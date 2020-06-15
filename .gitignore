@@ -39,3 +39,8 @@ package-lock.json
 .pnp.js
 .yarn-integrity
 /errors
+
+build
+dist
+lib
+generated
