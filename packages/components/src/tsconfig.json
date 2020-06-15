@@ -1,7 +1,7 @@
 {
-    "extends": "../../../config/tsconfig.base",
-    "compilerOptions": {
-        "outDir": "../lib/esm",
-        "strict": true
-    }
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../lib/esm",
+    "strict": true
+  }
 }

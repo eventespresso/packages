@@ -73,7 +73,7 @@ export async function createRollupConfig(
       esModule: tsconfigJSON ? tsconfigJSON.esModuleInterop : false,
       name: opts.name,
       sourcemap: true,
-      globals: { react: "React", "react-native": "ReactNative" },
+      globals: { react: "React" },
       exports: "named",
     },
     plugins: [
