@@ -10,7 +10,8 @@
     "directory": "packages/alert"
   },
   "scripts": {
-    "build": "ts-node ../../scripts/build"
+    "build": "ts-node ../../scripts/build",
+    "watch": "ts-node ../../scripts/watch"
   },
   "dependencies": {
     "@reach/utils": "^0.10.3",

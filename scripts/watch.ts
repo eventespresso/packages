@@ -3,6 +3,7 @@ import chalk from "chalk";
 import execa from "execa";
 import ora from "ora";
 import { watch, RollupWatchOptions, WatcherOptions } from "rollup";
+import { createBuildConfigs, writeCjsEntryFile } from "./build";
 import {
   clearConsole,
   normalizeOpts,
@@ -12,7 +13,6 @@ import {
   parseArgs,
   getPackageName,
 } from "./utils";
-import { createBuildConfigs, writeCjsEntryFile } from "./build";
 
 async function watchAction() {
   const opts = await normalizeOpts(parseArgs());
