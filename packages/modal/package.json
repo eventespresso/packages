@@ -1,6 +1,6 @@
 {
   "name": "@eventespresso/modal",
-  "version": "0.10.5",
+  "version": "0.10.7",
   "description": "Event Espresso core js and css.",
   "author": "Event Espresso",
   "license": "MIT",
@@ -14,6 +14,7 @@
     "watch": "ts-node ../../scripts/watch"
   },
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
     "@reach/utils": "^0.10.3",
     "@reach/visually-hidden": "^0.10.2",
     "@types/classnames": "^2.2.10",
@@ -32,5 +33,8 @@
     "README.md",
     "dist"
   ],
-  "gitHead": "63d8f58a883a38a91e7840a7443296c313141e23"
+  "gitHead": "63d8f58a883a38a91e7840a7443296c313141e23",
+  "devDependencies": {
+    "rollup-plugin-scss": "^2.5.0"
+  }
 }

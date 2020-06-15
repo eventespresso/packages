@@ -12,6 +12,7 @@ import babelPlugin from "rollup-plugin-babel";
 import sourceMaps from "rollup-plugin-sourcemaps";
 import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
+
 import { paths } from "./constants";
 import {
   createProgressEstimator,
