@@ -1,35 +1,53 @@
 {
-  "name": "@eventespresso/components",
-  "version": "0.10.7",
-  "description": "Event Espresso components.",
   "author": "Event Espresso",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/eventespresso/packages.git",
-    "directory": "packages/alert"
-  },
+  "name": "@eventespresso/components",
+  "version": "0.10.12",
+  "description": "Components related to selecting items from a list",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "esnext": "lib/esnext/index.js",
+  "typings": "lib/esm/index.d.ts",
+  "style": "lib/css/blueprint-select.css",
+  "unpkg": "dist/select.bundle.js",
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
-    "build": "ts-node ../../scripts/build"
+    "clean": "rm -rf dist/* && rm -rf lib/*",
+    "build": "run-p \"build:*\"",
+    "build:esm": "tsc -p ./src",
+    "build:cjs": "tsc -p ./src -m commonjs --outDir lib/cjs",
+    "build:esnext": "tsc -p ./src -t esnext --outDir lib/esnext",
+    "build:css": "sass-compile ./src",
+    "dev": "run-p \"build:esm -- --watch\" \"build:css -- --watch\"",
+    "dist": "run-s \"dist:*\"",
+    "dist:bundle": "cross-env NODE_ENV=production webpack",
+    "dist:css": "css-dist lib/css/*.css",
+    "dist:verify": "assert-package-layout"
   },
   "dependencies": {
-    "@chakra-ui/core": "^0.8.0",
-    "@types/classnames": "^2.2.10",
-    "classnames": "^2.2.6",
-    "tslib": "^1.11.2"
+    "@blueprintjs/core": "^3.28.2",
+    "classnames": "^2.2",
+    "tslib": "~1.10.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
-  "main": "dist/index.js",
-  "module": "dist/alert.esm.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "gitHead": "63d8f58a883a38a91e7840a7443296c313141e23",
   "devDependencies": {
-    "rollup-plugin-scss": "^2.5.0"
-  }
+    "@eventespresso/node-build-scripts": "^0.10.12",
+    "npm-run-all": "^4.1.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "typescript": "~3.9.3",
+    "webpack-cli": "^3.3.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eventespresso/packages.git",
+    "directory": "packages/select"
+  },
+  "license": "MIT",
+  "gitHead": "31509f3655b8f494ad0142721926a27e0a69263f"
 }
