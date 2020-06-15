@@ -34,8 +34,9 @@ pids
 node_modules
 .cache
 .env
-package-lock.json
 .pnp/
 .pnp.js
 .yarn-integrity
 /errors
+/vendor/
+/build/
