@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "start:app-ts": "yarn workspace @eventespresso/app-typescript start",
+    "start:app-ts": "yarn workspace @eventespresso/rem start",
     "start:storybook": "yarn workspace @project/storybook storybook",
     "start:storybook-ts": "yarn workspace @project/storybook-typescript storybook",
     "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
