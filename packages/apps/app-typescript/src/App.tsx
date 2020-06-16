@@ -3,7 +3,7 @@ import ReactLogo from './ReactLogo.svg';
 import YarnCat from './YarnCat.svg';
 import './App.css';
 
-import { CompOne, CompTwo } from '@eventespresso/components-typescript';
+import { CompOne, CompTwo } from '@eventespresso/components';
 
 const App: React.FC = () => {
   return (

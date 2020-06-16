@@ -2,10 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "start:app-ant-design": "yarn workspace @project/app-ant-design-rewired start",
-    "start:app-multi": "yarn workspace @project/app-multi-comps start",
-    "start:app-single": "yarn workspace @project/app-single-comp start",
-    "start:app-ts": "yarn workspace @project/app-typescript start",
+    "start:app-ts": "yarn workspace @eventespresso/app-typescript start",
     "start:storybook": "yarn workspace @project/storybook storybook",
     "start:storybook-ts": "yarn workspace @project/storybook-typescript storybook",
     "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
@@ -15,8 +12,7 @@
     "packages": [
       "packages/apps/*",
       "packages/components",
-      "packages/components-typescript",
-      "packages/storybook",
+      "packages/infrastructure",
       "packages/storybook-typescript"
     ],
     "nohoist": [
@@ -25,14 +21,27 @@
       "**/babel-jest"
     ]
   },
+  "dependencies": {
+    "@wordpress/block-library": "^2.19.0",
+    "@wordpress/blocks": "^6.17.0",
+    "@wordpress/components": "^9.7.0",
+    "@wordpress/compose": "^3.16.0",
+    "@wordpress/editor": "^9.17.0",
+    "@wordpress/i18n": "^3.13.0",
+    "@wordpress/keycodes": "^2.13.0",
+    "@wordpress/server-side-render": "^1.3.4",
+    "@wordpress/url": "^2.15.0",
+    "@wordpress/viewport": "^2.18.0",
+    "classnames": "^2.2"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
+    "@types/classnames": "^2.2.10",
     "babel-eslint": "10.0.3",
     "eslint": "6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-config-react-app": "^5.1.0",
-    "eslint-plugin-flowtype": "^4.5.3",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
@@ -42,6 +51,9 @@
     "jest-prop-type-error": "^1.1.0",
     "lerna": "^3.20.2",
     "prettier": "^1.19.1"
+  },
+  "resolutions": {
+    "react-dev-utils": "10.1.0"
   },
   "husky": {
     "hooks": {

@@ -12,8 +12,10 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@eventespresso/components-typescript": "^1.0.1",
+    "@chakra-ui/core": "^0.8.0",
+    "@eventespresso/components": "^1.0.1",
     "@react-workspaces/react-scripts": "3.3.0-alpha-08",
+    "@types/classnames": "^2.2.10",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
