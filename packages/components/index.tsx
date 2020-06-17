@@ -1,8 +1,4 @@
-export { default as CurrencyInput } from './src/CurrencyInput';
-export { default as InputWithLabel } from './src/InputWithLabel';
-
-export * from './src/Button';
-export * from './src/InlineEditInput';
-export * from './src/SearchInput';
-export * from './src/SelectInput';
-export * from './src/SwitchInput';
+export * from './src/calendars';
+export * from './src/display';
+export * from './src/input';
+export * from './src/layout';

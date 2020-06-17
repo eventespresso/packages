@@ -13,6 +13,8 @@
     "lint": "eslint ./src/**/*.tsx --max-warnings=0 --format=codeframe"
   },
   "dependencies": {
+    "@eventespresso/infrastructure": "^1.0.1",
+    "@eventespresso/services": "^1.0.1",
     "@react-workspaces/react-scripts": "3.4.0-alpha-01",
     "@storybook/react": "^5.3.19",
     "@testing-library/jest-dom": "^5.10.1",

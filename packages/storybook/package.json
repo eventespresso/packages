@@ -12,7 +12,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@eventespresso/components-typescript": "^1.0.1",
+    "@eventespresso/components": "^1.0.1",
     "@react-workspaces/react-scripts": "3.4.0-alpha-01",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"

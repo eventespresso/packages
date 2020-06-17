@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactLogo from './ReactLogo.svg';
-import YarnCat from './YarnCat.svg';
 import './App.css';
-
-import { CompOne, CompTwo } from '@eventespresso/components-typescript';
 
 const App: React.FC = () => {
   return (
@@ -11,7 +8,6 @@ const App: React.FC = () => {
       <header className="App-header">
         <div>
           <img src={ReactLogo} className="React-logo" alt="React Logo" />
-          <img src={YarnCat} className="Yarn-cat" alt="Yarn Workspaces Cat" />
         </div>
         <h1>
           <a

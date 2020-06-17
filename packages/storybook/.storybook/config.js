@@ -7,7 +7,7 @@ addParameters({
   },
 });
 
-const comps = require.context('@eventespresso/components-typescript/src', true, /.stories.tsx$/);
+const comps = require.context('@eventespresso/components/src', true, /.stories.tsx$/);
 
 configure(() => {
   comps.keys().forEach(filename => comps(filename));
