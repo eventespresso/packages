@@ -49,7 +49,7 @@ const resolveModule = (resolveFn, filePath) => {
   return resolveFn(`${filePath}.js`);
 };
 
-const packages = ['components-typescript'];
+const packages = ['components', 'infrastructure'];
 const packagePaths = [];
 const packageEntries = {};
 

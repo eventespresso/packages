@@ -1,0 +1,14 @@
+.ee-inline-edit {
+	&:focus,
+	&.ee-infinity-sign:focus {
+		color: var(--ee-color-primary-low-contrast) !important;
+		outline: none;
+	}
+
+	&.ee-infinity-sign {
+		color: var(--ee-default-text-color);
+		font-size: var(--ee-font-size-bigger);
+		line-height: 0.9;
+		vertical-align: middle;
+	}
+}
