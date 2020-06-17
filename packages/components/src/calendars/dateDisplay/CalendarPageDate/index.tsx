@@ -2,8 +2,8 @@ import React from 'react';
 import { parseISO, isValid } from 'date-fns';
 import { __ } from '@wordpress/i18n';
 
-import { Tooltip } from '@infraUI/display';
-import { useTimeZoneTime } from '@eventespresso/services/hooks';
+import { Tooltip } from '@eventespresso/infrastructure';
+import { useTimeZoneTime } from '@eventespresso/services';
 
 import './style.scss';
 import {

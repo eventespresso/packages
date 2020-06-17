@@ -1,4 +1,4 @@
-import { diff } from '@eventespresso/services/utilities';
+import { diff } from '@eventespresso/services';
 import { now } from '@sharedServices/utils/dateAndTime';
 
 const switchTenseForDate = (date: Date, textForPastDate: string, textForFutureDate: string): string => {

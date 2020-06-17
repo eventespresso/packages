@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { differenceInCalendarDays, parseISO, isValid } from 'date-fns';
 import { __ } from '@wordpress/i18n';
 
-import { useTimeZoneTime } from '@eventespresso/services/hooks';
+import { useTimeZoneTime } from '@eventespresso/services';
 import { BiggieCalendarDate, MediumCalendarDate, CalendarDateProps } from '../index';
 import { TIME_ONLY_12H_SHORT_FORMAT } from '@appConstants/dateFnsFormats';
 import './style.scss';

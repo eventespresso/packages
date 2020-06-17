@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { parseISO, isValid } from 'date-fns';
 import { __ } from '@wordpress/i18n';
 
-import { useTimeZoneTime } from '@eventespresso/services/hooks';
+import { useTimeZoneTime } from '@eventespresso/services';
 
 import './style.scss';
 import { CalendarDateProps } from '../types';
