@@ -5,6 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/eventespresso/packages.git"
   },
+  "private": true,
   "version": "1.0.5",
   "main": "src/index.tsx",
   "main:src": "src/index.tsx",

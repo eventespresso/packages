@@ -1,6 +1,6 @@
 {
   "author": "Event Espresso",
-  "name": "@eventespresso/storybook-typescript",
+  "name": "@eventespresso/storybook",
   "version": "1.0.5",
   "private": true,
   "repository": {

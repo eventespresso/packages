@@ -2,7 +2,7 @@
 
 ![Join us on Slack](https://img.shields.io/badge/Slack-React--Workpaces-EBB424?style=for-the-badge&logo=slack)
 
-> 💥 Now supports TypeScript and React-App-Rewired!  
+> 💥 Now supports TypeScript and React-App-Rewired!
 
 ## Features
 
@@ -71,24 +71,10 @@ From your project root type start command for desired app
 yarn workspace @project/app-single-comp start
 ```
 
-All available `start` scripts
-
-```json
-"scripts": {
-    "start:app-ant-design": "yarn workspace @project/app-ant-design-rewired start",
-    "start:app-multi": "yarn workspace @project/app-multi-comps start",
-    "start:app-single": "yarn workspace @project/app-single-comp start",
-    "start:app-ts": "yarn workspace @project/app-typescript start",
-    "start:storybook": "yarn workspace @project/storybook storybook",
-    "start:storybook-ts": "yarn workspace @project/storybook-typescript storybook",
-    ...
-  }
-```
-
 ### Starting The Storybook
 
 ```bash
-yarn start:storybook
+yarn storybook
 ```
 
 ### Linting & Testing
