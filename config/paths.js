@@ -49,7 +49,7 @@ const resolveModule = (resolveFn, filePath) => {
   return resolveFn(`${filePath}.js`);
 };
 
-const packages = ['components', 'infrastructure'];
+const packages = ['components', 'infrastructure', 'services'];
 const packagePaths = [];
 const packageEntries = {};
 
