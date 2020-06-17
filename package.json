@@ -2,10 +2,12 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "build": "node scripts/build.js",
     "dev": "node scripts/watch.js",
+    "dev:all": "node scripts/watch.js --domains all",
+    "build": "node scripts/build.js",
     "storybook": "yarn workspace @project/storybook storybook",
-    "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage"
+    "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
+    "deploy": "FORCE_COLOR=true lerna run deploy"
   },
   "workspaces": {
     "packages": [
@@ -33,7 +35,6 @@
   "devDependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
-    "@types/classnames": "^2.2.10",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "babel-eslint": "10.1.0",
@@ -102,11 +103,5 @@
       "!src/serviceWorker.{js,jsx,ts,tsx}",
       "!src/**/*.(spec|test|stories).{js,jsx,ts,tsx}"
     ]
-  },
-  "dependencies": {
-    "@chakra-ui/core": "^0.8.0",
-    "@wordpress/i18n": "^3.13.0",
-    "classnames": "^2.2.6",
-    "date-fns": "^2.14.0"
   }
 }
