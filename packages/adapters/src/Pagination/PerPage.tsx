@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Select, SelectProps } from '../Modal/node_modules/@infraUI/inputs';
+import { Select, SelectProps } from '../Select';
 import { PerPageProps } from './types';
 import './style.scss';
 
