@@ -1,5 +1,5 @@
-import { Entity, EntityId } from '@dataServices/types';
-import { RelationEntity } from '@appServices/apollo/relations';
+import { Entity, EntityId } from '@eventespresso/data';
+import { RelationEntity } from '@eventespresso/services';
 
 export interface EntityItemProps {
 	id: EntityId;
