@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ApolloClient from 'apollo-client';
 import {
 	CacheResolver,
@@ -8,6 +9,7 @@ import {
 } from 'apollo-cache-inmemory';
 import { BatchHttpLink } from 'apollo-link-batch-http';
 
+// TODO update this after centralized DOM data
 const graphqlEndpoint = window?.eeEditorData?.graphqlEndpoint || '';
 const nonce = window?.eejsdata?.data?.eejs_api_nonce || '';
 
