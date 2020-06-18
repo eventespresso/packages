@@ -3733,9 +3733,9 @@
     "@babel/runtime" "^7.10.2"
 
 "@typeform/embed@^0.21.0":
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/@typeform/embed/-/embed-0.21.1.tgz#8d711c608ea2927ada6dbc09182d59d57cd747ef"
-  integrity sha512-AOlwJiDYkTtno9bmu7NFpnM/p7wgqykl8eybigsk+bqzWUVBEx+zpKqSlL9oRooWLN5qG8NkCwATmszIPjENVQ==
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/@typeform/embed/-/embed-0.21.4.tgz#3524296a445f2dcdddb7986d14a7c5e870748f75"
+  integrity sha512-SrnpQfCV7XYLZdun9UyrKt7vXrlxL22xQqxwUZgW5jrsjntBar5bZbjh6806Hh9HbT5LVgMrKUhZBlBslscrMQ==
   dependencies:
     custom-event "^1.0.1"
     is-url "^1.2.2"
@@ -8062,9 +8062,9 @@ element-resize-detector@^1.2.1:
     batch-processor "1.0.0"
 
 elliptic@^6.0.0, elliptic@^6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.2.tgz#05c5678d7173c049d8ca433552224a495d0e3762"
-  integrity sha512-f4x70okzZbIQl/NSRLkI/+tteV/9WqL98zx+SQ69KbXxmVrmjwsNUPn/gYJJ0sHvEak24cZgHIPegRePAtA/xw==
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.3.tgz#cb59eb2efdaf73a0bd78ccd7015a62ad6e0f93d6"
+  integrity sha512-IMqzv5wNQf+E6aHeIqATs0tOLeOTwj1QKbRcS3jBbYkl5oLAserA8yJTT7/VyHUYG91PRmPyeQDObKLPpeS4dw==
   dependencies:
     bn.js "^4.4.0"
     brorand "^1.0.1"
@@ -18889,6 +18889,11 @@ use-dark-mode@2.3.1:
   dependencies:
     "@use-it/event-listener" "^0.1.2"
     use-persisted-state "^0.3.0"
+
+use-debounce@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-3.4.2.tgz#f4333cca59504244b916159600427bf977ec4c46"
+  integrity sha512-rW44wZaFPh3XiwUzGBA0JRuklpbfKO/szU/5CYD2Q/erLmCem63lJ650p3a+NJE6S+g0rulKtBOfa/3rw/GN+Q==
 
 use-persisted-state@^0.3.0:
   version "0.3.0"

@@ -1,46 +1,46 @@
 {
-  "name": "@eventespresso/react-exit-modal-typeform",
-  "version": "2.0.1-alpha.0",
-  "description": "React component that allows the triggering of an typeform form via modal",
-  "author": "EventEspresso",
-  "license": "GPL-2.0-or-later",
-  "keywords": [
-    "typeform",
-    "modal",
-    "exit-survey",
-    "survey"
-  ],
-  "homepage": "https://github.com/eventespresso/packages/tree/master/packages/exit-modal-typeform/README.md",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/eventespresso/packages.git"
-  },
-  "bugs": {
-    "url": "https://github.com/eventespresso/packages/issues"
-  },
-  "main": "build/index.js",
-  "module": "build-module/index.js",
-  "publishConfig": {
-    "access": "public"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
-    "@babel/plugin-transform-react-jsx": "^7.10.1",
-    "@babel/runtime": "^7.10.2",
-    "@babel/runtime-corejs2": "^7.10.2",
-    "css-loader": "^3.6.0",
-    "style-loader": "^1.2.1"
-  },
-  "dependencies": {
-    "@typeform/embed": "^0.21.0",
-    "classnames": "^2.2.6",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-modal": "^3.11.2"
-  },
-  "babel": {
-    "presets": "@wordpress/default"
-  }
+	"name": "@eventespresso/react-exit-modal-typeform",
+	"version": "2.0.1-alpha.0",
+	"description": "React component that allows the triggering of an typeform form via modal",
+	"author": "EventEspresso",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"typeform",
+		"modal",
+		"exit-survey",
+		"survey"
+	],
+	"homepage": "https://github.com/eventespresso/packages/tree/master/packages/exit-modal-typeform/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/eventespresso/barista.git"
+	},
+	"bugs": {
+		"url": "https://github.com/eventespresso/barista/issues"
+	},
+	"main": "build/index.js",
+	"module": "build-module/index.js",
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.10.2",
+		"@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+		"@babel/plugin-transform-react-jsx": "^7.10.1",
+		"@babel/runtime": "^7.10.2",
+		"@babel/runtime-corejs2": "^7.10.2",
+		"css-loader": "^3.6.0",
+		"style-loader": "^1.2.1"
+	},
+	"dependencies": {
+		"@typeform/embed": "^0.21.0",
+		"classnames": "^2.2.6",
+		"prop-types": "^15.7.2",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-modal": "^3.11.2"
+	},
+	"babel": {
+		"presets": "@wordpress/default"
+	}
 }

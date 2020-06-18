@@ -1,0 +1,49 @@
+import { useEffect, useRef } from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import { __ } from '@wordpress/i18n';
+
+import usePriceTypeQueryOptions from './usePriceTypeQueryOptions';
+import { useStatus, TypeName, useSystemNotifications} from '@eventespresso/services';
+import { FetchQueryResult } from '@eventespresso/data';
+import { PriceTypesList } from '../../types';
+
+const useFetchPriceTypes = (): FetchQueryResult<PriceTypesList> => {
+	const { setIsLoading, setIsLoaded, setIsError } = useStatus();
+	const { query, ...options } = usePriceTypeQueryOptions();
+
+	const toaster = useSystemNotifications();
+	const toastId = useRef(null);
+
+	const dismissLoading = (): void => toaster.dismiss(toastId.current);
+
+	const { data, error, loading } = useQuery<PriceTypesList>(query, {
+		...options,
+		onCompleted: (): void => {
+			setIsLoaded(TypeName.priceTypes, true);
+			dismissLoading();
+			toaster.success({ message: __('price types initialized') });
+		},
+		onError: (error): void => {
+			setIsError(TypeName.priceTypes, true);
+			dismissLoading();
+			toaster.error({ message: error.message });
+		},
+	});
+
+	useEffect(() => {
+		if (loading) {
+			toastId.current = toaster.loading({ message: __('initializing  price types') });
+		}
+
+		setIsLoading(TypeName.priceTypes, loading);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [loading]);
+
+	return {
+		data,
+		error,
+		loading,
+	};
+};
+
+export default useFetchPriceTypes;
