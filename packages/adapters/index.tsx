@@ -1,4 +1,4 @@
-import './src/styles'; // global adapters' styles
+import './src/style.scss'; // global adapters' styles
 
 export * from './src/Alert';
 export * from './src/AlertDialog';

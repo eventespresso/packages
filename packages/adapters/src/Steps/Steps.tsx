@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Heading } from '../Heading';
 import { StepsProps } from './types';
-import { useMemoStringify } from '@application/services/hooks';
+import { useMemoStringify } from '@eventespresso/services';
 import './style.scss';
 
 const Steps: React.FC<StepsProps> = ({

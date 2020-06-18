@@ -10,7 +10,7 @@ import {
   ModalOverlay,
 } from '@chakra-ui/core';
 
-import { Button } from '@application/ui/input';
+import { Button } from '../Button';
 import { ModalProps } from './types';
 
 import './styles.scss';

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Alert as ChakraAlert, AlertIcon, AlertTitle, AlertDescription, AlertProps, IconProps } from '@chakra-ui/core';
+import { Alert as ChakraAlert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/core';
 
 import { BannerProps } from './types';
 

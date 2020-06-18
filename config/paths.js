@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const fs = require('fs');
 const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
@@ -86,7 +84,7 @@ if (suppliedDomains && typeof suppliedDomains === 'string') {
 	domainsToWatch = suppliedDomains === 'all' ? allDomains : suppliedDomains.split(',');
 }
 if (domainsToWatch.some((domain) => !allDomains.includes(domain))) {
-	throw 'Unknown domain';
+	throw new Error('Unknown domain');
 }
 
 const domainPaths = [];
@@ -101,8 +99,6 @@ domainsToWatch.forEach((domain) => {
 });
 
 const includePaths = [...packagePaths, ...domainPaths];
-
-console.log('includePaths', includePaths);
 
 // config after eject: we're in ./config/
 module.exports = {

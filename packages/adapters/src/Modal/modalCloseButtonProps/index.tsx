@@ -1,6 +1,4 @@
-import { __ } from '@wordpress/i18n';
-
-import { ButtonProps } from '@infraUI/inputs';
+import { ButtonProps } from '../../Button';
 import { Close } from '@appDisplay/icons';
 
 import './styles.scss';

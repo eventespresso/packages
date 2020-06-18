@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar as ChakraAvatar, AvatarBadge, IAvatar, BoxProps } from '@chakra-ui/core';
+import { Avatar as ChakraAvatar, AvatarBadge } from '@chakra-ui/core';
 
 import { AvatarProps } from './types';
 
