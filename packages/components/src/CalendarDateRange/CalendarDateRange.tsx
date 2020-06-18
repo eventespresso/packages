@@ -4,7 +4,7 @@ import { differenceInCalendarDays, parseISO, isValid } from 'date-fns';
 import { __ } from '@wordpress/i18n';
 
 import { useTimeZoneTime } from '@eventespresso/services';
-import { BiggieCalendarDate, MediumCalendarDate } from '../..';
+import { BiggieCalendarDate, MediumCalendarDate } from '../../';
 import { TIME_ONLY_12H_SHORT_FORMAT } from '@eventespresso/constants';
 
 import { CalendarDateRangeProps } from './types';
