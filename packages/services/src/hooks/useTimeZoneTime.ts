@@ -1,7 +1,7 @@
 import { path } from 'ramda';
 import { parseISO, isValid } from 'date-fns';
 
-import useConfig from '../config/useConfig';
+import { useConfig } from '../config';
 import { format as formatTz, utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 
 type DateFn = (date: Date | string | number) => Date;

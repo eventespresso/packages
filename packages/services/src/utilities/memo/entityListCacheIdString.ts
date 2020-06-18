@@ -1,5 +1,5 @@
-import { Entity } from '@dataServices/types';
-import { getCacheIds } from '@eventespresso/services/predicates';
+import { Entity } from '@eventespresso/data';
+import { getCacheIds } from '@eventespresso/services';
 
 const entityListCacheIdString = <E extends Entity>(entities: E[]): string => JSON.stringify(getCacheIds(entities));
 
