@@ -1,0 +1,50 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "prettier/react",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
+    "react-app"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react-hooks", "jsx-a11y"],
+  "rules": {
+    "comma-dangle": "off",
+    "jest/valid-describe": "off",
+    "no-case-declarations": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "react/prop-types": "off",
+    "react/static-property-placement": "off",
+    "react/display-name": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "no-unused-vars": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
