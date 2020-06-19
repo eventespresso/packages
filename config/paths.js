@@ -50,7 +50,7 @@ const resolveModule = (resolveFn, filePath) => {
 	return resolveFn(`${filePath}.js`);
 };
 
-const packages = ['adapters', 'components', 'constants', 'data', 'edtr-services', 'predicates', 'services'];
+const packages = ['adapters', 'components', 'constants', 'data', 'edtr-services','icons', 'predicates', 'services'];
 const packagePaths = [];
 const packageEntries = {};
 
