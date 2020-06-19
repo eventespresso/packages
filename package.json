@@ -1,113 +1,114 @@
 {
-  "name": "root",
-  "private": true,
-  "scripts": {
-    "dev": "node scripts/watch.js",
-    "dev:all": "node scripts/watch.js --domains all",
-    "build": "node scripts/build.js",
-    "storybook": "yarn workspace @project/storybook storybook",
-    "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
-    "deploy": "FORCE_COLOR=true lerna run deploy"
-  },
-  "workspaces": {
-    "packages": [
-      "domains/*",
-      "packages/*"
-    ],
-    "nohoist": [
-      "domains/**/webpack-dev-server",
-      "**/babel-loader",
-      "**/babel-jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@babel/core": "7.10.2",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.1",
-    "@babel/plugin-proposal-optional-chaining": "^7.10.1",
-    "@babel/plugin-transform-runtime": "^7.10.1",
-    "@svgr/webpack": "5.4.0",
-    "@typescript-eslint/eslint-plugin": "^3.3.0",
-    "@typescript-eslint/parser": "^3.3.0",
-    "babel-eslint": "10.1.0",
-    "babel-jest": "^26.0.1",
-    "babel-loader": "8.1.0",
-    "babel-plugin-named-asset-import": "^0.3.6",
-    "babel-preset-react-app": "^9.1.2",
-    "camelcase": "^6.0.0",
-    "case-sensitive-paths-webpack-plugin": "2.3.0",
-    "css-loader": "3.6.0",
-    "dotenv": "8.2.0",
-    "dotenv-expand": "5.1.0",
-    "eslint": "^7.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-config-react-app": "^5.2.1",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-flowtype": "5.1.3",
-    "eslint-plugin-import": "2.21.2",
-    "eslint-plugin-jest": "^23.13.2",
-    "eslint-plugin-jsx-a11y": "6.3.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
-    "file-loader": "6.0.0",
-    "fs-extra": "^9.0.1",
-    "html-webpack-plugin": "4.3.0",
-    "identity-obj-proxy": "3.0.0",
-    "jest": "26.0.1",
-    "jest-environment-jsdom-fourteen": "1.0.1",
-    "jest-resolve": "26.0.1",
-    "jest-watch-typeahead": "0.6.0",
-    "lerna": "^3.22.1",
-    "mini-css-extract-plugin": "0.9.0",
-    "node-sass": "^4.14.1",
-    "optimize-css-assets-webpack-plugin": "5.0.3",
-    "pnp-webpack-plugin": "1.6.4",
-    "postcss-flexbugs-fixes": "4.2.1",
-    "postcss-loader": "3.0.0",
-    "postcss-normalize": "9.0.0",
-    "postcss-preset-env": "6.7.0",
-    "postcss-safe-parser": "4.0.2",
-    "prettier": "^2.0.5",
-    "react-app-polyfill": "^1.0.6",
-    "react-dev-utils": "^10.2.1",
-    "resolve": "1.17.0",
-    "resolve-url-loader": "3.1.1",
-    "sass-loader": "8.0.2",
-    "semver": "7.3.2",
-    "style-loader": "1.2.1",
-    "terser-webpack-plugin": "3.0.6",
-    "ts-pnp": "1.2.0",
-    "typescript": "^3.9.5",
-    "url-loader": "4.1.0",
-    "webpack": "4.43.0",
-    "webpack-dev-server": "3.11.0",
-    "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "5.1.3"
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/setupTests.{js,jsx,ts,tsx}",
-      "!src/index.{js,jsx,ts,tsx}",
-      "!src/serviceWorker.{js,jsx,ts,tsx}",
-      "!src/**/*.(spec|test|stories).{js,jsx,ts,tsx}"
-    ]
-  }
+	"name": "root",
+	"private": true,
+	"scripts": {
+		"dev": "node scripts/watch.js",
+		"start": "node scripts/start.js",
+		"dev:all": "node scripts/watch.js --domains all",
+		"build": "node scripts/build.js",
+		"storybook": "yarn workspace @project/storybook storybook",
+		"test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
+		"deploy": "FORCE_COLOR=true lerna run deploy"
+	},
+	"workspaces": {
+		"packages": [
+			"domains/*",
+			"packages/*"
+		],
+		"nohoist": [
+			"domains/**/webpack-dev-server",
+			"**/babel-loader",
+			"**/babel-jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@babel/core": "7.10.2",
+		"@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.1",
+		"@babel/plugin-proposal-optional-chaining": "^7.10.1",
+		"@babel/plugin-transform-runtime": "^7.10.1",
+		"@svgr/webpack": "5.4.0",
+		"@typescript-eslint/eslint-plugin": "^3.3.0",
+		"@typescript-eslint/parser": "^3.3.0",
+		"babel-eslint": "10.1.0",
+		"babel-jest": "^26.0.1",
+		"babel-loader": "8.1.0",
+		"babel-plugin-named-asset-import": "^0.3.6",
+		"babel-preset-react-app": "^9.1.2",
+		"camelcase": "^6.0.0",
+		"case-sensitive-paths-webpack-plugin": "2.3.0",
+		"css-loader": "3.6.0",
+		"dotenv": "8.2.0",
+		"dotenv-expand": "5.1.0",
+		"eslint": "^7.2.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-config-react-app": "^5.2.1",
+		"eslint-loader": "^4.0.2",
+		"eslint-plugin-flowtype": "5.1.3",
+		"eslint-plugin-import": "2.21.2",
+		"eslint-plugin-jest": "^23.13.2",
+		"eslint-plugin-jsx-a11y": "6.3.0",
+		"eslint-plugin-prettier": "^3.1.4",
+		"eslint-plugin-react": "7.20.0",
+		"eslint-plugin-react-hooks": "^4.0.4",
+		"file-loader": "6.0.0",
+		"fs-extra": "^9.0.1",
+		"html-webpack-plugin": "4.3.0",
+		"identity-obj-proxy": "3.0.0",
+		"jest": "26.0.1",
+		"jest-environment-jsdom-fourteen": "1.0.1",
+		"jest-resolve": "26.0.1",
+		"jest-watch-typeahead": "0.6.0",
+		"lerna": "^3.22.1",
+		"mini-css-extract-plugin": "0.9.0",
+		"node-sass": "^4.14.1",
+		"optimize-css-assets-webpack-plugin": "5.0.3",
+		"pnp-webpack-plugin": "1.6.4",
+		"postcss-flexbugs-fixes": "4.2.1",
+		"postcss-loader": "3.0.0",
+		"postcss-normalize": "9.0.0",
+		"postcss-preset-env": "6.7.0",
+		"postcss-safe-parser": "4.0.2",
+		"prettier": "^2.0.5",
+		"react-app-polyfill": "^1.0.6",
+		"react-dev-utils": "^10.2.1",
+		"resolve": "1.17.0",
+		"resolve-url-loader": "3.1.1",
+		"sass-loader": "8.0.2",
+		"semver": "7.3.2",
+		"style-loader": "1.2.1",
+		"terser-webpack-plugin": "3.0.6",
+		"ts-pnp": "1.2.0",
+		"typescript": "^3.9.5",
+		"url-loader": "4.1.0",
+		"webpack": "4.43.0",
+		"webpack-dev-server": "3.11.0",
+		"webpack-manifest-plugin": "2.2.0",
+		"workbox-webpack-plugin": "5.1.3"
+	},
+	"babel": {
+		"presets": [
+			"react-app"
+		]
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"src/**/*.{js,jsx,ts,tsx}",
+			"!src/setupTests.{js,jsx,ts,tsx}",
+			"!src/index.{js,jsx,ts,tsx}",
+			"!src/serviceWorker.{js,jsx,ts,tsx}",
+			"!src/**/*.(spec|test|stories).{js,jsx,ts,tsx}"
+		]
+	}
 }

@@ -6,7 +6,7 @@ export { default as useMemoStringify } from './useMemoStringify';
 
 export { default as useMemoLazy } from './useMemoLazy';
 
-export { default as usePrevNext } from './usePrevNext';
+export * from './usePrevNext';
 
 export { default as useRect } from './useRect';
 

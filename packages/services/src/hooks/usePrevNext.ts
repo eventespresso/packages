@@ -7,7 +7,7 @@ export interface PrevNext {
 	prev: VoidFunction;
 }
 
-const usePrevNext = (initialIndex = 0): PrevNext => {
+export const usePrevNext = (initialIndex = 0): PrevNext => {
 	const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
 	const goto = useCallback((index: number) => setCurrentIndex(index), [setCurrentIndex]);
@@ -18,5 +18,3 @@ const usePrevNext = (initialIndex = 0): PrevNext => {
 
 	return useMemo(() => ({ current: currentIndex, goto, next, prev }), [currentIndex, goto, next, prev]);
 };
-
-export default usePrevNext;

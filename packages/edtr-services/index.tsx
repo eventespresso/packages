@@ -7,3 +7,5 @@ export * from './src/context';
 export * from './src/filterState';
 
 export * from './src/hooks';
+
+export * from './src/utils';

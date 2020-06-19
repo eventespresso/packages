@@ -1,19 +1,15 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
-  },
-  "include": ["src"]
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"traceResolution": true,
+		"paths": {
+			"@edtrHooks/*": ["src/hooks/*"],
+			"@edtrInterfaces/*": ["src/interfaces/*"],
+			"@edtrServices/*": ["src/services/*"],
+			"@edtrUI/*": ["src/ui/*"]
+		},
+		"rootDir": "."
+	},
+	"include": ["src"]
 }

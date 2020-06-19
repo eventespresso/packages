@@ -3,29 +3,13 @@ import { allPass, filter, find, includes, propEq } from 'ramda';
 import { EntityId, EntityDbId } from '@eventespresso/data';
 import { Price } from '@eventespresso/edtr-services';
 import { PRICE_FIELDS, PRICE_INPUT_FIELDS } from '../priceFields';
-import { findEntityByDbId, findEntityByGuid } from '../../common';
+import { findEntityByDbId, findEntityByGuid, isTax, isBasePrice } from '../../common';
 
 // the following return `true` if price satisfies predicate
 export const isPriceField = (_: unknown, field: string): boolean => includes(field, PRICE_FIELDS);
 
 // the following return `true` if price satisfies predicate
 export const isPriceInputField = (_: unknown, field: string): boolean => includes(field, PRICE_INPUT_FIELDS);
-
-// is a base price ?
-export const isBasePrice = propEq('isBasePrice', true);
-export const isNotBasePrice = propEq('isBasePrice', false);
-
-// is a discount ?
-export const isDiscount = propEq('isDiscount', true);
-export const isNotDiscount = propEq('isDiscount', false);
-
-// is a percent based modifier ?
-export const isPercent = propEq('isPercent', true);
-export const isNotPercent = propEq('isPercent', false);
-
-// is a tax ?
-export const isTax = propEq('isTax', true);
-export const isNotTax = propEq('isTax', false);
 
 // is a default price ?
 export const isDefault = propEq('isDefault', true);
@@ -40,6 +24,5 @@ export const getPriceByDbId = (prices: Price[], dbId: EntityDbId): Price => find
 export const getPriceByGuid = (prices: Price[], guid: EntityId): Price => findEntityByGuid(prices)(guid);
 
 // returns array of prices that satisfy predicate
-export const getPriceModifiers = (prices: Price[]): Price[] => filter<Price>(isNotBasePrice, prices);
 export const getTaxes = (prices: Price[]): Price[] => filter<Price>(isTax, prices);
 export const getDefaultTaxes = (prices: Price[]): Price[] => filter(isDefaultTax, prices);

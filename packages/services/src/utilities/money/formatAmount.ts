@@ -9,10 +9,8 @@ export type FormatAmountFunction = (amount: number | string) => string;
  * @param {number} decimalPlaces
  * @return {Function}
  */
-const formatAmount = (decimalPlaces: number): FormatAmountFunction => (amount: number | string): string => {
+export const formatAmount = (decimalPlaces: number): FormatAmountFunction => (amount: number | string): string => {
 	const newParsedAmount = parsedAmount(amount);
 	// newParsedAmount may be NaN
 	return isNaN(newParsedAmount) ? '' : newParsedAmount.toFixed(decimalPlaces);
 };
-
-export default formatAmount;
