@@ -1,7 +1,8 @@
 import { PriceType, PriceTypesList } from '../../types';
 import { useCacheQuery } from '@eventespresso/data';
-import { getCacheIds, useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/services';
 import usePriceTypeQueryOptions from './usePriceTypeQueryOptions';
+import { getCacheIds } from '@eventespresso/predicates';
 
 /**
  * A custom react hook for retrieving all the priceTypes from cache

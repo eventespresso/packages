@@ -1,6 +1,7 @@
 import { Price, PricesList } from '../../types';
 import { useCacheQuery } from '@eventespresso/data';
-import { getCacheIds, useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/services';
+import { getCacheIds } from '@eventespresso/predicates';
 import usePriceQueryOptions from './usePriceQueryOptions';
 
 /**

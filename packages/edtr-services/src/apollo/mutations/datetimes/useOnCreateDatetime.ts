@@ -3,7 +3,8 @@ import { useCallback } from 'react';
 import updateTicketCache from './updateTicketCache';
 import useUpdateDatetimeCache from './useUpdateDatetimeCache';
 import { DatetimeMutationCallbackFn, DatetimeMutationCallbackFnArgs } from '../types';
-import { useRelations, getGuids } from '@eventespresso/services';
+import { useRelations } from '@eventespresso/services';
+import { getGuids } from '@eventespresso/predicates';
 
 const useOnCreateDatetime = (): DatetimeMutationCallbackFn => {
 	const { updateRelations, addRelation } = useRelations();

@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
 
+import { useRelations } from '@eventespresso/services';
+import { getGuids } from '@eventespresso/predicates';
 import updatePriceCache from './updatePriceCache';
 import useUpdateTicketCache from './useUpdateTicketCache';
 import { TicketMutationCallbackFn, TicketMutationCallbackFnArgs } from '../types';
-import {getGuids, useRelations } from '@eventespresso/services';
 
 const useOnDeleteTicket = (): TicketMutationCallbackFn => {
 	const { dropRelations, removeRelation } = useRelations();

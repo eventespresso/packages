@@ -1,5 +1,5 @@
 import { DatetimeEdge, TicketEdge, PriceEdge, PriceTypeEdge } from '../types';
-import { EntityEdge } from '@dataServices/types';
+import { EntityEdge } from '@eventespresso/data';
 
 export const DEFAULT_ENTITY_LIST_DATA: EntityEdge = {
 	nodes: [],

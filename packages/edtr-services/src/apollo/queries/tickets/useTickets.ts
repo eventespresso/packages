@@ -1,7 +1,8 @@
 import { Ticket, TicketEdge } from '../../types';
-import { getCacheIds, useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/services';
 import { useTicketsQuery } from '@eventespresso/data';
 import useTicketQueryOptions from './useTicketQueryOptions';
+import { getCacheIds } from '@eventespresso/predicates';
 
 const useTickets = (): Array<Ticket> => {
 	const options = useTicketQueryOptions();

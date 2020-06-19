@@ -1,6 +1,7 @@
 import useDatetimeQueryOptions from './useDatetimeQueryOptions';
 import { Datetime, DatetimeEdge } from '../../types';
-import { getCacheIds, useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/services';
+import { getCacheIds } from '@eventespresso/predicates';
 import { useDatetimesQuery } from '@eventespresso/data';
 
 const useDatetimes = (): Array<Datetime> => {

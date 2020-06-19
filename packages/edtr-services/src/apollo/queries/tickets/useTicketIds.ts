@@ -1,6 +1,6 @@
 import useTickets from './useTickets';
 import { EntityId } from '@eventespresso/data';
-import { getGuids } from '@eventespresso/services';
+import { getGuids } from '@eventespresso/predicates';
 
 const useTicketIds = (): EntityId[] => {
 	const tickets = useTickets();
