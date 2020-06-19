@@ -33,7 +33,7 @@
 		"style-loader": "^1.2.1"
 	},
 	"dependencies": {
-		"@typeform/embed": "^0.21.0",
+		"@typeform/embed": "^0.21.4",
 		"classnames": "^2.2.6",
 		"prop-types": "^15.7.2",
 		"react": "^16.13.1",
