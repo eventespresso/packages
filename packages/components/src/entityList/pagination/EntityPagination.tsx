@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Pagination, PaginationProps } from '../../../Button/node_modules/@infraUI/display';
+import { Pagination, PaginationProps } from '@eventespresso/adapters';
 
 import { EntityListFilterStateManager } from '../filterBar';
 import './style.scss';
 
 interface EntityPaginationProps<ELFS extends EntityListFilterStateManager> extends Partial<PaginationProps> {
-  filterState: ELFS;
+	filterState: ELFS;
 }
 
 /**
@@ -14,29 +14,29 @@ interface EntityPaginationProps<ELFS extends EntityListFilterStateManager> exten
  * @return EntityPagination
  */
 const EntityPagination: React.FC<EntityPaginationProps<any>> = ({
-  filterState,
-  showPerPageChanger = true,
-  showTotal,
-  ...rest
+	filterState,
+	showPerPageChanger = true,
+	showTotal,
+	...rest
 }) => {
-  const { pageNumber, perPage, setPerPage, setPageNumber, total }: EntityListFilterStateManager = filterState;
-  const className = classNames('ee-entity-pagination', { hidePagination: total <= perPage });
+	const { pageNumber, perPage, setPerPage, setPageNumber, total }: EntityListFilterStateManager = filterState;
+	const className = classNames('ee-entity-pagination', { hidePagination: total <= perPage });
 
-  return (
-    <div className={className}>
-      <Pagination
-        {...rest}
-        defaultPerPage={6}
-        onChangePageNumber={setPageNumber}
-        onChangePerPage={setPerPage}
-        pageNumber={pageNumber}
-        perPage={perPage}
-        showPerPageChanger={showPerPageChanger}
-        showTotal={showTotal}
-        total={total}
-      />
-    </div>
-  );
+	return (
+		<div className={className}>
+			<Pagination
+				{...rest}
+				defaultPerPage={6}
+				onChangePageNumber={setPageNumber}
+				onChangePerPage={setPerPage}
+				pageNumber={pageNumber}
+				perPage={perPage}
+				showPerPageChanger={showPerPageChanger}
+				showTotal={showTotal}
+				total={total}
+			/>
+		</div>
+	);
 };
 
 export default EntityPagination;

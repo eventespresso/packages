@@ -1,12 +1,12 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { EmptyState, ErrorIndicator, LoadingNotice } from '@appDisplay';
+import { EmptyState, ErrorIndicator, LoadingNotice } from '../../';
 import { EntityListFilterStateManager } from './filterBar';
 import EntityListFilterBar from './withValidFilterState';
 import { Entity } from '@eventespresso/data';
-import { Divider, Heading } from '../../Button/node_modules/@infraUI/display';
-import { useStatus } from '@appServices/apollo/status';
+import { Divider, Heading } from '@eventespresso/adapters';
+import { useStatus } from '@eventespresso/services';
 
 import { EntityListProps } from './types';
 import { EntityPagination } from './pagination';

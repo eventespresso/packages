@@ -2,11 +2,11 @@ import React from 'react';
 import { parseISO } from 'date-fns';
 import { __ } from '@wordpress/i18n';
 
-import { BiggieCalendarDate, CalendarDateRange } from '@appCalendars/dateDisplay';
+import { BiggieCalendarDate, CalendarDateRange } from '../../';
 import { CalendarDateSwitcherProps } from './types';
-import { DisplayStartOrEndDate } from '@sharedServices/filterState';
-import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@sharedConstants/defaultDates';
-import { switchTenseForDate } from '@appServices/utilities/date';
+import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
+import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
+import { switchTenseForDate } from '@eventespresso/unknown';
 
 const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = React.memo(
 	({ className, displayDate = DisplayStartOrEndDate.start, labels, ...props }) => {

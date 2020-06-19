@@ -2,7 +2,7 @@ import React from 'react';
 
 import { EntityCardListProps } from './types';
 import { Entity } from '@eventespresso/data';
-import entitiesUnchanged from '@appServices/utilities/memo/entitiesUnchanged';
+import { entitiesUnchanged } from '@eventespresso/services';
 
 const EntityCardList = <E extends Entity>({ EntityCard, entities }: EntityCardListProps<E>) => {
 	return (

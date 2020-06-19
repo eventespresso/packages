@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { EntityTableProps } from './types';
 import { Entity } from '@eventespresso/data';
 import { EntityListFilterStateManager } from './filterBar';
-import { ResponsiveTable } from '@appLayout/espressoTable';
-import { useMemoStringify } from '@application/services/hooks';
+import { ResponsiveTable } from '../../';
+import { useMemoStringify } from '@eventespresso/services';
 
 type ELFSM = EntityListFilterStateManager<any>;
 

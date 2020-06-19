@@ -1,6 +1,6 @@
 import React from 'react';
 
-import EntityPaperFrame from '../EntityPaperFrame';
+import { EntityPaperFrame } from '../EntityPaperFrame';
 import { EntityCardProps } from './types';
 import { getPropsAreEqual } from '@eventespresso/services';
 import './styles.scss';

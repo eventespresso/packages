@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { GlobalOutlined } from '@eventespresso/components';
-
+import { GlobalOutlined } from '@eventespresso/icons';
 import { TooltipProps } from '@eventespresso/adapters';
 import { useMemoStringify } from '@eventespresso/services';
 

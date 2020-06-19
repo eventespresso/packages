@@ -1,4 +1,4 @@
-import { useUIRegistry } from '@appServices/subscription';
+import { useUIRegistry } from '@eventespresso/services';
 import { EntityActionsMenuRegistryHook } from './types';
 import { serviceName as service } from './constants';
 

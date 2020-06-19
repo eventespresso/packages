@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Menu } from '@infraUI/layout/menu';
-
+import { Menu } from '@eventespresso/adapters';
 import DropdownMenuList from './DropdownMenuList';
 import DropdownToggle from './DropdownToggle';
 

@@ -2,9 +2,10 @@ import React from 'react';
 import { is } from 'ramda';
 
 import { ColorSwatch } from '../ColorSwatch';
-import { Icon, IconName } from '@appDisplay/icons';
+import { Icon } from '@eventespresso/icons';
+import type { IconName } from '@eventespresso/icons';
 import { DescriptionList } from '../descriptionList';
-import { EntityListLegendProps } from './types';
+import type { EntityListLegendProps } from './types';
 
 const EntityListLegend: React.FC<EntityListLegendProps> = ({ legendConfig }) => {
 	const { icons, swatches } = legendConfig;

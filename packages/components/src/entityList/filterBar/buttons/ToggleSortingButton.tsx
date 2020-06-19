@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Button } from '../../../Button';
-import { Sort } from '@eventespresso/components';
+import { Sort } from '@eventespresso/icons';
 import { ToggleSortingButtonProps } from '../types';
 
 import { getPropsAreEqual } from '@eventespresso/services';

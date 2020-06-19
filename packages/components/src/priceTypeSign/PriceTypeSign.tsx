@@ -2,10 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 
 import CurrencySign from './CurrencySign';
-import { getCurrencySignCharacterCountClassName, getCurrencySignPositionClassName } from './utils';
+import { getCurrencySignPositionClassName } from './utils';
 import PercentSign from './PercentSign';
-import { PriceType } from '@edtrServices/apollo/types';
 import { useConfig } from '@eventespresso/services';
+import { PriceType } from '@eventespresso/edtr-services';
 
 type Props = {
 	priceType: PriceType;

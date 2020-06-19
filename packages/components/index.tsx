@@ -16,6 +16,8 @@ export * from './src/EntityIDs';
 export * from './src/entityList';
 export * from './src/EntityListLegend';
 export * from './src/EntityPaperFrame';
+export * from './src/EmptyState';
+export * from './src/ErrorIndicator';
 export * from './src/espressoTable';
 export * from './src/InlineEditInput';
 export * from './src/InputWithLabel';

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { MenuItem } from '@infraUI/layout/menu';
+import { MenuItem } from '@eventespresso/adapters';
 import { DropdownMenuItemProps } from './types';
 
 const DropdownMenuItem: React.FC<DropdownMenuItemProps> = ({ icon: Icon, title, ...props }) => {

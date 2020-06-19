@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useMemoStringify } from '@application/services/hooks';
+import { useMemoStringify } from '@eventespresso/services';
 
-import Banner from './Banner';
+import Banner from '../Banner';
 
 interface ErrorIndicatorProps {
 	description?: string;

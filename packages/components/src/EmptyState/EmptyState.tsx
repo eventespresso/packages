@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { useMemoStringify } from '@application/services/hooks';
+import { useMemoStringify } from '@eventespresso/services';
 
-import Banner from './Banner';
+import Banner from '../Banner';
 
 interface EmptyStateProps {
 	children?: React.ReactNode;

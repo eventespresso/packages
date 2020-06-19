@@ -1,5 +1,5 @@
 import { IconName } from '@application/ui/display';
-import { MenuProps, MenuItemProps, MenuToggleProps, MenuListProps } from '@infraUI/layout/menu';
+import { MenuProps, MenuItemProps, MenuToggleProps, MenuListProps } from '@eventespresso/adapters';
 import { withTooltipProps } from '@application/ui/display';
 
 export interface DropdownMenuProps extends Omit<MenuProps, 'isOpen'> {

@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Button } from '../../../Button';
 
-import { Filter } from '@appDisplay/icons';
+import { Filter } from '@eventespresso/icons';
 
 import { ToggleFiltersButtonProps } from '../types';
 

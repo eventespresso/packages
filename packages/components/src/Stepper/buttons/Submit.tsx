@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { Button, ButtonProps, ButtonType } from '@application/ui/input';
-import { SaveOutlined } from '@eventespresso/components';
+import { Button, ButtonProps, ButtonType } from '../../../';
+import { SaveOutlined } from '@eventespresso/icons';
 
 const Submit: React.FC<ButtonProps> = ({ isDisabled, onClick, ...props }) => {
 	const buttonText = props.buttonText || __('Submit');
