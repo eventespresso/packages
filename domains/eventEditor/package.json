@@ -12,14 +12,18 @@
     "@react-workspaces/react-scripts": "^3.4.0-alpha-01",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.3.0",
+    "@testing-library/react-hooks": "^3.3.0",
     "@testing-library/user-event": "^12.0.2",
     "@types/jest": "^26.0.0",
     "@types/node": "^14.0.13",
     "@types/react": "^16.9.38",
     "@types/react-dom": "^16.9.8",
+    "@wordpress/url": "^2.16.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "typescript": "~3.9.5"
+    "react-final-form": "^6.5.0",
+    "typescript": "~3.9.5",
+    "yup": "^0.29.1"
   },
   "scripts": {
     "start": "node ./../../scripts/start.js",

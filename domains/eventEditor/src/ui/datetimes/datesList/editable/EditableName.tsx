@@ -1,0 +1,39 @@
+import React, { useCallback } from 'react';
+import { __ } from '@wordpress/i18n';
+
+import type { DateItemProps } from '../types';
+import { useDatetimeMutator } from '@eventespresso/edtr-services';
+import { InlineEditText } from '@eventespresso/components';
+import { getPropsAreEqual } from '@eventespresso/services';
+
+interface EditableNameProps extends DateItemProps {
+	className?: string;
+	view?: 'card' | 'table';
+}
+
+const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime, view = 'card' }) => {
+	const { updateEntity } = useDatetimeMutator(datetime.id);
+
+	const dateName = datetime.name ? datetime.name : __('Edit title...');
+
+	const onChangeName = useCallback(
+		(name: string): void => {
+			if (name !== datetime.name) {
+				updateEntity({ name });
+			}
+		},
+		[datetime.name, updateEntity]
+	);
+
+	return (
+		<InlineEditText
+			fitText={view === 'card'}
+			tag={view === 'table' ? 'p' : 'h4'}
+			className={className}
+			onChangeValue={onChangeName}
+			value={dateName}
+		/>
+	);
+};
+
+export default React.memo(EditableName, getPropsAreEqual(['entity', 'name']));
