@@ -1,14 +1,20 @@
-// GENERATE BY ./scripts/generate.ts
-// DON NOT EDIT IT MANUALLY
+import * as React from 'react';
 
-import * as React from 'react'
-import AppstoreFilledSvg from '../svg/src/asn/AppstoreFilled';
-import AntdIcon, { AntdIconProps } from '../components/AntdIcon';
+function SvgAppstoreFilled(props: React.SVGProps<SVGSVGElement>) {
+	return (
+		<svg
+			viewBox='64 64 896 896'
+			className='appstoreFilled_svg__ee-svg'
+			data-icon='appstore'
+			fill='currentColor'
+			aria-hidden='true'
+			height='1.25em'
+			width='1.25em'
+			{...props}
+		>
+			<path d='M864 144H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm0 400H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zM464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm0 400H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16z' />
+		</svg>
+	);
+}
 
-const AppstoreFilled = (
-  props: AntdIconProps,
-  ref: React.MutableRefObject<HTMLSpanElement>,
-) => <AntdIcon {...props} ref={ref} icon={AppstoreFilledSvg} />;
-
-AppstoreFilled.displayName = 'AppstoreFilled';
-export default React.forwardRef<HTMLSpanElement, AntdIconProps>(AppstoreFilled);
+export default SvgAppstoreFilled;

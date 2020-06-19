@@ -1,14 +1,20 @@
-// GENERATE BY ./scripts/generate.ts
-// DON NOT EDIT IT MANUALLY
+import * as React from 'react';
 
-import * as React from 'react'
-import MinusOutlinedSvg from '../svg/src/asn/MinusOutlined';
-import AntdIcon, { AntdIconProps } from '../components/AntdIcon';
+function SvgMinusOutlined(props: React.SVGProps<SVGSVGElement>) {
+	return (
+		<svg
+			viewBox='64 64 896 896'
+			className='minusOutlined_svg__ee-svg'
+			data-icon='minus'
+			fill='currentColor'
+			aria-hidden='true'
+			height='1.25em'
+			width='1.25em'
+			{...props}
+		>
+			<path d='M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z' />
+		</svg>
+	);
+}
 
-const MinusOutlined = (
-  props: AntdIconProps,
-  ref: React.MutableRefObject<HTMLSpanElement>,
-) => <AntdIcon {...props} ref={ref} icon={MinusOutlinedSvg} />;
-
-MinusOutlined.displayName = 'MinusOutlined';
-export default React.forwardRef<HTMLSpanElement, AntdIconProps>(MinusOutlined);
+export default SvgMinusOutlined;
