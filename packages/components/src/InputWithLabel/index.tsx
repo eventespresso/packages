@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { InputWithLabel as InputWithLabelAdapter } from '@infraUI/inputs';
+import { InputWithLabel as InputWithLabelAdapter } from '@eventespresso/adapters';
 import './style.scss';
 
 interface InputWithLabel {
@@ -8,7 +8,7 @@ interface InputWithLabel {
 	labelPosition: 'left' | 'right';
 }
 
-const InputWithLabel: React.FC<InputWithLabel> = ({ children, label, labelPosition = 'right' }) => {
+export const InputWithLabel: React.FC<InputWithLabel> = ({ children, label, labelPosition = 'right' }) => {
 	const leftLabel = labelPosition === 'left' && label;
 	const rightLabel = labelPosition === 'right' && label;
 
@@ -18,5 +18,3 @@ const InputWithLabel: React.FC<InputWithLabel> = ({ children, label, labelPositi
 		</InputWithLabelAdapter>
 	);
 };
-
-export default InputWithLabel;

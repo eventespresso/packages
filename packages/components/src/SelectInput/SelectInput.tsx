@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { Select, SelectProps } from '@infraUI/inputs';
+import { Select } from '@eventespresso/adapters';
+import { withLabel } from '../../';
 
-import { withLabel, withLabelProps, withTooltipProps } from '@appDisplay';
-
-interface SelectInputProps extends SelectProps, Partial<withLabelProps>, Partial<withTooltipProps> {}
+import { SelectInputProps } from './types';
 
 const SelectInput: React.FC<SelectInputProps> = React.memo(({ id, ...rest }) => {
-  const htmlId = id ? `ee-select-input-${id}` : null;
+	const htmlId = id ? `ee-select-input-${id}` : null;
 
-  return <Select id={htmlId} {...rest} />;
+	return <Select id={htmlId} {...rest} />;
 });
 
 export default withLabel(SelectInput);

@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import EntityIDs from '@appDisplay/EntityIDs';
-import { getPropsAreEqual } from '@appServices/utilities';
-import { Entity } from '@dataServices/types';
+import { EntityIDs } from '../EntityIDs';
+import { getPropsAreEqual } from '@eventespresso/services';
+import { Entity } from '@eventespresso/data';
 import './style.css';
 
 interface EntityPaperFrameProps {

@@ -5,7 +5,7 @@ import CurrencySign from './CurrencySign';
 import { getCurrencySignCharacterCountClassName, getCurrencySignPositionClassName } from './utils';
 import PercentSign from './PercentSign';
 import { PriceType } from '@edtrServices/apollo/types';
-import useConfig from '@appServices/config/useConfig';
+import { useConfig } from '@eventespresso/services';
 
 type Props = {
 	priceType: PriceType;

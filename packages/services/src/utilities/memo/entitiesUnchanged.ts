@@ -1,4 +1,4 @@
-import { Entity } from '@dataServices/types';
+import { Entity } from '@eventespresso/data';
 import { EntityListBaseProps } from '../../../ui/layout/entityList/types';
 import entityListCacheIdString from './entityListCacheIdString';
 

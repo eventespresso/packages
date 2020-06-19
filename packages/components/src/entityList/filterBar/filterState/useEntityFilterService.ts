@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from 'react';
-import { Entity } from '@dataServices/types';
+import { Entity } from '@eventespresso/data';
 import { EntityFilterService, EntityListFilterStateManager } from './types';
 import { useFilterBarService, FilterBarServiceCbArgs } from '../subscription';
-import { SubscriptionCallback } from '@appServices/subscription';
+import { SubscriptionCallback } from '@eventespresso/services';
 import { sortBy, pathOr } from 'ramda';
 
 type ELFSM = EntityListFilterStateManager;

@@ -1,6 +1,6 @@
 import { getCurrencySignCharacterCountClassName, getCurrencySignPositionClassName } from './utils';
 import { PriceType } from '@edtrServices/apollo/types';
-import useConfig from '@appServices/config/useConfig';
+import { useConfig } from '@eventespresso/services';
 
 const usePriceTypeHtmlClassName = (priceType: PriceType): string => {
 	const config = useConfig();

@@ -2,8 +2,10 @@ import React, { useCallback, useState, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { __ } from '@wordpress/i18n';
 
-import { Button } from '@application/ui/input';
-import { Collapse } from '@infraUI/display';
+import { Button } from '../Button';
+import { Collapse } from '@eventespresso/adapters';
+
+import { DebugInfoProps } from './types';
 
 const Pre = styled.pre`
 	border-radius: 5px;
@@ -12,12 +14,6 @@ const Pre = styled.pre`
 	color: #a9ce47;
 	background-color: #26203d;
 `;
-
-interface DebugInfoProps {
-	data: any;
-	asJson?: boolean;
-	asCollapse?: boolean;
-}
 
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 

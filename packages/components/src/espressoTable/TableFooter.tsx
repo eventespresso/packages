@@ -2,8 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import warning from 'warning';
 
-import { isEmpty } from '@appServices/utilities/array';
-import { isFunc } from '@appServices/utilities/function';
+import { isFunc, isEmpty } from '@eventespresso/services';
 
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';

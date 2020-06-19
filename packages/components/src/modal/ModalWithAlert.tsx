@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { canUseDOM } from '@appServices/utilities/dom';
 import { ESCAPE } from '@wordpress/keycodes';
 import { __ } from '@wordpress/i18n';
 
-import { useConfirmationDialog } from '@appDisplay/confirm';
-import { Modal, ModalProps } from '@infraUI/layout/modal';
+import { canUseDOM } from '@eventespresso/services';
+import { Modal, ModalProps } from '@eventespresso/adapters';
+import { useConfirmationDialog } from '../confirm';
 
 interface Props extends ModalProps {
 	cancelBtnText?: string;

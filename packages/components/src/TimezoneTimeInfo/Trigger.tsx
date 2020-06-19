@@ -1,9 +1,11 @@
 import React, { forwardRef } from 'react';
 
 import { GlobalOutlined } from '@appDisplay/icons/svgs';
-import { IconButton } from '@application/ui/input';
-import { useMemoStringify } from '@application/services/hooks';
-import { TooltipProps } from '@infraUI/display';
+
+import { TooltipProps } from '@eventespresso/adapters';
+import { useMemoStringify } from '@eventespresso/services';
+
+import { IconButton } from '../../';
 
 interface TriggerProps {
 	tooltip: string;

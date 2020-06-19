@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import shortenGuid from '@appServices/utilities/text/shortenGuid';
-import { EntityId, EntityDbId } from '@dataServices/types';
+import { shortenGuid } from '@eventespresso/services';
+import { EntityId, EntityDbId } from '@eventespresso/data';
 
 import './style.css';
 

@@ -1,8 +1,8 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { allPass, filter, pathEq } from 'ramda';
 import invariant from 'invariant';
 
-import { useSubscriptionService, SubscriptionService } from '@appServices/subscription';
+import { useSubscriptionService, SubscriptionService } from '@eventespresso/services';
 import { FilterBarServiceHook, FilterBarServiceRegistry, FilterBarServiceType } from './types';
 
 type FBShook = FilterBarServiceHook;

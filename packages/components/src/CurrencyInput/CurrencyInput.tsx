@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
+import { parsedAmount, useMoneyDisplay } from '@eventespresso/services';
 import { InlineEditText } from '../InlineEditInput';
-import { parsedAmount, useMoneyDisplay } from '@appServices/utilities/money';
 
 const nullFunc = (args?: any) => {};
 

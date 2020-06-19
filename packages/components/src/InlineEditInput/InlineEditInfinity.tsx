@@ -1,10 +1,9 @@
 import React, { useCallback } from 'react';
 import classNames from 'classnames';
 
-import parseInfinity from '@appServices/utilities/number/parseInfinity';
-import { InlineEdit, InlineEditPreviewProps } from '@infraUI/inputs';
+import { isInfinite, parseInfinity } from '@eventespresso/services';
+import { InlineEdit, InlineEditPreviewProps } from '@eventespresso/adapters';
 import { TextProps } from './types';
-import { isInfinite } from '@application/services';
 
 const Preview: React.FC<InlineEditPreviewProps> = ({ value, onRequestEdit, isEditing }) => {
 	const isInfinity = isInfinite(value);

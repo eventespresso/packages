@@ -1,5 +1,5 @@
 import React from 'react';
-import { Entity } from '@dataServices/types';
+import { Entity } from '@eventespresso/data';
 import { BaseSubscriptionOptions, Subscriptions, UIRegistry } from '@appServices/subscription';
 
 export interface EntityActionsSubscriptionsOptions<T extends string> {

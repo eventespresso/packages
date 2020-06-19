@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import warning from 'warning';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-import { isFunc } from '@appServices/utilities/function';
+import { isFunc } from '@eventespresso/services';
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
 import TableDataCell from './TableDataCell';

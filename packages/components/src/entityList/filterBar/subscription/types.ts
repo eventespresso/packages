@@ -1,5 +1,5 @@
 import React from 'react';
-import { Entity } from '@dataServices/types';
+import { Entity } from '@eventespresso/data';
 import {
 	BaseSubscriptionOptions,
 	ServiceRegistry,
@@ -7,7 +7,7 @@ import {
 	SubscriptionCallback,
 	Subscriptions,
 	UIRegistry,
-} from '@appServices/subscription';
+} from '@eventespresso/services';
 import { EntityListFilterStateManager } from '../filterState';
 
 export enum FilterBarServiceType {

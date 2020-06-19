@@ -1,4 +1,4 @@
-import { Entity } from '@dataServices/types';
+import { Entity } from '@eventespresso/data';
 
 export type onChangeFn = (page: number) => void;
 

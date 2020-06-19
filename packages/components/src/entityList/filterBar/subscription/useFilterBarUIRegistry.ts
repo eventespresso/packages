@@ -1,4 +1,4 @@
-import { useUIRegistry } from '@appServices/subscription';
+import { useUIRegistry } from '@eventespresso/services';
 import { FilterBarUIRegistryHook, FilterBarServiceType } from './types';
 
 const useFilterBarUIRegistry: FilterBarUIRegistryHook = ({ domain, listId }) => {

@@ -1,9 +1,9 @@
 import { useEffect, useMemo } from 'react';
 
-import { Entity } from '@dataServices/types';
+import { Entity } from '@eventespresso/data';
 import { EntityListFilterStateManager } from './types';
 import useEntityFilterService from './useEntityFilterService';
-import { entityListCacheIdString } from '@appServices/utilities/memo';
+import { entityListCacheIdString } from '@eventespresso/services';
 
 type ELFSM = EntityListFilterStateManager<any>;
 

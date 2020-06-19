@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { Switch, SwitchProps } from '@infraUI/inputs';
-
-import { withLabel, withLabelProps, withTooltipProps } from '@appDisplay';
+import { Switch, SwitchProps } from '@eventespresso/adapters';
+import { withLabel, withLabelProps, withTooltipProps } from '../../';
 
 interface SwitchInputProps extends SwitchProps, Partial<withLabelProps>, Partial<withTooltipProps> {}
 
-const SwitchInput: React.FC<SwitchInputProps> = React.memo(props => {
-  return <Switch {...props} />;
+const SwitchInput: React.FC<SwitchInputProps> = React.memo((props) => {
+	return <Switch {...props} />;
 });
 
 export default withLabel(SwitchInput);

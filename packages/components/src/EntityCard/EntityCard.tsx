@@ -2,7 +2,7 @@ import React from 'react';
 
 import EntityPaperFrame from '../EntityPaperFrame';
 import { EntityCardProps } from './types';
-import { getPropsAreEqual } from '@appServices/utilities';
+import { getPropsAreEqual } from '@eventespresso/services';
 import './styles.scss';
 
 const EntityCard: React.FC<EntityCardProps> = ({ cacheId, actionsMenu, details, entity, sidebar, reverse = false }) => {
