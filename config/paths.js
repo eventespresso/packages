@@ -50,11 +50,18 @@ const resolveModule = (resolveFn, filePath) => {
 	return resolveFn(`${filePath}.js`);
 };
 
-<<<<<<< HEAD
-const packages = ['adapters', 'components', 'constants', 'data', 'edtr-services', 'icons', 'predicates', 'services'];
-=======
-const packages = ['adapters', 'components', 'constants', 'data', 'edtr-services','icons', 'predicates', 'services', 'styles'];
->>>>>>> espressoTable
+const packages = [
+	'adapters',
+	'components',
+	'constants',
+	'data',
+	'edtr-services',
+	'icons',
+	'predicates',
+	'services',
+	'styles',
+];
+
 const packagePaths = [];
 const packageEntries = {};
 

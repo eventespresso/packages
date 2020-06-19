@@ -1,4 +1,4 @@
-import { AnyObject } from '@eventespresso/services';
+import type { AnyObject } from '@eventespresso/services';
 import type { IconName } from '@eventespresso/icons';
 
 export interface EntityListLegendProps {

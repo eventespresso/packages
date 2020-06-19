@@ -1,7 +1,10 @@
 export { default as AppstoreFilled } from './src/icons/AppstoreFilled';
+export { default as Calendar } from './src/icons/Calendar';
 export { default as Check } from './src/icons/Check';
 export { default as ChevronDoubleLeft } from './src/icons/ChevronDoubleLeft';
+export { default as ChevronDoubleRight } from './src/icons/ChevronDoubleRight';
 export { default as ChevronLeft } from './src/icons/ChevronLeft';
+export { default as ChevronRight } from './src/icons/ChevronRight';
 export { default as CompassFilled } from './src/icons/CompassFilled';
 export { default as Copy } from './src/icons/Copy';
 export { default as Edit } from './src/icons/Edit';
@@ -11,6 +14,7 @@ export { default as Groups } from './src/icons/Groups';
 export { default as More } from './src/icons/More';
 export { default as SaveOutlined } from './src/icons/SaveOutlined';
 export { default as Sort } from './src/icons/Sort';
+export { default as Ticket } from './src/icons/Ticket';
 export { default as TableView } from './src/icons/TableView';
 export { default as Trash } from './src/icons/Trash';
 

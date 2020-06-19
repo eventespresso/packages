@@ -16,7 +16,7 @@ import { TicketsFilterStateManager } from '@edtrServices/filterState';
 import { EditableName } from '../editable';
 import TicketRegistrationsLink from '../../TicketRegistrationsLink';
 
-import '@application/ui/styles/root/entity-status.css';
+// import '@application/ui/styles/root/entity-status.css';
 
 type TicketsTableBodyRowGen = BodyRowGeneratorFn<Ticket, TicketsFilterStateManager>;
 

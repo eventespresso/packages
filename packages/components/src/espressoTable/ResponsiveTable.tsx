@@ -27,16 +27,8 @@ const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 }) => {
 	const primaryHeader = headerRows.find((row) => row.primary === true);
 	const instanceId = props.instanceId || uuidv4();
-	if (!primaryHeader || isEmpty(bodyRows)) {
-		return null;
-	}
-	const tableId = metaData.tableId || `ee-rspnsv-table-${instanceId}`;
-	const tableCaption = metaData.tableCaption;
-	const captionID = `${tableId}-caption`;
-	const hasRowHeaders = !!metaData.hasRowHeaders;
-	const headerRowCount = headerRows.length;
-	const tableRowCount = bodyRows.length;
 	const isScrollable = !!metaData.isScrollable;
+	const hasRowHeaders = !!metaData.hasRowHeaders;
 
 	const tableClassName = classNames(
 		className.tableClassName,
@@ -64,6 +56,15 @@ const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 		tableClassName,
 	});
 
+	if (!primaryHeader || isEmpty(bodyRows)) {
+		return null;
+	}
+
+	const tableId = metaData.tableId || `ee-rspnsv-table-${instanceId}`;
+	const tableCaption = metaData.tableCaption;
+	const captionID = `${tableId}-caption`;
+	const headerRowCount = headerRows.length;
+	const tableRowCount = bodyRows.length;
 	const showDragHandle = props.showDragHandle && isFunc(onDragEnd);
 
 	return (

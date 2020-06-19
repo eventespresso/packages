@@ -3,7 +3,7 @@
 	"name": "@eventespresso/components",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/eventespresso/packages.git"
+		"url": "git+https://github.com/eventespresso/barista.git"
 	},
 	"version": "1.0.5",
 	"main": "src/index.tsx",

@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { Button, ButtonProps, ButtonType } from '@application/ui/input';
-import { ChevronDoubleRight, ChevronRight } from '@eventespresso/components';
+import { Button, ButtonProps, ButtonType } from '../../../';
+import { ChevronDoubleRight, ChevronRight } from '@eventespresso/icons';
 
 interface Props extends ButtonProps {
 	skippable?: boolean;
