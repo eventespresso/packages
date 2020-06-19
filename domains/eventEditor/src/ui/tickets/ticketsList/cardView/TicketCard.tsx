@@ -1,5 +1,4 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
 
 import { CalendarDateSwitcher } from '@eventespresso/components';
 import Details from './Details';

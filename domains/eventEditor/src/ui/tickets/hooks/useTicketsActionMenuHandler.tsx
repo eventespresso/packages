@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import { __ } from '@wordpress/i18n';
 
 import AssignDatesButton from '../ticketsList/actionsMenu/AssignDatesButton';
 import { TicketMainMenu } from '../ticketsList/actionsMenu/dropdown';

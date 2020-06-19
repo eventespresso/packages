@@ -1,4 +1,4 @@
-import isExpired from '../../isExpired';
+import { isExpired } from '../../../common/isExpired';
 import { DatetimeFilterFn } from '../types';
 
 const expiredOnly: DatetimeFilterFn = (dates) => {

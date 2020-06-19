@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import { __ } from '@wordpress/i18n';
 
 import { FilterBarUISubscriptionCb } from '@eventespresso/unknown'; // '@appLayout/entityList/filterBar';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';

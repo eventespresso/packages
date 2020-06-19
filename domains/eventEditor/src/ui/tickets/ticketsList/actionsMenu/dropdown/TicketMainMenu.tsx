@@ -2,8 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useDisclosure } from '@chakra-ui/core';
 
-import { Copy, Edit, Trash } from '@eventespresso/unknown'; // '@application/ui/layout/entityActionsMenu/entityMenuItems';
-import { DropdownMenu, DropdownToggleProps, useConfirmationDialog} from '@eventespresso/components';
+import { Copy, Edit, Trash, DropdownMenu, DropdownToggleProps, useConfirmationDialog } from '@eventespresso/components';
 
 import { Container as FormContainer } from '@edtrUI/tickets/ticketForm/multiStep';
 import { TicketMainMenuProps } from './types';

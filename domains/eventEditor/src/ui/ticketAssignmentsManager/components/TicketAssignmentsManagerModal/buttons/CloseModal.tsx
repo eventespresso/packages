@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import { __ } from '@wordpress/i18n';
 
 import { Button, ConfirmClose} from '@eventespresso/components';
 import { modalCloseButtonProps } from '@eventespresso/adapters';

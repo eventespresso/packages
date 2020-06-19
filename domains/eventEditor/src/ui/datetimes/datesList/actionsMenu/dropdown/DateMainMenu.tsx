@@ -2,8 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useDisclosure } from '@chakra-ui/core';
 
-import { Copy, Edit,Trash} from '@eventespresso/unknown'; //'@application/ui/layout/entityActionsMenu/entityMenuItems'
-import { DropdownMenu, DropdownToggleProps } from '@eventespresso/components';
+import { DropdownMenu, DropdownToggleProps, Copy, Edit, Trash } from '@eventespresso/components';
 import { useConfirmationDialog } from '@eventespresso/components';
 import { Container as FormContainer } from '@edtrUI/datetimes/dateForm/multiStep';
 

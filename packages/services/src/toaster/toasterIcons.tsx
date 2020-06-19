@@ -1,7 +1,7 @@
 import React from 'react';
 import { theme } from '@chakra-ui/core';
 
-import { Check, CloseCircleOutlined, InfoCircleOutlined, Spinner } from '@appDisplay/icons/svgs';
+import { Check, CloseCircleOutlined, InfoCircleOutlined, Spinner } from '@eventespresso/icons';
 
 const { colors } = theme;
 const fontSize = '1.2rem';

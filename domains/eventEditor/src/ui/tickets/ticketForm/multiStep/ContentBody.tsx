@@ -5,7 +5,7 @@ import { anyPass, isNil, isEmpty } from 'ramda';
 
 import TicketFormSteps from './TicketFormSteps';
 import { usePrevNext } from '@eventespresso/services';
-import { ButtonRow, ButtonType,  Next, Previous, Submit} from '@eventespresso/components';
+import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/components';
 import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/components';
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
 import TicketPriceCalculator from '@edtrUI/tickets/ticketPriceCalculator/components/TicketPriceCalculator';
@@ -19,7 +19,7 @@ const ContentBody: React.FC = ({ children }) => {
 	useDataListener();
 
 	const { current, goto, prev, next } = usePrevNext();
-	const { hasOrphanEntities, getData } = useTAMDataState();
+	const { hasOrphanEntities } = useTAMDataState();
 	const isSubmitDisabled = hasOrphanEntities();
 
 	const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };

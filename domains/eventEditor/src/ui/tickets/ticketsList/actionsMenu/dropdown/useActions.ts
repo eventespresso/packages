@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from 'react';
-import { __ } from '@wordpress/i18n';
 
 import { isTrashed } from '@eventespresso/predicates';
 import { useTicketItem } from '@eventespresso/edtr-services';

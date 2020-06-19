@@ -50,7 +50,7 @@ const resolveModule = (resolveFn, filePath) => {
 	return resolveFn(`${filePath}.js`);
 };
 
-const packages = ['adapters', 'components', 'constants', 'data', 'edtr-services','icons', 'predicates', 'services'];
+const packages = ['adapters', 'components', 'constants', 'data', 'edtr-services', 'icons', 'predicates', 'services'];
 const packagePaths = [];
 const packageEntries = {};
 
@@ -119,6 +119,8 @@ module.exports = {
 	publicUrlOrPath,
 	entry: { ...packageEntries, ...domainEntries },
 	includePaths,
+	domains: allDomains,
+	packages,
 };
 
 module.exports.moduleFileExtensions = moduleFileExtensions;

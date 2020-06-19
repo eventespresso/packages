@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import useCacheRehydration from '../useCacheRehydration';
-import {useDatetimes, useTickets, usePriceTypes} from '@eventespresso/edtr-services';
+import { useDatetimes, useTickets, usePriceTypes } from '@eventespresso/edtr-services';
 import { ApolloMockedProvider } from '@edtrServices/context/TestContext';
 
 const timeout = 5000; // milliseconds

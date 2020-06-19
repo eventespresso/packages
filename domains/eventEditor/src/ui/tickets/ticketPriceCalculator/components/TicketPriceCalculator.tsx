@@ -1,7 +1,6 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
 
-import { ButtonRow, DebugInfo} from '@eventespresso/components';
+import { ButtonRow, DebugInfo } from '@eventespresso/components';
 
 import DefaultPricesInfo from './DefaultPricesInfo';
 import DeleteAllPricesButton from '../buttons/DeleteAllPricesButton';

@@ -53,7 +53,8 @@ const useFilterStateManager: FilterStateManagerHook = () => {
 			setShowTrashedDates,
 			setShowTrashedTickets,
 		}),
-		Object.values(state)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[state]
 	);
 };
 

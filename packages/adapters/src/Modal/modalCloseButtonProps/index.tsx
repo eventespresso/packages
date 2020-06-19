@@ -1,5 +1,5 @@
 import { ButtonProps } from '../../Button';
-import { Close } from '@appDisplay/icons';
+import { Close } from '@eventespresso/icons';
 
 import './styles.scss';
 

@@ -68,9 +68,7 @@ const useDataStateManager: DataStateManagerHook = (props) => {
 		});
 	}, []);
 
-	const reverseCalculate: boolean = useMemo(() => Boolean(state.ticket?.reverseCalculate), [
-		state.ticket?.reverseCalculate,
-	]);
+	const reverseCalculate: boolean = useMemo(() => Boolean(state.ticket?.reverseCalculate), [state.ticket]);
 
 	return useMemo(
 		() => ({
@@ -85,6 +83,7 @@ const useDataStateManager: DataStateManagerHook = (props) => {
 			updatePrice,
 			updateTicketPrice,
 		}),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[state]
 	);
 };
