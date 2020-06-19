@@ -1,0 +1,73 @@
+/** -------------------------------------------------------------------------
+ * Event Espresso EntityList Stylesheet
+ * © 2020 Event Espresso
+ * ------------------------------------------------------------------------- */
+
+@import 'application/ui/styles/mixins/breakpoints.scss';
+
+.ee-entity-list {
+	margin: 0 0 var(--ee-margin-big);
+	width: 100%;
+
+	&__header {
+		&.ee-heading {
+			color: var(--ee-color-grey-11);
+			font-family: 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans',
+				'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
+			font-size: calc(var(--ee-font-size-huge) * 2.5);
+			font-weight: 800;
+			line-height: calc(var(--ee-line-height-modifier) * 0.875);
+			margin: var(--ee-margin-default) 0 var(--ee-margin-micro);
+			text-shadow: var(--ee-text-shadow-inset-light);
+		}
+	}
+
+	&__footer {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-end;
+		margin: 0;
+		width: 100%;
+	}
+
+	.ee-entity-table {
+		width: 100%;
+		.ee-rspnsv-table-body-row {
+			min-height: 3em;
+		}
+	}
+
+	&__card-view {
+		display: grid;
+		gap: var(--ee-margin-big);
+		grid-template-columns: repeat(auto-fit, minmax(445px, 1fr));
+		grid-auto-rows: 250px;
+		width: 100%;
+
+		@include max480px {
+			gap: var(--ee-margin-big) 0;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			grid-auto-rows: unset;
+		}
+
+		.ee-entity-card-wrapper {
+			justify-self: center;
+			max-width: 615px;
+			min-width: 300px;
+			width: 100%;
+		}
+	}
+
+	&--no-results.ee-banner[role='alert'] {
+		.ee-banner {
+			&__icon {
+				height: calc(var(--ee-font-size-extreme) * 2);
+				width: calc(var(--ee-font-size-extreme) * 2);
+			}
+		}
+	}
+
+	+ .ee-entity-list {
+		margin-top: calc(var(--ee-margin-big) * -1);
+	}
+}

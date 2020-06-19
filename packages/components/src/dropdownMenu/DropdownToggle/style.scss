@@ -1,0 +1,12 @@
+button.ee-dropdown-menu__toggle {
+	background: none !important;
+	border-color: transparent;
+	display: inline-flex;
+	height: calc(var(--ee-icon-button-size) + 2px);
+	margin: 0;
+	padding: var(--ee-padding-tiny);
+	width: calc(var(--ee-icon-button-size) + 2px);
+	svg {
+		display: inline-block;
+	}
+}
