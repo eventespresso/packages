@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { AppstoreFilled } from '@appDisplay/icons/svgs';
+import { AppstoreFilled } from '@eventespresso/components';
 
 import { Button } from '../../../Button';
 import { CardViewFilterButtonProps } from '../types';

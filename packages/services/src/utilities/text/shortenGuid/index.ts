@@ -1,4 +1,4 @@
-import { EntityId } from '@dataServices/types';
+import { EntityId } from '@eventespresso/data';
 
 /**
  * converts a GUID like "RGF0ZXRpbWU6NQ==" into "U6NQ=="

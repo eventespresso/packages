@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Button } from '../../../Button';
 
-import { TableView } from '@appDisplay/icons/svgs';
+import { TableView } from '@eventespresso/components';
 
 import { TableViewFilterButtonProps } from '../types';
 

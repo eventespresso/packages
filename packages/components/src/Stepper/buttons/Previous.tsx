@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Button, ButtonProps } from '@application/ui/input';
-import { ChevronDoubleLeft, ChevronLeft } from '@appDisplay/icons/svgs';
+import { ChevronDoubleLeft, ChevronLeft } from '@eventespresso/components';
 
 interface Props extends ButtonProps {
 	skippable?: boolean;
