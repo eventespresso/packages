@@ -1,10 +1,12 @@
 import React from 'react';
 
-import '../interfaces/types';
-// import '@application/ui/styles/themes/default/index.scss';
-import EventEditor from './EventEditor';
 import { ContextProviders } from '@edtrServices/context';
 import { renderDomElement } from '@eventespresso/services';
+
+import '../interfaces/types';
+import EventEditor from './EventEditor';
+
+import '@eventespresso/styles/src/themes/default/index.scss';
 
 const setupEditor = (): void => {
 	const Editor: React.FC = () => (

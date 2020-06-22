@@ -15,7 +15,7 @@ import type { BodyRowGeneratorFn } from '@eventespresso/components';
 import type { DatetimesFilterStateManager } from '@edtrServices/filterState';
 import { EditableName } from '../editable';
 
-// import '@application/ui/styles/root/entity-status.css';
+import '@eventespresso/styles/src/root/entity-status.css';
 
 type DatesTableBodyRowGen = BodyRowGeneratorFn<Datetime, DatetimesFilterStateManager>;
 
