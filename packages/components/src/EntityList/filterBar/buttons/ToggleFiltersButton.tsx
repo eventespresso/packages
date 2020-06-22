@@ -23,7 +23,7 @@ const ToggleFiltersButton: React.FC<ToggleFiltersButtonProps> = ({ listId, showF
 			labelClassName={'ee-filter-bar__btn-wrap'}
 			{...rest}
 		>
-			{showFilters ? __('hide filters') : __('show filters')}
+			{tooltip}
 		</Button>
 	);
 };

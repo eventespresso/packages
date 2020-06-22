@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import { __ } from '@wordpress/i18n';
 
 import { Tooltip, TooltipProps } from '@eventespresso/adapters';
 import { withTooltipProps } from './types';

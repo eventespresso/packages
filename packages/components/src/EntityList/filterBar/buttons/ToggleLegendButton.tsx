@@ -33,7 +33,7 @@ const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({ listId, showLeg
 			labelClassName={'ee-filter-bar__btn-wrap'}
 			{...rest}
 		>
-			{showLegend ? __('hide legend') : __('show legend')}
+			{tooltip}
 		</Button>
 	);
 };

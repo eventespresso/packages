@@ -4,7 +4,7 @@ import { CalendarDateSwitcher } from '@eventespresso/components';
 import Details from './Details';
 
 import TicketActionsMenu from '../actionsMenu/TicketActionsMenu';
-import { EntityActionsMenuLayout } from '@eventespresso/unknown'; // '@appLayout/entityActionsMenu';
+import { EntityActionsMenuLayout } from '@eventespresso/components';
 
 import { EntityCard } from '@eventespresso/components';
 import { getStatusTextLabel, statusBgColorClassName } from '@eventespresso/unknown'; // '@sharedEntities/tickets/helpers';

@@ -6,10 +6,9 @@ import { IconButton, EntityListItemProps, ItemCount } from '@eventespresso/compo
 import { useRelatedDatetimes } from '@eventespresso/edtr-services';
 import { useTicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager';
 import { TypeName } from '@eventespresso/services';
-import withIsLoaded from '@eventespresso/unknown'; // '@sharedUI/hoc/withIsLoaded';
 import type { Ticket } from '@eventespresso/edtr-services';
 import type { TooltipProps } from '@eventespresso/adapters';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify, withIsLoaded } from '@eventespresso/services';
 
 const AssignDatesButton: React.FC<EntityListItemProps<Ticket>> = React.memo(({ entity }) => {
 	const { ModalContainer, onOpen, ...disclosure } = useTicketAssignmentsManager();

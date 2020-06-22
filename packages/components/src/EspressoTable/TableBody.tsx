@@ -69,10 +69,10 @@ const TableBody: React.FC<TableBodyProps> = ({
 			>
 				{row.cells.map((cellData, colNumber) => {
 					const column = primaryHeader.cells[colNumber];
-					warning(column !== undefined, `Missing data for column ${colNumber} ` + `in row ${rowNumber}.`);
+					warning(column !== undefined, `Missing data for column ${colNumber} in row ${rowNumber}.`);
 					warning(
 						cellData.hasOwnProperty('value'),
-						`Missing "value" property for table cell at ` + `row ${rowNumber} column ${colNumber}.`
+						`Missing "value" property for table cell at row ${rowNumber} column ${colNumber}.`
 					);
 
 					if (cellData.render) {

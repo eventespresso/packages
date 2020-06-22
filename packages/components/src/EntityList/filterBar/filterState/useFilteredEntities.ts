@@ -25,6 +25,7 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 			return entityList;
 		}
 		return applyFilters(entityList, filterState);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [applyFilters, cacheIds, filterState]);
 
 	// search entities
@@ -34,12 +35,14 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 			return filteredEntities;
 		}
 		return applySearches(filteredEntities, filterState);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [applySearches, cacheIds, searchText]);
 
 	// sort it
 	cacheIds = entityListCacheIdString(searchResults);
 	const sortedEntities = useMemo<Array<E>>(() => {
 		return applySorters(searchResults, filterState);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [applySorters, cacheIds, sortBy]);
 
 	// paginate it
@@ -50,6 +53,7 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 		}
 		// entities for current page
 		return sortedEntities.slice(perPage * (pageNumber - 1), perPage * pageNumber);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cacheIds, perPage, pageNumber, sortingEnabled]);
 
 	// Avoid synchronous state update
@@ -57,6 +61,7 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 		if (total !== searchResults.length) {
 			setTotal(searchResults.length);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [total, searchResults]);
 
 	useEffect(() => {
@@ -65,6 +70,7 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 		if (paginatedEntities.length === 0 && pageNumber > 1) {
 			setPageNumber(1);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [paginatedEntities.length]);
 
 	return paginatedEntities;

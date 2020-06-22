@@ -3,7 +3,7 @@ import React, { createContext, useEffect } from 'react';
 import type { EntityListContextProps } from '../types';
 import { DatetimesFilterStateManager } from '../../filterState';
 import { useDatesListFilterStateManager } from '@edtrServices/filterState/datetimes';
-import { useFilteredEntities } from '@eventespresso/unknown';
+import { useFilteredEntities } from '@eventespresso/components';
 import { domain, datesList } from '@edtrServices/constants';
 import { useDatetimes } from '@eventespresso/edtr-services';
 import type { Datetime } from '@eventespresso/edtr-services';

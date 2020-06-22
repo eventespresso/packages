@@ -36,6 +36,7 @@ const ModalWithAlert: React.FC<Props> = ({ children, showAlertOnEscape, ...props
 				document.removeEventListener('keydown', onEscape);
 			}
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

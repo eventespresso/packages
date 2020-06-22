@@ -11,7 +11,7 @@ const Link: React.FC<LinkProps> = ({ external, href, icon, tooltip, tooltipProps
 	if (external && icon) {
 		return (
 			<Tooltip tooltip={tooltip} {...tooltipProps}>
-				<a href={href} className={className} target={'_blank'} rel={'noopener norefferer'}>
+				<a href={href} className={className} target={'_blank'} rel={'noopener noreferrer'}>
 					{icon}
 				</a>
 			</Tooltip>

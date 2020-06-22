@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import reducer from './reducer';
 import { TicketsFilterState, TicketsFilterStateManager, TicketsSales, TicketsStatus } from './types';
 import { DisplayStartOrEndDate, SortBy } from '@eventespresso/edtr-services';
-import {useEntityListFilterStateManager} from '@eventespresso/unknown';
+import { useEntityListFilterStateManager } from '@eventespresso/components';
 import { useEdtrState } from '@edtrHooks/edtrState';
 
 type FSM = TicketsFilterStateManager;

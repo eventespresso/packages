@@ -2,7 +2,7 @@ import React from 'react';
 import { CalendarDateSwitcher } from '@eventespresso/components';
 
 import DateActionsMenu from '../actionsMenu/DateActionsMenu';
-import { EntityActionsMenuLayout } from '@eventespresso/unknown'; // '@appLayout/entityActionsMenu';
+import { EntityActionsMenuLayout } from '@eventespresso/components';
 
 import { getStatusTextLabel, statusBgColorClassName } from '@eventespresso/unknown'; // '@sharedEntities/datetimes/helpers';
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
 
 import { Modal } from '@eventespresso/adapters';
 import { EntityEditModalProps } from './types';

@@ -10,7 +10,7 @@ type BFP = BaseFieldProps<number>;
 const TicketPriceField: React.FC<TicketPriceFieldProps> = (props) => {
 	const { ticket, updateTicketPrice } = useDataState();
 
-	const getValue: BFP['getValue'] = useCallback(() => ticket?.price || 0, [ticket]);
+	const getValue: BFP['getValue'] = useCallback(() => ticket?.price || 0, [ticket?.price]);
 
 	const setValue: BFP['setValue'] = useCallback((value) => updateTicketPrice(value), [updateTicketPrice]);
 

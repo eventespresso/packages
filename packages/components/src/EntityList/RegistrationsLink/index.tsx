@@ -1,5 +1,4 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
 
 import { Groups } from '@eventespresso/icons';
 import { Link, LinkProps } from '../../..';
@@ -16,7 +15,7 @@ const RegistrationsLink: React.FC<Props> = ({ href, ...props }) => {
 			className='ee-editor-details-reg-url-link'
 			external
 			href={href}
-			icon={<Groups svgSize={24} />}
+			icon={<Groups /* svgSize={24} */ />}
 			{...props}
 		/>
 	);

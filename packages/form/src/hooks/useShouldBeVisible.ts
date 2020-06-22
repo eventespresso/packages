@@ -7,7 +7,11 @@ import { FieldConditions } from '../types';
 const useShouldBeVisible = (conditions: FieldConditions, fieldName: string): boolean => {
 	const { getState } = useForm();
 	const formValues = getState().values;
-	return useMemo<boolean>(() => evalFieldConditions(conditions, formValues, fieldName), [conditions, formValues]);
+	return useMemo<boolean>(() => evalFieldConditions(conditions, formValues, fieldName), [
+		conditions,
+		fieldName,
+		formValues,
+	]);
 };
 
 export default useShouldBeVisible;

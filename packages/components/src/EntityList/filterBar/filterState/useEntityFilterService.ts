@@ -15,12 +15,16 @@ const useEntityFilterService = <D extends string, L extends string, E extends En
 
 	const { getFilters, getSearches, getSorters } = useFilterBarService<D, L, E, ELFSM>(domain, listId);
 
-	const getCallbackList = useCallback((mappedCallbackList: ReturnType<typeof getFilters>): Array<
-		SubscriptionCallback<FilterBarServiceCbArgs<E, ELFSM>, E[]>
-	> => {
-		const subscriptions = sortBy(pathOr(10, ['options', 'priority']), Object.values(mappedCallbackList));
-		return subscriptions.map(({ callback }) => callback);
-	}, []);
+	const getCallbackList = useCallback(
+		(
+			mappedCallbackList: ReturnType<typeof getFilters>
+		): Array<SubscriptionCallback<FilterBarServiceCbArgs<E, ELFSM>, E[]>> => {
+			const subscriptions = sortBy(pathOr(10, ['options', 'priority']), Object.values(mappedCallbackList));
+			return subscriptions.map(({ callback }) => callback);
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[]
+	);
 
 	const applyCallbacks = useCallback(
 		(entityList: Array<E>, filterState: FS, mappedCallbackList: ReturnType<typeof getFilters>): Array<E> => {
