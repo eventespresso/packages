@@ -6,7 +6,7 @@ import { getPropsAreEqual } from '@eventespresso/services';
 
 import './style.scss';
 
-interface ItemCountProps extends BadgeProps {
+export interface ItemCountProps extends BadgeProps {
 	children: React.ReactNode;
 	/** Number to show in badge */
 	count?: React.ReactNode;
@@ -15,7 +15,7 @@ interface ItemCountProps extends BadgeProps {
 	zeroCountChar?: string | JSX.Element;
 }
 
-const ItemCount: React.FC<ItemCountProps> = ({
+export const ItemCount: React.FC<ItemCountProps> = ({
 	children,
 	count,
 	emphasizeZero = true,

@@ -4,7 +4,7 @@ import AssignTicketsButton from '../datesList/actionsMenu/AssignTicketsButton';
 import { DateMainMenu } from '../datesList/actionsMenu/dropdown';
 
 import { Datetime } from '@eventespresso/edtr-services';
-import { EntityActionsSubscriptionCb } from '@eventespresso/unknown'; // '@appLayout/entityActionsMenu';
+import { EntityActionsSubscriptionCb } from '@eventespresso/registry';
 
 type DatesSubscriptionCallback = EntityActionsSubscriptionCb<Datetime, 'datetime'>;
 

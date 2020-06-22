@@ -3,7 +3,7 @@ import { useCallback, useMemo, useReducer } from 'react';
 import reducer from './reducer';
 import { DatetimesFilterState, DatetimesFilterStateManager, DatetimeSales, DatetimeStatus } from './types';
 import { DisplayStartOrEndDate, SortBy } from '@eventespresso/edtr-services';
-import { useEntityListFilterStateManager } from '@eventespresso/unknown';
+import { useEntityListFilterStateManager } from '@eventespresso/components';
 
 type FSM = DatetimesFilterStateManager;
 

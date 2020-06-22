@@ -6,7 +6,7 @@ import {
 	EntityFilterStateManager,
 	EntityFilterStateReducer,
 } from '@eventespresso/edtr-services';
-import { EntityListFilterStateManager } from '@eventespresso/unknown';
+import { EntityListFilterStateManager } from '@eventespresso/components';
 
 export interface TicketsFilterState extends EntityFilterState {
 	isChained: boolean;

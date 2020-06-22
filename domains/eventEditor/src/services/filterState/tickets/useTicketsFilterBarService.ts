@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import { useFilterBarService } from '@eventespresso/unknown';
-import { salesFilter, statusFilter, sortTickets} from '@eventespresso/predicates';
+import { useFilterBarService } from '@eventespresso/registry';
+import { ticketSalesFilter, ticketStatusFilter, sortTickets} from '@eventespresso/predicates';
 import { domain, ticketsList } from '@edtrServices/constants';
 import { entityListSearch } from '@eventespresso/services';
 import type {Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
@@ -52,12 +52,12 @@ const useTicketsFilterBarService = (): void => {
 	useEffect(() => {
 		// Register sales filter
 		const unSubscribeSalesFilter = registerTicketsFilter(({ entityList, filterState }) => {
-			return salesFilter({ sales: filterState.sales, tickets: entityList });
+			return ticketSalesFilter({ sales: filterState.sales, tickets: entityList });
 		}, 11);
 
 		// Register status filter
 		const unSubscribeStatusFilter = registerTicketsFilter(({ entityList, filterState }) => {
-			return statusFilter({ status: filterState.status, tickets: entityList });
+			return ticketStatusFilter({ status: filterState.status, tickets: entityList });
 		}, 10); // 10 by default
 
 		// Register search

@@ -4,4 +4,5 @@ export { default as useEntityActionsSubscription } from './useEntityActionsSubsc
 
 export { default as useEntityActionsMenuRegistry } from './useEntityActionsMenuRegistry';
 
+export * from './entityMenuItems';
 export * from './types';

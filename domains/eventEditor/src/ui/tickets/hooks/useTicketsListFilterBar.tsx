@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { FilterBarUISubscriptionCb } from '@eventespresso/unknown'; // '@appLayout/entityList/filterBar';
+import { FilterBarUISubscriptionCb } from '@eventespresso/registry';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';
 import {
 	DisplayStartOrEndDateControl,

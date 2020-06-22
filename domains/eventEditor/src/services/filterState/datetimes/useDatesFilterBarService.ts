@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import { useFilterBarService } from '@eventespresso/unknown';
-import { salesFilter, statusFilter, sortDates} from '@eventespresso/predicates';
+import { useFilterBarService } from '@eventespresso/registry';
+import { dateSalesFilter, dateStatusFilter, sortDates} from '@eventespresso/predicates';
 import { datesList, domain } from '@edtrServices/constants';
 import { entityListSearch } from '@eventespresso/services';
 import { Datetime } from '@eventespresso/edtr-services';
@@ -20,12 +20,12 @@ const useDatesFilterBarService = (): void => {
 	useEffect(() => {
 		// Register sales filter
 		const unsubscribeSalesFilter = registerDatesFilter(({ entityList, filterState }) => {
-			return salesFilter({ dates: entityList, sales: filterState.sales });
+			return dateSalesFilter({ dates: entityList, sales: filterState.sales });
 		}, 11);
 
 		// Register status filter
 		const unsubscribeStatusFilter = registerDatesFilter(({ entityList, filterState }) => {
-			return statusFilter({ dates: entityList, status: filterState.status });
+			return dateStatusFilter({ dates: entityList, status: filterState.status });
 		}, 9);
 
 		// Register search
