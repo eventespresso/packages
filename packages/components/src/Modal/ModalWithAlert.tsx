@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { canUseDOM } from '@eventespresso/services';
 import { Modal, ModalProps } from '@eventespresso/adapters';
-import { useConfirmationDialog } from '../confirm';
+import { useConfirmationDialog } from '../Confirm';
 
 interface Props extends ModalProps {
 	cancelBtnText?: string;

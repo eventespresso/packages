@@ -1,5 +1,5 @@
 import { EntityListFilterStateManager as ELFSM, View } from './filterState';
-import { IconButtonProps, LegendConfig } from '../../../';
+import { IconButtonProps, LegendConfig } from '../../..';
 
 export interface CardViewFilterButtonProps extends View, CommonProps, IconButtonProps {
 	setCardView: VoidFunction;

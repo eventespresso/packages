@@ -4,7 +4,7 @@ import { is } from 'ramda';
 import { ColorSwatch } from '../ColorSwatch';
 import { Icon } from '@eventespresso/icons';
 import type { IconName } from '@eventespresso/icons';
-import { DescriptionList } from '../descriptionList';
+import { DescriptionList } from '../DescriptionList';
 import type { EntityListLegendProps } from './types';
 
 const EntityListLegend: React.FC<EntityListLegendProps> = ({ legendConfig }) => {

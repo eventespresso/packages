@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { EntityTableProps } from './types';
 import { Entity } from '@eventespresso/data';
 import { EntityListFilterStateManager } from './filterBar';
-import { ResponsiveTable } from '../../';
+import { ResponsiveTable } from '../..';
 import { useMemoStringify } from '@eventespresso/services';
 
 type ELFSM = EntityListFilterStateManager<any>;

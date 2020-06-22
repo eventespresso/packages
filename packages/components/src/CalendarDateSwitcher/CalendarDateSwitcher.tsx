@@ -6,7 +6,7 @@ import { BiggieCalendarDate, CalendarDateRange } from '../../';
 import { CalendarDateSwitcherProps } from './types';
 import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
-import { switchTenseForDate } from '@eventespresso/unknown';
+import { switchTenseForDate } from '@eventespresso/services';
 
 const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = React.memo(
 	({ className, displayDate = DisplayStartOrEndDate.start, labels, ...props }) => {

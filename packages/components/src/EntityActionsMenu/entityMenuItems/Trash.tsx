@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { DropdownMenuItem } from '../../dropdownMenu';
+import { DropdownMenuItem } from '../../DropdownMenu';
 import { Trash as TrashIcon } from '@eventespresso/icons';
 import { MenuItemProps } from './types';
 

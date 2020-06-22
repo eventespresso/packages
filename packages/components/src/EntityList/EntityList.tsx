@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { EmptyState, ErrorIndicator, LoadingNotice } from '../../';
+import { EmptyState, ErrorIndicator, LoadingNotice } from '../..';
 import { EntityListFilterStateManager } from './filterBar';
 import EntityListFilterBar from './withValidFilterState';
 import { Entity } from '@eventespresso/data';

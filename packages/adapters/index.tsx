@@ -42,4 +42,5 @@ export * from './src/TextArea';
 export * from './src/TextFit';
 export * from './src/TextInput';
 export * from './src/Timepicker';
+export * from './src/ThemeProvider';
 export * from './src/Tooltip';

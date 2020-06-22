@@ -3,12 +3,12 @@ import { __ } from '@wordpress/i18n';
 
 import Collapsible from './Collapsible';
 import { EntityListFilterBarProps } from './types';
-import { EntityListLegend, SearchInput } from '../../../';
+import { EntityListLegend, SearchInput } from '../../..';
 import ToggleLegendButton from './buttons/ToggleLegendButton';
 import ToggleFiltersButton from './buttons/ToggleFiltersButton';
 import ToggleSortingButton from './buttons/ToggleSortingButton';
 import EntityListViewButtonGroup from './buttons/EntityListViewButtonGroup';
-import { useFilterBarUIElements } from './subscription';
+import { useFilterBarUIElements } from '@eventespresso/unknown';
 import { EntityListFilterStateManager as ELFSM } from './filterState';
 
 import './style.scss';
