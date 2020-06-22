@@ -3,7 +3,7 @@
  * © 2020 Event Espresso
  * ------------------------------------------------------------------------- */
 
-@import 'application/ui/styles/mixins/breakpoints.scss';
+@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
 .ee-entity-pagination {
 	display: flex;

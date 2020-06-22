@@ -1,6 +1,7 @@
 import { assoc, map, pickBy, when } from 'ramda';
 
-import { isBasePrice, isPriceField, isPriceInputField } from './selectionPredicates';
+import { isBasePrice } from '../common';
+import { isPriceField, isPriceInputField } from './selectionPredicates';
 import { entityHasGuid } from '@eventespresso/predicates';
 import { Price } from '@eventespresso/edtr-services';
 import { toBoolean, toInteger, parsedAmount} from '@eventespresso/services';

@@ -1,4 +1,4 @@
-@import 'application/ui/styles/mixins/breakpoints.scss';
+@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
 .ee-tooltip.ee-tooltip {
 	background-color: var(--ee-text-on-blue-super-high-contrast);
