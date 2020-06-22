@@ -36,7 +36,7 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 			}
 			onClose();
 		},
-		[createEntity, entity, onClose, ticketQuantityForCapacity, updateEntity, updateRelatedTickets]
+		[createEntity, entity?.capacity, entity?.id, onClose, ticketQuantityForCapacity, updateEntity, updateRelatedTickets]
 	);
 	const formConfig = useDatetimeFormConfig(entity?.id, { onSubmit });
 

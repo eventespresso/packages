@@ -8,7 +8,7 @@ import ToggleLegendButton from './buttons/ToggleLegendButton';
 import ToggleFiltersButton from './buttons/ToggleFiltersButton';
 import ToggleSortingButton from './buttons/ToggleSortingButton';
 import EntityListViewButtonGroup from './buttons/EntityListViewButtonGroup';
-import { useFilterBarUIElements } from '@eventespresso/unknown';
+import { useFilterBarUIElements } from '@eventespresso/registry';
 import { EntityListFilterStateManager as ELFSM } from './filterState';
 
 import './style.scss';

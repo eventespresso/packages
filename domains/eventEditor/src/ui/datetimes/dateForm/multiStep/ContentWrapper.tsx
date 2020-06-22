@@ -3,14 +3,14 @@ import React from 'react';
 import { withContext as withTAMContext } from '@edtrUI/ticketAssignmentsManager/context';
 import ContentBody from './ContentBody';
 import { ContentWrapperProps } from './types';
-import { withEntityFormDetails } from '@eventespresso/unknown'; // '@sharedUI/entityEditModal';
+import { useWithEntityFormDetails } from '@eventespresso/components';
 
 /**
  * This component is inside RFF context, so we can use all of RFF features.
  */
 const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
 	// provide entity details to TAM from edit form
-	return withEntityFormDetails(
+	return useWithEntityFormDetails(
 		({ entity }) =>
 			withTAMContext(
 				ContentBody,

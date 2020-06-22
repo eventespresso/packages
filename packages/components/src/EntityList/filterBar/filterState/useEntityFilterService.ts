@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { Entity } from '@eventespresso/data';
 import { EntityFilterService, EntityListFilterStateManager } from './types';
-import { useFilterBarService, FilterBarServiceCbArgs } from '@eventespresso/unknown';
+import { useFilterBarService, FilterBarServiceCbArgs } from '@eventespresso/registry';
 import { SubscriptionCallback } from '@eventespresso/services';
 import { sortBy, pathOr } from 'ramda';
 
@@ -34,7 +34,7 @@ const useEntityFilterService = <D extends string, L extends string, E extends En
 
 			return filteredEntities;
 		},
-		[getCallbackList]
+		[getCallbackList, getFilters]
 	);
 
 	// avoid the callback being affected by change in other callbacks
@@ -43,6 +43,7 @@ const useEntityFilterService = <D extends string, L extends string, E extends En
 		(entityList, filterState) => {
 			return applyCallbacks(entityList, filterState, getFilters());
 		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[applyCallbacks, filterIdsStr]
 	);
 
@@ -52,6 +53,7 @@ const useEntityFilterService = <D extends string, L extends string, E extends En
 		(entityList, filterState) => {
 			return applyCallbacks(entityList, filterState, getSearches());
 		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[applyCallbacks, searchIdsStr]
 	);
 
@@ -61,6 +63,7 @@ const useEntityFilterService = <D extends string, L extends string, E extends En
 		(entityList, filterState) => {
 			return applyCallbacks(entityList, filterState, getSorters());
 		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[applyCallbacks, sorterIdsStr]
 	);
 

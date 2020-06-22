@@ -20,7 +20,7 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 	};
 	const [state, dispatch] = useReducer(getReducer<SortBy>(), initialState);
 
-	const getState: FSM['getState'] = useCallback(() => state, Object.values(state));
+	const getState: FSM['getState'] = useCallback(() => state, [state]);
 
 	const setSortBy: FSM['setSortBy'] = useCallback((sortBy) => {
 		dispatch({
@@ -40,7 +40,8 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 			type: 'SET_PER_PAGE',
 			perPage: newPerPage,
 		});
-	}, []);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [state.pageNumber]);
 
 	const setPageNumber: FSM['setPageNumber'] = useCallback((pageNumber) => {
 		dispatch({
@@ -96,7 +97,8 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 			setSearchText,
 			toggleSorting,
 		}),
-		Object.values(state)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[state]
 	);
 };
 

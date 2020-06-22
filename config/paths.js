@@ -59,6 +59,7 @@ const packages = [
 	'form',
 	'icons',
 	'predicates',
+	'registry',
 	'services',
 	'styles',
 ];

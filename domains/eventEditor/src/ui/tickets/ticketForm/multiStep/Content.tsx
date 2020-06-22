@@ -16,7 +16,7 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 		(input) => {
 			return entity?.id ? updateEntity(input) : createEntity(input);
 		},
-		[createEntity, entity, updateEntity]
+		[createEntity, entity?.id, updateEntity]
 	);
 	const getCappedQuantity = useCapQuantity();
 	const onSubmit = useCallback(

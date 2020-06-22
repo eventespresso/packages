@@ -68,7 +68,7 @@ const useDataStateManager: DataStateManagerHook = (props) => {
 		});
 	}, []);
 
-	const reverseCalculate: boolean = useMemo(() => Boolean(state.ticket?.reverseCalculate), [state.ticket]);
+	const reverseCalculate: boolean = useMemo(() => Boolean(state.ticket?.reverseCalculate), [state.ticket?.reverseCalculate]);
 
 	return useMemo(
 		() => ({

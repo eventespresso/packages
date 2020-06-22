@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { FormSpy } from 'react-final-form';
 
 import { Datetime, Ticket } from '@eventespresso/edtr-services';
@@ -10,7 +10,7 @@ import { processDateAndTime } from '@eventespresso/edtr-services';
  * This HOC provides the current entity detail to the underlying component
  * in multi-step form by subscribing to RFF.
  */
-const withEntityFormDetails = <T extends Datetime | Ticket>(
+const useWithEntityFormDetails = <T extends Datetime | Ticket>(
 	Component: React.ComponentType<Partial<BaseProps<T>>>,
 	newEntityId: string
 ): JSX.Element => {
@@ -36,4 +36,4 @@ const withEntityFormDetails = <T extends Datetime | Ticket>(
 	);
 };
 
-export default withEntityFormDetails;
+export default useWithEntityFormDetails;

@@ -4,7 +4,7 @@ import { withContext as withTAMContext } from '@edtrUI/ticketAssignmentsManager/
 import { withContext as withTPCContext } from '@edtrUI/tickets/ticketPriceCalculator/context';
 import ContentBody from './ContentBody';
 import { ContentWrapperProps } from './types';
-import { withEntityFormDetails } from '@eventespresso/unknown'; // '@sharedUI/entityEditModal';
+import { useWithEntityFormDetails } from '@eventespresso/components';
 
 const WithTPC: React.FC<ContentWrapperProps> = (props) => {
 	const { values } = props.form.getState();
@@ -21,7 +21,7 @@ const WithTPC: React.FC<ContentWrapperProps> = (props) => {
  */
 const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
 	// provide entity details to TAM from edit form
-	return withEntityFormDetails(
+	return useWithEntityFormDetails(
 		({ entity }) =>
 			withTAMContext(
 				WithTPC,
