@@ -19,6 +19,7 @@ const withEntityFormDetails = <T extends Datetime | Ticket>(
 	const lazyMemo = useMemoLazy<T>(null);
 	// We only need value here.
 	const subscription = useMemoStringify({ values: true });
+
 	return (
 		<FormSpy subscription={subscription}>
 			{({ values: { dateTime, ...values } }) => {

@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { Entity } from '@eventespresso/data';
 import { EntityFilterService, EntityListFilterStateManager } from './types';
-import { useFilterBarService, FilterBarServiceCbArgs } from '../subscription';
+import { useFilterBarService, FilterBarServiceCbArgs } from '@eventespresso/unknown';
 import { SubscriptionCallback } from '@eventespresso/services';
 import { sortBy, pathOr } from 'ramda';
 
