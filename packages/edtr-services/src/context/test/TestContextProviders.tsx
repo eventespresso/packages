@@ -1,8 +1,9 @@
 import React from 'react';
 import { MockedProvider } from '@apollo/react-testing';
 
-import { cache } from '@dataServices/apollo/client';
-import { CommonProviders } from '../EventEditorContext/ContextProviders';
+import { cache } from '@eventespresso/data';
+
+import { CommonProviders } from '@eventespresso/unknown';
 import { useDomTestData, useResetApolloCache, useSetGlobalStatusFlags, useSetRelationalData } from './';
 import { MockedResponse } from './types';
 

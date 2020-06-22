@@ -7,7 +7,7 @@ import { MutationInput, MutationType } from '../../../../../../../application/se
 import { ucFirst } from '../../../../../../../application/services/utilities/text/changeCase';
 import { mutations } from '../..';
 import { MockedResponse } from '../../../../context/TestContext/types';
-import { ReadQueryOptions } from '@dataServices/apollo/queries';
+import { ReadQueryOptions } from '@eventespresso/data';
 
 const prices = { ...priceEdge, __typename: 'EspressoTicketPricesConnectionEdge' };
 

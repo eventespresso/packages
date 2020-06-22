@@ -1,4 +1,5 @@
-import { UpdateTicketInput } from '@edtrServices/apollo/mutations';
+import type { UpdateTicketInput } from '@eventespresso/edtr-services';
+
 
 export const TICKET_INPUT_FIELDS: Array<keyof UpdateTicketInput> = [
 	'datetimes',

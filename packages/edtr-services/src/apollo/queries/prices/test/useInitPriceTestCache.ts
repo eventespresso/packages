@@ -1,7 +1,7 @@
 import { useApolloClient } from '@apollo/react-hooks';
 
 import usePriceQueryOptions from '../usePriceQueryOptions';
-import { WriteQueryOptions } from '@dataServices/apollo/queries/types';
+import { WriteQueryOptions } from '@eventespresso/data';
 import { edge } from './data';
 
 const useInitPriceTestCache = (espressoPrices = edge): void => {

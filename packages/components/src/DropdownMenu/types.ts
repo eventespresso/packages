@@ -1,6 +1,6 @@
-import { IconName } from '@application/ui/display';
 import { MenuProps, MenuItemProps, MenuToggleProps, MenuListProps } from '@eventespresso/adapters';
-import { withTooltipProps } from '@application/ui/display';
+import { withTooltipProps } from '../../';
+import type { IconName } from '@eventespresso/icons';
 
 export interface DropdownMenuProps extends Omit<MenuProps, 'isOpen'> {
 	className?: string;

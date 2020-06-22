@@ -1,4 +1,4 @@
-import { UpdatePriceInput } from '@edtrServices/apollo/mutations';
+import type { UpdatePriceInput } from '@eventespresso/edtr-services';
 
 export const PRICE_INPUT_FIELDS: Array<keyof UpdatePriceInput> = [
 	'amount',

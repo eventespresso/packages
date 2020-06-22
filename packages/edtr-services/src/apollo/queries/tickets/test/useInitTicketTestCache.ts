@@ -1,7 +1,7 @@
 import { useApolloClient } from '@apollo/react-hooks';
 
 import useTicketQueryOptions from '../useTicketQueryOptions';
-import { WriteQueryOptions } from '@dataServices/apollo/queries/types';
+import { WriteQueryOptions } from '@eventespresso/data';
 import { edge } from './data';
 
 const useInitTicketTestCache = (espressoTickets = edge): void => {

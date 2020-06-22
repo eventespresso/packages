@@ -2,7 +2,7 @@ import { GraphQLError } from 'graphql';
 import { formatISO } from 'date-fns';
 
 import { Datetime, DatetimeEdge, DatetimeStatus } from '../../../types';
-import { ReadQueryOptions } from '@dataServices/apollo/queries';
+import { ReadQueryOptions } from '@eventespresso/data';
 
 export const request: ReadQueryOptions = null; // to be generated via Query Options hook
 

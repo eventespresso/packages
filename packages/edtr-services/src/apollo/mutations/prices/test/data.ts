@@ -6,7 +6,8 @@ import { MutationInput, MutationType } from '../../../../../../../application/se
 import { ucFirst } from '../../../../../../../application/services/utilities/text/changeCase';
 import { mutations } from '../..';
 import { MockedResponse } from '../../../../context/TestContext/types';
-import { ReadQueryOptions } from '@dataServices/apollo/queries';
+import { ReadQueryOptions } from '@eventespresso/data';
+
 
 export const mockedPrices = {
 	[MutationType.Create]: { ...prices[0], id: prices[0].id + '-alpha' }, // make sure to change the ID to make it different}

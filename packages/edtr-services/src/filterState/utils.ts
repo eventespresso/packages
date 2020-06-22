@@ -1,5 +1,6 @@
 import { DisplayStartOrEndDate } from './types';
-import { Cell } from '@appLayout/espressoTable';
+import type { Cell } from '@eventespresso/components';
+
 
 export const filterCellByStartOrEndDate = (displayStartOrEndDate: DisplayStartOrEndDate) => (cell: Cell): boolean => {
 	if (displayStartOrEndDate === DisplayStartOrEndDate.start && cell.key === 'end') {

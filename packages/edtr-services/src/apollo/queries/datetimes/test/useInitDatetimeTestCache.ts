@@ -1,7 +1,8 @@
 import { useApolloClient } from '@apollo/react-hooks';
 
+import { WriteQueryOptions } from '@eventespresso/data';
+
 import useDatetimeQueryOptions from '../useDatetimeQueryOptions';
-import { WriteQueryOptions } from '@dataServices/apollo/queries/types';
 import { edge } from './data';
 
 const useInitDatetimeTestCache = (espressoDatetimes = edge): void => {
