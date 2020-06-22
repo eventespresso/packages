@@ -9,20 +9,11 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
 }
 
 export enum IconName {
-	CALCULATOR = 'calculator',
 	CALENDAR = 'calendar',
-	CLOSE = 'close',
-	COPY = 'copy',
 	EDIT = 'edit',
 	FILTER = 'filter',
 	GROUPS = 'groups',
-	LINK = 'admin-links',
-	MORE = 'more',
-	REM = 'rem',
-	ROTATE = 'rotate',
-	SAVE = 'save',
 	TICKET = 'ticket-alt',
-	UNLINK = 'editor-unlink',
 }
 
 export type SvgPath = {
