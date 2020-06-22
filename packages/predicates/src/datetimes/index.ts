@@ -10,5 +10,7 @@ export { default as isInYear } from './isInYear';
 export { default as isDateSoldOut } from './isSoldOut';
 export { default as isUpcoming } from './isUpcoming';
 
-export * from './filters';
 export { default as sortDates } from './sorters';
+
+export * from './constants';
+export * from './filters';

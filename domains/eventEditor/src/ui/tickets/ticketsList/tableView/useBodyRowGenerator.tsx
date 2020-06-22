@@ -5,7 +5,7 @@ import { filter, pipe } from 'ramda';
 import { Cell, addZebraStripesOnMobile } from '@eventespresso/components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
-import { getBackgroundColorClassName, status } from '@eventespresso/unknown'; // '@sharedEntities/tickets/helpers';
+import { getTicketBackgroundColorClassName, ticketStatus } from '@eventespresso/helpers';
 import { shortenGuid } from '@eventespresso/services';
 import { Ticket } from '@eventespresso/edtr-services';
 import TicketActionsMenu from '@edtrUI/tickets/ticketsList/actionsMenu/TicketActionsMenu';
@@ -27,9 +27,9 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 		({ entity: ticket, filterState }) => {
 			const { displayStartOrEndDate, sortingEnabled } = filterState;
 
-			const bgClassName = getBackgroundColorClassName(ticket);
+			const bgClassName = getTicketBackgroundColorClassName(ticket);
 			const id = ticket.dbId || shortenGuid(ticket.id);
-			const statusClassName = status(ticket);
+			const statusClassName = ticketStatus(ticket);
 
 			const name = {
 				key: 'name',
@@ -39,12 +39,12 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				value: sortingEnabled ? (
 					ticket.name
 				) : (
-					<EditableName
-						className={'ee-entity-list-text ee-focus-priority-5'}
-						entity={ticket}
-						view={'table'}
-					/>
-				),
+						<EditableName
+							className={'ee-entity-list-text ee-focus-priority-5'}
+							entity={ticket}
+							view={'table'}
+						/>
+					),
 			};
 
 			const quantity = {

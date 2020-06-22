@@ -4,14 +4,14 @@ import { __ } from '@wordpress/i18n';
 import { Calculator } from '@eventespresso/icons';
 import { IconButton, IconButtonProps } from '@eventespresso/components';
 import { TypeName } from '@eventespresso/services';
-import withIsLoaded from '@eventespresso/unknown'; // '@sharedUI/hoc/withIsLoaded';
+import { withIsLoaded } from '@eventespresso/services';
 
 import { BaseProps } from '../types';
 import { useTicketPriceCalculator } from '../hooks';
-import type { TooltipProps } from '@eventespresso/components';
+import type { TooltipProps } from '@eventespresso/adapters';
 import { useMemoStringify } from '@eventespresso/services';
 
-interface TPCButtonProps extends BaseProps, IconButtonProps {}
+interface TPCButtonProps extends BaseProps, IconButtonProps { }
 
 const TicketPriceCalculatorButton: React.FC<TPCButtonProps> = ({ ticketId, ...buttonProps }) => {
 	const { ModalContainer, onOpen, ...disclosure } = useTicketPriceCalculator();

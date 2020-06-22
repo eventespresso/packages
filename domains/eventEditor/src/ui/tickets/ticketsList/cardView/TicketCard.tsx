@@ -7,15 +7,15 @@ import TicketActionsMenu from '../actionsMenu/TicketActionsMenu';
 import { EntityActionsMenuLayout } from '@eventespresso/components';
 
 import { EntityCard } from '@eventespresso/components';
-import { getStatusTextLabel, statusBgColorClassName } from '@eventespresso/unknown'; // '@sharedEntities/tickets/helpers';
+import { getTicketStatusTextLabel, ticketStatusBgColorClassName } from '@eventespresso/helpers';
 import { useTicketsListFilterState } from '@edtrServices/filterState';
 import type { TicketItemProps } from '../types';
 import { getPropsAreEqual, useMemoStringify } from '@eventespresso/services';
 
 const TicketCard: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 	const { displayStartOrEndDate } = useTicketsListFilterState();
-	const bgClassName = statusBgColorClassName(ticket);
-	const footer = getStatusTextLabel(ticket);
+	const bgClassName = ticketStatusBgColorClassName(ticket);
+	const footer = getTicketStatusTextLabel(ticket);
 	const labels = useMemoStringify({ footer });
 
 	return ticket ? (

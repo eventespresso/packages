@@ -4,7 +4,7 @@ import { CalendarDateSwitcher } from '@eventespresso/components';
 import DateActionsMenu from '../actionsMenu/DateActionsMenu';
 import { EntityActionsMenuLayout } from '@eventespresso/components';
 
-import { getStatusTextLabel, statusBgColorClassName } from '@eventespresso/unknown'; // '@sharedEntities/datetimes/helpers';
+import { getDatetimeStatusTextLabel, datetimeStatusBgColorClassName } from '@eventespresso/helpers';
 
 import { EntityCard } from '@eventespresso/components';
 import { useDatesListFilterState } from '@edtrServices/filterState';
@@ -13,9 +13,9 @@ import Details from './Details';
 import type { DateItemProps } from '../types';
 
 const DateCard: React.FC<DateItemProps> = ({ entity: date }) => {
-	const bgClassName = statusBgColorClassName(date);
+	const bgClassName = datetimeStatusBgColorClassName(date);
 	const { displayStartOrEndDate } = useDatesListFilterState();
-	const footer = getStatusTextLabel(date);
+	const footer = getDatetimeStatusTextLabel(date);
 	const labels = useMemoStringify({ footer });
 
 	return date ? (

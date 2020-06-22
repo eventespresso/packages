@@ -8,7 +8,7 @@ import DateActionsMenu from '@edtrUI/datetimes/datesList/actionsMenu/DateActions
 import type { Datetime } from '@eventespresso/edtr-services';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
-import { getBackgroundColorClassName, status } from '@eventespresso/unknown'; // '@sharedEntities/datetimes/helpers';
+import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers'; // '@sharedEntities/datetimes/helpers';
 import { shortenGuid } from '@eventespresso/services';
 import DateCapacity from '../cardView/DateCapacity';
 import type { BodyRowGeneratorFn } from '@eventespresso/components';
@@ -25,7 +25,7 @@ const addZebraStripes = addZebraStripesOnMobile(exclude);
 const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 	return useCallback<DatesTableBodyRowGen>(({ entity: datetime, filterState }) => {
 		const { displayStartOrEndDate, sortingEnabled } = filterState;
-		const bgClassName = getBackgroundColorClassName(datetime);
+		const bgClassName = getDatetimeBackgroundColorClassName(datetime);
 		const id = datetime.dbId || shortenGuid(datetime.id);
 		const statusClassName = status(datetime);
 
@@ -44,8 +44,8 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			value: sortingEnabled ? (
 				datetime.name
 			) : (
-				<EditableName className={'ee-entity-list-text ee-focus-priority-5'} entity={datetime} view={'table'} />
-			),
+					<EditableName className={'ee-entity-list-text ee-focus-priority-5'} entity={datetime} view={'table'} />
+				),
 		};
 
 		const cellsData = [

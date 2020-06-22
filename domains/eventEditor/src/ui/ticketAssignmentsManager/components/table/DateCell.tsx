@@ -4,12 +4,12 @@ import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 
 import { RenderCellProps } from '../../types';
-import { getBackgroundColorClassName } from '@eventespresso/unknown'; // '@sharedEntities/datetimes/helpers';
+import { getDatetimeBackgroundColorClassName } from '@eventespresso/helpers';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { LOCALIZED_DATE_SHORT_FORMAT } from '@eventespresso/constants';
 
 const DateCell: React.FC<RenderCellProps> = ({ datetime }) => {
-	const bgClassName = getBackgroundColorClassName(datetime);
+	const bgClassName = getDatetimeBackgroundColorClassName(datetime);
 	const stripeClassName = classNames('date-stripe', bgClassName);
 
 	const { formatForSite: format } = useTimeZoneTime();

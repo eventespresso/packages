@@ -3,12 +3,12 @@ import { parseISO } from 'date-fns';
 import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 
-import { getBackgroundColorClassName } from '@eventespresso/unknown';// '@sharedEntities/tickets/helpers';
+import { getTicketBackgroundColorClassName } from '@eventespresso/helpers';
 import { RenderCellProps } from '../../types';
-import { useMoneyDisplay, useTimeZoneTime} from '@eventespresso/services';
+import { useMoneyDisplay, useTimeZoneTime } from '@eventespresso/services';
 
 const HeaderCell: React.FC<RenderCellProps> = ({ ticket }) => {
-	const bgClassName = getBackgroundColorClassName(ticket);
+	const bgClassName = getTicketBackgroundColorClassName(ticket);
 	const { currency } = useMoneyDisplay();
 	const { formatForSite: format } = useTimeZoneTime();
 	const startDate = ticket.startDate && format(parseISO(ticket.startDate), 'MMM dd yyyy');
