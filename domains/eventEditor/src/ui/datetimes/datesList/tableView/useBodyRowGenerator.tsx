@@ -27,7 +27,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 		const { displayStartOrEndDate, sortingEnabled } = filterState;
 		const bgClassName = getDatetimeBackgroundColorClassName(datetime);
 		const id = datetime.dbId || shortenGuid(datetime.id);
-		const statusClassName = status(datetime);
+		const statusClassName = datetimeStatus(datetime);
 
 		const capacity = {
 			key: 'capacity',

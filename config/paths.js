@@ -57,6 +57,7 @@ const packages = [
 	'data',
 	'edtr-services',
 	'form',
+	'helpers',
 	'icons',
 	'predicates',
 	'registry',
