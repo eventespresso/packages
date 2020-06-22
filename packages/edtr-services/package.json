@@ -58,6 +58,7 @@
 	"gitHead": "66fae0230a22c100153cb05f5a624305efc5a8d9",
 	"devDependencies": {
 		"@apollo/react-testing": "^3.1.4",
+		"@babel/preset-typescript": "^7.10.1",
 		"@react-workspaces/react-scripts": "3.4.0-alpha-01",
 		"@storybook/react": "^5.3.19",
 		"@testing-library/jest-dom": "^5.10.1",
