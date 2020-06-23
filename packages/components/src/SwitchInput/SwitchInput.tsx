@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Switch, SwitchProps } from '@eventespresso/adapters';
-import { withLabel, withLabelProps, withTooltipProps } from '../../';
+import { withLabel, withLabelProps } from '../withLabel';
+import { withTooltipProps } from '../withTooltip';
 
 interface SwitchInputProps extends SwitchProps, Partial<withLabelProps>, Partial<withTooltipProps> {}
 

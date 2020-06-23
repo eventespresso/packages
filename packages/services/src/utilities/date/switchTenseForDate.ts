@@ -1,4 +1,4 @@
-import { diff } from '@eventespresso/services';
+import diff from './diff';
 
 const now = new Date();
 

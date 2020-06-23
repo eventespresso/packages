@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { useMemoStringify } from '@eventespresso/services';
 
-import Banner from '../Banner';
+import { Banner } from '../Banner';
 
 interface EmptyStateProps {
 	children?: React.ReactNode;

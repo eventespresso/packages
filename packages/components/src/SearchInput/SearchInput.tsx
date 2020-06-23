@@ -2,7 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { TextInput, TextInputProps } from '@eventespresso/adapters';
-import { withLabel, withLabelProps, withTooltipProps } from '../../';
+import { withLabel, withLabelProps } from '../withLabel';
+import type { withTooltipProps } from '../withTooltip';
 
 interface SearchInputProps extends TextInputProps, Partial<withLabelProps>, Partial<withTooltipProps> {
 	searchId: string;

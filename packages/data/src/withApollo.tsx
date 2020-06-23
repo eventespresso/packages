@@ -1,15 +1,14 @@
 import React from 'react';
-import { ApolloProvider } from '@apollo/react-hooks';
 
-import { getClient } from './client';
+import { DataProvider } from './DataProvider';
 import { AnyObject } from '@eventespresso/services';
 
 const withApollo = <P extends AnyObject>(Component: React.ComponentType<P>): React.FC<P> => {
 	const WrappedComponent: React.FC<P> = (props) => {
 		return (
-			<ApolloProvider client={getClient()}>
+			<DataProvider>
 				<Component {...props} />
-			</ApolloProvider>
+			</DataProvider>
 		);
 	};
 

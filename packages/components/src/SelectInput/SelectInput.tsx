@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Select } from '@eventespresso/adapters';
-import { withLabel } from '../../';
+import { withLabel } from '../withLabel';
 
 import { SelectInputProps } from './types';
 

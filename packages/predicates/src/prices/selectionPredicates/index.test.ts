@@ -2,7 +2,7 @@ import { omit } from 'ramda';
 
 import { isPriceField, getBasePrice, getPriceByDbId, getPriceByGuid, getTaxes } from './index';
 import { nodes as prices } from '@eventespresso/edtr-services/src/apollo/queries/prices/test/data';
-import { getGuids } from '@eventespresso/predicates';
+import { getGuids } from '../../common';
 
 describe('isPriceField', () => {
 	it('should return true if field is included in price type', () => {

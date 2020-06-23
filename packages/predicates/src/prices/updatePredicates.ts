@@ -2,7 +2,7 @@ import { assoc, map, pickBy, when } from 'ramda';
 
 import { isBasePrice } from '../common';
 import { isPriceField, isPriceInputField } from './selectionPredicates';
-import { entityHasGuid } from '@eventespresso/predicates';
+import { entityHasGuid } from '../common';
 import type { Price } from '@eventespresso/edtr-services';
 import { toBoolean, toInteger, parsedAmount } from '@eventespresso/services';
 
