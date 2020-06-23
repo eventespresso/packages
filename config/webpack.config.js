@@ -9,7 +9,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
@@ -17,6 +16,9 @@ const paths = require('./paths');
 const modules = require('./modules');
 const workspaces = require('./yarn-workspaces');
 const getClientEnvironment = require('./env');
+const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
+const { requestToExternal, requestToHandle } = require('./utils');
+
 const resolveTsconfigPathsToAlias = require('./resolve-tsconfig-path-to-webpack-alias');
 
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
@@ -29,11 +31,6 @@ const appPackageJson = require(paths.appPackageJson);
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-// Some apps do not need the benefits of saving a web request, so not inlining the chunk
-// makes for a smoother build process.
-const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
-
-const isExtendingEslintConfig = process.env.EXTEND_ESLINT === 'true';
 
 const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000');
 
@@ -174,6 +171,8 @@ module.exports = function (webpackEnv) {
 			// this defaults to 'window', but by setting it to 'this' then
 			// module chunks which are built will work in web workers as well.
 			globalObject: 'this',
+			libraryTarget: 'this',
+			library: ['eventespresso', '[name]'],
 		},
 		optimization: {
 			minimize: isEnvProduction,
@@ -483,6 +482,10 @@ module.exports = function (webpackEnv) {
 			],
 		},
 		plugins: [
+			new DependencyExtractionWebpackPlugin({
+				requestToHandle,
+				requestToExternal,
+			}),
 			// This gives some necessary context to module not found errors, such as
 			// the requesting resource.
 			new ModuleNotFoundPlugin(paths.appPath),
@@ -543,22 +546,6 @@ module.exports = function (webpackEnv) {
 			new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 			// Generate a service worker script that will precache, and keep up to date,
 			// the HTML & assets that are part of the webpack build.
-			isEnvProduction &&
-				new WorkboxWebpackPlugin.GenerateSW({
-					clientsClaim: true,
-					exclude: [/\.map$/, /asset-manifest\.json$/],
-					importWorkboxFrom: 'cdn',
-					navigateFallback: paths.publicUrlOrPath + 'index.html',
-					navigateFallbackBlacklist: [
-						// Exclude URLs starting with /_, as they're likely an API call
-						new RegExp('^/_'),
-						// Exclude any URLs whose last part seems to be a file extension
-						// as they're likely a resource and not a SPA route.
-						// URLs containing a "?" character won't be blacklisted as they're likely
-						// a route with query params (e.g. auth callbacks).
-						new RegExp('/[^/?]+\\.[^/]+$'),
-					],
-				}),
 			// TypeScript type checking
 			useTypeScript &&
 				new ForkTsCheckerWebpackPlugin({
