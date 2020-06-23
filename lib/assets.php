@@ -10,17 +10,17 @@ if (! defined('ABSPATH')) {
 /**
  * Retrieves the root plugin path.
  *
- * @return string Root path to the ee_packages plugin.
+ * @return string Root path to the ee_barista plugin.
  *
  * @since 0.0.1
  */
-function ee_packages_dir_path()
+function ee_barista_dir_path()
 {
-    return EE_PACKAGES_DIR;
+    return EE_BARISTA_DIR;
 }
 
 /**
- * Retrieves a URL to a file in the ee_packages plugin.
+ * Retrieves a URL to a file in the ee_barista plugin.
  *
  * @param  string $path Relative path of the desired file.
  *
@@ -28,9 +28,9 @@ function ee_packages_dir_path()
  *
  * @since 0.0.1
  */
-function ee_packages_url($path)
+function ee_barista_url($path)
 {
-    return EE_PACKAGES_URL . $path;
+    return EE_BARISTA_URL . $path;
 }
 
 /**
@@ -52,8 +52,9 @@ function ee_packages_url($path)
  * @param bool             $in_footer Optional. Whether to enqueue the script before </body> instead of in the <head>.
  *                                    Default 'false'.
  */
-function ee_packages_override_script($scripts, $handle, $src, $deps = array(), $ver = false, $in_footer = false)
+function ee_barista_override_script($scripts, $handle, $src, $deps = array(), $ver = false, $in_footer = false)
 {
+    // error_log(print_r(compact('handle', 'deps'), true));
     $script = $scripts->query($handle, 'registered');
     if ($script) {
         /*
@@ -105,7 +106,7 @@ function ee_packages_override_script($scripts, $handle, $src, $deps = array(), $
  *                                 Default 'all'. Accepts media types like 'all', 'print' and 'screen', or media queries like
  *                                 '(orientation: portrait)' and '(max-width: 640px)'.
  */
-function ee_packages_override_style($styles, $handle, $src, $deps = array(), $ver = false, $media = 'all')
+function ee_barista_override_style($styles, $handle, $src, $deps = array(), $ver = false, $media = 'all')
 {
     $style = $styles->query($handle, 'registered');
     if ($style) {
@@ -114,9 +115,9 @@ function ee_packages_override_style($styles, $handle, $src, $deps = array(), $ve
     $styles->add($handle, $src, $deps, $ver, $media);
 }
 
-function ee_packages_get_manifest($key = 'files')
+function ee_barista_get_manifest($key = 'files')
 {
-    $manifest_path = ee_packages_dir_path() . 'build/asset-manifest.json';
+    $manifest_path = ee_barista_dir_path() . 'build/asset-manifest.json';
 
     if (! file_exists($manifest_path)) {
         wp_die('No manifest file found. Try yarn dev');
@@ -143,11 +144,11 @@ function ee_packages_get_manifest($key = 'files')
  *
  * @param WP_Scripts $scripts WP_Scripts instance.
  */
-function ee_packages_register_scripts($scripts)
+function ee_barista_register_scripts($scripts)
 {
-    $entry_points = array_keys(ee_packages_get_manifest('entrypoints'));
-    $asset_files = ee_packages_get_manifest();
-    
+    $entry_points = array_keys(ee_barista_get_manifest('entrypoints'));
+    $asset_files = ee_barista_get_manifest();
+
     $common_deps = array(
         'react',
         'react-dom',
@@ -156,23 +157,39 @@ function ee_packages_register_scripts($scripts)
     );
 
     foreach ($entry_points as $entry_point) {
-        $handle = 'ee-' . $entry_point;
+        $handle = 'eventespresso-' . $entry_point;
 
-        // Get the path from root directory as expected by `ee_packages_url`.
+        // Get the path from root directory as expected by `ee_barista_url`.
         $package_path = 'build' . $asset_files[ $entry_point . '.js' ];
-        
-        // @todo find a way to auto-generate package dependencies.
-        $dependencies = $common_deps;
-        $version      = filemtime(ee_packages_dir_path() . $package_path); // no caching
 
-        ee_packages_override_script(
+        // Replace `.js` extension with `.asset.php` to find the generated dependencies file.
+        $asset_file   = ee_barista_dir_path() . substr($package_path, 0, -3) . '.asset.php';
+        $asset        = file_exists($asset_file)
+            ? require($asset_file)
+            : null;
+        // $dependencies = isset($asset['dependencies']) ? $asset['dependencies'] : array();
+        $dependencies = $common_deps;
+        $version      = isset($asset['version']) ? $asset['version'] : filemtime(ee_barista_dir_path() . $package_path);
+
+        ee_barista_override_script(
             $scripts,
             $handle,
-            ee_packages_url($package_path),
+            ee_barista_url($package_path),
             $dependencies,
             $version,
             true
         );
     }
 }
-add_action('wp_default_scripts', 'ee_packages_register_scripts');
+add_action('wp_default_scripts', 'ee_barista_register_scripts');
+
+add_action(
+    'admin_enqueue_scripts',
+    function () {
+        wp_add_inline_script(
+            'ee-constants',
+            sprintf('var baristaAsselsUrl = "%s";', ee_barista_url('build/')),
+            'before'
+        );
+    }
+);
