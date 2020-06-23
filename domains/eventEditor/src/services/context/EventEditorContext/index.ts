@@ -1,1 +1,1 @@
-export { default as ContextProviders } from './ContextProviders';
+export * from './ContextProviders';

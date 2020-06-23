@@ -8,5 +8,3 @@ export const ContextProviders: React.FC = ({ children }) => (
 		<EdtrStateProvider>{children}</EdtrStateProvider>
 	</ContextProvider>
 );
-
-export default ContextProviders;

@@ -8,12 +8,13 @@ import EventEditor from './EventEditor';
 
 import '@eventespresso/styles/src/themes/default/index.scss';
 
+const Editor: React.FC = () => (
+	<ContextProviders>
+		<EventEditor />
+	</ContextProviders>
+);
+
 const setupEditor = (): void => {
-	const Editor: React.FC = () => (
-		<ContextProviders>
-			<EventEditor />
-		</ContextProviders>
-	);
 	renderDomElement({
 		appendToTarget: false,
 		domElementToRender: <Editor />,
