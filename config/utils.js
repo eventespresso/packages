@@ -49,7 +49,7 @@ function requestToExternal(request) {
  */
 function requestToHandle(request) {
 	if (request.startsWith(EVENTESPRESSO_NAMESPACE)) {
-		return 'eventespresso-' + request.substring(EVENTESPRESSO_NAMESPACE.length);
+		return 'eventespresso-' + camelCaseDash(request.substring(EVENTESPRESSO_NAMESPACE.length));
 	}
 	if (request.startsWith(WORDPRESS_NAMESPACE)) {
 		return 'wp-' + request.substring(WORDPRESS_NAMESPACE.length);
