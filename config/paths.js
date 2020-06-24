@@ -63,6 +63,7 @@ const packages = [
 	'registry',
 	'services',
 	'styles',
+	'toaster',
 ];
 
 const packagePaths = [];
