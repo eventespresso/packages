@@ -1,6 +1,8 @@
 import * as React from 'react';
+import withEnhance from '../withEnhance';
+import { IconProps } from '../types';
 
-function SvgSpinner(props: React.SVGProps<SVGSVGElement>) {
+const SvgSpinner = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -24,6 +26,6 @@ function SvgSpinner(props: React.SVGProps<SVGSVGElement>) {
 			</g>
 		</svg>
 	);
-}
+};
 
-export default SvgSpinner;
+export default withEnhance(SvgSpinner);

@@ -1,6 +1,8 @@
 import * as React from 'react';
+import withEnhance from '../withEnhance';
+import { IconProps } from '../types';
 
-function SvgCopy(props: React.SVGProps<SVGSVGElement>) {
+const SvgCopy = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -12,6 +14,6 @@ function SvgCopy(props: React.SVGProps<SVGSVGElement>) {
 			<path d='M6 15V2h10v13H6zm-1 1h8v2H3V5h2v11z' />
 		</svg>
 	);
-}
+};
 
-export default SvgCopy;
+export default withEnhance(SvgCopy);

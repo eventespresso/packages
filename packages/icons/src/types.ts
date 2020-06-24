@@ -1,11 +1,13 @@
 import type { SVGProps } from 'react';
 
 export interface IconProps extends SVGProps<SVGSVGElement> {
-	name: IconName | keyof SvgPath;
-	svgSize?: number;
 	className?: string;
-	viewBox?: string;
 	color?: string;
+	name?: IconName | keyof SvgPath;
+	noMargin?: boolean;
+	size?: IconSize
+	svgSize?: number;
+	viewBox?: string;
 }
 
 export enum IconName {
@@ -15,6 +17,8 @@ export enum IconName {
 	GROUPS = 'groups',
 	TICKET = 'ticket-alt',
 }
+
+export type IconSize = 'big' | 'bigger' | 'small' | 'smaller' | 'tiny';
 
 export type SvgPath = {
 	[key in IconName]: string;

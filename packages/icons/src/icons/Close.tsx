@@ -1,6 +1,8 @@
 import * as React from 'react';
+import withEnhance from '../withEnhance';
+import { IconProps } from '../types';
 
-function SvgClose(props: React.SVGProps<SVGSVGElement>) {
+const SvgClose = (props: IconProps): JSX.Element => {
 	return (
 		<svg viewBox='0 0 24 24' aria-hidden='true' className='close_svg__css-1idynds' {...props}>
 			<path
@@ -9,6 +11,6 @@ function SvgClose(props: React.SVGProps<SVGSVGElement>) {
 			/>
 		</svg>
 	);
-}
+};
 
-export default SvgClose;
+export default withEnhance(SvgClose);

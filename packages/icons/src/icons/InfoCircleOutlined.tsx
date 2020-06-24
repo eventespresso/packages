@@ -1,6 +1,8 @@
 import * as React from 'react';
+import withEnhance from '../withEnhance';
+import { IconProps } from '../types';
 
-function SvgInfoCircleOutlined(props: React.SVGProps<SVGSVGElement>) {
+const SvgInfoCircleOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -15,6 +17,6 @@ function SvgInfoCircleOutlined(props: React.SVGProps<SVGSVGElement>) {
 			<path d='M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z' />
 		</svg>
 	);
-}
+};
 
-export default SvgInfoCircleOutlined;
+export default withEnhance(SvgInfoCircleOutlined);

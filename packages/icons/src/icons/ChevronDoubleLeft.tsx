@@ -1,6 +1,8 @@
 import * as React from 'react';
+import withEnhance from '../withEnhance';
+import { IconProps } from '../types';
 
-function SvgChevronDoubleLeft(props: React.SVGProps<SVGSVGElement>) {
+const SvgChevronDoubleLeft = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -15,6 +17,6 @@ function SvgChevronDoubleLeft(props: React.SVGProps<SVGSVGElement>) {
 			<path d='M171.213 165.004L310.607 25.607c5.858-5.858 5.858-15.355 0-21.213-5.857-5.858-15.355-5.858-21.213.001l-150 150.004a14.999 14.999 0 00.001 21.213l150 149.996A14.948 14.948 0 00300 330a14.95 14.95 0 0010.607-4.394c5.858-5.858 5.858-15.355 0-21.213L171.213 165.004z' />
 		</svg>
 	);
-}
+};
 
-export default SvgChevronDoubleLeft;
+export default withEnhance(SvgChevronDoubleLeft);

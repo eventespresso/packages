@@ -1,6 +1,8 @@
 import * as React from 'react';
+import withEnhance from '../withEnhance';
+import { IconProps } from '../types';
 
-function SvgCheck(props: React.SVGProps<SVGSVGElement>) {
+const SvgCheck = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -16,6 +18,6 @@ function SvgCheck(props: React.SVGProps<SVGSVGElement>) {
 			<path d='M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z' />
 		</svg>
 	);
-}
+};
 
-export default SvgCheck;
+export default withEnhance(SvgCheck);

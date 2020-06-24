@@ -1,6 +1,8 @@
 import * as React from 'react';
+import withEnhance from '../withEnhance';
+import { IconProps } from '../types';
 
-function SvgSort(props: React.SVGProps<SVGSVGElement>) {
+const SvgSort = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -14,6 +16,6 @@ function SvgSort(props: React.SVGProps<SVGSVGElement>) {
 			<path d='M11 7H1l5 7zm-2 7h10l-5-7z' />
 		</svg>
 	);
-}
+};
 
-export default SvgSort;
+export default withEnhance(SvgSort);

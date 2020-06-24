@@ -4,12 +4,19 @@ function defaultTemplate({ template }, opts, { imports, interfaces, componentNam
 		plugins.push('typescript');
 	}
 	const typeScriptTpl = template.smart({ plugins });
+
 	return typeScriptTpl.ast`${imports}
-  ${interfaces}
-  function ${componentName}(${props}) {
-    return ${jsx};
-  }
-  ${exports}
-    `;
+	
+	import withEnhance from '../withEnhance';
+	import { IconProps } from '../types';	
+
+	${ interfaces}
+
+	const ${componentName} = (props: IconProps): JSX.Element => {
+		return ${ jsx};
+	}
+
+	export default withEnhance(${ componentName});
+	`;
 }
 module.exports = defaultTemplate;
