@@ -167,8 +167,8 @@ function ee_barista_register_scripts($scripts)
         $asset        = file_exists($asset_file)
             ? require($asset_file)
             : null;
-        // $dependencies = isset($asset['dependencies']) ? $asset['dependencies'] : array();
         $dependencies = $common_deps;
+        // $dependencies = isset($asset['dependencies']) ? $asset['dependencies'] : array();
         $version      = isset($asset['version']) ? $asset['version'] : filemtime(ee_barista_dir_path() . $package_path);
 
         ee_barista_override_script(
