@@ -1,5 +1,5 @@
 
-import { Datetime } from '@eventespresso/edtr-services';
+import type { Datetime } from '@eventespresso/edtr-services';
 import { isTrashed } from '../../../common';
 import validFiniteCapacityLimit from '../../validFiniteCapacityLimit';
 import validInfiniteCapacityLimit from './validInfiniteCapacityLimit';

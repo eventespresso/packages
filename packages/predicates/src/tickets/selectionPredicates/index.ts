@@ -3,7 +3,7 @@ import { assoc, includes, map, when } from 'ramda';
 import { TICKET_FIELDS, TICKET_INPUT_FIELDS } from '../ticketFields';
 import { entityHasGuid } from '.././../common';
 import { EntityId } from '@eventespresso/data';
-import { Ticket } from '@eventespresso/edtr-services';
+import type { Ticket } from '@eventespresso/edtr-services';
 
 interface UpdateTicketPriceForTicketProps {
 	amount: number;

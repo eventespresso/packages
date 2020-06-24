@@ -1,6 +1,6 @@
 import { allPass, find } from 'ramda';
 
-import { PriceType } from '@eventespresso/edtr-services';
+import type { PriceType } from '@eventespresso/edtr-services';
 import { isNotBasePrice, isNotDiscount, isNotPercent } from '../../common';
 
 // returns true if supplied price type is a flat fee (dollar) surcharge

@@ -1,7 +1,7 @@
 import { prop, sort, sortBy as sortByFn } from 'ramda';
 import { compareAsc, parseISO } from 'date-fns';
 
-import { Datetime, SortBy } from '@eventespresso/edtr-services';
+import type { Datetime, SortBy } from '@eventespresso/edtr-services';
 
 interface SortDates {
 	dates: Datetime[];

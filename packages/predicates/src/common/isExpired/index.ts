@@ -1,6 +1,6 @@
 import { parseISO } from 'date-fns';
 
-import { Ticket, Datetime } from '@eventespresso/edtr-services';
+import type { Ticket, Datetime } from '@eventespresso/edtr-services';
 import { diff, isBooleanTrue } from '@eventespresso/services';
 import { NOW as now } from '@eventespresso/constants';
 

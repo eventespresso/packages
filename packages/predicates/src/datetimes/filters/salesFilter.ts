@@ -1,14 +1,14 @@
-import { Datetime, DatetimeSales } from '@eventespresso/edtr-services';
+import type { Datetime, } from '@eventespresso/edtr-services';
 
 import aboveCapacity from './aboveCapacity';
 import belowCapacity from './belowCapacity';
 
-import { SalesFilter } from './types';
+import { DatetimeSales, DatesSalesFilter } from './types';
 
 /**
  * reduces dates array based on value of the "sales" filter
  */
-const salesFilter = ({ dates, sales = DatetimeSales.all }: SalesFilter): Datetime[] => {
+const salesFilter = ({ dates, sales = DatetimeSales.all }: DatesSalesFilter): Datetime[] => {
 	switch (sales) {
 		case DatetimeSales.above50Capacity:
 			return aboveCapacity({ dates, capacity: 50 });

@@ -1,4 +1,4 @@
-import { Datetime } from '@eventespresso/edtr-services';
+import type { Datetime } from '@eventespresso/edtr-services';
 import filter from './filter';
 
 type BelowCapacityProps = {

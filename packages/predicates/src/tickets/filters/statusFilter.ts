@@ -1,13 +1,13 @@
-import { Ticket, TicketsStatus } from '@eventespresso/edtr-services';
+import type { Ticket, } from '@eventespresso/edtr-services';
 import allOnSaleAndPending from './allOnSaleAndPending';
 import expiredOnly from './expiredOnly';
 import nextOnSaleOrPendingOnly from './nextOnSaleOrPendingOnly';
 import onSaleOnly from './onSaleOnly';
 import pendingOnly from './pendingOnly';
 import soldOutOnly from './soldOutOnly';
-import {notTrashed, trashedOnly} from '../../common';
+import { notTrashed, trashedOnly } from '../../common';
 
-import { TicketStatusFilter } from './types';
+import { TicketStatusFilter, TicketsStatus } from './types';
 
 /**
  * reduces tickets array based on value of the "status" filter

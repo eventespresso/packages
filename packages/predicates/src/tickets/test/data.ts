@@ -1,4 +1,4 @@
-import { Ticket } from '@eventespresso/edtr-services';
+import type { Ticket } from '@eventespresso/edtr-services';
 
 export const tickets: Ticket[] = [
 	{

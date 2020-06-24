@@ -1,7 +1,7 @@
 import { compareAsc, parseISO } from 'date-fns';
 import { ascend, prop, propOr, sort, sortWith } from 'ramda';
 
-import { Ticket, SortBy } from '@eventespresso/edtr-services';
+import type { Ticket, SortBy } from '@eventespresso/edtr-services';
 
 const sortByDate = (tickets: Ticket[]): Ticket[] => {
 	const sortByDatePredicate = ({ startDate: dateLeft }: Ticket, { startDate: dateRight }: Ticket): number => {

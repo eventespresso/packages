@@ -1,6 +1,6 @@
 import { filter, propEq } from 'ramda';
 
-import { Price, PriceType } from '@eventespresso/edtr-services';
+import type { Price, PriceType } from '@eventespresso/edtr-services';
 
 // is a base price ?
 export const isBasePrice = propEq('isBasePrice', true);

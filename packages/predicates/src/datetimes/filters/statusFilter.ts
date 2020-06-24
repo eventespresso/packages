@@ -1,4 +1,5 @@
-import { Datetime, DatetimeStatus } from '@eventespresso/edtr-services';
+import type { Datetime } from '@eventespresso/edtr-services';
+import { DatetimeStatus } from '../types';
 
 import activeOnly from './activeOnly';
 import activeUpcoming from './activeUpcoming';

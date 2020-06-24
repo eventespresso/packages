@@ -13,4 +13,5 @@ export { default as isUpcoming } from './isUpcoming';
 export { default as sortDates } from './sorters';
 
 export * from './constants';
+export * from './types';
 export * from './filters';

@@ -1,5 +1,5 @@
 import { isFlatFeeSurcharge, getDefaultPriceModifierType } from './index';
-import { PriceBasetype } from '@eventespresso/edtr-services';
+import type { PriceBasetype } from '@eventespresso/edtr-services';
 import { nodes as priceTypes } from '@eventespresso/edtr-services/src/apollo/queries/priceTypes/test/data';
 
 describe('isFlatFeeSurcharge', () => {

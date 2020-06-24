@@ -1,4 +1,4 @@
-import { Datetime } from '@eventespresso/edtr-services';
+import type { Datetime } from '@eventespresso/edtr-services';
 import { isBooleanTrue } from '@eventespresso/services';
 
 const isSoldOut = (date: Datetime): boolean =>

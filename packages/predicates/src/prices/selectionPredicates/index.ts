@@ -1,7 +1,7 @@
 import { allPass, filter, find, includes, propEq } from 'ramda';
 
 import { EntityId, EntityDbId } from '@eventespresso/data';
-import { Price } from '@eventespresso/edtr-services';
+import type { Price } from '@eventespresso/edtr-services';
 import { PRICE_FIELDS, PRICE_INPUT_FIELDS } from '../priceFields';
 import { findEntityByDbId, findEntityByGuid, isTax, isBasePrice } from '../../common';
 

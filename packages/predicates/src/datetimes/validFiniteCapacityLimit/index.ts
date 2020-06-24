@@ -1,6 +1,6 @@
 import { is } from 'ramda';
 
-import { Datetime } from '@eventespresso/edtr-services';
+import type { Datetime } from '@eventespresso/edtr-services';
 
 /**
  * @param {Object} date event object

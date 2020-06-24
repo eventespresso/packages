@@ -1,6 +1,6 @@
 import { is } from 'ramda';
 
-import { Ticket } from '@eventespresso/edtr-services';
+import type { Ticket } from '@eventespresso/edtr-services';
 
 /**
  * @param {Object} ticket    event ticket object
