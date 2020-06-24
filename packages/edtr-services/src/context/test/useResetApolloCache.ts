@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useApolloClient } from '@apollo/react-hooks';
+import { useApolloClient } from '@eventespresso/data';
 
 const useResetApolloCache = (): void => {
 	const client = useApolloClient();

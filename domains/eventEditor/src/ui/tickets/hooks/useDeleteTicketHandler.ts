@@ -7,7 +7,7 @@ import { useTicketMutator } from '@eventespresso/edtr-services';
 import { getGuids, entitiesWithGuIdNotInArray } from '@eventespresso/predicates';
 import { usePriceQueryOptions } from '@eventespresso/edtr-services';
 import type { PricesList } from '@eventespresso/edtr-services';
-import { useApolloClient } from '@apollo/react-hooks';
+import { useApolloClient } from '@eventespresso/data';
 
 type Callback = (deletePermanently?: boolean) => Promise<void>;
 

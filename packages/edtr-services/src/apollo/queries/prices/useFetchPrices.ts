@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@eventespresso/data';
 import { __ } from '@wordpress/i18n';
 
 import { useStatus, TypeName } from '@eventespresso/services';
@@ -22,7 +22,7 @@ const useFetchPrices = (skipFetch: boolean = null): FetchQueryResult<PricesList>
 
 	const dismissLoading = (): void => toaster.dismiss(toastId.current);
 
-	const { data, error, loading } = useQuery<PricesList>(query, {
+	const { loading, ...result } = useQuery<PricesList>(query, {
 		...options,
 		skip,
 		onCompleted: (): void => {
@@ -48,8 +48,7 @@ const useFetchPrices = (skipFetch: boolean = null): FetchQueryResult<PricesList>
 	}, [loading]);
 
 	return {
-		data,
-		error,
+		...result,
 		loading,
 	};
 };

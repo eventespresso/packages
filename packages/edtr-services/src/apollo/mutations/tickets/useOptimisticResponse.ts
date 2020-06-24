@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useApolloClient } from '@apollo/react-hooks';
+import { useApolloClient } from '@eventespresso/data';
 import { v4 as uuidv4 } from 'uuid';
 
 import { GET_TICKET } from '../../';

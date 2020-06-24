@@ -44,3 +44,4 @@ export * from './src/TextInput';
 export * from './src/Timepicker';
 export * from './src/ThemeProvider';
 export * from './src/Tooltip';
+export * from './src/theme';

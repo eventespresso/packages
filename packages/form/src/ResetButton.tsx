@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useForm } from 'react-final-form';
 
-import { Button, ButtonProps } from '@eventespresso/components';
+import { Button, ButtonProps } from '@eventespresso/adapters';
 
 const ResetButton: React.FC<ButtonProps> = ({ isDisabled, buttonText, ...props }) => {
 	const form = useForm();

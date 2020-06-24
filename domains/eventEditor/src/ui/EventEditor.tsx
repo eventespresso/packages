@@ -3,7 +3,7 @@ import React from 'react';
 import { DatesList } from './datetimes/datesList';
 import { TicketsList } from './tickets/ticketsList';
 
-import { initToaster } from '@eventespresso/services';
+import { initToaster } from '@eventespresso/toaster';
 import { useEditorInitialization } from '../hooks';
 
 import './styles.scss';

@@ -1,10 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { Datepicker as BaseUIDatepicker } from 'baseui/datepicker';
 
 import { DatepickerProps } from './types';
 import withBaseProvider from '../ThemeProvider/withBaseProvider';
-import { useMemoStringify } from '@eventespresso/services';
 
 import './style.scss';
 
@@ -23,7 +22,7 @@ const Datepicker: React.FC<DatepickerProps> = ({ value, onChange, onChangeValue,
 		[onChange, onChangeValue]
 	);
 
-	const dateValue = useMemoStringify([value]);
+	const dateValue = useMemo(() => [value], [value]);
 
 	return (
 		<div className={className}>

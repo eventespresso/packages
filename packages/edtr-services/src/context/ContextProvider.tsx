@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { DataProvider } from '@eventespresso/data';
-import { ConfigProvider, RelationsProvider, StatusProvider, ThemeProvider } from '@eventespresso/services';
+import { ThemeProvider } from '@eventespresso/adapters';
+import { ConfigProvider, RelationsProvider, StatusProvider } from '@eventespresso/services';
 
 export const ServiceProvider: React.FC = ({ children }) => {
 	return (

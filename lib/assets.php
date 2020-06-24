@@ -187,7 +187,7 @@ add_action(
     'admin_enqueue_scripts',
     function () {
         wp_add_inline_script(
-            'ee-constants',
+            'eventespresso-constants',
             sprintf('var baristaAsselsUrl = "%s";', ee_barista_url('build/')),
             'before'
         );

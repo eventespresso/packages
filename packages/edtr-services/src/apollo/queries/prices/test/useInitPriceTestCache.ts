@@ -1,4 +1,4 @@
-import { useApolloClient } from '@apollo/react-hooks';
+import { useApolloClient } from '@eventespresso/data';
 
 import usePriceQueryOptions from '../usePriceQueryOptions';
 import { WriteQueryOptions } from '@eventespresso/data';

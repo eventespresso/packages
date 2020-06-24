@@ -3,7 +3,8 @@ import type { Datetime, } from '@eventespresso/edtr-services';
 import aboveCapacity from './aboveCapacity';
 import belowCapacity from './belowCapacity';
 
-import { DatetimeSales, DatesSalesFilter } from './types';
+import { DatesSalesFilter } from './types';
+import { DatetimeSales } from '../types';
 
 /**
  * reduces dates array based on value of the "sales" filter
