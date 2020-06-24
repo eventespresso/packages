@@ -1,33 +1,33 @@
 {
-  "author": "Event Espresso",
-  "name": "@eventespresso/storybook",
-  "version": "1.0.5",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/eventespresso/packages.git"
-  },
-  "scripts": {
-    "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook"
-  },
-  "dependencies": {
-    "@eventespresso/components": "^1.0.1",
-    "@react-workspaces/react-scripts": "3.4.0-alpha-01",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-docs": "^5.3.19",
-    "@storybook/addon-info": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/preset-create-react-app": "^3.1.1",
-    "@storybook/react": "^5.3.19",
-    "@storybook/theming": "^5.3.19",
-    "babel-loader": "^8.1.0",
-    "cross-env": "7.0.2"
-  }
+	"author": "Event Espresso",
+	"name": "@eventespresso/storybook",
+	"version": "1.0.5",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eventespresso/packages.git"
+	},
+	"scripts": {
+		"storybook": "start-storybook -p 9009",
+		"build-storybook": "build-storybook"
+	},
+	"dependencies": {
+		"@eventespresso/components": "^1.0.1",
+		"@react-workspaces/react-scripts": "3.4.0-alpha-01",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.10.3",
+		"@storybook/addon-actions": "^5.3.19",
+		"@storybook/addon-docs": "^5.3.19",
+		"@storybook/addon-info": "^5.3.19",
+		"@storybook/addon-links": "^5.3.19",
+		"@storybook/addons": "^5.3.19",
+		"@storybook/preset-create-react-app": "^3.1.2",
+		"@storybook/react": "^5.3.19",
+		"@storybook/theming": "^5.3.19",
+		"babel-loader": "^8.1.0",
+		"cross-env": "7.0.2"
+	}
 }
