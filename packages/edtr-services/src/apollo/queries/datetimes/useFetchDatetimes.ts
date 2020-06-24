@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { __ } from '@wordpress/i18n';
 
-import { useSystemNotifications, useStatus, TypeName } from '@eventespresso/services';
+import { useStatus, TypeName } from '@eventespresso/services';
+import { useSystemNotifications } from '@eventespresso/toaster';
 import useDatetimeQueryOptions from './useDatetimeQueryOptions';
 import { FetchQueryResult } from '@eventespresso/data';
 import { DatetimesList } from '../../types';

@@ -7,7 +7,7 @@ import useMutationHandler from './useMutationHandler';
 import useUpdateCallback from '../useUpdateCallback';
 import { MutationFunction, TypeName } from '../types';
 import { CreateDatetimeResult, UpdateDatetimeResult, DeleteDatetimeResult } from './types';
-import { useSystemNotifications } from '@eventespresso/services';
+import { useSystemNotifications } from '@eventespresso/toaster';
 
 interface DatetimeMutator {
 	createEntity: MutationFunction<CreateDatetimeResult, CreateDatetimeInput>;

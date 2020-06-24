@@ -7,7 +7,7 @@ import useMutationHandler from './useMutationHandler';
 import useUpdateCallback from '../useUpdateCallback';
 import { MutationFunction, TypeName } from '../types';
 import { CreateTicketResult, UpdateTicketResult, DeleteTicketResult } from './types';
-import { useSystemNotifications } from '@eventespresso/services';
+import { useSystemNotifications } from '@eventespresso/toaster';
 
 interface TicketMutator {
 	createEntity: MutationFunction<CreateTicketResult, CreateTicketInput>;

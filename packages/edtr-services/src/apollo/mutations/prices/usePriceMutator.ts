@@ -7,7 +7,7 @@ import useMutationHandler from './useMutationHandler';
 import useUpdateCallback from '../useUpdateCallback';
 import { MutationFunction, TypeName } from '../types';
 import { CreatePriceResult, UpdatePriceResult, DeletePriceResult } from './types';
-import { useSystemNotifications } from '@eventespresso/services';
+import { useSystemNotifications } from '@eventespresso/toaster';
 
 interface PriceMutator {
 	createEntity: MutationFunction<CreatePriceResult, CreatePriceInput>;

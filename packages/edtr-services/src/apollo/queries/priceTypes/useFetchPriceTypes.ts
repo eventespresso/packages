@@ -3,7 +3,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { __ } from '@wordpress/i18n';
 
 import usePriceTypeQueryOptions from './usePriceTypeQueryOptions';
-import { useStatus, TypeName, useSystemNotifications} from '@eventespresso/services';
+import { useStatus, TypeName } from '@eventespresso/services';
+import { useSystemNotifications } from '@eventespresso/toaster';
 import { FetchQueryResult } from '@eventespresso/data';
 import { PriceTypesList } from '../../types';
 

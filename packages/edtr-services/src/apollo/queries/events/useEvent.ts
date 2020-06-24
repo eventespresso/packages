@@ -1,7 +1,7 @@
 import { Event, EventData } from '../../types';
 import { useCacheQuery } from '@eventespresso/data';
 import useEventQueryOptions from './useEventQueryOptions';
-import { useSystemNotifications } from '@eventespresso/services';
+import { useSystemNotifications } from '@eventespresso/toaster';
 
 const useEvent = (): Event => {
 	const options = useEventQueryOptions();

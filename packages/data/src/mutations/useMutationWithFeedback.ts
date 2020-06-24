@@ -5,7 +5,7 @@ import { OperationVariables } from 'apollo-client';
 import { v4 as uuidv4 } from 'uuid';
 
 import { MutationType } from './types';
-import { SystemNotificationsToaster } from '@eventespresso/services';
+import { SystemNotificationsToaster } from '@eventespresso/toaster';
 
 interface MutationWithFeedbackArgs {
 	typeName: string; // e.g. "Datetime", "Ticket", "PriceType"

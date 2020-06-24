@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/react-hooks';
 
-import { useSystemNotifications } from '@eventespresso/services';
+import { useSystemNotifications } from '@eventespresso/toaster';
 import { GET_CURRENT_USER } from '.';
 import { FetchQueryResult } from '../types';
 import { Viewer } from '@eventespresso/services';
