@@ -1,4 +1,4 @@
-import type React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import type { PriceModifierProps, TpcPriceModifier } from '../types';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement>;

@@ -5,7 +5,7 @@ import TicketPriceCalculator from './TicketPriceCalculator';
 import useResetButtonProps from '../buttons/useResetButtonProps';
 import useSubmitButtonProps from '../buttons/useSubmitButtonProps';
 import { useTPCContext } from '../context';
-import { Modal } from '@eventespresso/components';
+import { Modal } from '@eventespresso/adapters';
 
 import './styles.scss';
 

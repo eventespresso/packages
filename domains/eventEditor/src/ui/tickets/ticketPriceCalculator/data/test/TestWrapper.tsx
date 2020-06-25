@@ -1,8 +1,8 @@
 import React from 'react';
-import { ApolloMockedProvider } from '@edtrServices/context/TestContext';
+import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 import { ContextProvider } from '../../context';
 import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
-import { useCacheRehydration } from '@edtrServices/initialization';
+import { useCacheRehydration } from '@eventespresso/edtr-services';
 import { useInitStateListeners } from '../../stateListeners';
 
 const mockTicket = tickets[0];

@@ -9,7 +9,7 @@ import { getPropsAreEqual, useMemoStringify } from '@eventespresso/services';
 import { RegistrationsLink } from '@eventespresso/components';
 import { useConfig } from '@eventespresso/services';
 import { useEventId } from '@eventespresso/edtr-services';
-import type { TooltipProps } from '@eventespresso/components';
+import type { TooltipProps } from '@eventespresso/adapters';
 
 interface Props {
 	datetime: Datetime;

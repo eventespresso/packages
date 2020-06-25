@@ -1,5 +1,5 @@
 import type { Entity, EntityId } from '@eventespresso/data';
-import type { EntityListFilterStateManager } from '@appLayout/entityList';
+import type { EntityListFilterStateManager } from '@eventespresso/components';
 
 type ELFSM = EntityListFilterStateManager<any>;
 
