@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import useCacheRehydrationData from './useCacheRehydrationData';
 import { useStatus, TypeName, useRelations } from '@eventespresso/services';
+import { useUpdateDatetimeList, useUpdatePriceList, useUpdatePriceTypeList, useUpdateTicketList } from '../../hooks';
 import {
 	DEFAULT_DATETIME_LIST_DATA,
 	DEFAULT_TICKET_LIST_DATA,
@@ -11,11 +12,7 @@ import {
 	usePriceQueryOptions,
 	usePriceTypeQueryOptions,
 	useTicketQueryOptions,
-	useUpdateDatetimeList,
-	useUpdatePriceList,
-	useUpdatePriceTypeList,
-	useUpdateTicketList,
-} from '@eventespresso/edtr-services';
+} from '../queries';
 import {
 	useCurrentUserQueryOptions,
 	useGeneralSettingsQueryOptions,

@@ -1,6 +1,6 @@
 import { setLocaleData } from '@wordpress/i18n';
 
-import { useI18nData, useInitQueries } from '@edtrServices/initialization';
+import { useI18nData, useInitQueries } from '@eventespresso/edtr-services';
 import { useEntityActionsMenuSubscription } from './entityActionsMenu';
 import { useFilterBarUISubscription, useFilterBarService } from './filterBar';
 

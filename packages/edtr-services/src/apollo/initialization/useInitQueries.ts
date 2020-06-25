@@ -4,7 +4,7 @@ import {
 	useFetchPriceTypes,
 	useFetchPrices,
 	useFetchTickets,
-} from '@eventespresso/edtr-services';
+} from '../queries';
 import { useFetchCurrentUser, useFetchGeneralSettings } from '@eventespresso/data';
 import useCacheRehydration from './useCacheRehydration';
 

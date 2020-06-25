@@ -1,4 +1,4 @@
-import { EEEditorData } from '@edtrInterfaces/types';
+import { EEEditorData } from '../../types';
 
 const useCacheRehydrationData = (): EEEditorData => {
 	const { event, currentUser, generalSettings } = window?.eeEditorData || {};
