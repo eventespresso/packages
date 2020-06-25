@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import usePriceQueryOptions from '../usePriceQueryOptions';
-import { ApolloMockedProvider } from '../../../../../services/context/TestContext';
+import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from '../../tickets/test/data';
 import useInitTicketTestCache from '../../tickets/test/useInitTicketTestCache';
 import { getGuids } from '@eventespresso/predicates';
