@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
@@ -10,6 +11,12 @@
 		"module": "esnext",
 		"moduleResolution": "node",
 		"noEmit": true,
+		"paths": {
+			"@edtrHooks/*": ["domains/eventEditor/src/hooks/*"],
+			"@edtrInterfaces/*": ["domains/eventEditor/src/interfaces/*"],
+			"@edtrServices/*": ["domains/eventEditor/src/services/*"],
+			"@edtrUI/*": ["domains/eventEditor/src/ui/*"]
+		},
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": false,

@@ -1,15 +1,4 @@
 {
 	"extends": "../../tsconfig.json",
-	"compilerOptions": {
-		"baseUrl": ".",
-		"traceResolution": true,
-		"paths": {
-			"@edtrHooks/*": ["src/hooks/*"],
-			"@edtrInterfaces/*": ["src/interfaces/*"],
-			"@edtrServices/*": ["src/services/*"],
-			"@edtrUI/*": ["src/ui/*"]
-		},
-		"rootDir": "."
-	},
 	"include": ["src"]
 }
