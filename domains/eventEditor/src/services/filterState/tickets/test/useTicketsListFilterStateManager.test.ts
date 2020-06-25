@@ -1,9 +1,9 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { DisplayStartOrEndDate } from '@sharedServices/filterState';
+import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 import useTicketsListFilterStateManager from '../useTicketsListFilterStateManager';
 import { TicketsSales, TicketsStatus } from '../types';
-import { ApolloMockedProvider } from '@edtrServices/context/TestContext';
+import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 
 describe('useTicketsListFilterStateManager', () => {
 	const wrapper = ApolloMockedProvider();

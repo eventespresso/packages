@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import useTicketIds from '../useTicketIds';
-import { ApolloMockedProvider } from '../../../../../services/context/TestContext';
+import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from './data';
 import useInitTicketTestCache from './useInitTicketTestCache';
-import { getGuids } from '@appServices/predicates';
+import { getGuids } from '@eventespresso/predicates';
 
 const timeout = 5000; // milliseconds
 describe('useTicketIds()', () => {

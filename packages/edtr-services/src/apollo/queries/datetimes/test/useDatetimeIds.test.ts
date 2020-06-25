@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import useDatetimeIds from '../useDatetimeIds';
-import { ApolloMockedProvider } from '../../../../../services/context/TestContext';
+import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from './data';
 import useInitDatetimeTestCache from './useInitDatetimeTestCache';
-import { getGuids } from '@appServices/predicates';
+import { getGuids } from '@eventespresso/predicates';
 
 const timeout = 5000; // milliseconds
 describe('useDatetimeIds()', () => {

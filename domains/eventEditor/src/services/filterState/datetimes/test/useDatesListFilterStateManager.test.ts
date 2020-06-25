@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { DisplayStartOrEndDate } from '@sharedServices/filterState';
+import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 import useDatesListFilterStateManager from '../useDatesListFilterStateManager';
 import { DatetimeSales, DatetimeStatus } from '../types';
 

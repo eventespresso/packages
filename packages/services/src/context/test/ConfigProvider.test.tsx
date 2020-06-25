@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 import { ConfigConsumer } from '../ConfigProvider';
 import { mockEeJsData } from '../../config/test/data';
-import { ApolloMockedProvider } from '../../../../domain/eventEditor/services/context/TestContext';
+import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 
 describe('ConfigProvider', () => {
 	it('checks for brandName in config data', () => {

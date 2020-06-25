@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { format } from 'date-fns';
 
 import useTimeZoneTime from '../useTimeZoneTime';
-import { ApolloMockedProvider } from '../../../../domain/eventEditor/services/context/TestContext';
+import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 
 const formatString = "yyyy-MM-dd'T'HH:mm:ss.SSS";
 

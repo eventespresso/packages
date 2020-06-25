@@ -1,12 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import usePriceTypeForPrice from '../usePriceTypeForPrice';
-import { ApolloMockedProvider } from '../../../../../services/context/TestContext';
+import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes, edge } from './data';
 import { nodes as prices } from '../../prices/test/data';
 import useInitPriceTypeTestCache from './useInitPriceTypeTestCache';
-import { isFlatFeeSurcharge } from '../../../../../../shared/entities/priceTypes/predicates/selectionPredicates';
-import { useRelations } from '../../../../../../../application/services/apollo/relations';
+import { isFlatFeeSurcharge } from '@eventespresso/predicates';
+import { useRelations } from '@eventespresso/services';
 
 const timeout = 5000; // milliseconds
 describe('usePriceTypeForPrice()', () => {
