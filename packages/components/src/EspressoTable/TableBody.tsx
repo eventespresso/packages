@@ -9,7 +9,8 @@ import TableHeaderCell from './TableHeaderCell';
 import TableDataCell from './TableDataCell';
 import ResponsiveCell from './ResponsiveCell';
 
-import type { RowType, TableBodyProps } from './types';
+import type { TableBodyProps } from './types';
+import { RowType } from './types';
 
 const TableBody: React.FC<TableBodyProps> = ({
 	bodyRows,

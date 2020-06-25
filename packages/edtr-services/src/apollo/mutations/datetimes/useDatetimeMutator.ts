@@ -5,7 +5,7 @@ import { MutationType, useMutationWithFeedback } from '@eventespresso/data';
 import { CREATE_DATETIME, UPDATE_DATETIME, DELETE_DATETIME } from './';
 import useMutationHandler from './useMutationHandler';
 import useUpdateCallback from '../useUpdateCallback';
-import type { MutationFunction, TypeName } from '../types';
+import { MutationFunction, TypeName } from '../types';
 import type { CreateDatetimeResult, UpdateDatetimeResult, DeleteDatetimeResult } from './types';
 import { useSystemNotifications } from '@eventespresso/toaster';
 

@@ -7,7 +7,8 @@ import { isFunc, isEmpty } from '@eventespresso/services';
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
 
-import type { RowType, TableFooterProps } from './types';
+import type { TableFooterProps } from './types';
+import { RowType } from './types';
 
 const TableFooter: React.FC<TableFooterProps> = ({ tableId, footerRows, rowCount, ...props }) => {
 	const className = classNames(props?.className?.footerClassName, 'ee-rspnsv-table-footer');

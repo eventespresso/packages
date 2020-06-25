@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
 import { Button, ConfirmClose} from '@eventespresso/components';
-import type { modalCloseButtonProps } from '@eventespresso/adapters';
+import { modalCloseButtonProps } from '@eventespresso/adapters';
 import { useTAMContext } from '../../../context';
 
 const CloseModal: React.FC = () => {

@@ -1,7 +1,8 @@
 import { filter } from 'ramda';
 
 import { useSubscriptionService } from '@eventespresso/services';
-import type { FilterBarUISubscription, FilterBarUISubscriptionHook, FilterBarServiceType } from './types';
+import type { FilterBarUISubscription, FilterBarUISubscriptionHook } from './types';
+import { FilterBarServiceType } from './types';
 
 type FBS = FilterBarUISubscription;
 type FBShook = FilterBarUISubscriptionHook;

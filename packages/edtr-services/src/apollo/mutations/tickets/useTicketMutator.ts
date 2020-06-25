@@ -5,7 +5,7 @@ import { MutationType, useMutationWithFeedback } from '@eventespresso/data';
 import { CREATE_TICKET, UPDATE_TICKET, DELETE_TICKET } from './';
 import useMutationHandler from './useMutationHandler';
 import useUpdateCallback from '../useUpdateCallback';
-import type { MutationFunction, TypeName } from '../types';
+import { MutationFunction, TypeName } from '../types';
 import type { CreateTicketResult, UpdateTicketResult, DeleteTicketResult } from './types';
 import { useSystemNotifications } from '@eventespresso/toaster';
 

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import './style.scss';
 
-import type { EntityActionsMenuProps, EntityActionsMenuLayout } from './types';
+import { EntityActionsMenuProps, EntityActionsMenuLayout } from './types';
 
 const EntityActionsMenu: React.FC<EntityActionsMenuProps> = ({
 	layout = EntityActionsMenuLayout.Horizontal,

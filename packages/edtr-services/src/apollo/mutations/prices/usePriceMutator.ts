@@ -5,7 +5,7 @@ import { MutationType, useMutationWithFeedback } from '@eventespresso/data';
 import { CREATE_PRICE, UPDATE_PRICE, DELETE_PRICE } from './';
 import useMutationHandler from './useMutationHandler';
 import useUpdateCallback from '../useUpdateCallback';
-import type { MutationFunction, TypeName } from '../types';
+import { MutationFunction, TypeName } from '../types';
 import type { CreatePriceResult, UpdatePriceResult, DeletePriceResult } from './types';
 import { useSystemNotifications } from '@eventespresso/toaster';
 

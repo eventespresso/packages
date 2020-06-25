@@ -1,5 +1,6 @@
 import { useUIRegistry } from '@eventespresso/services';
-import type { FilterBarUIRegistryHook, FilterBarServiceType } from './types';
+import { FilterBarUIRegistryHook } from './types';
+import { FilterBarServiceType } from './types';
 
 const useFilterBarUIRegistry: FilterBarUIRegistryHook = ({ domain, listId }) => {
 	const path = [listId];

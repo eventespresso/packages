@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import type { LabelPosition, withLabelProps } from './types';
+import type { withLabelProps } from './types';
+import { LabelPosition } from './types';
 import './style.scss';
 
 const withLabel = <P extends withLabelProps>(WrappedComponent: React.ComponentType<P>) => {
