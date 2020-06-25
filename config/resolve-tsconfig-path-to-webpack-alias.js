@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { resolve } = require('path');
 
 const { domains } = require('./paths');
@@ -24,7 +25,7 @@ function resolveTsconfigPathsToAlias() {
 }
 
 const getTsConfigPaths = (tsconfigPath) => {
-	const { paths } = require(tsconfigPath).compilerOptions;
+	const { paths } = require(tsconfigPath).compilerOptions || {};
 	return paths;
 };
 
