@@ -1,7 +1,7 @@
 import { pick } from 'ramda';
 
 import { Entity } from '@eventespresso/data';
-import { EntityListSearchProps } from './types';
+import type { EntityListSearchProps } from './types';
 
 const entityListSearch = <E extends Entity>({
 	entities,

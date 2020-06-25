@@ -1,6 +1,6 @@
 import type { Datetime } from '@eventespresso/edtr-services';
 import isRecentlyExpired from '../../isRecentlyExpired';
-import { DatetimeFilterFn } from '../types';
+import type { DatetimeFilterFn } from '../types';
 
 const recentlyExpiredOnly: DatetimeFilterFn = (dates) => {
 	const filterFn = (date: Datetime): boolean => {

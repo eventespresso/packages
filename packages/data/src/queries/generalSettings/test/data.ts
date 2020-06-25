@@ -2,7 +2,7 @@ import { GraphQLError } from 'graphql';
 
 import { GeneralSettingsData } from '@eventespresso/services';
 import { GET_GENERAL_SETTINGS } from '..';
-import { ReadQueryOptions } from '../../types';
+import type { ReadQueryOptions } from '../../types';
 
 export const request: ReadQueryOptions = {
 	query: GET_GENERAL_SETTINGS,

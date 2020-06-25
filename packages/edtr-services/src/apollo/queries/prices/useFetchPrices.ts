@@ -6,7 +6,7 @@ import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import usePriceQueryOptions from './usePriceQueryOptions';
 import { FetchQueryResult } from '@eventespresso/data';
-import { PricesList } from '../../types';
+import type { PricesList } from '../../types';
 
 const useFetchPrices = (skipFetch: boolean = null): FetchQueryResult<PricesList> => {
 	const { setIsLoading, setIsLoaded, setIsError, isLoaded } = useStatus();

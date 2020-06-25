@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Draggable } from 'react-beautiful-dnd';
 import { Icon } from '@chakra-ui/core';
 
-import { RowType, BodyRow } from './types';
+import type { RowType, BodyRow } from './types';
 
 const TableRow: React.FC<BodyRow> = ({
 	children,

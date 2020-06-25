@@ -1,6 +1,6 @@
 import isSoldOut from '../../isSoldOut';
 
-import { DatetimeFilterFn } from '../types';
+import type { DatetimeFilterFn } from '../types';
 
 const soldOutOnly: DatetimeFilterFn = (dates) => {
 	return dates.filter(isSoldOut);

@@ -1,5 +1,5 @@
-import { DataStateManager, BaseProps } from '../types';
-import { FilterStateManager } from '../filters/filterState';
+import type { DataStateManager, BaseProps } from '../types';
+import type { FilterStateManager } from '../filters/filterState';
 
 export interface ExtraContextProps {
 	onCloseModal?: VoidFunction;

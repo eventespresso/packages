@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FieldProps } from '../types';
+import type { FieldProps } from '../types';
 import Field from './Field';
 import FieldRenderer from '../renderers/FieldRenderer';
 import useShouldBeVisible from '../hooks/useShouldBeVisible';

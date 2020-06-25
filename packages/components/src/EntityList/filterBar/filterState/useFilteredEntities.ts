@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 
 import { Entity } from '@eventespresso/data';
-import { EntityListFilterStateManager } from './types';
+import type { EntityListFilterStateManager } from './types';
 import useEntityFilterService from './useEntityFilterService';
 import { entityListCacheIdString } from '@eventespresso/services';
 

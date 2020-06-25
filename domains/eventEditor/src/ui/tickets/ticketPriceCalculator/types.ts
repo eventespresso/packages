@@ -1,6 +1,6 @@
-import React from 'react';
-import { EntityId } from '@eventespresso/data';
-import { Price } from '@eventespresso/edtr-services';
+import type React from 'react';
+import type { EntityId } from '@eventespresso/data';
+import type { Price } from '@eventespresso/edtr-services';
 
 export interface BaseProps {
 	ticketId: EntityId;

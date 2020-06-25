@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { MenuItem } from '@eventespresso/adapters';
-import { DropdownMenuItemProps } from './types';
+import type { DropdownMenuItemProps } from './types';
 
 const DropdownMenuItem: React.FC<DropdownMenuItemProps> = ({ icon: Icon, title, ...props }) => {
 	const className = classNames('ee-dropdown-menu__item', props.className);

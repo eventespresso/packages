@@ -1,8 +1,8 @@
-import { Reducer, ReducerState } from 'react';
+import type { Reducer, ReducerState } from 'react';
 
-import { EntityId } from '@eventespresso/data';
-import { Ticket } from '@eventespresso/edtr-services';
-import { BaseProps, TpcPriceModifier } from '../types';
+import type { EntityId } from '@eventespresso/data';
+import type { Ticket } from '@eventespresso/edtr-services';
+import type { BaseProps, TpcPriceModifier } from '../types';
 
 export interface DataState extends Prices {
 	ticket: Partial<Ticket>;

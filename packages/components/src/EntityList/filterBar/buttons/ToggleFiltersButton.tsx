@@ -5,7 +5,7 @@ import { Button } from '../../../Button';
 
 import { Filter } from '@eventespresso/icons';
 
-import { ToggleFiltersButtonProps } from '../types';
+import type { ToggleFiltersButtonProps } from '../types';
 
 import { getPropsAreEqual } from '@eventespresso/services';
 

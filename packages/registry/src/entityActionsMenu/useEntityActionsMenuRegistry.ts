@@ -1,5 +1,5 @@
 import { useUIRegistry } from '@eventespresso/services';
-import { EntityActionsMenuRegistryHook } from './types';
+import type { EntityActionsMenuRegistryHook } from './types';
 import { serviceName as service } from './constants';
 
 const useEntityActionsMenuRegistry: EntityActionsMenuRegistryHook = ({ domain, entityType, entityId }) => {

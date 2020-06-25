@@ -1,4 +1,4 @@
-import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
+import type { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 
 export interface CalendarDateLabels {
 	header?: string;

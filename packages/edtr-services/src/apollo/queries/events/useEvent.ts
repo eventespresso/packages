@@ -1,4 +1,4 @@
-import { Event, EventData } from '../../types';
+import type { Event, EventData } from '../../types';
 import { useCacheQuery } from '@eventespresso/data';
 import useEventQueryOptions from './useEventQueryOptions';
 import { useSystemNotifications } from '@eventespresso/toaster';

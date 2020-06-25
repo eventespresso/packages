@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { Datepicker as BaseUIDatepicker } from 'baseui/datepicker';
 
-import { DatepickerProps } from './types';
+import type { DatepickerProps } from './types';
 import withBaseProvider from '../ThemeProvider/withBaseProvider';
 
 import './style.scss';

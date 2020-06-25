@@ -1,7 +1,7 @@
-import React from 'react';
-import { Entity } from '@eventespresso/data';
-import { EntityListFilterStateManager } from '@eventespresso/components';
-import {
+import type React from 'react';
+import type { Entity } from '@eventespresso/data';
+import type { EntityListFilterStateManager } from '@eventespresso/components';
+import type {
 	BaseSubscriptionOptions,
 	ServiceRegistry,
 	SubscribeFn,

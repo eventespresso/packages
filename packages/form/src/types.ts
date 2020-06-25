@@ -1,8 +1,8 @@
-import React from 'react';
-import { FormRenderProps, FormProps, FieldRenderProps, FieldProps as RFFFieldProps } from 'react-final-form';
-import { FieldArrayProps } from 'react-final-form-arrays';
-import { FormState, AnyObject } from 'final-form';
-import { ButtonProps, OptionsType, FormControlProps } from '@eventespresso/adapters';
+import type React from 'react';
+import type { FormRenderProps, FormProps, FieldRenderProps, FieldProps as RFFFieldProps } from 'react-final-form';
+import type { FieldArrayProps } from 'react-final-form-arrays';
+import type { FormState, AnyObject } from 'final-form';
+import type { ButtonProps, OptionsType, FormControlProps } from '@eventespresso/adapters';
 
 export interface FormButtonProps extends ButtonProps {
 	buttonText?: string;

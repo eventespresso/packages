@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { parsedAmount } from '@eventespresso/services';
 
-import { PriceModifierProps } from '../types';
+import type { PriceModifierProps } from '../types';
 import { BaseNumberInputField, MoneyField, usePriceAmount } from '../fields';
 import { useDataState } from '../data';
 

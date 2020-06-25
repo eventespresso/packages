@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Tooltip, TooltipProps } from '@eventespresso/adapters';
-import { withTooltipProps } from './types';
+import type { withTooltipProps } from './types';
 
 import './style.scss';
 

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { InputGroup, InputLeftAddon, InputRightAddon } from '@chakra-ui/core';
 
-import { InputWithLabelProps } from './types';
+import type { InputWithLabelProps } from './types';
 
 const InputWithLabel: React.FC<InputWithLabelProps> = ({ children, leftLabel, rightLabel, ...props }) => {
   const className = classNames(

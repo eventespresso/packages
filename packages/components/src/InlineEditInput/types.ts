@@ -1,4 +1,4 @@
-import { InlineEditProps } from '@eventespresso/adapters';
+import type { InlineEditProps } from '@eventespresso/adapters';
 
 export interface TextAreaProps extends Omit<InlineEditProps, 'inputType'> {}
 

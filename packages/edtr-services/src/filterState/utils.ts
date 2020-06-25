@@ -1,4 +1,4 @@
-import { DisplayStartOrEndDate } from './types';
+import type { DisplayStartOrEndDate } from './types';
 import type { Cell } from '@eventespresso/components';
 
 

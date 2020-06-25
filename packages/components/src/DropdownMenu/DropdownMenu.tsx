@@ -4,7 +4,7 @@ import { Menu } from '@eventespresso/adapters';
 import DropdownMenuList from './DropdownMenuList';
 import DropdownToggle from './DropdownToggle';
 
-import { DropdownMenuProps } from './types';
+import type { DropdownMenuProps } from './types';
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, className, menuListProps, toggleProps }) => {
 	return (

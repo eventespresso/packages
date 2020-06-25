@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import useBaseField from './useBaseField';
-import { BaseFieldProps } from './types';
+import type { BaseFieldProps } from './types';
 
 const BaseField: React.FC<BaseFieldProps> = ({
 	children,

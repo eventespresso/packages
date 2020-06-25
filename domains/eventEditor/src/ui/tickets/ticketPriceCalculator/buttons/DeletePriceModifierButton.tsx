@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { ConfirmDelete } from '@eventespresso/components';
 import { Trash } from '@eventespresso/icons';
-import { PriceModifierProps } from '../types';
+import type { PriceModifierProps } from '../types';
 import { useDataState } from '../data';
 import { useRemoveDefaultTax } from '../hooks';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import { TicketAssignmentsManagerModal } from '../components';
-import { ModalContainerProps } from '../types';
+import type { ModalContainerProps } from '../types';
 import { withContext } from '../context';
 
 const ModalContainer: React.FC<ModalContainerProps> = ({ isOpen, onClose, ...props }) => {

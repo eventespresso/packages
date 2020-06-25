@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckboxGroup as ChakraCheckboxGroup } from '@chakra-ui/core';
 
-import { CheckboxGroupProps } from './types';
+import type { CheckboxGroupProps } from './types';
 
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ children, ...props }) => {
   return <ChakraCheckboxGroup {...props}>{children}</ChakraCheckboxGroup>;

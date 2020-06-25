@@ -8,7 +8,7 @@ import TicketAssignmentsManager from '../TicketAssignmentsManager';
 import useCancelButtonProps from './buttons/useCancelButtonProps';
 import useSubmitButtonProps from './buttons/useSubmitButtonProps';
 import { useDataState } from '../../data';
-import { WithContextProps } from '../../context/types';
+import type { WithContextProps } from '../../context/types';
 
 import '../styles.scss';
 

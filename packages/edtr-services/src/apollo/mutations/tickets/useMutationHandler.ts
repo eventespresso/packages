@@ -9,9 +9,9 @@ import useOnDeleteTicket from './useOnDeleteTicket';
 import useOnUpdateTicket from './useOnUpdateTicket';
 import useOptimisticResponse from './useOptimisticResponse';
 import { DEFAULT_TICKET_LIST_DATA as DEFAULT_LIST_DATA, useTicketQueryOptions } from '../../queries';
-import { MutationHandler, MutationUpdater } from '../types';
+import type { MutationHandler, MutationUpdater } from '../types';
 import { TicketsList, Ticket } from '../../';
-import { TicketCommonInput } from './types';
+import type { TicketCommonInput } from './types';
 
 type MH = MutationHandler<Ticket, TicketCommonInput>;
 

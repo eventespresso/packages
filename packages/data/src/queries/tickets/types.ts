@@ -1,5 +1,5 @@
-import { EntityQueryArgs } from '../types';
-import { EntityEdge } from '../../types';
+import type { EntityQueryArgs } from '../types';
+import type { EntityEdge } from '../../types';
 
 export interface TicketsQueryWhereArgs {
   datetime?: string;

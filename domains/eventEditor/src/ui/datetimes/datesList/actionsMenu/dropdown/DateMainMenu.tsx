@@ -6,7 +6,7 @@ import { DropdownMenu, DropdownToggleProps, Copy, Edit, Trash } from '@eventespr
 import { useConfirmationDialog } from '@eventespresso/components';
 import { Container as FormContainer } from '@edtrUI/datetimes/dateForm/multiStep';
 
-import { DateMainMenuProps } from './types';
+import type { DateMainMenuProps } from './types';
 import useActions from './useActions';
 
 const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {

@@ -3,7 +3,7 @@ import { allPass, filter, pathEq } from 'ramda';
 import invariant from 'invariant';
 
 import { useSubscriptionService, SubscriptionService } from '@eventespresso/services';
-import { FilterBarServiceHook, FilterBarServiceRegistry, FilterBarServiceType } from './types';
+import type { FilterBarServiceHook, FilterBarServiceRegistry, FilterBarServiceType } from './types';
 
 type FBShook = FilterBarServiceHook;
 type FBSRegistry = FilterBarServiceRegistry;

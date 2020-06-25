@@ -1,5 +1,5 @@
 import useDatetimeQueryOptions from './useDatetimeQueryOptions';
-import { Datetime, DatetimeEdge } from '../../types';
+import type { Datetime, DatetimeEdge } from '../../types';
 import { useMemoStringify } from '@eventespresso/services';
 import { getCacheIds } from '@eventespresso/predicates';
 import { useDatetimesQuery } from '@eventespresso/data';

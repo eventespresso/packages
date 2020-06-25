@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { DatetimeMutationCallbackFn, DatetimeMutationCallbackFnArgs } from '../types';
+import type { DatetimeMutationCallbackFn, DatetimeMutationCallbackFnArgs } from '../types';
 import { useRelations } from '@eventespresso/services';
 
 const useOnUpdateDatetime = (): DatetimeMutationCallbackFn => {

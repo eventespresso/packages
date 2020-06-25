@@ -4,7 +4,7 @@ import { parseISO, isValid } from 'date-fns';
 
 import { useTimeZoneTime } from '@eventespresso/services';
 import './style.scss';
-import { CalendarDateProps } from '../types';
+import type { CalendarDateProps } from '../types';
 
 import {
 	DAY_ONLY_SHORT_FORMAT,

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useSpring, animated } from 'react-spring';
 
-import { CollapsibleProps } from './types';
+import type { CollapsibleProps } from './types';
 import { useRect } from '@eventespresso/services';
 
 /**

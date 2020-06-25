@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import Collapsible from './Collapsible';
-import { EntityListFilterBarProps } from './types';
+import type { EntityListFilterBarProps } from './types';
 import { EntityListLegend, SearchInput } from '../../..';
 import ToggleLegendButton from './buttons/ToggleLegendButton';
 import ToggleFiltersButton from './buttons/ToggleFiltersButton';

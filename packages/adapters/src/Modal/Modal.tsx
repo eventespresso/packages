@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/core';
 
 import { Button } from '../Button';
-import { ModalProps } from './types';
+import type { ModalProps } from './types';
 
 import './styles.scss';
 

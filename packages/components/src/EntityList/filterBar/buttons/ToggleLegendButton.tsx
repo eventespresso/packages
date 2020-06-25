@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Button } from '../../../Button';
 import { CompassFilled } from '@eventespresso/icons';
-import { ToggleLegendButtonProps } from '../types';
+import type { ToggleLegendButtonProps } from '../types';
 
 import { getPropsAreEqual } from '@eventespresso/services';
 

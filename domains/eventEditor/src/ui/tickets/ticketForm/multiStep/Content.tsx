@@ -4,7 +4,7 @@ import { EspressoForm } from '@eventespresso/form';
 import useTicketFormConfig from '../useTicketFormConfig';
 import ContentWrapper from './ContentWrapper';
 import { useTicketMutator } from '@eventespresso/edtr-services';
-import { ContentProps } from './types';
+import type { ContentProps } from './types';
 import { useMutatePrices } from '@edtrUI/tickets/ticketPriceCalculator/hooks';
 import useCapQuantity from '@edtrUI/tickets/hooks/useCapQuantity';
 

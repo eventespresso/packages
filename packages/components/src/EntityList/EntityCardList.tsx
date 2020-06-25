@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { EntityCardListProps } from './types';
+import type { EntityCardListProps } from './types';
 import { Entity } from '@eventespresso/data';
 import { entitiesUnchanged } from '@eventespresso/services';
 

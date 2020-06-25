@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
-import { EntityTableProps } from './types';
+import type { EntityTableProps } from './types';
 import { Entity } from '@eventespresso/data';
 import { EntityListFilterStateManager } from './filterBar';
 import { ResponsiveTable } from '../..';

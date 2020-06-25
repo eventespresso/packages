@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
 import { GET_TICKET } from '../tickets';
-import { Ticket, TicketItem } from '../../types';
-import { EntityItemProps } from '../types';
+import type { Ticket, TicketItem } from '../../types';
+import type { EntityItemProps } from '../types';
 import { useCacheQuery, ReadQueryOptions } from '@eventespresso/data';
 
 const useTicketItem = ({ id }: EntityItemProps): Ticket => {

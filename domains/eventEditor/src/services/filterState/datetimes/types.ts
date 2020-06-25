@@ -1,4 +1,4 @@
-import {
+import type {
 	SortBy,
 	EntityFilterState,
 	EntityFilterAction,
@@ -6,7 +6,7 @@ import {
 	EntityFilterStateManager,
 	EntityFilterStateReducer,
 } from '@eventespresso/edtr-services';
-import { EntityListFilterStateManager } from '@eventespresso/components';
+import type { EntityListFilterStateManager } from '@eventespresso/components';
 
 export interface DatetimesFilterState extends EntityFilterState {
 	sales: DatetimeSales;

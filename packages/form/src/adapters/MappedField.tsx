@@ -10,7 +10,7 @@ import DatePicker from './DatePicker';
 import TimePicker from './TimePicker';
 import Hidden from './Hidden';
 import NumberField from './Number';
-import { FieldRendererProps } from '../types';
+import type { FieldRendererProps } from '../types';
 
 const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...rest }) => {
 	let Component: React.ComponentType<Omit<FieldRendererProps, 'fieldType'>>;

@@ -3,7 +3,7 @@ import { assocPath, omit } from 'ramda';
 import { v4 as uuidv4 } from 'uuid';
 import invariant from 'invariant';
 
-import { SubscriptionService, SubscriptionServiceHook, Subscriptions, UpdateSubscriptionProps } from './types';
+import type { SubscriptionService, SubscriptionServiceHook, Subscriptions, UpdateSubscriptionProps } from './types';
 
 const NAMESPACE = 'espresso';
 

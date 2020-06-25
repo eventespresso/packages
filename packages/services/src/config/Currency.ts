@@ -1,4 +1,4 @@
-import { CurrencyProps } from './types';
+import type { CurrencyProps } from './types';
 
 export const Currency = (config: CurrencyProps): CurrencyProps => {
 	return {

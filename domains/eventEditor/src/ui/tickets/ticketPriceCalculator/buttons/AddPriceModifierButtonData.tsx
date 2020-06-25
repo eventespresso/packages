@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import AddPriceModifierButton from './AddPriceModifierButton';
 import { usePriceTypeForPrice } from '@eventespresso/edtr-services';
-import { PriceModifierProps, TpcPriceModifier } from '../types';
+import type { PriceModifierProps, TpcPriceModifier } from '../types';
 import { usePriceModifier } from '../hooks';
 import defaultPrice from '../defaultPriceModifier';
 import { useDataState } from '../data';

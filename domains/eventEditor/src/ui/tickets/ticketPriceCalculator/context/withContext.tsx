@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ContextProvider } from './ContextProvider';
-import { WithContextProps } from './types';
+import type { WithContextProps } from './types';
 
 const withContext = <P extends {}>(
 	Component: React.ComponentType<P>,

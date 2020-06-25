@@ -1,5 +1,5 @@
 import { Entity } from '@eventespresso/data';
-import { EntityListBaseProps } from '../../../ui/layout/entityList/types';
+import type { EntityListBaseProps } from '@eventespresso/components';
 import entityListCacheIdString from './entityListCacheIdString';
 
 const entitiesUnchanged = <E extends Entity>(

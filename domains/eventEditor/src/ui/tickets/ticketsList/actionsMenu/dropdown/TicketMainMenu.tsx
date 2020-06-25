@@ -5,7 +5,7 @@ import { useDisclosure } from '@chakra-ui/core';
 import { Copy, Edit, Trash, DropdownMenu, DropdownToggleProps, useConfirmationDialog } from '@eventespresso/components';
 
 import { Container as FormContainer } from '@edtrUI/tickets/ticketForm/multiStep';
-import { TicketMainMenuProps } from './types';
+import type { TicketMainMenuProps } from './types';
 import useActions from './useActions';
 
 const TicketMainMenu: React.FC<TicketMainMenuProps> = ({ ticket }) => {

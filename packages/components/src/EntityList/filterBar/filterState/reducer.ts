@@ -1,4 +1,4 @@
-import { BasicSortBy, EntityListFilterStateReducer } from './types';
+import type { BasicSortBy, EntityListFilterStateReducer } from './types';
 
 const getReducer = <SortBy = BasicSortBy>(): EntityListFilterStateReducer<SortBy> => {
 	const reducer: EntityListFilterStateReducer<SortBy> = (state, action) => {

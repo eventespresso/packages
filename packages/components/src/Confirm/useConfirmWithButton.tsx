@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Button } from '@eventespresso/adapters';
 import { iconBtnClassName } from '../Button/IconButton';
-import { ConfirmPropsWithButton } from './types';
+import type { ConfirmPropsWithButton } from './types';
 import useConfirmationDialog from './useConfirmationDialog';
 
 const useConfirmWithButton: React.FC<ConfirmPropsWithButton> = ({ buttonProps, ...props }) => {

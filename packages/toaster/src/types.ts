@@ -1,5 +1,5 @@
-import { TypeOptions } from 'react-toastify';
-import { BoxProps } from '@eventespresso/adapters';
+import type { TypeOptions } from 'react-toastify';
+import type { BoxProps } from '@eventespresso/adapters';
 
 type AddToastProps = Omit<ToastProps, 'timestamp' | 'loading'>;
 

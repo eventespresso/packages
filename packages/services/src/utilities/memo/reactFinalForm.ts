@@ -1,4 +1,4 @@
-import { FieldRenderProps, FormRenderProps } from 'react-final-form';
+import type { FieldRenderProps, FormRenderProps } from 'react-final-form';
 
 export const reactFinalFormState = (prevProps: FormRenderProps, nextProps: FormRenderProps): boolean => {
 	const prevValue = JSON.stringify(prevProps.form?.getState());

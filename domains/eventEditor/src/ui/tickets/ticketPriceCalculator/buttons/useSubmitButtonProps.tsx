@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { anyPass, isEmpty, isNil } from 'ramda';
 import { __ } from '@wordpress/i18n';
 
-import { ButtonProps } from '@eventespresso/adapters';
+import type { ButtonProps } from '@eventespresso/adapters';
 
 import { useOnSubmitPrices } from '../hooks';
 import { useTPCContext } from '../context';

@@ -10,7 +10,7 @@ import { useRelatedTickets } from '@eventespresso/edtr-services';
 import { useTicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager';
 import { Datetime } from '@eventespresso/edtr-services';
 import { withIsLoaded, useMemoStringify } from '@eventespresso/services';
-import { TooltipProps } from '@eventespresso/adapters';
+import type { TooltipProps } from '@eventespresso/adapters';
 
 const AssignTicketsButton: React.FC<EntityListItemProps<Datetime>> = React.memo(({ entity }) => {
 	const { ModalContainer, onOpen, ...disclosure } = useTicketAssignmentsManager();

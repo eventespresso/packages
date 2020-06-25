@@ -1,3 +1,3 @@
-import { BadgeProps as ChakraBadgeProps } from '@chakra-ui/core';
+import type { BadgeProps as ChakraBadgeProps } from '@chakra-ui/core';
 
 export interface BadgeProps extends ChakraBadgeProps {}

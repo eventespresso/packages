@@ -1,4 +1,4 @@
-import { SelectProps } from '@eventespresso/adapters';
-import { withLabelProps, withTooltipProps } from '../../';
+import type { SelectProps } from '@eventespresso/adapters';
+import type { withLabelProps, withTooltipProps } from '../../';
 
 export interface SelectInputProps extends SelectProps, Partial<withLabelProps>, Partial<withTooltipProps> {}

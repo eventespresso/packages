@@ -6,7 +6,7 @@ import defaultLocale from 'rc-pagination/lib/locale/en_US';
 import './style.scss';
 
 import defaultItemRender from './ItemRender';
-import { PaginationProps } from './types';
+import type { PaginationProps } from './types';
 import PerPage from './PerPage';
 
 const Pagination: React.FC<PaginationProps> = ({

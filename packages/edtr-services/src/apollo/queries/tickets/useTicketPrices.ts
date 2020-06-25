@@ -1,5 +1,5 @@
 import { EntityId } from '@eventespresso/data';
-import { Price } from '../../types';
+import type { Price } from '../../types';
 import { useRelatedPrices } from '../prices';
 /**
  * A custom react hook for retrieving the related prices

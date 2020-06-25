@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 
-import { ProviderProps, ContextProps } from './types';
+import type { ProviderProps, ContextProps } from './types';
 import { useDataStateManager } from '../data';
 
 const Context = createContext<ContextProps>(null);

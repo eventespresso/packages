@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Box } from '@eventespresso/adapters';
-import { TableProps } from './types';
+import type { TableProps } from './types';
 
 const Table: React.FC<TableProps> = ({ captionID = '', captionText = '', children, tableId = '', ...props }) => {
 	const className = classNames(props.className, 'ee-rspnsv-table');

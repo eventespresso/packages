@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { FormContextProps } from './types';
+import type { FormContextProps } from './types';
 
 const Context = createContext<FormContextProps>({});
 

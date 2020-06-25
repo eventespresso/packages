@@ -11,7 +11,7 @@ import './style.scss';
 
 import './tablet-style.scss';
 
-import { ResponsiveTableProps } from './types';
+import type { ResponsiveTableProps } from './types';
 
 const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	bodyRows = [],

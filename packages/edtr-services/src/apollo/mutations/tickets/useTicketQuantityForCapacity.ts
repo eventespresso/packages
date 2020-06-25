@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import { parseInfinity } from '@eventespresso/services';
 import { Ticket } from '../../';
-import { UpdateTicketInput } from './types';
+import type { UpdateTicketInput } from './types';
 
 type InputGenerator = (ticket: Ticket) => UpdateTicketInput;
 type UpdateCallback = (capacity: number) => InputGenerator;

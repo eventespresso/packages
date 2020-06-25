@@ -1,7 +1,7 @@
 import { is } from 'ramda';
 import type { Datetime } from '@eventespresso/edtr-services';
 
-import { DatetimeFilterFn } from '../types';
+import type { DatetimeFilterFn } from '../types';
 
 const allDates: DatetimeFilterFn = (dates) => {
 	const withoutTrashed = ({ isTrashed }: Datetime): boolean => {

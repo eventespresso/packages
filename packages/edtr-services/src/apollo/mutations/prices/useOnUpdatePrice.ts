@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { PriceMutationCallbackFn, PriceMutationCallbackFnArgs } from '../types';
+import type { PriceMutationCallbackFn, PriceMutationCallbackFnArgs } from '../types';
 import { useRelations } from '@eventespresso/services';
 
 const useOnUpdatePrice = (): PriceMutationCallbackFn => {

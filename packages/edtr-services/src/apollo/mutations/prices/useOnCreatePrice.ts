@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import useUpdatePriceCache from './useUpdatePriceCache';
-import { PriceMutationCallbackFn, PriceMutationCallbackFnArgs } from '../types';
+import type { PriceMutationCallbackFn, PriceMutationCallbackFnArgs } from '../types';
 import { useRelations } from '@eventespresso/services';
 
 const useOnCreatePrice = (): PriceMutationCallbackFn => {

@@ -1,6 +1,6 @@
-import { SelectProps as ChakraSelectProps, } from '@chakra-ui/core';
+import type { SelectProps as ChakraSelectProps, } from '@chakra-ui/core';
 
-import { CommonInputProps } from '../types';
+import type { CommonInputProps } from '../types';
 
 export interface OptionProps {
   value?: React.ReactText;

@@ -3,7 +3,7 @@ import { parseISO } from 'date-fns';
 import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 
-import { RenderCellProps } from '../../types';
+import type { RenderCellProps } from '../../types';
 import { getDatetimeBackgroundColorClassName } from '@eventespresso/helpers';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { LOCALIZED_DATE_SHORT_FORMAT } from '@eventespresso/constants';

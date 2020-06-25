@@ -4,7 +4,7 @@ import useDefaultPriceType from './useDefaultPriceType';
 import { EntityId } from '@eventespresso/data';
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
 
-import { PriceType } from '../../types';
+import type { PriceType } from '../../types';
 import usePriceTypes from './usePriceTypes';
 /**
  * A custom react hook for retrieving the related priceType from cache for the given Price entity

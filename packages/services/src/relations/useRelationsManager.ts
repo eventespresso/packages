@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useReducer, useState } from 'react';
 import { pathOr } from 'ramda';
-import { RelationsManager as RM, RelationalData } from './types';
+import type { RelationsManager as RM, RelationalData } from './types';
 import reducer from './reducer';
 
 const INITIAL_STATE: RelationalData = {};

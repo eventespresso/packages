@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 
 import { useDataStateManager } from '../data';
-import { ProviderProps, ContextProps } from './types';
+import type { ProviderProps, ContextProps } from './types';
 import { useFilterStateManager } from '../filters/filterState';
 
 const Context = createContext<ContextProps>(null);

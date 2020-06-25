@@ -1,4 +1,4 @@
-import { Reducer } from 'react';
+import type { Reducer } from 'react';
 
 export interface FilterState {
 	datesByMonth: [number, number]; //[year, month]

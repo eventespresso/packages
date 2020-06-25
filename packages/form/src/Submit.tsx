@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Button, ButtonProps } from '@eventespresso/adapters';
 import ResetButton from './ResetButton';
-import { FormButtonProps } from './types';
+import type { FormButtonProps } from './types';
 import { Save } from '@eventespresso/icons';
 
 export interface SubmitProps extends Omit<ButtonProps, 'onClick' | 'loading'> {

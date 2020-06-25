@@ -1,7 +1,7 @@
 import React from 'react';
 import { MenuButton as ChakraMenuButton } from '@chakra-ui/core';
 
-import { MenuToggleProps } from './types';
+import type { MenuToggleProps } from './types';
 
 const MenuToggle = React.forwardRef<typeof ChakraMenuButton, MenuToggleProps>(
   ({ children, variant = 'unstyled', ...props }, ref) => {

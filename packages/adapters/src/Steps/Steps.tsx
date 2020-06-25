@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 
 import { Heading } from '../Heading';
-import { StepsProps } from './types';
+import type { StepsProps } from './types';
 import './style.scss';
 
 const Steps: React.FC<StepsProps> = ({

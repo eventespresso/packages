@@ -1,6 +1,6 @@
-import React from 'react';
-import { withLabelProps, withTooltipProps } from '../../';
-import { ButtonProps as ButtonAdapterProps } from '@eventespresso/adapters';
+import type React from 'react';
+import type { withLabelProps, withTooltipProps } from '../../';
+import type { ButtonProps as ButtonAdapterProps } from '@eventespresso/adapters';
 
 export type ClickHandler = (click?: React.MouseEvent<HTMLElement>) => void;
 

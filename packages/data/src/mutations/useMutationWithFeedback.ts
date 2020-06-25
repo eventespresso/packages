@@ -4,7 +4,7 @@ import { DocumentNode } from 'graphql';
 import { OperationVariables } from 'apollo-client';
 import { v4 as uuidv4 } from 'uuid';
 
-import { MutationType } from './types';
+import type { MutationType } from './types';
 import { SystemNotificationsToaster } from '@eventespresso/toaster';
 
 interface MutationWithFeedbackArgs {

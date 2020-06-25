@@ -1,5 +1,5 @@
-import { BaseProps } from '../types';
-import { DataStateManager } from '../data';
+import type { BaseProps } from '../types';
+import type { DataStateManager } from '../data';
 
 export interface ExtraContextProps {
 	onClose?: VoidFunction;

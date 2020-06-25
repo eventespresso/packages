@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Tooltip } from '@eventespresso/adapters';
-import { LinkProps } from './types';
+import type { LinkProps } from './types';
 import './style.scss';
 
 const Link: React.FC<LinkProps> = ({ external, href, icon, tooltip, tooltipProps, ...props }) => {

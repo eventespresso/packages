@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Spinner } from '@eventespresso/adapters';
 import { _x, sprintf } from '@wordpress/i18n';
 
-import { LoadingNoticeProps } from './types';
+import type { LoadingNoticeProps } from './types';
 import './style.scss';
 
 const LoadingNotice: React.FC<LoadingNoticeProps> = ({ children, size = 'lg', ...props }) => {

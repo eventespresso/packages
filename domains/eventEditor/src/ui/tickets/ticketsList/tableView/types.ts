@@ -1,5 +1,5 @@
-import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
-import { Entity } from '@eventespresso/data';
+import type { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
+import type { Entity } from '@eventespresso/data';
 
 export interface TableViewProps {
 	className?: string;

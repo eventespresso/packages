@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Select } from '@eventespresso/adapters';
-import { FieldRendererProps } from '../types';
+import type { FieldRendererProps } from '../types';
 
 const SelectField: React.FC<FieldRendererProps> = ({
 	input,

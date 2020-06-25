@@ -3,7 +3,7 @@ import { parseISO } from 'date-fns';
 import { __ } from '@wordpress/i18n';
 
 import { BiggieCalendarDate, CalendarDateRange } from '../../';
-import { CalendarDateSwitcherProps } from './types';
+import type { CalendarDateSwitcherProps } from './types';
 import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
 import { switchTenseForDate } from '@eventespresso/services';

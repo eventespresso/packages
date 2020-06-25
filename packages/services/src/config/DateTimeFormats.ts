@@ -1,4 +1,4 @@
-import { DateTimeFormatsProps } from './types';
+import type { DateTimeFormatsProps } from './types';
 import { defaultDateFormat, defaultTimeFormat } from './defaultDateTimeFormats';
 
 export const DateTimeFormats = (formats: DateTimeFormatsProps): DateTimeFormatsProps => {

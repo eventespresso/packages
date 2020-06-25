@@ -1,4 +1,4 @@
-import { ISpinnerProps } from '@chakra-ui/core';
+import type { ISpinnerProps } from '@chakra-ui/core';
 
 export interface LoadingNoticeProps extends ISpinnerProps {
 	className?: string;

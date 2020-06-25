@@ -2,7 +2,8 @@ import type { Ticket } from '@eventespresso/edtr-services';
 import percentSoldAtOrAbove from './percentSoldAtOrAbove';
 import percentSoldBelow from './percentSoldBelow';
 
-import { TicketSalesFilter, TicketsSales } from './types';
+import type { TicketSalesFilter } from './types';
+import { TicketsSales } from './types';
 
 /**
  * reduces tickets array based on value of the "sales" filter

@@ -1,4 +1,4 @@
-import { Ticket, TicketEdge } from '../../types';
+import type { Ticket, TicketEdge } from '../../types';
 import { useMemoStringify } from '@eventespresso/services';
 import { useTicketsQuery } from '@eventespresso/data';
 import useTicketQueryOptions from './useTicketQueryOptions';

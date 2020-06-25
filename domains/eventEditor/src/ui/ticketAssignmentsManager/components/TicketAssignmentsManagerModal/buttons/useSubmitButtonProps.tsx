@@ -1,7 +1,8 @@
 import { useCallback, useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { ButtonProps, ButtonType } from '@eventespresso/components';
+import { ButtonType } from '@eventespresso/components';
+import type { ButtonProps } from '@eventespresso/components';
 import { SaveOutlined } from '@eventespresso/icons';
 import { useOnSubmitAssignments } from '../../../data';
 import { useDataState } from '../../../data';

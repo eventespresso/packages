@@ -1,7 +1,7 @@
-import { EntityListFilterStateManager } from '@eventespresso/components';
-import { TicketsSales, TicketsStatus } from '@eventespresso/predicates';
+import type { EntityListFilterStateManager } from '@eventespresso/components';
+import type { TicketsSales, TicketsStatus } from '@eventespresso/predicates';
 
-import {
+import type {
 	SortBy,
 	EntityFilterState,
 	EntityFilterAction,

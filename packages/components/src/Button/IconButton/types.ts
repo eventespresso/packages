@@ -1,5 +1,5 @@
-import { withLabelProps, withTooltipProps } from '../../../';
-import { IconButtonProps as IconButtonAdapterProps } from '@eventespresso/adapters';
+import type { withLabelProps, withTooltipProps } from '../../../';
+import type { IconButtonProps as IconButtonAdapterProps } from '@eventespresso/adapters';
 
 export interface IconButtonProps
 	extends Omit<IconButtonAdapterProps, 'aria-label'>,

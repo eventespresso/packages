@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from 'react';
 
-import { Datetime, DatetimeEdge } from '../../types';
+import type { Datetime, DatetimeEdge } from '../../types';
 import useReorderEntities from '../useReorderEntities';
-import { EntityTableProps } from '@eventespresso/components';
+import type { EntityTableProps } from '@eventespresso/components';
 import { useDatetimes, useDatetimeQueryOptions } from '../../queries';
 import { useUpdateDatetimeList } from '../../../hooks';
 import { DatetimesFilterStateManager as DFSM } from '../../../filterState';

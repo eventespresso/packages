@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { assocPath, dissocPath, omit, pathOr } from 'ramda';
-import { AnyObject } from '../utilities/types';
+import type { AnyObject } from '../utilities/types';
 
-import { ElementRegistry, UIRegistry, UIRegistryHook } from './types';
+import type { ElementRegistry, UIRegistry, UIRegistryHook } from './types';
 
 let elementRegistry: ElementRegistry = {};
 

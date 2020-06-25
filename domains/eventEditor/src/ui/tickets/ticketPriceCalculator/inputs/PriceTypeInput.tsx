@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PriceModifierProps } from '../types';
+import type { PriceModifierProps } from '../types';
 import { PriceField } from '../fields';
 import { usePriceTypes } from '@eventespresso/edtr-services';
 import { getPriceModifiers } from '@eventespresso/predicates';

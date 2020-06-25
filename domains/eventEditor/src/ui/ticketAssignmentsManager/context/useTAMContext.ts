@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Context } from './ContextProvider';
-import { ContextProps } from './types';
+import type { ContextProps } from './types';
 import invariant from 'invariant';
 
 const useTAMContext = (): ContextProps => {

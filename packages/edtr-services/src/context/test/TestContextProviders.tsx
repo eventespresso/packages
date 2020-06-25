@@ -5,7 +5,7 @@ import { cache } from '@eventespresso/data';
 
 import { CommonProviders } from '@eventespresso/unknown';
 import { useDomTestData, useResetApolloCache, useSetGlobalStatusFlags, useSetRelationalData } from './';
-import { MockedResponse } from './types';
+import type { MockedResponse } from './types';
 
 /**
  * A top level provider wrapped by Apollo MockedProvider.

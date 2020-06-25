@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { AlertDialog } from '@eventespresso/adapters';
 import { Button, ButtonType } from '../Button';
-import { ConfirmProps } from './types';
+import type { ConfirmProps } from './types';
 
 const useConfirmationDialog = ({ message, onConfirm, title, ...props }: ConfirmProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();

@@ -2,7 +2,7 @@ import { FieldMetaState } from 'react-final-form';
 import { setIn, getIn, AnyObject, Mutator } from 'final-form';
 import { ObjectSchema, ValidationError } from 'yup';
 
-import { FieldConditions } from './types';
+import type { FieldConditions } from './types';
 
 type ValidateStatus = '' | 'error' | 'success' | 'warning' | 'validating';
 

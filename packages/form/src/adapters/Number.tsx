@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { NumberInput } from '@eventespresso/adapters';
-import { FieldRendererProps } from '../types';
+import type { FieldRendererProps } from '../types';
 
 const NumberField: React.FC<FieldRendererProps> = ({
 	input: { onChange, value, ...input },

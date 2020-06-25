@@ -3,8 +3,8 @@ import { useMemo } from 'react';
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { entityListCacheIdString, useRelations} from '@eventespresso/services';
 import usePrices from './usePrices';
-import { Price } from '../../types';
-import { RelatedEntitiesHook } from '../types';
+import type { Price } from '../../types';
+import type { RelatedEntitiesHook } from '../types';
 
 const useRelatedPrices: RelatedEntitiesHook<Price, 'prices'> = ({ entity, entityId }) => {
 	const prices = usePrices();

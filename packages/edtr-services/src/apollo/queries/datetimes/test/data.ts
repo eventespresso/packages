@@ -1,7 +1,7 @@
 import { GraphQLError } from 'graphql';
 import { formatISO } from 'date-fns';
 
-import { Datetime, DatetimeEdge } from '../../../types';
+import type { Datetime, DatetimeEdge } from '../../../types';
 import { DatetimeStatus } from '@eventespresso/predicates';
 import { ReadQueryOptions } from '@eventespresso/data';
 

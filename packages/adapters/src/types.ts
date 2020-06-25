@@ -1,4 +1,4 @@
-import {
+import type {
   CheckboxGroupProps as ChakraCheckboxGroupProps,
   FlexProps as ChakraFlexProps,
   InputProps as ChakraInputProps,

@@ -1,6 +1,6 @@
 import { GET_CURRENT_USER } from '.';
 import { useCacheQuery, ReadQueryOptions } from '../';
-import { CurrentUserProps, Viewer } from '@eventespresso/services';
+import type { CurrentUserProps, Viewer } from '@eventespresso/services';
 
 /**
  * A custom react hook for retrieving CurrentUser

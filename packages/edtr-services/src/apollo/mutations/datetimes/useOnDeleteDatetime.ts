@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import updateTicketCache from './updateTicketCache';
 import useUpdateDatetimeCache from './useUpdateDatetimeCache';
-import { DatetimeMutationCallbackFn, DatetimeMutationCallbackFnArgs } from '../types';
+import type { DatetimeMutationCallbackFn, DatetimeMutationCallbackFnArgs } from '../types';
 import { useRelations } from '@eventespresso/services';
 import { getGuids } from '@eventespresso/predicates';
 

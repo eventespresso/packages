@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Button } from '@eventespresso/adapters';
-import { RenderCellProps } from '../../types';
+import type { RenderCellProps } from '../../types';
 import { useDataState } from '../../data';
 import useCellIcon from './useCellIcon';
 

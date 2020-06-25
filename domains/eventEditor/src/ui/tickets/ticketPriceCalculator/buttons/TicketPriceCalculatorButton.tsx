@@ -6,7 +6,7 @@ import { IconButton, IconButtonProps } from '@eventespresso/components';
 import { TypeName } from '@eventespresso/services';
 import { withIsLoaded } from '@eventespresso/services';
 
-import { BaseProps } from '../types';
+import type { BaseProps } from '../types';
 import { useTicketPriceCalculator } from '../hooks';
 import type { TooltipProps } from '@eventespresso/adapters';
 import { useMemoStringify } from '@eventespresso/services';

@@ -3,7 +3,7 @@ import React from 'react';
 import { Select } from '@eventespresso/adapters';
 import { withLabel } from '../withLabel';
 
-import { SelectInputProps } from './types';
+import type { SelectInputProps } from './types';
 
 const SelectInput: React.FC<SelectInputProps> = React.memo(({ id, ...rest }) => {
 	const htmlId = id ? `ee-select-input-${id}` : null;

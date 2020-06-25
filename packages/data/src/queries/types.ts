@@ -1,8 +1,8 @@
-import { QueryHookOptions } from '@apollo/react-hooks';
-import { DocumentNode } from 'graphql';
-import { OperationVariables } from 'apollo-client';
-import { DataProxy } from 'apollo-cache';
-import { QueryResult } from '@apollo/react-common';
+import type { QueryHookOptions } from '@apollo/react-hooks';
+import type { DocumentNode } from 'graphql';
+import type { OperationVariables } from 'apollo-client';
+import type { DataProxy } from 'apollo-cache';
+import type { QueryResult } from '@apollo/react-common';
 
 export interface EntityQueryArgs<WhereArgs> {
 	after?: string;

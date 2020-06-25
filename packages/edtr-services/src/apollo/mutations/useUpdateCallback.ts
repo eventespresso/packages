@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { MutationUpdaterFn } from 'apollo-client';
 import { pathOr } from 'ramda';
 
-import { TypeName, UpdaterCallback } from './types';
+import type { TypeName, UpdaterCallback } from './types';
 
 const useUpdateCallback = (typeName: TypeName): UpdaterCallback => {
 	return useCallback(

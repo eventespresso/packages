@@ -2,8 +2,8 @@ import { QueryHookOptions } from '@apollo/react-hooks';
 import { QueryResult as ApolloQueryResult } from '@apollo/react-common';
 
 import { useCacheQuery } from '../';
-import { EventsList, EventsQueryArgs } from './types';
-import { EntityEdge } from '../../types';
+import type { EventsList, EventsQueryArgs } from './types';
+import type { EntityEdge } from '../../types';
 
 type QueryOptions<Edge extends EntityEdge> = QueryHookOptions<EventsList<Edge>, EventsQueryArgs>;
 type QueryResult<Edge extends EntityEdge> = ApolloQueryResult<EventsList<Edge>, EventsQueryArgs>;

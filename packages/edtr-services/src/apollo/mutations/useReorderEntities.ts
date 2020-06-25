@@ -7,7 +7,7 @@ import { MutationResult } from '@apollo/react-common';
 
 import { EntityId } from '@eventespresso/data';
 import { getGuids } from '@eventespresso/predicates';
-import { Datetime, Ticket } from '../types';
+import type { Datetime, Ticket } from '../types';
 
 type Entity = Datetime | Ticket;
 

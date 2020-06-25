@@ -1,5 +1,5 @@
 import isPending from '../../isPending';
-import { TicketFilterFn } from '../types';
+import type { TicketFilterFn } from '../types';
 
 const pendingOnly: TicketFilterFn = (tickets) => {
 	return tickets.filter(isPending);

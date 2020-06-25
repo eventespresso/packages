@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { useDataState } from '../data';
 import BaseField from './BaseField';
-import { BaseFieldProps, TicketPriceFieldProps } from './types';
+import type { BaseFieldProps, TicketPriceFieldProps } from './types';
 import MoneyField from './MoneyField';
 
 type BFP = BaseFieldProps<number>;

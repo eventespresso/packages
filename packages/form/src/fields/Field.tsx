@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field as RFFField } from 'react-final-form';
 
-import { FieldProps } from '../types';
+import type { FieldProps } from '../types';
 import FieldRenderer from '../renderers/FieldRenderer';
 import useShouldBeVisible from '../hooks/useShouldBeVisible';
 import { parseInfinity, formatInfinity } from '@eventespresso/services';

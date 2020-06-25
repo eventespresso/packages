@@ -1,4 +1,4 @@
-import { SvgPath } from '../types';
+import type { SvgPath } from '../types';
 
 /**
  * Some of the paths are taken from WordPress Dashicons Component

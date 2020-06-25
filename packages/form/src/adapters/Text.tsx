@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { TextInput } from '@eventespresso/adapters';
-import { FieldRendererProps } from '../types';
+import type { FieldRendererProps } from '../types';
 
 const Text: React.FC<FieldRendererProps> = ({ htmlType = 'text', input, meta: { error, submitError }, ...rest }) => {
 	return <TextInput {...input} isInvalid={error || submitError} {...rest} />;

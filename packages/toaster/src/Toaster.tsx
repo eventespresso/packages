@@ -1,7 +1,7 @@
 import React from 'react';
 
 import toasterIcons from './toasterIcons';
-import { ToasterProps } from './types';
+import type { ToasterProps } from './types';
 
 const Toaster: React.FC<ToasterProps> = ({ message = 'loading...', type }) => {
 	return (

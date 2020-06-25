@@ -4,8 +4,8 @@ import { __ } from '@wordpress/i18n';
 import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import useDatetimeQueryOptions from './useDatetimeQueryOptions';
-import { FetchQueryResult, useQuery} from '@eventespresso/data';
-import { DatetimesList } from '../../types';
+import { FetchQueryResult, useQuery } from '@eventespresso/data';
+import type { DatetimesList } from '../../types';
 
 const useFetchDatetimes = (): FetchQueryResult<DatetimesList> => {
 	const { setIsLoading, setIsLoaded, setIsError } = useStatus();

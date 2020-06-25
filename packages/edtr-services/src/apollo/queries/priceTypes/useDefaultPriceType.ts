@@ -1,5 +1,5 @@
 import usePriceTypes from './usePriceTypes';
-import { PriceType } from '../../types';
+import type { PriceType } from '../../types';
 import { getDefaultPriceModifierType } from '@eventespresso/predicates';
 
 /**

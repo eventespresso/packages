@@ -1,5 +1,5 @@
-import { Entity } from '@eventespresso/data';
-import { Disclosure } from '@eventespresso/services';
+import type { Entity } from '@eventespresso/data';
+import type { Disclosure } from '@eventespresso/services';
 
 export interface BaseProps<E extends Entity> {
 	entity: E;

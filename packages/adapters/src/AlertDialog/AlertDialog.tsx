@@ -8,7 +8,7 @@ import {
   AlertDialogOverlay,
 } from '@chakra-ui/core';
 
-import { AlertDialogProps } from './types';
+import type { AlertDialogProps } from './types';
 
 const AlertDialog: React.FC<AlertDialogProps> = ({
   body,

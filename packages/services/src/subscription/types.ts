@@ -1,4 +1,4 @@
-import { AnyObject } from '../utilities/types';
+import type { AnyObject } from '../utilities/types';
 
 export interface BaseSubscriptionOptions<D extends string> {
   domain: D;

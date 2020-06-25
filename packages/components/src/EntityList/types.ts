@@ -1,8 +1,8 @@
-import React from 'react';
-import { BodyRow, HeaderRow, LegendConfig, ResponsiveTableProps } from '../..';
-import { Entity, EntityId } from '@eventespresso/data';
-import { EntityListFilterStateManager } from './filterBar';
-import { TypeName } from '@eventespresso/services';
+import type React from 'react';
+import type { BodyRow, HeaderRow, LegendConfig, ResponsiveTableProps } from '../..';
+import type { Entity, EntityId } from '@eventespresso/data';
+import type { EntityListFilterStateManager } from './filterBar';
+import type { TypeName } from '@eventespresso/services';
 
 type ELFSM = EntityListFilterStateManager<any>;
 

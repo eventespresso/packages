@@ -1,6 +1,6 @@
 import React from 'react';
 import { path, Path } from 'ramda';
-import { AnyObject } from '../types';
+import type { AnyObject } from '../types';
 
 type PropsAreEqual<P extends AnyObject> = (
 	prevProps: Readonly<React.PropsWithChildren<P>>,

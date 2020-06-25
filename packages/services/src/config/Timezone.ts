@@ -1,4 +1,4 @@
-import { TimezoneProps } from './types';
+import type { TimezoneProps } from './types';
 
 export const Timezone = ({ city, name, offset }: TimezoneProps): TimezoneProps => {
 	return {

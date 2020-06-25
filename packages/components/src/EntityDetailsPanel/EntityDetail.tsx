@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { EntityDetailProps } from './types';
+import type { EntityDetailProps } from './types';
 
 const EntityDetail: React.FC<EntityDetailProps> = ({ render: Component, ...props }) => {
 	if (Component) {

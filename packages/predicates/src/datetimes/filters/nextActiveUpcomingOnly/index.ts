@@ -1,7 +1,7 @@
 import { head } from 'ramda';
 
 import activeUpcoming from '../activeUpcoming';
-import { DatetimeFilterFn } from '../types';
+import type { DatetimeFilterFn } from '../types';
 
 const nextActiveUpcomingOnly: DatetimeFilterFn = (dates) => {
 	const activeUpcomingDates = activeUpcoming(dates);

@@ -1,7 +1,7 @@
 import { filter } from 'ramda';
 
 import { useSubscriptionService } from '@eventespresso/services';
-import { EntityActionsSubscription, EntityActionsSubscriptionHook } from './types';
+import type { EntityActionsSubscription, EntityActionsSubscriptionHook } from './types';
 import { serviceName as service } from './constants';
 
 type EAS = EntityActionsSubscription;

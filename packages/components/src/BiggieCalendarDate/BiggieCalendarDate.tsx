@@ -4,7 +4,7 @@ import { parseISO, isValid } from 'date-fns';
 
 import { Button } from '@eventespresso/adapters';
 
-import { CalendarDateProps } from '../types';
+import type { CalendarDateProps } from '../types';
 import { LabelPosition } from '../withLabel';
 import { TimezoneTimeInfo } from '../TimezoneTimeInfo';
 import {

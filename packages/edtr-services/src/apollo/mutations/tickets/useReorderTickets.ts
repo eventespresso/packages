@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from 'react';
 
-import { Ticket, TicketEdge } from '../../types';
+import type { Ticket, TicketEdge } from '../../types';
 import useReorderEntities from '../useReorderEntities';
-import { EntityTableProps } from '@eventespresso/components';
+import type { EntityTableProps } from '@eventespresso/components';
 import { TicketsFilterStateManager as DFSM } from '../../../filterState';
 import { useTickets, useTicketQueryOptions } from '../../queries';
 import { useUpdateTicketList } from '../../../hooks';

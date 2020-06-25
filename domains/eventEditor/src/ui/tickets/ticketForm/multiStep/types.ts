@@ -1,8 +1,8 @@
-import { Disclosure } from '@eventespresso/services';
-import { EntityId } from '@eventespresso/data';
-import { Ticket } from '@eventespresso/edtr-services';
-import { FormRenderProps } from 'react-final-form';
-import { TicketFormShape } from '../types';
+import type { Disclosure } from '@eventespresso/services';
+import type { EntityId } from '@eventespresso/data';
+import type { Ticket } from '@eventespresso/edtr-services';
+import type { FormRenderProps } from 'react-final-form';
+import type { TicketFormShape } from '../types';
 
 export interface ContainerProps extends Omit<Disclosure, 'onOpen'> {
 	ticketId?: EntityId;

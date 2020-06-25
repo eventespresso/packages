@@ -2,7 +2,7 @@ import { anyPass, filter, head } from 'ramda';
 
 import { isOnSale, isPending } from '../../index';
 import sorters from '../../sorters';
-import { TicketFilterFn } from '../types';
+import type { TicketFilterFn } from '../types';
 
 const nextOnSaleOrPendingOnly: TicketFilterFn = (tickets) => {
 	const isOnSaleOrIsPending = anyPass([isOnSale, isPending]);

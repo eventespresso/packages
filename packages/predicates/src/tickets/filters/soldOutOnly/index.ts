@@ -1,5 +1,5 @@
 import { filterFn } from '../percentSoldAtOrAbove';
-import { TicketFilterFn } from '../types';
+import type { TicketFilterFn } from '../types';
 
 const soldOutOnly: TicketFilterFn = (tickets) => {
 	return tickets.filter((ticket) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RenderFieldsProps } from './types';
+import type { RenderFieldsProps } from './types';
 import RenderField from './RenderField';
 
 const RenderFields: React.FC<RenderFieldsProps> = ({ fields, namespace }) => {

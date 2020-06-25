@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { findIndex, update } from 'ramda';
 
-import { CacheUpdaterFn, CacheUpdaterFnArgs } from '../types';
+import type { CacheUpdaterFn, CacheUpdaterFnArgs } from '../types';
 import { Ticket, TicketsList } from '../../';
 import { WriteQueryOptions } from '@eventespresso/data';
 import { entityHasGuid } from '@eventespresso/predicates';

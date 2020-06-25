@@ -3,7 +3,7 @@ import { pick } from 'ramda';
 import { parseISO } from 'date-fns';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { EspressoFormProps } from '@eventespresso/form';
+import type { EspressoFormProps } from '@eventespresso/form';
 import { useDatetimeItem, processDateAndTime } from '@eventespresso/edtr-services';
 import type { Datetime } from '@eventespresso/edtr-services';
 import { EntityId } from '@eventespresso/data';

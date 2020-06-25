@@ -1,5 +1,5 @@
-import { CurrentUserProps, GeneralSettings, JsDataProps, RelationalData } from '@eventespresso/services';
-import { DatetimeEdge, TicketEdge, PriceEdge, PriceTypeEdge } from '@eventespresso/edtr-services';
+import type { CurrentUserProps, GeneralSettings, JsDataProps, RelationalData } from '@eventespresso/services';
+import type { DatetimeEdge, TicketEdge, PriceEdge, PriceTypeEdge } from '@eventespresso/edtr-services';
 
 export interface EventData {
 	dbId: number;

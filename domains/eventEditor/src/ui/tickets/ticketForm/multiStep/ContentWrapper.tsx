@@ -3,7 +3,7 @@ import React from 'react';
 import { withContext as withTAMContext } from '@edtrUI/ticketAssignmentsManager/context';
 import { withContext as withTPCContext } from '@edtrUI/tickets/ticketPriceCalculator/context';
 import ContentBody from './ContentBody';
-import { ContentWrapperProps } from './types';
+import type { ContentWrapperProps } from './types';
 import { useWithEntityFormDetails } from '@eventespresso/components';
 
 const WithTPC: React.FC<ContentWrapperProps> = (props) => {

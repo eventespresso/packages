@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { DropdownToggleProps } from '../types';
+import type { DropdownToggleProps } from '../types';
 import { IconButton, MenuToggle } from '@eventespresso/adapters';
 import { More } from '@eventespresso/icons';
 import { withTooltip } from '../../withTooltip';

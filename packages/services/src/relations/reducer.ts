@@ -1,5 +1,5 @@
 import { pathOr, assocPath, dissocPath, clone } from 'ramda';
-import { RelationsReducer, RelationalData } from './types';
+import type { RelationsReducer, RelationalData } from './types';
 
 const reducer: RelationsReducer = (state, action) => {
 	const { entity, entityId, relation, relationId, relationIds } = action;

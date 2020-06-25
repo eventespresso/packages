@@ -1,7 +1,7 @@
 import React from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 
-import { ContainerProps } from './types';
+import type { ContainerProps } from './types';
 import { Container as EditModalContainer } from '@eventespresso/components';
 import { useEvent, useTicketItem } from '@eventespresso/edtr-services';
 import Content from './Content';

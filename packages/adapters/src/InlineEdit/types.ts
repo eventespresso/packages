@@ -1,7 +1,7 @@
-import React from 'react';
+import type React from 'react';
 import type { EditableProps as ChakraEditableProps } from '@chakra-ui/core';
 
-import { CommonInputProps } from '../types';
+import type { CommonInputProps } from '../types';
 
 export type InputType = 'heading' | 'number' | 'textarea' | 'text';
 

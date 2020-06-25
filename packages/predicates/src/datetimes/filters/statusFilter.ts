@@ -9,7 +9,7 @@ import soldOutOnly from './soldOutOnly';
 import upcomingOnly from './upcomingOnly';
 import { notTrashed, trashedOnly } from '../../common';
 
-import { DatesStatusFilter } from './types';
+import type { DatesStatusFilter } from './types';
 import { DatetimeStatus } from '../types';
 
 /**

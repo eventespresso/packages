@@ -7,7 +7,7 @@ import { reactFinalFormField } from '@eventespresso/services';
 import { Tooltip } from '@eventespresso/adapters';
 
 import ErrorMessage from './ErrorMessage';
-import { FieldRendererProps } from '../types';
+import type { FieldRendererProps } from '../types';
 import { MappedField } from '../adapters';
 
 const FieldRenderer: React.FC<FieldRendererProps> = (props) => {

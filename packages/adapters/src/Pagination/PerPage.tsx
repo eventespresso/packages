@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Select, SelectProps } from '../Select';
-import { PerPageProps } from './types';
+import type { PerPageProps } from './types';
 import './style.scss';
 
 const calculatePageNumber = (newPerPage: number, prevPerPage: number, total: number): number => {

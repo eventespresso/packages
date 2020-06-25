@@ -6,11 +6,11 @@ import useOnDeleteDatetime from './useOnDeleteDatetime';
 import useOnUpdateDatetime from './useOnUpdateDatetime';
 import useOptimisticResponse from './useOptimisticResponse';
 import { DEFAULT_DATETIME_LIST_DATA as DEFAULT_LIST_DATA } from '../../queries';
-import { DatetimesList, Datetime } from '../../types';
+import type { DatetimesList, Datetime } from '../../types';
 import { MutationType } from '@eventespresso/data';
-import { MutationHandler, MutationUpdater } from '../types';
+import type { MutationHandler, MutationUpdater } from '../types';
 import { useDatetimeQueryOptions } from '../../queries/datetimes';
-import { DatetimeCommonInput } from './types';
+import type { DatetimeCommonInput } from './types';
 
 type MH = MutationHandler<Datetime, DatetimeCommonInput>;
 

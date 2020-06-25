@@ -8,7 +8,7 @@ import { Entity } from '@eventespresso/data';
 import { Divider, Heading } from '@eventespresso/adapters';
 import { useStatus } from '@eventespresso/services';
 
-import { EntityListProps } from './types';
+import type { EntityListProps } from './types';
 import { EntityPagination } from './pagination';
 import './style.scss';
 

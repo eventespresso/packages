@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { AppstoreFilled } from '@eventespresso/icons';
 
 import { Button } from '../../../Button';
-import { CardViewFilterButtonProps } from '../types';
+import type { CardViewFilterButtonProps } from '../types';
 import { getPropsAreEqual } from '@eventespresso/services';
 
 const CardViewFilterButton: React.FC<CardViewFilterButtonProps> = ({ listId, setCardView, view, ...rest }) => {

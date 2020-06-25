@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { ConfirmPropsWithButton } from './types';
+import type { ConfirmPropsWithButton } from './types';
 import useConfirmWithButton from './useConfirmWithButton';
 
 const ConfirmClose: React.FC<ConfirmPropsWithButton> = (props) => {

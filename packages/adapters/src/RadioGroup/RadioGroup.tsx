@@ -1,7 +1,7 @@
 import React from 'react';
 import { RadioGroup as ChakraRadioGroup } from '@chakra-ui/core';
 
-import { RadioGroupProps } from './types';
+import type { RadioGroupProps } from './types';
 
 const RadioGroup: React.FC<RadioGroupProps> = ({ children, ...props }) => {
   return <ChakraRadioGroup {...props}>{children}</ChakraRadioGroup>;

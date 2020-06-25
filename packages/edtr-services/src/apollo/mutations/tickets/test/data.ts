@@ -6,7 +6,7 @@ import { edge as priceEdge } from '../../../queries/prices/test/data';
 import { MutationInput, MutationType } from '../../../../../../../application/services/apollo/mutations/types';
 import { ucFirst } from '../../../../../../../application/services/utilities/text/changeCase';
 import { mutations } from '../..';
-import { MockedResponse } from '../../../../context/TestContext/types';
+import type { MockedResponse } from '../../../../context/TestContext/types';
 import { ReadQueryOptions } from '@eventespresso/data';
 
 const prices = { ...priceEdge, __typename: 'EspressoTicketPricesConnectionEdge' };

@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Tooltip as ChakraTooltip } from '@chakra-ui/core';
 
-import { TooltipProps } from './types';
+import type { TooltipProps } from './types';
 
 const Tooltip: React.FC<TooltipProps> = ({ children, tooltip, ...props }) => {
   const ariaLabel = tooltip || props['aria-label'];

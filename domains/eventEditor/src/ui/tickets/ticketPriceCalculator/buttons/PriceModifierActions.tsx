@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Divider } from '@eventespresso/components';
 import AddPriceModifierButton from './AddPriceModifierButtonData';
 import DeletePriceModifierButton from './DeletePriceModifierButton';
-import { PriceModifierProps } from '../types';
+import type { PriceModifierProps } from '../types';
 
 const PriceModifierActions: React.FC<PriceModifierProps> = ({ index, price }) => {
 	return (

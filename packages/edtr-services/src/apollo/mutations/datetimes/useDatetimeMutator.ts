@@ -1,12 +1,12 @@
 import { useCallback, useMemo } from 'react';
 
-import { CreateDatetimeInput, UpdateDatetimeInput, DeleteDatetimeInput } from './types';
+import type { CreateDatetimeInput, UpdateDatetimeInput, DeleteDatetimeInput } from './types';
 import { MutationType, useMutationWithFeedback } from '@eventespresso/data';
 import { CREATE_DATETIME, UPDATE_DATETIME, DELETE_DATETIME } from './';
 import useMutationHandler from './useMutationHandler';
 import useUpdateCallback from '../useUpdateCallback';
-import { MutationFunction, TypeName } from '../types';
-import { CreateDatetimeResult, UpdateDatetimeResult, DeleteDatetimeResult } from './types';
+import type { MutationFunction, TypeName } from '../types';
+import type { CreateDatetimeResult, UpdateDatetimeResult, DeleteDatetimeResult } from './types';
 import { useSystemNotifications } from '@eventespresso/toaster';
 
 interface DatetimeMutator {

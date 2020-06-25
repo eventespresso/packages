@@ -2,7 +2,7 @@ import React from 'react';
 import Dotdotdot from 'react-dotdotdot';
 
 import { InlineEdit, InlineEditPreviewProps, TextFit } from '@eventespresso/adapters';
-import { TextProps } from './types';
+import type { TextProps } from './types';
 
 const Preview: React.FC<InlineEditPreviewProps> = ({ fitText, isEditing, onRequestEdit, value }) => {
 	if (isEditing) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RenderSectionsProps } from './types';
+import type { RenderSectionsProps } from './types';
 import RenderSection from './RenderSection';
 
 const RenderSections: React.FC<RenderSectionsProps> = ({ sections }) => {

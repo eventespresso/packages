@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { PriceModifierProps } from '../types';
+import type { PriceModifierProps } from '../types';
 import { PriceField } from '../fields';
 
 const PriceDescriptionInput: React.FC<PriceModifierProps> = ({ price }) => {

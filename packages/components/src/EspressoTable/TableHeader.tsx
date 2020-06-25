@@ -6,7 +6,7 @@ import warning from 'warning';
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
 
-import { RowType, TableHeaderProps } from './types';
+import type { RowType, TableHeaderProps } from './types';
 
 const TableHeader: React.FC<TableHeaderProps> = ({ headerRows, showDragHandle, tableId, ...props }) => {
 	const className = classNames(props.className.headerClassName, 'ee-rspnsv-table-header');

@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Alert as ChakraAlert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/core';
 
-import { BannerProps } from './types';
+import type { BannerProps } from './types';
 
 const Banner: React.FC<BannerProps> = ({ children, description, iconProps, status, title, ...props }) => {
   const className = classNames(props.className, 'ee-banner', status && `ee-banner--${status}`);

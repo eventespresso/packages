@@ -1,4 +1,4 @@
-import { CacheUpdaterFn, WriteQueryOptions } from '../types';
+import type { CacheUpdaterFn, WriteQueryOptions } from '../types';
 import useUpdateCache from '../useUpdateCache';
 import { Viewer } from '@eventespresso/services';
 

@@ -1,4 +1,4 @@
-import { JsDataProps } from '../types';
+import type { JsDataProps } from '../types';
 
 export const mockEeJsData: JsDataProps = {
 	brandName: 'EE',

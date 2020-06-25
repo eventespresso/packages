@@ -1,6 +1,6 @@
 import { GraphQLError } from 'graphql';
 
-import { Event } from '../../../types';
+import type { Event } from '../../../types';
 import { ReadQueryOptions } from '@eventespresso/data';
 
 export const request: ReadQueryOptions = null; // to be generated via Query Options hook

@@ -1,5 +1,5 @@
-import { EntityId } from '@eventespresso/data';
-import { Ticket } from '../../';
+import type { EntityId } from '@eventespresso/data';
+import type { Ticket } from '../../';
 
 export interface TicketBaseInput {
 	datetimes?: Array<EntityId>;

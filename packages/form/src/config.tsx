@@ -1,4 +1,4 @@
-import { EspressoFormProps } from './types';
+import type { EspressoFormProps } from './types';
 
 export const formConfig: EspressoFormProps = {
 	onSubmit: (values) => console.log(values),

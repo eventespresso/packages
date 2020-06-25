@@ -1,7 +1,7 @@
 import { GraphQLError } from 'graphql';
 
 import { Viewer } from '@eventespresso/services';
-import { ReadQueryOptions } from '../../types';
+import type { ReadQueryOptions } from '../../types';
 import { GET_CURRENT_USER } from '..';
 
 export const request: ReadQueryOptions = {

@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useReducer } from 'react';
 
-import { BasicSortBy, EntityListFilterState, EntityListFilterStateManager } from './types';
+import type { BasicSortBy, EntityListFilterState, EntityListFilterStateManager } from './types';
 import getReducer from './reducer';
 
 // create a shorter generic to use at multiple places.

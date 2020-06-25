@@ -1,4 +1,4 @@
-import {
+import type {
   FlexProps as ChakraFlexProps,
   InputProps as ChakraInputProps,
   NumberInputProps as ChakraNumberInputProps,

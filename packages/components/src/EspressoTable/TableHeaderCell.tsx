@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { TableHeaderCellProps } from './types';
+import type { TableHeaderCellProps } from './types';
 
 const TableHeaderCell: React.FC<TableHeaderCellProps> = ({
 	children,

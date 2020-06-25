@@ -1,4 +1,4 @@
-import { SiteUrlProps } from './types';
+import type { SiteUrlProps } from './types';
 
 export const SiteUrl = ({ admin, home }: SiteUrlProps): SiteUrlProps => {
 	return {

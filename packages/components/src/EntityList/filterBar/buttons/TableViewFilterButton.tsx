@@ -5,7 +5,7 @@ import { Button } from '../../../Button';
 
 import { TableView } from '@eventespresso/icons';
 
-import { TableViewFilterButtonProps } from '../types';
+import type { TableViewFilterButtonProps } from '../types';
 
 import { getPropsAreEqual } from '@eventespresso/services';
 

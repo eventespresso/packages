@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Radio, RadioGroup } from '@eventespresso/adapters';
-import { FieldRendererProps } from '../types';
+import type { FieldRendererProps } from '../types';
 
 const RadioField: React.FC<FieldRendererProps> = ({ input, meta, options, ...restProps }) => {
 	const children = options.map(({ label, value, ...rest }, index) => {

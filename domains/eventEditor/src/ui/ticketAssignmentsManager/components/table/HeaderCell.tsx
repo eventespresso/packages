@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 
 import { getTicketBackgroundColorClassName } from '@eventespresso/helpers';
-import { RenderCellProps } from '../../types';
+import type { RenderCellProps } from '../../types';
 import { useMoneyDisplay, useTimeZoneTime } from '@eventespresso/services';
 
 const HeaderCell: React.FC<RenderCellProps> = ({ ticket }) => {

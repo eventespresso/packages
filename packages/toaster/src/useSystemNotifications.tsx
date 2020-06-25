@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { toast } from 'react-toastify';
 
-import { DissmissToast, SystemNotificationsToaster, ToastProps, UpdateToast } from './types';
+import type { DissmissToast, SystemNotificationsToaster, ToastProps, UpdateToast } from './types';
 import Toaster from './Toaster';
 
 const position = toast.POSITION.BOTTOM_RIGHT as 'bottom-right';

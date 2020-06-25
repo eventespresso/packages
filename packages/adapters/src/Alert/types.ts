@@ -1,4 +1,4 @@
-import { AlertProps as ChakraAlertProps, IconProps } from '@chakra-ui/core';
+import type { AlertProps as ChakraAlertProps, IconProps } from '@chakra-ui/core';
 
 export interface AlertProps extends ChakraAlertProps {
   description: string;

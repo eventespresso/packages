@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { assocPath, pick } from 'ramda';
 
-import { StateInitializer } from './types';
-import { BaseProps, TpcPriceModifier } from '../types';
+import type { StateInitializer } from './types';
+import type { BaseProps, TpcPriceModifier } from '../types';
 import { sortByPriceOrderIdAsc } from '@eventespresso/predicates';
 import { TICKET_FIELDS_TO_USE } from '../utils/constants';
 import { useTicketItem, useTicketPrices, usePriceTypes } from '@eventespresso/edtr-services';

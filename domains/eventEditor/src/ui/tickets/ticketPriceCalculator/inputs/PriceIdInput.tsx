@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PriceModifierProps } from '../types';
+import type { PriceModifierProps } from '../types';
 import { PriceField } from '../fields';
 
 const PriceIdInput: React.FC<PriceModifierProps> = ({ price }) => {

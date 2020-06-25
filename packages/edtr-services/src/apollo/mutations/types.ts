@@ -1,10 +1,10 @@
-import { DataProxy } from 'apollo-cache';
-import { OperationVariables, MutationUpdaterFn } from 'apollo-client';
-import { ExecutionResult } from '@apollo/react-common';
+import type { DataProxy } from 'apollo-cache';
+import type { OperationVariables, MutationUpdaterFn } from 'apollo-client';
+import type { ExecutionResult } from '@apollo/react-common';
 
-import { MutationInput, MutationType, Entity as BaseEntity, Entity } from '@eventespresso/data';
-import { Datetime, DatetimeEdge, Ticket, TicketEdge, Price, PriceEdge } from '../types';
-import { Merge } from '@eventespresso/services';
+import type { MutationInput, MutationType, Entity as BaseEntity, Entity } from '@eventespresso/data';
+import type { Datetime, DatetimeEdge, Ticket, TicketEdge, Price, PriceEdge } from '../types';
+import type { Merge } from '@eventespresso/services';
 
 export interface MutationCallbackFnArgs {
 	proxy?: DataProxy;

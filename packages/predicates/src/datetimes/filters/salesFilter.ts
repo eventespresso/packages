@@ -3,7 +3,7 @@ import type { Datetime, } from '@eventespresso/edtr-services';
 import aboveCapacity from './aboveCapacity';
 import belowCapacity from './belowCapacity';
 
-import { DatesSalesFilter } from './types';
+import type { DatesSalesFilter } from './types';
 import { DatetimeSales } from '../types';
 
 /**

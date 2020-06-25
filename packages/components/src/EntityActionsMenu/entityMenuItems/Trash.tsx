@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { DropdownMenuItem } from '../../DropdownMenu';
 import { Trash as TrashIcon } from '@eventespresso/icons';
-import { MenuItemProps } from './types';
+import type { MenuItemProps } from './types';
 
 const Trash: React.FC<MenuItemProps> = ({ onClick, ...props }) => {
 	const title = props.title || __('trash');

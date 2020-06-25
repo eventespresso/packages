@@ -3,7 +3,7 @@ import React from 'react';
 import { DataProvider } from './DataProvider';
 import { AnyObject } from '@eventespresso/services';
 
-const withApollo = <P extends AnyObject>(Component: React.ComponentType<P>): React.FC<P> => {
+const withDataProvider = <P extends AnyObject>(Component: React.ComponentType<P>): React.FC<P> => {
 	const WrappedComponent: React.FC<P> = (props) => {
 		return (
 			<DataProvider>
@@ -15,4 +15,4 @@ const withApollo = <P extends AnyObject>(Component: React.ComponentType<P>): Rea
 	return WrappedComponent;
 };
 
-export default withApollo;
+export default withDataProvider;

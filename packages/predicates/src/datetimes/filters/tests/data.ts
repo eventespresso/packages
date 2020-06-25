@@ -1,5 +1,5 @@
 import type { Datetime } from '@eventespresso/edtr-services';
-import { DatetimeStatus } from '../../types';
+import type { DatetimeStatus } from '../../types';
 
 const dates: Datetime[] = [
 	{

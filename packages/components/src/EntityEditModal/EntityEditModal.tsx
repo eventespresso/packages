@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal } from '@eventespresso/adapters';
-import { EntityEditModalProps } from './types';
+import type { EntityEditModalProps } from './types';
 
 import './styles.scss';
 

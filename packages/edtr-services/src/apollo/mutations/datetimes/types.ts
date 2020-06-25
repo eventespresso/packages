@@ -1,5 +1,5 @@
-import { EntityId } from '@eventespresso/data';
-import { Datetime } from '../../types';
+import type { EntityId } from '@eventespresso/data';
+import type { Datetime } from '../../types';
 
 export interface DatetimeBaseInput {
 	capacity?: number;

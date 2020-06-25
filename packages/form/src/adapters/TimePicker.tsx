@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Timepicker } from '@eventespresso/adapters';
-import { FieldRendererProps } from '../types';
+import type { FieldRendererProps } from '../types';
 
 const TimePicker: React.FC<FieldRendererProps> = ({ input: { onChange, ...input }, meta, ...rest }) => {
 	return (

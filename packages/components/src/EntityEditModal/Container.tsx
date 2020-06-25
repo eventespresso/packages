@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ContainerProps } from './types';
+import type { ContainerProps } from './types';
 import { Entity } from '@eventespresso/data';
 import EntityEditModal from './EntityEditModal';
 

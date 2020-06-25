@@ -1,3 +1,3 @@
-import { CheckboxProps as ChakraCheckboxProps } from '@chakra-ui/core';
+import type { CheckboxProps as ChakraCheckboxProps } from '@chakra-ui/core';
 
 export interface CheckboxProps extends ChakraCheckboxProps {}

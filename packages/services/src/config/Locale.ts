@@ -1,4 +1,4 @@
-import { LocaleProps } from './types';
+import type { LocaleProps } from './types';
 
 export const Locale = ({ user, site }: LocaleProps): LocaleProps => {
 	const userLocale = user?.replace('_', '-') || 'en-US';

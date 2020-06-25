@@ -3,7 +3,7 @@ import { pathOr, path } from 'ramda';
 
 import { relationalData } from '../../../../../../domain/eventEditor/services/context/TestContext/data';
 import useRelationsManager from '../../useRelationsManager';
-import { RelationFunctionProps } from '../../types';
+import type { RelationFunctionProps } from '../../types';
 
 describe('RelationsManager.removeRelation()', () => {
 	const existingRelationalEntityId = Object.keys(relationalData.datetimes)[0];

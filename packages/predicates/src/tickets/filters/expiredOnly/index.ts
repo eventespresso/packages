@@ -1,5 +1,5 @@
 import { isExpired } from '../../../common/isExpired';
-import { TicketFilterFn } from '../types';
+import type { TicketFilterFn } from '../types';
 
 const expiredOnly: TicketFilterFn = (tickets) => tickets.filter((ticket) => isExpired(ticket));
 

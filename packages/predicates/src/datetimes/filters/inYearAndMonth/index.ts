@@ -1,7 +1,7 @@
 import isInMonth from '../../isInMonth';
 import isInYear from '../../isInYear';
 import type { Datetime } from '@eventespresso/edtr-services';
-import { DatetimeFilterFn } from '../types';
+import type { DatetimeFilterFn } from '../types';
 
 type InYearAndMonth = (yearMonth: [number, number]) => DatetimeFilterFn;
 

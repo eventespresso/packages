@@ -1,6 +1,6 @@
-import { EntityQueryArgs } from '../types';
-import { EntityEdge } from '../../types';
-import { AnyObject } from '@eventespresso/services';
+import type { EntityQueryArgs } from '../types';
+import type { EntityEdge } from '../../types';
+import type { AnyObject } from '@eventespresso/services';
 
 export type EventsQueryArgs = EntityQueryArgs<AnyObject>;
 

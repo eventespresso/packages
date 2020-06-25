@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import { BaseFieldProps, FieldValue, InputProps } from './types';
+import type { BaseFieldProps, FieldValue, InputProps } from './types';
 
 const defaultFormat: BaseFieldProps['format'] = (value, name) => (value === undefined ? '' : value);
 const defaultParse: BaseFieldProps['parse'] = (value, name) => (value === '' ? undefined : value);

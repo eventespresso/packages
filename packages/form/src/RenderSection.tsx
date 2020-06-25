@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SectionProps } from './types';
+import type { SectionProps } from './types';
 import RenderFields from './RenderFields';
 
 const NoIcon: SectionProps['icon'] = () => null;

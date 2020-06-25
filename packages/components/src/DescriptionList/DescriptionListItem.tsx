@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { DescriptionListItemProps } from './types';
+import type { DescriptionListItemProps } from './types';
 import './styles.scss';
 
 const DescriptionListItem: React.FC<DescriptionListItemProps> = ({ description, term, ...props }) => {

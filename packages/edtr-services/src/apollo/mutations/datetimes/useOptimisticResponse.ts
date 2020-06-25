@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useApolloClient } from '@eventespresso/data';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Datetime, DatetimeItem } from '../../types';
+import type { Datetime, DatetimeItem } from '../../types';
 import { GET_DATETIME } from '../../queries';
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';

@@ -1,4 +1,4 @@
-import { PriceType, PriceTypesList } from '../../types';
+import type { PriceType, PriceTypesList } from '../../types';
 import { useCacheQuery } from '@eventespresso/data';
 import { useMemoStringify } from '@eventespresso/services';
 import usePriceTypeQueryOptions from './usePriceTypeQueryOptions';

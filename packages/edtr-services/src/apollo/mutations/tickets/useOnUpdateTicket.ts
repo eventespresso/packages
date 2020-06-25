@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import useUpdateTicketCache from './useUpdateTicketCache';
-import { TicketMutationCallbackFn, TicketMutationCallbackFnArgs } from '../types';
+import type { TicketMutationCallbackFn, TicketMutationCallbackFnArgs } from '../types';
 import { useRelations } from '@eventespresso/services';
 
 const useOnUpdateTicket = (): TicketMutationCallbackFn => {

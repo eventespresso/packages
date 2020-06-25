@@ -1,6 +1,6 @@
-import { EntityQueryArgs, EntityQueryOrderBy } from '../types';
-import { EntityEdge, EntityId, EntityDbId } from '../../types';
-import { RegistrationStatus } from '../registrations/types';
+import type { EntityQueryArgs, EntityQueryOrderBy } from '../types';
+import type { EntityEdge, EntityId, EntityDbId } from '../../types';
+import type { RegistrationStatus } from '../registrations/types';
 
 export interface AttendeesQueryWhereArgs {
   event?: EntityId;

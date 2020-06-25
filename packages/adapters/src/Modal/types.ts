@@ -1,6 +1,6 @@
-import React from 'react';
-import { Modal } from '@chakra-ui/core';
-import { ButtonProps } from '@eventespresso/adapters';
+import type React from 'react';
+import type { Modal } from '@chakra-ui/core';
+import type { ButtonProps } from '@eventespresso/adapters';
 
 export interface ModalProps extends React.ComponentProps<typeof Modal> {
 	bodyClassName?: string;

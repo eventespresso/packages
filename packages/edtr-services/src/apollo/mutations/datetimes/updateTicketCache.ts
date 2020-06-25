@@ -1,6 +1,6 @@
-import { CacheUpdaterFnArgs } from '../types';
+import type { CacheUpdaterFnArgs } from '../types';
 import { GET_TICKETS } from '../../queries';
-import { TicketsList } from '../../types';
+import type { TicketsList } from '../../types';
 import { sortBy, identity } from 'ramda';
 import { ReadQueryOptions, WriteQueryOptions } from '@eventespresso/data';
 

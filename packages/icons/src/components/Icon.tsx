@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { svgPath } from './svgPaths';
-import { IconProps } from '../types';
+import type { IconProps } from '../types';
 
 /**
  * Custom Event Espresso Dashicons

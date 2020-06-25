@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import classNames from 'classnames';
 import { Select as ChakraSelect } from '@chakra-ui/core';
 
-import { SelectProps } from './types';
+import type { SelectProps } from './types';
 
 const Select: React.FC<SelectProps> = ({ children, options = [], onChange, onChangeValue, ...props }) => {
   const className = classNames(props.className, 'ee-input-base ee-select');

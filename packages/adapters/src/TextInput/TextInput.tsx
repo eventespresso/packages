@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import classNames from 'classnames';
 import { Input as ChakraInput } from '@chakra-ui/core';
 
-import { TextInputProps } from './types';
+import type { TextInputProps } from './types';
 
 const TextInput: React.FC<TextInputProps> = ({ onChange, onChangeValue, ...props }) => {
   const className = classNames('ee-input-base ee-input', props.className);

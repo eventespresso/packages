@@ -1,4 +1,4 @@
-import { TooltipProps } from '@eventespresso/adapters';
+import type { TooltipProps } from '@eventespresso/adapters';
 
 export interface withTooltipProps {
 	buttonText?: React.ReactNode;

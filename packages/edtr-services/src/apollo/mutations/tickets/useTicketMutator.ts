@@ -1,12 +1,12 @@
 import { useCallback, useMemo } from 'react';
 
-import { CreateTicketInput, UpdateTicketInput, DeleteTicketInput } from './types';
+import type { CreateTicketInput, UpdateTicketInput, DeleteTicketInput } from './types';
 import { MutationType, useMutationWithFeedback } from '@eventespresso/data';
 import { CREATE_TICKET, UPDATE_TICKET, DELETE_TICKET } from './';
 import useMutationHandler from './useMutationHandler';
 import useUpdateCallback from '../useUpdateCallback';
-import { MutationFunction, TypeName } from '../types';
-import { CreateTicketResult, UpdateTicketResult, DeleteTicketResult } from './types';
+import type { MutationFunction, TypeName } from '../types';
+import type { CreateTicketResult, UpdateTicketResult, DeleteTicketResult } from './types';
 import { useSystemNotifications } from '@eventespresso/toaster';
 
 interface TicketMutator {

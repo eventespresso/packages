@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider as ChakraDivider } from '@chakra-ui/core';
 
-import { DividerProps } from './types';
+import type { DividerProps } from './types';
 
 const Divider: React.FC<DividerProps> = ({ children, dashed, ...props }) => {
   const borderStyle = dashed ? 'dashed' : 'none';

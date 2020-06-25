@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { RelationsContext } from '../context/RelationsProvider';
-import { RelationsManager } from './types';
+import type { RelationsManager } from './types';
 
 const useRelations = (): RelationsManager => {
 	return useContext<RelationsManager>(RelationsContext);

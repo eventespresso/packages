@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { Banner } from '@eventespresso/components';
 
 import AddDefaultPricesButton from '../buttons/AddDefaultPricesButton';
-import { TicketPriceCalculatorProps } from './TicketPriceCalculator';
+import type { TicketPriceCalculatorProps } from './TicketPriceCalculator';
 
 interface Props extends Pick<TicketPriceCalculatorProps, 'context'> {}
 

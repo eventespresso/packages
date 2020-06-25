@@ -7,7 +7,7 @@ import {
 	PercentSign,
 	getCurrencySignCharacterCountClassName,
 } from '@eventespresso/components';
-import { MoneyFieldProps } from './types';
+import type { MoneyFieldProps } from './types';
 
 import { useConfig } from '@eventespresso/services';
 import './style.scss';

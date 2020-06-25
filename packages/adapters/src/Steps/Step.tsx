@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { StepProps } from './types';
+import type { StepProps } from './types';
 
 const Step: React.FC<StepProps> = ({
 	active,

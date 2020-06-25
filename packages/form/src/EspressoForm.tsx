@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Form as ReactFinalForm } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 
-import { EspressoFormProps } from './types';
+import type { EspressoFormProps } from './types';
 import FormRenderer from './renderers/FormRenderer';
 import { FormProvider } from './context';
 import { updateFieldValue } from './utils';

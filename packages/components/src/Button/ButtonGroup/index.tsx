@@ -2,7 +2,7 @@ import React, { cloneElement } from 'react';
 import classNames from 'classnames';
 
 import { ButtonGroup as ButtonGroupAdapter } from '@eventespresso/adapters';
-import { ButtonGroupProps } from './types';
+import type { ButtonGroupProps } from './types';
 import { cleanChildren } from './utils';
 
 import './style.scss';

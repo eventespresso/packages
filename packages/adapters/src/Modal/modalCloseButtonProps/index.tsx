@@ -1,4 +1,4 @@
-import { ButtonProps } from '../../Button';
+import type { ButtonProps } from '../../Button';
 import { Close } from '@eventespresso/icons';
 
 import './styles.scss';

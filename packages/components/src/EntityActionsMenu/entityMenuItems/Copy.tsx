@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { DropdownMenuItem } from '../../DropdownMenu';
 import { Copy as CopyIcon } from '@eventespresso/icons';
-import { MenuItemProps } from './types';
+import type { MenuItemProps } from './types';
 
 const Copy: React.FC<MenuItemProps> = ({ onClick, ...props }) => {
 	const title = props.title || __('copy');

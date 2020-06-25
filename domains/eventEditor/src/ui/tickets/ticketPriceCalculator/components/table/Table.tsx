@@ -6,7 +6,7 @@ import { ResponsiveTable } from '@eventespresso/components';
 import useBodyRowGenerator from './useBodyRowGenerator';
 import useFooterRowGenerator from './useFooterRowGenerator';
 import useHeaderRowGenerator from './useHeaderRowGenerator';
-import { TableProps } from '../../data/types';
+import type { TableProps } from '../../data/types';
 import { useDataState } from '../../data';
 import {useConfig,  useMoneyDisplay } from '@eventespresso/services';
 

@@ -7,7 +7,8 @@ import pendingOnly from './pendingOnly';
 import soldOutOnly from './soldOutOnly';
 import { notTrashed, trashedOnly } from '../../common';
 
-import { TicketStatusFilter, TicketsStatus } from './types';
+import type { TicketStatusFilter } from './types';
+import { TicketsStatus } from './types';
 
 /**
  * reduces tickets array based on value of the "status" filter

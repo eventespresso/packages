@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DescriptionListProps } from './types';
+import type { DescriptionListProps } from './types';
 import DescriptionListItem from './DescriptionListItem';
 import './styles.scss';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RenderFieldProps } from './types';
+import type { RenderFieldProps } from './types';
 import { Field, Group, Repeatable } from './fields';
 
 const RenderField: React.FC<RenderFieldProps> = (props) => {

@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { Button } from '../Button';
 import { Collapse } from '@eventespresso/adapters';
 
-import { DebugInfoProps } from './types';
+import type { DebugInfoProps } from './types';
 
 const Pre = styled.pre`
 	border-radius: 5px;

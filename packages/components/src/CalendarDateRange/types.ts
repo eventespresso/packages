@@ -1,4 +1,4 @@
-import { CalendarDateProps } from '../types';
+import type { CalendarDateProps } from '../types';
 
 export interface CalendarDateRangeProps extends CalendarDateProps {
 	startDate: Date | string;

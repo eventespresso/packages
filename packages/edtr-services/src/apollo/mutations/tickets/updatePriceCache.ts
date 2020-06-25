@@ -1,8 +1,8 @@
 import { assocPath, pathOr, uniqBy, sortBy, identity } from 'ramda';
 
-import { CacheUpdaterFnArgs } from '../types';
+import type { CacheUpdaterFnArgs } from '../types';
 import { DEFAULT_PRICE_LIST_DATA, GET_PRICES } from '../../queries';
-import { Price, PricesList } from '../../types';
+import type { Price, PricesList } from '../../types';
 import {ReadQueryOptions, WriteQueryOptions } from '@eventespresso/data';
 import { entityDbId } from '@eventespresso/predicates';
 
