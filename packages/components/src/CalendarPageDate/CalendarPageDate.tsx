@@ -10,7 +10,7 @@ import {
 	LOCALIZED_DATE_AND_TIME_FULL_FORMAT,
 } from '@eventespresso/constants';
 
-import type { CalendarPageDateProps, CalendarPageSize } from './types';
+import { CalendarPageDateProps, CalendarPageSize } from './types';
 import './style.scss';
 
 /**

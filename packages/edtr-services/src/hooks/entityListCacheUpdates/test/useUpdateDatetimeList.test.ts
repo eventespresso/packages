@@ -1,10 +1,10 @@
 import { useApolloClient } from '@eventespresso/data';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useCacheRehydration } from '@edtrServices/apollo/initialization';
+import { useCacheRehydration } from '../../../apollo/initialization';
 import useUpdateDatetimeList from '../useUpdateDatetimeList';
-import { useDatetimes, useDatetimeIds, useDatetimeQueryOptions } from '@edtrServices/apollo/queries';
-import { ApolloMockedProvider } from '@edtrServices/context/TestContext';
+import { useDatetimes, useDatetimeIds, useDatetimeQueryOptions } from '../../../apollo/queries';
+import { ApolloMockedProvider } from '../../../context/test';
 
 const timeout = 5000; // milliseconds
 describe('useUpdateDatetimeList', () => {

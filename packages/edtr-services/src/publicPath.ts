@@ -18,3 +18,9 @@ __webpack_public_path__ = assetsUrl;
 
 // not needed
 export default assetsUrl = __webpack_public_path__;
+
+declare global {
+	interface Window {
+		baristaAsselsUrl: string;
+	}
+}

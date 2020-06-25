@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useRelations } from '../../../../../application/services/apollo/relations';
+import { useRelations } from '@eventespresso/services';
 import './data';
 
 const useSetRelationalData = (): void => {

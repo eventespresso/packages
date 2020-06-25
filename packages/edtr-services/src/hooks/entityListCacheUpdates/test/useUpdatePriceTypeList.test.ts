@@ -1,11 +1,11 @@
 import { useApolloClient } from '@eventespresso/data';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useCacheRehydration } from '@edtrServices/apollo/initialization';
+import { useCacheRehydration } from '../../../../../../domains/eventEditor/src/services/initialization';
 import useUpdatePriceTypeList from '../useUpdatePriceTypeList';
-import { usePriceTypeQueryOptions, usePriceTypes } from '@edtrServices/apollo/queries';
-import { ApolloMockedProvider } from '@edtrServices/context/TestContext';
-import { getGuids } from '@appServices/predicates';
+import { usePriceTypeQueryOptions, usePriceTypes } from '../../../apollo/queries';
+import { ApolloMockedProvider } from '../../../context/test';
+import { getGuids } from '@eventespresso/predicates';
 
 const timeout = 5000; // milliseconds
 describe('useUpdatePriceTypeList', () => {

@@ -1,8 +1,3 @@
-export const MODEL_NAMES = {
-	MODEL: 'ticket',
-	RELATION: 'tickets',
-};
-
 export const TICKET_STATUS_ID = {
 	EXPIRED: 'TKE',
 	ONSALE: 'TKO',

@@ -1,5 +1,5 @@
 import type { EntityId } from '@eventespresso/data';
-import type { Price } from '@eventespresso/edtr-services';
+import type { Price } from '../../';
 
 export interface PriceBaseInput {
 	amount?: number;

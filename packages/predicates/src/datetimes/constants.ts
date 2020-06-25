@@ -1,8 +1,3 @@
-export const MODEL_NAMES = {
-	MODEL: 'datetime',
-	RELATION: 'datetimes',
-};
-
 export const DATETIME_STATUS_ID = {
 	ACTIVE: 'DTA',
 	CANCELLED: 'DTC',

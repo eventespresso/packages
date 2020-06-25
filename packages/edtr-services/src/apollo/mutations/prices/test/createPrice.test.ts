@@ -2,14 +2,14 @@ import { useApolloClient } from '@eventespresso/data';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { path } from 'ramda';
 
-import { useRelations } from '../../../../../../../application/services/apollo/relations';
-import { MutationType } from '../../../../../../../application/services/apollo/mutations/types';
-import { ApolloMockedProvider } from '../../../../context/TestContext';
+import { useRelations } from '@eventespresso/services';
+import { MutationType } from '@eventespresso/data';
+import { ApolloMockedProvider } from '../../../../context/test';
 import { getMutationMocks, mockedPrices } from './data';
 import usePrices from '../../../queries/prices/usePrices';
 import { nodes as priceTypes } from '../../../queries/priceTypes/test/data';
 import { usePriceMutator, CreatePriceInput } from '../';
-import { getGuids } from '@appServices/predicates';
+import { getGuids } from '@eventespresso/predicates';
 
 const timeout = 5000; // milliseconds
 describe('createPrice', () => {

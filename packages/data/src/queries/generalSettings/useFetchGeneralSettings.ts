@@ -8,18 +8,14 @@ import { GeneralSettingsData } from '@eventespresso/services';
 const useFetchGeneralSettings = (): FetchQueryResult<GeneralSettingsData> => {
   const toaster = useSystemNotifications();
 
-  const { data, error, loading } = useQuery<GeneralSettingsData>(GET_GENERAL_SETTINGS, {
+  const result = useQuery<GeneralSettingsData>(GET_GENERAL_SETTINGS, {
     // only display error, not loading or success
     onError: (error): void => {
       toaster.error({ message: error.message });
     },
   });
 
-  return {
-    data,
-    error,
-    loading,
-  };
+  return result;
 };
 
 export default useFetchGeneralSettings;

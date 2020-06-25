@@ -3,10 +3,10 @@ import { pickBy } from 'ramda';
 import { ExecutionResult } from 'graphql';
 
 import { nodes as datetimes } from '../../../queries/datetimes/test/data';
-import type { MutationInput, MutationType } from '../../../../../../../application/services/apollo/mutations/types';
-import { ucFirst } from '../../../../../../../application/services/utilities/text/changeCase';
-import { eventId } from '../../../../context/TestContext';
-import type { MockedResponse } from '../../../../context/TestContext/types';
+import { MutationInput, MutationType } from '@eventespresso/data';
+import { ucFirst } from '@eventespresso/services';
+import { eventId } from '../../../../context/test';
+import type { MockedResponse } from '../../../../context/test/types';
 import { mutations } from '../..';
 
 export const mockedDatetimes = {

@@ -2,7 +2,8 @@ import React, { useCallback } from 'react';
 import classNames from 'classnames';
 import { parseISO, isValid } from 'date-fns';
 
-import { Button } from '@eventespresso/adapters';
+import { Button } from '../Button';
+import { Calendar } from '@eventespresso/icons';
 
 import type { CalendarDateProps } from '../types';
 import { LabelPosition } from '../withLabel';

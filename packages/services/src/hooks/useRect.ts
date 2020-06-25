@@ -23,9 +23,9 @@ const useRect = (ref: React.RefObject<HTMLElement>): ClientRect => {
 		}
 
 		handleResize();
-		// eslint-disable-next-line
+		// @ts-ignore
 		if (ResizeObserver && typeof ResizeObserver === 'function') {
-			// eslint-disable-next-line
+			// @ts-ignore
 			let resizeObserver = new ResizeObserver(() => handleResize());
 			resizeObserver.observe(element);
 

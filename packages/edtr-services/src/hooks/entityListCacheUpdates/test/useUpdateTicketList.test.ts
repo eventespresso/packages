@@ -1,10 +1,10 @@
 import { useApolloClient } from '@eventespresso/data';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useCacheRehydration } from '@edtrServices/apollo/initialization';
+import { useCacheRehydration } from '../../../apollo/initialization';
 import useUpdateTicketList from '../useUpdateTicketList';
-import { useTicketQueryOptions, useTickets, useTicketIds } from '@edtrServices/apollo/queries';
-import { ApolloMockedProvider } from '@edtrServices/context/TestContext';
+import { useTicketQueryOptions, useTickets, useTicketIds } from '../../../apollo/queries';
+import { ApolloMockedProvider } from '../../../context/test';
 
 const timeout = 5000; // milliseconds
 describe('useUpdateTicketList', () => {

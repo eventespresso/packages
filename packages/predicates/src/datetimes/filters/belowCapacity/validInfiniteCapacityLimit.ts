@@ -1,12 +1,6 @@
-/**
- * External dependencies
- */
 import { is } from 'ramda';
 
-/**
- * Internal dependencies
- */
-import type { Datetime } from '../../../../../../eventEditor/services/apollo/types';
+import type { Datetime } from '@eventespresso/edtr-services';
 
 /**
  * @param {Object} date event object

@@ -9,3 +9,5 @@ export * from './src/filterState';
 export * from './src/hooks';
 
 export * from './src/utils';
+
+export * from './src/types';

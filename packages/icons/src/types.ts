@@ -12,6 +12,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
 
 export enum IconName {
 	CALENDAR = 'calendar',
+	CALCULATOR = 'calculator',
 	EDIT = 'edit',
 	FILTER = 'filter',
 	GROUPS = 'groups',

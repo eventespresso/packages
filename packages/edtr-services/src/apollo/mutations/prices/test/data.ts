@@ -2,10 +2,10 @@ import { pickBy, omit } from 'ramda';
 import { ExecutionResult } from 'graphql';
 
 import { nodes as prices } from '../../../queries/prices/test/data';
-import type { MutationInput, MutationType } from '../../../../../../../application/services/apollo/mutations/types';
-import { ucFirst } from '../../../../../../../application/services/utilities/text/changeCase';
+import { MutationInput, MutationType } from '@eventespresso/data';
+import { ucFirst } from '@eventespresso/services';
 import { mutations } from '../..';
-import type { MockedResponse } from '../../../../context/TestContext/types';
+import type { MockedResponse } from '../../../../context/test/types';
 import { ReadQueryOptions } from '@eventespresso/data';
 
 

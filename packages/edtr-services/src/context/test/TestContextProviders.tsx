@@ -3,7 +3,7 @@ import { MockedProvider } from '@apollo/react-testing';
 
 import { cache } from '@eventespresso/data';
 
-import { CommonProviders } from '@eventespresso/unknown';
+import { ServiceProvider as CommonProviders } from '../ContextProvider';
 import { useDomTestData, useResetApolloCache, useSetGlobalStatusFlags, useSetRelationalData } from './';
 import type { MockedResponse } from './types';
 

@@ -3,18 +3,17 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { path } from 'ramda';
 
 import { useDatetimeMutator } from '../';
-import { useRelations } from '../../../../../../../application/services/apollo/relations';
-import { MutationType } from '../../../../../../../application/services/apollo/mutations/types';
-import { ApolloMockedProvider } from '../../../../context/TestContext';
+import { useRelations } from '@eventespresso/services';
+import { MutationType, MutationInput} from '@eventespresso/data';
+import { ApolloMockedProvider } from '../../../../context/test';
 import { getMutationMocks, mockedDatetimes } from './data';
 import { nodes as tickets } from '../../../queries/tickets/test/data';
-import { MutationInput } from '../../../../../../../application/services/apollo/mutations/types';
 import useDatetimeItem from '../../../queries/datetimes/useDatetimeItem';
 import useDatetimeIds from '../../../queries/datetimes/useDatetimeIds';
 import useInitTicketTestCache from '../../../queries/tickets/test/useInitTicketTestCache';
 import useTickets from '../../../queries/tickets/useTickets';
 import useTicketQueryOptions from '../../../queries/tickets/useTicketQueryOptions';
-import { getGuids } from '@appServices/predicates';
+import { getGuids } from '@eventespresso/predicates';
 
 const timeout = 5000; // milliseconds
 

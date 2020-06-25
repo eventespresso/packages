@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useStatus, TypeName } from '../../../../../application/services/apollo/status';
+import { useStatus, TypeName } from '@eventespresso/services';
 
 const useSetGlobalStatusFlags = (): void => {
 	const { setIsLoaded, isLoaded } = useStatus();
