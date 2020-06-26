@@ -13,8 +13,8 @@ describe('useFetchGeneralSettings', () => {
 			wrapper,
 		});
 
-		expect(result.current.error).toBeDefined();
-		expect(result.current.data).toBeDefined();
+		expect(result.current.error).toBeUndefined();
+		expect(result.current.data).toBeUndefined();
 
 		await waitForNextUpdate({ timeout }); // wait for response
 
