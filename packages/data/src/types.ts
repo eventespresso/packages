@@ -3,7 +3,7 @@ export type EntityId = string;
 export type EntityDbId = number;
 
 export interface Cacheable {
-	cacheId: number;
+	cacheId: string;
 }
 
 export interface Entity extends Cacheable {
