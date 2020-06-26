@@ -8,7 +8,8 @@
 		"dev:all": "node scripts/watch.js --domains all",
 		"start": "node scripts/start.js",
 		"storybook": "yarn workspace @project/storybook storybook",
-		"test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true node scripts/test.js"
+		"test-unit": "node scripts/test.js",
+		"test-unit:ci": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true node scripts/test.js"
 	},
 	"workspaces": {
 		"packages": [
