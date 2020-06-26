@@ -11,6 +11,7 @@ const CloseModal: React.FC = () => {
 
 	const hasErrors = hasOrphanEntities();
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const onConfirm = useCallback(onCloseModal, [hasErrors]);
 
 	return hasErrors ? (
