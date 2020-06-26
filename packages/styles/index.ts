@@ -1,1 +1,0 @@
-export * from './src/themes/default/config'
