@@ -71,8 +71,8 @@ const packagePaths = [];
 const packageEntries = {};
 
 packages.forEach((packageName) => {
-	const packageEntry = resolveModule(resolveApp, PACKAGES_FOLDER + `/${packageName}/index`);
-	const packagePath = resolveApp(PACKAGES_FOLDER + `/${packageName}`);
+	const packageEntry = resolveModule(resolveApp, PACKAGES_FOLDER + `/${packageName}/src/index`);
+	const packagePath = resolveApp(PACKAGES_FOLDER + `/${packageName}/src`);
 	// "edtr-services" becomes "edtrServices"
 	const name = camelCaseDash(packageName);
 
