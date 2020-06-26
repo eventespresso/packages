@@ -10,6 +10,7 @@
 	"main": "src/index.tsx",
 	"main:src": "src/index.tsx",
 	"scripts": {
+		"generate": "./scripts/generate.sh",
 		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.tsx --max-warnings=0 --format=codeframe"
 	},
