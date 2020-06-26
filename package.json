@@ -2,7 +2,8 @@
 	"name": "root",
 	"private": true,
 	"scripts": {
-		"build": "FORCE_COLOR=true node scripts/build.js",
+		"build": "node scripts/build.js",
+		"build:ci": "FORCE_COLOR=true node scripts/build.js",
 		"deploy": "FORCE_COLOR=true lerna run deploy",
 		"dev": "node scripts/watch.js",
 		"dev:all": "node scripts/watch.js --domains all",
