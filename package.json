@@ -2,14 +2,13 @@
 	"name": "root",
 	"private": true,
 	"scripts": {
-		"dev": "node scripts/watch.js",
-		"start": "node scripts/start.js",
-		"dev:all": "node scripts/watch.js --domains all",
 		"build": "FORCE_COLOR=true node scripts/build.js",
-		"test-js": "FORCE_COLOR=true node scripts/test.js",
+		"deploy": "FORCE_COLOR=true lerna run deploy",
+		"dev": "node scripts/watch.js",
+		"dev:all": "node scripts/watch.js --domains all",
+		"start": "node scripts/start.js",
 		"storybook": "yarn workspace @project/storybook storybook",
-		"test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
-		"deploy": "FORCE_COLOR=true lerna run deploy"
+		"test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true node scripts/test.js"
 	},
 	"workspaces": {
 		"packages": [
