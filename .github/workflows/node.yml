@@ -13,8 +13,8 @@ jobs:
             - uses: actions/checkout@722adc6
 
             - uses: dcodeIO/setup-node-nvm@master
-                with:
-                  node-version: lts/*              
+              with:
+                  node-version: lts/*
 
             - uses: actions/cache@70655ec
               name: Load Yarn cache
