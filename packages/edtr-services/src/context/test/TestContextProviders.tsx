@@ -3,21 +3,25 @@ import { MockedProvider } from '@apollo/react-testing';
 
 import { cache } from '@eventespresso/data';
 
-import { ServiceProvider as CommonProviders } from '../ContextProvider';
+import { ServiceProvider } from '../ContextProvider';
 import { useDomTestData, useResetApolloCache, useSetGlobalStatusFlags, useSetRelationalData } from './';
 import type { MockedResponse } from './types';
 
 /**
  * A top level provider wrapped by Apollo MockedProvider.
  *
- * @param {ReactElement} children The element that should be wrapped.
- * @returns {ReactElement} The wrapped element.
+ * @param {mocks} The mocked responses for Apollo
+ * @param {addServiceProviders} Whether to add service contexts. Pass false to test in isolation
+ * @returns {React.FC} The provider component
  */
-export const ApolloMockedProvider = (mocks: ReadonlyArray<MockedResponse> = []): React.FC => {
+export const ApolloMockedProvider = (
+	mocks: ReadonlyArray<MockedResponse> = [],
+	addServiceProviders = true
+): React.FC => {
 	const Provider: React.FC = ({ children }) => {
 		return (
 			<MockedProvider mocks={mocks} cache={cache}>
-				<ApolloAwareWrapper>{children}</ApolloAwareWrapper>
+				{addServiceProviders ? <ApolloAwareWrapper>{children}</ApolloAwareWrapper> : <>{children}</>}
 			</MockedProvider>
 		);
 	};
@@ -25,7 +29,7 @@ export const ApolloMockedProvider = (mocks: ReadonlyArray<MockedResponse> = []):
 };
 
 /**
- * A mid level provider wrapped by CommonProviders.
+ * A mid level provider wrapped by ServiceProvider.
  * It sets the DOM data and handles Apollo cache reset.
  *
  * @param {ReactElement} children The element that should be wrapped.
@@ -37,9 +41,9 @@ export const ApolloAwareWrapper: React.FC = ({ children }) => {
 	// clear Apollo cache on unmount
 	useResetApolloCache();
 	return (
-		<CommonProviders>
+		<ServiceProvider>
 			<ContextAwareWrapper>{children}</ContextAwareWrapper>
-		</CommonProviders>
+		</ServiceProvider>
 	);
 };
 
