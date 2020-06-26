@@ -10,7 +10,7 @@
 	"main:src": "src/index.tsx",
 	"scripts": {
 		"test": "react-scripts test",
-		"lint": "eslint ./src/**/*.tsx --max-warnings=0 --format=codeframe"
+		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
 	},
 	"dependencies": {
 		"react-beautiful-dnd": "^13.0.0",
