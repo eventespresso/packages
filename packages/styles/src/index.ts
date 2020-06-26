@@ -1,1 +1,1 @@
-export * from './themes/default/config'
+export * from './themes/default/config';
