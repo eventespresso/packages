@@ -12,4 +12,3 @@ export * from './text';
 export * from './types';
 
 export { cancelClickEvent } from './cancelClickEvent';
-export { default as usePrevious } from './usePrevious';

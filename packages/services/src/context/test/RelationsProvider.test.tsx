@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { RelationsProvider, RelationsConsumer } from '../RelationsProvider';
-import { RelationsManager, RelationalData } from '@eventespresso/services';
+import { RelationsManager, RelationalData } from '../../relations';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 
 describe('RelationsProvider', () => {

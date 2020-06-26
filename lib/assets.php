@@ -54,7 +54,6 @@ function ee_barista_url($path)
  */
 function ee_barista_override_script($scripts, $handle, $src, $deps = array(), $ver = false, $in_footer = false)
 {
-    // error_log(print_r(compact('handle', 'deps'), true));
     $script = $scripts->query($handle, 'registered');
     if ($script) {
         /*
@@ -149,13 +148,6 @@ function ee_barista_register_scripts($scripts)
     $entry_points = array_keys(ee_barista_get_manifest('entrypoints'));
     $asset_files = ee_barista_get_manifest();
 
-    $common_deps = array(
-        'react',
-        'react-dom',
-        'jquery',
-        'wp-i18n',
-    );
-
     foreach ($entry_points as $entry_point) {
         $handle = 'eventespresso-' . $entry_point;
 
@@ -167,8 +159,11 @@ function ee_barista_register_scripts($scripts)
         $asset        = file_exists($asset_file)
             ? require($asset_file)
             : null;
-        $dependencies = $common_deps;
-        // $dependencies = isset($asset['dependencies']) ? $asset['dependencies'] : array();
+        $dependencies = isset($asset['dependencies']) ? $asset['dependencies'] : array();
+        // remove cyclical dependencies, if any
+        if (($key = array_search($handle, $dependencies, true)) !== false) {
+            unset($dependencies[ $key ]);
+        }
         $version      = isset($asset['version']) ? $asset['version'] : filemtime(ee_barista_dir_path() . $package_path);
 
         ee_barista_override_script(
