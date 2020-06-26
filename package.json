@@ -6,7 +6,7 @@
 		"start": "node scripts/start.js",
 		"dev:all": "node scripts/watch.js --domains all",
 		"build": "node scripts/build.js",
-		"test-js": "node scripts/test.js",
+		"test-js": "FORCE_COLOR=true node scripts/test.js",
 		"storybook": "yarn workspace @project/storybook storybook",
 		"test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
 		"deploy": "FORCE_COLOR=true lerna run deploy"
