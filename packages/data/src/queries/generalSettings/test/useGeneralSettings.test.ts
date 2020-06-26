@@ -2,40 +2,39 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import { useGeneralSettings } from '..';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
-import { useCacheRehydration } from '@eventespresso/edtr-services';
-import { generalSettings } from './data';
+import { generalSettings, successMocks } from './data';
+import useInitGeneralSettingsTestCache from './useInitGeneralSettingsTestCache';
 
-const timeout = 5000; // milliseconds
 describe('useGeneralSettings', () => {
-	const wrapper = ApolloMockedProvider();
-	it('checks for the current user when the cache is empty', () => {
+	it('checks for the general settings when the cache is empty', () => {
+		const wrapper = ApolloMockedProvider([], false);
 		const { result } = renderHook(() => useGeneralSettings(), { wrapper });
 
 		expect(result.current).toBe(undefined);
 	});
 
-	it('checks for the current user when the cache is NOT empty', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+	it('checks for the general settings when the cache is NOT empty', async () => {
+		const wrapper = ApolloMockedProvider(successMocks, false);
+		const { result } = renderHook(
 			() => {
-				useCacheRehydration();
+				useInitGeneralSettingsTestCache();
 				return useGeneralSettings();
 			},
 			{ wrapper }
 		);
-		await waitForNextUpdate({ timeout });
 
 		expect(result.current).toBeDefined();
 	});
 
-	it('checks for current user props', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+	it('checks for general settings props', async () => {
+		const wrapper = ApolloMockedProvider(successMocks, false);
+		const { result } = renderHook(
 			() => {
-				useCacheRehydration();
+				useInitGeneralSettingsTestCache();
 				return useGeneralSettings();
 			},
 			{ wrapper }
 		);
-		await waitForNextUpdate({ timeout });
 
 		const { current: cachedSettings } = result;
 

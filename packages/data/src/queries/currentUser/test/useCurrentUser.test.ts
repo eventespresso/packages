@@ -2,40 +2,39 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import { useCurrentUser } from '..';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
-import { useCacheRehydration } from '@eventespresso/edtr-services';
-import { currentUser } from './data';
+import { currentUser, successMocks } from './data';
+import useInitCurrentUserTestCache from './useInitCurrentUserTestCache';
 
-const timeout = 5000; // milliseconds
 describe('useCurrentUser', () => {
-	const wrapper = ApolloMockedProvider();
 	it('checks for the current user when the cache is empty', async () => {
+		const wrapper = ApolloMockedProvider([], false);
 		const { result } = renderHook(() => useCurrentUser(), { wrapper });
 
 		expect(result.current).toBe(undefined);
 	});
 
 	it('checks for the current user when the cache is NOT empty', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const wrapper = ApolloMockedProvider(successMocks, false);
+		const { result } = renderHook(
 			() => {
-				useCacheRehydration();
+				useInitCurrentUserTestCache();
 				return useCurrentUser();
 			},
 			{ wrapper }
 		);
-		await waitForNextUpdate({ timeout });
 
 		expect(result.current).toBeDefined();
 	});
 
 	it('checks for current user props', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const wrapper = ApolloMockedProvider(successMocks, false);
+		const { result } = renderHook(
 			() => {
-				useCacheRehydration();
+				useInitCurrentUserTestCache();
 				return useCurrentUser();
 			},
 			{ wrapper }
 		);
-		await waitForNextUpdate({ timeout });
 
 		const { current: cachedUser } = result;
 

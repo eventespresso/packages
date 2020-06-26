@@ -7,7 +7,7 @@ import { successMocks, errorMocks, currentUser } from './data';
 const timeout = 5000; // milliseconds
 describe('useFetchCurrentUser', () => {
 	it('checks for the error state', async () => {
-		const wrapper = ApolloMockedProvider(errorMocks);
+		const wrapper = ApolloMockedProvider(errorMocks, false);
 
 		const { result, waitForNextUpdate } = renderHook(() => useFetchCurrentUser(), {
 			wrapper,
@@ -23,7 +23,7 @@ describe('useFetchCurrentUser', () => {
 	});
 
 	it('checks for the loading state', async () => {
-		const wrapper = ApolloMockedProvider(successMocks);
+		const wrapper = ApolloMockedProvider(successMocks, false);
 
 		const { result, waitForNextUpdate } = renderHook(() => useFetchCurrentUser(), {
 			wrapper,
@@ -37,16 +37,11 @@ describe('useFetchCurrentUser', () => {
 	});
 
 	it('checks for the response data', async () => {
-		const wrapper = ApolloMockedProvider(successMocks);
+		const wrapper = ApolloMockedProvider(successMocks, false);
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchCurrentUser(), {
+		const { result } = renderHook(() => useFetchCurrentUser(), {
 			wrapper,
 		});
-
-		expect(result.current.error).toBeUndefined();
-		expect(result.current.data).toBeUndefined();
-
-		await waitForNextUpdate({ timeout }); // wait for response
 
 		// Data is already written above
 		expect(result.current.data).toBeDefined();
@@ -54,13 +49,11 @@ describe('useFetchCurrentUser', () => {
 	});
 
 	it('checks for the entries in response data', async () => {
-		const wrapper = ApolloMockedProvider(successMocks);
+		const wrapper = ApolloMockedProvider(successMocks, false);
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchCurrentUser(), {
+		const { result } = renderHook(() => useFetchCurrentUser(), {
 			wrapper,
 		});
-
-		await waitForNextUpdate({ timeout }); // wait for response
 
 		expect(result.current.data).toHaveProperty('viewer');
 
