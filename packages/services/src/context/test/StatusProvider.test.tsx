@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { StatusProvider, StatusConsumer } from '../StatusProvider';
-import { TypeName, StatusManager } from '../../apollo/status';
+import { TypeName, StatusManager } from '../../status';
 
 describe('StatusProvider', () => {
 	it('checks for statusProvider setter functions', () => {

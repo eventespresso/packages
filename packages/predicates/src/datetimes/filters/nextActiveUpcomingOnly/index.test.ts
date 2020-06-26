@@ -1,7 +1,7 @@
 import { formatISO } from 'date-fns';
 
 import nextActiveUpcomingOnly from './index';
-import { nodes as datetimes } from '../../../../../../eventEditor/services/apollo/queries/datetimes/test/data';
+import { nodes as datetimes } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
 
 const datetime = datetimes[1];
 const theFuture = formatISO(new Date(2987, 1 /* Feb */, 11));

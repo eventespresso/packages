@@ -1,5 +1,5 @@
 import isSoldOut from './index';
-import { nodes as tickets } from '../../../../../eventEditor/services/apollo/queries/tickets/test/data';
+import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
 
 const testCases = [
 	{

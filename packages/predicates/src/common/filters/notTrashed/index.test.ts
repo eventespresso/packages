@@ -1,6 +1,6 @@
-import notTrashed from './index';
-import datetimes from '../../../../entities/datetimes/predicates/filters/tests/data';
-import { tickets } from '../../../../entities/tickets/predicates/test/data';
+import { notTrashed } from './index';
+import datetimes from '../../../datetimes/filters/tests/data';
+import { tickets } from '../../../tickets/test/data';
 
 test('Should return array of untrashed datetimes', () => {
 	const noTrash = notTrashed(datetimes);

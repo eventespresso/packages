@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import useEvent from '../useEvent';
-import { ApolloMockedProvider } from '../../../../../services/context/TestContext';
+import { ApolloMockedProvider } from '../../../../context/test';
 import { successMocks, nodes } from './data';
 import useEventQueryOptions from '../useEventQueryOptions';
 

@@ -1,6 +1,6 @@
-import trashedOnly from './index';
-import datetimes from '../../../../entities/datetimes/predicates/filters/tests/data';
-import { tickets } from '../../../../entities/tickets/predicates/test/data';
+import { trashedOnly } from './index';
+import datetimes from '../../../datetimes/filters/tests/data';
+import { tickets } from '../../../tickets/test/data';
 
 test('Should return only trashed datetimes', () => {
 	const noTrash = trashedOnly(datetimes);

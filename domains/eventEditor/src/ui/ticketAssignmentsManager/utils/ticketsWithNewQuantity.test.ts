@@ -1,7 +1,7 @@
 import { prepareEntitiesForUpdate, ticketsWithNewQuantity } from './';
 import { nodes as allDates } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
 import { nodes as allTickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
-import { relationalData as existingData } from '@edtrServices/context/TestContext/data';
+import { relationalData as existingData } from '@eventespresso/edtr-services/src/context/test/data';
 import { assocPath, pathOr } from 'ramda';
 
 describe('TAM:ticketsWithNewQuantity', () => {

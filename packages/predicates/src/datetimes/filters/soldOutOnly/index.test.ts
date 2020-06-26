@@ -1,9 +1,6 @@
-/**
- * Internal dependencies
- */
 import soldOutOnly from './index';
-import { DatetimeStatus } from '../../types';
-import { nodes as datetimes } from '../../../../../../eventEditor/services/apollo/queries/datetimes/test/data';
+import { DateStatus as DatetimeStatus } from '@eventespresso/edtr-services';
+import { nodes as datetimes } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
 
 const datetime = datetimes[0];
 

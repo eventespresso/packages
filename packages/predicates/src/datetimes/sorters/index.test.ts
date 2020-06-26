@@ -1,7 +1,7 @@
 import { compareAsc, parseISO } from 'date-fns';
 
 import sorters from './index';
-import { nodes as dates } from '@edtrServices/apollo/queries/datetimes/test/data';
+import { nodes as dates } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
 
 describe('sorters', () => {
 	it('should return dates sorted in default chronological order if no sortBy prop is provided', () => {

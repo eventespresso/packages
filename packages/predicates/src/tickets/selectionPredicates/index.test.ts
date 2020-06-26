@@ -7,7 +7,7 @@ import {
 	updateTicketPriceForTicket,
 	updateTicketReverseCalculate,
 } from './index';
-import { nodes as tickets } from '../../../../../eventEditor/services/apollo/queries/tickets/test/data';
+import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
 
 describe('isTicketField', () => {
 	it('should return true if field is included in ticket type', () => {

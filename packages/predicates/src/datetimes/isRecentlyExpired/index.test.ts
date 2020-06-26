@@ -1,8 +1,8 @@
 import { formatISO } from 'date-fns';
 
 import isRecentlyExpired from './index';
-import { nodes as datetimes } from '../../../../../eventEditor/services/apollo/queries/datetimes/test/data';
-import { add, sub } from '../../../../../../application/services/utilities/date';
+import { nodes as datetimes } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
+import { add, sub } from '@eventespresso/services';
 
 describe('isRecentlyExpired', () => {
 	it('should return false if endDate is in the future', () => {

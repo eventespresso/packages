@@ -1,9 +1,9 @@
 import { formatISO, parseISO } from 'date-fns';
 
 import expiredOnly from './index';
-import { nodes as tickets } from '../../../../../../eventEditor/services/apollo/queries/tickets/test/data';
-import { diff, add } from '../../../../../../../application/services/utilities/date';
-import { now } from '@sharedServices/utils/dateAndTime';
+import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
+import { diff, add } from '@eventespresso/services';
+import { NOW as now } from '@eventespresso/constants';
 
 describe('expiredOnly', () => {
 	it('should return an empty array if tickets are not expired', () => {

@@ -1,7 +1,7 @@
 import { renderHook, cleanup } from '@testing-library/react-hooks';
 
 import useDatetimeItem from '../useDatetimeItem';
-import { ApolloMockedProvider } from '../../../../../services/context/TestContext';
+import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from './data';
 import useInitDatetimeTestCache from './useInitDatetimeTestCache';
 

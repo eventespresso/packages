@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import useFetchGeneralSettings from '../useFetchGeneralSettings';
-import { ApolloMockedProvider } from '@edtrServices/context/TestContext';
+import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 import { successMocks, errorMocks, generalSettings } from './data';
 
 const timeout = 5000; // milliseconds

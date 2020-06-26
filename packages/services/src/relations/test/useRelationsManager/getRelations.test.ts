@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { pathOr, assocPath } from 'ramda';
 
-import { relationalData } from '../../../../../../domain/eventEditor/services/context/TestContext/data';
+import { relationalData } from '@eventespresso/edtr-services/src/context/test';
 import useRelationsManager from '../../useRelationsManager';
 
 describe('RelationsManager.getRelations()', () => {

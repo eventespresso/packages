@@ -1,7 +1,7 @@
 import { useApolloClient } from '@eventespresso/data';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useCacheRehydration } from '../../../../../../domains/eventEditor/src/services/initialization';
+import { useCacheRehydration } from '../../../apollo/initialization';
 import useUpdatePriceTypeList from '../useUpdatePriceTypeList';
 import { usePriceTypeQueryOptions, usePriceTypes } from '../../../apollo/queries';
 import { ApolloMockedProvider } from '../../../context/test';

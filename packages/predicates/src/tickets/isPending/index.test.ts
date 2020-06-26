@@ -1,9 +1,9 @@
 import { formatISO } from 'date-fns';
-import { add, sub } from '../../../../../../application/services/utilities/date';
+import { add, sub } from '@eventespresso/services';
 
 import isPending from './index';
-import { nodes as tickets } from '../../../../../eventEditor/services/apollo/queries/tickets/test/data';
-import { now } from '@sharedServices/utils/dateAndTime';
+import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
+import { NOW as now } from '@eventespresso/constants';
 
 const testCases = [
 	{

@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import useFetchCurrentUser from '../useFetchCurrentUser';
-import { ApolloMockedProvider } from '@edtrServices/context/TestContext';
+import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 import { successMocks, errorMocks, currentUser } from './data';
 
 const timeout = 5000; // milliseconds

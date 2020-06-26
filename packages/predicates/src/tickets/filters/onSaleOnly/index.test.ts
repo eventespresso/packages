@@ -3,8 +3,8 @@ import { pipe } from 'ramda';
 
 import onSaleOnly from './index';
 import isOnSale from '../../isOnSale';
-import { nodes as tickets } from '../../../../../../eventEditor/services/apollo/queries/tickets/test/data';
-import { now } from '@sharedServices/utils/dateAndTime';
+import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
+import { NOW as now } from '@eventespresso/constants';
 
 describe('onSaleOnly', () => {
 	it('should return an empty array if tickets are not on sale', () => {

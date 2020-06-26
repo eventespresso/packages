@@ -4,8 +4,8 @@ import { pipe } from 'ramda';
 import allOnSaleAndPending from './index';
 import isOnSale from '../../isOnSale';
 import isPending from '../../isPending';
-import { nodes as tickets } from '../../../../../../eventEditor/services/apollo/queries/tickets/test/data';
-import { now } from '@sharedServices/utils/dateAndTime';
+import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
+import { NOW as now } from '@eventespresso/constants';
 
 describe('allOnSaleAndPending', () => {
 	it('should return an empty array if tickets are not on sale and not pending', () => {

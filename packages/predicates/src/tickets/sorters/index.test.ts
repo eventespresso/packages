@@ -1,7 +1,7 @@
 import { compareAsc, parseISO } from 'date-fns';
 
 import sorters from './index';
-import { nodes as tickets } from '@edtrServices/apollo/queries/tickets/test/data';
+import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
 
 describe('sorters', () => {
 	it('should return tickets sorted in default chronological order if no order prop is provided', () => {
