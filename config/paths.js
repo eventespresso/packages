@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
 const { getCommandArgs, camelCaseDash } = require('./utils');
+const R = require('ramda');
 
 const PACKAGES_FOLDER = 'packages';
 const DOMAINS_FOLDER = 'domains';
@@ -80,7 +81,7 @@ packages.forEach((packageName) => {
 	packagePaths.push(packagePath);
 });
 
-const allDomains = ['eventEditor' /* ,'wpPluginsPage', 'blocks' */];
+const allDomains = ['eventEditor', 'wpPluginsPage' /* , 'blocks' */];
 
 /**
  * Get args from CLI to watch only the domains specified during dev
@@ -99,7 +100,7 @@ if (!isEnvDevelopment) {
 // set "eventEditor" as the default domain to watch
 let domainsToWatch = ['eventEditor'];
 if (suppliedDomains && typeof suppliedDomains === 'string') {
-	domainsToWatch = suppliedDomains === 'all' ? allDomains : suppliedDomains.split(',');
+	domainsToWatch = suppliedDomains === 'all' ? allDomains : R.map(R.trim, R.split(',', suppliedDomains));
 }
 if (domainsToWatch.some((domain) => !allDomains.includes(domain))) {
 	throw new Error('Unknown domain');
