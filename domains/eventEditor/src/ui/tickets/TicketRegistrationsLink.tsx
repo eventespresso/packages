@@ -7,6 +7,7 @@ import { getAdminUrl, useEventId } from '@eventespresso/edtr-services';
 import { getPropsAreEqual, useConfig, useMemoStringify } from '@eventespresso/services';
 import { RegistrationsLink, ItemCount } from '@eventespresso/components';
 import { Ticket } from '@eventespresso/edtr-services';
+import type { TooltipProps } from '@eventespresso/adapters';
 
 interface Props {
 	ticket: Ticket;
@@ -25,7 +26,7 @@ const TicketRegistrationsLink: React.FC<Props> = ({ ticket }) => {
 	});
 	const countTitle = __('total registrations.');
 	const tooltip = __('view registrations for this ticket.');
-	const tooltipProps = useMemoStringify({ placement: 'top' as 'top' });
+	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'top' });
 
 	return (
 		<ItemCount count={ticket.registrationCount} title={countTitle} emphasizeZero={false} offset={[12, -4]}>

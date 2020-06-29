@@ -6,7 +6,7 @@ import { isDefault } from '@eventespresso/predicates';
 import { useConfig } from '@eventespresso/services';
 import { useDataState } from '../data';
 
-const DefaultPricesInfo = () => {
+const DefaultPricesInfo: React.FC = () => {
 	const config = useConfig();
 	const adminUrl = config.siteUrl.admin;
 	const href = adminUrl + '/admin.php?page=pricing';

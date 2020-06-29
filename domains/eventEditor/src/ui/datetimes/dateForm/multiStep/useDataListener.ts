@@ -7,7 +7,7 @@ import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManage
  * A custom hook which subscribes to TAM data and updates
  * RFF data when needed.
  */
-const useDataListener = () => {
+const useDataListener: VoidFunction = () => {
 	const { getData } = useTAMDataState();
 	const { mutators, getState } = useForm();
 	const data = getData();

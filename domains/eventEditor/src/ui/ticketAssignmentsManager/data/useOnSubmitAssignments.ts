@@ -12,7 +12,9 @@ import { prepareEntitiesForUpdate, ticketsWithNewQuantity } from '../utils';
 import { TAMRelationalData } from '../types';
 import { EntityId } from '@eventespresso/data';
 
-const useOnSubmitAssignments = () => {
+type Callback = (data: TAMRelationalData) => Promise<void>;
+
+const useOnSubmitAssignments = (): Callback => {
 	const { getData: getExistingData } = useRelations();
 	const { updateEntity: updateDatetime } = useDatetimeMutator();
 	const { updateEntity: updateTicket } = useTicketMutator();
@@ -20,8 +22,8 @@ const useOnSubmitAssignments = () => {
 	const allDates = useDatetimes();
 	const allTickets = useTickets();
 
-	return useCallback(
-		async (data: TAMRelationalData): Promise<void> => {
+	return useCallback<Callback>(
+		async (data) => {
 			const existingData = getExistingData();
 
 			/**

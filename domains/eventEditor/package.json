@@ -9,6 +9,12 @@
 		"type": "git",
 		"url": "git+https://github.com/eventespresso/barista.git"
 	},
+	"scripts": {
+		"start": "node ./../../scripts/start.js",
+		"build": "node ./../../scripts/build.js",
+		"test": "react-scripts test",
+		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
+	},
 	"dependencies": {
 		"@wordpress/url": "^2.16.0",
 		"final-form": "^4.20.0",
@@ -30,11 +36,5 @@
 	"peerDependencies": {
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1"
-	},
-	"scripts": {
-		"start": "node ./../../scripts/start.js",
-		"build": "node ./../../scripts/build.js",
-		"test": "react-scripts test",
-		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
 	}
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Cell } from '@eventespresso/components';
+import { Cell, HeaderRow } from '@eventespresso/components';
 import HeaderCell from './HeaderCell';
 import type { Ticket } from '@eventespresso/edtr-services';
 import useColClassName from './useColClassName';
 
-const useGetHeaderRows = (tickets: Ticket[]) => {
+const useGetHeaderRows = (tickets: Ticket[]): HeaderRow[] => {
 	const getColClass = useColClassName();
 
 	const emptyCell: Cell = {
@@ -26,7 +26,6 @@ const useGetHeaderRows = (tickets: Ticket[]) => {
 	return [
 		{
 			cells: [emptyCell, ...cells],
-			rowClassName: 'ticket-assignment-manager-table-header-row',
 			key: 'ticket-assignment-manager-table-header-row',
 			primary: true,
 			type: 'row',

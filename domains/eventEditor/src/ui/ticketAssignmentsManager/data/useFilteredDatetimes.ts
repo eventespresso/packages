@@ -1,8 +1,8 @@
-import { useDatetimes } from '@eventespresso/edtr-services';
+import { useDatetimes, Datetime } from '@eventespresso/edtr-services';
 import { useFilterState } from '../filters';
 import { isTrashed, inYearAndMonth } from '@eventespresso/predicates';
 
-const useFilteredDatetimes = () => {
+const useFilteredDatetimes = (): Array<Datetime> => {
 	const { showTrashedDates, datesByMonth } = useFilterState();
 
 	const datesInYearAndMonth = inYearAndMonth(datesByMonth);

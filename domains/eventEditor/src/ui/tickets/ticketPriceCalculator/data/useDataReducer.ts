@@ -1,7 +1,8 @@
 import { any, append, findIndex, insert, update } from 'ramda';
 
 import { DataStateReducer, StateInitializer, DataState } from './types';
-import { entityHasGuid, isTax} from '@eventespresso/predicates';
+import { entityHasGuid, isTax } from '@eventespresso/predicates';
+import { TpcPriceModifier } from '../types';
 
 export const initialState: DataState = {
 	ticket: null,
@@ -12,7 +13,13 @@ export const initialState: DataState = {
 const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 	const dataReducer: DataStateReducer = (state, action) => {
 		const { type, id, index, fieldValues, ticketPrice, price, prices } = action;
-		let isTaxable: boolean;
+		let isTaxable: boolean,
+			newPrices: Array<TpcPriceModifier>,
+			priceIndex: number,
+			priceToUpdate: TpcPriceModifier,
+			updatedPrice: TpcPriceModifier,
+			retainedPrices: Array<TpcPriceModifier>,
+			updatedPrices: Array<TpcPriceModifier>;
 
 		switch (type) {
 			case 'TOGGLE_CALC_DIR':
@@ -40,7 +47,7 @@ const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 				};
 
 			case 'ADD_PRICE':
-				let newPrices =
+				newPrices =
 					typeof index !== 'undefined' ? insert(index, price, state.prices) : append(price, state.prices);
 				newPrices = newPrices.map((newPrice, index) => {
 					// order of base price is <= 1
@@ -57,19 +64,19 @@ const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 
 			case 'UPDATE_PRICE':
 				// find the index of the price to update
-				const priceIndex = findIndex(entityHasGuid(id), state.prices);
+				priceIndex = findIndex(entityHasGuid(id), state.prices);
 				// if price id does not exist
 				if (priceIndex < 0) {
 					return state;
 				}
 				// get the price object
-				const priceToUpdate = state.prices[priceIndex];
+				priceToUpdate = state.prices[priceIndex];
 
 				// update the price object
-				const updatedPrice = { ...priceToUpdate, ...fieldValues, isModified: true };
+				updatedPrice = { ...priceToUpdate, ...fieldValues, isModified: true };
 
 				// update the prices list
-				const updatedPrices = update<typeof state.prices[0]>(priceIndex, updatedPrice, state.prices);
+				updatedPrices = update<typeof state.prices[0]>(priceIndex, updatedPrice, state.prices);
 				isTaxable = any(isTax, updatedPrices);
 				return priceIndex > -1
 					? {
@@ -83,7 +90,7 @@ const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 					: state;
 
 			case 'DELETE_PRICE':
-				const retainedPrices = state.prices.filter(({ id: priceId }) => id !== priceId);
+				retainedPrices = state.prices.filter(({ id: priceId }) => id !== priceId);
 				isTaxable = any(isTax, retainedPrices);
 				return {
 					...state,

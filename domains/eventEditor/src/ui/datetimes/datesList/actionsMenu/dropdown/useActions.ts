@@ -4,8 +4,19 @@ import { pick } from 'ramda';
 import { isTrashed } from '@eventespresso/predicates';
 import { useDatetimeItem, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
 import { useRelations } from '@eventespresso/services';
+import type { EntityId } from '@eventespresso/data';
 
-const useActions = ({ datetimeId }) => {
+type useActionsArgs = {
+	datetimeId: EntityId;
+};
+
+type Actions = {
+	copyDate: VoidFunction;
+	trashDate: VoidFunction;
+	trashed: boolean;
+};
+
+const useActions = ({ datetimeId }: useActionsArgs): Actions => {
 	// Make sure to subscribe to Apollo cache
 	// to avoid stale data
 	const datetime = useDatetimeItem({ id: datetimeId });

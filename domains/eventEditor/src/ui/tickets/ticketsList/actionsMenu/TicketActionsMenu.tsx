@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { ActionsMenuComponentProps } from '@eventespresso/registry';
-import {  EntityActionsMenu } from '@eventespresso/components';
+import { EntityActionsMenu } from '@eventespresso/components';
 import useTicketsActionMenuItems from '../../hooks/useTicketsActionMenuItems';
 import { Ticket } from '@eventespresso/edtr-services';
 import { getPropsAreEqual } from '@eventespresso/services';

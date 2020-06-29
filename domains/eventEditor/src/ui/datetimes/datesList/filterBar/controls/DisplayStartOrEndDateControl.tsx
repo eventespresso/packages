@@ -15,22 +15,20 @@ type DisplayStartOrEndDateControlProps = Pick<
  */
 const DisplayStartOrEndDateControl: React.FC<DisplayStartOrEndDateControlProps> = React.memo(
 	({ displayStartOrEndDate, setDisplayStartOrEndDate }) => {
-		const options = useMemoStringify(
-			[
-				{
-					value: DisplayStartOrEndDate.start,
-					label: __('start dates only'),
-				},
-				{
-					value: DisplayStartOrEndDate.end,
-					label: __('end dates only'),
-				},
-				{
-					value: DisplayStartOrEndDate.both,
-					label: __('start and end dates'),
-				},
-			],
-		);
+		const options = useMemoStringify([
+			{
+				value: DisplayStartOrEndDate.start,
+				label: __('start dates only'),
+			},
+			{
+				value: DisplayStartOrEndDate.end,
+				label: __('end dates only'),
+			},
+			{
+				value: DisplayStartOrEndDate.both,
+				label: __('start and end dates'),
+			},
+		]);
 		return (
 			<SelectInput
 				label={__('display')}

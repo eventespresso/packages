@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Cell } from '@eventespresso/components';
+import { Cell, BodyRow } from '@eventespresso/components';
 import BodyCell from './BodyCell';
 import DateCell from './DateCell';
 
@@ -10,7 +10,7 @@ import { DatesAndTickets } from '../../types';
 import useRowClassName from './useRowClassName';
 import useColClassName from './useColClassName';
 
-const useGetBodyRows = ({ datetimes, tickets }: DatesAndTickets) => {
+const useGetBodyRows = ({ datetimes, tickets }: DatesAndTickets): BodyRow[] => {
 	const { getAssignmentStatus } = useDataState();
 
 	const getRowClass = useRowClassName();

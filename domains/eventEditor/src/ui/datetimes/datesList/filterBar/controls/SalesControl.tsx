@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { SelectInput } from '@eventespresso/components';
 import { DatetimeSales } from '@edtrServices/filterState';
-import { getPropsAreEqual, useMemoStringify} from '@eventespresso/services';
+import { getPropsAreEqual, useMemoStringify } from '@eventespresso/services';
 import { DatetimesFilterStateManager } from '@edtrServices/filterState';
 
 type StatusControlProps = Pick<DatetimesFilterStateManager, 'sales' | 'setSales'>;

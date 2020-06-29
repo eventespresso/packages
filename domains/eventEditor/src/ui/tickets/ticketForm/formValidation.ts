@@ -5,7 +5,7 @@ import { yupToFinalFormErrors } from '@eventespresso/form';
 import { TicketFormShape } from './types';
 import { dateAndTimeSchema } from '@eventespresso/edtr-services';
 
-export const validate = async (values: TicketFormShape) => {
+export const validate = async (values: TicketFormShape): Promise<any> => {
 	return await yupToFinalFormErrors(validationSchema, values);
 };
 

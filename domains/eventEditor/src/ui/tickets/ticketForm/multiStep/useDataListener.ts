@@ -14,7 +14,7 @@ const TPC_TICKET_FIELDS_TO_SYNC: Array<keyof Ticket> = ['isTaxable', 'price', 'r
  * A custom hook which subscribes to TAM and TPC data and updates
  * RFF data when needed.
  */
-const useDataListener = () => {
+const useDataListener: VoidFunction = () => {
 	const { getData } = useTAMDataState();
 	const { mutators, getState } = useForm();
 	const data = getData();

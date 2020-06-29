@@ -1,14 +1,15 @@
 import { prop } from 'ramda';
 
-import { TpcPriceModifier } from '../types';
-import { PriceType } from '@eventespresso/edtr-services';
+import type { TpcPriceModifier } from '../types';
+import type { PriceType } from '@eventespresso/edtr-services';
+import type { EntityId } from '@eventespresso/data';
 import { findEntityByGuid } from '@eventespresso/predicates';
 
 // returns GUID for price modifier's related price type
-export const getPriceModifierPriceTypeGuid = (price: TpcPriceModifier) => prop('priceType', price);
+export const getPriceModifierPriceTypeGuid = (price: TpcPriceModifier): EntityId => prop('priceType', price);
 
 // returns price type for supplied price modifier if found in array of price types
-export const getPriceType = (priceTypes: PriceType[]) => (price: TpcPriceModifier) => {
+export const getPriceType = (priceTypes: PriceType[]) => (price: TpcPriceModifier): PriceType => {
 	return findEntityByGuid(priceTypes)(getPriceModifierPriceTypeGuid(price));
 };
 

@@ -8,7 +8,7 @@ import useFooterRowGenerator from './useFooterRowGenerator';
 import useHeaderRowGenerator from './useHeaderRowGenerator';
 import type { TableProps } from '../../data/types';
 import { useDataState } from '../../data';
-import {useConfig,  useMoneyDisplay } from '@eventespresso/services';
+import { useConfig, useMoneyDisplay } from '@eventespresso/services';
 
 import './styles.scss';
 import { useMemoStringify } from '@eventespresso/services';

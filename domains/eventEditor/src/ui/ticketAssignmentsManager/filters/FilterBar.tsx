@@ -8,7 +8,7 @@ import {
 } from './controls';
 import { useTAMContext } from '../context';
 
-const FilterBar = () => {
+const FilterBar: React.FC = () => {
 	const {
 		assignmentType,
 		filterState: {

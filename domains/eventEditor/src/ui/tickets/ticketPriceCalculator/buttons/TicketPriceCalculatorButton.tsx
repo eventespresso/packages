@@ -11,7 +11,7 @@ import { useTicketPriceCalculator } from '../hooks';
 import type { TooltipProps } from '@eventespresso/adapters';
 import { useMemoStringify } from '@eventespresso/services';
 
-interface TPCButtonProps extends BaseProps, IconButtonProps { }
+interface TPCButtonProps extends BaseProps, IconButtonProps {}
 
 const TicketPriceCalculatorButton: React.FC<TPCButtonProps> = ({ ticketId, ...buttonProps }) => {
 	const { ModalContainer, onOpen, ...disclosure } = useTicketPriceCalculator();

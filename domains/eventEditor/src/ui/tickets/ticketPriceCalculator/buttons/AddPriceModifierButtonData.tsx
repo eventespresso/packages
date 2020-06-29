@@ -27,7 +27,16 @@ const AddPriceModifierButtonData: React.FC<Partial<PriceModifierProps>> = ({ ind
 		};
 
 		addPrice(newPrice, index + 1);
-	}, [addPrice, baseType.isBasePrice, baseType.isDiscount, baseType.isPercent, baseType.isTax, baseType.order, defaultPriceModifier, index]);
+	}, [
+		addPrice,
+		baseType.isBasePrice,
+		baseType.isDiscount,
+		baseType.isPercent,
+		baseType.isTax,
+		baseType.order,
+		defaultPriceModifier,
+		index,
+	]);
 	return <AddPriceModifierButton addPriceModifier={addPriceModifier} />;
 };
 export default AddPriceModifierButtonData;

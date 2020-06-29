@@ -1,8 +1,8 @@
 import { isTrashed, isExpired } from '@eventespresso/predicates';
 import { useFilterState } from '../filters';
-import { useTickets } from '@eventespresso/edtr-services';
+import { useTickets, Ticket } from '@eventespresso/edtr-services';
 
-const useFilteredTickets = () => {
+const useFilteredTickets = (): Array<Ticket> => {
 	const { showExpiredTickets, showTrashedTickets } = useFilterState();
 	let tickets = useTickets();
 

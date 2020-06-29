@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
-import type { Cell, HeaderRowGeneratorFn} from '@eventespresso/components';
+import type { Cell, HeaderRowGeneratorFn } from '@eventespresso/components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';
 
