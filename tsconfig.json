@@ -12,6 +12,8 @@
 		"moduleResolution": "node",
 		"noEmit": true,
 		"paths": {
+			"@blocksServices/*": ["domains/blocks/src/services/*"],
+			"@blocksComponents/*": ["domains/blocks/src/components/*"],
 			"@edtrHooks/*": ["domains/eventEditor/src/hooks/*"],
 			"@edtrInterfaces/*": ["domains/eventEditor/src/interfaces/*"],
 			"@edtrServices/*": ["domains/eventEditor/src/services/*"],
