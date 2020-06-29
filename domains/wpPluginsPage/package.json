@@ -1,0 +1,80 @@
+{
+	"author": "Event Espresso",
+	"name": "@eventespresso/wp-plugins-page",
+	"version": "1.0.0",
+	"private": true,
+	"main": "src/index.ts",
+	"main:src": "src/index.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eventespresso/barista.git"
+	},
+	"dependencies": {
+		"@typeform/embed": "^0.20.0",
+		"@wordpress/components": "^9.7.0",
+		"@wordpress/i18n": "^3.13.0",
+		"@wordpress/url": "^2.16.0"
+	},
+	"devDependencies": {
+		"@react-workspaces/react-scripts": "^3.4.0-alpha-01",
+		"@testing-library/jest-dom": "^5.10.1",
+		"@testing-library/react": "^10.4.1",
+		"@testing-library/react-hooks": "^3.3.0",
+		"@testing-library/user-event": "^12.0.7",
+		"@types/jest": "^26.0.1",
+		"@types/node": "^14.0.14",
+		"@types/react": "^16.9.41",
+		"@types/react-dom": "^16.9.8",
+		"@types/wordpress__components": "^8.5.3",
+		"@types/wordpress__i18n": "^3.11.0",
+		"typescript": "~3.9.5"
+	},
+	"peerDependencies": {
+		"@chakra-ui/hooks": "^1.0.0-next.2",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	},
+	"scripts": {
+		"start": "node ./../../scripts/start.js",
+		"build": "node ./../../scripts/build.js",
+		"test": "react-scripts test",
+		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
+	},
+	"babel": {
+		"presets": [
+			"react-app"
+		]
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"src/**/*.{ts,tsx}",
+			"!src/setupTests.{ts,tsx}",
+			"!src/index.{ts,tsx}",
+			"!src/serviceWorker.{ts,tsx}",
+			"!src/**/*.(spec|test|stories).{ts,tsx}"
+		],
+		"coverageThreshold": {
+			"global": {
+				"statements": 98,
+				"branches": 98,
+				"functions": 98,
+				"lines": 98
+			}
+		}
+	}
+}
