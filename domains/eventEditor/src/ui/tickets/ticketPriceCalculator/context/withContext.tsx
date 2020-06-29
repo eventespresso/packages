@@ -8,7 +8,7 @@ const withContext = <P extends AnyObject>(
 	Component: React.ComponentType<P>,
 	contextProps: WithContextProps,
 	componentProps?: P
-): React.ReactNode => {
+): JSX.Element => {
 	return (
 		<ContextProvider {...contextProps}>
 			<Component {...componentProps} />
