@@ -44,18 +44,4 @@
 			border-bottom-left-radius: 0 !important;
 		}
 	}
-
-	+ .ee-btn {
-		// TODO: rethink this approach such that btn group margins shouldn't rely on nearby buttons
-		// margin-left: var(--ee-margin-default);
-
-		// [dir='rtl'] & {
-		// 	margin-left: 0;
-		// 	margin-right: var(--ee-margin-default);
-		// }
-
-		// @include max782px {
-		// 	margin-left: 0;
-		// }
-	}
 }

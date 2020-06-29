@@ -10,7 +10,7 @@
 		"dev:blocks": "node scripts/watch.js --domains \"blocks\"",
 		"dev:all": "node scripts/watch.js --domains all",
 		"start": "node scripts/start.js",
-		"storybook": "yarn workspace @project/storybook storybook",
+		"storybook": "yarn workspace @eventespresso/storybook storybook",
 		"test-unit": "node scripts/test.js",
 		"test-unit:ci": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true node scripts/test.js"
 	},

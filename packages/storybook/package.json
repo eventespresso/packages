@@ -12,6 +12,7 @@
 		"build-storybook": "build-storybook"
 	},
 	"dependencies": {
+		"@chakra-ui/core": "^0.8.0",
 		"@eventespresso/components": "^1.0.1",
 		"@react-workspaces/react-scripts": "3.4.0-alpha-01",
 		"react": "^16.13.1",
@@ -19,6 +20,8 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.10.3",
+		"@chakra-ui/css-reset": "^1.0.0-next.3",
+		"@chakra-ui/theme": "^1.0.0-next.3",
 		"@storybook/addon-actions": "^5.3.19",
 		"@storybook/addon-docs": "^5.3.19",
 		"@storybook/addon-info": "^5.3.19",
