@@ -81,7 +81,7 @@ packages.forEach((packageName) => {
 	packagePaths.push(packagePath);
 });
 
-const allDomains = ['eventEditor', 'wpPluginsPage', 'blocks'];
+const allDomains = ['eventEditor', 'wpPluginsPage', 'blocks', 'rem'];
 
 /**
  * Get args from CLI to watch only the domains specified during dev
