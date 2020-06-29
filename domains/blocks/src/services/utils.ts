@@ -30,7 +30,6 @@ export const buildEntitySelectOptions = (list: Array<any>, loading: boolean, err
 	];
 };
 
-
 export const getAttendeesOrderBy = (orderBy: string, order: Order): EntityQueryOrderBy<AttendeesOrderByFields> => {
 	const orderByFirstName = {
 		field: 'FIRST_NAME',

@@ -36,42 +36,5 @@
 		"build": "node ./../../scripts/build.js",
 		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
-	},
-	"babel": {
-		"presets": [
-			"react-app"
-		]
-	},
-	"eslintConfig": {
-		"extends": "react-app"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"jest": {
-		"collectCoverageFrom": [
-			"src/**/*.{ts,tsx}",
-			"!src/setupTests.{ts,tsx}",
-			"!src/index.{ts,tsx}",
-			"!src/serviceWorker.{ts,tsx}",
-			"!src/**/*.(spec|test|stories).{ts,tsx}"
-		],
-		"coverageThreshold": {
-			"global": {
-				"statements": 98,
-				"branches": 98,
-				"functions": 98,
-				"lines": 98
-			}
-		}
 	}
 }
