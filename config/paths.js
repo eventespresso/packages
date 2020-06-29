@@ -106,6 +106,8 @@ if (domainsToWatch.some((domain) => !allDomains.includes(domain))) {
 	throw new Error('Unknown domain');
 }
 
+console.log('Watching domains: ', domainsToWatch);
+
 const domainPaths = [];
 const domainEntries = {};
 

@@ -28,20 +28,20 @@
 	},
 	"plugins": ["react-hooks", "jsx-a11y"],
 	"rules": {
+		"@typescript-eslint/ban-ts-comment": "off",
+		"@typescript-eslint/ban-ts-ignore": "off",
+		"@typescript-eslint/no-empty-interface": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-use-before-define": "off",
 		"comma-dangle": "off",
 		"jest/valid-describe": "off",
 		"no-case-declarations": "warn",
-		"react-hooks/rules-of-hooks": "error",
+		"no-unused-vars": "error",
 		"react-hooks/exhaustive-deps": "error",
-		"react/prop-types": "off",
-		"react/static-property-placement": "off",
+		"react-hooks/rules-of-hooks": "error",
 		"react/display-name": "off",
-		"@typescript-eslint/no-explicit-any": "off",
-		"@typescript-eslint/no-use-before-define": "off",
-		"@typescript-eslint/ban-ts-ignore": "off",
-		"@typescript-eslint/ban-ts-comment": "off",
-		"@typescript-eslint/no-empty-interface": "off",
-		"no-unused-vars": "error"
+		"react/prop-types": "off",
+		"react/static-property-placement": "off"
 	},
 	"settings": {
 		"react": {
