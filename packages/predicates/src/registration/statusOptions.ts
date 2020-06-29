@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 
-const regStatusOptions = [
+export const regStatusOptions = [
 	{
 		value: 'APPROVED',
 		label: __('Approved', 'event_espresso'),
@@ -30,5 +30,3 @@ const regStatusOptions = [
 		label: __('Wait List', 'event_espresso'),
 	},
 ];
-
-export default regStatusOptions;
