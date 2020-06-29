@@ -3,9 +3,11 @@
 	"name": "@eventespresso/event-editor",
 	"version": "1.0.0",
 	"private": true,
+	"main": "src/index.ts",
+	"main:src": "src/index.ts",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/eventespresso/packages.git"
+		"url": "git+https://github.com/eventespresso/barista.git"
 	},
 	"dependencies": {
 		"@wordpress/url": "^2.16.0",
@@ -33,7 +35,6 @@
 		"start": "node ./../../scripts/start.js",
 		"build": "node ./../../scripts/build.js",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject",
 		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
 	},
 	"babel": {
