@@ -19,22 +19,24 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ defaultCheckedOptions, on
 
 	const options = getOptions();
 
-	return (
-		<div>
-			{options.map((option) => (
-				<>
-					<input
-						key={option.value.toString()}
-						id='btn-check'
-						onChange={onChange}
-						type='checkbox'
-						checked={option.checked}
-					/>
-					<label for='btn-check'>{option.label}</label>
-				</>
-			))}
-		</div>
-	);
+	return null;
+
+	// return (
+	// 	<div>
+	// 		{options.map((option) => (
+	// 			<>
+	// 				<input
+	// 					key={option.value.toString()}
+	// 					id='btn-check'
+	// 					onChange={onChange}
+	// 					type='checkbox'
+	// 					checked={option.checked}
+	// 				/>
+	// 				<label for='btn-check'>{option.label}</label>
+	// 			</>
+	// 		))}
+	// 	</div>
+	// );
 };
 
 export default CheckboxGroup;
