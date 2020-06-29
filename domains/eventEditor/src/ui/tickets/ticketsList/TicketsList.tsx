@@ -1,13 +1,14 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import AddNewTicketButton from './AddNewTicketButton';
-import { EntityList } from '@eventespresso/components';
-import { legendConfig } from './config';
-import { TicketsListProvider, withEntityListContext } from '@edtrServices/context';
 import { TypeName } from '@eventespresso/services';
+import { domain, ticketsList } from '@eventespresso/edtr-services';
+import { EntityList } from '@eventespresso/components';
+
+import { TicketsListProvider, withEntityListContext } from '@edtrServices/context';
 import { useTicketsListFilterState } from '@edtrServices/filterState';
-import { domain, ticketsList } from '@edtrServices/constants';
+import AddNewTicketButton from './AddNewTicketButton';
+import { legendConfig } from './config';
 import { RenderCardView } from './cardView';
 import { RenderTableView } from './tableView';
 

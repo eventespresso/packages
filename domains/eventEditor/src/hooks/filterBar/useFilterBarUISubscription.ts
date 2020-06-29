@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useFilterBarUISubscription as useAppFilterBarUISubscription } from '@eventespresso/registry';
 import useDatesListFilterBar from '@edtrUI/datetimes/hooks/useDatesListFilterBar';
 import useTicketsListFilterBar from '@edtrUI/tickets/hooks/useTicketsListFilterBar';
-import { domain } from '@edtrServices/constants';
+import { domain } from '@eventespresso/edtr-services';
 
 const useFilterBarUISubscription = (): void => {
 	const { subscribe } = useAppFilterBarUISubscription(domain);

@@ -1,13 +1,14 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import AddNewDateButton from './AddNewDateButton';
-import { DatetimesListProvider, withEntityListContext } from '@edtrServices/context/EntityListContext';
-import { EntityList } from '@eventespresso/components';
-import { legendConfig } from './config';
 import { TypeName } from '@eventespresso/services';
+import { domain, datesList } from '@eventespresso/edtr-services';
+import { EntityList } from '@eventespresso/components';
+
+import { DatetimesListProvider, withEntityListContext } from '@edtrServices/context';
 import { useDatesListFilterState } from '@edtrServices/filterState';
-import { domain, datesList } from '@edtrServices/constants';
+import AddNewDateButton from './AddNewDateButton';
+import { legendConfig } from './config';
 import { RenderCardView } from './cardView';
 import { RenderTableView } from './tableView';
 

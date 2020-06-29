@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 
 import { useFilterBarService } from '@eventespresso/registry';
-import { ticketSalesFilter, ticketStatusFilter, sortTickets} from '@eventespresso/predicates';
-import { domain, ticketsList } from '@edtrServices/constants';
+import { ticketSalesFilter, ticketStatusFilter, sortTickets } from '@eventespresso/predicates';
+import { domain, ticketsList } from '@eventespresso/edtr-services';
 import { entityListSearch } from '@eventespresso/services';
-import type {Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
+import type { Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
 import useIsChainedFilter from './useIsChainedFilter';
 
 type Domain = typeof domain;

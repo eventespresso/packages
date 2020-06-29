@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Entity } from '@eventespresso/data';
 import { useEntityActionsSubscription, useEntityActionsMenuRegistry } from '@eventespresso/registry';
-import { domain } from '@edtrServices/constants';
+import { domain } from '@eventespresso/edtr-services';
 
 const useEntityActionsMenuItems = <E extends Entity, T extends string>(
 	entityType: T,

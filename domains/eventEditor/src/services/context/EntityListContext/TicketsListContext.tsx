@@ -5,8 +5,7 @@ import type { EntityListContextProps } from '../types';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';
 import { useTicketsListFilterStateManager } from '@edtrServices/filterState/tickets';
 import { useFilteredEntities } from '@eventespresso/components';
-import { domain, ticketsList } from '@edtrServices/constants';
-import { useTickets } from '@eventespresso/edtr-services';
+import { domain, ticketsList, useTickets } from '@eventespresso/edtr-services';
 import type { Ticket } from '@eventespresso/edtr-services';
 import { notTrashed } from '@eventespresso/predicates';
 

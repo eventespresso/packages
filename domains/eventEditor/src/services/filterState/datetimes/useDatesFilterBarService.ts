@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 
 import { useFilterBarService } from '@eventespresso/registry';
-import { dateSalesFilter, dateStatusFilter, sortDates} from '@eventespresso/predicates';
-import { datesList, domain } from '@edtrServices/constants';
+import { dateSalesFilter, dateStatusFilter, sortDates } from '@eventespresso/predicates';
+import { datesList, domain } from '@eventespresso/edtr-services';
 import { entityListSearch } from '@eventespresso/services';
-import { Datetime } from '@eventespresso/edtr-services';
-import { DatetimesFilterStateManager } from '@edtrServices/filterState';
+import type { Datetime } from '@eventespresso/edtr-services';
+import type { DatetimesFilterStateManager } from '@edtrServices/filterState';
 
 type Domain = typeof domain;
 type DFSM = DatetimesFilterStateManager;
