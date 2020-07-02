@@ -30,7 +30,7 @@ const useOnCreateRecurrence = (): RecurrenceMutationCallbackFn => {
 					});
 				});
 			}
-			// Update recurrence cache after price cache is updated.
+			// Update recurrence cache.
 			updateRecurrenceCache({ proxy, recurrences, recurrence, action: 'add' });
 		},
 		[addRelation, updateRelations, updateRecurrenceCache]
