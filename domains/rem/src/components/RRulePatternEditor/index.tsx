@@ -5,11 +5,13 @@ import { __ } from '@wordpress/i18n';
 
 import { PATTERN_TYPE_RECURRENCE } from '../../constants';
 
+import './style.scss';
+
 interface PatternEditorProps {
 	id: string;
 	onChange: VoidFunction;
 	rruleString: string;
-	type: string;
+	type: 'recurrence' | 'exclusion';
 }
 
 const PatternEditor: React.FC<PatternEditorProps> = ({ id, type, rruleString, onChange }) => {
@@ -66,7 +68,7 @@ const RRulePatternEditor: React.FC<RRulePatternEditorProps> = ({
 		rruleString && rrule instanceof RRule && rrule.isFullyConvertibleToText() ? rrule.toText() : 'none';
 
 	return (
-		<>
+		<div className='rrule-generator-wrapper'>
 			<div className={`${type}-form rem-form-row`}>
 				<PatternEditor id={id} onChange={onChange} rruleString={rruleString} type={type} />
 			</div>
@@ -74,7 +76,7 @@ const RRulePatternEditor: React.FC<RRulePatternEditorProps> = ({
 				<PatternEditorControls label={label} onChange={onChange} />
 				<div className='clear'></div>
 			</div>
-		</>
+		</div>
 	);
 };
 

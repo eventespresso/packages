@@ -2,11 +2,13 @@ import React from 'react';
 // import { isEmpty, isArray } from 'lodash';
 import { __ } from '@wordpress/i18n';
 // import moment from 'moment';
-import { RRule, RRuleSet } from 'rrule';
+import { RRule, RRuleSet, rrulestr } from 'rrule';
 
-import RRulePatternEditor from './RRulePatternEditor';
-import ExtraDatetimes from './ExtraDatetimes';
-import Datetimes from './Datetimes';
+import type { Datetime } from '@eventespresso/edtr-services';
+
+import RRulePatternEditor from '../RRulePatternEditor';
+// import ExtraDatetimes from './ExtraDatetimes';
+// import Datetimes from './Datetimes';
 // import { DATA_STORE_KEY_REM } from '../data-stores';
 import { PATTERN_TYPE_RECURRENCE, PATTERN_TYPE_EXCLUSION } from '../../constants';
 
@@ -14,35 +16,29 @@ import { generateDatetimes, getRecurrenceFrequency } from '../../utils';
 
 import './style.scss';
 
-const EditDatetimeRecurrence: React.FC<any> = ({
-	editorOpen,
-	eventDate,
-	toggleEditor,
-	rRule,
-	exRule,
-	rDates,
-	exDates,
-	onExclusionChange,
-	addRdate,
-	deleteRdate,
-	addExDate,
-	deleteExDate,
-}) => {
+interface Props {
+	datetime: Datetime;
+}
+
+const EditDatetimeRecurrence: React.FC<Props> = ({ datetime }) => {
 	const onRecurrenceChange = (rRuleString) => {
-		rRuleString = rRuleString.target ? rRuleString.target.value : rRuleString;
-		return rRuleString ? addRrule(eventDate, rRuleString) : resetRrule(eventDate);
+		// rRuleString = rRuleString.target ? rRuleString.target.value : rRuleString;
+		// return rRuleString ? addRrule(eventDate, rRuleString) : resetRrule(eventDate);
+		return rRuleString;
 	};
+
+	const ruleString = 'DTSTART:20120201T093000Z\nRRULE:FREQ=WEEKLY;INTERVAL=5;UNTIL=20130130T230000Z;BYDAY=MO,FR';
 
 	return (
 		<>
 			<RRulePatternEditor
-				id={eventDate.id}
+				id={datetime.id}
 				type={PATTERN_TYPE_RECURRENCE}
-				rruleString={rRule}
+				rruleString={ruleString}
 				onChange={onRecurrenceChange}
 				initialOpen={true}
 			/>
-			<RRulePatternEditor
+			{/* <RRulePatternEditor
 				id={eventDate.id}
 				type={PATTERN_TYPE_EXCLUSION}
 				rruleString={exRule}
@@ -67,58 +63,9 @@ const EditDatetimeRecurrence: React.FC<any> = ({
 				datetimes={datetimes}
 				freq={getRecurrenceFrequency(rRule)}
 				onClick={addExDate}
-			/>
+			/> */}
 		</>
 	);
 };
 
 export default EditDatetimeRecurrence;
-
-// export default compose(
-// 	withSelect((select, ownProps) => {
-// 		const { getRRule, getExRule, getRDates, getExDates } = select(DATA_STORE_KEY_REM);
-// 		const { eventDate } = ownProps;
-// 		// console.log( 'EditDatetimeRecurrence withSelect() ownProps', ownProps );
-// 		return eventDate.hasOwnProperty('id')
-// 			? {
-// 					rRule: getRRule(eventDate),
-// 					exRule: getExRule(eventDate),
-// 					rDates: getRDates(eventDate),
-// 					exDates: getExDates(eventDate),
-// 			  }
-// 			: {};
-// 	}),
-// 	withDispatch((dispatch, ownProps) => {
-// 		const {
-// 			addRrule,
-// 			resetRrule,
-// 			addExRule,
-// 			resetExRule,
-// 			addRdate,
-// 			deleteRdate,
-// 			addExDate,
-// 			deleteExDate,
-// 		} = dispatch(DATA_STORE_KEY_REM);
-// 		const { eventDate } = ownProps;
-// 		// console.log( 'EditDatetimeRecurrence withDispatch() ownProps', ownProps );
-// 		return {
-
-// 			onExclusionChange(exRuleString) {
-// 				exRuleString = exRuleString.target ? exRuleString.target.value : exRuleString;
-// 				return exRuleString ? addExRule(eventDate, exRuleString) : resetExRule(eventDate);
-// 			},
-// 			addRdate(rDate) {
-// 				return addRdate(eventDate, rDate);
-// 			},
-// 			deleteRdate(rDate) {
-// 				return deleteRdate(eventDate, rDate);
-// 			},
-// 			addExDate(exDate) {
-// 				return addExDate(eventDate, exDate);
-// 			},
-// 			deleteExDate(exDate) {
-// 				return deleteExDate(eventDate, exDate);
-// 			},
-// 		};
-// 	})
-// )(EditDatetimeRecurrence);

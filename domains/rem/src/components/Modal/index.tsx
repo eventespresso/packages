@@ -3,13 +3,21 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@wordpress/i18n';
 
 import { Button } from '@eventespresso/components';
+import type { Datetime } from '@eventespresso/edtr-services';
 import { ModalWithAlert } from '@eventespresso/components';
 
-// import { EditDatetimeRecurrence } from '../EditDatetimeRecurrence';
-// import { ContentBody } from '../MultiStep';
+import { ContentBody as MultiStepContent } from '../MultiStep';
 import useCancelButtonProps from './useCancelButtonProps';
 
-const Modal: React.FC<any> = ({ isOpen, datetime, onClose }) => {
+import './styles.scss';
+
+interface ModalProps {
+	datetime: Datetime;
+	isOpen: boolean;
+	onClose: VoidFunction;
+}
+
+const Modal: React.FC<ModalProps> = ({ isOpen, datetime, onClose }) => {
 	const { isOpen: isRecurrenceOpen, onOpen: onRecurrenceOpen } = useDisclosure();
 	const cancelButtonProps = useCancelButtonProps(onClose);
 
@@ -20,12 +28,11 @@ const Modal: React.FC<any> = ({ isOpen, datetime, onClose }) => {
 			className='ee-rem-modal'
 			isOpen={isOpen}
 			onClose={onClose}
-			title={__('Recurring Events Manager')}
 			showAlertOnEscape={false}
+			title={__('Recurring Events Manager')}
 		>
-			<Button buttonText={__('Convert date')} onClick={onRecurrenceOpen} />
-			{/* {isRecurrenceOpen && <EditDatetimeRecurrence />} */}
-			{/* {isRecurrenceOpen && <ContentBody />} */}
+			{!isRecurrenceOpen && <Button buttonText={__('Convert date')} onClick={onRecurrenceOpen} />}
+			{isRecurrenceOpen && <MultiStepContent datetime={datetime} />}
 		</ModalWithAlert>
 	);
 };
