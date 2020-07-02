@@ -1,6 +1,6 @@
 import type { EntityId } from '@eventespresso/data';
 
-export type RelationEntity = 'datetimes' | 'tickets' | 'prices' | 'priceTypes';
+export type RelationEntity = 'datetimes' | 'tickets' | 'prices' | 'priceTypes' | 'recurrences';
 
 interface CommonProps<Entity extends RelationEntity> {
 	relation?: Exclude<RelationEntity, Entity>;

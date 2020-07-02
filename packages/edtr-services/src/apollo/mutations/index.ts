@@ -22,3 +22,5 @@ export * from './tickets';
 export * from './prices';
 
 export * from './types';
+
+export { default as useUpdateCallback } from './useUpdateCallback';
