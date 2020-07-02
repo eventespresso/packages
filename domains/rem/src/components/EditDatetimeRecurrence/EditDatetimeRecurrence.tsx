@@ -6,7 +6,7 @@ import { RRule, RRuleSet } from 'rrule';
 
 import RRulePatternEditor from './RRulePatternEditor';
 import ExtraDatetimes from './ExtraDatetimes';
-import GeneratedDatetimes from './GeneratedDatetimes';
+import Datetimes from './Datetimes';
 // import { DATA_STORE_KEY_REM } from '../data-stores';
 import { PATTERN_TYPE_RECURRENCE, PATTERN_TYPE_EXCLUSION } from '../../constants';
 
@@ -14,7 +14,7 @@ import { generateDatetimes, getRecurrenceFrequency } from '../../utils';
 
 import './style.scss';
 
-const EditDatetimeRecurrence = ({
+const EditDatetimeRecurrence: React.FC<any> = ({
 	editorOpen,
 	eventDate,
 	toggleEditor,
@@ -62,7 +62,7 @@ const EditDatetimeRecurrence = ({
 				addDatetime={addExDate}
 				deleteDatetime={deleteExDate}
 			/>
-			<GeneratedDatetimes
+			<Datetimes
 				id={eventDate.id}
 				datetimes={datetimes}
 				freq={getRecurrenceFrequency(rRule)}

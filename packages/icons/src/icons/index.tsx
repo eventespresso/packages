@@ -19,6 +19,7 @@ export { default as Filter } from './Filter';
 export { default as GlobalOutlined } from './GlobalOutlined';
 export { default as Groups } from './Groups';
 export { default as InfoCircleOutlined } from './InfoCircleOutlined';
+export { default as Insert } from './Insert';
 export { default as Link } from './Link';
 export { default as MinusOutlined } from './MinusOutlined';
 export { default as More } from './More';

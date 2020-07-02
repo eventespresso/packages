@@ -1,45 +1,21 @@
 import React from 'react';
-import DateTime from 'react-datetime';
 import { __ } from '@wordpress/i18n';
-import { Dashicon, IconButton, Tooltip } from '@wordpress/components';
 
-const AddDate = ({ addDateHandler }) => {
-	return (
-		<Tooltip text={__('Add Extra Event Date')}>
-			<IconButton
-				id={'add-datetime-button'}
-				className={'components-button components-icon-button'}
-				onClick={addDateHandler}
-			>
-				<Dashicon icon={'insert'} />
-			</IconButton>
-		</Tooltip>
-	);
-};
+import { Button } from '@eventespresso/components';
+import { Datepicker } from '@eventespresso/adapters';
+import { Insert, Trash } from '@eventespresso/icons';
 
-const DeleteDate = ({ deleteDateHandler }) => {
-	return (
-		<Tooltip text={__('Delete this Event Date')}>
-			<IconButton
-				id={'delete-datetime-button'}
-				className={'components-button components-icon-button'}
-				onClick={deleteDateHandler}
-			>
-				<Dashicon icon={'trash'} />
-			</IconButton>
-		</Tooltip>
-	);
-};
+interface ExtraDatetimeProps {
+	extraDate: any;
+	options: any;
+	handleChange: VoidFunction;
+	datetimeCount: number;
+	addDateHandler: VoidFunction;
+	deleteDateHandler: VoidFunction;
+	index: number;
+}
 
-const Actions = ({ lastItem, addDateHandler, deleteDateHandler }) => {
-	return lastItem ? (
-		<AddDate addDateHandler={addDateHandler} />
-	) : (
-		<DeleteDate deleteDateHandler={deleteDateHandler} />
-	);
-};
-
-const ExtraDatetime = ({
+const ExtraDatetime: React.FC<ExtraDatetimeProps> = ({
 	extraDate,
 	options,
 	handleChange,
@@ -48,31 +24,16 @@ const ExtraDatetime = ({
 	deleteDateHandler,
 	index,
 }) => {
-	const calendarAttributes = {
-		'aria-label': __('Datetime picker for an extra date', 'event_espresso'),
-		value: extraDate.start,
-		dateFormat: options.dateFormat,
-		locale: options.locale,
-		readOnly: true,
-	};
-
 	return (
 		<>
-			<DateTime
-				{...calendarAttributes}
-				inputProps={{ name: extraDate.name, readOnly: true }}
-				timeFormat={false}
-				viewMode='days'
-				closeOnSelect
-				closeOnTab
-				required
-				onChange={handleChange}
-			/>
-			<Actions
-				lastItem={index === datetimeCount}
-				addDateHandler={addDateHandler}
-				deleteDateHandler={deleteDateHandler}
-			/>
+			{/* To be extended */}
+			<Datepicker onChange={handleChange} />
+
+			{index === datetimeCount ? (
+				<Button icon={Insert} onClick={addDateHandler} tooltip={__('Add Extra Event Date')} />
+			) : (
+				<Button icon={Trash} onClick={deleteDateHandler} tooltip={__('Delete this Event Date')} />
+			)}
 		</>
 	);
 };
