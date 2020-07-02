@@ -15,9 +15,9 @@ interface RecurrenceMutator {
 	deleteEntity: MutationFunction<DeleteRecurrenceResult, DeleteRecurrenceInput>;
 }
 
-type PM = RecurrenceMutator;
+type RM = RecurrenceMutator;
 
-const useRecurrenceMutator = (id = ''): PM => {
+const useRecurrenceMutator = (id = ''): RM => {
 	// create a single toaster instance to share between all mutations
 	const toaster = useSystemNotifications();
 
@@ -46,7 +46,7 @@ const useRecurrenceMutator = (id = ''): PM => {
 
 	const getUpdateCallback = useUpdateCallback((TypeName.Recurrence as unknown) as EdtrTypeName);
 
-	const createEntity = useCallback<PM['createEntity']>(
+	const createEntity = useCallback<RM['createEntity']>(
 		(input) => {
 			const { onUpdate, ...options } = mutationHandler(MutationType.Create, input);
 
@@ -57,7 +57,7 @@ const useRecurrenceMutator = (id = ''): PM => {
 		[createRecurrence, getUpdateCallback, mutationHandler]
 	);
 
-	const updateEntity = useCallback<PM['updateEntity']>(
+	const updateEntity = useCallback<RM['updateEntity']>(
 		(input) => {
 			const { onUpdate, ...options } = mutationHandler(MutationType.Update, { id, ...input });
 
@@ -68,7 +68,7 @@ const useRecurrenceMutator = (id = ''): PM => {
 		[getUpdateCallback, id, mutationHandler, updateRecurrence]
 	);
 
-	const deleteEntity = useCallback<PM['deleteEntity']>(
+	const deleteEntity = useCallback<RM['deleteEntity']>(
 		(input) => {
 			const { onUpdate, ...options } = mutationHandler(MutationType.Delete, { id, ...input });
 
