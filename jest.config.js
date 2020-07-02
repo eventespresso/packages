@@ -1,3 +1,4 @@
+/* eslint-disable */
 function resolveTsconfigPathsToModuleNameMapper() {
 	const tsconfigPath = './tsconfig.json';
 	const { paths } = require(tsconfigPath).compilerOptions;
@@ -20,9 +21,21 @@ function resolveTsconfigPathsToModuleNameMapper() {
 	return moduleNameMapper;
 }
 
+const { domains, packages } = require('./config/paths');
+let roots = [],
+	testMatch = [];
+domains.forEach((domain) => {
+	roots.push(`<rootDir>/domains/${domain}/src`);
+	testMatch.push(`<rootDir>/domains/${domain}/src/**/*.test.{ts,tsx}`);
+});
+packages.forEach((package) => {
+	roots.push(`<rootDir>/packages/${package}/src`);
+	testMatch.push(`<rootDir>/packages/${package}/src/**/*.test.{ts,tsx}`);
+});
+
 module.exports = {
-	roots: ['<rootDir>/domains/eventEditor/src', '<rootDir>/packages'],
-	testMatch: ['<rootDir>/domains/eventEditor/src/**/*.test.{ts,tsx}', '<rootDir>/packages/**/*.test.{ts,tsx}'],
+	roots,
+	testMatch,
 	transform: {
 		'^.+\\.(js|jsx)$': '<rootDir>/node_modules/babel-jest',
 		'^.+\\.(ts|tsx)$': '<rootDir>/node_modules/ts-jest',
