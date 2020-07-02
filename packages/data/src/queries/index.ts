@@ -12,6 +12,8 @@ export * from './events';
 
 export * from './generalSettings';
 
+export * from './recurrences';
+
 export * from './registrations';
 
 export * from './tickets';

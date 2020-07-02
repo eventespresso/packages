@@ -24,6 +24,7 @@ export const resolverMap: CacheResolverMap = {
 		ticket: getResolver('EspressoTicket'),
 		price: getResolver('EspressoPrice'),
 		priceType: getResolver('EspressoPriceType'),
+		recurrence: getResolver('EspressoRecurrence'),
 	},
 };
 
