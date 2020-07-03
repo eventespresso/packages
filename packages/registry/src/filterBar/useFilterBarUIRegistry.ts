@@ -1,4 +1,4 @@
-import { useUIRegistry } from '@eventespresso/services';
+import { useUIRegistry } from '../subscription';
 import { FilterBarUIRegistryHook } from './types';
 import { FilterBarServiceType } from './types';
 

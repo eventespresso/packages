@@ -1,6 +1,6 @@
 import { filter } from 'ramda';
 
-import { useSubscriptionService } from '@eventespresso/services';
+import { useSubscriptionService } from '../subscription';
 import type { EntityActionsSubscription, EntityActionsSubscriptionHook } from './types';
 import { serviceName as service } from './constants';
 

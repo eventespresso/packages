@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { allPass, filter, pathEq } from 'ramda';
 import invariant from 'invariant';
 
-import { useSubscriptionService, SubscriptionService } from '@eventespresso/services';
+import { useSubscriptionService, SubscriptionService } from '../subscription';
 import type { FilterBarServiceHook, FilterBarServiceRegistry } from './types';
 import { FilterBarServiceType } from './types';
 

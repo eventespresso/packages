@@ -8,7 +8,7 @@ import type {
 	SubscriptionCallback,
 	Subscriptions,
 	UIRegistry,
-} from '@eventespresso/services';
+} from '../subscription';
 
 export enum FilterBarServiceType {
 	UI = 'entityListFilterBarUI',
