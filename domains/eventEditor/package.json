@@ -3,6 +3,7 @@
 	"name": "@eventespresso/event-editor",
 	"version": "1.0.0",
 	"private": true,
+	"license": "GPL-3.0",
 	"main": "src/index.ts",
 	"main:src": "src/index.ts",
 	"repository": {
