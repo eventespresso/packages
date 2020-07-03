@@ -8,7 +8,8 @@ import { getDatetimeStatusTextLabel, datetimeStatusBgColorClassName } from '@eve
 
 import { EntityCard } from '@eventespresso/components';
 import { useDatesListFilterState } from '@edtrServices/filterState';
-import { getPropsAreEqual, useMemoStringify } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 import Details from './Details';
 import type { DateItemProps } from '../types';
 

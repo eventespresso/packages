@@ -7,7 +7,8 @@ import { sortByPriceOrderIdAsc } from '@eventespresso/predicates';
 import { TICKET_FIELDS_TO_USE } from '../utils/constants';
 import { useTicketItem, useTicketPrices, usePriceTypes } from '@eventespresso/edtr-services';
 import type { Ticket } from '@eventespresso/edtr-services';
-import { useMemoStringify, useRelations } from '@eventespresso/services';
+import { useRelations } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 /**
  * Initializes the data state dynamically by

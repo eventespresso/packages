@@ -9,7 +9,8 @@ import type { Ticket } from '@eventespresso/edtr-services';
 import { EntityId } from '@eventespresso/data';
 import { validate } from './formValidation';
 import { TicketFormShape } from './types';
-import { useTimeZoneTime, useMemoStringify, setDateToToday, setTimeToZeroHour } from '@eventespresso/services';
+import { useTimeZoneTime, setDateToToday, setTimeToZeroHour } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
 
 type TicketFormConfig = EspressoFormProps<TicketFormShape>;

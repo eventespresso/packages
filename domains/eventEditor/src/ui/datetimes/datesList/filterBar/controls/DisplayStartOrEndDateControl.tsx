@@ -4,7 +4,7 @@ import { SelectInput } from '@eventespresso/components';
 import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 import { getPropsAreEqual } from '@eventespresso/services';
 import type { DatetimesFilterStateManager } from '@edtrServices/filterState';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 type DisplayStartOrEndDateControlProps = Pick<
 	DatetimesFilterStateManager,

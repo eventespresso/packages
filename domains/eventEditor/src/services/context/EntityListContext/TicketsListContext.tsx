@@ -1,6 +1,6 @@
 import React, { createContext, useEffect } from 'react';
 
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 import type { EntityListContextProps } from '../types';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';
 import { useTicketsListFilterStateManager } from '@edtrServices/filterState/tickets';

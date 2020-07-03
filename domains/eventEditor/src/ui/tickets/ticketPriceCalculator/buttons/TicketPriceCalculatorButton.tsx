@@ -9,7 +9,7 @@ import { withIsLoaded } from '@eventespresso/services';
 import type { BaseProps } from '../types';
 import { useTicketPriceCalculator } from '../hooks';
 import type { TooltipProps } from '@eventespresso/adapters';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 interface TPCButtonProps extends BaseProps, IconButtonProps {}
 

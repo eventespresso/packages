@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 import { Banner } from '../Banner';
 

@@ -3,7 +3,7 @@ import { identity, sortBy } from 'ramda';
 import useTicketIds from '../tickets/useTicketIds';
 import { GET_PRICES } from '../prices';
 import {EntityId, ReadQueryOptions } from '@eventespresso/data';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 const usePriceQueryOptions = (ticketIn: EntityId[] = []): ReadQueryOptions => {
 	const ticketIds = useTicketIds();

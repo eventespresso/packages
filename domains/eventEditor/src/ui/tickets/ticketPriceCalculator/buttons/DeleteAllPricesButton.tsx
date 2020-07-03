@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { ConfirmDelete } from '@eventespresso/components';
 import { useDataState } from '../data';
 import { ButtonType } from '@eventespresso/components';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 import { useRemoveDefaultTax } from '../hooks';
 
 const DeleteAllPricesButton: React.FC = () => {

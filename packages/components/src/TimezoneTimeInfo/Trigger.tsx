@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 
 import { GlobalOutlined } from '@eventespresso/icons';
 import type { TooltipProps } from '@eventespresso/adapters';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 import { IconButton } from '../../';
 

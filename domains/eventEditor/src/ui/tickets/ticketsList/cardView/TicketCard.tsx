@@ -10,7 +10,8 @@ import { EntityCard } from '@eventespresso/components';
 import { getTicketStatusTextLabel, ticketStatusBgColorClassName } from '@eventespresso/helpers';
 import { useTicketsListFilterState } from '@edtrServices/filterState';
 import type { TicketItemProps } from '../types';
-import { getPropsAreEqual, useMemoStringify } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 const TicketCard: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 	const { displayStartOrEndDate } = useTicketsListFilterState();

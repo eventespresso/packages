@@ -8,7 +8,8 @@ import { domain, datesList, useDatetimes } from '@eventespresso/edtr-services';
 import type { Datetime } from '@eventespresso/edtr-services';
 import { useEdtrState } from '@edtrHooks/edtrState';
 import { getGuids, notTrashed } from '@eventespresso/predicates';
-import { entityListCacheIdString, useMemoStringify } from '@eventespresso/services';
+import { entityListCacheIdString } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 export type DatetimesListContextProps = EntityListContextProps<DatetimesFilterStateManager, Datetime>;
 

@@ -4,7 +4,7 @@ import { Editable as ChakraEditable } from '@chakra-ui/core';
 import type { InlineEditProps } from './types';
 import InlineEditInput from './InlineEditInput';
 import InlineEditPreview from './InlineEditPreview';
-import usePrevious from '../../../services/src/hooks/usePrevious'; // to avoid external dep
+import { usePrevious } from '@eventespresso/hooks';
 
 const InlineEdit: React.FC<InlineEditProps> = ({
 	defaultValue,
@@ -25,7 +25,7 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 			setCurrentValue(value);
 			setPrevSubmitValue(value);
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);
 
 	const onSubmitHandler = useCallback<InlineEditProps['onSubmit']>(() => {

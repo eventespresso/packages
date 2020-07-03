@@ -1,7 +1,7 @@
 import { GET_RECURRENCES } from '../recurrences';
 import { RecurrencesList, RecurrencesQueryArgs, ReadQueryOptions } from '@eventespresso/data';
 import { RecurrenceEdge } from '../../types';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 type RecurrencesQueryOptions = ReadQueryOptions<RecurrencesList<RecurrenceEdge>, RecurrencesQueryArgs>;
 

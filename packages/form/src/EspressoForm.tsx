@@ -7,7 +7,7 @@ import FormRenderer from './renderers/FormRenderer';
 import { FormProvider } from './context';
 import { updateFieldValue } from './utils';
 import './styles.scss';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 const EspressoForm: React.FC<EspressoFormProps> = ({ onSubmit, mutators, layout, ...rest }) => {
 	const context = useMemoStringify({ layout });

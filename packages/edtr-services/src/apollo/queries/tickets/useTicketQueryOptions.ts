@@ -4,7 +4,7 @@ import { GET_TICKETS } from '../tickets';
 import {EntityId, TicketsList, TicketsQueryArgs, ReadQueryOptions } from '@eventespresso/data';
 import { TicketEdge } from '../../';
 import useDatetimeIds from '../datetimes/useDatetimeIds';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 type DatetimesQueryOptions = ReadQueryOptions<TicketsList<TicketEdge>, TicketsQueryArgs>;
 

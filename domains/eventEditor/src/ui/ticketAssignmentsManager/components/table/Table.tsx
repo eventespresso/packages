@@ -5,7 +5,7 @@ import useGetBodyRows from './useGetBodyRows';
 import useGetHeaderRows from './useGetHeaderRows';
 import { DatesAndTickets } from '../../types';
 import { ResponsiveTable } from '@eventespresso/components';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 import './styles.scss';
 

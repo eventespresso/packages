@@ -2,7 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
-import { isFunc, isEmpty, useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
+import { isFunc, isEmpty } from '@eventespresso/services';
 import Table from './Table';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';

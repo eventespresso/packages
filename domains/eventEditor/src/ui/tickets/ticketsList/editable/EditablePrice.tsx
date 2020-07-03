@@ -6,7 +6,7 @@ import { useTicketMutator } from '@eventespresso/edtr-services';
 import { getPropsAreEqual } from '@eventespresso/services';
 import { CurrencyInput } from '@eventespresso/components';
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 interface EditablePriceProps extends TicketItemProps {
 	className?: string;

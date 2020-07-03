@@ -1,5 +1,5 @@
 import type { Ticket, TicketEdge } from '../../types';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 import { useTicketsQuery } from '@eventespresso/data';
 import useTicketQueryOptions from './useTicketQueryOptions';
 import { getCacheIds } from '@eventespresso/predicates';

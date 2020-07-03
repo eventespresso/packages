@@ -5,7 +5,7 @@ import { SelectInput } from '@eventespresso/components';
 import { TicketsStatus } from '@edtrServices/filterState';
 import { getPropsAreEqual } from '@eventespresso/services';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 type StatusControlProps = Pick<TicketsFilterStateManager, 'isChained' | 'status' | 'setStatus'>;
 

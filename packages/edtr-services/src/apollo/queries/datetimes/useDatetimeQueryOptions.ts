@@ -2,7 +2,7 @@ import useEventId from '../events/useEventId';
 import { GET_DATETIMES } from '../datetimes';
 import { DatetimesList, DatetimesQueryArgs, ReadQueryOptions } from '@eventespresso/data';
 import { DatetimeEdge } from '../../';
-import { useMemoStringify } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 type DatetimesQueryOptions = ReadQueryOptions<DatetimesList<DatetimeEdge>, DatetimesQueryArgs>;
 
