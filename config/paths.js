@@ -60,6 +60,7 @@ const packages = [
 	'edtr-services',
 	'form',
 	'helpers',
+	'hooks',
 	'icons',
 	'predicates',
 	'registry',
