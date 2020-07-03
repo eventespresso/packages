@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { assocPath, dissocPath, omit, pathOr } from 'ramda';
-import type { AnyObject } from '../utilities/types';
+import type { AnyObject } from '@eventespresso/services';
 
 import type { ElementRegistry, UIRegistry, UIRegistryHook } from './types';
 

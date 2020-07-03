@@ -1,4 +1,4 @@
-import type { AnyObject } from '../utilities/types';
+import type { AnyObject } from '@eventespresso/services';
 
 export interface BaseSubscriptionOptions<D extends string> {
   domain: D;
@@ -40,7 +40,6 @@ export interface Subscription<CbArgs = AnyObject, Options = AnyObject, CbReturn 
 }
 
 export interface ServiceRegistry {
-  subscribe: SubscribeFn;
   subscriptions: Subscriptions;
 }
 
@@ -50,6 +49,14 @@ export interface UpdateSubscriptionProps {
   options?: AnyObject;
   action?: 'add' | 'remove';
 }
+
+export type SubscriptionRegistry = {
+  // domain name e.g. "eventEditor"
+  [key: string]: {
+    // service id e.g. "entityListFilterBar"
+    [key: string]: ServiceRegistry;
+  };
+};
 
 /**
  * e.g.

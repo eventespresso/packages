@@ -3,9 +3,15 @@ import { assocPath, omit } from 'ramda';
 import { v4 as uuidv4 } from 'uuid';
 import invariant from 'invariant';
 
-import type { SubscriptionService, SubscriptionServiceHook, Subscriptions, UpdateSubscriptionProps } from './types';
+import type {
+	SubscriptionRegistry,
+	SubscriptionService,
+	SubscriptionServiceHook,
+	Subscriptions,
+	UpdateSubscriptionProps,
+} from './types';
 
-const NAMESPACE = 'espresso';
+let subscriptionRegistry: SubscriptionRegistry = {};
 
 type SS = SubscriptionService;
 
@@ -17,12 +23,12 @@ const useSubscriptionService: SubscriptionServiceHook = ({ domain, service }) =>
 	 * When we add or remove a subscription, this hash will change, resulting notification to
 	 * all the subscribers.
 	 */
-	const subscriptions = window[NAMESPACE]?.[domain]?.[service]?.subscriptions || {};
+	const subscriptions = subscriptionRegistry?.[domain]?.[service]?.subscriptions || {};
 	const subscriptionsHash = Object.keys(subscriptions).join(':');
 
+	 // @ts-ignore
 	const getSubscriptions = useCallback<SS['getSubscriptions']>(() => {
-		return window[NAMESPACE]?.[domain]?.[service]?.subscriptions || {};
-
+		return getServiceRegistryItem('subscriptions', {});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [subscriptionsHash]);
 
@@ -31,7 +37,7 @@ const useSubscriptionService: SubscriptionServiceHook = ({ domain, service }) =>
 	 */
 	const updateServiceRegistry = useCallback<SS['addToServiceRegistry']>(
 		(key, value) => {
-			window[NAMESPACE] = assocPath([domain, service, key], value, window[NAMESPACE]);
+			subscriptionRegistry = assocPath([domain, service, key], value, subscriptionRegistry);
 		},
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -80,7 +86,7 @@ const useSubscriptionService: SubscriptionServiceHook = ({ domain, service }) =>
 
 	const getServiceRegistryItem = useCallback<SS['getServiceRegistryItem']>(
 		(key, defaultValue) => {
-			return window[NAMESPACE]?.[domain]?.[service]?.[key] || defaultValue;
+			return subscriptionRegistry?.[domain]?.[service]?.[key] || defaultValue;
 		},
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -93,13 +99,6 @@ const useSubscriptionService: SubscriptionServiceHook = ({ domain, service }) =>
 		},
 		[updateServiceRegistry]
 	);
-
-	const subscribeFn = getServiceRegistryItem('subscribe');
-
-	// check if the `subscribe` function path has not been exposed globally
-	if (typeof subscribeFn !== 'function') {
-		addToServiceRegistry('subscribe', subscribe);
-	}
 
 	return {
 		addToServiceRegistry,
