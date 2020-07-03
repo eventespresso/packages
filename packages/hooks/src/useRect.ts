@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useCallback, useState } from 'react';
-import getHTMLElementClientRect from '../utilities/dom/getHTMLElementClientRect';
+import { getHTMLElementClientRect } from './utils';
 
 const { addEventListener, removeEventListener } = window;
 
