@@ -1,6 +1,7 @@
 {
 	"name": "root",
 	"private": true,
+	"license": "GPL-3.0",
 	"scripts": {
 		"build": "node scripts/build.js",
 		"build:ci": "FORCE_COLOR=true node scripts/build.js",
