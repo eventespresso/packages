@@ -1,6 +1,6 @@
 import { GraphQLError } from 'graphql';
 
-import { Viewer } from '@eventespresso/services';
+import { Viewer, CurrentUserProps } from '@eventespresso/services';
 import type { ReadQueryOptions } from '../../types';
 import { GET_CURRENT_USER } from '..';
 
@@ -8,7 +8,7 @@ export const request: ReadQueryOptions = {
 	query: GET_CURRENT_USER,
 };
 
-export const currentUser = {
+export const currentUser: CurrentUserProps = {
 	description: null,
 	email: 'user@eventespresso.com',
 	firstName: null,
@@ -18,7 +18,7 @@ export const currentUser = {
 	nickname: 'admin',
 	lastName: null,
 	locale: 'en_US',
-	userId: 1,
+	databaseId: 1,
 	username: 'admin',
 	__typename: 'User',
 };

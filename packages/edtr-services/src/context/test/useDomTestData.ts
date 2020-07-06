@@ -1,12 +1,19 @@
 import { useEffect } from 'react';
-import { event, currentUser, generalSettings } from './data';
+import { eventEditor, currentUser, generalSettings } from './data';
 
-import { mockEeJsData } from '@eventespresso/services/src/config/test/data';
+import { mockEspressoDomData } from '@eventespresso/services/src/config/test/data';
+import { EventEspressoData } from '../../../../../types/global';
 
 const useDomTestData = (): void => {
 	// Set the DOM data
-	window.eeEditorData = { event, currentUser, generalSettings };
-	window.eejsdata = { data: mockEeJsData };
+	const eventEspressoData: EventEspressoData = {
+		...mockEspressoDomData,
+		eventEditor,
+	};
+	eventEspressoData.config.currentUser = currentUser;
+	eventEspressoData.config.generalSettings = generalSettings;
+
+	window.eventEspressoData = eventEspressoData;
 
 	// For Housekeeping
 	useEffect(() => {
@@ -14,8 +21,7 @@ const useDomTestData = (): void => {
 		// when the context component is unmounted
 		// to avoid any unexpected results.
 		return (): void => {
-			delete window.eeEditorData;
-			delete window.eejsdata;
+			delete window.eventEspressoData;
 		};
 	}, []);
 };

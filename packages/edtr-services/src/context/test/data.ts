@@ -1,4 +1,5 @@
-import type { EventDomData } from '../../types';
+import type { EventEditorData } from '../../types';
+import type { Event } from '../../apollo';
 import type { RelationalData } from '@eventespresso/services';
 import { nodes as datetimes, edge as datetimesEdge } from '../../apollo/queries/datetimes/test/data';
 
@@ -51,8 +52,26 @@ export const relationalData: RelationalData = {
 };
 
 // Add only what's needed
-export const event: EventDomData = {
+export const event: Event = {
+	cacheId: '',
 	dbId: eventId,
+	description: '',
+	id: '',
+	isActive: true,
+	isCancelled: false,
+	isExpired: false,
+	isInactive: false,
+	isPostponed: false,
+	isSoldOut: false,
+	isUpcoming: false,
+	name: '',
+	order: 1,
+	shortDescription: '',
+};
+
+// Add only what's needed
+export const eventEditor: EventEditorData = {
+	event,
 	datetimes: datetimesEdge,
 	tickets: ticketsEdge,
 	prices: pricesEdge,
