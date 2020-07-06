@@ -4,3 +4,4 @@ export * from './hooks';
 export * from './relations';
 export * from './status';
 export * from './utilities';
+export * from './types';
