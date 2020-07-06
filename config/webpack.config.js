@@ -27,6 +27,7 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const postcssNormalize = require('postcss-normalize');
+const { pick } = require('ramda');
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -529,7 +530,7 @@ module.exports = function (webpackEnv) {
 						return manifest;
 					}, seed);
 					const entrypointFiles = Object.entries(entrypoints).reduce((acc, [name, paths]) => {
-						acc[name] = paths.filter((fileName) => !fileName.endsWith('.map'));
+						acc[name] = paths.filter((fileName) => !fileName.endsWith('.map') && !fileName.endsWith('.php'));
 						return acc;
 					}, {});
 
