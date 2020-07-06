@@ -3,9 +3,10 @@ import type { Entity, EntityEdge, RecurrencesList as RecurrenceList } from '@eve
 export interface Recurrence extends Entity {
 	exDates: string;
 	exRule: string;
-	patternHash: string;
 	rDates: string;
 	rRule: string;
+	gDates: string;
+	name: string;
 	salesEndOffset: string;
 	salesStartOffset: string;
 }
