@@ -122,6 +122,9 @@ domainsToWatch.forEach((domain) => {
 
 const includePaths = [...packagePaths, ...domainPaths];
 
+// Add global types to include paths for ts-loader
+includePaths.push(resolveApp('types'));
+
 // config after eject: we're in ./config/
 module.exports = {
 	dotenv: resolveApp('.env'),
