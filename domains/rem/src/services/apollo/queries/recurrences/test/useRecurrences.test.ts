@@ -34,6 +34,6 @@ describe('useRecurrences()', () => {
 
 		expect(cachedRecurrences[0].id).toEqual(nodes[0].id);
 
-		expect(cachedRecurrences[0].patternHash).toEqual(nodes[0].patternHash);
+		expect(cachedRecurrences[0].name).toEqual(nodes[0].name);
 	});
 });
