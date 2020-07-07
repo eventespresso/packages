@@ -3,19 +3,14 @@ import React from 'react';
 // import { FormSpy } from '@eventespresso/form';
 
 import { ButtonRow, Next, Previous } from '@eventespresso/components';
-import type { Datetime } from '@eventespresso/edtr-services';
-import { usePrevNext } from '@eventespresso/hooks';
 
 import { EditDatetimeRecurrence } from '../EditDatetimeRecurrence';
+
 import Steps from './Steps';
 
-interface Props {
-	datetime: Datetime;
-}
+import { ContentBodyProps } from './types';
 
-const ContentBody: React.FC<Props> = ({ datetime }) => {
-	const { current, prev, next } = usePrevNext();
-
+const ContentBody: React.FC<ContentBodyProps> = ({ current, datetime }) => {
 	// const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
 
 	// return (
@@ -29,23 +24,10 @@ const ContentBody: React.FC<Props> = ({ datetime }) => {
 			{current === 0 && (
 				<>
 					<EditDatetimeRecurrence datetime={datetime} />
-					<ButtonRow rightAligned>
-						<Next
-							onClick={next}
-							// isDisabled={isSaveDisabled}
-						/>
-					</ButtonRow>
 				</>
 			)}
 
-			{current === 1 && (
-				<>
-					<ButtonRow rightAligned>
-						<Previous onClick={prev} />
-						{/* <Submit onClick={form.submit} isDisabled={isSubmitDisabled} /> */}
-					</ButtonRow>
-				</>
-			)}
+			{/* {current === 1 && <></>} */}
 		</div>
 	);
 	// }}

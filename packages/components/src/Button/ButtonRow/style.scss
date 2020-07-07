@@ -8,6 +8,10 @@
 		margin-right: unset;
 	}
 
+	&--no-marging {
+		margin: 0;
+	}
+
 	&--right-aligned {
 		display: flex;
 		justify-content: flex-end;

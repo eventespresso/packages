@@ -1,1 +1,1 @@
-export { default as ContentBody } from './ContentBody';
+export { default as useMultiStep } from './useMultiStep';

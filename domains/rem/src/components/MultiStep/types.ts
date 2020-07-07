@@ -1,6 +1,6 @@
 import type { Disclosure } from '@eventespresso/services';
 import type { Datetime } from '@eventespresso/edtr-services';
-// import type { FormRenderProps } from 'react-final-form';
+import { PrevNext } from '@eventespresso/hooks';
 
 export interface ContainerProps extends Omit<Disclosure, 'onOpen'> {}
 
@@ -9,4 +9,8 @@ export interface ContentProps {
 	onClose: VoidFunction;
 }
 
-// export interface ContentWrapperProps extends FormRenderProps<> {}
+export interface ContentBodyProps extends Pick<PrevNext, 'current'> {
+	datetime: Datetime;
+}
+
+export interface ContentFooterProps extends Pick<PrevNext, 'current' | 'next' | 'prev'> {}
