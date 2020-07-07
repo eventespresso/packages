@@ -4,7 +4,7 @@ import React from 'react';
 
 import { ButtonRow, Next, Previous } from '@eventespresso/components';
 import type { Datetime } from '@eventespresso/edtr-services';
-import { usePrevNext } from '@eventespresso/services';
+import { usePrevNext } from '@eventespresso/hooks';
 
 import { EditDatetimeRecurrence } from '../EditDatetimeRecurrence';
 import Steps from './Steps';

@@ -5,7 +5,7 @@ import { FormSpy } from '@eventespresso/form';
 import { ButtonRow, Next, Previous, Submit } from '@eventespresso/components';
 import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/components';
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
-import { usePrevNext } from '@eventespresso/services';
+import { usePrevNext } from '@eventespresso/hooks';
 
 import DateFormSteps from './DateFormSteps';
 import useDataListener from './useDataListener';

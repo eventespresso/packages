@@ -4,7 +4,7 @@ import { FormSpy } from '@eventespresso/form';
 import { anyPass, isNil, isEmpty } from 'ramda';
 
 import TicketFormSteps from './TicketFormSteps';
-import { usePrevNext } from '@eventespresso/services';
+import { usePrevNext } from '@eventespresso/hooks';
 import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/components';
 import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/components';
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
