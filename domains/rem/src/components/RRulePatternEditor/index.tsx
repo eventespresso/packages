@@ -1,18 +1,14 @@
 import React from 'react';
-import RRule from 'rrule';
+// import RRule from 'rrule';
 import RRuleGenerator from 'react-rrule-generator';
+
 import { __ } from '@wordpress/i18n';
 
 import { PATTERN_TYPE_RECURRENCE } from '../../constants';
 
 import './style.scss';
 
-interface PatternEditorProps {
-	id: string;
-	onChange: VoidFunction;
-	rruleString: string;
-	type: 'recurrence' | 'exclusion';
-}
+import { PatternEditorControlsProps, PatternEditorProps, RRulePatternEditorProps } from './types';
 
 const PatternEditor: React.FC<PatternEditorProps> = ({ id, type, rruleString, onChange }) => {
 	return (
@@ -31,11 +27,6 @@ const PatternEditor: React.FC<PatternEditorProps> = ({ id, type, rruleString, on
 	);
 };
 
-interface PatternEditorControlsProps {
-	label: string;
-	onChange: VoidFunction;
-}
-
 const PatternEditorControls: React.FC<PatternEditorControlsProps> = ({ label, onChange }) => {
 	return (
 		<button id={'rem-cancel-button'} className={'button button-secondary'} value={null} onClick={onChange}>
@@ -43,14 +34,6 @@ const PatternEditorControls: React.FC<PatternEditorControlsProps> = ({ label, on
 		</button>
 	);
 };
-
-interface RRulePatternEditorProps {
-	id: string;
-	initialOpen: boolean;
-	onChange: VoidFunction;
-	rruleString: string;
-	type: string;
-}
 
 const RRulePatternEditor: React.FC<RRulePatternEditorProps> = ({
 	id,
@@ -63,9 +46,9 @@ const RRulePatternEditor: React.FC<RRulePatternEditorProps> = ({
 		type === PATTERN_TYPE_RECURRENCE
 			? __('Recurrence Pattern', 'event_espresso')
 			: __('Exclusion Pattern', 'event_espresso');
-	const rrule = rruleString ? RRule.fromString(rruleString) : new RRule();
-	const rruleText =
-		rruleString && rrule instanceof RRule && rrule.isFullyConvertibleToText() ? rrule.toText() : 'none';
+	// const rrule = rruleString ? RRule.fromString(rruleString) : new RRule();
+	// const rruleText =
+	// 	rruleString && rrule instanceof RRule && rrule.isFullyConvertibleToText() ? rrule.toText() : 'none';
 
 	return (
 		<div className='rrule-generator-wrapper'>

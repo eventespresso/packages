@@ -3,7 +3,6 @@ import React from 'react';
 import { renderDomElement } from '@eventespresso/services';
 import { withEdtrContext } from '@eventespresso/edtr-services';
 
-import '../interfaces/types';
 import REM from './REM';
 
 const WrappedREM = withEdtrContext(REM);

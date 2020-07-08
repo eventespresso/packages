@@ -1,8 +1,7 @@
 import React from 'react';
-// import { isEmpty, isArray } from 'lodash';
-import { __ } from '@wordpress/i18n';
+// import { __ } from '@wordpress/i18n';
 // import moment from 'moment';
-import { RRule, RRuleSet, rrulestr } from 'rrule';
+// import { RRule, RRuleSet, rrulestr } from 'rrule';
 
 import type { Datetime } from '@eventespresso/edtr-services';
 
@@ -10,9 +9,9 @@ import RRulePatternEditor from '../RRulePatternEditor';
 // import ExtraDatetimes from './ExtraDatetimes';
 // import Datetimes from './Datetimes';
 // import { DATA_STORE_KEY_REM } from '../data-stores';
-import { PATTERN_TYPE_RECURRENCE, PATTERN_TYPE_EXCLUSION } from '../../constants';
+import { PATTERN_TYPE_RECURRENCE } from '../../constants';
 
-import { generateDatetimes, getRecurrenceFrequency } from '../../utils';
+// import { generateDatetimes, getRecurrenceFrequency } from '../../utils';
 
 import './style.scss';
 
@@ -21,7 +20,7 @@ interface Props {
 }
 
 const EditDatetimeRecurrence: React.FC<Props> = ({ datetime }) => {
-	const onRecurrenceChange = (rRuleString) => {
+	const onRecurrenceChange = (rRuleString: string): string => {
 		// rRuleString = rRuleString.target ? rRuleString.target.value : rRuleString;
 		// return rRuleString ? addRrule(eventDate, rRuleString) : resetRrule(eventDate);
 		return rRuleString;

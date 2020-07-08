@@ -4,7 +4,7 @@ import React from 'react';
 
 import { CheckboxGroupProps, CheckboxOptionType } from './types';
 
-const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ defaultCheckedOptions, onChange, value, ...props }) => {
+const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ defaultCheckedOptions, onChange, ...props }) => {
 	const getOptions = () => {
 		return (props.options as Array<CheckboxOptionType>).map((option) => {
 			if (typeof option === 'string') {

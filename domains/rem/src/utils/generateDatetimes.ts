@@ -1,4 +1,7 @@
+import { RRule, RRuleSet } from 'rrule';
 import { isEmpty } from 'ramda';
+
+import { getRecurrenceFrequency } from './getRecurrenceFrequency';
 
 export const generateDatetimes = (rRuleString, exRuleString, rDates, exDates) => {
 	if (!rRuleString) {
@@ -10,13 +13,16 @@ export const generateDatetimes = (rRuleString, exRuleString, rDates, exDates) =>
 	// console.log( 'rrule.toString()', rrule.toString() );
 	// console.log( rrule.all() );
 	const rruleSet = new RRuleSet();
+
 	rruleSet.rrule(RRule.fromString(rRuleString));
+
 	if (exRuleString) {
 		console.log('generateDatetimes() exRuleString', exRuleString);
 		rruleSet.exrule(RRule.fromString(exRuleString));
 	}
-	if (isArray(rDates) && !isEmpty(rDates)) {
+	if (Array.isArray(rDates) && !isEmpty(rDates)) {
 		console.log('generateDatetimes() rDates', rDates);
+
 		rDates.map(function (rDate) {
 			if (rDate instanceof Date) {
 				console.log('generateDatetimes() rDate', rDate);

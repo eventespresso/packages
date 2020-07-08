@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { __ } from '@wordpress/i18n';
 
 import type { Datetime } from '@eventespresso/edtr-services';
 import { usePrevNext } from '@eventespresso/hooks';
