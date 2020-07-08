@@ -2,8 +2,6 @@ import React from 'react';
 // import { __ } from '@wordpress/i18n';
 // import { FormSpy } from '@eventespresso/form';
 
-import { ButtonRow, Next, Previous } from '@eventespresso/components';
-
 import { EditDatetimeRecurrence } from '../EditDatetimeRecurrence';
 
 import Steps from './Steps';

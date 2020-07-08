@@ -17,7 +17,8 @@ const useMultiStep = (datetime: Datetime): any => {
 			multiStepContent,
 			multiStepFooter,
 		}),
-		[multiStepContent, multiStepFooter]
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[current]
 	);
 };
 
