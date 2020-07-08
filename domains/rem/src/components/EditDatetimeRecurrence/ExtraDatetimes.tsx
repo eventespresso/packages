@@ -1,12 +1,12 @@
 import React from 'react';
 // import { isArray } from 'lodash';
 // import { PanelBody, PanelRow } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+// import { __ } from '@wordpress/i18n';
 // import { SettingsPanel } from '@eventespresso/components';
 
 import type { Datetime } from '@eventespresso/edtr-services';
 import ExtraDatetime from './ExtraDatetime';
-import { PATTERN_TYPE_RECURRENCE } from '../../constants';
+// import { PATTERN_TYPE_RECURRENCE } from '../../constants';
 
 interface ExtraDatetimesProps {
 	id: string;

@@ -12,7 +12,7 @@ const timeout = 5000; // milliseconds
 describe('createRecurrence', () => {
 	const testInput: MutationInput = {
 		exDates: 'new test exDates',
-		patternHash: 'new-pattern-ghi',
+		name: 'new-name-ghi',
 	};
 	const mockedRecurrence = mockedRecurrences.CREATE;
 

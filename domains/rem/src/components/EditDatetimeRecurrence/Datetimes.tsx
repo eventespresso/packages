@@ -1,5 +1,4 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
 
 // import type { Datetime } from '@eventespresso/edtr-services';
 import DatetimeRow from './DatetimeRow';

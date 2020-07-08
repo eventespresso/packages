@@ -13,7 +13,7 @@ describe('updateRecurrence', () => {
 	const testInput: MutationInput = {
 		...mockedRecurrence,
 		exDates: 'new-test-exDates',
-		patternHash: 'new-pattern-ghi',
+		name: 'new-name-ghi',
 	};
 
 	const mutationMocks = getMutationMocks({ ...testInput, id: mockedRecurrence.id }, MutationType.Update);
