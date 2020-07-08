@@ -5,6 +5,8 @@ const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
 const { getCommandArgs, camelCaseDash } = require('./utils');
 const R = require('ramda');
 
+const { getPackages, getDomains, getCoreDomains } = require('./packages-and-domains');
+
 const PACKAGES_FOLDER = 'packages';
 const DOMAINS_FOLDER = 'domains';
 
@@ -52,22 +54,21 @@ const resolveModule = (resolveFn, filePath) => {
 	return resolveFn(`${filePath}.js`);
 };
 
-const packages = [
-	'adapters',
-	'components',
-	'constants',
-	'data',
-	'edtr-services',
-	'form',
-	'helpers',
-	'hooks',
-	'icons',
-	'predicates',
-	'registry',
-	'services',
-	'styles',
-	'toaster',
-];
+/**
+ * Get args from CLI to watch only the domains specified during dev
+ * All domains in production and all packages are watched by default
+ * Domain names should match their corresponding directory names
+ * Example commands:
+ * - `yarn dev --domains "eventEditor,wpPluginsPage"`
+ * - `yarn dev --domains "eventEditor"` - default
+ * - `yarn dev --domains "all"`
+ * - `yarn build --domains "core"`
+ * - `yarn build --domains "rem" --skip-packages`
+ */
+let { domains: suppliedDomains, ['skip-packages']: skipPackages } = getCommandArgs();
+
+// since icons package is bundled, it will be loaded regardles
+const packages = getPackages();
 
 const packagePaths = [];
 const packageEntries = {};
@@ -78,30 +79,28 @@ packages.forEach((packageName) => {
 	// "edtr-services" becomes "edtrServices"
 	const name = camelCaseDash(packageName);
 
-	packageEntries[name] = [packageEntry];
+	// we don't need an entry point for icons
+	if (name !== 'icons' && !skipPackages) {
+		packageEntries[name] = [packageEntry];
+	}
 	packagePaths.push(packagePath);
 });
 
-const allDomains = ['eventEditor', 'wpPluginsPage', 'blocks', 'rem'];
-
-/**
- * Get args from CLI to watch only the domains specified during dev
- * All domains in production and all packages are watched by default
- * Domain names should match their corresponding directory names
- * Example commands:
- * - `yarn dev --domains "eventEditor,wpPluginsPage"`
- * - `yarn dev --domains "eventEditor"` - default
- * - `yarn dev --domains "all"`
- */
-let { domains: suppliedDomains } = getCommandArgs();
-// if not in dev, we will build all domains
-if (!isEnvDevelopment) {
-	suppliedDomains = 'all';
-}
-// set "eventEditor" as the default domain to watch
-let domainsToWatch = ['eventEditor'];
+const allDomains = getDomains();
+// no domain to watch by default
+let domainsToWatch = [];
 if (suppliedDomains && typeof suppliedDomains === 'string') {
-	domainsToWatch = suppliedDomains === 'all' ? allDomains : R.map(R.trim, R.split(',', suppliedDomains));
+	switch (suppliedDomains) {
+		case 'all':
+			domainsToWatch = allDomains;
+			break;
+		case 'core':
+			domainsToWatch = getCoreDomains();
+			break;
+		default:
+			domainsToWatch = R.map(R.trim, R.split(',', suppliedDomains));
+			break;
+	}
 }
 if (domainsToWatch.some((domain) => !allDomains.includes(domain))) {
 	throw new Error('Unknown domain');
