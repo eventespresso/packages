@@ -1,5 +1,5 @@
 const useEventId = (): number => {
-	return window?.eeEditorData?.event?.dbId || 0;
+	return window?.eventEspressoData?.eventEditor?.event?.dbId || 0;
 };
 
 export default useEventId;
