@@ -22,8 +22,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, datetime, onClose }) => {
 	const cancelButtonProps = useCancelButtonProps(onClose);
 	const { multiStepContent, multiStepFooter } = useMultiStep(datetime);
 
-	console.log({ isRecurrenceOpen });
-
 	return (
 		<ModalWithAlert
 			bodyClassName='ee-rem-modal__body'

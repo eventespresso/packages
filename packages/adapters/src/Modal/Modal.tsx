@@ -70,7 +70,7 @@ const Modal: React.FC<ModalProps> = ({
 
 				<ModalBody className={bodyClassName}>{children || content}</ModalBody>
 
-				{footerNode && <ModalFooter>{footerNode}</ModalFooter>}
+				{footerNode && <ModalFooter className='ee-modal__footer'>{footerNode}</ModalFooter>}
 			</ModalContent>
 		</ChakraModal>
 	);

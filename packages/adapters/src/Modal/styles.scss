@@ -3,6 +3,8 @@
 .ee-modal .ee-modal {
 	&__header {
 		&.ee-modal__header {
+			border-bottom: 0.5px solid var(--ee-border-color);
+
 			[dir='rtl'] & {
 				padding-right: var(--ee-padding-extreme);
 			}
@@ -19,5 +21,9 @@
 			padding-left: var(--ee-padding-smaller);
 			padding-right: var(--ee-padding-smaller);
 		}
+	}
+
+	&__footer {
+		border-top: 0.5px solid var(--ee-border-color);
 	}
 }
