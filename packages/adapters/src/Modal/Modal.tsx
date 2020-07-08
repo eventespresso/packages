@@ -34,8 +34,10 @@ const Modal: React.FC<ModalProps> = ({
 		return null;
 	}
 
-	const className = classNames(props.className, withBorder && 'ee-modal--with-border', 'ee-modal');
+	const className = classNames(props.className, 'ee-modal');
+	const headerClassName = classNames(withBorder && 'ee-modal--with-border', 'ee-modal__header');
 	const bodyClassName = classNames(props.bodyClassName, 'ee-modal__body');
+	const footerClassName = classNames(withBorder && 'ee-modal--with-border', 'ee-modal__footer');
 
 	const cancelButton = cancelButtonProps && <Button mr={3} {...cancelButtonProps} />;
 	const submitButton = submitButtonProps && <Button variantColor='blue' {...submitButtonProps} />;
@@ -65,13 +67,13 @@ const Modal: React.FC<ModalProps> = ({
 		>
 			<ModalOverlay />
 			<ModalContent role='alertdialog' className={className}>
-				<ModalHeader className='ee-modal__header'>{title}</ModalHeader>
+				<ModalHeader className={headerClassName}>{title}</ModalHeader>
 
 				{closeButton ? closeButton : <ModalCloseButton isDisabled={!isClosable} />}
 
 				<ModalBody className={bodyClassName}>{children || content}</ModalBody>
 
-				{footerNode && <ModalFooter className='ee-modal__footer'>{footerNode}</ModalFooter>}
+				{footerNode && <ModalFooter className={footerClassName}>{footerNode}</ModalFooter>}
 			</ModalContent>
 		</ChakraModal>
 	);

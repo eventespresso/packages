@@ -3,7 +3,7 @@
 .ee-modal .ee-modal {
 	&__header {
 		&.ee-modal__header {
-			.ee-modal--with-border & {
+			&.ee-modal--with-border {
 				border-bottom: 0.5px solid var(--ee-border-color);
 			}
 
@@ -26,7 +26,7 @@
 	}
 
 	&__footer {
-		.ee-modal--with-border & {
+		&.ee-modal--with-border {
 			border-top: 0.5px solid var(--ee-border-color);
 		}
 	}
