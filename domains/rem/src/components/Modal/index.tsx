@@ -32,6 +32,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, datetime, onClose }) => {
 			onClose={onClose}
 			showAlertOnEscape={false}
 			title={__('Recurring Events Manager')}
+			withBorder
 		>
 			{!isRecurrenceOpen && <Button buttonText={__('Convert date')} onClick={onRecurrenceOpen} />}
 			{isRecurrenceOpen && multiStepContent}

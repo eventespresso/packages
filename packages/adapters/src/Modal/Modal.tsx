@@ -27,13 +27,14 @@ const Modal: React.FC<ModalProps> = ({
 	scrollBehavior = 'inside',
 	submitButtonProps,
 	title,
+	withBorder,
 	...props
 }) => {
 	if (destroyOnClose && !isOpen) {
 		return null;
 	}
 
-	const className = classNames(props.className, 'ee-modal');
+	const className = classNames(props.className, withBorder && 'ee-modal--with-border', 'ee-modal');
 	const bodyClassName = classNames(props.bodyClassName, 'ee-modal__body');
 
 	const cancelButton = cancelButtonProps && <Button mr={3} {...cancelButtonProps} />;

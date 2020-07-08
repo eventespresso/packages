@@ -13,4 +13,5 @@ export interface ModalProps extends React.ComponentProps<typeof Modal> {
 	isClosable?: boolean;
 	submitButtonProps?: ButtonProps;
 	title?: React.ReactNode;
+	withBorder?: boolean;
 }
