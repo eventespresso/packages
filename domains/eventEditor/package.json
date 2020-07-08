@@ -6,6 +6,7 @@
 	"license": "GPL-3.0",
 	"main": "src/index.ts",
 	"main:src": "src/index.ts",
+	"isCore": "true",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/eventespresso/barista.git"
