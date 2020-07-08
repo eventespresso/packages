@@ -8,7 +8,7 @@ import { EditDatetimeRecurrence } from '../EditDatetimeRecurrence';
 
 import Steps from './Steps';
 
-import { ContentBodyProps } from './types';
+import type { ContentBodyProps } from './types';
 
 const ContentBody: React.FC<ContentBodyProps> = ({ current, datetime }) => {
 	// const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };

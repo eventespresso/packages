@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Steps as StepsAdapter, Step } from '@eventespresso/adapters';
-import { PrevNext } from '@eventespresso/hooks';
+import type { PrevNext } from '@eventespresso/hooks';
 import { Calendar, Ticket } from '@eventespresso/icons';
 
 const Steps: React.FC<Pick<PrevNext, 'current'>> = ({ current }) => {
