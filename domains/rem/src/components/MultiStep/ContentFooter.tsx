@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ButtonRow, Next, Previous } from '@eventespresso/components';
-import { ContentFooterProps } from './types';
+import type { ContentFooterProps } from './types';
 
 const ContentFooter: React.FC<ContentFooterProps> = ({ current, next, prev }) => {
 	return (
