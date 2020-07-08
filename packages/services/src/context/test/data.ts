@@ -1,7 +1,6 @@
-import { GET_CURRENT_USER } from '@dataServices/apollo/queries/currentUser';
-import { GET_GENERAL_SETTINGS } from '@dataServices/apollo/queries/generalSettings';
+import { GET_CURRENT_USER, GET_GENERAL_SETTINGS } from '@eventespresso/data';
+import type { MockedResponse } from '@eventespresso/edtr-services/src/context/test/types';
 import { mockEspressoDomData } from '../../config/test/data';
-import { MockedResponse } from '@edtrServices/context/TestContext/types';
 
 export const configMocks: ReadonlyArray<MockedResponse> = [
 	{
