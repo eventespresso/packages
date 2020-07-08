@@ -11,6 +11,7 @@
 		"storybook": "start-storybook -p 9009",
 		"build-storybook": "build-storybook"
 	},
+	"sideEffects": false,
 	"dependencies": {
 		"@chakra-ui/core": "^0.8.0",
 		"@eventespresso/components": "^1.0.6",

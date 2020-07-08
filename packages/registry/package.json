@@ -13,6 +13,7 @@
 		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
 	},
+	"sideEffects": false,
 	"dependencies": {
 		"invariant": "^2.2.4",
 		"ramda": "^0.27.0",

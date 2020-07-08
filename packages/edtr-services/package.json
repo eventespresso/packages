@@ -13,6 +13,7 @@
 		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
 	},
+	"sideEffects": false,
 	"dependencies": {
 		"@wordpress/i18n": "^3.13.0",
 		"date-fns": "^2.14.0",

@@ -13,6 +13,7 @@
 		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
 	},
+	"sideEffects": false,
 	"dependencies": {
 		"uuid": "^8.2.0"
 	},
