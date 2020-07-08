@@ -1,6 +1,6 @@
 import type { Disclosure } from '@eventespresso/services';
 import type { Datetime } from '@eventespresso/edtr-services';
-import { PrevNext } from '@eventespresso/hooks';
+import type { PrevNext } from '@eventespresso/hooks';
 
 export interface ContainerProps extends Omit<Disclosure, 'onOpen'> {}
 
