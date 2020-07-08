@@ -5,7 +5,7 @@
 	"private": true,
 	"main": "src/index.ts",
 	"main:src": "src/index.ts",
-	"isCore": "true",
+	"isCore": true,
 	"license": "GPL-3.0",
 	"repository": {
 		"type": "git",
@@ -40,7 +40,7 @@
 		"start": "node ./../../scripts/start.js",
 		"build": "node ./../../scripts/build.js",
 		"test": "react-scripts test",
-		"lint": "eslint ./src/**/*.{ts,tsx} --max-warnings=0 --format=codeframe"
+		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe"
 	},
 	"babel": {
 		"presets": [

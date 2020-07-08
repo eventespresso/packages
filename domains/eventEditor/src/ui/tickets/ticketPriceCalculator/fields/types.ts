@@ -1,5 +1,6 @@
 import React, { InputHTMLAttributes } from 'react';
 import type { PriceModifierProps, TpcPriceModifier } from '../types';
+import type { AnyObject } from '@eventespresso/services';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -8,7 +9,7 @@ type SupportedInputs = 'input' | 'select' | 'textarea';
 export type FieldValue = string | number | boolean;
 
 export interface BaseFieldProps<V = FieldValue> extends InputProps {
-	children?: ((props: {}) => React.ReactNode) | React.ReactNode;
+	children?: ((props: AnyObject) => React.ReactNode) | React.ReactNode;
 	component?: React.ComponentType | SupportedInputs;
 	disabled?: boolean;
 	name: string;
