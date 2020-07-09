@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import { useEntityActionsSubscription } from '@eventespresso/registry';
 import { domain } from '@eventespresso/edtr-services';
+import { ContextProvider } from '../context';
 import RemButton from './RemButton';
 
 const REM: React.FC = () => {
@@ -11,7 +12,15 @@ const REM: React.FC = () => {
 	const datesActionHandler = useCallback(({ entity, registry }) => {
 		const { registerElement: registerMenuItem } = registry;
 
-		registerMenuItem('rem', () => <RemButton datetime={entity} />, 11);
+		registerMenuItem(
+			'rem',
+			() => (
+				<ContextProvider datetime={entity}>
+					<RemButton />
+				</ContextProvider>
+			),
+			11
+		);
 	}, []);
 
 	subscribe(datesActionHandler, { entityType: 'datetime' });

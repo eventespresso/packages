@@ -3,7 +3,13 @@ import React from 'react';
 import { ButtonRow, Next, Previous } from '@eventespresso/components';
 import type { ContentFooterProps } from './types';
 
-const ContentFooter: React.FC<ContentFooterProps> = ({ current, next, prev }) => {
+import { useREMContext } from '../../context';
+
+const ContentFooter: React.FC<ContentFooterProps> = () => {
+	const {
+		stepState: { current, next, prev },
+	} = useREMContext();
+
 	return (
 		<>
 			{current === 0 && (

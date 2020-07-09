@@ -8,8 +8,13 @@ import EditDatetime from './EditDatetime';
 import Steps from './Steps';
 
 import type { ContentBodyProps } from './types';
+import { useREMContext } from '../../context';
 
-const ContentBody: React.FC<ContentBodyProps> = ({ current, datetime }) => {
+const ContentBody: React.FC<ContentBodyProps> = () => {
+	const {
+		datetime,
+		stepState: { current },
+	} = useREMContext();
 	// const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
 
 	// return (
@@ -22,7 +27,7 @@ const ContentBody: React.FC<ContentBodyProps> = ({ current, datetime }) => {
 			<Steps current={current} />
 			{current === 0 && (
 				<>
-					<EditDatetimeRecurrence datetime={datetime} />
+					<EditDatetimeRecurrence />
 				</>
 			)}
 

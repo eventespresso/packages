@@ -1,1 +1,2 @@
-export { default as useMultiStep } from './useMultiStep';
+export { default as ContentBody } from './ContentBody';
+export { default as ContentFooter } from './ContentFooter';
