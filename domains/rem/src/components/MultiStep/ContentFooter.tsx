@@ -18,6 +18,7 @@ const ContentFooter: React.FC<ContentFooterProps> = ({ current, next, prev }) =>
 				<>
 					<ButtonRow noMargin rightAligned>
 						<Previous onClick={prev} />
+						<Next onClick={next} />
 					</ButtonRow>
 				</>
 			)}

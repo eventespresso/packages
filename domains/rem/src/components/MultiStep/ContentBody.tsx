@@ -3,6 +3,7 @@ import React from 'react';
 // import { FormSpy } from '@eventespresso/form';
 
 import { EditDatetimeRecurrence } from '../EditDatetimeRecurrence';
+import EditDatetime from './EditDatetime';
 
 import Steps from './Steps';
 
@@ -25,7 +26,7 @@ const ContentBody: React.FC<ContentBodyProps> = ({ current, datetime }) => {
 				</>
 			)}
 
-			{/* {current === 1 && <></>} */}
+			{current === 1 && <EditDatetime datetime={datetime} />}
 		</div>
 	);
 	// }}

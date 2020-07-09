@@ -14,3 +14,7 @@ export interface ContentBodyProps extends Pick<PrevNext, 'current'> {
 }
 
 export interface ContentFooterProps extends Pick<PrevNext, 'current' | 'next' | 'prev'> {}
+
+export interface EditDatetimeProps {
+	datetime: Datetime;
+}

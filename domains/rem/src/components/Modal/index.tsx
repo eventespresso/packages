@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@wordpress/i18n';
 
@@ -22,9 +23,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, datetime, onClose }) => {
 	const cancelButtonProps = useCancelButtonProps(onClose);
 	const { multiStepContent, multiStepFooter } = useMultiStep(datetime);
 
+	const bodyClassName = classNames(!isRecurrenceOpen && 'ee-rem-modal__body--centered', 'ee-rem-modal__body');
+
 	return (
 		<ModalWithAlert
-			bodyClassName='ee-rem-modal__body'
+			bodyClassName={bodyClassName}
 			cancelButtonProps={cancelButtonProps}
 			className='ee-rem-modal'
 			footerContent={isRecurrenceOpen && multiStepFooter}

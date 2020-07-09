@@ -2,4 +2,12 @@
 
 .ee-rem-modal {
 	max-width: 75rem !important;
+
+	&__body {
+		&--centered {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+		}
+	}
 }
