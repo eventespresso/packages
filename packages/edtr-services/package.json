@@ -13,7 +13,9 @@
 		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe"
 	},
-	"sideEffects": false,
+	"sideEffects": [
+		"./src/publicPath.ts"
+	],
 	"dependencies": {
 		"@wordpress/i18n": "^3.13.0",
 		"date-fns": "^2.14.0",
