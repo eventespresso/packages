@@ -13,7 +13,9 @@
 		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe"
 	},
-	"sideEffects": false,
+	"sideEffects": [
+		"*.css"
+	],
 	"dependencies": {
 		"@wordpress/keycodes": "^2.13.0",
 		"baseui": "^9.84.1",
