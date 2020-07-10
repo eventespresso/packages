@@ -154,12 +154,14 @@ function ee_barista_register_scripts($scripts)
         // Get the path from root directory as expected by `ee_barista_url`.
         $package_path = 'build' . $asset_files[ $entry_point . '.js' ];
 
-        // Replace `.js` extension with `.asset.php` to find the generated dependencies file.
-        $asset_file   = ee_barista_dir_path() . substr($package_path, 0, -3) . '.asset.php';
-        $asset        = file_exists($asset_file)
-            ? require($asset_file)
-            : null;
-        $dependencies = isset($asset['dependencies']) ? $asset['dependencies'] : array();
+        $dependencies = array();
+
+        if (! empty($asset_files[ $entry_point . '.php' ])) {
+            $asset_file   = ee_barista_dir_path() . 'build' . $asset_files[ $entry_point . '.php' ] ;
+            $asset        = file_exists($asset_file) ? require($asset_file) : null;
+            $dependencies = isset($asset['dependencies']) ? $asset['dependencies'] : $dependencies;
+        }
+
         // remove cyclical dependencies, if any
         if (($key = array_search($handle, $dependencies, true)) !== false) {
             unset($dependencies[ $key ]);
@@ -178,11 +180,46 @@ function ee_barista_register_scripts($scripts)
 }
 add_action('wp_default_scripts', 'ee_barista_register_scripts');
 
+/**
+ * Registers all the packages and domain styles that are in the build folder.
+ *
+ * @since 0.0.1
+ * @param WP_Styles $styles WP_Styles instance.
+ */
+function ee_barista_register_packages_styles($styles)
+{
+    $entry_points = array_keys(ee_barista_get_manifest('entrypoints'));
+    $asset_files = ee_barista_get_manifest();
+
+    foreach ($entry_points as $entry_point) {
+        $handle = 'eventespresso-' . $entry_point;
+
+        $dependencies = array(); // May be we need it some day ¯\_(ツ)_/¯
+
+        if (! empty($asset_files[ $entry_point . '.css' ])) {
+            $css_relative_path = 'build' . $asset_files[ $entry_point . '.css' ];
+            $css_absolute_path = ee_barista_dir_path() . $css_relative_path;
+
+            if (file_exists($css_absolute_path)) {
+                $version = filemtime($css_absolute_path);
+                ee_barista_override_style(
+                    $styles,
+                    $handle,
+                    ee_barista_url($css_relative_path),
+                    $dependencies,
+                    $version
+                );
+            }
+        }
+    }
+}
+add_action('wp_default_styles', 'ee_barista_register_packages_styles');
+
 add_action(
     'admin_enqueue_scripts',
     function () {
         wp_add_inline_script(
-            'eventespresso-constants',
+            'eventespresso-hooks',
             sprintf('var baristaAsselsUrl = "%s";', ee_barista_url('build/')),
             'before'
         );
