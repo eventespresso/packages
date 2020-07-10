@@ -29,6 +29,11 @@
 # GIT_USER_NAME               | Name of the git user to use for commits               #
 #######################################################################################
 
+####################### DEFAULT ENV VARIABLES SET BY GITHUB ###########################
+# @link https://docs.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables
+# 1. GITHUB_REPOSITORY
+# 2. GITHUB_SHA
+
 set -e
 
 # name of the repo e.g. "event-espresso-core"
