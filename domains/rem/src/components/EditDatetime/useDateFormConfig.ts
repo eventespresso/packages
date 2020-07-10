@@ -1,4 +1,4 @@
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { pick } from 'ramda';
 
 import { ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
@@ -12,7 +12,8 @@ import { useTimeZoneTime } from '@eventespresso/services';
 
 type DateFormConfig = EspressoFormProps<DateFormShape>;
 
-const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'description', 'capacity', 'isTrashed'];
+// @ts-ignore
+const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'type', 'isTrashed'];
 
 const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormConfig => {
 	const { startDate: start, endDate: end, ...restProps } = useDatetimeItem({ id }) || {};
@@ -22,7 +23,6 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 	const { onSubmit } = config;
 
 	const onSubmitFrom: DateFormConfig['onSubmit'] = ({ dateTime, ...rest }, form, ...restParams) => {
-		// convert "dateTime" object to proper UTC "startDate" and "endDate"
 		const { startDate, endDate } = processDateAndTime(dateTime, siteTimeToUtc);
 
 		const values = { ...rest, startDate, endDate };
@@ -50,19 +50,33 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 			{
 				name: 'basics',
 				icon: ProfileOutlined,
-				title: __('Basics'),
+				title: __('Length'),
 				fields: [
 					{
-						name: 'name',
-						label: __('Name'),
-						fieldType: 'text',
-						required: true,
-						min: 3,
+						// @ts-ignore
+						name: 'number',
+						label: __('number'),
+						fieldType: 'number',
 					},
 					{
-						name: 'description',
-						label: __('Description'),
-						fieldType: 'textarea',
+						// @ts-ignore
+						name: 'type',
+						label: __('type'),
+						fieldType: 'select',
+						options: [
+							{
+								label: 'day(s)',
+								value: 'day',
+							},
+							{
+								label: 'hour(s)',
+								value: 'hour',
+							},
+							{
+								label: 'minutes',
+								value: 'minutes',
+							},
+						],
 					},
 				],
 			},
@@ -71,20 +85,6 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 				icon: ControlOutlined,
 				title: __('Details'),
 				fields: [
-					{
-						name: 'capacity',
-						label: __('Capacity'),
-						fieldType: 'number',
-						parseAsInfinity: true,
-						min: -1,
-						info: sprintf(
-							__(
-								'The maximum number of registrants that can attend the event at this particular date.%sSet to 0 to close registration or leave blank for no limit.'
-							),
-							'\n'
-						),
-						formControlProps: adjacentFormItemProps,
-					},
 					{
 						name: 'isTrashed',
 						label: __('Trash'),

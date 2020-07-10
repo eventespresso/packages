@@ -1,7 +1,4 @@
 import React from 'react';
-// import { __ } from '@wordpress/i18n';
-// import moment from 'moment';
-// import { RRule, RRuleSet, rrulestr } from 'rrule';
 
 import RRulePatternEditor from '../RRulePatternEditor';
 // import ExtraDatetimes from './ExtraDatetimes';

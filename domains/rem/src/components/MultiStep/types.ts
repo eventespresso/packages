@@ -18,8 +18,3 @@ export interface ContentProps {
 export interface ContentBodyProps {}
 
 export interface ContentFooterProps {}
-
-export interface EditDatetimeProps {
-	datetime: Datetime;
-	onClose?: VoidFunction;
-}
