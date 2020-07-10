@@ -3,7 +3,7 @@ import React from 'react';
 // import { FormSpy } from '@eventespresso/form';
 
 import { EditDatetimeRecurrence } from '../EditDatetimeRecurrence';
-import EditDatetime from './EditDatetime';
+import EditDatetime from '../EditDatetime';
 
 import Steps from './Steps';
 

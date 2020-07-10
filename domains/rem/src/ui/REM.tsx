@@ -1,15 +1,17 @@
 import React, { useCallback } from 'react';
 
 import { useEntityActionsSubscription } from '@eventespresso/registry';
-import { domain } from '@eventespresso/edtr-services';
+import { domain, Datetime } from '@eventespresso/edtr-services';
 import { ContextProvider } from '../context';
 import RemButton from './RemButton';
+import type { EntityActionsSubscriptionCb } from '@eventespresso/registry';
+
+type DatesSubscriptionCallback = EntityActionsSubscriptionCb<Datetime, 'datetime'>;
 
 const REM: React.FC = () => {
-	console.log('Hello World! I am the tiny REM swimming in EDTR');
 	const { subscribe } = useEntityActionsSubscription(domain);
 
-	const datesActionHandler = useCallback(({ entity, registry }) => {
+	const datesActionHandler = useCallback<DatesSubscriptionCallback>(({ entity, registry }) => {
 		const { registerElement: registerMenuItem } = registry;
 
 		registerMenuItem(
