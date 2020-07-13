@@ -7,5 +7,5 @@ export interface EditDatetimeProps {
 
 export interface DateFormShape extends UpdateDatetimeInput {
 	duration?: number;
-	unit?: 'day' | 'hours' | 'minutes';
+	unit?: 'days' | 'hours' | 'minutes';
 }
