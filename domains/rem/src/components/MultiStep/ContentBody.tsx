@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { EditRecurrence } from '../EditRecurrence';
-import EditDatetime from '../EditDatetime';
-import Tickets from '../Tickets';
-
 import Steps from './Steps';
 
 import type { ContentBodyProps } from './types';
 import { useDatetime, useStepsState } from '../../context';
+import { ExclusionPattern, RecurrencePattern } from '../recurrence';
+import { DatetimeDetails } from '../datetimeDetails';
+import { GeneratedDates } from '../generatedDates';
+import Tickets from '../Tickets';
 
 const ContentBody: React.FC<ContentBodyProps> = () => {
 	const { current } = useStepsState();
@@ -16,14 +16,11 @@ const ContentBody: React.FC<ContentBodyProps> = () => {
 	return (
 		<div>
 			<Steps current={current} />
-			{current === 0 && (
-				<>
-					<EditRecurrence />
-				</>
-			)}
-
-			{current === 1 && <EditDatetime datetime={datetime} />}
-			{current === 2 && <Tickets />}
+			{current === 0 && <RecurrencePattern />}
+			{current === 1 && <ExclusionPattern />}
+			{current === 2 && <DatetimeDetails datetime={datetime} />}
+			{current === 3 && <Tickets />}
+			{current === 4 && <GeneratedDates />}
 		</div>
 	);
 };

@@ -9,24 +9,13 @@ const ContentFooter: React.FC<ContentFooterProps> = () => {
 	const { current, next, prev } = useStepsState();
 
 	return (
-		<>
-			{current === 0 && (
-				<>
-					<ButtonRow noMargin rightAligned>
-						<Next onClick={next} />
-					</ButtonRow>
-				</>
-			)}
-
-			{current === 1 && (
-				<>
-					<ButtonRow noMargin rightAligned>
-						<Previous onClick={prev} />
-						<Next onClick={next} />
-					</ButtonRow>
-				</>
-			)}
-		</>
+		<ButtonRow noMargin rightAligned>
+			<Previous onClick={prev} />
+			{
+				// hide next on last step
+				current < 4 && <Next onClick={next} />
+			}
+		</ButtonRow>
 	);
 };
 
