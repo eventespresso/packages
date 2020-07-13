@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { ButtonRow, Next, Previous } from '@eventespresso/components';
-import type { ContentFooterProps } from './types';
 
 import { useStepsState } from '../../context';
 
-const ContentFooter: React.FC<ContentFooterProps> = () => {
+const ContentFooter: React.FC = () => {
 	const { current, next, prev } = useStepsState();
 
 	return (

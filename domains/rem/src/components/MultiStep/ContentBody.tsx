@@ -2,14 +2,13 @@ import React from 'react';
 
 import Steps from './Steps';
 
-import type { ContentBodyProps } from './types';
 import { useDatetime, useStepsState } from '../../context';
 import { ExclusionPattern, RecurrencePattern } from '../recurrence';
 import { DatetimeDetails } from '../datetimeDetails';
 import { GeneratedDates } from '../generatedDates';
 import Tickets from '../Tickets';
 
-const ContentBody: React.FC<ContentBodyProps> = () => {
+const ContentBody: React.FC = () => {
 	const { current } = useStepsState();
 	const datetime = useDatetime();
 
