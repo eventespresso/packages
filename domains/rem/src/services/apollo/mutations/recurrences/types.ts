@@ -5,7 +5,8 @@ export interface RecurrenceBaseInput {
 	datetimes?: Array<EntityId>;
 	exDates?: string;
 	exRule?: string;
-	patternHash?: string;
+	gDates?: string;
+	name?: string;
 	rDates?: string;
 	rRule?: string;
 	salesEndOffset?: string;
