@@ -17,8 +17,9 @@ export type FormStateManagerHook = () => FormStateManager;
 
 export interface FormStateManager extends FormState {
 	getData: () => FormState;
+	setDateDetails: (details: FormState['dateDetails']) => void;
+	setExRule: (exRule: FormState['exRule']) => void;
 	setRRule: (rRule: FormState['rRule']) => void;
-	setExRule: (xRule: FormState['exRule']) => void;
 	updateDateField: <K extends keyof DatetimeBaseInput>(field: K, value: DatetimeBaseInput[K]) => void;
 }
 

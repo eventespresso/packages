@@ -32,6 +32,13 @@ const useFormStateManager: FormStateManagerHook = () => {
 		});
 	}, []);
 
+	const setDateDetails: DSM['setDateDetails'] = useCallback((dateDetails) => {
+		dispatch({
+			type: 'SET_DATE_DETAILS',
+			dateDetails,
+		});
+	}, []);
+
 	const updateDateField: DSM['updateDateField'] = useCallback((field, value) => {
 		dispatch({
 			type: 'SET_DATE_DETAILS',
@@ -43,8 +50,9 @@ const useFormStateManager: FormStateManagerHook = () => {
 		() => ({
 			...state,
 			getData,
-			setRRule,
+			setDateDetails,
 			setExRule,
+			setRRule,
 			updateDateField,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
