@@ -10,7 +10,10 @@ const ContentFooter: React.FC<ContentFooterProps> = () => {
 
 	return (
 		<ButtonRow noMargin rightAligned>
-			<Previous onClick={prev} />
+			{
+				// hide previous on first step
+				current > 0 && <Previous onClick={prev} />
+			}
 			{
 				// hide next on last step
 				current < 4 && <Next onClick={next} />
