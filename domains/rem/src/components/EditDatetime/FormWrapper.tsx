@@ -6,7 +6,7 @@ const FormWrapper: React.FC<FormRenderProps> = ({ children, form }) => {
 	const { setDateDetails } = useFormState();
 
 	useEffect(() => {
-		// subscribe to RFF form state.
+		// subscribe to RFF state.
 		const unsubscribe = form.subscribe(
 			(state) => {
 				setDateDetails(state?.values);
