@@ -21,9 +21,11 @@ const TicketCard: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 
 	return ticket ? (
 		<EntityCard
-			entity={ticket}
-			cacheId={ticket.cacheId + displayStartOrEndDate}
 			actionsMenu={<TicketActionsMenu entity={ticket} layout={EntityActionsMenuLayout.Vertical} />}
+			cacheId={ticket.cacheId + displayStartOrEndDate}
+			details={<Details entity={ticket} />}
+			entity={ticket}
+			reverse
 			sidebar={
 				<CalendarDateSwitcher
 					className={bgClassName}
@@ -33,8 +35,6 @@ const TicketCard: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 					startDate={ticket.startDate}
 				/>
 			}
-			details={<Details entity={ticket} />}
-			reverse
 		/>
 	) : null;
 };

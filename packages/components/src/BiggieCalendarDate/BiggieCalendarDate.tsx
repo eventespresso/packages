@@ -5,7 +5,6 @@ import { parseISO, isValid } from 'date-fns';
 import { Button } from '../Button';
 import { Calendar } from '@eventespresso/icons';
 
-import type { CalendarDateProps } from '../types';
 import { LabelPosition } from '../withLabel';
 import { TimezoneTimeInfo } from '../TimezoneTimeInfo';
 import {
@@ -17,17 +16,14 @@ import {
 } from '@eventespresso/constants';
 import { useTimeZoneTime } from '@eventespresso/services';
 
+import { BiggieCalendarDateProps } from './index';
 import './style.scss';
-
-export interface BiggieCalendarDateProps extends CalendarDateProps {
-	date: Date | string;
-	timeRange?: string;
-}
 
 /**
  * Displays a full calendar date, but REALLY BIG!!
  */
 const BiggieCalendarDate: React.FC<BiggieCalendarDateProps> = ({
+	compact,
 	date,
 	editButton = {},
 	footerText,
@@ -71,9 +67,9 @@ const BiggieCalendarDate: React.FC<BiggieCalendarDateProps> = ({
 					<div className='ee-bcd__time'>{format(dateObject, TIME_ONLY_12H_SHORT_FORMAT)}</div>
 				)}
 				{timeRange && <div className='ee-bcd__time'>{timeRange}</div>}
-				<TimezoneTimeInfo date={dateObject} />
+				{!compact && <TimezoneTimeInfo date={dateObject} />}
 			</div>
-			{footerText && <div className='ee-biggie-calendar-date__footer'>{footerText}</div>}
+			{footerText && !compact && <div className='ee-biggie-calendar-date__footer'>{footerText}</div>}
 			{editDateButton}
 		</div>
 	);

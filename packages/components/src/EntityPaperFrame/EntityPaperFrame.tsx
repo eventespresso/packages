@@ -18,10 +18,11 @@ interface EntityPaperFrameProps {
  * adds a styled frame that gives the appearance
  * of a piece of paper on a surface
  */
-const EntityPaperFrame: React.FC<EntityPaperFrameProps> = ({ children, className, entity }) => {
-	const htmlClassName = classNames(className, 'ee-entity-paper-frame-wrapper');
+const EntityPaperFrame: React.FC<EntityPaperFrameProps> = ({ children, entity, ...props }) => {
+	const className = classNames(props.className, 'ee-entity-paper-frame-wrapper');
+
 	return (
-		<div id={`ee-entity-paper-frame-${entity.id}`} className={htmlClassName}>
+		<div id={`ee-entity-paper-frame-${entity.id}`} className={className}>
 			<EntityIDs dbid={entity.dbId} guid={entity.id} />
 			<div className='ee-entity-paper-frame'>
 				<div className='ee-entity-inner-wrapper'>{children}</div>

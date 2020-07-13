@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import type { Datetime } from '@eventespresso/edtr-services';
 import DatetimeRow from './DatetimeRow';
 import { Pagination } from '@eventespresso/adapters';
 
