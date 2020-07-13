@@ -8,6 +8,7 @@ import { ModalWithAlert } from '@eventespresso/components';
 
 import { ContentBody, ContentFooter } from '../MultiStep';
 import useCancelButtonProps from './useCancelButtonProps';
+import { withContext } from '../../context';
 
 import './styles.scss';
 
@@ -42,4 +43,4 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 	);
 };
 
-export default Modal;
+export default withContext(Modal);

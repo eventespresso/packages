@@ -2,12 +2,12 @@ type Type = 'recurrence' | 'exclusion';
 
 export interface PatternEditorControlsProps {
 	label: string;
-	onChange: (string) => string;
+	onChange: (string) => void;
 }
 
 export interface PatternEditorProps {
 	id: string;
-	onChange: (string) => string;
+	onChange: (string) => void;
 	rruleString: string;
 	type: Type;
 }
@@ -15,7 +15,7 @@ export interface PatternEditorProps {
 export interface RRulePatternEditorProps {
 	id: string;
 	initialOpen: boolean;
-	onChange: (string) => string;
+	onChange: (string) => void;
 	rruleString: string;
 	type: Type;
 }
