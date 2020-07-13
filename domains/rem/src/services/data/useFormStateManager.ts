@@ -4,7 +4,7 @@ import type { FormStateManager, FormStateManagerHook } from './types';
 import useDataReducer, { initialState } from './useFormStateReducer';
 import useInitialState from './useInitialState';
 
-type DSM = FormStateManager;
+type FSM = FormStateManager;
 
 const useFormStateManager: FormStateManagerHook = () => {
 	const initializer = useInitialState();
@@ -16,30 +16,30 @@ const useFormStateManager: FormStateManagerHook = () => {
 		console.log('REM form state', state);
 	}, [state]);
 
-	const getData: DSM['getData'] = useCallback(() => state, [state]);
+	const getData: FSM['getData'] = useCallback(() => state, [state]);
 
-	const setRRule: DSM['setRRule'] = useCallback((rRule) => {
+	const setRRule: FSM['setRRule'] = useCallback((rRule) => {
 		dispatch({
 			type: 'SET_R_RULE',
 			rRule,
 		});
 	}, []);
 
-	const setExRule: DSM['setExRule'] = useCallback((rRule) => {
+	const setExRule: FSM['setExRule'] = useCallback((rRule) => {
 		dispatch({
 			type: 'SET_R_RULE',
 			rRule,
 		});
 	}, []);
 
-	const setDateDetails: DSM['setDateDetails'] = useCallback((dateDetails) => {
+	const setDateDetails: FSM['setDateDetails'] = useCallback((dateDetails) => {
 		dispatch({
 			type: 'SET_DATE_DETAILS',
 			dateDetails,
 		});
 	}, []);
 
-	const updateDateField: DSM['updateDateField'] = useCallback((field, value) => {
+	const updateDateField: FSM['updateDateField'] = useCallback((field, value) => {
 		dispatch({
 			type: 'SET_DATE_DETAILS',
 			dateDetails: { [field]: value },
