@@ -25,10 +25,10 @@ const useFormStateManager: FormStateManagerHook = () => {
 		});
 	}, []);
 
-	const setExRule: FSM['setExRule'] = useCallback((rRule) => {
+	const setExRule: FSM['setExRule'] = useCallback((exRule) => {
 		dispatch({
-			type: 'SET_R_RULE',
-			rRule,
+			type: 'SET_EX_RULE',
+			exRule,
 		});
 	}, []);
 
