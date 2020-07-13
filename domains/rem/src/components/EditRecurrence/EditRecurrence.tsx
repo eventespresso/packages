@@ -8,28 +8,22 @@ import { PATTERN_TYPE_RECURRENCE } from '../../constants';
 
 // import { generateDatetimes, getRecurrenceFrequency } from '../../utils';
 
-import { useREMContext } from '../../context';
+import { useDatetime } from '../../context';
+import { useFormState } from '../../services/data';
 
 import './style.scss';
 
-const EditDatetimeRecurrence: React.FC = () => {
-	const { datetime } = useREMContext();
-
-	const onRecurrenceChange = (rRuleString: string): string => {
-		// rRuleString = rRuleString.target ? rRuleString.target.value : rRuleString;
-		// return rRuleString ? addRrule(eventDate, rRuleString) : resetRrule(eventDate);
-		return rRuleString;
-	};
-
-	const ruleString = 'DTSTART:20120201T093000Z\nRRULE:FREQ=WEEKLY;INTERVAL=5;UNTIL=20130130T230000Z;BYDAY=MO,FR';
+const EditRecurrence: React.FC = () => {
+	const datetime = useDatetime();
+	const { rRule, setRRule } = useFormState();
 
 	return (
 		<>
 			<RRulePatternEditor
 				id={datetime.id}
 				type={PATTERN_TYPE_RECURRENCE}
-				rruleString={ruleString}
-				onChange={onRecurrenceChange}
+				rruleString={rRule}
+				onChange={setRRule}
 				initialOpen={true}
 			/>
 			{/* <RRulePatternEditor
@@ -62,4 +56,4 @@ const EditDatetimeRecurrence: React.FC = () => {
 	);
 };
 
-export default EditDatetimeRecurrence;
+export default EditRecurrence;
