@@ -11,6 +11,7 @@ import './style.scss';
 const ExclusionPattern: React.FC = () => {
 	const datetime = useDatetime();
 	const { exRule, setExRule } = useFormState();
+
 	const onReset = useCallback(() => setExRule(''), [setExRule]);
 
 	return (
