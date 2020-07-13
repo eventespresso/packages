@@ -3,36 +3,22 @@ import { pick } from 'ramda';
 
 import { ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import type { EspressoFormProps } from '@eventespresso/form';
-import { useDatetimeItem, processDateAndTime } from '@eventespresso/edtr-services';
 import type { Datetime } from '@eventespresso/edtr-services';
-import { EntityId } from '@eventespresso/data';
 import { validate } from './formValidation';
-import { DateFormShape } from '@eventespresso/event-editor/src/ui/datetimes/dateForm/types';
-import { useTimeZoneTime } from '@eventespresso/services';
+import { DateFormShape } from './types';
 
 type DateFormConfig = EspressoFormProps<DateFormShape>;
 
-// @ts-ignore
-const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'type', 'isTrashed'];
+const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'description'];
 
-const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormConfig => {
-	const { startDate: start, endDate: end, ...restProps } = useDatetimeItem({ id }) || {};
+// required for RFF, but we don't need it.
+const onSubmit = () => null;
 
-	const { siteTimeToUtc } = useTimeZoneTime();
-
-	const { onSubmit } = config;
-
-	const onSubmitFrom: DateFormConfig['onSubmit'] = ({ dateTime, ...rest }, form, ...restParams) => {
-		const { startDate, endDate } = processDateAndTime(dateTime, siteTimeToUtc);
-
-		const values = { ...rest, startDate, endDate };
-
-		return onSubmit(values, form, ...restParams);
-	};
+const useDateFormConfig = (datetime: Datetime, config?: EspressoFormProps): DateFormConfig => {
+	const { startDate: start, endDate: end, ...restProps } = datetime;
 
 	const initialValues: DateFormShape = {
 		...pick<Partial<Datetime>, keyof Datetime>(FIELD_NAMES, restProps),
-		dateTime: {},
 	};
 
 	const adjacentFormItemProps = {
@@ -41,7 +27,7 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 
 	return {
 		...config,
-		onSubmit: onSubmitFrom,
+		onSubmit,
 		initialValues,
 		validate,
 		layout: 'horizontal',
@@ -50,31 +36,48 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 			{
 				name: 'basics',
 				icon: ProfileOutlined,
+				title: __('Basics'),
+				fields: [
+					{
+						name: 'name',
+						label: __('Name'),
+						fieldType: 'text',
+						required: true,
+						min: 3,
+					},
+					{
+						name: 'description',
+						label: __('Description'),
+						fieldType: 'textarea',
+					},
+				],
+			},
+			{
+				name: 'length',
+				icon: ProfileOutlined,
 				title: __('Length'),
 				fields: [
 					{
-						// @ts-ignore
-						name: 'number',
-						label: __('number'),
+						name: 'duration',
+						label: __('Duration'),
 						fieldType: 'number',
 					},
 					{
-						// @ts-ignore
-						name: 'type',
-						label: __('type'),
+						name: 'unit',
+						label: __('Unit'),
 						fieldType: 'select',
 						options: [
 							{
 								label: 'day(s)',
-								value: 'day',
+								value: 'days',
 							},
 							{
 								label: 'hour(s)',
-								value: 'hour',
+								value: 'hours',
 							},
 							{
 								label: 'minutes',
-								value: 'minutes',
+								value: 'minutess',
 							},
 						],
 					},
@@ -86,9 +89,11 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 				title: __('Details'),
 				fields: [
 					{
-						name: 'isTrashed',
-						label: __('Trash'),
-						fieldType: 'switch',
+						name: 'capacity',
+						label: __('Capacity'),
+						fieldType: 'number',
+						parseAsInfinity: true,
+						min: -1,
 						formControlProps: adjacentFormItemProps,
 					},
 				],
