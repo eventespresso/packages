@@ -77,7 +77,7 @@ const useDateFormConfig = (datetime: Datetime, config?: EspressoFormProps): Date
 							},
 							{
 								label: 'minutes',
-								value: 'minutess',
+								value: 'minutes',
 							},
 						],
 					},
