@@ -1,11 +1,12 @@
 import React from 'react';
 import RRuleGenerator from 'react-rrule-generator';
+import { __ } from '@wordpress/i18n';
 
 import { PatternEditorProps } from './types';
 
 const config = {
-	repeat: ['Yearly', 'Monthly', 'Weekly', 'Daily'],
-	end: ['After', 'On date'],
+	repeat: [__('Yearly'), __('Monthly'), __('Weekly'), __('Daily')],
+	end: [__('After'), __('On date')],
 	weekStartsOnSunday: true,
 	enableTimepicker: false,
 	hideStart: false,
