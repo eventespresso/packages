@@ -1,18 +1,17 @@
 import type { Entity } from '@eventespresso/data';
 
-export interface CompactDetailsProps {
-	description: string;
-	id: string;
-	name: string;
-	price?: number;
-}
-
 export interface EntityCardProps {
-	actionsMenu?: JSX.Element;
+	actionsMenu: JSX.Element;
 	cacheId?: string;
-	compact?: boolean;
-	details?: JSX.Element;
+	details: JSX.Element;
 	entity: Entity;
 	reverse?: boolean;
 	sidebar: JSX.Element;
+}
+
+export interface SimpleEntityCardProps {
+	afterDetails?: JSX.Element;
+	beforeDetails?: JSX.Element;
+	id: string;
+	name: string;
 }

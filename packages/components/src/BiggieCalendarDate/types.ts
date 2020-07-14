@@ -23,7 +23,6 @@ export interface NumberInputProps extends ChakraNumberInputProps {
 }
 
 export interface BiggieCalendarDateProps extends CalendarDateProps {
-	compact?: boolean;
 	date: Date | string;
 	timeRange?: string;
 }

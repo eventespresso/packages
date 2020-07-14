@@ -9,7 +9,7 @@ import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
 import { switchTenseForDate } from '@eventespresso/services';
 
 const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = React.memo(
-	({ className, compact, displayDate = DisplayStartOrEndDate.start, labels, ...props }) => {
+	({ className, displayDate = DisplayStartOrEndDate.start, labels, ...props }) => {
 		const startDate = parseISO(props.startDate) || PLUS_ONE_MONTH;
 		const endDate = parseISO(props.endDate) || PLUS_TWO_MONTHS;
 		const { footer = '', footerPast, footerFuture, header = '', headerPast, headerFuture } = labels;
@@ -20,7 +20,6 @@ const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = React.memo(
 		const start = (
 			<BiggieCalendarDate
 				className={className}
-				compact={compact}
 				date={startDate}
 				footerText={footerText}
 				headerText={headerText || __('starts')}

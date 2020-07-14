@@ -1,0 +1,25 @@
+.ee-simple-entity-card {
+	display: flex;
+	border: 1px solid #ccc;
+	margin: 0.5rem 1rem;
+	max-width: 270px;
+	color: #000;
+
+	&__details {
+		flex-flow: column;
+		padding: 0.5rem 0.75rem;
+		border-left: 1px dotted #ccc;
+		width: 13rem;
+		height: 6rem;
+		display: flex;
+		justify-content: space-between;
+		line-height: 1rem;
+		font-size: 0.6rem;
+	}
+
+	&__name {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--ee-text-on-grey-15);
+	}
+}

@@ -23,7 +23,6 @@ import './style.scss';
  * Displays a full calendar date, but REALLY BIG!!
  */
 const BiggieCalendarDate: React.FC<BiggieCalendarDateProps> = ({
-	compact,
 	date,
 	editButton = {},
 	footerText,
@@ -67,9 +66,9 @@ const BiggieCalendarDate: React.FC<BiggieCalendarDateProps> = ({
 					<div className='ee-bcd__time'>{format(dateObject, TIME_ONLY_12H_SHORT_FORMAT)}</div>
 				)}
 				{timeRange && <div className='ee-bcd__time'>{timeRange}</div>}
-				{!compact && <TimezoneTimeInfo date={dateObject} />}
+				<TimezoneTimeInfo date={dateObject} />
 			</div>
-			{footerText && !compact && <div className='ee-biggie-calendar-date__footer'>{footerText}</div>}
+			{footerText && <div className='ee-biggie-calendar-date__footer'>{footerText}</div>}
 			{editDateButton}
 		</div>
 	);

@@ -11,7 +11,6 @@ export interface CalendarDateLabels {
 
 export interface CalendarDateSwitcherProps {
 	className?: string;
-	compact?: boolean;
 	displayDate?: DisplayStartOrEndDate;
 	endDate: string;
 	labels: CalendarDateLabels;
