@@ -14,7 +14,7 @@ const RemButton: React.FC = () => {
 	return (
 		<>
 			<IconButton borderless icon={Rem} onClick={onOpen} />
-			<Modal isOpen={isOpen} {...disclosure} />
+			{isOpen && <Modal isOpen={true} {...disclosure} />}
 		</>
 	);
 };

@@ -43,7 +43,11 @@ const useCacheRehydration = (): void => {
 		// make sure we have something to deal with
 		if (relations?.datetimes) {
 			Object.entries(relations.datetimes).forEach(([datetimeId, relations]) => {
-				newRelationalData = assocPath(['datetimes', datetimeId, 'recurrences'], relations, newRelationalData);
+				newRelationalData = assocPath(
+					['datetimes', datetimeId, 'recurrences'],
+					relations.recurrences,
+					newRelationalData
+				);
 			});
 		}
 
