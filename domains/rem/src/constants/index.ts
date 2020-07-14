@@ -1,4 +1,5 @@
 import { __ } from '@wordpress/i18n';
+import type { Datetime } from '@eventespresso/edtr-services';
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
 export const TIME_FORMAT = 'hh:mm a';
@@ -39,3 +40,5 @@ export const RRULE_DAY_LABELS = {
 	SA: __('Saturday'),
 	SU: __('Sunday'),
 };
+
+export const DATE_FIELDS_TO_USE: Array<keyof Datetime> = ['id', 'name', 'description', 'capacity'];
