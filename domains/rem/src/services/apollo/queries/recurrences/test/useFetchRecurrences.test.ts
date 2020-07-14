@@ -9,12 +9,16 @@ const timeout = 5000; // milliseconds
 describe('useFetchRecurrences()', () => {
 	it('checks for the error state', async () => {
 		/* Set query options and the wrapper */
-		const {
-			result: { current: request },
-		} = renderHook(() => useRecurrenceQueryOptions(), {
-			wrapper: ApolloMockedProvider(),
-		});
-		const wrapper = ApolloMockedProvider(errorMocks.map((mock) => ({ ...mock, request })));
+		const { result: queryResult, waitForNextUpdate: waitForUpdate } = renderHook(
+			() => useRecurrenceQueryOptions(),
+			{
+				wrapper: ApolloMockedProvider(),
+			}
+		);
+
+		await waitForUpdate({ timeout });
+
+		const wrapper = ApolloMockedProvider(errorMocks.map((mock) => ({ ...mock, request: queryResult.current })));
 		/* Set query options and the wrapper */
 
 		const { result, waitForNextUpdate } = renderHook(() => useFetchRecurrences(), {
