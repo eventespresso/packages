@@ -33,10 +33,7 @@ const EntityCard: React.FC<EntityCardProps> = ({
 				{!compact && <div className={'entity-card__sidebar'}>{sidebar}</div>}
 
 				<div className={'entity-card__details-wrapper'}>
-					<div className={'entity-card__details'}>
-						{details && details}
-						{!details && compact && <Details entity={entity} />}
-					</div>
+					<div className={'entity-card__details'}>{details && details}</div>
 				</div>
 
 				{actionsMenu && <div className={'entity-card__menu'}>{actionsMenu}</div>}

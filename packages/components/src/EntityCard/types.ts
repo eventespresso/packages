@@ -1,7 +1,10 @@
 import type { Entity } from '@eventespresso/data';
 
-export interface DetailsProps {
-	entity: Entity;
+export interface CompactDetailsProps {
+	description: string;
+	id: string;
+	name: string;
+	price?: number;
 }
 
 export interface EntityCardProps {
