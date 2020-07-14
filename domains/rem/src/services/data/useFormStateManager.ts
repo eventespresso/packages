@@ -6,8 +6,8 @@ import useInitialState from './useInitialState';
 
 type FSM = FormStateManager;
 
-const useFormStateManager: FormStateManagerHook = () => {
-	const initializer = useInitialState();
+const useFormStateManager: FormStateManagerHook = (datetime) => {
+	const initializer = useInitialState(datetime);
 	const dataReducer = useDataReducer(initializer);
 	const [state, dispatch] = useReducer(dataReducer, initialState, initializer);
 
