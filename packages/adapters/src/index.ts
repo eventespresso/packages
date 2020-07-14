@@ -12,6 +12,7 @@ export * from './CheckboxGroup';
 export * from './Collapse';
 export * from './Datepicker';
 export * from './Divider';
+export * from './Dotdotdot';
 export * from './FormControl';
 export * from './FormErrorMessage';
 export * from './FormHelperText';

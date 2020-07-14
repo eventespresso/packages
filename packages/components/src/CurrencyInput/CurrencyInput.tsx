@@ -1,18 +1,14 @@
 import React, { useCallback } from 'react';
+import classNames from 'classnames';
 
 import { parsedAmount, useMoneyDisplay } from '@eventespresso/services';
 import { InlineEditText } from '../InlineEditInput';
 
-const nullFunc = (args?: any) => {};
+import { CurrencyInputProps } from './types';
 
-interface CurrencyInputProps {
-	amount: string | number;
-	id: string;
-	onChange?: (result?: { amount: string | number; id: string }) => void;
-	placeholder?: string;
-	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-	wrapperProps?: React.HTMLAttributes<Element>;
-}
+import './style.scss';
+
+const nullFunc = (args?: any) => {};
 
 const CurrencyInput: React.FC<CurrencyInputProps> = ({
 	amount = 0,
@@ -20,8 +16,10 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
 	onChange = nullFunc,
 	tag = 'p',
 	wrapperProps = {},
+	vertical,
 }) => {
 	const { formatAmount, beforeAmount, afterAmount } = useMoneyDisplay();
+	const className = classNames('ee-currency-input', vertical && 'ee-currency-input--vertical');
 	const before = beforeAmount ? <span className={'ee-currency-input__before-amount'}>{beforeAmount} </span> : '';
 	const after = afterAmount ? <span className={'ee-currency-input__after-amount'}> {afterAmount}</span> : '';
 	const formattedAmount = formatAmount(amount);
@@ -38,7 +36,7 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
 	);
 
 	return (
-		<Wrapper className={'ee-currency-input'} {...wrapperProps}>
+		<Wrapper {...wrapperProps} className={className}>
 			{before}
 			<InlineEditText
 				as='span'

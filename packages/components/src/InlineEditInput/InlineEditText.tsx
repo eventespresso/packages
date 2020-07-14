@@ -1,7 +1,6 @@
 import React from 'react';
-import Dotdotdot from 'react-dotdotdot';
 
-import { InlineEdit, InlineEditPreviewProps, TextFit } from '@eventespresso/adapters';
+import { Dotdotdot, InlineEdit, InlineEditPreviewProps, TextFit } from '@eventespresso/adapters';
 import type { TextProps } from './types';
 
 const Preview: React.FC<InlineEditPreviewProps> = ({ fitText, isEditing, onRequestEdit, value }) => {

@@ -1,7 +1,11 @@
 .rem-ticket-list {
+	display: flex;
+	justify-content: flex-start;
+
 	.ee-entity-card-wrapper {
-		display: inline-flex;
-		margin-right: 2%;
-		width: 48%;
+		display: flex;
+		border: 1px solid #ccc;
+		margin: 0.5rem 1rem;
+		color: #000;
 	}
 }

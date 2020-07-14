@@ -1,8 +1,9 @@
 import React from 'react';
 
-import TicketDetailsPanel from './TicketDetailsPanel';
 import { getPropsAreEqual } from '@eventespresso/services';
 import { EditableDesc, EditableName, EditablePrice } from '../editable';
+
+import TicketDetailsPanel from './TicketDetailsPanel';
 import type { TicketItemProps } from '../types';
 
 const Details: React.FC<TicketItemProps> = ({ entity: ticket }) => {

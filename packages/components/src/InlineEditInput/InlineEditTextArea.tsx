@@ -1,6 +1,6 @@
 import React from 'react';
-import Dotdotdot from 'react-dotdotdot';
 
+import { Dotdotdot } from '@eventespresso/adapters';
 import type { TextAreaProps } from './types';
 import { InlineEdit, InlineEditPreviewProps } from '@eventespresso/adapters';
 

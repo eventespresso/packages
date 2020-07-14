@@ -5,7 +5,6 @@ import { EntityCard } from '@eventespresso/components';
 import { getTicketStatusTextLabel, ticketStatusBgColorClassName } from '@eventespresso/helpers';
 import { useMemoStringify } from '@eventespresso/hooks';
 
-import Details from './Details';
 import { TicketCardProps } from './types';
 
 const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
@@ -16,8 +15,8 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
 	return (
 		<EntityCard
 			cacheId={ticket.cacheId}
+			compact
 			entity={ticket}
-			details={<Details ticket={ticket} />}
 			sidebar={
 				<CalendarDateSwitcher
 					className={bgClassName}
@@ -27,7 +26,6 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
 					startDate={ticket.startDate}
 				/>
 			}
-			reverse
 		/>
 	);
 };
