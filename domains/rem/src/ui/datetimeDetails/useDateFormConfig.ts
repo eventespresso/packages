@@ -6,19 +6,16 @@ import type { EspressoFormProps } from '@eventespresso/form';
 import type { Datetime } from '@eventespresso/edtr-services';
 import { validate } from './formValidation';
 import { DateFormShape } from './types';
+import { DATE_FIELDS_TO_USE } from '../../constants';
 
 type DateFormConfig = EspressoFormProps<DateFormShape>;
-
-const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'description'];
 
 // required for RFF, but we don't need it.
 const onSubmit = () => null;
 
 const useDateFormConfig = (datetime: Datetime, config?: EspressoFormProps): DateFormConfig => {
-	const { startDate: start, endDate: end, ...restProps } = datetime;
-
 	const initialValues: DateFormShape = {
-		...pick<Partial<Datetime>, keyof Datetime>(FIELD_NAMES, restProps),
+		...pick<Partial<Datetime>, keyof Datetime>(DATE_FIELDS_TO_USE, datetime),
 	};
 
 	const adjacentFormItemProps = {

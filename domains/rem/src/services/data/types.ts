@@ -1,7 +1,7 @@
 import type { Reducer, ReducerState } from 'react';
 
 import type { RecurrenceBaseInput } from '../apollo/mutations';
-import type { DatetimeBaseInput } from '@eventespresso/edtr-services';
+import type { DatetimeBaseInput, Datetime } from '@eventespresso/edtr-services';
 
 export interface FormState extends Omit<RecurrenceBaseInput, 'datetimes'> {
 	dateDetails: DatetimeBaseInput;
@@ -13,7 +13,7 @@ export interface DataAction extends Partial<FormState> {
 	type: DataActionType;
 }
 
-export type FormStateManagerHook = () => FormStateManager;
+export type FormStateManagerHook = (datetime: Datetime) => FormStateManager;
 
 export interface FormStateManager extends FormState {
 	getData: () => FormState;

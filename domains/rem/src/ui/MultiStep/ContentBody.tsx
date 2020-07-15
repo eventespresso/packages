@@ -9,17 +9,16 @@ import { GeneratedDates } from '../generatedDates';
 import Steps from './Steps';
 import Tickets from '../Tickets';
 import { useDatetime, useStepsState } from '../../context';
-// import { useDateRecurrence } from '../../services/apollo';
+import { useDateRecurrence } from '../../services/apollo';
 
 import type { ContentBodyProps } from './types';
 
 const ContentBody: React.FC<ContentBodyProps> = ({ isRecurrenceOpen, onRecurrenceOpen }) => {
 	const { current } = useStepsState();
 	const datetime = useDatetime();
-	// const recurrence = useDateRecurrence(datetime.id);
+	const recurrence = useDateRecurrence(datetime.id);
 
-	// if (!isRecurrenceOpen || !recurrence) {
-	if (!isRecurrenceOpen) {
+	if (!isRecurrenceOpen || !recurrence) {
 		return <Button buttonText={__('Convert date')} onClick={onRecurrenceOpen} />;
 	}
 
