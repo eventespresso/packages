@@ -16,6 +16,7 @@ function assertElementFitsHeight(el, height) {
 	return el.scrollHeight - 1 <= height;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 function noop() {}
 
 export default class TextFit extends React.Component {
