@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { useSystemNotifications } from '@eventespresso/toaster';
-import useRecurrenceQueryOptions from './useRecurrenceQueryOptions';
+import useRecurrenceQueryOptions, { RecurrencesQueryOptions } from './useRecurrenceQueryOptions';
 import { FetchQueryResult, useQuery } from '@eventespresso/data';
 import type { RecurrencesList } from '../../types';
 
-const useFetchRecurrences = (): FetchQueryResult<RecurrencesList> => {
+const useFetchRecurrences = (queryOptions?: Partial<RecurrencesQueryOptions>): FetchQueryResult<RecurrencesList> => {
 	const { query, ...options } = useRecurrenceQueryOptions();
 
 	const toaster = useSystemNotifications();
@@ -16,6 +16,7 @@ const useFetchRecurrences = (): FetchQueryResult<RecurrencesList> => {
 
 	const { loading, ...result } = useQuery<RecurrencesList>(query, {
 		...options,
+		...queryOptions, // priority to passed options
 		onCompleted: (): void => {
 			dismissLoading();
 			toastId.current = toaster.success({ message: __('recurrences initialized') });

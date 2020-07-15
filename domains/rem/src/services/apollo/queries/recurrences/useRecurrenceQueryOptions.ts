@@ -6,7 +6,7 @@ import { RecurrenceEdge } from '../../types';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { useDatetimeIds } from '@eventespresso/edtr-services';
 
-type RecurrencesQueryOptions = ReadQueryOptions<RecurrencesList<RecurrenceEdge>, RecurrencesQueryArgs>;
+export type RecurrencesQueryOptions = ReadQueryOptions<RecurrencesList<RecurrenceEdge>, RecurrencesQueryArgs>;
 
 const useRecurrenceQueryOptions = (datetimeIn: EntityId[] = []): RecurrencesQueryOptions => {
 	const datetimeIds = useDatetimeIds();

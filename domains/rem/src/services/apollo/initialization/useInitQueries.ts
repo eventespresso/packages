@@ -2,10 +2,10 @@ import { useFetchRecurrences } from '../queries';
 import useCacheRehydration from './useCacheRehydration';
 
 const useInitQueries = (): void => {
-	useCacheRehydration();
+	const rehydrated = useCacheRehydration();
 
 	// initiate datetime fetching.
-	useFetchRecurrences();
+	useFetchRecurrences({ skip: !rehydrated }); // skip until the cache has not been rehydrated
 };
 
 export default useInitQueries;

@@ -8,7 +8,10 @@ import { getGuids } from '@eventespresso/predicates';
 import { useDatetimes } from '@eventespresso/edtr-services';
 import { assocPath } from 'ramda';
 
-const useCacheRehydration = (): void => {
+/**
+ * Returns true if the cache has been rehydrated, false otherwise
+ */
+const useCacheRehydration = (): boolean => {
 	const { getData: getRelationalData, initialize, isInitialized } = useRelations();
 
 	const { recurrences: espressoRecurrences = DEFAULT_RECURRENCE_LIST_DATA, relations } = useCacheRehydrationData();
@@ -65,6 +68,8 @@ const useCacheRehydration = (): void => {
 		relations,
 		updateRecurrenceList,
 	]);
+
+	return initialized.current;
 };
 
 export default useCacheRehydration;
