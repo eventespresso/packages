@@ -18,7 +18,7 @@ const ContentBody: React.FC<ContentBodyProps> = ({ isRecurrenceOpen, onRecurrenc
 	const datetime = useDatetime();
 	const recurrence = useDateRecurrence(datetime.id);
 
-	if (!isRecurrenceOpen || !recurrence) {
+	if (!isRecurrenceOpen && !recurrence) {
 		return <Button buttonText={__('Convert date')} onClick={onRecurrenceOpen} />;
 	}
 
