@@ -16,7 +16,9 @@ function assertElementFitsHeight(el, height) {
 	return el.scrollHeight - 1 <= height;
 }
 
-function noop() {}
+function noop() {
+	return null;
+}
 
 export default class TextFit extends React.Component {
 	static defaultProps = {

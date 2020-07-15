@@ -26,8 +26,10 @@ const useEntityFilterService = <D extends string, L extends string, E extends En
 		[]
 	);
 
+	type GetFilters = ReturnType<typeof getFilters>;
+
 	const applyCallbacks = useCallback(
-		(entityList: Array<E>, filterState: FS, mappedCallbackList: ReturnType<typeof getFilters>): Array<E> => {
+		(entityList: Array<E>, filterState: FS, mappedCallbackList: GetFilters): Array<E> => {
 			let filteredEntities = entityList;
 
 			const callbacks = getCallbackList(mappedCallbackList);
@@ -38,7 +40,7 @@ const useEntityFilterService = <D extends string, L extends string, E extends En
 
 			return filteredEntities;
 		},
-		[getCallbackList, getFilters]
+		[getCallbackList]
 	);
 
 	// avoid the callback being affected by change in other callbacks

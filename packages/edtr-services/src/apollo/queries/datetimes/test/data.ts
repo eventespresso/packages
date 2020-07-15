@@ -2,7 +2,6 @@ import { GraphQLError } from 'graphql';
 import { formatISO } from 'date-fns';
 
 import { Datetime, DatetimeEdge, DateStatus as DatetimeStatus } from '../../../types';
-import {} from '@eventespresso/predicates';
 import { ReadQueryOptions } from '@eventespresso/data';
 
 export const request: ReadQueryOptions = null; // to be generated via Query Options hook
