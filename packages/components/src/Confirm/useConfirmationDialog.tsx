@@ -6,7 +6,12 @@ import { AlertDialog } from '@eventespresso/adapters';
 import { Button, ButtonType } from '../Button';
 import type { ConfirmProps } from './types';
 
-const useConfirmationDialog = ({ message, onConfirm, title, ...props }: ConfirmProps) => {
+type UseConfirmationDialog = {
+	confirmationDialog: React.ReactNode;
+	onOpen: VoidFunction;
+};
+
+const useConfirmationDialog = ({ message, onConfirm, title, ...props }: ConfirmProps): UseConfirmationDialog => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const cancelRef = React.useRef();
 	const onClickHandler = useCallback(() => {

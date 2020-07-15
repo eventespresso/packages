@@ -3,10 +3,14 @@ import classNames from 'classnames';
 
 import { Tooltip, TooltipProps } from '@eventespresso/adapters';
 import type { withTooltipProps } from './types';
+import type { ForwardRefComponent } from '../types';
 
 import './style.scss';
 
-const withTooltip = <P extends withTooltipProps>(WrappedComponent: React.ComponentType<P>) => {
+const withTooltip = <P extends withTooltipProps>(
+	WrappedComponent: React.ComponentType<P>
+): ForwardRefComponent<P, typeof WrappedComponent> => {
+	// Define ref type
 	type Ref = React.Ref<typeof WrappedComponent>;
 	type refProps = { forwardedRef: Ref };
 	const WithTooltip: React.ComponentType<P & refProps> = ({

@@ -2,9 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import type { withLabelProps } from './types';
 import { LabelPosition } from './types';
+import type { ForwardRefComponent } from '../types';
 import './style.scss';
 
-const withLabel = <P extends withLabelProps>(WrappedComponent: React.ComponentType<P>) => {
+const withLabel = <P extends withLabelProps>(
+	WrappedComponent: React.ComponentType<P>
+): ForwardRefComponent<P, typeof WrappedComponent> => {
 	type Ref = React.Ref<typeof WrappedComponent>;
 	type refProps = { forwardedRef: Ref };
 

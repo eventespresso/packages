@@ -1,11 +1,15 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, PropsWithoutRef, ForwardRefExoticComponent, RefAttributes } from 'react';
 import classNames from 'classnames';
 
 import { IconProps, IconSize } from './types';
 
 import './style.scss';
 
-const withEnhance = <P extends IconProps>(WrappedComponent: React.ComponentType<P>) => {
+export type ForwardRefComponent<P, C> = ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<C>>;
+
+const withEnhance = <P extends IconProps>(
+	WrappedComponent: React.ComponentType<P>
+): ForwardRefComponent<P, typeof WrappedComponent> => {
 	type Ref = React.Ref<typeof WrappedComponent>;
 	type EnhanceProps = { forwardedRef?: Ref; noMargin?: boolean; size?: IconSize };
 

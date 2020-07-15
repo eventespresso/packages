@@ -18,7 +18,7 @@ const EntityTable = <E extends Entity, FS extends ELFSM>({
 	tableCaption,
 	tableId,
 	...rest
-}: EntityTableProps<E, FS>) => {
+}: EntityTableProps<E, FS>): JSX.Element => {
 	const bodyRows = useMemo(() => entities.map((entity) => bodyRowGenerator({ entity, filterState })), [
 		bodyRowGenerator,
 		entities,

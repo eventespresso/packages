@@ -3,7 +3,7 @@ import type { BasicSortBy, EntityListFilterStateReducer } from './types';
 const getReducer = <SortBy = BasicSortBy>(): EntityListFilterStateReducer<SortBy> => {
 	const reducer: EntityListFilterStateReducer<SortBy> = (state, action) => {
 		const { type, perPage, pageNumber, total, searchText, sortBy, view } = action;
-
+		let sortingEnabled: boolean;
 		switch (type) {
 			case 'SET_SEARCH_TEXT':
 				return { ...state, searchText };
@@ -25,7 +25,7 @@ const getReducer = <SortBy = BasicSortBy>(): EntityListFilterStateReducer<SortBy
 				return { ...state, view, sortingEnabled: view === 'card' ? false : state.sortingEnabled };
 
 			case 'TOGGLE_SORTING':
-				const sortingEnabled = !state.sortingEnabled;
+				sortingEnabled = !state.sortingEnabled;
 				// switch to table view when sorting enabled
 				return { ...state, sortingEnabled, view: sortingEnabled ? 'table' : state.view };
 

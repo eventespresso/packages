@@ -1,4 +1,4 @@
-import type React from 'react';
+import React, { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes } from 'react';
 
 export interface CalendarDateProps {
 	editButton?: EditButtonProps;
@@ -16,3 +16,5 @@ export interface EditButtonProps {
 	tooltip: string;
 	tooltipPosition: string;
 }
+
+export type ForwardRefComponent<P, C> = ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<C>>;

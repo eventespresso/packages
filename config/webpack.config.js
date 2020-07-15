@@ -321,6 +321,7 @@ module.exports = function (webpackEnv) {
 								formatter: require.resolve('react-dev-utils/eslintFormatter'),
 								eslintPath: require.resolve('eslint'),
 								resolvePluginsRelativeTo: __dirname,
+								ignore: true,
 							},
 							loader: require.resolve('eslint-loader'),
 						},
@@ -530,7 +531,9 @@ module.exports = function (webpackEnv) {
 						return manifest;
 					}, seed);
 					const entrypointFiles = Object.entries(entrypoints).reduce((acc, [name, paths]) => {
-						acc[name] = paths.filter((fileName) => !fileName.endsWith('.map') && !fileName.endsWith('.php'));
+						acc[name] = paths.filter(
+							(fileName) => !fileName.endsWith('.map') && !fileName.endsWith('.php')
+						);
 						return acc;
 					}, {});
 

@@ -23,7 +23,7 @@ const EntityList = <E extends Entity, ELFS extends EntityListFilterStateManager<
 	noResultsDesc,
 	noResultsTitle,
 	renderList,
-}: EntityListProps<E, ELFS>) => {
+}: EntityListProps<E, ELFS>): JSX.Element => {
 	const { isError, isLoading } = useStatus();
 	const error = isError(entityType);
 	const loading = isLoading(entityType);
