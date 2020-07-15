@@ -9,17 +9,17 @@ const noop = () => {};
  */
 
 export default function whilst(test, iterator, callback = noop) {
-    if (test()) {
-        iterator(function next(err, ...args) {
-            if (err) {
-                callback(err);
-            } else if (test.apply(this, args)) {
-                iterator(next);
-            } else {
-                callback(null);
-            }
-        });
-    } else {
-        callback(null);
-    }
+	if (test()) {
+		iterator(function next(err, ...args) {
+			if (err) {
+				callback(err);
+			} else if (test.apply(this, args)) {
+				iterator(next);
+			} else {
+				callback(null);
+			}
+		});
+	} else {
+		callback(null);
+	}
 }
