@@ -5,7 +5,7 @@ import { withEdtrContext } from '@eventespresso/edtr-services';
 import { IconButton } from '@eventespresso/components';
 import { Rem } from '@eventespresso/icons';
 
-import Modal from '../components/Modal';
+import Modal from './Modal';
 
 const RemButton: React.FC = () => {
 	const { isOpen, onOpen, ...disclosure } = useDisclosure();

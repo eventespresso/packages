@@ -3,12 +3,11 @@ import classNames from 'classnames';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@wordpress/i18n';
 
-import { Button } from '@eventespresso/components';
 import { ModalWithAlert } from '@eventespresso/components';
 
 import { ContentBody, ContentFooter } from '../MultiStep';
-import useCancelButtonProps from './useCancelButtonProps';
 import { withContext } from '../../context';
+import useCancelButtonProps from './useCancelButtonProps';
 
 import './styles.scss';
 
@@ -37,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 			title={__('Recurring Events Manager')}
 			withBorder
 		>
-			{isRecurrenceOpen ? <ContentBody /> : <Button buttonText={__('Convert date')} onClick={onRecurrenceOpen} />}
+			<ContentBody isRecurrenceOpen={isRecurrenceOpen} onRecurrenceOpen={onRecurrenceOpen} />
 		</ModalWithAlert>
 	);
 };
