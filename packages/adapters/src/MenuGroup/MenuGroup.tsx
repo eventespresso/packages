@@ -4,7 +4,7 @@ import { MenuGroup as ChakraMenuGroup } from '@chakra-ui/core';
 import type { MenuGroupProps } from './types';
 
 const MenuGroup: React.FC<MenuGroupProps> = ({ children, ...props }) => {
-  return <ChakraMenuGroup {...props}>{children}</ChakraMenuGroup>;
+	return <ChakraMenuGroup {...props}>{children}</ChakraMenuGroup>;
 };
 
 export default MenuGroup;

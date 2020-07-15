@@ -19,15 +19,14 @@ export type DatetimesFilterActionType = 'SET_SALES' | 'SET_STATUS' | EntityFilte
 
 export interface DatetimesFilterAction
 	extends Partial<DatetimesFilterState>,
-	EntityFilterAction<DatetimesFilterActionType> { }
+		EntityFilterAction<DatetimesFilterActionType> {}
 
 export interface DatetimesFilterStateManager
 	extends EntityListFilterStateManager<SortBy>,
-	EntityFilterStateManager,
-	DatetimesFilterState {
+		EntityFilterStateManager,
+		DatetimesFilterState {
 	setSales: (sales: DatetimeSales) => void;
 	setStatus: (status: DatetimeStatus) => void;
 }
 
 export type DatetimesFilterStateReducer = EntityFilterStateReducer<DatetimesFilterState, DatetimesFilterAction>;
-

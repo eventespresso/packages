@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
-import { entityListCacheIdString, useRelations} from '@eventespresso/services';
+import { entityListCacheIdString, useRelations } from '@eventespresso/services';
 import useDatetimes from './useDatetimes';
 import type { Datetime } from '../../types';
 import type { RelatedEntitiesHook } from '../types';

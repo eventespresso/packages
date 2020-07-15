@@ -11,7 +11,9 @@ const Preview: React.FC<InlineEditPreviewProps> = ({ value, onRequestEdit, isEdi
 
 	return (
 		<Dotdotdot clamp={3}>
-			<span onClick={onRequestEdit}>{value}</span>
+			<span onClick={onRequestEdit} onKeyDown={onRequestEdit} role='button' tabIndex={0}>
+				{value}
+			</span>
 		</Dotdotdot>
 	);
 };

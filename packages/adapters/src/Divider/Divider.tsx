@@ -4,13 +4,13 @@ import { Divider as ChakraDivider } from '@chakra-ui/core';
 import type { DividerProps } from './types';
 
 const Divider: React.FC<DividerProps> = ({ children, dashed, ...props }) => {
-  const borderStyle = dashed ? 'dashed' : 'none';
+	const borderStyle = dashed ? 'dashed' : 'none';
 
-  return (
-    <ChakraDivider {...props} borderStyle={borderStyle}>
-      {children}
-    </ChakraDivider>
-  );
+	return (
+		<ChakraDivider {...props} borderStyle={borderStyle}>
+			{children}
+		</ChakraDivider>
+	);
 };
 
 export default Divider;

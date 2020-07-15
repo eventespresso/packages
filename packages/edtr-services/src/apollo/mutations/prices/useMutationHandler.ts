@@ -7,7 +7,7 @@ import useOnUpdatePrice from './useOnUpdatePrice';
 import type { MutationHandler, MutationUpdater } from '../types';
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PricesList, Price } from '../../';
-import {DEFAULT_PRICE_LIST_DATA as DEFAULT_LIST_DATA, usePriceQueryOptions } from '../../queries';
+import { DEFAULT_PRICE_LIST_DATA as DEFAULT_LIST_DATA, usePriceQueryOptions } from '../../queries';
 import type { PriceCommonInput } from './types';
 
 type MH = MutationHandler<Price, PriceCommonInput>;

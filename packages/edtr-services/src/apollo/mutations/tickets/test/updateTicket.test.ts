@@ -2,7 +2,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { path } from 'ramda';
 
 import { useRelations } from '@eventespresso/services';
-import { MutationType, MutationInput} from '@eventespresso/data';
+import { MutationType, MutationInput } from '@eventespresso/data';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { getMutationMocks, mockedTickets } from './data';
 import { nodes as datetimes } from '../../../queries/datetimes/test/data';

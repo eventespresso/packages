@@ -18,12 +18,12 @@ export interface TicketsFilterState extends EntityFilterState {
 
 export type TicketsFilterActionType = 'SET_SALES' | 'SET_STATUS' | 'TOGGLE_IS_CHAINED' | EntityFilterActionType;
 
-export interface TicketsFilterAction extends Partial<TicketsFilterState>, EntityFilterAction<TicketsFilterActionType> { }
+export interface TicketsFilterAction extends Partial<TicketsFilterState>, EntityFilterAction<TicketsFilterActionType> {}
 
 export interface TicketsFilterStateManager
 	extends EntityListFilterStateManager<SortBy>,
-	EntityFilterStateManager,
-	TicketsFilterState {
+		EntityFilterStateManager,
+		TicketsFilterState {
 	setSales: (sales: TicketsSales) => void;
 	setStatus: (status: TicketsStatus) => void;
 	toggleIsChained: VoidFunction;

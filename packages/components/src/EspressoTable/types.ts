@@ -5,6 +5,7 @@ import type {
 	OnDragUpdateResponder,
 	OnDragEndResponder,
 } from 'react-beautiful-dnd';
+import { AnyObject } from 'react-final-form';
 
 interface CommonProps {
 	showDragHandle?: boolean;
@@ -36,7 +37,7 @@ export interface HeaderRow {
 	cells: Cell[];
 	children?: React.ReactNode;
 	className?: string;
-	extraProps?: object;
+	extraProps?: AnyObject;
 	id?: string;
 	key: string;
 	primary: boolean;

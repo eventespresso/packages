@@ -15,10 +15,10 @@ const Preview: React.FC<InlineEditPreviewProps> = ({ value, onRequestEdit, isEdi
 		return null;
 	}
 
-	let output = isInfinity ? '∞' : value;
+	const output = isInfinity ? '∞' : value;
 
 	return (
-		<span className={classeName} onClick={onRequestEdit}>
+		<span className={classeName} onClick={onRequestEdit} onKeyDown={onRequestEdit} role='button' tabIndex={0}>
 			{output}
 		</span>
 	);

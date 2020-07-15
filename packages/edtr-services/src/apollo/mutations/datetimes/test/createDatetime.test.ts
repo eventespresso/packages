@@ -4,7 +4,7 @@ import { path } from 'ramda';
 
 import { useDatetimeMutator } from '../';
 import { useRelations } from '@eventespresso/services';
-import { MutationType, MutationInput} from '@eventespresso/data';
+import { MutationType, MutationInput } from '@eventespresso/data';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { getMutationMocks, mockedDatetimes } from './data';
 import { nodes as tickets } from '../../../queries/tickets/test/data';

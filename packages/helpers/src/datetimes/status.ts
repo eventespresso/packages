@@ -1,5 +1,12 @@
 import type { Datetime } from '@eventespresso/edtr-services';
-import { DATETIME_STATUS_ID, isActive, isExpired, isDateSoldOut, isTrashed, isUpcoming } from '@eventespresso/predicates';
+import {
+	DATETIME_STATUS_ID,
+	isActive,
+	isExpired,
+	isDateSoldOut,
+	isTrashed,
+	isUpcoming,
+} from '@eventespresso/predicates';
 
 const status = (date: Datetime): string => {
 	if (isTrashed(date)) {

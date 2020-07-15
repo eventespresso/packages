@@ -10,7 +10,7 @@ import {
 	SiteUrlProps,
 	Timezone,
 	TimezoneProps,
-  ConfigDataProps
+	ConfigDataProps,
 } from './';
 import { ApiDomData, ConfigDomData } from '../types';
 

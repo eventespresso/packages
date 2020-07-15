@@ -29,19 +29,22 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 		});
 	}, []);
 
-	const setPerPage: FSM['setPerPage'] = useCallback((newPageNumber, newPerPage) => {
-		// the pagination component will recalculate the page number
-		// if it goes out of range after changing the perPage value,
-		// so save that else we'll get no results returned
-		if (newPageNumber && newPageNumber !== state.pageNumber) {
-			setPageNumber(newPageNumber);
-		}
-		dispatch({
-			type: 'SET_PER_PAGE',
-			perPage: newPerPage,
-		});
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [state.pageNumber]);
+	const setPerPage: FSM['setPerPage'] = useCallback(
+		(newPageNumber, newPerPage) => {
+			// the pagination component will recalculate the page number
+			// if it goes out of range after changing the perPage value,
+			// so save that else we'll get no results returned
+			if (newPageNumber && newPageNumber !== state.pageNumber) {
+				setPageNumber(newPageNumber);
+			}
+			dispatch({
+				type: 'SET_PER_PAGE',
+				perPage: newPerPage,
+			});
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[state.pageNumber]
+	);
 
 	const setPageNumber: FSM['setPageNumber'] = useCallback((pageNumber) => {
 		dispatch({

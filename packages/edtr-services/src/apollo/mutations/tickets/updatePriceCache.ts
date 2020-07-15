@@ -3,7 +3,7 @@ import { assocPath, pathOr, uniqBy, sortBy, identity } from 'ramda';
 import type { CacheUpdaterFnArgs } from '../types';
 import { DEFAULT_PRICE_LIST_DATA, GET_PRICES } from '../../queries';
 import type { Price, PricesList } from '../../types';
-import {ReadQueryOptions, WriteQueryOptions } from '@eventespresso/data';
+import { ReadQueryOptions, WriteQueryOptions } from '@eventespresso/data';
 import { entityDbId } from '@eventespresso/predicates';
 
 const updatePriceCache = ({ proxy, prices = null, ticketIn, ticketId, action }: CacheUpdaterFnArgs): void => {

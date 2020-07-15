@@ -5,13 +5,13 @@ import { Heading as ChakraHeading } from '@chakra-ui/core';
 import type { HeadingProps } from './types';
 
 const Heading: React.FC<HeadingProps> = ({ children, ...props }) => {
-  const className = classNames(props.className, 'ee-heading');
+	const className = classNames(props.className, 'ee-heading');
 
-  return (
-    <ChakraHeading {...props} className={className}>
-      {children}
-    </ChakraHeading>
-  );
+	return (
+		<ChakraHeading {...props} className={className}>
+			{children}
+		</ChakraHeading>
+	);
 };
 
 export default Heading;

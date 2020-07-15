@@ -4,7 +4,7 @@ import { MenuItemOption as ChakraMenuItemOption } from '@chakra-ui/core';
 import type { MenuItemOptionProps } from './types';
 
 const MenuItemOption: React.FC<MenuItemOptionProps> = ({ children, ...props }) => {
-  return <ChakraMenuItemOption {...props}>{children}</ChakraMenuItemOption>;
+	return <ChakraMenuItemOption {...props}>{children}</ChakraMenuItemOption>;
 };
 
 export default MenuItemOption;

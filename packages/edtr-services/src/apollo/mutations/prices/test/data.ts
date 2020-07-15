@@ -8,7 +8,6 @@ import { mutations } from '../..';
 import type { MockedResponse } from '../../../../context/test/types';
 import { ReadQueryOptions } from '@eventespresso/data';
 
-
 export const mockedPrices = {
 	[MutationType.Create]: { ...prices[0], id: prices[0].id + '-alpha' }, // make sure to change the ID to make it different}
 	[MutationType.Update]: prices[0],

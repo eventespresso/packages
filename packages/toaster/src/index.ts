@@ -4,4 +4,4 @@ export { default as initToaster } from './initToaster';
 
 export { default as useSystemNotifications } from './useSystemNotifications';
 
-export * from './types'
+export * from './types';

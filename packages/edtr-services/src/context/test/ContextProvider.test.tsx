@@ -7,7 +7,7 @@ import { InvariantError } from 'ts-invariant';
 import '@testing-library/jest-dom/extend-expect';
 
 import { useStatus } from '@eventespresso/services';
-import {useEventId} from '../../apollo/queries/events';
+import { useEventId } from '../../apollo/queries/events';
 import { ApolloMockedProvider, eventId } from '../test';
 
 describe('ContextProviders', () => {

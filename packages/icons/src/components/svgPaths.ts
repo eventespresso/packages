@@ -5,13 +5,14 @@ import type { SvgPath } from '../types';
  * @link https://github.com/WordPress/gutenberg
  */
 export const svgPath: SvgPath = {
-	calculator: 'M 3 0 v20 h14 v-20 h-14 z m 2.5 2.5 h9 v2 h-9 ' +
-	'v-2 z m 0 4 h2 v1.75 h-2 v-1.75 z m 3.5 0 h2 v1.75 h-2 v-1.75' +
-	' z m 3.5 0 h2 v1.75 h-2 v-1.75 z M 5.5 9.5 h2 v1.75 h-2 v-1.75' +
-	' z m 3.5 0 h2 v1.75 h-2 v-1.75 z m 3.5 0 h2 v1.75 h-2 v-1.75 z M' +
-	' 5.5 12.5 h2 v1.75 h-2 v-1.75 z m 3.5 0 h2 v1.75 h-2 v-1.75 z m' +
-	' 3.5 0 h2 v1.75 h-2 v-1.75 z M 5.5 15.5 h2 v1.75 h-2 v-1.75 z m' +
-	' 3.5 0 h2 v1.75 h-2 v-1.75 z m 3.5 0 h2 v1.75 h-2 v-1.75 z ',
+	calculator:
+		'M 3 0 v20 h14 v-20 h-14 z m 2.5 2.5 h9 v2 h-9 ' +
+		'v-2 z m 0 4 h2 v1.75 h-2 v-1.75 z m 3.5 0 h2 v1.75 h-2 v-1.75' +
+		' z m 3.5 0 h2 v1.75 h-2 v-1.75 z M 5.5 9.5 h2 v1.75 h-2 v-1.75' +
+		' z m 3.5 0 h2 v1.75 h-2 v-1.75 z m 3.5 0 h2 v1.75 h-2 v-1.75 z M' +
+		' 5.5 12.5 h2 v1.75 h-2 v-1.75 z m 3.5 0 h2 v1.75 h-2 v-1.75 z m' +
+		' 3.5 0 h2 v1.75 h-2 v-1.75 z M 5.5 15.5 h2 v1.75 h-2 v-1.75 z m' +
+		' 3.5 0 h2 v1.75 h-2 v-1.75 z m 3.5 0 h2 v1.75 h-2 v-1.75 z ',
 	calendar:
 		'M 0 2 v18 h20 v-18 z ' +
 		'M 2 6.5 h16 v11.5 h-16 z ' +

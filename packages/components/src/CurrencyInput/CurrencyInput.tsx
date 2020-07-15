@@ -8,7 +8,7 @@ import { CurrencyInputProps } from './types';
 
 import './style.scss';
 
-const nullFunc = (args?: any) => {};
+const nullFunc = (args?: any) => null;
 
 const CurrencyInput: React.FC<CurrencyInputProps> = ({
 	amount = 0,

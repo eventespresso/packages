@@ -9,9 +9,9 @@ type QueryOptions<Edge extends EntityEdge> = QueryHookOptions<RecurrencesList<Ed
 type QueryResult<Edge extends EntityEdge> = ApolloQueryResult<RecurrencesList<Edge>, RecurrencesQueryArgs>;
 
 const useRecurrencesQuery = <RecurrenceEdge extends EntityEdge>(
-  queryOptions: QueryOptions<RecurrenceEdge>,
+	queryOptions: QueryOptions<RecurrenceEdge>
 ): QueryResult<RecurrenceEdge> => {
-  return useCacheQuery<RecurrencesList<RecurrenceEdge>>(queryOptions);
+	return useCacheQuery<RecurrencesList<RecurrenceEdge>>(queryOptions);
 };
 
 export default useRecurrencesQuery;

@@ -34,9 +34,8 @@ function withIsLoaded<Props>(
 		 * Cast `rest` as Props to avoid negative side effect
 		 * @link https://devblogs.microsoft.com/typescript/announcing-typescript-3-2/#object-spread-on-generic-types
 		 */
-		return <Component {...rest as Props} loaded={loaded} />;
+		return <Component {...(rest as Props)} loaded={loaded} />;
 	};
-
-};
+}
 
 export default withIsLoaded;

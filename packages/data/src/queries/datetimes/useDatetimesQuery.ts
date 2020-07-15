@@ -9,9 +9,9 @@ type QueryOptions<Edge extends EntityEdge> = QueryHookOptions<DatetimesList<Edge
 type QueryResult<Edge extends EntityEdge> = ApolloQueryResult<DatetimesList<Edge>, DatetimesQueryArgs>;
 
 const useDatetimesQuery = <DatetimeEdge extends EntityEdge>(
-  queryOptions: QueryOptions<DatetimeEdge>,
+	queryOptions: QueryOptions<DatetimeEdge>
 ): QueryResult<DatetimeEdge> => {
-  return useCacheQuery<DatetimesList<DatetimeEdge>>(queryOptions);
+	return useCacheQuery<DatetimesList<DatetimeEdge>>(queryOptions);
 };
 
 export default useDatetimesQuery;

@@ -4,7 +4,7 @@ import { FormHelperText as ChakraFormHelperText } from '@chakra-ui/core';
 import type { FormControlProps } from './types';
 
 const FormHelperText: React.FC<FormControlProps> = ({ children, ...props }) => {
-  return <ChakraFormHelperText {...props}>{children}</ChakraFormHelperText>;
+	return <ChakraFormHelperText {...props}>{children}</ChakraFormHelperText>;
 };
 
 export default FormHelperText;

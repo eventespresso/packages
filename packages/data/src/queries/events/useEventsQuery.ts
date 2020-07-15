@@ -9,9 +9,9 @@ type QueryOptions<Edge extends EntityEdge> = QueryHookOptions<EventsList<Edge>, 
 type QueryResult<Edge extends EntityEdge> = ApolloQueryResult<EventsList<Edge>, EventsQueryArgs>;
 
 const useEventsQuery = <EventEdge extends EntityEdge>(
-  queryOptions: QueryOptions<EventEdge>,
+	queryOptions: QueryOptions<EventEdge>
 ): QueryResult<EventEdge> => {
-  return useCacheQuery<EventsList<EventEdge>>(queryOptions);
+	return useCacheQuery<EventsList<EventEdge>>(queryOptions);
 };
 
 export default useEventsQuery;

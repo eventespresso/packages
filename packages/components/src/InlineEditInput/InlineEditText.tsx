@@ -8,7 +8,11 @@ const Preview: React.FC<InlineEditPreviewProps> = ({ fitText, isEditing, onReque
 		return null;
 	}
 
-	const textInput = <span onClick={onRequestEdit}>{value}</span>;
+	const textInput = (
+		<span onClick={onRequestEdit} onKeyDown={onRequestEdit} role='button' tabIndex={0}>
+			{value}
+		</span>
+	);
 
 	if (value.length > 30) {
 		return <Dotdotdot clamp={2}>{textInput}</Dotdotdot>;

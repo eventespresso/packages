@@ -1,4 +1,4 @@
-import type { Datetime, } from '@eventespresso/edtr-services';
+import type { Datetime } from '@eventespresso/edtr-services';
 
 import aboveCapacity from './aboveCapacity';
 import belowCapacity from './belowCapacity';

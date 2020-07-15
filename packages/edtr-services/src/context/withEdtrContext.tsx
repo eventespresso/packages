@@ -4,16 +4,15 @@ import { ContextProvider } from './ContextProvider';
 import type { AnyObject } from '@eventespresso/services';
 
 const withEdtrContext = <P extends AnyObject>(Component: React.ComponentType<P>): React.FC<P> => {
-    const WrappedComponent: React.FC<P> = (props) => {
-        return (
-            <ContextProvider>
-                <Component {...props} />
-            </ContextProvider>
-        );
-    };
+	const WrappedComponent: React.FC<P> = (props) => {
+		return (
+			<ContextProvider>
+				<Component {...props} />
+			</ContextProvider>
+		);
+	};
 
-    return WrappedComponent;
+	return WrappedComponent;
 };
 
 export default withEdtrContext;
-

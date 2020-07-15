@@ -26,7 +26,7 @@ const useSubscriptionService: SubscriptionServiceHook = ({ domain, service }) =>
 	const subscriptions = subscriptionRegistry?.[domain]?.[service]?.subscriptions || {};
 	const subscriptionsHash = Object.keys(subscriptions).join(':');
 
-	 // @ts-ignore
+	// @ts-ignore
 	const getSubscriptions = useCallback<SS['getSubscriptions']>(() => {
 		return getServiceRegistryItem('subscriptions', {});
 		// eslint-disable-next-line react-hooks/exhaustive-deps

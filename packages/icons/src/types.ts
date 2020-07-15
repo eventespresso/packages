@@ -5,7 +5,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
 	color?: string;
 	name?: IconName | keyof SvgPath;
 	noMargin?: boolean;
-	size?: IconSize
+	size?: IconSize;
 	svgSize?: number;
 	viewBox?: string;
 }

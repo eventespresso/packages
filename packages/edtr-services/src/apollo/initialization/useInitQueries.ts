@@ -1,10 +1,4 @@
-import {
-	useEvent,
-	useFetchDatetimes,
-	useFetchPriceTypes,
-	useFetchPrices,
-	useFetchTickets,
-} from '../queries';
+import { useEvent, useFetchDatetimes, useFetchPriceTypes, useFetchPrices, useFetchTickets } from '../queries';
 import { useFetchCurrentUser, useFetchGeneralSettings } from '@eventespresso/data';
 import useCacheRehydration from './useCacheRehydration';
 

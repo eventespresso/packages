@@ -5,7 +5,7 @@ import { Menu as ChakraMenu } from '@chakra-ui/core';
 import type { MenuProps } from './types';
 
 const Menu: React.FC<MenuProps> = ({ children, ...props }) => {
-  return <ChakraMenu {...props}>{children}</ChakraMenu>;
+	return <ChakraMenu {...props}>{children}</ChakraMenu>;
 };
 
 export default Menu;

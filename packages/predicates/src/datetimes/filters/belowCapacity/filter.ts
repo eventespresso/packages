@@ -1,4 +1,3 @@
-
 import type { Datetime } from '@eventespresso/edtr-services';
 import { isTrashed } from '../../../common';
 import validFiniteCapacityLimit from '../../validFiniteCapacityLimit';
