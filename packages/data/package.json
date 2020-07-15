@@ -11,7 +11,8 @@
 	"main:src": "src/index.ts",
 	"scripts": {
 		"test": "react-scripts test",
-		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe"
+		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
+		"lint-fix": "eslint ./src/**/*.{ts,tsx} --format=codeframe --fix"
 	},
 	"sideEffects": false,
 	"dependencies": {
@@ -41,9 +42,6 @@
 		"graphql-tag": "^2.10.3",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1"
-	},
-	"eslintConfig": {
-		"extends": "react-app"
 	},
 	"browserslist": [
 		">0.2%",
