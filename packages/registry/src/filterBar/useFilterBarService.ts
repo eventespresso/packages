@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useEffect } from 'react';
 import { allPass, filter, pathEq } from 'ramda';
 import invariant from 'invariant';
 
@@ -94,10 +94,12 @@ const useFilterBarService: FBShook = (domain, entityListId) => {
 		[entityListId, registerCallback]
 	);
 
-	// Expose the regsitry functions globally
-	exposeToRegistry('registerFilter', registerFilter);
-	exposeToRegistry('registerSorter', registerSorter);
-	exposeToRegistry('registerSearch', registerSearch);
+	useEffect(() => {
+		// Expose the regsitry functions globally
+		exposeToRegistry('registerFilter', registerFilter);
+		exposeToRegistry('registerSorter', registerSorter);
+		exposeToRegistry('registerSearch', registerSearch);
+	}, [exposeToRegistry, registerFilter, registerSearch, registerSorter]);
 
 	return useMemo(
 		() => ({
