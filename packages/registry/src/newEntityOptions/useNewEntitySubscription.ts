@@ -1,14 +1,13 @@
-import { useMemo, useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
-import { useSubscriptionService } from '../subscription';
-import type { EntityActionsSubscription, EntityActionsSubscriptionHook } from './types';
+import { useSubscriptionService, filterSubscriptionsByOption } from '../subscription';
+import type { NewEntitySubscription, NewEntitySubscriptionHook } from './types';
 import { serviceName as service } from './constants';
-import { filterSubscriptionsByOption } from '../subscription/utils';
 
-type EAS = EntityActionsSubscription;
-type EAShook = EntityActionsSubscriptionHook;
+type EAS = NewEntitySubscription;
+type EAShook = NewEntitySubscriptionHook;
 
-const useEntityActionsSubscription: EAShook = (domain) => {
+const useNewEntitySubscription: EAShook = (domain) => {
 	const { getSubscriptions: getAllSubscriptions, ...restServices } = useSubscriptionService({ domain, service });
 
 	const getSubscriptions: EAS['getSubscriptions'] = useCallback(
@@ -19,4 +18,4 @@ const useEntityActionsSubscription: EAShook = (domain) => {
 	return useMemo(() => ({ ...restServices, getSubscriptions }), [getSubscriptions, restServices]);
 };
 
-export default useEntityActionsSubscription;
+export default useNewEntitySubscription;
