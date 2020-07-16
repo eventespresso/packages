@@ -7,7 +7,7 @@ import { EntityList } from '@eventespresso/components';
 
 import { TicketsListProvider, withEntityListContext } from '@edtrServices/context';
 import { useTicketsListFilterState } from '@edtrServices/filterState';
-import AddNewTicketButton from './AddNewTicketButton';
+import TicketsListButtons from './TicketsListButtons';
 import { legendConfig } from './config';
 import { RenderCardView } from './cardView';
 import { RenderTableView } from './tableView';
@@ -20,7 +20,7 @@ const TicketsList: React.FC = () => {
 			domain={domain}
 			entityType={TypeName.tickets}
 			filterState={filterState}
-			footer={<AddNewTicketButton />}
+			footer={<TicketsListButtons />}
 			headerText={__('Available Tickets')}
 			legendConfig={legendConfig}
 			listId={ticketsList}

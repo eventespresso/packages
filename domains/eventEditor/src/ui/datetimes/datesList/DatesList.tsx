@@ -7,7 +7,7 @@ import { EntityList } from '@eventespresso/components';
 
 import { DatetimesListProvider, withEntityListContext } from '@edtrServices/context';
 import { useDatesListFilterState } from '@edtrServices/filterState';
-import AddNewDateButton from './AddNewDateButton';
+import DatesListButtons from './DatesListButtons';
 import { legendConfig } from './config';
 import { RenderCardView } from './cardView';
 import { RenderTableView } from './tableView';
@@ -20,7 +20,7 @@ const DatesList: React.FC = () => {
 			domain={domain}
 			entityType={TypeName.datetimes}
 			filterState={filterState}
-			footer={<AddNewDateButton />}
+			footer={<DatesListButtons />}
 			headerText={__('Event Dates')}
 			legendConfig={legendConfig}
 			listId={datesList}

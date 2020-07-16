@@ -1,8 +1,8 @@
-import { useDatesActionsMenuSubscription } from './';
+import { useNewDateOptionSubscription } from './';
 
 const useEditorInit: VoidFunction = () => {
-	// set menu subscription
-	useDatesActionsMenuSubscription();
+	// set new date subscription
+	useNewDateOptionSubscription();
 };
 
 export default useEditorInit;

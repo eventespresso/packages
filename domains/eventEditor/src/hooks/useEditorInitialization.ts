@@ -2,6 +2,7 @@ import { setLocaleData } from '@wordpress/i18n';
 
 import { useI18nData, useInitQueries } from '@eventespresso/edtr-services';
 import { useEntityActionsMenuSubscription } from './entityActionsMenu';
+import { useNewEntityOptionsSubscription } from './newEntityOptions';
 import { useFilterBarUISubscription, useFilterBarService } from './filterBar';
 
 const useEditorInitialization = (): void => {
@@ -11,6 +12,9 @@ const useEditorInitialization = (): void => {
 
 	// set menu subscription
 	useEntityActionsMenuSubscription();
+
+	// set new entity subscription
+	useNewEntityOptionsSubscription();
 
 	// set filter bar subscription
 	useFilterBarUISubscription();
