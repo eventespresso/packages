@@ -10,6 +10,7 @@
 	}
 
 	.ee-add-ticket-btn {
+		background-color: var(--ee-color-grey-11);
 		border: 1px dashed #ccc;
 		box-shadow: none;
 		margin: 0.5rem 1rem;
@@ -19,6 +20,10 @@
 		&:focus,
 		&:hover {
 			box-shadow: none;
+		}
+
+		&:hover {
+			background-color: var(--ee-color-grey-10);
 		}
 	}
 }
