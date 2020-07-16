@@ -11,16 +11,14 @@ const Tickets: React.FC = () => {
 	const tickets = useTickets();
 
 	return (
-		<>
-			<div className='rem-ticket-list'>
-				{tickets.map((ticket) => (
-					<Fragment key={ticket.id}>
-						<TicketCard ticket={ticket} />
-					</Fragment>
-				))}
-				<AddTicket />
-			</div>
-		</>
+		<div className='rem-ticket-list'>
+			{tickets.map((ticket) => (
+				<Fragment key={ticket.id}>
+					<TicketCard ticket={ticket} />
+				</Fragment>
+			))}
+			<AddTicket />
+		</div>
 	);
 };
 
