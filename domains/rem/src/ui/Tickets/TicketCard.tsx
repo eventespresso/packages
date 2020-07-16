@@ -20,9 +20,15 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
 	const afterDetails = (
 		<div className='ee-ticket-offset'>
 			<div>
-				{`${__('starts:')} ${ticketStartDifferenceInHours} hours ${
+				{
+				/* translators: 1 duration (number), 2 unit e.g. hours, days etc. 3 position e.g. before or after */
+				sprintf(
+					'starts %1$d %2$s %3$s the start date',
+					ticketStartDifferenceInHours,
+					__('hours'),
 					isTicketAfter ? __('after') : __('before')
-				} start date`}
+				)
+			}
 			</div>
 		</div>
 	);
