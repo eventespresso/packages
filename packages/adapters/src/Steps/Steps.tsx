@@ -8,6 +8,7 @@ import './style.scss';
 
 const Steps: React.FC<StepsProps> = ({
 	children,
+	compact,
 	current = 0,
 	initial = 0,
 	orientation = 'inline',
@@ -16,7 +17,11 @@ const Steps: React.FC<StepsProps> = ({
 }) => {
 	const wrapperClassName = classNames(props.className, 'ee-form-steps__wrapper');
 
-	const listClassName = classNames('ee-form-steps', `ee-form-steps--${orientation}`);
+	const listClassName = classNames(
+		'ee-form-steps',
+		compact && `ee-form-steps--compact`,
+		`ee-form-steps--${orientation}`
+	);
 
 	const heading = props.heading ?? __('Steps');
 

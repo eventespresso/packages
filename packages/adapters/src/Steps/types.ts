@@ -5,6 +5,7 @@ export interface CommonProps {
 }
 
 export interface StepsProps extends CommonProps {
+	compact?: boolean;
 	current?: number;
 	heading?: string;
 	initial?: number;

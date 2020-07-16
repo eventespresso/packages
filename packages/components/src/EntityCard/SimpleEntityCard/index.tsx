@@ -12,11 +12,11 @@ const SimpleEntityCard: React.FC<SimpleEntityCardProps> = ({ afterDetails, befor
 
 			<div className='ee-simple-entity-card__details'>
 				<div className='ee-simple-entity-card__name'>
-					<Dotdotdot clamp={3}>{name}</Dotdotdot>
+					<Dotdotdot clamp={2}>{name}</Dotdotdot>
 				</div>
-			</div>
 
-			{afterDetails && afterDetails}
+				{afterDetails && afterDetails}
+			</div>
 		</div>
 	);
 };

@@ -1,11 +1,24 @@
 .rem-ticket-list {
+	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: flex-start;
 
-	.ee-entity-card-wrapper {
-		display: flex;
-		border: 1px solid #ccc;
+	.ee-ticket-offset {
+		letter-spacing: 1px;
+		padding: 0.5rem 0.75rem 0 0;
+	}
+
+	.ee-add-ticket-btn {
+		border: 1px dashed #ccc;
+		box-shadow: none;
 		margin: 0.5rem 1rem;
-		color: #000;
+		height: 98px;
+		width: 236px;
+
+		&:focus,
+		&:hover {
+			box-shadow: none;
+		}
 	}
 }

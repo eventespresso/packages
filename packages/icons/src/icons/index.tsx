@@ -23,6 +23,7 @@ export { default as Insert } from './Insert';
 export { default as Link } from './Link';
 export { default as MinusOutlined } from './MinusOutlined';
 export { default as More } from './More';
+export { default as Plus } from './Plus';
 export { default as PlusCircleFilled } from './PlusCircleFilled';
 export { default as ProfileOutlined } from './ProfileOutlined';
 export { default as Rem } from './Rem';

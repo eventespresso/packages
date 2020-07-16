@@ -7,7 +7,7 @@ import { Calendar, Ticket, CalendarOutlined } from '@eventespresso/icons';
 
 const Steps: React.FC<Pick<PrevNext, 'current'>> = ({ current }) => {
 	return (
-		<StepsAdapter current={current} showStepNumber>
+		<StepsAdapter compact current={current} showStepNumber>
 			<Step icon={Calendar} title={__('Recurrence Pattern')} />
 			<Step icon={Calendar} title={__('Exclusion Pattern')} />
 			<Step description={__('primary information about the date')} icon={Calendar} title={__('Date Details')} />

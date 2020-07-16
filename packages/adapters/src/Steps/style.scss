@@ -46,6 +46,11 @@
 		padding: var(--ee-padding-small) var(--ee-padding-big);
 		position: relative;
 
+		@at-root .ee-form-steps--compact#{&} {
+			min-width: 11rem;
+			padding: var(--ee-padding-small);
+		}
+
 		&--active {
 			background-color: var(--ee-color-grey-14);
 		}
@@ -98,9 +103,18 @@
 				margin-left: var(--ee-margin-smaller);
 			}
 
+			@at-root .ee-form-steps--compact#{&} {
+				display: inline-flex;
+			}
+
 			svg {
 				height: 39px;
 				width: 39px;
+
+				@at-root .ee-form-steps--compact#{&} {
+					height: 20px;
+					width: 20px;
+				}
 
 				path {
 					fill: currentColor;

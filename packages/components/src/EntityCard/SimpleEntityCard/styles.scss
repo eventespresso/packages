@@ -1,16 +1,18 @@
 .ee-simple-entity-card {
-	display: flex;
+	align-items: center;
 	border: 1px solid #ccc;
+	color: #000;
+	display: flex;
+	flex-wrap: wrap;
 	margin: 0.5rem 1rem;
 	max-width: 270px;
-	color: #000;
+	min-height: 6rem;
 
 	&__details {
 		flex-flow: column;
 		padding: 0.5rem 0.75rem;
 		border-left: 1px dotted #ccc;
 		width: 13rem;
-		height: 6rem;
 		display: flex;
 		justify-content: space-between;
 		line-height: 1rem;
