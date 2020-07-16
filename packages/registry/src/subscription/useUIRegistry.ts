@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { assocPath, dissocPath, omit, pathOr } from 'ramda';
 import type { AnyObject } from '@eventespresso/services';
 
@@ -12,35 +12,44 @@ const useUIRegistry: UIRegistryHook = ({ domain, service, path }) => {
 	const pathToElements = [domain, service, ...path];
 	const pathToElementsStr = pathToElements.join(':');
 
-	const getRegistrationKey = (elementKey: string, priority: number): string => {
-		return `${pathToElementsStr}:${elementKey}:${priority}`;
-	};
+	const getRegistrationKey = useCallback(
+		(elementKey: string, priority: number): string => {
+			return `${pathToElementsStr}:${elementKey}:${priority}`;
+		},
+		[pathToElementsStr]
+	);
 
-	const registerElement: UIRegistry['registerElement'] = (key, component, priority = 10) => {
-		const registrationKey = getRegistrationKey(key, priority);
+	const registerElement = useCallback<UIRegistry['registerElement']>(
+		(key, component, priority = 10) => {
+			const registrationKey = getRegistrationKey(key, priority);
 
-		if (!(registrationKey in registeredElements)) {
-			// Add the element to registered elements
-			setRegisteredElements((elements) => ({ ...elements, [registrationKey]: true }));
-			// Add the element(may be JSX) to the registry
-			elementRegistry = assocPath([...pathToElements, priority, key], component, elementRegistry);
-		}
-	};
+			if (!(registrationKey in registeredElements)) {
+				// Add the element to registered elements
+				setRegisteredElements((elements) => ({ ...elements, [registrationKey]: true }));
+				// Add the element(may be JSX) to the registry
+				elementRegistry = assocPath([...pathToElements, priority, key], component, elementRegistry);
+			}
+		},
+		[getRegistrationKey, pathToElements, registeredElements]
+	);
 
-	const unRegisterElement: UIRegistry['unRegisterElement'] = (key, priority = 10) => {
-		const registrationKey = getRegistrationKey(key, priority);
-		if (registrationKey in registeredElements) {
-			// Remove the element from registered elements
-			setRegisteredElements((elements) => omit([registrationKey], elements));
-		}
-		// Remove the element from registry
-		elementRegistry = dissocPath([...pathToElements, priority, key], elementRegistry);
-	};
+	const unRegisterElement = useCallback<UIRegistry['unRegisterElement']>(
+		(key, priority = 10) => {
+			const registrationKey = getRegistrationKey(key, priority);
+			if (registrationKey in registeredElements) {
+				// Remove the element from registered elements
+				setRegisteredElements((elements) => omit([registrationKey], elements));
+			}
+			// Remove the element from registry
+			elementRegistry = dissocPath([...pathToElements, priority, key], elementRegistry);
+		},
+		[getRegistrationKey, pathToElements, registeredElements]
+	);
 
 	/**
 	 * Returns the list of registered UI elements.
 	 */
-	const getElements: UIRegistry['getElements'] = () => {
+	const getElements = useCallback<UIRegistry['getElements']>(() => {
 		/**
 		 * This list is of this shape:
 		 * [
@@ -54,9 +63,13 @@ const useUIRegistry: UIRegistryHook = ({ domain, service, path }) => {
 		 */
 		const elementsWithPriority = pathOr([], pathToElements, elementRegistry);
 		return Object.assign({}, ...elementsWithPriority);
-	};
+	}, [pathToElements]);
 
-	return { registerElement, unRegisterElement, getElements };
+	return useMemo(() => ({ registerElement, unRegisterElement, getElements }), [
+		getElements,
+		registerElement,
+		unRegisterElement,
+	]);
 };
 
 export default useUIRegistry;

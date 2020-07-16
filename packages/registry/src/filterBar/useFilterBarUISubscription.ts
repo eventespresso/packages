@@ -1,3 +1,4 @@
+import { useMemo, useCallback } from 'react';
 import { filter } from 'ramda';
 
 import { useSubscriptionService } from '../subscription';
@@ -13,16 +14,19 @@ const useFilterBarUISubscription: FBShook = (domain) => {
 		service: FilterBarServiceType.UI,
 	});
 
-	const getSubscriptions: FBS['getSubscriptions'] = (args = {}) => {
-		const { listId } = args;
-		const allSubscriptions = getUISubscriptions();
-		if (listId) {
-			return filter(({ options }) => listId === options.listId, allSubscriptions);
-		}
-		return allSubscriptions;
-	};
+	const getSubscriptions: FBS['getSubscriptions'] = useCallback(
+		(args = {}) => {
+			const { listId } = args;
+			const allSubscriptions = getUISubscriptions();
+			if (listId) {
+				return filter(({ options }) => listId === options.listId, allSubscriptions);
+			}
+			return allSubscriptions;
+		},
+		[getUISubscriptions]
+	);
 
-	return { ...restServices, getSubscriptions };
+	return useMemo(() => ({ ...restServices, getSubscriptions }), [getSubscriptions, restServices]);
 };
 
 export default useFilterBarUISubscription;

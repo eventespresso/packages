@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { assocPath, omit } from 'ramda';
 import { v4 as uuidv4 } from 'uuid';
 import invariant from 'invariant';
@@ -100,12 +100,15 @@ const useSubscriptionService: SubscriptionServiceHook = ({ domain, service }) =>
 		[updateServiceRegistry]
 	);
 
-	return {
-		addToServiceRegistry,
-		getServiceRegistryItem,
-		getSubscriptions,
-		subscribe,
-	};
+	return useMemo(
+		() => ({
+			addToServiceRegistry,
+			getServiceRegistryItem,
+			getSubscriptions,
+			subscribe,
+		}),
+		[addToServiceRegistry, getServiceRegistryItem, getSubscriptions, subscribe]
+	);
 };
 
 export default useSubscriptionService;

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { allPass, filter, pathEq } from 'ramda';
 import invariant from 'invariant';
 
@@ -99,14 +99,17 @@ const useFilterBarService: FBShook = (domain, entityListId) => {
 	exposeToRegistry('registerSorter', registerSorter);
 	exposeToRegistry('registerSearch', registerSearch);
 
-	return {
-		getFilters,
-		getSearches,
-		getSorters,
-		registerFilter,
-		registerSearch,
-		registerSorter,
-	};
+	return useMemo(
+		() => ({
+			getFilters,
+			getSearches,
+			getSorters,
+			registerFilter,
+			registerSearch,
+			registerSorter,
+		}),
+		[getFilters, getSearches, getSorters, registerFilter, registerSearch, registerSorter]
+	);
 };
 
 export default useFilterBarService;
