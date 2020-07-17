@@ -1,8 +1,12 @@
+import type { DateAndTime } from '@eventespresso/edtr-services';
 import type { CreateTicketInput, Datetime, Ticket } from '@eventespresso/edtr-services';
 
 export interface TicketFormShape extends CreateTicketInput {
-	duration?: number;
-	unit?: 'days' | 'hours' | 'minutes';
+	dateTime?: DateAndTime;
+	position?: 'before' | 'after';
+	startOrEnd?: 'start' | 'end';
+	unit?: 'months' | 'weeks' | 'days' | 'hours' | 'minutes';
+	unitValue?: number;
 }
 
 export interface TicketCardProps {

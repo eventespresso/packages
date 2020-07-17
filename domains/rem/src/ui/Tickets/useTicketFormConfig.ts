@@ -52,7 +52,7 @@ const useTicketFormConfig = (): TicketFormConfig => {
 						subFields: [
 							{
 								label: __('Unit value'),
-								name: 'unit-value',
+								name: 'unitValue',
 								fieldType: 'number',
 								required: true,
 							},
@@ -62,6 +62,14 @@ const useTicketFormConfig = (): TicketFormConfig => {
 								fieldType: 'select',
 								options: [
 									{
+										label: 'month(s)',
+										value: 'months',
+									},
+									{
+										label: 'week(s)',
+										value: 'weeks',
+									},
+									{
 										label: 'day(s)',
 										value: 'days',
 									},
@@ -70,7 +78,7 @@ const useTicketFormConfig = (): TicketFormConfig => {
 										value: 'hours',
 									},
 									{
-										label: 'minutes',
+										label: 'minute(s)',
 										value: 'minutes',
 									},
 								],
@@ -91,7 +99,7 @@ const useTicketFormConfig = (): TicketFormConfig => {
 								],
 							},
 							{
-								name: 'start-or-end',
+								name: 'startOrEnd',
 								label: __('Start/ end'),
 								fieldType: 'select',
 								options: [
@@ -175,19 +183,6 @@ const useTicketFormConfig = (): TicketFormConfig => {
 						fieldType: 'switch',
 						formControlProps: adjacentFormItemProps,
 						info: __('If enabled, the ticket will appear first in frontend ticket lists.'),
-					},
-					{
-						name: 'isDefault',
-						label: __('Default Ticket'),
-						fieldType: 'switch',
-						formControlProps: adjacentFormItemProps,
-						info: __('If enabled, the ticket will appear on all new events.'),
-					},
-					{
-						name: 'isTrashed',
-						label: __('Trash'),
-						fieldType: 'switch',
-						formControlProps: adjacentFormItemProps,
 					},
 				],
 			},

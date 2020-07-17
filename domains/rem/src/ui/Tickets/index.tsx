@@ -16,7 +16,11 @@ import './style.scss';
 const Tickets: React.FC = () => {
 	const tickets = useTickets();
 	const formConfig = useTicketFormConfig();
-	const { isOpen, onClose, onOpen } = useDisclosure();
+	const {
+		isOpen,
+		//  onClose,
+		onOpen,
+	} = useDisclosure();
 
 	return (
 		<>
