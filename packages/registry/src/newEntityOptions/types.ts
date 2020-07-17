@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { BaseSubscriptionOptions, Subscriptions, UIRegistry } from '../subscription';
+import type { BaseSubscriptionOptions, Subscriptions, UIRegistryInterface } from '../subscription';
 
 export interface NewEntitySubscriptionsOptions<T extends string> {
 	entityType?: T; // to limit the subscription only to specific entityType
@@ -7,6 +7,13 @@ export interface NewEntitySubscriptionsOptions<T extends string> {
 
 export interface NewEntitySubscriptionCbArgs<T extends string> extends NewEntitySubscriptionsOptions<T> {
 	registry: NewEntityOptionsRegistry;
+}
+
+export interface NewEntitySubscriptionInterface {
+	subscribe: NewEntitySubscribeFn;
+	getSubscriptions: <T extends string>(
+		options?: NewEntitySubscriptionsOptions<T>
+	) => Subscriptions<NewEntitySubscriptionCbArgs<T>, NewEntitySubscriptionsOptions<T>>;
 }
 
 export interface NewEntitySubscription {
@@ -34,7 +41,9 @@ export type NewEntityOptionsRegistryHook = <D extends string, ET extends string>
 	options: NewEntityOptionsArgs<D, ET>
 ) => NewEntityOptionsRegistry;
 
-export type NewEntityOptionsRegistry = UIRegistry;
+export type NewEntityOptionsRegistry = UIRegistryInterface;
+
+export interface NewEntityOptionsRegistryInterface extends UIRegistryInterface {}
 
 export interface NewEntityOptionsProps {
 	className?: string;
