@@ -1,13 +1,6 @@
 import { useMemo } from 'react';
-import {
-	differenceInMinutes,
-	differenceInHours,
-	differenceInDays,
-	differenceInMonths,
-	isAfter,
-	parseISO,
-} from 'date-fns';
-import { __ } from '@wordpress/i18n';
+import { differenceInMinutes, differenceInHours, differenceInDays, differenceInMonths, parseISO } from 'date-fns';
+import { __, _n } from '@wordpress/i18n';
 
 import { Offset, OffsetProps } from './types';
 
@@ -17,9 +10,6 @@ const useOffset = ({ datetime, ticket }: OffsetProps): Offset => {
 
 	const ticketStartDate = parseISO(ticket.startDate);
 	const ticketEndDate = parseISO(ticket.endDate);
-
-	const isTicketStartAfter = isAfter(ticketStartDate, datetimeStartDate);
-	const isTicketEndAfter = isAfter(ticketEndDate, datetimeEndDate);
 
 	const ticketStartDifferenceInMinutes = differenceInMinutes(ticketStartDate, datetimeStartDate);
 	const ticketStartDifferenceInHours = differenceInHours(ticketStartDate, datetimeStartDate);
@@ -35,53 +25,7 @@ const useOffset = ({ datetime, ticket }: OffsetProps): Offset => {
 		const minutes = Math.abs(ticketStartDifferenceInMinutes);
 		const hours = Math.abs(ticketStartDifferenceInHours);
 		const days = Math.abs(ticketStartDifferenceInDays);
-
-		if (minutes < 59) {
-			return hours;
-		}
-
-		if (hours < 24) {
-			return hours;
-		}
-
-		if (days < 30) {
-			return days;
-		}
-
-		return Math.abs(ticketStartDifferenceInMonths);
-	}, [
-		ticketStartDifferenceInDays,
-		ticketStartDifferenceInHours,
-		ticketStartDifferenceInMinutes,
-		ticketStartDifferenceInMonths,
-	]);
-
-	const startPosition = isTicketStartAfter ? __('after') : __('before');
-
-	const startUnit = useMemo(() => {
-		const minutes = Math.abs(ticketStartDifferenceInMinutes);
-		const hours = Math.abs(ticketStartDifferenceInHours);
-		const days = Math.abs(ticketStartDifferenceInDays);
-
-		if (minutes < 59) {
-			return __('minutes');
-		}
-
-		if (hours < 24) {
-			return __('hours');
-		}
-
-		if (days < 30) {
-			return __('days');
-		}
-
-		return __('months');
-	}, [ticketStartDifferenceInDays, ticketStartDifferenceInHours, ticketStartDifferenceInMinutes]);
-
-	const endDuration = useMemo(() => {
-		const minutes = Math.abs(ticketEndDifferenceInMinutes);
-		const hours = Math.abs(ticketEndDifferenceInHours);
-		const days = Math.abs(ticketEndDifferenceInDays);
+		const months = Math.abs(ticketStartDifferenceInMonths);
 
 		if (minutes < 59) {
 			return minutes;
@@ -95,7 +39,59 @@ const useOffset = ({ datetime, ticket }: OffsetProps): Offset => {
 			return days;
 		}
 
-		return Math.abs(ticketEndDifferenceInMonths);
+		return months;
+	}, [
+		ticketStartDifferenceInDays,
+		ticketStartDifferenceInHours,
+		ticketStartDifferenceInMinutes,
+		ticketStartDifferenceInMonths,
+	]);
+
+	const startUnit = useMemo(() => {
+		const minutes = Math.abs(ticketStartDifferenceInMinutes);
+		const hours = Math.abs(ticketStartDifferenceInHours);
+		const days = Math.abs(ticketStartDifferenceInDays);
+		const months = Math.abs(ticketStartDifferenceInMonths);
+
+		if (minutes < 59) {
+			return _n(__('minute'), __('minutes'), minutes);
+		}
+
+		if (hours < 24) {
+			return _n(__('hour'), __('hours'), hours);
+		}
+
+		if (days < 30) {
+			return _n(__('day'), __('days'), days);
+		}
+
+		return _n(__('month'), __('months'), months);
+	}, [
+		ticketStartDifferenceInDays,
+		ticketStartDifferenceInHours,
+		ticketStartDifferenceInMinutes,
+		ticketStartDifferenceInMonths,
+	]);
+
+	const endDuration = useMemo(() => {
+		const minutes = Math.abs(ticketEndDifferenceInMinutes);
+		const hours = Math.abs(ticketEndDifferenceInHours);
+		const days = Math.abs(ticketEndDifferenceInDays);
+		const months = Math.abs(ticketEndDifferenceInMonths);
+
+		if (minutes < 59) {
+			return minutes;
+		}
+
+		if (hours < 24) {
+			return hours;
+		}
+
+		if (days < 30) {
+			return days;
+		}
+
+		return months;
 	}, [
 		ticketEndDifferenceInDays,
 		ticketEndDifferenceInHours,
@@ -103,38 +99,40 @@ const useOffset = ({ datetime, ticket }: OffsetProps): Offset => {
 		ticketEndDifferenceInMonths,
 	]);
 
-	const endPosition = isTicketEndAfter ? __('after') : __('before');
-
 	const endUnit = useMemo(() => {
 		const minutes = Math.abs(ticketEndDifferenceInMinutes);
 		const hours = Math.abs(ticketEndDifferenceInHours);
 		const days = Math.abs(ticketEndDifferenceInDays);
+		const months = Math.abs(ticketEndDifferenceInMonths);
 
 		if (minutes < 59) {
-			return __('minutes');
+			return _n(__('minute'), __('minutes'), minutes);
 		}
 
 		if (hours < 24) {
-			return __('hours');
+			return _n(__('hour'), __('hours'), hours);
 		}
 
 		if (days < 30) {
-			return __('days');
+			return _n(__('day'), __('days'), days);
 		}
 
-		return __('months');
-	}, [ticketEndDifferenceInDays, ticketEndDifferenceInHours, ticketEndDifferenceInMinutes]);
+		return _n(__('month'), __('months'), months);
+	}, [
+		ticketEndDifferenceInDays,
+		ticketEndDifferenceInHours,
+		ticketEndDifferenceInMinutes,
+		ticketEndDifferenceInMonths,
+	]);
 
 	return useMemo(
 		() => ({
 			startDuration,
 			startUnit,
-			startPosition,
 			endDuration,
 			endUnit,
-			endPosition,
 		}),
-		[endDuration, endPosition, endUnit, startDuration, startPosition, startUnit]
+		[endDuration, endUnit, startDuration, startUnit]
 	);
 };
 

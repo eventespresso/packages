@@ -12,8 +12,6 @@ export interface OffsetProps {
 export interface Offset {
 	startDuration: number;
 	startUnit: string;
-	startPosition: string;
 	endDuration: number;
 	endUnit: string;
-	endPosition: string;
 }
