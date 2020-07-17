@@ -1,8 +1,28 @@
 import React from 'react';
+import { __ } from '@wordpress/i18n';
+import { useDisclosure } from '@chakra-ui/core';
+
+import { Button, ButtonSize, NewEntityPopover } from '@eventespresso/components';
+import { Calendar } from '@eventespresso/icons';
 
 const OptionsPopover: React.FC = ({ children }) => {
-	// TODO convert this to modal
-	return <div style={{ margin: '5px', border: '1px solid red' }}>{children}</div>;
+	const { isOpen, onClose, onOpen: openModal } = useDisclosure(false);
+	return (
+		<>
+			<Button
+				buttonSize={ButtonSize.BIG}
+				buttonText={__('Add New Date')}
+				icon={Calendar}
+				mr={2}
+				onClick={openModal}
+			/>
+			{isOpen && (
+				<NewEntityPopover isOpen={true} onClose={onClose} title={__('Add New Date')}>
+					{children}
+				</NewEntityPopover>
+			)}
+		</>
+	);
 };
 
 export default OptionsPopover;
