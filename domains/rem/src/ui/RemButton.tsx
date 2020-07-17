@@ -6,10 +6,10 @@ import { Button, NewEntityOption } from '@eventespresso/components';
 import { Rem } from '@eventespresso/icons';
 
 import Modal from './Modal';
-import { useRemInitialization } from '../hooks';
+// import { useRemInitialization } from '../hooks';
 
 const RemButton: React.FC = () => {
-	useRemInitialization();
+	// useRemInitialization();
 	const { isOpen, onOpen, ...disclosure } = useDisclosure();
 
 	return (

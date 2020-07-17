@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 
-import { useNewEntitySubscription } from '@eventespresso/registry';
+import { NewEntitySubscription } from '@eventespresso/registry';
 import useNewDateOptionsHandler from '@edtrUI/datetimes/hooks/useNewDateOptionsHandler';
 import useNewTicketOptionsHandler from '@edtrUI/tickets/hooks/useNewTicketOptionsHandler';
 import { domain } from '@eventespresso/edtr-services';
 
+const { subscribe } = new NewEntitySubscription(domain);
+
 const useNewEntityOptionsSubscription: VoidFunction = () => {
-	const { subscribe } = useNewEntitySubscription(domain);
 	const newDateOptionsHandler = useNewDateOptionsHandler();
 	const newTicketOptionsHandler = useNewTicketOptionsHandler();
 

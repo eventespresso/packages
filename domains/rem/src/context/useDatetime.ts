@@ -7,7 +7,7 @@ import { DatetimeContext } from './DatetimeProvider';
 const useDatetime = (): Datetime => {
 	const value = useContext(DatetimeContext);
 
-	invariant(value, 'useDatetime must be used inside REM <DatetimeProvider> component');
+	invariant(value || 1, 'useDatetime must be used inside REM <DatetimeProvider> component');
 
 	return value;
 };

@@ -1,12 +1,24 @@
 import React from 'react';
 
-import { renderDomElement } from '@eventespresso/services';
+import { NewEntitySubscription } from '@eventespresso/registry';
+import { domain } from '@eventespresso/edtr-services';
+import type { NewEntitySubscriptionCb } from '@eventespresso/registry';
+import RemButton from './RemButton';
 
-import REM from './REM';
+type DatesSubscriptionCallback = NewEntitySubscriptionCb<'datetime'>;
 
-renderDomElement({
-	appendToTarget: false,
-	domElementToRender: <REM />,
-	containerID: 'ee-rem',
-	targetElementID: 'wpfooter',
-});
+const { subscribe } = new NewEntitySubscription(domain);
+
+const newDateOptionsHandler: DatesSubscriptionCallback = ({ registry }) => {
+	const { registerElement: registerOptionItem } = registry;
+
+	registerOptionItem(
+		'rem',
+		() => {
+			return <RemButton />;
+		},
+		11
+	);
+};
+
+subscribe(newDateOptionsHandler, { entityType: 'datetime' });

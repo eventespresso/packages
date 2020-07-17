@@ -33,7 +33,6 @@ class SubscriptionManager<D extends string, S extends string, SR extends Service
 		const subscriptionId = uuidv4();
 
 		this.updateSubscription({ id: subscriptionId, callback, options, action: 'add' });
-		console.log(options, SubscriptionManager.subscriptionRegistry);
 
 		// to unsubscribe
 		return (): void => {

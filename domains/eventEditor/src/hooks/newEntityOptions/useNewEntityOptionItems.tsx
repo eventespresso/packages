@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { useNewEntitySubscription, useNewEntityOptionsRegistry } from '@eventespresso/registry';
+import { NewEntitySubscription, NewEntityOptionsRegistry } from '@eventespresso/registry';
 import { domain } from '@eventespresso/edtr-services';
+
+const { getSubscriptions } = new NewEntitySubscription(domain);
 
 const useNewEntityOptionItems = <T extends string>(
 	entityType: T,
 	filterByEntityType = true
 ): Array<React.ReactNode> => {
-	const registry = useNewEntityOptionsRegistry({ domain, entityType });
-	const { getSubscriptions } = useNewEntitySubscription(domain);
+	const registry = new NewEntityOptionsRegistry({ domain, entityType });
 
 	const { getElements } = registry;
 
