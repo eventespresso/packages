@@ -8,6 +8,17 @@ export interface SubscriptionServiceOptions<D extends string, S extends string> 
 	service: S;
 }
 
+export interface SubscriptionManagerInterface<SR extends ServiceRegistry = ServiceRegistry> {
+	addToServiceRegistry: <K extends keyof SR>(key: K, value: SR[K]) => void;
+	getServiceRegistryItem: <K extends keyof SR>(key: K, defaultValue?: any) => SR[K];
+	getSubscriptions: <CbArgs = AnyObject, Options = AnyObject, CbReturn = void>() => Subscriptions<
+		CbArgs,
+		Options,
+		CbReturn
+	>;
+	subscribe: SubscribeFn;
+}
+
 export type SubscriptionServiceHook = <D extends string, S extends string, SR = ServiceRegistry>(
 	options: SubscriptionServiceOptions<D, S>
 ) => SubscriptionService<SR>;
@@ -125,6 +136,12 @@ export type UIRegistryHook = <ElementProps, D extends string, S extends string>(
 ) => UIRegistry<ElementProps>;
 
 export interface UIRegistry<ElementProps = any> {
+	registerElement: (key: string, component: React.FC<ElementProps>, priority?: number) => void;
+	unRegisterElement: (key: string, priority?: number) => void;
+	getElements: () => UIElements<ElementProps>;
+}
+
+export interface UIRegistryInterface<ElementProps = any> {
 	registerElement: (key: string, component: React.FC<ElementProps>, priority?: number) => void;
 	unRegisterElement: (key: string, priority?: number) => void;
 	getElements: () => UIElements<ElementProps>;
