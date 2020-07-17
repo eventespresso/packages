@@ -28,6 +28,7 @@ export * from './LoadingIndicator';
 export * from './LoadingNotice';
 export * from './MediumCalendarDate';
 export * from './Modal';
+export * from './NewEntity';
 export * from './PriceTypeSign';
 export * from './SearchInput';
 export * from './SelectInput';
