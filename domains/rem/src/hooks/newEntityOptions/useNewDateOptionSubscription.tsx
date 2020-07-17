@@ -1,9 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
 
 import { useNewEntitySubscription } from '@eventespresso/registry';
-import { domain } from '@eventespresso/edtr-services';
+import { domain, Datetime } from '@eventespresso/edtr-services';
 import type { NewEntitySubscriptionCb } from '@eventespresso/registry';
 import RemButton from '../../ui/RemButton';
+import { DatetimeProvider } from '../../context';
 
 type DatesSubscriptionCallback = NewEntitySubscriptionCb<'datetime'>;
 
@@ -16,7 +17,11 @@ const useNewDateOptionSubscription = (): void => {
 		registerOptionItem(
 			'rem',
 			() => {
-				return <RemButton />;
+				return (
+					<DatetimeProvider datetime={{} as Datetime}>
+						<RemButton />
+					</DatetimeProvider>
+				);
 			},
 			11
 		);
