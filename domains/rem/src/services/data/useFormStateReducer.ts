@@ -4,6 +4,7 @@ export const initialState: FormState = {
 	rRule: '',
 	exRule: '',
 	dateDetails: {},
+	ticketDetails: {},
 };
 
 const useFormStateReducer = (initializer: StateInitializer): FormStateReducer => {
@@ -19,6 +20,14 @@ const useFormStateReducer = (initializer: StateInitializer): FormStateReducer =>
 				return {
 					...state,
 					dateDetails: {
+						...state.dateDetails,
+						...dateDetails,
+					},
+				};
+			case 'SET_TICKET_DETAILS':
+				return {
+					...state,
+					ticketDetails: {
 						...state.dateDetails,
 						...dateDetails,
 					},

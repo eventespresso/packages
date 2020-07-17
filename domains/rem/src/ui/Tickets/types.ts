@@ -1,4 +1,9 @@
-import type { Datetime, Ticket } from '@eventespresso/edtr-services';
+import type { CreateTicketInput, Datetime, Ticket } from '@eventespresso/edtr-services';
+
+export interface TicketFormShape extends CreateTicketInput {
+	duration?: number;
+	unit?: 'days' | 'hours' | 'minutes';
+}
 
 export interface TicketCardProps {
 	ticket: Ticket;
@@ -14,4 +19,5 @@ export interface Offset {
 	startUnit: string;
 	endDuration: number;
 	endUnit: string;
+	endOffsetFrom?: string;
 }

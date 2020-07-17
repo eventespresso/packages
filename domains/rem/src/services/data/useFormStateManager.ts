@@ -39,6 +39,13 @@ const useFormStateManager: FormStateManagerHook = (datetime) => {
 		});
 	}, []);
 
+	const setTicketDetails: FSM['setTicketDetails'] = useCallback((dateDetails) => {
+		dispatch({
+			type: 'SET_TICKET_DETAILS',
+			dateDetails,
+		});
+	}, []);
+
 	const updateDateField: FSM['updateDateField'] = useCallback((field, value) => {
 		dispatch({
 			type: 'SET_DATE_DETAILS',
@@ -53,6 +60,7 @@ const useFormStateManager: FormStateManagerHook = (datetime) => {
 			setDateDetails,
 			setExRule,
 			setRRule,
+			setTicketDetails,
 			updateDateField,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
