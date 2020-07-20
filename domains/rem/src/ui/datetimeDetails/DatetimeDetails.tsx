@@ -5,8 +5,8 @@ import useDatetimeFormConfig from './useDateFormConfig';
 import type { DatetimeDetailsProps } from './types';
 import FormWrapper from './FormWrapper';
 
-const DatetimeDetails: React.FC<DatetimeDetailsProps> = ({ datetime }) => {
-	const formConfig = useDatetimeFormConfig(datetime);
+const DatetimeDetails: React.FC<DatetimeDetailsProps> = () => {
+	const formConfig = useDatetimeFormConfig();
 
 	return <EspressoForm {...formConfig} formWrapper={FormWrapper} />;
 };

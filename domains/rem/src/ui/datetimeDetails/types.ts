@@ -1,7 +1,6 @@
-import type { UpdateDatetimeInput, Datetime } from '@eventespresso/edtr-services';
+import type { UpdateDatetimeInput } from '@eventespresso/edtr-services';
 
 export interface DatetimeDetailsProps {
-	datetime: Datetime;
 	onClose?: VoidFunction;
 }
 

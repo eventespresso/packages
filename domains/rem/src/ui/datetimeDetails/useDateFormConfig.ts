@@ -1,22 +1,17 @@
 import { __ } from '@wordpress/i18n';
-import { pick } from 'ramda';
 
 import { ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import type { EspressoFormProps } from '@eventespresso/form';
-import type { Datetime } from '@eventespresso/edtr-services';
 import { validate } from './formValidation';
 import { DateFormShape } from './types';
-import { DATE_FIELDS_TO_USE } from '../../constants';
 
 type DateFormConfig = EspressoFormProps<DateFormShape>;
 
 // required for RFF, but we don't need it.
 const onSubmit = () => null;
 
-const useDateFormConfig = (datetime: Datetime, config?: EspressoFormProps): DateFormConfig => {
-	const initialValues: DateFormShape = {
-		...pick<Partial<Datetime>, keyof Datetime>(DATE_FIELDS_TO_USE, datetime),
-	};
+const useDateFormConfig = (config?: EspressoFormProps): DateFormConfig => {
+	const initialValues: DateFormShape = {};
 
 	const adjacentFormItemProps = {
 		className: 'ee-form-item-pair',

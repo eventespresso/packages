@@ -3,20 +3,18 @@ import { __ } from '@wordpress/i18n';
 
 import { RRuleEditor } from '../rRule';
 
-import { useDatetime } from '../../context';
-import { useFormState } from '../../services/data';
+import { useFormState } from '../../data';
 
 import './style.scss';
 
 const ExclusionPattern: React.FC = () => {
-	const datetime = useDatetime();
 	const { exRule, setExRule } = useFormState();
 
 	const onReset = useCallback(() => setExRule(''), [setExRule]);
 
 	return (
 		<RRuleEditor
-			id={datetime.id}
+			id={'ex-rule'}
 			onChange={setExRule}
 			onReset={onReset}
 			rRuleString={exRule}

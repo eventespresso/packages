@@ -1,14 +1,13 @@
 import React, { createContext } from 'react';
 
-import { FormStateManager, useFormStateManager } from '../services/data';
-import useDatetime from './useDatetime';
+import { FormStateManager, useFormStateManager } from '../data';
 
 const FormStateContext = createContext<FormStateManager>(null);
 
 const { Provider, Consumer: FormStateConsumer } = FormStateContext;
 
 const FormStateProvider: React.FC = ({ children }) => {
-	const data = useFormStateManager(useDatetime());
+	const data = useFormStateManager();
 
 	return <Provider value={data}>{children}</Provider>;
 };
