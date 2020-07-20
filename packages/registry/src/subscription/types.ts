@@ -19,21 +19,6 @@ export interface SubscriptionManagerInterface<SR extends ServiceRegistry = Servi
 	subscribe: SubscribeFn;
 }
 
-export type SubscriptionServiceHook = <D extends string, S extends string, SR = ServiceRegistry>(
-	options: SubscriptionServiceOptions<D, S>
-) => SubscriptionService<SR>;
-
-export interface SubscriptionService<SR = ServiceRegistry> {
-	addToServiceRegistry: <K extends keyof SR>(key: K, value: SR[K]) => void;
-	getServiceRegistryItem: <K extends keyof SR>(key: K, defaultValue?: any) => SR[K];
-	getSubscriptions: <CbArgs = AnyObject, Options = AnyObject, CbReturn = void>() => Subscriptions<
-		CbArgs,
-		Options,
-		CbReturn
-	>;
-	subscribe: SubscribeFn;
-}
-
 export type SubscribeFn = <CbArgs = AnyObject, Options = AnyObject, CbReturn = void>(
 	cb: SubscriptionCallback<CbArgs, CbReturn>,
 	options?: Options
