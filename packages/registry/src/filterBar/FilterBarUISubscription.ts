@@ -4,6 +4,9 @@ import { FilterBarServiceType } from './types';
 
 type FBUIS = FilterBarUISubscriptionInterface;
 
+/**
+ * D: Domain name e.g. "eventEditor"
+ */
 class FilterBarUISubscription<D extends string> implements FBUIS {
 	private subscriptionManager: SubscriptionManager<D, FilterBarServiceType>;
 

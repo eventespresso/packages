@@ -18,6 +18,12 @@ type GetSetCbArgs = {
 	priority?: number;
 };
 
+/**
+ * D: Domain name e.g. "eventEditor"
+ * L: List name name e.g. "dates-list", "tickets-list"
+ * E: Entity: The current entity e.g. "Datetime", "Ticket"
+ * FS: Filter State (manager): The filter state instance for the current entity list
+ */
 class FilterBarService<D extends string, L extends string, E extends Entity, FS extends ELFSM>
 	implements FBS<L, E, FS> {
 	private subscriptionManager: SubscriptionManager<D, FilterBarServiceType>;

@@ -4,6 +4,9 @@ import { serviceName as service } from './constants';
 
 type EASI = EntityActionsSubscriptionInterface;
 
+/**
+ * D: Domain name e.g. "eventEditor"
+ */
 class EntityActionsSubscription<D extends string> implements EASI {
 	private subscriptionManager: SubscriptionManager<D, typeof service>;
 

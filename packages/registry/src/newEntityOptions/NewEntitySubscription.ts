@@ -4,6 +4,9 @@ import { serviceName as service } from './constants';
 
 type NESI = NewEntitySubscriptionInterface;
 
+/**
+ * D: Domain name e.g. "eventEditor"
+ */
 class NewEntitySubscription<D extends string> implements NESI {
 	private subscriptionManager: SubscriptionManager<D, typeof service>;
 

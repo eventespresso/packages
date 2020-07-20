@@ -4,6 +4,11 @@ import type { AnyObject } from '@eventespresso/services';
 
 import type { ElementRegistry, UIRegistryInterface as UIRI, UIRegistryOptions, ElementProps } from './types';
 
+/**
+ * EP: Element Props: The props of the component that's registerd by the consumer
+ * D: Domain name e.g. "eventEditor"
+ * S: Name of the service provided by the domain e.g. "entityActions"
+ */
 class UIRegistry<EP extends ElementProps, D extends string, S extends string> implements UIRI<EP> {
 	protected options: UIRegistryOptions<D, S>;
 

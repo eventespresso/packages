@@ -1,8 +1,8 @@
 import { filter, pathEq } from 'ramda';
-import { Subscriptions, SubscriptionService } from './types';
+import { Subscriptions, SubscriptionManagerInterface } from './types';
 
 export const filterSubscriptionsByOption = (
-	getSubscriptions: SubscriptionService['getSubscriptions'],
+	getSubscriptions: SubscriptionManagerInterface['getSubscriptions'],
 	option: string,
 	value: unknown
 ): Subscriptions => {

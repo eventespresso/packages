@@ -15,7 +15,11 @@ type Options<D extends string, S extends string> = {
 };
 
 type SMI<SR extends ServiceRegistry = ServiceRegistry> = SubscriptionManagerInterface<SR>;
-
+/**
+ * D: Domain name e.g. "eventEditor"
+ * S: Name of the service provided by the domain e.g. "entityActions"
+ * SR: Custom Service Registry structure created by the consumer which may contain additional properties/ methods
+ */
 class SubscriptionManager<D extends string, S extends string, SR extends ServiceRegistry = ServiceRegistry>
 	implements SMI<SR> {
 	protected options: Options<D, S>;
