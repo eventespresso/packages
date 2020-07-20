@@ -6,6 +6,7 @@ import type { SelectProps } from './types';
 
 const Select: React.FC<SelectProps> = ({ children, options = [], onChange, onChangeValue, ...props }) => {
 	const className = classNames(props.className, 'ee-input-base ee-select');
+
 	const childNodes =
 		children ||
 		options.map(({ label, options: optionGroups, value, ...optionProps }, index) => {
@@ -42,10 +43,10 @@ const Select: React.FC<SelectProps> = ({ children, options = [], onChange, onCha
 
 	return (
 		<ChakraSelect
+			className={className}
 			// fix the double icon issue
 			icon={() => null}
 			{...props}
-			className={className}
 			onChange={onChangeHandler}
 		>
 			{childNodes}

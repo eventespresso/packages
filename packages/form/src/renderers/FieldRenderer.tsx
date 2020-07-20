@@ -37,7 +37,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	return (
 		<FormControl className={className} isInvalid={Boolean(errorMessage)} isRequired={required}>
 			<FormLabel htmlFor={props.input.name}>
-				{label}
+				{label && label}
 				{info && (
 					<Tooltip placement='right' tooltip={info}>
 						<InfoCircleOutlined />

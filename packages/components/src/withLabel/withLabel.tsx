@@ -25,6 +25,7 @@ const withLabel = <P extends withLabelProps>(
 			label && 'ee-input-label__wrapper',
 			label && labelPosition && `ee-input-label__wrapper--${labelPosition}`
 		);
+
 		return label ? (
 			<div className={className}>
 				<label className='ee-input-label' htmlFor={id}>

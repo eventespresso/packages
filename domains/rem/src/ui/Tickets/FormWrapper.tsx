@@ -3,13 +3,14 @@ import type { FormRenderProps } from 'react-final-form';
 import { useFormState } from '../../data';
 
 const FormWrapper: React.FC<FormRenderProps> = ({ children, form }) => {
-	const { setTicketDetails } = useFormState();
+	const { setTickets } = useFormState();
 
 	useEffect(() => {
 		// subscribe to RFF state.
 		const unsubscribe = form.subscribe(
 			(state) => {
-				setTicketDetails(state?.values);
+				// @ts-ignore
+				setTickets(state?.values);
 			},
 			{ values: true }
 		);

@@ -2,9 +2,10 @@ import { __, sprintf } from '@wordpress/i18n';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import type { EspressoFormProps } from '@eventespresso/form';
+import { useMemoStringify } from '@eventespresso/hooks';
+
 import { validate } from './formValidation';
 import { TicketFormShape } from './types';
-import { useMemoStringify } from '@eventespresso/hooks';
 
 type TicketFormConfig = EspressoFormProps<TicketFormShape>;
 
