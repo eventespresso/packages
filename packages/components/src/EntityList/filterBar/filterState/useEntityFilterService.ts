@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { Entity } from '@eventespresso/data';
 import type { EntityFilterService, EntityListFilterStateManager } from './types';
-import { useFilterBarService, FilterBarServiceCbArgs } from '@eventespresso/registry';
+import { FilterBarService, FilterBarServiceCbArgs } from '@eventespresso/registry';
 import { SubscriptionCallback } from '@eventespresso/registry';
 import { sortBy, pathOr } from 'ramda';
 
@@ -13,7 +13,7 @@ const useEntityFilterService = <D extends string, L extends string, E extends En
 ): EntityFilterService<E, FS> => {
 	type EFS = EntityFilterService<E, FS>;
 
-	const { getFilters, getSearches, getSorters } = useFilterBarService<D, L, E, ELFSM>(domain, listId);
+	const { getFilters, getSearches, getSorters } = new FilterBarService<D, L, E, ELFSM>(domain, listId);
 
 	const getCallbackList = useCallback(
 		(

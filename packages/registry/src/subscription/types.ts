@@ -135,7 +135,7 @@ export interface UIRegistryInterface<EP extends ElementProps> {
 	registerElement: (key: string, component: React.ComponentType<EP>, priority?: number) => void;
 	unRegisterElement: (key: string, priority?: number) => void;
 	getElements: () => UIElements<EP>;
-	generateElements: () => Array<React.ReactNode>;
+	generateElements: (props?: Partial<EP>) => Array<React.ReactNode>;
 }
 
 export interface ElementProps {

@@ -7,7 +7,8 @@ import type {
 	SubscribeFn,
 	SubscriptionCallback,
 	Subscriptions,
-	UIRegistry,
+	UIRegistryInterface,
+	ElementProps,
 } from '../subscription';
 
 export enum FilterBarServiceType {
@@ -26,14 +27,12 @@ export interface FilterBarSubscriptionCbArgs<FS extends ELFSM, L extends string>
 	registry: FilterBarUIRegistry<FS>;
 }
 
-export interface FilterBarUISubscription {
+export interface FilterBarUISubscriptionInterface {
 	subscribe: FilterBarUISubscribeFn;
 	getSubscriptions: <FS extends ELFSM, L extends string>(
 		options?: FilterBarSubscriptionsBaseOptions<L>
 	) => Subscriptions<FilterBarSubscriptionCbArgs<FS, L>, FilterBarSubscriptionsBaseOptions<L>>;
 }
-
-export type FilterBarUISubscriptionHook = <Domain extends string>(domain: Domain) => FilterBarUISubscription;
 
 export type FilterBarUISubscribeFn = <FS extends ELFSM, L extends string>(
 	cb: FilterBarUISubscriptionCb<FS, L>,
@@ -48,31 +47,22 @@ export interface FilterBarUIOptions<D extends string, L extends string> extends 
 	listId: L;
 }
 
-export type FilterBarUIRegistryHook = <D extends string, L extends string, FS extends ELFSM>(
-	options: FilterBarUIOptions<D, L>
-) => FilterBarUIRegistry<FS>;
-
-export interface FilterBarUIComponentProps<FS extends ELFSM> {
+export interface FilterBarUIComponentProps<FS extends ELFSM> extends ElementProps {
 	filterState: FS;
 }
 
-export type FilterBarUIRegistry<FS extends ELFSM> = UIRegistry<FilterBarUIComponentProps<FS>>;
+export type FilterBarUIRegistry<FS extends ELFSM> = UIRegistryInterface<FilterBarUIComponentProps<FS>>;
 
 export interface FilterBarUIElementsHookOptions<FS extends ELFSM, D extends string, L extends string>
 	extends BaseSubscriptionOptions<D>,
 		FilterBarSubscriptionsBaseOptions<L>,
-		FilterBarUIComponentProps<FS> {}
+		Partial<FilterBarUIComponentProps<FS>> {}
 
 export type FilterBarUIElementsHook = <FS extends ELFSM, D extends string, L extends string>(
 	options: FilterBarUIElementsHookOptions<FS, D, L>
 ) => Array<React.ReactNode>;
 
 /*****************************/
-
-export type FilterBarServiceHook = <Domain extends string, L extends string, E extends Entity, FS extends ELFSM>(
-	domain: Domain,
-	listId?: L
-) => FilterBarService<L, E, FS>;
 
 export interface FilterBarServiceCbArgs<E extends Entity, FS extends ELFSM> {
 	entityList: Array<E>;
@@ -85,7 +75,7 @@ type FilterBarServiceSubList<L extends string, E extends Entity, FS extends ELFS
 	Array<E>
 >;
 
-export interface FilterBarService<L extends string, E extends Entity, FS extends ELFSM>
+export interface FilterBarServiceInterface<L extends string, E extends Entity, FS extends ELFSM>
 	extends FilterBarServiceFns<L, E, FS> {
 	getFilters: (listId?: L) => FilterBarServiceSubList<L, E, FS>;
 	getSearches: (listId?: L) => FilterBarServiceSubList<L, E, FS>;

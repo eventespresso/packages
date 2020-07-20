@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { useFilterBarService } from '@eventespresso/registry';
+import { FilterBarService } from '@eventespresso/registry';
 import { ticketSalesFilter, ticketStatusFilter, sortTickets } from '@eventespresso/predicates';
 import { domain, ticketsList } from '@eventespresso/edtr-services';
 import { entityListSearch } from '@eventespresso/services';
@@ -10,13 +10,13 @@ import useIsChainedFilter from './useIsChainedFilter';
 type Domain = typeof domain;
 type TFSM = TicketsFilterStateManager;
 
-const useTicketsFilterBarService = (): void => {
-	const {
-		registerFilter: registerTicketsFilter,
-		registerSearch: registerTicketsSearch,
-		registerSorter: registerTicketsSorter,
-	} = useFilterBarService<Domain, typeof ticketsList, Ticket, TFSM>(domain, ticketsList);
+const {
+	registerFilter: registerTicketsFilter,
+	registerSearch: registerTicketsSearch,
+	registerSorter: registerTicketsSorter,
+} = new FilterBarService<Domain, typeof ticketsList, Ticket, TFSM>(domain, ticketsList);
 
+const useTicketsFilterBarService = (): void => {
 	/**
 	 * isChained filter needs special treatment :)
 	 *
@@ -47,7 +47,7 @@ const useTicketsFilterBarService = (): void => {
 		return (): void => {
 			unSubscribeIsChainedFilter();
 		};
-	}, [isChainedFilter, isChainedDeps, registerTicketsFilter]);
+	}, [isChainedFilter, isChainedDeps]);
 
 	useEffect(() => {
 		// Register sales filter
@@ -81,7 +81,7 @@ const useTicketsFilterBarService = (): void => {
 			unSubscribeTicketsSearch();
 			unSubscribeTicketsSorter();
 		};
-	}, [registerTicketsFilter, registerTicketsSearch, registerTicketsSorter]);
+	}, []);
 };
 
 export default useTicketsFilterBarService;

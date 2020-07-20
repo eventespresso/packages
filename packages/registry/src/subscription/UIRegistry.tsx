@@ -77,12 +77,12 @@ class UIRegistry<EP extends ElementProps, D extends string, S extends string> im
 		return Object.assign({}, ...elementsWithPriority);
 	};
 
-	generateElements: UIRI<EP>['generateElements'] = () => {
+	generateElements: UIRI<EP>['generateElements'] = (props) => {
 		const elements = Object.entries<React.ComponentType<any>>(this.getElements());
 
 		const total = elements.length;
 
-		return elements.map(([itemKey, Component], i) => <Component key={itemKey + i} totalCount={total} />);
+		return elements.map(([itemKey, Component], i) => <Component key={itemKey + i} totalCount={total} {...props} />);
 	};
 }
 
