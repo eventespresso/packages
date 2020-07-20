@@ -1,21 +1,21 @@
 import { filterSubscriptionsByOption, SubscriptionManager } from '../subscription';
-import type { NewEntitySubscriptionInterface } from './types';
+import type { EntityActionsSubscriptionInterface } from './types';
 import { serviceName as service } from './constants';
 
-type NESI = NewEntitySubscriptionInterface;
+type EASI = EntityActionsSubscriptionInterface;
 
-class NewEntitySubscription<D extends string> implements NESI {
+class EntityActionsSubscription<D extends string> implements EASI {
 	private subscriptionManager: SubscriptionManager<D, typeof service>;
 
 	constructor(domain: D) {
 		this.subscriptionManager = new SubscriptionManager<D, typeof service>({ domain, service });
 	}
 
-	subscribe: NESI['subscribe'] = (...args) => this.subscriptionManager.subscribe(...args);
+	subscribe: EASI['subscribe'] = (...args) => this.subscriptionManager.subscribe(...args);
 
-	getSubscriptions: NESI['getSubscriptions'] = (args) => {
+	getSubscriptions: EASI['getSubscriptions'] = (args) => {
 		return filterSubscriptionsByOption(this.subscriptionManager.getSubscriptions, 'entityType', args?.entityType);
 	};
 }
 
-export default NewEntitySubscription;
+export default EntityActionsSubscription;

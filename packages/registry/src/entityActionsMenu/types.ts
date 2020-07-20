@@ -1,33 +1,31 @@
 import type React from 'react';
 import type { Entity } from '@eventespresso/data';
-import type { BaseSubscriptionOptions, Subscriptions, UIRegistry } from '../subscription';
+import type { BaseSubscriptionOptions, Subscriptions, ElementProps, UIRegistryInterface } from '../subscription';
 
 export interface EntityActionsSubscriptionsOptions<T extends string> {
 	entityType?: T; // to limit the subscription only to specific entityType
 }
 
-export interface EntityActionsSubscriptionCbArgs<E extends Entity, T extends string>
+export interface EntityActionsSubscriptionCbArgs<E extends Entity, T extends string, EP extends ElementProps>
 	extends EntityActionsSubscriptionsOptions<T> {
 	entity: E;
-	registry: EntityActionsMenuRegistry;
+	registry: EntityActionsMenuRegistry<EP>;
 }
 
-export interface EntityActionsSubscription {
+export interface EntityActionsSubscriptionInterface {
 	subscribe: EntityActionsSubscribeFn;
-	getSubscriptions: <E extends Entity, T extends string>(
+	getSubscriptions: <E extends Entity, T extends string, EP extends ElementProps>(
 		options?: EntityActionsSubscriptionsOptions<T>
-	) => Subscriptions<EntityActionsSubscriptionCbArgs<E, T>, EntityActionsSubscriptionsOptions<T>>;
+	) => Subscriptions<EntityActionsSubscriptionCbArgs<E, T, EP>, EntityActionsSubscriptionsOptions<T>>;
 }
 
-export type EntityActionsSubscriptionHook = <Domain extends string>(domain: Domain) => EntityActionsSubscription;
-
-export type EntityActionsSubscribeFn = <E extends Entity, T extends string>(
-	cb: EntityActionsSubscriptionCb<E, T>,
+export type EntityActionsSubscribeFn = <E extends Entity, T extends string, EP extends ElementProps>(
+	cb: EntityActionsSubscriptionCb<E, T, EP>,
 	options?: EntityActionsSubscriptionsOptions<T>
 ) => VoidFunction;
 
-export type EntityActionsSubscriptionCb<E extends Entity, T extends string> = (
-	args: EntityActionsSubscriptionCbArgs<E, T>
+export type EntityActionsSubscriptionCb<E extends Entity, T extends string, EP extends ElementProps = ElementProps> = (
+	args: EntityActionsSubscriptionCbArgs<E, T, EP>
 ) => void;
 
 /* UI related types */
@@ -36,16 +34,16 @@ export interface EntityActionsMenuOptions<D extends string, ET extends string> e
 	entityId: string;
 }
 
-export type EntityActionsMenuRegistryHook = <D extends string, ET extends string>(
+export type EntityActionsMenuRegistryHook = <D extends string, ET extends string, EP extends ElementProps>(
 	options: EntityActionsMenuOptions<D, ET>
-) => EntityActionsMenuRegistry;
+) => EntityActionsMenuRegistry<EP>;
 
 export enum EntityActionsMenuLayout {
 	Horizontal = 'horizontal',
 	Vertical = 'vertical',
 }
 
-export type EntityActionsMenuRegistry = UIRegistry;
+export type EntityActionsMenuRegistry<EP extends ElementProps> = UIRegistryInterface<EP>;
 
 export interface EntityActionsMenuProps {
 	className?: string;

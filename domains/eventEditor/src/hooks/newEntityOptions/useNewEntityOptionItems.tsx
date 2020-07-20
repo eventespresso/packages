@@ -11,7 +11,7 @@ const useNewEntityOptionItems = <T extends string>(
 ): Array<React.ReactNode> => {
 	const registry = new NewEntityOptionsRegistry({ domain, entityType });
 
-	const { getElements } = registry;
+	const { generateElements } = registry;
 
 	const subscriptions = getSubscriptions({ entityType: filterByEntityType ? entityType : null });
 
@@ -19,9 +19,7 @@ const useNewEntityOptionItems = <T extends string>(
 		callback({ entityType, registry });
 	});
 
-	const optionItems = getElements();
-
-	return Object.entries(optionItems).map(([itemKey, Component], i) => <Component key={itemKey + i} />);
+	return generateElements();
 };
 
 export default useNewEntityOptionItems;

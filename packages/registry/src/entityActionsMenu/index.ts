@@ -1,5 +1,5 @@
-export { default as useEntityActionsSubscription } from './useEntityActionsSubscription';
+export { default as EntityActionsSubscription } from './EntityActionsSubscription';
 
-export { default as useEntityActionsMenuRegistry } from './useEntityActionsMenuRegistry';
+export { default as EntityActionsMenuRegistry } from './EntityActionsMenuRegistry';
 
 export * from './types';

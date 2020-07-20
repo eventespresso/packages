@@ -14,7 +14,7 @@ const useNewDateOptionsHandler = (): DatesSubscriptionCallback => {
 
 		const { registerElement: registerOptionItem } = registry;
 
-		registerOptionItem('AddSingleDate', () => <AddSingleDate />);
+		registerOptionItem('AddSingleDate', ({ totalCount }) => <AddSingleDate isOnlyButton={totalCount === 1} />);
 	}, []);
 };
 

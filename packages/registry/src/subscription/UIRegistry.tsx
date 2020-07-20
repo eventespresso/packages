@@ -1,9 +1,10 @@
+import React from 'react';
 import { assocPath, dissocPath, pathOr } from 'ramda';
 import type { AnyObject } from '@eventespresso/services';
 
-import type { ElementRegistry, UIRegistryInterface as UIRI, UIRegistryOptions } from './types';
+import type { ElementRegistry, UIRegistryInterface as UIRI, UIRegistryOptions, ElementProps } from './types';
 
-class UIRegistry<EP, D extends string, S extends string> implements UIRI<EP> {
+class UIRegistry<EP extends ElementProps, D extends string, S extends string> implements UIRI<EP> {
 	protected options: UIRegistryOptions<D, S>;
 
 	protected static elementRegistry: ElementRegistry = {};
@@ -17,7 +18,7 @@ class UIRegistry<EP, D extends string, S extends string> implements UIRI<EP> {
 	constructor(options: UIRegistryOptions<D, S>) {
 		this.options = options;
 
-		this.pathToElements = [this.options.domain, this.options.service, ...this.options.path];
+		this.pathToElements = [this.options.domain, this.options.service, ...(this.options.path || [])];
 		this.pathToElementsStr = this.pathToElements.join(':');
 	}
 
@@ -74,6 +75,14 @@ class UIRegistry<EP, D extends string, S extends string> implements UIRI<EP> {
 		 */
 		const elementsWithPriority = pathOr([], this.pathToElements, UIRegistry.elementRegistry);
 		return Object.assign({}, ...elementsWithPriority);
+	};
+
+	generateElements: UIRI<EP>['generateElements'] = () => {
+		const elements = Object.entries<React.ComponentType<any>>(this.getElements());
+
+		const total = elements.length;
+
+		return elements.map(([itemKey, Component], i) => <Component key={itemKey + i} totalCount={total} />);
 	};
 }
 

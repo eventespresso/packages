@@ -1,18 +1,19 @@
 import React from 'react';
 
 import { Entity } from '@eventespresso/data';
-import { useEntityActionsSubscription, useEntityActionsMenuRegistry } from '@eventespresso/registry';
+import { EntityActionsSubscription, EntityActionsMenuRegistry } from '@eventespresso/registry';
 import { domain } from '@eventespresso/edtr-services';
+
+const { getSubscriptions } = new EntityActionsSubscription(domain);
 
 const useEntityActionsMenuItems = <E extends Entity, T extends string>(
 	entityType: T,
 	entity: E,
 	filterByEntityType = true
 ): Array<React.ReactNode> => {
-	const registry = useEntityActionsMenuRegistry({ domain, entityType, entityId: entity.id });
-	const { getSubscriptions } = useEntityActionsSubscription(domain);
+	const registry = new EntityActionsMenuRegistry({ domain, entityType, entityId: entity.id });
 
-	const { getElements } = registry;
+	const { generateElements } = registry;
 
 	const subscriptions = getSubscriptions({ entityType: filterByEntityType ? entityType : null });
 
@@ -20,9 +21,7 @@ const useEntityActionsMenuItems = <E extends Entity, T extends string>(
 		callback({ entityType, entity, registry });
 	});
 
-	const menuItems = getElements();
-
-	return Object.entries(menuItems).map(([itemKey, Component], i) => <Component key={itemKey + i} />);
+	return generateElements();
 };
 
 export default useEntityActionsMenuItems;

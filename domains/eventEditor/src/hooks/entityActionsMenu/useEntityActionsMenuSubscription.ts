@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 
-import { useEntityActionsSubscription } from '@eventespresso/registry';
+import { EntityActionsSubscription } from '@eventespresso/registry';
 import useDatesActionMenuHandler from '@edtrUI/datetimes/hooks/useDatesActionMenuHandler';
 import useTicketsActionMenuHandler from '@edtrUI/tickets/hooks/useTicketsActionMenuHandler';
 import { domain } from '@eventespresso/edtr-services';
 
+const { subscribe } = new EntityActionsSubscription(domain);
+
 const useEntityActionsMenuSubscription = (): void => {
-	const { subscribe } = useEntityActionsSubscription(domain);
 	const datesActionHandler = useDatesActionMenuHandler();
 	const ticketsActionHandler = useTicketsActionMenuHandler();
 

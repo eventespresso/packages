@@ -6,10 +6,10 @@ import { AddSingleTicket } from '../ticketsList/newTicketOptions';
 type TicketsSubscriptionCallback = NewEntitySubscriptionCb<'ticket'>;
 
 const useNewTicketOptionsHandler = (): TicketsSubscriptionCallback => {
-	return useCallback<TicketsSubscriptionCallback>(({ entityType, registry }) => {
+	return useCallback<TicketsSubscriptionCallback>(({ registry }) => {
 		const { registerElement: registerOptionItem } = registry;
 
-		registerOptionItem('AddSingleTicket', () => <AddSingleTicket />);
+		registerOptionItem('AddSingleTicket', ({ totalCount }) => <AddSingleTicket isOnlyButton={totalCount === 1} />);
 	}, []);
 };
 

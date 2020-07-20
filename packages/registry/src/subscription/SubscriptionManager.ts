@@ -6,7 +6,6 @@ import type {
 	ServiceRegistry,
 	SubscriptionManagerInterface,
 	SubscriptionRegistry,
-	Subscriptions,
 	UpdateSubscriptionProps,
 } from './types';
 
@@ -68,11 +67,7 @@ class SubscriptionManager<D extends string, S extends string, SR extends Service
 				  }
 				: omit([id], subscriptions);
 
-		this.setSubscriptions(newSubscriptions);
-	};
-
-	protected setSubscriptions = (subscriptions: Subscriptions): void => {
-		this.updateServiceRegistry('subscriptions', subscriptions);
+		this.updateServiceRegistry('subscriptions', newSubscriptions);
 	};
 
 	/**
