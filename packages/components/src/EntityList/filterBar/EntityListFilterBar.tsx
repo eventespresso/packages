@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import Collapsible from './Collapsible';
@@ -24,10 +24,10 @@ const EntityListFilterBar = <FS extends ELFSM>({
 	listId,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
 	const [showLegend, setShowLegend] = useState(false);
-	const toggleLegend = () => setShowLegend(!showLegend);
+	const toggleLegend = useCallback(() => setShowLegend((v) => !v), []);
 
 	const [showEntityFilters, setShowEntityFilters] = useState(false);
-	const toggleEntityFilters = () => setShowEntityFilters((v) => !v);
+	const toggleEntityFilters = useCallback(() => setShowEntityFilters((v) => !v), []);
 
 	const { searchText, setCardView, setTableView, setSearchText, sortingEnabled, toggleSorting, view } = filterState;
 
