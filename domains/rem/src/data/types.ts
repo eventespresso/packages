@@ -1,10 +1,16 @@
 import type { Reducer, ReducerState } from 'react';
 
-import type { RecurrenceBaseInput } from '../apollo/mutations';
-import type { DatetimeBaseInput, Datetime, TicketBaseInput } from '@eventespresso/edtr-services';
+import type { DatetimeBaseInput, TicketBaseInput } from '@eventespresso/edtr-services';
 
-export interface FormState extends Omit<RecurrenceBaseInput, 'datetimes'> {
+export interface FormState {
 	dateDetails: DatetimeBaseInput;
+	exDates?: string;
+	exRule: string;
+	gDates?: string;
+	rDates?: string;
+	rRule: string;
+	salesEndOffset?: string;
+	salesStartOffset?: string;
 	ticketDetails: TicketBaseInput;
 }
 
@@ -14,7 +20,7 @@ export interface DataAction extends Partial<FormState> {
 	type: DataActionType;
 }
 
-export type FormStateManagerHook = (datetime: Datetime) => FormStateManager;
+export type FormStateManagerHook = () => FormStateManager;
 
 export interface FormStateManager extends FormState {
 	getData: () => FormState;
