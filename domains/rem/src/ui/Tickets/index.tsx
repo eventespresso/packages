@@ -1,48 +1,39 @@
-import React, { Fragment, useCallback, useState } from 'react';
-import { __ } from '@wordpress/i18n';
-import { useDisclosure } from '@chakra-ui/core';
+import React, { Fragment, useCallback } from 'react';
 
-import { Button } from '@eventespresso/components';
 import { EspressoForm } from '@eventespresso/form';
-import { Plus } from '@eventespresso/icons';
 import FormWrapper from './FormWrapper';
-import ExistingTicketTemplate from './ExistingTicketTemplate';
+import TicketTemplate from './TicketTemplate';
 import TicketCard from './TicketCard';
 import useTicketFormConfig from './useTicketFormConfig';
-import { Ticket } from '@eventespresso/edtr-services';
+import { useFormState } from '../../data';
 
 import './style.scss';
 
 const Tickets: React.FC = () => {
-	const [ticketTemplates, setTicketTemplates] = useState<Ticket[]>([]);
+	const { addTicket, tickets } = useFormState();
 
-	const formConfig = useTicketFormConfig();
-	const {
-		isOpen,
-		//  onClose,
-		onOpen,
-	} = useDisclosure();
-
-	const addTicketTemplate = useCallback(
-		(ticket) => {
-			setTicketTemplates([...ticketTemplates, ticket]);
+	const onSubmit = useCallback(
+		(values) => {
+			console.log(values);
+			addTicket(values);
 		},
-		[ticketTemplates]
+		[addTicket]
 	);
 
+	const formConfig = useTicketFormConfig({ onSubmit });
+
 	return (
-		<>
-			<div className='rem-ticket-list'>
-				{ticketTemplates.map((ticket) => (
+		<div className='rem-tickets'>
+			<div className='rem-tickets__list'>
+				{tickets.map((ticket) => (
 					<Fragment key={ticket?.id}>
 						<TicketCard ticket={ticket} />
 					</Fragment>
 				))}
-				<Button buttonText={__('Add ticket')} className='ee-add-ticket-btn' icon={Plus} onClick={onOpen} />
 			</div>
-			<ExistingTicketTemplate addTicketTemplate={addTicketTemplate} ticketTemplates={ticketTemplates} />
-			{isOpen && <EspressoForm {...formConfig} formWrapper={FormWrapper} />}
-		</>
+			<TicketTemplate addTicketTemplate={addTicket} ticketTemplates={tickets} />
+			<EspressoForm {...formConfig} formWrapper={FormWrapper} />
+		</div>
 	);
 };
 

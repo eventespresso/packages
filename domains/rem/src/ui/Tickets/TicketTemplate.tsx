@@ -13,7 +13,7 @@ interface Props {
 	addTicketTemplate: (ticket: Ticket) => void;
 }
 
-const ExistingTicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates }) => {
+const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates }) => {
 	const [selectedTicketId, setSelectedTicketId] = useState('');
 
 	const tickets = useTickets();
@@ -31,15 +31,18 @@ const ExistingTicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemp
 	const onClick = useCallback(() => addTicketTemplate(ticket), [ticket, addTicketTemplate]);
 
 	return (
-		<div className='rem-add-existing-ticket'>
-			<SelectInput options={options} onChangeValue={onChangeValue} />
-			<Button
-				buttonText={__('Use Ticket as Template')}
-				onClick={onClick}
-				isDisabled={!selectedTicketId || !filteredTickets?.length}
-			/>
+		<div className='rem-tickets__template'>
+			<p>{__('select an existing ticket to use as a template.')}</p>
+			<div className='rem-tickets__template-input'>
+				<SelectInput options={options} onChangeValue={onChangeValue} />
+				<Button
+					buttonText={__('Add')}
+					onClick={onClick}
+					isDisabled={!selectedTicketId || !filteredTickets?.length}
+				/>
+			</div>
 		</div>
 	);
 };
 
-export default ExistingTicketTemplate;
+export default TicketTemplate;

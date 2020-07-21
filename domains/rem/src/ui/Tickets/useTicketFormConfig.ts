@@ -9,15 +9,14 @@ import { TicketFormShape } from './types';
 
 type TicketFormConfig = EspressoFormProps<TicketFormShape>;
 
-const onSubmit = () => null;
-
-const useTicketFormConfig = (): TicketFormConfig => {
+const useTicketFormConfig = (config?: Partial<TicketFormConfig>): TicketFormConfig => {
 	const adjacentFormItemProps = useMemoStringify({
 		className: 'ee-form-item-pair',
 	});
 
 	return {
-		onSubmit,
+		...config,
+		onSubmit: config?.onSubmit,
 		validate,
 		layout: 'horizontal',
 		debugFields: ['values', 'errors'],

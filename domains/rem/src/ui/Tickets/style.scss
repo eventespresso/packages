@@ -1,24 +1,26 @@
-.rem-ticket-list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
+.rem-tickets {
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
 
-	.ee-ticket-offset {
-		letter-spacing: 1px;
-		padding: 0.5rem 0.75rem 0 0;
-	}
-
-	.ee-add-ticket-btn {
-		background-color: var(--ee-color-grey-14);
-		border: 1px dashed #ccc;
-		box-shadow: none;
-		margin: 0.5rem 1rem;
-		height: 98px;
-		width: 268px;
-
-		&:focus,
-		&:hover {
-			box-shadow: none;
+		.ee-ticket-offset {
+			letter-spacing: 1px;
+			padding: 0.5rem 0.75rem 0 0;
 		}
+	}
+	&__template {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		&-input {
+			display: flex;
+			align-items: center;
+		}
+	}
+	&__form {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
 	}
 }
