@@ -19,10 +19,7 @@ const useFormStateReducer = (initializer: StateInitializer): FormStateReducer =>
 			case 'SET_DATE_DETAILS':
 				return {
 					...state,
-					dateDetails: {
-						...state.dateDetails,
-						...dateDetails,
-					},
+					dateDetails,
 				};
 			case 'ADD_TICKET':
 				return {
