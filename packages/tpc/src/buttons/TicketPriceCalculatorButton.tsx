@@ -5,11 +5,11 @@ import { Calculator } from '@eventespresso/icons';
 import { IconButton, IconButtonProps } from '@eventespresso/components';
 import { TypeName } from '@eventespresso/services';
 import { withIsLoaded } from '@eventespresso/services';
+import type { TooltipProps } from '@eventespresso/adapters';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 import type { BaseProps } from '../types';
 import { useTicketPriceCalculator } from '../hooks';
-import type { TooltipProps } from '@eventespresso/adapters';
-import { useMemoStringify } from '@eventespresso/hooks';
 
 interface TPCButtonProps extends BaseProps, IconButtonProps {}
 

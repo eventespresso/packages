@@ -2,14 +2,14 @@ import React, { useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveTable } from '@eventespresso/components';
+import { useConfig, useMoneyDisplay } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 import useBodyRowGenerator from './useBodyRowGenerator';
 import useFooterRowGenerator from './useFooterRowGenerator';
 import useHeaderRowGenerator from './useHeaderRowGenerator';
 import type { TableProps } from '../../data/types';
 import { useDataState } from '../../data';
-import { useConfig, useMoneyDisplay } from '@eventespresso/services';
-import { useMemoStringify } from '@eventespresso/hooks';
 
 import './styles.scss';
 

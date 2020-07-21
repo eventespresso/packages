@@ -1,7 +1,7 @@
 import React from 'react';
 
-import type { BaseFieldProps } from './types';
 import { TextInput } from '@eventespresso/adapters';
+import type { BaseFieldProps } from './types';
 import useBaseField from './useBaseField';
 
 const BaseNumberInputField: React.FC<BaseFieldProps> = ({

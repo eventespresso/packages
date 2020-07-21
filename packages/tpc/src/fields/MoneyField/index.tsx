@@ -7,9 +7,9 @@ import {
 	PercentSign,
 	getCurrencySignCharacterCountClassName,
 } from '@eventespresso/components';
+import { useConfig } from '@eventespresso/services';
 import type { MoneyFieldProps } from './types';
 
-import { useConfig } from '@eventespresso/services';
 import './style.scss';
 
 const MoneyField: React.FC<MoneyFieldProps> = ({ children, isPercent = false, ...props }) => {

@@ -1,7 +1,8 @@
 import { useContext } from 'react';
+import invariant from 'invariant';
+
 import { Context } from './ContextProvider';
 import type { ContextProps } from './types';
-import invariant from 'invariant';
 
 const useTPCContext = (): ContextProps => {
 	const value = useContext(Context);

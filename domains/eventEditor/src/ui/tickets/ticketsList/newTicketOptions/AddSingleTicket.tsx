@@ -4,7 +4,7 @@ import { useDisclosure } from '@chakra-ui/core';
 
 import { Button, ButtonSize, NewEntityOption } from '@eventespresso/components';
 import { Ticket } from '@eventespresso/icons';
-import { Container as FormContainer } from '@edtrUI/datetimes/dateForm/multiStep';
+import { Container as FormContainer } from '@edtrUI/tickets/ticketForm/multiStep';
 
 type AddSingleTicketProps = {
 	isOnlyButton?: boolean;

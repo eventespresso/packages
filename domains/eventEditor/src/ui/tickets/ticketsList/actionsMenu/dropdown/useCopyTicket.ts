@@ -4,8 +4,7 @@ import { useTicketPrices, useTicketMutator } from '@eventespresso/edtr-services'
 import { isTicketInputField, copyTicketFields, isDefaultTax } from '@eventespresso/predicates';
 import { useRelations } from '@eventespresso/services';
 import { Ticket } from '@eventespresso/edtr-services';
-import usePriceToTpcModifier from '@edtrUI/tickets/ticketPriceCalculator/hooks/usePriceToTpcModifier';
-import { useMutatePrices } from '@edtrUI/tickets/ticketPriceCalculator/hooks';
+import { useMutatePrices, usePriceToTpcModifier } from '@eventespresso/tpc';
 
 const useCopyTicket = (ticket: Ticket): VoidFunction => {
 	const relatedPrices = useTicketPrices(ticket?.id);
