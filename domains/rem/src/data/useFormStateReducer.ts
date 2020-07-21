@@ -9,7 +9,7 @@ export const initialState: FormState = {
 
 const useFormStateReducer = (initializer: StateInitializer): FormStateReducer => {
 	const dataReducer: FormStateReducer = (state, action) => {
-		const { rRule, exRule, dateDetails, tickets, type } = action;
+		const { rRule, exRule, dateDetails, ticket, tickets, type } = action;
 
 		switch (type) {
 			case 'SET_R_RULE':
@@ -24,10 +24,15 @@ const useFormStateReducer = (initializer: StateInitializer): FormStateReducer =>
 						...dateDetails,
 					},
 				};
+			case 'ADD_TICKET':
+				return {
+					...state,
+					tickets: [...state.tickets, ticket],
+				};
 			case 'SET_TICKETS':
 				return {
 					...state,
-					tickets: [...state.tickets, ...tickets],
+					tickets,
 				};
 			case 'RESET':
 				return initializer(initialState);

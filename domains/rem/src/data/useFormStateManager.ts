@@ -39,6 +39,13 @@ const useFormStateManager: FormStateManagerHook = () => {
 		});
 	}, []);
 
+	const addTicket: FSM['addTicket'] = useCallback((ticket) => {
+		dispatch({
+			type: 'ADD_TICKET',
+			ticket,
+		});
+	}, []);
+
 	const setTickets: FSM['setTickets'] = useCallback((tickets) => {
 		dispatch({
 			type: 'SET_TICKETS',
@@ -56,6 +63,7 @@ const useFormStateManager: FormStateManagerHook = () => {
 	return useMemo(
 		() => ({
 			...state,
+			addTicket,
 			getData,
 			setDateDetails,
 			setExRule,
