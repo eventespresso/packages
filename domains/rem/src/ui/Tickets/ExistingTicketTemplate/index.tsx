@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Ticket, useTickets } from '@eventespresso/edtr-services';
 import { Button, SelectInput } from '@eventespresso/components';
-import { getGuids } from '@eventespresso/predicates';
+import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { entityListToSelectOptions } from '@eventespresso/services';
 
 import './style.scss';
