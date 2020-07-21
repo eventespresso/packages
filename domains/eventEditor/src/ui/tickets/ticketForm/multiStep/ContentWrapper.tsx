@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { withContext as withTAMContext } from '@edtrUI/ticketAssignmentsManager/context';
-import { withContext as withTPCContext } from '@edtrUI/tickets/ticketPriceCalculator/context';
+import { withContext as withTPCContext } from '@eventespresso/tpc';
 import ContentBody from './ContentBody';
 import type { ContentWrapperProps } from './types';
 import { useWithEntityFormDetails } from '@eventespresso/components';

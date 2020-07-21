@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 
 import { EntityId } from '@eventespresso/data';
-import { useInitialState } from '@edtrUI/tickets/ticketPriceCalculator/data';
-import { calculateBasePrice } from '@edtrUI/tickets/ticketPriceCalculator/utils';
+import { calculateBasePrice, useInitialState } from '@eventespresso/tpc';
 import { isBasePrice } from '@eventespresso/predicates';
 import { usePriceMutator } from '@eventespresso/edtr-services';
 

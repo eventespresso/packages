@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import AssignDatesButton from '../ticketsList/actionsMenu/AssignDatesButton';
 import { TicketMainMenu } from '../ticketsList/actionsMenu/dropdown';
-import TicketPriceCalculatorButton from '../ticketPriceCalculator/buttons/TicketPriceCalculatorButton';
+import { TicketPriceCalculatorButton } from '@eventespresso/tpc';
 import { EntityActionsSubscriptionCb } from '@eventespresso/registry';
 import { Ticket } from '@eventespresso/edtr-services';
 

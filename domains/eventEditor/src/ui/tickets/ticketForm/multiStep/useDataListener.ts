@@ -3,7 +3,7 @@ import { useForm } from '@eventespresso/form';
 import { pick } from 'ramda';
 
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
-import { useDataState as useTPCDataState } from '@edtrUI/tickets/ticketPriceCalculator/data';
+import { useDataState as useTPCDataState } from '@eventespresso/tpc';
 import { Ticket } from '@eventespresso/edtr-services';
 
 // The fields that need to be synced from TPC to ticket edit form

@@ -5,10 +5,10 @@ import { anyPass, isNil, isEmpty } from 'ramda';
 
 import TicketFormSteps from './TicketFormSteps';
 import { usePrevNext } from '@eventespresso/hooks';
+import { TicketPriceCalculator } from '@eventespresso/tpc';
 import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/components';
 import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/components';
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
-import TicketPriceCalculator from '@edtrUI/tickets/ticketPriceCalculator/components/TicketPriceCalculator';
 import useDataListener from './useDataListener';
 
 /**
