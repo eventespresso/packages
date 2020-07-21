@@ -27,10 +27,7 @@ const useFormStateReducer = (initializer: StateInitializer): FormStateReducer =>
 			case 'SET_TICKETS':
 				return {
 					...state,
-					tickets: {
-						...state.tickets,
-						...tickets,
-					},
+					tickets: [...state.tickets, ...tickets],
 				};
 			case 'RESET':
 				return initializer(initialState);

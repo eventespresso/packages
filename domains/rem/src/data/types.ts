@@ -1,6 +1,6 @@
 import type { Reducer, ReducerState } from 'react';
 
-import type { DatetimeBaseInput, Ticket } from '@eventespresso/edtr-services';
+import type { DatetimeBaseInput, TicketBaseInput } from '@eventespresso/edtr-services';
 
 export interface FormState {
 	dateDetails: DatetimeBaseInput;
