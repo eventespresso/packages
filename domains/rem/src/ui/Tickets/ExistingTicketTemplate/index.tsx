@@ -24,7 +24,7 @@ const ExistingTicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemp
 
 	const options = entityListToSelectOptions(filteredTickets, { label: __('Select...'), value: '' });
 
-	const ticket = tickets.find(({ id }) => id === selectedTicketId);
+	const [ticket] = entitiesWithGuIdInArray(tickets, [selectedTicketId]);
 
 	const onClick = useCallback(() => addTicketTemplate(ticket), [ticket, addTicketTemplate]);
 
