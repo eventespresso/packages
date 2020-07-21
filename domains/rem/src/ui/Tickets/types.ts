@@ -11,6 +11,8 @@ export interface TicketFormShape extends CreateTicketInput {
 }
 
 export interface TicketCardProps {
+	onCopy?: VoidFunction;
+	onTrash?: VoidFunction;
 	ticket: Ticket;
 }
 

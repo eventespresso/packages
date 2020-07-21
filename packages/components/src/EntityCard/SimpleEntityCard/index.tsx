@@ -5,7 +5,7 @@ import type { SimpleEntityCardProps } from '../types';
 
 import './styles.scss';
 
-const SimpleEntityCard: React.FC<SimpleEntityCardProps> = ({ afterDetails, beforeDetails, id, name }) => {
+const SimpleEntityCard: React.FC<SimpleEntityCardProps> = ({ afterDetails, beforeDetails, name, sidebar }) => {
 	return (
 		<div className='ee-simple-entity-card'>
 			{beforeDetails && beforeDetails}
@@ -17,6 +17,7 @@ const SimpleEntityCard: React.FC<SimpleEntityCardProps> = ({ afterDetails, befor
 
 				{afterDetails && afterDetails}
 			</div>
+			{sidebar && <div className='ee-simple-entity-card__sidebar'>{sidebar}</div>}
 		</div>
 	);
 };

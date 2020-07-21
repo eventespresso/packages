@@ -1,11 +1,18 @@
 import React from 'react';
 
-import { ButtonRow, Next, Previous } from '@eventespresso/components';
+import { Button, ButtonRow, Next, Previous } from '@eventespresso/components';
 
+import useCancelButtonProps from './useCancelButtonProps';
 import { useStepsState } from '../../context';
 
-const ContentFooter: React.FC = () => {
+interface Props {
+	onClose: VoidFunction;
+}
+
+const ContentFooter: React.FC<Props> = ({ onClose }) => {
 	const { current, next, prev } = useStepsState();
+	const cancelButtonProps = useCancelButtonProps(onClose);
+	const cancelButton = <Button mr={3} {...cancelButtonProps} />;
 
 	return (
 		<ButtonRow noMargin rightAligned>
@@ -17,6 +24,7 @@ const ContentFooter: React.FC = () => {
 				// hide next on last step
 				current < 4 && <Next onClick={next} />
 			}
+			{cancelButton}
 		</ButtonRow>
 	);
 };

@@ -14,4 +14,5 @@ export interface SimpleEntityCardProps {
 	beforeDetails?: JSX.Element;
 	id: string;
 	name: string;
+	sidebar?: JSX.Element;
 }
