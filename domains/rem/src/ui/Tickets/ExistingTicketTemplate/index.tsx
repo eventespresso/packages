@@ -18,7 +18,7 @@ const ExistingTicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemp
 
 	const tickets = useTickets();
 
-	const filteredTickets = entitiesWithGuIdNotInArray(tickets, getGuids(ticketTemplates));
+	const filteredTickets = ticketTemplates.length ? entitiesWithGuIdNotInArray(tickets, getGuids(ticketTemplates)) : tickets;
 
 	const onChangeValue = useCallback((value) => setSelectedTicketId(value), []);
 
