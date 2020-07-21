@@ -11,7 +11,7 @@ export interface FormState {
 	rRule: string;
 	salesEndOffset?: string;
 	salesStartOffset?: string;
-	tickets: Ticket[];
+	tickets: TicketBaseInput[];
 }
 
 export type DataActionType = 'SET_R_RULE' | 'SET_EX_RULE' | 'SET_DATE_DETAILS' | 'SET_TICKETS' | 'RESET';
