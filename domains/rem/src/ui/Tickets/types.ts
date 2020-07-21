@@ -7,6 +7,7 @@ export interface TicketFormShape extends CreateTicketInput {
 	startOrEnd?: 'start' | 'end';
 	unit?: 'months' | 'weeks' | 'days' | 'hours' | 'minutes';
 	unitValue?: number;
+	isShared?: boolean;
 }
 
 export interface TicketCardProps {
