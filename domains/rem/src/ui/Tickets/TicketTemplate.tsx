@@ -19,7 +19,7 @@ const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates })
 	const [selectedTicketId, setSelectedTicketId] = useState('');
 
 	// convert Apollo tickets to REM tickets
-	// This is nothing but to make fool of TS ¯\_(ツ)_/¯
+	// This is nothing but to make a fool of TS ¯\_(ツ)_/¯
 	const tickets = useTickets().map<RemTicket>(assoc('prices', []));
 
 	const filteredTickets = ticketTemplates.length
