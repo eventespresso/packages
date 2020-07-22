@@ -14,7 +14,6 @@ const Tickets: React.FC = () => {
 
 	const onSubmit = useCallback(
 		(values) => {
-			console.log(values);
 			addTicket(values);
 		},
 		[addTicket]
@@ -25,13 +24,13 @@ const Tickets: React.FC = () => {
 	return (
 		<div className='rem-tickets'>
 			<div className='rem-tickets__list'>
-				{tickets.map((ticket) => (
-					<Fragment key={ticket?.id}>
+				{Object.entries(tickets).map(([id, ticket]) => (
+					<Fragment key={id}>
 						<TicketCard ticket={ticket} />
 					</Fragment>
 				))}
 			</div>
-			<TicketTemplate addTicketTemplate={addTicket} ticketTemplates={tickets} />
+			<TicketTemplate addTicketTemplate={addTicket} ticketTemplates={Object.values(tickets)} />
 			<EspressoForm {...formConfig} formWrapper={FormWrapper} />
 		</div>
 	);

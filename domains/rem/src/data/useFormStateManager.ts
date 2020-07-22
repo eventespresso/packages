@@ -46,10 +46,10 @@ const useFormStateManager: FormStateManagerHook = () => {
 		});
 	}, []);
 
-	const setTickets: FSM['setTickets'] = useCallback((tickets) => {
+	const updateTicket: FSM['updateTicket'] = useCallback((id, details) => {
 		dispatch({
-			type: 'SET_TICKETS',
-			tickets,
+			type: 'UPDATE_TICKET',
+			ticket: { id, ...details },
 		});
 	}, []);
 
@@ -68,7 +68,7 @@ const useFormStateManager: FormStateManagerHook = () => {
 			setDateDetails,
 			setExRule,
 			setRRule,
-			setTickets,
+			updateTicket,
 			updateDateField,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
