@@ -14,7 +14,7 @@ export interface Disclosure {
 	onClose: VoidFunction;
 }
 
-export interface TicketPriceCalculator extends Disclosure {
+export interface TicketPriceCalculatorHook extends Disclosure {
 	ModalContainer: React.FC<ModalContainerProps>;
 }
 

@@ -1,9 +1,9 @@
 import { useDisclosure } from '@chakra-ui/hooks';
 
-import { TicketPriceCalculator } from '../types';
+import { TicketPriceCalculatorHook } from '../types';
 import ModalContainer from '../components/ModalContainer';
 
-const useTicketPriceCalculator = (): TicketPriceCalculator => {
+const useTicketPriceCalculator = (): TicketPriceCalculatorHook => {
 	const disclosure = useDisclosure();
 
 	return {
