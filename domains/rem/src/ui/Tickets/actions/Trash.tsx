@@ -9,11 +9,7 @@ import { useFormState } from '../../../data';
 const Trash: React.FC<BaseProps> = ({ ticket }) => {
 	const { deleteTicket } = useFormState();
 	const onClick = useCallback(() => deleteTicket(ticket?.id), [deleteTicket, ticket?.id]);
-	return (
-		<>
-			<IconButton borderless icon={TrashIcon} onClick={onClick} tooltip={__('trash ticket')} />
-		</>
-	);
+	return <IconButton borderless icon={TrashIcon} onClick={onClick} tooltip={__('trash ticket')} />;
 };
 
 export default Trash;
