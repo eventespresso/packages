@@ -46,10 +46,11 @@ const useFormStateManager: FormStateManagerHook = () => {
 		});
 	}, []);
 
-	const updateTicket: FSM['updateTicket'] = useCallback((id, details) => {
+	const updateTicket: FSM['updateTicket'] = useCallback((id, ticket) => {
 		dispatch({
 			type: 'UPDATE_TICKET',
-			ticket: { id, ...details },
+			id,
+			ticket,
 		});
 	}, []);
 
@@ -60,10 +61,18 @@ const useFormStateManager: FormStateManagerHook = () => {
 		});
 	}, []);
 
+	const deleteTicket: FSM['deleteTicket'] = useCallback((id) => {
+		dispatch({
+			type: 'DELETE_TICKET',
+			id,
+		});
+	}, []);
+
 	return useMemo(
 		() => ({
 			...state,
 			addTicket,
+			deleteTicket,
 			getData,
 			setDateDetails,
 			setExRule,

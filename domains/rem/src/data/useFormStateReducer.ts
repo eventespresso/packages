@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { assocPath } from 'ramda';
+import { assocPath, omit } from 'ramda';
 
 import { FormStateReducer, StateInitializer, FormState } from './types';
 
@@ -12,8 +12,8 @@ export const initialState: FormState = {
 
 const useFormStateReducer = (initializer: StateInitializer): FormStateReducer => {
 	const dataReducer: FormStateReducer = (state, action) => {
-		const { rRule, exRule, dateDetails, ticket, type } = action;
-		let id: string;
+		const { rRule, exRule, dateDetails, id, ticket, type } = action;
+		let ticketId: string;
 
 		switch (type) {
 			case 'SET_R_RULE':
@@ -27,8 +27,15 @@ const useFormStateReducer = (initializer: StateInitializer): FormStateReducer =>
 				};
 			case 'ADD_TICKET':
 			case 'UPDATE_TICKET':
-				id = ticket?.id || uuidv4();
-				return assocPath(['tickets', id], ticket, state);
+				// use id to update and uuid to add new
+				ticketId = id || uuidv4();
+				// we need to make the id inside ticket and in tickets object same
+				return assocPath(['tickets', ticketId], { ...ticket, id: ticketId }, state);
+			case 'DELETE_TICKET':
+				return {
+					...state,
+					tickets: omit([id], state.tickets),
+				};
 			case 'RESET':
 				return initializer(initialState);
 			default:
