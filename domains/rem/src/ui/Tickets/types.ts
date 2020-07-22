@@ -1,7 +1,11 @@
 import type { DateAndTime } from '@eventespresso/edtr-services';
-import type { CreateTicketInput, Datetime, Ticket } from '@eventespresso/edtr-services';
+import type { UpdateTicketInput, Datetime, Ticket } from '@eventespresso/edtr-services';
 
-export interface TicketFormShape extends CreateTicketInput {
+export interface BaseProps {
+	ticket: Ticket;
+}
+
+export interface TicketFormShape extends UpdateTicketInput {
 	dateTime?: DateAndTime;
 	position?: 'before' | 'after';
 	startOrEnd?: 'start' | 'end';

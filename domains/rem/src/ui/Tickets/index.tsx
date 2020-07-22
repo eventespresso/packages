@@ -1,25 +1,14 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { Fragment } from 'react';
 
-import { EspressoForm } from '@eventespresso/form';
-import FormWrapper from './FormWrapper';
+import AddNewButton from './AddNewButton';
 import TicketTemplate from './TicketTemplate';
-import TicketCard from './TicketCard';
-import useTicketFormConfig from './useTicketFormConfig';
+import { TicketCard } from './card';
 import { useFormState } from '../../data';
 
 import './style.scss';
 
 const Tickets: React.FC = () => {
 	const { addTicket, tickets } = useFormState();
-
-	const onSubmit = useCallback(
-		(values) => {
-			addTicket(values);
-		},
-		[addTicket]
-	);
-
-	const formConfig = useTicketFormConfig({ onSubmit });
 
 	return (
 		<div className='rem-tickets'>
@@ -31,7 +20,7 @@ const Tickets: React.FC = () => {
 				))}
 			</div>
 			<TicketTemplate addTicketTemplate={addTicket} ticketTemplates={Object.values(tickets)} />
-			<EspressoForm {...formConfig} formWrapper={FormWrapper} />
+			<AddNewButton />
 		</div>
 	);
 };

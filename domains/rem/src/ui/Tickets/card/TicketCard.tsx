@@ -1,13 +1,12 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
 
-import { CurrencyInput, IconButton, SimpleEntityCard } from '@eventespresso/components';
-import { Edit, Trash } from '@eventespresso/icons';
-import { TicketCardProps } from './types';
+import { CurrencyInput, SimpleEntityCard } from '@eventespresso/components';
+import { BaseProps } from '../types';
+import Sidebar from './Sidebar';
 
 // import { useDatetime } from '../../context';
 
-const TicketCard: React.FC<TicketCardProps> = ({ onCopy, onTrash, ticket }) => {
+const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 	const beforeDetails = <CurrencyInput id={ticket.id} amount={ticket.price} tag='h5' vertical />;
 	// const datetime = useDatetime();
 
@@ -18,12 +17,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ onCopy, onTrash, ticket }) => {
 		</div>
 	);
 
-	const sidebar = (
-		<div className='ee-ticket-sidebar'>
-			<IconButton borderless icon={Edit} onClick={onCopy} tooltip={__('edit ticket')} />
-			<IconButton borderless icon={Trash} onClick={onTrash} tooltip={__('trash ticket')} />
-		</div>
-	);
+	const sidebar = <Sidebar ticket={ticket} />;
 
 	return (
 		<SimpleEntityCard
