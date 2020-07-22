@@ -38,7 +38,7 @@ const useDataListener: VoidFunction = () => {
 		const prices = currentTicket?.prices;
 
 		// If we are lucky
-		if (currentTicket && prices) {
+		if (prices) {
 			// feed TPC the best peanut butter
 			setPrices(prices);
 		}
