@@ -1,9 +1,11 @@
 import React from 'react';
+import { isEmpty } from 'ramda';
 
 import { Button, ButtonRow, Next, Previous } from '@eventespresso/components';
 
 import useCancelButtonProps from './useCancelButtonProps';
 import { useStepsState } from '../../context';
+import { useFormState } from '../../data';
 
 interface Props {
 	onClose: VoidFunction;
@@ -11,9 +13,24 @@ interface Props {
 
 const ContentFooter: React.FC<Props> = ({ onClose }) => {
 	const { current, next, prev } = useStepsState();
-	const cancelButtonProps = useCancelButtonProps(onClose);
-	const cancelButton = <Button mr={3} {...cancelButtonProps} />;
+	const { rRule, dateDetails, tickets } = useFormState();
 
+	let isNextDisabled: boolean;
+	const dateNameLen = dateDetails?.name?.length;
+
+	switch (current) {
+		case 0: // pattern step
+			isNextDisabled = !rRule;
+			break;
+		case 1: // date details step
+			isNextDisabled = !dateNameLen || dateNameLen < 3;
+			break;
+		case 2: // tickets step
+			isNextDisabled = isEmpty(tickets);
+			break;
+	}
+
+	const cancelButtonProps = useCancelButtonProps(onClose);
 	return (
 		<ButtonRow noMargin rightAligned>
 			{
@@ -22,9 +39,9 @@ const ContentFooter: React.FC<Props> = ({ onClose }) => {
 			}
 			{
 				// hide next on last step
-				current < 3 && <Next onClick={next} />
+				current < 3 && <Next onClick={next} isDisabled={isNextDisabled} />
 			}
-			{cancelButton}
+			<Button mr={3} {...cancelButtonProps} />
 		</ButtonRow>
 	);
 };
