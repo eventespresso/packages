@@ -1,22 +1,26 @@
 import React, { useState, useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
+import { assoc } from 'ramda';
 
-import { Ticket, useTickets } from '@eventespresso/edtr-services';
+import { useTickets } from '@eventespresso/edtr-services';
 import { Button, SelectInput } from '@eventespresso/components';
 import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { entityListToSelectOptions } from '@eventespresso/services';
+import { RemTicket } from '../../data';
 
 import './style.scss';
 
 interface Props {
-	ticketTemplates: Ticket[];
-	addTicketTemplate: (ticket: Ticket) => void;
+	ticketTemplates: RemTicket[];
+	addTicketTemplate: (ticket: RemTicket) => void;
 }
 
 const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates }) => {
 	const [selectedTicketId, setSelectedTicketId] = useState('');
 
-	const tickets = useTickets();
+	// conver Apollo tickets to REM tickets
+	// This is nothing but o make fool of TS ¯\_(ツ)_/¯
+	const tickets = useTickets().map<RemTicket>(assoc('prices', []));
 
 	const filteredTickets = ticketTemplates.length
 		? entitiesWithGuIdNotInArray(tickets, getGuids(ticketTemplates))

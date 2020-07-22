@@ -1,8 +1,9 @@
 import type { DateAndTime } from '@eventespresso/edtr-services';
-import type { UpdateTicketInput, Datetime, Ticket } from '@eventespresso/edtr-services';
+import type { UpdateTicketInput, Datetime } from '@eventespresso/edtr-services';
+import { RemTicket } from '../../data';
 
 export interface BaseProps {
-	ticket: Ticket;
+	ticket: RemTicket;
 }
 
 export interface TicketFormShape extends Omit<UpdateTicketInput, 'prices'> {
@@ -17,12 +18,12 @@ export interface TicketFormShape extends Omit<UpdateTicketInput, 'prices'> {
 export interface TicketCardProps {
 	onCopy?: VoidFunction;
 	onTrash?: VoidFunction;
-	ticket: Ticket;
+	ticket: RemTicket;
 }
 
 export interface OffsetProps {
 	datetime: Datetime;
-	ticket: Ticket;
+	ticket: RemTicket;
 }
 
 export interface Offset {

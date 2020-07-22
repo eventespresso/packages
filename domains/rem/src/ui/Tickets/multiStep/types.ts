@@ -1,12 +1,12 @@
 import type { Disclosure } from '@eventespresso/services';
-import type { Ticket } from '@eventespresso/edtr-services';
 import type { FormRenderProps } from 'react-final-form';
 import type { TicketFormShape } from '../types';
+import { RemTicket } from '../../../data';
 
 export interface ContainerProps extends ContentProps, Omit<Disclosure, 'onOpen'> {}
 
 export interface ContentProps {
-	entity?: Ticket;
+	entity?: RemTicket;
 	onClose: VoidFunction;
 }
 

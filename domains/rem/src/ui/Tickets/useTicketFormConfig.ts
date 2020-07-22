@@ -4,18 +4,18 @@ import { pick } from 'ramda';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import type { EspressoFormProps } from '@eventespresso/form';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { Ticket } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
 import { TicketFormShape } from './types';
 import { TICKET_FIELDS_TO_USE } from '../../constants';
+import { RemTicket } from '../../data';
 
 type TicketFormConfig = EspressoFormProps<TicketFormShape>;
 
-const useTicketFormConfig = (ticket?: Ticket, config?: Partial<TicketFormConfig>): TicketFormConfig => {
+const useTicketFormConfig = (ticket?: RemTicket, config?: Partial<TicketFormConfig>): TicketFormConfig => {
 	const initialValues: TicketFormShape = {
 		...config?.initialValues,
-		...pick<Partial<Ticket>, keyof Ticket>(TICKET_FIELDS_TO_USE, ticket || {}),
+		...pick<Partial<RemTicket>, keyof RemTicket>(TICKET_FIELDS_TO_USE, ticket || {}),
 	};
 	const adjacentFormItemProps = useMemoStringify({
 		className: 'ee-form-item-pair',

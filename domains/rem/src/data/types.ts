@@ -1,8 +1,13 @@
 import type { Reducer, ReducerState } from 'react';
 
 import type { DatetimeBaseInput, Ticket } from '@eventespresso/edtr-services';
-import { AnyObject } from '@eventespresso/services';
-import { EntityId } from '@eventespresso/data';
+import type { AnyObject } from '@eventespresso/services';
+import type { EntityId } from '@eventespresso/data';
+import type { TpcPriceModifier } from '@eventespresso/tpc';
+
+export interface RemTicket extends Omit<Ticket, 'prices'> {
+	prices?: Array<TpcPriceModifier>;
+}
 
 export interface FormState {
 	dateDetails: DatetimeBaseInput;
@@ -13,7 +18,7 @@ export interface FormState {
 	rRule: string;
 	salesEndOffset?: string;
 	salesStartOffset?: string;
-	tickets: AnyObject<Ticket>;
+	tickets: AnyObject<RemTicket>;
 }
 
 export type DataActionType =
@@ -28,7 +33,7 @@ export type DataActionType =
 export interface DataAction extends Partial<FormState> {
 	type: DataActionType;
 	id?: EntityId;
-	ticket?: Ticket;
+	ticket?: RemTicket;
 }
 
 export type FormStateManagerHook = () => FormStateManager;

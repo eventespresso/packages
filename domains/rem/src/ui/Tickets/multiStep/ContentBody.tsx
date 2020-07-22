@@ -43,11 +43,10 @@ const ContentBody: React.FC = ({ children }) => {
 										isDisabled={isSaveDisabled}
 										onClick={next}
 									/>
-									<Next
+									<Submit
 										buttonText={__('Skip prices - Save')}
 										isDisabled={isSaveDisabled}
 										onClick={form.submit}
-										skippable
 									/>
 								</ButtonRow>
 							</>
@@ -57,7 +56,7 @@ const ContentBody: React.FC = ({ children }) => {
 							<>
 								<TicketPriceCalculator context='editTicketForm' />
 								<ButtonRow rightAligned>
-									<Previous onClick={prev} />
+									<Previous onClick={prev} buttonText={__('Ticket details')} />
 									<Submit
 										onClick={form.submit}
 										isDisabled={isTPCSubmitDisabled}
