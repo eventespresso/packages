@@ -5,7 +5,7 @@ export interface BaseProps {
 	ticket: Ticket;
 }
 
-export interface TicketFormShape extends UpdateTicketInput {
+export interface TicketFormShape extends Omit<UpdateTicketInput, 'prices'> {
 	dateTime?: DateAndTime;
 	position?: 'before' | 'after';
 	startOrEnd?: 'start' | 'end';

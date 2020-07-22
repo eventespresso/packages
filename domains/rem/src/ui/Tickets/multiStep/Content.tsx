@@ -20,7 +20,7 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 		},
 		[addTicket, entity?.id, onClose, updateTicket]
 	);
-	const formConfig = useTicketFormConfig({ onSubmit });
+	const formConfig = useTicketFormConfig(entity, { onSubmit });
 
 	return <EspressoForm {...formConfig} formWrapper={ContentWrapper} />;
 };

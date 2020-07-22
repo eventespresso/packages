@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import type { Datetime } from '@eventespresso/edtr-services';
+import type { Datetime, Ticket } from '@eventespresso/edtr-services';
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
 export const TIME_FORMAT = 'hh:mm a';
@@ -42,3 +42,4 @@ export const RRULE_DAY_LABELS = {
 };
 
 export const DATE_FIELDS_TO_USE: Array<keyof Datetime> = ['id', 'name', 'description', 'capacity'];
+export const TICKET_FIELDS_TO_USE: Array<keyof Ticket> = ['id', 'name', 'description', 'quantity'];
