@@ -18,7 +18,7 @@ interface Props {
 const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates }) => {
 	const [selectedTicketId, setSelectedTicketId] = useState('');
 
-	// conver Apollo tickets to REM tickets
+	// convert Apollo tickets to REM tickets
 	// This is nothing but o make fool of TS ¯\_(ツ)_/¯
 	const tickets = useTickets().map<RemTicket>(assoc('prices', []));
 
