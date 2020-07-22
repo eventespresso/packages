@@ -7,10 +7,7 @@ interface CommonProps {
 	type: PatternType;
 }
 
-export interface EditorControlsProps {
-	onReset?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-	resetLabel?: string;
-}
+export interface EditorControlsProps {}
 
 export interface PatternEditorProps extends CommonProps {}
 

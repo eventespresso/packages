@@ -22,7 +22,7 @@ const ContentFooter: React.FC<Props> = ({ onClose }) => {
 			}
 			{
 				// hide next on last step
-				current < 4 && <Next onClick={next} />
+				current < 3 && <Next onClick={next} />
 			}
 			{cancelButton}
 		</ButtonRow>

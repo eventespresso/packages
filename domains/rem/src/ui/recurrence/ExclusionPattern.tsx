@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { RRuleEditor } from '../rRule';
@@ -10,18 +10,7 @@ import './style.scss';
 const ExclusionPattern: React.FC = () => {
 	const { exRule, setExRule } = useFormState();
 
-	const onReset = useCallback(() => setExRule(''), [setExRule]);
-
-	return (
-		<RRuleEditor
-			id={'ex-rule'}
-			onChange={setExRule}
-			onReset={onReset}
-			rRuleString={exRule}
-			resetLabel={__('Reset Exclusion Pattern')}
-			type='exclusion'
-		/>
-	);
+	return <RRuleEditor id={'ex-rule'} onChange={setExRule} rRuleString={exRule} type='exclusion' />;
 };
 
 export default ExclusionPattern;

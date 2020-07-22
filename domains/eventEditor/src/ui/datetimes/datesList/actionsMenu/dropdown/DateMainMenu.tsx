@@ -1,6 +1,6 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { useDisclosure } from '@chakra-ui/core';
+import { useDisclosure } from '@chakra-ui/hooks';
 
 import { DropdownMenu, DropdownToggleProps, Copy, Edit, Trash } from '@eventespresso/components';
 import { useConfirmationDialog } from '@eventespresso/components';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { useDisclosure } from '@chakra-ui/core';
+import { useDisclosure } from '@chakra-ui/hooks';
 
 import { Button, ButtonSize, NewEntityPopover } from '@eventespresso/components';
 import { Calendar } from '@eventespresso/icons';
