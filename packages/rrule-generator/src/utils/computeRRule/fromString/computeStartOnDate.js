@@ -1,6 +1,6 @@
 const computeStartOnDate = (data, rruleObj) => {
   if (!rruleObj.dtstart) {
-    return data.start.onDate.date;
+    return data?.start?.date;
   }
 
   return rruleObj.dtstart;

@@ -40,7 +40,7 @@ const computeRRule = (data, rrule) => {
         onDate: {
           date: moment(computeStartOnDate(data, rruleObj)).format(DATE_TIME_FORMAT),
           options: {
-            ...data.start.onDate.options,
+            ...data?.start?.options,
             weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
           },
         },
@@ -94,7 +94,7 @@ const computeRRule = (data, rrule) => {
         onDate: {
           date: moment(computeEndOnDate(data, rruleObj)).format(DATE_TIME_FORMAT),
           options: {
-            ...data.end.onDate.options,
+            ...data?.end?.options,
             weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
           },
         },
@@ -106,7 +106,7 @@ const computeRRule = (data, rrule) => {
       error: null,
     };
   } catch (e) {
-    return { ...data, error: { value: rrule, message: e } };
+    return { ...data, error: { name: rrule, message: e } };
   }
 
   return newDataObj;

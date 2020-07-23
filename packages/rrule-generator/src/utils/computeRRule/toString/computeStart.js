@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-const computeStart = ({ onDate: { date } }) => {
+const computeStart = ({ date }) => {
   // verify that incoming date is valid
   // by seeing if it can be converted into a moment object.
   // if not, then create a new date
