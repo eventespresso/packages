@@ -1,1 +1,5 @@
-export { default as RRuleGenerator } from './components/RRuleGenerator';
+import RRuleGenerator from './components/RRuleGenerator';
+
+export { RRuleGenerator };
+
+export default RRuleGenerator;
