@@ -1,7 +1,7 @@
 import type { AnyObject } from '@eventespresso/services';
 import type { IconName } from '@eventespresso/icons';
 
-export interface EntityListLegendProps {
+export interface LegendProps {
 	legendConfig: LegendConfig;
 }
 
@@ -12,5 +12,5 @@ interface IconType {
 
 export interface LegendConfig {
 	icons: IconType[];
-	swatches: AnyObject;
+	swatches?: AnyObject;
 }

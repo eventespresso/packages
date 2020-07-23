@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import Collapsible from './Collapsible';
 import type { EntityListFilterBarProps } from './types';
-import { EntityListLegend, SearchInput } from '../../..';
+import { Legend, SearchInput } from '../../..';
 import ToggleLegendButton from './buttons/ToggleLegendButton';
 import ToggleFiltersButton from './buttons/ToggleFiltersButton';
 import ToggleSortingButton from './buttons/ToggleSortingButton';
@@ -78,7 +78,7 @@ const EntityListFilterBar = <FS extends ELFSM>({
 			</Collapsible>
 
 			<Collapsible show={showLegend}>
-				<EntityListLegend legendConfig={legendConfig} />
+				<Legend legendConfig={legendConfig} />
 			</Collapsible>
 		</div>
 	);

@@ -32,7 +32,7 @@ const ContentFooter: React.FC<Props> = ({ onClose }) => {
 
 	const cancelButtonProps = useCancelButtonProps(onClose);
 	return (
-		<ButtonRow noMargin rightAligned>
+		<ButtonRow rightAligned topBordered>
 			{
 				// hide previous on first step
 				current > 0 && <Previous onClick={prev} />

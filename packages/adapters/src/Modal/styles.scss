@@ -4,6 +4,10 @@
 	.ee-modal {
 		&__header {
 			&.ee-modal__header {
+				&.ee-modal--with-border {
+					border-bottom: 0.5px solid var(--ee-border-color);
+				}
+
 				[dir='rtl'] & {
 					padding-right: var(--ee-padding-extreme);
 				}
@@ -19,6 +23,12 @@
 			@include max782px {
 				padding-left: var(--ee-padding-smaller);
 				padding-right: var(--ee-padding-smaller);
+			}
+		}
+
+		&__footer {
+			&.ee-modal--with-border {
+				border-top: 0.5px solid var(--ee-border-color);
 			}
 		}
 	}

@@ -5,10 +5,10 @@ import { Icon } from '@eventespresso/icons';
 import { ColorSwatch } from '../ColorSwatch';
 import { DescriptionList } from '../DescriptionList';
 
-import type { EntityListLegendProps } from './types';
+import type { LegendProps } from './types';
 import type { IconName } from '@eventespresso/icons';
 
-const EntityListLegend: React.FC<EntityListLegendProps> = ({ legendConfig }) => {
+const Legend: React.FC<LegendProps> = ({ legendConfig }) => {
 	const { icons, swatches } = legendConfig;
 
 	const iconsSource = icons.map(({ icon, description }) => {
@@ -18,24 +18,27 @@ const EntityListLegend: React.FC<EntityListLegendProps> = ({ legendConfig }) => 
 		);
 
 		return {
-			className: 'ee-entity-list-legend-item',
+			className: 'ee-legend-item',
 			description,
 			term,
 		};
 	});
 
-	const swatchesSource = Object.entries(swatches).map(([swatchClassName, description]) => {
-		const colorSwatchClassName = 'ee-status-background-color-' + swatchClassName;
-		return {
-			className: 'ee-entity-list-legend-item',
-			description,
-			term: <ColorSwatch className={colorSwatchClassName} label={description} />,
-		};
-	});
+	const swatchesSource = swatches
+		? Object.entries(swatches).map(([swatchClassName, description]) => {
+				const colorSwatchClassName = 'ee-status-background-color-' + swatchClassName;
+
+				return {
+					className: 'ee-legend-item',
+					description,
+					term: <ColorSwatch className={colorSwatchClassName} label={description} />,
+				};
+		  })
+		: [];
 
 	const dataSource = [...iconsSource, ...swatchesSource];
 
 	return <DescriptionList dataSource={dataSource} />;
 };
 
-export default EntityListLegend;
+export default Legend;

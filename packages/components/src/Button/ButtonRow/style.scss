@@ -30,6 +30,11 @@
 		}
 	}
 
+	&--top-bordered {
+		border-top: 0.5px solid var(--ee-border-color);
+		padding-top: var(--ee-padding-small);
+	}
+
 	@include max782px {
 		display: block;
 	}

@@ -8,17 +8,10 @@
 		place-items: center start;
 		width: 100%;
 
-		/* Media Queries for specific screen sizes
- 			* -------------------------------------------------------------------------*/
-		@media only screen and (max-width: 1920px) {
-		}
-		@media only screen and (max-width: 1766px) {
-		}
 		@media only screen and (max-width: 1440px) {
 			grid-template-rows: repeat(3, var(--ee-font-size-huge));
 		}
-		@media only screen and (max-width: 1366px) {
-		}
+
 		@media only screen and (max-width: 1280px) {
 			grid-template-rows: repeat(4, var(--ee-font-size-huge));
 		}

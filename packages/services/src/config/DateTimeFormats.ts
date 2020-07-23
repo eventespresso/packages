@@ -7,6 +7,7 @@ export const DateTimeFormats = (formats: DateTimeFormatsProps): DateTimeFormatsP
 		timeFormat: formats?.timeFormat || defaultTimeFormat,
 		dateTimeFormat: '',
 	};
+
 	return {
 		...maybeDefault,
 		dateTimeFormat: maybeDefault.dateFormat + ' ' + maybeDefault.timeFormat,
