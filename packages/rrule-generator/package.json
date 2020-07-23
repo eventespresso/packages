@@ -16,7 +16,7 @@
 	},
 	"sideEffects": false,
 	"dependencies": {
-		"react-toastify": "^6.0.6"
+		"react-date-picker": "^8.0.1"
 	},
 	"devDependencies": {
 		"@react-workspaces/react-scripts": "3.4.0-alpha-01",
