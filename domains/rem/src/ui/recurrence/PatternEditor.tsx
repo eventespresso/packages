@@ -14,18 +14,25 @@ import './style.scss';
 const PatternEditor: React.FC = () => {
 	const { isOpen, onClose, onOpen } = useDisclosure({ defaultIsOpen: false });
 
-	const { setExRule } = useFormState();
+	const { rRule, setExRule } = useFormState();
 
-	const onExclusionClick = useCallback(() => {
+	const onRemoveClick = useCallback(() => {
 		setExRule('');
 		onClose();
 	}, [onClose, setExRule]);
 
 	return (
 		<>
+			{!rRule ? (
+				<div className='ee-form-error-message'>
+					<p>{__('You must set a recurrence pattern')}</p>
+				</div>
+			) : null}
 			<RecurrencePattern />
-			{!isOpen && <Button buttonText={__('Enable exclusion')} onClick={onOpen} />}
-			{isOpen && <Button buttonText={__('Disable exclusion')} onClick={onExclusionClick} />}
+			<Button
+				buttonText={isOpen ? __('Remove exclusion pattern') : __('Add exclusion pattern')}
+				onClick={isOpen ? onRemoveClick : onOpen}
+			/>
 			{isOpen && <ExclusionPattern />}
 		</>
 	);

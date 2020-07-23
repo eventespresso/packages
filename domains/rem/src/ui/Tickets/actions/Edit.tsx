@@ -12,7 +12,7 @@ const Edit: React.FC<BaseProps> = ({ ticket }) => {
 
 	return (
 		<>
-			<IconButton borderless icon={EditIcon} onClick={onOpen} tooltip={__('edit ticket')} />;
+			<IconButton borderless icon={EditIcon} onClick={onOpen} tooltip={__('edit ticket')} />
 			{isOpen && <FormContainer isOpen={true} onClose={onClose} entity={ticket} />}
 		</>
 	);
