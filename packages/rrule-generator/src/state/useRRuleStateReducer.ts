@@ -32,7 +32,7 @@ const useRRuleStateReducer = (initializer: StateInitializer): RRuleStateReducer 
 			case 'SET_REPEAT_FREQUENCY':
 				return assocPath(['repeat', 'frequency'], frequency, state);
 			case 'SET_REPEAT_INTERVAL':
-				return assocPath(['repeat', repeatKey], interval, state);
+				return assocPath(['repeat', repeatKey, 'interval'], interval, state);
 			case 'SET_REPEAT_MONTH':
 				return assocPath(['repeat', 'yearly', monthYearMode, 'month'], month, state);
 			case 'SET_REPEAT_DAY':

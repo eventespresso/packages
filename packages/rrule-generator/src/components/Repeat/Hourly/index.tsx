@@ -23,7 +23,7 @@ const Hourly: React.FC<BaseProps> = ({ id }) => {
 				<input
 					id={`${id}-interval`}
 					name='repeat.hourly.interval'
-					aria-label='Repeat hourly interval'
+					aria-label={__('Repeat hourly interval')}
 					className='form-control'
 					value={hourly?.interval}
 					onChange={onChangeInterval}

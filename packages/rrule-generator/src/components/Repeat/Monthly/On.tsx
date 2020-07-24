@@ -31,7 +31,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 						id={id}
 						type='radio'
 						name={id}
-						aria-label='Repeat monthly on'
+						aria-label={__('Repeat monthly on')}
 						value='ON'
 						checked={isActive}
 						onChange={onChangeMode}
@@ -44,7 +44,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				<select
 					id={`${id}-day`}
 					name='repeat.monthly.on.day'
-					aria-label='Repeat monthly on a day'
+					aria-label={__('Repeat monthly on a day')}
 					className='form-control'
 					value={on.day}
 					disabled={!isActive}

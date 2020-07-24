@@ -49,7 +49,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 					<input
 						id={id}
 						type='radio'
-						aria-label='Repeat yearly on the'
+						aria-label={__('Repeat yearly on the')}
 						name='repeat.yearly.mode'
 						checked={isActive}
 						value='ON_THE'
@@ -63,7 +63,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				<select
 					id={`${id}-which`}
 					name='repeat.yearly.onThe.which'
-					aria-label='Repeat yearly on the which'
+					aria-label={__('Repeat yearly on the')}
 					className='form-control'
 					value={onThe.which}
 					disabled={!isActive}
@@ -81,7 +81,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				<select
 					id={`${id}-day`}
 					name='repeat.yearly.onThe.day'
-					aria-label='Repeat yearly on the day'
+					aria-label={__('Repeat yearly on the day')}
 					className='form-control'
 					value={onThe.day}
 					disabled={!isActive}
@@ -101,7 +101,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				<select
 					id={`${id}-month`}
 					name='repeat.yearly.onThe.month'
-					aria-label='Repeat yearly on the month'
+					aria-label={__('Repeat yearly on the month')}
 					className='form-control'
 					value={onThe.month}
 					disabled={!isActive}

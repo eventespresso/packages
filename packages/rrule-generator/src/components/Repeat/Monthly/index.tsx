@@ -38,7 +38,7 @@ const Monthly: React.FC<BaseProps> = ({ id }) => {
 					<input
 						id={`${id}-interval`}
 						name='repeat.monthly.interval'
-						aria-label='Repeat monthly interval'
+						aria-label={__('Repeat monthly interval')}
 						className='form-control'
 						value={monthly?.interval}
 						onChange={onChangeInterval}
