@@ -1,27 +1,26 @@
 import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { MONTHS, DAYS } from '../../../constants';
+import { DAYS } from '../../../constants';
+import { OnProps } from '../types';
 import { useRRuleState } from '../../../hooks';
 import { OnChangeSelect } from '../../types';
-import { Which, Month, Day } from '../../../types';
-import { OnProps } from '../types';
+import { Which, Day } from 'packages/rrule-generator/src/types';
 
 const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	const {
-		repeat: { yearly },
-		setRepeatMonth,
+		repeat: { monthly },
 		setRepeatWhich,
 		setRepeatDay,
 	} = useRRuleState();
 
-	const isActive = yearly?.mode === 'ON_THE';
-	const onThe = yearly?.onThe;
+	const isActive = monthly?.mode === 'ON_THE';
+	const onThe = monthly?.onThe;
 
 	const onChangeWhich = useCallback<OnChangeSelect>(
 		(event) => {
 			const value = event.target.value as Which;
-			setRepeatWhich('yearly', 'onThe', value);
+			setRepeatWhich('monthly', 'onThe', value);
 		},
 		[setRepeatWhich]
 	);
@@ -29,17 +28,9 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	const onChangeDay = useCallback<OnChangeSelect>(
 		(event) => {
 			const value = event.target.value as Day;
-			setRepeatDay('yearly', 'onThe', value);
+			setRepeatDay('monthly', 'onThe', value);
 		},
 		[setRepeatDay]
-	);
-
-	const onChangeMonth = useCallback<OnChangeSelect>(
-		(event) => {
-			const value = event.target.value as Month;
-			setRepeatMonth('onThe', value);
-		},
-		[setRepeatMonth]
 	);
 
 	return (
@@ -49,10 +40,10 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 					<input
 						id={id}
 						type='radio'
-						aria-label='Repeat yearly on the'
-						name='repeat.yearly.mode'
-						checked={isActive}
+						name={id}
+						aria-label='Repeat monthly on the'
 						value='ON_THE'
+						checked={isActive}
 						onChange={onChangeMode}
 					/>
 				)}
@@ -62,8 +53,8 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 			<div className='col-sm-2'>
 				<select
 					id={`${id}-which`}
-					name='repeat.yearly.onThe.which'
-					aria-label='Repeat yearly on the which'
+					name='repeat.monthly.onThe.which'
+					aria-label='Repeat monthly on the which'
 					className='form-control'
 					value={onThe.which}
 					disabled={!isActive}
@@ -80,8 +71,8 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 			<div className='col-sm-3'>
 				<select
 					id={`${id}-day`}
-					name='repeat.yearly.onThe.day'
-					aria-label='Repeat yearly on the day'
+					name='repeat.monthly.onThe.day'
+					aria-label='Repeat monthly on the day'
 					className='form-control'
 					value={onThe.day}
 					disabled={!isActive}
@@ -94,28 +85,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 					))}
 				</select>
 			</div>
-
-			<div className='col-sm-1'>{__('of')}</div>
-
-			<div className='col-sm-2'>
-				<select
-					id={`${id}-month`}
-					name='repeat.yearly.onThe.month'
-					aria-label='Repeat yearly on the month'
-					className='form-control'
-					value={onThe.month}
-					disabled={!isActive}
-					onChange={onChangeMonth}
-				>
-					{Object.entries(MONTHS).map(([key, month]) => (
-						<option key={key} value={key}>
-							{month}
-						</option>
-					))}
-				</select>
-			</div>
 		</div>
 	);
 };
-
 export default OnThe;

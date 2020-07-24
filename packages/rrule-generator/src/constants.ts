@@ -27,3 +27,13 @@ export const DAYS = {
 	WEEKDAY: __('Weekday'),
 	WEEKEND_DAY: __('Weekend day'),
 };
+
+export const SHORT_DAYS = {
+	MO: __('Mon'),
+	TU: __('Tue'),
+	WE: __('Wed'),
+	TH: __('Thu'),
+	FR: __('Fri'),
+	SA: __('Sat'),
+	SU: __('Sun'),
+};

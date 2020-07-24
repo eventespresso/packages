@@ -40,7 +40,7 @@ const useRRuleStateReducer = (initializer: StateInitializer): RRuleStateReducer 
 			case 'SET_REPEAT_WHICH':
 				return assocPath(['repeat', repeatKey, monthYearMode, 'which'], which, state);
 			case 'SET_REPEAT_WEEKLY_DAYS':
-				return assocPath(['repeat', 'weekly', 'days'], days, state);
+				return assocPath(['repeat', 'weekly', 'days'], { ...state.repeat.weekly?.days, ...days }, state);
 			case 'SET_REPEAT_MODE':
 				return assocPath(['repeat', repeatKey, 'mode'], mode, state);
 			case 'SET_DATA':

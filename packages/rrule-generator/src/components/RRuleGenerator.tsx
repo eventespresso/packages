@@ -19,7 +19,7 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({
 	onChange,
 	value,
 }) => {
-	const { /* repeat,  */ error, getData, setData } = useRRuleState();
+	const { error, getData, setData } = useRRuleState();
 
 	// Update/Initiate the state from value if it changes
 	useEffect(() => {

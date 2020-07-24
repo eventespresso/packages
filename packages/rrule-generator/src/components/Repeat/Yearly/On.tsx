@@ -5,9 +5,9 @@ import { range } from 'ramda';
 
 import { MONTHS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';
-import { OnProps } from './types';
 import { OnChangeSelect } from '../../types';
 import { Month } from '../../../types';
+import { OnProps } from '../types';
 
 const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	const {
