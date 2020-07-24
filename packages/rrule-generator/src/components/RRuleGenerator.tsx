@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 
 import Start from './Start';
-// import Repeat from './Repeat/index';
+import Repeat from './Repeat';
 import End from './End';
 import computeRRuleFromString from '../utils/computeRRule/fromString/computeRRule';
 import computeRRuleToString from '../utils/computeRRule/toString/computeRRule';
@@ -56,14 +56,9 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({
 					</div>
 				)}
 
-				{/* <div>
-					<Repeat
-						id={`${id}-repeat`}
-						repeat={repeat}
-						handleChange={this.handleChange}
-						translations={this.props.translations}
-					/>
-				</div> */}
+				<div>
+					<Repeat id={`${id}-repeat`} />
+				</div>
 
 				{!hideEnd && (
 					<div>

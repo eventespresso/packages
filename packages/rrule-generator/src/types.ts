@@ -1,5 +1,6 @@
 import React from 'react';
 import { Frequency as RRuleFrequency, WeekdayStr } from 'rrule';
+import { MONTHS, DAYS } from './constants';
 
 export type Frequency = keyof typeof RRuleFrequency;
 
@@ -13,7 +14,7 @@ export interface BaseRepeatOption {
 	interval: number;
 }
 
-export type Day = number | Weekday;
+export type Day = number | keyof typeof DAYS;
 
 export interface RepeatOn {
 	day: Day;
@@ -26,7 +27,7 @@ export interface RepeatOnThe extends RepeatOn {
 
 export type Which = 'FIRST' | 'SECOND' | 'THIRD' | 'FOURTH' | 'LAST';
 
-export type Month = 'Jan' | 'Feb' | 'Mar' | 'Apr' | 'May' | 'Jun' | 'Jul' | 'Aug' | 'Sep' | 'Oct' | 'Nov' | 'Dec';
+export type Month = keyof typeof MONTHS;
 
 export interface YearlyRepeatOption {
 	mode: RepeatMode;

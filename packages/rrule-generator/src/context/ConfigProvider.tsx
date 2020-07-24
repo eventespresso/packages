@@ -17,7 +17,7 @@ const DEFAULT_CONFIG: RRuleConfig = {
 	endModes: ['AFTER', 'ON_DATE'],
 	weekStartsOn: 'MO',
 	enableTimepicker: true,
-	locale: 'en_US',
+	// locale: 'en_US',
 };
 
 const ConfigProvider: React.FC<ConfigProviderProps> = ({ children, config }) => {
