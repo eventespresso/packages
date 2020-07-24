@@ -8,7 +8,7 @@ import computeRRuleFromString from '../utils/computeRRule/fromString/computeRRul
 import computeRRuleToString from '../utils/computeRRule/toString/computeRRule';
 import '../styles/index.css';
 import { RRuleGeneratorProps } from './types';
-import { useRRuleState } from '../hooks';
+import { useRRuleConfig, useRRuleState } from '../hooks';
 import { withConfig, withState } from '../context';
 
 const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({
@@ -20,6 +20,7 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({
 	value,
 }) => {
 	const { error, getData, setData } = useRRuleState();
+	const config = useRRuleConfig();
 
 	// Update/Initiate the state from value if it changes
 	useEffect(() => {
@@ -30,7 +31,7 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);
 
-	const rRuleString = computeRRuleToString({ ...getData(), options: {} });
+	const rRuleString = computeRRuleToString(getData(), config, hideStart);
 	// TODO: move this to some state listener
 	useEffect(() => {
 		onChange(rRuleString);
