@@ -20,7 +20,7 @@ export const legendConfig: LegendConfig = {
 		},
 		{
 			description: __(
-				'Locked: dates that can be edited because ticket sales or registrations have already occured'
+				'Locked: dates that can NOT be edited because ticket sales or registrations have already occurred'
 			),
 			icon: Lock,
 		},
