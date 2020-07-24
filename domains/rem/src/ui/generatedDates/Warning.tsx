@@ -6,7 +6,7 @@ const Warning = ({ freq, count }) => {
 	switch (freq) {
 		case 'YEARLY':
 			warning =
-				count >= 5 ? 'The number of Event Dates has been capped at 5' + ' for YEARLY recurrence patterns' : '';
+				count >= 5 ? __('The number of Event Dates has been capped at 5 for YEARLY recurrence patterns') : '';
 			break;
 		case 'MONTHLY':
 			warning =
