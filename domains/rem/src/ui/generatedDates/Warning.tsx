@@ -1,4 +1,5 @@
 import React from 'react';
+import { __ } from '@wordpress/i18n';
 
 const Warning = ({ freq, count }) => {
 	let warning = '';
@@ -11,19 +12,22 @@ const Warning = ({ freq, count }) => {
 		case 'MONTHLY':
 			warning =
 				count >= 24
-					? 'The number of Event Dates has been capped at 24' + ' for MONTHLY recurrence patterns (2 years)'
+					? __(
+							'The number of Event Dates has been capped at 24' +
+								' for MONTHLY recurrence patterns (2 years)'
+					  )
 					: '';
 			break;
 		case 'WEEKLY':
 			warning =
 				count >= 52
-					? 'The number of Event Dates has been capped at 52' + ' for WEEKLY recurrence patterns (1 year)'
+					? __('The number of Event Dates has been capped at 52 for WEEKLY recurrence patterns (1 year)')
 					: '';
 			break;
 		case 'DAILY':
 			warning =
 				count >= 92
-					? 'The number of Event Dates has been capped at 92' + ' for DAILY recurrence patterns (~3 months)'
+					? __('The number of Event Dates has been capped at 92 for DAILY recurrence patterns (~3 months)')
 					: '';
 			break;
 	}
