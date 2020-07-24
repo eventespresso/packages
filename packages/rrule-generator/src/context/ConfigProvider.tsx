@@ -9,8 +9,20 @@ const { Provider, Consumer: ConfigConsumer } = ConfigContext;
 export interface ConfigProviderProps {
 	config?: RRuleConfig;
 }
+
+const DEFAULT_CONFIG: RRuleConfig = {
+	frequencies: ['YEARLY', 'MONTHLY', 'WEEKLY', 'DAILY'],
+	yearlyModes: ['ON', 'ON_THE'],
+	monthlyModes: ['ON', 'ON_THE'],
+	endModes: ['AFTER', 'ON_DATE'],
+	weekStartsOn: 'MO',
+	enableTimepicker: true,
+	locale: 'en_US',
+};
+
 const ConfigProvider: React.FC<ConfigProviderProps> = ({ children, config }) => {
-	return <Provider value={config}>{children}</Provider>;
+	const mergedConfig = { ...DEFAULT_CONFIG, ...config };
+	return <Provider value={mergedConfig}>{children}</Provider>;
 };
 
 export { ConfigContext, ConfigProvider, ConfigConsumer };

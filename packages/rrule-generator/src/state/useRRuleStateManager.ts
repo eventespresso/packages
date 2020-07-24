@@ -45,6 +45,34 @@ const useRRuleStateManager = (config: RRuleConfig): RSM => {
 		dispatch({ type: 'SET_END_DATE', date });
 	}, []);
 
+	const setRepeatFrequency: RSM['setRepeatFrequency'] = useCallback((frequency) => {
+		dispatch({ type: 'SET_REPEAT_FREQUENCY', frequency });
+	}, []);
+
+	const setRepeatDay: RSM['setRepeatDay'] = useCallback((repeatKey, monthYearMode, day) => {
+		dispatch({ type: 'SET_REPEAT_DAY', repeatKey, monthYearMode, day });
+	}, []);
+
+	const setRepeatInterval: RSM['setRepeatInterval'] = useCallback((repeatKey, interval) => {
+		dispatch({ type: 'SET_REPEAT_INTERVAL', repeatKey, interval });
+	}, []);
+
+	const setRepeatMode: RSM['setRepeatMode'] = useCallback((repeatKey, mode) => {
+		dispatch({ type: 'SET_REPEAT_MODE', repeatKey, mode });
+	}, []);
+
+	const setRepeatMonth: RSM['setRepeatMonth'] = useCallback((monthYearMode, month) => {
+		dispatch({ type: 'SET_REPEAT_MONTH', monthYearMode, month });
+	}, []);
+
+	const setRepeatWeeklyDays: RSM['setRepeatWeeklyDays'] = useCallback((days) => {
+		dispatch({ type: 'SET_REPEAT_WEEKLY_DAYS', days });
+	}, []);
+
+	const setRepeatWhich: RSM['setRepeatWhich'] = useCallback((repeatKey, monthYearMode, which) => {
+		dispatch({ type: 'SET_REPEAT_WHICH', repeatKey, monthYearMode, which });
+	}, []);
+
 	return useMemo<RSM>(
 		() => ({
 			...state,
@@ -54,6 +82,13 @@ const useRRuleStateManager = (config: RRuleConfig): RSM => {
 			setEndMode,
 			setEndAfter,
 			setEndDate,
+			setRepeatFrequency,
+			setRepeatDay,
+			setRepeatInterval,
+			setRepeatMode,
+			setRepeatMonth,
+			setRepeatWeeklyDays,
+			setRepeatWhich,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[state]

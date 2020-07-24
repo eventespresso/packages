@@ -3,7 +3,22 @@ import { assocPath } from 'ramda';
 
 const useRRuleStateReducer = (initializer: StateInitializer): RRuleStateReducer => {
 	const dataReducer: RRuleStateReducer = (state, action) => {
-		const { type, data, date, endMode, after } = action;
+		const {
+			after,
+			data,
+			date,
+			day,
+			days,
+			endMode,
+			frequency,
+			interval,
+			mode,
+			month,
+			monthYearMode,
+			repeatKey,
+			type,
+			which,
+		} = action;
 
 		switch (type) {
 			case 'SET_START_DATE':
@@ -14,6 +29,20 @@ const useRRuleStateReducer = (initializer: StateInitializer): RRuleStateReducer 
 				return assocPath(['end', 'after'], after, state);
 			case 'SET_END_DATE':
 				return assocPath(['end', 'date'], date, state);
+			case 'SET_REPEAT_FREQUENCY':
+				return assocPath(['repeat', 'frequency'], frequency, state);
+			case 'SET_REPEAT_INTERVAL':
+				return assocPath(['repeat', repeatKey], interval, state);
+			case 'SET_REPEAT_MONTH':
+				return assocPath(['repeat', 'yearly', monthYearMode, 'month'], month, state);
+			case 'SET_REPEAT_DAY':
+				return assocPath(['repeat', repeatKey, monthYearMode, 'day'], day, state);
+			case 'SET_REPEAT_WHICH':
+				return assocPath(['repeat', repeatKey, monthYearMode, 'which'], which, state);
+			case 'SET_REPEAT_WEEKLY_DAYS':
+				return assocPath(['repeat', 'weekly', 'days'], days, state);
+			case 'SET_REPEAT_MODE':
+				return assocPath(['repeat', repeatKey, 'mode'], mode, state);
 			case 'SET_DATA':
 				return data;
 			case 'RESET':

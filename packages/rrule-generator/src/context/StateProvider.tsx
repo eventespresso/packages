@@ -1,16 +1,14 @@
 import React, { createContext } from 'react';
 
-import { RRuleConfig } from '../types';
 import { RRuleStateManager, useRRuleStateManager } from '../state';
+import { useRRuleConfig } from '../hooks';
 
 const StateContext = createContext<RRuleStateManager>(null);
 
 const { Provider, Consumer: StateConsumer } = StateContext;
 
-export interface StateProviderProps {
-	config?: RRuleConfig;
-}
-const StateProvider: React.FC<StateProviderProps> = ({ children, config }) => {
+const StateProvider: React.FC = ({ children }) => {
+	const config = useRRuleConfig();
 	const stateManager = useRRuleStateManager(config);
 	return <Provider value={stateManager}>{children}</Provider>;
 };

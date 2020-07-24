@@ -15,9 +15,9 @@ const useInitialState = (config: RRuleConfig): StateInitializer => {
 				},
 			},
 			repeat: {
-				frequency: config?.frequency?.[0] || 'YEARLY',
+				frequency: config?.frequencies?.[0] || 'YEARLY',
 				yearly: {
-					mode: config?.yearlyMode || 'ON',
+					mode: config?.yearlyModes?.[0] || 'ON',
 					on: {
 						month: 'Jan',
 						day: 1,
@@ -29,7 +29,7 @@ const useInitialState = (config: RRuleConfig): StateInitializer => {
 					},
 				},
 				monthly: {
-					mode: config?.monthlyMode || 'ON',
+					mode: config?.monthlyModes?.[0] || 'ON',
 					interval: 1,
 					on: {
 						day: 1,
@@ -67,7 +67,7 @@ const useInitialState = (config: RRuleConfig): StateInitializer => {
 				},
 			},
 		}),
-		[config?.endModes, config?.frequency, config?.monthlyMode, config?.weekStartsOn, config?.yearlyMode]
+		[config?.endModes, config?.frequencies, config?.monthlyModes, config?.weekStartsOn, config?.yearlyModes]
 	);
 
 	return useCallback<StateInitializer>(

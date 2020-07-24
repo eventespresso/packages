@@ -9,32 +9,34 @@ export type EndMode = 'NEVER' | 'AFTER' | 'ON_DATE';
 
 export type Weekday = WeekdayStr;
 
-interface BaseRepeatOption {
+export interface BaseRepeatOption {
 	interval: number;
 }
 
-interface RepeatOn {
-	day: number | Weekday;
+export type Day = number | Weekday;
+
+export interface RepeatOn {
+	day: Day;
 	month?: Month;
 }
 
-interface RepeatOnThe extends RepeatOn {
+export interface RepeatOnThe extends RepeatOn {
 	which: Which;
 }
 
-type Which = 'FIRST' | 'SECOND' | 'THIRD' | 'FOURTH' | 'LAST';
+export type Which = 'FIRST' | 'SECOND' | 'THIRD' | 'FOURTH' | 'LAST';
 
-type Month = 'Jan' | 'Feb' | 'Mar' | 'Apr' | 'May' | 'Jun' | 'Jul' | 'Aug' | 'Sep' | 'Oct' | 'Nov' | 'Dec';
+export type Month = 'Jan' | 'Feb' | 'Mar' | 'Apr' | 'May' | 'Jun' | 'Jul' | 'Aug' | 'Sep' | 'Oct' | 'Nov' | 'Dec';
 
-interface YearlyRepeatOption {
+export interface YearlyRepeatOption {
 	mode: RepeatMode;
 	on: RepeatOn;
 	onThe: RepeatOnThe;
 }
 
-interface MonthlyRepeatOption extends BaseRepeatOption, YearlyRepeatOption {}
+export interface MonthlyRepeatOption extends BaseRepeatOption, YearlyRepeatOption {}
 
-interface WeeklyRepeatOption extends BaseRepeatOption {
+export interface WeeklyRepeatOption extends BaseRepeatOption {
 	days: {
 		[key in Weekday]?: boolean;
 	};
@@ -62,9 +64,9 @@ export interface EndRule extends StartRule {
 }
 
 export interface RRuleConfig {
-	frequency?: Array<Frequency>;
-	yearlyMode?: RepeatMode;
-	monthlyMode?: RepeatMode;
+	frequencies?: Array<Frequency>;
+	yearlyModes?: Array<RepeatMode>;
+	monthlyModes?: Array<RepeatMode>;
 	endModes?: Array<EndMode>;
 	weekStartsOn?: Weekday;
 	enableTimepicker?: boolean;
