@@ -35,6 +35,7 @@
 		"@typescript-eslint/no-use-before-define": "off",
 		"comma-dangle": "off",
 		"jest/valid-describe": "off",
+		"jsx-a11y/no-onchange": "off",
 		"no-case-declarations": "warn",
 		"no-prototype-builtins": "off",
 		"no-unused-vars": "error",

@@ -1,11 +1,12 @@
-import React from 'react';
 import { StateProviderProps } from '../context';
 
-export interface RRuleGeneratorProps extends StateProviderProps {
+export interface BaseProps {
 	id?: string;
+}
+
+export interface RRuleGeneratorProps extends BaseProps, StateProviderProps {
 	value?: string;
 	onChange: (rRuleString: string) => void;
-	calendarComponent?: React.ComponentType;
 	hideStart?: boolean;
 	hideEnd?: boolean;
 	hideError?: boolean;

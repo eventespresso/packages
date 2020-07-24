@@ -16,6 +16,7 @@
 	},
 	"sideEffects": false,
 	"dependencies": {
+		"rrule": "^2.6.4",
 		"react-date-picker": "^8.0.1"
 	},
 	"devDependencies": {

@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDatepicker from 'react-date-picker';
-import { __ } from '@wordpress/i18n';
+import { useRRuleConfig } from '../hooks';
 
-import { OnDateProps } from './types';
+export interface OnDateProps {
+	id: string;
+	date: Date;
+	onChange: (date: Date) => void;
+	label?: string;
+}
 
-const OnDate: React.FC<OnDateProps> = ({ id, value, onChange, calendarComponent: CalendarComponent, locale }) => {
+const OnDate: React.FC<OnDateProps> = ({ id, date, label, onChange }) => {
+	const { locale, calendarComponent: CalendarComponent } = useRRuleConfig();
 	const calendarAttributes = {
-		'aria-label': __('Start'),
-		value,
+		'aria-label': label,
+		value: date,
 		locale,
 		readOnly: true,
 	};
