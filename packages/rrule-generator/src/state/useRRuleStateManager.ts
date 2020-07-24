@@ -33,12 +33,27 @@ const useRRuleStateManager = (config: RRuleConfig): RSM => {
 		dispatch({ type: 'SET_START_DATE', date });
 	}, []);
 
+	const setEndMode: RSM['setEndMode'] = useCallback((endMode) => {
+		dispatch({ type: 'SET_END_MODE', endMode });
+	}, []);
+
+	const setEndAfter: RSM['setEndAfter'] = useCallback((after) => {
+		dispatch({ type: 'SET_END_AFTER', after });
+	}, []);
+
+	const setEndDate: RSM['setEndDate'] = useCallback((date) => {
+		dispatch({ type: 'SET_END_DATE', date });
+	}, []);
+
 	return useMemo<RSM>(
 		() => ({
 			...state,
 			getData,
 			setData,
 			setStartDate,
+			setEndMode,
+			setEndAfter,
+			setEndDate,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[state]

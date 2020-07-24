@@ -1,3 +1,4 @@
+import React from 'react';
 import { Frequency as RRuleFrequency, WeekdayStr } from 'rrule';
 
 export type Frequency = keyof typeof RRuleFrequency;
@@ -64,7 +65,9 @@ export interface RRuleConfig {
 	frequency?: Array<Frequency>;
 	yearlyMode?: RepeatMode;
 	monthlyMode?: RepeatMode;
-	end?: Array<EndMode>;
+	endModes?: Array<EndMode>;
 	weekStartsOn?: Weekday;
+	enableTimepicker?: boolean;
 	locale?: string;
+	calendarComponent?: React.ComponentType<any>;
 }
