@@ -17,6 +17,9 @@
 	"sideEffects": false,
 	"dependencies": {
 		"rrule": "^2.6.4",
+		"date-fns": "^2.14.0",
+		"date-fns-tz": "^1.0.10",
+		"ramda": "^0.27.0",
 		"react-date-picker": "^8.0.1"
 	},
 	"devDependencies": {
