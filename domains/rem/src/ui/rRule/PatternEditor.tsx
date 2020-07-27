@@ -1,14 +1,12 @@
 import React from 'react';
-import RRuleGenerator from 'react-rrule-generator';
+import { RRuleGenerator, RRuleConfig } from '@eventespresso/rrule-generator';
 
 import { PatternEditorProps } from './types';
 
-const config = {
-	repeat: ['Yearly', 'Monthly', 'Weekly', 'Daily'],
-	end: ['After', 'On date'],
-	weekStartsOnSunday: true,
+const config: RRuleConfig = {
+	frequencies: ['YEARLY', 'MONTHLY', 'WEEKLY', 'DAILY'],
+	endModes: ['AFTER', 'ON_DATE'],
 	enableTimepicker: false,
-	hideStart: false,
 };
 
 const PatternEditor: React.FC<PatternEditorProps> = ({ id, type, rRuleString, onChange }) => {
