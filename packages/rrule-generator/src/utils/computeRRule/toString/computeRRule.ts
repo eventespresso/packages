@@ -14,7 +14,7 @@ const computeRRule: ComputeRRule = ({ start, repeat, end }, { weekStartsOn }, hi
 		...computeStart(start),
 		...computeRepeat(repeat),
 		...computeEnd(end),
-		...computeOptions(options),
+		...computeOptions({ weekStartsOn, hideStart }),
 	};
 	const rrule = new RRule(rruleObject);
 	return rrule.toString();

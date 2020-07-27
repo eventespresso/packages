@@ -1,6 +1,6 @@
 import { Options } from 'rrule';
 
-import { MONTHS } from '../../../constants/index';
+import { MONTHS } from '../../../constants';
 import { RRuleState } from '../../../state';
 
 const computeYearlyOnThe = (onThe: RRuleState['repeat']['yearly']['onThe']): Partial<Options> => {
@@ -61,7 +61,7 @@ const computeYearlyOnThe = (onThe: RRuleState['repeat']['yearly']['onThe']): Par
 			break;
 	}
 
-	repeat.bymonth = MONTHS.indexOf(onThe.month) + 1;
+	repeat.bymonth = Object.keys(MONTHS).indexOf(onThe.month) + 1;
 
 	return repeat;
 };

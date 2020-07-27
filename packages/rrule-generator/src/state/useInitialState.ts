@@ -10,9 +10,6 @@ const useInitialState = (config: RRuleConfig): StateInitializer => {
 		() => ({
 			start: {
 				date: new Date(),
-				options: {
-					weekStartsOn: config?.weekStartsOn,
-				},
 			},
 			repeat: {
 				frequency: config?.frequencies?.[0] || 'YEARLY',
@@ -62,12 +59,9 @@ const useInitialState = (config: RRuleConfig): StateInitializer => {
 				mode: config?.endModes?.[0] || 'NEVER',
 				after: 1,
 				date: new Date(),
-				options: {
-					weekStartsOn: config?.weekStartsOn,
-				},
 			},
 		}),
-		[config?.endModes, config?.frequencies, config?.monthlyModes, config?.weekStartsOn, config?.yearlyModes]
+		[config?.endModes, config?.frequencies, config?.monthlyModes, config?.yearlyModes]
 	);
 
 	return useCallback<StateInitializer>(

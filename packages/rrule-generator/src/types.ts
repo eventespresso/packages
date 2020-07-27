@@ -45,9 +45,6 @@ export interface WeeklyRepeatOption extends BaseRepeatOption {
 
 export interface StartRule {
 	date?: Date;
-	options?: {
-		weekStartsOn: Weekday;
-	};
 }
 
 export interface RepeatRule {
