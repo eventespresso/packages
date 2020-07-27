@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 
 import Start from './Start';
@@ -20,7 +20,6 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({
 }) => {
 	const { error, getData, setData } = useRRuleState();
 	const config = useRRuleConfig();
-	const count = useRef(0);
 
 	// Update/Initiate the state from value if it changes
 	useEffect(() => {
@@ -34,11 +33,7 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({
 	const rRuleString = computeRRuleToString(getData(), config, hideStart);
 	// TODO: move this to some state listener
 	useEffect(() => {
-		if (count.current > 5) {
-			return;
-		}
 		onChange(rRuleString);
-		count.current++;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [rRuleString]);
 
