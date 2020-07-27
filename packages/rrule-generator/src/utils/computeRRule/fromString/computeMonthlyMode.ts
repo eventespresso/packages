@@ -1,8 +1,10 @@
+import { Frequency } from 'rrule';
+
 import { ComputeRule } from './types';
 import { RepeatMode } from '../../../types';
 
 const computeMonthlyMode: ComputeRule<RepeatMode> = (data, rruleObj) => {
-	if (rruleObj.freq !== 1) {
+	if (rruleObj.freq !== Frequency.MONTHLY) {
 		return data?.repeat?.monthly?.mode;
 	}
 

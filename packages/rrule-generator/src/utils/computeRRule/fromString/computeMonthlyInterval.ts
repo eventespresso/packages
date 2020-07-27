@@ -1,7 +1,9 @@
+import { Frequency } from 'rrule';
+
 import { ComputeRule } from './types';
 
 const computeMonthlyInterval: ComputeRule<number> = (data, rruleObj) => {
-	if (rruleObj.freq !== 1) {
+	if (rruleObj.freq !== Frequency.MONTHLY) {
 		return data?.repeat?.monthly?.interval;
 	}
 

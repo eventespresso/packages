@@ -1,8 +1,8 @@
 import { WeekdayStr } from 'rrule';
 import { ALL_WEEKDAYS } from 'rrule/dist/esm/src/weekday';
+import { parse, getMonth } from 'date-fns';
 
-import { Which, Day, Month } from '../../types';
-import { parse } from 'date-fns';
+import { Which, Day, Month } from '../../../types';
 
 export const get_bysetpos = (which: Which): number => {
 	let bysetpos: number;
@@ -54,5 +54,6 @@ export const get_bymonth = (month: Month): number => {
 	// parse 'Jan', 'Feb'
 	const date = parse(month, 'MMM', new Date());
 
-	return date.getMonth();
+	// +1 because rrule bymonth starts from 1, not from 0
+	return getMonth(date) + 1;
 };

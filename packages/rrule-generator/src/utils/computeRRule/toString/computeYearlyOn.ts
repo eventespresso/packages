@@ -1,13 +1,11 @@
 import { Options } from 'rrule';
-import { parse } from 'date-fns';
 
 import { RRuleState } from '../../../state';
+import { get_bymonth } from './utils';
 
 const computeYearlyOn = (on: RRuleState['repeat']['yearly']['on']): Partial<Options> => {
-	// parse 'Jan', 'Feb'
-	const date = parse(on.month, 'MMM', new Date());
 	return {
-		bymonth: date.getMonth(),
+		bymonth: get_bymonth(on.month),
 		bymonthday: on.day as number,
 	};
 };

@@ -1,26 +1,22 @@
+import { Frequency as RFrequency } from 'rrule';
+
 import { ComputeRule } from './types';
 import { Frequency } from '../../../types';
 
 const computeFrequency: ComputeRule<Frequency> = (data, rruleObj) => {
 	switch (rruleObj.freq) {
-		case 0: {
+		case RFrequency.YEARLY:
 			return 'YEARLY';
-		}
-		case 1: {
+		case RFrequency.MONTHLY:
 			return 'MONTHLY';
-		}
-		case 2: {
+		case RFrequency.WEEKLY:
 			return 'WEEKLY';
-		}
-		case 3: {
+		case RFrequency.DAILY:
 			return 'DAILY';
-		}
-		case 4: {
+		case RFrequency.HOURLY:
 			return 'HOURLY';
-		}
-		default: {
-			return data.repeat.frequency;
-		}
+		default:
+			return data?.repeat?.frequency;
 	}
 };
 

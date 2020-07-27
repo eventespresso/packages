@@ -1,4 +1,5 @@
-import { ByWeekday, Weekday } from 'rrule';
+import { Weekday, Frequency } from 'rrule';
+import { ALL_WEEKDAYS } from 'rrule/dist/esm/src/weekday';
 
 import { ComputeRule } from './types';
 import { WeeklyRepeatOption } from '../../../types';
@@ -6,23 +7,27 @@ import { WeeklyRepeatOption } from '../../../types';
 const computeWeeklyDays: ComputeRule<WeeklyRepeatOption['days']> = (data, rruleObj) => {
 	let weekdays = [];
 
-	if (rruleObj.freq !== 2) {
+	if (rruleObj.freq !== Frequency.WEEKLY) {
 		return data?.repeat?.weekly?.days;
 	}
 
 	if (rruleObj.byweekday) {
-		weekdays = (rruleObj.byweekday as ByWeekday[]).map((weekday) => (weekday as Weekday).weekday);
+		weekdays = (rruleObj.byweekday as Weekday[]).map((weekday) => weekday.weekday);
 	}
 
-	return {
-		MO: weekdays.includes(0),
-		TU: weekdays.includes(1),
-		WE: weekdays.includes(2),
-		TH: weekdays.includes(3),
-		FR: weekdays.includes(4),
-		SA: weekdays.includes(5),
-		SU: weekdays.includes(6),
-	};
+	/**
+	 * convert to
+	 * {
+	 *     MO: ture,
+	 *     TU: ture,
+	 *     WE: false,
+	 *     ...
+	 * }
+	 */
+	return ALL_WEEKDAYS.reduce((days, weekdayStr) => {
+		const isDayActive = weekdays.includes(Weekday.fromStr(weekdayStr).weekday);
+		return { ...days, [weekdayStr]: isDayActive };
+	}, {});
 };
 
 export default computeWeeklyDays;

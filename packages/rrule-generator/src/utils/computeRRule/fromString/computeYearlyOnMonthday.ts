@@ -1,8 +1,10 @@
+import { Frequency } from 'rrule';
+
 import { ComputeRule } from './types';
 import { Day } from '../../../types';
 
 const computeYearlyOnMonthday: ComputeRule<Day> = (data, rruleObj) => {
-	if (rruleObj.freq !== 0 || !rruleObj.bymonthday) {
+	if (rruleObj.freq !== Frequency.YEARLY || !rruleObj.bymonthday) {
 		return data?.repeat?.yearly?.on?.day;
 	}
 

@@ -1,7 +1,7 @@
 import { Options } from 'rrule';
 
 import { RRuleState } from '../../../state';
-import { get_byweekday, get_bysetpos, get_bymonth } from '../utils';
+import { get_byweekday, get_bysetpos, get_bymonth } from './utils';
 
 const computeYearlyOnThe = (onThe: RRuleState['repeat']['yearly']['onThe']): Partial<Options> => {
 	return {

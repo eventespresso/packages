@@ -17,21 +17,16 @@ const computeRepeat = ({
 	hourly,
 }: RRuleState['repeat']): Partial<Options> => {
 	switch (frequency) {
-		case 'YEARLY': {
+		case 'YEARLY':
 			return computeYearly(yearly);
-		}
-		case 'MONTHLY': {
+		case 'MONTHLY':
 			return computeMonthly(monthly);
-		}
-		case 'WEEKLY': {
+		case 'WEEKLY':
 			return computeWeekly(weekly);
-		}
-		case 'DAILY': {
+		case 'DAILY':
 			return computeDaily(daily);
-		}
-		case 'HOURLY': {
+		case 'HOURLY':
 			return computeHourly(hourly);
-		}
 		default:
 			return {};
 	}

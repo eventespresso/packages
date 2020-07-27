@@ -1,19 +1,15 @@
-import { MONTHS } from '../../../constants';
+import { Frequency } from 'rrule';
+
 import { ComputeRule } from './types';
 import { Month } from '../../../types';
+import { getOnMonth } from './utils';
 
 const computeYearlyOnMonth: ComputeRule<Month> = (data, rruleObj) => {
-	if (rruleObj.freq !== 0 || !rruleObj.bymonthday) {
+	if (rruleObj.freq !== Frequency.YEARLY || !rruleObj.bymonthday) {
 		return data.repeat?.yearly?.on?.month;
 	}
 
-	const MONTH_KEYS = Object.keys(MONTHS);
-
-	if (typeof rruleObj.bymonth === 'number') {
-		return MONTH_KEYS[rruleObj.bymonth - 1] as Month;
-	}
-
-	return MONTH_KEYS[rruleObj.bymonth[0] - 1] as Month;
+	return getOnMonth(rruleObj.bymonth);
 };
 
 export default computeYearlyOnMonth;
