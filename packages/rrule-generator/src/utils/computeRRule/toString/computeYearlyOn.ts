@@ -1,11 +1,11 @@
 import { Options } from 'rrule';
 
 import { RRuleState } from '../../../state';
-import { get_bymonth } from './utils';
+import { getByMonth } from './utils';
 
 const computeYearlyOn = (on: RRuleState['repeat']['yearly']['on']): Partial<Options> => {
 	return {
-		bymonth: get_bymonth(on.month),
+		bymonth: getByMonth(on.month),
 		bymonthday: on.day as number,
 	};
 };

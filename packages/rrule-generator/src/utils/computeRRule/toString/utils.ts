@@ -4,7 +4,7 @@ import { parse, getMonth } from 'date-fns';
 
 import { Which, Day, Month } from '../../../types';
 
-export const get_bysetpos = (which: Which): number => {
+export const getBySetPos = (which: Which): number => {
 	let bysetpos: number;
 	switch (which) {
 		case 'FIRST':
@@ -28,7 +28,7 @@ export const get_bysetpos = (which: Which): number => {
 	return bysetpos;
 };
 
-export const get_byweekday = (day: Day): Array<WeekdayStr> => {
+export const getByWeekday = (day: Day): Array<WeekdayStr> => {
 	let byweekday: Array<WeekdayStr>;
 	switch (day) {
 		case 'DAY':
@@ -50,7 +50,7 @@ export const get_byweekday = (day: Day): Array<WeekdayStr> => {
 	return byweekday;
 };
 
-export const get_bymonth = (month: Month): number => {
+export const getByMonth = (month: Month): number => {
 	// parse 'Jan', 'Feb'
 	const date = parse(month, 'MMM', new Date());
 
