@@ -5,10 +5,10 @@ import { RRuleState } from '../../../state';
 const computeWeekly = ({ interval, days }: RRuleState['repeat']['weekly']): Partial<Options> => ({
 	freq: RRule.WEEKLY,
 	interval,
-	byweekday: Object.values(days).reduce(
-		(activeDays, isDayActive, dayIndex) => (isDayActive ? [...activeDays, dayIndex] : activeDays),
-		[]
-	),
+	byweekday: Object.entries(days).reduce((activeDays, [day, isDayActive]) => {
+		// `day` will be 'MO', 'TU' ...
+		return isDayActive ? [...activeDays, day] : activeDays;
+	}, []),
 });
 
 export default computeWeekly;

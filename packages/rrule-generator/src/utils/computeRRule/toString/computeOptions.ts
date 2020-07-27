@@ -1,4 +1,4 @@
-import RRule, { Options } from 'rrule';
+import { Options, Weekday } from 'rrule';
 
 import { RRuleConfig } from '../../../types';
 
@@ -15,7 +15,8 @@ const computeOptions = ({ hideStart, weekStartsOn }: ComputeOptionsArgs): Partia
 	}
 
 	if (weekStartsOn) {
-		options.wkst = RRule?.[weekStartsOn];
+		// compute week start day from string.
+		options.wkst = Weekday.fromStr(weekStartsOn);
 	}
 
 	return options;
