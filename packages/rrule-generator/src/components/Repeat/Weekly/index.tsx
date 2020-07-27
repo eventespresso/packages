@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { BaseProps, OnChangeInput } from '../../types';
 import { useRRuleState } from '../../../hooks';
 import { SHORT_DAYS } from '../../../constants';
+import { getIntervalUpdater } from '../../../utils';
 
 const Weekly: React.FC<BaseProps> = ({ id }) => {
 	const {
@@ -12,12 +13,7 @@ const Weekly: React.FC<BaseProps> = ({ id }) => {
 		setRepeatWeeklyDays,
 	} = useRRuleState();
 
-	const onChangeInterval = useCallback<OnChangeInput>(
-		(event) => {
-			setRepeatInterval('weekly', +event.target.value);
-		},
-		[setRepeatInterval]
-	);
+	const onChangeInterval = getIntervalUpdater('weekly', setRepeatInterval);
 
 	const onChangeDays = useCallback<OnChangeInput>(
 		(event) => {

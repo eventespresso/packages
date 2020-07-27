@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { BaseProps, OnChangeInput } from '../../types';
+import { BaseProps } from '../../types';
 import { useRRuleState } from '../../../hooks';
+import { getIntervalUpdater } from '../../../utils';
 
 const Daily: React.FC<BaseProps> = ({ id }) => {
 	const {
@@ -9,12 +10,7 @@ const Daily: React.FC<BaseProps> = ({ id }) => {
 		setRepeatInterval,
 	} = useRRuleState();
 
-	const onChangeInterval = useCallback<OnChangeInput>(
-		(event) => {
-			setRepeatInterval('daily', +event.target.value);
-		},
-		[setRepeatInterval]
-	);
+	const onChangeInterval = getIntervalUpdater('daily', setRepeatInterval);
 	return (
 		<div className='form-group row d-flex align-items-sm-center'>
 			<div className='col-sm-1 offset-sm-2'>{__('every')}</div>

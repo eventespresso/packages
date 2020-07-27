@@ -2,17 +2,12 @@ import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { AfterProps } from './types';
+import { getNumericValue } from '../../utils';
 
 const After: React.FC<AfterProps> = ({ id, after, onChange }) => {
 	const onChangeAfter = useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
-			// Convert input from a string to a number
-			let numericValue = +event.target.value;
-			// Check if is a number and is less than 1000
-			if (isNaN(numericValue) || numericValue >= 1000) {
-				numericValue = 0;
-			}
-			onChange(numericValue);
+			onChange(getNumericValue(event.target.value));
 		},
 		[onChange]
 	);

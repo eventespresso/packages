@@ -6,6 +6,7 @@ import OnThe from './OnThe';
 import { BaseProps, OnChangeInput } from '../../types';
 import { useRRuleConfig, useRRuleState } from '../../../hooks';
 import { RepeatMode } from '../../../types';
+import { getIntervalUpdater } from '../../../utils';
 
 const Monthly: React.FC<BaseProps> = ({ id }) => {
 	const {
@@ -16,12 +17,7 @@ const Monthly: React.FC<BaseProps> = ({ id }) => {
 	const { monthlyModes } = useRRuleConfig();
 	const isTheOnlyMode = monthlyModes?.length === 1;
 
-	const onChangeInterval = useCallback<OnChangeInput>(
-		(event) => {
-			setRepeatInterval('monthly', +event.target.value);
-		},
-		[setRepeatInterval]
-	);
+	const onChangeInterval = getIntervalUpdater('monthly', setRepeatInterval);
 
 	const onChangeMode = useCallback<OnChangeInput>(
 		(event) => {

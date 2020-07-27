@@ -5,6 +5,7 @@ import { range } from 'ramda';
 import { useRRuleState } from '../../../hooks';
 import { OnProps } from '../types';
 import { OnChangeSelect } from '../../types';
+import { getNumericValue } from '../../../utils';
 
 const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	const {
@@ -17,8 +18,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 
 	const onChangeDay = useCallback<OnChangeSelect>(
 		(event) => {
-			const value = +event.target.value;
-			setRepeatDay('monthly', 'on', value);
+			setRepeatDay('monthly', 'on', getNumericValue(event.target.value));
 		},
 		[setRepeatDay]
 	);
