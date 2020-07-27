@@ -5,7 +5,7 @@ import { Day } from '../../..';
 
 const computeMonthlyOnTheDay: ComputeRule<Day> = (data, rruleObj) => {
 	if (rruleObj.freq !== 1 || !rruleObj.byweekday) {
-		return data.repeat.monthly.onThe.day;
+		return data?.repeat?.monthly?.onThe?.day;
 	}
 
 	const weekdays = (rruleObj.byweekday as ByWeekday[]).map((weekday) => (weekday as Weekday).weekday).join(',');
@@ -41,7 +41,7 @@ const computeMonthlyOnTheDay: ComputeRule<Day> = (data, rruleObj) => {
 			return 'WEEKEND_DAY';
 
 		default:
-			return data.repeat.monthly.onThe.day;
+			return data?.repeat?.monthly?.onThe?.day;
 	}
 };
 

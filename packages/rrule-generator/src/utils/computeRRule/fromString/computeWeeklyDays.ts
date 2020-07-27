@@ -7,7 +7,7 @@ const computeWeeklyDays: ComputeRule<WeeklyRepeatOption['days']> = (data, rruleO
 	let weekdays = [];
 
 	if (rruleObj.freq !== 2) {
-		return data.repeat.weekly.days;
+		return data?.repeat?.weekly?.days;
 	}
 
 	if (rruleObj.byweekday) {

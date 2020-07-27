@@ -3,7 +3,7 @@ import { Which } from '../../../types';
 
 const computeYearlyOnTheWhich: ComputeRule<Which> = (data, rruleObj) => {
 	if (rruleObj.freq !== 0 || !rruleObj.byweekday) {
-		return data.repeat.yearly.onThe.which;
+		return data?.repeat?.yearly?.onThe?.which;
 	}
 
 	const bysetpos = typeof rruleObj.bysetpos === 'number' ? rruleObj.bysetpos : rruleObj.bysetpos[0];

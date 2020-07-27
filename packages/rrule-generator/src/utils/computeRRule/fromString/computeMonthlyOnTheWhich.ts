@@ -3,7 +3,7 @@ import { Which } from '../../../types';
 
 const computeMonthlyOnTheWhich: ComputeRule<Which> = (data, rruleObj) => {
 	if (rruleObj.freq !== 1 || !rruleObj.bysetpos) {
-		return data.repeat.monthly.onThe.which;
+		return data?.repeat?.monthly?.onThe?.which;
 	}
 
 	const bysetpos = typeof rruleObj.bysetpos === 'number' ? rruleObj.bysetpos : rruleObj.bysetpos[0];

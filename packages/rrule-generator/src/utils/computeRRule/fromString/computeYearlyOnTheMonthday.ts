@@ -5,7 +5,7 @@ import { Day } from '../../../types';
 
 const computeYearlyOnTheMonthday: ComputeRule<Day> = (data, rruleObj) => {
 	if (rruleObj.freq !== 0 || !rruleObj.byweekday) {
-		return data.repeat.yearly.onThe.day;
+		return data?.repeat?.yearly?.onThe?.day;
 	}
 
 	const weekdays = (rruleObj.byweekday as ByWeekday[]).map((weekday) => (weekday as Weekday).weekday).join(',');
