@@ -18,8 +18,8 @@ const computeWeeklyDays: ComputeRule<WeeklyRepeatOption['days']> = (data, rruleO
 	/**
 	 * convert to
 	 * {
-	 *     MO: ture,
-	 *     TU: ture,
+	 *     MO: true,
+	 *     TU: true,
 	 *     WE: false,
 	 *     ...
 	 * }
