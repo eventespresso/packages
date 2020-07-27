@@ -31,7 +31,6 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({
 	}, [value]);
 
 	const rRuleString = computeRRuleToString(getData(), config, hideStart);
-	// TODO: move this to some state listener
 	useEffect(() => {
 		onChange(rRuleString);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
