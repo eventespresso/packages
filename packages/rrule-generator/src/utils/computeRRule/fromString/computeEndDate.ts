@@ -1,6 +1,6 @@
 import { ComputeRule } from './types';
 
-const computeEndOnDate: ComputeRule<Date> = (data, rruleObj) => {
+const computeEndDate: ComputeRule<Date> = (data, rruleObj) => {
 	if (!rruleObj.until) {
 		return data?.end?.date;
 	}
@@ -8,4 +8,4 @@ const computeEndOnDate: ComputeRule<Date> = (data, rruleObj) => {
 	return rruleObj.until;
 };
 
-export default computeEndOnDate;
+export default computeEndDate;
