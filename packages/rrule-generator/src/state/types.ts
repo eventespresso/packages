@@ -14,6 +14,8 @@ import {
 } from '../types';
 
 export interface RRuleState {
+	// string that determines if the state has changed as a result of user action
+	hash: string;
 	start: StartRule;
 	repeat: RepeatRule;
 	end: EndRule;

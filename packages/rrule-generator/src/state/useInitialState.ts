@@ -1,4 +1,6 @@
 import { useCallback, useMemo } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import { RRuleConfig } from '../types';
 import { StateInitializer, RRuleState } from './types';
 
@@ -8,6 +10,7 @@ import { StateInitializer, RRuleState } from './types';
 const useInitialState = (config: RRuleConfig): StateInitializer => {
 	const state = useMemo<RRuleState>(
 		() => ({
+			hash: uuidv4(),
 			start: {
 				date: new Date(),
 			},
