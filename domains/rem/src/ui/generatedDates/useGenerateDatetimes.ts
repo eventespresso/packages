@@ -1,5 +1,5 @@
 import { RRule, RRuleSet } from 'rrule';
-import { map } from 'ramda';
+import { identity, map, sortBy } from 'ramda';
 import { formatISO, parseISO } from 'date-fns';
 
 import { useFormState } from '../../data';
@@ -43,7 +43,7 @@ export const useGenerateDatetimes = (includeExDates?: boolean): Array<string> =>
 			generatedDatesISOStr = [...generatedDatesISOStr, ...exDates];
 		}
 
-		result = generatedDatesISOStr.sort();
+		result = sortBy(identity, generatedDatesISOStr);
 	}
 
 	return useMemoStringify(result);
