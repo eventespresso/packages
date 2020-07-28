@@ -1,5 +1,6 @@
 import { RRuleStateManager as RSM } from '../state';
 import { OnChangeInput } from '../components/types';
+import { useCallback } from 'react';
 export const getNumericValue = (value: unknown, defaultValue?: 0): number => {
 	// Convert input from a string to a number
 	const numericValue = +value;
@@ -7,9 +8,14 @@ export const getNumericValue = (value: unknown, defaultValue?: 0): number => {
 	return isNaN(numericValue) ? defaultValue : numericValue;
 };
 
-export const getIntervalUpdater = (
+export const useIntervalUpdater = (
 	repeatKey: Parameters<RSM['setRepeatInterval']>[0],
 	setRepeatInterval: RSM['setRepeatInterval']
-): OnChangeInput => (event) => {
-	setRepeatInterval(repeatKey, getNumericValue(event.target.value));
+): OnChangeInput => {
+	return useCallback(
+		(event) => {
+			setRepeatInterval(repeatKey, getNumericValue(event.target.value));
+		},
+		[repeatKey, setRepeatInterval]
+	);
 };
