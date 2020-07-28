@@ -1,13 +1,10 @@
 import { Options } from 'rrule';
 
-import { isValid, toDate } from 'date-fns';
+import { isValid } from 'date-fns';
 import { RRuleState } from '../../../state';
 
 const computeStart = ({ date }: RRuleState['start']): Partial<Options> => {
-	let dtstart = toDate(date);
-	if (!isValid(date)) {
-		dtstart = new Date();
-	}
+	const dtstart = isValid(date) ? date : new Date();
 	return {
 		dtstart,
 	};

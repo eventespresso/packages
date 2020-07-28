@@ -1,5 +1,4 @@
 import { Options } from 'rrule';
-import { toDate } from 'date-fns';
 
 import { RRuleState } from '../../../state';
 
@@ -11,7 +10,7 @@ const computeEnd = ({ mode, after, date }: RRuleState['end']): Partial<Options> 
 	}
 
 	if (mode === 'ON_DATE') {
-		end.until = toDate(date);
+		end.until = date;
 	}
 
 	return end;
