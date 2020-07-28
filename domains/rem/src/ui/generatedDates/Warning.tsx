@@ -32,7 +32,7 @@ const Warning: React.FC<any> = ({ freq, count }) => {
 			break;
 	}
 
-	return warning.length && <p className={'rem-max-event-dates-warning'}>{warning}</p>;
+	return warning && <p className={'rem-max-event-dates-warning'}>{warning}</p>;
 };
 
 export default Warning;

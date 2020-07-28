@@ -7,7 +7,7 @@ import { format as formatTz, utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
 type DateFn = (date: Date | string | number) => Date;
 type FormatDateFn = (date: Date, options?: Intl.DateTimeFormatOptions) => string;
 
-interface TimeZoneTime {
+export interface TimeZoneTime {
 	formatDateForSite: FormatDateFn;
 	formatDateForUser: FormatDateFn;
 	formatForSite: (localDate: Date, formatStr: string) => string;
@@ -32,7 +32,7 @@ const deafultOptions: Intl.DateTimeFormatOptions = {
 	timeZoneName: 'long',
 };
 
-const useTimeZoneTime = (): TimeZoneTime => {
+export const useTimeZoneTime = (): TimeZoneTime => {
 	const config = useConfig();
 	// locale and timezone for the site
 	const siteLC = path<string>(['locale', 'site'], config);
@@ -136,5 +136,3 @@ const useTimeZoneTime = (): TimeZoneTime => {
 		utcToUserTime,
 	};
 };
-
-export default useTimeZoneTime;

@@ -32,6 +32,34 @@ const useFormStateManager: FormStateManagerHook = () => {
 		});
 	}, []);
 
+	const addRDate: FSM['addRDate'] = useCallback((date) => {
+		dispatch({
+			type: 'ADD_R_DATE',
+			date,
+		});
+	}, []);
+
+	const addExDate: FSM['addExDate'] = useCallback((date) => {
+		dispatch({
+			type: 'ADD_EX_DATE',
+			date,
+		});
+	}, []);
+
+	const removeRDate: FSM['removeRDate'] = useCallback((date) => {
+		dispatch({
+			type: 'REMOVE_R_DATE',
+			date,
+		});
+	}, []);
+
+	const removeExDate: FSM['removeExDate'] = useCallback((date) => {
+		dispatch({
+			type: 'REMOVE_EX_DATE',
+			date,
+		});
+	}, []);
+
 	const setDateDetails: FSM['setDateDetails'] = useCallback((dateDetails) => {
 		dispatch({
 			type: 'SET_DATE_DETAILS',
@@ -71,14 +99,18 @@ const useFormStateManager: FormStateManagerHook = () => {
 	return useMemo(
 		() => ({
 			...state,
+			addExDate,
+			addRDate,
 			addTicket,
 			deleteTicket,
 			getData,
+			removeExDate,
+			removeRDate,
 			setDateDetails,
 			setExRule,
 			setRRule,
-			updateTicket,
 			updateDateField,
+			updateTicket,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[state]

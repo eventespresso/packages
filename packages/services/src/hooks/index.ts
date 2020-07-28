@@ -1,1 +1,1 @@
-export { default as useTimeZoneTime } from './useTimeZoneTime';
+export * from './useTimeZoneTime';

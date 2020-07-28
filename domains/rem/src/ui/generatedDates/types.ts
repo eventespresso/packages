@@ -1,20 +1,20 @@
 import { AnyObject } from '@eventespresso/services';
+import { FormStateManager as FSM } from '../../data';
 
 type DateType = 'generated' | 'addition' | 'exception' | 'locked' | 'expired';
 
 export interface DatetimesProps extends AnyObject {
-	datetimes: Date[];
+	datetimes: string[];
 }
 
 export interface DatetimeRowsProps extends AnyObject {
-	datetimes: Date[];
+	datetimes: string[];
 	datetimesPage: any[];
-	onClick: VoidFunction;
 }
 
 export interface DatetimeRowProps {
-	date: Date;
-	onClick: VoidFunction;
+	date: string;
 	number: number;
 	type: DateType;
+	toggleExDate: FSM['addRDate']; // signature is same as addRDate
 }

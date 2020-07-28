@@ -1,18 +1,20 @@
 import { v4 as uuidv4 } from 'uuid';
-import { assocPath, omit } from 'ramda';
+import { assocPath, omit, without } from 'ramda';
 
 import { FormStateReducer, StateInitializer, FormState } from './types';
 
 export const initialState: FormState = {
 	rRule: '',
 	exRule: '',
+	rDates: [],
+	exDates: [],
 	dateDetails: {},
 	tickets: {},
 };
 
 const useFormStateReducer = (initializer: StateInitializer): FormStateReducer => {
 	const dataReducer: FormStateReducer = (state, action) => {
-		const { rRule, exRule, dateDetails, id, ticket, type } = action;
+		const { date, rRule, exRule, dateDetails, id, ticket, type } = action;
 		let ticketId: string;
 
 		switch (type) {
@@ -20,6 +22,26 @@ const useFormStateReducer = (initializer: StateInitializer): FormStateReducer =>
 				return { ...state, rRule };
 			case 'SET_EX_RULE':
 				return { ...state, exRule };
+			case 'ADD_R_DATE':
+				return {
+					...state,
+					rDates: [...state.rDates, date],
+				};
+			case 'ADD_EX_DATE':
+				return {
+					...state,
+					exDates: [...state.exDates, date],
+				};
+			case 'REMOVE_R_DATE':
+				return {
+					...state,
+					rDates: without([date], state.rDates),
+				};
+			case 'REMOVE_EX_DATE':
+				return {
+					...state,
+					exDates: without([date], state.exDates),
+				};
 			case 'SET_DATE_DETAILS':
 				return {
 					...state,

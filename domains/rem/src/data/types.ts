@@ -11,10 +11,10 @@ export interface RemTicket extends Omit<Ticket, 'prices'> {
 
 export interface FormState {
 	dateDetails: DatetimeBaseInput;
-	exDates?: string;
+	exDates?: Array<string>;
 	exRule: string;
 	gDates?: string;
-	rDates?: string;
+	rDates?: Array<string>;
 	rRule: string;
 	salesEndOffset?: string;
 	salesStartOffset?: string;
@@ -24,6 +24,10 @@ export interface FormState {
 export type DataActionType =
 	| 'SET_R_RULE'
 	| 'SET_EX_RULE'
+	| 'ADD_R_DATE'
+	| 'ADD_EX_DATE'
+	| 'REMOVE_R_DATE'
+	| 'REMOVE_EX_DATE'
 	| 'SET_DATE_DETAILS'
 	| 'ADD_TICKET'
 	| 'UPDATE_TICKET'
@@ -34,6 +38,7 @@ export interface DataAction extends Partial<FormState> {
 	type: DataActionType;
 	id?: EntityId;
 	ticket?: RemTicket;
+	date?: string;
 }
 
 export type FormStateManagerHook = () => FormStateManager;
@@ -45,6 +50,10 @@ export interface FormStateManager extends FormState {
 	setDateDetails: (details: FormState['dateDetails']) => void;
 	setExRule: (exRule: FormState['exRule']) => void;
 	setRRule: (rRule: FormState['rRule']) => void;
+	addRDate: (date: string) => void;
+	removeRDate: (date: string) => void;
+	addExDate: (date: string) => void;
+	removeExDate: (date: string) => void;
 	updateDateField: <K extends keyof DatetimeBaseInput>(field: K, value: DatetimeBaseInput[K]) => void;
 	updateTicket: (id: string, details: DataAction['ticket']) => void;
 }

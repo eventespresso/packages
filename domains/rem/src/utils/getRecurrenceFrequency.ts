@@ -1,13 +1,8 @@
-export const getRecurrenceFrequency = (rRuleString: string): string => {
-	let freq = 'DAILY';
+import { Frequency } from 'rrule';
 
-	if (rRuleString.indexOf('FREQ=YEARLY') !== -1) {
-		freq = 'YEARLY';
-	} else if (rRuleString.indexOf('FREQ=MONTHLY') !== -1) {
-		freq = 'MONTHLY';
-	} else if (rRuleString.indexOf('FREQ=WEEKLY') !== -1) {
-		freq = 'WEEKLY';
-	}
+// "freq" is the named capturing group
+const FREQ_PATTERN = /FREQ=(?<freq>(?:YEAR|MONTH|WEEK|DAI)LY)/;
 
-	return freq;
+export const getRecurrenceFrequency = (rRuleString: string): keyof Partial<typeof Frequency> => {
+	return (rRuleString.match(FREQ_PATTERN)?.groups?.freq || 'DAILY') as keyof Partial<typeof Frequency>;
 };

@@ -1,36 +1,30 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import classNames from 'classnames';
-import { parseISO } from 'date-fns';
 import { __ } from '@wordpress/i18n';
 
-import {
-	Rotate,
-	//  PlusCircleFilled, CloseCircleFilled, Lock, InfoCircleFilled
-} from '@eventespresso/icons';
+import { Rotate, PlusCircleFilled, Trash, CloseCircleFilled } from '@eventespresso/icons';
 import { Button } from '@eventespresso/components';
-import { Trash } from '@eventespresso/icons';
 import { useTimeZoneTime } from '@eventespresso/services';
-
-import { LOCALIZED_DATE_FULL_FORMAT, TIME_ONLY_12H_SHORT_FORMAT } from '@eventespresso/constants';
 
 import { DatetimeRowProps } from '../types';
 
 import './styles.scss';
+import { formatDate } from '../utils';
 
-const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, onClick, number, type }) => {
-	const { formatForSite: format } = useTimeZoneTime();
+const iconMappingBy = {
+	generated: <Rotate />,
+	addition: <PlusCircleFilled />,
+	exception: <CloseCircleFilled />,
+};
+
+const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, number, type, toggleExDate }) => {
+	const { formatForSite } = useTimeZoneTime();
 
 	const titleClassName = classNames('ee-datetime-row__title', type && `ee-datetime-row__title--${type}`);
 
-	const iconMappingBy = {
-		generated: <Rotate />,
-	};
+	const title = formatDate(date, formatForSite);
 
-	const dateObject = date instanceof Date ? date : parseISO(date);
-	const title = `${number} ${format(dateObject, LOCALIZED_DATE_FULL_FORMAT)} ${format(
-		dateObject,
-		TIME_ONLY_12H_SHORT_FORMAT
-	)}`;
+	const onClickTrash = useCallback(() => toggleExDate(date), [toggleExDate, date]);
 
 	return (
 		<div>
@@ -40,7 +34,11 @@ const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, onClick, number, type }
 			</div>
 
 			<div className='generated-datetime-trash-div'>
-				<Button icon={Trash} onClick={onClick} tooltip={__('Add to Exceptions.')} />
+				<Button
+					icon={Trash}
+					onClick={onClickTrash}
+					tooltip={type === 'exception' ? __('Remove from Exceptions.') : __('Add to Exceptions.')}
+				/>
 			</div>
 		</div>
 	);

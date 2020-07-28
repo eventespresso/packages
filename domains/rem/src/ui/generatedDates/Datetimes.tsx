@@ -5,12 +5,12 @@ import { Pagination } from '@eventespresso/adapters';
 import DatetimeRows from './DatetimeRows';
 import Warning from './Warning';
 import { DatetimesProps } from './types';
+import RDate from './RDate';
 
 const Datetimes: React.FC<DatetimesProps> = ({
 	datetimes,
 	datetimesPage,
 	freq,
-	onClick,
 	pageNumber,
 	perPage = 10,
 	setPerPage,
@@ -20,7 +20,7 @@ const Datetimes: React.FC<DatetimesProps> = ({
 }) => {
 	return (
 		<>
-			<DatetimeRows datetimes={datetimes} datetimesPage={datetimesPage} onClick={onClick} />
+			<DatetimeRows datetimes={datetimes} datetimesPage={datetimesPage} />
 			<Pagination
 				defaultPerPage={6}
 				onChangePageNumber={setPageNumber}
@@ -30,6 +30,7 @@ const Datetimes: React.FC<DatetimesProps> = ({
 				showPerPageChanger={showPerPageChanger}
 				total={total}
 			/>
+			<RDate />
 			<Warning count={datetimes?.length} freq={freq} />
 		</>
 	);
