@@ -1,40 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 
 import Start from './Start';
 import Repeat from './Repeat';
 import End from './End';
-import { computeRRuleFromString, computeRRuleToString } from '../utils';
 import '../styles/index.css';
 import { RRuleGeneratorProps } from './types';
-import { useRRuleConfig, useRRuleState } from '../hooks';
+import { useRRuleState, useStateListener } from '../hooks';
 import { withConfig, withState } from '../context';
 
-const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({
-	hideEnd,
-	hideError,
-	hideStart,
-	id = 'rrule',
-	onChange,
-	value,
-}) => {
-	const { error, getData, setData } = useRRuleState();
-	const config = useRRuleConfig();
+const RRuleGenerator: React.FC<RRuleGeneratorProps> = (props) => {
+	// set up state listener
+	useStateListener(props);
 
-	// Update/Initiate the state from value if it changes
-	useEffect(() => {
-		if (value) {
-			const data = computeRRuleFromString(getData(), value);
-			setData(data);
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [value]);
-
-	const rRuleString = computeRRuleToString(getData(), config, hideStart);
-	useEffect(() => {
-		onChange(rRuleString);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [rRuleString]);
+	const { hideEnd, hideError, hideStart, id = 'rrule' } = props;
+	const { error } = useRRuleState();
 
 	return (
 		<div>
