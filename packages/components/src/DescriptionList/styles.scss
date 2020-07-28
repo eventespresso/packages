@@ -8,6 +8,10 @@
 		place-items: center start;
 		width: 100%;
 
+		&--row {
+			display: block;
+		}
+
 		@media only screen and (max-width: 1440px) {
 			grid-template-rows: repeat(3, var(--ee-font-size-huge));
 		}

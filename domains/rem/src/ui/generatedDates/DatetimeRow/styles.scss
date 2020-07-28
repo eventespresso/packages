@@ -1,0 +1,19 @@
+.ee-datetime-row {
+	&__title {
+		align-items: center;
+		display: inline-block;
+		padding: var(--ee-padding-tiny);
+
+		svg path {
+			fill: white;
+		}
+
+		span {
+			color: white;
+		}
+
+		&--generated {
+			background-color: rgb(33, 148, 200);
+		}
+	}
+}

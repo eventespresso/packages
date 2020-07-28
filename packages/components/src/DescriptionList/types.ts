@@ -5,5 +5,6 @@ export interface DescriptionListItemProps {
 }
 
 export interface DescriptionListProps {
+	direction?: 'row';
 	dataSource: DescriptionListItemProps[];
 }

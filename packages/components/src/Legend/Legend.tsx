@@ -8,7 +8,7 @@ import { DescriptionList } from '../DescriptionList';
 import type { LegendProps } from './types';
 import type { IconName } from '@eventespresso/icons';
 
-const Legend: React.FC<LegendProps> = ({ legendConfig }) => {
+const Legend: React.FC<LegendProps> = ({ direction, legendConfig }) => {
 	const { icons, swatches } = legendConfig;
 
 	const iconsSource = icons.map(({ icon, description }) => {
@@ -38,7 +38,7 @@ const Legend: React.FC<LegendProps> = ({ legendConfig }) => {
 
 	const dataSource = [...iconsSource, ...swatchesSource];
 
-	return <DescriptionList dataSource={dataSource} />;
+	return <DescriptionList direction={direction} dataSource={dataSource} />;
 };
 
 export default Legend;

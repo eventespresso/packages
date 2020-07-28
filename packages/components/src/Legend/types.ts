@@ -2,6 +2,7 @@ import type { AnyObject } from '@eventespresso/services';
 import type { IconName } from '@eventespresso/icons';
 
 export interface LegendProps {
+	direction?: 'row';
 	legendConfig: LegendConfig;
 }
 

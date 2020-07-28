@@ -1,10 +1,15 @@
 import { RRule, RRuleSet } from 'rrule';
 import { isEmpty } from 'ramda';
 
-import { getRecurrenceFrequency } from './getRecurrenceFrequency';
+import { useFormState } from '../../data';
+import { getRecurrenceFrequency } from '../../utils';
 
-export const generateDatetimes = (rRuleString, exRuleString, rDates, exDates) => {
-	if (!rRuleString) {
+export const useGenerateDatetimes = (): Date[] => {
+	const { getData } = useFormState();
+
+	const { exRule, rRule, exDates, rDates } = getData();
+
+	if (!rRule) {
 		return [];
 	}
 
@@ -14,17 +19,17 @@ export const generateDatetimes = (rRuleString, exRuleString, rDates, exDates) =>
 	// console.log( rrule.all() );
 	const rruleSet = new RRuleSet();
 
-	rruleSet.rrule(RRule.fromString(rRuleString));
+	rruleSet.rrule(RRule.fromString(rRule));
 
-	if (exRuleString) {
-		console.log('generateDatetimes() exRuleString', exRuleString);
-		rruleSet.exrule(RRule.fromString(exRuleString));
+	if (exRule) {
+		console.log('generateDatetimes() exRule', exRule);
+		rruleSet.exrule(RRule.fromString(exRule));
 	}
 
 	if (Array.isArray(rDates) && !isEmpty(rDates)) {
 		console.log('generateDatetimes() rDates', rDates);
 
-		rDates.map((rDate) => {
+		rDates.forEach((rDate: Date) => {
 			if (rDate instanceof Date) {
 				console.log('generateDatetimes() rDate', rDate);
 				rruleSet.rdate(rDate);
@@ -35,7 +40,7 @@ export const generateDatetimes = (rRuleString, exRuleString, rDates, exDates) =>
 	if (Array.isArray(exDates) && !isEmpty(exDates)) {
 		console.log('generateDatetimes() exDates', exDates);
 
-		exDates.map((exDate) => {
+		exDates.forEach((exDate) => {
 			if (exDate instanceof Date) {
 				console.log('generateDatetimes() exDate', exDate);
 				rruleSet.exdate(exDate);
@@ -45,7 +50,7 @@ export const generateDatetimes = (rRuleString, exRuleString, rDates, exDates) =>
 
 	let dateCount = 183; // ~6 months of events if repeated DAILY
 
-	switch (getRecurrenceFrequency(rRuleString)) {
+	switch (getRecurrenceFrequency(rRule)) {
 		case 'YEARLY':
 			dateCount = 5; // 5 years if repeated YEARLY
 			break;
@@ -64,4 +69,4 @@ export const generateDatetimes = (rRuleString, exRuleString, rDates, exDates) =>
 	);
 };
 
-export default generateDatetimes;
+export default useGenerateDatetimes;

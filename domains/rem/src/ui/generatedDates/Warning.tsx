@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const Warning = ({ freq, count }) => {
+const Warning: React.FC<any> = ({ freq, count }) => {
 	let warning = '';
 
 	switch (freq) {

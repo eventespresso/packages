@@ -1,22 +1,30 @@
 import React from 'react';
+import classNames from 'classnames';
 import { parseISO } from 'date-fns';
-
 import { __ } from '@wordpress/i18n';
 
+import {
+	Rotate,
+	//  PlusCircleFilled, CloseCircleFilled, Lock, InfoCircleFilled
+} from '@eventespresso/icons';
 import { Button } from '@eventespresso/components';
 import { Trash } from '@eventespresso/icons';
 import { useTimeZoneTime } from '@eventespresso/services';
 
 import { LOCALIZED_DATE_FULL_FORMAT, TIME_ONLY_12H_SHORT_FORMAT } from '@eventespresso/constants';
 
-interface DatetimeRowProps {
-	date: Date;
-	onClick: VoidFunction;
-	number: number;
-}
+import { DatetimeRowProps } from '../types';
 
-const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, onClick, number }) => {
+import './styles.scss';
+
+const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, onClick, number, type }) => {
 	const { formatForSite: format } = useTimeZoneTime();
+
+	const titleClassName = classNames('ee-datetime-row__title', type && `ee-datetime-row__title--${type}`);
+
+	const iconMappingBy = {
+		generated: <Rotate />,
+	};
 
 	const dateObject = date instanceof Date ? date : parseISO(date);
 	const title = `${number} ${format(dateObject, LOCALIZED_DATE_FULL_FORMAT)} ${format(
@@ -25,12 +33,16 @@ const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, onClick, number }) => {
 	)}`;
 
 	return (
-		<>
-			{title}
+		<div>
+			<div className={titleClassName}>
+				{iconMappingBy[type]}
+				<span>{title}</span>
+			</div>
+
 			<div className='generated-datetime-trash-div'>
 				<Button icon={Trash} onClick={onClick} tooltip={__('Add to Exceptions.')} />
 			</div>
-		</>
+		</div>
 	);
 };
 
