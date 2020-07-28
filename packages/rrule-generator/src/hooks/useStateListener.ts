@@ -19,7 +19,7 @@ const useStateListener = ({ onChange, value, hideStart }: RRuleGeneratorProps): 
 	}, [value]);
 
 	/**
-	 * When hash changes, it means state was changed as a result of user ation
+	 * When hash changes, it means state was changed as a result of user action
 	 * So, we need to fire onChange
 	 */
 	useEffect(() => {
