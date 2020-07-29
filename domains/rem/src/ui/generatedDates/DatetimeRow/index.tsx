@@ -6,15 +6,15 @@ import { Rotate, PlusCircleFilled, Trash, CloseCircleFilled } from '@eventespres
 import { Button } from '@eventespresso/components';
 import { useTimeZoneTime } from '@eventespresso/services';
 
-import { DatetimeRowProps } from '../types';
+import { DatetimeRowProps, DateType } from '../types';
 
 import './styles.scss';
 import { formatDate } from '../utils';
 
-const iconMappingBy = {
-	generated: <Rotate />,
-	addition: <PlusCircleFilled />,
-	exception: <CloseCircleFilled />,
+const iconMap: { [key in DateType]: React.ReactNode } = {
+	gDate: <Rotate />,
+	rDate: <PlusCircleFilled />,
+	exDate: <CloseCircleFilled />,
 };
 
 const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, number, type, toggleExDate }) => {
@@ -29,7 +29,7 @@ const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, number, type, toggleExD
 	return (
 		<div>
 			<div className={titleClassName}>
-				{iconMappingBy[type]}
+				{iconMap[type]}
 				<span>{title}</span>
 			</div>
 
@@ -37,7 +37,13 @@ const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, number, type, toggleExD
 				<Button
 					icon={Trash}
 					onClick={onClickTrash}
-					tooltip={type === 'exception' ? __('Remove from Exceptions.') : __('Add to Exceptions.')}
+					tooltip={
+						type === 'exDate'
+							? __('Remove from Exceptions')
+							: type === 'rDate'
+							? __('Remove')
+							: __('Add to Exceptions')
+					}
 				/>
 			</div>
 		</div>

@@ -5,20 +5,20 @@ import DatetimeRow from './DatetimeRow';
 import { DatetimeRowsProps } from './types';
 import { useFormState } from '../../data';
 
-const DatetimeRows: React.FC<DatetimeRowsProps> = ({ datetimes, datetimesPage = [], onClick }) => {
-	const { addExDate, removeRDate, removeExDate, rDates, exDates } = useFormState();
+const DatetimeRows: React.FC<DatetimeRowsProps> = ({ datetimes, datetimesPage = [] }) => {
+	const { addExDate, removeRDate, removeExDate } = useFormState();
 	return (
 		<ul>
-			{datetimes.map((date, index) => {
-				const isRDate = rDates.includes(date);
-				const isExDate = exDates.includes(date);
+			{datetimes.map(({ ISOStr, type }, index) => {
+				const isRDate = type === 'rDate';
+				const isExDate = type === 'exDate';
 				return (
-					<li key={date + index}>
+					<li key={ISOStr}>
 						<DatetimeRow
-							date={date}
+							date={ISOStr}
 							number={index + 1}
 							toggleExDate={isExDate ? removeExDate : isRDate ? removeRDate : addExDate}
-							type={isRDate ? 'addition' : isExDate ? 'exception' : 'generated'}
+							type={type}
 						/>
 					</li>
 				);
