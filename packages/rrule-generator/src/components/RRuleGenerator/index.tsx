@@ -29,13 +29,11 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = (props) => {
 				</div>
 			)}
 
-			<div className='px-0 pt-3 border rounded'>
-				{!hideStart && <Start id={`${id}-start`} />}
+			{!hideStart && <Start id={`${id}-start`} />}
 
-				<Repeat id={`${id}-repeat`} />
+			<Repeat id={`${id}-repeat`} />
 
-				{!hideEnd && <End id={`${id}-end`} />}
-			</div>
+			{!hideEnd && <End id={`${id}-end`} />}
 		</div>
 	);
 };

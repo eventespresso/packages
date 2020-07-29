@@ -1,0 +1,33 @@
+.rrule-generator {
+	padding-bottom: 0.75rem;
+	padding-top: 0.75rem;
+
+	&__form-group {
+		&-row {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+			margin-bottom: 1rem;
+
+			&--align-items-start {
+				align-items: flex-start;
+			}
+
+			label {
+				flex: 0 0 15%;
+				max-width: 15%;
+				padding-left: 1rem;
+				padding-right: 1rem;
+				text-align: right;
+			}
+		}
+	}
+
+	&__form-control {
+		.rrule-generator & {
+			margin-right: 1rem;
+			min-width: 40px;
+			width: auto;
+		}
+	}
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDatepicker from 'react-date-picker';
-import { useRRuleConfig } from '../hooks';
+import { useRRuleConfig } from '../../hooks';
+
+import './styles.scss';
 
 export interface OnDateProps {
 	id: string;
@@ -19,7 +21,7 @@ const OnDate: React.FC<OnDateProps> = ({ id, date, label, onChange }) => {
 	};
 
 	return (
-		<div className='col-6 col-sm-3'>
+		<div className='rrule-generator__on-date'>
 			{CalendarComponent ? (
 				<CalendarComponent
 					key={`${id}-calendar`}

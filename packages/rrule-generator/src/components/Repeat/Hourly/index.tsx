@@ -14,18 +14,18 @@ const Hourly: React.FC<BaseProps> = ({ id }) => {
 	const onChangeInterval = useIntervalUpdater('hourly', setRepeatInterval);
 	return (
 		<div className='form-group row d-flex align-items-sm-center'>
-			<div className='col-sm-1 offset-sm-2'>{__('every')}</div>
-			<div className='col-sm-2'>
+			<div className=' '>{__('every')}</div>
+			<div className=''>
 				<input
 					id={`${id}-interval`}
 					name='repeat.hourly.interval'
 					aria-label={__('Repeat hourly interval')}
-					className='form-control'
+					className='rrule-generator__form-control'
 					value={hourly?.interval}
 					onChange={onChangeInterval}
 				/>
 			</div>
-			<div className='col-sm-1'>{__('hour(s)')}</div>
+			<div className=''>{__('hour(s)')}</div>
 		</div>
 	);
 };

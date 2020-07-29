@@ -10,6 +10,7 @@ const modeLabels: { [key in EndMode]: string } = {
 	NEVER: __('Never'),
 	ON_DATE: __('On date'),
 };
+
 const Mode: React.FC<ModeProps> = ({ id, mode, onChange }) => {
 	const { endModes } = useRRuleConfig();
 
@@ -19,15 +20,11 @@ const Mode: React.FC<ModeProps> = ({ id, mode, onChange }) => {
 		},
 		[onChange]
 	);
+
 	return (
 		<>
-			<div className='col-sm-2 text-sm-right'>
-				<label htmlFor={id} className='col-form-label'>
-					<strong>{__('End')}</strong>
-				</label>
-			</div>
 			<div className='col-sm-3'>
-				<select id={id} className='form-control' value={mode} onChange={onChangeMode}>
+				<select id={id} className='rrule-generator__form-control' value={mode} onChange={onChangeMode}>
 					{endModes.map((endMode) => {
 						return (
 							<option key={endMode} value={endMode}>

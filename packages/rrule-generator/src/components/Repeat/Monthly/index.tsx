@@ -29,18 +29,18 @@ const Monthly: React.FC<BaseProps> = ({ id }) => {
 	return (
 		<div>
 			<div className='form-group row d-flex align-items-sm-center'>
-				<div className='col-sm-1 offset-sm-2'>{__('every')}</div>
+				<div className=' '>{__('every')}</div>
 				<div className='col-sm-3'>
 					<input
 						id={`${id}-interval`}
 						name='repeat.monthly.interval'
 						aria-label={__('Repeat monthly interval')}
-						className='form-control'
+						className='rrule-generator__form-control'
 						value={monthly?.interval}
 						onChange={onChangeInterval}
 					/>
 				</div>
-				<div className='col-sm-1'>{__('month(s)')}</div>
+				<div className=''>{__('month(s)')}</div>
 			</div>
 
 			{monthlyModes?.includes('ON') && (

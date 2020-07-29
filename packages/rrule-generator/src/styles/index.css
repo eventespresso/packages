@@ -1,9 +1,9 @@
 @import 'react-datetime.css';
 
-.rdt .form-control {
-  background-color: white;
+.rdt .rrule-generator__form-control {
+	background-color: white;
 }
 
 .opacity-50 {
-  opacity: 0.5;
+	opacity: 0.5;
 }

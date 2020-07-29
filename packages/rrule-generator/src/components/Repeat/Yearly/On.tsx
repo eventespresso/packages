@@ -40,8 +40,8 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	);
 
 	return (
-		<div className={`form-group row d-flex align-items-sm-center ${!isActive && 'opacity-50'}`}>
-			<div className='col-sm-1 offset-sm-2'>
+		<div className={!isActive && 'opacity-50'}>
+			<div className=' '>
 				{!isTheOnlyMode && (
 					<input
 						id={id}
@@ -55,14 +55,14 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				)}
 			</div>
 
-			<div className='col-sm-1'>{__('on')}</div>
+			<div className=''>{__('on')}</div>
 
-			<div className='col-sm-2'>
+			<div className=''>
 				<select
 					id={`${id}-month`}
 					name='repeat.yearly.on.month'
 					aria-label={__('Repeat yearly on month')}
-					className='form-control'
+					className='rrule-generator__form-control'
 					value={on.month}
 					disabled={!isActive}
 					onChange={onChangeMonth}
@@ -75,23 +75,21 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				</select>
 			</div>
 
-			<div className='col-sm-2'>
-				<select
-					id={`${id}-day`}
-					name='repeat.yearly.on.day'
-					aria-label={__('Repeat yearly on a day')}
-					className='form-control'
-					value={on.day}
-					disabled={!isActive}
-					onChange={onChangeDay}
-				>
-					{range(1, daysInMonth + 1).map((day) => (
-						<option key={day} value={day}>
-							{day}
-						</option>
-					))}
-				</select>
-			</div>
+			<select
+				id={`${id}-day`}
+				name='repeat.yearly.on.day'
+				aria-label={__('Repeat yearly on a day')}
+				className='rrule-generator__form-control'
+				value={on.day}
+				disabled={!isActive}
+				onChange={onChangeDay}
+			>
+				{range(1, daysInMonth + 1).map((day) => (
+					<option key={day} value={day}>
+						{day}
+					</option>
+				))}
+			</select>
 		</div>
 	);
 };

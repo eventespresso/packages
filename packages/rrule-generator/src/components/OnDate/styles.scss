@@ -1,0 +1,33 @@
+.rrule-generator {
+	&__on-date {
+		flex: 0 0 85%;
+		max-width: 85%;
+
+		.react-date-picker {
+			width: 200px;
+
+			&__wrapper {
+				border: none;
+			}
+
+			&__inputGroup {
+				&__input {
+					margin-right: 0.25rem;
+					max-width: 35px !important;
+					min-width: 20px !important;
+					text-align: center;
+					width: auto !important;
+				}
+
+				&__day,
+				&__year {
+					margin-left: 0.25rem;
+				}
+
+				&__year {
+					max-width: 60px !important;
+				}
+			}
+		}
+	}
+}

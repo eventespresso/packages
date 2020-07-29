@@ -35,7 +35,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 
 	return (
 		<div className={`form-group row d-flex align-items-sm-center ${!isActive && 'opacity-50'}`}>
-			<div className='col-sm-1 offset-sm-2'>
+			<div className=' '>
 				{!isTheOnlyMode && (
 					<input
 						id={id}
@@ -48,14 +48,14 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 					/>
 				)}
 			</div>
-			<div className='col-sm-1'>{__('on the')}</div>
+			<div className=''>{__('on the')}</div>
 
-			<div className='col-sm-2'>
+			<div className=''>
 				<select
 					id={`${id}-which`}
 					name='repeat.monthly.onThe.which'
 					aria-label={__('Repeat monthly on the which')}
-					className='form-control'
+					className='rrule-generator__form-control'
 					value={onThe.which}
 					disabled={!isActive}
 					onChange={onChangeWhich}
@@ -73,7 +73,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 					id={`${id}-day`}
 					name='repeat.monthly.onThe.day'
 					aria-label={__('Repeat monthly on the day')}
-					className='form-control'
+					className='rrule-generator__form-control'
 					value={onThe.day}
 					disabled={!isActive}
 					onChange={onChangeDay}

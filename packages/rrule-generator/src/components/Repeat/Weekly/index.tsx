@@ -29,22 +29,22 @@ const Weekly: React.FC<BaseProps> = ({ id }) => {
 	return (
 		<div className='px-3'>
 			<div className='form-group row d-flex align-items-sm-center'>
-				<div className='col-sm-1 offset-sm-2'>{__('every')}</div>
+				<div className=' '>{__('every')}</div>
 				<div className='col-sm-3'>
 					<input
 						id={`${id}-interval`}
 						name='repeat.weekly.interval'
 						aria-label={__('Repeat weekly interval')}
-						className='form-control'
+						className='rrule-generator__form-control'
 						value={weekly?.interval}
 						onChange={onChangeInterval}
 					/>
 				</div>
-				<div className='col-sm-1'>{__('week(s)')}</div>
+				<div className=''>{__('week(s)')}</div>
 			</div>
 
 			<div className='form-group row'>
-				<div className='btn-group btn-group-toggle offset-sm-2'>
+				<div className='btn-group btn-group-toggle '>
 					{/* TODO arrange days according to week start day */}
 					{Object.entries(weekly?.days).map(([dayName, isDayActive]) => (
 						<label
@@ -56,7 +56,7 @@ const Weekly: React.FC<BaseProps> = ({ id }) => {
 								type='checkbox'
 								id={`${id}-${dayName}`}
 								name={`${id}-${dayName}`}
-								className='form-control'
+								className='rrule-generator__form-control'
 								checked={isDayActive}
 								onChange={onChangeDays}
 							/>
