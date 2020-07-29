@@ -40,9 +40,9 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	);
 
 	return (
-		<div className={!isActive && 'opacity-50'}>
-			<div className=' '>
-				{!isTheOnlyMode && (
+		<div className='rrule-generator__on'>
+			{!isTheOnlyMode && (
+				<label className='rrule-generator__labelled-input'>
 					<input
 						id={id}
 						type='radio'
@@ -52,28 +52,25 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 						checked={isActive}
 						onChange={onChangeMode}
 					/>
-				)}
-			</div>
+					<span>{__('on')}</span>
+				</label>
+			)}
 
-			<div className=''>{__('on')}</div>
-
-			<div className=''>
-				<select
-					id={`${id}-month`}
-					name='repeat.yearly.on.month'
-					aria-label={__('Repeat yearly on month')}
-					className='rrule-generator__form-control'
-					value={on.month}
-					disabled={!isActive}
-					onChange={onChangeMonth}
-				>
-					{Object.entries(MONTHS).map(([key, month]) => (
-						<option key={key} value={key}>
-							{month}
-						</option>
-					))}
-				</select>
-			</div>
+			<select
+				id={`${id}-month`}
+				name='repeat.yearly.on.month'
+				aria-label={__('Repeat yearly on month')}
+				className='rrule-generator__form-control'
+				value={on.month}
+				disabled={!isActive}
+				onChange={onChangeMonth}
+			>
+				{Object.entries(MONTHS).map(([key, month]) => (
+					<option key={key} value={key}>
+						{month}
+					</option>
+				))}
+			</select>
 
 			<select
 				id={`${id}-day`}

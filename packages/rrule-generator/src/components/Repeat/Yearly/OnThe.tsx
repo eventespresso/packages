@@ -43,7 +43,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	);
 
 	return (
-		<div className={!isActive && 'opacity-50'}>
+		<div className='rrule-generator__on-the'>
 			{!isTheOnlyMode && (
 				<input
 					id={id}

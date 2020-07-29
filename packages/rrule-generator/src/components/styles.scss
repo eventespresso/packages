@@ -13,6 +13,10 @@
 				align-items: flex-start;
 			}
 
+			&--no-label {
+				flex-direction: column;
+			}
+
 			label {
 				flex: 0 0 15%;
 				max-width: 15%;
@@ -23,11 +27,42 @@
 		}
 	}
 
+	&__on,
+	&__on-the {
+		align-items: center;
+		display: flex;
+		margin-top: 1rem;
+		width: 100%;
+
+		.rrule-generator__form-control {
+			margin-left: 0.5rem;
+		}
+
+		select {
+			&.rrule-generator__form-control {
+				margin-right: 0;
+			}
+		}
+	}
+
+	&__labelled-input {
+		@at-root label#{&} {
+			display: flex !important;
+			flex: initial;
+			margin: 0 !important;
+			padding: 0;
+		}
+
+		span {
+			padding-left: 0.5rem;
+		}
+	}
+
 	&__form-control {
 		.rrule-generator & {
 			margin-right: 1rem;
 			min-width: 40px;
-			width: auto;
+			width: 100%;
 		}
 	}
 }
