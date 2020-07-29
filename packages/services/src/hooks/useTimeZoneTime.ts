@@ -32,7 +32,7 @@ const deafultOptions: Intl.DateTimeFormatOptions = {
 	timeZoneName: 'long',
 };
 
-export const useTimeZoneTime = (): TimeZoneTime => {
+const useTimeZoneTime = (): TimeZoneTime => {
 	const config = useConfig();
 	// locale and timezone for the site
 	const siteLC = path<string>(['locale', 'site'], config);
@@ -136,3 +136,5 @@ export const useTimeZoneTime = (): TimeZoneTime => {
 		utcToUserTime,
 	};
 };
+
+export default useTimeZoneTime;
