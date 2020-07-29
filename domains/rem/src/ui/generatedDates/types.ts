@@ -16,9 +16,7 @@ export interface DatetimeRowsProps extends DatetimesProps {
 	datetimesPage?: any[];
 }
 
-export interface DatetimeRowProps {
-	date: string;
+export interface DatetimeRowProps extends GeneratedDate {
 	number: number;
-	type: DateType;
 	toggleExDate: FSM['addRDate']; // signature is same as addRDate
 }

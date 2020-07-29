@@ -17,14 +17,14 @@ const iconMap: { [key in DateType]: React.ReactNode } = {
 	exDate: <CloseCircleFilled />,
 };
 
-const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, number, type, toggleExDate }) => {
+const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, ISOStr, number, type, toggleExDate }) => {
 	const { formatForSite } = useTimeZoneTime();
 
 	const titleClassName = classNames('ee-datetime-row__title', type && `ee-datetime-row__title--${type}`);
 
 	const title = formatDate(date, formatForSite);
 
-	const onClickTrash = useCallback(() => toggleExDate(date), [toggleExDate, date]);
+	const onClickTrash = useCallback(() => toggleExDate(ISOStr), [toggleExDate, ISOStr]);
 
 	return (
 		<div>
