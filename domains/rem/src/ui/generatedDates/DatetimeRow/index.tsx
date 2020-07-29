@@ -17,6 +17,12 @@ const iconMap: { [key in DateType]: React.ReactNode } = {
 	exDate: <CloseCircleFilled />,
 };
 
+const titleMap: { [key in DateType]: string } = {
+	gDate: __('Add to Exceptions'),
+	rDate: __('Remove'),
+	exDate: __('Remove from Exceptions'),
+};
+
 const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, ISOStr, number, type, toggleExDate }) => {
 	const { formatForSite } = useTimeZoneTime();
 
@@ -34,17 +40,7 @@ const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, ISOStr, number, type, t
 			</div>
 
 			<div className='generated-datetime-trash-div'>
-				<Button
-					icon={Trash}
-					onClick={onClickTrash}
-					tooltip={
-						type === 'exDate'
-							? __('Remove from Exceptions')
-							: type === 'rDate'
-							? __('Remove')
-							: __('Add to Exceptions')
-					}
-				/>
+				<Button icon={Trash} onClick={onClickTrash} tooltip={titleMap[type]} />
 			</div>
 		</div>
 	);
