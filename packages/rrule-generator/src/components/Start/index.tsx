@@ -14,6 +14,7 @@ const Start: React.FC<BaseProps> = ({ id }) => {
 		},
 		[setStartDate]
 	);
+
 	return (
 		<div className='px-3'>
 			<div className='form-group row'>

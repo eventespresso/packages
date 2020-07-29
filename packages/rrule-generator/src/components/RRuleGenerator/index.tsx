@@ -1,13 +1,15 @@
 import React from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 
-import Start from './Start';
-import Repeat from './Repeat';
-import End from './End';
-import '../styles/index.css';
-import { RRuleGeneratorProps } from './types';
-import { useRRuleState, useStateListener } from '../hooks';
-import { withConfig, withState } from '../context';
+import Start from '../Start';
+import Repeat from '../Repeat';
+import End from '../End';
+import { RRuleGeneratorProps } from '../types';
+import { useRRuleState, useStateListener } from '../../hooks';
+import { withConfig, withState } from '../../context';
+
+import '../../styles/index.css';
+import './styles.scss';
 
 const RRuleGenerator: React.FC<RRuleGeneratorProps> = (props) => {
 	// set up state listener
@@ -17,9 +19,9 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = (props) => {
 	const { error } = useRRuleState();
 
 	return (
-		<div>
+		<div className='rrule-generator'>
 			{!hideError && error && (
-				<div className='alert alert-danger'>
+				<div className='rrule-generator__alert-danger'>
 					{sprintf(
 						__('You provided an invalid RRule value to component. %s is not a correct RRule string.'),
 						error.name
@@ -28,23 +30,11 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = (props) => {
 			)}
 
 			<div className='px-0 pt-3 border rounded'>
-				{!hideStart && (
-					<div>
-						<Start id={`${id}-start`} />
-						<hr />
-					</div>
-				)}
+				{!hideStart && <Start id={`${id}-start`} />}
 
-				<div>
-					<Repeat id={`${id}-repeat`} />
-				</div>
+				<Repeat id={`${id}-repeat`} />
 
-				{!hideEnd && (
-					<div>
-						<hr />
-						<End id={`${id}-end`} />
-					</div>
-				)}
+				{!hideEnd && <End id={`${id}-end`} />}
 			</div>
 		</div>
 	);
