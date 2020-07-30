@@ -1,8 +1,5 @@
 .rrule-generator {
 	&__on-date {
-		flex: 0 0 85%;
-		max-width: 85%;
-
 		.react-date-picker {
 			width: 200px;
 
@@ -12,6 +9,7 @@
 
 			&__inputGroup {
 				&__input {
+					height: 2rem;
 					margin-right: 0.25rem;
 					max-width: 35px !important;
 					min-width: 20px !important;
