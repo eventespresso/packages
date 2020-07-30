@@ -23,7 +23,7 @@ const After: React.FC<AfterProps> = ({ id, after, onChange }) => {
 				onChange={onChangeAfter}
 			/>
 
-			<span>{__('executions')}</span>
+			<span>{__('occurrences')}</span>
 		</label>
 	);
 };
