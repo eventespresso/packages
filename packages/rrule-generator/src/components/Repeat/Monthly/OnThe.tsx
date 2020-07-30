@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { DAYS } from '../../../constants';
-import OnTheWhichSelect from '../OnTheWhichSelect';
+import PositionSelect from '../PositionSelect';
 import { OnProps } from '../types';
 import { useRRuleState } from '../../../hooks';
 import { OnChangeSelect } from '../../types';
@@ -51,7 +51,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				</label>
 			)}
 
-			<OnTheWhichSelect
+			<PositionSelect
 				aria-label={__('Repeat monthly on the which')}
 				id={id}
 				isActive={isActive}

@@ -11,7 +11,7 @@ export interface OnProps extends BaseProps {
 	isTheOnlyMode: boolean;
 }
 
-export interface OnTheWhichSelectProps {
+export interface PositionSelectProps {
 	'aria-label': string;
 	id: string;
 	isActive: boolean;
