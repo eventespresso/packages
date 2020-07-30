@@ -96,8 +96,9 @@
 	}
 
 	&__repeat {
-		&-weekly,
-		&-monthly {
+		&-daily,
+		&-monthly,
+		&-weekly {
 			margin-top: 1rem;
 		}
 	}
