@@ -43,18 +43,26 @@
 				margin-right: 0;
 			}
 		}
+
+		span {
+			padding-left: 0.5rem;
+			white-space: nowrap;
+		}
 	}
 
 	&__labelled-input {
 		@at-root label#{&} {
+			align-items: center;
 			display: flex !important;
 			flex: initial;
 			margin: 0 !important;
 			padding: 0;
-		}
+			max-width: none;
 
-		span {
-			padding-left: 0.5rem;
+			span + input {
+				margin-left: 0.5rem;
+				margin-right: 0.5rem !important;
+			}
 		}
 	}
 
@@ -63,6 +71,33 @@
 			margin-right: 1rem;
 			min-width: 40px;
 			width: 100%;
+		}
+
+		&.rrule-generator {
+			&__day-select {
+				min-width: 50px;
+				width: 50px;
+			}
+
+			&__month-select {
+				min-width: 60px;
+				width: 60px;
+			}
+
+			&__input {
+				border-radius: 4px;
+				border: 1px solid #7e8993;
+				min-width: unset;
+				padding: 6px 8px;
+				text-align: center;
+				width: 35px;
+			}
+		}
+	}
+
+	&__repeat {
+		&-monthly {
+			margin-top: 1rem;
 		}
 	}
 }

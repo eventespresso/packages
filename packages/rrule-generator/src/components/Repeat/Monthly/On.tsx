@@ -24,9 +24,9 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	);
 
 	return (
-		<div className={`form-group row d-flex align-items-sm-center ${!isActive && 'opacity-50'}`}>
-			<div className=' '>
-				{!isTheOnlyMode && (
+		<div className='rrule-generator__on'>
+			{!isTheOnlyMode && (
+				<label className='rrule-generator__labelled-input'>
 					<input
 						id={id}
 						type='radio'
@@ -36,27 +36,25 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 						checked={isActive}
 						onChange={onChangeMode}
 					/>
-				)}
-			</div>
-			<div className=''>{__('on day')}</div>
+					<span>{__('on day')}</span>
+				</label>
+			)}
 
-			<div className=''>
-				<select
-					id={`${id}-day`}
-					name='repeat.monthly.on.day'
-					aria-label={__('Repeat monthly on a day')}
-					className='rrule-generator__form-control'
-					value={on.day}
-					disabled={!isActive}
-					onChange={onChangeDay}
-				>
-					{range(1, 32).map((day) => (
-						<option key={day} value={day}>
-							{day}
-						</option>
-					))}
-				</select>
-			</div>
+			<select
+				id={`${id}-day`}
+				name='repeat.monthly.on.day'
+				aria-label={__('Repeat monthly on a day')}
+				className='rrule-generator__form-control rrule-generator__day-select'
+				value={on.day}
+				disabled={!isActive}
+				onChange={onChangeDay}
+			>
+				{range(1, 32).map((day) => (
+					<option key={day} value={day}>
+						{day}
+					</option>
+				))}
+			</select>
 		</div>
 	);
 };

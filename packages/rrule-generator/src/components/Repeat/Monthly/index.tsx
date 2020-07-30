@@ -27,21 +27,19 @@ const Monthly: React.FC<BaseProps> = ({ id }) => {
 	);
 
 	return (
-		<div>
-			<div className='form-group row d-flex align-items-sm-center'>
-				<div className=' '>{__('every')}</div>
-				<div className='col-sm-3'>
-					<input
-						id={`${id}-interval`}
-						name='repeat.monthly.interval'
-						aria-label={__('Repeat monthly interval')}
-						className='rrule-generator__form-control'
-						value={monthly?.interval}
-						onChange={onChangeInterval}
-					/>
-				</div>
-				<div className=''>{__('month(s)')}</div>
-			</div>
+		<div className='rrule-generator__form-group-row rrule-generator__form-group-row--align-items-start rrule-generator__form-group-row--no-label rrule-generator__repeat-monthly'>
+			<label className='rrule-generator__labelled-input'>
+				<span>{__('every')}</span>
+				<input
+					id={`${id}-interval`}
+					name='repeat.monthly.interval'
+					aria-label={__('Repeat monthly interval')}
+					className='rrule-generator__form-control rrule-generator__input'
+					value={monthly?.interval}
+					onChange={onChangeInterval}
+				/>
+				<span>{__('month(s)')}</span>
+			</label>
 
 			{monthlyModes?.includes('ON') && (
 				<On id={`${id}-on`} isTheOnlyMode={isTheOnlyMode} onChangeMode={onChangeMode} />

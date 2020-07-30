@@ -44,10 +44,10 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 			{!isTheOnlyMode && (
 				<label className='rrule-generator__labelled-input'>
 					<input
+						aria-label={__('Repeat yearly on')}
 						id={id}
 						type='radio'
 						name={id}
-						aria-label={__('Repeat yearly on')}
 						value='ON'
 						checked={isActive}
 						onChange={onChangeMode}
@@ -60,7 +60,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				id={`${id}-month`}
 				name='repeat.yearly.on.month'
 				aria-label={__('Repeat yearly on month')}
-				className='rrule-generator__form-control'
+				className='rrule-generator__form-control rrule-generator__month-select'
 				value={on.month}
 				disabled={!isActive}
 				onChange={onChangeMonth}
@@ -76,7 +76,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				id={`${id}-day`}
 				name='repeat.yearly.on.day'
 				aria-label={__('Repeat yearly on a day')}
-				className='rrule-generator__form-control'
+				className='rrule-generator__form-control rrule-generator__day-select'
 				value={on.day}
 				disabled={!isActive}
 				onChange={onChangeDay}
