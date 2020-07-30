@@ -22,19 +22,20 @@ const Mode: React.FC<ModeProps> = ({ id, mode, onChange }) => {
 	);
 
 	return (
-		<>
-			<div className='col-sm-3'>
-				<select id={id} className='rrule-generator__form-control' value={mode} onChange={onChangeMode}>
-					{endModes.map((endMode) => {
-						return (
-							<option key={endMode} value={endMode}>
-								{modeLabels?.[endMode]}
-							</option>
-						);
-					})}
-				</select>
-			</div>
-		</>
+		<select
+			id={id}
+			className='rrule-generator__form-control rrule-generator__end-after-select'
+			value={mode}
+			onChange={onChangeMode}
+		>
+			{endModes.map((endMode) => {
+				return (
+					<option key={endMode} value={endMode}>
+						{modeLabels?.[endMode]}
+					</option>
+				);
+			})}
+		</select>
 	);
 };
 

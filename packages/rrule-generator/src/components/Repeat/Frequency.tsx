@@ -11,6 +11,8 @@ import { Frequency as FrequencyType } from '../../types';
 import { useRRuleConfig } from '../../hooks';
 import { FrequencyProps } from './types';
 
+import './styles.scss';
+
 const frequencyLabels: { [key in FrequencyType]: string } = {
 	YEARLY: __('Yearly'),
 	MONTHLY: __('Monthly'),
