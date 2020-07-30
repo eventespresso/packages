@@ -1,6 +1,6 @@
 import React from 'react';
 import { isEmpty } from 'ramda';
-import { UseDisclosureReturn } from '@chakra-ui/hooks';
+import type { UseDisclosureReturn } from '@chakra-ui/hooks';
 
 import { ButtonRow, Next, Previous } from '@eventespresso/components';
 

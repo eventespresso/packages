@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
-import { UseDisclosureReturn } from '@chakra-ui/hooks';
+import type { UseDisclosureReturn } from '@chakra-ui/hooks';
 
 import { Button, ButtonType } from '@eventespresso/components';
 import { useGenerateDates } from '../generatedDates';

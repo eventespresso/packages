@@ -1,6 +1,6 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { UseDisclosureReturn } from '@chakra-ui/hooks';
+import type { UseDisclosureReturn } from '@chakra-ui/hooks';
 
 import { ModalWithAlert } from '@eventespresso/components';
 
