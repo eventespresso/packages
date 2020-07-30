@@ -45,12 +45,12 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				<label className='rrule-generator__labelled-input'>
 					<input
 						aria-label={__('Repeat yearly on')}
-						className='rrule-generator__form-control rrule-generator__input'
+						checked={isActive}
+						className='rrule-generator__input-radio'
 						id={id}
 						type='radio'
 						name={id}
 						value='ON'
-						checked={isActive}
 						onChange={onChangeMode}
 					/>
 					<span>{__('on')}</span>

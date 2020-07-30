@@ -49,7 +49,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				<label className='rrule-generator__labelled-input'>
 					<input
 						aria-label={__('Repeat yearly on the')}
-						className='rrule-generator__form-control rrule-generator__input'
+						className='rrule-generator__input-radio'
 						id={id}
 						type='radio'
 						name='repeat.yearly.mode'
