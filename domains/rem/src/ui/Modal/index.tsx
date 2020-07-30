@@ -1,5 +1,6 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
+import { UseDisclosureReturn } from '@chakra-ui/hooks';
 
 import { ModalWithAlert } from '@eventespresso/components';
 
@@ -8,12 +9,7 @@ import { withContext } from '../../context';
 
 import './styles.scss';
 
-interface ModalProps {
-	isOpen: boolean;
-	onClose: VoidFunction;
-}
-
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const Modal: React.FC<Partial<UseDisclosureReturn>> = ({ isOpen, onClose }) => {
 	return (
 		<ModalWithAlert
 			bodyClassName='ee-rem-modal__body'

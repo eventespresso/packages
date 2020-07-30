@@ -7,22 +7,13 @@ import type { GeneratedDate } from '../ui/generatedDates';
 import type { FormState } from './types';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';
 import useMutateTickets from './useMutateTickets';
-
-type Progress = {
-	//  normally represents the number of entities processed
-	datetimes?: number;
-	tickets?: number;
-};
+import { Progress, getTotalProgress } from '../utils/getProgress';
 
 const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate>): (() => Promise<void>) => {
 	const { dateDetails, tickets } = formState;
 	const [progress, setProgress] = useState<Progress>({ datetimes: 0, tickets: 0 });
 	const { createEntity: createDatetime } = useDatetimeMutator();
 	const { siteTimeToUtc } = useTimeZoneTime();
-
-	useEffect(() => {
-		console.log('progress', progress);
-	}, [progress]);
 
 	// updates progress for a given entity type
 	const updateProgress = useCallback((forEntity: keyof Progress, value = 1) => {
@@ -39,11 +30,21 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 
 	const mutateTickets = useMutateTickets({ incrementProgress: incrementTicketProgress });
 
-	return useCallback(async () => {
-		const allTickets = Object.values(tickets);
-		const sharedTickets = getSharedTickets(allTickets);
-		const nonSharedTickets = getNonSharedTickets(allTickets);
+	const allTickets = Object.values(tickets);
+	const sharedTickets = getSharedTickets(allTickets);
+	const nonSharedTickets = getNonSharedTickets(allTickets);
 
+	useEffect(() => {
+		const totalProgress = getTotalProgress({
+			sharedTickets,
+			nonSharedTickets,
+			generatedDates,
+			progress,
+		});
+		console.log('totalProgress', `${totalProgress}%`);
+	}, [generatedDates, nonSharedTickets, progress, sharedTickets]);
+
+	return useCallback(async () => {
 		// create shared tickets and collect their ids
 		const sharedTicketIds = await mutateTickets(sharedTickets, true);
 
@@ -74,7 +75,16 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 				updateProgress('datetimes');
 			})
 		);
-	}, [createDatetime, dateDetails, generatedDates, mutateTickets, siteTimeToUtc, tickets, updateProgress]);
+	}, [
+		createDatetime,
+		dateDetails,
+		generatedDates,
+		mutateTickets,
+		nonSharedTickets,
+		sharedTickets,
+		siteTimeToUtc,
+		updateProgress,
+	]);
 };
 
 export default useSubmitForm;
