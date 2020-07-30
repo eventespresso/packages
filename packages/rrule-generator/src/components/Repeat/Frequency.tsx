@@ -35,7 +35,12 @@ const Frequency: React.FC<FrequencyProps> = ({ id, frequency, onChange }) => {
 
 	return (
 		<div className='rrule-generator__frequency'>
-			<select className='rrule-generator__form-control' id={id} onChange={onChangeFrequency} value={frequency}>
+			<select
+				className='rrule-generator__form-control rrule-generator__select'
+				id={id}
+				onChange={onChangeFrequency}
+				value={frequency}
+			>
 				{frequencyTypes.map((frequencyType) => {
 					return (
 						<option key={frequencyType} value={frequencyType}>
