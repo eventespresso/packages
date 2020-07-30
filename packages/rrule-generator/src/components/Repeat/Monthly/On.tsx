@@ -44,7 +44,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				id={`${id}-day`}
 				name='repeat.monthly.on.day'
 				aria-label={__('Repeat monthly on a day')}
-				className='rrule-generator__form-control rrule-generator__day-select'
+				className='rrule-generator__form-control rrule-generator__select rrule-generator__day'
 				value={on.day}
 				disabled={!isActive}
 				onChange={onChangeDay}

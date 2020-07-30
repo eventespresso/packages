@@ -60,7 +60,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				id={`${id}-month`}
 				name='repeat.yearly.on.month'
 				aria-label={__('Repeat yearly on month')}
-				className='rrule-generator__form-control rrule-generator__month-select'
+				className='rrule-generator__form-control rrule-generator__select rrule-generator__month'
 				value={on.month}
 				disabled={!isActive}
 				onChange={onChangeMonth}
@@ -76,7 +76,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				id={`${id}-day`}
 				name='repeat.yearly.on.day'
 				aria-label={__('Repeat yearly on a day')}
-				className='rrule-generator__form-control rrule-generator__day-select'
+				className='rrule-generator__form-control rrule-generator__select rrule-generator__day'
 				value={on.day}
 				disabled={!isActive}
 				onChange={onChangeDay}
