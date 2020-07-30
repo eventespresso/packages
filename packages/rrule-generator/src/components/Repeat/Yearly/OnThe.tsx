@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
+import OnTheWhichSelect from '../OnTheWhichSelect';
 import { MONTHS, DAYS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';
 import { OnChangeSelect } from '../../types';
@@ -59,21 +60,14 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				</label>
 			)}
 
-			<select
-				id={`${id}-which`}
-				name='repeat.yearly.onThe.which'
+			<OnTheWhichSelect
 				aria-label={__('Repeat yearly on the')}
-				className='rrule-generator__form-control'
+				id={id}
+				isActive={isActive}
+				name='repeat.yearly.onThe.which'
+				onChangeWhich={onChangeWhich}
 				value={onThe.which}
-				disabled={!isActive}
-				onChange={onChangeWhich}
-			>
-				<option value='FIRST'>{__('First')}</option>
-				<option value='SECOND'>{__('Second')}</option>
-				<option value='THIRD'>{__('Third')}</option>
-				<option value='FOURTH'>{__('Fourth')}</option>
-				<option value='LAST'>{__('Last')}</option>
-			</select>
+			/>
 
 			<select
 				id={`${id}-day`}

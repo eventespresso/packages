@@ -1,5 +1,5 @@
 import { Frequency } from '../../types';
-import { BaseProps, OnChangeInput } from '../types';
+import { BaseProps, OnChangeInput, OnChangeSelect } from '../types';
 
 export interface FrequencyProps extends BaseProps {
 	frequency: Frequency;
@@ -9,4 +9,13 @@ export interface FrequencyProps extends BaseProps {
 export interface OnProps extends BaseProps {
 	onChangeMode: OnChangeInput;
 	isTheOnlyMode: boolean;
+}
+
+export interface OnTheWhichSelectProps {
+	'aria-label': string;
+	id: string;
+	isActive: boolean;
+	name: string;
+	onChangeWhich: OnChangeSelect;
+	value: string;
 }
