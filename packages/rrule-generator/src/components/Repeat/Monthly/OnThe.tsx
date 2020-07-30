@@ -39,6 +39,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 			{!isTheOnlyMode && (
 				<label className='rrule-generator__labelled-input'>
 					<input
+						className='rrule-generator__form-control rrule-generator__input'
 						id={id}
 						type='radio'
 						name={id}

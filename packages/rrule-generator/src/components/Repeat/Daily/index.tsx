@@ -17,10 +17,10 @@ const Daily: React.FC<BaseProps> = ({ id }) => {
 			<label className='rrule-generator__labelled-input'>
 				<span>{__('every')}</span>
 				<input
-					id={`${id}-interval`}
-					name='repeat.daily.interval'
 					aria-label={__('Repeat daily interval')}
 					className='rrule-generator__form-control rrule-generator__input'
+					id={`${id}-interval`}
+					name='repeat.daily.interval'
 					value={daily?.interval}
 					onChange={onChangeInterval}
 				/>

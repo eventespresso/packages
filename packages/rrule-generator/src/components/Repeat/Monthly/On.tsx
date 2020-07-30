@@ -28,10 +28,11 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 			{!isTheOnlyMode && (
 				<label className='rrule-generator__labelled-input'>
 					<input
-						id={id}
-						type='radio'
-						name={id}
 						aria-label={__('Repeat monthly on')}
+						className='rrule-generator__form-control rrule-generator__input'
+						id={id}
+						name={id}
+						type='radio'
 						value='ON'
 						checked={isActive}
 						onChange={onChangeMode}
