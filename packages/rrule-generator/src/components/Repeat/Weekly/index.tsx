@@ -6,6 +6,8 @@ import { useRRuleState } from '../../../hooks';
 import { SHORT_DAYS } from '../../../constants';
 import { useIntervalUpdater } from '../../../utils';
 
+import './styles.scss';
+
 const Weekly: React.FC<BaseProps> = ({ id }) => {
 	const {
 		repeat: { weekly },
@@ -27,43 +29,41 @@ const Weekly: React.FC<BaseProps> = ({ id }) => {
 	);
 
 	return (
-		<div className='px-3'>
-			<div className='form-group row d-flex align-items-sm-center'>
-				<div className=' '>{__('every')}</div>
-				<div className='col-sm-3'>
-					<input
-						id={`${id}-interval`}
-						name='repeat.weekly.interval'
-						aria-label={__('Repeat weekly interval')}
-						className='rrule-generator__form-control'
-						value={weekly?.interval}
-						onChange={onChangeInterval}
-					/>
-				</div>
-				<div className=''>{__('week(s)')}</div>
-			</div>
+		<div className='rrule-generator__form-group-row rrule-generator__form-group-row--align-items-start rrule-generator__form-group-row--no-label rrule-generator__repeat-weekly'>
+			<label className='rrule-generator__labelled-input'>
+				<span>{__('every')}</span>
 
-			<div className='form-group row'>
-				<div className='btn-group btn-group-toggle '>
-					{/* TODO arrange days according to week start day */}
-					{Object.entries(weekly?.days).map(([dayName, isDayActive]) => (
-						<label
-							htmlFor={`${id}-${dayName}`}
-							key={dayName}
-							className={`btn btn-primary ${isDayActive ? 'active' : ''}`}
-						>
+				<input
+					id={`${id}-interval`}
+					name='repeat.weekly.interval'
+					aria-label={__('Repeat weekly interval')}
+					className='rrule-generator__form-control rrule-generator__input'
+					value={weekly?.interval}
+					onChange={onChangeInterval}
+				/>
+
+				<span>{__('week(s)')}</span>
+			</label>
+
+			{/* TODO arrange days according to week start day */}
+			<div className='rrule-generator__week-day-checkbox-group'>
+				{Object.entries(weekly?.days).map(([dayName, isDayActive]) => {
+					const dayId = `${id}-${dayName}`;
+
+					return (
+						<label htmlFor={dayId} key={dayName} className={isDayActive && 'active'}>
 							<input
 								type='checkbox'
-								id={`${id}-${dayName}`}
-								name={`${id}-${dayName}`}
+								id={dayId}
+								name={dayId}
 								className='rrule-generator__form-control'
 								checked={isDayActive}
 								onChange={onChangeDays}
 							/>
-							{SHORT_DAYS?.[dayName]}
+							<span>{SHORT_DAYS?.[dayName]}</span>
 						</label>
-					))}
-				</div>
+					);
+				})}
 			</div>
 		</div>
 	);

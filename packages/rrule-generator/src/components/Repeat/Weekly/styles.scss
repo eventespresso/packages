@@ -1,0 +1,40 @@
+.rrule-generator {
+	&__week-day {
+		&-checkbox-group {
+			display: flex;
+			justify-content: flex-end;
+			margin-top: 1rem;
+
+			label {
+				flex: none;
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+
+				&:first-child {
+					padding-left: 0;
+				}
+			}
+
+			input[type='checkbox'] {
+				position: absolute;
+				left: -100vw;
+
+				~ span {
+					border: 1px solid black;
+					border-radius: 50%;
+					display: inline-block;
+					padding: 10px 5px;
+					height: 40px;
+					text-align: center;
+					width: 40px;
+				}
+
+				&:checked ~ span {
+					background-color: rgb(41, 122, 188);
+					border-color: transparent;
+					color: white;
+				}
+			}
+		}
+	}
+}
