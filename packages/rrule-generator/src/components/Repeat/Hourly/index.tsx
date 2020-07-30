@@ -12,10 +12,11 @@ const Hourly: React.FC<BaseProps> = ({ id }) => {
 	} = useRRuleState();
 
 	const onChangeInterval = useIntervalUpdater('hourly', setRepeatInterval);
+
 	return (
-		<div className='form-group row d-flex align-items-sm-center'>
-			<div className=' '>{__('every')}</div>
-			<div className=''>
+		<div className='rrule-generator__form-group-row rrule-generator__form-group-row--align-items-start rrule-generator__form-group-row--no-label'>
+			<label className='rrule-generator__labelled-input'>
+				<span>{__('every')}</span>
 				<input
 					id={`${id}-interval`}
 					name='repeat.hourly.interval'
@@ -24,8 +25,8 @@ const Hourly: React.FC<BaseProps> = ({ id }) => {
 					value={hourly?.interval}
 					onChange={onChangeInterval}
 				/>
-			</div>
-			<div className=''>{__('hour(s)')}</div>
+				<span>{__('hour(s)')}</span>
+			</label>
 		</div>
 	);
 };
