@@ -1,6 +1,7 @@
 svg {
 	&.ee-svg.ee-svg {
 		display: inline-flex;
+		fill: currentColor;
 		margin: 0 var(--ee-margin-micro);
 
 		&.ee-icon {

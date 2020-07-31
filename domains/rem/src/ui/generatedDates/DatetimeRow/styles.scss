@@ -5,11 +5,7 @@
 		padding: var(--ee-padding-tiny);
 
 		svg {
-			margin-right: 0.5rem !important;
-
-			path {
-				fill: white;
-			}
+			margin-right: var(--ee-margin-tiny) !important;
 		}
 
 		span {

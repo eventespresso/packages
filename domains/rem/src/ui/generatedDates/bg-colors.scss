@@ -1,21 +1,16 @@
 .ee-generated-dates-bg {
 	&--rDate {
-		background-color: rgb(38, 151, 15);
+		background-color: var(--ee-color-secondary);
+		color: var(--ee-text-on-secondary);
 	}
 
 	&--exDate {
-		background-color: rgb(206, 43, 111);
+		background-color: var(--ee-color-accent);
+		color: var(--ee-text-on-accent);
 	}
 
 	&--gDate {
-		background-color: rgb(33, 148, 200);
-	}
-
-	&--locked {
-		background-color: rgb(160, 105, 205);
-	}
-
-	&--expired {
-		background-color: rgb(169, 171, 165);
+		background-color: var(--ee-color-primary);
+		color: var(--ee-text-on-primary);
 	}
 }

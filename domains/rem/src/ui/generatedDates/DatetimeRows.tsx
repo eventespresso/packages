@@ -7,11 +7,13 @@ import { useFormState } from '../../data';
 
 const DatetimeRows: React.FC<DatetimeRowsProps> = ({ datetimes, datetimesPage = [] }) => {
 	const { addExDate, removeRDate, removeExDate } = useFormState();
+
 	return (
 		<ul>
 			{datetimes.map(({ date, ISOStr, type }, index) => {
 				const isRDate = type === 'rDate';
 				const isExDate = type === 'exDate';
+
 				return (
 					<li key={ISOStr}>
 						<DatetimeRow
