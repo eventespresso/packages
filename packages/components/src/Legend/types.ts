@@ -9,7 +9,7 @@ export interface LegendProps {
 interface IconType {
 	bgClassName?: string;
 	description: string;
-	icon: IconName | React.ReactNode;
+	icon: IconName | React.ElementType;
 }
 
 export interface LegendConfig {
