@@ -1,4 +1,4 @@
-import { Rotate, PlusCircleFilled, CloseCircleFilled, Lock, InfoCircleFilled } from '@eventespresso/icons';
+import { Rotate, PlusCircleFilled, CloseCircleFilled } from '@eventespresso/icons';
 import { LegendConfig } from '@eventespresso/components';
 import { __ } from '@wordpress/i18n';
 import { getBgClassName } from './utils';
@@ -23,18 +23,6 @@ export const legendConfig: LegendConfig = {
 				'Exceptions: dates that have been created via the pattern editor, but should be skipped or excluded'
 			),
 			icon: CloseCircleFilled,
-		},
-		{
-			bgClassName: getBgClassName('locked'),
-			description: __(
-				'Locked: dates that can NOT be edited because ticket sales or registrations have already occurred'
-			),
-			icon: Lock,
-		},
-		{
-			bgClassName: getBgClassName('expired'),
-			description: __('Expired: dates that have already occured and are now in the past'),
-			icon: InfoCircleFilled,
 		},
 	],
 };

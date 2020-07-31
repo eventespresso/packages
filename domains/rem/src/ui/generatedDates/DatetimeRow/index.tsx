@@ -2,12 +2,10 @@ import React, { useCallback } from 'react';
 import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 
-import { Rotate, PlusCircleFilled, Trash, CloseCircleFilled, Lock, InfoCircleFilled } from '@eventespresso/icons';
+import { Rotate, PlusCircleFilled, Trash, CloseCircleFilled } from '@eventespresso/icons';
 import { Button } from '@eventespresso/components';
 import { useTimeZoneTime } from '@eventespresso/services';
-
 import { DatetimeRowProps, DateType } from '../types';
-
 import { getBgClassName, formatDate } from '../utils';
 
 import './styles.scss';
@@ -17,16 +15,12 @@ const iconMap: { [key in DateType]: React.ReactNode } = {
 	gDate: <Rotate />,
 	rDate: <PlusCircleFilled />,
 	exDate: <CloseCircleFilled />,
-	locked: <Lock />,
-	expired: <InfoCircleFilled />,
 };
 
 const titleMap: { [key in DateType]: string } = {
 	gDate: __('Add to Exceptions'),
 	rDate: __('Remove'),
 	exDate: __('Remove from Exceptions'),
-	locked: __('Remove from Locked'),
-	expired: __('Remove from Expired'),
 };
 
 const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, ISOStr, type, toggleExDate }) => {

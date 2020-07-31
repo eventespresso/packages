@@ -6,7 +6,7 @@ export type GeneratedDate = {
 	ISOStr: string; // ISO date string
 };
 
-export type DateType = 'gDate' | 'rDate' | 'exDate' | 'locked' | 'expired';
+export type DateType = 'gDate' | 'rDate' | 'exDate';
 
 export interface DatetimesProps {
 	datetimes: Array<GeneratedDate>;
