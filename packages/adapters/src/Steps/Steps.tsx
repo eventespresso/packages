@@ -15,7 +15,11 @@ const Steps: React.FC<StepsProps> = ({
 	showStepNumber,
 	...props
 }) => {
-	const wrapperClassName = classNames(props.className, 'ee-form-steps__wrapper');
+	const wrapperClassName = classNames(
+		props.className,
+		compact && `ee-form-steps__wrapper--compact`,
+		'ee-form-steps__wrapper'
+	);
 
 	const listClassName = classNames(
 		'ee-form-steps',
