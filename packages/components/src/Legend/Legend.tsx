@@ -11,13 +11,14 @@ import type { IconName } from '@eventespresso/icons';
 const Legend: React.FC<LegendProps> = ({ direction, legendConfig }) => {
 	const { icons, swatches } = legendConfig;
 
-	const iconsSource = icons.map(({ icon, description }) => {
+	const iconsSource = icons.map(({ bgClassName, description, icon }) => {
 		// @ts-ignore
 		const term = (!is(String)(icon) && React.createElement(icon)) || (
 			<Icon aria-label={description} name={icon as IconName} svgSize={18} />
 		);
 
 		return {
+			bgClassName,
 			className: 'ee-legend-item',
 			description,
 			term,

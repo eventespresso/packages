@@ -1,0 +1,7 @@
+.ee-heading {
+	&--top-bordered {
+		border-top: 0.5px solid var(--ee-border-color);
+		margin-top: var(--ee-margin-small);
+		padding-top: var(--ee-padding-small);
+	}
+}

@@ -17,6 +17,7 @@ export * from './EntityDetailsPanel';
 export * from './EntityEditModal';
 export * from './EntityIDs';
 export * from './EntityList';
+export * from './Heading';
 export * from './Legend';
 export * from './EntityPaperFrame';
 export * from './ErrorIndicator';

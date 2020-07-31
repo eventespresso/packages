@@ -4,24 +4,16 @@
 		display: inline-block;
 		padding: var(--ee-padding-tiny);
 
-		svg path {
-			fill: white;
+		svg {
+			margin-right: 0.5rem !important;
+
+			path {
+				fill: white;
+			}
 		}
 
 		span {
 			color: white;
-		}
-
-		&--rDate {
-			background-color: rgb(38, 151, 15);
-		}
-
-		&--exDate {
-			background-color: rgb(206, 43, 111);
-		}
-
-		&--gDate {
-			background-color: rgb(33, 148, 200);
 		}
 	}
 }

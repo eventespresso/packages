@@ -1,8 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { Heading } from '@eventespresso/adapters';
-import { Legend } from '@eventespresso/components';
+import { Heading, Legend } from '@eventespresso/components';
 
 import Datetimes from './Datetimes';
 import useGenerateDates from './useGenerateDates';
@@ -14,7 +13,9 @@ const GeneratedDates: React.FC = () => {
 	return (
 		<>
 			<Datetimes datetimes={datetimes} />
-			<Heading as='h5'>{__('Legend')}</Heading>
+			<Heading as='h6' topBordered>
+				{__('Legend')}
+			</Heading>
 			<Legend direction='row' legendConfig={legendConfig} />
 		</>
 	);

@@ -51,13 +51,21 @@
 		display: flex;
 		padding: var(--ee-padding-tiny) var(--ee-padding-default) var(--ee-padding-tiny) 0;
 
-		dt {
+		&__term {
 			background: var(--ee-background-color);
 			border-radius: var(--ee-border-radius-default);
 			display: flex;
 			margin: 0 var(--ee-margin-smaller) 0 0;
 			padding: 0.5rem;
 			vertical-align: middle;
+
+			&--has-bg {
+				svg {
+					fill: white;
+					height: auto;
+					width: 18px;
+				}
+			}
 
 			svg {
 				margin: 0;
