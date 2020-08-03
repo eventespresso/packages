@@ -13,12 +13,17 @@
 	border-radius: 3px;
 	border: 1px solid #ccc;
 	margin: 1em;
-	max-width: 220px;
 	padding: 1em;
+
 	h4 {
 		font-size: 1.5em;
 		font-weight: 600;
 		margin-top: 1.3em;
 		margin-bottom: 1.3em;
+	}
+
+	&__description {
+		text-align: center;
+		max-width: 220px;
 	}
 }

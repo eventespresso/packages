@@ -6,9 +6,10 @@
 
 		.ee-ticket-offset {
 			letter-spacing: 1px;
-			padding: 0.5rem 0.75rem 0 0;
+			padding-top: var(--ee-padding-tiny);
 		}
 	}
+
 	&__template {
 		display: flex;
 		flex-direction: column;
@@ -18,6 +19,7 @@
 			align-items: center;
 		}
 	}
+
 	&__add-new {
 		display: flex;
 		align-items: center;

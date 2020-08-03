@@ -1,24 +1,25 @@
 import React from 'react';
-import { Box } from '@chakra-ui/core';
+import { Box } from '@eventespresso/adapters';
 import classNames from 'classnames';
 import { NewEntityOptionProps } from './types';
 
 const NewEntityOption: React.FC<NewEntityOptionProps> = ({
 	button,
 	children,
-	className,
 	description,
 	icon: Icon,
 	title,
+	...props
 }) => {
-	const newClassName = classNames(className, 'ee-new-entity-option');
+	const className = classNames(props.className, 'ee-new-entity-option');
+
 	return (
-		<Box className={newClassName}>
+		<div className={className}>
 			<Icon />
 			<Box as='h4'>{title}</Box>
-			<Box>{description}</Box>
+			<p className='ee-new-entity-option__description'>{description}</p>
 			{button || children}
-		</Box>
+		</div>
 	);
 };
 
