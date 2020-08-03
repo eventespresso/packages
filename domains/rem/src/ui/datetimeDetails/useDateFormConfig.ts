@@ -6,7 +6,8 @@ import type { EspressoFormProps } from '@eventespresso/form';
 import { Datetime } from '@eventespresso/edtr-services';
 import { validate } from './formValidation';
 import { DateFormShape } from './types';
-import { DATE_FIELDS_TO_USE } from '../../constants';
+import { DATE_FIELDS_TO_USE, INTERVALS } from '../../constants';
+import { intervalsToOptions } from '../../utils/misc';
 
 type DateFormConfig = EspressoFormProps<DateFormShape>;
 
@@ -69,20 +70,7 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 						name: 'unit',
 						label: __('Unit'),
 						fieldType: 'select',
-						options: [
-							{
-								label: 'day(s)',
-								value: 'days',
-							},
-							{
-								label: 'hour(s)',
-								value: 'hours',
-							},
-							{
-								label: 'minutes',
-								value: 'minutes',
-							},
-						],
+						options: intervalsToOptions(pick(['days', 'hours', 'minutes'], INTERVALS)),
 					},
 				],
 			},

@@ -7,8 +7,10 @@ import { useMemoStringify } from '@eventespresso/hooks';
 
 import { validate } from './formValidation';
 import { TicketFormShape } from './types';
-import { TICKET_FIELDS_TO_USE } from '../../constants';
+import { TICKET_FIELDS_TO_USE, INTERVALS } from '../../constants';
 import { RemTicket } from '../../data';
+import { intervalsToOptions } from '../../utils/misc';
+import { Intervals } from '../../types';
 
 type TicketFormConfig = EspressoFormProps<TicketFormShape>;
 
@@ -43,6 +45,10 @@ const dateTimeFields: Array<FieldProps> = [
 	},
 ];
 
+const unitOptions = intervalsToOptions(
+	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], INTERVALS)
+);
+
 const ticketSalesFields: Array<FieldProps> = [
 	{
 		label: __('Unit value'),
@@ -56,28 +62,7 @@ const ticketSalesFields: Array<FieldProps> = [
 		label: __('Unit'),
 		fieldType: 'select',
 		required: true,
-		options: [
-			{
-				label: 'month(s)',
-				value: 'months',
-			},
-			{
-				label: 'week(s)',
-				value: 'weeks',
-			},
-			{
-				label: 'day(s)',
-				value: 'days',
-			},
-			{
-				label: 'hour(s)',
-				value: 'hours',
-			},
-			{
-				label: 'minute(s)',
-				value: 'minutes',
-			},
-		],
+		options: unitOptions,
 	},
 	{
 		name: 'position',
