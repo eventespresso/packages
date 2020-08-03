@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import { useDisclosure } from '@chakra-ui/hooks';
 
 import { Button, ButtonSize, NewEntityOption } from '@eventespresso/components';
-import { Calendar } from '@eventespresso/icons';
+import { CalendarAlt } from '@eventespresso/icons';
 import { Container as FormContainer } from '@edtrUI/datetimes/dateForm/multiStep';
 
 type AddSingleDateProps = {
@@ -19,7 +19,8 @@ const AddSingleDate: React.FC<AddSingleDateProps> = ({ isOnlyButton }) => {
 				buttonText={isOnlyButton ? __('Add New Date') : __('Add Single Date')}
 				onClick={onAddNew}
 				buttonSize={isOnlyButton ? ButtonSize.BIG : null}
-				icon={isOnlyButton ? Calendar : null}
+				buttonType='primary'
+				icon={isOnlyButton && CalendarAlt}
 			/>
 			{isOpen && <FormContainer isOpen={true} onClose={onClose} />}
 		</>
@@ -28,10 +29,11 @@ const AddSingleDate: React.FC<AddSingleDateProps> = ({ isOnlyButton }) => {
 	if (isOnlyButton) {
 		return output;
 	}
+
 	return (
 		<NewEntityOption
 			title={__('Single Date')}
-			icon={Calendar}
+			icon={CalendarAlt}
 			description={__('Add a single date and assign the tickets to it')}
 		>
 			{output}

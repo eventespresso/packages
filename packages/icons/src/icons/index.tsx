@@ -1,5 +1,6 @@
 export { default as AppstoreFilled } from './AppstoreFilled';
 export { default as Calculator } from './Calculator';
+export { default as CalendarAlt } from './CalendarAlt';
 export { default as Calendar } from './Calendar';
 export { default as CalendarOutlined } from './CalendarOutlined';
 export { default as Check } from './Check';

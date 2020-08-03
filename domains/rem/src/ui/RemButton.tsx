@@ -17,7 +17,9 @@ const RemButton: React.FC = () => {
 				icon={Rem}
 				description={__('Add dates in bulk using a recurring pattern')}
 			>
-				<Button onClick={onOpen}>{__('Add Recurring Dates')}</Button>
+				<Button buttonType='primary' onClick={onOpen}>
+					{__('Add Recurring Dates')}
+				</Button>
 				{isOpen && <Modal isOpen={true} {...disclosure} />}
 			</NewEntityOption>
 		</>
