@@ -14,12 +14,12 @@ const Steps: React.FC<Pick<PrevNext, 'current'>> = ({ current }) => {
 				title={__('Pattern Editor')}
 			/>
 			<Step
-				description={__('use existing date as template or create a new one```
+				description={__('use existing date as template or create a new one')}
 				icon={Calendar}
 				title={__('Date Details')}
 			/>
 			<Step
-				description={__('use existing tickets as templates or create a new one```
+				description={__('use existing tickets as templates or create a new one')}
 				icon={Ticket}
 				title={__('Tickets')}
 			/>
