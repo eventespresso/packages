@@ -4,6 +4,7 @@ interface CommonProps {
 	id: string;
 	onChange: (rRuleString: string) => void;
 	rRuleString: string;
+	sidebarLabel?: string;
 	type: PatternType;
 }
 

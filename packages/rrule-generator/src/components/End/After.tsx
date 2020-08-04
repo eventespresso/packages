@@ -15,12 +15,13 @@ const After: React.FC<AfterProps> = ({ id, after, onChange }) => {
 	return (
 		<label className='rrule-generator__labelled-input'>
 			<input
-				id={id}
-				name='end.after'
 				aria-label={__('End after')}
 				className='rrule-generator__form-control rrule-generator__input'
-				value={after}
+				id={id}
+				name='end.after'
 				onChange={onChangeAfter}
+				type='number'
+				value={after}
 			/>
 
 			<span>{__('occurrences')}</span>

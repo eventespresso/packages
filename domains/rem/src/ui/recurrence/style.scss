@@ -27,7 +27,7 @@
 }
 
 .ee-edit-event-date-recurrence {
-	.recurrence-rrule-generator-wrapper {
+	.recurrence-rrule-generator {
 		border-top: none;
 	}
 
@@ -43,7 +43,7 @@
 		font-size: 1rem;
 	}
 
-	.components-modal__content .generated-datetimes-rrule-generator-wrapper {
+	.components-modal__content .generated-datetimes-rrule-generator {
 		margin-bottom: 50px;
 	}
 }
@@ -218,7 +218,7 @@
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-.rrule-generator-wrapper .rdtPicker td.rdtToday {
+.rrule-generator .rdtPicker td.rdtToday {
 	position: relative;
 }
 

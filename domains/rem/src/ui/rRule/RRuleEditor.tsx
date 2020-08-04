@@ -5,12 +5,11 @@ import PatternEditor from './PatternEditor';
 
 import './style.scss';
 
-const RRuleEditor: React.FC<RRuleEditorProps> = ({ id, onChange, rRuleString, type }) => {
+const RRuleEditor: React.FC<RRuleEditorProps> = ({ id, onChange, rRuleString, sidebarLabel, type }) => {
 	return (
 		<div className='rrule-generator-wrapper'>
-			<div className={`${type}-form rem-form-row`}>
-				<PatternEditor id={id} onChange={onChange} rRuleString={rRuleString} type={type} />
-			</div>
+			{sidebarLabel && <h2 className='rrule-generator__sidebar-label'>{sidebarLabel}</h2>}
+			<PatternEditor id={id} onChange={onChange} rRuleString={rRuleString} type={type} />
 		</div>
 	);
 };

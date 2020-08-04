@@ -30,6 +30,7 @@ const PatternEditor: React.FC = () => {
 			) : null}
 			<RecurrencePattern />
 			<Button
+				noHorizontalMargin
 				buttonText={isOpen ? __('Remove exclusion pattern') : __('Add exclusion pattern')}
 				onClick={isOpen ? onRemoveClick : onOpen}
 			/>

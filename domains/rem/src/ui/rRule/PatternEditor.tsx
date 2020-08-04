@@ -9,8 +9,8 @@ const config: RRuleConfig = {
 	enableTimepicker: false,
 };
 
-const PatternEditor: React.FC<PatternEditorProps> = ({ id, type, rRuleString, onChange }) => {
-	return <RRuleGenerator id={`rrule-${type}-${id}`} value={rRuleString} onChange={onChange} config={config} />;
+const PatternEditor: React.FC<PatternEditorProps> = ({ id, rRuleString, onChange, type }) => {
+	return <RRuleGenerator config={config} id={`rrule-${type}-${id}`} onChange={onChange} value={rRuleString} />;
 };
 
 export default PatternEditor;

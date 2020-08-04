@@ -38,8 +38,9 @@ const Weekly: React.FC<BaseProps> = ({ id }) => {
 					name='repeat.weekly.interval'
 					aria-label={__('Repeat weekly interval')}
 					className='rrule-generator__form-control rrule-generator__input'
-					value={weekly?.interval}
+					type='number'
 					onChange={onChangeInterval}
+					value={weekly?.interval}
 				/>
 
 				<span>{__('week(s)')}</span>

@@ -1,6 +1,5 @@
 .rrule-generator {
 	padding-bottom: 0.75rem;
-	padding-top: 0.75rem;
 
 	&__form-group {
 		&-row {
@@ -18,7 +17,8 @@
 			}
 
 			label {
-				flex: 0 0 15%;
+				flex: 0 1 20%;
+				font-size: var(--ee-font-size-default);
 				max-width: 15%;
 				padding-left: 1rem;
 				padding-right: 1rem;
@@ -59,11 +59,32 @@
 			padding: 0;
 			max-width: none;
 
-			span + input {
-				margin-left: 0.5rem;
-				margin-right: 0.5rem !important;
+			span {
+				font-size: var(--ee-font-size-default);
+
+				+ input {
+					margin-left: 0.5rem;
+					margin-right: 0.5rem !important;
+				}
 			}
 		}
+	}
+
+	input[type='number'],
+	input[type='text'],
+	select {
+		border-color: var(--ee-border-color);
+		border-radius: var(--ee-border-radius-small);
+		border-style: solid;
+		border-width: 3px;
+		box-shadow: none;
+		color: var(--ee-default-text-color);
+		font-size: var(--ee-font-size-default);
+		line-height: inherit;
+		min-height: 2.625rem;
+		outline: none;
+		padding: var(--ee-padding-micro) var(--ee-padding-tiny);
+		transition: all ease 50ms;
 	}
 
 	&__form-control {
@@ -75,6 +96,10 @@
 
 		@at-root select#{&} {
 			height: 2rem;
+
+			&--medium-width {
+				min-width: 6rem !important;
+			}
 		}
 
 		&.rrule-generator {
@@ -88,7 +113,7 @@
 
 			&__month {
 				min-width: 60px;
-				width: 60px;
+				width: 135px;
 			}
 
 			&__input {
@@ -97,7 +122,7 @@
 				min-width: unset;
 				padding: 6px 8px;
 				text-align: center;
-				width: 35px;
+				width: 40px;
 			}
 		}
 	}
