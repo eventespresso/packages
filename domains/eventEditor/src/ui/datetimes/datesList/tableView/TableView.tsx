@@ -6,6 +6,8 @@ import useHeaderRowGenerator from './useHeaderRowGenerator';
 import useBodyRowGenerator from './useBodyRowGenerator';
 import { useDatesListContext } from '@edtrServices/context/EntityListContext';
 import { useReorderDatetimes } from '@eventespresso/edtr-services';
+import { withBulkEdit } from '@eventespresso/services';
+import { Actions } from '../bulkEdit';
 
 import './styles.scss';
 
@@ -21,17 +23,20 @@ const TableView: React.FC = () => {
 	const headerRowGenerator = useHeaderRowGenerator();
 
 	return (
-		<EntityTable
-			entities={filteredEntities}
-			filterState={filterState}
-			bodyRowGenerator={bodyRowGenerator}
-			headerRowGenerator={headerRowGenerator}
-			className={'ee-dates-list-list-view ee-fade-in'}
-			tableId='date-entities-table-view'
-			tableCaption={__('Event Dates')}
-			onSort={sortDates}
-		/>
+		<>
+			<Actions />
+			<EntityTable
+				entities={filteredEntities}
+				filterState={filterState}
+				bodyRowGenerator={bodyRowGenerator}
+				headerRowGenerator={headerRowGenerator}
+				className={'ee-dates-list-list-view ee-fade-in'}
+				tableId='date-entities-table-view'
+				tableCaption={__('Event Dates')}
+				onSort={sortDates}
+			/>
+		</>
 	);
 };
 
-export default TableView;
+export default withBulkEdit(TableView);

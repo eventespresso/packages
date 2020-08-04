@@ -20,6 +20,12 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 				value: '',
 			},
 			{
+				key: 'checkbox',
+				type: 'cell',
+				className: 'ee-date-list-col-hdr ee-date-list-col-checkbox ee-rspnsv-table-column-nano',
+				value: null,
+			},
+			{
 				key: 'id',
 				type: 'cell',
 				className: 'ee-date-list-col-hdr ee-date-list-col-id ee-number-column ee-rspnsv-table-column-nano',

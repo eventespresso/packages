@@ -14,6 +14,7 @@ import DateCapacity from '../cardView/DateCapacity';
 import type { BodyRowGeneratorFn } from '@eventespresso/components';
 import type { DatetimesFilterStateManager } from '@edtrServices/filterState';
 import { EditableName } from '../editable';
+import Checkbox from './Checkbox';
 
 import '../../../../../../../packages/styles/src/root/entity-status.css';
 
@@ -54,6 +55,12 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				type: 'cell',
 				className: `ee-date-list-cell ee-entity-list-status-stripe ${bgClassName} ee-rspnsv-table-column-nano`,
 				value: <div className={'ee-rspnsv-table-show-on-mobile'}>{datetime.name}</div>,
+			},
+			{
+				key: 'checkbox',
+				type: 'cell',
+				className: 'ee-date-list-cell ee-date-list-col-checkbox ee-rspnsv-table-column-nano',
+				value: <Checkbox id={datetime.id} />,
 			},
 			{
 				key: 'id',
