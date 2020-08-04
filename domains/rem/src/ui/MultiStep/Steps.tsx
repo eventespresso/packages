@@ -19,7 +19,7 @@ const Steps: React.FC<Pick<PrevNext, 'current'>> = ({ current }) => {
 				title={__('Date Details')}
 			/>
 			<Step
-				description={__('use existing tickets as templates or create new tickets')}
+				description={__('use existing tickets as templates or create a new one```
 				icon={Ticket}
 				title={__('Tickets')}
 			/>
