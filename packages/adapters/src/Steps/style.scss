@@ -29,6 +29,8 @@
 
 		&--compact {
 			flex-direction: column;
+			margin-right: 0;
+			margin-left: 0;
 
 			h3 {
 				margin-bottom: var(--ee-margin-small);
@@ -59,7 +61,7 @@
 		position: relative;
 
 		@at-root .ee-form-steps--compact#{&} {
-			min-width: 11rem;
+			min-width: 13rem;
 			padding: var(--ee-padding-small);
 		}
 

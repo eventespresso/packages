@@ -42,7 +42,7 @@ const DatetimeRow: React.FC<DatetimeRowProps> = ({ date, ISOStr, type, toggleExD
 			</div>
 
 			<div className='generated-datetime-trash-div'>
-				<Button icon={Trash} onClick={onClickTrash} tooltip={titleMap[type]} />
+				<Button noMargin icon={Trash} onClick={onClickTrash} tooltip={titleMap[type]} />
 			</div>
 		</div>
 	);

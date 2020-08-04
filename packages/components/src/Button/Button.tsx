@@ -25,6 +25,7 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 			buttonText,
 			buttonType = ButtonType.DEFAULT,
 			icon,
+			noMargin,
 			noHorizontalMargin,
 			onClick,
 			...props
@@ -36,6 +37,7 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 		const className = classNames(
 			props.className,
 			active && 'ee-btn--is-active',
+			noMargin && 'ee-btn--no-margin',
 			noHorizontalMargin && 'ee-btn--no-horizontal-margin',
 			hasIconClassName,
 			{

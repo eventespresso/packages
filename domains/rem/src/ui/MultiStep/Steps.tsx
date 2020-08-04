@@ -13,9 +13,21 @@ const Steps: React.FC<Pick<PrevNext, 'current'>> = ({ current }) => {
 				icon={Calendar}
 				title={__('Pattern Editor')}
 			/>
-			<Step description={__('primary information about the date')} icon={Calendar} title={__('Date Details')} />
-			<Step icon={Ticket} title={__('Tickets')} />
-			<Step icon={CalendarOutlined} title={__('Generated Dates')} />
+			<Step
+				description={__('use existing date as template or create new details')}
+				icon={Calendar}
+				title={__('Date Details')}
+			/>
+			<Step
+				description={__('use existing tickets as templates or create new tickets')}
+				icon={Ticket}
+				title={__('Tickets')}
+			/>
+			<Step
+				description={__('confirm dates to be created and add or remove exceptions')}
+				icon={CalendarOutlined}
+				title={__('Generated Dates')}
+			/>
 		</StepsAdapter>
 	);
 };

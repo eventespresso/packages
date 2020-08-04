@@ -12,7 +12,12 @@ const GeneratedDates: React.FC = () => {
 
 	return (
 		<>
-			<Datetimes datetimes={datetimes} />
+			<div className='rrule-generator-wrapper'>
+				<h2 className='rrule-generator__sidebar-label'>{__('Dates List')}</h2>
+				<div className='rrule-generator__main-content'>
+					<Datetimes datetimes={datetimes} />
+				</div>
+			</div>
 			<Heading as='h6' topBordered>
 				{__('Legend')}
 			</Heading>

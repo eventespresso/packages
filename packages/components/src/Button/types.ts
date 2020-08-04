@@ -24,6 +24,7 @@ export interface ButtonProps extends ButtonAdapterProps, Partial<withLabelProps>
 	active?: boolean;
 	buttonType?: ButtonType | 'accent' | 'default' | 'minimal' | 'primary' | 'secondary';
 	buttonSize?: ButtonSize;
+	noMargin?: boolean;
 	noHorizontalMargin?: boolean;
 }
 
