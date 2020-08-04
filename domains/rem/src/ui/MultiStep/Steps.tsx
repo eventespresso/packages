@@ -14,7 +14,7 @@ const Steps: React.FC<Pick<PrevNext, 'current'>> = ({ current }) => {
 				title={__('Pattern Editor')}
 			/>
 			<Step
-				description={__('use existing date as template or create new details')}
+				description={__('use existing date as template or create a new one```
 				icon={Calendar}
 				title={__('Date Details')}
 			/>
