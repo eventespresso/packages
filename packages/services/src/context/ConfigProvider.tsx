@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useMemo } from 'react';
 
 import { CurrentUser, DateTimeFormats, useConfigData, ConfigDataProps } from '../config';
 import { useCurrentUser, useGeneralSettings } from '@eventespresso/data';
@@ -12,11 +12,14 @@ const ConfigProvider: React.FC = ({ children }) => {
 	const currentUser = useCurrentUser();
 	const generalSettings = useGeneralSettings();
 
-	const config: ConfigDataProps = {
-		...ConfigData,
-		currentUser: currentUser && CurrentUser(currentUser),
-		dateTimeFormats: generalSettings && DateTimeFormats(generalSettings),
-	};
+	const config: ConfigDataProps = useMemo(
+		() => ({
+			...ConfigData,
+			currentUser: currentUser && CurrentUser(currentUser),
+			dateTimeFormats: generalSettings && DateTimeFormats(generalSettings),
+		}),
+		[ConfigData, currentUser, generalSettings]
+	);
 
 	return <Provider value={config}>{children}</Provider>;
 };
