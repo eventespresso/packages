@@ -9,6 +9,8 @@ import { TicketPriceCalculator } from '@eventespresso/tpc';
 import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/components';
 import useDataListener from './useDataListener';
 
+const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
+
 /**
  * This component is inside both RFF and TAM contexts, so we can use all of their features
  */
@@ -17,8 +19,6 @@ const ContentBody: React.FC = ({ children }) => {
 	useDataListener();
 
 	const { current, prev, next } = usePrevNext();
-
-	const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
 
 	return (
 		<FormSpy subscription={subscription}>

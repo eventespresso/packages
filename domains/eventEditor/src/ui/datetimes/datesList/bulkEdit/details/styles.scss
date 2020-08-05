@@ -1,0 +1,18 @@
+.ee-entity-edit-modal {
+	.shift-dates-wrapper {
+		display: flex;
+		align-items: center;
+		.field-group-label {
+			font-weight: 600;
+			font-size: 1.2em;
+			line-height: 1.4em;
+			flex-basis: 15%;
+		}
+		.field-group-items {
+			flex-basis: 85%;
+			.field-group-item {
+				flex-basis: 33% !important;
+			}
+		}
+	}
+}
