@@ -17,12 +17,18 @@ const Group: React.FC<FieldProps> = ({
 }) => {
 	const visible = useShouldBeVisible(conditions, groupName);
 	if (subFields.length && visible) {
-		const className = classNames('field-group-items', formControlProps?.className);
+		// className for the group
+		const className = formControlProps?.className;
+		const groupClassName = classNames('field-group-items', className);
+		// className for the group wrapper
+		const wrapperClassName = classNames('field-group-wrapper', {
+			[`${className}-wrapper`]: className,
+		});
 		return (
-			<div className='field-group-wrapper'>
-				<h5>{label}</h5>
+			<div className={wrapperClassName}>
+				<h5 className='field-group-label'>{label}</h5>
 				{before}
-				<div className={className}>
+				<div className={groupClassName}>
 					{subFields.map(({ name: fieldname, fieldType, ...props }, i) => {
 						const name = `${groupName}.${fieldname}`;
 						return (
