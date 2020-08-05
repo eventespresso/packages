@@ -1,0 +1,7 @@
+@import '../_variables.scss';
+
+:root {
+	@each $height, $value in $heights {
+		--ee-#{$height}: #{$value};
+	}
+}
