@@ -19,8 +19,6 @@ export interface LegendConfig {
 }
 
 export interface ToggleLegendButtonProps extends ButtonProps {
-	className?: string;
-	isDisabled?: boolean;
 	showLegend?: boolean;
 	toggleLegend: VoidFunction;
 }
