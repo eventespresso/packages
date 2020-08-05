@@ -35,7 +35,15 @@ const Checkbox: React.FC<Props> = ({ id }) => {
 	// set "-" icon for header when some are selected
 	const isIndeterminate = !isChecked && selected.length && !id;
 
-	return <CheckboxAdapter p='0.5em' isChecked={isChecked} isIndeterminate={isIndeterminate} onChange={onChange} />;
+	return (
+		<CheckboxAdapter
+			py='0.5em'
+			px='0.8em'
+			isChecked={isChecked}
+			isIndeterminate={isIndeterminate}
+			onChange={onChange}
+		/>
+	);
 };
 
 export default Checkbox;

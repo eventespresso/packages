@@ -59,7 +59,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			{
 				key: 'checkbox',
 				type: 'cell',
-				className: 'ee-date-list-cell ee-date-list-col-checkbox ee-rspnsv-table-column-nano',
+				className: 'ee-date-list-cell ee-date-list-col-checkbox ee-rspnsv-table-column-micro',
 				value: <Checkbox id={datetime.id} />,
 			},
 			{
