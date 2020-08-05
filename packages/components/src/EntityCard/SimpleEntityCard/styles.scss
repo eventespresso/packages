@@ -8,6 +8,10 @@
 	max-width: 270px;
 	min-height: 6rem;
 
+	&:first-child {
+		margin-left: 0;
+	}
+
 	&__details {
 		flex-flow: column;
 		padding: 0.5rem 0.75rem;

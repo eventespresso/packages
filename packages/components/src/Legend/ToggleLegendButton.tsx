@@ -7,7 +7,12 @@ import { getPropsAreEqual } from '@eventespresso/services';
 import { Button } from '../Button';
 import type { ToggleLegendButtonProps } from './types';
 
-const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({ className, showLegend, toggleLegend }) => {
+const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({
+	className,
+	noHorizontalMargin,
+	showLegend,
+	toggleLegend,
+}) => {
 	const iconProps = useSpring({
 		display: 'inline-flex',
 		transform: `rotate(${showLegend ? 0 : 180}deg)`,
@@ -22,7 +27,13 @@ const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({ className, show
 	const tooltip = showLegend ? __('hide legend') : __('show legend');
 
 	return (
-		<Button active={showLegend} className={className} icon={icon} onClick={toggleLegend}>
+		<Button
+			active={showLegend}
+			className={className}
+			icon={icon}
+			noHorizontalMargin={noHorizontalMargin}
+			onClick={toggleLegend}
+		>
 			{tooltip}
 		</Button>
 	);

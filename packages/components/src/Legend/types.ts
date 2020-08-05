@@ -1,5 +1,6 @@
 import type { AnyObject } from '@eventespresso/services';
 import type { IconName } from '@eventespresso/icons';
+import { ButtonProps } from '../Button';
 
 export interface LegendProps {
 	direction?: 'row';
@@ -17,7 +18,7 @@ export interface LegendConfig {
 	swatches?: AnyObject;
 }
 
-export interface ToggleLegendButtonProps {
+export interface ToggleLegendButtonProps extends ButtonProps {
 	className?: string;
 	isDisabled?: boolean;
 	showLegend?: boolean;

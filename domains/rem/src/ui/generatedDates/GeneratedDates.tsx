@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { Legend } from '@eventespresso/components';
+import { CollapsibleLegend } from '@eventespresso/components';
 
 import Datetimes from './Datetimes';
 import useGenerateDates from './useGenerateDates';
@@ -18,7 +18,7 @@ const GeneratedDates: React.FC = () => {
 					<Datetimes datetimes={datetimes} />
 				</div>
 			</div>
-			<Legend direction='row' legendConfig={legendConfig} />
+			<CollapsibleLegend direction='row' legendConfig={legendConfig} />
 		</>
 	);
 };
