@@ -6,7 +6,7 @@ const Warning: React.FC = () => {
 		<div className='ee-form-error-message'>
 			<p>
 				{__('Note: ')}
-				{__('any changes will be applied to ALL the selected entities.')}
+				{__('any changes will be applied to ALL of the selected dates.')}
 			</p>
 		</div>
 	);

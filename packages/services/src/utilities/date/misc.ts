@@ -32,6 +32,11 @@ export const DATE_INTERVALS: Intervals = {
 	minutes: __('minute(s)'),
 };
 
-export const intervalsToOptions = (intervals: Intervals): OptionsType => {
-	return Object.entries(intervals).map(([value, label]) => ({ value, label }));
+export const intervalsToOptions = (intervals: Intervals, prependEmpty?: boolean): OptionsType => {
+	const options = Object.entries(intervals).map(([value, label]) => ({ value, label }));
+
+	if (prependEmpty) {
+		return [{ label: '', value: '' }, ...options];
+	}
+	return options;
 };

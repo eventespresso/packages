@@ -6,6 +6,8 @@ export { default as EntityTable } from './EntityTable';
 
 export { default as RegistrationsLink } from './RegistrationsLink';
 
+export * from './ActionCheckbox';
+
 export * from './filterBar';
 
 export * from './pagination';

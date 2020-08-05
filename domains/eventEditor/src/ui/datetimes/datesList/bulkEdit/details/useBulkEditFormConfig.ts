@@ -7,21 +7,14 @@ import { intervalsToOptions, Intervals, DATE_INTERVALS } from '@eventespresso/se
 import type { EspressoFormProps } from '@eventespresso/form';
 
 import { validate } from './formValidation';
-import { BulkEditFormShape } from './types';
+import type { BulkEditFormShape } from './types';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 type DateFormConfig = EspressoFormProps<BulkEditFormShape>;
 
-const BULK_EDIT_DEFAULTS: BulkEditFormShape = {
-	shiftDates: {
-		unit: 'hours',
-		value: 1,
-		type: 'later',
-	},
-};
-
 const unitOptions = intervalsToOptions(
-	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS)
+	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS),
+	true
 );
 
 const useBulkEditFormConfig = (config?: EspressoFormProps<BulkEditFormShape>): DateFormConfig => {
@@ -34,14 +27,6 @@ const useBulkEditFormConfig = (config?: EspressoFormProps<BulkEditFormShape>): D
 		[onSubmit]
 	);
 
-	const initialValues: BulkEditFormShape = useMemo(
-		() => ({
-			...BULK_EDIT_DEFAULTS,
-			...config?.initialValues,
-		}),
-		[config?.initialValues]
-	);
-
 	const adjacentFormItemProps = useMemoStringify({
 		className: 'ee-form-item-pair',
 	});
@@ -50,7 +35,6 @@ const useBulkEditFormConfig = (config?: EspressoFormProps<BulkEditFormShape>): D
 		() => ({
 			...config,
 			onSubmit: onSubmitFrom,
-			initialValues,
 			validate,
 			layout: 'horizontal',
 			debugFields: ['values', 'errors'],
@@ -102,6 +86,10 @@ const useBulkEditFormConfig = (config?: EspressoFormProps<BulkEditFormShape>): D
 									fieldType: 'select',
 									options: [
 										{
+											label: '',
+											value: '',
+										},
+										{
 											label: __('earlier'),
 											value: 'earlier',
 										},
@@ -132,7 +120,7 @@ const useBulkEditFormConfig = (config?: EspressoFormProps<BulkEditFormShape>): D
 				},
 			],
 		}),
-		[adjacentFormItemProps, config, initialValues, onSubmitFrom]
+		[adjacentFormItemProps, config, onSubmitFrom]
 	);
 };
 
