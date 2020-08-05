@@ -5,10 +5,6 @@ export interface CardViewFilterButtonProps extends View, CommonProps, IconButton
 	setCardView: VoidFunction;
 }
 
-export interface CollapsibleProps {
-	show: boolean;
-}
-
 interface CommonProps {
 	listId?: string;
 }
@@ -33,9 +29,4 @@ export interface ToggleFiltersButtonProps extends CommonProps, IconButtonProps {
 export interface ToggleSortingButtonProps extends CommonProps, IconButtonProps {
 	sortingEnabled?: boolean;
 	toggleSorting: VoidFunction;
-}
-
-export interface ToggleLegendButtonProps extends CommonProps, IconButtonProps {
-	showLegend?: boolean;
-	toggleLegend: VoidFunction;
 }

@@ -4,6 +4,7 @@ export * from './Button';
 export * from './CalendarDateRange';
 export * from './CalendarDateSwitcher';
 export * from './CalendarPageDate';
+export * from './Collapsible';
 export * from './ColorSwatch';
 export * from './Confirm';
 export * from './CurrencyInput';

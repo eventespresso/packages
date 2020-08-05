@@ -16,3 +16,10 @@ export interface LegendConfig {
 	icons: IconType[];
 	swatches?: AnyObject;
 }
+
+export interface ToggleLegendButtonProps {
+	className?: string;
+	isDisabled?: boolean;
+	showLegend?: boolean;
+	toggleLegend: VoidFunction;
+}
