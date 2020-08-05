@@ -2,6 +2,6 @@
 
 :root {
 	@each $height, $value in $heights {
-		--ee-#{$height}: #{$value};
+		--ee-height-#{$height}: #{$value};
 	}
 }

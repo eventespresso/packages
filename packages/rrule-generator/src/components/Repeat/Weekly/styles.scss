@@ -25,10 +25,10 @@
 					border: 1px solid black;
 					border-radius: 50%;
 					display: inline-block;
-					padding: 12px 5px;
-					height: var(--ee-big-height);
+					padding: var(--ee-padding-smaller) var(--ee-padding-micro);
+					height: var(--ee-height-big);
 					text-align: center;
-					width: var(--ee-big-height);
+					width: var(--ee-height-big);
 				}
 
 				&:checked ~ span {

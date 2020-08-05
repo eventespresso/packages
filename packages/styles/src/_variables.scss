@@ -1,9 +1,9 @@
-$small-height: 20px !default;
-$default-height: 30px !default;
-$big-height: 45px !default;
+$height-small: 20px !default;
+$height-default: 30px !default;
+$height-big: 45px !default;
 
 $heights: (
-	'small-height': $small-height,
-	'default-height': $default-height,
-	'big-height': $big-height,
+	'small': $height-small,
+	'default': $height-default,
+	'big': $height-big,
 ) !default;
