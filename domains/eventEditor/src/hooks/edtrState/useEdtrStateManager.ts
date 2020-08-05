@@ -8,6 +8,7 @@ type ESM = EdtrStateManager;
 
 const initialState: EdtrState = {
 	visibleDatetimeIds: [],
+	visibleTicketIds: [],
 };
 
 const useEdtrStateManager = (): ESM => {
@@ -22,13 +23,21 @@ const useEdtrStateManager = (): ESM => {
 		});
 	}, []);
 
+	const setVisibleTicketIds: ESM['setVisibleTicketIds'] = useCallback((visibleTicketIds) => {
+		dispatch({
+			type: 'SET_VISIBLE_TICKET_IDS',
+			visibleTicketIds,
+		});
+	}, []);
+
 	return useMemo(
 		() => ({
 			...state,
 			getState,
 			setVisibleDatetimeIds,
+			setVisibleTicketIds,
 		}),
-		[getState, setVisibleDatetimeIds, state]
+		[getState, setVisibleDatetimeIds, setVisibleTicketIds, state]
 	);
 };
 
