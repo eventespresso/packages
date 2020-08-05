@@ -4,13 +4,12 @@ import { pick } from 'ramda';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
 import { useMemoStringify } from '@eventespresso/hooks';
+import { intervalsToOptions, Intervals, DATE_INTERVALS } from '@eventespresso/services';
 
 import { validate } from './formValidation';
 import { TicketFormShape } from './types';
-import { TICKET_FIELDS_TO_USE, INTERVALS } from '../../constants';
+import { TICKET_FIELDS_TO_USE } from '../../constants';
 import { RemTicket } from '../../data';
-import { intervalsToOptions } from '../../utils/misc';
-import { Intervals } from '../../types';
 
 type TicketFormConfig = EspressoFormProps<TicketFormShape>;
 
@@ -46,7 +45,7 @@ const dateTimeFields: Array<FieldProps> = [
 ];
 
 const unitOptions = intervalsToOptions(
-	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], INTERVALS)
+	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS)
 );
 
 const ticketSalesFields: Array<FieldProps> = [
@@ -71,11 +70,11 @@ const ticketSalesFields: Array<FieldProps> = [
 		required: true,
 		options: [
 			{
-				label: 'before',
+				label: __('before'),
 				value: 'before',
 			},
 			{
-				label: 'after',
+				label: __('after'),
 				value: 'after',
 			},
 		],
@@ -87,11 +86,11 @@ const ticketSalesFields: Array<FieldProps> = [
 		required: true,
 		options: [
 			{
-				label: 'start',
+				label: __('start'),
 				value: 'start',
 			},
 			{
-				label: 'end',
+				label: __('end'),
 				value: 'end',
 			},
 		],

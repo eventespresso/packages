@@ -4,3 +4,4 @@ export { default as diff } from './diff';
 export { default as sort } from './sort';
 export { default as switchTenseForDate } from './switchTenseForDate';
 export * from './misc';
+export * from './types';

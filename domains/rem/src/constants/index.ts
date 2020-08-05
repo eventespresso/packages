@@ -1,6 +1,5 @@
 import { __ } from '@wordpress/i18n';
 import type { Datetime, Ticket } from '@eventespresso/edtr-services';
-import { Intervals } from '../types';
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
 export const TIME_FORMAT = 'hh:mm a';
@@ -40,14 +39,6 @@ export const RRULE_DAY_LABELS = {
 	FR: __('Friday'),
 	SA: __('Saturday'),
 	SU: __('Sunday'),
-};
-
-export const INTERVALS: Intervals = {
-	months: __('month(s)'),
-	weeks: __('week(s)'),
-	days: __('day(s)'),
-	hours: __('hour(s)'),
-	minutes: __('minute(s)'),
 };
 
 export const DATE_FIELDS_TO_USE: Array<keyof Datetime> = ['id', 'name', 'description', 'capacity'];

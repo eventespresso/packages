@@ -5,7 +5,7 @@ import { CurrencyInput, SimpleEntityCard } from '@eventespresso/components';
 import { BaseProps } from '../types';
 import Sidebar from './Sidebar';
 import { useFormState } from '../../../data';
-import { INTERVALS } from '../../../constants';
+import { DATE_INTERVALS } from '@eventespresso/services';
 
 const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 	const { tickets } = useFormState();
@@ -27,7 +27,7 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 					*/
 					__('starts %1$d %2$s %3$s the %4$s date'),
 					ticketSalesStart?.unitValue,
-					INTERVALS?.[ticketSalesStart?.unit],
+					DATE_INTERVALS?.[ticketSalesStart?.unit],
 					ticketSalesStart?.position === 'before' ? __('before') : __('after'),
 					ticketSalesStart?.startOrEnd === 'start' ? __('start') : __('end')
 				)}
@@ -44,7 +44,7 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 					*/
 					__('ends %1$d %2$s %3$s the %4$s date'),
 					ticketSalesEnd?.unitValue,
-					INTERVALS?.[ticketSalesEnd?.unit],
+					DATE_INTERVALS?.[ticketSalesEnd?.unit],
 					ticketSalesEnd?.position === 'before' ? __('before') : __('after'),
 					ticketSalesEnd?.startOrEnd === 'start' ? __('start') : __('end')
 				)}
