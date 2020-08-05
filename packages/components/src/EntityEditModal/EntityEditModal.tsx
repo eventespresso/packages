@@ -5,7 +5,7 @@ import type { EntityEditModalProps } from './types';
 
 import './styles.scss';
 
-const EntityEditModal: React.FC<EntityEditModalProps> = ({ isOpen, onClose, title, children }) => {
+const EntityEditModal: React.FC<EntityEditModalProps> = ({ isOpen, onClose, title, children, ...rest }) => {
 	return (
 		<Modal
 			bodyClassName='ee-entity-edit-modal__body'
@@ -14,6 +14,7 @@ const EntityEditModal: React.FC<EntityEditModalProps> = ({ isOpen, onClose, titl
 			isOpen={isOpen}
 			onClose={onClose}
 			title={title}
+			{...rest}
 		>
 			{children}
 		</Modal>
