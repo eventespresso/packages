@@ -6,8 +6,9 @@ export interface BaseProps<E extends Entity> {
 	entity: E;
 }
 
-export interface EntityEditModalProps extends ModalProps {}
+export interface EntityEditModalProps extends Partial<ModalProps> {}
 
-export interface ContainerProps<E extends Entity> extends BaseProps<E>, EntityEditModalProps {
+export interface ContainerProps<E extends Entity> extends BaseProps<E>, Omit<EntityEditModalProps, 'onClose'> {
 	component: React.ComponentType<BaseProps<E> & Pick<Disclosure, 'onClose'>>;
+	onClose?: VoidFunction;
 }
