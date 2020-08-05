@@ -5,6 +5,7 @@ import { Cell } from '@eventespresso/components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { HeaderRowGeneratorFn } from '@eventespresso/components';
 import { DatetimesFilterStateManager } from '@edtrServices/filterState';
+import Checkbox from './Checkbox';
 
 type DatesTableHeaderRowGen = HeaderRowGeneratorFn<DatetimesFilterStateManager>;
 
@@ -23,7 +24,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 				key: 'checkbox',
 				type: 'cell',
 				className: 'ee-date-list-col-hdr ee-date-list-col-checkbox ee-rspnsv-table-column-nano',
-				value: null,
+				value: <Checkbox />,
 			},
 			{
 				key: 'id',

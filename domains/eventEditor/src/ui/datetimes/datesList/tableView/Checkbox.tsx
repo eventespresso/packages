@@ -2,32 +2,40 @@ import React, { useCallback } from 'react';
 
 import { Checkbox as CheckboxAdapter } from '@eventespresso/adapters';
 import { useBulkEdit } from '@eventespresso/services';
-
 import { EntityId } from '@eventespresso/data';
 
+import { useEdtrState } from '@edtrHooks/edtrState';
+
 type Props = {
-	id: EntityId;
-	isHeader?: boolean;
+	id?: EntityId;
 };
 
-const Checkbox: React.FC<Props> = ({ id, isHeader }) => {
+const Checkbox: React.FC<Props> = ({ id }) => {
 	const { selected, toggleSelected, unSelectAll, selectMultiple } = useBulkEdit();
+	const { visibleDatetimeIds } = useEdtrState();
 
 	const onChange = useCallback(() => {
-		if (isHeader) {
+		// if id is passed it's from body row
+		if (id) {
+			toggleSelected(id);
+		} else {
+			// no id means it's the header row
+
 			// if there are some selected
 			if (selected.length) {
 				unSelectAll();
 			} else {
-				// somehow get all the visible entity ids
-				selectMultiple([]);
+				selectMultiple(visibleDatetimeIds);
 			}
-		} else {
-			toggleSelected(id);
 		}
-	}, [id, isHeader, selectMultiple, selected.length, toggleSelected, unSelectAll]);
+	}, [id, selectMultiple, selected.length, toggleSelected, unSelectAll, visibleDatetimeIds]);
 
-	return <CheckboxAdapter p='0.5em' isChecked={selected.includes(id)} onChange={onChange} />;
+	// for header chekbox, if visible and selected have same length, means all are checked
+	const isChecked = id ? selected.includes(id) : selected.length === visibleDatetimeIds.length;
+	// set "-" icon for header when some are selected
+	const isIndeterminate = !isChecked && selected.length && !id;
+
+	return <CheckboxAdapter p='0.5em' isChecked={isChecked} isIndeterminate={isIndeterminate} onChange={onChange} />;
 };
 
 export default Checkbox;
