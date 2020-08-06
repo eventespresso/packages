@@ -1,0 +1,26 @@
+.ee-entity-ids {
+	padding: 0 var(--ee-margin-micro);
+	position: absolute;
+	top: 0;
+
+	.ee-entity-dbid,
+	.ee-entity-guid {
+		color: var(--ee-color-grey-7);
+	}
+
+	span + span {
+		margin-left: var(--ee-margin-micro);
+	}
+
+	&.ee-align-lft {
+		text-align: left;
+	}
+
+	&.ee-align-rgt {
+		text-align: right;
+	}
+}
+
+.ee-entity-id-separator {
+	color: var(--ee-color-grey-8);
+}

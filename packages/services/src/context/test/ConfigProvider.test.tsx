@@ -39,12 +39,15 @@ describe('ConfigProvider', () => {
 					</ConfigProvider>
 				</MockedProvider>
 			);
+
 			expect(getByText(/^Brand name:/).textContent).toBe(
 				'Brand name: ' + mockEspressoDomData.config.coreDomain.brandName
 			);
+
 			expect(getByText(/^User locale:/).textContent).toBe(
 				'User locale: ' + mockEspressoDomData.config.locale.user
 			);
+
 			expect(getByText(/^Site locale:/).textContent).toBe(
 				'Site locale: ' + mockEspressoDomData.config.locale.site
 			);
