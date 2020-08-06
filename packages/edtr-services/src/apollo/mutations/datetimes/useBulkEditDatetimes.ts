@@ -28,7 +28,7 @@ const useBulkEditDatetimes = (): BulkEditDatetimes => {
 
 	const updateEntityList = useCallback(
 		(input: BulkUpdateDatetimeInput) => () => {
-			// convert uniqueInputs array to object with key as id and value as the object
+			// convert uniqueInputs array to object with ids as keys and the objects as values
 			const uniqueInputs = input.uniqueInputs.reduce((inputs, currentInput) => {
 				return { ...inputs, [currentInput.id]: currentInput };
 			}, {});
