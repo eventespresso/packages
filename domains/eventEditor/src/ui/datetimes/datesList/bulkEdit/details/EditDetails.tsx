@@ -15,15 +15,13 @@ const EditDetails: React.FC<EditDetailsProps> = ({ onClose, isOpen }) => {
 	const formConfig = useBulkEditFormConfig({ onSubmit });
 
 	return (
-		<>
-			<BulkEditDetails
-				formConfig={formConfig}
-				isOpen={isOpen}
-				onClose={onClose}
-				title={__('Bulk edit date details')}
-				warning={__('any changes will be applied to ALL of the selected dates.')}
-			/>
-		</>
+		<BulkEditDetails
+			formConfig={formConfig}
+			isOpen={isOpen}
+			onClose={onClose}
+			title={__('Bulk edit date details')}
+			warning={__('any changes will be applied to ALL of the selected dates.')}
+		/>
 	);
 };
 
