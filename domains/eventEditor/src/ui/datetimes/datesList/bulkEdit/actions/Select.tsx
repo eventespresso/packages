@@ -16,11 +16,11 @@ const Select: React.FC<Props> = React.memo(({ value, setValue }) => {
 		},
 		{
 			value: 'edit-details',
-			label: __('edit date details'),
+			label: __('edit datetime details'),
 		},
 		{
 			value: 'delete',
-			label: __('delete dates'),
+			label: __('delete datetimes'),
 		},
 	]);
 	return <SelectInput value={value} options={options} onChangeValue={setValue} />;
