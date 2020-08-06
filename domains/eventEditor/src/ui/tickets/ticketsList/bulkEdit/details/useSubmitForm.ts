@@ -17,7 +17,7 @@ const useSubmitForm = (onClose: VoidFunction): Callback => {
 			onClose();
 			// back to basics
 			unSelectAll();
-			// prepare mutaion input from data
+			// prepare mutation input from data
 			const input = formToBulkUpdateInput(formData, allTickets, getSelected());
 			// do the thing
 			updateEntities(input);
