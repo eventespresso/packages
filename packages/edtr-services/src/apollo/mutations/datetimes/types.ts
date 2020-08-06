@@ -46,3 +46,8 @@ export type UpdateDatetimeResult = {
 export type DeleteDatetimeResult = {
 	deleteEspressoDatetime: DatetimeMutationResult;
 };
+
+export interface BulkUpdateDatetimeInput {
+	sharedInput?: UpdateDatetimeInput;
+	uniqueInputs: Array<UpdateDatetimeInput>;
+}
