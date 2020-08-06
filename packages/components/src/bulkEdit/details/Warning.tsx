@@ -1,12 +1,16 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const Warning: React.FC = () => {
+type WarningProps = {
+	message?: string;
+};
+
+const Warning: React.FC<WarningProps> = ({ message }) => {
 	return (
 		<div className='ee-form-error-message'>
 			<p>
 				{__('Note: ')}
-				{__('any changes will be applied to ALL of the selected dates.')}
+				{message || __('any changes will be applied to ALL of the selected entities.')}
 			</p>
 		</div>
 	);

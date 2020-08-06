@@ -3,13 +3,12 @@ import { __ } from '@wordpress/i18n';
 import type { FormRenderProps } from 'react-final-form';
 import type { FormState } from 'final-form';
 
-import { Button, ButtonRow, ButtonType, useConfirmationDialog } from '@eventespresso/components';
-import { BulkEditFormShape } from './types';
+import { Button, ButtonRow, ButtonType, useConfirmationDialog } from '../../';
 
 const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true, pristine: true };
 
-const Submit: React.FC<Pick<FormRenderProps<BulkEditFormShape>, 'form'>> = ({ form }) => {
-	const [formState, setFormState] = useState<Partial<FormState<BulkEditFormShape>>>({});
+const Submit: React.FC<Pick<FormRenderProps<any>, 'form'>> = ({ form }) => {
+	const [formState, setFormState] = useState<Partial<FormState<any>>>({});
 
 	const { submitting, hasValidationErrors, hasSubmitErrors, pristine } = formState;
 	const isSubmitDisabled = submitting || hasValidationErrors || hasSubmitErrors;
@@ -26,8 +25,8 @@ const Submit: React.FC<Pick<FormRenderProps<BulkEditFormShape>, 'form'>> = ({ fo
 	}, []);
 
 	const { confirmationDialog, onOpen } = useConfirmationDialog({
-		message: __('Are you sure you want to update the selected dates?'),
-		title: __('Bulk update date details'),
+		message: __('Are you sure you want to update the selected entities?'),
+		title: __('Bulk update details'),
 		onConfirm: form.submit,
 	});
 
