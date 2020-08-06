@@ -13,6 +13,7 @@ interface TriggerProps {
 
 const Trigger = forwardRef<typeof IconButton, TriggerProps>(({ tooltip, ...props }, ref) => {
 	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'top' });
+
 	return (
 		<IconButton
 			{...props}

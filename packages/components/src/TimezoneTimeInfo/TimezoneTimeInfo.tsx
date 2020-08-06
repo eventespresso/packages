@@ -3,7 +3,8 @@ import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 
 import { Popover } from '@eventespresso/adapters';
-import { useTimeZoneTime } from '@eventespresso/services';
+
+import Content from './Content';
 import Trigger from './Trigger';
 import './style.scss';
 
@@ -13,26 +14,8 @@ export interface Props {
 }
 
 const TimezoneTimeInfo: React.FC<Props> = ({ date, ...props }) => {
-	const { formatDateForSite, formatDateForUser, formatUtcDateForSite } = useTimeZoneTime();
-	const content = (
-		<div>
-			<div className={'ee-focus-priority-8'}>
-				<strong>{__('Your Local Time Zone')}</strong>
-			</div>
-			<div className={'ee-focus-priority-6'}>{formatDateForUser(date)}</div>
-			<br />
-			<div className={'ee-focus-priority-8'}>
-				<strong>{__("The Website's Time Zone")}</strong>
-			</div>
-			<div className={'ee-focus-priority-6'}>{formatDateForSite(date)}</div>
-			<br />
-			<div className={'ee-focus-priority-8'}>
-				<strong>{__('UTC (Greenwich Mean Time)')}</strong>
-			</div>
-			<div className={'ee-focus-priority-6'}>{formatUtcDateForSite(date)}</div>
-		</div>
-	);
 	const className = classNames(props.className, 'ee-timezone-info');
+	const content = () => <Content date={date} />;
 
 	return (
 		<div className={className}>

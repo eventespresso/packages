@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Timepicker } from '@eventespresso/adapters';
+import { TimePicker as TimePickerAdapter } from '@eventespresso/adapters';
 import type { FieldRendererProps } from '../types';
 
 const TimePicker: React.FC<FieldRendererProps> = ({ input: { onChange, ...input }, meta, ...rest }) => {
 	return (
-		<Timepicker
+		<TimePickerAdapter
 			{...input}
 			{...rest}
 			format='12'

@@ -2,12 +2,15 @@ import React, { useCallback } from 'react';
 import classNames from 'classnames';
 
 import { isInfinite, parseInfinity } from '@eventespresso/services';
-import { InlineEdit, InlineEditPreviewProps } from '@eventespresso/adapters';
-import type { TextProps } from './types';
+import { InlineEdit } from '@eventespresso/adapters';
+import type { PreviewProps } from './types';
 
-const Preview: React.FC<InlineEditPreviewProps> = ({ value, onRequestEdit, isEditing }) => {
+import TabbableText from './TabbableText';
+import { TextProps } from './types';
+
+const Preview: React.FC<PreviewProps> = ({ value, onRequestEdit, isEditing, ...props }) => {
 	const isInfinity = isInfinite(value);
-	const classeName = classNames({
+	const className = classNames('ee-inline-edit__infinity', {
 		'ee-infinity-sign': isInfinity,
 	});
 
@@ -15,16 +18,12 @@ const Preview: React.FC<InlineEditPreviewProps> = ({ value, onRequestEdit, isEdi
 		return null;
 	}
 
-	const output = isInfinity ? '∞' : value;
+	const output = isInfinity ? <span className={'ee-infinity-sign__inner'}>{'∞'}</span> : value;
 
-	return (
-		<span className={classeName} onClick={onRequestEdit} onKeyDown={onRequestEdit} role='button' tabIndex={0}>
-			{output}
-		</span>
-	);
+	return <TabbableText {...props} className={className} onRequestEdit={onRequestEdit} text={output} />;
 };
 
-const InlineEditInfinity: React.FC<TextProps> = ({ onChangeValue, value, ...rest }) => {
+const InlineEditInfinity: React.FC<TextProps> = ({ onChangeValue, value, ...props }) => {
 	const isInfinity = isInfinite(value);
 
 	const onChangeHandler = useCallback<TextProps['onChangeValue']>(
@@ -39,7 +38,7 @@ const InlineEditInfinity: React.FC<TextProps> = ({ onChangeValue, value, ...rest
 
 	return (
 		<InlineEdit
-			{...rest}
+			{...props}
 			inputType='number'
 			onChangeValue={onChangeHandler}
 			Preview={Preview}
