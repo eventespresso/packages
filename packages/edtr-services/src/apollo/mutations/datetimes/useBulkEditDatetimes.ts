@@ -1,13 +1,13 @@
 import { useCallback, useMemo } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import { useMutationWithFeedback, MutationType } from '@eventespresso/data';
 import { useSystemNotifications } from '@eventespresso/toaster';
-import type { Datetime, DatetimeEdge } from '../../types';
+import type { DatetimeEdge } from '../../types';
 import { useDatetimeQueryOptions, useDatetimes } from '../../queries';
 import { useUpdateDatetimeList } from '../../../hooks';
 import { BulkUpdateDatetimeInput, BULK_UPDATE_DATETIMES } from './';
 import { TypeName } from '../';
+import { cacheNodesFromBulkInput } from '../utils';
 
 interface BulkEditDatetimes {
 	updateEntities: (input: BulkUpdateDatetimeInput) => ReturnType<ReturnType<typeof useMutationWithFeedback>>;
@@ -28,24 +28,7 @@ const useBulkEditDatetimes = (): BulkEditDatetimes => {
 
 	const updateEntityList = useCallback(
 		(input: BulkUpdateDatetimeInput) => () => {
-			// convert uniqueInputs array to object with ids as keys and the objects as values
-			const uniqueInputs = input.uniqueInputs.reduce((inputs, currentInput) => {
-				return { ...inputs, [currentInput.id]: currentInput };
-			}, {});
-
-			// override the data for the selected nodes from the given input
-			const nodes = allDatetimes.map<Datetime>((node) => {
-				// if the node is not in selected nodes
-				if (!uniqueInputs?.[node.id]) {
-					return node;
-				}
-				return {
-					...node,
-					...input.sharedInput,
-					...uniqueInputs[node.id],
-					cacheId: uuidv4(),
-				};
-			});
+			const nodes = cacheNodesFromBulkInput(input, allDatetimes);
 
 			const espressoDatetimes: DatetimeEdge = {
 				nodes,

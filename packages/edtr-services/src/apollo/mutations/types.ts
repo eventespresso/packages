@@ -3,8 +3,8 @@ import type { OperationVariables, MutationUpdaterFn } from 'apollo-client';
 import type { ExecutionResult } from '@apollo/react-common';
 
 import type { MutationInput, MutationType, Entity as BaseEntity, Entity } from '@eventespresso/data';
+import type { Merge, ShiftDateArgs, AnyObject } from '@eventespresso/services';
 import type { Datetime, DatetimeEdge, Ticket, TicketEdge, Price, PriceEdge } from '../types';
-import type { Merge } from '@eventespresso/services';
 
 export interface MutationCallbackFnArgs {
 	proxy?: DataProxy;
@@ -118,3 +118,11 @@ export interface UpdaterCallbackArgs<E extends Entity, MI extends MutationInput 
 export type UpdaterCallback = <E extends Entity, MI extends MutationInput = MutationInput>(
 	args: UpdaterCallbackArgs<E, MI>
 ) => MutationUpdaterFn;
+
+export interface BulkUpdateInput<T extends AnyObject = AnyObject> {
+	sharedInput?: T;
+	uniqueInputs: Array<T>;
+}
+export interface BulkEditFormBaseShape extends Partial<ShiftDateArgs> {
+	shiftDates?: ShiftDateArgs;
+}

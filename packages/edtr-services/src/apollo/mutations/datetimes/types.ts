@@ -1,5 +1,6 @@
 import type { EntityId } from '@eventespresso/data';
 import type { Datetime } from '../../types';
+import { BulkUpdateInput } from '../types';
 
 export interface DatetimeBaseInput {
 	capacity?: number;
@@ -47,7 +48,4 @@ export type DeleteDatetimeResult = {
 	deleteEspressoDatetime: DatetimeMutationResult;
 };
 
-export interface BulkUpdateDatetimeInput {
-	sharedInput?: UpdateDatetimeInput;
-	uniqueInputs: Array<UpdateDatetimeInput>;
-}
+export type BulkUpdateDatetimeInput = BulkUpdateInput<UpdateDatetimeInput>;
