@@ -2,8 +2,10 @@ import { pipe } from 'ramda';
 import { __ } from '@wordpress/i18n';
 import { setHours, setMinutes, setSeconds, setYear, setMonth, setDate } from 'date-fns/fp';
 import type { OptionsType } from '@eventespresso/adapters';
+import { parseISO } from 'date-fns';
 
-import { Intervals } from './types';
+import { Intervals, ShiftDateArgs } from './types';
+import { add, sub } from './addSub';
 
 /**
  * Sets the time of the date object to zero hour
@@ -39,4 +41,16 @@ export const intervalsToOptions = (intervals: Intervals, prependEmpty?: boolean)
 		return [{ label: '', value: '' }, ...options];
 	}
 	return options;
+};
+
+/**
+ * Shifts the given date according to args.
+ */
+export const shiftDate = (args: ShiftDateArgs) => (date: Date | string): Date => {
+	const parsedDate = date instanceof Date ? date : parseISO(date);
+	if (args?.unit && args?.value && args?.type) {
+		const fn = args.type === 'earlier' ? sub : add;
+		return fn(args.unit, parsedDate, args.value);
+	}
+	return parsedDate;
 };
