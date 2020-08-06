@@ -25,7 +25,7 @@ const Submit: React.FC<Pick<FormRenderProps<any>, 'form'>> = ({ form }) => {
 	}, []);
 
 	const { confirmationDialog, onOpen } = useConfirmationDialog({
-		message: __('Are you sure you want to update the selected entities?'),
+		message: __('Are you sure you want to bulk update the details?'),
 		title: __('Bulk update details'),
 		onConfirm: form.submit,
 	});

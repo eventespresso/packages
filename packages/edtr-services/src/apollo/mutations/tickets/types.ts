@@ -1,5 +1,6 @@
 import type { EntityId } from '@eventespresso/data';
 import type { Ticket } from '../../';
+import { BulkUpdateInput } from '../types';
 
 export interface TicketBaseInput {
 	datetimes?: Array<EntityId>;
@@ -54,3 +55,5 @@ export type UpdateTicketResult = {
 export type DeleteTicketResult = {
 	deleteEspressoTicket: TicketMutationResult;
 };
+
+export type BulkUpdateTicketInput = BulkUpdateInput<UpdateTicketInput>;

@@ -38,9 +38,20 @@ export const DELETE_TICKET = gql`
 	${TICKET_ATTRIBUTES}
 `;
 
+export const BULK_UPDATE_TICKETS = gql`
+	mutation BULK_UPDATE_TICKETS($input: BulkUpdateEspressoTicketInput!) {
+		bulkUpdateEspressoTicket(input: $input) {
+			updated
+			failed
+		}
+	}
+`;
+
 export { default as useTicketMutator } from './useTicketMutator';
 
 export { default as useReorderTickets } from './useReorderTickets';
+
+export { default as useBulkEditTickets } from './useBulkEditTickets';
 
 export { default as useTicketQuantityForCapacity } from './useTicketQuantityForCapacity';
 
