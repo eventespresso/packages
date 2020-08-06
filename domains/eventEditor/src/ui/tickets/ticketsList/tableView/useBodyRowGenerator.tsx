@@ -15,6 +15,7 @@ import { BodyRowGeneratorFn } from '@eventespresso/components';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';
 import { EditableName } from '../editable';
 import TicketRegistrationsLink from '../../TicketRegistrationsLink';
+import Checkbox from './Checkbox';
 
 import '../../../../../../../packages/styles/src/root/entity-status.css';
 
@@ -61,6 +62,12 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 					type: 'cell',
 					className: `ee-ticket-list-cell ee-entity-list-status-stripe ${bgClassName} ee-rspnsv-table-column-nano`,
 					value: <div className={'ee-rspnsv-table-show-on-mobile'}>{ticket.name}</div>,
+				},
+				{
+					key: 'checkbox',
+					type: 'cell',
+					className: 'ee-date-list-cell ee-date-list-col-checkbox ee-rspnsv-table-column-micro',
+					value: <Checkbox id={ticket.id} />,
 				},
 				{
 					key: 'id',

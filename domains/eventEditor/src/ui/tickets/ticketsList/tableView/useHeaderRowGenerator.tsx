@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import type { Cell, HeaderRowGeneratorFn } from '@eventespresso/components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';
+import Checkbox from './Checkbox';
 
 type TicketsTableHeaderRowGen = HeaderRowGeneratorFn<TicketsFilterStateManager>;
 
@@ -17,6 +18,12 @@ const useHeaderRowGenerator = (): TicketsTableHeaderRowGen => {
 				type: 'cell',
 				className: 'ee-ticket-list-col-hdr ee-entity-list-status-stripe ee-rspnsv-table-column-nano',
 				value: '',
+			},
+			{
+				key: 'checkbox',
+				type: 'cell',
+				className: 'ee-date-list-col-hdr ee-date-list-col-checkbox ee-rspnsv-table-column-micro',
+				value: <Checkbox />,
 			},
 			{
 				key: 'id',
