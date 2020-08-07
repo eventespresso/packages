@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import './style.scss';
 import DetailsSeparator from './DetailsSeparator';
-import EntityDetail from './EntityDetail';
+import EntityDetails from './EntityDetails';
 import type { EntityDetailsPanelProps } from './types';
 
 const EntityDetailsPanel: React.FC<EntityDetailsPanelProps> = ({ details, ...props }) => {
@@ -14,7 +14,7 @@ const EntityDetailsPanel: React.FC<EntityDetailsPanelProps> = ({ details, ...pro
 			{details.map((detail, index) => {
 				return (
 					<Fragment key={index}>
-						<EntityDetail {...detail} />
+						<EntityDetails {...detail} />
 						<DetailsSeparator last={index === details.length - 1} />
 					</Fragment>
 				);
