@@ -11,6 +11,7 @@ export * from './CurrencyInput';
 export * from './DebugInfo';
 export * from './DescriptionList';
 export * from './DropdownMenu';
+export * from './EditDateRangeButton';
 export * from './EmptyState';
 export * from './EntityActionsMenu';
 export * from './EntityCard';

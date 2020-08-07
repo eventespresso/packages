@@ -7,7 +7,13 @@ import { DateTimeRangePicker } from '@eventespresso/adapters';
 import { ButtonSize, ButtonType, IconButton, Popover } from '../../';
 import { EditDateButtonProps } from './types';
 
-const EditDateRangeButton: React.FC<EditDateButtonProps> = ({ header, onEditHandler, startDate, endDate, tooltip }) => {
+export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
+	header,
+	onEditHandler,
+	startDate,
+	endDate,
+	tooltip,
+}) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const headerText = header ? header : __('Edit Start and End Dates and Times');
 	const onChange = useCallback(
@@ -41,5 +47,3 @@ const EditDateRangeButton: React.FC<EditDateButtonProps> = ({ header, onEditHand
 		/>
 	);
 };
-
-export default EditDateRangeButton;

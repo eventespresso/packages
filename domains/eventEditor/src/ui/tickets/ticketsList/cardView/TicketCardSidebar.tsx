@@ -2,16 +2,16 @@ import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { CalendarDateSwitcher, EditDateRangeButton } from '@eventespresso/components';
+import { getTicketStatusTextLabel } from '@eventespresso/helpers';
+import { useTicketsListFilterState } from '@edtrServices/filterState';
 import { getPropsAreEqual } from '@eventespresso/services';
-import { getDatetimeStatusTextLabel } from '@eventespresso/helpers';
-import { useDatesListFilterState } from '@edtrServices/filterState';
-import { useDatetimeMutator } from '@eventespresso/edtr-services';
+import { useTicketMutator } from '@eventespresso/edtr-services';
 import { useTimeZoneTime } from '@eventespresso/services';
-import type { DateItemProps } from '../types';
+import type { TicketItemProps } from '../types';
 
-const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {
-	const { displayStartOrEndDate } = useDatesListFilterState();
-	const { updateEntity } = useDatetimeMutator(date.id);
+const TicketCardSidebar: React.FC<TicketItemProps> = ({ entity: ticket }) => {
+	const { displayStartOrEndDate } = useTicketsListFilterState();
+	const { updateEntity } = useTicketMutator(ticket.id);
 	const { siteTimeToUtc } = useTimeZoneTime();
 
 	const onEditHandler = useCallback(
@@ -24,25 +24,25 @@ const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {
 		},
 		[siteTimeToUtc, updateEntity]
 	);
-	const statusText = getDatetimeStatusTextLabel(date);
+	const statusText = getTicketStatusTextLabel(ticket);
 
-	return date ? (
+	return ticket ? (
 		<>
 			<CalendarDateSwitcher
 				displayDate={displayStartOrEndDate}
-				endDate={date.endDate}
-				startDate={date.startDate}
+				endDate={ticket.endDate}
+				startDate={ticket.startDate}
 			/>
 			<EditDateRangeButton
-				endDate={date.endDate}
-				header={__('Edit Event Date Start and End Dates')}
+				endDate={ticket.endDate}
+				header={__('Edit Ticket Sales Start and End Dates')}
 				onEditHandler={onEditHandler}
-				startDate={date.startDate}
-				tooltip={__('edit start and end dates')}
+				tooltip={__('edit ticket sales start and end dates')}
+				startDate={ticket.startDate}
 			/>
 			<div className={'ee-ticket-status-label'}>{statusText}</div>
 		</>
 	) : null;
 };
 
-export default React.memo(DateCardSidebar, getPropsAreEqual(['entity', 'cacheId']));
+export default React.memo(TicketCardSidebar, getPropsAreEqual(['entity', 'cacheId']));
