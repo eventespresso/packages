@@ -7,7 +7,7 @@ const EntityDetails: React.FC<EntityDetailProps> = ({ render: Component, ...prop
 		return <Component {...props} />;
 	}
 
-	const { id, label, value, className = '' } = props;
+	const { label, value, className = '' } = props;
 
 	return (
 		<div className={`ee-entity-details ${className}`}>
