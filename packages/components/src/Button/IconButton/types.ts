@@ -1,3 +1,4 @@
+import type { ButtonSize, ButtonType } from '../types';
 import type { withLabelProps, withTooltipProps } from '../../../';
 import type { IconButtonProps as IconButtonAdapterProps } from '@eventespresso/adapters';
 
@@ -7,5 +8,7 @@ export interface IconButtonProps
 		Partial<withTooltipProps> {
 	'aria-label'?: string;
 	borderless?: boolean;
+	buttonType?: ButtonType;
+	buttonSize?: ButtonSize;
 	color?: 'white' | 'black';
 }

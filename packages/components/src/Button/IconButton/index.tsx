@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { IconButton as IconButtonAdapter } from '@eventespresso/adapters';
 import type { IconButtonProps } from './types';
+import { ButtonSize, ButtonType } from '../types';
 import { withLabel } from '../../withLabel';
 import { withTooltip } from '../../withTooltip';
 
@@ -13,13 +14,26 @@ type BtnType = React.ComponentType<IconButtonProps>;
 export const iconBtnClassName = 'ee-btn-base ee-icon-button';
 
 const IconButton = forwardRef<typeof IconButtonAdapter, IconButtonProps>(
-	({ borderless, color, icon, onClick, ...props }, ref) => {
+	(
+		{
+			borderless,
+			buttonSize = ButtonSize.DEFAULT,
+			buttonType = ButtonType.DEFAULT,
+			color,
+			icon,
+			onClick,
+			...props
+		},
+		ref
+	) => {
 		const ariaLabel = props['aria-label'] || props.label;
 		const className = classNames(
 			iconBtnClassName,
 			props.className,
 			color && `ee-icon-button-color--${color}`,
-			borderless && 'ee-icon-button--borderless'
+			borderless && 'ee-icon-button--borderless',
+			buttonSize !== ButtonSize.DEFAULT && [`ee-btn--${buttonSize}`],
+			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`]
 		);
 
 		return (

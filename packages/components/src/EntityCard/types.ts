@@ -7,6 +7,7 @@ export interface EntityCardProps {
 	entity: Entity;
 	reverse?: boolean;
 	sidebar: JSX.Element;
+	sidebarClass?: string;
 }
 
 export interface SimpleEntityCardProps {
