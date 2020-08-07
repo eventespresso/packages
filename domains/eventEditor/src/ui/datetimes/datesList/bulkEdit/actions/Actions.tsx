@@ -3,11 +3,11 @@ import { __ } from '@wordpress/i18n';
 import { useDisclosure } from '@chakra-ui/hooks';
 
 import { BulkActions, BulkActionsProps } from '@eventespresso/components';
+import { useMemoStringify } from '@eventespresso/hooks';
 
+import { useDatesListFilterState, DatetimeStatus } from '@edtrServices/filterState';
 import { EditDetails } from '../details';
 import { Delete } from '../delete';
-import { useMemoStringify } from '@eventespresso/hooks';
-import { useDatesListFilterState, DatetimeStatus } from '@edtrServices/filterState';
 
 const Actions: React.FC = () => {
 	const [action, setAction] = useState('');
