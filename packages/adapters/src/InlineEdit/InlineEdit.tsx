@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Editable as ChakraEditable } from '@chakra-ui/core';
 
-import { usePrevious } from '@eventespresso/hooks';
+import { usePrevious, useIfMounted } from '@eventespresso/hooks';
 import InlineEditInput from './InlineEditInput';
 import InlineEditPreview from './InlineEditPreview';
 import type { InlineEditProps } from './types';
@@ -18,13 +18,16 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 	const [prevSubmitValue, setPrevSubmitValue] = useState(currentValue);
 
 	const previousValue = usePrevious(value);
+	const ifMounted = useIfMounted();
 
 	useEffect(() => {
 		// update value if updated from consumer
-		if (value !== previousValue) {
-			setCurrentValue(value);
-			setPrevSubmitValue(value);
-		}
+		ifMounted(() => {
+			if (value !== previousValue) {
+				setCurrentValue(value);
+				setPrevSubmitValue(value);
+			}
+		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);
 

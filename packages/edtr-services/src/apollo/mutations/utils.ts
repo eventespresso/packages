@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
+import { entitiesWithGuIdInArray, entitiesWithGuIdNotInArray } from '@eventespresso/predicates';
 import { shiftDate, AnyObject } from '@eventespresso/services';
 import type { EntityId } from '@eventespresso/data';
 
@@ -66,6 +66,31 @@ export const cacheNodesFromBulkInput = <T extends UpdateDatetimeInput | UpdateTi
 			...node,
 			...input.sharedInput,
 			...uniqueInputs[node.id],
+			cacheId: uuidv4(),
+		};
+	});
+
+	return nodes;
+};
+
+export const cacheNodesFromBulkDelete = <E extends Datetime | Ticket>(
+	entityIds: Array<EntityId>,
+	allEntities: E[],
+	deletePermanently?: boolean
+): E[] => {
+	if (deletePermanently) {
+		return entitiesWithGuIdNotInArray(allEntities, entityIds);
+	}
+
+	// mark all entities as trashed
+	const nodes = allEntities.map<E>((node) => {
+		// if the node is not in selected nodes
+		if (!entityIds.includes(node.id)) {
+			return node;
+		}
+		return {
+			...node,
+			isTrashed: true,
 			cacheId: uuidv4(),
 		};
 	});

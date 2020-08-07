@@ -70,6 +70,8 @@ export { default as useReorderTickets } from './useReorderTickets';
 
 export { default as useBulkEditTickets } from './useBulkEditTickets';
 
+export { default as useBulkDeleteTickets } from './useBulkDeleteTickets';
+
 export { default as useTicketQuantityForCapacity } from './useTicketQuantityForCapacity';
 
 export * from './types';
