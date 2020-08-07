@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 
+import type { EntityId } from '@eventespresso/data';
 import type { DatetimeEdge } from '../../types';
 import { useDatetimes, useDatetimeQueryOptions } from '../../queries';
 import { useUpdateDatetimeList } from '../../../hooks';
-import { EntityId } from '@eventespresso/data';
 import useBulkDeleteEntities from '../useBulkDeleteEntities';
 import { TypeName, cacheNodesFromBulkDelete } from '../';
 
