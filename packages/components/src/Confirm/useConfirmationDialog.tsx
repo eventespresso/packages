@@ -11,7 +11,13 @@ type UseConfirmationDialog = {
 	onOpen: VoidFunction;
 };
 
-const useConfirmationDialog = ({ message, onConfirm, title, ...props }: ConfirmProps): UseConfirmationDialog => {
+const useConfirmationDialog = ({
+	message,
+	onConfirm,
+	title,
+	onCancel,
+	...props
+}: ConfirmProps): UseConfirmationDialog => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const cancelRef = React.useRef();
 	const onClickHandler = useCallback(() => {
@@ -21,10 +27,15 @@ const useConfirmationDialog = ({ message, onConfirm, title, ...props }: ConfirmP
 		onClose();
 	}, [onClose, onConfirm]);
 
+	const onCancelHandler = useCallback(() => {
+		onClose();
+		onCancel?.();
+	}, [onCancel, onClose]);
+
 	const noButtonText = props.noButtonText || __('No');
 	const yesButtonText = props.yesButtonText || __('Yes');
 
-	const cancelButton = <Button buttonText={noButtonText} ref={cancelRef} onClick={onClose} />;
+	const cancelButton = <Button buttonText={noButtonText} ref={cancelRef} onClick={onCancelHandler} />;
 
 	const okButton = (
 		<Button buttonText={yesButtonText} buttonType={ButtonType.ACCENT} onClick={onClickHandler} ml={3} />
@@ -38,7 +49,7 @@ const useConfirmationDialog = ({ message, onConfirm, title, ...props }: ConfirmP
 			isOpen={isOpen}
 			leastDestructiveRef={cancelRef}
 			okButton={okButton}
-			onClose={onClose}
+			onClose={onCancelHandler}
 		/>
 	);
 
