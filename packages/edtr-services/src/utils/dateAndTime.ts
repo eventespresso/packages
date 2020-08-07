@@ -41,16 +41,16 @@ export const processDateAndTime: ProcessDateAndTime = (dateTime, siteTimeToUtc, 
 	const formatStr = `${DEFAULT_DATE_FORMAT} ${DEFAULT_TIME_FORMAT}`;
 
 	if (dateTime?.startDate && dateTime?.startTime) {
-		const startDateStr = `${format(dateTime.startDate as Date, DEFAULT_DATE_FORMAT)} ${format(
-			dateTime.startTime as Date,
+		const startDateStr = `${format(dateTime?.startDate as Date, DEFAULT_DATE_FORMAT)} ${format(
+			dateTime?.startTime as Date,
 			DEFAULT_TIME_FORMAT
 		)}`;
 		startDate = siteTimeToUtc(parse(startDateStr, formatStr, backupDate)).toISOString();
 	}
 
 	if (dateTime?.endDate && dateTime?.endTime) {
-		const endDateStr = `${format(dateTime.endDate as Date, DEFAULT_DATE_FORMAT)} ${format(
-			dateTime.endTime as Date,
+		const endDateStr = `${format(dateTime?.endDate as Date, DEFAULT_DATE_FORMAT)} ${format(
+			dateTime?.endTime as Date,
 			DEFAULT_TIME_FORMAT
 		)}`;
 		endDate = siteTimeToUtc(parse(endDateStr, formatStr, backupDate)).toISOString();
@@ -73,7 +73,7 @@ const transformTime = (value: any, originalValue: any): Date => {
 };
 
 /**
- * sets year, month and date for a time value from the given date object
+ * sets year, month and date for a time value from the given date object.
  */
 export const updateTimeFromDate = (time: Date, date: Date): Date => {
 	// clone to avoid mutating the actual object

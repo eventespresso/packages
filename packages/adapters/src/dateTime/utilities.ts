@@ -30,7 +30,7 @@ const timeFormats = {
 /**
  * converts WordPress date formats to work with react-date-picker
  */
-export const convertWordPressDateFormat = (dateFormat: string) => {
+export const convertWordPressDateFormat = (dateFormat: string): string => {
 	let newFormat = dateFormat;
 	for (const find in dateFormats) {
 		if (dateFormats.hasOwnProperty(find)) {
@@ -38,13 +38,14 @@ export const convertWordPressDateFormat = (dateFormat: string) => {
 			newFormat = newFormat.replace(find, replace);
 		}
 	}
+
 	return newFormat;
 };
 
 /**
  * converts WordPress time formats to work with react-time-picker
  */
-export const convertWordPressTimeFormat = (timeFormat: string) => {
+export const convertWordPressTimeFormat = (timeFormat: string): string => {
 	const is12HourTime = timeFormat.indexOf('g') !== -1 || timeFormat.indexOf('h') !== -1;
 	let newFormat = timeFormat;
 	for (const find in timeFormats) {

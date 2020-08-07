@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import type { TicketItemProps } from '../types';
-import { useTicketMutator } from '@eventespresso/edtr-services';
 import { getPropsAreEqual } from '@eventespresso/services';
 import { CurrencyInput } from '@eventespresso/components';
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
@@ -13,17 +12,15 @@ interface EditablePriceProps extends TicketItemProps {
 }
 
 const EditablePrice: React.FC<EditablePriceProps> = ({ entity: ticket, className }) => {
-	const { updateEntity } = useTicketMutator(ticket.id);
 	const recalculateBasePrice = useRecalculateBasePrice(ticket.id);
 	const onChangePrice = useCallback(
-		({ amount: price }: any): void => {
-			price = parseFloat(price);
+		({ amount }: any): void => {
+			const price = parseFloat(amount);
 			if (price !== ticket.price) {
-				updateEntity({ price, reverseCalculate: true });
-				recalculateBasePrice();
+				recalculateBasePrice(price);
 			}
 		},
-		[recalculateBasePrice, ticket.price, updateEntity]
+		[recalculateBasePrice, ticket.price]
 	);
 
 	const wrapperProps = useMemoStringify({ className });
@@ -36,6 +33,7 @@ const EditablePrice: React.FC<EditablePriceProps> = ({ entity: ticket, className
 			wrapperProps={wrapperProps}
 			onChange={onChangePrice}
 			tag={'h3'}
+			tooltip={__('edit ticket total...')}
 		/>
 	);
 };
