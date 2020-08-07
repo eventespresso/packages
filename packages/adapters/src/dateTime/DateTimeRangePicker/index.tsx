@@ -4,7 +4,7 @@ import { default as ReactDateTimeRangePicker } from '@wojtekmaj/react-datetimera
 import { __ } from '@wordpress/i18n';
 
 import { DateTimeRangePickerProps } from '../types';
-import useConfig from '@appServices/config/useConfig';
+import { useConfig } from '@eventespresso/services';
 import { convertWordPressDateFormat, convertWordPressTimeFormat } from '../utilities';
 
 import '../style.scss';

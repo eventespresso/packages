@@ -2,9 +2,9 @@ import React, { useCallback, useState } from 'react';
 import { format, parse } from 'date-fns';
 import { default as ReactTimePicker } from 'react-time-picker';
 
-import { CloseOutlined } from '@appDisplay/icons/svgs';
+import { CloseOutlined } from '@eventespresso/icons';
 import { TimePickerProps } from '../types';
-import useConfig from '@appServices/config/useConfig';
+import { useConfig } from '@eventespresso/services';
 import { convertWordPressTimeFormat } from '../utilities';
 
 import '../style.scss';

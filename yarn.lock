@@ -4849,7 +4849,7 @@
     text-table "^0.2.0"
     webpack-log "^1.1.2"
 
-"@wojtekmaj/date-utils@^1.0.2":
+"@wojtekmaj/date-utils@^1.0.0", "@wojtekmaj/date-utils@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@wojtekmaj/date-utils/-/date-utils-1.0.2.tgz#31348c572606ac42aaf9b7bb22074fc0b163cc2b"
   integrity sha512-sOu+uH3jzsECLg3YGH++/pLWs8S4eKiXMwMIcotE62CO9AB/HRyhZ0ISwann/30DLnfCw4skvr8h9gF3aafhPA==
@@ -17039,6 +17039,14 @@ react-clientside-effect@^1.2.2:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
+react-clock@^2.3.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-clock/-/react-clock-2.4.0.tgz#39540f84e16f8b2c2137640f535c162041bd2a1e"
+  integrity sha512-BlzkzbhLEzLwdqtl+PAPvzMhRvg4xyxsiQnGpb+ZzL4YY5iFQgJa7C48EUGhbpnTtNwyMuaBG4KeYmUuUlTQUQ==
+  dependencies:
+    merge-class-names "^1.1.1"
+    prop-types "^15.6.0"
+
 react-date-picker@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/react-date-picker/-/react-date-picker-8.0.1.tgz#d91a01c6904c5ebaf03fb70848f31b1d6d7e9b68"
@@ -17520,6 +17528,20 @@ react-textarea-autosize@^7.1.0:
   dependencies:
     "@babel/runtime" "^7.1.2"
     prop-types "^15.6.0"
+
+react-time-picker@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-time-picker/-/react-time-picker-4.0.1.tgz#ec3ee385377c8c6c8271a2dd1178452f6b11ad84"
+  integrity sha512-qnZDlXXF6AItplelYXMUsHar05VevaYY+SuKIacTZ5YJwyj74ZpScHkolNvcJgo6YYzdX1QC6iNprzcuPHYt7Q==
+  dependencies:
+    "@wojtekmaj/date-utils" "^1.0.0"
+    get-user-locale "^1.2.0"
+    make-event-props "^1.1.0"
+    merge-class-names "^1.1.1"
+    prop-types "^15.6.0"
+    react-clock "^2.3.0"
+    react-fit "^1.0.3"
+    update-input-width "^1.1.1"
 
 react-toastify@^6.0.6:
   version "6.0.8"
