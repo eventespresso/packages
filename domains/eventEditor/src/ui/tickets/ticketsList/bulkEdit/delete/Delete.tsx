@@ -10,7 +10,7 @@ const Delete: React.FC<OnDeleteProps> = ({ areTrashedTickets, onClose }) => {
 
 	const { confirmationDialog, onOpen } = useConfirmationDialog({
 		message: areTrashedTickets
-			? __('Are you sure you want to delete these tickets premanently?')
+			? __('Are you sure you want to permanently delete these tickets? This action can NOT be undone!')
 			: __('Are you sure you want to trash these tickets?'),
 		title: areTrashedTickets ? __('Delete tickets permanently') : __('Trash tickets'),
 		onConfirm: onDelete,

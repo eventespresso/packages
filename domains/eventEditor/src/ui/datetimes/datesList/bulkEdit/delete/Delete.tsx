@@ -10,7 +10,7 @@ const Delete: React.FC<OnDeleteProps> = ({ areTrashedDates, onClose }) => {
 
 	const { confirmationDialog, onOpen } = useConfirmationDialog({
 		message: areTrashedDates
-			? __('Are you sure you want to delete these datetimes premanently?')
+			? __('Are you sure you want to permanently delete these datetimes? This action can NOT be undone!')
 			: __('Are you sure you want to trash these datetimes?'),
 		title: areTrashedDates ? __('Delete datetimes permanently') : __('Trash datetimes'),
 		onConfirm: onDelete,
