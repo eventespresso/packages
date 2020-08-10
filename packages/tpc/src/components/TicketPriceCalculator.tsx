@@ -3,6 +3,8 @@ import React from 'react';
 import { ButtonRow, DebugInfo } from '@eventespresso/components';
 
 import DefaultPricesInfo from './DefaultPricesInfo';
+import DefaultTaxesInfo from './DefaultTaxesInfo';
+
 import DeleteAllPricesButton from '../buttons/DeleteAllPricesButton';
 import NoPricesBanner from './NoPricesBanner';
 import Table from './table/Table';
@@ -34,6 +36,7 @@ const TicketPriceCalculator: React.FC<TicketPriceCalculatorProps> = ({ context }
 	return (
 		<>
 			<Table prices={dataState.prices} />
+			<DefaultTaxesInfo />
 
 			<ButtonRow rightAligned>
 				<DebugInfo data={dataState} />

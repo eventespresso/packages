@@ -16,7 +16,7 @@ const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime
 
 	const tooltip = __('edit title...');
 
-	const dateName = datetime.name ? datetime.name : tooltip;
+	const dateName = datetime.name || tooltip;
 
 	const lineCount = view === 'card' && 2;
 
