@@ -6,10 +6,11 @@ import { IconButton, EntityListItemProps, ItemCount } from '@eventespresso/compo
 import { useRelatedDatetimes } from '@eventespresso/edtr-services';
 import { useTicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager';
 import { TypeName } from '@eventespresso/services';
-import type { Ticket } from '@eventespresso/edtr-services';
-import type { TooltipProps } from '@eventespresso/adapters';
 import { withIsLoaded } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
+
+import type { Ticket } from '@eventespresso/edtr-services';
+import type { TooltipProps } from '@eventespresso/adapters';
 
 const AssignDatesButton: React.FC<EntityListItemProps<Ticket>> = React.memo(({ entity }) => {
 	const { ModalContainer, onOpen, ...disclosure } = useTicketAssignmentsManager();
@@ -18,12 +19,11 @@ const AssignDatesButton: React.FC<EntityListItemProps<Ticket>> = React.memo(({ e
 		entity: 'tickets',
 		entityId: entity.id,
 	});
+
 	const count = relatedDatetimes.length;
 
-	const relatedDatetimeDbIds = relatedDatetimes.map(({ dbId }) => dbId);
-
 	const title = count
-		? `${__('Related Dates:')} ${relatedDatetimeDbIds.join(', ')}`
+		? __('Number of related dates')
 		: __(
 				'There are no event dates assigned to this ticket. Please click the calendar icon to update the assignments.'
 		  );

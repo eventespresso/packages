@@ -9,6 +9,7 @@ type ESM = EdtrStateManager;
 const initialState: EdtrState = {
 	visibleDatetimeIds: [],
 	visibleTicketIds: [],
+	pricesPollInterval: 0, // no polling by default
 };
 
 const useEdtrStateManager = (): ESM => {
@@ -30,14 +31,22 @@ const useEdtrStateManager = (): ESM => {
 		});
 	}, []);
 
+	const setPricesPollInterval: ESM['setPricesPollInterval'] = useCallback((pricesPollInterval) => {
+		dispatch({
+			type: 'SET_PRICES_POLL_INTERVAL',
+			pricesPollInterval,
+		});
+	}, []);
+
 	return useMemo(
 		() => ({
 			...state,
 			getState,
 			setVisibleDatetimeIds,
 			setVisibleTicketIds,
+			setPricesPollInterval,
 		}),
-		[getState, setVisibleDatetimeIds, setVisibleTicketIds, state]
+		[getState, setPricesPollInterval, setVisibleDatetimeIds, setVisibleTicketIds, state]
 	);
 };
 
