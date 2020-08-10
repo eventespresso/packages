@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import invariant from 'invariant';
 
 import type { EdtrStateManager } from './types';
-import { EdtrStateContext } from '@edtrServices/context';
+import { EdtrStateContext } from '../../context/';
 
 const useEdtrState = (): EdtrStateManager => {
 	const value = useContext(EdtrStateContext);

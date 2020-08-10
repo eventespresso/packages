@@ -1,4 +1,4 @@
-import { WriteQueryOptions, useApolloClient } from '@eventespresso/data';
+import { WriteQueryOptions, useApolloClient } from '../../../';
 import type { GeneralSettingsData } from '@eventespresso/services';
 
 import useGeneralSettingsQueryOptions from '../useGeneralSettingsQueryOptions';

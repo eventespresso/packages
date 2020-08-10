@@ -1,7 +1,7 @@
 import React from 'react';
 
-import type { AnyObject } from '@eventespresso/services';
 import { BulkEditProvider } from './BulkEditProvider';
+import type { AnyObject } from '../';
 
 export const withBulkEdit = <P extends AnyObject>(Component: React.ComponentType<P>): React.FC<P> => {
 	const WrappedComponent: React.FC<P> = (props) => {

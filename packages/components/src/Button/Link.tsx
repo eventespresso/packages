@@ -5,21 +5,30 @@ import { Tooltip } from '@eventespresso/adapters';
 import type { LinkProps } from './types';
 import './style.scss';
 
-const Link: React.FC<LinkProps> = ({ external, href, icon, tooltip, tooltipProps, ...props }) => {
-	const className = classNames('ee-btn-base ee-icon-button ee-icon-button--borderless', props.className);
+const Link: React.FC<LinkProps> = ({ children, href, icon, tooltip, tooltipProps, ...props }) => {
+	const className = classNames(
+		props.className,
+		'ee-btn-base',
+		'ee-icon-button',
+		'ee-icon-button--link',
+		'ee-icon-button--borderless'
+	);
 
-	if (external && icon) {
+	const link = (
+		<a href={href} className={className} target='_blank' rel='noopener noreferrer'>
+			{icon ? icon : children}
+		</a>
+	);
+
+	if (tooltip) {
 		return (
 			<Tooltip tooltip={tooltip} {...tooltipProps}>
-				<a href={href} className={className} target={'_blank'} rel={'noopener noreferrer'}>
-					{icon}
-				</a>
+				{link}
 			</Tooltip>
 		);
 	}
 
-	// this might be extended later when we'll use react-router
-	return null;
+	return link;
 };
 
 export default Link;

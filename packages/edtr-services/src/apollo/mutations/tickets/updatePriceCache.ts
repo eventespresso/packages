@@ -12,6 +12,7 @@ const updatePriceCache = ({ proxy, prices = null, ticketIn, ticketId, action }: 
 		variables: {
 			where: {
 				ticketIn: sortBy(identity, ticketIn),
+				includeDefaultPrices: true,
 			},
 		},
 	};
@@ -67,6 +68,7 @@ const updatePriceCache = ({ proxy, prices = null, ticketIn, ticketId, action }: 
 		variables: {
 			where: {
 				ticketIn: sortBy(identity, newTicketIn),
+				includeDefaultPrices: true,
 			},
 		},
 	};

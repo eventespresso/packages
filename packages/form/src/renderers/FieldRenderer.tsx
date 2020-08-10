@@ -2,9 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { FormControl, FormHelperText, FormLabel } from '@eventespresso/adapters';
-import { InfoCircleOutlined } from '@eventespresso/icons';
+import { HelpIcon } from '@eventespresso/icons';
 import { reactFinalFormField } from '@eventespresso/services';
-import { Tooltip } from '@eventespresso/adapters';
 
 import ErrorMessage from './ErrorMessage';
 import type { FieldRendererProps } from '../types';
@@ -22,7 +21,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 
 	const className = classNames(
 		'ee-input__wrapper ee-form-item',
-		`form-item__${rest.fieldType}`,
+		`ee-form-item__${rest.fieldType}`,
 		formControlProps?.className
 	);
 
@@ -37,12 +36,8 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	return (
 		<FormControl className={className} isInvalid={Boolean(errorMessage)} isRequired={required}>
 			<FormLabel htmlFor={props.input.name}>
-				{label && label}
-				{info && (
-					<Tooltip placement='right' tooltip={info}>
-						<InfoCircleOutlined />
-					</Tooltip>
-				)}
+				{label}
+				{info && <HelpIcon clickable tooltipText={info} />}
 			</FormLabel>
 			{before}
 			<MappedField aria-label={label} aria-describedby={tooltipKey} {...rest} />
@@ -52,4 +47,5 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 		</FormControl>
 	);
 };
+
 export default React.memo(FieldRenderer, reactFinalFormField);

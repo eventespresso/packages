@@ -39,6 +39,7 @@ export * from './SearchInput';
 export * from './SelectInput';
 export * from './Stepper';
 export * from './SwitchInput';
+export * from './TimePicker';
 export * from './TimezoneTimeInfo';
 export * from './withLabel';
 export * from './withTooltip';

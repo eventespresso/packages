@@ -3,7 +3,7 @@ import { keys, pathOr, pickBy, hasPath } from 'ramda';
 
 import { useRelations } from '@eventespresso/services';
 import { Ticket } from '@eventespresso/edtr-services';
-import { useEdtrState } from '@edtrHooks/edtrState';
+import { useEdtrState } from '@eventespresso/edtr-services';
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
 
 type IsChainedFilterCallback = (args: { isChained: boolean; tickets: Array<Ticket> }) => Array<Ticket>;

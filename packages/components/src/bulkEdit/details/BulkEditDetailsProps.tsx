@@ -1,10 +1,12 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
+import { EspressoForm } from '@eventespresso/form';
+import type { EspressoFormProps } from '@eventespresso/form';
+
 import { EntityEditModal } from '../../';
-import { EspressoForm, EspressoFormProps } from '@eventespresso/form';
-import Warning from './Warning';
 import FormWrapper from './FormWrapper';
+import Warning from './Warning';
 
 import './styles.scss';
 

@@ -3,7 +3,7 @@ import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
-import { Link } from '@eventespresso/components';
+import { Link } from '../../';
 import { EntityDbId } from '@eventespresso/data';
 import { useConfig } from '@eventespresso/services';
 import { getAdminUrl, useEventId } from '@eventespresso/edtr-services';

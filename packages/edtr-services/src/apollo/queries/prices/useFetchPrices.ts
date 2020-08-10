@@ -6,11 +6,15 @@ import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import usePriceQueryOptions from './usePriceQueryOptions';
 import { FetchQueryResult } from '@eventespresso/data';
+import { useEdtrState } from '../../../hooks/';
+import { usePrevious } from '@eventespresso/hooks';
 import type { PricesList } from '../../types';
 
 const useFetchPrices = (skipFetch: boolean = null): FetchQueryResult<PricesList> => {
 	const { setIsLoading, setIsLoaded, setIsError, isLoaded } = useStatus();
 	const { query, ...options } = usePriceQueryOptions();
+	const { pricesPollInterval: pollInterval } = useEdtrState();
+	const prevPollInterval = usePrevious(pollInterval);
 
 	const { ticketIn } = options.variables.where;
 	// do not fetch if we don't have any tickets
@@ -22,7 +26,7 @@ const useFetchPrices = (skipFetch: boolean = null): FetchQueryResult<PricesList>
 
 	const dismissLoading = (): void => toaster.dismiss(toastId.current);
 
-	const { loading, ...result } = useQuery<PricesList>(query, {
+	const { data, error, loading, startPolling, stopPolling } = useQuery<PricesList>(query, {
 		...options,
 		skip,
 		onCompleted: (): void => {
@@ -38,6 +42,25 @@ const useFetchPrices = (skipFetch: boolean = null): FetchQueryResult<PricesList>
 	});
 
 	useEffect(() => {
+		// if poll interval has changed
+		if (pollInterval !== prevPollInterval) {
+			// if poll interval has been set/changed
+			if (pollInterval > 0) {
+				// first stop the polling
+				stopPolling();
+				// start polling with new/fresh value
+				startPolling(pollInterval);
+			} else {
+				// Since poll interval has changed to falsy
+				// We need to stop ponting our missiles towards the target
+				stopPolling();
+			}
+		}
+		// Make sure we don't leave any traces for our enemy after unmount
+		return stopPolling;
+	}, [pollInterval, prevPollInterval, startPolling, stopPolling]);
+
+	useEffect(() => {
 		if (loading) {
 			toastId.current = toaster.loading({ message: __('initializing prices') });
 		}
@@ -48,7 +71,8 @@ const useFetchPrices = (skipFetch: boolean = null): FetchQueryResult<PricesList>
 	}, [loading]);
 
 	return {
-		...result,
+		data,
+		error,
 		loading,
 	};
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Datepicker } from '@eventespresso/adapters';
+import { DatePicker as DatePickerAdapter } from '@eventespresso/adapters';
 import type { FieldRendererProps } from '../types';
 
 const DatePicker: React.FC<FieldRendererProps> = ({ input: { onChange, ...input }, meta, ...rest }) => {
-	return <Datepicker {...input} {...rest} onChangeValue={onChange} />;
+	return <DatePickerAdapter {...input} {...rest} onChangeValue={onChange} />;
 };
 
 export default DatePicker;

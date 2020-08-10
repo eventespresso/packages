@@ -3,7 +3,7 @@ import { __, sprintf } from '@wordpress/i18n';
 
 import { getDefaultTaxes } from '@eventespresso/predicates';
 import { useDataState } from '../data';
-import { useEdtrState } from '@edtrHooks/edtrState';
+import { useEdtrState } from '@eventespresso/edtr-services';
 import { usePrices } from '@eventespresso/edtr-services';
 
 const DefaultTaxesInfo: React.FC = () => {

@@ -1,3 +1,5 @@
+@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+
 .ee-editor-details-reg-url-link {
 	align-items: center;
 	border-color: transparent;
@@ -18,9 +20,8 @@
 	width: var(--ee-icon-button-size);
 
 	&.ee-btn-base {
-		margin: 0 0 -2rem -0.25rem;
+		margin: 0;
 		position: relative;
-		top: 0.25rem;
 	}
 
 	path {

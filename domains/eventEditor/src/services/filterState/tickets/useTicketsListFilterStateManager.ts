@@ -4,7 +4,7 @@ import reducer from './reducer';
 import { TicketsFilterState, TicketsFilterStateManager, TicketsSales, TicketsStatus } from './types';
 import { DisplayStartOrEndDate, SortBy } from '@eventespresso/edtr-services';
 import { useEntityListFilterStateManager } from '@eventespresso/components';
-import { useEdtrState } from '@edtrHooks/edtrState';
+import { useEdtrState } from '@eventespresso/edtr-services';
 
 type FSM = TicketsFilterStateManager;
 
@@ -21,7 +21,8 @@ const useTicketsListFilterStateManager = (): FSM => {
 
 	const { visibleDatetimeIds } = useEdtrState();
 
-	const entityFilterState = useEntityListFilterStateManager<SortBy>('date');
+	const entityFilterState = useEntityListFilterStateManager<SortBy>('order');
+
 	const { setPageNumber } = entityFilterState;
 
 	// subscribe to visible dates for isChained

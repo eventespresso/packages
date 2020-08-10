@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { __ } from '@wordpress/i18n';
 
 import { parseInfinity } from '@eventespresso/services';
 import { InlineEditInfinity, TextProps } from '@eventespresso/components';
@@ -29,7 +30,13 @@ const DateCapacity: React.FC<DateItemProps> = ({ entity: datetime }) => {
 		[datetime.capacity, updateEntity, ticketQuantityForCapacity, updateRelatedTickets]
 	);
 
-	return <InlineEditInfinity onChangeValue={onChange} value={`${datetime.capacity}`} />;
+	return (
+		<InlineEditInfinity
+			onChangeValue={onChange}
+			tooltip={__('edit capacity (registration limit)...')}
+			value={`${datetime.capacity}`}
+		/>
+	);
 };
 
 export default React.memo(DateCapacity, getPropsAreEqual(['entity']));

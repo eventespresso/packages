@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { parsedAmount, useMoneyDisplay } from '@eventespresso/services';
 import { InlineEditText } from '../InlineEditInput';
 
-import { CurrencyInputProps } from './types';
+import type { CurrencyInputProps } from './types';
 
 import './style.scss';
 

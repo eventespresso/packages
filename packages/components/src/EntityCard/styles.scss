@@ -1,29 +1,31 @@
+@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+
 .entity-card {
 	--ee-sidebar-width: 9rem;
-	--ee-menu-width: 4rem;
+	--ee-menu-width: 42px;
 
 	align-items: stretch;
 	box-sizing: border-box;
 	display: flex;
-	flex-flow: row nowrap;
 	height: 100%;
-	justify-content: space-between;
-
-	&--reverse-layout {
-		flex-flow: row-reverse nowrap;
-	}
 
 	&__sidebar {
-		align-items: stretch;
-		box-sizing: border-box;
 		padding: 0;
-		min-width: var(--ee-sidebar-width);
+		width: var(--ee-sidebar-width);
 
-		.ee-biggie-calendar-date__footer {
+		.ee-ticket-status-label {
 			font-size: var(--ee-font-size-default);
 			font-weight: bolder;
 			letter-spacing: 1px;
+			padding: 0 0 var(--ee-padding-smaller);
+			text-align: center;
 			text-transform: uppercase;
+		}
+
+		.ee-edit-calendar-date-range {
+			display: flex;
+			justify-content: center;
+			padding: 0 0 var(--ee-padding-nano);
 		}
 	}
 
@@ -56,15 +58,15 @@
 				color: var(--ee-default-text-color);
 				font-size: var(--ee-font-size-bigger);
 				font-weight: bold;
+				height: 2rem;
 				letter-spacing: var(--ee-letter-spacing-font-size-huge);
 				line-height: calc(var(--ee-line-height-modifier) * 0.75);
-				margin: var(--ee-margin-micro) 0 var(--ee-margin-smaller);
+				margin: 0 0 var(--ee-margin-smaller);
 				padding: 0;
 				text-align: center;
 				width: 100%;
-
 				.ee-input-inline {
-					transform: translateY(-25%);
+					margin: calc(var(--ee-margin-tiny) * -1) 0 0;
 				}
 			}
 
@@ -76,10 +78,9 @@
 				text-align: center;
 				width: 100%;
 				z-index: 1;
-
 				textarea {
 					background-color: white;
-					margin: 0;
+					margin: calc(var(--ee-margin-tiny) * -1) 0 0;
 					position: absolute;
 					right: 0;
 					top: 0;
@@ -108,18 +109,19 @@
 	}
 
 	&__menu {
-		align-items: stretch;
-		box-sizing: border-box;
-		flex: 0 0 var(--ee-menu-width);
-		padding: var(--ee-padding-micro);
+		box-sizing: content-box;
+		padding: var(--ee-padding-tiny);
+		text-align: center;
+		width: var(--ee-menu-width);
 	}
 
-	@media only screen and (max-width: 480px) {
+	@include max480px {
 		flex-flow: column nowrap;
 
 		&__menu,
 		&__sidebar,
 		&__details-wrapper {
+			padding-bottom: 0;
 			width: 100%;
 		}
 

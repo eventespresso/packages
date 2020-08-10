@@ -19,6 +19,7 @@ const usePriceQueryOptions = (ticketIn: EntityId[] = []): ReadQueryOptions => {
 		variables: {
 			where: {
 				ticketIn: newTicketIn,
+				includeDefaultPrices: true,
 			},
 		},
 	};

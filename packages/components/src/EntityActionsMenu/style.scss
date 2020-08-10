@@ -1,13 +1,30 @@
+@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+
 .ee-entity-actions-menu {
 	display: flex;
 
 	&--horizontal {
 		flex-direction: row;
-		justify-content: center;
+		justify-content: flex-start;
+
+		.ee-btn-base.ee-icon-button {
+			margin: 0 var(--ee-margin-tiny) 0 0;
+		}
 	}
 
 	&--vertical {
+		align-items: center;
 		flex-direction: column;
+		text-align: center;
+
+		@include max480px {
+			flex-direction: row;
+			justify-content: center;
+		}
+
+		.ee-btn-base.ee-icon-button {
+			margin: 0 0 var(--ee-margin-tiny);
+		}
 	}
 
 	.ee-btn-default.ee-btn:not([disabled]),

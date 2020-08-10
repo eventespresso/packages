@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnyObject } from '@appServices/utilities/types';
+import type { AnyObject } from '@eventespresso/services';
 
 /* alignments correspond to CSS flexbox justify-content values */
 export type Alignments =

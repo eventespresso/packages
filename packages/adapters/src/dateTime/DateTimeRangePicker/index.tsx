@@ -1,6 +1,5 @@
 import React from 'react';
-// @ts-ignore
-import { default as ReactDateTimeRangePicker } from '@wojtekmaj/react-datetimerange-picker';
+import ReactDateTimeRangePicker from '@wojtekmaj/react-datetimerange-picker';
 import { __ } from '@wordpress/i18n';
 
 import { DateTimeRangePickerProps } from '../types';

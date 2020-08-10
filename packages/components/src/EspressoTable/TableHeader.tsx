@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { isFunction } from 'lodash';
-import warning from 'warning';
+import invariant from 'invariant';
 
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
@@ -29,9 +28,9 @@ const TableHeader: React.FC<TableHeaderProps> = ({ headerRows, showDragHandle, t
 					rowType={RowType.header}
 				>
 					{headerRow.cells.map((column, col) => {
-						warning(column.hasOwnProperty('value'), `Missing "value" property for header column ${col}.`);
+						invariant(column.hasOwnProperty('value'), `Missing "value" property for header column ${col}.`);
 
-						return isFunction(column.render) ? (
+						return typeof column?.render === 'function' ? (
 							column.render({ row, col, column })
 						) : (
 							<TableHeaderCell

@@ -9,7 +9,7 @@
 		margin: var(--ee-margin-nano) var(--ee-margin-nano) var(--ee-margin-smaller) var(--ee-margin-smaller);
 	}
 
-	@include max782px {
+	@include max600px {
 		align-items: stretch;
 		display: flex;
 		flex-direction: row;
@@ -17,11 +17,15 @@
 		margin: var(--ee-margin-nano) var(--ee-margin-nano) var(--ee-margin-smaller);
 	}
 
+	@include max480px {
+		margin-bottom: var(--ee-margin-tiny);
+	}
+
 	.ee-btn-base.ee-btn {
 		box-shadow: none !important;
 		margin: 0 !important;
 
-		@include max782px {
+		@include max600px {
 			flex-grow: 1;
 		}
 

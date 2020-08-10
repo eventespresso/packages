@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 
-import { EdtrStateManager, useEdtrStateManager } from '@edtrHooks/edtrState';
+import { EdtrStateManager, useEdtrStateManager } from '../../hooks';
 
 const EdtrStateContext = createContext<EdtrStateManager>(null);
 

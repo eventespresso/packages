@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Editable as ChakraEditable } from '@chakra-ui/core';
 
-import type { InlineEditProps } from './types';
+import { usePrevious } from '@eventespresso/hooks';
 import InlineEditInput from './InlineEditInput';
 import InlineEditPreview from './InlineEditPreview';
-import { usePrevious } from '@eventespresso/hooks';
+import type { InlineEditProps } from './types';
 
 const InlineEdit: React.FC<InlineEditProps> = ({
 	defaultValue,

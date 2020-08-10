@@ -187,7 +187,7 @@ class Barista
 				$asset        = file_exists($asset_file) ? require($asset_file) : null;
 				$dependencies = isset($asset['dependencies']) ? $asset['dependencies'] : $dependencies;
 			}
-
+			
 			// remove cyclical dependencies, if any
 			if (($key = array_search($handle, $dependencies, true)) !== false) {
 				unset($dependencies[ $key ]);

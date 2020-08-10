@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { isDefault } from '@eventespresso/predicates';
 import { useConfig } from '@eventespresso/services';
-import { useEdtrState } from '@edtrHooks/edtrState';
+import { useEdtrState } from '@eventespresso/edtr-services';
 import { useDataState } from '../data';
 
 const DefaultPricesInfo: React.FC = () => {

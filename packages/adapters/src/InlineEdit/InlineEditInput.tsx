@@ -1,8 +1,8 @@
 import React from 'react';
 import { EditableInput as ChakraEditableInput } from '@chakra-ui/core';
-import type { PseudoBoxProps } from '@chakra-ui/core';
 import { ESCAPE, ENTER } from '@wordpress/keycodes';
 
+import type { PseudoBoxProps } from '@chakra-ui/core';
 import type { InlineEditInputProps } from './types';
 
 /**

@@ -19,8 +19,7 @@ const EditableDesc: React.FC<EditableDescProps> = ({ entity: ticket, className }
 				updateEntity({ description });
 			}
 		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[ticket.cacheId, updateEntity]
+		[ticket.description, updateEntity]
 	);
 
 	const tooltip = __('edit description...');

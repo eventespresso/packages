@@ -24,8 +24,11 @@ export interface ButtonProps extends ButtonAdapterProps, Partial<withLabelProps>
 	active?: boolean;
 	buttonType?: ButtonType | 'accent' | 'default' | 'minimal' | 'primary' | 'secondary';
 	buttonSize?: ButtonSize;
+	className?: string;
 	noMargin?: boolean;
 	noHorizontalMargin?: boolean;
+	onClick?: React.MouseEventHandler;
+	onKeyPress?: React.KeyboardEventHandler;
 }
 
 export interface LinkProps extends Partial<withTooltipProps> {

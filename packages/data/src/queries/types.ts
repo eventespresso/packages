@@ -2,7 +2,7 @@ import type { QueryHookOptions } from '@apollo/react-hooks';
 import type { DocumentNode } from 'graphql';
 import type { OperationVariables } from 'apollo-client';
 import type { DataProxy } from 'apollo-cache';
-import type { QueryResult } from '@apollo/react-common';
+import type { ApolloError } from 'apollo-client';
 
 export interface EntityQueryArgs<WhereArgs> {
 	after?: string;
@@ -26,7 +26,11 @@ type EntityQueryOrderByItem<Field> = {
 
 export type EntityQueryOrderBy<Field> = Array<EntityQueryOrderByItem<Field>>;
 
-export interface FetchQueryResult<Data, TVariables = OperationVariables> extends QueryResult<Data, TVariables> {}
+export interface FetchQueryResult<Data> {
+	data: Data;
+	error?: ApolloError;
+	loading: boolean;
+}
 
 export type CacheUpdaterFn<TData = any> = (writeOptions?: WriteQueryOptions<TData>) => void;
 

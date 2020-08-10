@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { format, parse } from 'date-fns';
-import { default as ReactTimePicker } from 'react-time-picker';
+import ReactTimePicker from 'react-time-picker';
 
 import { CloseOutlined } from '@eventespresso/icons';
-import { TimePickerProps } from '../types';
 import { useConfig } from '@eventespresso/services';
 import { convertWordPressTimeFormat } from '../utilities';
 
+import type { TimePickerProps } from '../types';
 import '../style.scss';
 
 const TimePicker: React.FC<TimePickerProps> = ({ onChange, onChangeValue, value, ...props }) => {

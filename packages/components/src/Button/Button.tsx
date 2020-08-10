@@ -37,15 +37,10 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 		const className = classNames(
 			props.className,
 			active && 'ee-btn--is-active',
-			noMargin && 'ee-btn--no-margin',
-			noHorizontalMargin && 'ee-btn--no-horizontal-margin',
+			buttonSize !== ButtonSize.DEFAULT && [`ee-btn--${buttonSize}`],
+			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],
 			hasIconClassName,
-			{
-				[`ee-btn--${buttonType}`]: buttonType !== ButtonType.DEFAULT,
-				[`ee-btn--${buttonSize}`]: buttonSize !== ButtonSize.DEFAULT,
-
-				'ee-noIcon': !icon,
-			}
+			!icon && 'ee-noIcon'
 		);
 
 		return (

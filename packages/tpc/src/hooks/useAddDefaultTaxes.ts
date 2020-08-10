@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import { usePrices } from '@eventespresso/edtr-services';
 import { useDataState } from '../data';
-import { useEdtrState } from '@edtrHooks/edtrState';
+import { useEdtrState } from '@eventespresso/edtr-services';
 
 import { getDefaultTaxes, sortByPriceOrderIdAsc, getGuids } from '@eventespresso/predicates';
 import usePriceToTpcModifier from './usePriceToTpcModifier';

@@ -3,7 +3,7 @@ import type { AnyObject } from '@eventespresso/services';
 import type { CommonInputProps } from '../types';
 
 export interface DatePickerProps
-	extends Omit<ReactDatePickerProps, 'onChange' | 'value'>,
+	extends Omit<ReactDatePickerProps, 'onChange' | 'value' | 'format'>, // this is conflicting with FieldRendererProps, this is why format has been omitted, to be improved
 		CommonInputProps<HTMLInputElement, Date> {
 	className?: string;
 	onChange?: (date: Date) => void;
@@ -19,7 +19,9 @@ export interface DateTimeRangePickerProps
 	startDate: string;
 }
 
-export interface TimePickerProps extends ReactTimePickerProps, CommonInputProps<HTMLInputElement, Date> {
+export interface TimePickerProps
+	extends Omit<ReactTimePickerProps, 'format'>,
+		CommonInputProps<HTMLInputElement, Date> {
 	className?: string;
 	onChange?: (time: string) => void;
 	value?: Date;

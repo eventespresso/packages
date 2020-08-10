@@ -12,7 +12,7 @@ import {
 } from './index';
 import { nodes as datetimes } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
 import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
-import { getGuids } from '@eventespresso/predicates';
+import { getGuids } from '../';
 
 describe('entityDbId', () => {
 	it('should return dbId for each entity', () => {
