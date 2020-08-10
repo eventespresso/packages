@@ -14,7 +14,11 @@ interface EditableNameProps extends DateItemProps {
 const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime, view = 'card' }) => {
 	const { updateEntity } = useDatetimeMutator(datetime.id);
 
-	const dateName = datetime.name ? datetime.name : __('Edit title...');
+	const tooltip = __('edit title...');
+
+	const dateName = datetime.name ? datetime.name : tooltip;
+
+	const lineCount = view === 'card' && 2;
 
 	const onChangeName = useCallback(
 		(name: string): void => {
@@ -27,10 +31,12 @@ const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime
 
 	return (
 		<InlineEditText
-			fitText={view === 'card'}
-			tag={view === 'table' ? 'p' : 'h4'}
 			className={className}
+			fitText={view === 'card'}
+			lineCount={lineCount}
 			onChangeValue={onChangeName}
+			tag={view === 'table' ? 'p' : 'h4'}
+			tooltip={tooltip}
 			value={dateName}
 		/>
 	);

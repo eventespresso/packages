@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { __ } from '@wordpress/i18n';
 
 import { parseInfinity, getPropsAreEqual } from '@eventespresso/services';
 import { InlineEditInfinity, TextProps } from '@eventespresso/components';
@@ -18,7 +19,13 @@ const TicketQuantity: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 		[ticket.quantity, updateEntity]
 	);
 
-	return <InlineEditInfinity onChangeValue={onChange} value={`${ticket.quantity}`} />;
+	return (
+		<InlineEditInfinity
+			onChangeValue={onChange}
+			value={`${ticket.quantity}`}
+			tooltip={__('edit quantity of tickets available...')}
+		/>
+	);
 };
 
 export default React.memo(TicketQuantity, getPropsAreEqual(['entity', 'cacheId']));

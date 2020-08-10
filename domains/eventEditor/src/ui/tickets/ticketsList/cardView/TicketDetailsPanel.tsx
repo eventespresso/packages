@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import TicketRegistrationsLink from '../../TicketRegistrationsLink';
-import { EntityDetailsPanel } from '@eventespresso/components';
+import { EntityDetailsPanel, EntityDetailsPanelSold } from '@eventespresso/components';
 import TicketQuantity from './TicketQuantity';
 import { getPropsAreEqual } from '@eventespresso/services';
 import type { TicketItemProps } from '../types';
@@ -12,7 +12,7 @@ const TicketDetailsPanel: React.FC<TicketItemProps> = React.memo(({ entity: tick
 		{
 			id: 'ee-ticket-sold',
 			label: __('sold'),
-			value: ticket.sold,
+			value: <EntityDetailsPanelSold dbId={ticket.dbId} sold={ticket.sold} type='ticket' />,
 		},
 		{
 			id: 'ee-ticket-qty',
@@ -25,6 +25,7 @@ const TicketDetailsPanel: React.FC<TicketItemProps> = React.memo(({ entity: tick
 			value: <TicketRegistrationsLink ticket={ticket} />,
 		},
 	];
+
 	return <EntityDetailsPanel details={details} className='ee-editor-ticket-details-sold-rsrvd-qty-div' />;
 });
 
