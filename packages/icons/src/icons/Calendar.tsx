@@ -7,8 +7,9 @@ const SvgCalendar = (props: IconProps): JSX.Element => {
 		<svg
 			aria-hidden='true'
 			className='calendar_svg__css-1pmpdjw calendar_svg__dashicon calendar_svg__dashicons-calendar calendar_svg__espresso-icon'
-			height={20}
-			width={20}
+			height={'1.25em'}
+			viewBox={'0 0 20 20'}
+			width={'1.25em'}
 			data-custom-icon='true'
 			{...props}
 		>
