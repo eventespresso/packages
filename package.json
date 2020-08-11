@@ -16,7 +16,7 @@
 		"dev:core": "yarn dev:watch --domains \"core\"",
 		"dev:rem": "yarn dev:watch --domains \"eventEditor,rem\"",
 		"dev:watch": "node scripts/watch.js",
-		"generate-icons": "npx @svgr/cli --typescript --template packages/icons/scripts/template.js -d packages/icons/src/icons packages/icons/src/svg",
+		"generate:icons": "npx @svgr/cli --typescript --template packages/icons/scripts/template.js -d packages/icons/src/icons packages/icons/src/svg",
 		"start": "node scripts/start.js",
 		"storybook": "yarn workspace @eventespresso/storybook storybook",
 		"test-unit": "node scripts/test.js",
