@@ -1,6 +1,7 @@
 type PatternType = 'recurrence' | 'exclusion';
 
 interface CommonProps {
+	desc?: string;
 	id: string;
 	onChange: (rRuleString: string) => void;
 	rRuleString: string;
@@ -12,4 +13,6 @@ export interface EditorControlsProps {}
 
 export interface PatternEditorProps extends CommonProps {}
 
-export interface RRuleEditorProps extends CommonProps, EditorControlsProps {}
+export interface RRuleEditorProps extends CommonProps, EditorControlsProps {
+	icon?: React.ComponentType<{ className: string }>;
+}
