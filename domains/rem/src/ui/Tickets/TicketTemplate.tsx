@@ -1,10 +1,15 @@
 import React, { useState, useCallback } from 'react';
+import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@wordpress/i18n';
 
-import { useTickets } from '@eventespresso/edtr-services';
 import { Button, SelectInput } from '@eventespresso/components';
-import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { entityListToSelectOptions } from '@eventespresso/services';
+import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';
+import { Plus } from '@eventespresso/icons';
+import { useTickets } from '@eventespresso/edtr-services';
+
+import { Container as FormContainer } from './multiStep';
+import EntityOptionsRow from '../EntityOptionsRow';
 import { RemTicket } from '../../data';
 
 import './style.scss';
@@ -15,6 +20,7 @@ interface Props {
 }
 
 const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates }) => {
+	const { isOpen, onClose, onOpen: onAddNew } = useDisclosure();
 	const [selectedTicketId, setSelectedTicketId] = useState('');
 
 	// convert Apollo tickets to REM tickets
@@ -26,25 +32,37 @@ const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates })
 		: tickets;
 
 	const onChangeValue = useCallback((value) => setSelectedTicketId(value), []);
-
 	const options = entityListToSelectOptions(filteredTickets, { label: __('Select...'), value: '' });
 
 	const [ticket] = entitiesWithGuIdInArray(tickets, [selectedTicketId]);
-
 	const onClick = useCallback(() => addTicketTemplate(ticket), [ticket, addTicketTemplate]);
 
+	const addNewID = 'ee-add-new-ticket';
+	const addNew = (
+		<Button buttonText={__('Add New')} className='rem-tickets__form-btn' icon={Plus} onClick={onAddNew} />
+	);
+
+	const selectExistingID = 'ee-select-existing-ticket';
+	const selectExisting = (
+		<>
+			<SelectInput id={selectExistingID} options={options} onChangeValue={onChangeValue} />
+			<Button
+				buttonText={__('Add')}
+				onClick={onClick}
+				isDisabled={!selectedTicketId || !filteredTickets?.length}
+			/>
+		</>
+	);
+
 	return (
-		<div className='rem-tickets__template'>
-			<p>{__('select an existing ticket to use as a template.')}</p>
-			<div className='rem-tickets__template-input'>
-				<SelectInput options={options} onChangeValue={onChangeValue} />
-				<Button
-					buttonText={__('Add')}
-					onClick={onClick}
-					isDisabled={!selectedTicketId || !filteredTickets?.length}
-				/>
-			</div>
-		</div>
+		<EntityOptionsRow
+			addNew={addNew}
+			addNewID={addNewID}
+			afterOptions={isOpen && <FormContainer isOpen={true} onClose={onClose} />}
+			selectExisting={selectExisting}
+			selectExistingID={selectExistingID}
+			type={'datetime'}
+		/>
 	);
 };
 
