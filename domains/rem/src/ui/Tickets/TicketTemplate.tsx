@@ -61,7 +61,7 @@ const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates })
 			afterOptions={isOpen && <FormContainer isOpen={true} onClose={onClose} />}
 			selectExisting={selectExisting}
 			selectExistingID={selectExistingID}
-			type={'datetime'}
+			type={'ticket'}
 		/>
 	);
 };
