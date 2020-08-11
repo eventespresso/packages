@@ -1,6 +1,6 @@
 import type { BoxProps } from '@chakra-ui/core';
 
 export interface DividerProps extends Omit<BoxProps, 'aria-orientation'> {
-	dashed?: boolean;
+	type?: 'dashed' | 'dotted' | 'solid' | 'none';
 	orientation?: BoxProps['aria-orientation'];
 }

@@ -61,7 +61,7 @@ const EntityList = <E extends Entity, ELFS extends EntityListFilterStateManager<
 				!filterState.sortingEnabled && <EntityPagination filterState={filterState} />
 			}
 			<div className={'ee-entity-list__footer'}>{footer}</div>
-			<Divider dashed />
+			<Divider type='dashed' />
 		</div>
 	);
 };

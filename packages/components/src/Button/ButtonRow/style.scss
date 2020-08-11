@@ -1,7 +1,9 @@
 @import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
 .ee-btn-row {
-	margin: var(--ee-margin-big) 0;
+	margin: var(--ee-margin-big) auto;
+	max-width: 900px;
+	padding: 0;
 
 	.ee-debug-info-btn {
 		margin-left: auto;
