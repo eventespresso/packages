@@ -15,7 +15,8 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 
 	const afterDetails = ticketSalesStart && ticketSalesEnd && (
 		<div className='ee-ticket-offset'>
-			<div>
+			<div className={'ee-ticket-offset__label'}>{__('starts')}</div>
+			<div className={'ee-ticket-offset__date'}>
 				{sprintf(
 					/* translators:
 					1. interval value, like 10 in "10 days", 15 in "15 minutes"
@@ -23,16 +24,17 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 					3. position (before/after) with respect to start or end date
 					4. the date ("start" or "end") for which the position is sepcified
 					The final string may look like this:
-					"starts 3 days before the start date"
+					"3 days before the start date"
 					*/
-					__('starts %1$d %2$s %3$s the %4$s date'),
+					__('%1$d %2$s %3$s the %4$s date'),
 					ticketSalesStart?.unitValue,
 					DATE_INTERVALS?.[ticketSalesStart?.unit],
 					ticketSalesStart?.position === 'before' ? __('before') : __('after'),
 					ticketSalesStart?.startOrEnd === 'start' ? __('start') : __('end')
 				)}
 			</div>
-			<div>
+			<div className={'ee-ticket-offset__label'}>{__('ends')}</div>
+			<div className={'ee-ticket-offset__date'}>
 				{sprintf(
 					/* translators:
 					1. interval value, like 10 in "10 days", 15 in "15 minutes"
@@ -40,9 +42,9 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 					3. position (before/after) with respect to start or end date
 					4. the date ("start" or "end") for which the position is sepcified
 					The final string may look like this:
-					"ends 3 days before the start date"
+					"3 days before the end date"
 					*/
-					__('ends %1$d %2$s %3$s the %4$s date'),
+					__('%1$d %2$s %3$s the %4$s date'),
 					ticketSalesEnd?.unitValue,
 					DATE_INTERVALS?.[ticketSalesEnd?.unit],
 					ticketSalesEnd?.position === 'before' ? __('before') : __('after'),
