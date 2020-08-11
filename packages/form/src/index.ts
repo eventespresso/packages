@@ -1,9 +1,11 @@
 export { default as EspressoForm } from './EspressoForm';
 
-export * from './types';
+export { default as FormSectionSidebar } from './FormSectionSidebar';
 
-export * from './utils';
+export { FormSpy, useForm, useFormState } from 'react-final-form';
 
 export { default as TestForm } from './TestForm';
 
-export { FormSpy, useForm, useFormState } from 'react-final-form';
+export * from './types';
+
+export * from './utils';
