@@ -10,7 +10,6 @@
 	"main": "src/index.ts",
 	"main:src": "src/index.ts",
 	"scripts": {
-		"generate": "./scripts/generate.sh",
 		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
 		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
