@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Button, ButtonRow, DebugInfo } from '@eventespresso/components';
 import { Divider } from '@eventespresso/adapters';
-import { CloseOutlined, Rem } from '@eventespresso/icons';
+import { CloseCircleOutlined, Repeat } from '@eventespresso/icons';
 
 import { RRuleEditor } from '../rRule';
 import { useFormState } from '../../data';
@@ -29,7 +29,7 @@ const PatternEditor: React.FC = () => {
 			) : null}
 			<RRuleEditor
 				desc={__('defines a rule or repeating pattern for generating event dates that occur regularly')}
-				icon={Rem}
+				icon={Repeat}
 				id={'r-rule'}
 				onChange={setRRule}
 				rRuleString={rRule}
@@ -40,7 +40,7 @@ const PatternEditor: React.FC = () => {
 			{isOpen && (
 				<RRuleEditor
 					desc={__('defines a rule or repeating pattern that will remove dates from those generated above')}
-					icon={CloseOutlined}
+					icon={CloseCircleOutlined}
 					id={'ex-rule'}
 					onChange={setExRule}
 					rRuleString={exRule}
