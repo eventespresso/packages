@@ -5,8 +5,8 @@ import type { SectionProps } from './types';
 const NoIcon: SectionProps['icon'] = () => null;
 
 interface Props {
-	desc?: string | React.ReactNode;
-	title?: string | React.ReactNode;
+	desc?: React.ReactNode;
+	title?: React.ReactNode;
 	Icon?: React.ComponentType<{ className: string }>;
 }
 
