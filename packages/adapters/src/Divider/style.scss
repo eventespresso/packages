@@ -1,0 +1,10 @@
+.ee-divider {
+	&.ee-divider {
+		&--horizontal {
+			margin: var(--ee-margin-bigger) 0;
+		}
+		&--vertical {
+			margin: 0 var(--ee-margin-default);
+		}
+	}
+}

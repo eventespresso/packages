@@ -1,36 +1,36 @@
 .ee-simple-entity-card {
-	align-items: center;
-	border: 1px solid #ccc;
-	color: #000;
+	align-items: flex-start;
+	border: 1px solid var(--ee-border-color);
 	display: flex;
 	flex-wrap: wrap;
-	margin: 0.5rem 1rem;
-	max-width: 270px;
-	min-height: 6rem;
+	margin: var(--ee-margin-tiny) var(--ee-margin-small);
+	max-width: 19rem;
+	min-height: 8rem;
 
 	&:first-child {
 		margin-left: 0;
 	}
 
 	&__details {
-		flex-flow: column;
-		padding: 0.5rem 0.75rem;
-		border-left: 1px dotted #ccc;
-		width: 11rem;
+		border-left: 1px dotted var(--ee-border-color);
+		box-sizing: border-box;
 		display: flex;
+		flex-flow: column;
 		justify-content: space-between;
-		line-height: 1rem;
-		font-size: 0.6rem;
+		line-height: var(--ee-font-size-default);
+		padding: var(--ee-padding-smaller);
+		width: 13.5rem;
 	}
 
 	&__name {
-		font-size: 1rem;
+		color: var(--ee-default-text-color-low-contrast);
+		font-size: var(--ee-font-size-big);
 		font-weight: 700;
-		color: var(--ee-text-on-grey-15);
+		margin: 0 0 var(--ee-margin-tiny);
 	}
 
 	&__sidebar {
-		margin: var(--ee-margin-tiny) var(--ee-margin-tiny) var(--ee-margin-tiny) 0;
+		margin: var(--ee-margin-micro);
 		width: 2.625rem; // 42px
 	}
 }

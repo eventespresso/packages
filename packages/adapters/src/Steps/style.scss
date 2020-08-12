@@ -28,9 +28,8 @@
 		}
 
 		&--compact {
+			align-items: start;
 			flex-direction: column;
-			margin-right: 0;
-			margin-left: 0;
 
 			h3 {
 				margin-bottom: var(--ee-margin-small);
@@ -39,7 +38,6 @@
 	}
 
 	&--inline {
-		align-items: stretch;
 		flex-flow: row nowrap;
 		align-items: center;
 	}
@@ -53,6 +51,7 @@
 		background-color: var(--ee-background-color);
 		border: 1px solid var(--ee-color-grey-10);
 		border-right-width: 0;
+		box-sizing: border-box;
 		display: inline-flex;
 		height: 5.25rem;
 		justify-content: flex-start;
@@ -109,7 +108,7 @@
 
 		&__icon {
 			color: var(--ee-color-grey-9);
-			font-size: 39px;
+			font-size: var(--ee-font-size-huge);
 			margin-right: var(--ee-margin-smaller);
 
 			[dir='rtl'] & {
@@ -122,12 +121,12 @@
 			}
 
 			svg {
-				height: 39px;
-				width: 39px;
+				height: var(--ee-font-size-huge);
+				width: var(--ee-font-size-huge);
 
 				@at-root .ee-form-steps--compact#{&} {
-					height: 20px;
-					width: 20px;
+					height: var(--ee-font-size-bigger);
+					width: var(--ee-font-size-bigger);
 				}
 
 				path {
@@ -197,12 +196,7 @@
 			border-style: solid;
 			border-color: var(--ee-color-grey-10);
 			border-width: 0 1px 1px 0;
-			-webkit-transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease,
-				-webkit-box-shadow 0.1s ease;
-			transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, -webkit-box-shadow 0.1s ease;
 			transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
-			transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease,
-				-webkit-box-shadow 0.1s ease;
 			transform: translateY(-50%) translateX(50%) rotate(-45deg);
 			z-index: 2;
 

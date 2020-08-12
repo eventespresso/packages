@@ -5,12 +5,14 @@
 	border: 2px solid var(--ee-text-on-blue-super-high-contrast);
 	border-radius: var(--ee-border-radius-small);
 	box-shadow: var(--ee-box-shadow-tiny);
+	box-sizing: border-box;
 	color: var(--ee-text-on-blue-low-contrast);
 	font-weight: normal;
 	letter-spacing: 2px;
 	padding: var(--ee-padding-tiny) var(--ee-padding-smaller);
 	position: relative;
 	// text-shadow: var(--ee-text-shadow-inset);
+	white-space: pre;
 	width: auto;
 	word-spacing: 0.15rem;
 	z-index: 1401;

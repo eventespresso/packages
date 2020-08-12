@@ -59,15 +59,15 @@
 			padding: 0.5rem;
 			vertical-align: middle;
 
+			svg.ee-svg.ee-svg {
+				margin: auto;
+			}
+
 			&--has-bg {
-				svg {
+				svg.ee-svg.ee-svg {
 					height: auto;
 					width: 18px;
 				}
-			}
-
-			svg {
-				margin: 0;
 			}
 		}
 
