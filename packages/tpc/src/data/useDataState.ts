@@ -1,10 +1,15 @@
+import { useContext } from 'react';
+import invariant from 'invariant';
+
 import { DataStateManager } from './types';
-import { useTPCContext } from '../context';
+import { DataStateContext } from '../context';
 
 const useDataState = (): DataStateManager => {
-	const { dataState } = useTPCContext();
+	const value = useContext(DataStateContext);
 
-	return dataState;
+	invariant(value, 'useDataState must be used inside TPC <DataStateProvider> component');
+
+	return value;
 };
 
 export default useDataState;

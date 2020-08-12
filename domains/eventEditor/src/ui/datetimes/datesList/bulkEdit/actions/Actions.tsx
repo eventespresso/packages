@@ -9,8 +9,10 @@ import { useDatesListFilterState, DatetimeStatus } from '@edtrServices/filterSta
 import { EditDetails } from '../details';
 import { Delete } from '../delete';
 
+type Action = 'edit-details' | 'delete' | '';
+
 const Actions: React.FC = () => {
-	const [action, setAction] = useState('');
+	const [action, setAction] = useState<Action>('');
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -33,7 +35,7 @@ const Actions: React.FC = () => {
 		},
 	]);
 
-	const onApply = useCallback<BulkActionsProps['onApply']>(
+	const onApply = useCallback<BulkActionsProps<Action>['onApply']>(
 		(action) => {
 			setAction(action);
 			onOpen();

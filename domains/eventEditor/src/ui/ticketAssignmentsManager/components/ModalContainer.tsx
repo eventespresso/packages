@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import { TicketAssignmentsManagerModal } from '../components';
@@ -14,15 +14,12 @@ const ModalContainer: React.FC<ModalContainerProps> = ({ isOpen, onClose, ...pro
 	} else if (assignmentType === 'forTicket') {
 		title = sprintf(__('Ticket Assignment Manager for Ticket: %s - %s'), `${entity.dbId}`, entity.name);
 	}
-
-	return (
-		isOpen &&
-		withContext(
-			TicketAssignmentsManagerModal,
-			{ ...props, title, onCloseModal: onClose },
-			{ title, onCloseModal: onClose }
-		)
-	);
+	const contextProps = useMemo(() => ({ ...props, title, onCloseModal: onClose }), [onClose, props, title]);
+	if (!isOpen) {
+		return null;
+	}
+	const Component = withContext(TicketAssignmentsManagerModal, contextProps);
+	return <Component title={title} onCloseModal={onClose} />;
 };
 
 export default ModalContainer;

@@ -1,12 +1,15 @@
-import { useMemo } from 'react';
+import { useContext } from 'react';
+import invariant from 'invariant';
 
 import { DataStateManager } from '../types';
-import { useTAMContext } from '../context';
+import { DataStateContext } from '../context';
 
 const useDataState = (): DataStateManager => {
-	const { dataState } = useTAMContext();
+	const value = useContext(DataStateContext);
 
-	return useMemo(() => dataState, [dataState]);
+	invariant(value, 'useDataState must be used inside TAM <DataStateProvider> component');
+
+	return value;
 };
 
 export default useDataState;

@@ -55,7 +55,7 @@ describe('TPC:data.updatePrice', () => {
 	});
 
 	it('updates the amount of an existing price', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return useDataState();
 			},
@@ -63,8 +63,6 @@ describe('TPC:data.updatePrice', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.reset());
@@ -79,7 +77,7 @@ describe('TPC:data.updatePrice', () => {
 	});
 
 	it('updates the name and description of a price', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return useDataState();
 			},
@@ -87,8 +85,6 @@ describe('TPC:data.updatePrice', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.reset());
@@ -109,7 +105,7 @@ describe('TPC:data.updatePrice', () => {
 	});
 
 	it('updates the priceType of a price', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return useDataState();
 			},
@@ -117,8 +113,6 @@ describe('TPC:data.updatePrice', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.reset());
