@@ -14,13 +14,16 @@ const GeneratedDatetimes: React.FC<GeneratedDatetimesProps> = ({ datetimes }) =>
 				const isRDate = type === 'rDate';
 				const isExDate = type === 'exDate';
 
+				let toggleExDate = isRDate ? removeRDate : addExDate;
+				toggleExDate = isExDate ? removeExDate : toggleExDate;
+
 				return (
 					<GeneratedDatetime
 						date={date}
 						key={ISOStr}
 						ISOStr={ISOStr}
 						number={index + 1}
-						toggleExDate={isExDate ? removeExDate : isRDate ? removeRDate : addExDate}
+						toggleExDate={toggleExDate}
 						type={type}
 					/>
 				);
