@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { useDisclosure } from '@chakra-ui/hooks';
 
-import { Tooltip } from '@eventespresso/adapters';
-import { InfoCircleOutlined } from '../../icons';
+import Tooltip from '../Tooltip';
+import { InfoCircleOutlined } from '@eventespresso/icons';
 
 import './style.scss';
 
@@ -13,7 +13,11 @@ interface ClickableIconWithTooltipProps {
 	tooltipText: string;
 }
 
-const ClickableIconWithTooltip: React.FC<ClickableIconWithTooltipProps> = ({ icon: Icon, tooltipText, ...props }) => {
+export const ClickableIconWithTooltip: React.FC<ClickableIconWithTooltipProps> = ({
+	icon: Icon,
+	tooltipText,
+	...props
+}) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const className = classNames('ee-clickable-tooltip', props.className);
 
@@ -29,5 +33,3 @@ const ClickableIconWithTooltip: React.FC<ClickableIconWithTooltipProps> = ({ ico
 		</Tooltip>
 	);
 };
-
-export default ClickableIconWithTooltip;

@@ -1,5 +1,5 @@
 import type { TypeOptions } from 'react-toastify';
-import type { BoxProps } from '@eventespresso/adapters';
+import type { BoxProps } from '@chakra-ui/core';
 
 type AddToastProps = Omit<ToastProps, 'timestamp' | 'loading'>;
 

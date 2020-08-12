@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { FormControl, FormHelperText, FormLabel } from '@eventespresso/adapters';
-import { HelpIcon } from '@eventespresso/icons';
+import { HelpIcon } from '@eventespresso/components';
 import { reactFinalFormField } from '@eventespresso/services';
 
 import ErrorMessage from './ErrorMessage';

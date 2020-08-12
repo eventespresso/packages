@@ -1,8 +1,8 @@
 import { pipe } from 'ramda';
 import { __ } from '@wordpress/i18n';
 import { setHours, setMinutes, setSeconds, setYear, setMonth, setDate } from 'date-fns/fp';
-import type { OptionsType } from '@eventespresso/adapters';
 import { parseISO } from 'date-fns';
+import type { OptionsType } from '@eventespresso/adapters';
 
 import { Intervals, ShiftDateArgs } from './types';
 import { add, sub } from './addSub';
