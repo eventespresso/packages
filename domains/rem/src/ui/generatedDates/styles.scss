@@ -1,0 +1,41 @@
+.ee-generated-datetime {
+	&__list {
+		font-size: var(--ee-font-size-small);
+
+		li {
+			align-content: center;
+			display: flex;
+			flex-flow: row nowrap;
+			margin: 0 0 var(--ee-margin-smaller);
+		}
+	}
+
+	&__body {
+		align-items: center;
+		border-radius: var(--ee-border-radius-small);
+		box-sizing: border-box;
+		display: inline-flex;
+		padding: var(--ee-padding-tiny);
+		width: 20rem;
+
+		svg {
+			margin-right: var(--ee-margin-tiny) !important;
+		}
+
+		span {
+			color: white;
+		}
+	}
+
+	&__trash {
+		display: inline-block;
+		font-size: var(--ee-font-size-bigger);
+		margin: 0 0 0 var(--ee-margin-big);
+
+		.ee-btn-base.ee-icon-button {
+			background-color: var(--ee-button-background);
+			border: none;
+			color: var(--ee-button-text-color);
+		}
+	}
+}

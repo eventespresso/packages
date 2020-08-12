@@ -1,11 +1,19 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { CollapsibleLegend } from '@eventespresso/components';
+import { CalendarOutlined } from '@eventespresso/icons';
+import { ButtonRow, CollapsibleLegend } from '@eventespresso/components';
+import { FormSectionSidebar } from '@eventespresso/form';
+// import { Pagination } from '@eventespresso/adapters';
 
-import Datetimes from './Datetimes';
-import useGenerateDates from './useGenerateDates';
+import GeneratedDatetimes from './GeneratedDatetimes';
 import { legendConfig } from './config';
+import RDate from './RDate';
+import useGenerateDates from './useGenerateDates';
+import Warning from './Warning';
+
+import './styles.scss';
+import './bg-colors.scss';
 
 const GeneratedDates: React.FC = () => {
 	const datetimes = useGenerateDates(true);
@@ -13,12 +21,17 @@ const GeneratedDates: React.FC = () => {
 	return (
 		<>
 			<div className='rrule-generator-wrapper'>
-				<h2 className='rrule-generator__sidebar-label'>{__('Dates List')}</h2>
+				<FormSectionSidebar Icon={CalendarOutlined} title={__('Dates List')} />
 				<div className='rrule-generator__main-content'>
-					<Datetimes datetimes={datetimes} />
+					<GeneratedDatetimes datetimes={datetimes} />
+					{/* <Pagination defaultPerPage={6} /> */}
+					<RDate />
+					<Warning count={datetimes?.length} />
 				</div>
 			</div>
-			<CollapsibleLegend direction='row' legendConfig={legendConfig} />
+			<ButtonRow>
+				<CollapsibleLegend direction='row' legendConfig={legendConfig} />
+			</ButtonRow>
 		</>
 	);
 };
