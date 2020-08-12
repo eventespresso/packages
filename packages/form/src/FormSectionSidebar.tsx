@@ -7,7 +7,7 @@ const NoIcon: SectionProps['icon'] = () => null;
 interface Props {
 	desc?: React.ReactNode;
 	title?: React.ReactNode;
-	Icon?: React.ComponentType<{ className: string }>;
+	Icon?: React.ComponentType<{ className?: string }>;
 }
 
 const FormSectionSidebar: React.FC<Props> = ({ desc, Icon = NoIcon, title }) => {

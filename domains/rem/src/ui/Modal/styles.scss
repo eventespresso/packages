@@ -9,5 +9,13 @@
 			display: flex;
 			justify-content: center;
 		}
+
+		.ee-rem-form-step-pattern-editor {
+			.ee-form-step__icon svg {
+				height: 1.9rem;
+				width: 1.9rem;
+				margin: 0;
+			}
+		}
 	}
 }
