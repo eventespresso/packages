@@ -10,6 +10,7 @@ export interface RRuleGeneratorProps extends BaseProps, ConfigProviderProps {
 	hideStart?: boolean;
 	hideEnd?: boolean;
 	hideError?: boolean;
+	showReadable?: boolean;
 }
 
 export type OnChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => void;

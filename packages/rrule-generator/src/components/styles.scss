@@ -1,12 +1,14 @@
 .rrule-generator {
-	padding-bottom: 0.75rem;
-
 	&__form-group {
 		&-row {
 			align-items: center;
 			display: flex;
 			flex-wrap: wrap;
 			margin-bottom: 1rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 
 			&--align-items-start {
 				align-items: flex-start;
@@ -19,12 +21,15 @@
 			label {
 				flex: 0 1 20%;
 				font-size: var(--ee-font-size-default);
-				max-width: 15%;
 				padding-left: 1rem;
 				padding-right: 1rem;
 				text-align: right;
 			}
 		}
+	}
+
+	&__frequency {
+		flex: 0 1 80%;
 	}
 
 	&__on,
@@ -90,7 +95,7 @@
 	&__form-control {
 		.rrule-generator & {
 			margin-right: 1rem;
-			min-width: 40px;
+			min-width: 140px;
 			width: 100%;
 		}
 
@@ -113,12 +118,12 @@
 
 			&__month {
 				min-width: 60px;
-				width: 135px;
+				width: 140px;
 			}
 
 			&__input {
 				border-radius: 4px;
-				border: 1px solid #7e8993;
+				border: 1px solid #c1c1c1;
 				min-width: unset;
 				padding: 6px 8px;
 				text-align: center;

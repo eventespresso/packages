@@ -1,6 +1,4 @@
 .rrule-generator {
-	padding-bottom: 0.75rem;
-
 	&__alert-danger {
 		background-color: rgb(254, 215, 215);
 		margin-bottom: 0.75rem;
@@ -8,5 +6,38 @@
 		padding-right: 1rem;
 		padding-bottom: 0.75rem;
 		padding-top: 0.75rem;
+	}
+
+	&__form-group-row:first-child {
+		margin: 3rem 0 1rem;
+	}
+
+	.rrule-text {
+		border-radius: 3px;
+		color: white;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-left: 20%;
+		min-height: 2.625rem;
+		outline: none;
+		padding: 0.5rem 1rem;
+		white-space: pre;
+
+		&-label {
+			color: white;
+		}
+	}
+
+	&-wrapper {
+		&-recurrence {
+			.rrule-text {
+				background: #7ab540;
+			}
+		}
+		&-exclusion {
+			.rrule-text {
+				background: #e65983;
+			}
+		}
 	}
 }
