@@ -8,9 +8,12 @@ import { useMemoStringify } from '@eventespresso/hooks';
 import { useTicketsListFilterState, TicketsStatus } from '@edtrServices/filterState';
 import { EditDetails } from '../details';
 import { Delete } from '../delete';
+import { EditPrices } from '../prices';
+
+type Action = 'edit-details' | 'delete' | 'edit-prices' | '';
 
 const Actions: React.FC = () => {
-	const [action, setAction] = useState('');
+	const [action, setAction] = useState<Action>('');
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { status } = useTicketsListFilterState();
@@ -30,9 +33,13 @@ const Actions: React.FC = () => {
 			value: 'delete',
 			label: areTrashedTickets ? __('delete tickets') : __('trash tickets'),
 		},
+		{
+			value: 'edit-prices',
+			label: __('edit ticket prices'),
+		},
 	]);
 
-	const onApply = useCallback<BulkActionsProps['onApply']>(
+	const onApply = useCallback<BulkActionsProps<Action>['onApply']>(
 		(action) => {
 			setAction(action);
 			onOpen();
@@ -47,6 +54,7 @@ const Actions: React.FC = () => {
 				<>
 					{action === 'edit-details' && <EditDetails isOpen={true} onClose={onClose} />}
 					{action === 'delete' && <Delete areTrashedTickets={areTrashedTickets} onClose={onClose} />}
+					{action === 'edit-prices' && <EditPrices isOpen={true} onClose={onClose} />}
 				</>
 			)}
 		</>
