@@ -3,10 +3,27 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: flex-start;
+		max-width: 900px;
+		margin: var(--ee-margin-small) auto;
 
 		.ee-ticket-offset {
+			font-size: var(--ee-font-size-tiny);
 			letter-spacing: 1px;
 			padding-top: var(--ee-padding-tiny);
+
+			&__label {
+				color: var(--ee-default-text-color-super-low-contrast);
+				font-weight: 700;
+				white-space: pre;
+			}
+			&__date {
+				color: var(--ee-default-text-color-super-high-contrast);
+				white-space: pre;
+
+				+ .ee-ticket-offset__label {
+					margin-top: var(--ee-margin-tiny);
+				}
+			}
 		}
 	}
 

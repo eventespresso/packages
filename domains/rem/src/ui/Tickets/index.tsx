@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 
-import AddNewButton from './AddNewButton';
 import TicketTemplate from './TicketTemplate';
 import { TicketCard } from './card';
 import { useFormState } from '../../data';
@@ -12,6 +11,7 @@ const Tickets: React.FC = () => {
 
 	return (
 		<div className='rem-tickets'>
+			<TicketTemplate addTicketTemplate={addTicket} ticketTemplates={Object.values(tickets)} />
 			<div className='rem-tickets__list'>
 				{Object.entries(tickets).map(([id, ticket]) => (
 					<Fragment key={id}>
@@ -19,8 +19,6 @@ const Tickets: React.FC = () => {
 					</Fragment>
 				))}
 			</div>
-			<TicketTemplate addTicketTemplate={addTicket} ticketTemplates={Object.values(tickets)} />
-			<AddNewButton />
 		</div>
 	);
 };
