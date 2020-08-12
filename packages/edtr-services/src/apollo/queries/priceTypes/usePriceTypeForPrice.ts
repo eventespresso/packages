@@ -3,6 +3,7 @@ import { useRelations } from '@eventespresso/services';
 import useDefaultPriceType from './useDefaultPriceType';
 import { EntityId } from '@eventespresso/data';
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 import type { PriceType } from '../../types';
 import usePriceTypes from './usePriceTypes';
@@ -26,7 +27,9 @@ const usePriceTypeForPrice = (priceId: EntityId): PriceType => {
 
 	const relatedPriceTypes = entitiesWithGuIdInArray(allPriceTypes, relatedPriceTypeIds);
 
-	return !isEmpty(relatedPriceTypes) ? relatedPriceTypes[0] : defaultPriceType;
+	const priceType = !isEmpty(relatedPriceTypes) ? relatedPriceTypes[0] : defaultPriceType;
+
+	return useMemoStringify(priceType);
 };
 
 export default usePriceTypeForPrice;
