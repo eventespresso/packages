@@ -31,6 +31,7 @@ export { default as Plus } from './Plus';
 export { default as PlusCircleFilled } from './PlusCircleFilled';
 export { default as ProfileOutlined } from './ProfileOutlined';
 export { default as Rem } from './Rem';
+export { default as Repeat } from './Repeat';
 export { default as Rotate } from './Rotate';
 export { default as Save } from './Save';
 export { default as SaveOutlined } from './SaveOutlined';
