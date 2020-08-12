@@ -1,10 +1,15 @@
+import { useContext } from 'react';
+import invariant from 'invariant';
+
 import { FilterStateManager } from './types';
-import { useTAMContext } from '../../context';
+import { FilterStateContext } from '../../context';
 
 const useFilterState = (): FilterStateManager => {
-	const { filterState } = useTAMContext();
+	const value = useContext(FilterStateContext);
 
-	return filterState;
+	invariant(value, 'useFilterState must be used inside TAM <FilterStateProvider> component');
+
+	return value;
 };
 
 export default useFilterState;

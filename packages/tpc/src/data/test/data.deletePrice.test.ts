@@ -11,7 +11,7 @@ import TestWrapper from './TestWrapper';
 const timeout = 5000; // milliseconds
 describe('TPC:data.deletePrice', () => {
 	it('deletes the last price and adds it to deleted list', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return useDataState();
 			},
@@ -19,8 +19,6 @@ describe('TPC:data.deletePrice', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.reset());

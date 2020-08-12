@@ -6,17 +6,12 @@ import type { ContentWrapperProps } from './types';
 import { useWithEntityFormDetails } from '@eventespresso/components';
 
 const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
-	return useWithEntityFormDetails(
-		({ entity }) =>
-			withTPCContext(
-				ContentBody,
-				{
-					ticketId: entity.id,
-				},
-				props
-			),
-		'NEW_TICKET'
-	);
+	return useWithEntityFormDetails(({ entity }) => {
+		const Component = withTPCContext(ContentBody, {
+			ticketId: entity.id,
+		});
+		return <Component {...props} />;
+	}, 'NEW_TICKET');
 };
 
 export default ContentWrapper;

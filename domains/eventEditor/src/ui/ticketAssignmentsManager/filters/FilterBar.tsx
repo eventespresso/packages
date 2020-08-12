@@ -7,21 +7,20 @@ import {
 	ShowTrashedTicketsControl,
 } from './controls';
 import { useTAMContext } from '../context';
+import { useFilterState } from '../filters';
 
 const FilterBar: React.FC = () => {
+	const { assignmentType } = useTAMContext();
 	const {
-		assignmentType,
-		filterState: {
-			datesByMonth,
-			setDatesByMonth,
-			setShowExpiredTickets,
-			setShowTrashedDates,
-			setShowTrashedTickets,
-			showExpiredTickets,
-			showTrashedDates,
-			showTrashedTickets,
-		},
-	} = useTAMContext();
+		datesByMonth,
+		setDatesByMonth,
+		setShowExpiredTickets,
+		setShowTrashedDates,
+		setShowTrashedTickets,
+		showExpiredTickets,
+		showTrashedDates,
+		showTrashedTickets,
+	} = useFilterState();
 
 	return (
 		<div className='ee-ticket-assignments-manager__filter-bar'>

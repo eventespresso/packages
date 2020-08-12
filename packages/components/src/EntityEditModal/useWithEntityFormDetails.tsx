@@ -1,11 +1,8 @@
 import React from 'react';
-import { FormSpy } from '@eventespresso/form';
 
-import { Datetime, Ticket } from '@eventespresso/edtr-services';
-import { useMemoStringify, useMemoLazy } from '@eventespresso/hooks';
-import { useTimeZoneTime } from '@eventespresso/services';
+import type { Datetime, Ticket } from '@eventespresso/edtr-services';
 import type { BaseProps } from './types';
-import { processDateAndTime } from '@eventespresso/edtr-services';
+import EntityEditForm from './EntityEditForm';
 
 /**
  * This HOC provides the current entity detail to the underlying component
@@ -15,26 +12,7 @@ const useWithEntityFormDetails = <T extends Datetime | Ticket>(
 	Component: React.ComponentType<Partial<BaseProps<T>>>,
 	newEntityId: string
 ): JSX.Element => {
-	const { siteTimeToUtc } = useTimeZoneTime();
-
-	const lazyMemo = useMemoLazy<T>(null);
-	// We only need value here.
-	const subscription = useMemoStringify({ values: true });
-
-	return (
-		<FormSpy subscription={subscription}>
-			{({ values: { dateTime, ...values } }) => {
-				const entity = lazyMemo({
-					...values,
-					id: values.id ?? newEntityId,
-					dbId: values.dbId ?? 0,
-					...processDateAndTime(dateTime, siteTimeToUtc),
-				} as T);
-
-				return <Component entity={entity} />;
-			}}
-		</FormSpy>
-	);
+	return <EntityEditForm Component={Component} newEntityId={newEntityId} />;
 };
 
 export default useWithEntityFormDetails;

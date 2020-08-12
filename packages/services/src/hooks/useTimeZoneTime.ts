@@ -3,6 +3,7 @@ import { parseISO, isValid } from 'date-fns';
 
 import { useConfig } from '../config';
 import { format as formatTz, utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
+import { useMemo, useCallback } from 'react';
 
 type DateFn = (date: Date | string | number) => Date;
 type FormatDateFn = (date: Date, options?: Intl.DateTimeFormatOptions) => string;
@@ -44,97 +45,141 @@ const useTimeZoneTime = (): TimeZoneTime => {
 	/**
 	 * returns a date string formatted using the site's locale and timezone
 	 */
-	const formatDateForSite: FormatDateFn = (date, options) => {
-		const dateObject = date instanceof Date ? date : parseISO(date);
-		if (!isValid(dateObject)) {
-			return null;
-		}
-		const formatOptions = { ...deafultOptions, ...options };
-		return dateObject.toLocaleString(siteLC, { ...formatOptions, timeZone: siteTZ });
-	};
+	const formatDateForSite: FormatDateFn = useCallback(
+		(date, options) => {
+			const dateObject = date instanceof Date ? date : parseISO(date);
+			if (!isValid(dateObject)) {
+				return null;
+			}
+			const formatOptions = { ...deafultOptions, ...options };
+			return dateObject.toLocaleString(siteLC, { ...formatOptions, timeZone: siteTZ });
+		},
+		[siteLC, siteTZ]
+	);
 
 	/**
 	 * returns a date string formatted using the user's locale and timezone
 	 */
-	const formatDateForUser: FormatDateFn = (date, options) => {
-		const dateObject = date instanceof Date ? date : parseISO(date);
-		if (!isValid(dateObject)) {
-			return null;
-		}
-		const formatOptions = { ...deafultOptions, ...options };
-		return dateObject.toLocaleString(userLC, { ...formatOptions, timeZone: userTZ });
-	};
+	const formatDateForUser: FormatDateFn = useCallback(
+		(date, options) => {
+			const dateObject = date instanceof Date ? date : parseISO(date);
+			if (!isValid(dateObject)) {
+				return null;
+			}
+			const formatOptions = { ...deafultOptions, ...options };
+			return dateObject.toLocaleString(userLC, { ...formatOptions, timeZone: userTZ });
+		},
+		[userLC, userTZ]
+	);
 
 	/**
 	 * returns a date string formatted using the site's locale but UTC timezone
 	 */
-	const formatUtcDateForSite: FormatDateFn = (date, options) => {
-		const dateObject = date instanceof Date ? date : parseISO(date);
-		if (!isValid(dateObject)) {
-			return null;
-		}
-		const formatOptions = { ...deafultOptions, ...options };
-		return dateObject.toLocaleString(siteLC, { ...formatOptions, timeZone: 'UTC' });
-	};
+	const formatUtcDateForSite: FormatDateFn = useCallback(
+		(date, options) => {
+			const dateObject = date instanceof Date ? date : parseISO(date);
+			if (!isValid(dateObject)) {
+				return null;
+			}
+			const formatOptions = { ...deafultOptions, ...options };
+			return dateObject.toLocaleString(siteLC, { ...formatOptions, timeZone: 'UTC' });
+		},
+		[siteLC]
+	);
 
 	/**
 	 * returns a date string formatted using the user's locale but UTC timezone
 	 */
-	const formatUtcDateForUser: FormatDateFn = (date, options) => {
-		const dateObject = date instanceof Date ? date : parseISO(date);
-		if (!isValid(dateObject)) {
-			return null;
-		}
-		const formatOptions = { ...deafultOptions, ...options };
-		return dateObject.toLocaleString(userLC, { ...formatOptions, timeZone: 'UTC' });
-	};
+	const formatUtcDateForUser: FormatDateFn = useCallback(
+		(date, options) => {
+			const dateObject = date instanceof Date ? date : parseISO(date);
+			if (!isValid(dateObject)) {
+				return null;
+			}
+			const formatOptions = { ...deafultOptions, ...options };
+			return dateObject.toLocaleString(userLC, { ...formatOptions, timeZone: 'UTC' });
+		},
+		[userLC]
+	);
+
+	const userToSiteTime: DateFn = useCallback(
+		(localDate) => {
+			// First convert the local date to UTC
+			const utcDate = zonedTimeToUtc(localDate, userTZ);
+			// Now convert the UTC date to site timezone
+			return utcToZonedTime(utcDate, siteTZ);
+		},
+		[siteTZ, userTZ]
+	);
+
+	const userTimeToUtc: DateFn = useCallback(
+		(date) => {
+			return zonedTimeToUtc(date, userTZ);
+		},
+		[userTZ]
+	);
+
+	const utcToUserTime: DateFn = useCallback(
+		(date) => {
+			return utcToZonedTime(date, userTZ);
+		},
+		[userTZ]
+	);
+
+	const siteTimeToUtc: DateFn = useCallback(
+		(date) => {
+			return zonedTimeToUtc(date, siteTZ);
+		},
+		[siteTZ]
+	);
+
+	const utcToSiteTime: DateFn = useCallback(
+		(date) => {
+			return utcToZonedTime(date, siteTZ);
+		},
+		[siteTZ]
+	);
 
 	/**
 	 * generates a string from local date for the given timezone, default to site timezone
 	 */
-	const formatForSite: TimeZoneTime['formatForSite'] = (localDate, formatStr) => {
-		// Convert the local date to UTC
-		const utcDate = userTimeToUtc(localDate);
-		// Now convert the UTC date to site timezone
-		const zonedDate = utcToSiteTime(utcDate);
-		return formatTz(zonedDate, formatStr, { timeZone: siteTZ });
-	};
+	const formatForSite: TimeZoneTime['formatForSite'] = useCallback(
+		(localDate, formatStr) => {
+			// Convert the local date to UTC
+			const utcDate = userTimeToUtc(localDate);
+			// Now convert the UTC date to site timezone
+			const zonedDate = utcToSiteTime(utcDate);
+			return formatTz(zonedDate, formatStr, { timeZone: siteTZ });
+		},
+		[siteTZ, userTimeToUtc, utcToSiteTime]
+	);
 
-	const userToSiteTime: DateFn = (localDate) => {
-		// First convert the local date to UTC
-		const utcDate = zonedTimeToUtc(localDate, userTZ);
-		// Now convert the UTC date to site timezone
-		return utcToZonedTime(utcDate, siteTZ);
-	};
-
-	const userTimeToUtc: DateFn = (date) => {
-		return zonedTimeToUtc(date, userTZ);
-	};
-
-	const utcToUserTime: DateFn = (date) => {
-		return utcToZonedTime(date, userTZ);
-	};
-
-	const siteTimeToUtc: DateFn = (date) => {
-		return zonedTimeToUtc(date, siteTZ);
-	};
-
-	const utcToSiteTime: DateFn = (date) => {
-		return utcToZonedTime(date, siteTZ);
-	};
-
-	return {
-		formatDateForSite,
-		formatDateForUser,
-		formatForSite,
-		formatUtcDateForSite,
-		formatUtcDateForUser,
-		siteTimeToUtc,
-		userTimeToUtc,
-		userToSiteTime,
-		utcToSiteTime,
-		utcToUserTime,
-	};
+	return useMemo(
+		() => ({
+			formatDateForSite,
+			formatDateForUser,
+			formatForSite,
+			formatUtcDateForSite,
+			formatUtcDateForUser,
+			siteTimeToUtc,
+			userTimeToUtc,
+			userToSiteTime,
+			utcToSiteTime,
+			utcToUserTime,
+		}),
+		[
+			formatDateForSite,
+			formatDateForUser,
+			formatForSite,
+			formatUtcDateForSite,
+			formatUtcDateForUser,
+			siteTimeToUtc,
+			userTimeToUtc,
+			userToSiteTime,
+			utcToSiteTime,
+			utcToUserTime,
+		]
+	);
 };
 
 export default useTimeZoneTime;

@@ -3,11 +3,11 @@ import React, { useCallback } from 'react';
 import { Button, ConfirmClose } from '@eventespresso/components';
 import { modalCloseButtonProps } from '@eventespresso/adapters';
 import { useTAMContext } from '../../../context';
+import { useDataState } from '../../../data';
 
 const CloseModal: React.FC = () => {
-	const { dataState, onCloseModal } = useTAMContext();
-
-	const { hasOrphanEntities } = dataState;
+	const { onCloseModal } = useTAMContext();
+	const { hasOrphanEntities } = useDataState();
 
 	const hasErrors = hasOrphanEntities();
 

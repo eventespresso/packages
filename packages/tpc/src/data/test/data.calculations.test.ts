@@ -139,7 +139,7 @@ describe('TPC:data.calculations', () => {
 	});
 
 	it('updates the amount of an existing price and base price to reflect the change in ticket total when reverseCalculate is false', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return useDataState();
 			},
@@ -147,8 +147,6 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.reset());
@@ -184,7 +182,7 @@ describe('TPC:data.calculations', () => {
 	});
 
 	it('updates the amount of an existing price to reflect the change in base price when reverseCalculate is true', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return {
 					dataState: useDataState(),
@@ -194,8 +192,6 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());
@@ -230,7 +226,7 @@ describe('TPC:data.calculations', () => {
 	});
 
 	it('updates the ticket total to reflect the change in base price when reverseCalculate is true', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return {
 					dataState: useDataState(),
@@ -240,8 +236,6 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());
@@ -277,7 +271,7 @@ describe('TPC:data.calculations', () => {
 	});
 
 	it('updates the priceType of an existing price to reflect the change in ticket total when reverseCalculate is false', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return useDataState();
 			},
@@ -285,8 +279,6 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.reset());
@@ -321,7 +313,7 @@ describe('TPC:data.calculations', () => {
 	});
 
 	it('updates the priceType of an existing price to reflect the change in base price when reverseCalculate is true', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return {
 					dataState: useDataState(),
@@ -331,8 +323,6 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());
