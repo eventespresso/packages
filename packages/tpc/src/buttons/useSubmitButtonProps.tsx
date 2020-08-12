@@ -5,13 +5,12 @@ import { __ } from '@wordpress/i18n';
 import type { ButtonProps } from '@eventespresso/adapters';
 
 import { useOnSubmitPrices } from '../hooks';
+import { useDataState } from '../data';
 import { useTPCContext } from '../context';
 
 const useSubmitButtonProps = (): ButtonProps => {
-	const {
-		onClose,
-		dataState: { prices },
-	} = useTPCContext();
+	const { onClose } = useTPCContext();
+	const { prices } = useDataState();
 
 	const isDisabled = prices.length && prices.some(({ amount }) => anyPass([isNil, isEmpty])(amount));
 

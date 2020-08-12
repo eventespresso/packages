@@ -1,19 +1,20 @@
-import React, { createContext } from 'react';
+import React, { createContext, useMemo } from 'react';
 
 import type { ProviderProps, ContextProps } from './types';
-import { useDataStateManager } from '../data';
+import { DataStateProvider } from './DataStateProvider';
 
 const Context = createContext<ContextProps>(null);
 
 const { Provider, Consumer } = Context;
 
-const ContextProvider: React.FC<ProviderProps> = ({ children, ticketId, ...rest }) => {
-	const value: ContextProps = {
-		dataState: useDataStateManager({ ticketId }),
-		...rest,
-	};
+const ContextProvider: React.FC<ProviderProps> = ({ children, ticketId, onClose }) => {
+	const value = useMemo(() => ({ onClose }), [onClose]);
 
-	return <Provider value={value}>{children}</Provider>;
+	return (
+		<Provider value={value}>
+			<DataStateProvider ticketId={ticketId}>{children}</DataStateProvider>
+		</Provider>
+	);
 };
 
 export { Context, ContextProvider, Consumer };

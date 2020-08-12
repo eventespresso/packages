@@ -5,15 +5,14 @@ import TicketPriceCalculator from './TicketPriceCalculator';
 import useResetButtonProps from '../buttons/useResetButtonProps';
 import useSubmitButtonProps from '../buttons/useSubmitButtonProps';
 import { useTPCContext } from '../context';
+import { useDataState } from '../data';
 import { Modal } from '@eventespresso/adapters';
 
 import './styles.scss';
 
 const TicketPriceCalculatorModal: React.FC = () => {
-	const {
-		onClose,
-		dataState: { ticket },
-	} = useTPCContext();
+	const { onClose } = useTPCContext();
+	const { ticket } = useDataState();
 	const resetButtonProps = useResetButtonProps();
 	const submitButtonProps = useSubmitButtonProps();
 
