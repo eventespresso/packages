@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { EditMode } from '../types';
 import { Button } from '@eventespresso/components';
 import { Box, Divider } from '@eventespresso/adapters';
+import { EditMode } from '../types';
 
 export interface EditModeButtonsProps {
 	setEditMode: (editMode: EditMode) => void;
