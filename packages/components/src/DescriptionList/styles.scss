@@ -38,8 +38,15 @@
 
 			svg,
 			.dashicon,
-			.ee-svg.ee-svg {
-				margin: 0;
+			svg.ee-svg.ee-svg {
+				margin: auto;
+			}
+
+			&--has-bg {
+				svg.ee-svg.ee-svg {
+					height: auto;
+					width: 18px;
+				}
 			}
 		}
 

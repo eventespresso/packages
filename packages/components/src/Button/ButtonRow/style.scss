@@ -4,6 +4,8 @@
 	display: flex;
 	justify-content: center;
 	padding: var(--ee-padding-nano);
+	margin: var(--ee-margin-big) auto;
+	max-width: 900px;
 
 	.ee-debug-info-btn {
 		margin-left: auto;
