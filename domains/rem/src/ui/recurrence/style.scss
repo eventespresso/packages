@@ -70,10 +70,6 @@
 	margin: 3rem 1rem 0.5rem 0;
 }
 
-.generated-datetimes-list {
-	font-size: 1.2rem;
-}
-
 .rrule-string-div {
 	color: #a9aba6;
 	display: none;
@@ -84,18 +80,6 @@
 	&.display-rrule-string {
 		display: block;
 	}
-}
-
-.generated-datetimes-list li {
-	margin: 0 0 1.5rem;
-}
-
-.generated-datetime-trash-div {
-	display: inline-block;
-	font-size: 1.4rem;
-	margin: 0 0 0 2rem;
-	position: relative;
-	top: 0.1rem;
 }
 
 .recurring-events-manager {
@@ -201,15 +185,11 @@
 	text-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-.generated-datetime-trash-div .dashicons {
-	color: #a9aba6;
-}
-
 .rem-max-event-dates-warning {
 	color: #f06291;
 	margin: 2em 0 1em;
 	font-size: 0.9em;
-	text-space: 1px;
+	letter-spacing: 1px;
 }
 
 .rdtPicker td.rdtActive:hover {
