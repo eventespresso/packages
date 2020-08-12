@@ -3,12 +3,12 @@ import { __ } from '@wordpress/i18n';
 import { FormSpy } from '@eventespresso/form';
 import { anyPass, isNil, isEmpty } from 'ramda';
 
-import TicketFormSteps from './TicketFormSteps';
-import { usePrevNext } from '@eventespresso/hooks';
-import { TicketPriceCalculator } from '@eventespresso/tpc';
 import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/components';
+import { TicketPriceCalculator } from '@eventespresso/tpc';
+import { usePrevNext } from '@eventespresso/hooks';
 import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/components';
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
+import TicketFormSteps from './TicketFormSteps';
 import useDataListener from './useDataListener';
 
 /**

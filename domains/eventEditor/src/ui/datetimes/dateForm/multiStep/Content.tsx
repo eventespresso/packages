@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
 
 import { EspressoForm } from '@eventespresso/form';
-import useDatetimeFormConfig from '../useDateFormConfig';
-import ContentWrapper from './ContentWrapper';
 import {
 	useDatetimeMutator,
 	useTicketQuantityForCapacity,
 	useUpdateRelatedTickets,
 } from '@eventespresso/edtr-services';
+import useDatetimeFormConfig from '../useDateFormConfig';
+import ContentWrapper from './ContentWrapper';
 import type { ContentProps } from './types';
 
 const Content: React.FC<ContentProps> = ({ entity, onClose }) => {

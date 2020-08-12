@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { withContext as withTAMContext } from '@edtrUI/ticketAssignmentsManager/context';
-import ContentBody from './ContentBody';
-import type { ContentWrapperProps } from './types';
 import { useWithEntityFormDetails } from '@eventespresso/components';
+import { withContext as withTAMContext } from '@edtrUI/ticketAssignmentsManager/context';
+import type { ContentWrapperProps } from './types';
+import ContentBody from './ContentBody';
 
 /**
  * This component is inside RFF context, so we can use all of RFF features.

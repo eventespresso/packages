@@ -1,9 +1,9 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
+import { Calculator, Calendar, Ticket } from '@eventespresso/icons';
 import { Steps, Step } from '@eventespresso/adapters';
 import { PrevNext } from '@eventespresso/hooks';
-import { Calculator, Calendar, Ticket } from '@eventespresso/icons';
 
 const TicketFormSteps: React.FC<Pick<PrevNext, 'current'>> = ({ current }) => {
 	return (

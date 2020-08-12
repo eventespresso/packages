@@ -1,18 +1,18 @@
 import { useMemo, useCallback } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
-import { pick } from 'ramda';
 import { parseISO } from 'date-fns';
+import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import type { EspressoFormProps } from '@eventespresso/form';
 import { useTicketItem, processDateAndTime } from '@eventespresso/edtr-services';
+import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
+import type { EspressoFormProps } from '@eventespresso/form';
 import type { Ticket } from '@eventespresso/edtr-services';
+import { useTimeZoneTime } from '@eventespresso/services';
+import { useMemoStringify } from '@eventespresso/hooks';
 import { EntityId } from '@eventespresso/data';
 import { validate } from './formValidation';
 import { TicketFormShape } from './types';
-import { useTimeZoneTime } from '@eventespresso/services';
-import { useMemoStringify } from '@eventespresso/hooks';
-import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
 
 type TicketFormConfig = EspressoFormProps<TicketFormShape>;
 
