@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 import { LOCALIZED_DATE_FULL_FORMAT, TIME_ONLY_12H_SHORT_FORMAT } from '@eventespresso/constants';
 import type { TimeZoneTime } from '@eventespresso/services';
@@ -19,7 +19,19 @@ export const iconClassMap: { [key in DateType]: string } = {
 };
 
 export const tooltipMap: { [key in DateType]: string } = {
-	gDate: __('remove from list\nof generated dates'),
-	rDate: __('undo addition of extra date and\nremove from list of generated dates'),
-	exDate: __('undo exclusion and add back\ninto list of generated dates'),
+	gDate: sprintf(
+		/* translators: remove from list(linebreak)of generated dates */
+		__('remove from list%sof generated dates'),
+		'\n'
+	),
+	rDate: sprintf(
+		/* translators: undo addition of extra date and(linebreak)remove from list of generated dates */
+		__('undo addition of extra date and%sremove from list of generated dates'),
+		'\n'
+	),
+	exDate: sprintf(
+		/* translators: undo exclusion and add back(linebreak)into list of generated dates */
+		__('undo exclusion and add back%sinto list of generated dates'),
+		'\n'
+	),
 };
