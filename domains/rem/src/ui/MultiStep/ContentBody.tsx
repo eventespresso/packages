@@ -11,13 +11,13 @@ const ContentBody: React.FC = () => {
 	const { current } = useStepsState();
 
 	return (
-		<div>
+		<>
 			<Steps current={current} />
 			{current === 0 && <PatternEditor />}
 			{current === 1 && <DatetimeDetails />}
 			{current === 2 && <Tickets />}
 			{current === 3 && <GeneratedDates />}
-		</div>
+		</>
 	);
 };
 

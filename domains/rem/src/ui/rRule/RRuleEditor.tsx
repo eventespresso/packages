@@ -1,20 +1,23 @@
 import React from 'react';
+import classNames from 'classnames';
 
-import { DebugInfo } from '@eventespresso/components';
-import { RRuleEditorProps } from './types';
+import { FormSectionSidebar } from '@eventespresso/form';
 import PatternEditor from './PatternEditor';
+import type { RRuleEditorProps } from './types';
 
 import './style.scss';
 
-const RRuleEditor: React.FC<RRuleEditorProps> = ({ id, onChange, rRuleString, sidebarLabel, type }) => {
+const RRuleEditor: React.FC<RRuleEditorProps> = ({ desc, icon, id, onChange, rRuleString, sidebarLabel, type }) => {
+	const wrapperClassName = classNames(
+		'rrule-generator-wrapper',
+		type === 'recurrence' && 'rrule-generator-wrapper-recurrence',
+		type === 'exclusion' && 'rrule-generator-wrapper-exclusion'
+	);
 	return (
-		<>
-			<div className='rrule-generator-wrapper'>
-				{sidebarLabel && <h2 className='rrule-generator__sidebar-label'>{sidebarLabel}</h2>}
-				<PatternEditor id={id} onChange={onChange} rRuleString={rRuleString} type={type} />
-			</div>
-			<DebugInfo data={rRuleString} asJson={false} />
-		</>
+		<div className={wrapperClassName}>
+			{sidebarLabel && <FormSectionSidebar desc={desc} Icon={icon} title={sidebarLabel} />}
+			<PatternEditor id={id} onChange={onChange} rRuleString={rRuleString} type={type} />
+		</div>
 	);
 };
 
