@@ -2,9 +2,13 @@
 
 .ee-form {
 	.form-wrapper {
+		margin: 0 auto;
 		max-width: 900px;
 		padding: 0;
+// <<<<<<< HEAD
 		margin: 0 auto;
+// =======
+// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 
 		.ee-debug-info-btn {
 			@include max782px {
@@ -19,10 +23,11 @@
 		padding: 0 0 var(--ee-padding-big);
 
 		& > div:first-child {
-			padding: 1em 0;
+			padding: var(--ee-padding-small) 0;
 		}
 	}
 
+// <<<<<<< HEAD
 	.section-wrapper {
 		padding: 2.5em 0 1rem;
 		display: flex;
@@ -54,10 +59,47 @@
 
 			@include max782px {
 				margin: 0 0 1.5rem;
+// =======
+	.section {
+		&-wrapper {
+			padding: var(--ee-padding-bigger) 0 var(--ee-padding-small);
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		&-wrapper + &-wrapper {
+			border-top: 3px solid var(--ee-color-grey-14);
+		}
+
+		&-body {
+			padding: var(--ee-padding-smaller) 0;
+			.ee-form-item {
+				padding: var(--ee-padding-smaller) 0;
+
+				&-switch {
+					padding: var(--ee-padding-small) 0;
+				}
+				&-pair {
+					box-sizing: border-box;
+					display: inline-flex;
+					margin: var(--ee-margin-default) 0;
+					padding-right: var(--ee-padding-default);
+					width: 50%;
+					label {
+						display: flex;
+						align-items: center;
+					}
+				}
+				.ee-icon--info-circle-outlined {
+					color: var(--ee-color-primary-low-contrast);
+					margin: 0 var(--ee-margin-tiny);
+				}
+// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 			}
 		}
 	}
 
+// <<<<<<< HEAD
 	.section-heading-icon {
 		color: var(--ee-color-grey-13);
 		display: inline-block;
@@ -70,6 +112,33 @@
 			left: unset;
 			right: 0.25rem;
 			top: -0.75rem;
+// =======
+	&-section {
+		&__sidebar {
+			flex: 0 1 25%;
+			position: relative;
+
+			&-heading {
+				color: var(--ee-default-text-color);
+				font-size: var(--ee-font-size-bigger);
+				font-weight: bold;
+				margin: 0;
+			}
+
+			&-icon.ee-svg.ee-svg {
+				color: var(--ee-color-grey-13);
+				display: inline-block;
+				font-size: var(--ee-font-size-extreme);
+				height: var(--ee-font-size-extreme);
+				margin: 0 0 var(--ee-margin-small);
+				width: var(--ee-font-size-extreme);
+			}
+
+			&-desc {
+				color: var(--ee-default-text-color-low-contrast);
+				margin: var(--ee-margin-small) 0;
+			}
+// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 		}
 	}
 
@@ -80,13 +149,13 @@
 	}
 
 	.repeatable-wrap {
-		margin-bottom: 1em;
+		margin-bottom: var(--ee-margin-small);
 	}
 
 	.repeatable-item {
 		.remove-item {
 			float: right;
-			margin-left: 0.5em;
+			margin-left: var(--ee-margin-tiny);
 		}
 	}
 
@@ -94,9 +163,10 @@
 		display: flex;
 
 		> div {
-			padding: 0 0.5em;
+			padding: 0 var(--ee-padding-tiny);
 		}
 	}
+// <<<<<<< HEAD
 
 	.section-body {
 		padding: var(--ee-padding-smaller) 0;
@@ -217,20 +287,57 @@
 				}
 			}
 		}
+// =======
+
+	@media only screen and (min-width: 782px) {
+		.ee-form-section-sidebar {
+			flex: 0 25%;
+		}
+
+		.section-body {
+			flex: 0 75%;
+			position: relative;
+			.field-group-item {
+				flex: 0 50%;
+				padding: 0 var(--ee-padding-tiny);
+			}
+		}
+	}
+
+	@media only screen and (max-width: 782px) {
+		.ee-form-section-sidebar {
+			flex: 0 100%;
+			h3 {
+				margin: 0 0 var(--ee-margin-default);
+			}
+			&-icon {
+				left: unset;
+				position: absolute;
+				right: 0.25rem;
+				top: -0.75rem;
+			}
+		}
+
+		.section-body {
+			flex: 0 100%;
+// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 
 		.field-group-item {
 			@include max782px {
 				flex: 0 100%;
 			}
+// <<<<<<< HEAD
 
 			@include min782px {
 				flex: 0 50%;
 				padding: 0 0.5em;
 			}
+// =======
+// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 		}
 	}
 
 	.tooltip {
-		margin-left: 0.5em;
+		margin-left: var(--ee-margin-tiny);
 	}
 }

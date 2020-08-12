@@ -1,5 +1,7 @@
 .rrule-generator {
 	&__frequency {
+		flex: 0 1 80%;
+
 		> select.rrule-generator__form-control {
 			width: 220px;
 		}

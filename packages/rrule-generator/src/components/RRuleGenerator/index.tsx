@@ -4,6 +4,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import Start from '../Start';
 import Repeat from '../Repeat';
 import End from '../End';
+import RRuleText from './RRuleText';
 import { RRuleGeneratorProps } from '../types';
 import { useRRuleState, useStateListener } from '../../hooks';
 import { withConfig, withState } from '../../context';
@@ -11,7 +12,7 @@ import { withConfig, withState } from '../../context';
 import '../../styles/index.css';
 import './styles.scss';
 
-const RRuleGenerator: React.FC<RRuleGeneratorProps> = (props) => {
+const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({ showReadable = true, ...props }) => {
 	// set up state listener
 	useStateListener(props);
 
@@ -28,6 +29,8 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = (props) => {
 					)}
 				</div>
 			)}
+
+			{showReadable && <RRuleText rRuleString={props.value} />}
 
 			{!hideStart && <Start id={`${id}-start`} />}
 
