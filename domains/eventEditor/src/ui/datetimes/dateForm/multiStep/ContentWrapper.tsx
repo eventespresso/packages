@@ -10,18 +10,13 @@ import { useWithEntityFormDetails } from '@eventespresso/components';
  */
 const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
 	// provide entity details to TAM from edit form
-	return useWithEntityFormDetails(
-		({ entity }) =>
-			withTAMContext(
-				ContentBody,
-				{
-					assignmentType: 'forDate',
-					entity,
-				},
-				props
-			),
-		'NEW_DATE'
-	);
+	return useWithEntityFormDetails(({ entity }) => {
+		const Component = withTAMContext(ContentBody, {
+			assignmentType: 'forDate',
+			entity,
+		});
+		return <Component {...props} />;
+	}, 'NEW_DATE');
 };
 
 export default ContentWrapper;

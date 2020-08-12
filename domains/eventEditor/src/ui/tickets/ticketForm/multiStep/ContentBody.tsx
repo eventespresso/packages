@@ -14,6 +14,7 @@ import useDataListener from './useDataListener';
 /**
  * This component is inside both RFF and TAM contexts, so we can use all of their features
  */
+const subscription = { values: true, submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
 const ContentBody: React.FC = ({ children }) => {
 	// init data listener to update RFF data
 	useDataListener();
@@ -21,8 +22,6 @@ const ContentBody: React.FC = ({ children }) => {
 	const { current, goto, prev, next } = usePrevNext();
 	const { hasOrphanEntities } = useTAMDataState();
 	const isSubmitDisabled = hasOrphanEntities();
-
-	const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
 
 	return (
 		<FormSpy subscription={subscription}>

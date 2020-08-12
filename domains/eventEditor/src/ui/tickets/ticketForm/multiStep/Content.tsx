@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { EspressoForm } from '@eventespresso/form';
 import useTicketFormConfig from '../useTicketFormConfig';
@@ -30,7 +30,9 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 		},
 		[getCappedQuantity, mutatePrices, mutateTicket, onClose]
 	);
-	const formConfig = useTicketFormConfig(entity?.id, { onSubmit });
+
+	const config = useMemo(() => ({ onSubmit }), [onSubmit]);
+	const formConfig = useTicketFormConfig(entity?.id, config);
 
 	return <EspressoForm {...formConfig} formWrapper={ContentWrapper} />;
 };
