@@ -18,6 +18,7 @@ export * from './FormErrorMessage';
 export * from './FormHelperText';
 export * from './FormLabel';
 export * from './Heading';
+export * from './HelpIcon';
 export * from './Icon';
 export * from './InlineEdit';
 export * from './InputWithLabel';
