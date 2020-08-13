@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { ClickableIconWithTooltip } from '@eventespresso/adapters';
 import { InfoCircleOutlined } from '@eventespresso/icons';
+import { ClickableIconWithTooltip } from '../../';
 
 import './style.scss';
 
