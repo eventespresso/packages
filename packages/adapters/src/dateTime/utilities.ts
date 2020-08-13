@@ -1,31 +1,4 @@
-/**
- * object where keys are WordPress date format parameters
- * and values are substitutions required to work with react-date-picker
- */
-const dateFormats = {
-	Y: 'y',
-	M: 'MMM',
-	n: 'M',
-	m: 'MM',
-	F: 'MMMM',
-	j: 'd',
-	s: '',
-	l: '',
-	D: '',
-};
-
-/**
- * object where keys are WordPress time format parameters
- * and values are substitutions required to work with react-time-picker
- */
-const timeFormats = {
-	H: 'HH',
-	G: 'H',
-	h: 'hh',
-	g: 'h',
-	i: 'mm',
-	A: 'a',
-};
+import { dateFormats, timeFormats } from '@eventespresso/constants';
 
 /**
  * converts WordPress date formats to work with react-date-picker
