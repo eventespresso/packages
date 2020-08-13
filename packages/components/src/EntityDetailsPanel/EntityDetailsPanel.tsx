@@ -7,7 +7,7 @@ import EntityDetails from './EntityDetails';
 import type { EntityDetailsPanelProps } from './types';
 
 const EntityDetailsPanel: React.FC<EntityDetailsPanelProps> = ({ details, ...props }) => {
-	const className = classNames('ee-entity-details-panel-div', props.className);
+	const className = classNames('ee-entity-details-panel', props.className);
 
 	return (
 		<div className={className}>
