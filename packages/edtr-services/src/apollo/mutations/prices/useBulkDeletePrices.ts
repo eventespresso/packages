@@ -8,7 +8,7 @@ import { useUpdatePriceList } from '../../../hooks';
 import useBulkDeleteEntities from '../useBulkDeleteEntities';
 import { TypeName, cacheNodesFromBulkDelete } from '../';
 
-type Callback<R = void> = (entityIds: Array<EntityId>, deletePermanently?: boolean) => R;
+type Callback<R = void> = (entityIds: Array<EntityId>) => R;
 
 const useBulkDeletePrices = (): Callback<Promise<ExecutionResult>> => {
 	const allPrices = usePrices();

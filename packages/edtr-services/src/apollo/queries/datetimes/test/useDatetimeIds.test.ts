@@ -6,25 +6,22 @@ import { nodes } from './data';
 import useInitDatetimeTestCache from './useInitDatetimeTestCache';
 import { getGuids } from '@eventespresso/predicates';
 
-const timeout = 5000; // milliseconds
-describe('useDatetimeIds()', () => {
+describe('useDatetimeIds', () => {
 	const wrapper = ApolloMockedProvider();
-	it('checks for the empty datetime IDs', async () => {
-		const { result, waitForValueToChange } = renderHook(() => useDatetimeIds(), { wrapper });
+	it('checks for the empty datetime IDs', () => {
+		const { result } = renderHook(() => useDatetimeIds(), { wrapper });
 
-		await waitForValueToChange(() => result.current, { timeout });
 		expect(result.current.length).toBe(0);
 	});
 
-	it('checks for datetime IDs after the cache is updated', async () => {
-		const { result, waitForValueToChange } = renderHook(
+	it('checks for datetime IDs after the cache is updated', () => {
+		const { result } = renderHook(
 			() => {
 				useInitDatetimeTestCache();
 				return useDatetimeIds();
 			},
 			{ wrapper }
 		);
-		await waitForValueToChange(() => result.current, { timeout });
 
 		const { current: cachedDatetimeIds } = result;
 		const passedDatetimeIds = getGuids(nodes);
