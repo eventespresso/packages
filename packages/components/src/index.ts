@@ -9,6 +9,7 @@ export * from './Collapsible';
 export * from './ColorSwatch';
 export * from './Confirm';
 export * from './CurrencyInput';
+export * from './DatePicker';
 export * from './DateTimeRangePicker';
 export * from './DebugInfo';
 export * from './DescriptionList';

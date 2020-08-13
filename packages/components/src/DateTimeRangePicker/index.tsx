@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { DateTimeRangePicker as DateTimeRangePickerAdapter, DateTimeRangePickerProps } from '@eventespresso/adapters';
 import { Save } from '@eventespresso/icons';
+import { useConfig } from '@eventespresso/services';
 import { IconButton, ButtonType } from '../Button';
 
 const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
@@ -15,6 +16,10 @@ const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 	...props
 }) => {
 	const [dates, setDates] = useState([startDate, endDate]);
+	const {
+		dateTimeFormats: { dateTimeFormat },
+		locale: { user },
+	} = useConfig();
 
 	const onSave: VoidFunction = useCallback(() => {
 		if (typeof onChangeValue === 'function') {
@@ -37,7 +42,15 @@ const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 
 	return (
 		<div className={htmlClass}>
-			<DateTimeRangePickerAdapter required onChange={setDates} startDate={start} endDate={end} {...props} />
+			<DateTimeRangePickerAdapter
+				required
+				dateFormat={dateTimeFormat}
+				locale={user}
+				onChange={setDates}
+				startDate={start}
+				endDate={end}
+				{...props}
+			/>
 			<IconButton
 				aria-label={__('save')}
 				buttonType={ButtonType.MINIMAL}

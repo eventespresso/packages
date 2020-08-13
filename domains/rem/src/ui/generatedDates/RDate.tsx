@@ -2,8 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { formatISO } from 'date-fns';
 
-import { Button } from '@eventespresso/components';
-import { Box, DatePicker } from '@eventespresso/adapters';
+import { Button, DatePicker } from '@eventespresso/components';
+import { Box } from '@eventespresso/adapters';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { Insert } from '@eventespresso/icons';
 import { useFormState } from '../../data';
@@ -28,7 +28,7 @@ const RDate: React.FC = () => {
 
 	return (
 		<Box display='flex' alignItems='center'>
-			<DatePicker value={date} onChange={onChange} />
+			<DatePicker onChange={onChange} value={date} />
 			<Button icon={Insert} onClick={onAddDate} buttonText={__('Add Extra Event Date')} />
 		</Box>
 	);

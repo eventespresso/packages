@@ -2,21 +2,22 @@ import React from 'react';
 import ReactDateTimeRangePicker from '@wojtekmaj/react-datetimerange-picker';
 import { __ } from '@wordpress/i18n';
 
-import { DateTimeRangePickerProps } from '../types';
-import { useConfig } from '@eventespresso/services';
 import { convertWordPressDateFormat, convertWordPressTimeFormat } from '../utilities';
+import type { DateTimeRangePickerProps } from '../types';
 
 import '../style.scss';
 import './style.scss';
 
-export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({ endDate, onChange, startDate, ...props }) => {
-	const {
-		dateTimeFormats: { dateTimeFormat },
-		locale: { user },
-	} = useConfig();
-
+export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
+	dateFormat,
+	endDate,
+	locale,
+	onChange,
+	startDate,
+	...props
+}) => {
 	// convert date format to acceptable values for react-datetimerange-picker
-	const newDateFormat = convertWordPressDateFormat(dateTimeFormat);
+	const newDateFormat = convertWordPressDateFormat(dateFormat);
 	const newDateTimeFormat = convertWordPressTimeFormat(newDateFormat);
 
 	return (
@@ -26,7 +27,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({ endDat
 			closeWidgets={false}
 			disableClock
 			format={newDateTimeFormat}
-			locale={user}
+			locale={locale}
 			onChange={onChange}
 			showLeadingZeros
 			value={[new Date(startDate), new Date(endDate)]}

@@ -1,19 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import { default as ReactDatepicker } from 'react-date-picker';
 
-import { DatePickerProps } from '../types';
 import { CalendarOutlined, CloseOutlined } from '@eventespresso/icons';
-import { useConfig } from '@eventespresso/services';
 import { convertWordPressDateFormat } from '../utilities';
+import type { DatePickerProps } from '../types';
 
 import '../style.scss';
 
-const DatePicker: React.FC<DatePickerProps> = ({ value, onChange, onChangeValue, ...props }) => {
+const DatePicker: React.FC<DatePickerProps> = ({ dateFormat, locale, onChange, onChangeValue, value, ...props }) => {
 	const [date, setDate] = useState(value);
-	const {
-		dateTimeFormats: { dateFormat },
-		locale: { user },
-	} = useConfig();
 
 	const onChangeHandler: DatePickerProps['onChange'] = useCallback(
 		(newDate) => {
@@ -42,7 +37,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ value, onChange, onChangeValue,
 			{...props}
 			calendarIcon={<CalendarOutlined />}
 			clearIcon={<CloseOutlined />}
-			locale={user}
+			locale={locale}
 			onChange={onChangeHandler}
 			value={date}
 		/>

@@ -3,18 +3,13 @@ import { format, parse } from 'date-fns';
 import ReactTimePicker from 'react-time-picker';
 
 import { CloseOutlined } from '@eventespresso/icons';
-import { useConfig } from '@eventespresso/services';
 import { convertWordPressTimeFormat } from '../utilities';
 
 import type { TimePickerProps } from '../types';
 import '../style.scss';
 
-const TimePicker: React.FC<TimePickerProps> = ({ onChange, onChangeValue, value, ...props }) => {
+const TimePicker: React.FC<TimePickerProps> = ({ timeFormat, locale, onChange, onChangeValue, value, ...props }) => {
 	const [time, setTime] = useState(format(value, 'HH:mm'));
-	const {
-		dateTimeFormats: { timeFormat },
-		locale: { user },
-	} = useConfig();
 
 	// convert date format to accepatble values for react-time-picker
 	const convertedTimeFormat = convertWordPressTimeFormat(timeFormat);
@@ -44,7 +39,7 @@ const TimePicker: React.FC<TimePickerProps> = ({ onChange, onChangeValue, value,
 			{...props}
 			clearIcon={<CloseOutlined />}
 			clockIcon={null}
-			locale={user}
+			locale={locale}
 			onChange={onChangeHandler}
 			required
 			value={time}

@@ -5,7 +5,9 @@ import type { CommonInputProps } from '../types';
 export interface DatePickerProps
 	extends Omit<ReactDatePickerProps, 'onChange' | 'value' | 'format'>, // this is conflicting with FieldRendererProps, this is why format has been omitted, to be improved
 		CommonInputProps<HTMLInputElement, Date> {
+	dateFormat: string;
 	className?: string;
+	locale: string;
 	onChange?: (date: Date) => void;
 	value?: Date;
 }
@@ -13,8 +15,10 @@ export interface DatePickerProps
 export interface DateTimeRangePickerProps
 	extends ReactDateTimeRangePickerProps,
 		CommonInputProps<HTMLInputElement, string[]> {
+	dateFormat: string;
 	className?: string;
 	endDate: string;
+	locale: string;
 	onChange: (dates: string[]) => void;
 	startDate: string;
 }
@@ -23,7 +27,9 @@ export interface TimePickerProps
 	extends Omit<ReactTimePickerProps, 'format'>,
 		CommonInputProps<HTMLInputElement, Date> {
 	className?: string;
+	locale: string;
 	onChange?: (time: string) => void;
+	timeFormat: string;
 	value?: Date;
 }
 
