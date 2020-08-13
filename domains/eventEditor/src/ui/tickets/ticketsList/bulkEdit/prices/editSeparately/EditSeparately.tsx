@@ -16,9 +16,11 @@ const EditSeparately: React.FC<EditPricesBaseProps> = ({ onClose }) => {
 
 	const onSubmit = useOnSubmit(onClose, getDataStates);
 
+	const ticketIds = getSelected();
+
 	return (
 		<>
-			{getSelected().map<React.ReactNode>((ticketId) => {
+			{ticketIds.map<React.ReactNode>((ticketId) => {
 				const Instance = withTPCContext(TPCInstance, { ticketId });
 				return <Instance key={ticketId} setTPCState={setTPCState} />;
 			})}
