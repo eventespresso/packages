@@ -38,7 +38,7 @@ const TicketPriceCalculator: React.FC<TicketPriceCalculatorProps> = ({ context }
 			<Table prices={dataState.prices} />
 			<DefaultTaxesInfo />
 
-			<ButtonRow rightAligned>
+			<ButtonRow align='right'>
 				<DebugInfo data={dataState} />
 				<DefaultPricesInfo />
 				<TaxesButtons />

@@ -29,7 +29,7 @@ const ContentFooter: React.FC<Partial<UseDisclosureReturn>> = ({ onClose }) => {
 	}
 
 	return (
-		<ButtonRow rightAligned topBordered>
+		<ButtonRow align='right' topBordered>
 			<CancelButton onClick={onClose} />
 			{
 				// hide previous on first step

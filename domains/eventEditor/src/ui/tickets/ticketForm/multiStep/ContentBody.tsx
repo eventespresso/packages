@@ -39,7 +39,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 0 && (
 							<>
 								{children}
-								<ButtonRow rightAligned>
+								<ButtonRow align='right'>
 									<Next
 										buttonText={__('Add ticket prices')}
 										buttonType={ButtonType.SECONDARY}
@@ -59,7 +59,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 1 && (
 							<>
 								<TicketPriceCalculator context='editTicketForm' />
-								<ButtonRow rightAligned>
+								<ButtonRow align='right'>
 									<Previous onClick={prev} />
 									<Next
 										buttonText={__('Save and assign dates')}
@@ -73,7 +73,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 2 && (
 							<>
 								<TicketAssignmentsManager />
-								<ButtonRow rightAligned>
+								<ButtonRow align='right'>
 									<Previous buttonText={__('Ticket details')} onClick={() => goto(0)} skippable />
 									<Previous onClick={prev} />
 									<Submit onClick={form.submit} isDisabled={isSubmitDisabled} />
