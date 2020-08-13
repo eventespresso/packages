@@ -5,10 +5,6 @@
 		margin: 0 auto;
 		max-width: 900px;
 		padding: 0;
-// <<<<<<< HEAD
-		margin: 0 auto;
-// =======
-// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 
 		.ee-debug-info-btn {
 			@include max782px {
@@ -21,45 +17,11 @@
 
 	.sections-wrapper {
 		padding: 0 0 var(--ee-padding-big);
-
 		& > div:first-child {
 			padding: var(--ee-padding-small) 0;
 		}
 	}
 
-// <<<<<<< HEAD
-	.section-wrapper {
-		padding: 2.5em 0 1rem;
-		display: flex;
-		flex-wrap: wrap;
-	}
-
-	.section-wrapper + .section-wrapper {
-		border-top: 3px solid var(--ee-color-grey-14);
-	}
-
-	.section-heading {
-		position: relative;
-
-		@include max782px {
-			flex: 0 100%;
-		}
-
-		@include min782px {
-			flex: 0 20%;
-		}
-
-		h3 {
-			color: var(--ee-default-text-color);
-			font-size: 1.4rem;
-			font-weight: bold;
-			color: var(--ee-default-text-color);
-			font-size: 1.4rem;
-			margin: 0;
-
-			@include max782px {
-				margin: 0 0 1.5rem;
-// =======
 	.section {
 		&-wrapper {
 			padding: var(--ee-padding-bigger) 0 var(--ee-padding-small);
@@ -94,25 +56,10 @@
 					color: var(--ee-color-primary-low-contrast);
 					margin: 0 var(--ee-margin-tiny);
 				}
-// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 			}
 		}
 	}
 
-// <<<<<<< HEAD
-	.section-heading-icon {
-		color: var(--ee-color-grey-13);
-		display: inline-block;
-		font-size: var(--ee-font-size-extreme);
-		position: absolute;
-		top: 2rem;
-		left: 0.25rem;
-
-		@include max782px {
-			left: unset;
-			right: 0.25rem;
-			top: -0.75rem;
-// =======
 	&-section {
 		&__sidebar {
 			flex: 0 1 25%;
@@ -138,7 +85,6 @@
 				color: var(--ee-default-text-color-low-contrast);
 				margin: var(--ee-margin-small) 0;
 			}
-// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 		}
 	}
 
@@ -161,133 +107,12 @@
 
 	.submit-wrapper {
 		display: flex;
+		justify-content: flex-end;
 
 		> div {
 			padding: 0 var(--ee-padding-tiny);
 		}
 	}
-// <<<<<<< HEAD
-
-	.section-body {
-		padding: var(--ee-padding-smaller) 0;
-
-		@include max782px {
-			flex: 0 100%;
-		}
-
-		@include min782px {
-			flex: 0 80%;
-			position: relative;
-			.field-group-item {
-				flex: 0 50%;
-				padding: 0 0.5em;
-			}
-		}
-
-		.ee-form-item {
-			padding: var(--ee-padding-smaller) 0;
-
-			@include max782px {
-				padding: var(--ee-padding-tiny) 0;
-			}
-
-			@include max600px {
-				padding: var(--ee-padding-micro) 0;
-			}
-
-			@include max480px {
-				padding: var(--ee-padding-nano) 0;
-			}
-
-			&-switch {
-				padding: var(--ee-padding-small) 0;
-			}
-
-			&-pair {
-				display: inline-flex;
-				margin: var(--ee-margin-default) 0;
-				padding-right: var(--ee-padding-big);
-				width: 50%;
-
-				label {
-					cursor: default;
-					&:first-child {
-						align-items: center;
-						display: flex;
-						padding: var(--ee-padding-nano) var(--ee-padding-smaller) 0 0;
-						min-width: 200px;
-					}
-				}
-
-				> div {
-					width: calc(50% - 200px);
-				}
-
-				@include max782px {
-					margin: var(--ee-margin-small) 0;
-					width: 100%;
-
-					label:first-child {
-						justify-content: flex-end;
-						min-width: 240px;
-					}
-
-					label + label {
-						padding: var(--ee-padding-nano) var(--ee-padding-smaller);
-					}
-
-					> div {
-						width: calc(100% - 240px);
-					}
-				}
-
-				@include max600px {
-					margin: var(--ee-margin-smaller) 0;
-				}
-
-				@include max480px {
-					margin: var(--ee-margin-smaller) 0;
-
-					label:first-child {
-						min-width: 200px;
-					}
-
-					> div {
-						width: calc(100% - 200px);
-					}
-				}
-
-				@include max360px {
-					margin: var(--ee-margin-tiny) 0;
-
-					&:not(.ee-form-item__switch) {
-						display: flex;
-						flex-flow: column;
-						justify-content: flex-start;
-						padding-right: 0;
-
-						label:first-child {
-							justify-content: flex-start;
-							width: 100%;
-						}
-
-						> div {
-							width: 100%;
-						}
-					}
-				}
-			}
-
-			// to override values set in &__pair
-			&__number > div {
-				width: 120px;
-
-				@include max360px {
-					width: 100%;
-				}
-			}
-		}
-// =======
 
 	@media only screen and (min-width: 782px) {
 		.ee-form-section-sidebar {
@@ -320,20 +145,13 @@
 
 		.section-body {
 			flex: 0 100%;
-// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 
-		.field-group-item {
-			@include max782px {
+			.ee-form-item-pair {
+				width: 100%;
+			}
+			.field-group-item {
 				flex: 0 100%;
 			}
-// <<<<<<< HEAD
-
-			@include min782px {
-				flex: 0 50%;
-				padding: 0 0.5em;
-			}
-// =======
-// >>>>>>> Update rRuleGenerator & Forms Packages (#164)
 		}
 	}
 
