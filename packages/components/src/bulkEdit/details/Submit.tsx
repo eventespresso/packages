@@ -31,7 +31,7 @@ const Submit: React.FC<Pick<FormRenderProps<any>, 'form'>> = ({ form }) => {
 	});
 
 	return (
-		<ButtonRow align='right'>
+		<ButtonRow>
 			<Button
 				buttonText={__('Submit')}
 				buttonType={ButtonType.PRIMARY}

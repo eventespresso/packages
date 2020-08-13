@@ -36,7 +36,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 0 && (
 							<>
 								{children}
-								<ButtonRow align='right'>
+								<ButtonRow>
 									<Next
 										buttonText={__('Add ticket prices')}
 										buttonType={ButtonType.SECONDARY}
@@ -55,7 +55,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 1 && (
 							<>
 								<TicketPriceCalculator context='editTicketForm' />
-								<ButtonRow align='right'>
+								<ButtonRow>
 									<Previous onClick={prev} buttonText={__('Ticket details')} />
 									<Submit
 										onClick={form.submit}

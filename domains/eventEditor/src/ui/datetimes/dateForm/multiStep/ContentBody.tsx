@@ -36,7 +36,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 0 && (
 							<>
 								{children}
-								<ButtonRow align='right'>
+								<ButtonRow>
 									<Next
 										buttonText={__('Save and assign tickets')}
 										onClick={next}
@@ -49,7 +49,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 1 && (
 							<>
 								<TicketAssignmentsManager />
-								<ButtonRow align='right'>
+								<ButtonRow>
 									<Previous onClick={prev} />
 									<Submit onClick={form.submit} isDisabled={isSubmitDisabled} />
 								</ButtonRow>
