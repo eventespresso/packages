@@ -6,11 +6,11 @@ import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import usePriceQueryOptions from './usePriceQueryOptions';
 import { FetchQueryResult } from '@eventespresso/data';
-import { useEdtrState } from '../../../hooks/';
+import { useEdtrState } from '../../../hooks';
 import { usePrevious } from '@eventespresso/hooks';
 import type { PricesList } from '../../types';
 
-const useFetchPrices = (skipFetch: boolean = null): FetchQueryResult<PricesList> => {
+const useFetchPrices = (skipFetch: boolean = null): Partial<FetchQueryResult<PricesList>> => {
 	const { setIsLoading, setIsLoaded, setIsError, isLoaded } = useStatus();
 	const { query, ...options } = usePriceQueryOptions();
 	const { pricesPollInterval: pollInterval } = useEdtrState();

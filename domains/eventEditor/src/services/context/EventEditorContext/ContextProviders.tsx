@@ -1,3 +1,1 @@
-import { EdtrStateProvider, withEdtrContext } from '@eventespresso/edtr-services';
-
-export const ContextProviders = withEdtrContext(EdtrStateProvider);
+export { ContextProvider as ContextProviders } from '@eventespresso/edtr-services';

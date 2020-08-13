@@ -1,5 +1,4 @@
 import gql from 'graphql-tag';
-import { PRICE_ATTRIBUTES } from '../prices';
 
 export const TICKET_ATTRIBUTES: any = gql`
 	fragment ticketAttributes on EspressoTicket {
@@ -30,22 +29,6 @@ export const TICKET_ATTRIBUTES: any = gql`
 		startDate
 		uses
 	}
-`;
-
-/**
- * The related prices for a ticket.
- * Can be used to fetch the default prices
- * created for a ticket on the server.
- */
-export const TICKET_PRICES_ATTRIBUTE: any = gql`
-	fragment ticketPricesAttribute on EspressoTicket {
-		prices {
-			nodes {
-				...priceAttributes
-			}
-		}
-	}
-	${PRICE_ATTRIBUTES}
 `;
 
 export const GET_TICKET: any = gql`

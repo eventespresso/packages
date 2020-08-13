@@ -1,5 +1,22 @@
 import gql from 'graphql-tag';
-import { TICKET_ATTRIBUTES, TICKET_PRICES_ATTRIBUTE } from '../../queries';
+import { TICKET_ATTRIBUTES } from '../../queries/tickets';
+import { PRICE_ATTRIBUTES } from '../../queries/prices';
+
+/**
+ * The related prices for a ticket.
+ * Can be used to fetch the default prices
+ * created for a ticket on the server.
+ */
+export const TICKET_PRICES_ATTRIBUTE: any = gql`
+	fragment ticketPricesAttribute on EspressoTicket {
+		prices {
+			nodes {
+				...priceAttributes
+			}
+		}
+	}
+	${PRICE_ATTRIBUTES}
+`;
 
 export const CREATE_TICKET = gql`
 	mutation CREATE_TICKET($input: CreateEspressoTicketInput!) {
