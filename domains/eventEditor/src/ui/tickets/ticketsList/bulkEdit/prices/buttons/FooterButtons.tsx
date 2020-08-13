@@ -1,9 +1,7 @@
 import React from 'react';
+import { __ } from '@wordpress/i18n';
 
-import { ButtonRow } from '@eventespresso/components';
-
-import ResetButton from './ResetButton';
-import SubmitButton from './SubmitButton';
+import { Button, ButtonRow, ButtonType } from '@eventespresso/components';
 
 export interface FooterButtonsProps {
 	onSubmit: VoidFunction;
@@ -13,8 +11,8 @@ export interface FooterButtonsProps {
 export const FooterButtons: React.FC<FooterButtonsProps> = ({ onSubmit, onReset }) => {
 	return (
 		<ButtonRow rightAligned topBordered>
-			<ResetButton onClick={onReset} />
-			<SubmitButton onClose={onSubmit} />
+			<Button buttonText={__('Reset')} onClick={onReset} type='reset' />
+			<Button buttonText={__('Submit')} buttonType={ButtonType.PRIMARY} onClick={onSubmit} type='submit' />
 		</ButtonRow>
 	);
 };
