@@ -10,7 +10,7 @@ import { useTPCContext } from '../context';
 
 const useSubmitButtonProps = (): ButtonProps => {
 	const { onClose } = useTPCContext();
-	const { prices } = useDataState();
+	const { prices, getData } = useDataState();
 
 	const isDisabled = prices.length && prices.some(({ amount }) => anyPass([isNil, isEmpty])(amount));
 
@@ -18,10 +18,10 @@ const useSubmitButtonProps = (): ButtonProps => {
 	const onClick = useCallback(
 		(e) => {
 			e.preventDefault();
-			submitPrices();
+			submitPrices(getData());
 			onClose();
 		},
-		[submitPrices, onClose]
+		[submitPrices, getData, onClose]
 	);
 
 	return useMemo<ButtonProps>(

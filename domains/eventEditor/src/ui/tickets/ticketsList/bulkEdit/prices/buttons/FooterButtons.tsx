@@ -5,13 +5,15 @@ import { Button, ButtonRow, ButtonType } from '@eventespresso/components';
 
 export interface FooterButtonsProps {
 	onSubmit: VoidFunction;
-	onReset: VoidFunction;
+	onReset?: VoidFunction;
+	onCancel?: VoidFunction;
 }
 
-export const FooterButtons: React.FC<FooterButtonsProps> = ({ onSubmit, onReset }) => {
+export const FooterButtons: React.FC<FooterButtonsProps> = ({ onSubmit, onReset, onCancel }) => {
 	return (
 		<ButtonRow rightAligned topBordered>
-			<Button buttonText={__('Reset')} onClick={onReset} type='reset' />
+			{onReset && <Button buttonText={__('Reset')} onClick={onReset} type='reset' />}
+			{onCancel && <Button buttonText={__('Cancel')} onClick={onCancel} />}
 			<Button buttonText={__('Submit')} buttonType={ButtonType.PRIMARY} onClick={onSubmit} type='submit' />
 		</ButtonRow>
 	);
