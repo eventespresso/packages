@@ -1,7 +1,24 @@
-.ee-generated-dates-bg {
+.ee-generated-date {
+	&--add,
+	&--remove,
+	&--trash,
+	&--rDate,
+	&--exDate,
+	&--gDate {
+		height: var(--ee-icon-button-size);
+		width: var(--ee-icon-button-size);
+	}
+
+	&--add,
+	&--remove,
+	&--trash {
+		background-color: var(--ee-button-background);
+		color: var(--ee-button-text-color);
+	}
+
 	&--rDate {
 		background-color: var(--ee-color-secondary);
-		color: var(--ee-text-on-secondary);
+		color: var(--ee-color-white);
 	}
 
 	&--exDate {
@@ -12,5 +29,9 @@
 	&--gDate {
 		background-color: var(--ee-color-primary);
 		color: var(--ee-text-on-primary);
+
+		svg {
+			width: 26px !important;
+		}
 	}
 }

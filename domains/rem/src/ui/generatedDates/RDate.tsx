@@ -20,10 +20,8 @@ const RDate: React.FC = () => {
 		setDate(null);
 	}, [addRDate, date, siteTimeToUtc]);
 
-	const onChange = useCallback<DatePickerProps['onChange']>((newDate) => {
-		console.log('RDate', newDate);
-
-		setDate(newDate as Date);
+	const onChange = useCallback((newDate: Date) => {
+		setDate(newDate);
 	}, []);
 
 	return (
