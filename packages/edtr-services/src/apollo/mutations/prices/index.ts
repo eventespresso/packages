@@ -35,4 +35,6 @@ export const DELETE_PRICE = gql`
 
 export { default as usePriceMutator } from './usePriceMutator';
 
+export { default as useBulkDeletePrices } from './useBulkDeletePrices';
+
 export * from './types';

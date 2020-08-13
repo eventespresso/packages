@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import type { ExecutionResult } from '@apollo/react-common';
 
 import type { EntityId } from '@eventespresso/data';
 import type { TicketEdge } from '../../types';
@@ -9,7 +10,7 @@ import { TypeName, cacheNodesFromBulkDelete } from '../';
 
 type Callback<R = void> = (entityIds: Array<EntityId>, deletePermanently?: boolean) => R;
 
-const useBulkDeleteTickets = (): Callback => {
+const useBulkDeleteTickets = (): Callback<Promise<ExecutionResult>> => {
 	const allTickets = useTickets();
 	const queryOptions = useTicketQueryOptions();
 	const updateTicketList = useUpdateTicketList();
@@ -35,8 +36,8 @@ const useBulkDeleteTickets = (): Callback => {
 	);
 
 	return useCallback(
-		(entityIds, deletePermanently) => {
-			bulkDelete({
+		async (entityIds, deletePermanently) => {
+			return await bulkDelete({
 				entityIds,
 				deletePermanently,
 				updateEntityList: updateEntityList(entityIds, deletePermanently),

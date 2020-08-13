@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useMutationWithFeedback, MutationType } from '@eventespresso/data';
+import type { ExecutionResult } from '@apollo/react-common';
 import gql from 'graphql-tag';
 
 import type { EntityId } from '@eventespresso/data';
@@ -7,7 +8,7 @@ import { TypeName } from './';
 import { useSystemNotifications } from '@eventespresso/toaster';
 
 interface BulkDeleteEntitiesProps {
-	entityType: 'DATETIME' | 'TICKET';
+	entityType: 'DATETIME' | 'TICKET' | 'PRICE';
 	typeName: TypeName;
 }
 
@@ -17,7 +18,7 @@ interface CallbackArgs {
 	updateEntityList: VoidFunction;
 }
 
-type Callback = (args: CallbackArgs) => void;
+type Callback = (args: CallbackArgs) => Promise<ExecutionResult>;
 
 const BULK_DELETE_ENTITIES = gql`
 	mutation BULK_DELETE_ENTITIES($input: BulkDeleteEspressoEntitiesInput!) {
@@ -38,8 +39,8 @@ const useBulkDeleteEntities = ({ entityType, typeName }: BulkDeleteEntitiesProps
 	});
 
 	return useCallback<Callback>(
-		({ entityIds, deletePermanently, updateEntityList }) => {
-			return bulkDelete({
+		async ({ entityIds, deletePermanently, updateEntityList }) => {
+			return await bulkDelete({
 				variables: {
 					input: {
 						clientMutationId: 'BULK_DELETE_ENTITIES',

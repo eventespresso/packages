@@ -5,7 +5,7 @@ import { shiftDate, AnyObject } from '@eventespresso/services';
 import type { EntityId } from '@eventespresso/data';
 
 import { BulkUpdateInput, BulkEditFormBaseShape } from './types';
-import { Datetime, Ticket } from '../types';
+import { Datetime, Ticket, Price } from '../types';
 import { UpdateDatetimeInput } from '../..';
 import { UpdateTicketInput } from './tickets';
 
@@ -73,7 +73,7 @@ export const cacheNodesFromBulkInput = <T extends UpdateDatetimeInput | UpdateTi
 	return nodes;
 };
 
-export const cacheNodesFromBulkDelete = <E extends Datetime | Ticket>(
+export const cacheNodesFromBulkDelete = <E extends Datetime | Ticket | Price>(
 	entityIds: Array<EntityId>,
 	allEntities: E[],
 	deletePermanently?: boolean
