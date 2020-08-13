@@ -9,24 +9,21 @@ import { ticketStatusBgColorClassName } from '@eventespresso/helpers';
 import { useTicketsListFilterState } from '@edtrServices/filterState';
 import { getPropsAreEqual } from '@eventespresso/services';
 import type { TicketItemProps } from '../types';
-import { TicketProvider } from '../../../../services/context';
 
 const TicketCard: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 	const { displayStartOrEndDate } = useTicketsListFilterState();
 	const bgClassName = ticketStatusBgColorClassName(ticket);
 
 	return ticket ? (
-		<TicketProvider id={ticket.id}>
-			<EntityCard
-				actionsMenu={<TicketActionsMenu entity={ticket} layout={EntityActionsMenuLayout.Vertical} />}
-				cacheId={ticket.cacheId + displayStartOrEndDate}
-				details={<Details entity={ticket} />}
-				entity={ticket}
-				reverse
-				sidebar={<TicketCardSidebar entity={ticket} />}
-				sidebarClass={bgClassName}
-			/>
-		</TicketProvider>
+		<EntityCard
+			actionsMenu={<TicketActionsMenu entity={ticket} layout={EntityActionsMenuLayout.Vertical} />}
+			cacheId={ticket.cacheId + displayStartOrEndDate}
+			details={<Details entity={ticket} />}
+			entity={ticket}
+			reverse
+			sidebar={<TicketCardSidebar entity={ticket} />}
+			sidebarClass={bgClassName}
+		/>
 	) : null;
 };
 
