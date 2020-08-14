@@ -18,7 +18,7 @@ import { sortBy, prop } from 'ramda';
  * and Babel cannot transform them ¯\_(ツ)_/¯
  * @link https://www.regular-expressions.info/javascript.html
  */
-const COUNT_REGEX = /COUNT=[0-9]+?;/;
+const COUNT_REGEX = /COUNT=[0-9]+?;/; // matches "COUNT=8;", "COUNT=50;", "COUNT=102;" etc.
 const COUNT_REPLACE = 'COUNT=500;';
 
 export const useGenerateDates = (includeExDates?: boolean): Array<GeneratedDate> => {
