@@ -7,8 +7,8 @@ import { RRuleConfig } from '../types';
 
 type RSM = RRuleStateManager;
 
-const useRRuleStateManager = (config: RRuleConfig): RSM => {
-	const initializer = useInitialState(config);
+const useRRuleStateManager = (config: RRuleConfig, rRuleString?: string): RSM => {
+	const initializer = useInitialState(config, rRuleString);
 	const dataReducer = useRRuleStateReducer(initializer);
 	const [state, dispatch] = useReducer(dataReducer, null, initializer);
 

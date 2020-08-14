@@ -1,10 +1,10 @@
 import React from 'react';
-import { StateProvider } from './StateProvider';
+import { StateProvider, StateProviderProps } from './StateProvider';
 
-const withState = <P extends any>(Component: React.ComponentType<P>): React.ComponentType<P> => {
+const withState = <P extends StateProviderProps>(Component: React.ComponentType<P>): React.ComponentType<P> => {
 	const WrappedComponent: React.ComponentType<P> = (props) => {
 		return (
-			<StateProvider>
+			<StateProvider value={props.value}>
 				<Component {...props} />
 			</StateProvider>
 		);

@@ -1,11 +1,10 @@
-import { ConfigProviderProps } from '../context';
+import { ConfigProviderProps, StateProviderProps } from '../context';
 
 export interface BaseProps {
 	id?: string;
 }
 
-export interface RRuleGeneratorProps extends BaseProps, ConfigProviderProps {
-	value?: string;
+export interface RRuleGeneratorProps extends BaseProps, ConfigProviderProps, StateProviderProps {
 	onChange: (rRuleString: string) => void;
 	hideStart?: boolean;
 	hideEnd?: boolean;

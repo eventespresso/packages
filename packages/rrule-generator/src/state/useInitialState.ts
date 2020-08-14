@@ -3,11 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { RRuleConfig } from '../types';
 import { StateInitializer, RRuleState } from './types';
+import { computeRRuleFromString } from '../utils';
 
 /**
  * Initializes the state dynamically by using the config.
  */
-const useInitialState = (config: RRuleConfig): StateInitializer => {
+const useInitialState = (config: RRuleConfig, rRuleString?: string): StateInitializer => {
 	const state = useMemo<RRuleState>(
 		() => ({
 			hash: uuidv4(),
@@ -69,9 +70,12 @@ const useInitialState = (config: RRuleConfig): StateInitializer => {
 
 	return useCallback<StateInitializer>(
 		(initialState) => {
-			return { ...initialState, ...state };
+			// if rRule string is provided, use it to generate initial state
+			const data = rRuleString ? computeRRuleFromString(state, rRuleString) : state;
+
+			return { ...initialState, ...data };
 		},
-		[state]
+		[rRuleString, state]
 	);
 };
 
