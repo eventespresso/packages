@@ -2,7 +2,7 @@ import React from 'react';
 
 import 'draft-js/dist/Draft.css';
 
-import { RichTextEditor } from '@eventespresso/rich-rext-editor';
+import { RichTextEditor } from '@eventespresso/rich-text-editor';
 
 import Text from './Text';
 import TextArea from './TextArea';

@@ -1,11 +1,11 @@
 {
-	"name": "@eventespresso/rich-rext-editor",
+	"name": "@eventespresso/rich-text-editor",
 	"version": "1.0.6",
 	"description": "Wrapper around draft.js",
 	"author": "EventEspresso",
 	"license": "GPL-2.0-or-later",
 	"private": true,
-	"homepage": "https://github.com/eventespresso/packages/tree/master/packages/rich-rext-editor/README.md",
+	"homepage": "https://github.com/eventespresso/packages/tree/master/packages/rich-text-editor/README.md",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/eventespresso/barista.git"
