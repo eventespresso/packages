@@ -1,3 +1,3 @@
 export * from './date';
-export * from './getRecurrenceFrequency';
+export * from './misc';
 export * from './predicates';
