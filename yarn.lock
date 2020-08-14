@@ -4550,9 +4550,9 @@
     "@types/yargs-parser" "*"
 
 "@types/yup@^0.29.3":
-  version "0.29.4"
-  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.29.4.tgz#f7b1f9978180d5155663c1cd0ecdc41a72c23d81"
-  integrity sha512-OQ7gZRQb7eSbGu5h57tbK67sgX8UH5wbuqPORTFBG7qiBtOkEf1dXAr0QULyHIeRwaGLPYxPXiQru+40ClR6ng==
+  version "0.29.5"
+  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.29.5.tgz#3c870d5a7d6d36f927fa27a8774ec899bae1990d"
+  integrity sha512-meq6eww0Xm2hSa4suRVxDHBI6D1p7Qz9ZWz2D2Lq1tdrxG5Jhl3AhAPAMJ3LwVF5TjWs7bTYYtXMakB85IZOIw==
 
 "@types/zen-observable@^0.8.0":
   version "0.8.0"
@@ -6890,9 +6890,9 @@ base@^0.11.1:
     pascalcase "^0.1.1"
 
 baseui@^9.84.1:
-  version "9.94.0"
-  resolved "https://registry.yarnpkg.com/baseui/-/baseui-9.94.0.tgz#e8955e6935076a70f45dea348eb7b00679021f6e"
-  integrity sha512-WHC8lnTzfYsW9yahGDsf56vdFaQLcXUpCVmi9HrW+Epxf9ksLCwe0U+jx1dC3WJdfC6qExtt1hYl4+P7UGA2fg==
+  version "9.95.0"
+  resolved "https://registry.yarnpkg.com/baseui/-/baseui-9.95.0.tgz#6f0f2e2e96c2385b8b6da4715c3e00b159d23e64"
+  integrity sha512-jhgQ3HyGKoLOARtxmxYR0OwVEQM+laOf7IoDD8OXBRicofF6cS+Lpk5lM3xOSQtPCSa63FTB9VgDXFLwG7g1HQ==
   dependencies:
     "@date-io/date-fns" "^2.6.2"
     card-validator "^6.2.0"
@@ -6979,9 +6979,9 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.4.0:
   integrity sha512-E6QoYqCKZfgatHTdHzs1RRKP7ip4vvm+EyRUeE2RF0NblwVvb0p6jSVeNTOFxPn26QXN2o6SMfNxKp6kU8zQaw==
 
 bn.js@^5.1.1:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.2.tgz#c9686902d3c9a27729f43ab10f9d79c2004da7b0"
-  integrity sha512-40rZaf3bUNKTVYu9sIeeEGOg7g14Yvnj9kH7b50EiwX0Q7A6umbvfI5tvHaOERH0XigqKkfLkFQxzb4e6CIXnA==
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.3.tgz#beca005408f642ebebea80b042b4d18d2ac0ee6b"
+  integrity sha512-GkTiFpjFtUzU9CbMeJ5iazkCzGL3jrhzerzZIuqLABjbwRaFt33I9tUdSNryIptM+RxDet6OKm2WnLXzW51KsQ==
 
 body-parser@1.19.0:
   version "1.19.0"

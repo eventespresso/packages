@@ -1,7 +1,5 @@
 import React from 'react';
 
-import 'draft-js/dist/Draft.css';
-
 import { RichTextEditor } from '@eventespresso/rich-text-editor';
 
 import Text from './Text';
