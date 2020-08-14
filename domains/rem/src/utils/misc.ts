@@ -21,8 +21,8 @@ export const getRecurrenceCount = (rRuleString: string): number => {
 export const DATE_COUNT_LIMITS: { [key in keyof Partial<typeof Frequency>]: number } = {
 	YEARLY: 5,
 	MONTHLY: 36,
-	WEEKLY: 104,
-	DAILY: 183, // default
+	WEEKLY: 52,
+	DAILY: 92, // default
 };
 
 /**
