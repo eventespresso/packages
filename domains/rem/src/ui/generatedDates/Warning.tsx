@@ -1,34 +1,35 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-const Warning: React.FC<any> = ({ freq, count }) => {
-	let warning = '';
+import { getGDates, getRecurrenceFrequency } from '../../utils';
+import { useFormState } from '../../data';
+import { GeneratedDate } from './types';
 
-	switch (freq) {
-		case 'YEARLY':
-			warning =
-				count >= 5 ? __('The number of Event Dates has been capped at 5 for YEARLY recurrence patterns') : '';
+type WarningProps = {
+	datetimes: Array<GeneratedDate>;
+};
+
+const Warning: React.FC<WarningProps> = ({ datetimes }) => {
+	const { rRule } = useFormState();
+	const count = getGDates(datetimes).length;
+	const freq = getRecurrenceFrequency(rRule);
+
+	let warning: string;
+	switch (true) {
+		case freq === 'YEARLY' && count >= 5:
+			warning = __('The number of Event Dates has been capped at 5 for YEARLY recurrence patterns');
 			break;
-		case 'MONTHLY':
-			warning =
-				count >= 24
-					? __(
-							'The number of Event Dates has been capped at 24' +
-								' for MONTHLY recurrence patterns (2 years)'
-					  )
-					: '';
+		case freq === 'MONTHLY' && count >= 24:
+			warning = __('The number of Event Dates has been capped at 24 for MONTHLY recurrence patterns (2 years)');
 			break;
-		case 'WEEKLY':
-			warning =
-				count >= 52
-					? __('The number of Event Dates has been capped at 52 for WEEKLY recurrence patterns (1 year)')
-					: '';
+		case freq === 'WEEKLY' && count >= 52:
+			warning = __('The number of Event Dates has been capped at 52 for WEEKLY recurrence patterns (1 year)');
 			break;
-		case 'DAILY':
-			warning =
-				count >= 92
-					? __('The number of Event Dates has been capped at 92 for DAILY recurrence patterns (~3 months)')
-					: '';
+		case freq === 'DAILY' && count >= 92:
+			warning = __('The number of Event Dates has been capped at 92 for DAILY recurrence patterns (~3 months)');
+			break;
+		default:
+			warning = '';
 			break;
 	}
 

@@ -26,7 +26,7 @@ const GeneratedDates: React.FC = () => {
 					<GeneratedDatetimes datetimes={datetimes} />
 					{/* <Pagination defaultPerPage={6} /> */}
 					<RDate />
-					<Warning count={datetimes?.length} />
+					<Warning datetimes={datetimes} />
 				</div>
 			</div>
 			<ButtonRow>
