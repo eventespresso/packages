@@ -20,6 +20,10 @@ const PatternEditor: React.FC = () => {
 		onClose();
 	}, [onClose, setExRule]);
 
+	// We need to show rRule even after coming back from next steps
+	// isOpen is reset on each mount (step), exRule still remains in REM state
+	const showExRule = exRule || isOpen;
+
 	return (
 		<>
 			{!rRule ? (
@@ -37,7 +41,7 @@ const PatternEditor: React.FC = () => {
 				type='recurrence'
 			/>
 			<Divider type='dotted' />
-			{isOpen && (
+			{showExRule && (
 				<RRuleEditor
 					desc={__('defines a rule or repeating pattern that will remove dates from those generated above')}
 					icon={CloseCircleOutlined}
@@ -50,8 +54,8 @@ const PatternEditor: React.FC = () => {
 			)}
 			<ButtonRow>
 				<Button
-					buttonText={isOpen ? __('Remove exclusion pattern') : __('Add exclusion pattern')}
-					onClick={isOpen ? onRemoveClick : onOpen}
+					buttonText={showExRule ? __('Remove exclusion pattern') : __('Add exclusion pattern')}
+					onClick={showExRule ? onRemoveClick : onOpen}
 				/>
 				<DebugInfo data={{ rRule, exRule }} />
 			</ButtonRow>
