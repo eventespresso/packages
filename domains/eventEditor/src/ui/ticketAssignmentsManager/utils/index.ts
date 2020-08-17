@@ -63,7 +63,7 @@ export const ticketsWithNewQuantity = ({
 		{}
 	);
 	/**
-	 * This becomes an object with key as ticket id and value as array of new date ids
+	 * This becomes an object with key as ticket id and value as new ticket quantity
 	 * {
 	 *     [ticket.id]: quantity
 	 * }

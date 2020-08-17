@@ -1,41 +1,26 @@
 import { useCallback } from 'react';
+import { any } from 'ramda';
 
 import { useRelations } from '@eventespresso/services';
-import {
-	UpdateTicketInput,
-	useDatetimeMutator,
-	useDatetimes,
-	useTicketMutator,
-	useTickets,
-} from '@eventespresso/edtr-services';
+import { UpdateTicketInput, useDatetimes, useTickets, useBulkEditTickets } from '@eventespresso/edtr-services';
+import { entityHasGuid } from '@eventespresso/predicates';
 import { prepareEntitiesForUpdate, ticketsWithNewQuantity } from '../utils';
 import { TAMRelationalData } from '../types';
-import { EntityId } from '@eventespresso/data';
 
 type Callback = (data: TAMRelationalData) => Promise<void>;
 
 const useOnSubmitAssignments = (): Callback => {
 	const { getData: getExistingData } = useRelations();
-	const { updateEntity: updateDatetime } = useDatetimeMutator();
-	const { updateEntity: updateTicket } = useTicketMutator();
 
 	const allDates = useDatetimes();
 	const allTickets = useTickets();
+
+	const { updateEntities: bulkEditTickets } = useBulkEditTickets();
 
 	return useCallback<Callback>(
 		async (data) => {
 			const existingData = getExistingData();
 
-			/**
-			 * Lets prepare a list of dates and tickets that need to be mutated
-			 * avoiding updating the ones that haven't changed.
-			 */
-			const datesToUpdate = prepareEntitiesForUpdate({
-				entity: 'datetimes',
-				existingData,
-				newData: data,
-				relation: 'tickets',
-			});
 			const ticketsToUpdate = prepareEntitiesForUpdate({
 				entity: 'tickets',
 				existingData,
@@ -50,50 +35,25 @@ const useOnSubmitAssignments = (): Callback => {
 				ticketsToUpdate,
 			});
 
-			// Tickets which will be updated in the below loop
-			const updatedTickets: Array<EntityId> = [];
+			const uniqueInputs = ticketsToUpdate.map<UpdateTicketInput>(([id, possibleRelation]) => {
+				const input = { id, datetimes: possibleRelation?.datetimes };
 
-			/**
-			 * Now we have both dates and tickets list ready.
-			 * To reduce the number of mutation requests,
-			 * we will update the list that is less in size,
-			 * because the relation can be updated both ways.
-			 *
-			 * PS: Separate loops to avoid TS mess and make type checks strict.
-			 */
-			if (ticketsToUpdate.length < datesToUpdate.length) {
-				ticketsToUpdate.forEach(([id, possibleRelation]) => {
-					const datetimes = possibleRelation?.datetimes || [];
-					const input: UpdateTicketInput = { id, datetimes };
-
-					const changedQuantity = ticketsWithChangedQuantity?.[id];
-					// if an entry exists in changed quantity map
-					// lets use this opportunity to update the quantity here
-					// to reduce the number of mutation requests
-					if (changedQuantity) {
-						input.quantity = changedQuantity;
-						// mark the ticket as already updated
-						updatedTickets.push(id);
-					}
-					updateTicket(input);
-				});
-			} else {
-				datesToUpdate.forEach(([id, possibleRelation]) => {
-					const tickets = possibleRelation?.tickets || [];
-					updateDatetime({ id, tickets });
-				});
-			}
-
-			// now we finally update the ticket quantities
+				const quantity = ticketsWithChangedQuantity?.[id];
+				if (quantity) {
+					return { ...input, quantity };
+				}
+				return input;
+			});
 			Object.entries(ticketsWithChangedQuantity).forEach(([id, quantity]) => {
-				// if it's already updated above
-				if (updatedTickets.includes(id)) {
+				// if it's already in uniqueInputs
+				if (any<UpdateTicketInput>(entityHasGuid(id), uniqueInputs)) {
 					return;
 				}
-				updateTicket({ id, quantity });
+				uniqueInputs.push({ id, quantity });
 			});
+			bulkEditTickets({ uniqueInputs });
 		},
-		[allDates, allTickets, getExistingData, updateDatetime, updateTicket]
+		[allDates, allTickets, bulkEditTickets, getExistingData]
 	);
 };
 
