@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 
 import type { BaseFieldProps, FieldValue, InputProps } from './types';
 
@@ -49,7 +49,7 @@ const useBaseField = ({
 		fieldValue = '';
 	}
 
-	return useMemo<BaseField>(() => ({ handlers, fieldValue }), [handlers, fieldValue]);
+	return { handlers, fieldValue };
 };
 
 export default useBaseField;
