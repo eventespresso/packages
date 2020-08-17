@@ -1,6 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
 
-class StyleButton extends React.Component {
+class StyleButton extends React.Component<any> {
+	onToggle: (e: any) => void;
+
 	constructor() {
 		super();
 		this.onToggle = (e) => {
@@ -10,13 +13,10 @@ class StyleButton extends React.Component {
 	}
 
 	render() {
-		let className = 'RichEditor-styleButton';
-		if (this.props.active) {
-			className += ' RichEditor-activeButton';
-		}
+		const className = classNames('RichEditor-styleButton', this.props.active && 'RichEditor-activeButton');
 
 		return (
-			<span className={className} onMouseDown={this.onToggle} role='button'>
+			<span className={className} onMouseDown={this.onToggle} role='button' tabIndex={0}>
 				{this.props.label}
 			</span>
 		);
