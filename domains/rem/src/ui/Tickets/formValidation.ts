@@ -4,9 +4,10 @@ import * as yup from 'yup';
 import { yupToFinalFormErrors } from '@eventespresso/form';
 import { IntervalType } from '@eventespresso/services';
 import { transformTimeByDate, dateErrorMessage } from '@eventespresso/edtr-services';
-import { DateAndTime, TicketFormShape } from './types';
+import { DateAndTime } from './types';
+import { RemTicket } from '../../data';
 
-export const validate = async (values: TicketFormShape): Promise<any> => {
+export const validate = async (values: RemTicket): Promise<any> => {
 	return await yupToFinalFormErrors(validationSchema, values);
 };
 
@@ -61,7 +62,7 @@ const ticketSalesSchema = yup.object().when(
 	})
 );
 
-const validationSchema = yup.object<TicketFormShape>({
+const validationSchema = yup.object<Partial<RemTicket>>({
 	name: yup
 		.string()
 		.required(() => __('Name is required'))

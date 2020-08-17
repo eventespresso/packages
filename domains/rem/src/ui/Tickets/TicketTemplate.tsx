@@ -13,19 +13,18 @@ import EntityOptionsRow from '../EntityOptionsRow';
 import { RemTicket } from '../../data';
 
 import './style.scss';
+import useTicketFormConfig from './useTicketFormConfig';
 
 interface Props {
 	ticketTemplates: RemTicket[];
-	addTicketTemplate: (ticket: RemTicket) => void;
+	addTicketTemplate: (ticket: Partial<RemTicket>) => void;
 }
 
 const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates }) => {
 	const { isOpen, onClose, onOpen: onAddNew } = useDisclosure();
 	const [selectedTicketId, setSelectedTicketId] = useState('');
 
-	// convert Apollo tickets to REM tickets
-	// This is nothing but to make a fool of TS ¯\_(ツ)_/¯
-	const tickets = useTickets().map<RemTicket>((ticket) => ({ ...ticket, prices: [], isShared: false }));
+	const tickets = useTickets();
 
 	const filteredTickets = ticketTemplates.length
 		? entitiesWithGuIdNotInArray(tickets, getGuids(ticketTemplates))
@@ -35,7 +34,9 @@ const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates })
 	const options = entityListToSelectOptions(filteredTickets, { label: __('Select...'), value: '' });
 
 	const [ticket] = entitiesWithGuIdInArray(tickets, [selectedTicketId]);
-	const onClick = useCallback(() => addTicketTemplate(ticket), [ticket, addTicketTemplate]);
+	// convert Ticket to RemTicket
+	const { initialValues: normalizedTicket } = useTicketFormConfig(ticket);
+	const onClick = useCallback(() => addTicketTemplate(normalizedTicket), [addTicketTemplate, normalizedTicket]);
 
 	const addNewID = 'ee-add-new-ticket';
 	const addNew = (

@@ -1,13 +1,14 @@
 import type { Reducer, ReducerState } from 'react';
 
-import type { Ticket } from '@eventespresso/edtr-services';
 import type { AnyObject } from '@eventespresso/services';
-import type { EntityId } from '@eventespresso/data';
+import type { Entity, EntityId } from '@eventespresso/data';
 import type { TpcPriceModifier } from '@eventespresso/tpc';
+import type { UpdateTicketInput } from '@eventespresso/edtr-services';
+
 import type { DateFormShape } from '../ui/datetimeDetails/types';
 import type { RemTicketFields } from '../ui/Tickets/types';
 
-export interface RemTicket extends Omit<Ticket, 'prices'>, RemTicketFields {
+export interface RemTicket extends Entity, RemTicketFields, Omit<UpdateTicketInput, 'prices' | 'id'> {
 	prices?: Array<TpcPriceModifier>;
 	isShared: boolean;
 }
@@ -45,7 +46,7 @@ export type DataActionType =
 export interface DataAction extends Partial<FormState> {
 	type: DataActionType;
 	id?: EntityId;
-	ticket?: RemTicket;
+	ticket?: Partial<RemTicket>;
 	date?: string;
 }
 

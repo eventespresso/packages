@@ -1,4 +1,4 @@
-import type { UpdateTicketInput, Datetime } from '@eventespresso/edtr-services';
+import type { Datetime } from '@eventespresso/edtr-services';
 import type { IntervalType } from '@eventespresso/services';
 
 import { RemTicket } from '../../data';
@@ -6,8 +6,6 @@ import { RemTicket } from '../../data';
 export interface BaseProps {
 	ticket: RemTicket;
 }
-
-export interface TicketFormShape extends Omit<UpdateTicketInput, 'prices'>, RemTicketFields {}
 
 export type TicketSatesFields = {
 	position?: 'before' | 'after';
