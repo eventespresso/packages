@@ -2,12 +2,13 @@ import { useCallback, useMemo } from 'react';
 
 import { useMutationWithFeedback, MutationType } from '@eventespresso/data';
 import { useSystemNotifications } from '@eventespresso/toaster';
-import type { DatetimeEdge } from '../../types';
 import { useDatetimeQueryOptions, useDatetimes } from '../../queries';
-import { useUpdateDatetimeList } from '../../../hooks';
 import { BulkUpdateDatetimeInput, BULK_UPDATE_DATETIMES } from './';
-import { TypeName } from '../';
+import useOnUpdateDatetime from './useOnUpdateDatetime';
+import { useUpdateDatetimeList } from '../../../hooks';
 import { cacheNodesFromBulkInput } from '../utils';
+import type { DatetimeEdge, Datetime } from '../../types';
+import { TypeName } from '../';
 
 interface BulkEditDatetimes {
 	updateEntities: (input: BulkUpdateDatetimeInput) => ReturnType<ReturnType<typeof useMutationWithFeedback>>;
@@ -18,6 +19,7 @@ const useBulkEditDatetimes = (): BulkEditDatetimes => {
 	const queryOptions = useDatetimeQueryOptions();
 	const toaster = useSystemNotifications();
 	const updateDatetimeList = useUpdateDatetimeList();
+	const onUpdateDatetime = useOnUpdateDatetime();
 
 	const updateDatetimes = useMutationWithFeedback({
 		typeName: TypeName.Datetime,
@@ -40,8 +42,12 @@ const useBulkEditDatetimes = (): BulkEditDatetimes => {
 					espressoDatetimes,
 				},
 			});
+			// update entity relations
+			input.uniqueInputs.forEach(({ tickets, ...updateInput }) => {
+				onUpdateDatetime({ datetime: updateInput as Datetime, tickets });
+			});
 		},
-		[allDatetimes, queryOptions, updateDatetimeList]
+		[allDatetimes, onUpdateDatetime, queryOptions, updateDatetimeList]
 	);
 
 	const updateEntities = useCallback<BulkEditDatetimes['updateEntities']>(

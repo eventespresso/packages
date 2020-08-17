@@ -2,12 +2,13 @@ import { useCallback, useMemo } from 'react';
 
 import { useMutationWithFeedback, MutationType } from '@eventespresso/data';
 import { useSystemNotifications } from '@eventespresso/toaster';
-import type { TicketEdge } from '../../types';
+import type { TicketEdge, Ticket } from '../../types';
 import { useTicketQueryOptions, useTickets } from '../../queries';
 import { useUpdateTicketList } from '../../../hooks';
 import { BulkUpdateTicketInput, BULK_UPDATE_TICKETS } from './';
 import { TypeName } from '../';
 import { cacheNodesFromBulkInput } from '../utils';
+import useOnUpdateTicket from './useOnUpdateTicket';
 
 interface BulkEditTickets {
 	updateEntities: (input: BulkUpdateTicketInput) => ReturnType<ReturnType<typeof useMutationWithFeedback>>;
@@ -18,6 +19,7 @@ const useBulkEditTickets = (): BulkEditTickets => {
 	const queryOptions = useTicketQueryOptions();
 	const toaster = useSystemNotifications();
 	const updateTicketList = useUpdateTicketList();
+	const onUpdateTicket = useOnUpdateTicket();
 
 	const updateTickets = useMutationWithFeedback({
 		typeName: TypeName.Ticket,
@@ -40,8 +42,12 @@ const useBulkEditTickets = (): BulkEditTickets => {
 					espressoTickets,
 				},
 			});
+			// update entity relations
+			input.uniqueInputs.forEach(({ datetimes, prices, ...updateInput }) => {
+				onUpdateTicket({ ticket: updateInput as Ticket, datetimeIds: datetimes, priceIds: prices });
+			});
 		},
-		[allTickets, queryOptions, updateTicketList]
+		[allTickets, onUpdateTicket, queryOptions, updateTicketList]
 	);
 
 	const updateEntities = useCallback<BulkEditTickets['updateEntities']>(

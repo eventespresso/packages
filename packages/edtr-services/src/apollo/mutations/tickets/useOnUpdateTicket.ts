@@ -77,8 +77,10 @@ const useOnUpdateTicket = (): TicketMutationCallbackFn => {
 					});
 				}
 			}
-			// Update ticket cache.
-			updateTicketCache({ proxy, tickets, ticket, action: 'update' });
+			if (proxy && tickets) {
+				// Update ticket cache.
+				updateTicketCache({ proxy, tickets, ticket, action: 'update' });
+			}
 		},
 		[addRelation, removeRelation, updateRelations, updateTicketCache]
 	);
