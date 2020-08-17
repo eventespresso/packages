@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const StyleButton = (props) => {
+const StyleButton: React.FC<any> = (props) => {
 	const className = classNames('RichEditor-styleButton', this.props.active && 'RichEditor-activeButton');
 
 	const onToggle = (e) => {
