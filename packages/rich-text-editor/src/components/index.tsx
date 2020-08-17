@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import { convertFromHTML, convertToHTML } from 'draft-convert';
@@ -6,12 +7,13 @@ import 'draft-js/dist/Draft.css';
 import BlockStyleControls from './BlockStyleControls';
 import InlineStyleControls from './InlineStyleControls';
 
+import { RichTextEditorProps, RichTextEditorState } from './types';
+
 import './style.scss';
 
-export class RichTextEditor extends React.Component {
+export class RichTextEditor extends React.Component<RichTextEditorProps, RichTextEditorState> {
 	focus: () => any;
 	onChange: (editorState: any) => void;
-	handleKeyCommand: (command: any) => boolean;
 	onTab: (e: any) => void;
 	toggleBlockType: (type: any) => void;
 	toggleInlineStyle: (style: any) => void;
@@ -42,20 +44,22 @@ export class RichTextEditor extends React.Component {
 			this.setState({ editorState });
 		};
 
-		this.handleKeyCommand = (command) => this._handleKeyCommand(command);
+		this.handleKeyCommand = (command) => this.handleKeyCommand(command);
 		this.onTab = (e) => this._onTab(e);
 		this.toggleBlockType = (type) => this._toggleBlockType(type);
 		this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 	}
 
-	_handleKeyCommand(command) {
+	handleKeyCommand(command) {
 		const { editorState } = this.state;
 		const newState = RichUtils.handleKeyCommand(editorState, command);
+
 		if (newState) {
 			this.onChange(newState);
-			return true;
+			return 'handled';
 		}
-		return false;
+
+		return 'not-handled';
 	}
 
 	_onTab(e) {
@@ -108,19 +112,23 @@ export class RichTextEditor extends React.Component {
 			<div className='RichEditor-root'>
 				<BlockStyleControls editorState={editorState} onToggle={this.toggleBlockType} />
 				<InlineStyleControls editorState={editorState} onToggle={this.toggleInlineStyle} />
-				<div className={className} onClick={this.focus}>
-					<Editor
-						blockStyleFn={getBlockStyle}
-						customStyleMap={styleMap}
-						editorState={editorState}
-						handleKeyCommand={this.handleKeyCommand}
-						onChange={this.onChange}
-						onTab={this.onTab}
-						placeholder='Tell a story...'
-						ref='editor'
-						spellCheck={true}
-					/>
-				</div>
+				{
+					// eslint-disable-next-line jsx-a11y/click-events-have-key-events
+					<div className={className} onClick={this.focus}>
+						<Editor
+							blockStyleFn={getBlockStyle}
+							customStyleMap={styleMap}
+							editorState={editorState}
+							handleKeyCommand={this.handleKeyCommand}
+							onChange={this.onChange}
+							onTab={this.onTab}
+							placeholder='Write something...'
+							// eslint-disable-next-line react/no-string-refs
+							ref='editor'
+							spellCheck={true}
+						/>
+					</div>
+				}
 			</div>
 		);
 	}
