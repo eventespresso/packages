@@ -1,1 +1,3 @@
-export interface RichTextEditorProps {}
+export interface RichTextEditorProps {
+	readonly?: boolean;
+}

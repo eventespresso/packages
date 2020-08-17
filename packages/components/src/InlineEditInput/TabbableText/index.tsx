@@ -8,7 +8,7 @@ import { TabbableTextProps } from '../types';
 
 import './style.scss';
 
-const TabbableText: React.FC<TabbableTextProps> = ({ onRequestEdit, icon, text, ...props }) => {
+const TabbableText: React.FC<TabbableTextProps> = ({ icon, onRequestEdit, richTextContent, text, ...props }) => {
 	const className = classNames('ee-tabbable-text', props.className);
 
 	const onKeyDown = (e) => {
@@ -19,12 +19,26 @@ const TabbableText: React.FC<TabbableTextProps> = ({ onRequestEdit, icon, text, 
 
 	const tooltip = props.tooltip || __('Click to edit...');
 
+	const spanProps = {
+		...(richTextContent && { dangerouslySetInnerHTML: { __html: text } }),
+		...(!richTextContent && {
+			children: (
+				<>
+					{icon && icon}
+					{text && text}
+				</>
+			),
+		}),
+		className,
+		onClick: onRequestEdit,
+		onKeyDown,
+		role: 'button',
+		tabIndex: 0,
+	};
+
 	return (
 		<Tooltip tooltip={tooltip}>
-			<span className={className} onClick={onRequestEdit} onKeyDown={onKeyDown} role='button' tabIndex={0}>
-				{icon && icon}
-				{text && text}
-			</span>
+			<span {...spanProps} />
 		</Tooltip>
 	);
 };

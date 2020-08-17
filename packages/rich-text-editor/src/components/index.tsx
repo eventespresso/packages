@@ -1,5 +1,6 @@
 import React from 'react';
-import { Editor, EditorState, convertFromRaw, convertToRaw, RichUtils } from 'draft-js';
+import { Editor, EditorState, RichUtils } from 'draft-js';
+import { convertFromHTML, convertToHTML } from 'draft-convert';
 import 'draft-js/dist/Draft.css';
 
 import BlockStyleControls from './BlockStyleControls';
@@ -18,28 +19,25 @@ export class RichTextEditor extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const rawContent = {
-			blocks: [
-				{
-					text: 'Description',
-					type: 'unstyled',
-				},
-			],
-		};
+		const markup = '<b>Edit ...</b>';
 
-		const blocks = convertFromRaw((props?.input?.value && JSON.parse(props?.input?.value)) || rawContent);
+		const editorState = EditorState.createWithContent(
+			convertFromHTML((props?.input?.value.length && props?.input?.value) || markup)
+		);
+
+		// const blocksFromHTML = convertFromHTML( || markup);
 
 		this.state = {
-			editorState: EditorState.createWithContent(blocks),
+			editorState,
 		};
 
 		// eslint-disable-next-line react/no-string-refs
 		this.focus = () => this.refs.editor.focus();
 
 		this.onChange = (editorState) => {
-			const content = convertToRaw(editorState.getCurrentContent());
+			const html = convertToHTML(editorState.getCurrentContent());
 
-			this.props?.input?.onChange?.(JSON.stringify(content));
+			this.props?.input?.onChange?.(html);
 
 			this.setState({ editorState });
 		};

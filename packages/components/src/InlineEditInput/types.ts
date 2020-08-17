@@ -1,6 +1,7 @@
 import { InlineEditProps } from '@eventespresso/adapters';
 
 export interface TextAreaProps extends Omit<InlineEditProps, 'inputType'> {
+	richTextContent?: boolean;
 	tooltip?: string;
 }
 
@@ -15,7 +16,8 @@ export interface TabbableTextProps {
 	className?: string;
 	icon?: React.ReactNode;
 	onRequestEdit: VoidFunction;
-	text?: string | JSX.Element;
+	richTextContent?: boolean;
+	text?: string;
 	tooltip?: string;
 }
 
@@ -25,5 +27,6 @@ export interface PreviewProps extends Partial<Omit<InlineEditProps, 'onChange' |
 	fitText?: boolean;
 	isEditing?: boolean;
 	onRequestEdit?: VoidFunction;
+	richTextContent?: boolean;
 	tooltip?: string;
 }
