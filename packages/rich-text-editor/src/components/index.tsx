@@ -14,8 +14,6 @@ import './style.scss';
 export class RichTextEditor extends React.Component<RichTextEditorProps, RichTextEditorState> {
 	focus: () => any;
 	onChange: (editorState: any) => void;
-	onTab: (e: any) => void;
-	toggleBlockType: (type: any) => void;
 	toggleInlineStyle: (style: any) => void;
 
 	constructor(props) {
@@ -27,26 +25,30 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 			convertFromHTML((props?.input?.value.length && props?.input?.value) || markup)
 		);
 
-		// const blocksFromHTML = convertFromHTML( || markup);
-
 		this.state = {
 			editorState,
 		};
 
-		// eslint-disable-next-line react/no-string-refs
-		this.focus = () => this.refs.editor.focus();
+		this.focus = () => {
+			// eslint-disable-next-line react/no-string-refs
+			const { editor } = this.refs;
+
+			// @ts-ignore
+			editor.focus();
+		};
 
 		this.onChange = (editorState) => {
 			const html = convertToHTML(editorState.getCurrentContent());
 
+			// @ts-ignore
 			this.props?.input?.onChange?.(html);
 
 			this.setState({ editorState });
 		};
 
 		this.handleKeyCommand = (command) => this.handleKeyCommand(command);
-		this.onTab = (e) => this._onTab(e);
-		this.toggleBlockType = (type) => this._toggleBlockType(type);
+		this.onTab = (e) => this.onTab(e);
+		this.toggleBlockType = (type) => this.toggleBlockType(type);
 		this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 	}
 
@@ -62,12 +64,12 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 		return 'not-handled';
 	}
 
-	_onTab(e) {
+	onTab(e) {
 		const maxDepth = 4;
 		this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
 	}
 
-	_toggleBlockType(blockType) {
+	toggleBlockType(blockType) {
 		this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
 	}
 
