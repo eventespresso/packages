@@ -17,7 +17,7 @@ interface AdditionalFormProps<FormValues = AnyObject> extends FormContextProps {
 	fields?: FieldList<FormValues>;
 	submitButton?: FormButtonProps;
 	resetButton?: FormButtonProps;
-	formWrapper?: React.ComponentType<FormRenderProps>;
+	formWrapper?: React.ComponentType<FormRenderProps<FormValues>>;
 	debugFields?: Array<keyof FormState<any>>; // The fields from RFF form state to display in debug
 }
 
@@ -73,7 +73,9 @@ export interface EspressoFormProps<FormValues = AnyObject>
 	extends FormProps<FormValues>,
 		AdditionalFormProps<FormValues> {}
 
-export interface FormRendererProps extends FormRenderProps, AdditionalFormProps {}
+export interface FormRendererProps<FormValues = AnyObject>
+	extends FormRenderProps<FormValues>,
+		AdditionalFormProps<FormValues> {}
 
 export interface FieldRendererProps<FieldValue = any>
 	extends FieldRenderProps<FieldValue>,
