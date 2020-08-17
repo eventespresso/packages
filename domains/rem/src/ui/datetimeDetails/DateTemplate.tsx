@@ -17,7 +17,7 @@ const DateTemplate: React.FC<DateTemplateProps> = ({ setTemplate }) => {
 	const onChangeValue = useCallback((value) => setSelectedDateId(value), []);
 
 	const options = entityListToSelectOptions(useDatetimes(), { label: __('Select...'), value: '' });
-	const datetime = useDatetimeItem({ id: selectedDateId }) || {};
+	const datetime = useDatetimeItem({ id: selectedDateId });
 	const onClickSet = useCallback(() => setTemplate(datetime), [datetime, setTemplate]);
 
 	const addNewID = 'ee-add-new-datetime';
