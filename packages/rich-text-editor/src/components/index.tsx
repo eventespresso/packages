@@ -1,4 +1,3 @@
-// @ts-nocheck
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
@@ -12,7 +11,7 @@ import { RichTextEditorProps, RichTextEditorState } from './types';
 
 import './style.scss';
 
-type SyntheticKeyboardEvent = React.KeyboardEvent<{}>;
+type SyntheticKeyboardEvent = React.KeyboardEvent<{ any }>;
 
 export class RichTextEditor extends React.Component<RichTextEditorProps, RichTextEditorState> {
 	focus: () => any;
