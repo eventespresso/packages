@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
@@ -11,12 +12,14 @@ import { RichTextEditorProps, RichTextEditorState } from './types';
 
 import './style.scss';
 
+type SyntheticKeyboardEvent = React.KeyboardEvent<{}>;
+
 export class RichTextEditor extends React.Component<RichTextEditorProps, RichTextEditorState> {
 	focus: () => any;
 	onChange: (editorState: any) => void;
 	toggleInlineStyle: (style: any) => void;
 
-	constructor(props) {
+	constructor(props: RichTextEditorProps) {
 		super(props);
 
 		const markup = '<b>Edit ...</b>';
@@ -52,7 +55,7 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 		this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 	}
 
-	handleKeyCommand(command) {
+	handleKeyCommand(command: string) {
 		const { editorState } = this.state;
 		const newState = RichUtils.handleKeyCommand(editorState, command);
 
@@ -64,16 +67,16 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 		return 'not-handled';
 	}
 
-	onTab(e) {
+	onTab(e: SyntheticKeyboardEvent): void {
 		const maxDepth = 4;
 		this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
 	}
 
-	toggleBlockType(blockType) {
+	toggleBlockType(blockType: string) {
 		this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
 	}
 
-	_toggleInlineStyle(inlineStyle) {
+	_toggleInlineStyle(inlineStyle: string) {
 		this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
 	}
 
@@ -101,7 +104,7 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 			},
 		};
 
-		const getBlockStyle = (block) => {
+		const getBlockStyle = (block: { getType: () => any }) => {
 			switch (block.getType()) {
 				case 'blockquote':
 					return 'RichEditor-blockquote';
