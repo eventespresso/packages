@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ENTER } from '@wordpress/keycodes';
-import { is } from 'ramda';
 import { __ } from '@wordpress/i18n';
 
 import { Tooltip } from '@eventespresso/adapters';
@@ -19,7 +18,7 @@ const TabbableText: React.FC<TabbableTextProps> = ({ icon, onRequestEdit, richTe
 	};
 
 	const tooltip = props.tooltip || __('Click to edit...');
-	const html: string = is('string', text) && String(text);
+	const html: string | boolean = typeof text === 'string' && String(text);
 
 	const spanProps = {
 		...(richTextContent && { dangerouslySetInnerHTML: { __html: html } }),
