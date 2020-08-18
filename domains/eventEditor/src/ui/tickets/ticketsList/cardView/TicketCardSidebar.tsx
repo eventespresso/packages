@@ -7,7 +7,7 @@ import { useTicketsListFilterState } from '@edtrServices/filterState';
 import { getPropsAreEqual } from '@eventespresso/services';
 import { useTicketMutator } from '@eventespresso/edtr-services';
 import { useTimeZoneTime } from '@eventespresso/services';
-import { DateRange } from '@eventespresso/adapters';
+import type { DateRange } from '@eventespresso/adapters';
 import type { TicketItemProps } from '../types';
 
 const TicketCardSidebar: React.FC<TicketItemProps> = ({ entity: ticket }) => {
