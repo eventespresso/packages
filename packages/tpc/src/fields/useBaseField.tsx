@@ -1,5 +1,3 @@
-
-
 import type { BaseFieldProps, FieldValue, InputProps } from './types';
 
 const defaultFormat: BaseFieldProps['format'] = (value, name) => (value === undefined ? '' : value);
