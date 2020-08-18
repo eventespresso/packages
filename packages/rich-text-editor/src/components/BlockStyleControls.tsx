@@ -1,6 +1,7 @@
 import React from 'react';
 
 import StyleButton from './StyleButton';
+import type { BlockStyleControlsProps } from './types';
 
 const BLOCK_TYPES = [
 	{ label: 'H1', style: 'header-one' },
@@ -15,7 +16,7 @@ const BLOCK_TYPES = [
 	{ label: 'Code Block', style: 'code-block' },
 ];
 
-const BlockStyleControls: React.FC<any> = (props) => {
+const BlockStyleControls: React.FC<BlockStyleControlsProps> = (props) => {
 	const { editorState } = props;
 	const selection = editorState.getSelection();
 	const blockType = editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getType();

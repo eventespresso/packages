@@ -1,9 +1,10 @@
 import React from 'react';
 
 import StyleButton from './StyleButton';
+import type { InlineStyleControlsProps } from './types';
 
-const InlineStyleControls: React.FC<any> = (props) => {
-	const currentStyle = props.editorState.getCurrentInlineStyle();
+const InlineStyleControls: React.FC<InlineStyleControlsProps> = ({ editorState, onToggle }) => {
+	const currentStyle = editorState.getCurrentInlineStyle();
 
 	const INLINE_STYLES = [
 		{ label: 'Bold', style: 'BOLD' },
@@ -19,7 +20,7 @@ const InlineStyleControls: React.FC<any> = (props) => {
 					key={type.label}
 					active={currentStyle.has(type.style)}
 					label={type.label}
-					onToggle={props.onToggle}
+					onToggle={onToggle}
 					style={type.style}
 				/>
 			))}

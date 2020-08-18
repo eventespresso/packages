@@ -1,12 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const StyleButton: React.FC<any> = (props) => {
-	const className = classNames('RichEditor-styleButton', this.props.active && 'RichEditor-activeButton');
+import type { StyleButtonProps } from './types';
+
+const StyleButton: React.FC<StyleButtonProps> = ({ active, style, ...props }) => {
+	const className = classNames('RichEditor-styleButton', active && 'RichEditor-activeButton');
 
 	const onToggle = (e) => {
 		e.preventDefault();
-		props.onToggle(props.style);
+		props.onToggle(style);
 	};
 
 	return (

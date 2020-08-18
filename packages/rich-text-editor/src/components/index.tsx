@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor, EditorState, RichUtils, DraftBlockType } from 'draft-js';
 import { convertFromHTML, convertToHTML } from 'draft-convert';
 import 'draft-js/dist/Draft.css';
 
@@ -14,8 +14,8 @@ import './style.scss';
 type SyntheticKeyboardEvent = React.KeyboardEvent<{ any }>;
 
 export class RichTextEditor extends React.Component<RichTextEditorProps, RichTextEditorState> {
-	focus: () => any;
-	onChange: (editorState: any) => void;
+	focus: () => void;
+	onChange: (editorState: EditorState) => void;
 
 	constructor(props: RichTextEditorProps) {
 		super(props);
@@ -71,7 +71,7 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 		this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
 	}
 
-	toggleBlockType(blockType: string): any {
+	toggleBlockType(blockType: DraftBlockType): any {
 		this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
 	}
 
