@@ -54,10 +54,7 @@ const useConfirmationDialog = ({
 			/>
 		);
 
-		return {
-			confirmationDialog,
-			onOpen,
-		};
+		return { confirmationDialog, onOpen };
 	}, [isOpen, message, noButtonText, onCancelHandler, onClickHandler, onOpen, title, yesButtonText]);
 };
 
