@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import { format, parse } from 'date-fns';
+import React, { useCallback } from 'react';
+import { parse } from 'date-fns';
 import ReactTimePicker from 'react-time-picker';
 
 import { CloseOutlined } from '@eventespresso/icons';
@@ -9,28 +9,22 @@ import type { TimePickerProps } from '../types';
 import '../style.scss';
 
 const TimePicker: React.FC<TimePickerProps> = ({ timeFormat, locale, onChange, onChangeValue, value, ...props }) => {
-	const [time, setTime] = useState(format(value, 'HH:mm'));
-
 	// convert date format to accepatble values for react-time-picker
 	const convertedTimeFormat = convertWordPressTimeFormat(timeFormat);
 
-	const onChangeHandler: TimePickerProps['onChange'] = useCallback(
-		(newTime) => {
+	const onChangeHandler = useCallback(
+		(newTime: string): void => {
 			// incoming value from timepicker is 24hr time like "17:00"
-			setTime(newTime);
-			if (!newTime || newTime === time) {
+			if (!newTime) {
 				return;
 			}
-			const newDate: Date = parse(newTime, 'HH:mm', value);
-			if (typeof onChangeValue === 'function') {
-				onChangeValue(newDate);
-			}
-
-			if (typeof onChange === 'function') {
-				onChange(newDate.toISOString());
-			}
+			// lets not assume that TimePicker will be controlled.
+			const referenceDate = value instanceof Date ? value : new Date();
+			const newDate = parse(newTime, 'HH:mm', referenceDate);
+			onChangeValue?.(newDate);
+			onChange?.(newDate);
 		},
-		[onChange, onChangeValue, time, value]
+		[onChange, onChangeValue, value]
 	);
 
 	return (
@@ -42,7 +36,7 @@ const TimePicker: React.FC<TimePickerProps> = ({ timeFormat, locale, onChange, o
 			locale={locale}
 			onChange={onChangeHandler}
 			required
-			value={time}
+			value={value}
 		/>
 	);
 };

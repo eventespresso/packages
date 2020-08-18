@@ -8,14 +8,7 @@ import type { DateTimeRangePickerProps } from '../types';
 import '../style.scss';
 import './style.scss';
 
-export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
-	dateFormat,
-	endDate,
-	locale,
-	onChange,
-	startDate,
-	...props
-}) => {
+export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({ dateFormat, locale, onChange, ...props }) => {
 	// convert date format to acceptable values for react-datetimerange-picker
 	const newDateFormat = convertWordPressDateFormat(dateFormat);
 	const newDateTimeFormat = convertWordPressTimeFormat(newDateFormat);
@@ -30,7 +23,6 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 			locale={locale}
 			onChange={onChange}
 			showLeadingZeros
-			value={[new Date(startDate), new Date(endDate)]}
 			{...props}
 		/>
 	);

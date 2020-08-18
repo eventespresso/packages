@@ -12,15 +12,16 @@ export interface DatePickerProps
 	value?: Date;
 }
 
+export type DateRange = [Date, Date];
+
 export interface DateTimeRangePickerProps
 	extends ReactDateTimeRangePickerProps,
-		CommonInputProps<HTMLInputElement, string[]> {
+		CommonInputProps<HTMLInputElement, DateRange> {
 	dateFormat: string;
 	className?: string;
-	endDate: string;
 	locale: string;
-	onChange: (dates: string[]) => void;
-	startDate: string;
+	onChange?: (dates: DateRange) => void;
+	value?: DateRange;
 }
 
 export interface TimePickerProps
@@ -28,7 +29,7 @@ export interface TimePickerProps
 		CommonInputProps<HTMLInputElement, Date> {
 	className?: string;
 	locale: string;
-	onChange?: (time: string) => void;
+	onChange?: (time: Date) => void;
 	timeFormat: string;
 	value?: Date;
 }

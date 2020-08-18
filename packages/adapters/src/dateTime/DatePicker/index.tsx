@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { default as ReactDatepicker } from 'react-date-picker';
 
 import { CalendarOutlined, CloseOutlined } from '@eventespresso/icons';
@@ -8,24 +8,15 @@ import type { DatePickerProps } from '../types';
 import '../style.scss';
 
 const DatePicker: React.FC<DatePickerProps> = ({ dateFormat, locale, onChange, onChangeValue, value, ...props }) => {
-	const [date, setDate] = useState(value);
-
 	const onChangeHandler: DatePickerProps['onChange'] = useCallback(
 		(newDate) => {
-			setDate(newDate);
-			if (!newDate || newDate === date) {
+			if (!newDate) {
 				return;
 			}
-
-			if (typeof onChangeValue === 'function') {
-				onChangeValue(newDate as Date);
-			}
-
-			if (typeof onChange === 'function') {
-				onChange(newDate);
-			}
+			onChangeValue?.(newDate);
+			onChange?.(newDate);
 		},
-		[date, onChange, onChangeValue]
+		[onChange, onChangeValue]
 	);
 
 	// convert date format to accepatble values for react-date-picker
@@ -39,7 +30,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ dateFormat, locale, onChange, o
 			clearIcon={<CloseOutlined />}
 			locale={locale}
 			onChange={onChangeHandler}
-			value={date}
+			value={value}
 		/>
 	);
 };
