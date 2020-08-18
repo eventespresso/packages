@@ -7,7 +7,7 @@ import { Save } from '@eventespresso/icons';
 import { useConfig } from '@eventespresso/services';
 import { IconButton, ButtonType } from '../Button';
 
-const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
+export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 	className,
 	onChange,
 	onChangeValue,
@@ -52,5 +52,3 @@ const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 		</div>
 	);
 };
-
-export default DateTimeRangePicker;

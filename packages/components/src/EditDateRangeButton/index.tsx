@@ -4,12 +4,12 @@ import { __ } from '@wordpress/i18n';
 import { parseISO } from 'date-fns';
 
 import { CalendarOutlined } from '@eventespresso/icons';
-import { DateTimeRangePicker, DateRange } from '@eventespresso/adapters';
 import { useConfig, useTimeZoneTime } from '@eventespresso/services';
-
-import { ButtonSize, ButtonType, IconButton, Popover } from '../../';
-import type { EditDateButtonProps } from './types';
 import { useMemoStringify } from '@eventespresso/hooks';
+import type { DateRange } from '@eventespresso/adapters';
+
+import { ButtonSize, ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
+import type { EditDateButtonProps } from './types';
 
 export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
 	header,

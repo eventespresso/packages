@@ -4,6 +4,12 @@
 	display: inline-block;
 	position: relative;
 
+	.ee-popover {
+		&__close-button {
+			padding: var(--ee-margin-tiny);
+		}
+	}
+
 	&__content[role='dialog'] {
 		background-color: var(--ee-background-color);
 		border: 2px solid var(--ee-background-color);
