@@ -24,16 +24,17 @@ interface AdditionalFormProps<FormValues = AnyObject> extends FormContextProps {
 export interface AdditionalFieldProps<FormValues = AnyObject> {
 	label?: React.ReactNode | string;
 	fieldType:
-		| 'text'
-		| 'textarea'
+		| 'datepicker'
+		| 'group'
 		| 'hidden'
-		| 'switch'
-		| 'select'
 		| 'multicheck'
 		| 'number'
 		| 'radio'
-		| 'group'
-		| 'datepicker'
+		| 'rich-text-editor'
+		| 'select'
+		| 'switch'
+		| 'text'
+		| 'textarea'
 		| 'timepicker';
 	htmlType?: string;
 	before?: React.ReactNode | string;

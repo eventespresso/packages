@@ -5,6 +5,7 @@ import { Field, Group, Repeatable } from './fields';
 
 const RenderField: React.FC<RenderFieldProps> = (props) => {
 	const { fieldType } = props;
+
 	if (!fieldType) {
 		return null;
 	}
@@ -14,9 +15,11 @@ const RenderField: React.FC<RenderFieldProps> = (props) => {
 	if (isRepeatable) {
 		return <Repeatable {...rest} />;
 	}
+
 	if (fieldType === 'group') {
 		return <Group {...rest} />;
 	}
+
 	return <Field {...rest} />;
 };
 

@@ -14,7 +14,6 @@
 		"@wordpress/url": "^2.16.0",
 		"final-form": "^4.20.0",
 		"react-final-form": "^6.5.0",
-		"react-rrule-generator": "^1.2.0",
 		"rrule": "^2.6.4",
 		"yup": "^0.29.1"
 	},

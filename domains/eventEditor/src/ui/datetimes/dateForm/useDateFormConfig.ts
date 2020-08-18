@@ -84,7 +84,7 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 						{
 							name: 'description',
 							label: __('Description'),
-							fieldType: 'textarea',
+							fieldType: 'rich-text-editor',
 						},
 					],
 				},
