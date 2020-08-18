@@ -16,6 +16,10 @@ type SyntheticKeyboardEvent = React.KeyboardEvent<{ any }>;
 export class RichTextEditor extends React.Component<RichTextEditorProps, RichTextEditorState> {
 	focus: () => void;
 	onChange: (editorState: EditorState) => void;
+	toggleInlineStyle: (style: any) => any;
+	toggleBlockType: (type: any) => any;
+	onTab: (e: any) => void;
+	handleKeyCommand: (command: any) => any;
 
 	constructor(props: RichTextEditorProps) {
 		super(props);
@@ -48,13 +52,13 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 			this.setState({ editorState });
 		};
 
-		this.handleKeyCommand = (command) => this.handleKeyCommand(command);
-		this.onTab = (e) => this.onTab(e);
-		this.toggleBlockType = (type) => this.toggleBlockType(type);
-		this.toggleInlineStyle = (style) => this.toggleInlineStyle(style);
+		this.handleKeyCommand = (command) => this._handleKeyCommand(command);
+		this.onTab = (e) => this._onTab(e);
+		this.toggleBlockType = (type) => this._toggleBlockType(type);
+		this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 	}
 
-	handleKeyCommand(command: string): any {
+	_handleKeyCommand(command: string): any {
 		const { editorState } = this.state;
 		const newState = RichUtils.handleKeyCommand(editorState, command);
 
@@ -66,16 +70,16 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 		return 'not-handled';
 	}
 
-	onTab(e: SyntheticKeyboardEvent): void {
+	_onTab(e: SyntheticKeyboardEvent): void {
 		const maxDepth = 4;
 		this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
 	}
 
-	toggleBlockType(blockType: DraftBlockType): any {
+	_toggleBlockType(blockType: DraftBlockType): any {
 		this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
 	}
 
-	toggleInlineStyle(inlineStyle: string): any {
+	_toggleInlineStyle(inlineStyle: string): any {
 		this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
 	}
 
