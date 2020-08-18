@@ -16,7 +16,6 @@ type SyntheticKeyboardEvent = React.KeyboardEvent<{ any }>;
 export class RichTextEditor extends React.Component<RichTextEditorProps, RichTextEditorState> {
 	focus: () => any;
 	onChange: (editorState: any) => void;
-	toggleInlineStyle: (style: any) => void;
 
 	constructor(props: RichTextEditorProps) {
 		super(props);
@@ -52,10 +51,10 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 		this.handleKeyCommand = (command) => this.handleKeyCommand(command);
 		this.onTab = (e) => this.onTab(e);
 		this.toggleBlockType = (type) => this.toggleBlockType(type);
-		this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+		this.toggleInlineStyle = (style) => this.toggleInlineStyle(style);
 	}
 
-	handleKeyCommand(command: string) {
+	handleKeyCommand(command: string): any {
 		const { editorState } = this.state;
 		const newState = RichUtils.handleKeyCommand(editorState, command);
 
@@ -72,15 +71,15 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 		this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
 	}
 
-	toggleBlockType(blockType: string) {
+	toggleBlockType(blockType: string): any {
 		this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
 	}
 
-	_toggleInlineStyle(inlineStyle: string) {
+	toggleInlineStyle(inlineStyle: string): any {
 		this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
 	}
 
-	render() {
+	render(): JSX.Element {
 		const { editorState } = this.state;
 
 		// If the user changes block type before entering any text, we can
