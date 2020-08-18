@@ -9,26 +9,20 @@ import { IconButton, ButtonType } from '../Button';
 
 const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 	className,
-	startDate,
-	endDate,
 	onChange,
 	onChangeValue,
+	value,
 	...props
 }) => {
-	const [dates, setDates] = useState([startDate, endDate]);
+	const [dates, setDates] = useState(value);
 	const {
 		dateTimeFormats: { dateTimeFormat },
 		locale: { user },
 	} = useConfig();
 
 	const onSave: VoidFunction = useCallback(() => {
-		if (typeof onChangeValue === 'function') {
-			onChangeValue(dates);
-		}
-
-		if (typeof onChange === 'function') {
-			onChange(dates);
-		}
+		onChangeValue?.(dates);
+		onChange?.(dates);
 	}, [dates, onChange, onChangeValue]);
 
 	const htmlClass = classNames(
@@ -38,8 +32,6 @@ const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 		'ee-input-base-wrapper'
 	);
 
-	const [start, end] = dates;
-
 	return (
 		<div className={htmlClass}>
 			<DateTimeRangePickerAdapter
@@ -47,8 +39,6 @@ const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 				dateFormat={dateTimeFormat}
 				locale={user}
 				onChange={setDates}
-				startDate={start}
-				endDate={end}
 				{...props}
 			/>
 			<IconButton
