@@ -1,13 +1,15 @@
 import React, { useCallback } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@wordpress/i18n';
+import { parseISO } from 'date-fns';
 
 import { CalendarOutlined } from '@eventespresso/icons';
-import { DateTimeRangePicker } from '@eventespresso/adapters';
-import { useConfig } from '@eventespresso/services';
+import { DateTimeRangePicker, DateRange } from '@eventespresso/adapters';
+import { useConfig, useTimeZoneTime } from '@eventespresso/services';
 
 import { ButtonSize, ButtonType, IconButton, Popover } from '../../';
 import type { EditDateButtonProps } from './types';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
 	header,
@@ -21,25 +23,20 @@ export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
 		dateTimeFormats: { dateTimeFormat },
 		locale: { user },
 	} = useConfig();
-	const headerText = header ? header : __('Edit Start and End Dates and Times');
+	const { utcToSiteTime } = useTimeZoneTime();
+
 	const onChange = useCallback(
-		(dates: string[]) => {
+		(dates: DateRange) => {
 			onEditHandler(dates);
 			onClose();
 		},
 		[onClose, onEditHandler]
 	);
+	const value = useMemoStringify<DateRange>([utcToSiteTime(parseISO(startDate)), utcToSiteTime(parseISO(endDate))]);
 
-	const content = (
-		<DateTimeRangePicker
-			dateFormat={dateTimeFormat}
-			locale={user}
-			endDate={endDate}
-			startDate={startDate}
-			onChange={onChange}
-		/>
-	);
+	const content = <DateTimeRangePicker dateFormat={dateTimeFormat} locale={user} onChange={onChange} value={value} />;
 
+	const headerText = header ? header : __('Edit Start and End Dates and Times');
 	return (
 		<Popover
 			className={'ee-edit-calendar-date-range'}
