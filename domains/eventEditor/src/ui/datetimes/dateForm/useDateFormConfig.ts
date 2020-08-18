@@ -5,10 +5,10 @@ import { parseISO } from 'date-fns';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useDatetimeItem, processDateAndTime } from '@eventespresso/edtr-services';
-import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
+import { PLUS_ONE_MONTH } from '@eventespresso/constants';
+import { useTimeZoneTime, setDefaultTime } from '@eventespresso/services';
 import type { EspressoFormProps } from '@eventespresso/form';
 import type { Datetime } from '@eventespresso/edtr-services';
-import { useTimeZoneTime } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { EntityId } from '@eventespresso/data';
 
@@ -25,9 +25,11 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 	const { siteTimeToUtc, utcToSiteTime } = useTimeZoneTime();
 
 	const startDate = useMemoStringify(
-		datetime?.startDate ? utcToSiteTime(parseISO(datetime?.startDate)) : PLUS_ONE_MONTH
+		datetime?.startDate ? utcToSiteTime(parseISO(datetime?.startDate)) : setDefaultTime(PLUS_ONE_MONTH, 'start')
 	);
-	const endDate = useMemoStringify(datetime?.endDate ? utcToSiteTime(parseISO(datetime?.endDate)) : PLUS_TWO_MONTHS);
+	const endDate = useMemoStringify(
+		datetime?.endDate ? utcToSiteTime(parseISO(datetime?.endDate)) : setDefaultTime(PLUS_ONE_MONTH, 'end')
+	);
 
 	const { onSubmit } = config;
 

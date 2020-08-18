@@ -1,9 +1,16 @@
+import { useMemo } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 import { pick } from 'ramda';
 
+import {
+	intervalsToOptions,
+	Intervals,
+	DATE_INTERVALS,
+	useTimeZoneTime,
+	setDefaultTime,
+} from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { intervalsToOptions, Intervals, DATE_INTERVALS } from '@eventespresso/services';
-import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
+import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { Ticket } from '@eventespresso/edtr-services';
@@ -11,33 +18,8 @@ import { Ticket } from '@eventespresso/edtr-services';
 import { validate } from './formValidation';
 import { TICKET_FIELDS_TO_USE } from '../../constants';
 import { RemTicket } from '../../data';
-import { useMemo } from 'react';
 
 type TicketFormConfig = EspressoFormProps<RemTicket>;
-
-const TICKET_DEFAULTS: Partial<RemTicket> = {
-	ticketSalesStart: {
-		position: 'before',
-		startOrEnd: 'start',
-		unit: 'months',
-		unitValue: 1,
-	},
-	ticketSalesEnd: {
-		position: 'before',
-		startOrEnd: 'start',
-		unit: 'days',
-		unitValue: 1,
-	},
-	dateTimeStart: {
-		date: PLUS_ONE_MONTH,
-		time: PLUS_ONE_MONTH,
-	},
-	dateTimeEnd: {
-		date: PLUS_TWO_MONTHS,
-		time: PLUS_TWO_MONTHS,
-	},
-	isShared: false,
-};
 
 const dateTimeFields: Array<FieldProps> = [
 	{
@@ -108,6 +90,38 @@ const ticketSalesFields: Array<FieldProps> = [
 ];
 
 const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<TicketFormConfig>): TicketFormConfig => {
+	const { utcToSiteTime } = useTimeZoneTime();
+
+	const startDate = useMemoStringify(setDefaultTime(utcToSiteTime(PLUS_ONE_MONTH), 'start'));
+	const endDate = useMemoStringify(setDefaultTime(utcToSiteTime(PLUS_ONE_MONTH), 'end'));
+
+	const TICKET_DEFAULTS: Partial<RemTicket> = useMemo(
+		() => ({
+			ticketSalesStart: {
+				position: 'before',
+				startOrEnd: 'start',
+				unit: 'months',
+				unitValue: 1,
+			},
+			ticketSalesEnd: {
+				position: 'before',
+				startOrEnd: 'start',
+				unit: 'days',
+				unitValue: 1,
+			},
+			dateTimeStart: {
+				date: startDate,
+				time: startDate,
+			},
+			dateTimeEnd: {
+				date: endDate,
+				time: endDate,
+			},
+			isShared: false,
+		}),
+		[endDate, startDate]
+	);
+
 	const initialValues = useMemoStringify<Partial<RemTicket>>({
 		...TICKET_DEFAULTS,
 		...config?.initialValues,

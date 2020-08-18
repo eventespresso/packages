@@ -5,10 +5,10 @@ import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useTicketItem, processDateAndTime } from '@eventespresso/edtr-services';
-import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
+import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import type { EspressoFormProps } from '@eventespresso/form';
 import type { Ticket } from '@eventespresso/edtr-services';
-import { useTimeZoneTime } from '@eventespresso/services';
+import { useTimeZoneTime, setDefaultTime } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { EntityId } from '@eventespresso/data';
 import { validate } from './formValidation';
@@ -36,8 +36,12 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 
 	const { siteTimeToUtc, utcToSiteTime } = useTimeZoneTime();
 
-	const startDate = useMemoStringify(ticket?.startDate ? utcToSiteTime(parseISO(ticket?.startDate)) : PLUS_ONE_MONTH);
-	const endDate = useMemoStringify(ticket?.endDate ? utcToSiteTime(parseISO(ticket?.endDate)) : PLUS_TWO_MONTHS);
+	const startDate = useMemoStringify(
+		ticket?.startDate ? utcToSiteTime(parseISO(ticket?.startDate)) : setDefaultTime(PLUS_ONE_MONTH, 'start')
+	);
+	const endDate = useMemoStringify(
+		ticket?.endDate ? utcToSiteTime(parseISO(ticket?.endDate)) : setDefaultTime(PLUS_ONE_MONTH, 'end')
+	);
 
 	const { onSubmit } = config;
 
