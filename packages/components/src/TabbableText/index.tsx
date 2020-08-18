@@ -4,16 +4,16 @@ import { ENTER } from '@wordpress/keycodes';
 import { __ } from '@wordpress/i18n';
 
 import { Tooltip } from '@eventespresso/adapters';
-import { TabbableTextProps } from '../types';
+import { TabbableTextProps } from './types';
 
 import './style.scss';
 
-const TabbableText: React.FC<TabbableTextProps> = ({ icon, onRequestEdit, richTextContent, text, ...props }) => {
+export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, richTextContent, text, ...props }) => {
 	const className = classNames('ee-tabbable-text', props.className);
 
 	const onKeyDown = (e) => {
 		if (e.keyCode === ENTER) {
-			onRequestEdit();
+			onClick();
 		}
 	};
 
@@ -31,7 +31,7 @@ const TabbableText: React.FC<TabbableTextProps> = ({ icon, onRequestEdit, richTe
 			),
 		}),
 		className,
-		onClick: onRequestEdit,
+		onClick,
 		onKeyDown,
 		role: 'button',
 		tabIndex: 0,

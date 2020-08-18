@@ -2,7 +2,7 @@ import React from 'react';
 
 import { InlineEdit } from '@eventespresso/adapters';
 import Preview from './Preview';
-import { TextAreaProps } from './types';
+import type { TextAreaProps } from './types';
 
 const InlineEditTextArea: React.FC<TextAreaProps> = ({ tooltip, ...props }) => {
 	const preview = (previewProps) => <Preview {...previewProps} lineCount={3} tooltip={tooltip} />;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { InlineEdit } from '@eventespresso/adapters';
 import Preview from './Preview';
-import { TextProps } from './types';
+import type { TextProps } from './types';
 
 const InlineEditText: React.FC<TextProps> = ({
 	className,

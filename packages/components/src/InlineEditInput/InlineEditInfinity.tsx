@@ -5,8 +5,8 @@ import { isInfinite, parseInfinity } from '@eventespresso/services';
 import { InlineEdit } from '@eventespresso/adapters';
 import type { PreviewProps } from './types';
 
-import TabbableText from './TabbableText';
-import { TextProps } from './types';
+import { TabbableText } from '../index';
+import type { TextProps } from './types';
 
 const Preview: React.FC<PreviewProps> = ({ value, onRequestEdit, isEditing, ...props }) => {
 	const isInfinity = isInfinite(value);
@@ -20,7 +20,7 @@ const Preview: React.FC<PreviewProps> = ({ value, onRequestEdit, isEditing, ...p
 
 	const output = isInfinity ? <span className={'ee-infinity-sign__inner'}>{'∞'}</span> : value;
 
-	return <TabbableText {...props} className={className} onRequestEdit={onRequestEdit} text={output} />;
+	return <TabbableText {...props} className={className} onClick={onRequestEdit} text={output} />;
 };
 
 const InlineEditInfinity: React.FC<TextProps> = ({ onChangeValue, value, ...props }) => {

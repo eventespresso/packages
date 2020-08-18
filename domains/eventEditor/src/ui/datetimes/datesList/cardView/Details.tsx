@@ -1,17 +1,21 @@
 import React from 'react';
 
-import DateDetailsPanel from './DateDetailsPanel';
-import { EditableDesc, EditableName } from '../editable';
 import { getPropsAreEqual } from '@eventespresso/services';
+import { useDatetimeMutator } from '@eventespresso/edtr-services';
+import DateDetailsPanel from './DateDetailsPanel';
+import { EditableDesc } from '../../../shared/editable';
+import { EditableName } from '../editable';
 
 import type { DateItemProps } from '../types';
 
 const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
+	const { updateEntity } = useDatetimeMutator(datetime.id);
+
 	return (
 		<>
-			<EditableName className={'entity-card-details__name'} entity={datetime} />
+			<EditableName className='entity-card-details__name' entity={datetime} />
 
-			<EditableDesc className={'entity-card-details__description'} entity={datetime} />
+			<EditableDesc description={datetime.description} updateEntity={updateEntity} />
 
 			<DateDetailsPanel entity={datetime} />
 		</>

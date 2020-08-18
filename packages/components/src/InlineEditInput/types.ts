@@ -12,15 +12,6 @@ export interface TextProps extends Omit<InlineEditProps, 'inputType'> {
 	tooltip?: string;
 }
 
-export interface TabbableTextProps {
-	className?: string;
-	icon?: React.ReactNode;
-	onRequestEdit: VoidFunction;
-	richTextContent?: boolean;
-	text?: string | JSX.Element;
-	tooltip?: string;
-}
-
 export interface PreviewProps extends Partial<Omit<InlineEditProps, 'onChange' | 'onChangeValue'>> {
 	lineCount?: number;
 	lineLength?: number;

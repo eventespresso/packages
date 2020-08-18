@@ -3,15 +3,14 @@ import Dotdotdot from 'react-dotdotdot';
 
 import { TextFit } from '@eventespresso/adapters';
 
-import TabbableText from './TabbableText';
-import { PreviewProps } from './types';
+import { TabbableText } from '../index';
+import type { PreviewProps } from './types';
 
 const Preview: React.FC<PreviewProps> = ({
 	fitText,
 	isEditing,
 	lineCount,
 	lineLength = 25,
-	richTextContent,
 	onRequestEdit,
 	tooltip,
 	value,
@@ -20,9 +19,7 @@ const Preview: React.FC<PreviewProps> = ({
 		return null;
 	}
 
-	const textInput = (
-		<TabbableText onRequestEdit={onRequestEdit} richTextContent={richTextContent} text={value} tooltip={tooltip} />
-	);
+	const textInput = <TabbableText onClick={onRequestEdit} text={value} tooltip={tooltip} />;
 
 	if (lineCount && value.length > lineLength) {
 		return <Dotdotdot clamp={lineCount}>{textInput}</Dotdotdot>;
