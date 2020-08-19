@@ -1,9 +1,14 @@
-import { EditorState, DraftBlockType } from 'draft-js';
+import type { EditorState, DraftBlockType } from 'draft-js';
+import type { FieldInputProps } from 'react-final-form';
+import type { AnyObject } from 'final-form';
 
 type toggleBlockType = (style: DraftBlockType) => void;
 
 export interface RichTextEditorProps {
+	input?: FieldInputProps<AnyObject>;
+	onChange: (string) => void;
 	readonly?: boolean;
+	value?: string;
 }
 
 export interface RichTextEditorState {

@@ -26,10 +26,9 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 
 		const markup = '<b>Edit ...</b>';
 
-		const editorState = EditorState.createWithContent(
-			// @ts-ignore
-			convertFromHTML((props?.input?.value.length && props?.input?.value) || markup)
-		);
+		const value = props?.input?.value.length ? props?.input?.value : props?.value;
+
+		const editorState = EditorState.createWithContent(convertFromHTML(value || markup));
 
 		this.state = {
 			editorState,
@@ -46,8 +45,9 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 		this.onChange = (editorState) => {
 			const html = convertToHTML(editorState.getCurrentContent());
 
-			// @ts-ignore
-			this.props?.input?.onChange?.(html);
+			const onChange = this.props?.input?.onChange || this.props?.onChange;
+
+			onChange?.(html);
 
 			this.setState({ editorState });
 		};

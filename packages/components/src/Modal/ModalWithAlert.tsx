@@ -3,18 +3,25 @@ import { ESCAPE } from '@wordpress/keycodes';
 import { __ } from '@wordpress/i18n';
 
 import { canUseDOM } from '@eventespresso/services';
-import { Modal, ModalProps } from '@eventespresso/adapters';
+import { Modal } from '@eventespresso/adapters';
 import { useConfirmationDialog } from '../Confirm';
+import useCancelButtonProps from './useCancelButtonProps';
+import useSubmitButtonProps from './useSubmitButtonProps';
 
-interface Props extends ModalProps {
-	cancelBtnText?: string;
-	header?: string;
-	okBtnText?: string;
-	showAlertOnEscape: boolean;
-}
+import { ModalWithAlertProps } from './types';
 
-const ModalWithAlert: React.FC<Props> = ({ children, showAlertOnEscape, ...props }) => {
+const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
+	children,
+	onCancel,
+	onSubmit,
+	showAlertOnEscape,
+	...props
+}) => {
+	const cancelButtonProps = useCancelButtonProps(onCancel);
+	const submitButtonProps = useSubmitButtonProps(onSubmit);
+
 	const title = props.header || __('Are you sure you want to close this?');
+
 	const { confirmationDialog, onOpen } = useConfirmationDialog({
 		title,
 		onConfirm: props.onClose as VoidFunction,
@@ -41,7 +48,12 @@ const ModalWithAlert: React.FC<Props> = ({ children, showAlertOnEscape, ...props
 
 	return (
 		<>
-			<Modal {...props} closeOnEsc={!showAlertOnEscape}>
+			<Modal
+				{...props}
+				closeOnEsc={!showAlertOnEscape}
+				cancelButtonProps={props.cancelButtonProps || cancelButtonProps}
+				submitButtonProps={props.submitButtonProps || submitButtonProps}
+			>
 				{children}
 			</Modal>
 			{showAlertOnEscape && confirmationDialog}

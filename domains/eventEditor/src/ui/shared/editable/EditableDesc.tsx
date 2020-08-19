@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useDisclosure } from '@chakra-ui/hooks';
 
-import { TabbableText } from '@eventespresso/components';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { TabbableText, ModalWithAlert } from '@eventespresso/components';
+import { RichTextEditor } from '@eventespresso/rich-text-editor';
+
+import './style.scss';
 
 interface EditableDescProps {
 	className?: string;
@@ -11,29 +13,50 @@ interface EditableDescProps {
 	updateEntity: ({ description }: { description: string }) => void;
 }
 
-const EditableDesc: React.FC<EditableDescProps> = ({ description, updateEntity }) => {
-	const {
-		// isOpen,
-		onOpen,
-		//   onClose
-	} = useDisclosure();
+const EditableDesc: React.FC<EditableDescProps> = ({ updateEntity, ...props }) => {
+	const [description, setDescription] = useState(props.description);
+	const { isOpen, onOpen, onClose } = useDisclosure();
 	const className = 'entity-card-details__description';
 
-	// This will be used in Popover in the followup PR
-	// const onChangeDesc = useCallback(
-	// 	(desc: string): void => {
-	// 		if (desc !== description) {
-	// 			updateEntity({ description });
-	// 		}
-	// 	},
-	// 	[description, updateEntity]
-	// );
+	const onCancel = useCallback((): void => {
+		setDescription(props.description);
+		onClose();
+	}, [onClose, props.description]);
+
+	const onChange = useCallback((desc: string): void => {
+		setDescription(desc);
+	}, []);
+
+	const onSubmit = useCallback((): void => {
+		if (description !== props.description) {
+			updateEntity({ description });
+		}
+	}, [description, props.description, updateEntity]);
 
 	const tooltip = __('edit description...');
 
-	const desc = description || tooltip;
-
-	return <TabbableText richTextContent className={className} onClick={onOpen} tooltip={tooltip} text={desc} />;
+	return (
+		<>
+			<ModalWithAlert
+				className='ee-rich-content-description-modal'
+				isOpen={isOpen}
+				onCancel={onCancel}
+				onClose={onCancel}
+				onSubmit={onSubmit}
+				showAlertOnEscape={description !== props.description}
+				title={__('Edit description')}
+			>
+				<RichTextEditor onChange={onChange} value={props.description} />
+			</ModalWithAlert>
+			<TabbableText
+				richTextContent
+				className={className}
+				onClick={onOpen}
+				tooltip={tooltip}
+				text={props.description}
+			/>
+		</>
+	);
 };
 
-export default React.memo(EditableDesc, getPropsAreEqual(['description']));
+export default React.memo(EditableDesc);

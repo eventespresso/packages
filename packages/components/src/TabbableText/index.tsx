@@ -8,11 +8,13 @@ import { TabbableTextProps } from './types';
 
 import './style.scss';
 
-export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, richTextContent, text, ...props }) => {
+export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, richTextContent, ...props }) => {
 	const tooltip = props.tooltip || __('Click to edit...');
 
 	const spanProps = useMemo(() => {
 		const className = classNames('ee-tabbable-text', props.className);
+
+		const text = props.text || tooltip;
 
 		const html: string | boolean = typeof text === 'string' && String(text);
 
@@ -38,7 +40,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, richT
 			role: 'button',
 			tabIndex: 0,
 		};
-	}, [icon, onClick, props.className, richTextContent, text]);
+	}, [icon, onClick, props.className, props.text, richTextContent, tooltip]);
 
 	return (
 		<Tooltip tooltip={tooltip}>

@@ -37,6 +37,7 @@ export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
 	const content = <DateTimeRangePicker dateFormat={dateTimeFormat} locale={user} onChange={onChange} value={value} />;
 
 	const headerText = header ? header : __('Edit Start and End Dates and Times');
+
 	return (
 		<Popover
 			className={'ee-edit-calendar-date-range'}
