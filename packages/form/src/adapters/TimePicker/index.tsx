@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { TimePicker as TimePickerAdapter } from '@eventespresso/adapters';
+import { TimePicker as TimePickerAdapter } from '@eventespresso/dates';
 import { useConfig } from '@eventespresso/services';
 // import { TimezoneTimeInfo } from '../../';
 import type { FieldRendererProps } from '../../types';
@@ -29,7 +29,7 @@ const TimePicker: React.FC<FieldRendererProps> = ({
 				{...input}
 				{...props}
 				locale={user}
-				onChangeValue={onInputChange}
+				onChange={onInputChange}
 				timeFormat={timeFormat}
 				value={value}
 				required

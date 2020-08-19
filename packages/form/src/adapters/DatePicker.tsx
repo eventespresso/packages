@@ -1,14 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { DatePicker as DatepickerAdapter } from '@eventespresso/adapters';
+import { DatePicker as DatepickerAdapter } from '@eventespresso/dates';
 import { useConfig } from '@eventespresso/services';
 
 import type { FieldRendererProps } from '../types';
 
 const DatePicker: React.FC<FieldRendererProps> = ({ className, input: { onChange, ...input }, meta, ...props }) => {
 	const {
-		dateTimeFormats: { dateFormat },
+		// dateTimeFormats: { dateFormat },
 		locale: { user },
 	} = useConfig();
 	const htmlClass = classNames(className, 'ee-date-picker', 'ee-calendar-datetime-picker', 'ee-input-base-wrapper');
@@ -18,9 +18,9 @@ const DatePicker: React.FC<FieldRendererProps> = ({ className, input: { onChange
 			<DatepickerAdapter
 				{...input}
 				{...props}
-				dateFormat={dateFormat}
+				// dateFormat={dateFormat}
 				locale={user}
-				onChangeValue={onChange}
+				onChange={onChange}
 				required
 			/>
 		</div>
