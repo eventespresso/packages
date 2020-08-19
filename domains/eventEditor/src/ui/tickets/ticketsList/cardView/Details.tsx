@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { __ } from '@wordpress/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { getPropsAreEqual, useConfig } from '@eventespresso/services';
@@ -37,6 +38,7 @@ const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 				textClassName='entity-card-details__text'
 				onUpdate={onUpdate}
 				text={ticket.description}
+				tooltip={__('edit description...')}
 			/>
 
 			<EditablePrice className='entity-card-details__price' entity={ticket} />

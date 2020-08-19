@@ -9,7 +9,12 @@ import type { RichTextEditorModalProps } from './types';
 
 import './style.scss';
 
-export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({ onUpdate, textClassName, ...props }) => {
+export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
+	onUpdate,
+	textClassName,
+	tooltip,
+	...props
+}) => {
 	const [text, setDescription] = useState(props.text);
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -27,8 +32,6 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({ onUpda
 			onUpdate(text);
 		}
 	}, [text, props.text, onUpdate]);
-
-	const tooltip = __('edit text...');
 
 	return (
 		<>

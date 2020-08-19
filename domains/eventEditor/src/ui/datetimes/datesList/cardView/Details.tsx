@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { __ } from '@wordpress/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { getPropsAreEqual, useConfig } from '@eventespresso/services';
@@ -37,6 +38,7 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 				textClassName='entity-card-details__text'
 				onUpdate={onUpdate}
 				text={datetime.description}
+				tooltip={__('edit description...')}
 			/>
 
 			<DateDetailsPanel adminUrl={adminUrl} entity={datetime} eventId={eventId} />
