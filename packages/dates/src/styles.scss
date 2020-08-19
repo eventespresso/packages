@@ -1,0 +1,21 @@
+.date-range-picker {
+	display: flex;
+	align-items: center;
+	&__separator {
+		margin-left: 0.5em;
+		margin-right: 0.5em;
+	}
+}
+.react-datepicker {
+	&__input-time-container {
+		.react-datepicker-time {
+			&__input-container {
+				.react-datepicker-time {
+					&__input input {
+						width: auto;
+					}
+				}
+			}
+		}
+	}
+}
