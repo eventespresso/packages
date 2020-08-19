@@ -33,7 +33,7 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({ onUpda
 	return (
 		<>
 			<ModalWithAlert
-				className='ee-rich-content-text-modal'
+				className='ee-rich-text-editor-modal'
 				isOpen={isOpen}
 				onCancel={onCancel}
 				onClose={onCancel}
