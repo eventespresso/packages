@@ -1,4 +1,4 @@
-import type { DateRange } from '@eventespresso/adapters';
+import type { DateRange } from '@eventespresso/dates';
 import type { LabelPosition } from '../withLabel';
 import type { ButtonProps } from '../Button';
 

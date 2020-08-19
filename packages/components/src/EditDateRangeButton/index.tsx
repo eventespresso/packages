@@ -6,7 +6,7 @@ import { parseISO } from 'date-fns';
 import { CalendarOutlined } from '@eventespresso/icons';
 import { useConfig, useTimeZoneTime } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
-import type { DateRange } from '@eventespresso/adapters';
+import type { DateRange } from '@eventespresso/dates';
 
 import { ButtonSize, ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
 import type { EditDateButtonProps } from './types';

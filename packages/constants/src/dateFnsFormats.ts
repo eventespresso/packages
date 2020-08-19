@@ -42,3 +42,5 @@ export const TIME_ONLY_12H_SHORT_FORMAT = 'h:mm a'; // 11:59 pm
 export const TIME_ONLY_12H_LONG_FORMAT = 'hh:mm:ss b'; // 11:59:59 pm
 export const TIME_ONLY_24H_SHORT_FORMAT = 'H:mm'; // 23:59
 export const TIME_ONLY_24H_LONG_FORMAT = 'HH:mm:ss'; // 23:59:59
+
+export const DATETIME_FORMAT = 'MMM d, yyyy h:mm aa'; // Aug 19, 2020 3:11 PM

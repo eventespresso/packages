@@ -63,6 +63,7 @@
 
 .ee-calendar-datetime-picker {
 	position: relative;
+	display: flex;
 
 	.react-date-picker,
 	.react-datetime-picker,
@@ -303,10 +304,7 @@
 	&.ee-date-time-range-picker {
 		.ee-btn-base.ee-icon-button.ee-date-time-range-picker-submit {
 			@extend .ee-date-picker-button;
-			bottom: 0;
-			position: absolute;
-			right: 0;
-			top: unset;
+			margin-left: var(--ee-margin-tiny);
 		}
 	}
 }
