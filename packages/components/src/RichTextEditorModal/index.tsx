@@ -18,11 +18,6 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 	const [text, setText] = useState(props.text);
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const onCancel = useCallback((): void => {
-		setText(props.text);
-		onClose();
-	}, [onClose, props.text]);
-
 	const onChange = useCallback((str: string): void => {
 		setText(str);
 	}, []);
@@ -38,8 +33,8 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 			<ModalWithAlert
 				className='ee-rich-text-editor-modal'
 				isOpen={isOpen}
-				onCancel={onCancel}
-				onClose={onCancel}
+				onCancel={onClose}
+				onClose={onClose}
 				onSubmit={onSubmit}
 				showAlertOnEscape={text !== props.text}
 				title={title}
