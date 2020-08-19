@@ -38,6 +38,7 @@ const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 				textClassName='entity-card-details__text'
 				onUpdate={onUpdate}
 				text={ticket.description}
+				title={__('Edit description')}
 				tooltip={__('edit description...')}
 			/>
 

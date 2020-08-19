@@ -3,5 +3,6 @@ export interface RichTextEditorModalProps {
 	onUpdate: (text: string) => void;
 	text: string;
 	textClassName: string;
+	title: string;
 	tooltip: string;
 }

@@ -38,6 +38,7 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 				textClassName='entity-card-details__text'
 				onUpdate={onUpdate}
 				text={datetime.description}
+				title={__('Edit description')}
 				tooltip={__('edit description...')}
 			/>
 

@@ -12,19 +12,20 @@ import './style.scss';
 export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 	onUpdate,
 	textClassName,
+	title,
 	tooltip,
 	...props
 }) => {
-	const [text, setDescription] = useState(props.text);
+	const [text, setText] = useState(props.text);
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const onCancel = useCallback((): void => {
-		setDescription(props.text);
+		setText(props.text);
 		onClose();
 	}, [onClose, props.text]);
 
-	const onChange = useCallback((desc: string): void => {
-		setDescription(desc);
+	const onChange = useCallback((str: string): void => {
+		setText(str);
 	}, []);
 
 	const onSubmit = useCallback((): void => {
@@ -42,7 +43,7 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 				onClose={onCancel}
 				onSubmit={onSubmit}
 				showAlertOnEscape={text !== props.text}
-				title={__('Edit text')}
+				title={title}
 			>
 				<RichTextEditor onChange={onChange} value={props.text} />
 			</ModalWithAlert>
