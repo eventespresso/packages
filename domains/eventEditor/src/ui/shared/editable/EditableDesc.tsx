@@ -59,4 +59,4 @@ const EditableDesc: React.FC<EditableDescProps> = ({ updateEntity, ...props }) =
 	);
 };
 
-export default React.memo(EditableDesc);
+export default EditableDesc;
