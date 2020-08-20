@@ -1,4 +1,4 @@
-// avoid package dependecy upon `services`
+// avoid package dependency upon `services`
 import toBoolean from '../../services/src/utilities/converters/toBoolean';
 
 export const FEATURE_FLAGS = {
