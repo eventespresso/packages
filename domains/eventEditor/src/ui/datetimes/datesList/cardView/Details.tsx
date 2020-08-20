@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { getPropsAreEqual } from '@eventespresso/services';
-import { useDatetimeMutator } from '@eventespresso/edtr-services';
+import { ADMIN_ROUTES } from '@eventespresso/constants';
+import { getPropsAreEqual, useConfig } from '@eventespresso/services';
+import { getAdminUrl, useDatetimeMutator } from '@eventespresso/edtr-services';
+
 import DateDetailsPanel from './DateDetailsPanel';
 import { EditableDesc } from '../../../shared/editable';
 import { EditableName } from '../editable';
@@ -9,6 +11,12 @@ import { EditableName } from '../editable';
 import type { DateItemProps } from '../types';
 
 const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
+	const {
+		siteUrl: { admin },
+	} = useConfig();
+
+	const adminUrl = getAdminUrl({ adminSiteUrl: admin, page: ADMIN_ROUTES.REGISTRATIONS });
+
 	const { updateEntity } = useDatetimeMutator(datetime.id);
 
 	return (
@@ -17,7 +25,7 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 
 			<EditableDesc description={datetime.description} updateEntity={updateEntity} />
 
-			<DateDetailsPanel entity={datetime} />
+			<DateDetailsPanel adminUrl={adminUrl} entity={datetime} />
 		</>
 	);
 };

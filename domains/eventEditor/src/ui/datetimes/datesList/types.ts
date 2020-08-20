@@ -4,4 +4,6 @@ import type { DatetimesFilterStateManager } from '@edtrServices/filterState';
 
 export interface DatesListViewProps extends EntityListViewProps<Datetime, DatetimesFilterStateManager> {}
 
-export interface DateItemProps extends Required<Pick<EntityListItemProps<Datetime>, 'entity'>> {}
+export interface DateItemProps extends Required<Pick<EntityListItemProps<Datetime>, 'entity'>> {
+	adminUrl?: string;
+}

@@ -7,12 +7,12 @@ import TicketQuantity from './TicketQuantity';
 import { getPropsAreEqual } from '@eventespresso/services';
 import type { TicketItemProps } from '../types';
 
-const TicketDetailsPanel: React.FC<TicketItemProps> = React.memo(({ entity: ticket }) => {
+const TicketDetailsPanel: React.FC<TicketItemProps> = React.memo(({ adminUrl, entity: ticket }) => {
 	const details = [
 		{
 			id: 'ee-ticket-sold',
 			label: __('sold'),
-			value: <EntityDetailsPanelSold dbId={ticket.dbId} sold={ticket.sold} type='ticket' />,
+			value: <EntityDetailsPanelSold adminUrl={adminUrl} dbId={ticket.dbId} sold={ticket.sold} type='ticket' />,
 		},
 		{
 			id: 'ee-ticket-qty',

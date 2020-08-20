@@ -2,25 +2,21 @@ import React from 'react';
 import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
-import { ADMIN_ROUTES } from '@eventespresso/constants';
-import { Link } from '../../';
 import { EntityDbId } from '@eventespresso/data';
-import { useConfig } from '@eventespresso/services';
-import { getAdminUrl, useEventId } from '@eventespresso/edtr-services';
+import { useEventId } from '@eventespresso/edtr-services';
+
+import { Link } from '../../';
 
 import './style.scss';
 
 interface Props {
+	adminUrl: string;
 	dbId: EntityDbId;
 	sold?: number;
 	type: 'date' | 'ticket';
 }
 
-const EntityDetailsPanelSold: React.FC<Props> = ({ sold = 0, type, ...props }) => {
-	const {
-		siteUrl: { admin },
-	} = useConfig();
-	const adminUrl = getAdminUrl({ adminSiteUrl: admin, page: ADMIN_ROUTES.REGISTRATIONS });
+const EntityDetailsPanelSold: React.FC<Props> = ({ adminUrl, sold = 0, type, ...props }) => {
 	const eventId = useEventId();
 	const dbId = type === 'date' ? { datetime_id: props.dbId } : { ticket_id: props.dbId };
 

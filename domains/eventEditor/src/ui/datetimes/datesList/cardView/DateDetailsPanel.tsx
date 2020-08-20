@@ -7,12 +7,12 @@ import DateCapacity from './DateCapacity';
 import { getPropsAreEqual } from '@eventespresso/services';
 import type { DateItemProps } from '../types';
 
-const DateDetailsPanel: React.FC<DateItemProps> = ({ entity: datetime }) => {
+const DateDetailsPanel: React.FC<DateItemProps> = ({ adminUrl, entity: datetime }) => {
 	const details = [
 		{
 			id: 'ee-event-date-sold',
 			label: __('sold'),
-			value: <EntityDetailsPanelSold dbId={datetime.dbId} sold={datetime.sold} type='date' />,
+			value: <EntityDetailsPanelSold adminUrl={adminUrl} dbId={datetime.dbId} sold={datetime.sold} type='date' />,
 		},
 		{
 			id: 'ee-event-date-capacity',

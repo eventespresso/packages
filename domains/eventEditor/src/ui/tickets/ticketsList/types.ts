@@ -4,4 +4,6 @@ import type { TicketsFilterStateManager } from '@edtrServices/filterState';
 
 export interface TicketsListViewProps extends EntityListViewProps<Ticket, TicketsFilterStateManager> {}
 
-export interface TicketItemProps extends Required<Pick<EntityListItemProps<Ticket>, 'entity'>> {}
+export interface TicketItemProps extends Required<Pick<EntityListItemProps<Ticket>, 'entity'>> {
+	adminUrl?: string;
+}
