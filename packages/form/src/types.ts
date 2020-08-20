@@ -1,8 +1,11 @@
 import type React from 'react';
+
 import type { FormRenderProps, FormProps, FieldRenderProps, FieldProps as RFFFieldProps } from 'react-final-form';
 import type { FieldArrayProps } from 'react-final-form-arrays';
 import type { FormState, AnyObject } from 'final-form';
+
 import type { ButtonProps, OptionsType, FormControlProps } from '@eventespresso/adapters';
+import type { DateTimeFormatsProps, LocaleProps } from '@eventespresso/services';
 
 export interface FormButtonProps extends ButtonProps {
 	buttonText?: string;
@@ -76,7 +79,10 @@ export interface EspressoFormProps<FormValues = AnyObject>
 
 export interface FormRendererProps<FormValues = AnyObject>
 	extends FormRenderProps<FormValues>,
-		AdditionalFormProps<FormValues> {}
+		AdditionalFormProps<FormValues> {
+	dateTimeFormats?: DateTimeFormatsProps;
+	locale?: LocaleProps;
+}
 
 export interface FieldRendererProps<FieldValue = any>
 	extends FieldRenderProps<FieldValue>,
@@ -101,26 +107,32 @@ export interface SubmitProps extends Pick<AdditionalFormProps, 'submitButton' | 
 }
 
 export interface RenderFieldsProps {
+	dateTimeFormats?: DateTimeFormatsProps;
 	fields: FieldList;
+	locale?: LocaleProps;
 	namespace?: string;
 }
 
 export interface RenderSectionsProps {
+	dateTimeFormats?: DateTimeFormatsProps;
+	locale?: LocaleProps;
 	sections: SectionList;
 }
 
 export interface RenderFieldProps extends FieldProps<AnyObject> {}
 
 export interface SectionProps<FormValues = AnyObject> {
-	name: string;
-	title?: string | React.ReactNode;
-	icon?: React.ComponentType<{ className: string }>;
-	fields: FieldList<FormValues>;
 	/**
 	 * If true, each field inside the section
 	 * will be saved as `${section.name}.{field.name}`
 	 */
 	addSectionToFieldNames?: boolean;
+	dateTimeFormats?: DateTimeFormatsProps;
+	fields: FieldList<FormValues>;
+	icon?: React.ComponentType<{ className: string }>;
+	locale?: LocaleProps;
+	name: string;
+	title?: string | React.ReactNode;
 }
 
 type FieldList<FormValues = AnyObject> = Array<FieldProps<FormValues>>;

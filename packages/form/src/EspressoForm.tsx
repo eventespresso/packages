@@ -14,7 +14,7 @@ const EspressoForm = <FormValues extends AnyObject>({
 	onSubmit,
 	mutators,
 	layout,
-	...rest
+	...props
 }: EspressoFormProps<FormValues>): JSX.Element => {
 	const context = useMemoStringify({ layout });
 	const formMutators = useMemo(
@@ -28,7 +28,7 @@ const EspressoForm = <FormValues extends AnyObject>({
 
 	return (
 		<FormProvider value={context}>
-			<ReactFinalForm component={FormRenderer} onSubmit={onSubmit} mutators={formMutators} {...rest} />
+			<ReactFinalForm component={FormRenderer} onSubmit={onSubmit} mutators={formMutators} {...props} />
 		</FormProvider>
 	);
 };

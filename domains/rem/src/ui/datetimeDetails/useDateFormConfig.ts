@@ -2,12 +2,13 @@ import { pick } from 'ramda';
 import { __ } from '@wordpress/i18n';
 
 import { ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import type { EspressoFormProps } from '@eventespresso/form';
 import { Datetime } from '@eventespresso/edtr-services';
 import { validate } from './formValidation';
-import { DateFormShape } from './types';
 import { DATE_FIELDS_TO_USE } from '../../constants';
-import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/services';
+import { intervalsToOptions, DATE_INTERVALS, useConfig } from '@eventespresso/services';
+
+import type { EspressoFormProps } from '@eventespresso/form';
+import type { DateFormShape } from './types';
 
 type DateFormConfig = EspressoFormProps<DateFormShape>;
 
@@ -20,6 +21,7 @@ const DATE_DEFAULTS: DateFormShape = {
 };
 
 const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProps>): DateFormConfig => {
+	const { dateTimeFormats, locale } = useConfig();
 	const initialValues: DateFormShape = {
 		...DATE_DEFAULTS,
 		...config?.initialValues,
@@ -29,6 +31,8 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 		className: 'ee-form-item-pair',
 	};
 
+	console.log({ locale });
+
 	return {
 		...config,
 		onSubmit,
@@ -36,6 +40,8 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 		validate,
 		layout: 'horizontal',
 		debugFields: ['values', 'errors'],
+		locale,
+		dateTimeFormats,
 		sections: [
 			{
 				name: 'basics',

@@ -8,8 +8,10 @@ import { parseInfinity, formatInfinity } from '@eventespresso/services';
 
 type RFFFieldProps = Partial<React.ComponentProps<typeof RFFField>>;
 
-const Field: React.FC<FieldProps> = ({ conditions, parseAsInfinity, ...rest }) => {
-	const visible = useShouldBeVisible(conditions, rest.name);
+const Field: React.FC<FieldProps> = ({ conditions, parseAsInfinity, ...props }) => {
+	const visible = useShouldBeVisible(conditions, props.name);
+
+	console.log('field, ', props);
 
 	const extraProps: RFFFieldProps = parseAsInfinity
 		? {
@@ -22,7 +24,7 @@ const Field: React.FC<FieldProps> = ({ conditions, parseAsInfinity, ...rest }) =
 		  }
 		: {};
 
-	return visible && <RFFField component={FieldRenderer} {...extraProps} {...rest} type={rest.fieldType} />;
+	return visible && <RFFField component={FieldRenderer} {...extraProps} {...props} type={props.fieldType} />;
 };
 
 export default Field;

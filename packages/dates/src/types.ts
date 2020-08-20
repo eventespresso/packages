@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactDatePickerProps } from 'react-datepicker';
+import type { LocaleProps } from '@eventespresso/services';
 
 type OmittedProps = 'value' | 'onChange' | 'locale';
 
@@ -8,7 +9,7 @@ export interface DatePickerProps extends Omit<ReactDatePickerProps, OmittedProps
 	inputValue?: string;
 	onChange: (date: Date) => void;
 	value?: Date;
-	locale?: string;
+	locale?: LocaleProps;
 }
 
 export type DateRange = [Date, Date];

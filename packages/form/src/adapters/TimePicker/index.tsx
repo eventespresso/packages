@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { TimePicker as TimePickerAdapter } from '@eventespresso/dates';
-import { useConfig } from '@eventespresso/services';
 // import { TimezoneTimeInfo } from '../../';
 import type { FieldRendererProps } from '../../types';
 
@@ -10,17 +9,15 @@ import './style.scss';
 
 const TimePicker: React.FC<FieldRendererProps> = ({
 	className,
+	dateTimeFormats: { timeFormat },
+	format,
 	input: { onChange: onInputChange, value, ...input },
+	meta,
+	locale,
 	onChange,
 	onChangeValue,
-	meta,
-	format,
 	...props
 }) => {
-	const {
-		dateTimeFormats: { timeFormat },
-		locale: { user },
-	} = useConfig();
 	const classname = classNames(className, 'ee-time-picker', 'ee-calendar-datetime-picker', 'ee-input-base-wrapper');
 
 	return (
@@ -28,7 +25,7 @@ const TimePicker: React.FC<FieldRendererProps> = ({
 			<TimePickerAdapter
 				{...input}
 				{...props}
-				locale={user}
+				locale={locale}
 				onChange={onInputChange}
 				timeFormat={timeFormat}
 				value={value}

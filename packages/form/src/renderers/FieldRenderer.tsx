@@ -6,8 +6,8 @@ import { HelpIcon } from '@eventespresso/adapters';
 import { reactFinalFormField } from '@eventespresso/services';
 
 import ErrorMessage from './ErrorMessage';
-import type { FieldRendererProps } from '../types';
 import { MappedField } from '../adapters';
+import type { FieldRendererProps } from '../types';
 
 const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	const { after, before, description, formControlProps, info, label, required, ...rest } = props;

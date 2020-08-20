@@ -6,7 +6,7 @@ import { parseISO } from 'date-fns';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useDatetimeItem, processDateAndTime } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
-import { useTimeZoneTime, setDefaultTime } from '@eventespresso/services';
+import { useTimeZoneTime, setDefaultTime, useConfig } from '@eventespresso/services';
 import type { EspressoFormProps } from '@eventespresso/form';
 import type { Datetime } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
@@ -21,6 +21,8 @@ const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'description', 'capaci
 
 const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormConfig => {
 	const datetime = useDatetimeItem({ id });
+
+	const { dateTimeFormats, locale } = useConfig();
 
 	const { siteTimeToUtc, utcToSiteTime } = useTimeZoneTime();
 
@@ -65,11 +67,13 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 	return useMemo(
 		() => ({
 			...config,
-			onSubmit: onSubmitFrom,
-			initialValues,
-			validate,
-			layout: 'horizontal',
 			debugFields: ['values', 'errors'],
+			initialValues,
+			layout: 'horizontal',
+			locale,
+			dateTimeFormats,
+			onSubmit: onSubmitFrom,
+			validate,
 			sections: [
 				{
 					name: 'basics',
@@ -157,7 +161,7 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 				},
 			],
 		}),
-		[adjacentFormItemProps, config, initialValues, onSubmitFrom]
+		[adjacentFormItemProps, config, dateTimeFormats, initialValues, locale, onSubmitFrom]
 	);
 };
 

@@ -6,12 +6,25 @@ import RenderFields from './RenderFields';
 
 const NoIcon: SectionProps['icon'] = () => null;
 
-const RenderSection: React.FC<SectionProps> = ({ name, title, icon = NoIcon, fields, addSectionToFieldNames }) => {
+const RenderSection: React.FC<SectionProps> = ({
+	addSectionToFieldNames,
+	dateTimeFormats,
+	fields,
+	icon = NoIcon,
+	name,
+	locale,
+	title,
+}) => {
 	return (
 		<div className='section-wrapper'>
 			<FormSectionSidebar title={title} Icon={icon} />
 			<div className='section-body'>
-				<RenderFields fields={fields} namespace={addSectionToFieldNames ? name : null} />
+				<RenderFields
+					dateTimeFormats={dateTimeFormats}
+					fields={fields}
+					locale={locale}
+					namespace={addSectionToFieldNames ? name : null}
+				/>
 			</div>
 		</div>
 	);

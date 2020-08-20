@@ -11,24 +11,30 @@ import { reactFinalFormState } from '@eventespresso/services';
 
 const FormRenderer: React.FC<FormRendererProps> = (props) => {
 	const {
-		submitting,
-		sections = [],
-		fields = [],
-		submitButton,
-		resetButton,
-		formWrapper: FormWrapper,
+		dateTimeFormats,
 		debugFields,
+		fields = [],
+		formWrapper: FormWrapper,
 		hasValidationErrors,
 		hasSubmitErrors,
+		locale,
+		submitting,
+		sections = [],
+		submitButton,
+		resetButton,
 	} = props;
 
 	const formOutput = (
 		<div className='ee-form'>
 			<div className='form-wrapper'>
 				<form>
-					{sections.length ? <RenderSections sections={sections} /> : null}
+					{sections.length ? (
+						<RenderSections dateTimeFormats={dateTimeFormats} locale={locale} sections={sections} />
+					) : null}
 
-					{fields.length ? <RenderFields fields={fields} /> : null}
+					{fields.length ? (
+						<RenderFields dateTimeFormats={dateTimeFormats} fields={fields} locale={locale} />
+					) : null}
 
 					{/* May be formWrapper handles form submission */}
 					{submitButton ? (
@@ -53,4 +59,5 @@ const FormRenderer: React.FC<FormRendererProps> = (props) => {
 
 	return formOutput;
 };
+
 export default React.memo(FormRenderer, reactFinalFormState);
