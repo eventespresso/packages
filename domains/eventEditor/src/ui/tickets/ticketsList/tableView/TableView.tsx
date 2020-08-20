@@ -6,9 +6,11 @@ import useHeaderRowGenerator from './useHeaderRowGenerator';
 import useBodyRowGenerator from './useBodyRowGenerator';
 import { useTicketsListContext } from '@edtrServices/context/EntityListContext';
 import { useReorderTickets } from '@eventespresso/edtr-services';
+import { checkFeatureFlag } from '@eventespresso/config';
 import { withBulkEdit } from '@eventespresso/services';
 import { Actions } from '../bulkEdit';
 
+const isBulkEditEnabled = checkFeatureFlag('bulkEdit');
 /**
  * Displays tickets in a standard list table like view
  */
@@ -22,7 +24,7 @@ const TableView: React.FC = () => {
 
 	return (
 		<>
-			<Actions />
+			{isBulkEditEnabled && <Actions />}
 			<EntityTable
 				entities={filteredEntities}
 				filterState={filterState}
