@@ -1,14 +1,13 @@
 import { useMemo, useCallback } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
-import { parseISO } from 'date-fns';
 import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { useTicketItem, processDateAndTime } from '@eventespresso/edtr-services';
+import { useTicketItem } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import type { EspressoFormProps } from '@eventespresso/form';
 import type { Ticket } from '@eventespresso/edtr-services';
-import { useTimeZoneTime, setDefaultTime } from '@eventespresso/services';
+import { setDefaultTime, useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { EntityId } from '@eventespresso/data';
 import { validate } from './formValidation';
@@ -34,27 +33,27 @@ const FIELD_NAMES: Array<keyof Ticket> = [
 const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFormConfig => {
 	const ticket = useTicketItem({ id });
 
-	const { siteTimeToUtc, utcToSiteTime } = useTimeZoneTime();
+	const toUtcISO = useSiteDateToUtcISO();
+	const toSiteDate = useUtcISOToSiteDate();
 
 	const startDate = useMemoStringify(
-		ticket?.startDate ? utcToSiteTime(parseISO(ticket?.startDate)) : setDefaultTime(PLUS_ONE_MONTH, 'start')
+		ticket?.startDate ? toSiteDate(ticket?.startDate) : setDefaultTime(PLUS_ONE_MONTH, 'start')
 	);
 	const endDate = useMemoStringify(
-		ticket?.endDate ? utcToSiteTime(parseISO(ticket?.endDate)) : setDefaultTime(PLUS_ONE_MONTH, 'end')
+		ticket?.endDate ? toSiteDate(ticket?.endDate) : setDefaultTime(PLUS_ONE_MONTH, 'end')
 	);
 
 	const { onSubmit } = config;
 
 	const onSubmitFrom: TicketFormConfig['onSubmit'] = useCallback(
-		({ dateTime, ...rest }, form, ...restParams) => {
-			// convert "dateTime" object to proper UTC "startDate" and "endDate"
-			const { startDate, endDate } = processDateAndTime(dateTime, siteTimeToUtc);
-
-			const values = { ...rest, startDate, endDate };
-
-			return onSubmit(values, form, ...restParams);
+		({ startDate, endDate, ...values }, form, ...restParams) => {
+			return onSubmit(
+				{ ...values, startDate: toUtcISO(startDate), endDate: toUtcISO(endDate) },
+				form,
+				...restParams
+			);
 		},
-		[onSubmit, siteTimeToUtc]
+		[onSubmit, toUtcISO]
 	);
 
 	const adjacentFormItemProps = useMemoStringify({
@@ -64,12 +63,8 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 	const initialValues: TicketFormShape = useMemo(
 		() => ({
 			...pick<Omit<Partial<Ticket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
-			dateTime: {
-				startDate,
-				startTime: startDate,
-				endDate,
-				endTime: endDate,
-			},
+			startDate,
+			endDate,
 		}),
 		[endDate, startDate, ticket]
 	);
@@ -108,35 +103,16 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 					title: __('Ticket Sales'),
 					fields: [
 						{
-							name: 'dateTime',
-							label: '',
-							fieldType: 'group',
-							subFields: [
-								{
-									name: 'startDate',
-									label: __('Start Date'),
-									fieldType: 'datepicker',
-									required: true,
-								},
-								{
-									name: 'startTime',
-									label: __('Start Time'),
-									fieldType: 'timepicker',
-									required: true,
-								},
-								{
-									name: 'endDate',
-									label: __('End Date'),
-									fieldType: 'datepicker',
-									required: true,
-								},
-								{
-									name: 'endTime',
-									label: __('End Time'),
-									fieldType: 'timepicker',
-									required: true,
-								},
-							],
+							name: 'startDate',
+							label: __('Start Date'),
+							fieldType: 'datetimepicker',
+							required: true,
+						},
+						{
+							name: 'endDate',
+							label: __('End Date'),
+							fieldType: 'datetimepicker',
+							required: true,
 						},
 					],
 				},

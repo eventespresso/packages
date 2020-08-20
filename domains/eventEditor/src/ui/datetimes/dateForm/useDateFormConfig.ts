@@ -1,12 +1,11 @@
 import { useMemo, useCallback } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 import { pick } from 'ramda';
-import { parseISO } from 'date-fns';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { useDatetimeItem, processDateAndTime } from '@eventespresso/edtr-services';
+import { useDatetimeItem } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
-import { useTimeZoneTime, setDefaultTime } from '@eventespresso/services';
+import { setDefaultTime, useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
 import type { EspressoFormProps } from '@eventespresso/form';
 import type { Datetime } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
@@ -22,38 +21,34 @@ const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'description', 'capaci
 const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormConfig => {
 	const datetime = useDatetimeItem({ id });
 
-	const { siteTimeToUtc, utcToSiteTime } = useTimeZoneTime();
+	const toUtcISO = useSiteDateToUtcISO();
+	const toSiteDate = useUtcISOToSiteDate();
 
 	const startDate = useMemoStringify(
-		datetime?.startDate ? utcToSiteTime(parseISO(datetime?.startDate)) : setDefaultTime(PLUS_ONE_MONTH, 'start')
+		datetime?.startDate ? toSiteDate(datetime?.startDate) : setDefaultTime(PLUS_ONE_MONTH, 'start')
 	);
 	const endDate = useMemoStringify(
-		datetime?.endDate ? utcToSiteTime(parseISO(datetime?.endDate)) : setDefaultTime(PLUS_ONE_MONTH, 'end')
+		datetime?.endDate ? toSiteDate(datetime?.endDate) : setDefaultTime(PLUS_ONE_MONTH, 'end')
 	);
 
 	const { onSubmit } = config;
 
 	const onSubmitFrom: DateFormConfig['onSubmit'] = useCallback(
-		({ dateTime, ...rest }, form, ...restParams) => {
-			// convert "dateTime" object to proper UTC "startDate" and "endDate"
-			const { startDate, endDate } = processDateAndTime(dateTime, siteTimeToUtc);
-
-			const values = { ...rest, startDate, endDate };
-
-			return onSubmit(values, form, ...restParams);
+		({ startDate, endDate, ...values }, form, ...restParams) => {
+			return onSubmit(
+				{ ...values, startDate: toUtcISO(startDate), endDate: toUtcISO(endDate) },
+				form,
+				...restParams
+			);
 		},
-		[onSubmit, siteTimeToUtc]
+		[onSubmit, toUtcISO]
 	);
 
 	const initialValues: DateFormShape = useMemo(
 		() => ({
 			...pick<Partial<Datetime>, keyof Datetime>(FIELD_NAMES, datetime || {}),
-			dateTime: {
-				startDate,
-				endDate,
-				startTime: startDate,
-				endTime: endDate,
-			},
+			startDate,
+			endDate,
 		}),
 		[datetime, endDate, startDate]
 	);
@@ -93,38 +88,19 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 				{
 					name: 'dateTime',
 					icon: CalendarOutlined,
-					title: __('Date & Time'),
+					title: __('Dates'),
 					fields: [
 						{
-							name: 'dateTime',
-							label: '',
-							fieldType: 'group',
-							subFields: [
-								{
-									name: 'startDate',
-									label: __('Start Date'),
-									fieldType: 'datepicker',
-									required: true,
-								},
-								{
-									name: 'startTime',
-									label: __('Start Time'),
-									fieldType: 'timepicker',
-									required: true,
-								},
-								{
-									name: 'endDate',
-									label: __('End Date'),
-									fieldType: 'datepicker',
-									required: true,
-								},
-								{
-									name: 'endTime',
-									label: __('End Time'),
-									fieldType: 'timepicker',
-									required: true,
-								},
-							],
+							name: 'startDate',
+							label: __('Start Date'),
+							fieldType: 'datetimepicker',
+							required: true,
+						},
+						{
+							name: 'endDate',
+							label: __('End Date'),
+							fieldType: 'datetimepicker',
+							required: true,
 						},
 					],
 				},

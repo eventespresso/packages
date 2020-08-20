@@ -1,5 +1,3 @@
-import type { UpdateDatetimeInput, DateAndTime } from '@eventespresso/edtr-services';
+import type { UpdateDatetimeInput } from '@eventespresso/edtr-services';
 
-export interface DateFormShape extends UpdateDatetimeInput, DateAndTime {
-	dateTime?: DateAndTime;
-}
+export interface DateFormShape extends UpdateDatetimeInput {}

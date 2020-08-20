@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import * as yup from 'yup';
 
-import { dateAndTimeSchema } from '@eventespresso/edtr-services';
+import { datesSchema } from '@eventespresso/edtr-services';
 import { yupToFinalFormErrors } from '@eventespresso/form';
 import { TicketFormShape } from './types';
 
@@ -14,5 +14,5 @@ const validationSchema = yup.object({
 		.string()
 		.required(() => __('Name is required'))
 		.min(3, () => __('Name must be at least three characters')),
-	dateTime: dateAndTimeSchema,
+	...datesSchema,
 });
