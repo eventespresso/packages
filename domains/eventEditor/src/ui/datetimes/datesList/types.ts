@@ -6,4 +6,5 @@ export interface DatesListViewProps extends EntityListViewProps<Datetime, Dateti
 
 export interface DateItemProps extends Required<Pick<EntityListItemProps<Datetime>, 'entity'>> {
 	adminUrl?: string;
+	eventId?: number;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { getPropsAreEqual, useConfig } from '@eventespresso/services';
-import { getAdminUrl, useTicketMutator } from '@eventespresso/edtr-services';
+import { getAdminUrl, useTicketMutator, useEventId } from '@eventespresso/edtr-services';
 
 import { EditableName, EditablePrice } from '../editable';
 import { EditableDesc } from '../../../shared/editable';
@@ -16,6 +16,8 @@ const Details: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 
 	const adminUrl = getAdminUrl({ adminSiteUrl: admin, page: ADMIN_ROUTES.REGISTRATIONS });
 
+	const eventId = useEventId();
+
 	const { updateEntity } = useTicketMutator(ticket.id);
 
 	return (
@@ -26,7 +28,7 @@ const Details: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 
 			<EditablePrice className='entity-card-details__price' entity={ticket} />
 
-			<TicketDetailsPanel adminUrl={adminUrl} entity={ticket} />
+			<TicketDetailsPanel adminUrl={adminUrl} entity={ticket} eventId={eventId} />
 		</>
 	);
 };

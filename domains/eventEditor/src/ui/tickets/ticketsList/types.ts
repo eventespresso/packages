@@ -6,4 +6,5 @@ export interface TicketsListViewProps extends EntityListViewProps<Ticket, Ticket
 
 export interface TicketItemProps extends Required<Pick<EntityListItemProps<Ticket>, 'entity'>> {
 	adminUrl?: string;
+	eventId?: number;
 }

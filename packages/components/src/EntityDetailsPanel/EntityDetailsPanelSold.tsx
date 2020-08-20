@@ -3,7 +3,6 @@ import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
 import { EntityDbId } from '@eventespresso/data';
-import { useEventId } from '@eventespresso/edtr-services';
 
 import { Link } from '../../';
 
@@ -12,12 +11,12 @@ import './style.scss';
 interface Props {
 	adminUrl: string;
 	dbId: EntityDbId;
+	eventId: number;
 	sold?: number;
 	type: 'date' | 'ticket';
 }
 
-const EntityDetailsPanelSold: React.FC<Props> = ({ adminUrl, sold = 0, type, ...props }) => {
-	const eventId = useEventId();
+const EntityDetailsPanelSold: React.FC<Props> = ({ adminUrl, eventId, sold = 0, type, ...props }) => {
 	const dbId = type === 'date' ? { datetime_id: props.dbId } : { ticket_id: props.dbId };
 
 	const regListUrl = addQueryArgs(adminUrl, {
