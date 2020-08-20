@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { useWithEntityFormDetails } from '@eventespresso/form';
+import { useWithEntityFormDetails } from '@eventespresso/components';
 import { withContext as withTPCContext } from '@eventespresso/tpc';
 import { withContext as withTAMContext } from '@edtrUI/ticketAssignmentsManager/context';
 import ContentBody from './ContentBody';
+
+import type { Datetime, Ticket } from '@eventespresso/edtr-services';
 import type { ContentWrapperProps } from './types';
 
 const WithTPC: React.FC<ContentWrapperProps> = (props) => {
@@ -19,7 +21,7 @@ const WithTPC: React.FC<ContentWrapperProps> = (props) => {
  */
 const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
 	// provide entity details to TAM from edit form
-	return useWithEntityFormDetails(({ entity }) => {
+	return useWithEntityFormDetails(({ entity }: { entity: Datetime | Ticket }) => {
 		const Component = withTAMContext(WithTPC, {
 			assignmentType: 'forTicket',
 			entity,
