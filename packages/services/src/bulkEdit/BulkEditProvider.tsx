@@ -60,6 +60,4 @@ const BulkEditProvider: React.FC = ({ children }) => {
 
 export { BulkEditProvider, BulkEditConsumer, BulkEditContext };
 
-export default BulkEditProvider;
-
 export type { BulkEdit };
