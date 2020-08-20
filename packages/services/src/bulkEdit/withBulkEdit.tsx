@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { lazy } from 'react';
 
 import { checkFeatureFlag } from '@eventespresso/config';
 
-import { BulkEditProvider } from './BulkEditProvider';
 import type { AnyObject } from '../';
+
+const BulkEditProvider = lazy(() => import(/* webpackChunkName: "bulk-edit-provider" */ './BulkEditProvider'));
 
 const isBulkEditEnabled = checkFeatureFlag('bulkEdit');
 
