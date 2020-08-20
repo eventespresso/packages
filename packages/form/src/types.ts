@@ -25,6 +25,7 @@ export interface AdditionalFieldProps<FormValues = AnyObject> {
 	label?: React.ReactNode | string;
 	fieldType:
 		| 'datepicker'
+		| 'datetimepicker'
 		| 'group'
 		| 'hidden'
 		| 'multicheck'

@@ -3,10 +3,7 @@ import classNames from 'classnames';
 
 import { TimePicker as TimePickerAdapter } from '@eventespresso/dates';
 import { useConfig } from '@eventespresso/services';
-// import { TimezoneTimeInfo } from '../../';
-import type { FieldRendererProps } from '../../types';
-
-import './style.scss';
+import type { FieldRendererProps } from '../types';
 
 const TimePicker: React.FC<FieldRendererProps> = ({
 	className,
@@ -34,7 +31,6 @@ const TimePicker: React.FC<FieldRendererProps> = ({
 				value={value}
 				required
 			/>
-			{/* <TimezoneTimeInfo date={value} /> */}
 		</div>
 	);
 };

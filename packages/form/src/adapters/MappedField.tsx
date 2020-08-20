@@ -9,6 +9,7 @@ import Switch from './Switch';
 import MultiCheck from './MultiCheck';
 import Radio from './Radio';
 import DatePicker from './DatePicker';
+import DateTimePicker from './DateTimePicker';
 import TimePicker from './TimePicker';
 import Hidden from './Hidden';
 import NumberField from './Number';
@@ -19,6 +20,9 @@ const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...rest }) => {
 	switch (fieldType) {
 		case 'datepicker':
 			Component = DatePicker;
+			break;
+		case 'datetimepicker':
+			Component = DateTimePicker;
 			break;
 		case 'text':
 			Component = Text;

@@ -25,7 +25,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 		formControlProps?.className
 	);
 
-	const isDateOrTimePicker = ['datepicker', 'timepicker'].includes(props.fieldType);
+	const isDateOrTimePicker = ['datepicker', 'datetimepicker', 'timepicker'].includes(props.fieldType);
 
 	// since we don't have access to focus event of pickers' input, it will never be touched
 	// we still need to be able to show validation error message
