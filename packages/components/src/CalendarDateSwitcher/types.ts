@@ -1,5 +1,3 @@
-import type { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
-
 export interface CalendarDateLabels {
 	header?: string;
 	headerPast?: string;
@@ -11,7 +9,9 @@ export interface CalendarDateLabels {
 
 export interface CalendarDateSwitcherProps {
 	className?: string;
-	displayDate: DisplayStartOrEndDate;
+	displayBoth: boolean;
+	displayEnd: boolean;
+	displayStart: boolean;
 	endDate: string;
 	labels?: CalendarDateLabels;
 	showDate?: boolean;

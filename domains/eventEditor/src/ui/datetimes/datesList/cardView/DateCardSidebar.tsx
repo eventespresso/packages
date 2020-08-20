@@ -29,7 +29,9 @@ const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {
 	return date ? (
 		<>
 			<CalendarDateSwitcher
-				displayDate={displayStartOrEndDate}
+				displayBoth={displayStartOrEndDate === 'both'}
+				displayEnd={displayStartOrEndDate === 'end'}
+				displayStart={displayStartOrEndDate === 'start'}
 				endDate={date.endDate}
 				startDate={date.startDate}
 			/>
