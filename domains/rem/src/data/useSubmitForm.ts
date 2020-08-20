@@ -2,7 +2,7 @@ import { useCallback, useState, useEffect } from 'react';
 
 import { copyDatetimeFields, isDatetimeInputField } from '@eventespresso/predicates';
 import { getSharedTickets, getNonSharedTickets, computeDatetimeEndDate } from '../utils';
-import { useTimeZoneTime } from '@eventespresso/services';
+import { useSiteDateToUtcISO } from '@eventespresso/services';
 import type { GeneratedDate } from '../ui/generatedDates';
 import type { FormState } from './types';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';
@@ -13,7 +13,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 	const { dateDetails, tickets } = formState;
 	const [progress, setProgress] = useState<Progress>({ datetimes: 0, tickets: 0 });
 	const { createEntity: createDatetime } = useDatetimeMutator();
-	const { siteTimeToUtc } = useTimeZoneTime();
+	const toUtcISO = useSiteDateToUtcISO();
 
 	// updates progress for a given entity type
 	const updateProgress = useCallback((forEntity: keyof Progress, value = 1) => {
@@ -66,8 +66,8 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 				const tickets = [...sharedTicketIds, ...relatedTicketIds];
 
 				// compute and convert start and end date to UTC
-				const startDate = siteTimeToUtc(start).toISOString();
-				const endDate = siteTimeToUtc(end).toISOString();
+				const startDate = toUtcISO(start);
+				const endDate = toUtcISO(end);
 
 				const input = { ...normalizedDateInput, startDate, endDate, tickets };
 
@@ -82,7 +82,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 		mutateTickets,
 		nonSharedTickets,
 		sharedTickets,
-		siteTimeToUtc,
+		toUtcISO,
 		updateProgress,
 	]);
 };

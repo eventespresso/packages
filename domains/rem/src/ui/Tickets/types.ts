@@ -14,14 +14,13 @@ export type TicketSatesFields = {
 	unitValue?: number;
 };
 
-export type DateAndTime = {
-	date: Date;
-	time: Date;
+export type TicketSalesDates = {
+	startDate: string | Date;
+	endDate: string | Date;
 };
 
-export interface RemTicketFields extends Partial<TicketSatesFields>, Partial<DateAndTime> {
-	dateTimeStart?: DateAndTime;
-	dateTimeEnd?: DateAndTime;
+export interface RemTicketFields extends Partial<TicketSatesFields>, Partial<TicketSalesDates> {
+	ticketSalesDates?: TicketSalesDates;
 	ticketSalesStart?: TicketSatesFields;
 	ticketSalesEnd?: TicketSatesFields;
 	isShared?: boolean;

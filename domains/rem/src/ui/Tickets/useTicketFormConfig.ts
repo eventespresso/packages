@@ -21,21 +21,6 @@ import { RemTicket } from '../../data';
 
 type TicketFormConfig = EspressoFormProps<RemTicket>;
 
-const dateTimeFields: Array<FieldProps> = [
-	{
-		name: 'date',
-		label: __('Date'),
-		fieldType: 'datepicker',
-		required: true,
-	},
-	{
-		name: 'time',
-		label: __('Time'),
-		fieldType: 'timepicker',
-		required: true,
-	},
-];
-
 const unitOptions = intervalsToOptions(
 	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS)
 );
@@ -109,13 +94,9 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 				unit: 'days',
 				unitValue: 1,
 			},
-			dateTimeStart: {
-				date: startDate,
-				time: startDate,
-			},
-			dateTimeEnd: {
-				date: endDate,
-				time: endDate,
+			ticketSalesDates: {
+				startDate,
+				endDate,
 			},
 			isShared: false,
 		}),
@@ -174,11 +155,10 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 					title: __('Ticket Sales Start'),
 					fields: [
 						{
-							name: 'dateTimeStart',
+							name: 'ticketSalesDates.startDate' as 'startDate',
 							label: '',
-							fieldType: 'group',
+							fieldType: 'datetimepicker',
 							conditions: [{ field: 'isShared', compare: '=', value: true }],
-							subFields: dateTimeFields,
 						},
 						{
 							name: 'ticketSalesStart',
@@ -195,11 +175,10 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 					title: __('Ticket Sales End'),
 					fields: [
 						{
-							name: 'dateTimeEnd',
+							name: 'ticketSalesDates.endDate' as 'endDate',
 							label: '',
-							fieldType: 'group',
+							fieldType: 'datetimepicker',
 							conditions: [{ field: 'isShared', compare: '=', value: true }],
-							subFields: dateTimeFields,
 						},
 						{
 							name: 'ticketSalesEnd',

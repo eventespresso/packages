@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 
-import { useTimeZoneTime } from '@eventespresso/services';
-import { processDateAndTime } from '@eventespresso/edtr-services';
+import { useSiteDateToUtcISO } from '@eventespresso/services';
 import type { EntityId } from '@eventespresso/data';
 
 import type { RemTicket, StartAndEndDate } from './types';
@@ -21,34 +20,31 @@ type MutateTicketsArgs = {
 
 const useMutateTickets = ({ incrementProgress }: MutateTicketsArgs): Callback => {
 	const mutateTicket = useMutateTicket();
-	const { siteTimeToUtc } = useTimeZoneTime();
+	const toUtcISO = useSiteDateToUtcISO();
 
 	// Async to make sure that prices are handled before updating the ticket.
 	return useCallback(
 		async (tickets, sharedTickets, dates) => {
 			return await Promise.all(
 				tickets.map(async (ticket) => {
-					let start: string | Date, end: string | Date;
-					if (sharedTickets) {
-						const dateAndTime = {
-							startDate: ticket.dateTimeStart.date,
-							startTime: ticket.dateTimeStart.time,
-							endDate: ticket.dateTimeEnd.date,
-							endTime: ticket.dateTimeEnd.time,
-						};
-						({ startDate: start, endDate: end } = processDateAndTime(dateAndTime, siteTimeToUtc));
-					} else {
-						start = siteTimeToUtc(computeTicketDate(dates, ticket.ticketSalesStart)).toISOString();
-						end = siteTimeToUtc(computeTicketDate(dates, ticket.ticketSalesEnd)).toISOString();
-					}
-					const input = { ...ticket, startDate: start as string, endDate: end as string };
+					const startDate = toUtcISO(
+						sharedTickets
+							? ticket.ticketSalesDates.startDate
+							: computeTicketDate(dates, ticket.ticketSalesStart)
+					);
+					const endDate = toUtcISO(
+						sharedTickets
+							? ticket.ticketSalesDates.endDate
+							: computeTicketDate(dates, ticket.ticketSalesEnd)
+					);
+					const input = { ...ticket, startDate, endDate };
 					const ticketId = await mutateTicket(input);
 					incrementProgress?.();
 					return ticketId;
 				})
 			);
 		},
-		[incrementProgress, mutateTicket, siteTimeToUtc]
+		[incrementProgress, mutateTicket, toUtcISO]
 	);
 };
 
