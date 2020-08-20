@@ -1,8 +1,7 @@
 import React from 'react';
-import { useForm } from '@eventespresso/form';
 
-import { processDateAndTime } from '@eventespresso/edtr-services';
-import { useTimeZoneTime } from '@eventespresso/services';
+import { useForm } from '@eventespresso/form';
+import { useSiteDateToUtcISO } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { Entity } from '@eventespresso/data';
 import type { BaseProps } from './types';
@@ -13,8 +12,8 @@ interface EntityEditFormProps {
 }
 
 const EntityEditForm: React.FC<EntityEditFormProps> = ({ Component, newEntityId }) => {
-	const { siteTimeToUtc } = useTimeZoneTime();
 	const { getState } = useForm<any>();
+	const toUtcISO = useSiteDateToUtcISO();
 
 	const values = getState().values;
 	const entity = useMemoStringify(
@@ -22,7 +21,8 @@ const EntityEditForm: React.FC<EntityEditFormProps> = ({ Component, newEntityId 
 			...values,
 			id: values.id ?? newEntityId,
 			dbId: values.dbId ?? 0,
-			...processDateAndTime(values?.dateTime, siteTimeToUtc),
+			startDate: values?.startDate ? toUtcISO(values.startDate) : '',
+			endDate: values?.endDate ? toUtcISO(values.endDate) : '',
 		},
 		[values]
 	);
