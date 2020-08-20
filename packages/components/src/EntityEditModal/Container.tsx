@@ -1,9 +1,9 @@
 import React from 'react';
 
+import EntityEditModal from './EntityEditModal';
+
 import type { Entity } from '@eventespresso/data';
 import type { ContainerProps } from './types';
-
-import EntityEditModal from './EntityEditModal';
 
 const Container = <E extends Entity>({
 	component: Component,

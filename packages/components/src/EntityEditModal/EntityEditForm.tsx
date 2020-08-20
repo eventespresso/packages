@@ -7,12 +7,14 @@ import { useMemoStringify } from '@eventespresso/hooks';
 import { Entity } from '@eventespresso/data';
 import type { BaseProps } from './types';
 
+import './styles.scss';
+
 interface EntityEditFormProps {
 	Component: React.ComponentType<Partial<BaseProps<Entity>>>;
 	newEntityId: string;
 }
 
-export const EntityEditForm: React.FC<EntityEditFormProps> = ({ Component, newEntityId }) => {
+const EntityEditForm: React.FC<EntityEditFormProps> = ({ Component, newEntityId }) => {
 	const { siteTimeToUtc } = useTimeZoneTime();
 	const { getState } = useForm<any>();
 
