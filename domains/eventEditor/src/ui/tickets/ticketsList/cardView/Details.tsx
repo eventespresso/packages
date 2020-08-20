@@ -9,7 +9,7 @@ import { EditableDesc } from '../../../shared/editable';
 import TicketDetailsPanel from './TicketDetailsPanel';
 import type { TicketItemProps } from '../types';
 
-const Details: React.FC<TicketItemProps> = ({ entity: ticket }) => {
+const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 	const {
 		siteUrl: { admin },
 	} = useConfig();

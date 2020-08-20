@@ -10,7 +10,7 @@ import { useTimeZoneTime } from '@eventespresso/services';
 import type { DateRange } from '@eventespresso/adapters';
 import type { TicketItemProps } from '../types';
 
-const TicketCardSidebar: React.FC<TicketItemProps> = ({ entity: ticket }) => {
+const TicketCardSidebar: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 	const { displayStartOrEndDate } = useTicketsListFilterState();
 	const { updateEntity } = useTicketMutator(ticket.id);
 	const { siteTimeToUtc } = useTimeZoneTime();
