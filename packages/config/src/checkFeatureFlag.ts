@@ -1,9 +1,12 @@
-export const featureFlags = {
+// avoid package dependecy upon `services`
+import toBoolean from '../../services/src/utilities/converters/toBoolean';
+
+export const FEATURE_FLAGS = {
 	bulkEdit: process.env.FF_BULK_EDIT,
 };
 
-type Feature = 'bulkEdit' | '';
+type Feature = keyof typeof FEATURE_FLAGS;
 
 export const checkFeatureFlag = (feature: Feature): boolean => {
-	return featureFlags[feature];
+	return toBoolean(FEATURE_FLAGS?.[feature]);
 };
