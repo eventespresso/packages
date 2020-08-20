@@ -11,7 +11,7 @@ interface EditableNameProps extends TicketItemProps {
 	view?: 'card' | 'table';
 }
 
-const EditableName: React.FC<EditableNameProps> = ({ className, entity: ticket, view = 'card' }) => {
+const EditableName: React.FC<Partial<EditableNameProps>> = ({ className, entity: ticket, view = 'card' }) => {
 	const { updateEntity } = useTicketMutator(ticket.id);
 
 	const lineCount = view === 'card' && 2;

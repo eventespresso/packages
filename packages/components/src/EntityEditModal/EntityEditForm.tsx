@@ -7,8 +7,6 @@ import { useMemoStringify } from '@eventespresso/hooks';
 import { Entity } from '@eventespresso/data';
 import type { BaseProps } from './types';
 
-import './styles.scss';
-
 interface EntityEditFormProps {
 	Component: React.ComponentType<Partial<BaseProps<Entity>>>;
 	newEntityId: string;
