@@ -9,11 +9,15 @@ export interface CalendarDateLabels {
 
 export interface CalendarDateSwitcherProps {
 	className?: string;
-	displayBoth: boolean;
-	displayEnd: boolean;
-	displayStart: boolean;
+	displayDate: DisplayStartOrEndDate;
 	endDate: string;
 	labels?: CalendarDateLabels;
 	showDate?: boolean;
 	startDate: string;
+}
+
+export enum DisplayStartOrEndDate {
+	start = 'start',
+	end = 'end',
+	both = 'both',
 }

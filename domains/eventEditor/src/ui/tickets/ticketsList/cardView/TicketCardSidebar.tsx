@@ -29,9 +29,7 @@ const TicketCardSidebar: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 	return ticket ? (
 		<>
 			<CalendarDateSwitcher
-				displayBoth={displayStartOrEndDate === 'both'}
-				displayEnd={displayStartOrEndDate === 'end'}
-				displayStart={displayStartOrEndDate === 'start'}
+				displayDate={displayStartOrEndDate}
 				endDate={ticket.endDate}
 				startDate={ticket.startDate}
 			/>

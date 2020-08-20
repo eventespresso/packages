@@ -5,10 +5,11 @@ import { __ } from '@wordpress/i18n';
 import { switchTenseForDate } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { BiggieCalendarDate, CalendarDateRange } from '../../';
+import { DisplayStartOrEndDate } from './types';
 import type { CalendarDateSwitcherProps } from './types';
 
 const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = React.memo(
-	({ className, displayBoth, displayEnd, displayStart = true, labels, ...props }) => {
+	({ className, displayDate = DisplayStartOrEndDate.start, labels, ...props }) => {
 		const startDate = useMemoStringify(parseISO(props.startDate), [props.startDate]);
 		const endDate = useMemoStringify(parseISO(props.endDate), [props.endDate]);
 
@@ -20,42 +21,42 @@ const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = React.memo(
 			headerText = headerPast && headerFuture ? switchTenseForDate(startDate, headerPast, headerFuture) : header;
 		}
 
-		if (displayEnd) {
-			return (
-				<BiggieCalendarDate
-					className={className}
-					date={endDate}
-					footerText={footerText}
-					headerText={headerText || __('ends')}
-					showTime
-				/>
-			);
-		}
+		const start = (
+			<BiggieCalendarDate
+				className={className}
+				date={startDate}
+				footerText={footerText}
+				headerText={headerText || __('starts')}
+				showTime
+			/>
+		);
 
-		if (displayBoth) {
-			return (
-				<CalendarDateRange
-					className={className}
-					endDate={endDate}
-					footerText={footerText}
-					headerText={headerText}
-					showTime
-					startDate={startDate}
-				/>
-			);
-		}
-
-		// since this is the default value, it needs to be the last conditional
-		if (displayStart) {
-			return (
-				<BiggieCalendarDate
-					className={className}
-					date={startDate}
-					footerText={footerText}
-					headerText={headerText || __('starts')}
-					showTime
-				/>
-			);
+		switch (displayDate) {
+			case 'end':
+				return (
+					<BiggieCalendarDate
+						className={className}
+						date={endDate}
+						footerText={footerText}
+						headerText={headerText || __('ends')}
+						showTime
+					/>
+				);
+			case 'both':
+				return (
+					<CalendarDateRange
+						className={className}
+						endDate={endDate}
+						footerText={footerText}
+						headerText={headerText}
+						showTime
+						startDate={startDate}
+					/>
+				);
+			case 'start':
+				return start;
+			default:
+				return start;
 		}
 	}
 );
