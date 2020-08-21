@@ -2,11 +2,10 @@ import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
+import { RichTextEditorModal } from '@eventespresso/components';
 import { getPropsAreEqual, useConfig } from '@eventespresso/services';
 import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
 
-import { RichTextEditorModal } from '@eventespresso/components';
-import { useDatetimeMutator } from '@eventespresso/edtr-services';
 import DateDetailsPanel from './DateDetailsPanel';
 import { EditableName } from '../editable';
 

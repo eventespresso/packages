@@ -2,11 +2,10 @@ import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
+import { RichTextEditorModal } from '@eventespresso/components';
 import { getPropsAreEqual, useConfig } from '@eventespresso/services';
 import { getAdminUrl, useTicketMutator, useEventId } from '@eventespresso/edtr-services';
 
-import { RichTextEditorModal } from '@eventespresso/components';
-import { useTicketMutator } from '@eventespresso/edtr-services';
 import { EditableName, EditablePrice } from '../editable';
 import TicketDetailsPanel from './TicketDetailsPanel';
 
