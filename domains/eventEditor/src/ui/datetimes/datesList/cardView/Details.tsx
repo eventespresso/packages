@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { getPropsAreEqual, useConfig } from '@eventespresso/services';
 import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
 
+import { RichTextEditorModal } from '@eventespresso/components';
+import { useDatetimeMutator } from '@eventespresso/edtr-services';
 import DateDetailsPanel from './DateDetailsPanel';
-import { EditableDesc } from '../../../shared/editable';
 import { EditableName } from '../editable';
 
 import type { DateItemProps } from '../types';
@@ -21,11 +22,22 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 
 	const { updateEntity } = useDatetimeMutator(datetime.id);
 
+	const onUpdate = useCallback(
+		(description: string): void => {
+			updateEntity({ description });
+		},
+		[updateEntity]
+	);
+
 	return (
 		<>
 			<EditableName className='entity-card-details__name' entity={datetime} />
 
-			<EditableDesc description={datetime.description} updateEntity={updateEntity} />
+			<RichTextEditorModal
+				textClassName='entity-card-details__text'
+				onUpdate={onUpdate}
+				text={datetime.description}
+			/>
 
 			<DateDetailsPanel adminUrl={adminUrl} entity={datetime} eventId={eventId} />
 		</>

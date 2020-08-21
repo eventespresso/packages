@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { getPropsAreEqual, useConfig } from '@eventespresso/services';
 import { getAdminUrl, useTicketMutator, useEventId } from '@eventespresso/edtr-services';
 
+import { RichTextEditorModal } from '@eventespresso/components';
+import { useTicketMutator } from '@eventespresso/edtr-services';
 import { EditableName, EditablePrice } from '../editable';
-import { EditableDesc } from '../../../shared/editable';
 import TicketDetailsPanel from './TicketDetailsPanel';
+
 import type { TicketItemProps } from '../types';
 
 const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
@@ -20,11 +22,22 @@ const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 
 	const { updateEntity } = useTicketMutator(ticket.id);
 
+	const onUpdate = useCallback(
+		(description: string): void => {
+			updateEntity({ description });
+		},
+		[updateEntity]
+	);
+
 	return (
 		<>
 			<EditableName className={'entity-card-details__name'} entity={ticket} />
 
-			<EditableDesc description={ticket.description} updateEntity={updateEntity} />
+			<RichTextEditorModal
+				textClassName='entity-card-details__text'
+				onUpdate={onUpdate}
+				text={ticket.description}
+			/>
 
 			<EditablePrice className='entity-card-details__price' entity={ticket} />
 

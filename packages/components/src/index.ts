@@ -37,6 +37,7 @@ export * from './Modal';
 export * from './NewEntity';
 export * from './Popover';
 export * from './PriceTypeSign';
+export * from './RichTextEditorModal';
 export * from './SearchInput';
 export * from './SelectInput';
 export * from './Stepper';
