@@ -18,14 +18,10 @@ export const ClickableIconWithTooltip: React.FC<ClickableIconWithTooltipProps> =
 	tooltipText,
 	...props
 }) => {
-	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { isOpen, onToggle } = useDisclosure();
 	const className = classNames('ee-clickable-tooltip', props.className);
 
-	const onClick = () => {
-		return isOpen ? onClose() : onOpen();
-	};
-
-	const icon = <Icon className={className} onClick={onClick} />;
+	const icon = <Icon className={className} onClick={onToggle} />;
 
 	return (
 		<Tooltip isOpen={isOpen} tooltip={tooltipText}>
