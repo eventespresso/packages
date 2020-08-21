@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { TimePicker as TimePickerAdapter } from '@eventespresso/dates';
-import { useConfig } from '@eventespresso/services';
 import type { FieldRendererProps } from '../types';
+import { useFormConfig } from '../hooks';
 
 const TimePicker: React.FC<FieldRendererProps> = ({
 	className,
@@ -14,22 +14,19 @@ const TimePicker: React.FC<FieldRendererProps> = ({
 	format,
 	...props
 }) => {
-	const {
-		dateTimeFormats: { timeFormat },
-		locale: { user },
-	} = useConfig();
+	const { locale, timeFormat } = useFormConfig();
+
 	const classname = classNames(className, 'ee-time-picker', 'ee-calendar-datetime-picker', 'ee-input-base-wrapper');
 
 	return (
 		<div className={classname}>
 			<TimePickerAdapter
 				{...input}
-				{...props}
-				locale={user}
+				locale={locale}
 				onChange={onInputChange}
 				timeFormat={timeFormat}
 				value={value}
-				required
+				{...props}
 			/>
 		</div>
 	);

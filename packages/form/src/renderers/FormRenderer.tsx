@@ -7,7 +7,7 @@ import Submit from '../Submit';
 import RenderFields from '../RenderFields';
 import RenderSections from '../RenderSections';
 import DebugInfo from '../../../components/src/DebugInfo/DebugInfo'; // to avoid circular dependency, also since it's used only in dev
-import { reactFinalFormState } from '@eventespresso/services';
+import { formPropsAreEqual } from '../utils';
 
 const FormRenderer: React.FC<FormRendererProps> = (props) => {
 	const {
@@ -53,4 +53,4 @@ const FormRenderer: React.FC<FormRendererProps> = (props) => {
 
 	return formOutput;
 };
-export default React.memo(FormRenderer, reactFinalFormState);
+export default React.memo(FormRenderer, formPropsAreEqual);

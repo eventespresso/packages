@@ -2,15 +2,13 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { DateTimePicker as DateTimePickerAdapter } from '@eventespresso/dates';
-import { useConfig } from '@eventespresso/services';
 
 import type { FieldRendererProps } from '../types';
+import { useFormConfig } from '../hooks';
 
 const DateTimePicker: React.FC<FieldRendererProps> = ({ className, input: { onChange, ...input }, meta, ...props }) => {
-	const {
-		// dateTimeFormats: { dateFormat },
-		locale: { user },
-	} = useConfig();
+	const { locale, dateTimeFormat } = useFormConfig();
+
 	const htmlClass = classNames(
 		className,
 		'ee-datetime-picker',
@@ -22,11 +20,10 @@ const DateTimePicker: React.FC<FieldRendererProps> = ({ className, input: { onCh
 		<div className={htmlClass}>
 			<DateTimePickerAdapter
 				{...input}
-				{...props}
-				// dateFormat={dateFormat}
-				locale={user}
+				dateFormat={dateTimeFormat}
+				locale={locale}
 				onChange={onChange}
-				required
+				{...props}
 			/>
 		</div>
 	);

@@ -3,7 +3,6 @@ import type { EspressoFormProps } from './types';
 export const formConfig: EspressoFormProps = {
 	onSubmit: (values) => console.log(values),
 	initialValues: {},
-	layout: 'vertical',
 	validate: ({ password, account }) => {
 		let errors = {};
 		if (!password || password.length < 8) {

@@ -3,16 +3,20 @@ import type { FormRenderProps, FormProps, FieldRenderProps, FieldProps as RFFFie
 import type { FieldArrayProps } from 'react-final-form-arrays';
 import type { FormState, AnyObject } from 'final-form';
 import type { ButtonProps, OptionsType, FormControlProps } from '@eventespresso/adapters';
+import { FormConfigProviderProps } from './context';
 
 export interface FormButtonProps extends ButtonProps {
 	buttonText?: string;
 }
 
-export interface FormContextProps {
-	layout?: 'horizontal' | 'vertical' | 'inline';
+export interface FormConfig {
+	locale?: string;
+	dateFormat?: string;
+	timeFormat?: string;
+	dateTimeFormat?: string;
 }
 
-interface AdditionalFormProps<FormValues = AnyObject> extends FormContextProps {
+interface AdditionalFormProps<FormValues = AnyObject> extends FormConfigProviderProps {
 	sections?: SectionList<FormValues>;
 	fields?: FieldList<FormValues>;
 	submitButton?: FormButtonProps;

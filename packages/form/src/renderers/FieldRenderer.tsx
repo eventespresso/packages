@@ -3,11 +3,11 @@ import classNames from 'classnames';
 
 import { FormControl, FormHelperText, FormLabel } from '@eventespresso/adapters';
 import { HelpIcon } from '@eventespresso/adapters';
-import { reactFinalFormField } from '@eventespresso/services';
 
 import ErrorMessage from './ErrorMessage';
 import type { FieldRendererProps } from '../types';
 import { MappedField } from '../adapters';
+import { fieldPropsAreEqual } from '../utils';
 
 const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	const { after, before, description, formControlProps, info, label, required, ...rest } = props;
@@ -48,4 +48,4 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	);
 };
 
-export default React.memo(FieldRenderer, reactFinalFormField);
+export default React.memo(FieldRenderer, fieldPropsAreEqual);

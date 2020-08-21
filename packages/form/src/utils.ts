@@ -1,4 +1,4 @@
-import { FieldMetaState } from 'react-final-form';
+import type { FieldMetaState, FieldRenderProps, FormRenderProps } from 'react-final-form';
 import { setIn, getIn, AnyObject, Mutator } from 'final-form';
 import { ObjectSchema, ValidationError } from 'yup';
 
@@ -137,4 +137,21 @@ export const yupToFinalFormErrors = async <T>(validationSchema: ObjectSchema, va
 /* React Final Form mutator function */
 export const updateFieldValue: Mutator = ([name, value], state, { changeValue }) => {
 	changeValue(state, name, () => value);
+};
+
+export const formPropsAreEqual = (prevProps: FormRenderProps, nextProps: FormRenderProps): boolean => {
+	const prevValue = JSON.stringify(prevProps.form?.getState());
+	const nextValue = JSON.stringify(nextProps.form?.getState());
+	return prevValue === nextValue;
+};
+
+export const fieldPropsAreEqual = (prevProps: FieldRenderProps<any>, nextProps: FieldRenderProps<any>): boolean => {
+	const prevInputValue = JSON.stringify(prevProps.input);
+	const nextInputValue = JSON.stringify(nextProps.input);
+	if (prevInputValue !== nextInputValue) {
+		return false;
+	}
+	const prevMetaValue = JSON.stringify(prevProps.meta);
+	const nextMetaValue = JSON.stringify(nextProps.meta);
+	return prevMetaValue === nextMetaValue;
 };
