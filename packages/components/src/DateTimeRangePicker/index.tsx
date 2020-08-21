@@ -7,6 +7,8 @@ import { Save } from '@eventespresso/icons';
 import { useConfig } from '@eventespresso/services';
 import { IconButton, ButtonType } from '../Button';
 
+import './styles.scss';
+
 export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ className, onChange, value, ...props }) => {
 	const [dates, setDates] = useState(value);
 	const {

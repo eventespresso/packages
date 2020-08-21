@@ -1,0 +1,72 @@
+/** -------------------------------------------------------------------------
+ * Event Espresso Date && Time Picker Stylesheet
+ * © 2020 Event Espresso
+ * ------------------------------------------------------------------------- */
+
+.ee-date-picker-active {
+	border-color: var(--ee-color-primary);
+}
+
+.ee-date-picker-focus {
+	border-color: var(--ee-color-primary);
+	/* Visible in Windows high-contrast themes */
+	outline-color: transparent;
+	outline-width: 3px;
+	outline-style: solid;
+
+	&:active {
+		border-color: var(--ee-color-primary-high-contrast);
+	}
+}
+
+.ee-date-picker-hover {
+	border-color: var(--ee-color-primary-low-contrast);
+
+	&:active {
+		border-color: var(--ee-color-primary-high-contrast);
+	}
+}
+
+.ee-date-picker-button {
+	background: var(--ee-button-background);
+	border-color: var(--ee-button-background);
+	border-radius: var(--ee-border-radius-small);
+	border-style: solid;
+	border-width: 3px;
+	box-shadow: none;
+	box-sizing: border-box;
+	color: var(--ee-button-text-color);
+	height: var(--ee-icon-button-size);
+	margin: 0 var(--ee-margin-nano);
+	padding: var(--ee-padding-micro);
+	outline: none;
+	width: var(--ee-icon-button-size);
+
+	&:active {
+		@extend .ee-date-picker-active;
+	}
+
+	&:focus {
+		@extend .ee-date-picker-focus;
+	}
+
+	&:hover {
+		@extend .ee-date-picker-hover;
+	}
+	svg {
+		margin: 0;
+		path {
+			fill: currentColor;
+		}
+	}
+}
+.ee-calendar-datetime-picker {
+	position: relative;
+	display: flex;
+	&.ee-date-time-range-picker {
+		.ee-btn-base.ee-icon-button.ee-date-time-range-picker-submit {
+			@extend .ee-date-picker-button;
+			margin-left: var(--ee-margin-tiny);
+		}
+	}
+}
