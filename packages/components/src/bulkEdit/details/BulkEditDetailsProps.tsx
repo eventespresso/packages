@@ -1,12 +1,12 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { EspressoForm } from '@eventespresso/form';
 import type { EspressoFormProps } from '@eventespresso/form';
 
 import { EntityEditModal } from '../../';
 import FormWrapper from './FormWrapper';
 import Warning from './Warning';
+import { FormWithConfig } from '../../FormWithConfig';
 
 import './styles.scss';
 
@@ -27,7 +27,7 @@ export const BulkEditDetails: React.FC<BulkEditDetailsProps> = ({ isOpen, onClos
 			title={title || __('Bulk edit details')}
 		>
 			<Warning message={warning} />
-			<EspressoForm {...formConfig} formWrapper={FormWrapper} />
+			<FormWithConfig {...formConfig} formWrapper={FormWrapper} />
 		</EntityEditModal>
 	);
 };

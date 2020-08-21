@@ -34,7 +34,6 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 		onSubmit,
 		initialValues,
 		validate,
-		layout: 'horizontal',
 		debugFields: ['values', 'errors'],
 		sections: [
 			{

@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { useTicketMutator } from '@eventespresso/edtr-services';
 import { useMutatePrices } from '@eventespresso/tpc';
-import { EspressoForm } from '@eventespresso/form';
+import { FormWithConfig } from '@eventespresso/components';
 import useTicketFormConfig from '../useTicketFormConfig';
 import ContentWrapper from './ContentWrapper';
 import type { ContentProps } from './types';
@@ -34,7 +34,7 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 	const config = useMemo(() => ({ onSubmit }), [onSubmit]);
 	const formConfig = useTicketFormConfig(entity?.id, config);
 
-	return <EspressoForm {...formConfig} formWrapper={ContentWrapper} />;
+	return <FormWithConfig {...formConfig} formWrapper={ContentWrapper} />;
 };
 
 export default Content;

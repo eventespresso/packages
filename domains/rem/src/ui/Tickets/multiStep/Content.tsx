@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { EspressoForm } from '@eventespresso/form';
+import { FormWithConfig } from '@eventespresso/components';
 import useTicketFormConfig from '../useTicketFormConfig';
 import ContentWrapper from './ContentWrapper';
 import type { ContentProps } from './types';
@@ -22,7 +22,7 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 	);
 	const formConfig = useTicketFormConfig(entity, { onSubmit });
 
-	return <EspressoForm {...formConfig} formWrapper={ContentWrapper} />;
+	return <FormWithConfig {...formConfig} formWrapper={ContentWrapper} />;
 };
 
 export default Content;

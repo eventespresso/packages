@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { isEmpty } from 'ramda';
 
-import { EspressoForm } from '@eventespresso/form';
 import { Datetime } from '@eventespresso/edtr-services';
+import { FormWithConfig } from '@eventespresso/components';
 import useDatetimeFormConfig from './useDateFormConfig';
 import type { DatetimeDetailsProps } from './types';
 import FormWrapper from './FormWrapper';
@@ -20,7 +20,7 @@ const DatetimeDetails: React.FC<DatetimeDetailsProps> = () => {
 		return <DateTemplate setTemplate={setTemplateDate} />;
 	}
 
-	return <EspressoForm {...formConfig} formWrapper={FormWrapper} />;
+	return <FormWithConfig {...formConfig} formWrapper={FormWrapper} />;
 };
 
 export default DatetimeDetails;

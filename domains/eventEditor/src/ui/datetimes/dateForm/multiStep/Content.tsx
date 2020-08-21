@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 
-import { EspressoForm } from '@eventespresso/form';
 import {
 	useDatetimeMutator,
 	useTicketQuantityForCapacity,
 	useUpdateRelatedTickets,
 } from '@eventespresso/edtr-services';
+import { FormWithConfig } from '@eventespresso/components';
 import useDatetimeFormConfig from '../useDateFormConfig';
 import ContentWrapper from './ContentWrapper';
 import type { ContentProps } from './types';
@@ -48,7 +48,7 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 	);
 	const formConfig = useDatetimeFormConfig(entity?.id, { onSubmit });
 
-	return <EspressoForm {...formConfig} formWrapper={ContentWrapper} />;
+	return <FormWithConfig {...formConfig} formWrapper={ContentWrapper} />;
 };
 
 export default Content;
