@@ -7,7 +7,7 @@ import { getDatetimeStatusTextLabel } from '@eventespresso/helpers';
 import { useDatesListFilterState } from '@edtrServices/filterState';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';
 import { useTimeZoneTime } from '@eventespresso/services';
-import type { DateRange } from '@eventespresso/adapters';
+import type { DateRange } from '@eventespresso/dates';
 import type { DateItemProps } from '../types';
 
 const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {

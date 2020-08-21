@@ -10,7 +10,6 @@ export * from './Button';
 export * from './Checkbox';
 export * from './CheckboxGroup';
 export * from './Collapse';
-export * from './dateTime';
 export * from './Divider';
 export * from './Dotdotdot';
 export * from './FormControl';

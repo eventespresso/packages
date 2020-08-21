@@ -8,7 +8,7 @@ import { useTimeZoneTime } from '@eventespresso/services';
 import { Insert } from '@eventespresso/icons';
 import { useFormState } from '../../data';
 
-import type { DatePickerProps } from '@eventespresso/adapters';
+import type { DatePickerProps } from '@eventespresso/dates';
 
 const RDate: React.FC = () => {
 	const { addRDate } = useFormState();
