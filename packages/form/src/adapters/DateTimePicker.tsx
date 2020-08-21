@@ -22,8 +22,8 @@ const DateTimePicker: React.FC<FieldRendererProps> = ({ className, input: { onCh
 				{...input}
 				dateFormat={dateTimeFormat}
 				locale={locale}
-				onChange={onChange}
 				{...props}
+				onChange={onChange}
 			/>
 		</div>
 	);
