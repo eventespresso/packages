@@ -2,8 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 
-import 'react-datepicker/dist/react-datepicker.css';
-
 import { DateRangePickerProps } from './types';
 import { DatePicker } from './DatePicker';
 import { DateTimePicker } from './DateTimePicker';
