@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDatepicker from 'react-date-picker';
+
+import { DatePicker } from '@eventespresso/components';
 import { useRRuleConfig } from '../../hooks';
 
 import './styles.scss';
@@ -31,7 +32,7 @@ const OnDate: React.FC<OnDateProps> = ({ id, date, label, onChange }) => {
 					}}
 				/>
 			) : (
-				<ReactDatepicker {...calendarAttributes} onChange={onChange} />
+				<DatePicker {...calendarAttributes} onChange={onChange} />
 			)}
 		</div>
 	);

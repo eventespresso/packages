@@ -7,7 +7,7 @@ import { DatePickerProps } from './types';
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles.scss';
 
-export const DatePicker: React.FC<DatePickerProps> = ({ value, locale, onChange, inputValue, ...props }) => {
+export const DatePicker: React.FC<DatePickerProps> = ({ inputValue, locale, onChange, value, ...props }) => {
 	// get locale object from date-fns
 	// we need to change "en_US" to "enUS"
 	const datefnsLocale = locales?.[locale?.replace(/-_/, '')] ?? locales.enUS;

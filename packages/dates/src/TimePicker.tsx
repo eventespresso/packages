@@ -5,5 +5,13 @@ import { DatePickerProps } from './types';
 import { DatePicker } from './DatePicker';
 
 export const TimePicker: React.FC<DatePickerProps> = (props) => {
-	return <DatePicker showTimeInput showTimeSelectOnly timeCaption={__('time')} {...props} />;
+	return (
+		<DatePicker
+			// dateFormat={props.timeFormat}
+			showTimeInput
+			showTimeSelectOnly
+			timeCaption={__('time')}
+			{...props}
+		/>
+	);
 };

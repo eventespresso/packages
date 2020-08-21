@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Tooltip as ChakraTooltip } from '@chakra-ui/core';
+import { Tooltip as ChakraTooltip } from '@chakra-ui/tooltip';
 
 import type { TooltipProps } from './types';
 

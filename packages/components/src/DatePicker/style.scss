@@ -1,0 +1,15 @@
+@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+
+.react-datepicker {
+	&__input-time-container {
+		.react-datepicker-time {
+			&__input-container {
+				.react-datepicker-time {
+					&__input input {
+						width: auto;
+					}
+				}
+			}
+		}
+	}
+}

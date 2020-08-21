@@ -77,6 +77,11 @@
 		vertical-align: middle;
 		width: auto;
 
+		&.ee-no-horizontal-margin {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
 		@include max480px {
 			margin: var(--ee-margin-tiny) var(--ee-margin-nano);
 		}

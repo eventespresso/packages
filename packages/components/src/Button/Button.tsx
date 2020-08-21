@@ -40,7 +40,8 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 			buttonSize !== ButtonSize.DEFAULT && [`ee-btn--${buttonSize}`],
 			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],
 			hasIconClassName,
-			!icon && 'ee-noIcon'
+			!icon && 'ee-noIcon',
+			noHorizontalMargin && 'ee-no-horizontal-margin'
 		);
 
 		return (
