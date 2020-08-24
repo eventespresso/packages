@@ -6,9 +6,7 @@ const useMemoStringify = <T>(data: T, deps?: any[]): T => {
 
 	if (deps && Array.isArray(deps)) {
 		dataStringified = deps.map(toString).join(':');
-	}
-
-	if (is(Object, data)) {
+	} else if (is(Object, data)) {
 		dataStringified = JSON.stringify(data);
 	}
 
