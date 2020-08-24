@@ -59,9 +59,7 @@ const PatternEditor: React.FC = () => {
 					type='exclusion'
 				/>
 			)}
-			<ButtonRow>
-				<DebugInfo data={{ rRule, exRule }} />
-			</ButtonRow>
+			<DebugInfo data={{ rRule, exRule }} />
 		</>
 	);
 };
