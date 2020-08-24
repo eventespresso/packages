@@ -46,9 +46,9 @@ export const useGenerateDates = (includeExDates?: boolean): Array<GeneratedDate>
 			rruleSet.exdate(parseISO(exDate));
 		});
 
-		// We need to subtract the number of exDates from total dates generated
+		// We need to adjust the number of rDates and exDates in total dates generated
 		// to avoid they being excluded from total count
-		const datesLimit = getDatesLimit(rRule) - exDates.length;
+		const datesLimit = getDatesLimit(rRule) - exDates.length + rDates.length;
 
 		const rruleGeneratedDates = rruleSet.all((date, i) => {
 			return i < datesLimit;
