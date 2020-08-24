@@ -28,11 +28,15 @@
 	}
 
 	&__input-time-container {
+		float: none;
+		margin: 0;
+		padding: 0 var(--ee-padding-smaller) var(--ee-padding-smaller) var(--ee-padding-smaller);
+
 		.react-datepicker-time {
 			&__input-container {
 				.react-datepicker-time {
 					&__input input {
-						width: auto;
+						width: 165px;
 					}
 				}
 			}
