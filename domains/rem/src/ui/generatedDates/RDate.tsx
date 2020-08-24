@@ -27,7 +27,7 @@ const RDate: React.FC = () => {
 	return (
 		<Box display='flex' alignItems='center'>
 			<DatePicker onChange={onChange} value={date} />
-			<Button icon={Insert} onClick={onAddDate} buttonText={__('Add Extra Event Date')} />
+			<Button icon={Insert} onClick={onAddDate} buttonText={__('Add Extra Event Date')} isDisabled={!date} />
 		</Box>
 	);
 };
