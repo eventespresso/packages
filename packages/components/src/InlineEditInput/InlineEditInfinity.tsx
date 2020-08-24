@@ -20,7 +20,7 @@ const Preview: React.FC<PreviewProps> = ({ value, onRequestEdit, isEditing, ...p
 
 	const output = isInfinity ? <span className={'ee-infinity-sign__inner'}>{'∞'}</span> : value;
 
-	return <TabbableText {...props} className={className} onClick={onRequestEdit} text={output} />;
+	return <TabbableText {...props} bottomBorderDashed className={className} onClick={onRequestEdit} text={output} />;
 };
 
 const InlineEditInfinity: React.FC<TextProps> = ({ onChangeValue, value, ...props }) => {

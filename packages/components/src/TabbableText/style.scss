@@ -29,7 +29,8 @@
 		margin-bottom: var(--ee-margin-micro);
 		min-height: unset;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			border-bottom-color: var(--ee-color-primary-low-contrast);
 			border-bottom-style: solid;
 			border-bottom-width: 3px;
