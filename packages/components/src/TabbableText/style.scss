@@ -23,8 +23,11 @@
 	}
 
 	&--border-bottom-dashed {
-		border-bottom-color: var(--ee-color-grey-1);
+    	border-bottom-color: var(--ee-color-grey-12);
 		border-bottom-style: dashed;
+    	border-bottom-width: 2px;
+		margin-bottom: var(--ee-margin-micro);
+		min-height: unset;
 
 		&:hover {
 			border-bottom-color: var(--ee-color-primary-low-contrast);
