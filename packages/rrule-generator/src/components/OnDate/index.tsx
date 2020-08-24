@@ -3,8 +3,6 @@ import React from 'react';
 import { DatePicker } from '@eventespresso/components';
 import { useRRuleConfig } from '../../hooks';
 
-import './styles.scss';
-
 export interface OnDateProps {
 	id: string;
 	date: Date;

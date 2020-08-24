@@ -9,7 +9,6 @@ import { RRuleGeneratorProps } from '../types';
 import { useRRuleState, useStateListener } from '../../hooks';
 import { withConfig, withState } from '../../context';
 
-import '../../styles/index.css';
 import './styles.scss';
 
 const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({ showReadable = true, ...props }) => {
