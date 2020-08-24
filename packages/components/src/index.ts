@@ -10,6 +10,7 @@ export * from './ColorSwatch';
 export * from './Confirm';
 export * from './CurrencyInput';
 export * from './DatePicker';
+export * from './DateTimePicker';
 export * from './DateTimeRangePicker';
 export * from './DebugInfo';
 export * from './DescriptionList';
