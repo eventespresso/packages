@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { NewEntitySubscription, NewEntityOptionsRegistry } from '@eventespresso/registry';
 import { domain } from '@eventespresso/edtr-services';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 const { getSubscriptions } = new NewEntitySubscription(domain);
 
@@ -9,7 +10,7 @@ const useNewEntityOptionItems = <T extends string>(
 	entityType: T,
 	filterByEntityType = true
 ): Array<React.ReactNode> => {
-	const registry = new NewEntityOptionsRegistry({ domain, entityType });
+	const registry = useMemo(() => new NewEntityOptionsRegistry({ domain, entityType }), [entityType]);
 
 	const { generateElements } = registry;
 
@@ -19,7 +20,9 @@ const useNewEntityOptionItems = <T extends string>(
 		callback({ entityType, registry });
 	});
 
-	return generateElements();
+	// it should only change if subscriptions change
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	return useMemoStringify(generateElements(), Object.keys(subscriptions));
 };
 
 export default useNewEntityOptionItems;
