@@ -5,7 +5,7 @@ import { useConfig } from '@eventespresso/services';
 
 interface Props extends Pick<DatePickerProps, 'onChange' | 'value'> {}
 
-export const DatePicker: React.FC<Props> = ({ onChange, value }) => {
+export const DatePicker: React.FC<Props> = ({ onChange, value, ...props }) => {
 	const {
 		dateTimeFormats: { dateFormat },
 		locale: { user },
@@ -18,6 +18,7 @@ export const DatePicker: React.FC<Props> = ({ onChange, value }) => {
 			locale={user}
 			onChange={onChange}
 			value={value}
+			{...props}
 		/>
 	);
 };
