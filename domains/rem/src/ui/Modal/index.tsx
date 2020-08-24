@@ -17,7 +17,6 @@ const Modal: React.FC<Partial<UseDisclosureReturn>> = ({ isOpen, onClose }) => {
 			isOpen={isOpen}
 			onClose={onClose}
 			showAlertOnEscape={false}
-			size='lg'
 			title={__('Recurring Events Manager')}
 			withBorder
 		>
