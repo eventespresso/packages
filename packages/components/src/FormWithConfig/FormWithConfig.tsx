@@ -2,7 +2,7 @@ import React from 'react';
 
 import { EspressoForm, EspressoFormProps, FormConfig } from '@eventespresso/form';
 import { useConfig } from '@eventespresso/services';
-import { AnyObject } from '@eventespresso/utils';
+import type { AnyObject } from '@eventespresso/utils';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 const FormWithConfig = <FormValues extends AnyObject>(props: EspressoFormProps<FormValues>): JSX.Element => {

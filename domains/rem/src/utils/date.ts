@@ -1,4 +1,5 @@
-import { IntervalType, add, sub } from '@eventespresso/utils';
+import { add, sub } from '@eventespresso/utils';
+import type { IntervalType } from '@eventespresso/utils';
 import { TicketSatesFields } from '../ui/Tickets/types';
 import { StartAndEndDate } from '../data';
 
