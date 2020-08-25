@@ -1,6 +1,8 @@
-import { formatAmount, FormatAmountFunction } from '@eventespresso/utils';
-import { useConfig, CurrencyProps } from '../config';
 import { useMemo } from 'react';
+
+import { formatAmount, FormatAmountFunction } from '@eventespresso/utils';
+import { useConfig } from '../config';
+import type { CurrencyProps } from '../config';
 
 export type MoneyDisplay = {
 	// the currency sign if the currency displays it before the amount (or '')
