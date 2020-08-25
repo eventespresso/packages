@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { pipe } from 'ramda';
 import { __ } from '@wordpress/i18n';
 import { setHours, setMinutes, setSeconds, setYear, setMonth, setDate } from 'date-fns/fp';
@@ -7,7 +6,6 @@ import type { OptionsType } from '@eventespresso/adapters';
 
 import { Intervals, ShiftDateArgs } from './types';
 import { add, sub } from './addSub';
-import { useTimeZoneTime } from '../../';
 
 /**
  * Sets the time of the date object to zero hour
@@ -64,32 +62,4 @@ export const shiftDate = (args: ShiftDateArgs) => (date: Date | string): Date =>
 export const setDefaultTime = (date: Date, type: 'start' | 'end' = 'start'): Date => {
 	const hours = type === 'start' ? 8 : 17;
 	return pipe(setHours(hours), setMinutes(0), setSeconds(0))(date);
-};
-
-/**
- * Converts the given date or ISO string from site to UTC ISO string
- */
-export const useSiteDateToUtcISO = (): ((date: string | Date) => string) => {
-	const { siteTimeToUtc } = useTimeZoneTime();
-	return useCallback(
-		(date) => {
-			const parsedDate = date instanceof Date ? date : parseISO(date);
-			return siteTimeToUtc(parsedDate).toISOString();
-		},
-		[siteTimeToUtc]
-	);
-};
-
-/**
- * Converts the given date or ISO string from UTC to site time date object
- */
-export const useUtcISOToSiteDate = (): ((date: string | Date) => Date) => {
-	const { utcToSiteTime } = useTimeZoneTime();
-	return useCallback(
-		(date) => {
-			const parsedDate = date instanceof Date ? date : parseISO(date);
-			return utcToSiteTime(parsedDate);
-		},
-		[utcToSiteTime]
-	);
 };

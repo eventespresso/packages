@@ -1,4 +1,4 @@
-import { formatAmount, FormatAmountFunction } from './formatAmount';
+import { formatAmount, FormatAmountFunction } from '@eventespresso/utils';
 import { useConfig, CurrencyProps } from '../../config';
 
 export type MoneyDisplay = {
