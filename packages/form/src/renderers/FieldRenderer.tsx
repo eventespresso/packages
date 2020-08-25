@@ -2,12 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { FormControl, FormHelperText, FormLabel } from '@eventespresso/adapters';
-import { HelpIcon } from '@eventespresso/adapters';
+// import { HelpIcon } from '@eventespresso/adapters';
 
 import ErrorMessage from './ErrorMessage';
 import type { FieldRendererProps } from '../types';
 import { MappedField } from '../adapters';
 import { fieldPropsAreEqual } from '../utils';
+
+import './style.scss';
 
 const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	const { after, before, description, formControlProps, info, label, required, ...rest } = props;
@@ -21,6 +23,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 
 	const className = classNames(
 		'ee-input__wrapper ee-form-item',
+		info && 'ee-form-item--has-info',
 		`ee-form-item__${rest.fieldType}`,
 		formControlProps?.className
 	);
@@ -34,17 +37,21 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	const tooltipKey = info ? props.input.name + '-tooltip' : null;
 
 	return (
-		<FormControl className={className} isInvalid={Boolean(errorMessage)} isRequired={required}>
-			<FormLabel htmlFor={props.input.name}>
-				{label}
-				{info && <HelpIcon clickable tooltipText={info} />}
-			</FormLabel>
-			{before}
-			<MappedField aria-label={label} aria-describedby={tooltipKey} {...rest} />
-			{after}
-			<ErrorMessage message={errorMessage} />
-			<FormHelperText>{description}</FormHelperText>
-		</FormControl>
+		<>
+			<FormControl className={className} isInvalid={Boolean(errorMessage)} isRequired={required}>
+				<FormLabel htmlFor={props.input.name}>
+					{label}
+					{/* {info && <HelpIcon clickable tooltipText={info} />} */}
+				</FormLabel>
+				{before}
+				<MappedField aria-label={label} aria-describedby={tooltipKey} {...rest} />
+
+				{after}
+				<ErrorMessage message={errorMessage} />
+				<FormHelperText>{description}</FormHelperText>
+			</FormControl>
+			{info && <div className='ee-form-item__info'>{info}</div>}
+		</>
 	);
 };
 

@@ -54,10 +54,6 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 		[datetime, endDate, startDate]
 	);
 
-	const adjacentFormItemProps = useMemoStringify({
-		className: 'ee-form-item-pair',
-	});
-
 	return useMemo(
 		() => ({
 			...config,
@@ -122,19 +118,17 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 								),
 								'\n'
 							),
-							formControlProps: adjacentFormItemProps,
 						},
 						{
 							name: 'isTrashed',
 							label: __('Trash'),
 							fieldType: 'switch',
-							formControlProps: adjacentFormItemProps,
 						},
 					],
 				},
 			],
 		}),
-		[adjacentFormItemProps, config, initialValues, onSubmitFrom]
+		[config, initialValues, onSubmitFrom]
 	);
 };
 
