@@ -23,17 +23,21 @@
 	}
 
 	&--border-bottom-dashed {
-		border-bottom-color: var(--ee-color-grey-10);
-		border-bottom-style: dashed;
-		border-bottom-width: 2px;
-		margin-bottom: var(--ee-margin-micro);
-		min-height: unset;
+		position: relative;
+
+		&:after {
+			border-bottom: 2px dashed var(--ee-color-grey-10);
+			bottom: -2px;
+			content: '';
+			position: absolute;
+			width: 100%;
+		}
 
 		&:hover,
 		&:focus {
-			border-bottom-color: var(--ee-color-primary-low-contrast);
-			border-bottom-style: solid;
-			border-bottom-width: 3px;
+			&:after {
+				display: none;
+			}
 		}
 	}
 }
