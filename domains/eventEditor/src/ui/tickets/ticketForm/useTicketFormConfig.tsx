@@ -130,6 +130,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 								),
 								'\n'
 							),
+							width: 'small',
 						},
 						{
 							name: 'uses',
@@ -143,6 +144,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 								),
 								'\n'
 							),
+							width: 'small',
 						},
 						{
 							name: 'min',
@@ -155,6 +157,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 								),
 								'\n'
 							),
+							width: 'small',
 						},
 						{
 							name: 'max',
@@ -168,6 +171,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 								),
 								'\n'
 							),
+							width: 'small',
 						},
 						{
 							name: 'isRequired',
@@ -176,12 +180,14 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							info: __(
 								'If enabled, the ticket must be selected and will appear first in frontend ticket lists.'
 							),
+							width: 'small',
 						},
 						{
 							name: 'isDefault',
 							label: __('Default Ticket'),
 							fieldType: 'switch',
 							info: __('If enabled, the ticket will appear on all new events.'),
+							width: 'small',
 						},
 						{
 							name: 'isTrashed',

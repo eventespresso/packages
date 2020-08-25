@@ -1,15 +1,20 @@
 import React, { useMemo } from 'react';
+import classnames from 'classnames';
 import { Field as RFFField } from 'react-final-form';
 
 import { formatInfinity, parseInfinity } from '@eventespresso/utils';
-import type { FieldProps } from '../types';
-import FieldRenderer from '../renderers/FieldRenderer';
-import useShouldBeVisible from '../hooks/useShouldBeVisible';
+import FieldRenderer from '../../renderers/FieldRenderer';
+import useShouldBeVisible from '../../hooks/useShouldBeVisible';
+import type { FieldProps } from '../../types';
+
+import './style.scss';
 
 type RFFFieldProps = Partial<React.ComponentProps<typeof RFFField>>;
 
-const Field: React.FC<FieldProps> = ({ conditions, parseAsInfinity, ...rest }) => {
-	const visible = useShouldBeVisible(conditions, rest.name);
+const Field: React.FC<FieldProps> = ({ conditions, parseAsInfinity, width = 'fullWidth', ...props }) => {
+	const visible = useShouldBeVisible(conditions, props.name);
+	const className = classnames(props.className, `ee-field--width-${width}`);
+	console.log({ width });
 
 	const extraProps: RFFFieldProps = useMemo(
 		() =>
@@ -26,7 +31,17 @@ const Field: React.FC<FieldProps> = ({ conditions, parseAsInfinity, ...rest }) =
 		[parseAsInfinity]
 	);
 
-	return visible && <RFFField component={FieldRenderer} {...extraProps} {...rest} type={rest.fieldType} />;
+	return (
+		visible && (
+			<RFFField
+				component={FieldRenderer}
+				{...extraProps}
+				{...props}
+				className={className}
+				type={props.fieldType}
+			/>
+		)
+	);
 };
 
 export default Field;

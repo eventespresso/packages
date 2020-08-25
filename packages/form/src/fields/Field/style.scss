@@ -1,0 +1,11 @@
+.ee-field {
+	&--width {
+		&-small {
+			width: 90px;
+		}
+
+		&-fullWidth {
+			width: 100%;
+		}
+	}
+}

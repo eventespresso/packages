@@ -118,6 +118,7 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 								),
 								'\n'
 							),
+							width: 'small',
 						},
 						{
 							name: 'isTrashed',
