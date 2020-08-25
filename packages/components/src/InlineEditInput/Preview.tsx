@@ -1,10 +1,13 @@
 import React from 'react';
 import Dotdotdot from 'react-dotdotdot';
 
-import { TextFit } from '@eventespresso/adapters';
+import { Badge, TextFit } from '@eventespresso/adapters';
+import { Edit } from '@eventespresso/icons';
 
 import { TabbableText } from '../index';
 import type { PreviewProps } from './types';
+
+import './style.scss';
 
 const Preview: React.FC<PreviewProps> = ({
 	fitText,
@@ -19,7 +22,14 @@ const Preview: React.FC<PreviewProps> = ({
 		return null;
 	}
 
-	const textInput = <TabbableText bottomBorderDashed onClick={onRequestEdit} text={value} tooltip={tooltip} />;
+	const textInput = (
+		<div className='preview-wrapper'>
+			<Badge className='badge'>
+				<Edit />
+			</Badge>
+			<TabbableText bottomBorderDashed onClick={onRequestEdit} text={value} tooltip={tooltip} />
+		</div>
+	);
 
 	if (lineCount && value.length > lineLength) {
 		return <Dotdotdot clamp={lineCount}>{textInput}</Dotdotdot>;
