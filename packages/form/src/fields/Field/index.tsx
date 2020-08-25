@@ -11,7 +11,7 @@ import './style.scss';
 
 type RFFFieldProps = Partial<React.ComponentProps<typeof RFFField>>;
 
-const Field: React.FC<FieldProps> = ({ conditions, parseAsInfinity, width = 'fullWidth', ...props }) => {
+const Field: React.FC<FieldProps> = ({ conditions, parseAsInfinity, width = 'full', ...props }) => {
 	const visible = useShouldBeVisible(conditions, props.name);
 	const className = classnames(props.className, `ee-field--width-${width}`);
 	console.log({ width });
