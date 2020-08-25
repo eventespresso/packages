@@ -9,8 +9,6 @@ import type { FieldRendererProps } from '../types';
 import { MappedField } from '../adapters';
 import { fieldPropsAreEqual } from '../utils';
 
-import './style.scss';
-
 const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	const { after, before, description, formControlProps, info, label, required, ...rest } = props;
 
@@ -37,21 +35,14 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	const tooltipKey = info ? props.input.name + '-tooltip' : null;
 
 	return (
-		<>
-			<FormControl className={className} isInvalid={Boolean(errorMessage)} isRequired={required}>
-				<FormLabel htmlFor={props.input.name}>
-					{label}
-					{/* {info && <HelpIcon clickable tooltipText={info} />} */}
-				</FormLabel>
-				{before}
-				<MappedField aria-label={label} aria-describedby={tooltipKey} {...rest} />
-
-				{after}
-				<ErrorMessage message={errorMessage} />
-				<FormHelperText>{description}</FormHelperText>
-			</FormControl>
-			{info && <div className='ee-form-item__info'>{info}</div>}
-		</>
+		<FormControl className={className} isInvalid={Boolean(errorMessage)} isRequired={required}>
+			<FormLabel htmlFor={props.input.name}>{label}</FormLabel>
+			{before}
+			<MappedField aria-label={label} aria-describedby={tooltipKey} {...rest} />
+			{after}
+			<ErrorMessage message={errorMessage} />
+			<FormHelperText>{description || info}</FormHelperText>
+		</FormControl>
 	);
 };
 

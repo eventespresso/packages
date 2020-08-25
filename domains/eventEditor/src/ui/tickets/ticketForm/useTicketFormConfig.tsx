@@ -57,10 +57,6 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 		[onSubmit, toUtcISO]
 	);
 
-	const adjacentFormItemProps = useMemoStringify({
-		className: 'ee-form-item-pair',
-	});
-
 	const initialValues: TicketFormShape = useMemo(
 		() => ({
 			...pick<Omit<Partial<Ticket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
@@ -126,7 +122,6 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							name: 'quantity',
 							label: __('Quantity For Sale'),
 							fieldType: 'number',
-							formControlProps: adjacentFormItemProps,
 							parseAsInfinity: true,
 							min: -1,
 							info: sprintf(
@@ -141,7 +136,6 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							label: __('Number of Uses'),
 							fieldType: 'number',
 							parseAsInfinity: true,
-							formControlProps: adjacentFormItemProps,
 							min: 0,
 							info: sprintf(
 								__(
@@ -154,7 +148,6 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							name: 'min',
 							label: __('Minimum Quantity'),
 							fieldType: 'number',
-							formControlProps: adjacentFormItemProps,
 							min: 0,
 							info: sprintf(
 								__(
@@ -168,7 +161,6 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							label: __('Maximum Quantity'),
 							fieldType: 'number',
 							parseAsInfinity: true,
-							formControlProps: adjacentFormItemProps,
 							min: -1,
 							info: sprintf(
 								__(
@@ -181,7 +173,6 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							name: 'isRequired',
 							label: __('Required Ticket'),
 							fieldType: 'switch',
-							formControlProps: adjacentFormItemProps,
 							info: __(
 								'If enabled, the ticket must be selected and will appear first in frontend ticket lists.'
 							),
@@ -190,20 +181,18 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							name: 'isDefault',
 							label: __('Default Ticket'),
 							fieldType: 'switch',
-							formControlProps: adjacentFormItemProps,
 							info: __('If enabled, the ticket will appear on all new events.'),
 						},
 						{
 							name: 'isTrashed',
 							label: __('Trash'),
 							fieldType: 'switch',
-							formControlProps: adjacentFormItemProps,
 						},
 					],
 				},
 			],
 		}),
-		[adjacentFormItemProps, config, initialValues, onSubmitFrom]
+		[config, initialValues, onSubmitFrom]
 	);
 };
 
