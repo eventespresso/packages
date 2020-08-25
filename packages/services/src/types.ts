@@ -1,4 +1,4 @@
-import type { AnyObject } from './utilities/types';
+import type { AnyObject } from '@eventespresso/utils';
 import type { CurrencyProps, CurrentUserProps, GeneralSettings, SiteUrlProps } from './config/types';
 
 export interface EventEspressoDomData {

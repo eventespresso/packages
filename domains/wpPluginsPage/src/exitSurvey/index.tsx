@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 import ExitSurvey from './ExitSurvey';
 // avoid loading whole services package
-import renderDomElement from '../../../../packages/services/src/utilities/dom/renderDomElement';
+import renderDomElement from '../../../../packages/utils/src/dom/renderDomElement';
 
 const info = window?.eventEspressoData?.wpPluginsPage?.eeExitSurveyInfo;
 

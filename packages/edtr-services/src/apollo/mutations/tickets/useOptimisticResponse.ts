@@ -6,7 +6,7 @@ import { GET_TICKET } from '../../';
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
 import { Ticket, TicketItem } from '../../';
-import { removeNullAndUndefined, ucFirst } from '@eventespresso/services';
+import { removeNullAndUndefined, ucFirst } from '@eventespresso/utils';
 
 export const TICKET_DEFAULTS: Ticket = {
 	id: '',

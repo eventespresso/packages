@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { AnyObject } from '../';
+import type { AnyObject } from '@eventespresso/utils';
 import { BulkEditProvider } from './BulkEditProvider';
 
 export const withBulkEdit = <P extends AnyObject>(Component: React.ComponentType<P>): React.FC<P> => {

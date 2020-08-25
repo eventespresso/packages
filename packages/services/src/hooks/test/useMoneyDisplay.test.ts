@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import useMoneyDisplay from '../useMoneyDisplay';
-import { mockEspressoDomData } from '../../../config/test/data';
+import { mockEspressoDomData } from '../../config/test/data';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 
 describe('useMoneyDisplay', () => {
