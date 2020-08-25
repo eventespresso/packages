@@ -18,14 +18,13 @@ const TicketAssignmentsManagerModal: React.FC<Partial<WithContextProps>> = ({ on
 	const submitButtonProps = useSubmitButtonProps(onCloseModal);
 
 	const hasErrors = hasOrphanEntities();
-	const closeButton = <CloseModalButton />;
 
 	return (
 		<ModalWithAlert
 			bodyClassName='ee-ticket-assignments-manager__body'
 			cancelButtonProps={cancelButtonProps}
 			className='ee-ticket-assignments-manager'
-			closeButton={closeButton}
+			closeButton={<CloseModalButton />}
 			isOpen={true}
 			onClose={onCloseModal}
 			showAlertOnEscape={hasErrors}
