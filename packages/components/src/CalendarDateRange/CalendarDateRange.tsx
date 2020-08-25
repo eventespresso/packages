@@ -4,7 +4,7 @@ import { differenceInCalendarDays, parseISO, isValid } from 'date-fns';
 import { __ } from '@wordpress/i18n';
 
 import { useTimeZoneTime } from '@eventespresso/services';
-import { BiggieCalendarDate, MediumCalendarDate } from '../../';
+import { BiggieCalendar, MediumCalendarDate } from '../../';
 import { TIME_ONLY_12H_SHORT_FORMAT } from '@eventespresso/constants';
 
 import type { CalendarDateRangeProps } from './types';
@@ -48,7 +48,7 @@ const CalendarDateRange: React.FC<CalendarDateRangeProps> = ({
 	const headerTxt = headerText ? headerText : <span>&nbsp;</span>;
 
 	return (
-		<BiggieCalendarDate
+		<BiggieCalendar
 			date={startDateObject}
 			className={className}
 			headerText={headerTxt}

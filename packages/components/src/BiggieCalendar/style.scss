@@ -1,8 +1,8 @@
 /** -------------------------------------------------------------------------
- * Event Espresso BiggieCalendarDate Stylesheet
+ * Event Espresso BiggieCalendar Stylesheet
  * © 2020 Event Espresso
  * ------------------------------------------------------------------------- */
-.ee-biggie-calendar-date {
+.ee-biggie-calendar {
 	&__wrapper {
 		box-sizing: border-box;
 		color: var(--ee-color-white);
@@ -17,18 +17,25 @@
 	}
 
 	&__header {
-		font-size: var(--ee-font-size-micro);
-		letter-spacing: var(--ee-letter-spacing-font-size-micro);
+		font-size: var(--ee-font-size-smaller);
+		font-weight: normal;
+		letter-spacing: var(--ee-letter-spacing-font-size-tiny);
 		line-height: var(--ee-font-size-big);
 		margin: 0;
 	}
 
-	.ee-bcd {
-		&__weekday {
+	.ee-biggie-calendar {
+		&__weekday,
+		&__year,
+		&__time {
 			font-size: var(--ee-font-size-smaller);
 			font-weight: normal;
-			line-height: var(--ee-font-size-huge);
 			letter-spacing: var(--ee-letter-spacing-font-size-tiny);
+		}
+
+		&__weekday,
+		&__time {
+			line-height: var(--ee-font-size-huge);
 		}
 
 		&__month {
@@ -50,17 +57,10 @@
 		}
 
 		&__year {
-			font-size: var(--ee-font-size-smaller);
-			font-weight: 600;
-			letter-spacing: calc(var(--ee-letter-spacing-font-size-micro) * 2);
+			letter-spacing: calc(var(--ee-letter-spacing-font-size-micro));
 			line-height: var(--ee-font-size-big);
 			left: var(--ee-padding-nano);
 			position: relative;
-		}
-
-		&__time {
-			font-size: var(--ee-font-size-smaller);
-			line-height: var(--ee-font-size-huge);
 		}
 	}
 
@@ -94,38 +94,6 @@
 
 	/* Media Queries for specific screen sizes
  * -------------------------------------------------------------------------*/
-
-	@media only screen and (max-width: 1920px) {
-	}
-
-	@media only screen and (max-width: 1600px) {
-	}
-
-	@media only screen and (max-width: 1366px) {
-	}
-
-	@media only screen and (max-width: 1280px) {
-	}
-
-	@media only screen and (max-width: 1024px) {
-	}
-
-	/* WordPress Admin Media Query Breakpoint: Auto-folding of the admin menu */
-	@media only screen and (max-width: 960px) {
-	}
-
-	/* WordPress Admin Media Query Breakpoint: one column on the post write/edit screen */
-	@media only screen and (max-width: 850px) {
-	}
-
-	/* WordPress Admin Media Query Breakpoint: Tablet */
-	@media screen and (max-width: 782px) {
-	}
-
-	/* WordPress Admin Media Query Breakpoint: Smartphone */
-	@media screen and (max-width: 600px) {
-	}
-
 	@media only screen and (max-width: 480px) {
 		&__wrapper {
 			clear: both;
@@ -138,18 +106,18 @@
 			right: unset;
 			width: 100% !important;
 
-			&.ee-bcd-pos-left {
+			&.ee-biggie-calendar-pos-left {
 				float: none;
 			}
 
-			&.ee-bcd-pos-right {
+			&.ee-biggie-calendar-pos-right {
 				float: none;
 			}
 
-			.ee-biggie-calendar-date {
+			.ee-biggie-calendar {
 				&__header,
 				&__footer,
-				.ee-bcd-month-day-sep {
+				.ee-biggie-calendar-month-day-sep {
 					line-height: calc(var(--ee-font-size-big) - 3px);
 				}
 
@@ -160,7 +128,7 @@
 			}
 		}
 
-		.ee-bcd {
+		.ee-biggie-calendar {
 			&__weekday,
 			&__month,
 			&__day,
@@ -179,8 +147,5 @@
 				left: unset;
 			}
 		}
-	}
-
-	@media only screen and (max-width: 360px) {
 	}
 }

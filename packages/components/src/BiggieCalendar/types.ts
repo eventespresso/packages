@@ -22,7 +22,7 @@ export interface NumberInputProps extends ChakraNumberInputProps {
 	decrementStepperProps?: ChakraPseudoBoxProps;
 }
 
-export interface BiggieCalendarDateProps extends CalendarDateProps {
+export interface BiggieCalendarProps extends CalendarDateProps {
 	date: Date | string;
 	timeRange?: string;
 }
