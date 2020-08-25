@@ -1,7 +1,7 @@
 import { parseISO } from 'date-fns';
 
 import type { Datetime } from '@eventespresso/edtr-services';
-import { diff, isBooleanTrue } from '@eventespresso/services';
+import { diff, isBooleanTrue } from '@eventespresso/utils';
 import { NOW as now } from '@eventespresso/constants';
 
 const isUpcoming = (date: Datetime): boolean =>

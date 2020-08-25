@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 
-import { parsedAmount } from '@eventespresso/services';
+import { parsedAmount } from '@eventespresso/utils';
 
 import type { PriceModifierProps } from '../types';
 import { BaseNumberInputField, MoneyField, usePriceAmount } from '../fields';

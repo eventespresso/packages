@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import type { TicketItemProps } from '../types';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { CurrencyInput } from '@eventespresso/components';
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
 import { useMemoStringify } from '@eventespresso/hooks';

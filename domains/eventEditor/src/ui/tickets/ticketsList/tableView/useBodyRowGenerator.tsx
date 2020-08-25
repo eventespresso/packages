@@ -6,7 +6,7 @@ import { Cell, addZebraStripesOnMobile } from '@eventespresso/components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getTicketBackgroundColorClassName, ticketStatus } from '@eventespresso/helpers';
-import { shortenGuid } from '@eventespresso/services';
+import { shortenGuid } from '@eventespresso/utils';
 import { Ticket } from '@eventespresso/edtr-services';
 import TicketActionsMenu from '@edtrUI/tickets/ticketsList/actionsMenu/TicketActionsMenu';
 import { useMoneyDisplay } from '@eventespresso/services';

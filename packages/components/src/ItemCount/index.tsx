@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Badge, BadgeProps, Tooltip } from '@eventespresso/adapters';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 import './style.scss';
 

@@ -2,11 +2,10 @@ import { pickBy, omit } from 'ramda';
 import { ExecutionResult } from 'graphql';
 
 import { nodes as prices } from '../../../queries/prices/test/data';
-import { MutationInput, MutationType } from '@eventespresso/data';
-import { ucFirst } from '@eventespresso/services';
+import { MutationInput, MutationType, ReadQueryOptions } from '@eventespresso/data';
+import { ucFirst } from '@eventespresso/utils';
 import { mutations } from '../..';
 import type { MockedResponse } from '../../../../context/test/types';
-import { ReadQueryOptions } from '@eventespresso/data';
 
 export const mockedPrices = {
 	[MutationType.Create]: { ...prices[0], id: prices[0].id + '-alpha' }, // make sure to change the ID to make it different}

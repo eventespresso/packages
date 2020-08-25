@@ -1,5 +1,5 @@
 import type { Entity } from '@eventespresso/data';
-import type { Disclosure } from '@eventespresso/services';
+import type { Disclosure } from '@eventespresso/utils';
 import type { ModalProps } from '@eventespresso/adapters';
 
 export interface BaseProps<E extends Entity> {

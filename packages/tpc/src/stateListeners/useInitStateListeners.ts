@@ -1,11 +1,12 @@
 import { useCallback } from 'react';
 
+import { parsedAmount } from '@eventespresso/utils';
+import { useMoneyDisplay } from '@eventespresso/services';
 import { useDataState } from '../data';
 import { calculateBasePrice, calculateTicketTotal } from '../utils';
 import usePriceChangeListener from './usePriceChangeListener';
 import usePriceTypeChangeListener from './usePriceTypeChangeListener';
 import useTicketTotalChangeListener from './useTicketTotalChangeListener';
-import { parsedAmount, useMoneyDisplay } from '@eventespresso/services';
 
 const useStateListeners = (): void => {
 	const { getData, reverseCalculate, setPrices, updateTicketPrice } = useDataState();

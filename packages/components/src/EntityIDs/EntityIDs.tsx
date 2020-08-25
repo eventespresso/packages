@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { shortenGuid } from '@eventespresso/services';
+import { shortenGuid } from '@eventespresso/utils';
 import { EntityId, EntityDbId } from '@eventespresso/data';
 
 import './style.scss';

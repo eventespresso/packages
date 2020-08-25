@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useRef } from 'react';
 
 import { DataState } from '@eventespresso/tpc';
-import { AnyObject } from '@eventespresso/services';
+import { AnyObject } from '@eventespresso/utils';
 
 export interface ManageTPCStates {
 	setTPCState: (dataState: DataState) => void;

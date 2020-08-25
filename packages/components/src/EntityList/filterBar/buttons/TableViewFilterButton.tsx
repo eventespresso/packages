@@ -3,11 +3,10 @@ import { __ } from '@wordpress/i18n';
 
 import { Button } from '../../../Button';
 
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { TableView } from '@eventespresso/icons';
 
 import type { TableViewFilterButtonProps } from '../types';
-
-import { getPropsAreEqual } from '@eventespresso/services';
 
 const TableViewFilterButton: React.FC<TableViewFilterButtonProps> = ({ listId, setTableView, view, ...rest }) => {
 	const filterId = `ee-table-view-btn-${listId}`;

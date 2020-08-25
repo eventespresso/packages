@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { AnyObject } from '@eventespresso/services';
+import type { AnyObject } from '@eventespresso/utils';
 import { ContextProvider } from './ContextProvider';
 import type { WithContextProps } from './types';
 

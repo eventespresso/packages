@@ -1,5 +1,5 @@
 import { formatISO } from 'date-fns';
-import { add, sub } from '@eventespresso/services';
+import { add, sub } from '@eventespresso/utils';
 
 import isPending from './index';
 import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';

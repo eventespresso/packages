@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { SelectInput } from '@eventespresso/components';
 import { DatetimeStatus } from '@edtrServices/filterState';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { DatetimesFilterStateManager } from '@edtrServices/filterState';
 
 type StatusControlProps = Pick<DatetimesFilterStateManager, 'status' | 'setStatus'>;

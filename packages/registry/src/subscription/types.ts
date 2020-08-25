@@ -1,4 +1,4 @@
-import type { AnyObject } from '@eventespresso/services';
+import type { AnyObject } from '@eventespresso/utils';
 
 export interface BaseSubscriptionOptions<D extends string> {
 	domain: D;

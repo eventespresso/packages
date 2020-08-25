@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { EntityDetailsPanel, EntityDetailsPanelSold } from '@eventespresso/components';
 import DateRegistrationsLink from '../../DateRegistrationsLink';
 import DateCapacity from './DateCapacity';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import type { DateItemProps } from '../types';
 
 const DateDetailsPanel: React.FC<DateItemProps> = ({ adminUrl, entity: datetime, eventId }) => {

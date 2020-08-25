@@ -1,4 +1,4 @@
-import type { Disclosure } from '@eventespresso/services';
+import type { Disclosure } from '@eventespresso/utils';
 import type { FormRenderProps } from 'react-final-form';
 import { RemTicket } from '../../../data';
 

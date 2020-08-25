@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { ButtonGroup, ButtonSize } from '../../../Button';
 import CardViewFilterButton from './CardViewFilterButton';
 import TableViewFilterButton from './TableViewFilterButton';
 import type { EntityListViewButtonGroupProps } from '../types';
-import { getPropsAreEqual } from '@eventespresso/services';
 
 const EntityListViewButtonGroup: React.FC<EntityListViewButtonGroupProps> = ({
 	listId,

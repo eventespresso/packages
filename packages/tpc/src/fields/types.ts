@@ -1,6 +1,8 @@
 import React, { InputHTMLAttributes } from 'react';
+
+import type { AnyObject } from '@eventespresso/utils';
+
 import type { PriceModifierProps, TpcPriceModifier } from '../types';
-import type { AnyObject } from '@eventespresso/services';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement>;
 

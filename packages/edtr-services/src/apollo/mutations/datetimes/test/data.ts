@@ -4,7 +4,7 @@ import { ExecutionResult } from 'graphql';
 
 import { nodes as datetimes } from '../../../queries/datetimes/test/data';
 import { MutationInput, MutationType } from '@eventespresso/data';
-import { ucFirst } from '@eventespresso/services';
+import { ucFirst } from '@eventespresso/utils';
 import { eventId } from '../../../../context/test';
 import type { MockedResponse } from '../../../../context/test/types';
 import { mutations } from '../..';

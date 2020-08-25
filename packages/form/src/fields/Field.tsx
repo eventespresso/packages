@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react';
 import { Field as RFFField } from 'react-final-form';
 
+import { formatInfinity, parseInfinity } from '@eventespresso/utils';
 import type { FieldProps } from '../types';
 import FieldRenderer from '../renderers/FieldRenderer';
 import useShouldBeVisible from '../hooks/useShouldBeVisible';
-// avoid package dependency
-import parseInfinity from '../../../services/src/utilities/number/parseInfinity';
-import formatInfinity from '../../../services/src/utilities/number/formatInfinity';
 
 type RFFFieldProps = Partial<React.ComponentProps<typeof RFFField>>;
 

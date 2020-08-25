@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import type { DateItemProps } from '../types';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';
 import { InlineEditText } from '@eventespresso/components';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 interface EditableNameProps extends DateItemProps {
 	className?: string;

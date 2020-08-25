@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import classNames from 'classnames';
 
-import { isInfinite, parseInfinity } from '@eventespresso/services';
+import { isInfinite, parseInfinity } from '@eventespresso/utils';
 import { InlineEdit } from '@eventespresso/adapters';
 import type { PreviewProps } from './types';
 

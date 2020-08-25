@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { DateTimePicker } from '@eventespresso/components';
 import { useRRuleConfig } from '../../hooks';
@@ -12,12 +12,14 @@ export interface OnDateProps {
 
 const OnDate: React.FC<OnDateProps> = ({ id, date, label, onChange }) => {
 	const { locale, calendarComponent: CalendarComponent } = useRRuleConfig();
-	const calendarAttributes = {
-		'aria-label': label,
-		value: date,
-		locale,
-		readOnly: true,
-	};
+	const calendarAttributes = useMemo(
+		() => ({
+			'aria-label': label,
+			value: date,
+			locale,
+		}),
+		[date, label, locale]
+	);
 
 	return (
 		<div className='rrule-generator__on-date'>

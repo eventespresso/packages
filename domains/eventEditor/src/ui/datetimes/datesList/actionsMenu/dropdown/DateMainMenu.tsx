@@ -4,6 +4,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 
 import { DropdownMenu, DropdownToggleProps, Copy, Edit, Trash } from '@eventespresso/components';
 import { useConfirmationDialog } from '@eventespresso/components';
+import { useMemoStringify } from '@eventespresso/hooks';
 import { Container as FormContainer } from '@edtrUI/datetimes/dateForm/multiStep';
 
 import type { DateMainMenuProps } from './types';
@@ -28,10 +29,10 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 		onConfirm: trashDate,
 	});
 
-	const toggleProps: DropdownToggleProps = {
+	const toggleProps: DropdownToggleProps = useMemoStringify({
 		tooltip: __('event date main menu'),
 		tooltipProps: { placement: 'right' },
-	};
+	});
 
 	const trashDateTitle = trashed ? __('delete permanently') : __('trash datetime');
 

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { Content, Row, Sidebar } from '../Container';
 import { EntityPaperFrame } from '../EntityPaperFrame';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import type { EntityCardProps } from './types';
 import './styles.scss';
 

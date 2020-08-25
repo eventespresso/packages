@@ -3,7 +3,8 @@ import { __ } from '@wordpress/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { RichTextEditorModal } from '@eventespresso/components';
-import { getPropsAreEqual, useConfig } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
+import { useConfig } from '@eventespresso/services';
 import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
 
 import DateDetailsPanel from './DateDetailsPanel';

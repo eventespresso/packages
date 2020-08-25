@@ -2,7 +2,7 @@ import React from 'react';
 import { parseISO } from 'date-fns';
 import { __ } from '@wordpress/i18n';
 
-import { switchTenseForDate } from '@eventespresso/services';
+import { switchTenseForDate } from '@eventespresso/utils';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { BiggieCalendarDate, CalendarDateRange } from '../../';
 import { DisplayStartOrEndDate } from './types';

@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { SelectInput } from '@eventespresso/components';
 import { TicketsStatus } from '@edtrServices/filterState';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';
 import { useMemoStringify } from '@eventespresso/hooks';
 

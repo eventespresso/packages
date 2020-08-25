@@ -8,8 +8,8 @@ import DateActionsMenu from '@edtrUI/datetimes/datesList/actionsMenu/DateActions
 import type { Datetime } from '@eventespresso/edtr-services';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
-import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers'; // '@sharedEntities/datetimes/helpers';
-import { shortenGuid } from '@eventespresso/services';
+import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';
+import { shortenGuid } from '@eventespresso/utils';
 import DateCapacity from '../cardView/DateCapacity';
 import type { BodyRowGeneratorFn } from '@eventespresso/components';
 import type { DatetimesFilterStateManager } from '@edtrServices/filterState';

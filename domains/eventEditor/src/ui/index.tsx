@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ContextProviders } from '@edtrServices/context';
-import { renderDomElement } from '@eventespresso/services';
+import { renderDomElement } from '@eventespresso/utils';
 
 import EventEditor from './EventEditor';
 

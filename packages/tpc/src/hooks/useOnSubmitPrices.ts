@@ -1,7 +1,8 @@
 import { useCallback } from 'react';
 
 import { copyTicketFields, isTicketInputField, findEntityByGuid } from '@eventespresso/predicates';
-import { parsedAmount, toBoolean, useRelations } from '@eventespresso/services';
+import { parsedAmount, toBoolean } from '@eventespresso/utils';
+import { useRelations } from '@eventespresso/services';
 import { useTicketMutator, useTickets } from '@eventespresso/edtr-services';
 import useMutatePrices from './useMutatePrices';
 import { shouldUpdateTicket } from '../utils';

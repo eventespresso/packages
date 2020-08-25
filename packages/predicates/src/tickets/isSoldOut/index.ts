@@ -1,4 +1,4 @@
-import { isBooleanTrue } from '@eventespresso/services';
+import { isBooleanTrue } from '@eventespresso/utils';
 import type { Ticket } from '@eventespresso/edtr-services';
 
 const isSoldOut = (ticket: Ticket): boolean =>

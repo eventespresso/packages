@@ -5,7 +5,7 @@ import { EntityActionsMenuLayout } from '@eventespresso/components';
 import { datetimeStatusBgColorClassName } from '@eventespresso/helpers';
 import { EntityCard } from '@eventespresso/components';
 import { useDatesListFilterState } from '@edtrServices/filterState';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import DateCardSidebar from './DateCardSidebar';
 import Details from './Details';
 import type { DateItemProps } from '../types';

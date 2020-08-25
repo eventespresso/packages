@@ -4,7 +4,8 @@ import { __ } from '@wordpress/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { getAdminUrl, useEventId } from '@eventespresso/edtr-services';
-import { getPropsAreEqual, useConfig } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
+import { useConfig } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { RegistrationsLink, ItemCount } from '@eventespresso/components';
 import { Ticket } from '@eventespresso/edtr-services';

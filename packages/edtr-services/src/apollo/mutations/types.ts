@@ -3,7 +3,7 @@ import type { OperationVariables, MutationUpdaterFn } from 'apollo-client';
 import type { ExecutionResult } from '@apollo/react-common';
 
 import type { MutationInput, MutationType, Entity as BaseEntity, Entity } from '@eventespresso/data';
-import type { Merge, ShiftDateArgs, AnyObject } from '@eventespresso/services';
+import type { Merge, ShiftDateArgs, AnyObject } from '@eventespresso/utils';
 import type { Datetime, DatetimeEdge, Ticket, TicketEdge, Price, PriceEdge } from '../types';
 
 export interface MutationCallbackFnArgs {

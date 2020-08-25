@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { CalendarDateSwitcher, EditDateRangeButton } from '@eventespresso/components';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { getDatetimeStatusTextLabel } from '@eventespresso/helpers';
 import { useDatesListFilterState } from '@edtrServices/filterState';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';

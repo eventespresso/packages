@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { FilterBarService } from '@eventespresso/registry';
 import { dateSalesFilter, dateStatusFilter, sortDates } from '@eventespresso/predicates';
 import { datesList, domain } from '@eventespresso/edtr-services';
-import { entityListSearch } from '@eventespresso/services';
+import { entityListSearch } from '@eventespresso/utils';
 import type { Datetime } from '@eventespresso/edtr-services';
 import type { DatetimesFilterStateManager } from '@edtrServices/filterState';
 

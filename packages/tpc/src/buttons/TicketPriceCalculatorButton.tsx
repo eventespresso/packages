@@ -3,8 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Calculator } from '@eventespresso/icons';
 import { IconButton, IconButtonProps } from '@eventespresso/components';
-import { TypeName } from '@eventespresso/services';
-import { withIsLoaded } from '@eventespresso/services';
+import { TypeName, withIsLoaded } from '@eventespresso/services';
 import type { TooltipProps } from '@eventespresso/adapters';
 import { useMemoStringify } from '@eventespresso/hooks';
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { ESCAPE } from '@wordpress/keycodes';
 import { __ } from '@wordpress/i18n';
 
-import { canUseDOM } from '@eventespresso/services';
+import { canUseDOM } from '@eventespresso/utils';
 import { Modal } from '@eventespresso/adapters';
 import { useConfirmationDialog } from '../Confirm';
 import useCancelButtonProps from './useCancelButtonProps';

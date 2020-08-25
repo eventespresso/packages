@@ -1,10 +1,10 @@
 import { filter, reduce } from 'ramda';
 
+import { isNotBasePrice, sortByPriceOrderIdDesc, updateBasePriceAmount } from '@eventespresso/predicates';
+import { parsedAmount } from '@eventespresso/utils';
 import basePriceCalculator from './basePriceCalculator';
 import { TpcPriceModifier } from '../types';
 import { DataState } from '../data';
-import { isNotBasePrice, sortByPriceOrderIdDesc, updateBasePriceAmount } from '@eventespresso/predicates';
-import { parsedAmount } from '@eventespresso/services';
 
 const calculateBasePrice = (state: DataState): DataState['prices'] => {
 	const ticket = state?.ticket;

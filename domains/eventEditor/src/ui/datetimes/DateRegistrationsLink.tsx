@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import type { Datetime } from '@eventespresso/edtr-services';
 import { getAdminUrl } from '@eventespresso/edtr-services';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { RegistrationsLink } from '@eventespresso/components';
 import { useConfig } from '@eventespresso/services';

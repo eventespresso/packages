@@ -1,6 +1,6 @@
 import React from 'react';
 import { assocPath, dissocPath, pathOr } from 'ramda';
-import type { AnyObject } from '@eventespresso/services';
+import type { AnyObject } from '@eventespresso/utils';
 
 import type { ElementRegistry, UIRegistryInterface as UIRI, UIRegistryOptions, ElementProps } from './types';
 

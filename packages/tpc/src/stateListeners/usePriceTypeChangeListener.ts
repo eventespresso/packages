@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { assocPath } from 'ramda';
 
-import type { AnyObject } from '@eventespresso/services';
+import type { AnyObject } from '@eventespresso/utils';
 import { useDataState } from '../data';
 import { useUpdatePriceTypeForPrice } from '../utils';
 import { StateChangeListenerHook } from './types';

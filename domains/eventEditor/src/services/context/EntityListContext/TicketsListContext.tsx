@@ -9,7 +9,7 @@ import { domain, ticketsList, useTickets } from '@eventespresso/edtr-services';
 import type { Ticket } from '@eventespresso/edtr-services';
 import { notTrashed, getGuids } from '@eventespresso/predicates';
 import { useEdtrState } from '@eventespresso/edtr-services';
-import { entityListCacheIdString } from '@eventespresso/services';
+import { entityListCacheIdString } from '@eventespresso/utils';
 
 export type TicketsListContextProps = EntityListContextProps<TicketsFilterStateManager, Ticket>;
 

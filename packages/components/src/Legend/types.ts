@@ -1,4 +1,4 @@
-import type { AnyObject } from '@eventespresso/services';
+import type { AnyObject } from '@eventespresso/utils';
 import type { IconName } from '@eventespresso/icons';
 import { ButtonProps } from '../Button';
 

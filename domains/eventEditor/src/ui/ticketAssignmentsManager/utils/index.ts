@@ -2,12 +2,12 @@ import { equals, filter, pathOr, assocPath } from 'ramda';
 import { parseISO } from 'date-fns';
 
 import type { EntityId } from '@eventespresso/data';
-import type { AnyObject } from '@eventespresso/services';
+import type { AnyObject } from '@eventespresso/utils';
 import type { TAMPossibleRelation, TAMRelationEntity, TAMRelationalData, TAMRelationalEntity } from '../types';
 import type { Datetime, Ticket } from '@eventespresso/edtr-services';
 import type { OptionsType } from '@eventespresso/adapters';
 import { sortDates } from '@eventespresso/predicates';
-import { parseInfinity, isInfinite } from '@eventespresso/services';
+import { parseInfinity, isInfinite } from '@eventespresso/utils';
 
 export type EntitiesToUpdate = Array<[EntityId, TAMPossibleRelation]>;
 

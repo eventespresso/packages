@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
+import { FormatAmountFunction, parsedAmount } from '@eventespresso/utils';
 import { Cell, FooterRow } from '@eventespresso/components';
-import { FormatAmountFunction } from '@eventespresso/services';
-import { parsedAmount } from '@eventespresso/services';
 import { TicketPriceField } from '../../fields';
 import ReverseCalculateButton from '../../buttons/ReverseCalculateButton';
 

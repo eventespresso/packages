@@ -3,7 +3,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@wordpress/i18n';
 
 import { Button, SelectInput } from '@eventespresso/components';
-import { entityListToSelectOptions } from '@eventespresso/services';
+import { entityListToSelectOptions } from '@eventespresso/utils';
 import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { Plus } from '@eventespresso/icons';
 import { useTickets } from '@eventespresso/edtr-services';

@@ -2,14 +2,13 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import type { EntityListItemProps } from '@eventespresso/components';
-import { TypeName } from '@eventespresso/services';
+import { TypeName, withIsLoaded } from '@eventespresso/services';
 import { Ticket } from '@eventespresso/icons';
 import { IconButton, ItemCount } from '@eventespresso/components';
 
 import { useRelatedTickets } from '@eventespresso/edtr-services';
 import { useTicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager';
 import { Datetime } from '@eventespresso/edtr-services';
-import { withIsLoaded } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import type { TooltipProps } from '@eventespresso/adapters';
 

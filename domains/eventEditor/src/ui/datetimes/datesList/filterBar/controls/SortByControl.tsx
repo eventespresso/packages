@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { SelectInput } from '@eventespresso/components';
 import { SortBy } from '@eventespresso/edtr-services';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { DatetimesFilterStateManager } from '@edtrServices/filterState';
 
 type SortByControlProps = Pick<DatetimesFilterStateManager, 'sortBy' | 'setSortBy'>;

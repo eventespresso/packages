@@ -1,11 +1,11 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { Button } from '../../../Button';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { Sort } from '@eventespresso/icons';
-import type { ToggleSortingButtonProps } from '../types';
 
-import { getPropsAreEqual } from '@eventespresso/services';
+import { Button } from '../../../Button';
+import type { ToggleSortingButtonProps } from '../types';
 
 const ToggleSortingButton: React.FC<ToggleSortingButtonProps> = ({
 	listId,

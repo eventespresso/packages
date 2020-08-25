@@ -1,12 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks';
 
+import { useRelations } from '@eventespresso/services';
+import { getGuids } from '@eventespresso/predicates';
 import useTicketPrices from '../useTicketPrices';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from './data';
 import useInitTicketTestCache from './useInitTicketTestCache';
 import useInitPriceTestCache from '../../prices/test/useInitPriceTestCache';
-import { useRelations } from '@eventespresso/services';
-import { getGuids } from '@eventespresso/predicates';
 
 const timeout = 5000; // milliseconds
 describe('useTicketPrices', () => {

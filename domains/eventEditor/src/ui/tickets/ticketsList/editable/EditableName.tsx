@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import type { TicketItemProps } from '../types';
 import { useTicketMutator } from '@eventespresso/edtr-services';
 import { InlineEditText } from '@eventespresso/components';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 interface EditableNameProps extends TicketItemProps {
 	className?: string;

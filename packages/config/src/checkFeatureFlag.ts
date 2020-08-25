@@ -1,5 +1,4 @@
-// avoid package dependency upon `services`
-import toBoolean from '../../services/src/utilities/converters/toBoolean';
+import { toBoolean } from '@eventespresso/utils';
 
 export const FEATURE_FLAGS = {
 	bulkEdit: process.env.FF_BULK_EDIT,

@@ -13,8 +13,6 @@ const useCancelButtonProps = (onCloseModal: VoidFunction): ButtonProps => {
 		onCloseModal();
 	}, [onCloseModal]);
 
-	console.log('useCancelButtonProps here');
-
 	return useMemo<ButtonProps>(
 		() => ({
 			buttonText: __('Cancel'),

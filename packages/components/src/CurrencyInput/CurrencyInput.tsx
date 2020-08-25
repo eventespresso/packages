@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import classNames from 'classnames';
 
-import { parsedAmount, useMoneyDisplay } from '@eventespresso/services';
+import { parsedAmount } from '@eventespresso/utils';
+import { useMoneyDisplay } from '@eventespresso/services';
 import { InlineEditText } from '../InlineEditInput';
 
 import type { CurrencyInputProps } from './types';

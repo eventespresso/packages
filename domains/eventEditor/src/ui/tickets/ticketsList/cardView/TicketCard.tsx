@@ -7,7 +7,7 @@ import { EntityActionsMenuLayout } from '@eventespresso/components';
 import { EntityCard } from '@eventespresso/components';
 import { ticketStatusBgColorClassName } from '@eventespresso/helpers';
 import { useTicketsListFilterState } from '@edtrServices/filterState';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import type { TicketItemProps } from '../types';
 
 const TicketCard: React.FC<TicketItemProps> = ({ entity: ticket }) => {

@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n';
 import * as yup from 'yup';
 
 import { yupToFinalFormErrors } from '@eventespresso/form';
-import { IntervalType } from '@eventespresso/services';
+import { IntervalType } from '@eventespresso/utils';
 import { datesSchema, requiredMessage } from '@eventespresso/edtr-services';
 import { TicketSalesDates } from './types';
 import { RemTicket } from '../../data';

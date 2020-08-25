@@ -7,7 +7,7 @@ import { Datetime } from '@eventespresso/edtr-services';
 import { validate } from './formValidation';
 import { DateFormShape } from './types';
 import { DATE_FIELDS_TO_USE } from '../../constants';
-import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/services';
+import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/utils';
 
 type DateFormConfig = EspressoFormProps<DateFormShape>;
 

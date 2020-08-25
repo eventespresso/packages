@@ -2,9 +2,9 @@ import React from 'react';
 
 import type { ActionsMenuComponentProps } from '@eventespresso/registry';
 import { EntityActionsMenu } from '@eventespresso/components';
-import useTicketsActionMenuItems from '../../hooks/useTicketsActionMenuItems';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { Ticket } from '@eventespresso/edtr-services';
-import { getPropsAreEqual } from '@eventespresso/services';
+import useTicketsActionMenuItems from '../../hooks/useTicketsActionMenuItems';
 
 const TicketActionsMenu: React.FC<ActionsMenuComponentProps<Ticket>> = ({ entity, ...props }) => {
 	const menuItems = useTicketsActionMenuItems(entity);

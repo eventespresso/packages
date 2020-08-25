@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import { useMemoStringify } from '@eventespresso/hooks';
-import { isFunc, isEmpty } from '@eventespresso/services';
+import { isFunc, isEmpty } from '@eventespresso/utils';
 import Table from './Table';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';

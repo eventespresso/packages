@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import TicketRegistrationsLink from '../../TicketRegistrationsLink';
 import { EntityDetailsPanel, EntityDetailsPanelSold } from '@eventespresso/components';
 import TicketQuantity from './TicketQuantity';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import type { TicketItemProps } from '../types';
 
 const TicketDetailsPanel: React.FC<TicketItemProps> = React.memo(({ adminUrl, entity: ticket, eventId }) => {

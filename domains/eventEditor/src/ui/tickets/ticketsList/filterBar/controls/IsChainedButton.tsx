@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { IconButton } from '@eventespresso/components';
 import { Link, Unlink } from '@eventespresso/icons';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { TicketsFilterStateManager } from '@edtrServices/filterState';
 
 type IsChainedButtonProps = Pick<TicketsFilterStateManager, 'isChained' | 'toggleIsChained'>;

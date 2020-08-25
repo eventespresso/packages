@@ -4,7 +4,7 @@ import { ExecutionResult } from 'graphql';
 import { nodes as tickets } from '../../../queries/tickets/test/data';
 import { edge as priceEdge } from '../../../queries/prices/test/data';
 import { MutationInput, MutationType } from '@eventespresso/data';
-import { ucFirst } from '@eventespresso/services';
+import { ucFirst } from '@eventespresso/utils';
 import { mutations } from '../..';
 import type { MockedResponse } from '../../../../context/test/types';
 import { ReadQueryOptions } from '@eventespresso/data';

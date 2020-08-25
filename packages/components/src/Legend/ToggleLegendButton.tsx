@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { __ } from '@wordpress/i18n';
 
 import { CompassFilled } from '@eventespresso/icons';
-import { getPropsAreEqual } from '@eventespresso/services';
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { Button } from '../Button';
 import type { ToggleLegendButtonProps } from './types';
 

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { parseInfinity, getPropsAreEqual } from '@eventespresso/services';
+import { parseInfinity, getPropsAreEqual } from '@eventespresso/utils';
 import { InlineEditInfinity, TextProps } from '@eventespresso/components';
 import { useTicketMutator } from '@eventespresso/edtr-services';
 import type { TicketItemProps } from '../types';

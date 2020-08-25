@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Button, SelectInput } from '@eventespresso/components';
-import { entityListToSelectOptions, AnyObject } from '@eventespresso/services';
+import { entityListToSelectOptions, AnyObject } from '@eventespresso/utils';
 import { Plus } from '@eventespresso/icons';
 import { useDatetimes, useDatetimeItem } from '@eventespresso/edtr-services';
 

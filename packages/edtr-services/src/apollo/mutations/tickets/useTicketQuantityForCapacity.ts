@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { parseInfinity } from '@eventespresso/services';
+import { parseInfinity } from '@eventespresso/utils';
 import { Ticket } from '../../';
 import type { UpdateTicketInput } from './types';
 

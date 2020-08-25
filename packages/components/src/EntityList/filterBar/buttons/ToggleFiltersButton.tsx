@@ -3,11 +3,10 @@ import { __ } from '@wordpress/i18n';
 
 import { Button } from '../../../Button';
 
+import { getPropsAreEqual } from '@eventespresso/utils';
 import { Filter } from '@eventespresso/icons';
 
 import type { ToggleFiltersButtonProps } from '../types';
-
-import { getPropsAreEqual } from '@eventespresso/services';
 
 const ToggleFiltersButton: React.FC<ToggleFiltersButtonProps> = ({ listId, showFilters, toggleFilters, ...rest }) => {
 	const filterId = `ee-toggle-filters-btn-${listId}`;

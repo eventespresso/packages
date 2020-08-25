@@ -1,5 +1,5 @@
 import { Price } from '@eventespresso/edtr-services';
-import { parsedAmount } from '@eventespresso/services';
+import { parsedAmount } from '@eventespresso/utils';
 
 const basePriceCalculator = (currentTotal: number, { isPercent, isDiscount, amount }: Price): number => {
 	amount = parsedAmount(amount || 0);

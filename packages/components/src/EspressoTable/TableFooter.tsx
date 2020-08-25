@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import invariant from 'invariant';
 
-import { isFunc, isEmpty } from '@eventespresso/services';
+import { isFunc, isEmpty } from '@eventespresso/utils';
 
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';

@@ -1,7 +1,7 @@
 import { parseISO } from 'date-fns';
 
 import type { Datetime } from '@eventespresso/edtr-services';
-import { diff } from '@eventespresso/services';
+import { diff } from '@eventespresso/utils';
 import { NOW, TIME } from '@eventespresso/constants';
 
 /**

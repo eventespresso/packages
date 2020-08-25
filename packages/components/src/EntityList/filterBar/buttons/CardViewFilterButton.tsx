@@ -2,10 +2,10 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { AppstoreFilled } from '@eventespresso/icons';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 import { Button } from '../../../Button';
 import type { CardViewFilterButtonProps } from '../types';
-import { getPropsAreEqual } from '@eventespresso/services';
 
 const CardViewFilterButton: React.FC<CardViewFilterButtonProps> = ({ listId, setCardView, view, ...rest }) => {
 	const filterId = `ee-card-view-btn-${listId}`;

@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { FilterBarService } from '@eventespresso/registry';
 import { ticketSalesFilter, ticketStatusFilter, sortTickets } from '@eventespresso/predicates';
 import { domain, ticketsList } from '@eventespresso/edtr-services';
-import { entityListSearch } from '@eventespresso/services';
+import { entityListSearch } from '@eventespresso/utils';
 import type { Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
 import useIsChainedFilter from './useIsChainedFilter';
 

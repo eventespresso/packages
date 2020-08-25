@@ -2,13 +2,8 @@ import { useMemo } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 import { pick } from 'ramda';
 
-import {
-	intervalsToOptions,
-	Intervals,
-	DATE_INTERVALS,
-	useTimeZoneTime,
-	setDefaultTime,
-} from '@eventespresso/services';
+import { intervalsToOptions, Intervals, DATE_INTERVALS, setDefaultTime } from '@eventespresso/utils';
+import { useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import type { EspressoFormProps, FieldProps } from '@eventespresso/form';

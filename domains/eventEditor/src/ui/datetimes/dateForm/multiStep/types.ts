@@ -1,4 +1,4 @@
-import type { Disclosure } from '@eventespresso/services';
+import type { Disclosure } from '@eventespresso/utils';
 import type { EntityId } from '@eventespresso/data';
 import type { Datetime } from '@eventespresso/edtr-services';
 import type { FormRenderProps } from 'react-final-form';
