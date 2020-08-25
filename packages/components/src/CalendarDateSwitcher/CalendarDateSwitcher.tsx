@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 import { switchTenseForDate } from '@eventespresso/utils';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { BiggieCalendar, CalendarDateRange } from '../../';
+import { BiggieCalendarDate, CalendarDateRange } from '../../';
 import { DisplayStartOrEndDate } from './types';
 import type { CalendarDateSwitcherProps } from './types';
 
@@ -22,7 +22,7 @@ const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = React.memo(
 		}
 
 		const start = (
-			<BiggieCalendar
+			<BiggieCalendarDate
 				className={className}
 				date={startDate}
 				footerText={footerText}
@@ -34,7 +34,7 @@ const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = React.memo(
 		switch (displayDate) {
 			case 'end':
 				return (
-					<BiggieCalendar
+					<BiggieCalendarDate
 						className={className}
 						date={endDate}
 						footerText={footerText}

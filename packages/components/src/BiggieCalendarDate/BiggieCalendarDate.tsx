@@ -15,13 +15,13 @@ import {
 } from '@eventespresso/constants';
 import { useTimeZoneTime } from '@eventespresso/services';
 
-import type { BiggieCalendarProps } from './index';
+import type { BiggieCalendarDateProps } from './index';
 import './style.scss';
 
 /**
  * Displays a full calendar date, but REALLY BIG!!
  */
-export const BiggieCalendar: React.FC<BiggieCalendarProps> = ({
+export const BiggieCalendarDate: React.FC<BiggieCalendarDateProps> = ({
 	date,
 	editButton = {},
 	footerText,
@@ -39,7 +39,7 @@ export const BiggieCalendar: React.FC<BiggieCalendarProps> = ({
 		return null;
 	}
 
-	const className = classNames(props.className, 'ee-biggie-calendar__wrapper');
+	const className = classNames(props.className, 'ee-bcd__wrapper');
 
 	const editDateButton = typeof onEdit === 'function' && (
 		<Button
@@ -54,19 +54,19 @@ export const BiggieCalendar: React.FC<BiggieCalendarProps> = ({
 
 	return (
 		<div className={className}>
-			{headerText && <div className='ee-biggie-calendar__header'>{headerText}</div>}
-			<div className='ee-biggie-calendar'>
-				<div className='ee-biggie-calendar__weekday'>{format(dateObject, WEEKDAY_ONLY_FULL_FORMAT)}</div>
-				<div className='ee-biggie-calendar__month'>{format(dateObject, MONTH_ONLY_FULL_FORMAT)}</div>
-				<div className='ee-biggie-calendar__month-day-sep'></div>
-				<div className='ee-biggie-calendar__day'>{format(dateObject, DAY_ONLY_SHORT_FORMAT)}</div>
-				<div className='ee-biggie-calendar__year'>{format(dateObject, YEAR_ONLY_LONG_FORMAT)}</div>
+			{headerText && <div className='ee-bcd__header'>{headerText}</div>}
+			<div className='ee-bcd'>
+				<div className='ee-bcd__weekday'>{format(dateObject, WEEKDAY_ONLY_FULL_FORMAT)}</div>
+				<div className='ee-bcd__month'>{format(dateObject, MONTH_ONLY_FULL_FORMAT)}</div>
+				<div className='ee-bcd__month-day-sep'></div>
+				<div className='ee-bcd__day'>{format(dateObject, DAY_ONLY_SHORT_FORMAT)}</div>
+				<div className='ee-bcd__year'>{format(dateObject, YEAR_ONLY_LONG_FORMAT)}</div>
 				{showTime && !timeRange && (
-					<div className='ee-biggie-calendar__time'>{format(dateObject, TIME_ONLY_12H_SHORT_FORMAT)}</div>
+					<div className='ee-bcd__time'>{format(dateObject, TIME_ONLY_12H_SHORT_FORMAT)}</div>
 				)}
-				{timeRange && <div className='ee-biggie-calendar__time'>{timeRange}</div>}
+				{timeRange && <div className='ee-bcd__time'>{timeRange}</div>}
 			</div>
-			{footerText && <div className='ee-biggie-calendar__footer'>{footerText}</div>}
+			{footerText && <div className='ee-bcd__footer'>{footerText}</div>}
 			{editDateButton}
 		</div>
 	);

@@ -1,5 +1,5 @@
 export * from './Banner';
-export * from './BiggieCalendar';
+export * from './BiggieCalendarDate';
 export * from './bulkEdit';
 export * from './Button';
 export * from './CalendarDateRange';

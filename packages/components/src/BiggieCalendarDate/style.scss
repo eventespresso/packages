@@ -1,8 +1,8 @@
 /** -------------------------------------------------------------------------
- * Event Espresso BiggieCalendar Stylesheet
+ * Event Espresso BiggieCalendarDate Stylesheet
  * © 2020 Event Espresso
  * ------------------------------------------------------------------------- */
-.ee-biggie-calendar {
+.ee-bcd {
 	&__wrapper {
 		box-sizing: border-box;
 		color: var(--ee-color-white);
@@ -24,7 +24,7 @@
 		margin: 0;
 	}
 
-	.ee-biggie-calendar {
+	.ee-bcd {
 		&__weekday,
 		&__year,
 		&__time {
@@ -106,18 +106,18 @@
 			right: unset;
 			width: 100% !important;
 
-			&.ee-biggie-calendar-pos-left {
+			&.ee-bcd-pos-left {
 				float: none;
 			}
 
-			&.ee-biggie-calendar-pos-right {
+			&.ee-bcd-pos-right {
 				float: none;
 			}
 
-			.ee-biggie-calendar {
+			.ee-bcd {
 				&__header,
 				&__footer,
-				.ee-biggie-calendar-month-day-sep {
+				.ee-bcd-month-day-sep {
 					line-height: calc(var(--ee-font-size-big) - 3px);
 				}
 
@@ -128,7 +128,7 @@
 			}
 		}
 
-		.ee-biggie-calendar {
+		.ee-bcd {
 			&__weekday,
 			&__month,
 			&__day,
