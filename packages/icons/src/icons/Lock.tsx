@@ -5,11 +5,11 @@ import { IconProps } from '../types';
 const SvgLock = (props: IconProps): JSX.Element => {
 	return (
 		<svg
+			viewBox='0 0 20 20'
 			aria-hidden='true'
 			className='lock_svg__ee-svg'
 			fill='currentColor'
 			height='1.25em'
-			viewBox='0 0 20 20'
 			width='1.25em'
 			{...props}
 		>

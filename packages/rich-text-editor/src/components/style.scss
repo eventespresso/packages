@@ -7,6 +7,10 @@
 	}
 
 	&-controls {
+		&__blockquote {
+			background-image: url('~@eventespresso/icons/src/svg/editor-quote.svg');
+		}
+
 		&__bold {
 			font-weight: bolder;
 			margin-right: var(--ee-margin-smaller);

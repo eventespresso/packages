@@ -5,12 +5,12 @@ import { IconProps } from '../types';
 const SvgControlOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
-			aria-hidden='true'
+			viewBox='64 64 896 896'
 			className='controlOutlined_svg__ee-svg'
 			data-icon='control'
 			fill='currentColor'
+			aria-hidden='true'
 			height='1.25em'
-			viewBox='64 64 896 896'
 			width='1.25em'
 			{...props}
 		>
