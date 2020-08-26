@@ -19,9 +19,9 @@ const StyleButton: React.FC<StyleButtonProps> = ({ active, style, onToggle, ...p
 	);
 
 	return (
-		<span className={className} onMouseDown={onMouseDown} role='button' tabIndex={0}>
+		<div className={className} onMouseDown={onMouseDown} role='button' tabIndex={0}>
 			{props.label}
-		</span>
+		</div>
 	);
 };
 

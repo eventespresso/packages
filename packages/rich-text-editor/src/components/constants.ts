@@ -10,7 +10,6 @@ export const BLOCK_TYPES: { label: string; style: DraftBlockType }[] = [
 	{ label: 'Blockquote', style: 'blockquote' },
 	{ label: 'UL', style: 'unordered-list-item' },
 	{ label: 'OL', style: 'ordered-list-item' },
-	{ label: 'Code Block', style: 'code-block' },
 ];
 
 export const INLINE_STYLES = [
