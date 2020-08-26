@@ -7,6 +7,7 @@ const SvgRepeat = (props: IconProps): JSX.Element => {
 		<svg
 			aria-hidden='true'
 			className='repeat_svg__ee-svg'
+			fill='currentColor'
 			height='1.25rem'
 			viewBox='0 0 20 20'
 			width='1.25rem'
