@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Banner } from '@eventespresso/components';
-
+import { createInterpolateElement } from '@eventespresso/utils';
 import AddDefaultPricesButton from './AddDefaultPricesButton';
 import DefaultPricesLink from './DefaultPricesLink';
 
@@ -16,9 +16,14 @@ const NoPricesBanner: React.FC<Props> = ({ context }) => {
 	return (
 		<Banner status='info' title={title}>
 			<p>
-				{__('Click the button below to load your ')}
-				<DefaultPricesLink>{__('default prices')}</DefaultPricesLink>
-				{__(' into the calculator.')}
+				{createInterpolateElement(
+					__(
+						'Click the button below to load your <DefaultPricesLink>default prices</DefaultPricesLink> into the calculator.'
+					),
+					{
+						DefaultPricesLink: <DefaultPricesLink />,
+					}
+				)}
 			</p>
 			<p>{__('Additional ticket price modifiers can be added or removed.')}</p>
 			{context === 'editTicketForm' && (

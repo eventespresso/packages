@@ -1,3 +1,5 @@
+export { createInterpolateElement } from '@wordpress/element';
+
 export * from './array';
 export * from './boolean';
 export * from './converters';
