@@ -1,6 +1,5 @@
 import React from 'react';
 import { isEmpty } from 'ramda';
-import type { UseDisclosureReturn } from '@chakra-ui/hooks';
 
 import { ButtonRow, Next, Previous } from '@eventespresso/components';
 
@@ -8,8 +7,9 @@ import CancelButton from './CancelButton';
 import SubmitButton from './SubmitButton';
 import { useStepsState } from '../../context';
 import { useFormState } from '../../data';
+import { BaseProps } from '../types';
 
-const ContentFooter: React.FC<Partial<UseDisclosureReturn>> = ({ onClose }) => {
+const ContentFooter: React.FC<BaseProps> = ({ onClose, onSubmit }) => {
 	const { current, next, prev } = useStepsState();
 	const { rRule, dateDetails, tickets } = useFormState();
 
@@ -41,7 +41,7 @@ const ContentFooter: React.FC<Partial<UseDisclosureReturn>> = ({ onClose }) => {
 			}
 			{
 				// last step
-				current === 3 && <SubmitButton onClose={onClose} />
+				current === 3 && <SubmitButton onClick={onSubmit} />
 			}
 		</ButtonRow>
 	);

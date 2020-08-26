@@ -1,21 +1,12 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
-import type { UseDisclosureReturn } from '@chakra-ui/hooks';
 
-import { Button, ButtonType } from '@eventespresso/components';
+import { Button, ButtonType, ButtonProps } from '@eventespresso/components';
 import { useGenerateDates } from '../generatedDates';
-import { useSubmitForm, useFormState } from '../../data';
 
-const SubmitButton: React.FC<Partial<UseDisclosureReturn>> = ({ onClose }) => {
+const SubmitButton: React.FC<ButtonProps> = ({ onClick }) => {
 	// rDates and gDates, no exDates
 	const generateDates = useGenerateDates();
-	const { getData } = useFormState();
-	const submitForm = useSubmitForm(getData(), generateDates);
-
-	const onClick = useCallback(() => {
-		onClose();
-		submitForm();
-	}, [onClose, submitForm]);
 
 	return (
 		<Button

@@ -1,15 +1,14 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import type { UseDisclosureReturn } from '@chakra-ui/hooks';
 
 import { ModalWithAlert } from '@eventespresso/components';
 
 import { ContentBody, ContentFooter } from '../MultiStep';
-import { withContext } from '../../context';
+import { BaseProps } from '../types';
 
 import './styles.scss';
 
-const Modal: React.FC<Partial<UseDisclosureReturn>> = ({ isOpen, onClose }) => {
+const Modal: React.FC<BaseProps> = ({ isOpen, onClose, onSubmit }) => {
 	return (
 		<ModalWithAlert
 			bodyClassName='ee-rem-modal__body'
@@ -21,9 +20,9 @@ const Modal: React.FC<Partial<UseDisclosureReturn>> = ({ isOpen, onClose }) => {
 			withBorder
 		>
 			<ContentBody />
-			<ContentFooter onClose={onClose} />
+			<ContentFooter onSubmit={onSubmit} onClose={onClose} />
 		</ModalWithAlert>
 	);
 };
 
-export default withContext(Modal);
+export default Modal;
