@@ -1,8 +1,15 @@
 .rich-text-editor {
+	&__styleButton {
+		cursor: pointer;
+		margin-right: var(--ee-margin-small);
+		padding: var(--ee-padding-nano) 0;
+		display: inline-block;
+	}
+
 	&-controls {
 		&__bold {
 			font-weight: bolder;
-			margin-right: 14px;
+			margin-right: var(--ee-margin-smaller);
 		}
 
 		&__italic {
@@ -70,13 +77,6 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-
-.rich-text-editor-styleButton {
-	cursor: pointer;
-	margin-right: 16px;
-	padding: 2px 0;
-	display: inline-block;
 }
 
 .rich-text-editor-activeButton {

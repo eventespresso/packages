@@ -5,7 +5,7 @@ import type { StyleButtonProps } from './types';
 
 const StyleButton: React.FC<StyleButtonProps> = ({ active, style, onToggle, ...props }) => {
 	const className = classNames(
-		'rich-text-editor-styleButton',
+		'rich-text-editor__styleButton',
 		`rich-text-editor-controls__${style.toLowerCase()}`,
 		active && 'rich-text-editor-activeButton'
 	);
