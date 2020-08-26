@@ -2,16 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Tooltip } from '@eventespresso/adapters';
-import type { LinkProps } from './types';
+import type { LinkProps } from '../types';
 import './style.scss';
 
-const Link: React.FC<LinkProps> = ({ children, href, icon, tooltip, tooltipProps, ...props }) => {
+export const Link: React.FC<LinkProps> = ({ children, href, icon, tooltip, tooltipProps, ...props }) => {
 	const className = classNames(
 		props.className,
 		'ee-btn-base',
 		'ee-icon-button',
-		'ee-icon-button--link',
-		'ee-icon-button--borderless'
+		'ee-link',
+		!icon && 'ee-link--no-icon'
 	);
 
 	const link = (
@@ -30,5 +30,3 @@ const Link: React.FC<LinkProps> = ({ children, href, icon, tooltip, tooltipProps
 
 	return link;
 };
-
-export default Link;

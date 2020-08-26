@@ -6,7 +6,7 @@ export { default as ButtonRow } from './ButtonRow';
 
 export { default as IconButton } from './IconButton';
 
-export { default as Link } from './Link';
+export * from './Link';
 
 export * from './types';
 

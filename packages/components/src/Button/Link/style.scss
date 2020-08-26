@@ -1,0 +1,10 @@
+.ee-link.ee-link {
+	background-color: unset;
+	color: var(--ee-color-blue);
+
+	&--no-icon {
+		border: none;
+		display: inline;
+		padding: 0;
+	}
+}
