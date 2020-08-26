@@ -21,11 +21,13 @@ const NoPricesBanner: React.FC<Props> = ({ context }) => {
 				{__(' into the calculator.')}
 			</p>
 			<p>{__('Additional ticket price modifiers can be added or removed.')}</p>
-			{context === 'editTicketForm' &&
-				'\n' +
-					__(
+			{context === 'editTicketForm' && (
+				<p>
+					{__(
 						'Click the save button below to assign which dates this ticket will be available for purchase on.'
 					)}
+				</p>
+			)}
 			<AddDefaultPricesButton />
 		</Banner>
 	);

@@ -9,10 +9,7 @@ const DefaultPricesLink: React.FC = ({ children }) => {
 	const {
 		siteUrl: { admin },
 	} = useConfig();
-	const adminUrl = getAdminUrl({ adminSiteUrl: admin, page: ADMIN_ROUTES.REGISTRATIONS });
-	const href = adminUrl + '/wp-admin/admin.php?page=pricing';
-
-	console.log({ href });
+	const href = getAdminUrl({ adminSiteUrl: admin, page: ADMIN_ROUTES.PRICES });
 
 	return <Link href={href}>{children}</Link>;
 };
