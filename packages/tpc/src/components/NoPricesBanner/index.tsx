@@ -18,6 +18,7 @@ const NoPricesBanner: React.FC<Props> = ({ context }) => {
 			<p>
 				{createInterpolateElement(
 					sprintf(
+						/* translators: %s default prices */
 						__('Click the button below to load your %s into the calculator.'),
 						'<DefaultPricesLink>' + __('default prices') + '</DefaultPricesLink>'
 					),
