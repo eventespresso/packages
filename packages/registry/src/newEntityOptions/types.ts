@@ -17,13 +17,6 @@ export interface NewEntitySubscriptionInterface {
 	) => Subscriptions<NewEntitySubscriptionCbArgs<T>, NewEntitySubscriptionsOptions<T>>;
 }
 
-export interface NewEntitySubscription {
-	subscribe: NewEntitySubscribeFn;
-	getSubscriptions: <T extends string>(
-		options?: NewEntitySubscriptionsOptions<T>
-	) => Subscriptions<NewEntitySubscriptionCbArgs<T>, NewEntitySubscriptionsOptions<T>>;
-}
-
 export type NewEntitySubscribeFn = <T extends string>(
 	cb: NewEntitySubscriptionCb<T>,
 	options?: NewEntitySubscriptionsOptions<T>
@@ -45,11 +38,3 @@ export interface NewEntityOptionsProps {
 	className?: string;
 	optionItems: Array<React.ReactNode>;
 }
-
-export interface ActionsOptionsComponentProps {
-	[key: string]: any;
-}
-
-export type EntityOptionItems = {
-	[key: string]: React.ComponentType;
-};
