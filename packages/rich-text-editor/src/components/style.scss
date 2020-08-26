@@ -17,8 +17,10 @@ $ul: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' 
 		&__blockquote,
 		&__ordered-list-item,
 		&__unordered-list-item {
+			background-repeat: no-repeat;
+			background-size: contain;
 			font-size: 0;
-			width: 20px;
+			width: 19px;
 		}
 
 		&__blockquote {
