@@ -4,7 +4,11 @@ import classNames from 'classnames';
 import type { StyleButtonProps } from './types';
 
 const StyleButton: React.FC<StyleButtonProps> = ({ active, style, onToggle, ...props }) => {
-	const className = classNames('RichEditor-styleButton', active && 'RichEditor-activeButton');
+	const className = classNames(
+		'rich-text-editor-styleButton',
+		`rich-text-editor-controls__${style.toLowerCase()}`,
+		active && 'rich-text-editor-activeButton'
+	);
 
 	const onMouseDown = useCallback(
 		(e) => {

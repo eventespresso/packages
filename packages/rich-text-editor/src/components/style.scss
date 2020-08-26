@@ -1,4 +1,21 @@
-.RichEditor-root {
+.rich-text-editor {
+	&-controls {
+		&__bold {
+			font-weight: bolder;
+			margin-right: 14px;
+		}
+
+		&__italic {
+			font-style: italic;
+		}
+
+		&__underline {
+			text-decoration: underline;
+		}
+	}
+}
+
+.rich-text-editor-root {
 	border-color: var(--ee-border-color);
 	border-radius: var(--ee-border-radius-small);
 	border-style: solid;
@@ -10,7 +27,7 @@
 	}
 }
 
-.RichEditor-editor {
+.rich-text-editor-editor {
 	border-top: 1px solid #ddd;
 	cursor: text;
 	font-size: 16px;
@@ -27,12 +44,12 @@
 	}
 }
 
-.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+.rich-text-editor-hidePlaceholder .public-DraftEditorPlaceholder-root {
 	display: none;
 }
 
-.RichEditor-editor {
-	.RichEditor-blockquote {
+.rich-text-editor-editor {
+	.rich-text-editor-blockquote {
 		border-left: 5px solid #eee;
 		font-style: italic;
 		margin: 16px 0;
@@ -46,7 +63,7 @@
 	}
 }
 
-.RichEditor-controls {
+.rich-text-editor-controls {
 	font-size: 14px;
 	margin-bottom: 5px;
 	-webkit-user-select: none;
@@ -55,13 +72,13 @@
 	user-select: none;
 }
 
-.RichEditor-styleButton {
+.rich-text-editor-styleButton {
 	cursor: pointer;
 	margin-right: 16px;
 	padding: 2px 0;
 	display: inline-block;
 }
 
-.RichEditor-activeButton {
+.rich-text-editor-activeButton {
 	color: #5890ff;
 }

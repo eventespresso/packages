@@ -14,8 +14,7 @@ export const BLOCK_TYPES: { label: string; style: DraftBlockType }[] = [
 ];
 
 export const INLINE_STYLES = [
-	{ label: 'Bold', style: 'BOLD' },
-	{ label: 'Italic', style: 'ITALIC' },
-	{ label: 'Underline', style: 'UNDERLINE' },
-	{ label: 'Monospace', style: 'CODE' },
+	{ label: 'B', style: 'BOLD' },
+	{ label: 'I', style: 'ITALIC' },
+	{ label: 'U', style: 'UNDERLINE' },
 ];

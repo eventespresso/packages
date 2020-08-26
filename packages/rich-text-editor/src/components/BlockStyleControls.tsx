@@ -10,7 +10,7 @@ const BlockStyleControls: React.FC<BlockStyleControlsProps> = (props) => {
 	const blockType = editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getType();
 
 	return (
-		<div className='RichEditor-controls'>
+		<div className='rich-text-editor-controls'>
 			{BLOCK_TYPES.map((type) => (
 				<StyleButton
 					key={type.label}

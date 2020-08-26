@@ -8,7 +8,8 @@ const InlineStyleControls: React.FC<InlineStyleControlsProps> = ({ editorState, 
 	const currentStyle = editorState.getCurrentInlineStyle();
 
 	return (
-		<div className='RichEditor-controls'>
+		<div className='rich-text-editor-controls'>
+			{/* <BoldButton getEditorState={editorState.getEd} /> */}
 			{INLINE_STYLES.map((type) => (
 				<StyleButton
 					key={type.label}

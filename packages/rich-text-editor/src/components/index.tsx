@@ -7,7 +7,7 @@ import 'draft-js/dist/Draft.css';
 
 import BlockStyleControls from './BlockStyleControls';
 import InlineStyleControls from './InlineStyleControls';
-
+import { getBlockStyle } from '../utils';
 import { RichTextEditorProps, RichTextEditorState } from './types';
 
 import './style.scss';
@@ -98,12 +98,12 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 
 		// If the user changes block type before entering any text, we can
 		// either style the placeholder or hide it. Let's just hide it now.
-		let className = 'RichEditor-editor';
+		let className = 'rich-text-editor-editor';
 		const contentState = editorState.getCurrentContent();
 
 		if (!contentState?.hasText()) {
 			if (contentState?.getBlockMap?.().first?.().getType?.() !== 'unstyled') {
-				className += ' RichEditor-hidePlaceholder';
+				className += ' rich-text-editor-hidePlaceholder';
 			}
 		}
 
@@ -117,17 +117,8 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 			},
 		};
 
-		const getBlockStyle = (block: { getType: () => any }) => {
-			switch (block.getType()) {
-				case 'blockquote':
-					return 'RichEditor-blockquote';
-				default:
-					return null;
-			}
-		};
-
 		return (
-			<div className='RichEditor-root'>
+			<div className='rich-text-editor-root'>
 				<BlockStyleControls editorState={editorState} onToggle={this.toggleBlockType} />
 				<InlineStyleControls editorState={editorState} onToggle={this.toggleInlineStyle} />
 				{
