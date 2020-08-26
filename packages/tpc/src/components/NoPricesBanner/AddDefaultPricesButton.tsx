@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Button } from '@eventespresso/adapters';
-import { useAddDefaultPrices } from '../hooks';
+import { useAddDefaultPrices } from '../../hooks';
 
 const AddDefaultPricesButton: React.FC = () => {
 	const addDefaultPrices = useAddDefaultPrices();

@@ -3,26 +3,32 @@ import { __ } from '@wordpress/i18n';
 
 import { Banner } from '@eventespresso/components';
 
-import AddDefaultPricesButton from '../buttons/AddDefaultPricesButton';
-import type { TicketPriceCalculatorProps } from './TicketPriceCalculator';
+import AddDefaultPricesButton from './AddDefaultPricesButton';
+import DefaultPricesLink from './DefaultPricesLink';
+
+import type { TicketPriceCalculatorProps } from '../TicketPriceCalculator';
 
 interface Props extends Pick<TicketPriceCalculatorProps, 'context'> {}
 
 const NoPricesBanner: React.FC<Props> = ({ context }) => {
-	let description = __(
-		'Click the button below to load your default prices into the calculator. Additional ticket price modifiers can be added or removed.'
-	);
+	let description =
+		__('Click the button below to load your ') +
+		<DefaultPricesLink>{__('default prices')}</DefaultPricesLink> +
+		__(' into the calculator.') +
+		'\n' +
+		__('Additional ticket price modifiers can be added or removed.');
 
 	if (context === 'editTicketForm') {
 		description +=
-			' ' +
+			'\n' +
 			__('Click the save button below to assign which dates this ticket will be available for purchase on.');
 	}
 
 	const title = __('This Ticket is Currently Free');
 
 	return (
-		<Banner description={description} status='info' title={title}>
+		<Banner status='info' title={title}>
+			{description}
 			<AddDefaultPricesButton />
 		</Banner>
 	);
