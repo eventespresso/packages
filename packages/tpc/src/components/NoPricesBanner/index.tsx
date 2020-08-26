@@ -1,5 +1,5 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 import { Banner } from '@eventespresso/components';
 import { createInterpolateElement } from '@eventespresso/utils';
@@ -17,8 +17,9 @@ const NoPricesBanner: React.FC<Props> = ({ context }) => {
 		<Banner status='info' title={title}>
 			<p>
 				{createInterpolateElement(
-					__(
-						'Click the button below to load your <DefaultPricesLink>default prices</DefaultPricesLink> into the calculator.'
+					sprintf(
+						__('Click the button below to load your %s into the calculator.'),
+						'<DefaultPricesLink>' + __('default prices') + '</DefaultPricesLink>'
 					),
 					{
 						DefaultPricesLink: <DefaultPricesLink />,
