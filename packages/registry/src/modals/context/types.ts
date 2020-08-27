@@ -21,20 +21,23 @@ export interface GlobalModalAction {
 	type: GlobalModalActionType;
 }
 
-export interface GlobalModalManager {
+export interface GlobalModalManager<D = AnyObject> {
 	closeModal: (modalName: string) => void;
+	getData: () => GlobalModalState;
+	getModalData: (modalName: string) => D;
 	isModalOpen: (modalName: string) => boolean;
 	openModal: (modalName: string) => void;
-	openModalWithData: (modalName: string, data: AnyObject) => void;
-	setModalData: (modalName: string, data: AnyObject) => void;
+	openModalWithData: (modalName: string, data: D) => void;
+	setModalData: (modalName: string, data: D) => void;
 }
 
 export type GlobalModalStateReducer = Reducer<GlobalModalState, GlobalModalAction>;
 
-export interface GlobalModal {
+export interface GlobalModal<D = AnyObject> {
 	close: () => void;
+	getData: () => D;
 	isOpen: boolean;
 	open: () => void;
-	openWithData: (data: AnyObject) => void;
-	setData: (data: AnyObject) => void;
+	openWithData: (data: D) => void;
+	setData: (data: D) => void;
 }

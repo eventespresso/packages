@@ -19,11 +19,30 @@ const useGlobalModalManager = (): GMM => {
 		dispatch({ type: 'CLOSE_MODAL', modalName });
 	}, []);
 
+	const stateStr = JSON.stringify(state);
+
+	const getData: GMM['getData'] = useCallback(
+		() => {
+			return state;
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[stateStr]
+	);
+
+	const getModalData: GMM['getModalData'] = useCallback(
+		(modalName) => {
+			return state[modalName]?.data;
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[stateStr]
+	);
+
 	const isModalOpen: GMM['isModalOpen'] = useCallback(
 		(modalName) => {
-			return state[modalName]?.isOpen;
+			return Boolean(state[modalName]?.isOpen);
 		},
-		[state]
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[stateStr]
 	);
 
 	const openModal: GMM['openModal'] = useCallback((modalName) => {
@@ -42,12 +61,14 @@ const useGlobalModalManager = (): GMM => {
 	return useMemo<GMM>(
 		() => ({
 			closeModal,
+			getData,
+			getModalData,
 			isModalOpen,
 			openModal,
 			openModalWithData,
 			setModalData,
 		}),
-		[closeModal, isModalOpen, openModal, openModalWithData, setModalData]
+		[closeModal, getData, getModalData, isModalOpen, openModal, openModalWithData, setModalData]
 	);
 };
 
