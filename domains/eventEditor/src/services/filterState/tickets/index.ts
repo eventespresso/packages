@@ -1,6 +1,6 @@
 export { default as useTicketsListFilterState } from './useTicketsListFilterState';
 
-export { default as useTicketsFilterBarService } from './useTicketsFilterBarService';
+export { default as useRegisterIsChainedFilter } from './useRegisterIsChainedFilter';
 
 export { default as useTicketsListFilterStateManager } from './useTicketsListFilterStateManager';
 

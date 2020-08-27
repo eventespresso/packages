@@ -1,22 +1,19 @@
 import { useEffect, useRef } from 'react';
 
 import { FilterBarService } from '@eventespresso/registry';
-import { ticketSalesFilter, ticketStatusFilter, sortTickets } from '@eventespresso/predicates';
 import { domain, ticketsList } from '@eventespresso/edtr-services';
-import { entityListSearch } from '@eventespresso/utils';
 import type { Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
 import useIsChainedFilter from './useIsChainedFilter';
 
 type Domain = typeof domain;
 type TFSM = TicketsFilterStateManager;
 
-const {
-	registerFilter: registerTicketsFilter,
-	registerSearch: registerTicketsSearch,
-	registerSorter: registerTicketsSorter,
-} = new FilterBarService<Domain, typeof ticketsList, Ticket, TFSM>(domain, ticketsList);
+const { registerFilter: registerTicketsFilter } = new FilterBarService<Domain, typeof ticketsList, Ticket, TFSM>(
+	domain,
+	ticketsList
+);
 
-const useTicketsFilterBarService = (): void => {
+const useRegisterIsChainedFilter: VoidFunction = () => {
 	/**
 	 * isChained filter needs special treatment :)
 	 *
@@ -48,40 +45,6 @@ const useTicketsFilterBarService = (): void => {
 			unSubscribeIsChainedFilter();
 		};
 	}, [isChainedFilter, isChainedDeps]);
-
-	useEffect(() => {
-		// Register sales filter
-		const unSubscribeSalesFilter = registerTicketsFilter(({ entityList, filterState }) => {
-			return ticketSalesFilter({ sales: filterState.sales, tickets: entityList });
-		}, 11);
-
-		// Register status filter
-		const unSubscribeStatusFilter = registerTicketsFilter(({ entityList, filterState }) => {
-			return ticketStatusFilter({ status: filterState.status, tickets: entityList });
-		}, 10); // 10 by default
-
-		// Register search
-		const unSubscribeTicketsSearch = registerTicketsSearch(({ entityList, filterState }) => {
-			return entityListSearch<Ticket>({
-				entities: entityList,
-				searchFields: ['name', 'description'],
-				searchText: filterState.searchText,
-			});
-		});
-
-		// Register sorter
-		const unSubscribeTicketsSorter = registerTicketsSorter(({ entityList, filterState }) => {
-			return sortTickets({ tickets: entityList, sortBy: filterState.sortBy });
-		});
-
-		// Housekeeping
-		return (): void => {
-			unSubscribeSalesFilter();
-			unSubscribeStatusFilter();
-			unSubscribeTicketsSearch();
-			unSubscribeTicketsSorter();
-		};
-	}, []);
 };
 
-export default useTicketsFilterBarService;
+export default useRegisterIsChainedFilter;
