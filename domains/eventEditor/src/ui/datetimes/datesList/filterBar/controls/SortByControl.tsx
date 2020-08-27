@@ -2,10 +2,8 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { SelectInput } from '@eventespresso/components';
 import { SortBy } from '@eventespresso/edtr-services';
-import { getPropsAreEqual } from '@eventespresso/utils';
-import { DatetimesFilterStateManager } from '@edtrServices/filterState';
-
-type SortByControlProps = Pick<DatetimesFilterStateManager, 'sortBy' | 'setSortBy'>;
+import { useDatesListFilterState } from '@edtrServices/filterState';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 type SortByOptions = Array<{
 	value: SortBy;
@@ -14,8 +12,9 @@ type SortByOptions = Array<{
 /**
  * filter for controlling the sorting of a list of Event Dates
  */
-const SortByControl: React.FC<SortByControlProps> = React.memo(({ sortBy, setSortBy }) => {
-	const options: SortByOptions = [
+const SortByControl: React.FC = () => {
+	const { sortBy, setSortBy } = useDatesListFilterState();
+	const options = useMemoStringify<SortByOptions>([
 		{
 			value: 'date',
 			label: __('start date'),
@@ -32,7 +31,7 @@ const SortByControl: React.FC<SortByControlProps> = React.memo(({ sortBy, setSor
 			value: 'order',
 			label: __('custom order'),
 		},
-	];
+	]);
 
 	return (
 		<SelectInput
@@ -43,6 +42,6 @@ const SortByControl: React.FC<SortByControlProps> = React.memo(({ sortBy, setSor
 			onChangeValue={setSortBy}
 		/>
 	);
-});
+};
 
-export default React.memo(SortByControl, getPropsAreEqual(['sortBy']));
+export default SortByControl;

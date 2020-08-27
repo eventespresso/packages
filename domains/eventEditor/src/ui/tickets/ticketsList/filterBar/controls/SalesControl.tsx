@@ -2,14 +2,11 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { SelectInput } from '@eventespresso/components';
-import { TicketsSales } from '@edtrServices/filterState';
-import { getPropsAreEqual } from '@eventespresso/utils';
-import { TicketsFilterStateManager } from '@edtrServices/filterState';
+import { TicketsSales, useTicketsListFilterState } from '@edtrServices/filterState';
 import { useMemoStringify } from '@eventespresso/hooks';
 
-type StatusControlProps = Pick<TicketsFilterStateManager, 'isChained' | 'sales' | 'setSales'>;
-
-const SalesControl: React.FC<StatusControlProps> = React.memo(({ isChained, sales, setSales }) => {
+const SalesControl: React.FC = () => {
+	const { isChained, sales, setSales } = useTicketsListFilterState();
 	const options = useMemoStringify(
 		[
 			{
@@ -36,6 +33,6 @@ const SalesControl: React.FC<StatusControlProps> = React.memo(({ isChained, sale
 		[isChained]
 	);
 	return <SelectInput label={__('sales')} value={sales} options={options} onChangeValue={setSales} />;
-});
+};
 
-export default React.memo(SalesControl, getPropsAreEqual(['isChained'], ['sales']));
+export default SalesControl;

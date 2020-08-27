@@ -2,8 +2,8 @@ import React from 'react';
 
 import { DatesList } from './datetimes/datesList';
 import { TicketsList } from './tickets/ticketsList';
-// fire up the UI element registry
-import '@edtrServices/registry';
+// fire up the service and UI element registry
+import './registryInit';
 
 import { initToaster } from '@eventespresso/toaster';
 import { useEditorInitialization } from '../hooks';

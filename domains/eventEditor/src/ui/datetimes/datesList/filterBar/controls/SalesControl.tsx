@@ -2,14 +2,11 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { SelectInput } from '@eventespresso/components';
-import { DatetimeSales } from '@edtrServices/filterState';
-import { getPropsAreEqual } from '@eventespresso/utils';
+import { DatetimeSales, useDatesListFilterState } from '@edtrServices/filterState';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { DatetimesFilterStateManager } from '@edtrServices/filterState';
 
-type StatusControlProps = Pick<DatetimesFilterStateManager, 'sales' | 'setSales'>;
-
-const SalesControl: React.FC<StatusControlProps> = React.memo(({ sales, setSales }) => {
+const SalesControl: React.FC = () => {
+	const { sales, setSales } = useDatesListFilterState();
 	const options = useMemoStringify([
 		{
 			value: DatetimeSales.all,
@@ -33,6 +30,6 @@ const SalesControl: React.FC<StatusControlProps> = React.memo(({ sales, setSales
 		},
 	]);
 	return <SelectInput label={__('sales')} value={sales} options={options} onChangeValue={setSales} />;
-});
+};
 
-export default React.memo(SalesControl, getPropsAreEqual(['sales']));
+export default SalesControl;
