@@ -12,6 +12,7 @@ import {
 	FilterBarUISubscriptionCb,
 } from '@eventespresso/registry';
 import { domain, EdtrGlobalModals, Datetime, DatetimesFilterStateManager } from '@eventespresso/edtr-services';
+import { FilterBarFilter } from '@eventespresso/components';
 
 import {
 	DisplayStartOrEndDateControl,
@@ -79,33 +80,33 @@ const datesListFilterBar: DatesListFilterBarCallback = ({ listId, registry }) =>
 
 	registerFilterBarItem('status', () => {
 		return (
-			<div className='ee-filter-bar__filter'>
+			<FilterBarFilter>
 				<StatusControl />
-			</div>
+			</FilterBarFilter>
 		);
 	});
 
 	registerFilterBarItem('sales', () => {
 		return (
-			<div className='ee-filter-bar__filter'>
+			<FilterBarFilter>
 				<SalesControl />
-			</div>
+			</FilterBarFilter>
 		);
 	});
 
 	registerFilterBarItem('displayStartOrEndDate', () => {
 		return (
-			<div className='ee-filter-bar__filter'>
+			<FilterBarFilter>
 				<DisplayStartOrEndDateControl />
-			</div>
+			</FilterBarFilter>
 		);
 	});
 
 	registerFilterBarItem('sortBy', () => {
 		return (
-			<div className='ee-filter-bar__filter'>
+			<FilterBarFilter>
 				<SortByControl />
-			</div>
+			</FilterBarFilter>
 		);
 	});
 };

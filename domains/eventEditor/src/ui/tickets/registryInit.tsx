@@ -13,6 +13,7 @@ import {
 } from '@eventespresso/registry';
 import { domain, EdtrGlobalModals, Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
 import { TicketPriceCalculatorButton } from '@eventespresso/tpc';
+import { FilterBarFilter } from '@eventespresso/components';
 
 import {
 	DisplayStartOrEndDateControl,
@@ -71,41 +72,41 @@ const ticketsListFilterBar: TicketsListFilterBarCallback = ({ listId, registry }
 
 	registerFilterBarItem('status', () => {
 		return (
-			<div className='ee-filter-bar__filter'>
+			<FilterBarFilter>
 				<StatusControl />
-			</div>
+			</FilterBarFilter>
 		);
 	});
 
 	registerFilterBarItem('isChained', () => {
 		return (
-			<div className='ee-filter-bar__chain ee-filter-bar__filter ee-filter-bar__filter--micro'>
+			<FilterBarFilter className='ee-filter-bar__chain ee-filter-bar__filter--micro'>
 				<IsChainedButton />
-			</div>
+			</FilterBarFilter>
 		);
 	});
 
 	registerFilterBarItem('sales', () => {
 		return (
-			<div className='ee-filter-bar__filter'>
+			<FilterBarFilter>
 				<SalesControl />
-			</div>
+			</FilterBarFilter>
 		);
 	});
 
 	registerFilterBarItem('displayStartOrEndDate', () => {
 		return (
-			<div className='ee-filter-bar__filter'>
+			<FilterBarFilter>
 				<DisplayStartOrEndDateControl />
-			</div>
+			</FilterBarFilter>
 		);
 	});
 
 	registerFilterBarItem('sortBy', () => {
 		return (
-			<div className='ee-filter-bar__filter'>
+			<FilterBarFilter>
 				<SortByControl />
-			</div>
+			</FilterBarFilter>
 		);
 	});
 };

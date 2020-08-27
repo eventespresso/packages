@@ -23,6 +23,7 @@ export * from './EntityDetailsPanel';
 export * from './EntityEditModal';
 export * from './EntityIDs';
 export * from './EntityList';
+export * from './FilterBarFilter';
 export * from './FormWithConfig';
 export * from './Heading';
 export * from './Legend';
