@@ -13,7 +13,6 @@ const DatePicker: React.FC<FieldRendererProps> = ({ className, input: { onChange
 
 	return (
 		<div className={htmlClass}>
-			sasas
 			<DatepickerAdapter {...input} dateFormat={dateFormat} locale={locale} {...props} onChange={onChange} />
 		</div>
 	);
