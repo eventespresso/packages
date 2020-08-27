@@ -1,0 +1,24 @@
+.ee-edit-calendar-date-range {
+	.ee-popover__content[role='dialog'] {
+		min-width: 18rem;
+	}
+
+	.entity-card & {
+		display: flex;
+		justify-content: center;
+		padding: 0 0 var(--ee-padding-nano);
+	}
+
+	.ee-edit-calendar-date-btn {
+		color: rgba(255, 255, 255, 0.5);
+		display: inline-block;
+
+		&:focus:enabled,
+		&:not(:disabled):not([aria-disabled='true']):not(.is-default):hover,
+		&:not(:disabled):not([aria-disabled='true']):not(.is-default):active {
+			background-color: transparent;
+			color: var(--ee-color-white);
+			box-shadow: none;
+		}
+	}
+}

@@ -79,19 +79,6 @@
 		}
 	}
 
-	.ee-edit-calendar-date-btn {
-		color: rgba(255, 255, 255, 0.5);
-		display: inline-block;
-
-		&:focus:enabled,
-		&:not(:disabled):not([aria-disabled='true']):not(.is-default):hover,
-		&:not(:disabled):not([aria-disabled='true']):not(.is-default):active {
-			background-color: transparent;
-			color: var(--ee-color-white);
-			box-shadow: none;
-		}
-	}
-
 	/* Media Queries for specific screen sizes
  * -------------------------------------------------------------------------*/
 	@media only screen and (max-width: 480px) {

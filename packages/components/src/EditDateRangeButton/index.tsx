@@ -11,6 +11,8 @@ import type { DateRange } from '@eventespresso/dates';
 import { ButtonSize, ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
 import type { EditDateButtonProps } from './types';
 
+import './styles.scss';
+
 export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
 	header,
 	onEditHandler,
@@ -40,7 +42,7 @@ export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
 
 	return (
 		<Popover
-			className={'ee-edit-calendar-date-range'}
+			className='ee-edit-calendar-date-range'
 			closeOnBlur={false}
 			content={content}
 			header={<strong>{headerText}</strong>}

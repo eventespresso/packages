@@ -2,8 +2,11 @@
 	background-color: unset;
 	color: var(--ee-color-blue);
 
-	&--no-icon {
+	&:not(:hover):not(:focus) {
 		border: none;
+	}
+
+	&--no-icon {
 		display: inline;
 		padding: 0;
 	}

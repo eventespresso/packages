@@ -3,6 +3,37 @@
  * © 2020 Event Espresso
  * ------------------------------------------------------------------------- */
 
+.ee-calendar-datetime-picker {
+	position: relative;
+	display: flex;
+
+	&.ee-date-time-range-picker {
+		display: flex;
+		flex-flow: column;
+		align-items: flex-end;
+
+		.date-range-picker {
+			display: block;
+			margin-bottom: var(--ee-margin-small);
+
+			&__separator {
+				margin: var(--ee-margin-micro) 0;
+				text-align: center;
+			}
+		}
+
+		.react-datepicker {
+			&-wrapper {
+				display: block;
+			}
+		}
+
+		.ee-btn-base.ee-icon-button.ee-date-time-range-picker-submit {
+			@extend .ee-date-picker-button;
+		}
+	}
+}
+
 .ee-date-picker-active {
 	border-color: var(--ee-color-primary);
 }
@@ -57,16 +88,6 @@
 		margin: 0;
 		path {
 			fill: currentColor;
-		}
-	}
-}
-.ee-calendar-datetime-picker {
-	position: relative;
-	display: flex;
-	&.ee-date-time-range-picker {
-		.ee-btn-base.ee-icon-button.ee-date-time-range-picker-submit {
-			@extend .ee-date-picker-button;
-			margin-left: var(--ee-margin-tiny);
 		}
 	}
 }
