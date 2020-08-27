@@ -19,3 +19,9 @@ export interface EditorData {
 export interface EventEditorDomData {
 	eventEditor: EventEditorData;
 }
+
+export enum EdtrGlobalModals {
+	EDIT_DATE = 'editDate',
+	EDIT_TICKET = 'editTicket',
+	NEW_DATE_POPOVER = 'newDatePopover',
+}

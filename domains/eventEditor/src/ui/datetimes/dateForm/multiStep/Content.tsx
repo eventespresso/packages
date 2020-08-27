@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import {
 	useDatetimeMutator,
@@ -46,7 +46,8 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 			updateRelatedTickets,
 		]
 	);
-	const formConfig = useDatetimeFormConfig(entity?.id, { onSubmit });
+	const config = useMemo(() => ({ onSubmit }), [onSubmit]);
+	const formConfig = useDatetimeFormConfig(entity?.id, config);
 
 	return <FormWithConfig {...formConfig} formWrapper={ContentWrapper} />;
 };

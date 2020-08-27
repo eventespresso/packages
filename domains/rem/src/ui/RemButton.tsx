@@ -1,18 +1,13 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Button, NewEntityOption } from '@eventespresso/components';
 import { useGlobalModal } from '@eventespresso/registry';
 import { Rem } from '@eventespresso/icons';
+import { RemGlobalModals } from '../types';
 
 const RemButton: React.FC = () => {
-	const { open: openRemModal } = useGlobalModal('rem');
-	const { close: closeOptionsPopover } = useGlobalModal('newDatePopover');
-
-	const onClick = useCallback(() => {
-		closeOptionsPopover();
-		openRemModal();
-	}, [closeOptionsPopover, openRemModal]);
+	const { open: openRemModal } = useGlobalModal(RemGlobalModals.MAIN);
 
 	return (
 		<NewEntityOption
@@ -21,7 +16,7 @@ const RemButton: React.FC = () => {
 			icon={Rem}
 			title={__('Recurring Dates')}
 		>
-			<Button buttonType='primary' onClick={onClick}>
+			<Button buttonType='primary' onClick={openRemModal}>
 				{__('Add Recurring Dates')}
 			</Button>
 		</NewEntityOption>

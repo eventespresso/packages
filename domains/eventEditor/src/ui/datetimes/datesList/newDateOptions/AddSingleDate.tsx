@@ -1,29 +1,28 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { useDisclosure } from '@chakra-ui/hooks';
 
 import { Button, ButtonSize, NewEntityOption } from '@eventespresso/components';
+import { EdtrGlobalModals } from '@eventespresso/edtr-services';
+import { useGlobalModal } from '@eventespresso/registry';
 import { CalendarAlt } from '@eventespresso/icons';
-import { Container as FormContainer } from '@edtrUI/datetimes/dateForm/multiStep';
+
+import { EntityEditModalData } from '@edtrUI/types';
 
 type AddSingleDateProps = {
 	isOnlyButton?: boolean;
 };
 
 const AddSingleDate: React.FC<AddSingleDateProps> = ({ isOnlyButton }) => {
-	const { isOpen, onClose, onOpen: onAddNew } = useDisclosure();
+	const { open } = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_DATE);
 
 	const output = (
-		<>
-			<Button
-				buttonText={isOnlyButton ? __('Add New Date') : __('Add Single Date')}
-				onClick={onAddNew}
-				buttonSize={isOnlyButton ? ButtonSize.BIG : null}
-				buttonType='primary'
-				icon={isOnlyButton && CalendarAlt}
-			/>
-			{isOpen && <FormContainer isOpen={true} onClose={onClose} />}
-		</>
+		<Button
+			buttonText={isOnlyButton ? __('Add New Date') : __('Add Single Date')}
+			onClick={open}
+			buttonSize={isOnlyButton ? ButtonSize.BIG : null}
+			buttonType='primary'
+			icon={isOnlyButton && CalendarAlt}
+		/>
 	);
 
 	if (isOnlyButton) {

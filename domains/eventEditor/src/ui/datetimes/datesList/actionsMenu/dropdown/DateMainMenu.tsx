@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
-import { useDisclosure } from '@chakra-ui/hooks';
 
 import { DropdownMenu, DropdownToggleProps, Copy, Edit, Trash } from '@eventespresso/components';
 import { useConfirmationDialog } from '@eventespresso/components';
+import { EdtrGlobalModals } from '@eventespresso/edtr-services';
+import { useGlobalModal } from '@eventespresso/registry';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { Container as FormContainer } from '@edtrUI/datetimes/dateForm/multiStep';
 
 import type { DateMainMenuProps } from './types';
 import useActions from './useActions';
+import { EntityEditModalData } from '@edtrUI/types';
 
 const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 	const { copyDate, trashDate, trashed } = useActions({ datetimeId: datetime.id });
-
-	const { isOpen, onClose, onOpen: onOpenEditModal } = useDisclosure();
+	const { openWithData } = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_DATE);
 
 	const title = trashed ? __('Permanently delete Datetime?') : __('Move Datetime to Trash?');
 	const message = trashed
@@ -36,6 +36,10 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 
 	const trashDateTitle = trashed ? __('delete permanently') : __('trash datetime');
 
+	const onOpenEditModal = useCallback(() => {
+		openWithData({ entityId: datetime.id });
+	}, [datetime.id, openWithData]);
+
 	return (
 		<>
 			<DropdownMenu toggleProps={toggleProps}>
@@ -44,7 +48,6 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 				<Trash onClick={onOpen} title={trashDateTitle} />
 			</DropdownMenu>
 			{confirmationDialog}
-			<FormContainer datetimeId={datetime.id} isOpen={isOpen} onClose={onClose} />
 		</>
 	);
 };
