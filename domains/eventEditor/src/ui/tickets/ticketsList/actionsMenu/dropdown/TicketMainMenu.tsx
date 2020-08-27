@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
-import { useDisclosure } from '@chakra-ui/hooks';
 
 import { Copy, Edit, Trash, DropdownMenu, DropdownToggleProps, useConfirmationDialog } from '@eventespresso/components';
+import { EdtrGlobalModals } from '@eventespresso/edtr-services';
+import { useGlobalModal } from '@eventespresso/registry';
 import { useMemoStringify } from '@eventespresso/hooks';
 
-import { Container as FormContainer } from '@edtrUI/tickets/ticketForm/multiStep';
 import type { TicketMainMenuProps } from './types';
 import useActions from './useActions';
+import { EntityEditModalData } from '@edtrUI/types';
 
 const TicketMainMenu: React.FC<TicketMainMenuProps> = ({ ticket }) => {
 	const { copyTicket, trashTicket, trashed } = useActions({ ticketId: ticket.id });
-
-	const { isOpen, onClose, onOpen: onOpenEditModal } = useDisclosure();
+	const { openWithData } = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_TICKET);
 
 	const title = trashed ? __('Permanently delete Ticket?') : __('Move Ticket to Trash?');
 	const message = trashed
@@ -32,6 +32,10 @@ const TicketMainMenu: React.FC<TicketMainMenuProps> = ({ ticket }) => {
 
 	const trashTicketTitle = trashed ? __('delete permanently') : __('trash ticket');
 
+	const onOpenEditModal = useCallback(() => {
+		openWithData({ entityId: ticket.id });
+	}, [ticket.id, openWithData]);
+
 	return (
 		<>
 			<DropdownMenu toggleProps={toggleProps}>
@@ -40,7 +44,6 @@ const TicketMainMenu: React.FC<TicketMainMenuProps> = ({ ticket }) => {
 				<Trash onClick={onOpen} title={trashTicketTitle} />
 			</DropdownMenu>
 			{confirmationDialog}
-			<FormContainer ticketId={ticket.id} isOpen={isOpen} onClose={onClose} />
 		</>
 	);
 };

@@ -1,28 +1,26 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { useDisclosure } from '@chakra-ui/hooks';
 
 import { Button, ButtonSize, NewEntityOption } from '@eventespresso/components';
 import { Ticket } from '@eventespresso/icons';
-import { Container as FormContainer } from '@edtrUI/tickets/ticketForm/multiStep';
+import { useGlobalModal } from '@eventespresso/registry';
+import { EntityEditModalData } from '@edtrUI/types';
+import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 
 type AddSingleTicketProps = {
 	isOnlyButton?: boolean;
 };
 
 const AddSingleTicket: React.FC<AddSingleTicketProps> = ({ isOnlyButton }) => {
-	const { isOpen, onClose, onOpen: onAddNew } = useDisclosure();
+	const { open } = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_TICKET);
 
 	const output = (
-		<>
-			<Button
-				buttonText={__('Add New Ticket')}
-				onClick={onAddNew}
-				buttonSize={isOnlyButton ? ButtonSize.BIG : null}
-				icon={isOnlyButton ? Ticket : null}
-			/>
-			{isOpen && <FormContainer isOpen={true} onClose={onClose} />}
-		</>
+		<Button
+			buttonText={__('Add New Ticket')}
+			onClick={open}
+			buttonSize={isOnlyButton ? ButtonSize.BIG : null}
+			icon={isOnlyButton ? Ticket : null}
+		/>
 	);
 
 	if (isOnlyButton) {
