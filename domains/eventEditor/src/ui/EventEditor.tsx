@@ -2,6 +2,7 @@ import React from 'react';
 
 import { DatesList } from './datetimes/datesList';
 import { TicketsList } from './tickets/ticketsList';
+// fire up the UI element registry
 import '@edtrServices/registry';
 
 import { initToaster } from '@eventespresso/toaster';

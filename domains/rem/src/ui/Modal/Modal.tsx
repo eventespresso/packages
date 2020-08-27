@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { ModalWithAlert } from '@eventespresso/components';
 
 import { ContentBody, ContentFooter } from '../MultiStep';
-import { BaseProps } from '../types';
+import type { BaseProps } from '../types';
 
 import './styles.scss';
 
