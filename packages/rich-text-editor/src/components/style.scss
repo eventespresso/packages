@@ -20,11 +20,18 @@ $ul: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' 
 			background-repeat: no-repeat;
 			background-size: contain;
 			font-size: 0;
-			width: 19px;
+		}
+
+		&__ordered-list-item,
+		&__unordered-list-item {
+			background-position-y: 3.5px;
+			width: 15px;
 		}
 
 		&__blockquote {
 			background-image: $blockquote;
+			background-position-y: 3px;
+			width: 16px;
 		}
 
 		&__bold {
