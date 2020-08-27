@@ -19,7 +19,7 @@ const Preview: React.FC<PreviewProps> = ({
 		return null;
 	}
 
-	const textInput = <TabbableText onClick={onRequestEdit} text={value} tooltip={tooltip} />;
+	const textInput = <TabbableText bottomBorderDashed onClick={onRequestEdit} text={value} tooltip={tooltip} />;
 
 	if (lineCount && value.length > lineLength) {
 		return <Dotdotdot clamp={lineCount}>{textInput}</Dotdotdot>;

@@ -2,12 +2,10 @@
 	&__infinity {
 		&:focus,
 		&.ee-infinity-sign:focus {
-			color: var(--ee-color-primary-low-contrast) !important;
 			outline: none;
 		}
 
 		&.ee-infinity-sign {
-			color: var(--ee-default-text-color);
 			font-size: calc(var(--ee-font-size-default) * 1.6);
 			height: 2.625rem; // 42px
 			width: 2.625rem; // 42px

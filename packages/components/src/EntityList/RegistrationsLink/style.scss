@@ -5,10 +5,7 @@
 	border-color: transparent;
 	border-radius: var(--ee-border-radius-small);
 	box-shadow: none;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	color: var(--ee-default-text-color);
 	display: inline-flex;
 	font-size: var(--ee-font-size-default);
 	height: var(--ee-icon-button-size);
@@ -26,29 +23,5 @@
 
 	path {
 		fill: var(--ee-default-text-color);
-	}
-
-	&:visited {
-		color: var(--ee-color-primary-high-contrast);
-
-		path {
-			fill: var(--ee-color-primary-high-contrast);
-		}
-	}
-
-	&:hover {
-		color: var(--ee-color-primary);
-
-		path {
-			fill: var(--ee-color-primary);
-		}
-	}
-
-	&:active {
-		color: var(--ee-color-primary-low-contrast);
-
-		path {
-			fill: var(--ee-color-primary-low-contrast);
-		}
 	}
 }

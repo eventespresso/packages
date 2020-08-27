@@ -3,6 +3,7 @@
 	border-color: var(--ee-background-color); // essentially no border by default
 	border-radius: var(--ee-border-radius-small);
 	border-width: 3px;
+	color: var(--ee-color-blue);
 	cursor: pointer;
 	display: inline-flex;
 	justify-content: center;
@@ -20,5 +21,15 @@
 	&:focus {
 		border-width: 3px;
 		border-color: var(--ee-color-primary);
+	}
+
+	&--border-bottom-dashed {
+		border-bottom-color: var(--ee-color-blue);
+		border-bottom-style: dashed;
+
+		&:hover {
+			border-bottom-color: var(--ee-color-primary-low-contrast);
+			border-bottom-style: solid;
+		}
 	}
 }

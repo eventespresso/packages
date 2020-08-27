@@ -10,9 +10,7 @@ interface Props extends LinkProps {
 }
 
 const RegistrationsLink: React.FC<Props> = ({ href, ...props }) => {
-	return (
-		<Link className='ee-editor-details-reg-url-link' href={href} icon={<Groups /* svgSize={24} */ />} {...props} />
-	);
+	return <Link className='ee-editor-details-reg-url-link' external href={href} icon={<Groups />} {...props} />;
 };
 
 export default React.memo(RegistrationsLink);
