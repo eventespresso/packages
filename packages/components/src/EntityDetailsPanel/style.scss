@@ -36,7 +36,7 @@
 	.ee-entity-details {
 		display: flex;
 		flex-direction: column-reverse;
-		max-width: calc(var(--ee-font-size-tiny) * 7);
+		// max-width: calc(var(--ee-font-size-tiny) * 7);
 		width: 100%;
 
 		.ee-inline-edit-input {
