@@ -40,33 +40,16 @@
 }
 
 .preview-wrapper {
+	display: inline-flex;
 	position: relative;
 
 	.badge {
-		align-items: center;
-		background: var(--ee-color-dark-blue);
-		border-radius: var(--ee-border-radius-full);
-		box-sizing: border-box;
-		box-shadow: var(--ee-box-shadow-tiny);
-		color: var(--ee-color-white);
-		display: flex;
-		font-size: var(--ee-font-size-tiny);
-		font-weight: normal;
-		height: 20px;
-		justify-content: center;
-		line-height: var(--ee-font-size-micro);
-		width: 20px;
-		padding: 0;
+		background-color: transparent;
+		height: 1.25rem;
+		width: 1.25rem;
 		position: absolute;
-		right: -3px;
-		text-align: center;
-		text-shadow: var(--ee-text-shadow-inset);
-		top: -3px;
-		vertical-align: top;
-		z-index: 1;
-
-		svg {
-			margin: 0 !important;
-		}
+		top: 0;
+		right: -1rem;
+		z-index: 99;
 	}
 }
