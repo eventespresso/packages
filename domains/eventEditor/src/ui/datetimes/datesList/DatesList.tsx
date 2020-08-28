@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { TypeName } from '@eventespresso/services';
@@ -11,12 +11,18 @@ import DatesListButtons from './DatesListButtons';
 import { legendConfig } from './config';
 import { RenderCardView } from './cardView';
 import { RenderTableView } from './tableView';
+import { ActiveDatesFilters } from './filterBar';
 
 const DatesList: React.FC = () => {
 	const filterState = useDatesListFilterState();
 
+	const renderList = useCallback(() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />), [
+		filterState.view,
+	]);
+
 	return (
 		<EntityList
+			activeFilters={<ActiveDatesFilters />}
 			domain={domain}
 			entityType={TypeName.datetimes}
 			filterState={filterState}
@@ -25,7 +31,7 @@ const DatesList: React.FC = () => {
 			legendConfig={legendConfig}
 			listId={datesList}
 			loadingText={__('loading event dates...')}
-			renderList={() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />)}
+			renderList={renderList}
 		/>
 	);
 };

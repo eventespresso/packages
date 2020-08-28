@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { TypeName } from '@eventespresso/services';
@@ -11,12 +11,18 @@ import TicketsListButtons from './TicketsListButtons';
 import { legendConfig } from './config';
 import { RenderCardView } from './cardView';
 import { RenderTableView } from './tableView';
+import { ActiveTicketsFilters } from './filterBar';
 
 const TicketsList: React.FC = () => {
 	const filterState = useTicketsListFilterState();
 
+	const renderList = useCallback(() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />), [
+		filterState.view,
+	]);
+
 	return (
 		<EntityList
+			activeFilters={<ActiveTicketsFilters />}
 			domain={domain}
 			entityType={TypeName.tickets}
 			filterState={filterState}
@@ -25,7 +31,7 @@ const TicketsList: React.FC = () => {
 			legendConfig={legendConfig}
 			listId={ticketsList}
 			loadingText={__('loading tickets...')}
-			renderList={() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />)}
+			renderList={renderList}
 		/>
 	);
 };
