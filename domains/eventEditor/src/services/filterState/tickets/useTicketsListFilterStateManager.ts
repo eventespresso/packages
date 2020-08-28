@@ -1,10 +1,13 @@
-import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import reducer from './reducer';
-import { TicketsFilterState, TicketsFilterStateManager, TicketsSales, TicketsStatus } from './types';
 import { DisplayStartOrEndDate, SortBy } from '@eventespresso/edtr-services';
 import { useEntityListFilterStateManager } from '@eventespresso/components';
 import { useEdtrState } from '@eventespresso/edtr-services';
+import { useSessionStorageReducer } from '@eventespresso/services';
+
+import reducer from './reducer';
+import { TicketsSales, TicketsStatus } from './types';
+import type { TicketsFilterState, TicketsFilterStateManager } from './types';
 
 type FSM = TicketsFilterStateManager;
 
@@ -16,7 +19,8 @@ const initialState: TicketsFilterState = {
 };
 
 const useTicketsListFilterStateManager = (): FSM => {
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const [state, dispatch] = useSessionStorageReducer('ticket-list-filter-state', reducer, initialState);
+
 	const [visibleDatesStr, setVisibleDatesStr] = useState('');
 
 	const { visibleDatetimeIds } = useEdtrState();
@@ -41,12 +45,15 @@ const useTicketsListFilterStateManager = (): FSM => {
 		[setPageNumber, state]
 	);
 
-	const setDisplayStartOrEndDate: FSM['setDisplayStartOrEndDate'] = useCallback((displayStartOrEndDate) => {
-		dispatch({
-			type: 'SET_DISPLAY_START_OR_END_DATE',
-			displayStartOrEndDate,
-		});
-	}, []);
+	const setDisplayStartOrEndDate: FSM['setDisplayStartOrEndDate'] = useCallback(
+		(displayStartOrEndDate) => {
+			dispatch({
+				type: 'SET_DISPLAY_START_OR_END_DATE',
+				displayStartOrEndDate,
+			});
+		},
+		[dispatch]
+	);
 
 	const setSales: FSM['setSales'] = useCallback(
 		(sales) => {
@@ -57,7 +64,7 @@ const useTicketsListFilterStateManager = (): FSM => {
 				sales,
 			});
 		},
-		[resetPageNumber]
+		[dispatch, resetPageNumber]
 	);
 
 	const setStatus: FSM['setStatus'] = useCallback(
@@ -68,14 +75,14 @@ const useTicketsListFilterStateManager = (): FSM => {
 				status,
 			});
 		},
-		[resetPageNumber]
+		[dispatch, resetPageNumber]
 	);
 
 	const toggleIsChained: FSM['toggleIsChained'] = useCallback(() => {
 		dispatch({
 			type: 'TOGGLE_IS_CHAINED',
 		});
-	}, []);
+	}, [dispatch]);
 
 	return useMemo(
 		() => ({

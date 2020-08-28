@@ -1,9 +1,12 @@
-import { useCallback, useMemo, useReducer } from 'react';
+import { useCallback, useMemo } from 'react';
 
-import reducer from './reducer';
-import { DatetimesFilterState, DatetimesFilterStateManager, DatetimeSales, DatetimeStatus } from './types';
 import { DisplayStartOrEndDate, SortBy } from '@eventespresso/edtr-services';
 import { useEntityListFilterStateManager } from '@eventespresso/components';
+import { useSessionStorageReducer } from '@eventespresso/services';
+
+import reducer from './reducer';
+import { DatetimeSales, DatetimeStatus } from './types';
+import type { DatetimesFilterState, DatetimesFilterStateManager } from './types';
 
 type FSM = DatetimesFilterStateManager;
 
@@ -14,7 +17,7 @@ const initialState: DatetimesFilterState = {
 };
 
 const useDatesListFilterStateManager = (): FSM => {
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const [state, dispatch] = useSessionStorageReducer('dates-list-filter-state', reducer, initialState);
 
 	const entityFilterState = useEntityListFilterStateManager<SortBy>('order');
 
@@ -29,12 +32,15 @@ const useDatesListFilterStateManager = (): FSM => {
 		[setPageNumber, state]
 	);
 
-	const setDisplayStartOrEndDate: FSM['setDisplayStartOrEndDate'] = useCallback((displayStartOrEndDate) => {
-		dispatch({
-			type: 'SET_DISPLAY_START_OR_END_DATE',
-			displayStartOrEndDate,
-		});
-	}, []);
+	const setDisplayStartOrEndDate: FSM['setDisplayStartOrEndDate'] = useCallback(
+		(displayStartOrEndDate) => {
+			dispatch({
+				type: 'SET_DISPLAY_START_OR_END_DATE',
+				displayStartOrEndDate,
+			});
+		},
+		[dispatch]
+	);
 
 	const setSales: FSM['setSales'] = useCallback(
 		(sales) => {
@@ -45,7 +51,7 @@ const useDatesListFilterStateManager = (): FSM => {
 				sales,
 			});
 		},
-		[resetPageNumber]
+		[dispatch, resetPageNumber]
 	);
 
 	const setStatus: FSM['setStatus'] = useCallback(
@@ -57,7 +63,7 @@ const useDatesListFilterStateManager = (): FSM => {
 				status,
 			});
 		},
-		[resetPageNumber]
+		[dispatch, resetPageNumber]
 	);
 
 	return useMemo(

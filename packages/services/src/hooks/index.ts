@@ -1,4 +1,5 @@
 export * from './useTimeZoneTime';
+export * from './useStorage';
 
 export { default as useTimeZoneTime } from './useTimeZoneTime';
 export { default as useSiteDateToUtcISO } from './useSiteDateToUtcISO';

@@ -16,7 +16,8 @@
 	},
 	"sideEffects": false,
 	"dependencies": {
-		"ramda": "^0.27.0"
+		"ramda": "^0.27.0",
+		"react-storage-hooks": "^4.0.1"
 	},
 	"devDependencies": {
 		"@react-workspaces/react-scripts": "3.4.0-alpha-01",
