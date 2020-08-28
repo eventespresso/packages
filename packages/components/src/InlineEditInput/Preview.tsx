@@ -1,7 +1,7 @@
 import React from 'react';
 import Dotdotdot from 'react-dotdotdot';
 
-import { Badge, TextFit } from '@eventespresso/adapters';
+import { TextFit } from '@eventespresso/adapters';
 import { Edit } from '@eventespresso/icons';
 
 import { TabbableText } from '../index';
@@ -24,10 +24,8 @@ const Preview: React.FC<PreviewProps> = ({
 
 	const textInput = (
 		<div className='preview-wrapper'>
-			<Badge className='badge'>
-				<Edit />
-			</Badge>
-			<TabbableText bottomBorderDashed onClick={onRequestEdit} text={value} tooltip={tooltip} />
+			<Edit />
+			<TabbableText onClick={onRequestEdit} text={value} tooltip={tooltip} />
 		</div>
 	);
 

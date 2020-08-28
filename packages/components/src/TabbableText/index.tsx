@@ -8,21 +8,11 @@ import { TabbableTextProps } from './types';
 
 import './style.scss';
 
-export const TabbableText: React.FC<TabbableTextProps> = ({
-	icon,
-	bottomBorderDashed,
-	onClick,
-	richTextContent,
-	...props
-}) => {
+export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, richTextContent, ...props }) => {
 	const tooltip = props.tooltip || __('Click to edit...');
 
 	const spanProps = useMemo(() => {
-		const className = classNames(
-			'ee-tabbable-text',
-			bottomBorderDashed && 'ee-tabbable-text--border-bottom-dashed',
-			props.className
-		);
+		const className = classNames('ee-tabbable-text', props.className);
 
 		const text = props.text || tooltip;
 
@@ -50,7 +40,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({
 			role: 'button',
 			tabIndex: 0,
 		};
-	}, [bottomBorderDashed, icon, onClick, props.className, props.text, richTextContent, tooltip]);
+	}, [icon, onClick, props.className, props.text, richTextContent, tooltip]);
 
 	return (
 		<Tooltip tooltip={tooltip}>

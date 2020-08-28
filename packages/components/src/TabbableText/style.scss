@@ -21,23 +21,4 @@
 		border-width: 3px;
 		border-color: var(--ee-color-primary);
 	}
-
-	&--border-bottom-dashed {
-		position: relative;
-
-		&:after {
-			// border-bottom: 2px dashed var(--ee-color-grey-10);
-			bottom: -2px;
-			content: '';
-			position: absolute;
-			width: 100%;
-		}
-
-		&:hover,
-		&:focus {
-			&:after {
-				display: none;
-			}
-		}
-	}
 }
