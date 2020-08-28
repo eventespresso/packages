@@ -6,6 +6,7 @@ import type { OptionsType } from '@eventespresso/adapters';
 
 import { Intervals, ShiftDateArgs } from './types';
 import { add, sub } from './addSub';
+import { objectToSelectOptions } from '../list';
 
 /**
  * Sets the time of the date object to zero hour
@@ -35,12 +36,7 @@ export const DATE_INTERVALS: Intervals = {
 };
 
 export const intervalsToOptions = (intervals: Intervals, prependEmpty?: boolean): OptionsType => {
-	const options = Object.entries(intervals).map(([value, label]) => ({ value, label }));
-
-	if (prependEmpty) {
-		return [{ label: '', value: '' }, ...options];
-	}
-	return options;
+	return objectToSelectOptions(intervals, prependEmpty);
 };
 
 /**
