@@ -13,6 +13,7 @@ import { EntityPagination } from './pagination';
 import './style.scss';
 
 const EntityList = <E extends Entity, ELFS extends EntityListFilterStateManager<any>>({
+	activeFilters,
 	domain,
 	entityType,
 	filterState,
@@ -55,6 +56,7 @@ const EntityList = <E extends Entity, ELFS extends EntityListFilterStateManager<
 				legendConfig={legendConfig}
 				listId={listId}
 			/>
+			{activeFilters}
 			{entityList}
 			{
 				// disable pogination when sorting

@@ -1,0 +1,36 @@
+.ee-filter-tags__wrapper {
+	align-items: center;
+	display: flex;
+	margin-top: var(--ee-margin-smaller);
+	margin-bottom: var(--ee-margin-smaller);
+}
+
+h6.ee-filter-tags__header {
+	font-weight: 600;
+	margin-right: 1rem;
+}
+
+.ee-filter-bar__tags {
+	display: flex;
+}
+
+.ee-filter-tag {
+	background: var(--ee-color-grey-15);
+	color: var(--ee-color-primary);
+	border: 1px solid var(--ee-color-primary-low-contrast);
+	border-radius: var(--ee-border-radius-small);
+	font-size: var(--ee-font-size-smaller);
+	padding: var(--ee-padding-nano) var(--ee-padding-tiny) var(--ee-padding-micro);
+	position: relative;
+	margin-right: var(--ee-margin-smaller);
+}
+
+button.ee-filter-tag__close-btn {
+	cursor: pointer;
+	margin-left: 0.5rem;
+	font-size: var(--ee-font-size-default);
+	opacity: 0.6;
+}
+button.ee-filter-tag__close-btn:hover {
+	opacity: 1;
+}

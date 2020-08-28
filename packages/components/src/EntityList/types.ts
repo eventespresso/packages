@@ -45,6 +45,7 @@ export interface EntityTableProps<E extends Entity, FS extends ELFSM> extends En
 export type EntityListComponent<E extends Entity, FS extends ELFSM> = React.ComponentType<EntityListViewProps<E, FS>>;
 
 export interface EntityListProps<E extends Entity, FS extends ELFSM> extends Partial<EntityListViewProps<E, FS>> {
+	activeFilters?: React.ReactNode;
 	domain: string;
 	entityType: TypeName;
 	footer: React.ReactNode;
