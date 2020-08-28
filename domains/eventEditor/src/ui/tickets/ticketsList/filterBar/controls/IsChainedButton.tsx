@@ -6,6 +6,8 @@ import { IconButton } from '@eventespresso/components';
 import { Link, Unlink } from '@eventespresso/icons';
 import { useTicketsListFilterState } from '@edtrServices/filterState';
 
+import { labels } from './options';
+
 /**
  * filter for controlling whether Tickets List is chained to the Dates List
  * if true, then only tickets that are related to the dates in the dates list
@@ -27,7 +29,7 @@ const IsChainedButton: React.FC = () => {
 			className={className}
 			icon={icon}
 			id={'ee-ticket-list-filter-bar-is-chained'}
-			label={__('link')}
+			label={labels.isChained}
 			onClick={toggleIsChained}
 			tooltip={tooltip}
 			showTooltipOnMobile
