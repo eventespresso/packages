@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { EntityTable } from '@eventespresso/components';
 import useHeaderRowGenerator from './useHeaderRowGenerator';
 import useBodyRowGenerator from './useBodyRowGenerator';
-import { useTicketsListContext } from '@edtrServices/context/EntityListContext';
+import { useFilteredTickets, useTicketsListFilterState } from '@edtrServices/filterState';
 import { useReorderTickets } from '@eventespresso/edtr-services';
 import { checkFeatureFlag } from '@eventespresso/config';
 import { withBulkEdit } from '@eventespresso/services';
@@ -15,7 +15,8 @@ const isBulkEditEnabled = checkFeatureFlag('bulkEdit');
  * Displays tickets in a standard list table like view
  */
 const TableView: React.FC = () => {
-	const { filterState, filteredEntities } = useTicketsListContext();
+	const filterState = useTicketsListFilterState();
+	const filteredEntities = useFilteredTickets();
 
 	const { sortResponder: sortTickets } = useReorderTickets(filteredEntities);
 

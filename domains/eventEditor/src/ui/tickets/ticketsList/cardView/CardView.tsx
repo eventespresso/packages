@@ -1,10 +1,10 @@
 import React from 'react';
 import { EntityCardList } from '@eventespresso/components';
 import TicketCard from './TicketCard';
-import { useTicketsListContext } from '@edtrServices/context/EntityListContext';
+import { useFilteredTickets } from '@edtrServices/filterState';
 
 const CardView: React.FC = () => {
-	const { filteredEntities } = useTicketsListContext();
+	const filteredEntities = useFilteredTickets();
 
 	return <EntityCardList EntityCard={TicketCard} entities={filteredEntities} />;
 };
