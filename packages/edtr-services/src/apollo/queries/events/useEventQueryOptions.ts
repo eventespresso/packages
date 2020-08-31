@@ -1,17 +1,21 @@
+import { useMemo } from 'react';
+
+import { ReadQueryOptions } from '@eventespresso/data';
 import useEventId from '../events/useEventId';
 import { GET_EVENT } from './queries';
-import { ReadQueryOptions } from '@eventespresso/data';
 
 const useEventQueryOptions = (): ReadQueryOptions => {
 	const id = useEventId();
-	const options: ReadQueryOptions = {
-		query: GET_EVENT,
-		variables: {
-			id,
-		},
-	};
 
-	return options;
+	return useMemo(
+		() => ({
+			query: GET_EVENT,
+			variables: {
+				id,
+			},
+		}),
+		[id]
+	);
 };
 
 export default useEventQueryOptions;

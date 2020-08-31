@@ -1,7 +1,9 @@
-import type { Event, EventData } from '../../types';
 import { useCacheQuery } from '@eventespresso/data';
 import useEventQueryOptions from './useEventQueryOptions';
 import { useSystemNotifications } from '@eventespresso/toaster';
+import { useMemoStringify } from '@eventespresso/hooks';
+
+import type { Event, EventData } from '../../types';
 
 const useEvent = (): Event => {
 	const options = useEventQueryOptions();
@@ -16,7 +18,7 @@ const useEvent = (): Event => {
 		},
 	});
 
-	return data?.espressoEvent;
+	return useMemoStringify(data?.espressoEvent);
 };
 
 export default useEvent;

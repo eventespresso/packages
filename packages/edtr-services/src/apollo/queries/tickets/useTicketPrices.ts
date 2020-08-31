@@ -16,20 +16,22 @@ const useTicketPrices = (ticketId: EntityId | Array<EntityId>): Price[] => {
 	const prices = usePrices();
 	const { getRelations } = useRelations();
 
-	// if single ticketId is passed, convert it to array.
-	const ticketIds = Array.isArray(ticketId) ? ticketId : [ticketId];
 	// get related price ids for all the ticket ids
-	let allRelatedPricesIds = ticketIds.reduce<Array<EntityId>>((priceIds, ticketId) => {
-		const relatedPricesIds = getRelations({
-			entity: 'tickets',
-			entityId: ticketId,
-			relation: 'prices',
-		});
-		return [...priceIds, ...relatedPricesIds];
-	}, []);
+	const allRelatedPricesIds = useMemo(() => {
+		// if single ticketId is passed, convert it to array.
+		const ticketIds = Array.isArray(ticketId) ? ticketId : [ticketId];
+		const relatedPricesIds = ticketIds.reduce<Array<EntityId>>((priceIds, ticketId) => {
+			const relatedPricesIds = getRelations({
+				entity: 'tickets',
+				entityId: ticketId,
+				relation: 'prices',
+			});
+			return [...priceIds, ...relatedPricesIds];
+		}, []);
 
-	// default taxes may be repeated.
-	allRelatedPricesIds = uniq(allRelatedPricesIds);
+		// default taxes may be repeated.
+		return uniq(relatedPricesIds);
+	}, [getRelations, ticketId]);
 
 	const relatedPriceIdsStr = JSON.stringify(allRelatedPricesIds);
 

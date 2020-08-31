@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { useStatus, TypeName } from '@eventespresso/services';
@@ -42,10 +42,13 @@ const useFetchDatetimes = (): FetchQueryResult<DatetimesList> => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loading]);
 
-	return {
-		...result,
-		loading,
-	};
+	return useMemo(
+		() => ({
+			...result,
+			loading,
+		}),
+		[loading, result]
+	);
 };
 
 export default useFetchDatetimes;

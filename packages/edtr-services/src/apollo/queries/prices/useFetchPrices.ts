@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { useQuery } from '@eventespresso/data';
 import { __ } from '@wordpress/i18n';
 
@@ -70,11 +70,14 @@ const useFetchPrices = (skipFetch: boolean = null): Partial<FetchQueryResult<Pri
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loading]);
 
-	return {
-		data,
-		error,
-		loading,
-	};
+	return useMemo(
+		() => ({
+			data,
+			error,
+			loading,
+		}),
+		[data, error, loading]
+	);
 };
 
 export default useFetchPrices;

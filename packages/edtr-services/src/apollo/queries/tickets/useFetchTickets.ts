@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { useQuery } from '@eventespresso/data';
 import { __ } from '@wordpress/i18n';
 
@@ -46,10 +46,13 @@ const useFetchTickets = (skipFetch: boolean = null): FetchQueryResult<TicketsLis
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loading]);
 
-	return {
-		...result,
-		loading,
-	};
+	return useMemo(
+		() => ({
+			...result,
+			loading,
+		}),
+		[loading, result]
+	);
 };
 
 export default useFetchTickets;
