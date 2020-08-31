@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { assocPath } from 'ramda';
 
 import { useRelations } from '@eventespresso/services';
@@ -10,7 +10,9 @@ type Callback = (price: Price) => TpcPriceModifier;
 const usePriceToTpcModifier = (): Callback => {
 	const { getRelations } = useRelations();
 	const allPriceTypes = usePriceTypes();
-	const priceTypeIdOrder = allPriceTypes.reduce((acc, { id, order }) => assocPath([id], order, acc), {});
+	const priceTypeIdOrder = useMemo(() => {
+		return allPriceTypes.reduce((acc, { id, order }) => assocPath([id], order, acc), {});
+	}, [allPriceTypes]);
 
 	return useCallback<Callback>(
 		(price) => {
