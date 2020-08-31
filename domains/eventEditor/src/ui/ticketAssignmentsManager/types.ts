@@ -55,18 +55,6 @@ export interface DataStateManager extends AssignmentManager {
 	hasOrphanTickets: () => boolean;
 }
 
-export interface ModalContainerProps extends BaseProps, Omit<Disclosure, 'onOpen'> {}
-
-export interface Disclosure {
-	isOpen: boolean;
-	onOpen: VoidFunction;
-	onClose: VoidFunction;
-}
-
-export interface TicketAssignmentsManager extends Disclosure {
-	ModalContainer: React.ComponentType<ModalContainerProps>;
-}
-
 export interface DatesAndTickets {
 	datetimes: Datetime[];
 	tickets: Ticket[];

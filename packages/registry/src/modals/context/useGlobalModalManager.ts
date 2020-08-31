@@ -31,7 +31,7 @@ const useGlobalModalManager = (): GMM => {
 
 	const getModalData: GMM['getModalData'] = useCallback(
 		(modalName) => {
-			return state[modalName]?.data;
+			return state[modalName]?.data || {};
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[stateStr]

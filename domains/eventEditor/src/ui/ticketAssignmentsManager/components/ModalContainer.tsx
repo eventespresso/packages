@@ -1,11 +1,17 @@
 import React, { useMemo } from 'react';
 import { sprintf, __ } from '@wordpress/i18n';
 
-import { TicketAssignmentsManagerModal } from '../components';
-import type { ModalContainerProps } from '../types';
+import { EdtrGlobalModals } from '@eventespresso/edtr-services';
+import { useGlobalModal } from '@eventespresso/registry';
+
+import TicketAssignmentsManagerModal from './TicketAssignmentsManagerModal';
+import type { BaseProps } from '../types';
 import { withContext } from '../context';
 
-const ModalContainer: React.FC<ModalContainerProps> = ({ isOpen, onClose, ...props }) => {
+const ModalContainer: React.FC = () => {
+	const { getData, isOpen, close: onClose } = useGlobalModal<BaseProps>(EdtrGlobalModals.TAM);
+	const props = getData();
+
 	const { assignmentType, entity } = props;
 
 	let title = '';

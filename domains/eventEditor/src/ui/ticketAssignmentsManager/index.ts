@@ -1,3 +1,2 @@
-export { default as useTicketAssignmentsManager } from './useTicketAssignmentsManager';
-
+export * from './components';
 export * from './types';

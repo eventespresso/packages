@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Calendar } from '@eventespresso/icons';
 import { IconButton, EntityListItemProps, ItemCount } from '@eventespresso/components';
-import { useRelatedDatetimes } from '@eventespresso/edtr-services';
-import { useTicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager';
+import { useRelatedDatetimes, EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { TypeName } from '@eventespresso/services';
 import { withIsLoaded } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
-
 import type { Ticket } from '@eventespresso/edtr-services';
 import type { TooltipProps } from '@eventespresso/adapters';
+import { useGlobalModal } from '@eventespresso/registry';
 
-const AssignDatesButton: React.FC<EntityListItemProps<Ticket>> = React.memo(({ entity }) => {
-	const { ModalContainer, onOpen, ...disclosure } = useTicketAssignmentsManager();
+import { BaseProps } from '@edtrUI/ticketAssignmentsManager';
+
+const AssignDatesButton: React.FC<EntityListItemProps<Ticket>> = ({ entity }) => {
+	const { openWithData } = useGlobalModal<BaseProps>(EdtrGlobalModals.TAM);
 
 	const relatedDatetimes = useRelatedDatetimes({
 		entity: 'tickets',
@@ -30,21 +31,22 @@ const AssignDatesButton: React.FC<EntityListItemProps<Ticket>> = React.memo(({ e
 
 	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'left' });
 
+	const onOpen = useCallback(() => {
+		openWithData({ entity, assignmentType: 'forTicket' });
+	}, [entity, openWithData]);
+
 	return (
-		<>
-			<ItemCount count={count} emphasizeZero title={title} zeroCountChar='!'>
-				<IconButton
-					borderless
-					icon={Calendar}
-					onClick={onOpen}
-					tooltip={__('assign dates')}
-					tooltipProps={tooltipProps}
-				/>
-			</ItemCount>
-			<ModalContainer assignmentType='forTicket' entity={entity} {...disclosure} />
-		</>
+		<ItemCount count={count} emphasizeZero title={title} zeroCountChar='!'>
+			<IconButton
+				borderless
+				icon={Calendar}
+				onClick={onOpen}
+				tooltip={__('assign dates')}
+				tooltipProps={tooltipProps}
+			/>
+		</ItemCount>
 	);
-});
+};
 
 export default withIsLoaded<EntityListItemProps<Ticket>>(TypeName.datetimes, ({ entity, loaded }) => {
 	/* Hide TAM unless dates are loaded */
