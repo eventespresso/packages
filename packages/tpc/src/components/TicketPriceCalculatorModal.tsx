@@ -4,17 +4,19 @@ import { __, sprintf } from '@wordpress/i18n';
 import TicketPriceCalculator from './TicketPriceCalculator';
 import useResetButtonProps from '../buttons/useResetButtonProps';
 import useSubmitButtonProps from '../buttons/useSubmitButtonProps';
+import { Modal } from '@eventespresso/adapters';
+
 import { useTPCContext } from '../context';
 import { useDataState } from '../data';
-import { Modal } from '@eventespresso/adapters';
+import { TPCModalProps } from '../types';
 
 import './styles.scss';
 
-const TicketPriceCalculatorModal: React.FC = () => {
+const TicketPriceCalculatorModal: React.FC<TPCModalProps> = ({ onSubmit }) => {
 	const { onClose } = useTPCContext();
 	const { ticket } = useDataState();
 	const resetButtonProps = useResetButtonProps();
-	const submitButtonProps = useSubmitButtonProps();
+	const submitButtonProps = useSubmitButtonProps(onSubmit);
 
 	return (
 		<Modal

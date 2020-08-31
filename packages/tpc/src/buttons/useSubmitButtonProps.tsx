@@ -4,24 +4,20 @@ import { __ } from '@wordpress/i18n';
 
 import type { ButtonProps } from '@eventespresso/adapters';
 
-import { useOnSubmitPrices } from '../hooks';
 import { useDataState } from '../data';
-import { useTPCContext } from '../context';
+import { TPCModalProps } from '../types';
 
-const useSubmitButtonProps = (): ButtonProps => {
-	const { onClose } = useTPCContext();
+const useSubmitButtonProps = (onSubmit: TPCModalProps['onSubmit']): ButtonProps => {
 	const { prices, getData } = useDataState();
 
 	const isDisabled = prices.length && prices.some(({ amount }) => anyPass([isNil, isEmpty])(amount));
 
-	const submitPrices = useOnSubmitPrices();
 	const onClick = useCallback(
 		(e) => {
 			e.preventDefault();
-			submitPrices(getData());
-			onClose();
+			onSubmit(getData());
 		},
-		[submitPrices, getData, onClose]
+		[onSubmit, getData]
 	);
 
 	return useMemo<ButtonProps>(

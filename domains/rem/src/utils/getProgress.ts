@@ -27,7 +27,7 @@ export const getTotalProgress = ({
 	const totalItems = sharedTicketsCount + nonSharedTicketsCount * generatedDatesCount + generatedDatesCount;
 	const totalProgress = datetimes + tickets;
 
-	return (totalProgress / totalItems) * 100;
+	return totalItems && (totalProgress / totalItems) * 100;
 };
 
 export default getTotalProgress;
