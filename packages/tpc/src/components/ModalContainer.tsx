@@ -1,16 +1,22 @@
 import React, { useMemo } from 'react';
 
-import TicketPriceCalculatorModal from './TicketPriceCalculatorModal';
-import type { ModalContainerProps } from '../types';
-import { withContext } from '../context';
+import { useGlobalModal } from '@eventespresso/registry';
 
-const ModalContainer: React.FC<ModalContainerProps> = ({ isOpen, onClose, ...props }) => {
-	const contextProps = useMemo(() => ({ ...props, onClose }), [onClose, props]);
+import TicketPriceCalculatorModal from './TicketPriceCalculatorModal';
+import { withContext } from '../context';
+import type { BaseProps } from '../types';
+import { EdtrGlobalModals } from '@eventespresso/edtr-services';
+
+const ModalContainer: React.FC = () => {
+	const { getData, isOpen, close: onClose } = useGlobalModal<BaseProps>(EdtrGlobalModals.TPC);
+	const { ticketId } = getData();
+
+	const contextProps = useMemo(() => ({ ticketId, onClose }), [onClose, ticketId]);
 	if (!isOpen) {
 		return null;
 	}
 	const Component = withContext(TicketPriceCalculatorModal, contextProps);
-	return <Component {...props} />;
+	return <Component />;
 };
 
 export default ModalContainer;

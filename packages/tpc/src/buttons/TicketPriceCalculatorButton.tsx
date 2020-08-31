@@ -1,34 +1,36 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Calculator } from '@eventespresso/icons';
 import { IconButton, IconButtonProps } from '@eventespresso/components';
+import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { TypeName, withIsLoaded } from '@eventespresso/services';
 import type { TooltipProps } from '@eventespresso/adapters';
+import { useGlobalModal } from '@eventespresso/registry';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 import type { BaseProps } from '../types';
-import { useTicketPriceCalculator } from '../hooks';
 
 interface TPCButtonProps extends BaseProps, IconButtonProps {}
 
 const TicketPriceCalculatorButton: React.FC<TPCButtonProps> = ({ ticketId, ...buttonProps }) => {
-	const { ModalContainer, onOpen, ...disclosure } = useTicketPriceCalculator();
+	const { openWithData } = useGlobalModal<BaseProps>(EdtrGlobalModals.TPC);
 
 	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'left' });
 
+	const onOpen = useCallback(() => {
+		openWithData({ ticketId });
+	}, [ticketId, openWithData]);
+
 	return (
-		<>
-			<IconButton
-				borderless
-				icon={Calculator}
-				onClick={onOpen}
-				tooltip={__('ticket price calculator')}
-				tooltipProps={tooltipProps}
-				{...buttonProps}
-			/>
-			<ModalContainer ticketId={ticketId} {...disclosure} />
-		</>
+		<IconButton
+			borderless
+			icon={Calculator}
+			onClick={onOpen}
+			tooltip={__('ticket price calculator')}
+			tooltipProps={tooltipProps}
+			{...buttonProps}
+		/>
 	);
 };
 

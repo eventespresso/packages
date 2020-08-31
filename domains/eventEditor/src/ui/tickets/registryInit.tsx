@@ -12,7 +12,7 @@ import {
 	FilterBarUISubscriptionCb,
 } from '@eventespresso/registry';
 import { domain, EdtrGlobalModals, Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
-import { TicketPriceCalculatorButton } from '@eventespresso/tpc';
+import { TicketPriceCalculatorButton, ModalContainer as TPCModalContainer } from '@eventespresso/tpc';
 import { FilterBarFilter } from '@eventespresso/components';
 
 import {
@@ -32,6 +32,8 @@ const modals = new ModalSubscription(domain);
 modals.subscribe(({ registry: { registerContainer } }) => {
 	// Register edit ticket modal
 	registerContainer(EdtrGlobalModals.EDIT_TICKET, EditTicketContainer);
+	// Register TPC modal
+	registerContainer(EdtrGlobalModals.TPC, TPCModalContainer);
 });
 
 // Register ticket actions menu items.
