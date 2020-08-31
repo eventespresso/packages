@@ -1,7 +1,14 @@
-import { useTicketsListContext } from '@edtrServices/context';
-import type { TicketsListContextProps } from '@edtrServices/context';
+import { useContext } from 'react';
+import invariant from 'invariant';
 
-const useTicketsListFilterState = (): TicketsListContextProps['filterState'] => {
-	return useTicketsListContext().filterState;
+import { TicketsFilterStateContext } from '../../context';
+import type { TicketsFilterStateManager } from '@eventespresso/edtr-services';
+
+const useTicketsListFilterState = (): TicketsFilterStateManager => {
+	const value = useContext(TicketsFilterStateContext);
+
+	invariant(value, 'useTicketsListFilterState must be used inside <TicketsFilterStateProvider> component');
+
+	return value;
 };
 export default useTicketsListFilterState;
