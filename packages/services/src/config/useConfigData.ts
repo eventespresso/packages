@@ -14,11 +14,11 @@ import {
 	ConfigDataProps,
 } from './';
 import { ApiDomData, ConfigDomData } from '../types';
-
-const api: ApiDomData = window?.eventEspressoData?.api;
-const config: ConfigDomData = window?.eventEspressoData?.config;
+import { useMemoStringify } from '@eventespresso/hooks';
 
 export const useConfigData = (): ConfigDataProps => {
+	const api: ApiDomData = useMemoStringify(window?.eventEspressoData?.api);
+	const config: ConfigDomData = useMemoStringify(window?.eventEspressoData?.config);
 	return useMemo(
 		() => ({
 			brandName: config?.coreDomain?.brandName || 'Event Espresso',
@@ -45,6 +45,17 @@ export const useConfigData = (): ConfigDataProps => {
 				offset: config?.locale?.siteTimezone?.offset || 0,
 			} as TimezoneProps),
 		}),
-		[]
+		[
+			api?.restApiNonce,
+			config?.coreDomain?.brandName,
+			config?.currentUser,
+			config?.generalSettings,
+			config?.locale?.site,
+			config?.locale?.siteTimezone,
+			config?.locale?.user,
+			config?.siteCurrency,
+			config?.siteUrls?.admin,
+			config?.siteUrls?.home,
+		]
 	);
 };
