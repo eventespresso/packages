@@ -1,25 +1,21 @@
 import React, { createContext, useEffect } from 'react';
 
-import type { EntityListContextProps } from '../types';
-import { DatetimesFilterStateManager } from '../../filterState';
-import { useDatesListFilterStateManager } from '@edtrServices/filterState/datetimes';
-import { useFilteredEntities } from '@eventespresso/components';
 import { domain, datesList, useDatetimes, useEdtrState } from '@eventespresso/edtr-services';
-import type { Datetime } from '@eventespresso/edtr-services';
 import { getGuids, notTrashed } from '@eventespresso/predicates';
+import { useFilteredEntities } from '@eventespresso/components';
 import { entityListCacheIdString } from '@eventespresso/utils';
-import { useMemoStringify } from '@eventespresso/hooks';
+import type { Datetime } from '@eventespresso/edtr-services';
 
-export type DatetimesListContextProps = EntityListContextProps<DatetimesFilterStateManager, Datetime>;
+import { useDatesListFilterState } from '@edtrServices/filterState';
 
-export const DatetimesListContext = createContext<DatetimesListContextProps>(null);
+const FilteredDatesContext = createContext<Array<Datetime>>(null);
 
-export const DatetimesListProvider: React.FC = ({ children }) => {
+const { Provider, Consumer: FilteredDatesConsumer } = FilteredDatesContext;
+
+const FilteredDatesProvider: React.FC = ({ children }) => {
 	const datetimes = useDatetimes();
-	const filters = useDatesListFilterStateManager();
 
-	// memoize filter state
-	const filterState = useMemoStringify(filters);
+	const filterState = useDatesListFilterState();
 
 	const { setSortBy, sortingEnabled } = filterState;
 
@@ -50,7 +46,7 @@ export const DatetimesListProvider: React.FC = ({ children }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [sortingEnabled]);
 
-	const value: DatetimesListContextProps = { filterState, filteredEntities };
-
-	return <DatetimesListContext.Provider value={value}>{children}</DatetimesListContext.Provider>;
+	return <Provider value={filteredEntities}>{children}</Provider>;
 };
+
+export { FilteredDatesContext, FilteredDatesProvider, FilteredDatesConsumer };
