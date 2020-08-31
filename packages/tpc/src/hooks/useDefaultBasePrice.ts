@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import { useMemoStringify } from '@eventespresso/hooks';
 import { usePriceTypes } from '@eventespresso/edtr-services';
 import { isBasePrice } from '@eventespresso/predicates';
@@ -8,7 +10,10 @@ import { TpcPriceModifier } from '../types';
 
 const useDefaultBasePrice = (): TpcPriceModifier => {
 	const allPriceTypes = usePriceTypes();
-	const [basePriceType] = allPriceTypes.filter(isBasePrice);
+
+	const [basePriceType] = useMemo(() => {
+		return allPriceTypes.filter(isBasePrice);
+	}, [allPriceTypes]);
 
 	const defaultPriceModifier = usePriceModifier(defaultPrice);
 	const basePrice = updatePriceModifier(defaultPriceModifier, basePriceType);
