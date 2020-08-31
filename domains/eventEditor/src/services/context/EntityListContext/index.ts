@@ -1,9 +1,5 @@
-export * from './DatetimesListContext';
+export * from './datetimes';
 
-export * from './TicketsListContext';
+export * from './tickets';
 
 export { default as withEntityListContext } from './withEntityListContext';
-
-export { default as useDatesListContext } from './useDatesListContext';
-
-export { default as useTicketsListContext } from './useTicketsListContext';
