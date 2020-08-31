@@ -4,24 +4,20 @@ import { __ } from '@wordpress/i18n';
 import { ButtonType } from '@eventespresso/components';
 import type { ButtonProps } from '@eventespresso/components';
 import { SaveOutlined } from '@eventespresso/icons';
-import { useOnSubmitAssignments } from '../../../data';
 import { useDataState } from '../../../data';
+import { TAMModalProps } from '../../../context';
 
-const useSubmitButtonProps = (onCloseModal: VoidFunction): ButtonProps => {
-	const submitAssignments = useOnSubmitAssignments();
-
+const useSubmitButtonProps = (onSubmitData: TAMModalProps['onSubmit']): ButtonProps => {
 	const { hasOrphanEntities, getData } = useDataState();
 
 	const hasErrors = hasOrphanEntities();
-	const data = getData();
 
 	const onSubmit: ButtonProps['onClick'] = useCallback(
 		(e) => {
 			e.preventDefault();
-			submitAssignments(data);
-			onCloseModal();
+			onSubmitData(getData());
 		},
-		[data, onCloseModal, submitAssignments]
+		[getData, onSubmitData]
 	);
 
 	return useMemo<ButtonProps>(

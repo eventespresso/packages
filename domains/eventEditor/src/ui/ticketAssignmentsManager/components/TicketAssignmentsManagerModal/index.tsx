@@ -8,14 +8,14 @@ import TicketAssignmentsManager from '../TicketAssignmentsManager';
 import useCancelButtonProps from './buttons/useCancelButtonProps';
 import useSubmitButtonProps from './buttons/useSubmitButtonProps';
 import { useDataState } from '../../data';
-import type { WithContextProps } from '../../context/types';
+import type { TAMModalProps } from '../../context/types';
 
 import '../styles.scss';
 
-const TicketAssignmentsManagerModal: React.FC<Partial<WithContextProps>> = ({ onCloseModal, title }) => {
+const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onCloseModal, onSubmit, title }) => {
 	const { hasOrphanEntities } = useDataState();
 	const cancelButtonProps = useCancelButtonProps(onCloseModal);
-	const submitButtonProps = useSubmitButtonProps(onCloseModal);
+	const submitButtonProps = useSubmitButtonProps(onSubmit);
 
 	const hasErrors = hasOrphanEntities();
 
