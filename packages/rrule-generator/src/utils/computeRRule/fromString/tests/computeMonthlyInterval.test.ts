@@ -30,4 +30,13 @@ describe('fromString.computeMonthlyInterval', () => {
 		const result = computeMonthlyInterval(rRuleState, rruleObj);
 		expect(result).toBe(7);
 	});
+
+	it('returns undefined when no interval is set', () => {
+		const rRuleState = getDefaultRRuleState();
+		const rrule = 'DTSTART:20200901T092307Z\nRRULE:FREQ=MONTHLY;BYSETPOS=1;BYDAY=WE;COUNT=1;WKST=MO';
+		const rruleObj = RRuleObjectFromString(rrule).origOptions;
+
+		const result = computeMonthlyInterval(rRuleState, rruleObj);
+		expect(result).toBeUndefined();
+	});
 });

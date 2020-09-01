@@ -21,4 +21,13 @@ describe('fromString.computeHourlyInterval', () => {
 		const result = computeHourlyInterval(rRuleState, rruleObj);
 		expect(result).toBe(11);
 	});
+
+	it('returns undefined when no interval is set', () => {
+		const rRuleState = getDefaultRRuleState();
+		const rrule = 'DTSTART:20200901T092307Z\nRRULE:FREQ=HOURLY;UNTIL=20200922T093924Z;WKST=MO';
+		const rruleObj = RRuleObjectFromString(rrule).origOptions;
+
+		const result = computeHourlyInterval(rRuleState, rruleObj);
+		expect(result).toBeUndefined();
+	});
 });

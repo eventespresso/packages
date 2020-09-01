@@ -30,4 +30,13 @@ describe('fromString.computeWeeklyInterval', () => {
 		const result = computeWeeklyInterval(rRuleState, rruleObj);
 		expect(result).toBe(8);
 	});
+
+	it('returns undefined when no interval is set', () => {
+		const rRuleState = getDefaultRRuleState();
+		const rrule = 'DTSTART:20200901T092307Z\nRRULE:FREQ=WEEKLY;BYDAY=WE,TH,SA;COUNT=1;WKST=MO';
+		const rruleObj = RRuleObjectFromString(rrule).origOptions;
+
+		const result = computeWeeklyInterval(rRuleState, rruleObj);
+		expect(result).toBeUndefined();
+	});
 });
