@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useMemo } from 'react';
 
 import { RRuleConfig } from '../types';
 
@@ -10,7 +10,7 @@ export interface ConfigProviderProps {
 	config?: RRuleConfig;
 }
 
-const DEFAULT_CONFIG: RRuleConfig = {
+export const DEFAULT_CONFIG: RRuleConfig = {
 	frequencies: ['YEARLY', 'MONTHLY', 'WEEKLY', 'DAILY'],
 	yearlyModes: ['ON', 'ON_THE'],
 	monthlyModes: ['ON', 'ON_THE'],
@@ -21,7 +21,8 @@ const DEFAULT_CONFIG: RRuleConfig = {
 };
 
 const ConfigProvider: React.FC<ConfigProviderProps> = ({ children, config }) => {
-	const mergedConfig = { ...DEFAULT_CONFIG, ...config };
+	const mergedConfig = useMemo(() => ({ ...DEFAULT_CONFIG, ...config }), [config]);
+
 	return <Provider value={mergedConfig}>{children}</Provider>;
 };
 

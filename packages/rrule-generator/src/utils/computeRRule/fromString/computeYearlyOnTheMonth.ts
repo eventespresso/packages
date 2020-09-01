@@ -5,7 +5,7 @@ import { Month } from '../../../types';
 import { getOnMonth } from './utils';
 
 const computeYearlyOnTheMonth: ComputeRule<Month> = (data, rruleObj) => {
-	if (rruleObj.freq !== Frequency.YEARLY || !rruleObj.byweekday) {
+	if (rruleObj.freq !== Frequency.YEARLY || !rruleObj.bymonth) {
 		return data?.repeat?.yearly?.onThe?.month;
 	}
 

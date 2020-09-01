@@ -1,8 +1,8 @@
 import { Weekday, Frequency } from 'rrule';
-import { ALL_WEEKDAYS } from 'rrule/dist/esm/src/weekday';
 
 import { ComputeRule } from './types';
 import { WeeklyRepeatOption } from '../../../types';
+import { ALL_WEEKDAYS } from '../toString/utils';
 
 const computeWeeklyDays: ComputeRule<WeeklyRepeatOption['days']> = (data, rruleObj) => {
 	let weekdays = [];
