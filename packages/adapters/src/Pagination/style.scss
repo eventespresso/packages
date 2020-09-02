@@ -1,6 +1,6 @@
 @import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
-$border-style: 3px solid var(--ee-border-color);
+$border-style: var(--ee-border-width) solid var(--ee-border-color);
 $border-radius: var(--ee-border-radius-default);
 
 .ee-pagination {
@@ -72,7 +72,7 @@ $border-radius: var(--ee-border-radius-default);
 			height: 2.8rem;
 			min-height: 2.8rem;
 			min-width: 2.8rem;
-			margin: 0 0 0 -3px;
+			margin: 0 0 0 calc(var(--ee-border-width) * -1);
 			width: 2.8rem;
 			z-index: 1;
 

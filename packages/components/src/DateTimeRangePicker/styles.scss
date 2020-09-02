@@ -15,6 +15,7 @@
 		.date-range-picker {
 			display: block;
 			margin-bottom: var(--ee-margin-small);
+			width: 100%;
 
 			&__separator {
 				margin: var(--ee-margin-micro) 0;
@@ -42,7 +43,7 @@
 	border-color: var(--ee-color-primary);
 	/* Visible in Windows high-contrast themes */
 	outline-color: transparent;
-	outline-width: 3px;
+	outline-width: var(--ee-border-width);
 	outline-style: solid;
 
 	&:active {
@@ -63,8 +64,8 @@
 	border-color: var(--ee-button-background);
 	border-radius: var(--ee-border-radius-small);
 	border-style: solid;
-	border-width: 3px;
-	box-shadow: none;
+	border-width: var(--ee-border-width);
+	box-shadow: var(--ee-button-box-shadow);
 	box-sizing: border-box;
 	color: var(--ee-button-text-color);
 	height: var(--ee-icon-button-size);

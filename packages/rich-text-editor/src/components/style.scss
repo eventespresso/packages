@@ -65,7 +65,7 @@ $ul: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' 
 	border-color: var(--ee-border-color);
 	border-radius: var(--ee-border-radius-small);
 	border-style: solid;
-	border-width: 3px;
+	border-width: var(--ee-border-width);
 	padding: var(--ee-padding-micro) var(--ee-padding-tiny);
 
 	* {

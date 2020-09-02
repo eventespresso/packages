@@ -13,12 +13,12 @@
 	}
 
 	.rrule-text {
-		border-radius: 3px;
+		border-radius: var(--ee-border-width);
 		color: white;
 		font-size: 1rem;
 		line-height: 1.5rem;
 		margin-left: 20%;
-		min-height: 2.625rem;
+		min-height: var(--ee-icon-button-size);
 		outline: none;
 		padding: 0.5rem 1rem;
 		white-space: pre;

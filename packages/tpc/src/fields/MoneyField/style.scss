@@ -52,9 +52,10 @@
 
 				@mixin marginLeft($charLength) {
 					$signCharSize: 15px;
-					$signBorderWidth: 3px; // sign label has only one border applied, the other border is adjoined with input
-					$signPaddings: calc(var(--ee-padding-micro) * 2); // sign have paddings from both horizontal sides
-
+					// sign label has only one border applied, the other border is adjoined with input
+					$signBorderWidth: var(--ee-border-width);
+					// sign have paddings from both horizontal sides
+					$signPaddings: calc(var(--ee-padding-micro) * 2);
 					margin-left: calc(#{$signCharSize * $charLength} + #{$signBorderWidth} + #{$signPaddings});
 				}
 

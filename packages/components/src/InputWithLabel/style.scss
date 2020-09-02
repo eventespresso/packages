@@ -4,10 +4,10 @@
 	&__left-addon,
 	&__right-addon {
 		.ee-input-with-label & {
-			border-width: 3px;
+			border-width: var(--ee-border-width);
 			border-color: var(--ee-border-color);
-			border-radius: 3px;
-			height: 2.625rem;
+			border-radius: var(--ee-border-radius-small);
+			height: var(--ee-icon-button-size);
 			margin: 0;
 			padding: 0;
 		}

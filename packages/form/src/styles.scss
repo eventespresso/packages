@@ -30,7 +30,7 @@
 		}
 
 		&-wrapper + &-wrapper {
-			border-top: 3px solid var(--ee-color-grey-14);
+			border-top: var(--ee-border-width) solid var(--ee-color-grey-14);
 		}
 
 		&-body {

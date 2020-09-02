@@ -31,6 +31,6 @@
 
 	&__sidebar {
 		margin: var(--ee-margin-micro);
-		width: 2.625rem; // 42px
+		width: var(--ee-icon-button-size); // 42px
 	}
 }

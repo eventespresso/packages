@@ -2,7 +2,7 @@
 	align-items: center;
 	border-color: var(--ee-background-color); // essentially no border by default
 	border-radius: var(--ee-border-radius-small);
-	border-width: 3px;
+	border-width: var(--ee-border-width);
 	cursor: pointer;
 	display: inline-flex;
 	justify-content: center;
@@ -14,11 +14,16 @@
 	&:hover {
 		border-color: var(--ee-color-primary-low-contrast);
 		color: var(--ee-color-primary-high-contrast);
+
+		svg.ee-svg {
+			border-color: none;
+			color: var(--ee-default-text-color-super-low-contrast);
+		}
 	}
 
 	&:active,
 	&:focus {
-		border-width: 3px;
+		border-width: var(--ee-border-width);
 		border-color: var(--ee-color-primary);
 	}
 }
