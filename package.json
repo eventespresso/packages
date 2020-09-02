@@ -5,10 +5,10 @@
 	"scripts": {
 		"build": "yarn build:cra --domains \"all\"",
 		"build:ci": "FORCE_COLOR=true yarn build",
-		"build:core": "yarn build:cra --domains \"core\"",
+		"build:core": "yarn build:cra --domains \"core\" --skip-packages \"rrule-generator\"",
 		"build:cra": "node scripts/build.js",
 		"build:packages": "yarn build:cra",
-		"build:rem": "yarn build:cra --domains \"rem\" --skip-packages",
+		"build:rem": "yarn build:cra --domains \"rem\" --packages \"rrule-generator\"",
 		"deploy": "FORCE_COLOR=true lerna run deploy",
 		"dev": "yarn dev:watch --domains \"eventEditor\"",
 		"dev:all": "yarn dev:watch --domains all",

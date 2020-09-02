@@ -1,24 +1,24 @@
 #!/bin/bash
 
-################################### INSTRUCTIONS ######################################
-#                      This script accepts upto 5 arguments                           #
-#-------------------------------------------------------------------------------------#
-# # |                    Description                    | REQUIRED |      DEFAULT     #
-#-------------------------------------------------------------------------------------#
-# 1 | target repository name e.g. "event-espresso-core" |    YES   |         -        #
-# 2 | username of the target repository                 |    NO    |  "eventespresso" #
-# 3 | build path on the current/this repository         |    NO    |      "build"     #
-# 4 | branch to deploy at, in the target repository     |    NO    |    "barista-prod"  #
-# 5 | path to dist folder on the target repository      |    NO    |   "assets/dist"  #
-#######################################################################################
+################################### INSTRUCTIONS ########################################
+#                      This script accepts upto 5 arguments                             #
+#---------------------------------------------------------------------------------------#
+# # |                    Description                    | REQUIRED |      DEFAULT       #
+#---------------------------------------------------------------------------------------#
+# 1 | target repository name e.g. "event-espresso-core" |    YES   |         -          #
+# 2 | username of the target repository                 |    NO    |  "eventespresso"   #
+# 3 | build path on the current/this repository         |    NO    |      "build"       #
+# 4 | branch to deploy at, in the target repository     |    NO    |   "barista-prod"   #
+# 5 | path to dist folder on the target repository      |    NO    |   "assets/dist"    #
+#########################################################################################
 
-##################################### EXAMPLES ########################################
-# ./deploy.sh "event-espresso-core"                                                   #
-# ./deploy.sh "event-espresso-core" "eventespresso"                                   #
-# ./deploy.sh "event-espresso-core" "eventespresso" "build"                           #
+##################################### EXAMPLES ##########################################
+# ./deploy.sh "event-espresso-core"                                                     #
+# ./deploy.sh "event-espresso-core" "eventespresso"                                     #
+# ./deploy.sh "event-espresso-core" "eventespresso" "build"                             #
 # ./deploy.sh "event-espresso-core" "eventespresso" "build" "barista-prod"              #
 # ./deploy.sh "event-espresso-core" "eventespresso" "build" "barista-prod" "assets/dist"#
-#######################################################################################
+#########################################################################################
 
 ##################### ENV VARIABLES THAT SHOULD ALREADY BE SET ########################
 #-------------------------------------------------------------------------------------#
