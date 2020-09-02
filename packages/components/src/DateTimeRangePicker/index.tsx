@@ -12,7 +12,6 @@ import './styles.scss';
 export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ className, onChange, value, ...props }) => {
 	const [dates, setDates] = useState(value);
 	const {
-		// dateTimeFormats: { dateTimeFormat },
 		locale: { user },
 	} = useConfig();
 
@@ -29,14 +28,7 @@ export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ className,
 
 	return (
 		<div className={htmlClass}>
-			<DateTimeRangePickerAdapter
-				required
-				// dateFormat={dateTimeFormat}
-				locale={user}
-				onChange={setDates}
-				value={dates}
-				{...props}
-			/>
+			<DateTimeRangePickerAdapter required locale={user} onChange={setDates} value={dates} {...props} />
 			<IconButton
 				aria-label={__('save')}
 				buttonType={ButtonType.MINIMAL}
