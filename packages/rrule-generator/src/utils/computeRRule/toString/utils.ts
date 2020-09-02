@@ -3,8 +3,7 @@ import { Weekday } from 'rrule/dist/es5/rrule';
 import { parse, getMonth } from 'date-fns';
 
 import { Which, Day, Month } from '../../../types';
-
-export const ALL_WEEKDAYS: Array<WeekdayStr> = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+import { ALL_WEEKDAYS } from '../../../constants';
 
 export const getBySetPos = (which: Which): number => {
 	let bysetpos: number;

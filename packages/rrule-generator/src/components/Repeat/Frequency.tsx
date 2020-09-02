@@ -10,18 +10,9 @@ import Hourly from './Hourly';
 import { Frequency as FrequencyType } from '../../types';
 import { useRRuleConfig } from '../../hooks';
 import { FrequencyProps } from './types';
+import { FREQUENCY } from '../../constants';
 
 import './styles.scss';
-
-const frequencyLabels: { [key in FrequencyType]: string } = {
-	YEARLY: __('Yearly'),
-	MONTHLY: __('Monthly'),
-	WEEKLY: __('Weekly'),
-	DAILY: __('Daily'),
-	HOURLY: __('Hourly'),
-	MINUTELY: __('Minutely'),
-	SECONDLY: __('Secondly'),
-};
 
 const Frequency: React.FC<FrequencyProps> = ({ id, frequency, onChange }) => {
 	const { frequencies: frequencyTypes } = useRRuleConfig();
@@ -44,7 +35,7 @@ const Frequency: React.FC<FrequencyProps> = ({ id, frequency, onChange }) => {
 				{frequencyTypes.map((frequencyType) => {
 					return (
 						<option key={frequencyType} value={frequencyType}>
-							{frequencyLabels?.[frequencyType]}
+							{FREQUENCY?.[frequencyType]}
 						</option>
 					);
 				})}

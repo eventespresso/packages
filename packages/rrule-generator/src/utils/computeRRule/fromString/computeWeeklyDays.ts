@@ -2,7 +2,7 @@ import { Weekday, Frequency } from 'rrule';
 
 import { ComputeRule } from './types';
 import { WeeklyRepeatOption } from '../../../types';
-import { ALL_WEEKDAYS } from '../toString/utils';
+import { ALL_WEEKDAYS } from '../../../constants';
 
 const computeWeeklyDays: ComputeRule<WeeklyRepeatOption['days']> = (data, rruleObj) => {
 	let weekdays = [];
