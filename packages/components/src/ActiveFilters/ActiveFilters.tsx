@@ -12,9 +12,9 @@ const ActiveFilters: React.FC<ActiveFiltersProps> = ({ title = __('active filter
 	}
 
 	return (
-		<div className='ee-filter-tags__wrapper'>
+		<div className='ee-filter-tags ee-filter-tags__wrapper'>
 			<h6 className='ee-filter-tags__header'>{title}</h6>
-			<div className='ee-filter-bar__tags'>{children}</div>
+			<div className='ee-filter-tags__body'>{children}</div>
 		</div>
 	);
 };
