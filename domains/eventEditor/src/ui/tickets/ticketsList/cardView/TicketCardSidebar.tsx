@@ -35,7 +35,7 @@ const TicketCardSidebar: React.FC<Partial<TicketItemProps>> = ({ entity: ticket 
 			/>
 			<EditDateRangeButton
 				endDate={ticket.endDate}
-				header={__('Edit Ticket Sales Start and End Dates')}
+				header={__('Edit Ticket Sale Dates')}
 				onEditHandler={onEditHandler}
 				tooltip={__('edit ticket sales start and end dates')}
 				startDate={ticket.startDate}

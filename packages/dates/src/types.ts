@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactDatePickerProps } from 'react-datepicker';
 
 type OmittedProps = 'value' | 'onChange' | 'locale';
@@ -14,10 +13,11 @@ export interface DatePickerProps extends Omit<ReactDatePickerProps, OmittedProps
 export type DateRange = [Date, Date];
 
 export interface DateRangePickerProps extends Omit<ReactDatePickerProps, OmittedProps> {
+	endLabel?: string;
 	inputValue?: [string, string];
-	value?: DateRange;
-	onChange: (dates: DateRange) => void;
-	separator?: React.ReactNode;
-	showTime?: boolean;
 	locale?: string; // "en-US", "en_US", "ar" etc.
+	onChange: (dates: DateRange) => void;
+	showTime?: boolean;
+	startLabel?: string;
+	value?: DateRange;
 }

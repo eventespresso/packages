@@ -7,12 +7,13 @@ import { DatePicker } from './DatePicker';
 import { DateTimePicker } from './DateTimePicker';
 
 export const DateRangePicker: React.FC<DateRangePickerProps> = ({
-	value,
-	onChange,
-	inputValue,
-	separator,
 	className,
+	endLabel,
+	inputValue,
+	onChange,
 	showTime,
+	startLabel,
+	value,
 	...props
 }) => {
 	const [startDate, setStartDate] = useState(value?.[0] || new Date());
@@ -32,6 +33,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 
 	return (
 		<div className={wrapperClassName}>
+			<label className='date-range-picker__label'>{startLabel || __('start date')}</label>
 			<Component
 				endDate={endDate}
 				inputValue={inputValue?.[0]}
@@ -41,7 +43,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 				value={startDate}
 				{...props}
 			/>
-			<div className='date-range-picker__separator'>{separator || __('to')}</div>
+			<label className='date-range-picker__label'>{endLabel || __('end date')}</label>
 			<Component
 				endDate={endDate}
 				inputValue={inputValue?.[1]}

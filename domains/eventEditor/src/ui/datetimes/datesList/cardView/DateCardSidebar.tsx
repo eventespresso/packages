@@ -35,7 +35,7 @@ const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {
 			/>
 			<EditDateRangeButton
 				endDate={date.endDate}
-				header={__('Edit Event Date Start and End Dates')}
+				header={__('Edit Event Date')}
 				onEditHandler={onEditHandler}
 				startDate={date.startDate}
 				tooltip={__('edit start and end dates')}
