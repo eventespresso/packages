@@ -26,7 +26,10 @@ const EntityDetailsPanelSold: React.FC<Props> = ({ adminUrl, eventId, sold = 0, 
 		...{ dbId },
 	});
 
-	const tooltip = type === 'date' ? __('view sold for this date.') : __('view sold for this ticket.');
+	const tooltip =
+		type === 'date'
+			? __('view approved registrations for this date.')
+			: __('view approved registrations for this ticket.');
 
 	return (
 		<Link className='entity-sold' href={regListUrl} tooltip={tooltip}>

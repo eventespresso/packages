@@ -27,11 +27,11 @@ const TicketRegistrationsLink: React.FC<Props> = ({ ticket }) => {
 		return: 'edit',
 	});
 	const countTitle = __('total registrations.');
-	const tooltip = __('view registrations for this ticket.');
+	const tooltip = __('view ALL registrations for this ticket.');
 	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'top' });
 
 	return (
-		<ItemCount count={ticket.registrationCount} title={countTitle} emphasizeZero={false} offset={[12, -4]}>
+		<ItemCount count={ticket.registrationCount} title={countTitle} emphasizeZero={false}>
 			<RegistrationsLink href={regListUrl} tooltip={tooltip} tooltipProps={tooltipProps} />
 		</ItemCount>
 	);

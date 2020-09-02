@@ -27,7 +27,7 @@ const DateRegistrationsLink: React.FC<Props> = ({ datetime }) => {
 		datetime_id: datetime.dbId,
 		return: 'edit',
 	});
-	const tooltip = __('view registrations for this date.');
+	const tooltip = __('view ALL registrations for this date.');
 	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'top' });
 
 	return <RegistrationsLink href={regListUrl} tooltip={tooltip} tooltipProps={tooltipProps} />;
