@@ -1,3 +1,5 @@
+/* eslint-disable */
+const R = require('ramda');
 const EVENTESPRESSO_NAMESPACE = '@eventespresso/';
 const BUNDLED_PACKAGES = ['@eventespresso/icons'];
 const WORDPRESS_NAMESPACE = '@wordpress/';
@@ -95,8 +97,19 @@ function getCommandArgs() {
 	return arg;
 }
 
+/**
+ * Converts a comma separated string values to array
+ * "ab, cd,ef " => ["ab", "cd", "ef"]
+ *
+ * @param {string} str
+ */
+function commaStrToArray(str = '') {
+	return R.map(R.trim, R.split(',', str)).filter(Boolean);
+}
+
 module.exports = {
 	camelCaseDash,
+	commaStrToArray,
 	requestToExternal,
 	requestToHandle,
 	getCommandArgs,

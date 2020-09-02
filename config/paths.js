@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
-const { getCommandArgs, camelCaseDash } = require('./utils');
+const { commaStrToArray, getCommandArgs, camelCaseDash } = require('./utils');
 const R = require('ramda');
 
 const { getPackages, getDomains, getCoreDomains } = require('./packages-and-domains');
@@ -63,9 +63,16 @@ const resolveModule = (resolveFn, filePath) => {
  * - `yarn dev --domains "eventEditor"` - default
  * - `yarn dev --domains "all"`
  * - `yarn build --domains "core"`
- * - `yarn build --domains "rem" --skip-packages`
+ * - `yarn build --domains "core" --skip-packages "rrule-generator,some-other-package"`
+ * - `yarn build --domains "rem" --skip-all-packages`
+ * - `yarn build --domains "rem" --packages "rrule-generator,some-other-package"`
  */
-let { domains: suppliedDomains, ['skip-packages']: skipPackages } = getCommandArgs();
+let {
+	domains: suppliedDomains,
+	packages: suppliedPackages,
+	['skip-packages']: skipPackages,
+	['skip-all-packages']: skipAllPackages,
+} = getCommandArgs();
 
 // since icons package is bundled, it will be loaded regardles
 const packages = getPackages();
@@ -73,14 +80,23 @@ const packages = getPackages();
 const packagePaths = [];
 const packageEntries = {};
 
+suppliedPackages = commaStrToArray(suppliedPackages);
+skipPackages = commaStrToArray(skipPackages);
+
 packages.forEach((packageName) => {
 	const packageEntry = resolveModule(resolveApp, PACKAGES_FOLDER + `/${packageName}/src/index`);
 	const packagePath = resolveApp(PACKAGES_FOLDER + `/${packageName}/src`);
-	// "edtr-services" becomes "edtrServices"
-	const name = camelCaseDash(packageName);
 
-	// we don't need an entry point for icons
-	if (name !== 'icons' && !skipPackages) {
+	const skipPackageEntry =
+		skipAllPackages ||
+		// we don't need an entry point for icons
+		packageName === 'icons' ||
+		(suppliedPackages.length && !suppliedPackages.includes(packageName)) ||
+		(skipPackages.length && skipPackages.includes(packageName));
+
+	if (!skipPackageEntry) {
+		// "edtr-services" becomes "edtrServices"
+		const name = camelCaseDash(packageName);
 		packageEntries[name] = [packageEntry];
 	}
 	packagePaths.push(packagePath);
@@ -98,7 +114,7 @@ if (suppliedDomains && typeof suppliedDomains === 'string') {
 			domainsToWatch = getCoreDomains();
 			break;
 		default:
-			domainsToWatch = R.map(R.trim, R.split(',', suppliedDomains));
+			domainsToWatch = commaStrToArray(suppliedDomains);
 			break;
 	}
 }
