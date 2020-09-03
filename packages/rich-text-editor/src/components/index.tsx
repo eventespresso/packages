@@ -26,7 +26,7 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 	constructor(props: RichTextEditorProps) {
 		super(props);
 
-		const markup = '<b>Edit ...</b>';
+		const markup = props?.placeholder ? props.placeholder : '';
 
 		const value = props?.input?.value?.length ? props?.input?.value : props?.value;
 

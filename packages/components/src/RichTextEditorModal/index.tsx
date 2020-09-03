@@ -1,7 +1,9 @@
 import React, { useCallback, useState } from 'react';
+import classNames from 'classnames';
 import { useDisclosure } from '@chakra-ui/hooks';
 
 import { TabbableText, ModalWithAlert } from '../';
+import { Edit } from '@eventespresso/icons';
 import { RichTextEditor } from '@eventespresso/rich-text-editor';
 
 import type { RichTextEditorModalProps } from './types';
@@ -9,24 +11,34 @@ import type { RichTextEditorModalProps } from './types';
 import './style.scss';
 
 export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
+	className,
 	onUpdate,
-	textClassName,
 	title,
 	tooltip,
 	...props
 }) => {
-	const [text, setText] = useState(props.text);
+	const initialText = props.text === tooltip ? '' : props.text;
+	console.log('%c RichTextEditorModal text', 'color: DarkOrchid;', props.text, initialText);
+	const [text, setText] = useState(initialText);
+	const hasChanges = text !== props.text;
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const previewClassName = classNames('ee-inline-edit__preview-wrapper', className && className);
 
-	const onChange = useCallback((str: string): void => {
-		setText(str);
-	}, []);
+	const onChange = useCallback(
+		(newText: string): void => {
+			newText = newText !== '<p></p>' ? newText : '';
+			setText(newText);
+			console.log('%c RichTextEditorModal text update', 'color: DeepPink;', newText);
+		},
+		[setText]
+	);
 
 	const onSubmit = useCallback((): void => {
-		if (text !== props.text) {
+		if (hasChanges) {
 			onUpdate(text);
+			onClose();
 		}
-	}, [text, props.text, onUpdate]);
+	}, [onClose, onUpdate, hasChanges, text]);
 
 	return (
 		<>
@@ -36,18 +48,21 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 				onCancel={onClose}
 				onClose={onClose}
 				onSubmit={onSubmit}
-				showAlertOnEscape={text !== props.text}
+				showAlertOnEscape={hasChanges}
 				title={title}
 			>
-				<RichTextEditor onChange={onChange} value={props.text} />
+				<RichTextEditor onChange={onChange} value={text} />
 			</ModalWithAlert>
-			<TabbableText
-				richTextContent
-				className={textClassName}
-				onClick={onOpen}
-				tooltip={tooltip}
-				text={props.text}
-			/>
+			<div className='ee-rich-text-editor__preview-wrapper'>
+				<TabbableText
+					className={previewClassName}
+					icon={<Edit className={'ee-inline-edit__edit-icon'} />}
+					onClick={onOpen}
+					richTextContent
+					text={text}
+					tooltip={tooltip}
+				/>
+			</div>
 		</>
 	);
 };

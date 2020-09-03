@@ -7,6 +7,7 @@ type toggleBlockType = (style: DraftBlockType) => void;
 export interface RichTextEditorProps {
 	input?: FieldInputProps<AnyObject>;
 	onChange: (string) => void;
+	placeholder?: string;
 	readonly?: boolean;
 	value?: string;
 }
