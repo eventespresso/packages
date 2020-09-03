@@ -34,7 +34,7 @@ jobs:
               run: yarn install --frozen-lockfile
             # Build the core domains along with all the packages
             # because all packages will goto core
-            - name: Build core domains and all its packages
+            - name: Build core domains and all their packages
               run: yarn build:core
             # Deploy the built assets to core repo's assets/dist
             - name: Deploy to event-espresso-core
