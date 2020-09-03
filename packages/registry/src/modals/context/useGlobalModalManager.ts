@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useReducer, useEffect } from 'react';
+import { useCallback, useMemo, useReducer } from 'react';
 
 import type { GlobalModalManager, GlobalModalState } from './types';
 import reducer from './reducer';
@@ -9,11 +9,6 @@ const INITIAL_STATE: GlobalModalState = {};
 
 const useGlobalModalManager = (): GMM => {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-
-	// temporary
-	useEffect(() => {
-		console.log('Global Modal state', state);
-	}, [state]);
 
 	const closeModal: GMM['closeModal'] = useCallback((modalName) => {
 		dispatch({ type: 'CLOSE_MODAL', modalName });

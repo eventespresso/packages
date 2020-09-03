@@ -7,16 +7,16 @@ import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from './data';
 import useInitTicketTestCache from './useInitTicketTestCache';
 import useInitPriceTestCache from '../../prices/test/useInitPriceTestCache';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useTicketPrices', () => {
 	const wrapper = ApolloMockedProvider();
 	const existingTicket = nodes[0];
 
 	it('returns empty array for ticket prices when the ticket exists and the cache is empty', async () => {
-		const { result, waitForNextUpdate } = renderHook(() => useTicketPrices(existingTicket.id), { wrapper });
+		const { result } = renderHook(() => useTicketPrices(existingTicket.id), { wrapper });
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: cachedTicketPrices } = result;
 
@@ -24,9 +24,9 @@ describe('useTicketPrices', () => {
 	});
 
 	it('returns empty array for ticket prices when the ticket does not exist and the cache is empty', async () => {
-		const { result, waitForNextUpdate } = renderHook(() => useTicketPrices('fake-id'), { wrapper });
+		const { result } = renderHook(() => useTicketPrices('fake-id'), { wrapper });
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: cachedTicketPrices } = result;
 
@@ -34,7 +34,7 @@ describe('useTicketPrices', () => {
 	});
 
 	it('returns empty array for ticket prices when the ticket does not exist and the ticket cache is NOT empty', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
 				return useTicketPrices('fake-id');
@@ -42,7 +42,7 @@ describe('useTicketPrices', () => {
 			{ wrapper }
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: cachedTicketPrices } = result;
 
@@ -50,7 +50,7 @@ describe('useTicketPrices', () => {
 	});
 
 	it('returns empty array for ticket prices when the ticket exists, has price relations, ticket cache is NOT empty but price cache IS empty', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
 				return useTicketPrices(existingTicket.id);
@@ -58,7 +58,7 @@ describe('useTicketPrices', () => {
 			{ wrapper }
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: cachedTicketPrices } = result;
 
@@ -67,6 +67,7 @@ describe('useTicketPrices', () => {
 
 	it('returns an array of related ticket prices when the ticket exists, has price relations and the ticket/price cache is NOT empty', async () => {
 		const { result: relationsResult } = renderHook(() => useRelations(), { wrapper });
+		await actWait();
 
 		const relatedTicketPriceIds = relationsResult.current.getRelations({
 			entity: 'tickets',
@@ -74,7 +75,7 @@ describe('useTicketPrices', () => {
 			relation: 'prices',
 		});
 
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
 				useInitPriceTestCache();
@@ -82,7 +83,7 @@ describe('useTicketPrices', () => {
 			},
 			{ wrapper }
 		);
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: cachedTicketPrices } = result;
 

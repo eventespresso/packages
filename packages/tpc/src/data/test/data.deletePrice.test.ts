@@ -7,8 +7,8 @@ import { usePriceModifier } from '../../hooks';
 import defaultPrice from '../../defaultPriceModifier';
 import { useDataState } from '../';
 import TestWrapper from './TestWrapper';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('TPC:data.deletePrice', () => {
 	it('deletes the last price and adds it to deleted list', async () => {
 		const { result } = renderHook(
@@ -19,6 +19,7 @@ describe('TPC:data.deletePrice', () => {
 				wrapper: TestWrapper,
 			}
 		);
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.reset());
@@ -38,7 +39,7 @@ describe('TPC:data.deletePrice', () => {
 	});
 
 	it('deletes a newly added price and does NOT add it to deleted list', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				const defaultPriceModifier = usePriceModifier(defaultPrice);
 				return {
@@ -52,7 +53,7 @@ describe('TPC:data.deletePrice', () => {
 			}
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());

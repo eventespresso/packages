@@ -9,11 +9,11 @@ import defaultPrice from '../../defaultPriceModifier';
 import TestWrapper from './TestWrapper';
 import { getBasePrice } from '@eventespresso/predicates';
 import { calculateBasePrice, calculateTicketTotal } from '../../utils';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('TPC:data.calculations', () => {
 	it('adds a price to reflect the change in ticket total when reverseCalculate is false', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				const defaultPriceModifier = usePriceModifier(defaultPrice);
 				return {
@@ -27,7 +27,7 @@ describe('TPC:data.calculations', () => {
 			}
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());
@@ -74,7 +74,7 @@ describe('TPC:data.calculations', () => {
 	});
 
 	it('adds a price to reflect the change base price when reverseCalculate is true', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				const defaultPriceModifier = usePriceModifier(defaultPrice);
 				return {
@@ -88,7 +88,7 @@ describe('TPC:data.calculations', () => {
 			}
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());
@@ -147,6 +147,7 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.reset());
@@ -192,6 +193,7 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());
@@ -236,6 +238,7 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());
@@ -279,6 +282,7 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.reset());
@@ -323,6 +327,7 @@ describe('TPC:data.calculations', () => {
 				wrapper: TestWrapper,
 			}
 		);
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());

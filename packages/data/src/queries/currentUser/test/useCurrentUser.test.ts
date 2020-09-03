@@ -4,11 +4,13 @@ import { useCurrentUser } from '..';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 import { currentUser, successMocks } from './data';
 import useInitCurrentUserTestCache from './useInitCurrentUserTestCache';
+import { actWait } from '@eventespresso/utils/src/test';
 
 describe('useCurrentUser', () => {
 	it('checks for the current user when the cache is empty', async () => {
 		const wrapper = ApolloMockedProvider([], false);
 		const { result } = renderHook(() => useCurrentUser(), { wrapper });
+		await actWait();
 
 		expect(result.current).toBe(undefined);
 	});
@@ -22,6 +24,7 @@ describe('useCurrentUser', () => {
 			},
 			{ wrapper }
 		);
+		await actWait();
 
 		expect(result.current).toBeDefined();
 	});
@@ -35,6 +38,7 @@ describe('useCurrentUser', () => {
 			},
 			{ wrapper }
 		);
+		await actWait();
 
 		const { current: cachedUser } = result;
 

@@ -6,6 +6,7 @@ import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/t
 import useUpdateGeneralSettingsCache from '../useUpdateGeneralSettingsCache';
 import { useGeneralSettings } from '..';
 import { request } from './data';
+import { actWait } from '@eventespresso/utils/src/test';
 
 const timeout = 5000; // milliseconds
 describe('useUpdateGeneralSettingsCache', () => {
@@ -24,6 +25,7 @@ describe('useUpdateGeneralSettingsCache', () => {
 				wrapper,
 			}
 		);
+		await actWait();
 
 		const generalSettings = result.current.generalSettings;
 
@@ -55,6 +57,7 @@ describe('useUpdateGeneralSettingsCache', () => {
 				wrapper,
 			}
 		);
+		await actWait();
 
 		const cachedGeneralSettings = cacheResult.current;
 

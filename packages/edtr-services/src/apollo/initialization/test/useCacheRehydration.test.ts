@@ -3,11 +3,11 @@ import { renderHook } from '@testing-library/react-hooks';
 import useCacheRehydration from '../useCacheRehydration';
 import { useDatetimes, useTickets, usePriceTypes } from '../../queries';
 import { ApolloMockedProvider } from '../../../context/test';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useCacheRehydration', () => {
 	it('checks for datetimes rehydration', async () => {
-		const { result: datetimeResult, waitForNextUpdate } = renderHook(
+		const { result: datetimeResult } = renderHook(
 			() => {
 				useCacheRehydration();
 				return useDatetimes();
@@ -16,7 +16,7 @@ describe('useCacheRehydration', () => {
 				wrapper: ApolloMockedProvider(),
 			}
 		);
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: datetimesList } = datetimeResult;
 
@@ -28,7 +28,7 @@ describe('useCacheRehydration', () => {
 	});
 
 	it('checks for tickets rehydration', async () => {
-		const { result: ticketResult, waitForNextUpdate } = renderHook(
+		const { result: ticketResult } = renderHook(
 			() => {
 				useCacheRehydration();
 				return useTickets();
@@ -37,7 +37,7 @@ describe('useCacheRehydration', () => {
 				wrapper: ApolloMockedProvider(),
 			}
 		);
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: ticketsList } = ticketResult;
 
@@ -49,7 +49,7 @@ describe('useCacheRehydration', () => {
 	});
 
 	it('checks for price types rehydration', async () => {
-		const { result: priceResult, waitForNextUpdate } = renderHook(
+		const { result: priceResult } = renderHook(
 			() => {
 				useCacheRehydration();
 				return usePriceTypes();
@@ -58,7 +58,7 @@ describe('useCacheRehydration', () => {
 				wrapper: ApolloMockedProvider(),
 			}
 		);
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: priceTypesList } = priceResult;
 

@@ -4,27 +4,27 @@ import usePrices from '../usePrices';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from './data';
 import useInitPriceTestCache from './useInitPriceTestCache';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('usePrices()', () => {
 	const wrapper = ApolloMockedProvider();
 	it('checks for the empty prices', async () => {
-		const { result, waitForNextUpdate } = renderHook(() => usePrices(), { wrapper });
+		const { result } = renderHook(() => usePrices(), { wrapper });
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
+
 		expect(result.current.length).toBe(0);
 	});
 
 	it('checks for the updated prices cache', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitPriceTestCache();
 				return usePrices();
 			},
 			{ wrapper }
 		);
-
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: cachedPrices } = result;
 

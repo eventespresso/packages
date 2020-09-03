@@ -7,11 +7,11 @@ import { usePriceTypeForPrice } from '@eventespresso/edtr-services';
 import { usePriceModifier } from '../../hooks';
 import defaultPrice from '../../defaultPriceModifier';
 import TestWrapper from './TestWrapper';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('TPC:data.addPrice', () => {
 	it('adds a price at the end of the price list', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				const defaultPriceModifier = usePriceModifier(defaultPrice);
 				return {
@@ -24,8 +24,7 @@ describe('TPC:data.addPrice', () => {
 				wrapper: TestWrapper,
 			}
 		);
-
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());
@@ -57,7 +56,7 @@ describe('TPC:data.addPrice', () => {
 	});
 
 	it('adds a price at a specific index of the price list', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				const defaultPriceModifier = usePriceModifier(defaultPrice);
 				return {
@@ -71,7 +70,7 @@ describe('TPC:data.addPrice', () => {
 			}
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		// Make sure the state is properly set before moving ahead
 		act(() => result.current.dataState.reset());

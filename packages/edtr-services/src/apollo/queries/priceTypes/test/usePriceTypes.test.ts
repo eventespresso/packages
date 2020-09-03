@@ -4,19 +4,20 @@ import usePriceTypes from '../usePriceTypes';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from './data';
 import useInitPriceTypeTestCache from './useInitPriceTypeTestCache';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('usePriceTypes()', () => {
 	const wrapper = ApolloMockedProvider();
 	it('checks for the empty price types', async () => {
-		const { result, waitForNextUpdate } = renderHook(() => usePriceTypes(), { wrapper });
+		const { result } = renderHook(() => usePriceTypes(), { wrapper });
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
+
 		expect(result.current.length).toBe(0);
 	});
 
 	it('checks for the updated price types cache', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitPriceTypeTestCache();
 				return usePriceTypes();
@@ -24,7 +25,8 @@ describe('usePriceTypes()', () => {
 			{ wrapper }
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
+
 		const { current: cachedPriceTypes } = result;
 
 		expect(cachedPriceTypes).toEqual(nodes);

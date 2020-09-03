@@ -5,6 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { RelationsProvider, RelationsConsumer } from '../RelationsProvider';
 import { RelationsManager, RelationalData } from '../../relations';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
+import { actWait } from '@eventespresso/utils/src/test';
 
 describe('RelationsProvider', () => {
 	it('checks for relationsProvider functions', () => {
@@ -30,7 +31,7 @@ describe('RelationsProvider', () => {
 		expect(relationsProvider.updateRelations).toBeInstanceOf(Function);
 	});
 
-	it('checks for relationsProvider data from global context', () => {
+	it('checks for relationsProvider data from global context', async () => {
 		let relationalData: RelationalData = null;
 		const consumer = (
 			<RelationsConsumer>
@@ -42,6 +43,7 @@ describe('RelationsProvider', () => {
 		);
 
 		render(consumer, { wrapper: ApolloMockedProvider() });
+		await actWait();
 
 		expect(relationalData).toHaveProperty('datetimes');
 		expect(relationalData).toHaveProperty('tickets');

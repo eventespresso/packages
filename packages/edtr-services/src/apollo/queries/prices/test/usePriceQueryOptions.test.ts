@@ -5,19 +5,19 @@ import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from '../../tickets/test/data';
 import useInitTicketTestCache from '../../tickets/test/useInitTicketTestCache';
 import { getGuids } from '@eventespresso/predicates';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('usePriceQueryOptions()', () => {
 	it('checks if the query operation variables are correct', async () => {
 		const wrapper = ApolloMockedProvider();
-		const { result, waitForNextUpdate: waitForUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
 				return usePriceQueryOptions();
 			},
 			{ wrapper }
 		);
-		await waitForUpdate({ timeout });
+		await actWait();
 
 		expect(result.current.variables.where.ticketIn).toEqual(getGuids(nodes).sort());
 	});

@@ -9,6 +9,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { useStatus } from '@eventespresso/services';
 import { useEventId } from '../../apollo/queries/events';
 import { ApolloMockedProvider, eventId } from '../test';
+import { actWait } from '@eventespresso/utils/src/test';
 
 describe('ContextProviders', () => {
 	it('checks for Apollo context without ContextProviders', () => {
@@ -17,8 +18,9 @@ describe('ContextProviders', () => {
 		expect(result.error).toBeInstanceOf(InvariantError);
 	});
 
-	it('checks for Apollo context with ContextProviders', () => {
+	it('checks for Apollo context with ContextProviders', async () => {
 		const { result } = renderHook(() => useApolloClient(), { wrapper: ApolloMockedProvider() });
+		await actWait();
 
 		expect(result.current).toBeInstanceOf(ApolloClient);
 	});
@@ -33,8 +35,10 @@ describe('ContextProviders', () => {
 		expect(getByText('Status Manager is: NULL')).toBeInTheDocument();
 	});
 
-	it('checks for statusProvider context with ContextProviders', () => {
+	it('checks for statusProvider context with ContextProviders', async () => {
 		const { getByText } = render(<StatusComponent />, { wrapper: ApolloMockedProvider() });
+		await actWait();
+
 		expect(getByText('Status Manager is: NOT_NULL')).toBeInTheDocument();
 	});
 
@@ -48,8 +52,10 @@ describe('ContextProviders', () => {
 		expect(getByText('Event ID is: 0')).toBeInTheDocument();
 	});
 
-	it('checks for event id context with ContextProviders', () => {
+	it('checks for event id context with ContextProviders', async () => {
 		const { getByText } = render(<EventIdComponent />, { wrapper: ApolloMockedProvider() });
+		await actWait();
+
 		expect(getByText(`Event ID is: ${eventId}`)).toBeInTheDocument();
 	});
 });

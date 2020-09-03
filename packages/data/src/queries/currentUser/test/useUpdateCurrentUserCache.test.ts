@@ -6,6 +6,7 @@ import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/t
 import useUpdateCurrentUserCache from '../useUpdateCurrentUserCache';
 import { useCurrentUser } from '..';
 import { request } from './data';
+import { actWait } from '@eventespresso/utils/src/test';
 
 const timeout = 5000; // milliseconds
 describe('useUpdateCurrentUserCache', () => {
@@ -24,6 +25,7 @@ describe('useUpdateCurrentUserCache', () => {
 				wrapper,
 			}
 		);
+		await actWait();
 
 		const currentUser = result.current.currentUser;
 		const updatedUser = {
@@ -54,6 +56,7 @@ describe('useUpdateCurrentUserCache', () => {
 				wrapper,
 			}
 		);
+		await actWait();
 
 		const cachedCurrentUser = cacheResult.current;
 

@@ -4,19 +4,20 @@ import useTickets from '../useTickets';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from './data';
 import useInitTicketTestCache from './useInitTicketTestCache';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useTickets()', () => {
 	const wrapper = ApolloMockedProvider();
 	it('checks for the empty tickets', async () => {
-		const { result, waitForNextUpdate } = renderHook(() => useTickets(), { wrapper });
+		const { result } = renderHook(() => useTickets(), { wrapper });
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
+
 		expect(result.current.length).toBe(0);
 	});
 
 	it('checks for the updated tickets cache', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
 				return useTickets();
@@ -24,7 +25,7 @@ describe('useTickets()', () => {
 			{ wrapper }
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: cachedTickets } = result;
 

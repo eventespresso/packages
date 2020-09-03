@@ -5,19 +5,19 @@ import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from '../../datetimes/test/data';
 import useInitDatetimeTestCache from '../../datetimes/test/useInitDatetimeTestCache';
 import { getGuids } from '@eventespresso/predicates';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useTicketQueryOptions', () => {
 	it('checks if the query operation variables are correct', async () => {
 		const wrapper = ApolloMockedProvider();
-		const { result, waitForNextUpdate: waitForUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitDatetimeTestCache();
 				return useTicketQueryOptions();
 			},
 			{ wrapper }
 		);
-		await waitForUpdate({ timeout });
+		await actWait();
 
 		expect(result.current.variables.where.datetimeIn).toEqual(getGuids(nodes).sort());
 	});

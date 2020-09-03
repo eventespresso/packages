@@ -2,6 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useCacheRehydrationData from '../useCacheRehydrationData';
 import { ApolloMockedProvider } from '../../../context/test';
+import { actWait } from '@eventespresso/utils/src/test';
 
 describe('useCacheRehydrationData', () => {
 	it('checks for event data', async () => {
@@ -10,6 +11,7 @@ describe('useCacheRehydrationData', () => {
 		} = renderHook(() => useCacheRehydrationData(), {
 			wrapper: ApolloMockedProvider(),
 		});
+		await actWait();
 
 		expect(data.eventEditor.event.dbId).toBeGreaterThan(1);
 
@@ -30,6 +32,7 @@ describe('useCacheRehydrationData', () => {
 		} = renderHook(() => useCacheRehydrationData(), {
 			wrapper: ApolloMockedProvider(),
 		});
+		await actWait();
 
 		expect(data.currentUser).toHaveProperty('name');
 
@@ -42,6 +45,7 @@ describe('useCacheRehydrationData', () => {
 		} = renderHook(() => useCacheRehydrationData(), {
 			wrapper: ApolloMockedProvider(),
 		});
+		await actWait();
 
 		expect(data.generalSettings).toHaveProperty('dateFormat');
 
