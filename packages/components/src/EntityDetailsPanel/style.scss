@@ -36,7 +36,7 @@
 	.ee-entity-details {
 		display: flex;
 		flex-direction: column-reverse;
-		// max-width: calc(var(--ee-font-size-tiny) * 7);
+		max-width: calc(var(--ee-font-size-tiny) * 9);
 		width: 100%;
 
 		.ee-inline-edit-input {
@@ -56,7 +56,6 @@
 			color: var(--ee-default-text-color-super-high-contrast);
 			font-size: var(--ee-font-size-tiny);
 			letter-spacing: 1px;
-			margin-top: var(--ee-margin-micro);
 
 			@include max480px {
 				color: var(--ee-default-text-color-high-contrast);
@@ -69,7 +68,10 @@
 		}
 
 		&__value {
+			align-items: center;
+			display: flex;
 			font-weight: 600;
+			justify-content: center;
 			margin-bottom: 0;
 
 			.ee-entity-list__card-view & {

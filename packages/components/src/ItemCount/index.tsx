@@ -27,7 +27,7 @@ export const ItemCount: React.FC<ItemCountProps> = ({
 		'ee-item-count--has-items': count > 0,
 		'ee-item-count--no-items': count === 0 && emphasizeZero,
 	});
-	const offset = props.offset || [8, -4];
+	const offset = props.offset || [-8, -4];
 	const value = count === 0 && typeof zeroCountChar !== 'undefined' ? zeroCountChar : count;
 	const countNode = (
 		<Tooltip placement='top' tooltip={title}>

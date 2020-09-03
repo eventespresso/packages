@@ -8,12 +8,14 @@
 .ee-item-count {
 	&__wrapper {
 		position: relative;
-		min-width: 55px;
+		width: var(--ee-icon-button-size);
 
-		@include max782px {
-			margin-left: auto;
-			margin-right: auto;
-			width: var(var(--ee-icon-button-size));
+		.ee-entity-actions-menu--horizontal & {
+			margin: 0 var(--ee-margin-tiny) 0 0;
+
+			[dir='rtl'] & {
+				margin: 0 0 0 var(--ee-margin-tiny);
+			}
 		}
 	}
 
