@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { ENTER } from '@wordpress/keycodes';
 import { __ } from '@wordpress/i18n';
@@ -15,11 +15,14 @@ export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, richT
 	tooltip = text === tooltip ? '' : tooltip;
 	const className = classNames('ee-tabbable-text', props.className);
 
-	const onKeyDown = (e: React.KeyboardEvent) => {
-		if (e.keyCode === ENTER) {
-			onClick();
-		}
-	};
+	const onKeyDown = useCallback(
+		(e: React.KeyboardEvent) => {
+			if (e.keyCode === ENTER) {
+				onClick();
+			}
+		},
+		[onClick]
+	);
 
 	const spanProps = useMemo(() => {
 		const html: string | boolean = typeof text === 'string' && String(text);
