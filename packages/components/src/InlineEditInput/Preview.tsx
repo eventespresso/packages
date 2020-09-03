@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import Dotdotdot from 'react-dotdotdot';
 
 import { TextFit } from '@eventespresso/adapters';
@@ -10,6 +11,7 @@ import type { PreviewProps } from './types';
 import './style.scss';
 
 const Preview: React.FC<PreviewProps> = ({
+	className,
 	fitText,
 	isEditing,
 	lineCount,
@@ -21,17 +23,25 @@ const Preview: React.FC<PreviewProps> = ({
 	if (isEditing) {
 		return null;
 	}
+	const previewClassName = classNames('ee-inline-edit__preview-wrapper', className && className);
+
+	const trimmedValue =
+		lineCount && typeof value === 'string' && value.length > lineLength ? (
+			<Dotdotdot clamp={lineCount}>{value}</Dotdotdot>
+		) : (
+			value
+		);
 
 	const textInput = (
-		<div className='preview-wrapper'>
-			<Edit />
-			<TabbableText onClick={onRequestEdit} text={value} tooltip={tooltip} />
+		<div className={previewClassName}>
+			<TabbableText
+				icon={<Edit className={'ee-inline-edit__edit-icon'} />}
+				onClick={onRequestEdit}
+				text={trimmedValue}
+				tooltip={tooltip}
+			/>
 		</div>
 	);
-
-	if (lineCount && value.length > lineLength) {
-		return <Dotdotdot clamp={lineCount}>{textInput}</Dotdotdot>;
-	}
 
 	if (fitText) {
 		return (

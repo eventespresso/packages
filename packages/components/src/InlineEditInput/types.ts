@@ -12,7 +12,8 @@ export interface TextProps extends Omit<InlineEditProps, 'inputType'> {
 	tooltip?: string;
 }
 
-export interface PreviewProps extends Partial<Omit<InlineEditProps, 'onChange' | 'onChangeValue'>> {
+export interface PreviewProps extends Partial<Omit<InlineEditProps, 'onChange' | 'onChangeValue' | 'value'>> {
+	className?: string;
 	lineCount?: number;
 	lineLength?: number;
 	fitText?: boolean;
@@ -20,4 +21,5 @@ export interface PreviewProps extends Partial<Omit<InlineEditProps, 'onChange' |
 	onRequestEdit?: VoidFunction;
 	richTextContent?: boolean;
 	tooltip?: string;
+	value?: string | JSX.Element;
 }

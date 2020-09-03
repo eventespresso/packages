@@ -9,42 +9,34 @@ import { TabbableTextProps } from './types';
 import './style.scss';
 
 export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, richTextContent, ...props }) => {
-	const tooltip = props.tooltip || __('Click to edit...');
+	let tooltip = props.tooltip || __('Click to edit...');
+	const text = props.text || tooltip;
+	// don't display tooltip if it is being used as placeholder
+	tooltip = text === tooltip ? '' : tooltip;
+	const className = classNames('ee-tabbable-text', props.className);
+
+	const onKeyDown = (e: React.KeyboardEvent) => {
+		if (e.keyCode === ENTER) {
+			onClick();
+		}
+	};
 
 	const spanProps = useMemo(() => {
-		const className = classNames('ee-tabbable-text', props.className);
-
-		const text = props.text || tooltip;
-
 		const html: string | boolean = typeof text === 'string' && String(text);
-
-		const onKeyDown = (e) => {
-			if (e.keyCode === ENTER) {
-				onClick();
-			}
-		};
-
 		return {
 			...(richTextContent && { dangerouslySetInnerHTML: { __html: html } }),
 			...(!richTextContent && {
-				children: (
-					<>
-						{icon && icon}
-						{text && text}
-					</>
-				),
+				children: text,
 			}),
-			className,
-			onClick,
-			onKeyDown,
-			role: 'button',
-			tabIndex: 0,
 		};
-	}, [icon, onClick, props.className, props.text, richTextContent, tooltip]);
+	}, [richTextContent, text]);
 
 	return (
 		<Tooltip tooltip={tooltip}>
-			<span {...spanProps} />
+			<div className={className} onClick={onClick} onKeyDown={onKeyDown} role='button' tabIndex={0}>
+				<span {...spanProps} />
+				{icon}
+			</div>
 		</Tooltip>
 	);
 };
