@@ -25,6 +25,7 @@ export type ConfigDomData = {
 	locale: LocaleDomData;
 	siteCurrency: CurrencyProps;
 	siteUrls: SiteUrlProps;
+	wp_debug: boolean;
 };
 
 export type CoreDomainDomData = {

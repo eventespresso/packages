@@ -44,6 +44,7 @@ export const useConfigData = (): ConfigDataProps => {
 				name: config?.locale?.siteTimezone?.name || '',
 				offset: config?.locale?.siteTimezone?.offset || 0,
 			} as TimezoneProps),
+			wp_debug: config?.wp_debug || false,
 		}),
 		[
 			api?.restApiNonce,
@@ -56,6 +57,7 @@ export const useConfigData = (): ConfigDataProps => {
 			config?.siteCurrency,
 			config?.siteUrls?.admin,
 			config?.siteUrls?.home,
+			config?.wp_debug,
 		]
 	);
 };

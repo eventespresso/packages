@@ -24,6 +24,7 @@ type JsDataTimezoneProps = {
 };
 
 export type ConfigDataProps = {
+	brandName: string;
 	currency: CurrencyProps;
 	currentUser: CurrentUserProps;
 	dateTimeFormats: DateTimeFormatsProps;
@@ -32,7 +33,7 @@ export type ConfigDataProps = {
 	nonce: string;
 	siteUrl: SiteUrlProps;
 	timezone: TimezoneProps;
-	brandName: string;
+	wp_debug: boolean;
 };
 export interface CurrencyProps {
 	code: string;
