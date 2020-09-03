@@ -1,18 +1,22 @@
 .ee-currency-input {
-	&--vertical {
+	align-self: center;
+	color: var(--ee-default-text-color-super-low-contrast);
+	display: flex;
+	font-size: var(--ee-font-size-big);
+	font-weight: 900;
+	justify-content: center;
+	letter-spacing: 2px;
+	padding: var(--ee-padding-micro);
+
+	&__before-amount {
 		align-self: center;
-		color: var(--ee-default-text-color-super-low-contrast);
-		display: flex;
-		font-size: var(--ee-font-size-tiny);
-		font-weight: 900;
-		justify-content: center;
-		letter-spacing: 2px;
-		padding: var(--ee-padding-micro);
+	}
+
+	[dir='rtl'] & {
+		writing-mode: vertical-rl;
+	}
+	&--vertical {
 		transform: rotate(180deg);
 		writing-mode: vertical-lr;
-
-		[dir='rtl'] & {
-			writing-mode: vertical-rl;
-		}
 	}
 }

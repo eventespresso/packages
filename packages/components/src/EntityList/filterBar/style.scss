@@ -5,7 +5,7 @@ $filter-btn: '.ee-filter-bar__btn';
 .ee-filter-bar {
 	box-sizing: border-box;
 	color: var(--ee-default-text-color);
-	margin: 0 0 var(--ee-margin-default);
+	margin: 0 0 var(--ee-margin-tiny);
 	padding: var(--ee-padding-tiny) 0;
 
 	&__main {
@@ -21,7 +21,7 @@ $filter-btn: '.ee-filter-bar__btn';
 	&__collapsible {
 		display: flex;
 		flex-flow: row wrap;
-		padding: var(--ee-padding-small) var(--ee-padding-small) 0;
+		padding: 0 var(--ee-padding-small);
 
 		@include max782px {
 			padding: 0 0 var(--ee-padding-small);

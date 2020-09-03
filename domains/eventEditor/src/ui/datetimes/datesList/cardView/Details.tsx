@@ -35,7 +35,7 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 			<EditableName className='entity-card-details__name' entity={datetime} />
 
 			<RichTextEditorModal
-				textClassName='entity-card-details__text'
+				className='entity-card-details__text'
 				onUpdate={onUpdate}
 				text={datetime.description}
 				title={__('Edit description')}

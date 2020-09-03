@@ -1,5 +1,6 @@
 .ee-link.ee-link {
 	background-color: unset;
+	box-shadow: none !important;
 	color: var(--ee-color-blue);
 
 	&:not(:hover):not(:focus) {

@@ -35,7 +35,7 @@ const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 			<EditableName className={'entity-card-details__name'} entity={ticket} />
 
 			<RichTextEditorModal
-				textClassName='entity-card-details__text'
+				className='entity-card-details__text'
 				onUpdate={onUpdate}
 				text={ticket.description}
 				title={__('Edit description')}
