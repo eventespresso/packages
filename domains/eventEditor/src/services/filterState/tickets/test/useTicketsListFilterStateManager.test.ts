@@ -4,10 +4,12 @@ import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 import useTicketsListFilterStateManager from '../useTicketsListFilterStateManager';
 import { TicketsSales, TicketsStatus } from '../types';
 import wrapper from './Wrapper';
+import { actWait } from '@eventespresso/utils/src/test';
 
 describe('useTicketsListFilterStateManager', () => {
-	test('useTicketsListFilterStateManager initial state and result', () => {
+	test('useTicketsListFilterStateManager initial state and result', async () => {
 		const { result } = renderHook(() => useTicketsListFilterStateManager(), { wrapper });
+		await actWait();
 
 		expect(typeof result.current.sortBy).toBe('string');
 		expect(typeof result.current.displayStartOrEndDate).toBe('string');
@@ -19,8 +21,9 @@ describe('useTicketsListFilterStateManager', () => {
 		expect(result.current.isChained).toBe(true);
 	});
 
-	test('should update sortBy by invoking setSortBy with corresponding accepted enums', () => {
+	test('should update sortBy by invoking setSortBy with corresponding accepted enums', async () => {
 		const { result } = renderHook(() => useTicketsListFilterStateManager(), { wrapper });
+		await actWait();
 
 		act(() => {
 			result.current.setSortBy('name');
@@ -43,8 +46,9 @@ describe('useTicketsListFilterStateManager', () => {
 		expect(result.current.sortBy).toBe('date');
 	});
 
-	test('should update displayStartOrEndDate by invoking setDisplayStartOrEndDate with corresponding accepted enums', () => {
+	test('should update displayStartOrEndDate by invoking setDisplayStartOrEndDate with corresponding accepted enums', async () => {
 		const { result } = renderHook(() => useTicketsListFilterStateManager(), { wrapper });
+		await actWait();
 
 		act(() => {
 			result.current.setDisplayStartOrEndDate(DisplayStartOrEndDate.start);
@@ -62,8 +66,9 @@ describe('useTicketsListFilterStateManager', () => {
 		expect(result.current.displayStartOrEndDate).toBe('both');
 	});
 
-	test('should update sales by invoking setSales with corresponding accepted enums', () => {
+	test('should update sales by invoking setSales with corresponding accepted enums', async () => {
 		const { result } = renderHook(() => useTicketsListFilterStateManager(), { wrapper });
+		await actWait();
 
 		act(() => {
 			result.current.setSales(TicketsSales.above50Sold);
@@ -71,8 +76,9 @@ describe('useTicketsListFilterStateManager', () => {
 		expect(result.current.sales).toBe('above-50-sold');
 	});
 
-	test('should update status by invoking setStatus with corresponding accepted enums', () => {
+	test('should update status by invoking setStatus with corresponding accepted enums', async () => {
 		const { result } = renderHook(() => useTicketsListFilterStateManager(), { wrapper });
+		await actWait();
 
 		act(() => {
 			result.current.setStatus(TicketsStatus.all);

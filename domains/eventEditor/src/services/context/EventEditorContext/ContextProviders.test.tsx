@@ -8,16 +8,19 @@ import '@testing-library/jest-dom/extend-expect';
 
 import { useStatus } from '@eventespresso/services';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
+import { actWait } from '@eventespresso/utils/src/test';
 
 describe('ContextProviders', () => {
-	it('checks for Apollo context without ContextProviders', () => {
+	it('checks for Apollo context without ContextProviders', async () => {
 		const { result } = renderHook(() => useApolloClient());
+		await actWait();
 
 		expect(result.error).toBeInstanceOf(InvariantError);
 	});
 
-	it('checks for Apollo context with ContextProviders', () => {
+	it('checks for Apollo context with ContextProviders', async () => {
 		const { result } = renderHook(() => useApolloClient(), { wrapper: ApolloMockedProvider() });
+		await actWait();
 
 		expect(result.current).toBeInstanceOf(ApolloClient);
 	});
@@ -32,8 +35,9 @@ describe('ContextProviders', () => {
 		expect(getByText('Status Manager is: NULL')).toBeInTheDocument();
 	});
 
-	it('checks for statusProvider context with ContextProviders', () => {
+	it('checks for statusProvider context with ContextProviders', async () => {
 		const { getByText } = render(<StatusComponent />, { wrapper: ApolloMockedProvider() });
+		await actWait();
 		expect(getByText('Status Manager is: NOT_NULL')).toBeInTheDocument();
 	});
 });
