@@ -3,13 +3,13 @@ import { renderHook } from '@testing-library/react-hooks';
 import useInitialState from '../useInitialState';
 import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
 import TestWrapper from './TestWrapper';
+import { actWait } from '@eventespresso/utils/src/test';
 
 const mockTicket = tickets[0];
 
-const timeout = 5000; // milliseconds
 describe('TPC:useInitialState', () => {
 	it('returns the computed initial state for the passed ticketId', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				return useInitialState({ ticketId: mockTicket.id });
 			},
@@ -18,7 +18,7 @@ describe('TPC:useInitialState', () => {
 			}
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const initialState = result.current(null);
 
