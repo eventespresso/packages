@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { Weekday, Frequency } from './types';
+import { Weekday, Frequency, Which } from './types';
 
 export const MONTHS = {
 	Jan: __('Jan'),
@@ -49,4 +49,12 @@ export const FREQUENCY: { [key in Frequency]: string } = {
 	HOURLY: __('Hourly'),
 	MINUTELY: __('Minutely'),
 	SECONDLY: __('Secondly'),
+};
+
+export const WHICH: { [key in Which]: string } = {
+	FIRST: __('First'),
+	SECOND: __('Second'),
+	THIRD: __('Third'),
+	FOURTH: __('Fourth'),
+	LAST: __('Last'),
 };

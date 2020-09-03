@@ -1,7 +1,7 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
 
 import { PositionSelectProps } from './types';
+import { WHICH } from '../../constants';
 
 const PositionSelect: React.FC<PositionSelectProps> = ({ id, isActive, name, onChangeWhich, value, ...props }) => (
 	<select
@@ -13,11 +13,11 @@ const PositionSelect: React.FC<PositionSelectProps> = ({ id, isActive, name, onC
 		disabled={!isActive}
 		onChange={onChangeWhich}
 	>
-		<option value='FIRST'>{__('First')}</option>
-		<option value='SECOND'>{__('Second')}</option>
-		<option value='THIRD'>{__('Third')}</option>
-		<option value='FOURTH'>{__('Fourth')}</option>
-		<option value='LAST'>{__('Last')}</option>
+		{Object.entries(WHICH).map(([key, label]) => (
+			<option key={key} value={key}>
+				{label}
+			</option>
+		))}
 	</select>
 );
 
