@@ -21,7 +21,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	const onChangeWhich = useCallback<OnChangeSelect>(
 		(event) => {
 			const value = event.target.value as Which;
-			setRepeatWhich('monthly', 'onThe', value);
+			setRepeatWhich('monthly', value);
 		},
 		[setRepeatWhich]
 	);
