@@ -75,6 +75,7 @@ export const mockEspressoDomData: EventEspressoDomData = {
 			admin: 'http://www.dev.test/wp-admin/',
 			home: 'http://www.dev.test/',
 		},
+		wp_debug: true,
 	},
 	domain: 'eventEditor',
 	eei18n: {
