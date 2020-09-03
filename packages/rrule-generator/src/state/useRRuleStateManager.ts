@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useReducer, useEffect } from 'react';
+import { useCallback, useMemo, useReducer } from 'react';
 
 import type { RRuleStateManager } from './types';
 import useInitialState from './useInitialState';
@@ -11,11 +11,6 @@ const useRRuleStateManager = (config: RRuleConfig, rRuleString?: string): RSM =>
 	const initializer = useInitialState(config, rRuleString);
 	const dataReducer = useRRuleStateReducer(initializer);
 	const [state, dispatch] = useReducer(dataReducer, null, initializer);
-
-	// temporary
-	useEffect(() => {
-		console.log('RRule state', state);
-	}, [state]);
 
 	/**
 	 * Returns the current data.
@@ -69,8 +64,8 @@ const useRRuleStateManager = (config: RRuleConfig, rRuleString?: string): RSM =>
 		dispatch({ type: 'SET_REPEAT_WEEKLY_DAYS', days });
 	}, []);
 
-	const setRepeatWhich: RSM['setRepeatWhich'] = useCallback((repeatKey, monthYearMode, which) => {
-		dispatch({ type: 'SET_REPEAT_WHICH', repeatKey, monthYearMode, which });
+	const setRepeatWhich: RSM['setRepeatWhich'] = useCallback((repeatKey, which) => {
+		dispatch({ type: 'SET_REPEAT_WHICH', repeatKey, which });
 	}, []);
 
 	return useMemo<RSM>(

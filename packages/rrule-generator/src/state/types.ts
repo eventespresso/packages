@@ -64,18 +64,14 @@ export interface RRuleStateManager extends Readonly<RRuleState> {
 	setRepeatFrequency: (repeatKey: Frequency) => void;
 	setRepeatInterval: (repeatKey: keyof Omit<RepeatRule, 'frequency' | 'yearly'>, interval: number) => void;
 	setRepeatMonth: (monthYearMode: RRuleAction['monthYearMode'], month: Month) => void;
-	setRepeatWhich: (
-		repeatKey: keyof Pick<RepeatRule, 'yearly' | 'monthly'>,
-		monthYearMode: RRuleAction['monthYearMode'],
-		which: Which
-	) => void;
+	setRepeatWhich: (repeatKey: keyof Pick<RepeatRule, 'yearly' | 'monthly'>, which: Which) => void;
 	setRepeatWeeklyDays: (days: WeeklyRepeatOption['days']) => void;
 	setRepeatDay: (
 		repeatKey: keyof Pick<RepeatRule, 'yearly' | 'monthly'>,
 		monthYearMode: RRuleAction['monthYearMode'],
 		day: Day
 	) => void;
-	setRepeatMode: (repeatKey: RRuleAction['repeatKey'], mode: RepeatMode) => void;
+	setRepeatMode: (repeatKey: keyof Pick<RepeatRule, 'yearly' | 'monthly'>, mode: RepeatMode) => void;
 }
 
 export type RRuleStateReducer = Reducer<RRuleState, RRuleAction>;
