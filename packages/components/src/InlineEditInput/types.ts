@@ -1,6 +1,7 @@
-import { InlineEditProps } from '@eventespresso/adapters';
+import { InlineEditProps, InlineEditPreviewProps } from '@eventespresso/adapters';
 
 export interface TextAreaProps extends Omit<InlineEditProps, 'inputType'> {
+	lineCount?: number;
 	richTextContent?: boolean;
 	tooltip?: string;
 }
@@ -12,7 +13,7 @@ export interface TextProps extends Omit<InlineEditProps, 'inputType'> {
 	tooltip?: string;
 }
 
-export interface PreviewProps extends Partial<Omit<InlineEditProps, 'onChange' | 'onChangeValue' | 'value'>> {
+export interface PreviewProps extends Partial<InlineEditPreviewProps> {
 	className?: string;
 	lineCount?: number;
 	lineLength?: number;
@@ -21,5 +22,4 @@ export interface PreviewProps extends Partial<Omit<InlineEditProps, 'onChange' |
 	onRequestEdit?: VoidFunction;
 	richTextContent?: boolean;
 	tooltip?: string;
-	value?: string | JSX.Element;
 }
