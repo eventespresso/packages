@@ -17,8 +17,6 @@ describe('useEvent', () => {
 		await actWait();
 
 		expect(result.current).toBeUndefined();
-
-		expect(result.current).toBeUndefined();
 	});
 
 	it('checks for response data', async () => {
