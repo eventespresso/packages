@@ -18,17 +18,17 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 	...props
 }) => {
 	const initialText = props.text === tooltip ? '' : props.text;
-	console.log('%c RichTextEditorModal text', 'color: DarkOrchid;', props.text, initialText);
+
 	const [text, setText] = useState(initialText);
-	const hasChanges = text !== props.text;
 	const { isOpen, onOpen, onClose } = useDisclosure();
+
+	const hasChanges = text !== props.text;
 	const previewClassName = classNames('ee-inline-edit__preview-wrapper', className && className);
 
 	const onChange = useCallback(
 		(newText: string): void => {
 			newText = newText !== '<p></p>' ? newText : '';
 			setText(newText);
-			console.log('%c RichTextEditorModal text update', 'color: DeepPink;', newText);
 		},
 		[setText]
 	);
