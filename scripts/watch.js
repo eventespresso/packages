@@ -10,7 +10,7 @@ const devConfig = config(DEVELOPMENT);
 
 webpack(devConfig).watch(
 	{
-		poll: 500,
+		poll: true,
 		ignored: /node_modules/,
 	},
 	(err, stats) => {
