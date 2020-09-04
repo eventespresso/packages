@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import classNames from 'classnames';
 import { ENTER } from '@wordpress/keycodes';
 import { __ } from '@wordpress/i18n';
@@ -8,7 +8,7 @@ import { TabbableTextProps } from './types';
 
 import './style.scss';
 
-export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, richTextContent, ...props }) => {
+export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, ...props }) => {
 	let tooltip = props.tooltip || __('Click to edit...');
 	const text = props.text || tooltip;
 	// don't display tooltip if it is being used as placeholder
@@ -24,20 +24,10 @@ export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, richT
 		[onClick]
 	);
 
-	const spanProps = useMemo(() => {
-		const html: string | boolean = typeof text === 'string' && String(text);
-		return {
-			...(richTextContent && { dangerouslySetInnerHTML: { __html: html } }),
-			...(!richTextContent && {
-				children: text,
-			}),
-		};
-	}, [richTextContent, text]);
-
 	return (
 		<Tooltip tooltip={tooltip}>
 			<div className={className} onClick={onClick} onKeyDown={onKeyDown} role='button' tabIndex={0}>
-				<span {...spanProps} />
+				{text}
 				{icon}
 			</div>
 		</Tooltip>

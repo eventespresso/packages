@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import { useDisclosure } from '@chakra-ui/hooks';
+import Dotdotdot from 'react-dotdotdot';
 
 import { TabbableText, ModalWithAlert } from '../';
 import { Edit } from '@eventespresso/icons';
@@ -17,9 +18,7 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 	tooltip,
 	...props
 }) => {
-	const initialText = props.text === tooltip ? '' : props.text;
-
-	const [text, setText] = useState(initialText);
+	const [text, setText] = useState(props.text);
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const hasChanges = text !== props.text;
@@ -36,17 +35,33 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 	const onSubmit = useCallback((): void => {
 		if (hasChanges) {
 			onUpdate(text);
-			onClose();
 		}
+		onClose();
 	}, [onClose, onUpdate, hasChanges, text]);
+
+	const onCancel = useCallback((): void => {
+		// restore the initial text for preview
+		setText(props.text);
+		onClose();
+	}, [onClose, props.text]);
+
+	const previewProps = useMemo(() => {
+		return { dangerouslySetInnerHTML: { __html: text } };
+	}, [text]);
+
+	const preview = (
+		<Dotdotdot clamp={4}>
+			<div {...previewProps} />
+		</Dotdotdot>
+	);
 
 	return (
 		<>
 			<ModalWithAlert
 				className='ee-rich-text-editor-modal'
 				isOpen={isOpen}
-				onCancel={onClose}
-				onClose={onClose}
+				onCancel={onCancel}
+				onClose={onCancel}
 				onSubmit={onSubmit}
 				showAlertOnEscape={hasChanges}
 				title={title}
@@ -58,8 +73,7 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 					className={previewClassName}
 					icon={<Edit className={'ee-inline-edit__edit-icon'} />}
 					onClick={onOpen}
-					richTextContent
-					text={text}
+					text={preview}
 					tooltip={tooltip}
 				/>
 			</div>
