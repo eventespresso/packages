@@ -61,6 +61,7 @@ export interface FormStateManager extends FormState {
 	setRRule: (rRule: FormState['rRule']) => void;
 	addRDate: (date: string) => void;
 	removeRDate: (date: string) => void;
+	reset: () => void;
 	addExDate: (date: string) => void;
 	removeExDate: (date: string) => void;
 	updateDateField: <K extends keyof DateFormShape>(field: K, value: DateFormShape[K]) => void;

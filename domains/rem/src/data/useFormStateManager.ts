@@ -96,6 +96,10 @@ const useFormStateManager: FormStateManagerHook = () => {
 		});
 	}, []);
 
+	const reset: FSM['reset'] = useCallback(() => {
+		dispatch({ type: 'RESET' });
+	}, []);
+
 	return useMemo(
 		() => ({
 			...state,
@@ -111,6 +115,7 @@ const useFormStateManager: FormStateManagerHook = () => {
 			setRRule,
 			updateDateField,
 			updateTicket,
+			reset,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[state]
