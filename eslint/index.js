@@ -2,7 +2,8 @@ const levels = [
 	['constants', 'hooks', 'icons', 'registry', 'rich-text-editor', 'styles', 'toaster', 'dates'],
 	['adapters', 'data', 'rrule-generator'],
 	['form', 'predicates', 'services'],
-	['helpers', 'components', 'edtr-services', 'tpc'],
+	['helpers', 'components', 'edtr-services'],
+	['tpc'],
 ];
 
 /**
