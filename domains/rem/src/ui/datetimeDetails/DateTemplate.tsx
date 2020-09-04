@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { __ } from '@wordpress/i18n';
 
 import { Button, SelectInput } from '@eventespresso/components';
@@ -16,9 +16,13 @@ const DateTemplate: React.FC<DateTemplateProps> = ({ setTemplate }) => {
 	const [selectedDateId, setSelectedDateId] = useState('');
 	const onChangeValue = useCallback((value) => setSelectedDateId(value), []);
 
-	const options = entityListToSelectOptions(useDatetimes(), { label: __('Select...'), value: '' });
+	const allDates = useDatetimes();
+
+	const options = useMemo(() => entityListToSelectOptions(allDates, { label: __('Select...'), value: '' }), [
+		allDates,
+	]);
 	const datetime = useDatetimeItem({ id: selectedDateId });
-	const onClickSet = useCallback(() => setTemplate(datetime), [datetime, setTemplate]);
+	const onClickSet = useCallback(() => setTemplate(datetime || {}), [datetime, setTemplate]);
 
 	const addNewID = 'ee-add-new-datetime';
 	const addNew = <Button buttonText={__('Add New')} id={addNewID} icon={Plus} onClick={onClickSet} />;
