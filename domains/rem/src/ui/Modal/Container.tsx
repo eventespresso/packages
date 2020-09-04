@@ -19,6 +19,13 @@ const Container: React.FC = () => {
 	const { reset: resetStepState } = useStepsState();
 	const submitForm = useSubmitForm(getData(), generateDates);
 
+	const resetState = useCallback(() => {
+		// reset REM state
+		resetFormState();
+		// reset steps
+		resetStepState();
+	}, [resetFormState, resetStepState]);
+
 	const onSubmit = useCallback(async () => {
 		// close REM modal
 		close();
@@ -26,20 +33,14 @@ const Container: React.FC = () => {
 		closePopover();
 		// submit the data for mutations
 		await submitForm();
-		// reset REM state
-		resetFormState();
-		// reset steps
-		resetStepState();
-	}, [close, closePopover, resetFormState, resetStepState, submitForm]);
+		resetState();
+	}, [close, closePopover, resetState, submitForm]);
 
 	const onClose = useCallback(() => {
 		// close REM modal
 		close();
-		// reset REM state
-		resetFormState();
-		// reset steps
-		resetStepState();
-	}, [close, resetFormState, resetStepState]);
+		resetState();
+	}, [close, resetState]);
 
 	return isOpen && <Modal isOpen={true} onClose={onClose} onSubmit={onSubmit} />;
 };
