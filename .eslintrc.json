@@ -26,7 +26,7 @@
 		"ecmaVersion": 2018,
 		"sourceType": "module"
 	},
-	"plugins": ["react-hooks", "jsx-a11y"],
+	"plugins": ["react-hooks", "jsx-a11y", "ee-barista"],
 	"rules": {
 		"@typescript-eslint/ban-ts-comment": "off",
 		"@typescript-eslint/ban-ts-ignore": "off",
@@ -43,7 +43,8 @@
 		"react-hooks/rules-of-hooks": "error",
 		"react/display-name": "off",
 		"react/prop-types": "off",
-		"react/static-property-placement": "off"
+		"react/static-property-placement": "off",
+		"ee-barista/no-circular-imports": "error"
 	},
 	"settings": {
 		"react": {
