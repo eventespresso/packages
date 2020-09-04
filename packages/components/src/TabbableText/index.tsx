@@ -18,6 +18,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, ...pr
 	const onKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
 			if (e.keyCode === ENTER) {
+				e.preventDefault();
 				onClick();
 			}
 		},

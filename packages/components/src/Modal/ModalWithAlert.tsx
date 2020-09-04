@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { ESCAPE } from '@wordpress/keycodes';
 import { __ } from '@wordpress/i18n';
 
@@ -27,11 +27,14 @@ const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 		onConfirm: props.onClose as VoidFunction,
 	});
 
-	const onEscape = ({ keyCode }): void => {
-		if (keyCode === ESCAPE) {
-			onOpen();
-		}
-	};
+	const onEscape = useCallback(
+		({ keyCode }) => {
+			if (keyCode === ESCAPE) {
+				onOpen();
+			}
+		},
+		[onOpen]
+	);
 
 	useEffect(() => {
 		if (canUseDOM) {

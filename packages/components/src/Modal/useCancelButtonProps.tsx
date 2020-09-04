@@ -8,7 +8,7 @@ const useCancelButtonProps = (onCancel: VoidFunction): ButtonProps => {
 		return onCancel
 			? {
 					buttonText: __('Cancel'),
-					onCancel,
+					onClick: onCancel,
 					type: 'reset',
 			  }
 			: null;
