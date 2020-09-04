@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { DateTimePicker } from '@eventespresso/components';
+import { DateTimePicker } from '@eventespresso/dates';
 import { useRRuleConfig } from '../../hooks';
 
 export interface OnDateProps {

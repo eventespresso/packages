@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import { GET_GENERAL_SETTINGS } from '.';
 import type { FetchQueryResult } from '../types';
-import { GeneralSettingsData } from '@eventespresso/services';
+import type { GeneralSettingsData } from '@eventespresso/services';
 
 const useFetchGeneralSettings = (): FetchQueryResult<GeneralSettingsData> => {
 	const toaster = useSystemNotifications();

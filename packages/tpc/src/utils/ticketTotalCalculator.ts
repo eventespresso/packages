@@ -1,4 +1,4 @@
-import { Price } from '@eventespresso/edtr-services';
+import type { Price } from '@eventespresso/edtr-services';
 import { parsedAmount } from '@eventespresso/utils';
 
 const ticketTotalCalculator = (

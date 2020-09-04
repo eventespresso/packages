@@ -1,6 +1,6 @@
 import { GraphQLError } from 'graphql';
 
-import { GeneralSettingsData } from '@eventespresso/services';
+import type { GeneralSettingsData } from '@eventespresso/services';
 import { GET_GENERAL_SETTINGS } from '..';
 import type { ReadQueryOptions } from '../../types';
 

@@ -1,6 +1,6 @@
 import { GraphQLError } from 'graphql';
 
-import { Viewer, CurrentUserProps } from '@eventespresso/services';
+import type { Viewer, CurrentUserProps } from '@eventespresso/services';
 import type { ReadQueryOptions } from '../../types';
 import { GET_CURRENT_USER } from '..';
 

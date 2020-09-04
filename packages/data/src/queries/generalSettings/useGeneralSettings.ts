@@ -1,5 +1,5 @@
 import { useMemoStringify } from '@eventespresso/hooks';
-import { GeneralSettings, GeneralSettingsData } from '@eventespresso/services';
+import type { GeneralSettings, GeneralSettingsData } from '@eventespresso/services';
 
 import useGeneralSettingsQueryOptions from './useGeneralSettingsQueryOptions';
 import { useCacheQuery } from '../';

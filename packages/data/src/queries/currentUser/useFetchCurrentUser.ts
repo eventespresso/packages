@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import { GET_CURRENT_USER } from '.';
 import type { FetchQueryResult } from '../types';
-import { Viewer } from '@eventespresso/services';
+import type { Viewer } from '@eventespresso/services';
 
 const useFetchCurrentUser = (): FetchQueryResult<Viewer> => {
 	const toaster = useSystemNotifications();
