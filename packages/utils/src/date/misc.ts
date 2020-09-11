@@ -1,12 +1,12 @@
 import { pipe } from 'ramda';
 import { __ } from '@wordpress/i18n';
 import { setHours, setMinutes, setSeconds, setYear, setMonth, setDate } from 'date-fns/fp';
-import { parseISO } from 'date-fns';
+import { parseISO, toDate } from 'date-fns';
 import type { OptionsType } from '@eventespresso/adapters';
 
-import { Intervals, ShiftDateArgs } from './types';
 import { add, sub } from './addSub';
 import { objectToSelectOptions } from '../list';
+import type { Intervals, PrepDatesComparisonFunc, ShiftDateArgs } from './types';
 
 /**
  * Sets the time of the date object to zero hour
@@ -58,4 +58,18 @@ export const shiftDate = (args: ShiftDateArgs) => (date: Date | string): Date =>
 export const setDefaultTime = (date: Date, type: 'start' | 'end' = 'start'): Date => {
 	const hours = type === 'start' ? 8 : 17;
 	return pipe(setHours(hours), setMinutes(0), setSeconds(0))(date);
+};
+
+/**
+ *  accepts two Dates and/or timestamps, converts any timestamps to Dates,
+ *  will set all time properties to 0 if considerTime is false (default)
+ */
+export const prepDatesForComparison: PrepDatesComparisonFunc = (firstDate, secondDate, considerTime = false) => {
+	let parsedFirstDate = firstDate instanceof Date ? firstDate : toDate(firstDate);
+	let parsedSecondDate = secondDate instanceof Date ? secondDate : toDate(secondDate);
+	if (!considerTime) {
+		parsedFirstDate = setTimeToZeroHour(parsedFirstDate);
+		parsedSecondDate = setTimeToZeroHour(parsedSecondDate);
+	}
+	return [parsedFirstDate, parsedSecondDate];
 };
