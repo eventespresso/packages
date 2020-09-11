@@ -5,5 +5,5 @@ import { DatePickerProps } from './types';
 import { DatePicker } from './DatePicker';
 
 export const DateTimePicker: React.FC<DatePickerProps> = (props) => {
-	return <DatePicker showTimeInput timeCaption={__('time')} {...props} />;
+	return <DatePicker showTimeSelect timeCaption={__('time')} {...props} />;
 };

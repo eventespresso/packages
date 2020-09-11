@@ -8,7 +8,7 @@ export const TimePicker: React.FC<DatePickerProps> = (props) => {
 	return (
 		<DatePicker
 			dateFormat={props.timeFormat}
-			showTimeInput
+			showTimeSelect
 			showTimeSelectOnly
 			timeCaption={__('time')}
 			{...props}
