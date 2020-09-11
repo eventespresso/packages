@@ -11,7 +11,7 @@ const devConfig = config(DEVELOPMENT);
 webpack(devConfig).watch(
 	{
 		poll: true,
-		ignored: /node_modules/,
+		ignored: /packages\/(^[a-zA-Z\-].*)\/node_modules/,
 	},
 	(err, stats) => {
 		if (err) {
