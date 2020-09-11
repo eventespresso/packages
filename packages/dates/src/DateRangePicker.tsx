@@ -1,10 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
+import { isOnOrAfterToday, isOnOrAfterDate, isOnOrBeforeDate } from '@eventespresso/utils';
 
 import { DateRangePickerProps } from './types';
 import { DatePicker } from './DatePicker';
 import { DateTimePicker } from './DateTimePicker';
+import { DateRangePickerLegend } from './DateRangePickerLegend';
 
 export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 	className,
@@ -27,6 +29,20 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 	const onChangeStart = useCallback((date) => setStartDate(date), []);
 	const onChangeEnd = useCallback((date) => setEndDate(date), []);
 
+	const isAfterStartDate = useCallback(
+		(date) => {
+			return isOnOrAfterDate(date, startDate) > -1 && isOnOrAfterToday(date) > -1;
+		},
+		[startDate]
+	);
+
+	const isBeforeEndDate = useCallback(
+		(date) => {
+			return isOnOrBeforeDate(date, endDate) > -1 && isOnOrAfterToday(date) > -1;
+		},
+		[endDate]
+	);
+
 	const wrapperClassName = classNames(className, 'date-range-picker');
 
 	const Component = showTime ? DateTimePicker : DatePicker;
@@ -36,23 +52,31 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 			<label className='date-range-picker__label'>{startLabel || __('start date')}</label>
 			<Component
 				endDate={endDate}
+				filterDate={isBeforeEndDate}
+				fixedHeight
 				inputValue={inputValue?.[0]}
 				onChange={onChangeStart}
 				selectsStart
 				startDate={startDate}
 				value={startDate}
 				{...props}
-			/>
+			>
+				<DateRangePickerLegend />
+			</Component>
 			<label className='date-range-picker__label'>{endLabel || __('end date')}</label>
 			<Component
 				endDate={endDate}
+				filterDate={isAfterStartDate}
+				fixedHeight
 				inputValue={inputValue?.[1]}
 				onChange={onChangeEnd}
 				selectsEnd
 				startDate={startDate}
 				value={endDate}
 				{...props}
-			/>
+			>
+				<DateRangePickerLegend />
+			</Component>
 		</div>
 	);
 };
