@@ -1,31 +1,51 @@
+@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+
 .ee-filter-tags {
 	&__wrapper {
 		align-items: center;
 		display: flex;
 		margin: 0 0 var(--ee-margin-default);
+
+		@include max600px {
+			align-items: flex-start;
+			flex-direction: column;
+		}
 	}
 	&__header {
 		font-weight: 600;
-		margin-right: var(--ee-margin-small);
+		margin: 0 var(--ee-margin-small) 0 0;
+
+		@include max600px {
+			align-items: flex-start;
+			flex-direction: column;
+			margin: 0 0 var(--ee-margin-tiny);
+		}
 	}
 	&__body {
 		display: flex;
+		flex-flow: row wrap;
 	}
 
 	.ee-filter-tag {
+		align-items: center;
 		background: var(--ee-color-grey-15);
 		border: 1px solid var(--ee-color-primary-low-contrast);
 		border-radius: var(--ee-border-radius-small);
 		color: var(--ee-color-primary-high-contrast);
+		display: flex;
+    	flex-flow: row nowrap;
 		font-size: var(--ee-font-size-smaller);
-		margin-right: var(--ee-margin-smaller);
+		margin: 0 var(--ee-margin-smaller) var(--ee-margin-tiny) 0;
 		padding: var(--ee-padding-nano) var(--ee-padding-micro) var(--ee-padding-micro) var(--ee-padding-tiny);
 		position: relative;
 
 		&__close-btn {
+			align-items: center;
 			cursor: pointer;
+			display: inline-flex;
 			font-size: var(--ee-font-size-default);
 			height: var(--ee-icon-button-size-micro);
+			justify-content: center;
 			margin-left: var(--ee-margin-micro);
 			opacity: 0.5;
 			outline: none !important;

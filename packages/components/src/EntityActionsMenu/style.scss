@@ -17,13 +17,32 @@
 		flex-direction: column;
 		text-align: center;
 
+		.ee-btn-base.ee-icon-button {
+			margin: 0 0 var(--ee-margin-tiny);
+		}
+
 		@include max480px {
 			flex-direction: row;
 			justify-content: center;
 		}
+	}
 
-		.ee-btn-base.ee-icon-button {
-			margin: 0 0 var(--ee-margin-tiny);
+	@include max480px {
+		margin: var(--ee-margin-tiny);
+
+		> div,
+		> .ee-btn-base.ee-icon-button {
+			margin: 0 var(--ee-margin-tiny);
+
+			.ee-btn-base.ee-icon-button {
+				margin: 0;
+			}
+		}
+
+		> div {
+			.ee-btn-base.ee-icon-button {
+				margin: 0;
+			}
 		}
 	}
 
