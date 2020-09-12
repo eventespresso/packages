@@ -19,6 +19,10 @@
 		&-reverse {
 			flex-flow: row-reverse nowrap;
 		}
+
+		@include max480px {
+			flex-direction: column;
+		}
 	}
 
 	// stack
