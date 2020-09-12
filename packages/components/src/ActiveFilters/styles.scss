@@ -13,7 +13,7 @@
 	}
 	&__header {
 		font-weight: 600;
-		margin: 0 var(--ee-margin-small) 0 0;
+		margin: 0 var(--ee-margin-small) var(--ee-margin-tiny) 0;
 
 		@include max600px {
 			align-items: flex-start;
