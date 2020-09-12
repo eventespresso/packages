@@ -2,52 +2,47 @@
  * -------------------------------------------------------------------------*/
 @import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
-/* Tablet Landscape */
-@include max1024px {
+
+@include max1600px {
 	.ee-rspnsv-table {
+		.ee-rspnsv-table-short-label {
+			display: block;
+			height: unset;
+			visibility: visible;
+			width: 100%;
+		}
+
+		.ee-rspnsv-table-long-label {
+			display: none;
+			height: 0;
+			visibility: hidden;
+			width: 0;
+		}
+
 		.ee-rspnsv-table-header-th.ee-entity-list-status-stripe,
 		.ee-rspnsv-table-body-td.ee-entity-list-status-stripe {
-			max-width: unset;
-			width: 0.5%;
+			width: 0.275%;
 		}
 	}
 }
 
-/* WordPress Admin Media Query Breakpoint: Tablet */
-@include max782px {
+@include max1366px {
 	.ee-rspnsv-table {
-		display: block;
-		width: 100%;
-
-		&__is-scrollable .ee-rspnsv-table__inner-wrapper {
-			overflow-x: unset !important;
+		.ee-rspnsv-table-header-th.ee-entity-list-status-stripe,
+		.ee-rspnsv-table-body-td.ee-entity-list-status-stripe {
+			width: 0.37%;
 		}
+	}
+}
+
+@include max1280px {
+	.columns-2 .ee-rspnsv-table {
+		width: 600px;
 
 		.ee-rspnsv-table-body {
 			display: flex;
 			flex-flow: row wrap;
 			justify-content: space-between;
-
-			td {
-				&.ee-entity-list-status-stripe.ee-entity-list-status-stripe {
-					text-align: center;
-
-					.ee-rspnsv-table-mobile-only-column-value {
-						padding-left: 0;
-					}
-
-					.ee-rspnsv-table-show-on-mobile {
-						color: white;
-					}
-				}
-
-				&.ee-ticket-list-col-registrations,
-				&.ee-actions-column {
-					.ee-rspnsv-table-mobile-only-column-value {
-						justify-content: start;
-					}
-				}
-			}
 		}
 
 		.ee-rspnsv-table-header .ee-rspnsv-table-header-row,
@@ -83,6 +78,9 @@
 			}
 		}
 
+		display: block;
+		width: 100%;
+
 		.ee-rspnsv-table-header,
 		.ee-rspnsv-table-header-th:not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-body-th:not(.ee-rspnsv-table-hide-on-mobile),
@@ -116,24 +114,29 @@
 
 		.ee-rspnsv-table-mobile-only-column-header {
 			display: inline-block;
-			float: left;
 			margin: auto 0;
-			padding-right: var(--ee-padding-smaller);
+			padding-right: var(--ee-padding-small);
 			text-align: right;
 			vertical-align: middle;
 			visibility: visible;
 			width: 38.2%;
 		}
 
-		.ee-rspnsv-table-body-td .ee-rspnsv-table-mobile-only-column-value {
+		.ee-rspnsv-table-body-td .ee-rspnsv-table-mobile-only-column-value,
+		.ee-rspnsv-table-body-td .ee-rspnsv-table-mobile-only-column-value .ee-inline-edit {
+			color: var(--ee-default-text-color-super-high-contrast);
 			display: inline-block;
-			padding-left: var(--ee-padding-smaller);
 			width: 61.8%;
+		}
+
+		.ee-rspnsv-table-body-td.ee-entity-list-status-stripe .ee-rspnsv-table-mobile-only-column-value {
+			color: var(--ee-color-white);
+			text-align: center;
+			width: 100%;
 		}
 
 		.ee-rspnsv-table-long-label,
 		.ee-rspnsv-table-show-on-mobile {
-			color: var(--ee-default-text-color);
 			display: block;
 			height: unset;
 			visibility: visible;
@@ -190,12 +193,25 @@
 		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-auto:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-auto:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-auto:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile) {
-			padding: var(--ee-padding-smaller);
+			padding: var(--ee-padding-micro) var(--ee-padding-smaller);
 			width: 100%;
 		}
+		.ee-rspnsv-table-body-td.ee-col-1 {
+			padding-top: var(--ee-padding-small) !important;
+		}
+	}
 
+	/* COLUMN SIZES */
+
+	.ee-rspnsv-table {
+		.ee-rspnsv-table-header-th.ee-entity-list-status-stripe,
 		.ee-rspnsv-table-body-td.ee-entity-list-status-stripe {
-			width: 100%;
+			max-width: unset;
+			width: 0.4%;
 		}
+	}
+
+	.columns-2 .ee-rspnsv-table .ee-rspnsv-table-body-td.ee-entity-list-status-stripe {
+		width: 100%;
 	}
 }

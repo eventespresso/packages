@@ -9,10 +9,12 @@ import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 
-import './style/index.scss';
-import './style/tablet-style.scss';
-
 import type { ResponsiveTableProps } from './types';
+
+import './style/index.scss';
+import './style/laptop-style.scss';
+import './style/tablet-style.scss';
+import './style/phone-style.scss';
 
 const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	bodyRows = [],
