@@ -5,6 +5,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { BulkActions, BulkActionsProps } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
 
+import Checkbox from '../../tableView/Checkbox';
 import { useDatesListFilterState, DatetimeStatus } from '@edtrServices/filterState';
 import { EditDetails } from '../details';
 import { Delete } from '../delete';
@@ -45,7 +46,7 @@ const Actions: React.FC = () => {
 
 	return (
 		<>
-			<BulkActions options={options} onApply={onApply} defaultAction='' />
+			<BulkActions Checkbox={Checkbox} defaultAction='' onApply={onApply} options={options} />
 			{isOpen && (
 				<>
 					{action === 'edit-details' && <EditDetails isOpen={true} onClose={onClose} />}

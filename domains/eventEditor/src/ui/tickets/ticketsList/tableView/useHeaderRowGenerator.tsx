@@ -23,7 +23,11 @@ const useHeaderRowGenerator = (): TicketsTableHeaderRowGen => {
 				key: 'checkbox',
 				type: 'cell',
 				className: 'ee-date-list-col-hdr ee-date-list-col-checkbox ee-rspnsv-table-column-micro',
-				value: <Checkbox />,
+				value: (
+					<div className={'ee-rspnsv-table-hide-on-mobile'}>
+						<Checkbox />
+					</div>
+				),
 			},
 			{
 				key: 'id',

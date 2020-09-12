@@ -1,17 +1,20 @@
 import React, { useState, useCallback } from 'react';
 import { __ } from '@wordpress/i18n';
-
-import { Button, SelectInput, SelectInputProps } from '../';
-import { Box } from '@eventespresso/adapters';
+import { ActionCheckboxProps } from './ActionCheckbox';
 import { useBulkEdit } from '@eventespresso/services';
 
+import { Button, SelectInput, SelectInputProps } from '../';
+import './styles.scss';
+
 export interface BulkActionsProps<T extends string = string> {
-	options: SelectInputProps['options'];
-	onApply: (action: T) => void;
+	Checkbox?: React.FC<ActionCheckboxProps>;
 	defaultAction?: T;
+	onApply: (action: T) => void;
+	options: SelectInputProps['options'];
 }
 
 export const BulkActions = <T extends string>({
+	Checkbox,
 	defaultAction,
 	options,
 	onApply,
@@ -28,9 +31,12 @@ export const BulkActions = <T extends string>({
 	}, [action, onApply]);
 
 	return (
-		<Box display='flex' alignItems='center' maxWidth='fit-content'>
+		<div className='ee-bulk-edit-actions__wrapper'>
 			<SelectInput value={action} options={options} onChangeValue={setValue} />
+			<div className={'ee-bulk-edit-actions__mobile-checkbox'}>
+				<Checkbox label={__('select all')} />
+			</div>
 			<Button onClick={onClick} buttonText={__('apply')} isDisabled={isApplyDisabled} />
-		</Box>
+		</div>
 	);
 };

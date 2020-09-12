@@ -1,0 +1,20 @@
+@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+
+.ee-bulk-edit-actions {
+	&__wrapper {
+		align-items: center;
+		display: flex;
+		width: 100%;
+
+		@include max782px {
+			flex-direction: column;
+		}
+	}
+
+	&__mobile-checkbox {
+		display: none;
+		@include max782px {
+			display: block;
+		}
+	}
+}

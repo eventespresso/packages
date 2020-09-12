@@ -6,10 +6,11 @@ import { EntityId } from '@eventespresso/data';
 
 export type ActionCheckboxProps = {
 	id?: EntityId;
+	label?: React.ReactElement;
 	visibleEntityIds?: Array<EntityId>;
 };
 
-export const ActionCheckbox: React.FC<ActionCheckboxProps> = ({ id, visibleEntityIds }) => {
+export const ActionCheckbox: React.FC<ActionCheckboxProps> = ({ id, label, visibleEntityIds }) => {
 	const { selected, toggleSelected, unSelectAll, selectMultiple } = useBulkEdit();
 
 	const onChange = useCallback(() => {
@@ -39,6 +40,7 @@ export const ActionCheckbox: React.FC<ActionCheckboxProps> = ({ id, visibleEntit
 			px='0.8em'
 			isChecked={isChecked}
 			isIndeterminate={isIndeterminate}
+			label={label}
 			onChange={onChange}
 		/>
 	);
