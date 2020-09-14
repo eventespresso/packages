@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 
 import { FilterBarUISubscription, FilterBarUIRegistry } from './';
 import type { FilterBarUIElementsHook } from './types';
-import { useMemoStringify } from '@eventespresso/hooks';
 
 const useFilterBarUIElements: FilterBarUIElementsHook = ({ domain, listId, filterState }) => {
 	const registry = useMemo(() => new FilterBarUIRegistry({ domain, listId }), [domain, listId]);
@@ -19,8 +18,10 @@ const useFilterBarUIElements: FilterBarUIElementsHook = ({ domain, listId, filte
 		callback({ listId, registry });
 	});
 
+	const keys = Object.keys(subscriptions).join(':');
+
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	return useMemoStringify(generateElements({ filterState }), Object.keys(subscriptions));
+	return useMemo(() => generateElements({ filterState }), [keys]);
 };
 
 export default useFilterBarUIElements;

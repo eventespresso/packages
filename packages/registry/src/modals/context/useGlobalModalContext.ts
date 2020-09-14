@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { AnyObject } from '@eventespresso/utils';
+import type { AnyObject } from '@eventespresso/utils';
 
 import { GlobalModalContext } from './GlobalModalProvider';
 import type { GlobalModalManager } from './types';

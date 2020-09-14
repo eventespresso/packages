@@ -1,5 +1,5 @@
 import { Reducer } from 'react';
-import { AnyObject } from '@eventespresso/utils';
+import type { AnyObject } from '@eventespresso/utils';
 
 export interface ModalState {
 	isOpen?: boolean;

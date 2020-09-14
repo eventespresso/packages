@@ -1,6 +1,6 @@
 import { useMemo, useCallback } from 'react';
 
-import { AnyObject } from '@eventespresso/utils';
+import type { AnyObject } from '@eventespresso/utils';
 import type { GlobalModal } from './types';
 import useGlobalModalContext from './useGlobalModalContext';
 
