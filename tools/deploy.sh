@@ -76,6 +76,12 @@ rm -rf $ASSETS_PATH/*
 # Make sure the directory exists
 mkdir -p $ASSETS_PATH
 
+# Convert POT file to PHP
+npx pot-to-php $BASE/$BUILD_PATH/js-translations.pot languages/event_espresso-js-translations.php event_espresso
+
+# Remove POT file
+rm $BASE/$BUILD_PATH/js-translations.pot
+
 # copy files from build folder to target assets folder
 cp -r $BASE/$BUILD_PATH/* $ASSETS_PATH/
 
