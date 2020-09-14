@@ -1,5 +1,5 @@
 module.exports = [
-	/* LEVEL 0 */ [
+	/* LEVEL 1 */ [
 		'constants',
 		'hooks',
 		'icons',
@@ -10,8 +10,8 @@ module.exports = [
 		'dates',
 		'utils',
 	],
-	/* LEVEL 1 */ ['adapters', 'data', 'rrule-generator', 'config'],
-	/* LEVEL 2 */ ['form', 'predicates', 'services'],
-	/* LEVEL 3 */ ['helpers', 'components', 'edtr-services'],
-	/* LEVEL 4 */ ['tpc'],
+	/* LEVEL 2 */ ['adapters', 'data', 'rrule-generator', 'config'],
+	/* LEVEL 3 */ ['form', 'predicates', 'services'],
+	/* LEVEL 4 */ ['helpers', 'components', 'edtr-services'],
+	/* LEVEL 5 */ ['tpc'],
 ];

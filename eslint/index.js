@@ -4,20 +4,20 @@ const levels = require('./levels');
 /**
  * This creates a map (package: level) like this
  * {
- *     adapters: 1,
- *     components: 3,
- *     constants: 0,
- *     data: 1,
- *     edtr-services: 3,
- *     form: 2,
- *     helpers: 3,
+ *     adapters: 2,
+ *     components: 4,
+ *     constants: 1,
+ *     data: 2,
+ *     edtr-services: 4,
+ *     form: 3,
+ *     helpers: 4,
  * }
  */
 const packageLevels = levels.reduce((res, curr, i) => {
 	return {
 		...res,
 		...curr.reduce((list, item) => {
-			return { ...list, [item]: i };
+			return { ...list, [item]: i + 1 };
 		}, {}),
 	};
 }, {});
@@ -28,7 +28,7 @@ module.exports = {
 			create: function (context) {
 				return {
 					ImportDeclaration(node) {
-						if (node.importKind !== 'type' && node.source.value.startsWith('@eventespresso/')) {
+						if (node.importKind !== 'type' && node.source.value.startsWith('@eventespresso/' && node.source.value !== '@eventespresso/icons')) {
 							const path = context.getFilename();
 							// ignore tests
 							if (path.match(/[.\\/]tests?[.\\/](tsx?$)?/)) {
