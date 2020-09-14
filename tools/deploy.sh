@@ -67,6 +67,19 @@ rm -rf $CLONE_DIR/*
 # clone the repo branch
 git clone -b $BRANCH https://$API_TOKEN_GITHUB@github.com/$USERNAME/$REPO.git $CLONE_DIR
 
+## DEPLOY I18N ##
+## make sure languages directory exists
+mkdir -p $CLONE_DIR/languages
+# paths of the translation files
+PHP_I18N_FILE="$CLONE_DIR/languages/event_espresso-js-translations.php"
+JS_I18N_FILE="$BASE/$BUILD_PATH/js-translations.pot"
+# make sure the file exists
+touch $I18N_FILE
+# Convert POT file to PHP
+npx pot-to-php $JS_I18N_FILE $I18N_FILE event_espresso
+# Remove POT file
+rm $JS_I18N_FILE
+
 # goto the repo directory
 cd $CLONE_DIR
 
@@ -75,12 +88,6 @@ rm -rf $ASSETS_PATH/*
 
 # Make sure the directory exists
 mkdir -p $ASSETS_PATH
-
-# Convert POT file to PHP
-npx pot-to-php $BASE/$BUILD_PATH/js-translations.pot languages/event_espresso-js-translations.php event_espresso
-
-# Remove POT file
-rm $BASE/$BUILD_PATH/js-translations.pot
 
 # copy files from build folder to target assets folder
 cp -r $BASE/$BUILD_PATH/* $ASSETS_PATH/
