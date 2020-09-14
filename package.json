@@ -4,7 +4,7 @@
 	"license": "GPL-3.0",
 	"scripts": {
 		"build": "yarn build:cra --domains \"all\"",
-		"build:ci": "FORCE_COLOR=true yarn build",
+		"build:ci": "yarn lint:ci && FORCE_COLOR=true yarn build",
 		"build:core": "yarn build:cra --domains \"core\" --skip-packages \"rrule-generator\"",
 		"build:cra": "node scripts/build.js",
 		"build:packages": "yarn build:cra",
@@ -17,10 +17,12 @@
 		"dev:rem": "yarn dev:watch --domains \"eventEditor,rem\"",
 		"dev:watch": "node scripts/watch.js",
 		"generate:icons": "npx @svgr/cli --typescript --template packages/icons/scripts/template.js -d packages/icons/src/icons packages/icons/src/svg",
+		"lint": "node eslint/validate.js && lerna run lint",
+		"lint:ci": "FORCE_COLOR=true yarn lint",
 		"start": "node scripts/start.js",
 		"storybook": "yarn workspace @eventespresso/storybook storybook",
 		"test-unit": "node scripts/test.js",
-		"test-unit:ci": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true node scripts/test.js"
+		"test-unit:ci": "FORCE_COLOR=true CI=true yarn test-unit"
 	},
 	"workspaces": {
 		"packages": [
