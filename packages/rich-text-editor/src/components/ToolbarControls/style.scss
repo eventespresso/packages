@@ -14,8 +14,8 @@ $ul: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' 
 			select {
 				height: auto !important;
 				margin-right: var(--ee-margin-smaller);
-				padding: var(--ee-padding-micro) var(--ee-padding-smaller) !important;
-				height: auto !important;
+				min-height: auto !important;
+				padding: 0 var(--ee-padding-smaller) !important;
 				width: auto !important;
 			}
 		}
