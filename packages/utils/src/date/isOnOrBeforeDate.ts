@@ -5,13 +5,12 @@ import type { DateComparisonFunc } from './types';
 
 /**
  * returns:
- *      1 if firstDate is before secondDate
- *      -1 if firstDate is after secondDate
- *      0 if dates are equal
+ * 		 true if firstDate is on or before secondDate
+ *      false if firstDate is after secondDate
  */
 const isOnOrBeforeDate: DateComparisonFunc = (firstDate, secondDate, considerTime = false) => {
 	const [parsedFirstDate, parsedSecondDate] = prepDatesForComparison(firstDate, secondDate, considerTime);
-	return compareDesc(parsedFirstDate, parsedSecondDate);
+	return compareDesc(parsedFirstDate, parsedSecondDate) > -1;
 };
 
 export default isOnOrBeforeDate;

@@ -22,7 +22,7 @@ export type DateComparisonFunc = (
 	firstDate: Date | number,
 	secondDate: Date | number,
 	considerTime?: boolean
-) => number;
+) => boolean;
 
 // for comparing a date against NOW
-export type SingleDateComparisonFunc = (firstDate: Date | number, considerTime?: boolean) => number;
+export type SingleDateComparisonFunc = (firstDate: Date | number, considerTime?: boolean) => boolean;

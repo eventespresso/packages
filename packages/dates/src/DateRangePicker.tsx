@@ -31,14 +31,14 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 
 	const isAfterStartDate = useCallback(
 		(date) => {
-			return isOnOrAfterDate(date, startDate) > -1 && isOnOrAfterToday(date) > -1;
+			return isOnOrAfterDate(date, startDate) && isOnOrAfterToday(date);
 		},
 		[startDate]
 	);
 
 	const isBeforeEndDate = useCallback(
 		(date) => {
-			return isOnOrBeforeDate(date, endDate) > -1 && isOnOrAfterToday(date) > -1;
+			return isOnOrBeforeDate(date, endDate) && isOnOrAfterToday(date);
 		},
 		[endDate]
 	);

@@ -1,19 +1,17 @@
 import { compareDesc } from 'date-fns';
+import { NOW } from '@eventespresso/constants';
 
 import { prepDatesForComparison } from './misc';
 import type { SingleDateComparisonFunc } from './types';
 
-const now = new Date();
-
 /**
  * returns:
- *      1 if firstDate is before today
- *      -1 if firstDate is after today
- *      0 if dates are equal
+ * 		 true if firstDate is today or before today
+ *      false if firstDate is after today
  */
 const isOnOrBeforeToday: SingleDateComparisonFunc = (firstDate, considerTime = false) => {
-	const [parsedFirstDate, parsedSecondDate] = prepDatesForComparison(firstDate, now, considerTime);
-	return compareDesc(parsedFirstDate, parsedSecondDate);
+	const [parsedFirstDate, parsedSecondDate] = prepDatesForComparison(firstDate, NOW, considerTime);
+	return compareDesc(parsedFirstDate, parsedSecondDate) > -1;
 };
 
 export default isOnOrBeforeToday;
