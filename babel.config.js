@@ -13,5 +13,17 @@ module.exports = function (api) {
 	return {
 		presets,
 		plugins,
+		env: {
+			production: {
+				plugins: [
+					[
+						'@wordpress/babel-plugin-makepot',
+						{
+							output: 'build/js-translations.pot',
+						},
+					],
+				],
+			},
+		},
 	};
 };
