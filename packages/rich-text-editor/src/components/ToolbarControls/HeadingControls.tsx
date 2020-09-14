@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 
 import Select from '../../../../adapters/src/Select/Select';
-import { useMemoStringify } from '@eventespresso/hooks';
 import { HEADING_BLOCK_TYPES } from '../constants';
 import type { BlockStyleControlsProps } from '../types';
 
@@ -11,7 +10,12 @@ const HeadingControls: React.FC<BlockStyleControlsProps> = ({ editorState, onTog
 		editorState,
 		selection,
 	]);
-	const rootProps = useMemoStringify({ className: 'rich-text-editor-controls__heading' });
+	const rootProps = useMemo(
+		() => ({
+			className: 'rich-text-editor-controls__heading',
+		}),
+		[]
+	);
 
 	return (
 		<Select
