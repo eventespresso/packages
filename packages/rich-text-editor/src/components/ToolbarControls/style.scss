@@ -5,8 +5,9 @@ $ul: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' 
 
 .rich-text-editor-controls .rich-text-editor {
 	&-controls {
-		display: flex;
 		align-items: center;
+		display: flex;
+		margin-bottom: 0;
 
 		&__heading {
 			width: auto;
