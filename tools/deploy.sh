@@ -76,20 +76,24 @@ JS_I18N_FILE="$BASE/$BUILD_PATH/js-translations.pot"
 # make sure the file exists
 touch $I18N_FILE
 # Convert POT file to PHP
+echo "Converting pot to PHP..."
 npx pot-to-php $JS_I18N_FILE $I18N_FILE event_espresso
 # Remove POT file
+echo "Remove JS pot file"
 rm $JS_I18N_FILE
 
 # goto the repo directory
 cd $CLONE_DIR
 
 # clean the assets path.
+echo "Clean up assets path..."
 rm -rf $ASSETS_PATH/*
 
 # Make sure the directory exists
 mkdir -p $ASSETS_PATH
 
 # copy files from build folder to target assets folder
+echo "Copy build files to assets path..."
 cp -r $BASE/$BUILD_PATH/* $ASSETS_PATH/
 
 # Commit if there is anything to
