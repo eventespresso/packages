@@ -5,8 +5,8 @@ import { convertFromHTML, convertToHTML } from 'draft-convert';
 import { TAB } from '@wordpress/keycodes';
 import 'draft-js/dist/Draft.css';
 
-import BlockStyleControls from './BlockStyleControls';
-import InlineStyleControls from './InlineStyleControls';
+import ToolbarControls from './ToolbarControls';
+
 import { getBlockStyle } from '../utils';
 import { RichTextEditorProps, RichTextEditorState } from './types';
 
@@ -85,11 +85,11 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 		return getDefaultKeyBinding(e);
 	}
 
-	_toggleBlockType(blockType: DraftBlockType): any {
+	_toggleBlockType(blockType: DraftBlockType): void {
 		this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
 	}
 
-	_toggleInlineStyle(inlineStyle: string): any {
+	_toggleInlineStyle(inlineStyle: string): void {
 		this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
 	}
 
@@ -119,8 +119,11 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 
 		return (
 			<div className='rich-text-editor-root'>
-				<BlockStyleControls editorState={editorState} onToggle={this.toggleBlockType} />
-				<InlineStyleControls editorState={editorState} onToggle={this.toggleInlineStyle} />
+				<ToolbarControls
+					editorState={editorState}
+					onToggleBlockType={this.toggleBlockType}
+					onToggleInlineStyle={this.toggleInlineStyle}
+				/>
 				{
 					// eslint-disable-next-line jsx-a11y/click-events-have-key-events
 					<div className={className} onClick={this.focus}>

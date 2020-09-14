@@ -1,8 +1,8 @@
 import React from 'react';
 
-import StyleButton from './StyleButton';
-import { BLOCK_TYPES } from './constants';
-import type { BlockStyleControlsProps } from './types';
+import StyleButton from '../StyleButton';
+import { BLOCK_TYPES } from '../constants';
+import type { BlockStyleControlsProps } from '../types';
 
 const BlockStyleControls: React.FC<BlockStyleControlsProps> = (props) => {
 	const { editorState } = props;
