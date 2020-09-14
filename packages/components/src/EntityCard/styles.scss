@@ -36,8 +36,7 @@
 			box-sizing: border-box;
 			display: flex;
 			flex-flow: column nowrap;
-			font-family: 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans', 'Trebuchet MS',
-				Verdana, 'Verdana Ref', sans-serif;
+			font-family: var(--ee-admin-font-family);
 			height: 100%;
 			line-height: calc(var(--ee-line-height-modifier) * 0.875);
 			justify-content: space-between;

@@ -38,8 +38,7 @@ $border-radius: var(--ee-border-radius-default);
 	&__item {
 		align-items: center;
 		display: flex;
-		font-family: 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans', 'Trebuchet MS',
-			Verdana, 'Verdana Ref', sans-serif;
+		font-family: var(--ee-admin-font-family);
 		font-size: var(--ee-font-size-default);
 		height: 100%;
 		margin: 0;

@@ -8,6 +8,8 @@
 	--ee-word-spacing-font-size-micro: 4px;
 	--ee-word-spacing-font-size-tiny: 2px;
 	--ee-word-spacing-font-size-smaller: 1px;
+
+	--ee-admin-font-family: 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans', 'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
 }
 
 .ee-focus-priority-1 {

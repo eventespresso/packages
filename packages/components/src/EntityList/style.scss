@@ -12,8 +12,7 @@
 	&__header {
 		&.ee-heading {
 			color: var(--ee-color-grey-10);
-			font-family: 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans',
-				'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
+			font-family: var(--ee-admin-font-family);
 			font-size: calc(var(--ee-font-size-huge) * 1.45);
 			font-weight: 800;
 			line-height: calc(var(--ee-line-height-modifier) * 0.875);
