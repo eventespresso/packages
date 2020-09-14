@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { Select } from '@eventespresso/adapters';
+import Select from '../../../../adapters/src/Select/Select';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { HEADING_BLOCK_TYPES } from '../constants';
 import type { BlockStyleControlsProps } from '../types';
