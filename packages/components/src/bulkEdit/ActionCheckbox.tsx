@@ -6,7 +6,7 @@ import { EntityId } from '@eventespresso/data';
 
 export type ActionCheckboxProps = {
 	id?: EntityId;
-	label?: React.ReactElement;
+	label?: React.ReactNode;
 	visibleEntityIds?: Array<EntityId>;
 };
 

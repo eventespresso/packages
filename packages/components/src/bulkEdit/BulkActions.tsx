@@ -7,7 +7,7 @@ import { Button, SelectInput, SelectInputProps } from '../';
 import './styles.scss';
 
 export interface BulkActionsProps<T extends string = string> {
-	Checkbox?: React.FC<ActionCheckboxProps>;
+	Checkbox?: React.ComponentType<ActionCheckboxProps>;
 	defaultAction?: T;
 	onApply: (action: T) => void;
 	options: SelectInputProps['options'];
