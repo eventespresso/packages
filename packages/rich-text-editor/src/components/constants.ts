@@ -7,7 +7,7 @@ export const BLOCK_TYPES: { label: string; style: DraftBlockType }[] = [
 ];
 
 export const HEADING_BLOCK_TYPES: { label: string; value: DraftBlockType }[] = [
-	{ label: 'H1', value: 'header-onesas' },
+	{ label: 'H1', value: 'header-one' },
 	{ label: 'H2', value: 'header-two' },
 	{ label: 'H3', value: 'header-three' },
 	{ label: 'H4', value: 'header-four' },
