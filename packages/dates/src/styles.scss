@@ -1,3 +1,13 @@
+:root {
+	// color variables
+	--ee-date-picker-start-date-bg-color: #a0d6b3; // #84c4bd
+	--ee-date-picker-start-date-bg-color-hover:#b5e4c6; // #ade0da
+	--ee-date-picker-date-in-range-bg-color: #9dcdd5;
+	--ee-date-picker-date-in-range-bg-color-hover: #b6d8dd;
+	--ee-date-picker-end-date-bg-color: #94b0d6;
+	--ee-date-picker-end-date-bg-color-hover: #b1c8e8;
+}
+
 .date-range-picker {
 	display: flex;
 	align-items: center;
@@ -37,15 +47,15 @@
 
 					&.legend-item {
 						&__range-start {
-							background: var(--ee-color-blue-green-low-contrast);
+							background: var(--ee-date-picker-start-date-bg-color);
 						}
 
 						&__range-day {
-							background: var(--ee-color-light-blue);
+							background: var(--ee-date-picker-date-in-range-bg-color);
 						}
 
 						&__range-end {
-							background: var(--ee-text-on-dark-blue-high-contrast);
+							background: var(--ee-date-picker-end-date-bg-color);
 						}
 					}
 				}
@@ -165,12 +175,12 @@
 				}
 
 				&--in-selecting-range {
-					background-color: var(--ee-color-light-blue); // light-blue
-					color: var(--ee-text-on-light-blue);
+					background-color: var(--ee-date-picker-date-in-range-bg-color);
+					color: var(--ee-default-text-color-super-high-contrast);
 
 					&:hover {
-						background-color: var(--ee-color-light-blue-low-contrast); // light-blue-low-contrast
-						color: var(--ee-text-on-light-blue);
+						background-color: var(--ee-date-picker-date-in-range-bg-color-hover);
+						color: var(--ee-default-text-color-super-high-contrast);
 					}
 				}
 			}
@@ -206,32 +216,31 @@
 				&--in-range,
 				&--range-start,
 				&--range-end {
-					background-color: var(--ee-color-light-blue);
-					color: var(--ee-text-on-light-blue);
+					background-color: var(--ee-date-picker-date-in-range-bg-color);
+					color: var(--ee-default-text-color-super-high-contrast);
 
 					&:hover {
-						background-color: var(--ee-color-light-blue-low-contrast);
+						background-color: var(--ee-date-picker-date-in-range-bg-color-hover);
+						color: var(--ee-default-text-color-super-high-contrast);
 					}
 				}
 				&--range-end,
 				&--selecting-range-end {
-					background-color: var(--ee-text-on-dark-blue-high-contrast);
-					color: var(--ee-color-dark-blue-high-contrast);
+					background-color: var(--ee-date-picker-end-date-bg-color);
+					color: var(--ee-default-text-color-super-high-contrast);
 
 					&:hover {
-						background-color: var(--ee-text-on-dark-blue-super-high-contrast); // light-blue-low-contrast
-						color: var(--ee-color-dark-blue-super-high-contrast);
+						background-color: var(--ee-date-picker-end-date-bg-color-hover);
 					}
 				}
 
 				&--range-start,
 				&--selecting-range-start {
-					background-color: var(--ee-color-blue-green-low-contrast);
-					color: var(--ee-text-on-blue-green-low-contrast);
+					background-color: var(--ee-date-picker-start-date-bg-color);
+					color: var(--ee-default-text-color-super-high-contrast);
 
 					&:hover {
-						background-color: var(--ee-color-blue-green-super-low-contrast);
-						color: var(--ee-text-on-blue-green-low-contrast);
+						background-color: var(--ee-date-picker-start-date-bg-color-hover);
 					}
 				}
 
@@ -242,12 +251,9 @@
 				}
 
 				&--today {
-					background: var(--ee-status-color-light-blue); // light-blue-low-contrast
-					// color: var(--ee-text-on-light-blue);
+					background-color: var(--ee-color-primary-low-contrast);
+					color: var(--ee-text-on-primary);
 					font-weight: 700;
-					// &:hover {
-					// 	background-color: var(--ee-color-primary-super-low-contrast);
-					// }
 				}
 
 				& + & {
@@ -342,7 +348,6 @@
 							width: 8px;
 						}
 
-
 						li.react-datepicker__time-list-item {
 							box-sizing: border-box;
 							height: var(--ee-icon-button-size-tiny);
@@ -350,20 +355,15 @@
 							margin: 0;
 							padding: var(--ee-padding-micro) var(--ee-padding-tiny);
 
+							&--selected {
+								background-color: var(--ee-date-picker-date-in-range-bg-color);
+                                color: var(--ee-default-text-color-super-high-contrast);
+                                font-weight: 500;
+							}
+
 							&:hover {
 								background-color: var(--ee-color-primary-low-contrast);
 								color: var(--ee-text-on-primary);
-							}
-
-							&--selected {
-								background-color: var(--ee-color-light-blue);
-                                color: var(--ee-text-on-light-blue);
-                                font-weight: 500;
-
-								&:hover {
-									background-color: var(--ee-color-light-blue-low-contrast);
-									color: var(--ee-text-on-light-blue);
-								}
 							}
 
 							&--disabled {
