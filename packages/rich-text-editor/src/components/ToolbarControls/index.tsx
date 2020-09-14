@@ -10,7 +10,7 @@ import './style.scss';
 
 const ToolbarControls: React.FC<ToolbarControlsProps> = ({ editorState, onToggleBlockType, onToggleInlineStyle }) => {
 	return (
-		<div className='rich-text-editor-controls'>
+		<div className='rich-text-editor-controls__wrapper'>
 			<HeadingControls editorState={editorState} onToggle={onToggleBlockType} />
 			<BlockStyleControls editorState={editorState} onToggle={onToggleBlockType} />
 			<InlineStyleControls editorState={editorState} onToggle={onToggleInlineStyle} />
