@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import classNames from 'classnames';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { Cell, getCurrencySignPositionClassName, HeaderRow } from '@eventespresso/components';
 
@@ -19,37 +19,37 @@ const useHeaderRowGenerator = (): HeaderRowGenerator => {
 				key: 'id',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__price-id ee-number-column',
-				value: __('ID', 'event_espresso'),
+				value: __('ID'),
 			},
 			{
 				key: 'type',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__price-type',
-				value: __('Price Type', 'event_espresso'),
+				value: __('Price Type'),
 			},
 			{
 				key: 'name',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__price-name',
-				value: __('Label', 'event_espresso'),
+				value: __('Label'),
 			},
 			{
 				key: 'desc',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__price-desc',
-				value: __('Description', 'event_espresso'),
+				value: __('Description'),
 			},
 			{
 				key: 'amount',
 				type: 'cell',
 				className: classNames(position, 'ee-ticket-price-calculator__amount', 'ee-number-column'),
-				value: __('Amount', 'event_espresso'),
+				value: __('Amount'),
 			},
 			{
 				key: 'actions',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__actions',
-				value: __('Actions', 'event_espresso'),
+				value: __('Actions'),
 			},
 		];
 

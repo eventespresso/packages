@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import { Weekday, Frequency, Which } from './types';
 
 export const MONTHS = {

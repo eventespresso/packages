@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { Button, ButtonProps, ButtonType } from '../../../';
 import { SaveOutlined } from '@eventespresso/icons';

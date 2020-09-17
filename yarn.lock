@@ -5501,7 +5501,7 @@
   dependencies:
     "@babel/runtime" "^7.9.2"
 
-"@wordpress/i18n@*", "@wordpress/i18n@^3.13.0", "@wordpress/i18n@^3.14.0":
+"@wordpress/i18n@*", "@wordpress/i18n@^3.14.0":
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/@wordpress/i18n/-/i18n-3.14.0.tgz#682822d7674ae0ccfd8502737f0094047d196b4e"
   integrity sha512-FQbSggdvkdS+IWMNhTl3n1nThqfzAPxORvoFpjDma7DOwuRKOA8iPyomwacfeG/krAeaurj1DIDzDvZh9Ex79w==
@@ -5509,6 +5509,18 @@
     "@babel/runtime" "^7.9.2"
     gettext-parser "^1.3.1"
     lodash "^4.17.15"
+    memize "^1.1.0"
+    sprintf-js "^1.1.1"
+    tannin "^1.2.0"
+
+"@wordpress/i18n@^3.15.0":
+  version "3.15.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/i18n/-/i18n-3.15.0.tgz#2206a6a631c933d027ed8643a7f5407f8970c78e"
+  integrity sha512-AawJgHEGPyMoPATl8a3Qa+cCZV3S6azPfvqeStbN2pSc7v0HqYhJhWaw80WToHkN4kyOsfu1PUVf1wefuoMNEA==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    gettext-parser "^1.3.1"
+    lodash "^4.17.19"
     memize "^1.1.0"
     sprintf-js "^1.1.1"
     tannin "^1.2.0"
@@ -9767,7 +9779,7 @@ eslint-plugin-cypress@^2.10.3:
     globals "^11.12.0"
 
 "eslint-plugin-ee-barista@file:./eslint":
-  version "1.0.0"
+  version "1.0.1"
 
 eslint-plugin-flowtype@4.6.0:
   version "4.6.0"

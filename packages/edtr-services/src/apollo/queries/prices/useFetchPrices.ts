@@ -1,6 +1,6 @@
 import { useEffect, useRef, useMemo } from 'react';
 import { useQuery } from '@eventespresso/data';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';

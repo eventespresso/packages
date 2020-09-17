@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { ResponsiveTable } from '@eventespresso/components';
 import { useConfig, useMoneyDisplay } from '@eventespresso/services';

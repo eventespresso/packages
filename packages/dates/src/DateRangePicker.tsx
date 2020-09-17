@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import { isOnOrAfterToday, isOnOrAfterDate, isOnOrBeforeDate } from '@eventespresso/utils';
 
 import { DateRangePickerProps } from './types';

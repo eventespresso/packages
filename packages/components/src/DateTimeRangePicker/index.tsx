@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import classNames from 'classnames';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { DateTimeRangePicker as DateTimeRangePickerAdapter, DateRangePickerProps } from '@eventespresso/dates';
 import { Save } from '@eventespresso/icons';

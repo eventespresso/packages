@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Spinner } from '@eventespresso/adapters';
-import { _x, sprintf } from '@wordpress/i18n';
+import { _x, sprintf } from '@eventespresso/i18n';
 
 import type { LoadingNoticeProps } from './types';
 import './style.scss';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { Collapsible, Legend, SearchInput, ToggleLegendButton } from '../../..';
 import ToggleFiltersButton from './buttons/ToggleFiltersButton';

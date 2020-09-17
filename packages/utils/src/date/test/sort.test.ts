@@ -1,4 +1,4 @@
-import { sprintf } from '@wordpress/i18n';
+import { sprintf } from '@eventespresso/i18n';
 import { reverse } from 'ramda';
 
 import sort from '../sort';

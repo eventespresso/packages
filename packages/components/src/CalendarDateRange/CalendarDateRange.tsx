@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { differenceInCalendarDays, parseISO, isValid } from 'date-fns';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { useTimeZoneTime } from '@eventespresso/services';
 import { BiggieCalendarDate, MediumCalendarDate } from '../../';

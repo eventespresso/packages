@@ -1,7 +1,7 @@
 import React from 'react';
 import { RRule } from 'rrule';
 import format from 'date-fns/format';
-import { __, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@eventespresso/i18n';
 
 import { LOCALIZED_DATE_FULL_FORMAT } from '@eventespresso/constants';
 

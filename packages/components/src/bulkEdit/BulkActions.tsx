@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import { ActionCheckboxProps } from './ActionCheckbox';
 import { useBulkEdit } from '@eventespresso/services';
 

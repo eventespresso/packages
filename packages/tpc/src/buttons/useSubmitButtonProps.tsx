@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { anyPass, isEmpty, isNil } from 'ramda';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import type { ButtonProps } from '@eventespresso/adapters';
 

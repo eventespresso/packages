@@ -18,7 +18,6 @@
 		"./src/publicPath.ts"
 	],
 	"dependencies": {
-		"@wordpress/i18n": "^3.13.0",
 		"date-fns": "^2.14.0",
 		"date-fns-tz": "^1.0.10",
 		"ramda": "^0.27.0",

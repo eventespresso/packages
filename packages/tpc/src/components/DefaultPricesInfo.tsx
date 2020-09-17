@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { any } from 'ramda';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { isDefault } from '@eventespresso/predicates';
 import { useConfig } from '@eventespresso/services';

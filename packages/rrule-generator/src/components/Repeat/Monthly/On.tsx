@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import { range } from 'ramda';
 
 import { useRRuleState } from '../../../hooks';

@@ -1,5 +1,5 @@
 import { formatISO, parseISO } from 'date-fns';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
 export const dateErrorMessage = (): string => __('End Date & Time must be set later than the Start Date & Time');

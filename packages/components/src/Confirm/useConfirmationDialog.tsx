@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { AlertDialog } from '@eventespresso/adapters';
 import { Button, ButtonType } from '../Button';

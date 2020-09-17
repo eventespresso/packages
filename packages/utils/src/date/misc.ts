@@ -1,5 +1,5 @@
 import { pipe } from 'ramda';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import { setHours, setMinutes, setSeconds, setYear, setMonth, setDate } from 'date-fns/fp';
 import { parseISO, toDate } from 'date-fns';
 import type { OptionsType } from '@eventespresso/adapters';

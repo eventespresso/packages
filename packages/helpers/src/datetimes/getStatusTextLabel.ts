@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import type { Datetime } from '@eventespresso/edtr-services';
 import { DATETIME_STATUS_ID } from '@eventespresso/predicates';
