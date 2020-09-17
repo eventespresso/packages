@@ -1,9 +1,12 @@
-import type { ButtonProps } from '../../Button';
+import type { CloseButtonProps as ChakraCloseButtonProps } from '@chakra-ui/core';
 import { Close } from '@eventespresso/icons';
 
 import './styles.scss';
 
-const modalCloseButtonProps: ButtonProps = {
+export interface CloseButtonProps extends Partial<ChakraCloseButtonProps> {
+	icon?: React.ComponentType<any>;
+}
+const modalCloseButtonProps: CloseButtonProps = {
 	className: 'ee-confirm-close ee-icon-button ee-icon-button--borderless',
 	icon: Close,
 };
