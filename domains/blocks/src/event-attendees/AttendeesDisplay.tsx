@@ -42,10 +42,7 @@ const AttendeesDisplay: React.FC<AttendeesEditProps> = ({ attributes }) => {
 	if (isNewBlock(attributes) && !attendees.length) {
 		return (
 			<Placeholder>
-				{__(
-					'To get started, select what event you want to show attendees from in the block settings.',
-					'event_espresso'
-				)}
+				{__('To get started, select what event you want to show attendees from in the block settings.')}
 			</Placeholder>
 		);
 	}
