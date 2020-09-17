@@ -1,18 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import {
-	Modal as ChakraModal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalFooter,
-	ModalHeader,
-	ModalOverlay,
-} from '@chakra-ui/core';
+import { Modal as ChakraModal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/core';
 
-import { Button } from '../Button';
+import { Button } from '../../Button';
 import type { ModalProps } from './types';
-import modalCloseButtonProps from './modalCloseButtonProps';
+import ModalCloseButton from '../ModalCloseButton';
 
 import './styles.scss';
 
@@ -70,7 +62,7 @@ const Modal: React.FC<ModalProps> = ({
 			<ModalContent role='alertdialog' className={className}>
 				<ModalHeader className={headerClassName}>{title}</ModalHeader>
 
-				{closeButton || <ModalCloseButton {...modalCloseButtonProps} isDisabled={!isClosable} />}
+				{closeButton || <ModalCloseButton isDisabled={!isClosable} />}
 
 				<ModalBody className={bodyClassName}>{children || content}</ModalBody>
 
