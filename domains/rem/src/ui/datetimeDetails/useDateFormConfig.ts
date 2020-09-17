@@ -1,5 +1,5 @@
 import { pick } from 'ramda';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import type { EspressoFormProps } from '@eventespresso/form';

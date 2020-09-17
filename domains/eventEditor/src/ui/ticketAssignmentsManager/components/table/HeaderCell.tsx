@@ -1,7 +1,7 @@
 import React from 'react';
 import { parseISO } from 'date-fns';
 import classNames from 'classnames';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { getTicketBackgroundColorClassName } from '@eventespresso/helpers';
 import type { RenderCellProps } from '../../types';

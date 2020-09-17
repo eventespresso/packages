@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 interface AvatarImageProps {
 	altText?: string;
@@ -21,7 +21,7 @@ const AvatarImage: React.FC<AvatarImageProps> = ({ className = 'contact', url, a
 				className={className + '-avatar-img avatar'}
 				src={url}
 				style={style}
-				alt={altText || __('contact avatar', 'event_espresso')}
+				alt={altText || __('contact avatar')}
 			/>
 		</div>
 	) : null;

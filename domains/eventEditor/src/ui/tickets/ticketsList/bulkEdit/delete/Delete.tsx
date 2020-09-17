@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { useConfirmationDialog } from '@eventespresso/components';
 import useOnDelete from './useOnDelete';

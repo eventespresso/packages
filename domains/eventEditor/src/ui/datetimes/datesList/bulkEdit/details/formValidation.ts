@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
 import { yupToFinalFormErrors } from '@eventespresso/form';

@@ -1,5 +1,5 @@
 import type { ApolloError } from 'apollo-client';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import type { Order, EntityQueryOrderBy, AttendeesOrderByFields } from '@eventespresso/data';
 import type { OptionsType } from '@eventespresso/adapters';
@@ -8,7 +8,7 @@ export const buildEntitySelectOptions = (list: Array<any>, loading: boolean, err
 	if (loading) {
 		return [
 			{
-				label: __('Loading...', 'event_espresso'),
+				label: __('Loading...'),
 				value: '',
 			},
 		];
@@ -16,14 +16,14 @@ export const buildEntitySelectOptions = (list: Array<any>, loading: boolean, err
 	if (error) {
 		return [
 			{
-				label: __('Error', 'event_espresso'),
+				label: __('Error'),
 				value: '',
 			},
 		];
 	}
 	return [
 		{
-			label: __('Select...', 'event_espresso'),
+			label: __('Select...'),
 			value: '',
 		},
 		...list.map(({ id: value, name: label }) => ({ label, value })),

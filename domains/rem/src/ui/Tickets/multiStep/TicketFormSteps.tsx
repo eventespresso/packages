@@ -1,5 +1,5 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { Steps, Step } from '@eventespresso/adapters';
 import { PrevNext } from '@eventespresso/hooks';

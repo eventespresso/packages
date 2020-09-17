@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextControl } from '@wordpress/components';
-import { __, _n, sprintf } from '@wordpress/i18n';
+import { __, _n, sprintf } from '@eventespresso/i18n';
 
 import { AttendeesEditProps } from '../types';
 import { useAttendees } from '@blocksServices/apollo/queries';
@@ -22,7 +22,7 @@ const AttendeeLimit: React.FC<AttendeesEditProps> = ({ attributes, setAttributes
 		<TextControl
 			type='number'
 			value={limit}
-			label={__('Number of Attendees to Display:', 'event_espresso')}
+			label={__('Number of Attendees to Display:')}
 			min={1}
 			onChange={(limit): void => setAttributes({ limit: parseInt(limit, 10) })}
 			help={sprintf(

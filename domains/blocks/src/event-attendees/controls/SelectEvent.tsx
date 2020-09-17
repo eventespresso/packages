@@ -1,6 +1,6 @@
 import React from 'react';
 import { SelectControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import type { AttendeesEditProps } from '../types';
 import { useEvents } from '@blocksServices/apollo';
@@ -17,7 +17,7 @@ const SelectEvent: React.FC<AttendeesEditProps> = ({ attributes, setAttributes }
 
 	return (
 		<SelectControl
-			label={__('Select Event', 'event_espresso')}
+			label={__('Select Event')}
 			value={event}
 			options={options as SelectControlProps['options']}
 			onChange={(event): void => setAttributes({ event, datetime: '', ticket: '' })}

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { Button, SelectInput } from '@eventespresso/components';
 import { entityListToSelectOptions } from '@eventespresso/utils';

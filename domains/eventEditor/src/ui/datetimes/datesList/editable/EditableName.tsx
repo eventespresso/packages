@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import type { DateItemProps } from '../types';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';

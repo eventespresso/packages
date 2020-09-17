@@ -1,5 +1,5 @@
 import React from 'react';
-import { __, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@eventespresso/i18n';
 
 import { useEvent, useTicketItem, EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { Container as EditModalContainer } from '@eventespresso/components';

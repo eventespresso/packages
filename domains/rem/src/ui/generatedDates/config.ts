@@ -1,6 +1,6 @@
 import { CloseCircleFilled, PlusCircleFilled, Repeat, Trash } from '@eventespresso/icons';
 import { LegendConfig } from '@eventespresso/components';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import { getBgClassName } from './utils';
 
 import './bg-colors.scss';

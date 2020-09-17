@@ -1,6 +1,6 @@
 import React from 'react';
 import { SelectControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import type { SelectControlProps } from './types';
 import type { Order } from '@eventespresso/data';
@@ -12,25 +12,17 @@ interface SortOrderControlProps extends SelectControlProps {
 
 const defaultOptions: React.ComponentProps<typeof SelectControl>['options'] = [
 	{
-		label: __('Ascending', 'event_espresso'),
+		label: __('Ascending'),
 		value: 'ASC',
 	},
 	{
-		label: __('Descending', 'event_espresso'),
+		label: __('Descending'),
 		value: 'DESC',
 	},
 ];
 
 const SortOrderControl: React.FC<SortOrderControlProps> = ({ order, setOrder, options = defaultOptions, ...rest }) => {
-	return (
-		<SelectControl
-			label={__('Sort order:', 'event_espresso')}
-			value={order}
-			options={options}
-			onChange={setOrder}
-			{...rest}
-		/>
-	);
+	return <SelectControl label={__('Sort order:')} value={order} options={options} onChange={setOrder} {...rest} />;
 };
 
 export default SortOrderControl;

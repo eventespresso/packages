@@ -1,6 +1,6 @@
 import React from 'react';
 import { InspectorControls } from '@wordpress/block-editor';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import { PanelBody } from '@wordpress/components';
 
 import { AttendeesEditProps } from '../types';
@@ -19,7 +19,7 @@ const Controls: React.FC<AttendeesEditProps> = (props) => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={__('Filter By Settings', 'event_espresso')}>
+			<PanelBody title={__('Filter By Settings')}>
 				<SelectEvent {...props} />
 
 				{event && <SelectDatetime {...props} />}
@@ -34,10 +34,10 @@ const Controls: React.FC<AttendeesEditProps> = (props) => {
 
 				<SelectOrder {...props} />
 			</PanelBody>
-			<PanelBody title={__('Gravatar Setttings', 'event_espresso')}>
+			<PanelBody title={__('Gravatar Setttings')}>
 				<GravatarSettings {...props} />
 			</PanelBody>
-			<PanelBody title={__('Archive Settings', 'event_espresso')}>
+			<PanelBody title={__('Archive Settings')}>
 				<ArchiveSettings {...props} />
 			</PanelBody>
 		</InspectorControls>

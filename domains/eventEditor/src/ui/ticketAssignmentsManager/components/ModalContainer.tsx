@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback } from 'react';
-import { sprintf, __ } from '@wordpress/i18n';
+import { sprintf, __ } from '@eventespresso/i18n';
 
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';

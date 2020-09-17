@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { __, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@eventespresso/i18n';
 
 import { Container as EditModalContainer } from '@eventespresso/components';
 import { useEvent, useDatetimeItem, EdtrGlobalModals } from '@eventespresso/edtr-services';

@@ -14,7 +14,6 @@
 	"dependencies": {
 		"@typeform/embed": "^0.20.0",
 		"@wordpress/components": "^9.7.0",
-		"@wordpress/i18n": "^3.13.0",
 		"@wordpress/url": "^2.16.0"
 	},
 	"devDependencies": {

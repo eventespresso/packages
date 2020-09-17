@@ -1,6 +1,6 @@
 import React from 'react';
 import { SelectControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { regStatusOptions as statusOptions } from '@eventespresso/predicates';
 import type { SelectControlProps } from './types';
@@ -14,7 +14,7 @@ interface RegStatusControlProps extends SelectControlProps {
 const RegStatusControl: React.FC<RegStatusControlProps> = ({ status, setStatus, ...rest }) => {
 	return (
 		<SelectControl
-			label={__('Select Registration Status', 'event_espresso')}
+			label={__('Select Registration Status')}
 			value={status}
 			options={statusOptions}
 			onChange={setStatus}

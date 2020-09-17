@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 import { formatISO } from 'date-fns';
 
 import { Button, DatePicker } from '@eventespresso/components';

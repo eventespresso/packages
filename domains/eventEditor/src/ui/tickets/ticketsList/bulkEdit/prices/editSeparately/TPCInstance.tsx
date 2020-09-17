@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { __, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@eventespresso/i18n';
 
 import { TicketPriceCalculator, useDataState } from '@eventespresso/tpc';
 import { ManageTPCStates } from './useManageTPCStates';

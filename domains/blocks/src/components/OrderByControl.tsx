@@ -1,6 +1,6 @@
 import React from 'react';
 import { SelectControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import type { SelectControlProps } from './types';
 
@@ -10,15 +10,7 @@ interface OrderByControlProps extends SelectControlProps {
 }
 
 const OrderByControl: React.FC<OrderByControlProps> = ({ orderBy, setOrderBy, options, ...rest }) => {
-	return (
-		<SelectControl
-			label={__('Order by', 'event_espresso')}
-			onChange={setOrderBy}
-			options={options}
-			value={orderBy}
-			{...rest}
-		/>
-	);
+	return <SelectControl label={__('Order by')} onChange={setOrderBy} options={options} value={orderBy} {...rest} />;
 };
 
 export default OrderByControl;

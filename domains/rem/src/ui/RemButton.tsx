@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { Button, NewEntityOption } from '@eventespresso/components';
 import { useGlobalModal } from '@eventespresso/registry';

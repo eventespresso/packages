@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { TypeName } from '@eventespresso/services';
 import { domain, datesList } from '@eventespresso/edtr-services';

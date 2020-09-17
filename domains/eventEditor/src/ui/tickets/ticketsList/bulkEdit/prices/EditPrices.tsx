@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { EntityEditModal } from '@eventespresso/components';
 import { EditModeButtons } from './buttons';

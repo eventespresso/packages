@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { Button, SelectInput } from '@eventespresso/components';
 import { entityListToSelectOptions, AnyObject } from '@eventespresso/utils';

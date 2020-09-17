@@ -1,6 +1,6 @@
 import { IconName, Trash } from '@eventespresso/icons';
 import { LegendConfig } from '@eventespresso/components';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 export const legendConfig: LegendConfig = {
 	icons: [

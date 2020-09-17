@@ -1,5 +1,5 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { getGDates, getRecurrenceFrequency, DATE_COUNT_LIMITS } from '../../utils';
 import { useFormState } from '../../data';
