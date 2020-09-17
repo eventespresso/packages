@@ -1,10 +1,10 @@
 import type { CloseButtonProps as ChakraCloseButtonProps } from '@chakra-ui/core';
 import { ButtonProps } from '../../Button/types';
 
-export interface ModalCloseButtonProps
-	extends Partial<Omit<ButtonProps, 'size' | 'type'>>,
-		Partial<ChakraCloseButtonProps> {
+type BP = Partial<Omit<ButtonProps, 'size' | 'type'>>;
+
+export interface ModalCloseButtonProps extends BP, Partial<ChakraCloseButtonProps> {
+	buttonProps?: BP;
 	icon?: React.ComponentType<any>;
-	onConfirm?: VoidFunction;
 	tooltip?: string;
 }

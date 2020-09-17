@@ -1,4 +1,6 @@
-export interface ConfirmProps {
+import { ModalCloseButtonProps } from '@eventespresso/adapters';
+
+export interface ConfirmProps extends ModalCloseButtonProps {
 	message?: string;
 	noButtonText?: string;
 	onConfirm?: VoidFunction;
