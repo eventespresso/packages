@@ -70,7 +70,7 @@ const Modal: React.FC<ModalProps> = ({
 			<ModalContent role='alertdialog' className={className}>
 				<ModalHeader className={headerClassName}>{title}</ModalHeader>
 
-				{closeButton || <ModalCloseButton {...modalCloseButtonProps} isDisabled={!isClosable} />}
+				{closeButton || <ModalCloseButton {...modalCloseButtonProps} size={null} isDisabled={!isClosable} />}
 
 				<ModalBody className={bodyClassName}>{children || content}</ModalBody>
 
