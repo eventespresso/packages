@@ -5,7 +5,7 @@ import TicketPriceCalculator from './TicketPriceCalculator';
 import useResetButtonProps from '../buttons/useResetButtonProps';
 import useSubmitButtonProps from '../buttons/useSubmitButtonProps';
 import { ConfirmClose } from '@eventespresso/components';
-import { Modal } from '@eventespresso/adapters';
+import { Modal, modalCloseButtonProps } from '@eventespresso/adapters';
 
 import { useTPCContext } from '../context';
 import { useDataState } from '../data';
@@ -21,7 +21,7 @@ const TicketPriceCalculatorModal: React.FC<TPCModalProps> = ({ onSubmit }) => {
 
 	return (
 		<Modal
-			closeButton={<ConfirmClose onConfirm={onClose} />}
+			closeButton={<ConfirmClose buttonProps={modalCloseButtonProps} onConfirm={onClose} />}
 			isOpen={true}
 			onClose={onClose}
 			className='ee-tpc'

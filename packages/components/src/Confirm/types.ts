@@ -1,3 +1,5 @@
+import type { ButtonProps } from '../Button';
+
 export interface ConfirmProps {
 	message?: string;
 	noButtonText?: string;
@@ -5,4 +7,8 @@ export interface ConfirmProps {
 	onCancel?: VoidFunction;
 	title?: string;
 	yesButtonText?: string;
+}
+
+export interface ConfirmPropsWithButton extends ConfirmProps {
+	buttonProps: ButtonProps;
 }
