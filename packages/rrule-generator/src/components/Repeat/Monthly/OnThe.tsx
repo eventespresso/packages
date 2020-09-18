@@ -56,7 +56,6 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				aria-label={__('Repeat monthly on the which')}
 				id={id}
 				isActive={isActive}
-				name='repeat.monthly.onThe.which'
 				onChangeWhich={onChangeWhich}
 				value={onThe.which}
 			/>
