@@ -20,7 +20,7 @@ const Daily: React.FC<BaseProps> = ({ id }) => {
 					aria-label={__('Repeat daily interval')}
 					className='rrule-generator__form-control rrule-generator__input'
 					id={`${id}-interval`}
-					name='repeat.daily.interval'
+					name={`${id}-interval`}
 					onChange={onChangeInterval}
 					type='number'
 					value={daily?.interval}

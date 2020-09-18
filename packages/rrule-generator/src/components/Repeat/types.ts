@@ -15,7 +15,6 @@ export interface PositionSelectProps {
 	'aria-label': string;
 	id: string;
 	isActive: boolean;
-	name: string;
 	onChangeWhich: OnChangeSelect;
 	value: string;
 }

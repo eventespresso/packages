@@ -18,7 +18,7 @@ const After: React.FC<AfterProps> = ({ id, after, onChange }) => {
 				aria-label={__('End after')}
 				className='rrule-generator__form-control rrule-generator__input'
 				id={id}
-				name='end.after'
+				name={id}
 				onChange={onChangeAfter}
 				type='number'
 				value={after}

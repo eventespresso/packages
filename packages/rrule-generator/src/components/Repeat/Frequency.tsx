@@ -28,6 +28,7 @@ const Frequency: React.FC<FrequencyProps> = ({ id, frequency, onChange }) => {
 			<select
 				className='rrule-generator__form-control rrule-generator__select'
 				id={id}
+				name={id}
 				onChange={onChangeFrequency}
 				value={frequency}
 			>

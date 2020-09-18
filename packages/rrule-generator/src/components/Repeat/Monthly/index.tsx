@@ -34,7 +34,7 @@ const Monthly: React.FC<BaseProps> = ({ id }) => {
 					aria-label={__('Repeat monthly interval')}
 					className='rrule-generator__form-control rrule-generator__input'
 					id={`${id}-interval`}
-					name='repeat.monthly.interval'
+					name={`${id}-interval`}
 					onChange={onChangeInterval}
 					type='number'
 					value={monthly?.interval}

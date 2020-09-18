@@ -26,6 +26,7 @@ const Mode: React.FC<ModeProps> = ({ id, mode, onChange }) => {
 			id={id}
 			className='rrule-generator__form-control rrule-generator__form-control--medium-width rrule-generator__select'
 			value={mode}
+			name={id}
 			onChange={onChangeMode}
 		>
 			{endModes.map((endMode) => {
