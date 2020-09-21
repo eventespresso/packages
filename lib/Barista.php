@@ -243,7 +243,7 @@ class Barista
 
 	public function addInlineData() {
 		wp_add_inline_script(
-			'eventespresso-hooks',
+			'eventespresso-i18n',
 			sprintf('var baristaAssetsUrl = "%s";', $this->url('build/')),
 			'before'
 		);
