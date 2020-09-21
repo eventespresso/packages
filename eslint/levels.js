@@ -8,6 +8,7 @@ module.exports = [
 		'registry',
 		'rich-text-editor',
 		'styles',
+		'storage',
 		'toaster',
 		'utils',
 	],
