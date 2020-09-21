@@ -1,31 +1,12 @@
 import { pipe } from 'ramda';
 import { __ } from '@eventespresso/i18n';
-import { setHours, setMinutes, setSeconds, setYear, setMonth, setDate } from 'date-fns/fp';
-import { parseISO, toDate } from 'date-fns';
+import { setHours, setMinutes, setSeconds } from 'date-fns/fp';
+import { parseISO } from 'date-fns';
 import type { OptionsType } from '@eventespresso/adapters';
 
 import { add, sub } from './addSub';
 import { objectToSelectOptions } from '../list';
-import type { Intervals, PrepDatesComparisonFunc, ShiftDateArgs } from './types';
-
-/**
- * Sets the time of the date object to zero hour
- */
-export const setTimeToZeroHour = (date: Date): Date => pipe(setHours(0), setMinutes(0), setSeconds(0))(date);
-
-/**
- * Sets the date, month and year of the date object to those of today
- */
-export const setDateToToday = (date: Date): Date => {
-	const today = new Date();
-
-	// prettier-ignore
-	return pipe(
-        setDate(today.getDate()),
-        setMonth(today.getMonth()),
-        setYear(today.getFullYear()
-    ))(date);
-};
+import type { Intervals, ShiftDateArgs } from './types';
 
 export const DATE_INTERVALS: Intervals = {
 	months: __('month(s)'),
@@ -58,18 +39,4 @@ export const shiftDate = (args: ShiftDateArgs) => (date: Date | string): Date =>
 export const setDefaultTime = (date: Date, type: 'start' | 'end' = 'start'): Date => {
 	const hours = type === 'start' ? 8 : 17;
 	return pipe(setHours(hours), setMinutes(0), setSeconds(0))(date);
-};
-
-/**
- *  accepts two Dates and/or timestamps, converts any timestamps to Dates,
- *  will set all time properties to 0 if considerTime is false (default)
- */
-export const prepDatesForComparison: PrepDatesComparisonFunc = (firstDate, secondDate, considerTime = false) => {
-	let parsedFirstDate = firstDate instanceof Date ? firstDate : toDate(firstDate);
-	let parsedSecondDate = secondDate instanceof Date ? secondDate : toDate(secondDate);
-	if (!considerTime) {
-		parsedFirstDate = setTimeToZeroHour(parsedFirstDate);
-		parsedSecondDate = setTimeToZeroHour(parsedSecondDate);
-	}
-	return [parsedFirstDate, parsedSecondDate];
 };

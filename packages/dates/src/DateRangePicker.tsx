@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
-import { isOnOrAfterToday, isOnOrAfterDate, isOnOrBeforeDate } from '@eventespresso/utils';
+import { isOnOrAfterToday, isOnOrAfterDate, isOnOrBeforeDate } from './utils';
 
 import { DateRangePickerProps } from './types';
 import { DatePicker } from './DatePicker';

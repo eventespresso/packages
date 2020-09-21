@@ -1,8 +1,8 @@
 import { compareDesc } from 'date-fns';
-import { NOW } from '@eventespresso/constants';
 
 import { prepDatesForComparison } from './misc';
 import type { SingleDateComparisonFunc } from './types';
+import { NOW } from '../constants';
 
 /**
  * returns:
