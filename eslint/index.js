@@ -44,7 +44,7 @@ module.exports = {
 							// TODO use file system to resolve paths
 							const match = path.match(/[\\/]packages[\\/](?<package>[^\\/]+)[\\/]/);
 							if (match && match.groups.package && match.groups.package) {
-								const dependency = node.source.value.split('/')[1];
+								const dependency = importSource.split('/')[1];
 								const sourcePkg = match.groups.package;
 
 								if (
@@ -54,7 +54,7 @@ module.exports = {
 								) {
 									context.report({
 										node: node,
-										message: `You cannot import "${node.source.value}" into "@eventespresso/${sourcePkg}"`,
+										message: `You cannot import "${importSource}" into "@eventespresso/${sourcePkg}"`,
 									});
 								}
 							}
