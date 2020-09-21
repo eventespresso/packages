@@ -30,3 +30,5 @@ export const regStatusOptions = [
 		label: __('Wait List'),
 	},
 ];
+
+export default regStatusOptions;

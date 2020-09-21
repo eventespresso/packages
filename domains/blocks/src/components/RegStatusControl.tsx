@@ -2,9 +2,10 @@ import React from 'react';
 import { SelectControl } from '@wordpress/components';
 import { __ } from '@eventespresso/i18n';
 
-import { regStatusOptions as statusOptions } from '@eventespresso/predicates';
-import type { SelectControlProps } from './types';
 import type { RegistrationStatus } from '@eventespresso/data';
+import type { SelectControlProps } from './types';
+// imprort by absolute path to avoid loading the whole package
+import statusOptions from '../../../../packages/predicates/src/registration/statusOptions';
 
 interface RegStatusControlProps extends SelectControlProps {
 	setStatus?: (order: RegistrationStatus) => void;
