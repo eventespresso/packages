@@ -4,4 +4,5 @@ export * from './DateTimePicker';
 export * from './DateTimeRangePicker';
 export * from './TimePicker';
 
+export * from './utils';
 export * from './types';
