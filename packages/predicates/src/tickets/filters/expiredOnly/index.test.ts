@@ -2,7 +2,7 @@ import { formatISO, parseISO } from 'date-fns';
 
 import expiredOnly from './index';
 import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
-import { diff, add } from '@eventespresso/utils';
+import { diff, add } from '@eventespresso/dates';
 import { NOW as now } from '@eventespresso/constants';
 
 describe('expiredOnly', () => {

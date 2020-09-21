@@ -1,7 +1,7 @@
 import { formatISO } from 'date-fns';
 
 import { nodes as datetimes } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
-import { sub } from '@eventespresso/utils';
+import { sub } from '@eventespresso/dates';
 import recentlyExpiredOnly from './index';
 
 const datetime = datetimes[0];

@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import { entitiesWithGuIdInArray, entitiesWithGuIdNotInArray } from '@eventespresso/predicates';
-import { shiftDate, AnyObject } from '@eventespresso/utils';
+import type { AnyObject } from '@eventespresso/utils';
+import { shiftDate } from '@eventespresso/dates';
 import type { EntityId } from '@eventespresso/data';
 
 import { BulkUpdateInput, BulkEditFormBaseShape } from './types';

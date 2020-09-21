@@ -1,5 +1,5 @@
 import { formatISO } from 'date-fns';
-import { add, sub } from '@eventespresso/utils';
+import { add, sub } from '@eventespresso/dates';
 
 import { isExpired } from './index';
 import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
