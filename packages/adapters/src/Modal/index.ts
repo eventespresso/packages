@@ -1,5 +1,4 @@
 export { default as Modal } from './Modal';
-export { default as ModalCloseButton } from './ModalCloseButton';
+export { default as modalCloseButtonProps } from './modalCloseButtonProps';
 
-export * from './Modal/types';
-export * from './ModalCloseButton/types';
+export * from './types';
