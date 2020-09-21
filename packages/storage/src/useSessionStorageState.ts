@@ -5,7 +5,7 @@ export function useSessionStorageState<S>(
 	key: string,
 	defaultState?: S | (() => S)
 ): [S, React.Dispatch<React.SetStateAction<S>>] {
-	const [count, setCount, writeError] = useStorageState(sessionStorage, key, defaultState);
+	const [state, setState, writeError] = useStorageState(sessionStorage, key, defaultState);
 
 	useEffect(() => {
 		if (writeError) {
@@ -13,5 +13,5 @@ export function useSessionStorageState<S>(
 		}
 	}, [writeError]);
 
-	return useMemo(() => [count, setCount], [count, setCount]);
+	return useMemo(() => [state, setState], [setState, state]);
 }
