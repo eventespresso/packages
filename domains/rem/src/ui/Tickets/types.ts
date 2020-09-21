@@ -1,5 +1,5 @@
 import type { Datetime } from '@eventespresso/edtr-services';
-import type { IntervalType } from '@eventespresso/utils';
+import type { IntervalType } from '@eventespresso/dates';
 
 import { RemTicket } from '../../data';
 

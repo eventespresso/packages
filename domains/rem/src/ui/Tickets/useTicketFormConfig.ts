@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 import { pick } from 'ramda';
 
-import { intervalsToOptions, DATE_INTERVALS, setDefaultTime } from '@eventespresso/utils';
+import { intervalsToOptions, DATE_INTERVALS, setDefaultTime } from '@eventespresso/dates';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
@@ -13,7 +13,7 @@ import { validate } from './formValidation';
 import { TICKET_FIELDS_TO_USE } from '../../constants';
 
 import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
-import type { Intervals } from '@eventespresso/utils';
+import type { Intervals } from '@eventespresso/dates';
 import type { RemTicket } from '../../data';
 
 type TicketFormConfig = EspressoFormProps<RemTicket>;

@@ -4,7 +4,7 @@ import { __, sprintf } from '@eventespresso/i18n';
 import { CurrencyInput, SimpleEntityCard } from '@eventespresso/components';
 import { LOCALIZED_DATE_AND_TIME_SHORT_FORMAT } from '@eventespresso/constants';
 import { useTimeZoneTime } from '@eventespresso/services';
-import { DATE_INTERVALS } from '@eventespresso/utils';
+import { DATE_INTERVALS } from '@eventespresso/dates';
 
 import Sidebar from './Sidebar';
 import { useFormState } from '../../../data';

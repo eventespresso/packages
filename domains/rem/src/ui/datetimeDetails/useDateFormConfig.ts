@@ -1,13 +1,13 @@
 import { pick } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 
+import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/dates';
 import { ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import type { EspressoFormProps } from '@eventespresso/form';
 import { Datetime } from '@eventespresso/edtr-services';
 import { validate } from './formValidation';
 import { DateFormShape } from './types';
 import { DATE_FIELDS_TO_USE } from '../../constants';
-import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/utils';
 
 type DateFormConfig = EspressoFormProps<DateFormShape>;
 

@@ -3,7 +3,7 @@ import { __ } from '@eventespresso/i18n';
 import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { intervalsToOptions, Intervals, DATE_INTERVALS } from '@eventespresso/utils';
+import { intervalsToOptions, Intervals, DATE_INTERVALS } from '@eventespresso/dates';
 import type { EspressoFormProps } from '@eventespresso/form';
 
 import { validate } from './formValidation';

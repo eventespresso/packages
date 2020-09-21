@@ -7,7 +7,7 @@ import { useTicketItem } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import type { EspressoFormProps } from '@eventespresso/form';
 import type { Ticket } from '@eventespresso/edtr-services';
-import { setDefaultTime } from '@eventespresso/utils';
+import { setDefaultTime } from '@eventespresso/dates';
 import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { EntityId } from '@eventespresso/data';

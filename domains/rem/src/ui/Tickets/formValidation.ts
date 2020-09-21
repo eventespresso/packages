@@ -2,7 +2,7 @@ import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
 import { yupToFinalFormErrors } from '@eventespresso/form';
-import { IntervalType } from '@eventespresso/utils';
+import { IntervalType } from '@eventespresso/dates';
 import { datesSchema, requiredMessage } from '@eventespresso/edtr-services';
 import { TicketSalesDates } from './types';
 import { RemTicket } from '../../data';

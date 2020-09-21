@@ -5,7 +5,7 @@ import { pick } from 'ramda';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useDatetimeItem } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
-import { setDefaultTime } from '@eventespresso/utils';
+import { setDefaultTime } from '@eventespresso/dates';
 import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { EntityId } from '@eventespresso/data';
