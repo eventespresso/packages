@@ -1,7 +1,9 @@
+import { useCallback } from 'react';
+
 import type { BasicSortBy, EntityListFilterStateReducer } from './types';
 
-const getReducer = <SortBy = BasicSortBy>(): EntityListFilterStateReducer<SortBy> => {
-	const reducer: EntityListFilterStateReducer<SortBy> = (state, action) => {
+const useStateReducer = <SortBy = BasicSortBy>(): EntityListFilterStateReducer<SortBy> => {
+	return useCallback<EntityListFilterStateReducer<SortBy>>((state, action) => {
 		const { type, perPage, pageNumber, total, searchText, sortBy, view } = action;
 		let sortingEnabled: boolean;
 		switch (type) {
@@ -32,9 +34,7 @@ const getReducer = <SortBy = BasicSortBy>(): EntityListFilterStateReducer<SortBy
 			default:
 				throw new Error('Unexpected action');
 		}
-	};
-
-	return reducer;
+	}, []);
 };
 
-export default getReducer;
+export default useStateReducer;

@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from 'react';
 
-import { DisplayStartOrEndDate, SortBy } from '@eventespresso/edtr-services';
+import { DisplayStartOrEndDate, SortBy, datesList } from '@eventespresso/edtr-services';
 import { useEntityListFilterStateManager } from '@eventespresso/components';
-import { useSessionStorageReducer } from '@eventespresso/services';
+import { useSessionStorageReducer } from '@eventespresso/storage';
 
 import reducer from './reducer';
 import { DatetimeSales, DatetimeStatus } from './types';
@@ -19,7 +19,7 @@ const initialState: DatetimesFilterState = {
 const useDatesListFilterStateManager = (): FSM => {
 	const [state, dispatch] = useSessionStorageReducer('dates-list-filter-state', reducer, initialState);
 
-	const entityFilterState = useEntityListFilterStateManager<SortBy>('order');
+	const entityFilterState = useEntityListFilterStateManager<SortBy>('order', datesList);
 
 	const { setPageNumber } = entityFilterState;
 

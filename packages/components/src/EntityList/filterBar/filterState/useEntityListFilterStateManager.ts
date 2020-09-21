@@ -1,24 +1,35 @@
-import { useCallback, useMemo, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 
+import { useSessionStorageState } from '@eventespresso/storage';
 import type { BasicSortBy, EntityListFilterState, EntityListFilterStateManager } from './types';
-import getReducer from './reducer';
+import useStateReducer from './useStateReducer';
 
 // create a shorter generic to use at multiple places.
 type ELFSM<SortBy = BasicSortBy> = EntityListFilterStateManager<SortBy>;
 
-const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: SortBy): ELFSM<SortBy> => {
+const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: SortBy, listId = ''): ELFSM<SortBy> => {
 	type FSM = ELFSM<SortBy>;
 
-	const initialState: EntityListFilterState<SortBy> = {
-		perPage: 6,
-		pageNumber: 1,
-		total: null,
-		searchText: '',
-		sortBy: defaultSortBy,
-		sortingEnabled: false,
-		view: 'card',
-	};
-	const [state, dispatch] = useReducer(getReducer<SortBy>(), initialState);
+	const [view, setView] = useSessionStorageState<FSM['view']>(`${listId}-view`, 'card');
+
+	const initialState = useMemo<EntityListFilterState<SortBy>>(
+		() => ({
+			perPage: 6,
+			pageNumber: 1,
+			total: null,
+			searchText: '',
+			sortBy: defaultSortBy,
+			sortingEnabled: false,
+			view,
+		}),
+		[defaultSortBy, view]
+	);
+	const [state, dispatch] = useReducer(useStateReducer<SortBy>(), initialState);
+
+	useEffect(() => {
+		setView(state.view);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [state.view]);
 
 	const getState: FSM['getState'] = useCallback(() => state, [state]);
 
