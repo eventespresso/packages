@@ -1,4 +1,4 @@
-import { Entity } from '@eventespresso/data';
+import type { Entity } from '@eventespresso/data';
 import type { EntityListBaseProps } from '@eventespresso/components';
 import entityListCacheIdString from './entityListCacheIdString';
 
