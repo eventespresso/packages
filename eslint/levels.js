@@ -1,6 +1,7 @@
 module.exports = [
 	/* LEVEL 1 */ [
 		'constants',
+		'data',
 		'dates',
 		'hooks',
 		'icons',
@@ -12,7 +13,7 @@ module.exports = [
 		'toaster',
 		'utils',
 	],
-	/* LEVEL 2 */ ['adapters', 'config', 'data', 'rrule-generator'],
+	/* LEVEL 2 */ ['adapters', 'config', 'rrule-generator'],
 	/* LEVEL 3 */ ['form', 'predicates', 'services'],
 	/* LEVEL 4 */ ['components', 'edtr-services', 'helpers'],
 	/* LEVEL 5 */ ['tpc'],
