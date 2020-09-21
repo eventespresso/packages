@@ -7,7 +7,7 @@ const levels = require('./levels');
  *     adapters: 2,
  *     components: 4,
  *     constants: 1,
- *     data: 2,
+ *     data: 1,
  *     edtr-services: 4,
  *     form: 3,
  *     helpers: 4,
@@ -22,13 +22,20 @@ const packageLevels = levels.reduce((res, curr, i) => {
 	};
 }, {});
 
+const safeToImportAnywhere = ['@eventespresso/icons', '@eventespresso/i18n'];
+
 module.exports = {
 	rules: {
 		'no-circular-imports': {
 			create: function (context) {
 				return {
 					ImportDeclaration(node) {
-						if (node.importKind !== 'type' && node.source.value.startsWith('@eventespresso/' && node.source.value !== '@eventespresso/icons')) {
+						const importSource = node.source.value;
+						const isTypeImport = node.importKind === 'type';
+						const isBaristaPackage = importSource.startsWith('@eventespresso/');
+						const isSafeToImportAnyWhere = safeToImportAnywhere.includes(importSource);
+
+						if (isBaristaPackage && !isTypeImport && !isSafeToImportAnyWhere) {
 							const path = context.getFilename();
 							// ignore tests
 							if (path.match(/[.\\/]tests?[.\\/](tsx?$)?/)) {
