@@ -26,7 +26,7 @@ export const MOMENT_TIME_FORMAT = 'HH:mm:ss'; // 23:59:59
 export const DEFAULT_DATE_FORMAT = 'yyyy-MM-dd'; // 2020-12-31
 export const DEFAULT_TIME_FORMAT = 'HH:mm:ss'; // 23:59:59
 
-export const ENTITY_LIST_DATE_TIME_FORMAT = 'EEE MMM yy h:mm a'; // Fri Feb 21 9:00 AM
+export const ENTITY_LIST_DATE_TIME_FORMAT = 'EEE MMM d, h:mm a'; // Fri Feb 21 9:00 AM
 
 export const LOCALIZED_DATE_FORMAT = 'P'; // 12/31/2020
 export const LOCALIZED_DATE_SHORT_FORMAT = 'PP'; // December 31, 2020
