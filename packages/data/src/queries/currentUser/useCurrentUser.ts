@@ -1,4 +1,5 @@
-import { useMemoStringify } from '@eventespresso/hooks';
+import { useMemo } from 'react';
+
 import type { CurrentUserProps, Viewer } from '@eventespresso/services';
 
 import useCurrentUserQueryOptions from './useCurrentUserQueryOptions';
@@ -11,7 +12,10 @@ const useCurrentUser = (): CurrentUserProps => {
 	const options = useCurrentUserQueryOptions();
 	const { data } = useCacheQuery<Viewer>(options);
 
-	return useMemoStringify(data?.viewer);
+	const dataStr = JSON.stringify(data?.viewer);
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	return useMemo(() => data?.viewer, [dataStr]);
 };
 
 export default useCurrentUser;

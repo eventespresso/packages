@@ -1,4 +1,5 @@
-import { useMemoStringify } from '@eventespresso/hooks';
+import { useMemo } from 'react';
+
 import type { GeneralSettings, GeneralSettingsData } from '@eventespresso/services';
 
 import useGeneralSettingsQueryOptions from './useGeneralSettingsQueryOptions';
@@ -11,7 +12,10 @@ const useGeneralSettings = (): GeneralSettings => {
 	const options = useGeneralSettingsQueryOptions();
 	const { data } = useCacheQuery<GeneralSettingsData>(options);
 
-	return useMemoStringify(data?.generalSettings);
+	const dataStr = JSON.stringify(data?.generalSettings);
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	return useMemo(() => data?.generalSettings, [dataStr]);
 };
 
 export default useGeneralSettings;
