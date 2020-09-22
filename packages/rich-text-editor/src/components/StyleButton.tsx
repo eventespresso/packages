@@ -3,11 +3,11 @@ import classNames from 'classnames';
 
 import type { StyleButtonProps } from './types';
 
-const StyleButton: React.FC<StyleButtonProps> = ({ active, style, onToggle, ...props }) => {
+const StyleButton: React.FC<StyleButtonProps> = ({ active, icon, label, onToggle, style, ...props }) => {
 	const className = classNames(
 		'rich-text-editor__styleButton',
 		`rich-text-editor-controls__${style.toLowerCase()}`,
-		active && 'rich-text-editor-activeButton'
+		active && 'rich-text-editor__styleButton--active'
 	);
 
 	const onMouseDown = useCallback(
@@ -19,8 +19,8 @@ const StyleButton: React.FC<StyleButtonProps> = ({ active, style, onToggle, ...p
 	);
 
 	return (
-		<div className={className} onMouseDown={onMouseDown} role='button' tabIndex={0}>
-			{props.label}
+		<div aria-label={label} className={className} onMouseDown={onMouseDown} role='button' tabIndex={0}>
+			{icon ? icon : label}
 		</div>
 	);
 };

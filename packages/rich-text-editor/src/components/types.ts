@@ -18,6 +18,7 @@ export interface RichTextEditorState {
 
 export interface StyleButtonProps {
 	active: boolean;
+	icon?: React.ReactNode;
 	label: string;
 	onToggle: toggleBlockType;
 	style: DraftBlockType;

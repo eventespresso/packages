@@ -1,25 +1,4 @@
 .rich-text-editor {
-	&__styleButton {
-		cursor: pointer;
-		margin-right: var(--ee-margin-small);
-		padding: var(--ee-padding-nano) 0;
-		display: inline-block;
-	}
-}
-
-.rich-text-editor-root {
-	border-color: var(--ee-border-color);
-	border-radius: var(--ee-border-radius-small);
-	border-style: solid;
-	border-width: var(--ee-border-width);
-	padding: var(--ee-padding-micro) var(--ee-padding-tiny);
-
-	* {
-		color: var(--ee-default-text-color);
-	}
-}
-
-.rich-text-editor-editor {
 	border-top: 1px solid #ddd;
 	cursor: text;
 	font-size: 16px;
@@ -34,27 +13,38 @@
 	.public-DraftEditor-content {
 		min-height: 100px;
 	}
-}
 
-.rich-text-editor-hidePlaceholder .public-DraftEditorPlaceholder-root {
-	display: none;
-}
+	&--hidePlaceholder {
+		display: none;
+	}
 
-.rich-text-editor-editor {
-	.rich-text-editor-blockquote {
-		border-left: 5px solid #eee;
+	&-root {
+		border-color: var(--ee-border-color);
+		border-radius: var(--ee-border-radius-small);
+		border-style: solid;
+		border-width: var(--ee-border-width);
+		padding: var(--ee-padding-micro) var(--ee-padding-tiny);
+	}
+
+	&-blockquote {
+		border-left: 5px solid var(--ee-text-on-grey-4);
 		font-style: italic;
-		margin: 16px 0;
-		padding: 10px 20px;
+		margin: 1rem 0;
+		padding: var(--ee-padding-micro) var(--ee-padding-tiny);
 	}
 
-	.public-DraftStyleDefault-pre {
-		background-color: rgba(0, 0, 0, 0.05);
-		font-size: 16px;
-		padding: 20px;
-	}
-}
+	&__styleButton {
+		cursor: pointer;
+		margin-right: var(--ee-margin-small);
+		padding: var(--ee-padding-nano) 0;
+		display: inline-block;
 
-.rich-text-editor-activeButton {
-	color: #5890ff;
+		&--active {
+			color: var(--ee-color-primary-high-contrast);
+
+			svg {
+				color: var(--ee-color-primary-high-contrast);
+			}
+		}
+	}
 }

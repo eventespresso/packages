@@ -98,12 +98,12 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 
 		// If the user changes block type before entering any text, we can
 		// either style the placeholder or hide it. Let's just hide it now.
-		let className = 'rich-text-editor-editor';
+		let className = 'rich-text-editor';
 		const contentState = editorState.getCurrentContent();
 
 		if (!contentState?.hasText()) {
 			if (contentState?.getBlockMap?.().first?.().getType?.() !== 'unstyled') {
-				className += ' rich-text-editor-hidePlaceholder';
+				className += ' rich-text-editor--hidePlaceholder';
 			}
 		}
 
