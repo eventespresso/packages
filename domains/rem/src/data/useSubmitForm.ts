@@ -1,11 +1,12 @@
 import { useCallback, useState, useEffect } from 'react';
+import { last } from 'ramda';
 
-import { copyDatetimeFields, isDatetimeInputField } from '@eventespresso/predicates';
+import { copyDatetimeFields, isDatetimeInputField, sortDates } from '@eventespresso/predicates';
 import { getSharedTickets, getNonSharedTickets, computeDatetimeEndDate } from '../utils';
 import { useSiteDateToUtcISO } from '@eventespresso/services';
 import type { GeneratedDate } from '../ui/generatedDates';
 import type { FormState } from './types';
-import { useDatetimeMutator } from '@eventespresso/edtr-services';
+import { useDatetimeMutator, useDatetimes } from '@eventespresso/edtr-services';
 import useMutateTickets from './useMutateTickets';
 import { Progress, getTotalProgress } from '../utils/getProgress';
 
@@ -14,6 +15,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 	const [progress, setProgress] = useState<Progress>({ datetimes: 0, tickets: 0 });
 	const { createEntity: createDatetime } = useDatetimeMutator();
 	const toUtcISO = useSiteDateToUtcISO();
+	const dates = useDatetimes();
 
 	// updates progress for a given entity type
 	const updateProgress = useCallback((forEntity: keyof Progress, value = 1) => {
@@ -41,7 +43,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 			generatedDates,
 			progress,
 		});
-		console.log('totalProgress', `${totalProgress}%`);
+		totalProgress && console.log('totalProgress', `${totalProgress}%`);
 	}, [generatedDates, nonSharedTickets, progress, sharedTickets]);
 
 	return useCallback(async () => {
@@ -53,9 +55,11 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 
 		const { duration, unit } = dateDetails;
 
+		const highestDateOrder = last(sortDates({ dates, sortBy: 'order' }))?.order || 0;
+
 		// Dates can be mutated in parallel
 		await Promise.all(
-			generatedDates.map(async ({ date: start }) => {
+			generatedDates.map(async ({ date: start }, index) => {
 				const end = computeDatetimeEndDate(start, unit, duration);
 
 				// create tickets for the date and get the related ids
@@ -69,7 +73,10 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 				const startDate = toUtcISO(start);
 				const endDate = toUtcISO(end);
 
-				const input = { ...normalizedDateInput, startDate, endDate, tickets };
+				// order will be the highest order among dates plus its position (index +1) in the list
+				const order = highestDateOrder + index + 1;
+
+				const input = { ...normalizedDateInput, order, startDate, endDate, tickets };
 
 				await createDatetime(input);
 				updateProgress('datetimes');
@@ -78,6 +85,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 	}, [
 		createDatetime,
 		dateDetails,
+		dates,
 		generatedDates,
 		mutateTickets,
 		nonSharedTickets,
