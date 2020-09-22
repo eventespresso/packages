@@ -20,13 +20,13 @@ const BlockStyleControls: React.FC<BlockStyleControlsProps> = (props) => {
 	return (
 		<div className='rich-text-editor-controls'>
 			{BLOCK_TYPES.map(({ label, style }) => {
-				const Icon: React.ComponentType<IconProps> = iconMapping[label];
+				const Icon: React.ComponentType<IconProps> = iconMapping?.[label];
 
 				return (
 					<StyleButton
 						active={style === blockType}
 						key={label}
-						icon={<Icon noMargin size='small' />}
+						icon={Icon && <Icon noMargin size='small' />}
 						label={label}
 						onToggle={props.onToggle}
 						style={style}
