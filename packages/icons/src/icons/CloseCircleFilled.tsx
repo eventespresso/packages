@@ -5,11 +5,11 @@ import { IconProps } from '../types';
 const SvgCloseCircleFilled = (props: IconProps): JSX.Element => {
 	return (
 		<svg
-			viewBox='0 0 1024 1024'
 			aria-hidden='true'
 			className='close-circle-filled_svg__ee-svg'
 			fill='currentColor'
 			height='1.25em'
+			viewBox='0 0 1024 1024'
 			width='1.25em'
 			{...props}
 		>
