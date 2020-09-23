@@ -12,9 +12,9 @@ export interface Attendee extends Entity, Address {
 	avatar?: string;
 	bio?: string;
 	email?: string;
-	firstName: string;
+	firstName?: string;
 	fullName: string;
-	lastName: string;
+	lastName?: string;
 	phone?: string;
 	shortBio?: string;
 }
