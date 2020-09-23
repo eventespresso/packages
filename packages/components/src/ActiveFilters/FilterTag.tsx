@@ -8,7 +8,7 @@ const FilterTag: React.FC<FilterTagProps> = ({ title, className, onRemove }) => 
 		<div className={classNames('ee-filter-tag', className)}>
 			{title}
 			<button className='ee-filter-tag__close-btn' onClick={onRemove}>
-				<Close size={'tiny'} />
+				<Close aria-label='remove filters' size={'tiny'} />
 			</button>
 		</div>
 	);
