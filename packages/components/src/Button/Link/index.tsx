@@ -16,8 +16,12 @@ export const Link: React.FC<LinkProps> = ({ children, href, icon, tooltip, toolt
 		!icon && 'ee-link--no-icon'
 	);
 
+	console.log({ tooltip });
+
+	const label = tooltip && tooltip;
+
 	const link = (
-		<a href={href} className={className} target='_blank' rel='noopener noreferrer'>
+		<a aria-label={label} className={className} href={href} rel='noopener noreferrer' target='_blank'>
 			{icon ? icon : children}
 		</a>
 	);
