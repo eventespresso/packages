@@ -3,12 +3,12 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@eventespresso/i18n';
 import { parseISO } from 'date-fns';
 
+import { ButtonSize, ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
 import { CalendarOutlined } from '@eventespresso/icons';
 import { useConfig, useTimeZoneTime } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
-import type { DateRange } from '@eventespresso/dates';
 
-import { ButtonSize, ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
+import type { DateRange } from '@eventespresso/dates';
 import type { EditDateButtonProps } from './types';
 
 import './styles.scss';
@@ -50,6 +50,7 @@ export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
 			onClose={onClose}
 			trigger={
 				<IconButton
+					aria-label={headerText}
 					borderless
 					buttonSize={ButtonSize.SMALL}
 					buttonType={ButtonType.MINIMAL}

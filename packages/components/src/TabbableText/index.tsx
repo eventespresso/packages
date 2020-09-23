@@ -27,7 +27,14 @@ export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, ...pr
 
 	return (
 		<Tooltip tooltip={tooltip}>
-			<div className={className} onClick={onClick} onKeyDown={onKeyDown} role='button' tabIndex={0}>
+			<div
+				aria-label={props.tooltip}
+				className={className}
+				onClick={onClick}
+				onKeyDown={onKeyDown}
+				role='button'
+				tabIndex={0}
+			>
 				{text}
 				{icon}
 			</div>
