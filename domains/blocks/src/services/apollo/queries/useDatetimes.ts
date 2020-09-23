@@ -1,6 +1,7 @@
+import { useMemo } from 'react';
 import gql from 'graphql-tag';
 
-import type { FetchQueryResult } from '@eventespresso/data';
+import type { FetchQueryResult, QueryOptions } from '@eventespresso/data';
 import { useDatetimesQuery } from '@eventespresso/data';
 import type { DatetimesList } from '../types';
 
@@ -17,15 +18,19 @@ export const GET_DATETIMES: any = gql`
 `;
 
 const useDatetimes = (event?: string): FetchQueryResult<DatetimesList> => {
-	return useDatetimesQuery({
-		query: GET_DATETIMES,
-		variables: {
-			where: {
-				event,
+	const queryOptions = useMemo<QueryOptions<DatetimesList>>(
+		() => ({
+			query: GET_DATETIMES,
+			variables: {
+				where: {
+					event,
+				},
 			},
-		},
-		fetchPolicy: 'cache-first',
-	});
+			fetchPolicy: 'cache-first',
+		}),
+		[event]
+	);
+	return useDatetimesQuery(queryOptions);
 };
 
 export default useDatetimes;

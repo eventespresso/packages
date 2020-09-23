@@ -1,6 +1,7 @@
+import { useMemo } from 'react';
 import gql from 'graphql-tag';
 
-import type { FetchQueryResult } from '@eventespresso/data';
+import type { FetchQueryResult, QueryOptions } from '@eventespresso/data';
 import { useTicketsQuery } from '@eventespresso/data';
 import type { TicketsList } from '../types';
 
@@ -17,14 +18,18 @@ export const GET_TICKETS: any = gql`
 `;
 
 const useTickets = (datetime?: string): FetchQueryResult<TicketsList> => {
-	return useTicketsQuery({
-		query: GET_TICKETS,
-		variables: {
-			first: 100,
-			where: { datetime },
-		},
-		fetchPolicy: 'cache-first',
-	});
+	const queryOptions = useMemo<QueryOptions<TicketsList>>(
+		() => ({
+			query: GET_TICKETS,
+			variables: {
+				first: 100,
+				where: { datetime },
+			},
+			fetchPolicy: 'cache-first',
+		}),
+		[datetime]
+	);
+	return useTicketsQuery(queryOptions);
 };
 
 export default useTickets;

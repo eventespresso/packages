@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 import type { FetchQueryResult } from '@eventespresso/data';
-import { useEventsQuery } from '@eventespresso/data';
+import { useEventsQuery, QueryOptions } from '@eventespresso/data';
 import type { EventsList } from '../types';
 
 export const GET_EVENTS: any = gql`
@@ -16,14 +16,16 @@ export const GET_EVENTS: any = gql`
 	}
 `;
 
+const queryOptions: QueryOptions<EventsList> = {
+	query: GET_EVENTS,
+	variables: {
+		first: 100,
+	},
+	fetchPolicy: 'cache-first',
+};
+
 const useEvents = (): FetchQueryResult<EventsList> => {
-	return useEventsQuery({
-		query: GET_EVENTS,
-		variables: {
-			first: 100,
-		},
-		fetchPolicy: 'cache-first',
-	});
+	return useEventsQuery(queryOptions);
 };
 
 export default useEvents;
