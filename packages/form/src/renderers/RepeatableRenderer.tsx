@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 
 import { Button } from '@eventespresso/adapters';
@@ -13,6 +13,9 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 	...rest
 }) => {
 	const Component = fieldType === 'group' ? Group : Field;
+
+	const onAdd = useCallback(() => fields.push(undefined), [fields]);
+	const onRemove = useCallback((index: number) => () => () => fields.remove(index), [fields]);
 	return (
 		<>
 			<div>
@@ -32,7 +35,7 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 										className='remove-item'
 										size='sm'
 										icon={CloseOutlined}
-										onClick={() => fields.remove(index)}
+										onClick={onRemove(index)}
 									/>
 								</>
 							}
@@ -40,7 +43,7 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 					</div>
 				);
 			})}
-			<Button className='add-item' onClick={() => fields.push(undefined)}>
+			<Button className='add-item' onClick={onAdd}>
 				{__('Add')}
 			</Button>
 		</>

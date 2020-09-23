@@ -49,6 +49,7 @@ const ContentBody: React.FC = ({ children }) => {
 									<Next
 										buttonText={__('Skip prices - assign dates')}
 										isDisabled={isSaveDisabled}
+										// eslint-disable-next-line react/jsx-no-bind
 										onClick={() => goto(2)}
 										skippable
 									/>
@@ -74,7 +75,12 @@ const ContentBody: React.FC = ({ children }) => {
 							<>
 								<TicketAssignmentsManager />
 								<ButtonRow>
-									<Previous buttonText={__('Ticket details')} onClick={() => goto(0)} skippable />
+									<Previous
+										buttonText={__('Ticket details')}
+										// eslint-disable-next-line react/jsx-no-bind
+										onClick={() => goto(0)}
+										skippable
+									/>
 									<Previous onClick={prev} />
 									<Submit onClick={form.submit} isDisabled={isSubmitDisabled} />
 								</ButtonRow>

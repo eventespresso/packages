@@ -42,6 +42,7 @@
 		"react-hooks/exhaustive-deps": "error",
 		"react-hooks/rules-of-hooks": "error",
 		"react/display-name": "off",
+		"react/jsx-no-bind": "error",
 		"react/prop-types": "off",
 		"react/static-property-placement": "off",
 		"ee-barista/no-circular-imports": "error"

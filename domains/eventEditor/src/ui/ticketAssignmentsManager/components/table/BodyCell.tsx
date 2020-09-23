@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { Button } from '@eventespresso/adapters';
 import type { RenderCellProps } from '../../types';
@@ -10,7 +10,11 @@ const BodyCell: React.FC<RenderCellProps> = ({ datetime, ticket }) => {
 
 	const getCellIcon = useCellIcon();
 
-	const onClick = () => toggleAssignment({ datetimeId: datetime.id, ticketId: ticket.id });
+	const onClick = useCallback(() => toggleAssignment({ datetimeId: datetime.id, ticketId: ticket.id }), [
+		datetime.id,
+		ticket.id,
+		toggleAssignment,
+	]);
 
 	const icon = getCellIcon({ datetimeId: datetime.id, ticketId: ticket.id });
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import type { FormRenderProps } from 'react-final-form';
 import type { FormState } from 'final-form';
@@ -30,6 +30,8 @@ const Submit: React.FC<Pick<FormRenderProps<any>, 'form'>> = ({ form }) => {
 		onConfirm: form.submit,
 	});
 
+	const onReset = useCallback(() => form.reset(), [form]);
+
 	return (
 		<ButtonRow>
 			<Button
@@ -40,7 +42,7 @@ const Submit: React.FC<Pick<FormRenderProps<any>, 'form'>> = ({ form }) => {
 				onClick={onOpen}
 			/>
 			{confirmationDialog}
-			<Button buttonText={__('Reset')} isDisabled={pristine} type='reset' onClick={() => form.reset()} />
+			<Button buttonText={__('Reset')} isDisabled={pristine} type='reset' onClick={onReset} />
 		</ButtonRow>
 	);
 };

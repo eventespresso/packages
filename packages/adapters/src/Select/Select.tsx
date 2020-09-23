@@ -4,6 +4,8 @@ import { Select as ChakraSelect } from '@chakra-ui/core';
 
 import type { SelectProps } from './types';
 
+const NoIcon: React.FC = () => null;
+
 const Select: React.FC<SelectProps> = ({ children, className, options = [], onChange, onChangeValue, ...props }) => {
 	const selectClassName = classNames(className, 'ee-input-base ee-select');
 
@@ -45,7 +47,7 @@ const Select: React.FC<SelectProps> = ({ children, className, options = [], onCh
 		<ChakraSelect
 			className={selectClassName}
 			// fix the double icon issue
-			icon={() => null}
+			icon={NoIcon}
 			{...props}
 			onChange={onChangeHandler}
 		>

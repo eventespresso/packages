@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { DateTimePicker } from '@eventespresso/dates';
 import { useRRuleConfig } from '../../hooks';
@@ -21,16 +21,17 @@ const OnDate: React.FC<OnDateProps> = ({ id, date, label, onChange }) => {
 		[date, label, locale]
 	);
 
+	const onChangeDate = useCallback(
+		(date) => {
+			onChange(date);
+		},
+		[onChange]
+	);
+
 	return (
 		<div className='rrule-generator__on-date'>
 			{CalendarComponent ? (
-				<CalendarComponent
-					key={`${id}-calendar`}
-					{...calendarAttributes}
-					onChange={(date) => {
-						onChange(date);
-					}}
-				/>
+				<CalendarComponent key={`${id}-calendar`} {...calendarAttributes} onChange={onChangeDate} />
 			) : (
 				<DateTimePicker {...calendarAttributes} onChange={onChange} />
 			)}

@@ -11,6 +11,8 @@ interface TriggerProps {
 	onClick?: VoidFunction;
 }
 
+const Icon: React.FC = () => <GlobalOutlined /* noMargin */ size='smaller' />;
+
 const Trigger = forwardRef<typeof IconButton, TriggerProps>(({ tooltip, ...props }, ref) => {
 	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'top' });
 
@@ -20,7 +22,7 @@ const Trigger = forwardRef<typeof IconButton, TriggerProps>(({ tooltip, ...props
 			borderless
 			color='white'
 			className='ee-timezone-info__button ee-btn--tiny'
-			icon={() => <GlobalOutlined /* noMargin */ size='smaller' />}
+			icon={Icon}
 			tooltip={tooltip}
 			tooltipProps={tooltipProps}
 			ref={ref}

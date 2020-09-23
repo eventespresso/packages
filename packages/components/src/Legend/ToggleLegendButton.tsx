@@ -31,6 +31,7 @@ const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({
 			active={showLegend}
 			buttonSize={ButtonSize.SMALLER}
 			className={className}
+			// eslint-disable-next-line react/jsx-no-bind
 			icon={icon}
 			noHorizontalMargin={noHorizontalMargin}
 			onClick={toggleLegend}
