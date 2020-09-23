@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { AttendeesEditProps } from '../types';
 import SortOrderControl from '@blocksComponents/SortOrderControl';
@@ -6,7 +6,9 @@ import SortOrderControl from '@blocksComponents/SortOrderControl';
 const SelectOrder: React.FC<AttendeesEditProps> = ({ attributes, setAttributes }) => {
 	const { order } = attributes;
 
-	return <SortOrderControl order={order} setOrder={(order): void => setAttributes({ order })} />;
+	const setOrder = useCallback((order): void => setAttributes({ order }), [setAttributes]);
+
+	return <SortOrderControl order={order} setOrder={setOrder} />;
 };
 
 export default SelectOrder;

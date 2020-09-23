@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { RangeControl, ToggleControl } from '@wordpress/components';
 
@@ -8,12 +8,24 @@ const GravatarSettings: React.FC<AttendeesEditProps> = ({
 	attributes: { avatarSize, showGravatar },
 	setAttributes,
 }) => {
+	const onChangeShowGravatar = useCallback(
+		(newShowGravatar): void => {
+			setAttributes({ showGravatar: newShowGravatar });
+		},
+		[setAttributes]
+	);
+	const onChangeAvatarSize = useCallback(
+		(newAvatarSize): void => {
+			setAttributes({ avatarSize: newAvatarSize });
+		},
+		[setAttributes]
+	);
 	return (
 		<>
 			<ToggleControl
 				label={__('Display Gravatar')}
 				checked={showGravatar}
-				onChange={(showGravatar): void => setAttributes({ showGravatar })}
+				onChange={onChangeShowGravatar}
 				help={
 					showGravatar
 						? __('Gravatar images are shown for each attendee.')
@@ -26,7 +38,7 @@ const GravatarSettings: React.FC<AttendeesEditProps> = ({
 					value={avatarSize}
 					min={10}
 					max={128}
-					onChange={(avatarSize): void => setAttributes({ avatarSize })}
+					onChange={onChangeAvatarSize}
 				/>
 			)}
 		</>

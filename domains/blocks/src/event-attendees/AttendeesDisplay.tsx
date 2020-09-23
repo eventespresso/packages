@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Placeholder, Spinner } from '@wordpress/components';
 import { __ } from '@eventespresso/i18n';
 
@@ -14,16 +14,19 @@ const isNewBlock = ({ event, datetime, ticket }: AttendeesEditProps['attributes'
 
 const AttendeesDisplay: React.FC<AttendeesEditProps> = ({ attributes }) => {
 	const { datetime, event, ticket, status, limit, orderBy, order } = attributes;
-	const { data, loading, error } = useAttendees(
-		{
+	const whereArgs = useMemo(
+		() => ({
 			datetime,
 			event,
 			orderby: getAttendeesOrderBy(orderBy, order),
 			regTicket: ticket,
 			regStatus: status,
-		},
-		limit
+		}),
+		[datetime, event, order, orderBy, status, ticket]
 	);
+	const { data, loading, error } = useAttendees(whereArgs, limit);
+
+	const attendees = useMemo(() => data?.espressoAttendees?.nodes || [], [data?.espressoAttendees?.nodes]);
 
 	if (loading) {
 		return (
@@ -36,8 +39,6 @@ const AttendeesDisplay: React.FC<AttendeesEditProps> = ({ attributes }) => {
 	if (error) {
 		return <Placeholder>{__('There was some error fetching attendees list')}</Placeholder>;
 	}
-
-	const attendees = data?.espressoAttendees?.nodes || [];
 
 	if (isNewBlock(attributes) && !attendees.length) {
 		return (

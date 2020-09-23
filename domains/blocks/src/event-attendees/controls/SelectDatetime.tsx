@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { SelectControl } from '@wordpress/components';
 import { __ } from '@eventespresso/i18n';
 
@@ -12,15 +12,16 @@ const SelectDatetime: React.FC<AttendeesEditProps> = ({ attributes, setAttribute
 
 	const { data, loading, error } = useDatetimes(event);
 
-	const list = data?.espressoDatetimes?.nodes || [];
-	const options = buildEntitySelectOptions(list, loading, error);
+	const list = useMemo(() => data?.espressoDatetimes?.nodes || [], [data?.espressoDatetimes?.nodes]);
+	const options = useMemo(() => buildEntitySelectOptions(list, loading, error), [error, list, loading]);
+	const onChange = useCallback((datetime): void => setAttributes({ datetime, ticket: '' }), [setAttributes]);
 
 	return (
 		<SelectControl
 			label={__('Select Datetime')}
 			value={datetime}
 			options={options as SelectControlProps['options']}
-			onChange={(datetime): void => setAttributes({ datetime, ticket: '' })}
+			onChange={onChange}
 		/>
 	);
 };
