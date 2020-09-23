@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+
+import ConditionalElement from './ConditionalElement';
 import type { SidebarProps } from './types';
 import './styles.scss';
 
@@ -17,9 +19,9 @@ const Sidebar: React.FC<SidebarProps> = ({ align = 'top', before = false, childr
 	);
 
 	return (
-		<div {...props} className={className}>
+		<ConditionalElement {...props} tag='div' className={className}>
 			{children}
-		</div>
+		</ConditionalElement>
 	);
 };
 
