@@ -26,7 +26,7 @@ const IconButton = forwardRef<typeof IconButtonAdapter, IconButtonProps>(
 		},
 		ref
 	) => {
-		const ariaLabel = props['aria-label'] || props.label;
+		const ariaLabel = props['aria-label'] || props.label || props.tooltip;
 		const className = classNames(
 			iconBtnClassName,
 			props.className,
