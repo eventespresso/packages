@@ -48,6 +48,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				className='rrule-generator__form-control rrule-generator__select rrule-generator__day'
 				value={on.day}
 				disabled={!isActive}
+				onBlur={onChangeDay}
 				onChange={onChangeDay}
 			>
 				{range(1, 32).map((day) => (

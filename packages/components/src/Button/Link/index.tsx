@@ -16,8 +16,6 @@ export const Link: React.FC<LinkProps> = ({ children, href, icon, tooltip, toolt
 		!icon && 'ee-link--no-icon'
 	);
 
-	console.log({ tooltip });
-
 	const label = tooltip && tooltip;
 
 	const link = (

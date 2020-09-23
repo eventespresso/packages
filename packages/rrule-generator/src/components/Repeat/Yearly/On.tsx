@@ -64,6 +64,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				className='rrule-generator__form-control rrule-generator__select rrule-generator__month'
 				value={on.month}
 				disabled={!isActive}
+				onBlur={onChangeMonth}
 				onChange={onChangeMonth}
 			>
 				{Object.entries(MONTHS).map(([key, month]) => (
@@ -80,6 +81,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				className='rrule-generator__form-control rrule-generator__select rrule-generator__day'
 				value={on.day}
 				disabled={!isActive}
+				onBlur={onChangeDay}
 				onChange={onChangeDay}
 			>
 				{range(1, daysInMonth + 1).map((day) => (

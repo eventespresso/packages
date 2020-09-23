@@ -11,6 +11,7 @@ const PositionSelect: React.FC<PositionSelectProps> = ({ id, isActive, onChangeW
 		className='rrule-generator__form-control rrule-generator__select'
 		value={value}
 		disabled={!isActive}
+		onBlur={onChangeWhich}
 		onChange={onChangeWhich}
 	>
 		{Object.entries(WHICH).map(([key, label]) => (

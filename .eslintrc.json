@@ -34,8 +34,8 @@
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/no-use-before-define": "off",
 		"comma-dangle": "off",
+		"ee-barista/no-circular-imports": "error",
 		"jest/valid-describe": "off",
-		"jsx-a11y/no-onchange": "off",
 		"no-case-declarations": "warn",
 		"no-prototype-builtins": "off",
 		"no-unused-vars": "error",
@@ -44,8 +44,7 @@
 		"react/display-name": "off",
 		"react/jsx-no-bind": "error",
 		"react/prop-types": "off",
-		"react/static-property-placement": "off",
-		"ee-barista/no-circular-imports": "error"
+		"react/static-property-placement": "off"
 	},
 	"settings": {
 		"react": {
