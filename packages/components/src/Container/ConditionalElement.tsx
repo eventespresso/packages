@@ -6,6 +6,7 @@ import type { ConditionalElementProps } from './types';
  */
 const ConditionalElement: React.FC<ConditionalElementProps> = ({ children, className, tag, ...props }) => {
 	const Tag = tag;
+
 	return (
 		children && (
 			<Tag {...props} className={className}>

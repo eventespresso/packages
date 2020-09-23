@@ -57,7 +57,6 @@ export interface HeaderProps {
 
 export interface SidebarProps {
 	align?: Alignments;
-	as?: 'div' | 'aside';
 	before?: boolean;
 	className?: string;
 }

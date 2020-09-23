@@ -1,6 +1,7 @@
 import React from 'react';
-import ConditionalElement from './ConditionalElement';
 import classNames from 'classnames';
+
+import ConditionalElement from './ConditionalElement';
 import type { ContentProps } from './types';
 import './styles.scss';
 
@@ -10,6 +11,7 @@ import './styles.scss';
  */
 const Content: React.FC<ContentProps> = ({ align = 'start', as = 'div', children, className, ...props }) => {
 	const htmlClass = classNames(className, 'ee-container__section', align && `ee-container--align-${align}`);
+
 	return (
 		<ConditionalElement {...props} className={htmlClass} tag={as}>
 			{children}

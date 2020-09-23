@@ -7,14 +7,7 @@ import './styles.scss';
 /**
  * A container with horizontally aligned child components
  */
-const Row: React.FC<RowProps> = ({
-	align = 'start',
-	as = 'section',
-	children,
-	className,
-	reverse = false,
-	...props
-}) => {
+const Row: React.FC<RowProps> = ({ align = 'start', as = 'div', children, className, reverse = false, ...props }) => {
 	const htmlClass = classNames(
 		className,
 		'ee-container',
