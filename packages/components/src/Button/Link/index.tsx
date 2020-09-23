@@ -7,7 +7,15 @@ import type { LinkProps } from '../types';
 import '../style.scss';
 import './style.scss';
 
-export const Link: React.FC<LinkProps> = ({ children, href, icon, tooltip, tooltipProps, ...props }) => {
+export const Link: React.FC<LinkProps> = ({
+	children,
+	href,
+	icon,
+	target = '_blank',
+	tooltip,
+	tooltipProps,
+	...props
+}) => {
 	const className = classNames(
 		props.className,
 		'ee-btn-base',
@@ -19,7 +27,7 @@ export const Link: React.FC<LinkProps> = ({ children, href, icon, tooltip, toolt
 	const label = tooltip && tooltip;
 
 	const link = (
-		<a aria-label={label} className={className} href={href} rel='noopener noreferrer' target='_blank'>
+		<a aria-label={label} className={className} href={href} rel='noopener noreferrer' target={target}>
 			{icon ? icon : children}
 		</a>
 	);

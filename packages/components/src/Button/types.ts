@@ -33,6 +33,7 @@ export interface ButtonProps extends ButtonAdapterProps, Partial<withLabelProps>
 }
 
 export interface LinkProps extends Partial<withTooltipProps> {
+	target?: '_blank' | '_parent' | '_self' | '_top';
 	className?: string;
 	href?: string;
 	icon?: React.ReactNode;
