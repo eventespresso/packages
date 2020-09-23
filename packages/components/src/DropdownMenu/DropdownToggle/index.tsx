@@ -19,6 +19,7 @@ const DropdownToggle = React.forwardRef<typeof MenuToggle, DropdownToggleProps>(
 
 		return (
 			<MenuToggle
+				aria-label={toggleProps?.tooltip}
 				as={IconButton}
 				// @ts-ignore
 				icon={More}
