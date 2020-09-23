@@ -9,7 +9,7 @@ const colors = {
 	yellow: '#fad800',
 	'yellow-green': '#d3d600',
 	'light-green': '#a9ce47',
-	green: '#91ab30',
+	green: '#01873a',
 	'bright-green': '#71b94c',
 	'dark-green': '#4d6021',
 	'blue-green': '#399f94',
@@ -54,4 +54,4 @@ const sizes = {
 
 const folder = 'themes/default';
 
-export { folder, colors, meta, sizes };
+module.exports = { folder, colors, meta, sizes };

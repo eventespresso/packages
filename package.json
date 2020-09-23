@@ -17,6 +17,7 @@
 		"dev:rem": "yarn dev:watch --domains \"eventEditor,rem\"",
 		"dev:watch": "node scripts/watch.js",
 		"generate:icons": "npx @svgr/cli --typescript --template packages/icons/scripts/template.js -d packages/icons/src/icons packages/icons/src/svg",
+		"generate:css": "node packages/styles/bin/css-builder/css-builder",
 		"lint": "node eslint/validate.js && lerna run lint",
 		"lint:ci": "FORCE_COLOR=true yarn lint",
 		"start": "node scripts/start.js",
