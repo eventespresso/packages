@@ -35,6 +35,7 @@ describe('useAssignmentManager', () => {
 		});
 
 		// only dates and tickets related data should be there.
+		expect(typeof result.current.getData()).toBe('object');
 		expect(result.current.getData()).toHaveProperty('datetimes');
 		expect(result.current.getData()).toHaveProperty('tickets');
 		expect(result.current.getData()).not.toHaveProperty('prices');
