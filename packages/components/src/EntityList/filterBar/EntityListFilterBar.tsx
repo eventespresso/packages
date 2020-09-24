@@ -31,6 +31,8 @@ const EntityListFilterBar = <FS extends ELFSM>({
 
 	const filerBarItems = useFilterBarUIElements({ domain, filterState, listId });
 
+	const searchId = `ee-search-input-${listId}`;
+
 	useEffect(() => {
 		if (sortingEnabled) {
 			setShowEntityFilters(false);
@@ -67,7 +69,7 @@ const EntityListFilterBar = <FS extends ELFSM>({
 				<div className='ee-filter-bar__filter'>
 					<SearchInput
 						className='ee-entity-list-filter-bar-search'
-						searchId={listId}
+						id={searchId}
 						label={__('search')}
 						searchText={searchText}
 						setSearchText={setSearchText}

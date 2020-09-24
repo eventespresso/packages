@@ -6,13 +6,11 @@ import { withLabel, withLabelProps } from '../withLabel';
 import type { withTooltipProps } from '../withTooltip';
 
 interface SearchInputProps extends TextInputProps, Partial<withLabelProps>, Partial<withTooltipProps> {
-	searchId: string;
 	searchText: string;
 	setSearchText: (text?: string) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ searchId, searchText, setSearchText, ...props }) => {
-	const id = `ee-search-input-${searchId}`;
+const SearchInput: React.FC<SearchInputProps> = ({ id, searchText, setSearchText, ...props }) => {
 	const className = classNames('ee-input-base ee-input ee-search-input', props.className);
 
 	return typeof setSearchText === 'function' ? (
