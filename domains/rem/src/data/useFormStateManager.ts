@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useReducer, useEffect } from 'react';
+import { useCallback, useMemo, useReducer } from 'react';
 
 import type { FormStateManager, FormStateManagerHook } from './types';
 import useDataReducer, { initialState } from './useFormStateReducer';
@@ -10,11 +10,6 @@ const useFormStateManager: FormStateManagerHook = () => {
 	const initializer = useInitialState();
 	const dataReducer = useDataReducer(initializer);
 	const [state, dispatch] = useReducer(dataReducer, initialState, initializer);
-
-	// temporary
-	useEffect(() => {
-		console.log('REM form state', state);
-	}, [state]);
 
 	const getData: FSM['getData'] = useCallback(() => state, [state]);
 
