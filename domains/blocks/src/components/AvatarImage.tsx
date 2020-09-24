@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 
@@ -11,10 +11,13 @@ interface AvatarImageProps {
 }
 
 const AvatarImage: React.FC<AvatarImageProps> = ({ className = 'contact', url, altText, height = 32, width = 32 }) => {
-	const style: CSSProperties = {
-		height,
-		width,
-	};
+	const style = useMemo<CSSProperties>(
+		() => ({
+			height,
+			width,
+		}),
+		[height, width]
+	);
 	return url ? (
 		<div className={className + '-image-wrap-div'}>
 			<img

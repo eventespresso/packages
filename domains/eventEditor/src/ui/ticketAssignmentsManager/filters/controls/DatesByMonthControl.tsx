@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { useDatetimes } from '@eventespresso/edtr-services';
@@ -16,7 +16,9 @@ const DatesByMonthControl: React.FC<DatesByMonthControlProps> = React.memo(({ da
 	const yearMonth = datesByMonth.join(':');
 
 	// Add all dates option at the top, "0:0" to match the "year:month" format
-	const monthsListWithAllDates = [{ value: '0:0', label: __('All Dates') }, ...monthsList];
+	const monthsListWithAllDates = useMemo(() => [{ value: '0:0', label: __('All Dates') }, ...monthsList], [
+		monthsList,
+	]);
 
 	return (
 		<SelectInput

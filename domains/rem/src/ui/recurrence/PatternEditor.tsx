@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@eventespresso/i18n';
 
@@ -23,6 +23,8 @@ const PatternEditor: React.FC = () => {
 	// We need to show rRule even after coming back from next steps
 	// isOpen is reset on each mount (step), exRule still remains in REM state
 	const showExRule = exRule || isOpen;
+
+	const debugData = useMemo(() => ({ rRule, exRule }), [exRule, rRule]);
 
 	return (
 		<>
@@ -59,7 +61,7 @@ const PatternEditor: React.FC = () => {
 					type='exclusion'
 				/>
 			)}
-			<DebugInfo data={{ rRule, exRule }} />
+			<DebugInfo data={debugData} />
 		</>
 	);
 };

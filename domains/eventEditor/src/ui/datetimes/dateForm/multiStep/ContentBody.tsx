@@ -10,6 +10,7 @@ import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManage
 import DateFormSteps from './DateFormSteps';
 import useDataListener from './useDataListener';
 
+const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
 /**
  * This component is inside both RFF and TAM contexts, so we can use all of their features
  */
@@ -21,8 +22,6 @@ const ContentBody: React.FC = ({ children }) => {
 	const { hasOrphanEntities } = useTAMDataState();
 
 	const isSubmitDisabled = hasOrphanEntities();
-
-	const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
 
 	return (
 		<FormSpy subscription={subscription}>

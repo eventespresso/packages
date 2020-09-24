@@ -49,7 +49,7 @@ const ContentBody: React.FC = ({ children }) => {
 									<Next
 										buttonText={__('Skip prices - assign dates')}
 										isDisabled={isSaveDisabled}
-										// eslint-disable-next-line react/jsx-no-bind
+										// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
 										onClick={() => goto(2)}
 										skippable
 									/>
@@ -77,7 +77,7 @@ const ContentBody: React.FC = ({ children }) => {
 								<ButtonRow>
 									<Previous
 										buttonText={__('Ticket details')}
-										// eslint-disable-next-line react/jsx-no-bind
+										// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
 										onClick={() => goto(0)}
 										skippable
 									/>
