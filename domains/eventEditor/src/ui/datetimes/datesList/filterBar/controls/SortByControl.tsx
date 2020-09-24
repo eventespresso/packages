@@ -15,8 +15,8 @@ const SortByControl: React.FC = () => {
 
 	return (
 		<SelectInput
+			id='dates-list-sort-by-control'
 			label={labels.sortBy}
-			className='espresso-date-list-filter-bar-order-select'
 			value={sortBy}
 			options={options}
 			onChangeValue={setSortBy}

@@ -10,7 +10,15 @@ const options = objectToSelectOptions(statusOptions);
 const StatusControl: React.FC = () => {
 	const { status, setStatus } = useDatesListFilterState();
 
-	return <SelectInput label={labels.status} value={status} options={options} onChangeValue={setStatus} />;
+	return (
+		<SelectInput
+			id='dates-list-status-control'
+			label={labels.status}
+			onChangeValue={setStatus}
+			options={options}
+			value={status}
+		/>
+	);
 };
 
 export default StatusControl;

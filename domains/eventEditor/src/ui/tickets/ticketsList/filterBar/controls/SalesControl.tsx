@@ -12,7 +12,16 @@ const SalesControl: React.FC = () => {
 	const options = useMemoStringify(objectToSelectOptions(isChained ? salesIsChainedOptions : salesOptions), [
 		isChained,
 	]);
-	return <SelectInput label={labels.sales} value={sales} options={options} onChangeValue={setSales} />;
+
+	return (
+		<SelectInput
+			id='tickets-list-sales-control'
+			label={labels.sales}
+			onChangeValue={setSales}
+			options={options}
+			value={sales}
+		/>
+	);
 };
 
 export default SalesControl;

@@ -10,7 +10,16 @@ const options = objectToSelectOptions(salesOptions);
 
 const SalesControl: React.FC = () => {
 	const { sales, setSales } = useDatesListFilterState();
-	return <SelectInput label={labels.sales} value={sales} options={options} onChangeValue={setSales} />;
+
+	return (
+		<SelectInput
+			id='dates-list-sales-control'
+			label={labels.sales}
+			onChangeValue={setSales}
+			options={options}
+			value={sales}
+		/>
+	);
 };
 
 export default SalesControl;

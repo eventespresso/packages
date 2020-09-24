@@ -48,10 +48,12 @@ const datesActionHandler: EntityActionsSubscriptionCb<Datetime, 'datetime'> = ({
 
 	registerMenuItem('assignTickets', () => <AssignTicketsButton entity={entity} />);
 };
+
 entityActions.subscribe(datesActionHandler, { entityType: 'datetime' });
 
 // Register new date option(s)
 const newEntityOptions = new NewEntitySubscription(domain);
+
 newEntityOptions.subscribe(
 	({ entityType, registry }) => {
 		// although this is not needed
@@ -76,6 +78,7 @@ const datesListFilterBar: DatesListFilterBarCallback = ({ listId, registry }) =>
 	if (listId !== 'dates-list') {
 		return;
 	}
+
 	const { registerElement: registerFilterBarItem } = registry;
 
 	registerFilterBarItem('status', () => {
@@ -110,4 +113,5 @@ const datesListFilterBar: DatesListFilterBarCallback = ({ listId, registry }) =>
 		);
 	});
 };
+
 filterBar.subscribe(datesListFilterBar, { listId: 'dates-list' });

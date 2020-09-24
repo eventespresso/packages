@@ -15,11 +15,11 @@ const SortByControl: React.FC = () => {
 
 	return (
 		<SelectInput
+			id='tickets-list-sort-by-control'
 			label={labels.sortBy}
-			className='espresso-ticket-list-filter-bar-order-select'
-			value={sortBy}
-			options={options}
 			onChangeValue={setSortBy}
+			options={options}
+			value={sortBy}
 		/>
 	);
 };

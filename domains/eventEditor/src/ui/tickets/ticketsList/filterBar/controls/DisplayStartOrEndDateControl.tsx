@@ -15,11 +15,11 @@ const DisplayStartOrEndDateControl: React.FC = () => {
 
 	return (
 		<SelectInput
+			id='tickets-list-display-control'
 			label={labels.displayStartOrEndDate}
-			className='espresso-date-list-filter-bar-display-select'
-			value={displayStartOrEndDate}
-			options={options}
 			onChangeValue={setDisplayStartOrEndDate}
+			options={options}
+			value={displayStartOrEndDate}
 		/>
 	);
 };
