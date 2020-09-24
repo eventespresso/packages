@@ -299,11 +299,11 @@
 
 /** ticket expired **/
 .ee-status-color-TKE {
-	color: var(--ee-color-grey-7);
+	color: var(--ee-color-grey-6);
 }
 .ee-status-background-color-TKE {
-	background-color: var(--ee-color-grey-7);
-	color: var(--ee-text-on-grey-7);
+	background-color: var(--ee-color-grey-6);
+	color: var(--ee-text-on-grey-6);
 }
 
 /** ticket archived **/
