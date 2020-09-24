@@ -1,22 +1,24 @@
-import { useDatetimes, Datetime } from '@eventespresso/edtr-services';
-import { useFilterState } from '../filters';
-import { isTrashed, inYearAndMonth } from '@eventespresso/predicates';
+import { useMemo } from 'react';
 
-const useFilteredDatetimes = (): Array<Datetime> => {
+import type { Datetime } from '@eventespresso/edtr-services';
+import { isTrashed, inYearAndMonth } from '@eventespresso/predicates';
+import { useFilterState } from '../filters';
+
+const useFilteredDatetimes = (allDates: Array<Datetime>): Array<Datetime> => {
 	const { showTrashedDates, datesByMonth } = useFilterState();
 
 	const datesInYearAndMonth = inYearAndMonth(datesByMonth);
 
-	const allDates = useDatetimes();
-
 	// If the year i.e. datesByMonth[0] is set, then filter
-	const datetimes = datesByMonth[0] ? datesInYearAndMonth(allDates) : allDates;
+	const datetimes = useMemo(() => (datesByMonth[0] ? datesInYearAndMonth(allDates) : allDates), [
+		allDates,
+		datesByMonth,
+		datesInYearAndMonth,
+	]);
 
-	if (showTrashedDates) {
-		return datetimes;
-	}
-
-	return datetimes.filter((datetime) => !isTrashed(datetime));
+	return useMemo(() => {
+		return showTrashedDates ? datetimes : datetimes.filter((datetime) => !isTrashed(datetime));
+	}, [datetimes, showTrashedDates]);
 };
 
 export default useFilteredDatetimes;

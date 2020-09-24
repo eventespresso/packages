@@ -1,32 +1,37 @@
+import { Datetime, Ticket, useDatetimes, useTickets } from '@eventespresso/edtr-services';
+import { useMemoStringify } from '@eventespresso/hooks';
+
 import { DatesAndTickets } from '../types';
 import { useTAMContext } from '../context';
 import useFilteredDatetimes from './useFilteredDatetimes';
 import useFilteredTickets from './useFilteredTickets';
-import type { Datetime, Ticket } from '@eventespresso/edtr-services';
 
 const useDatesAndTickets = (): DatesAndTickets => {
 	const { assignmentType, entity } = useTAMContext();
+	const allDates = useDatetimes();
+	const allTickets = useTickets();
 
-	const filteredDatetimes = useFilteredDatetimes();
-	const filteredTickets = useFilteredTickets();
+	const filteredDatetimes = useFilteredDatetimes(allDates);
+	const filteredTickets = useFilteredTickets(allTickets);
+
+	let datetimes: Array<Datetime>, tickets: Array<Ticket>;
 
 	switch (assignmentType) {
 		case 'forAll':
-			return {
-				datetimes: filteredDatetimes,
-				tickets: filteredTickets,
-			};
+			datetimes = filteredDatetimes;
+			tickets = filteredTickets;
+			break;
 		case 'forDate':
-			return {
-				datetimes: [entity as Datetime],
-				tickets: filteredTickets,
-			};
+			datetimes = [entity as Datetime];
+			tickets = filteredTickets;
+			break;
 		case 'forTicket':
-			return {
-				datetimes: filteredDatetimes,
-				tickets: [entity as Ticket],
-			};
+			datetimes = filteredDatetimes;
+			tickets = [entity as Ticket];
+			break;
 	}
+
+	return useMemoStringify({ datetimes, tickets });
 };
 
 export default useDatesAndTickets;

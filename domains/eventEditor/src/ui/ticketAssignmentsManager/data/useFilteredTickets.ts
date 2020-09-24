@@ -1,20 +1,24 @@
+import { useMemo } from 'react';
+
 import { isTrashed, isExpired } from '@eventespresso/predicates';
+import type { Ticket } from '@eventespresso/edtr-services';
 import { useFilterState } from '../filters';
-import { useTickets, Ticket } from '@eventespresso/edtr-services';
 
-const useFilteredTickets = (): Array<Ticket> => {
+const useFilteredTickets = (allTickets: Array<Ticket>): Array<Ticket> => {
 	const { showExpiredTickets, showTrashedTickets } = useFilterState();
-	let tickets = useTickets();
 
-	if (!showExpiredTickets) {
-		tickets = tickets.filter((ticket) => !isExpired(ticket));
-	}
+	return useMemo(() => {
+		let tickets = allTickets;
+		if (!showExpiredTickets) {
+			tickets = tickets.filter((ticket) => !isExpired(ticket));
+		}
 
-	if (!showTrashedTickets) {
-		tickets = tickets.filter((ticket) => !isTrashed(ticket));
-	}
+		if (!showTrashedTickets) {
+			tickets = tickets.filter((ticket) => !isTrashed(ticket));
+		}
 
-	return tickets;
+		return tickets;
+	}, [allTickets, showExpiredTickets, showTrashedTickets]);
 };
 
 export default useFilteredTickets;
