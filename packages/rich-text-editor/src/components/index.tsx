@@ -14,7 +14,17 @@ import './style.scss';
 
 const { hasCommandModifier } = KeyBindingUtil;
 
-type SyntheticKeyboardEvent = React.KeyboardEvent<{ any }>;
+type SyntheticKeyboardEvent = React.KeyboardEvent<any>;
+
+// Custom overrides for "code" style.
+const styleMap = {
+	CODE: {
+		backgroundColor: 'rgba(0, 0, 0, 0.05)',
+		fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+		fontSize: 16,
+		padding: 2,
+	},
+};
 
 export class RichTextEditor extends React.Component<RichTextEditorProps, RichTextEditorState> {
 	focus: () => void;
@@ -106,16 +116,6 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 				className += ' rich-text-editor--hidePlaceholder';
 			}
 		}
-
-		// Custom overrides for "code" style.
-		const styleMap = {
-			CODE: {
-				backgroundColor: 'rgba(0, 0, 0, 0.05)',
-				fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-				fontSize: 16,
-				padding: 2,
-			},
-		};
 
 		return (
 			<div className='rich-text-editor-root'>

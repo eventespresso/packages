@@ -16,12 +16,14 @@ import './style/laptop-style.scss';
 import './style/tablet-style.scss';
 import './style/phone-style.scss';
 
+const EMPTY_ARRAY = [];
+
 const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
-	bodyRows = [],
-	className = {},
-	footerRows = [],
-	headerRows = [],
-	metaData = {},
+	bodyRows = EMPTY_ARRAY,
+	className,
+	footerRows = EMPTY_ARRAY,
+	headerRows = EMPTY_ARRAY,
+	metaData,
 	onBeforeDragStart,
 	onDragEnd,
 	onDragStart,
@@ -30,11 +32,11 @@ const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 }) => {
 	const primaryHeader = headerRows.find((row) => row.primary === true);
 	const instanceId = props.instanceId || uuidv4();
-	const isScrollable = !!metaData.isScrollable;
-	const hasRowHeaders = !!metaData.hasRowHeaders;
+	const isScrollable = !!metaData?.isScrollable;
+	const hasRowHeaders = !!metaData?.hasRowHeaders;
 
 	const tableClassName = classNames(
-		className.tableClassName,
+		className?.tableClassName,
 		`ee-rspnsv-table-column-count-${primaryHeader.cells.length}`,
 		hasRowHeaders && 'ee-rspnsv-table-has-row-headers'
 	);
@@ -46,16 +48,16 @@ const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	);
 
 	const cssClasses = useMemoStringify({
-		headerClassName: className.headerClassName || '',
-		headerRowClassName: className.headerRowClassName || '',
-		headerThClassName: className.headerThClassName || '',
-		bodyClassName: className.bodyClassName || '',
-		bodyRowClassName: className.bodyRowClassName || '',
-		bodyThClassName: className.bodyThClassName || '',
-		bodyTdClassName: className.bodyTdClassName || '',
-		footerClassName: className.footerClassName || '',
-		footerRowClassName: className.footerRowClassName || '',
-		footerThClassName: className.footerThClassName || '',
+		headerClassName: className?.headerClassName || '',
+		headerRowClassName: className?.headerRowClassName || '',
+		headerThClassName: className?.headerThClassName || '',
+		bodyClassName: className?.bodyClassName || '',
+		bodyRowClassName: className?.bodyRowClassName || '',
+		bodyThClassName: className?.bodyThClassName || '',
+		bodyTdClassName: className?.bodyTdClassName || '',
+		footerClassName: className?.footerClassName || '',
+		footerRowClassName: className?.footerRowClassName || '',
+		footerThClassName: className?.footerThClassName || '',
 		tableClassName,
 	});
 

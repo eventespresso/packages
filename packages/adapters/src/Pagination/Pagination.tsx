@@ -11,6 +11,8 @@ import defaultItemRender from './ItemRender';
 import type { PaginationProps } from './types';
 import PerPage from './PerPage';
 
+const DEFAULT_PER_PAGE_OPTIONS = ['2', '6', '12', '24', '48'];
+
 const Pagination: React.FC<PaginationProps> = ({
 	defaultPageNumber = 1,
 	defaultPerPage,
@@ -20,7 +22,7 @@ const Pagination: React.FC<PaginationProps> = ({
 	onChangePerPage,
 	pageNumber,
 	perPage,
-	perPageOptions = ['2', '6', '12', '24', '48'],
+	perPageOptions = DEFAULT_PER_PAGE_OPTIONS,
 	showPerPageChanger,
 	total,
 	...props

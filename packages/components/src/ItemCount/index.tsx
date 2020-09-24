@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { Badge, BadgeProps, Tooltip } from '@eventespresso/adapters';
@@ -27,7 +27,7 @@ export const ItemCount: React.FC<ItemCountProps> = ({
 		'ee-item-count--has-items': count > 0,
 		'ee-item-count--no-items': count === 0 && emphasizeZero,
 	});
-	const offset = props.offset || [-8, -4];
+	const offset = useMemo(() => props.offset || [-8, -4], [props.offset]);
 	const value = count === 0 && typeof zeroCountChar !== 'undefined' ? zeroCountChar : count;
 	const countNode = (
 		<Tooltip placement='top' tooltip={title}>
@@ -35,9 +35,11 @@ export const ItemCount: React.FC<ItemCountProps> = ({
 		</Tooltip>
 	);
 
+	const style = useMemo(() => ({ right: `${offset[0]}px`, top: `${offset[1]}px` }), [offset]);
+
 	return (
 		<div className='ee-item-count__wrapper'>
-			<Badge {...props} className={className} style={{ right: `${offset[0]}px`, top: `${offset[1]}px` }}>
+			<Badge {...props} className={className} style={style}>
 				{countNode}
 			</Badge>
 			{children}

@@ -49,6 +49,7 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 			value={currentValue}
 		>
 			{({ isEditing, onCancel, onRequestEdit }) => {
+				// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
 				const onCancelEdit = () => {
 					onCancel();
 					// reset current value to what it was earlier
@@ -64,12 +65,7 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 							value={currentValue}
 						/>
 
-						<InlineEditInput
-							inputType={inputType}
-							setValue={setCurrentValue}
-							// eslint-disable-next-line react/jsx-no-bind
-							onCancel={onCancelEdit}
-						/>
+						<InlineEditInput inputType={inputType} setValue={setCurrentValue} onCancel={onCancelEdit} />
 					</>
 				);
 			}}

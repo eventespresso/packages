@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { is } from 'ramda';
 
 import { Icon } from '@eventespresso/icons';
@@ -24,19 +24,23 @@ const Legend: React.FC<LegendProps> = ({ direction, legendConfig }) => {
 		};
 	});
 
-	const swatchesSource = swatches
-		? Object.entries(swatches).map(([swatchClassName, description]) => {
-				const colorSwatchClassName = 'ee-status-background-color-' + swatchClassName;
+	const swatchesSource = useMemo(
+		() =>
+			swatches
+				? Object.entries(swatches).map(([swatchClassName, description]) => {
+						const colorSwatchClassName = 'ee-status-background-color-' + swatchClassName;
 
-				return {
-					className: 'ee-legend-item',
-					description,
-					term: <ColorSwatch className={colorSwatchClassName} label={description} />,
-				};
-		  })
-		: [];
+						return {
+							className: 'ee-legend-item',
+							description,
+							term: <ColorSwatch className={colorSwatchClassName} label={description} />,
+						};
+				  })
+				: [],
+		[swatches]
+	);
 
-	const dataSource = [...iconsSource, ...swatchesSource];
+	const dataSource = useMemo(() => [...iconsSource, ...swatchesSource], [iconsSource, swatchesSource]);
 
 	return <DescriptionList direction={direction} dataSource={dataSource} />;
 };

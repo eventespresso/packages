@@ -49,10 +49,10 @@ const useFooterRowGenerator = (): FooterRowGenerator => {
 					<TicketPriceField
 						component='input'
 						disabled={!reverseCalculate}
-						// eslint-disable-next-line react/jsx-no-bind
+						// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
 						format={(price) => formatAmount(price) ?? ''}
 						formatOnBlur
-						// eslint-disable-next-line react/jsx-no-bind
+						// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
 						parse={(price) => parsedAmount(price)}
 						type='number'
 					/>

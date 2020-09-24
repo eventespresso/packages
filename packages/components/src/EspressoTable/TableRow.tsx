@@ -41,6 +41,7 @@ const TableRow: React.FC<BodyRow> = ({
 						ref={innerRef}
 						id={id}
 						className={css}
+						// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
 						style={{
 							...draggableProps.style,
 							border: isDragging ? '1px solid var(--ee-color-bright-blue)' : 'none',

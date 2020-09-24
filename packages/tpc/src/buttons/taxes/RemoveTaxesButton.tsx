@@ -4,11 +4,10 @@ import { __ } from '@eventespresso/i18n';
 import { ConfirmDelete } from '@eventespresso/components';
 import { useRemoveAllTaxes } from '../../hooks';
 
+const buttonProps = {
+	buttonText: __('Remove taxes'),
+};
 const RemoveTaxesButton: React.FC = () => {
-	const buttonProps = {
-		buttonText: __('Remove taxes'),
-	};
-
 	const message = __("Are you sure you want to remove all of this ticket's taxes?");
 
 	const removeAllTaxes = useRemoveAllTaxes();

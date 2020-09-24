@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
-import { Box } from '@eventespresso/adapters';
+import { Box, BoxProps } from '@eventespresso/adapters';
 import type { TableProps } from './types';
+
+const overflowX: BoxProps['overflowX'] = { sm: 'auto', md: 'visible' };
 
 const Table: React.FC<TableProps> = ({ captionID = '', captionText = '', children, tableId = '', ...props }) => {
 	const className = classNames(props.className, 'ee-rspnsv-table');
-	const tableProps: React.HTMLAttributes<HTMLElement> = {
-		...props,
-		className,
-		id: tableId,
-	};
+	const tableProps = useMemo<React.HTMLAttributes<HTMLElement>>(
+		() => ({
+			...props,
+			className,
+			id: tableId,
+		}),
+		[className, props, tableId]
+	);
 
 	return (
 		<Box
 			aria-labelledby={captionID}
 			className='ee-rspnsv-table__inner-wrapper'
-			overflowX={{ sm: 'auto', md: 'visible' }}
+			overflowX={overflowX}
 			role='region'
 			tabIndex={0}
 		>

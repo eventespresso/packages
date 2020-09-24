@@ -102,6 +102,7 @@ const TableBody: React.FC<TableBodyProps> = ({
 		>
 			<Droppable droppableId={`${tableId}-droppable`}>
 				{({ innerRef, droppableProps, placeholder }, { isDraggingOver }) => {
+					// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
 					const style = {
 						border: isDraggingOver ? '1px solid lightgreen' : 'none',
 						borderSpacing: isDraggingOver ? '2px' : '0',

@@ -9,11 +9,13 @@ import RenderSections from '../RenderSections';
 import DebugInfo from '../../../components/src/DebugInfo/DebugInfo'; // to avoid circular dependency, also since it's used only in dev
 import { formPropsAreEqual } from '../utils';
 
+const EMPTY_ARRAY = [];
+
 const FormRenderer: React.FC<FormRendererProps> = (props) => {
 	const {
 		submitting,
-		sections = [],
-		fields = [],
+		sections = EMPTY_ARRAY,
+		fields = EMPTY_ARRAY,
 		submitButton,
 		resetButton,
 		formWrapper: FormWrapper,

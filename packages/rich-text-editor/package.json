@@ -15,6 +15,11 @@
 	},
 	"main": "src/index.ts",
 	"main:src": "src/index.ts",
+	"scripts": {
+		"test": "react-scripts test",
+		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
+		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
+	},
 	"sideEffects": false,
 	"dependencies": {
 		"draft-convert": "^2.1.10",

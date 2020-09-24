@@ -18,6 +18,7 @@ const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({
 		transform: `rotate(${showLegend ? 0 : 180}deg)`,
 	});
 
+	// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
 	const icon = () => (
 		<animated.div style={iconProps}>
 			<CompassFilled />
@@ -31,7 +32,6 @@ const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({
 			active={showLegend}
 			buttonSize={ButtonSize.SMALLER}
 			className={className}
-			// eslint-disable-next-line react/jsx-no-bind
 			icon={icon}
 			noHorizontalMargin={noHorizontalMargin}
 			onClick={toggleLegend}
