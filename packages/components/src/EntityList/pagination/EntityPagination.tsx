@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Pagination, PaginationProps } from '@eventespresso/adapters';
 
-import { EntityListFilterStateManager } from '../filterBar';
+import { Pagination } from '@eventespresso/adapters';
+import type { PaginationProps } from '@eventespresso/adapters';
+import type { EntityListFilterStateManager } from '../filterBar';
 import './style.scss';
 
 interface EntityPaginationProps<ELFS extends EntityListFilterStateManager> extends Partial<PaginationProps> {
