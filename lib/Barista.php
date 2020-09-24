@@ -242,9 +242,10 @@ class Barista
 
 
 	public function addInlineData() {
-		printf(
-			"<script type='text/javascript' id='ee-barista'>\nvar baristaAssetsUrl = '%s';\n</script>\n",
-			$this->url('build/')
+		wp_add_inline_script(
+			'eventespresso-i18n',
+			sprintf('var baristaAssetsUrl = "%s";', $this->url('build/')),
+			'before'
 		);
 	}
 }
