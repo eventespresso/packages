@@ -1,4 +1,7 @@
-import { render } from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import '../../../../packages/edtr-services/src/publicPath';
 
 import canUseDOM from './canUseDOM';
 
@@ -73,7 +76,14 @@ const renderDomElement = ({
 	}
 
 	// and render our new DOM element into it
-	render(domElementToRender, container);
+	if (process.env.NODE_ENV !== 'production') {
+		import('react-axe').then((axe) => {
+			axe.default(React, ReactDOM, 1000);
+			ReactDOM.render(domElementToRender, container);
+		});
+	} else {
+		ReactDOM.render(domElementToRender, container);
+	}
 };
 
 export default renderDomElement;
