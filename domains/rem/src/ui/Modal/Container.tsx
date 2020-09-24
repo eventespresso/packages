@@ -4,8 +4,7 @@ import { useGlobalModal } from '@eventespresso/registry';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 
 import Modal from './Modal';
-import { useGenerateDates } from '../generatedDates';
-import { useFormState, useSubmitForm } from '../../data';
+import { useFormState, useGenerateDates, useSubmitForm } from '../../data';
 import { withContext, useStepsState } from '../../context';
 import { RemGlobalModals } from '../../types';
 

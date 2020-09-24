@@ -7,9 +7,9 @@ import { FormSectionSidebar } from '@eventespresso/form';
 // import { Pagination } from '@eventespresso/adapters';
 
 import GeneratedDatetimes from './GeneratedDatetimes';
+import { useGenerateDates } from '../../data';
 import { legendConfig } from './config';
 import RDate from './RDate';
-import useGenerateDates from './useGenerateDates';
 import Warning from './Warning';
 
 import './styles.scss';
