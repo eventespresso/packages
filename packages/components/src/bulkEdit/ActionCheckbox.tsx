@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
+import { __ } from '@eventespresso/i18n';
 
-import { Checkbox as CheckboxAdapter } from '@eventespresso/adapters';
+import { Checkbox } from '@eventespresso/adapters';
 import { useBulkEdit } from '@eventespresso/services';
-import { EntityId } from '@eventespresso/data';
+import type { EntityId } from '@eventespresso/data';
 
 export type ActionCheckboxProps = {
 	id?: EntityId;
@@ -35,7 +36,8 @@ export const ActionCheckbox: React.FC<ActionCheckboxProps> = ({ id, label, visib
 	const isIndeterminate = !isChecked && selected.length && !id;
 
 	return (
-		<CheckboxAdapter
+		<Checkbox
+			aria-label={__('select entity')}
 			className='ee-bulk-edit-actions__checkbox'
 			isChecked={isChecked}
 			isIndeterminate={isIndeterminate}

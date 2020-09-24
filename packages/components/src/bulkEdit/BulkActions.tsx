@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
-import { ActionCheckboxProps } from './ActionCheckbox';
 import { useBulkEdit } from '@eventespresso/services';
 
 import { Button, SelectInput } from '../';
+import type { ActionCheckboxProps } from './ActionCheckbox';
 import type { SelectInputProps } from '../';
 
 import './styles.scss';
