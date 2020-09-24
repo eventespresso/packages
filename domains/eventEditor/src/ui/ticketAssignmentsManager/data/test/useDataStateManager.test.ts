@@ -31,7 +31,7 @@ describe('useDataStateManager', () => {
 		// they are old childhood friends
 		expect(result.current.getAssignmentStatus({ datetimeId, ticketId })).toBe('OLD');
 
-		// lets test their friendsip by separating them
+		// lets test their friendship by separating them
 		act(() => {
 			result.current.removeAssignment({ datetimeId, ticketId });
 		});
@@ -39,7 +39,7 @@ describe('useDataStateManager', () => {
 
 		const newDateId = 'new-date-id';
 
-		// lets find a NEW parther for the ticket
+		// lets find a NEW partner for the ticket
 		act(() => {
 			result.current.addAssignment({ datetimeId: newDateId, ticketId });
 		});
@@ -52,6 +52,7 @@ describe('useDataStateManager', () => {
 				datetimeId: 'wants-to-go-to-mars',
 				ticketId: 'not-a-big-fan-of-elon-musk',
 			})
+			// it's no way going to be a match
 		).toBe(null);
 	});
 
