@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { useDisclosure } from '@chakra-ui/hooks';
 
-import { BulkActions, BulkActionsProps } from '@eventespresso/components';
+import { BulkActions } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { useTicketsListFilterState, TicketsStatus } from '@edtrServices/filterState';
 
@@ -10,6 +10,8 @@ import Checkbox from '../../tableView/Checkbox';
 import { EditDetails } from '../details';
 import { Delete } from '../delete';
 import { EditPrices } from '../prices';
+
+import type { BulkActionsProps } from '@eventespresso/components';
 
 type Action = 'edit-details' | 'delete' | 'edit-prices' | '';
 

@@ -3,7 +3,9 @@ import { __ } from '@eventespresso/i18n';
 import { ActionCheckboxProps } from './ActionCheckbox';
 import { useBulkEdit } from '@eventespresso/services';
 
-import { Button, SelectInput, SelectInputProps } from '../';
+import { Button, SelectInput } from '../';
+import type { SelectInputProps } from '../';
+
 import './styles.scss';
 
 export interface BulkActionsProps<T extends string = string> {
@@ -33,6 +35,7 @@ export const BulkActions = <T extends string>({
 	return (
 		<div className='ee-bulk-edit-actions__wrapper'>
 			<SelectInput
+				aria-label={__('bulk actions')}
 				className='ee-bulk-edit-actions__select'
 				onChangeValue={setValue}
 				options={options}

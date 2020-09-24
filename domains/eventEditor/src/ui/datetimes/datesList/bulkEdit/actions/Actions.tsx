@@ -2,13 +2,15 @@ import React, { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { useDisclosure } from '@chakra-ui/hooks';
 
-import { BulkActions, BulkActionsProps } from '@eventespresso/components';
+import { BulkActions } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 import Checkbox from '../../tableView/Checkbox';
 import { useDatesListFilterState, DatetimeStatus } from '@edtrServices/filterState';
 import { EditDetails } from '../details';
 import { Delete } from '../delete';
+
+import type { BulkActionsProps } from '@eventespresso/components';
 
 type Action = 'edit-details' | 'delete' | '';
 

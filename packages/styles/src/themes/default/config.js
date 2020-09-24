@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
 	magenta: '#962557',
 	red: '#b00e13',
 	'hot-pink': '#de5882',
@@ -24,7 +24,7 @@ const colors = {
 	white: '#ffffff',
 };
 
-const meta = {
+export const meta = {
 	name: '2019 Default',
 	primary: colors.blue,
 	secondary: colors.green,
@@ -36,7 +36,7 @@ const meta = {
 	blackAndWhiteContrast: false,
 };
 
-const sizes = {
+export const sizes = {
 	fontSizeBase: 10,
 	fontSizeModifiers: null,
 	fontUnits: 'rem',
@@ -52,6 +52,4 @@ const sizes = {
 	radiusUnits: 'px',
 };
 
-const folder = 'themes/default';
-
-module.exports = { folder, colors, meta, sizes };
+export const folder = 'themes/default';
