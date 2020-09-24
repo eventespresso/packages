@@ -12,6 +12,7 @@
 		"plugin:prettier/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:jsx-a11y/recommended",
+		"plugin:react-perf/recommended",
 		"react-app"
 	],
 	"globals": {
@@ -26,7 +27,7 @@
 		"ecmaVersion": 2018,
 		"sourceType": "module"
 	},
-	"plugins": ["react-hooks", "jsx-a11y", "ee-barista"],
+	"plugins": ["react-hooks", "jsx-a11y", "ee-barista", "react-perf"],
 	"rules": {
 		"@typescript-eslint/ban-ts-comment": "off",
 		"@typescript-eslint/ban-ts-ignore": "off",
@@ -42,7 +43,6 @@
 		"react-hooks/exhaustive-deps": "error",
 		"react-hooks/rules-of-hooks": "error",
 		"react/display-name": "off",
-		"react/jsx-no-bind": "error",
 		"react/prop-types": "off",
 		"react/static-property-placement": "off"
 	},
