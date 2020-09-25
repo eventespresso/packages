@@ -3,7 +3,7 @@ import isOnOrAfterToday from '../isOnOrAfterToday';
 import { NOW } from '../../constants';
 
 // lets set the time to today midnight
-const todayAtZeroHour = setTimeToZeroHour(new Date());
+const todayAtZeroHour = setTimeToZeroHour(NOW);
 
 describe('isOnOrAfterToday', () => {
 	it('returns true if the given date is today', () => {

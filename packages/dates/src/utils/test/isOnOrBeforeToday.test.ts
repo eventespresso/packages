@@ -3,7 +3,7 @@ import { add } from '../addSub';
 import { NOW } from '../../constants';
 
 // lets set the time to one hour from now
-const oneHourFromNow = add('hours', new Date(), 1);
+const oneHourFromNow = add('hours', NOW, 1);
 
 describe('isOnOrBeforeToday', () => {
 	it('returns true if the given date is today', () => {
