@@ -1,10 +1,10 @@
+import { head } from 'ramda';
 import { act, renderHook } from '@testing-library/react-hooks';
 import { formatISO } from 'date-fns';
 
 import useFormStateManager from '../useFormStateManager';
 import type { DateFormShape } from '../../ui/datetimeDetails/types';
 import { RemTicket } from '../types';
-import { head } from 'ramda';
 
 describe('REM.useFormStateManager', () => {
 	it('checks types for state values', () => {
@@ -162,7 +162,7 @@ describe('REM.useFormStateManager', () => {
 		});
 		expect(result.current.tickets[ticketId]).toBeUndefined();
 
-		// calling deleteTicket again does not have ane effect
+		// calling deleteTicket again does not have any effect
 		act(() => {
 			result.current.deleteTicket(ticketId);
 		});

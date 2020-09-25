@@ -1,11 +1,11 @@
+import { sortBy, prop } from 'ramda';
 import { RRule, RRuleSet } from 'rrule';
 import { formatISO, parseISO } from 'date-fns';
 
 import { useMemoStringify } from '@eventespresso/hooks';
 import useFormState from './useFormState';
 import { getDatesLimit } from '../utils';
-import { GeneratedDate } from '../ui/generatedDates/types';
-import { sortBy, prop } from 'ramda';
+import type { GeneratedDate } from '../ui/generatedDates/types';
 
 /**
  * This pattern is used to replace COUNT in rrule to generate 500 dates
