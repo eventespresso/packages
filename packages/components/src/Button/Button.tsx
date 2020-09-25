@@ -27,6 +27,7 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 			icon,
 			noMargin,
 			noHorizontalMargin,
+			noVerticalMargin,
 			onClick,
 			...props
 		},
@@ -41,7 +42,8 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],
 			hasIconClassName,
 			!icon && 'ee-noIcon',
-			noHorizontalMargin && 'ee-no-horizontal-margin'
+			noHorizontalMargin && 'ee-btn--no-horizontal-margin',
+			noVerticalMargin && 'ee-btn--no-vertical-margin'
 		);
 
 		return (

@@ -25,10 +25,6 @@ const Actions: React.FC = () => {
 
 	const options = useMemoStringify([
 		{
-			value: '',
-			label: __('bulk actions'),
-		},
-		{
 			value: 'edit-details',
 			label: __('edit datetime details'),
 		},

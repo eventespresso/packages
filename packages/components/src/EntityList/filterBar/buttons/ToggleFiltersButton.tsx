@@ -1,10 +1,9 @@
 import React from 'react';
+
 import { __ } from '@eventespresso/i18n';
-
-import { Button, ButtonSize } from '../../../Button';
-
 import { getPropsAreEqual } from '@eventespresso/utils';
 import { Filter } from '@eventespresso/icons';
+import { Button, ButtonSize } from '../../../Button';
 
 import type { ToggleFiltersButtonProps } from '../types';
 

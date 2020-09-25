@@ -28,6 +28,7 @@ export interface ButtonProps extends ButtonAdapterProps, Partial<withLabelProps>
 	className?: string;
 	noMargin?: boolean;
 	noHorizontalMargin?: boolean;
+	noVerticalMargin?: boolean;
 	onClick?: React.MouseEventHandler;
 	onKeyPress?: React.KeyboardEventHandler;
 }

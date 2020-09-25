@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { useBulkEdit } from '@eventespresso/services';
 
-import { Button, SelectInput } from '../';
+import { Button, LabelPosition, SelectInput } from '../';
 import type { ActionCheckboxProps } from './ActionCheckbox';
 import type { SelectInputProps } from '../';
 
@@ -14,6 +14,8 @@ export interface BulkActionsProps<T extends string = string> {
 	onApply: (action: T) => void;
 	options: SelectInputProps['options'];
 }
+
+const rootProps = { className: 'ee-bulk-edit-actions__select-wrapper' };
 
 export const BulkActions = <T extends string>({
 	Checkbox,
@@ -37,14 +39,17 @@ export const BulkActions = <T extends string>({
 			<SelectInput
 				aria-label={__('bulk actions')}
 				className='ee-bulk-edit-actions__select'
+				label={__('bulk actions')}
+				labelPosition={'top-left' as LabelPosition}
 				onChangeValue={setValue}
 				options={options}
+				rootProps={rootProps}
 				value={action}
 			/>
 			<div className={'ee-bulk-edit-actions__mobile-checkbox'}>
 				<Checkbox label={__('select all')} />
 			</div>
-			<Button onClick={onClick} buttonText={__('apply')} isDisabled={isApplyDisabled} />
+			<Button buttonText={__('apply')} isDisabled={isApplyDisabled} noVerticalMargin onClick={onClick} />
 		</div>
 	);
 };

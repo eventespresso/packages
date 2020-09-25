@@ -2,7 +2,7 @@
 
 .ee-bulk-edit-actions {
 	&__wrapper {
-		align-items: center;
+		align-items: flex-end;
 		display: flex;
 		width: 100%;
 
@@ -10,13 +10,18 @@
 			flex-direction: column;
 		}
 
-		div:first-child:not(.ee-bulk-edit-actions__mobile-checkbox) {
-			display: contents;
-			max-width: fit-content;
+		.ee-input-label__wrapper {
+			display: inline-grid;
+			padding-bottom: 0;
 		}
 	}
 
 	&__select {
+		&-wrapper {
+			display: contents;
+			max-width: fit-content;
+		}
+
 		&.ee-input-base.ee-select {
 			max-width: fit-content;
 		}
