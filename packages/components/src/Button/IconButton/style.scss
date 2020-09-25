@@ -78,10 +78,9 @@
 				svg {
 					color: var(--ee-color-white);
 				}
+
 				&:active,
-				&:focus {
-					border-color: var(--ee-color-primary-low-contrast);
-				}
+				&:focus,
 				&:hover {
 					border-color: var(--ee-color-white);
 				}
