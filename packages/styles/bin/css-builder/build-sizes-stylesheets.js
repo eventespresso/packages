@@ -135,6 +135,14 @@ function radiusSizes(config) {
 			})
 		);
 	}
+
+	sizes.push(
+		templateCompiler({
+			modifier: `border-width`,
+			value: '2px',
+		})
+	);
+
 	return sizes;
 }
 
