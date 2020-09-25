@@ -39,6 +39,7 @@ export const BulkActions = <T extends string>({
 			<SelectInput
 				aria-label={__('bulk actions')}
 				className='ee-bulk-edit-actions__select'
+				id='ee-bulk-edit-actions-select-input'
 				label={__('bulk actions')}
 				labelPosition={'top-left' as LabelPosition}
 				onChangeValue={setValue}
