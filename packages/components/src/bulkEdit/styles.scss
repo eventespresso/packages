@@ -7,12 +7,18 @@
 		width: 100%;
 
 		@include max782px {
+			align-items: center;
 			flex-direction: column;
 		}
 
 		.ee-input-label__wrapper {
 			display: inline-grid;
 			padding-bottom: 0;
+			label {
+				@include max782px {
+					text-align: center;
+				}
+			}
 		}
 	}
 
