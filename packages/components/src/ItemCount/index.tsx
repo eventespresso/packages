@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
-import { Badge, BadgeProps, Tooltip } from '@eventespresso/adapters';
+import { Badge, Tooltip } from '@eventespresso/adapters';
 import { getPropsAreEqual } from '@eventespresso/utils';
+import type { BadgeProps } from '@eventespresso/adapters';
 
 import './style.scss';
 
