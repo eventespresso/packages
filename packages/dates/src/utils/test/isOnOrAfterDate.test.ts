@@ -49,7 +49,7 @@ describe('isOnOrAfterDate', () => {
 		expect(result).toBe(false);
 	});
 
-	it('returns false if any of the two is null or undefined', () => {
+	it('returns false if any of the two or both are null or undefined', () => {
 		[null, undefined].forEach((date) => {
 			expect(isOnOrAfterDate(new Date(), date)).toBe(false);
 			expect(isOnOrAfterDate(date, new Date())).toBe(false);

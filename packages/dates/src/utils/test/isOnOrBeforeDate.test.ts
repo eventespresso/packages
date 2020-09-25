@@ -55,7 +55,7 @@ describe('isOnOrBeforeDate', () => {
 		expect(result).toBe(false);
 	});
 
-	it('returns false if any of the two is null or undefined', () => {
+	it('returns false if any of the two or both are null or undefined', () => {
 		[null, undefined].forEach((date) => {
 			expect(isOnOrBeforeDate(new Date(), date)).toBe(false);
 			expect(isOnOrBeforeDate(date, new Date())).toBe(false);
