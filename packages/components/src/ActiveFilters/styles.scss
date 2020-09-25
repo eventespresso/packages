@@ -54,14 +54,13 @@
 			height: calc(var(--ee-icon-button-size-micro) - 6px);
 			justify-content: center;
 			margin-left: var(--ee-margin-micro);
-			opacity: 0.5;
 			outline: none !important;
 			width: calc(var(--ee-icon-button-size-micro) - 6px);
 
 			&:focus,
 			&:hover {
-				border-color: var(--ee-color-primary-low-contrast);
-				opacity: 1;
+				background: var(--ee-color-primary);
+				color: var(--ee-text-on-primary);
 			}
 
 			& svg.ee-svg {
