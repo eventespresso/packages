@@ -15,6 +15,7 @@ const Row: React.FC<RowProps> = ({ align = 'start', as = 'div', children, classN
 		reverse && 'ee-container--inline-reverse',
 		!reverse && 'ee-container--inline'
 	);
+
 	return (
 		<ConditionalElement {...props} className={htmlClass} tag={as}>
 			{children}
