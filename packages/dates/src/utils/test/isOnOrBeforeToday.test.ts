@@ -2,7 +2,6 @@ import isOnOrBeforeToday from '../isOnOrBeforeToday';
 import { add } from '../addSub';
 import { NOW } from '../../constants';
 
-// lets set the time to today midnight
 const oneHourFromNow = add('hours', new Date(), 1);
 
 describe('isOnOrBeforeToday', () => {

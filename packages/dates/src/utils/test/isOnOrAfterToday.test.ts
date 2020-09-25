@@ -2,7 +2,6 @@ import { setTimeToZeroHour } from '../..';
 import isOnOrAfterToday from '../isOnOrAfterToday';
 import { NOW } from '../../constants';
 
-// lets set the time to today midnight
 const todayAtZeroHour = setTimeToZeroHour(new Date());
 
 describe('isOnOrAfterToday', () => {
