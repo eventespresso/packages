@@ -49,7 +49,7 @@ describe('usePrevNext', () => {
 		expect(result.current.current).toBe(10);
 	});
 
-	it('deccrements the default index by using prev()', () => {
+	it('decrements the default index by using prev()', () => {
 		const { result } = renderHook(() => usePrevNext());
 
 		act(() => {
@@ -73,7 +73,7 @@ describe('usePrevNext', () => {
 		expect(result.current.current).toBe(-2);
 	});
 
-	it('deccrements the passed index by using prev()', () => {
+	it('decrements the passed index by using prev()', () => {
 		const { result } = renderHook(() => usePrevNext(13));
 
 		expect(result.current.current).toBe(13);
