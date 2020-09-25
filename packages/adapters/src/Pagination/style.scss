@@ -160,6 +160,7 @@ $border-radius: var(--ee-border-radius-default);
 				}
 
 				&:focus {
+					background-color: var(--ee-color-primary-high-contrast);
 					border-color: var(--ee-color-primary-high-contrast);
 				}
 
