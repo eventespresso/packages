@@ -174,7 +174,6 @@ describe('useGenerateDates', () => {
 				result.current.formState.setExRule(rRule);
 			});
 
-			console.log(JSON.stringify(result.current.generatedDates.map(({ date }) => date.toISOString())));
 			// no dates shoul be generated
 			expect(result.current.generatedDates.length).toBe(0);
 		});
