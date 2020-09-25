@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import { __ } from '@eventespresso/i18n';
 
+import { __ } from '@eventespresso/i18n';
 import { Close } from '@eventespresso/icons';
-import { FilterTagProps } from './types';
+import type { FilterTagProps } from './types';
 
 const FilterTag: React.FC<FilterTagProps> = ({ title, className, onRemove }) => {
 	return (

@@ -23,6 +23,7 @@
 			margin: 0 0 var(--ee-margin-tiny);
 		}
 	}
+
 	&__body {
 		display: flex;
 		flex-flow: row wrap;
@@ -45,18 +46,21 @@
 
 		&__close-btn {
 			align-items: center;
+			border: 1px solid transparent;
+			border-radius: 50%;
 			cursor: pointer;
 			display: inline-flex;
 			font-size: var(--ee-font-size-default);
-			height: var(--ee-icon-button-size-micro);
+			height: calc(var(--ee-icon-button-size-micro) - 6px);
 			justify-content: center;
 			margin-left: var(--ee-margin-micro);
 			opacity: 0.5;
 			outline: none !important;
-			width: var(--ee-icon-button-size-micro);
+			width: calc(var(--ee-icon-button-size-micro) - 6px);
 
 			&:focus,
 			&:hover {
+				border-color: var(--ee-color-primary-low-contrast);
 				opacity: 1;
 			}
 
