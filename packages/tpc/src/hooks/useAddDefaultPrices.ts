@@ -1,7 +1,7 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { isBasePrice, sortByPriceOrderIdAsc, isDefault } from '@eventespresso/predicates';
+import { isBasePrice, sortByPriceOrderIdAsc, getDefaultPrices } from '@eventespresso/predicates';
 import { usePrices } from '@eventespresso/edtr-services';
 import { useDataState } from '../data';
 import usePriceToTpcModifier from './usePriceToTpcModifier';
@@ -9,7 +9,7 @@ import useDefaultBasePrice from './useDefaultBasePrice';
 
 const useAddDefaultPrices = (): VoidFunction => {
 	const allPrices = usePrices();
-	const defaultPrices = allPrices.filter(isDefault);
+	const defaultPrices = useMemo(() => getDefaultPrices(allPrices), [allPrices]);
 
 	const basePrice = useDefaultBasePrice();
 
