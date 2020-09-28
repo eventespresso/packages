@@ -14,7 +14,7 @@ const defaultTaxes = getDefaultTaxes(pricesWithADefaultTax);
 
 describe('useAddDefaultTaxes', () => {
 	it('adds default prices to TPC data', async () => {
-		// before doing anything, make sure we have default a default price
+		// before doing anything, make sure we have a default tax
 		expect(defaultTaxes.length).toBeGreaterThan(0);
 
 		const { result } = renderHook(
@@ -62,7 +62,7 @@ describe('useAddDefaultTaxes', () => {
 	});
 
 	it('does not add default prices to TPC data when there are no default prices', async () => {
-		// before doing anything, make sure we have default a default price
+		// before doing anything, make sure we have a default tax
 		expect(defaultTaxes.length).toBeGreaterThan(0);
 
 		const { result } = renderHook(
