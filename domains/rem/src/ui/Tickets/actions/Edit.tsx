@@ -7,12 +7,20 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { Container as FormContainer } from '../multiStep';
 import { BaseProps } from '../types';
 
+import './style.scss';
+
 const Edit: React.FC<BaseProps> = ({ ticket }) => {
 	const { isOpen, onClose, onOpen } = useDisclosure();
 
 	return (
 		<>
-			<IconButton borderless icon={EditIcon} onClick={onOpen} tooltip={__('edit ticket')} />
+			<IconButton
+				borderless
+				className='ee-ticket-sidebar__edit-ticket'
+				icon={EditIcon}
+				onClick={onOpen}
+				tooltip={__('edit ticket')}
+			/>
 			{isOpen && <FormContainer isOpen={true} onClose={onClose} entity={ticket} />}
 		</>
 	);

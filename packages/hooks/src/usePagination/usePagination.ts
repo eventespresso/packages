@@ -1,10 +1,10 @@
 import { useCallback, useMemo, useReducer } from 'react';
 
 import usePaginationReducer from './usePaginationReducer';
-import type { Pagination } from './types';
+import type { Pagination, PaginationState } from './types';
 
-export const usePagination = (datesLength: number | null): any => {
-	const initialState = useMemo<any>(
+export const usePagination = (datesLength: number | null): Pagination => {
+	const initialState = useMemo<PaginationState>(
 		() => ({
 			pageNumber: 1,
 			perPage: 6,

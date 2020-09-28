@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 
-import { entityListCacheIdString } from '@eventespresso/utils';
+import { entityListCacheIdString, paginateEntities } from '@eventespresso/utils';
 import { Entity } from '@eventespresso/data';
 import type { EntityListFilterStateManager } from './types';
 import useEntityFilterService from './useEntityFilterService';
@@ -52,7 +52,7 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 			return sortedEntities;
 		}
 		// entities for current page
-		return sortedEntities.slice(perPage * (pageNumber - 1), perPage * pageNumber);
+		return paginateEntities({ entities: sortedEntities, pageNumber, perPage });
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cacheIds, perPage, pageNumber, sortingEnabled]);
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 
 import { Pagination } from '@eventespresso/adapters';
 import type { PaginationProps } from '@eventespresso/adapters';
@@ -21,10 +20,9 @@ const EntityPagination: React.FC<EntityPaginationProps<any>> = ({
 	...props
 }) => {
 	const { pageNumber, perPage, setPerPage, setPageNumber, total }: EntityListFilterStateManager = filterState;
-	const className = classNames('ee-entity-pagination', { hidePagination: total <= perPage });
 
 	return (
-		<div className={className}>
+		<div className='ee-entity-pagination'>
 			<Pagination
 				{...props}
 				defaultPerPage={6}

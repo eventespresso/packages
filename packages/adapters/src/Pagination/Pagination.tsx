@@ -27,7 +27,9 @@ const Pagination: React.FC<PaginationProps> = ({
 	total,
 	...props
 }) => {
-	return (
+	const hidePagination = total <= perPage;
+
+	return hidePagination ? null : (
 		<div className='ee-pagination'>
 			<RcPagination
 				{...props}

@@ -1,3 +1,4 @@
+export * from './usePagination';
 export * from './usePrevNext';
 
 export { default as useIfMounted } from './useIfMounted';
