@@ -19,11 +19,11 @@ export const getPriceType = (priceTypes: PriceType[]) => (price: TpcPriceModifie
 export const updatePriceModifier = (price: TpcPriceModifier, priceType?: PriceType): TpcPriceModifier => {
 	return {
 		...price,
-		isBasePrice: priceType.isBasePrice,
-		isDiscount: priceType.isDiscount,
-		isPercent: priceType.isPercent,
-		isTax: priceType.isTax,
-		priceType: priceType.id,
-		priceTypeOrder: priceType.order,
+		isBasePrice: priceType?.isBasePrice,
+		isDiscount: priceType?.isDiscount,
+		isPercent: priceType?.isPercent,
+		isTax: priceType?.isTax,
+		priceType: priceType?.id,
+		priceTypeOrder: priceType?.order,
 	};
 };

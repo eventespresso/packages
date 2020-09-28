@@ -26,3 +26,4 @@ export const getPriceByGuid = (prices: Price[], guid: EntityId): Price => findEn
 // returns array of prices that satisfy predicate
 export const getTaxes = (prices: Price[]): Price[] => filter<Price>(isTax, prices);
 export const getDefaultTaxes = (prices: Price[]): Price[] => filter(isDefaultTax, prices);
+export const getDefaultPrices = (prices: Price[]): Price[] => filter<Price>(isDefault, prices);

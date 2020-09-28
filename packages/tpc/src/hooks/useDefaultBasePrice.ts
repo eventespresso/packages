@@ -16,7 +16,10 @@ const useDefaultBasePrice = (): TpcPriceModifier => {
 	}, [allPriceTypes]);
 
 	const defaultPriceModifier = usePriceModifier(defaultPrice);
-	const basePrice = updatePriceModifier(defaultPriceModifier, basePriceType);
+	const basePrice = useMemo(() => updatePriceModifier(defaultPriceModifier, basePriceType), [
+		basePriceType,
+		defaultPriceModifier,
+	]);
 
 	return useMemoStringify(basePrice);
 };
