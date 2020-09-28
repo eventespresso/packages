@@ -1,3 +1,5 @@
+import { LegendBaseProps } from '../index';
+
 export interface DescriptionListItemProps {
 	bgClassName?: string;
 	className: string;
@@ -5,7 +7,6 @@ export interface DescriptionListItemProps {
 	term?: React.ReactNode;
 }
 
-export interface DescriptionListProps {
-	direction?: 'row';
+export interface DescriptionListProps extends LegendBaseProps {
 	dataSource: DescriptionListItemProps[];
 }

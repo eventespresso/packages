@@ -187,6 +187,12 @@ $border-radius: var(--ee-border-radius-default);
 	&__per-page {
 		height: 2.8rem;
 
+		&-select-wrapper {
+			.ee-pagination & {
+				width: auto;
+			}
+		}
+
 		&.ee-input-base.ee-select {
 			border: $border-style;
 			border-radius: $border-radius;

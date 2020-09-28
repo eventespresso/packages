@@ -78,7 +78,7 @@ const EntityListFilterBar = <FS extends ELFSM>({
 			</Collapsible>
 
 			<Collapsible className='ee-filter-bar__collapsible' show={showLegend}>
-				<Legend legendConfig={legendConfig} />
+				<Legend legendConfig={legendConfig} termWhiteBg />
 			</Collapsible>
 		</div>
 	);

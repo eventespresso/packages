@@ -2,8 +2,13 @@ import type { AnyObject } from '@eventespresso/utils';
 import type { IconName } from '@eventespresso/icons';
 import { ButtonProps } from '../Button';
 
-export interface LegendProps {
+export interface LegendBaseProps {
+	columnsPerRow?: number;
 	direction?: 'row';
+	termWhiteBg?: boolean;
+}
+
+export interface LegendProps extends LegendBaseProps {
 	legendConfig: LegendConfig;
 }
 

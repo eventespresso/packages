@@ -1,12 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import type { DescriptionListProps } from './types';
 import DescriptionListItem from './DescriptionListItem';
+import type { DescriptionListProps } from './types';
 import './styles.scss';
 
-const DescriptionList: React.FC<DescriptionListProps> = ({ direction, dataSource }) => {
-	const className = classNames('ee-description-list-grid', direction && `ee-description-list-grid--${direction}`);
+const DescriptionList: React.FC<DescriptionListProps> = ({ columnsPerRow, direction, dataSource, termWhiteBg }) => {
+	const className = classNames(
+		'ee-description-list-grid',
+		direction && `ee-description-list-grid--${direction}`,
+		columnsPerRow && `ee-description-list-columns-per-row--${columnsPerRow}`,
+		termWhiteBg && `ee-description-list-item-term--white-bg`
+	);
 
 	return (
 		<dl className={className}>

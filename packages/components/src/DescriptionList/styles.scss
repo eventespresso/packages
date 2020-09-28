@@ -23,13 +23,20 @@
 		}
 	}
 
+	&-columns-per-row {
+		// to be extended
+		&--1 {
+			grid-template-columns: repeat(1, 1fr);
+			margin: var(--ee-margin-micro) var(--ee-margin-smaller);
+		}
+	}
+
 	&-item {
 		align-items: center;
 		display: flex;
 		padding: var(--ee-padding-tiny) var(--ee-padding-default) var(--ee-padding-tiny) 0;
 
 		dt {
-			background: var(--ee-background-color);
 			border-radius: var(--ee-border-radius-default);
 			display: flex;
 			margin: 0 var(--ee-margin-smaller) 0 0;
@@ -47,6 +54,12 @@
 					height: auto;
 					width: 18px;
 				}
+			}
+		}
+
+		&-term--white-bg {
+			dt {
+				background: var(--ee-background-color);
 			}
 		}
 

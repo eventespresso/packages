@@ -6,7 +6,7 @@ import Legend from './Legend';
 import ToggleLegendButton from './ToggleLegendButton';
 import type { LegendProps } from './types';
 
-const CollapsibleLegend: React.FC<LegendProps> = ({ direction, legendConfig }) => {
+const CollapsibleLegend: React.FC<LegendProps> = (props) => {
 	const { isOpen, onToggle } = useDisclosure();
 
 	return (
@@ -14,7 +14,7 @@ const CollapsibleLegend: React.FC<LegendProps> = ({ direction, legendConfig }) =
 			<ToggleLegendButton noHorizontalMargin showLegend={isOpen} toggleLegend={onToggle} />
 
 			<Collapsible show={isOpen}>
-				<Legend direction={direction} legendConfig={legendConfig} />
+				<Legend {...props} />
 			</Collapsible>
 		</>
 	);

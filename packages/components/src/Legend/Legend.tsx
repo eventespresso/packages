@@ -8,7 +8,7 @@ import { DescriptionList } from '../DescriptionList';
 import type { LegendProps } from './types';
 import type { IconName } from '@eventespresso/icons';
 
-const Legend: React.FC<LegendProps> = ({ direction, legendConfig }) => {
+const Legend: React.FC<LegendProps> = ({ columnsPerRow, direction, legendConfig, termWhiteBg }) => {
 	const { icons, swatches } = legendConfig;
 
 	const iconsSource = icons.map(({ bgClassName, description, icon }) => {
@@ -42,7 +42,14 @@ const Legend: React.FC<LegendProps> = ({ direction, legendConfig }) => {
 
 	const dataSource = useMemo(() => [...iconsSource, ...swatchesSource], [iconsSource, swatchesSource]);
 
-	return <DescriptionList direction={direction} dataSource={dataSource} />;
+	return (
+		<DescriptionList
+			columnsPerRow={columnsPerRow}
+			direction={direction}
+			dataSource={dataSource}
+			termWhiteBg={termWhiteBg}
+		/>
+	);
 };
 
 export default Legend;
