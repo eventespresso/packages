@@ -1,3 +1,5 @@
+import type { Capability } from '../permissions';
+
 export type JsDataProps = {
 	brandName: string;
 	currency_config: CurrencyProps;
@@ -31,6 +33,8 @@ export type ConfigDataProps = {
 	generalSettings: GeneralSettings;
 	locale: LocaleProps;
 	nonce: string;
+	/* Permission for the whole site */
+	permissions?: Array<Capability>;
 	siteUrl: SiteUrlProps;
 	timezone: TimezoneProps;
 	wp_debug: boolean;
@@ -56,6 +60,8 @@ export interface CurrentUserProps {
 	databaseId: number;
 	description: string;
 	email: string;
+	/* EE capabilities for the user */
+	espressoCaps?: Array<Capability>;
 	firstName: string;
 	name: string;
 	nicename: string;
