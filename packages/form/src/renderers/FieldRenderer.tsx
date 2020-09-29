@@ -2,12 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { FormControl, FormHelperText, FormLabel } from '@eventespresso/adapters';
-// import { HelpIcon } from '@eventespresso/adapters';
-
-import ErrorMessage from './ErrorMessage';
-import type { FieldRendererProps } from '../types';
+import { ErrorMessage } from '../ErrorMessage';
 import { MappedField } from '../adapters';
 import { fieldPropsAreEqual } from '../utils';
+import type { FieldRendererProps } from '../types';
 
 const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	const { after, before, description, formControlProps, info, label, required, ...rest } = props;

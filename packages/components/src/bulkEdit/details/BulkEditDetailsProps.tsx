@@ -1,11 +1,11 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
+import { ErrorMessage } from '@eventespresso/form';
 import type { EspressoFormProps } from '@eventespresso/form';
 
 import { EntityEditModal } from '../../';
 import FormWrapper from './FormWrapper';
-import Warning from './Warning';
 import { FormWithConfig } from '../../FormWithConfig';
 
 import './styles.scss';
@@ -19,6 +19,7 @@ export interface BulkEditDetailsProps {
 }
 
 export const BulkEditDetails: React.FC<BulkEditDetailsProps> = ({ isOpen, onClose, formConfig, title, warning }) => {
+	const message = __('Note: ') + (warning || __('any changes will be applied to ALL of the selected entities.'));
 	return (
 		<EntityEditModal
 			isOpen={isOpen}
@@ -26,7 +27,7 @@ export const BulkEditDetails: React.FC<BulkEditDetailsProps> = ({ isOpen, onClos
 			closeOnOverlayClick={true}
 			title={title || __('Bulk edit details')}
 		>
-			<Warning message={warning} />
+			<ErrorMessage message={message} />
 			<FormWithConfig {...formConfig} formWrapper={FormWrapper} />
 		</EntityEditModal>
 	);

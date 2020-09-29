@@ -3,6 +3,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@eventespresso/i18n';
 
 import { Button, ButtonRow, DebugInfo } from '@eventespresso/components';
+import { ErrorMessage } from '@eventespresso/form';
 import { Divider } from '@eventespresso/adapters';
 import { CloseCircleOutlined, Repeat } from '@eventespresso/icons';
 
@@ -28,11 +29,7 @@ const PatternEditor: React.FC = () => {
 
 	return (
 		<>
-			{!rRule ? (
-				<div className='ee-form-error-message'>
-					<p>{__('You must set a recurrence pattern')}</p>
-				</div>
-			) : null}
+			<ErrorMessage message={!rRule && __('You must set a recurrence pattern')} />
 			<RRuleEditor
 				desc={__('defines a rule or repeating pattern for generating event dates that occur regularly')}
 				icon={Repeat}

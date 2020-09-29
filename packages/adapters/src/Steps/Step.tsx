@@ -24,7 +24,7 @@ const Step: React.FC<StepProps> = ({
 	);
 
 	return (
-		<li className={className}>
+		<li aria-current={props['aria-current']} className={className}>
 			{showStepNumber && <div className={'ee-form-step__number'}>{stepNumber}</div>}
 			{Icon && (
 				<div className={'ee-form-step__icon'}>

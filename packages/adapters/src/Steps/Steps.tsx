@@ -40,12 +40,14 @@ const Steps: React.FC<StepsProps> = ({
 				{Children.map(children, (child: any, index) => {
 					const stepNumber = initial + index;
 					const childProps = {
-						stepNumber: `${stepNumber + 1}`,
-						stepIndex: stepNumber,
-						active: stepNumber === current,
-						showStepNumber,
 						...props,
+						...(stepNumber === current && { 'aria-current': 'step' }),
+						active: stepNumber === current,
+						stepIndex: stepNumber,
+						stepNumber: `${stepNumber + 1}`,
+						showStepNumber,
 					};
+
 					return cloneElement(child, childProps);
 				})}
 			</ul>
