@@ -27,7 +27,7 @@ const Warning: React.FC<WarningProps> = ({ datetimes }) => {
 			warning = __('The number of Event Dates has been capped at 5 for YEARLY recurrence patterns');
 			break;
 		case freq === 'MONTHLY':
-			warning = __('The number of Event Dates has been capped at 36 for MONTHLY recurrence patterns (2 years)');
+			warning = __('The number of Event Dates has been capped at 36 for MONTHLY recurrence patterns (3 years)');
 			break;
 		case freq === 'WEEKLY':
 			warning = __('The number of Event Dates has been capped at 52 for WEEKLY recurrence patterns (1 year)');
