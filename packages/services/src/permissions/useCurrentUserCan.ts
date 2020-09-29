@@ -5,7 +5,7 @@ import useUserCaps from './useUserCaps';
 import type { CurrentUserCan } from './types';
 
 /**
- * Returns a callback to check whether current has a capability.
+ * Returns a callback to check whether current user has a capability.
  * @example
  * const currentUserCan = useCurrentUserCan();
  *
