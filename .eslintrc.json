@@ -36,6 +36,8 @@
 		"@typescript-eslint/no-use-before-define": "off",
 		"comma-dangle": "off",
 		"ee-barista/no-circular-imports": "error",
+		"jest/valid-title": "off",
+		"jest/no-conditional-expect": "off",
 		"jest/valid-describe": "off",
 		"no-case-declarations": "warn",
 		"no-prototype-builtins": "off",

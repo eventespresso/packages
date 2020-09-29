@@ -3,12 +3,12 @@ import React from 'react';
 import { InputWithLabel as InputWithLabelAdapter } from '@eventespresso/adapters';
 import './style.scss';
 
-interface InputWithLabel {
+interface InputWithLabelProps {
 	label: React.ReactNode;
 	labelPosition: 'left' | 'right';
 }
 
-export const InputWithLabel: React.FC<InputWithLabel> = ({ children, label, labelPosition = 'right' }) => {
+export const InputWithLabel: React.FC<InputWithLabelProps> = ({ children, label, labelPosition = 'right' }) => {
 	const leftLabel = labelPosition === 'left' && label;
 	const rightLabel = labelPosition === 'right' && label;
 

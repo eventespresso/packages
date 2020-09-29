@@ -3,7 +3,7 @@ import { useMutation } from '@eventespresso/data';
 import gql from 'graphql-tag';
 import { clone } from 'ramda';
 import { useDebouncedCallback } from 'use-debounce';
-import { MutationResult } from '@apollo/react-common';
+import { MutationResult } from '@apollo/client';
 
 import { EntityId } from '@eventespresso/data';
 import { getGuids } from '@eventespresso/predicates';
@@ -46,7 +46,7 @@ const useReorderEntities = <E extends Entity>({ entityType }: ReorderEntitiesPro
 
 	const [mutate, result] = useMutation(REORDER_ENTITIES);
 
-	const [runMutation, cancelDebounce] = useDebouncedCallback(mutate, 5000); // delay in MS
+	const { callback: runMutation, cancel: cancelDebounce } = useDebouncedCallback(mutate, 5000); // delay in MS
 
 	const done = useCallback(() => {
 		runMutation({
