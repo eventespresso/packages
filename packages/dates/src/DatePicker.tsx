@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import * as locales from 'date-fns/locale';
 
@@ -10,7 +10,7 @@ import './styles.scss';
 export const DatePicker: React.FC<DatePickerProps> = ({ inputValue, locale, onChange, value, ...props }) => {
 	// get locale object from date-fns
 	// we need to change "en_US" to "enUS"
-	const datefnsLocale = locales?.[locale?.replace(/-_/, '')] ?? locales.enUS;
+	const datefnsLocale = useMemo(() => locales?.[locale?.replace(/-_/, '')] ?? locales.enUS, [locale]);
 
 	return (
 		<ReactDatePicker onChange={onChange} selected={value} value={inputValue} locale={datefnsLocale} {...props} />

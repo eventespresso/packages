@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
-import { isOnOrAfterToday, isOnOrAfterDate, isOnOrBeforeDate } from './utils';
 
-import { DateRangePickerProps } from './types';
+import type { DateRangePickerProps } from './types';
 import { DatePicker } from './DatePicker';
 import { DateTimePicker } from './DateTimePicker';
 import { DateRangePickerLegend } from './DateRangePickerLegend';
+import { isOnOrAfterToday, isOnOrAfterDate, isOnOrBeforeDate } from './utils';
 
 export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 	className,
