@@ -3,7 +3,6 @@ import classNames from 'classnames';
 
 import { CloseCircleFilled, PlusCircleFilled, Repeat, Trash } from '@eventespresso/icons';
 import { IconButton } from '@eventespresso/components';
-import { useTimeZoneTime } from '@eventespresso/services';
 import { DateType, GeneratedDatetimeProps } from './types';
 import { getBgClassName, formatDate, iconClassMap, tooltipMap } from './utils';
 
@@ -20,12 +19,10 @@ export const iconMap: { [key in DateType]: React.ReactNode } = {
 };
 
 const GeneratedDatetime: React.FC<GeneratedDatetimeProps> = ({ date, ISOStr, type, toggleExDate }) => {
-	const { formatForSite } = useTimeZoneTime();
-
 	const bgClassName = getBgClassName(type);
 	const className = classNames('ee-generated-datetime__body', bgClassName);
 
-	const gDateLabel = formatDate(date, formatForSite);
+	const gDateLabel = formatDate(date);
 
 	const onClickTrash = useCallback(() => toggleExDate(ISOStr), [toggleExDate, ISOStr]);
 

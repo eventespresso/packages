@@ -1,10 +1,15 @@
 import { __, sprintf } from '@eventespresso/i18n';
+import { format } from 'date-fns';
 
 import { LOCALIZED_DATE_FULL_FORMAT, TIME_ONLY_12H_SHORT_FORMAT } from '@eventespresso/constants';
-import type { TimeZoneTime } from '@eventespresso/services';
 import type { DateType } from './types';
 
-export const formatDate = (date: Date, format: TimeZoneTime['formatForSite']): string => {
+/**
+ * Formats the date in date and time format.
+ * It is assumed that the date that comes from rrle-generator is in site timezone,
+ * so no conversion to site timezone is needed.
+ */
+export const formatDate = (date: Date): string => {
 	return `${format(date, LOCALIZED_DATE_FULL_FORMAT)} ${format(date, TIME_ONLY_12H_SHORT_FORMAT)}`;
 };
 
