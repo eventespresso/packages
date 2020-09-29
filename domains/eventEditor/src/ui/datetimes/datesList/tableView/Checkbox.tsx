@@ -2,17 +2,12 @@ import React from 'react';
 
 import { ActionCheckbox, ActionCheckboxProps } from '@eventespresso/components';
 import { useEdtrState } from '@eventespresso/edtr-services';
-import { checkFeatureFlag } from '@eventespresso/config';
-
-const isBulkEditEnabled = checkFeatureFlag('bulkEdit');
+import { withFeature } from '@eventespresso/services';
 
 const Checkbox: React.FC<ActionCheckboxProps> = (props) => {
 	const { visibleDatetimeIds } = useEdtrState();
-	if (!isBulkEditEnabled) {
-		return null;
-	}
 
 	return <ActionCheckbox {...props} visibleEntityIds={visibleDatetimeIds} />;
 };
 
-export default Checkbox;
+export default withFeature('use_bulk_edit')(Checkbox);

@@ -6,13 +6,10 @@ import useHeaderRowGenerator from './useHeaderRowGenerator';
 import useBodyRowGenerator from './useBodyRowGenerator';
 import { useDatesListFilterState, useFilteredDates } from '@edtrServices/filterState';
 import { useReorderDatetimes } from '@eventespresso/edtr-services';
-import { checkFeatureFlag } from '@eventespresso/config';
 import { withBulkEdit } from '@eventespresso/services';
-import { Actions } from '../bulkEdit';
+import { Actions as BulkEditActions } from '../bulkEdit';
 
 import './styles.scss';
-
-const isBulkEditEnabled = checkFeatureFlag('bulkEdit');
 
 /**
  * Displays event date details in a standard list table like view
@@ -28,7 +25,7 @@ const TableView: React.FC = () => {
 
 	return (
 		<>
-			{isBulkEditEnabled && <Actions />}
+			<BulkEditActions />
 			<EntityTable
 				entities={filteredEntities}
 				filterState={filterState}

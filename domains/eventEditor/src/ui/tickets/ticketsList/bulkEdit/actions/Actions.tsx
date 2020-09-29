@@ -5,13 +5,13 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { BulkActions } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { useTicketsListFilterState, TicketsStatus } from '@edtrServices/filterState';
+import type { BulkActionsProps } from '@eventespresso/components';
+import { withFeature } from '@eventespresso/services';
 
 import Checkbox from '../../tableView/Checkbox';
 import { EditDetails } from '../details';
 import { Delete } from '../delete';
 import { EditPrices } from '../prices';
-
-import type { BulkActionsProps } from '@eventespresso/components';
 
 type Action = 'edit-details' | 'delete' | 'edit-prices' | '';
 
@@ -64,4 +64,4 @@ const Actions: React.FC = () => {
 	);
 };
 
-export default Actions;
+export default withFeature('use_bulk_edit')(Actions);
