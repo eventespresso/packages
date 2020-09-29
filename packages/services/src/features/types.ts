@@ -8,4 +8,4 @@ export interface FeatureProps {
 	render?: ReactNode | ((hasFeature: boolean) => JSX.Element);
 }
 
-export type WithFeature = <P>(capability: Capability) => (Component: ComponentType<P>) => ComponentType<P>;
+export type WithFeature = (capability: Capability) => <P>(Component: ComponentType<P>) => ComponentType<P>;
