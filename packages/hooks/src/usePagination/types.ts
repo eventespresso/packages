@@ -1,4 +1,4 @@
-import type { Entity } from '@eventespresso/data';
+import type { Reducer } from 'react';
 
 export interface PaginationState {
 	perPage: number;
@@ -12,11 +12,11 @@ export interface PaginationAction extends Partial<PaginationState> {
 	type: PaginationActionType;
 }
 
-export interface PaginatedEntities<E extends Entity | any> extends Partial<PaginationState> {
+export interface PaginatedEntities<E> extends Partial<PaginationState> {
 	entities: E[];
 }
 
-export type PaginationReducer = (state: PaginationState, action: PaginationAction) => PaginationState;
+export type PaginationReducer = Reducer<PaginationState, PaginationAction>;
 
 export interface Pagination extends PaginationState {
 	setPageNumber: (page: number) => void;

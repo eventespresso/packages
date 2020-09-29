@@ -3,14 +3,14 @@ import { useCallback, useMemo, useReducer } from 'react';
 import usePaginationReducer from './usePaginationReducer';
 import type { Pagination, PaginationState } from './types';
 
-export const usePagination = (datesLength: number | null): Pagination => {
+export const usePagination = (totalItems: number): Pagination => {
 	const initialState = useMemo<PaginationState>(
 		() => ({
 			pageNumber: 1,
 			perPage: 6,
-			total: datesLength,
+			total: totalItems,
 		}),
-		[datesLength]
+		[totalItems]
 	);
 
 	const [{ pageNumber, perPage, total }, dispatch] = useReducer(usePaginationReducer(), initialState);

@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 
-import type { PaginationReducer, PaginationState } from './types';
+import type { PaginationReducer } from './types';
 
 const usePaginationReducer = (): PaginationReducer => {
-	return useCallback<PaginationReducer>((state, action): PaginationState => {
+	return useCallback<PaginationReducer>((state, action) => {
 		const { type, perPage, pageNumber, total } = action;
 
 		switch (type) {
