@@ -1,10 +1,10 @@
 import { GraphQLError } from 'graphql';
 
 import type { Viewer, CurrentUserProps } from '@eventespresso/services';
-import type { ReadQueryOptions } from '../../types';
+import type { CacheQueryOptions } from '../../types';
 import { GET_CURRENT_USER } from '..';
 
-export const request: ReadQueryOptions = {
+export const request: CacheQueryOptions = {
 	query: GET_CURRENT_USER,
 };
 

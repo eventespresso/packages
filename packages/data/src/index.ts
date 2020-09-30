@@ -8,4 +8,5 @@ export * from './types';
 export * from './DataProvider';
 
 export * from '@apollo/react-hooks';
+export * from '@apollo/client';
 export { default as withDataProvider } from './withDataProvider';

@@ -1,5 +1,4 @@
-import { QueryHookOptions } from '@apollo/react-hooks';
-import { QueryResult as ApolloQueryResult } from '@apollo/react-common';
+import { QueryHookOptions, QueryResult as ApolloQueryResult } from '@apollo/react-hooks';
 
 import { useCacheQuery } from '../';
 import type { TicketsList, TicketsQueryArgs } from './types';

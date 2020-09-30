@@ -12,7 +12,7 @@ export interface EntityQueryArgs<WhereArgs> {
 	where?: WhereArgs;
 }
 
-export interface ReadQueryOptions<TData = any, TVariables = OperationVariables>
+export interface CacheQueryOptions<TData = any, TVariables = OperationVariables>
 	extends QueryHookOptions<TData, TVariables> {
 	query: DocumentNode;
 }

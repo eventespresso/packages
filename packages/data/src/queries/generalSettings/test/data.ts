@@ -2,9 +2,9 @@ import { GraphQLError } from 'graphql';
 
 import type { GeneralSettingsData } from '@eventespresso/services';
 import { GET_GENERAL_SETTINGS } from '..';
-import type { ReadQueryOptions } from '../../types';
+import type { CacheQueryOptions } from '../../types';
 
-export const request: ReadQueryOptions = {
+export const request: CacheQueryOptions = {
 	query: GET_GENERAL_SETTINGS,
 };
 
