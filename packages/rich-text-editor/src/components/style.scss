@@ -33,11 +33,19 @@
 		padding: var(--ee-padding-micro) var(--ee-padding-tiny);
 	}
 
-	&__styleButton {
+	&__style-button {
+		border-color: transparent;
+		border-radius: var(--ee-border-radius-small);
+		border-style: solid;
+		border-width: var(--ee-border-width);
 		cursor: pointer;
-		margin-right: var(--ee-margin-small);
-		padding: var(--ee-padding-nano) 0;
 		display: inline-block;
+		padding: var(--ee-padding-nano) var(--ee-margin-smaller);
+
+		&:hover,
+		&:focus {
+			border-color: var(--ee-color-primary);
+		}
 
 		&--active {
 			color: var(--ee-color-primary-high-contrast);

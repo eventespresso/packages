@@ -5,9 +5,9 @@ import type { StyleButtonProps } from './types';
 
 const StyleButton: React.FC<StyleButtonProps> = ({ active, icon, label, onToggle, style, ...props }) => {
 	const className = classNames(
-		'rich-text-editor__styleButton',
+		'rich-text-editor__style-button',
 		`rich-text-editor-controls__${style.toLowerCase()}`,
-		active && 'rich-text-editor__styleButton--active'
+		active && 'rich-text-editor__style-button--active'
 	);
 
 	const onMouseDown = useCallback(

@@ -19,7 +19,7 @@
 		max-width: 900px;
 
 		h3 {
-			color: var(--ee-color-grey-11);
+			color: var(--ee-color-grey-7);
 			flex: 0 1 20%;
 			font-size: 2.5rem;
 			font-weight: bolder;
@@ -172,14 +172,8 @@
 			font-weight: bold;
 		}
 
-		&--active {
-			.ee-form-step__title {
-				color: var(--ee-color-primary);
-			}
-		}
-
 		&__desc {
-			color: var(--ee-default-text-color-low-contrast);
+			color: var(--ee-default-text-color-high-contrast);
 			font-size: var(--ee-font-size-small);
 		}
 

@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { __ } from '@eventespresso/i18n';
 
 import Select from '../../../../adapters/src/Select/Select';
 import { HEADING_BLOCK_TYPES } from '../constants';
@@ -19,6 +20,7 @@ const HeadingControls: React.FC<BlockStyleControlsProps> = ({ editorState, onTog
 
 	return (
 		<Select
+			aria-label={__('heading selector')}
 			className='ee-input-base ee-select'
 			options={HEADING_BLOCK_TYPES}
 			onChangeValue={onToggle}
