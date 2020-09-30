@@ -15,7 +15,12 @@ describe('useAttendees', () => {
 			return useAttendeesQueryOptions(whereArgs);
 		});
 
-		const wrapper = ApolloMockedProvider(errorMocks.map((mock) => ({ ...mock, request: queryResult.current })));
+		const wrapper = ApolloMockedProvider(
+			errorMocks.map((mock) => ({
+				...mock,
+				request: { ...queryResult.current, query: queryResult.current.query },
+			}))
+		);
 		/* Set query options and the wrapper */
 
 		const { result } = renderHook(
@@ -42,7 +47,12 @@ describe('useAttendees', () => {
 			return useAttendeesQueryOptions(whereArgs);
 		});
 
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request: queryResult.current })));
+		const wrapper = ApolloMockedProvider(
+			successMocks.map((mock) => ({
+				...mock,
+				request: { ...queryResult.current, query: queryResult.current.query },
+			}))
+		);
 		/* Set query options and the wrapper */
 
 		const { result } = renderHook(
@@ -67,7 +77,12 @@ describe('useAttendees', () => {
 			return useAttendeesQueryOptions(whereArgs);
 		});
 
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request: queryResult.current })));
+		const wrapper = ApolloMockedProvider(
+			successMocks.map((mock) => ({
+				...mock,
+				request: { ...queryResult.current, query: queryResult.current.query },
+			}))
+		);
 		/* Set query options and the wrapper */
 
 		const { result } = renderHook(
@@ -95,7 +110,12 @@ describe('useAttendees', () => {
 			return useAttendeesQueryOptions(whereArgs);
 		});
 
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request: queryResult.current })));
+		const wrapper = ApolloMockedProvider(
+			successMocks.map((mock) => ({
+				...mock,
+				request: { ...queryResult.current, query: queryResult.current.query },
+			}))
+		);
 		/* Set query options and the wrapper */
 
 		const { result } = renderHook(

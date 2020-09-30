@@ -4,8 +4,8 @@ import useFetchDatetimes from '../useFetchDatetimes';
 import useDatetimeQueryOptions from '../useDatetimeQueryOptions';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { successMocks, errorMocks, nodes } from './data';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useFetchDatetimes()', () => {
 	it('checks for the error state', async () => {
 		/* Set query options and the wrapper */
@@ -17,14 +17,14 @@ describe('useFetchDatetimes()', () => {
 		const wrapper = ApolloMockedProvider(errorMocks.map((mock) => ({ ...mock, request })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchDatetimes(), {
+		const { result } = renderHook(() => useFetchDatetimes(), {
 			wrapper,
 		});
 
 		expect(result.current.error).toBeUndefined();
 		expect(result.current.data).toBeUndefined();
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		expect(result.current.error).toBeDefined();
 		expect(result.current.data).toBeUndefined();
@@ -40,13 +40,14 @@ describe('useFetchDatetimes()', () => {
 		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchDatetimes(), {
+		const { result } = renderHook(() => useFetchDatetimes(), {
 			wrapper,
 		});
 
 		expect(result.current.loading).toBe(true);
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
+
 		expect(result.current.loading).toBe(false);
 	});
 
@@ -60,14 +61,14 @@ describe('useFetchDatetimes()', () => {
 		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchDatetimes(), {
+		const { result } = renderHook(() => useFetchDatetimes(), {
 			wrapper,
 		});
 
 		expect(result.current.error).toBeUndefined();
 		expect(result.current.data).toBeUndefined();
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		// Data is already written above
 		expect(result.current.data).toBeDefined();
@@ -84,11 +85,11 @@ describe('useFetchDatetimes()', () => {
 		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchDatetimes(), {
+		const { result } = renderHook(() => useFetchDatetimes(), {
 			wrapper,
 		});
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		expect(result.current.data).toHaveProperty('espressoDatetimes');
 

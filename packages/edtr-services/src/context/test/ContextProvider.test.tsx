@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApolloClient } from '@eventespresso/data';
-import { ApolloClient } from 'apollo-client';
+import { ApolloClient } from '@apollo/client';
 import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { InvariantError } from 'ts-invariant';

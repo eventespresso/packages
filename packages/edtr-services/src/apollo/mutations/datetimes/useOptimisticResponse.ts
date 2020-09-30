@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
-import { useApolloClient } from '@eventespresso/data';
 import { v4 as uuidv4 } from 'uuid';
 
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
 import { ucFirst, removeNullAndUndefined } from '@eventespresso/utils';
-import type { Datetime, DatetimeItem } from '../../types';
-import { GET_DATETIME } from '../../queries';
+import { findEntityByGuid } from '@eventespresso/predicates';
+import type { Datetime } from '../../types';
+import { useDatetimes } from '../../queries';
 
 export const DATETIME_DEFAULTS: Datetime = {
 	id: '',
@@ -33,7 +33,7 @@ export const DATETIME_DEFAULTS: Datetime = {
 type OptimisticResCb = (mutationType: MutationType, input: MutationInput) => any;
 
 const useOptimisticResponse = (): OptimisticResCb => {
-	const client = useApolloClient();
+	const datetimes = useDatetimes();
 
 	return useCallback<OptimisticResCb>(
 		(mutationType, input) => {
@@ -42,18 +42,8 @@ const useOptimisticResponse = (): OptimisticResCb => {
 			};
 			// Get rid of null or undefined values
 			const filteredInput = removeNullAndUndefined(input);
-			let data: DatetimeItem;
-			try {
-				data = client.readQuery<DatetimeItem>({
-					query: GET_DATETIME,
-					variables: {
-						id: input.id,
-					},
-				});
-			} catch (error) {
-				// do nothing
-			}
-			const datetime = data?.datetime;
+
+			const datetime = findEntityByGuid(datetimes)(input.id);
 
 			switch (mutationType) {
 				case MutationType.Create:
@@ -97,7 +87,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 				},
 			};
 		},
-		[client]
+		[datetimes]
 	);
 };
 

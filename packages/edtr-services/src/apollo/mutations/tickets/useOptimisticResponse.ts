@@ -1,12 +1,13 @@
 import { useCallback } from 'react';
-import { useApolloClient } from '@eventespresso/data';
 import { v4 as uuidv4 } from 'uuid';
 
-import { GET_TICKET } from '../../';
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
-import { Ticket, TicketItem } from '../../';
+import { findEntityByGuid } from '@eventespresso/predicates';
 import { removeNullAndUndefined, ucFirst } from '@eventespresso/utils';
+
+import { Ticket } from '../../';
+import { useTickets } from '../../queries';
 
 export const TICKET_DEFAULTS: Ticket = {
 	id: '',
@@ -41,7 +42,7 @@ export const TICKET_DEFAULTS: Ticket = {
 type OptimisticResCb = (mutationType: MutationType, input: MutationInput) => any;
 
 const useOptimisticResponse = (): OptimisticResCb => {
-	const client = useApolloClient();
+	const tickets = useTickets();
 
 	return useCallback<OptimisticResCb>(
 		(mutationType, input) => {
@@ -50,18 +51,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 			};
 			// Get rid of null or undefined values
 			const filteredInput = removeNullAndUndefined(input);
-			let data: TicketItem;
-			try {
-				data = client.readQuery<TicketItem>({
-					query: GET_TICKET,
-					variables: {
-						id: input.id,
-					},
-				});
-			} catch (error) {
-				// do nothing
-			}
-			const ticket = data?.ticket;
+			const ticket = findEntityByGuid(tickets)(input.id);
 
 			switch (mutationType) {
 				case MutationType.Create:
@@ -107,7 +97,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 				},
 			};
 		},
-		[client]
+		[tickets]
 	);
 };
 

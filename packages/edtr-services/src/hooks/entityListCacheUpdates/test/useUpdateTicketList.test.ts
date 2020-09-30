@@ -5,12 +5,12 @@ import { useCacheRehydration } from '../../../apollo/initialization';
 import useUpdateTicketList from '../useUpdateTicketList';
 import { useTicketQueryOptions, useTickets, useTicketIds } from '../../../apollo/queries';
 import { ApolloMockedProvider } from '../../../context/test';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useUpdateTicketList', () => {
 	it('checks for tickets cache update', async () => {
 		const wrapper = ApolloMockedProvider();
-		const { result, waitForValueToChange } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useCacheRehydration();
 				return {
@@ -24,7 +24,7 @@ describe('useUpdateTicketList', () => {
 				wrapper,
 			}
 		);
-		await waitForValueToChange(() => result.current, { timeout });
+		await actWait();
 
 		const ticketlist = result.current.ticketlist;
 
@@ -46,7 +46,7 @@ describe('useUpdateTicketList', () => {
 		});
 
 		const cache = result.current.client.extract();
-		const { result: cacheResult, waitForNextUpdate: waitForUpdate } = renderHook(
+		const { result: cacheResult } = renderHook(
 			() => {
 				const client = useApolloClient();
 				// restore the cache from previous render
@@ -57,7 +57,7 @@ describe('useUpdateTicketList', () => {
 				wrapper,
 			}
 		);
-		await waitForUpdate({ timeout });
+		await actWait();
 
 		const cachedTicketIds = cacheResult.current;
 

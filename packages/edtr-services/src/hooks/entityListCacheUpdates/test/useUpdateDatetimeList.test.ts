@@ -5,12 +5,12 @@ import { useCacheRehydration } from '../../../apollo/initialization';
 import useUpdateDatetimeList from '../useUpdateDatetimeList';
 import { useDatetimes, useDatetimeIds, useDatetimeQueryOptions } from '../../../apollo/queries';
 import { ApolloMockedProvider } from '../../../context/test';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useUpdateDatetimeList', () => {
 	it('checks for datetimes cache update', async () => {
 		const wrapper = ApolloMockedProvider();
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useCacheRehydration();
 				return {
@@ -24,7 +24,7 @@ describe('useUpdateDatetimeList', () => {
 				wrapper,
 			}
 		);
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const datetimelist = result.current.datetimelist;
 
@@ -46,7 +46,7 @@ describe('useUpdateDatetimeList', () => {
 		});
 
 		const cache = result.current.client.extract();
-		const { result: cacheResult, waitForNextUpdate: waitForUpdate } = renderHook(
+		const { result: cacheResult } = renderHook(
 			() => {
 				const client = useApolloClient();
 				// restore the cache from previous render
@@ -57,7 +57,7 @@ describe('useUpdateDatetimeList', () => {
 				wrapper,
 			}
 		);
-		await waitForUpdate({ timeout });
+		await actWait();
 
 		const cachedDatetimeIds = cacheResult.current;
 

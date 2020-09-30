@@ -4,8 +4,8 @@ import useFetchPriceTypes from '../useFetchPriceTypes';
 import usePriceTypeQueryOptions from '../usePriceTypeQueryOptions';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { successMocks, errorMocks, nodes } from './data';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useFetchPriceTypes()', () => {
 	it('checks for the loading state', async () => {
 		/* Set query options and the wrapper */
@@ -17,13 +17,13 @@ describe('useFetchPriceTypes()', () => {
 		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchPriceTypes(), {
+		const { result } = renderHook(() => useFetchPriceTypes(), {
 			wrapper,
 		});
 
 		expect(result.current.loading).toBe(true);
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		expect(result.current.loading).toBe(false);
 	});
@@ -38,14 +38,14 @@ describe('useFetchPriceTypes()', () => {
 		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchPriceTypes(), {
+		const { result } = renderHook(() => useFetchPriceTypes(), {
 			wrapper,
 		});
 
 		expect(result.current.data).toBeUndefined();
 		expect(result.current.error).toBeUndefined();
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		expect(result.current.data).toBeDefined();
 		expect(result.current.error).toBeUndefined();
@@ -61,11 +61,11 @@ describe('useFetchPriceTypes()', () => {
 		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchPriceTypes(), {
+		const { result } = renderHook(() => useFetchPriceTypes(), {
 			wrapper,
 		});
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		expect(result.current.data).toHaveProperty('espressoPriceTypes');
 
@@ -95,14 +95,14 @@ describe('useFetchPriceTypes()', () => {
 		const wrapper = ApolloMockedProvider(errorMocks.map((mock) => ({ ...mock, request })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchPriceTypes(), {
+		const { result } = renderHook(() => useFetchPriceTypes(), {
 			wrapper,
 		});
 
 		expect(result.current.data).toBeUndefined();
 		expect(result.current.error).toBeUndefined();
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		expect(result.current.data).toBeUndefined();
 		expect(result.current.error).toBeDefined();

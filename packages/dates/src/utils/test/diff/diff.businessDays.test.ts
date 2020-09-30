@@ -7,9 +7,9 @@ describe('diff.businessDays', () => {
 	});
 
 	it('can handle long ranges', () => {
-		if (typeof this.timeout === 'function') {
-			this.timeout(500 /* 500 ms test timeout */);
-		}
+		// if (typeof this.timeout === 'function') {
+		// 	this.timeout(500 /* 500 ms test timeout */);
+		// }
 		const result = diff('businessDays', new Date(15000, 0 /* Jan */, 1), new Date(2014, 0 /* Jan */, 1));
 		expect(result).toBe(3387885);
 	});

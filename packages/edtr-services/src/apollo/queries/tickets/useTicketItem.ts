@@ -1,21 +1,15 @@
 import { useMemo } from 'react';
 
-import { GET_TICKET } from '../tickets';
-import type { Ticket, TicketItem } from '../../types';
+import { findEntityByGuid } from '@eventespresso/predicates';
+
+import type { Ticket } from '../../types';
 import type { EntityItemProps } from '../types';
-import { useCacheQuery, CacheQueryOptions } from '@eventespresso/data';
+import useTickets from './useTickets';
 
 const useTicketItem = ({ id }: EntityItemProps): Ticket => {
-	const options: CacheQueryOptions = {
-		query: GET_TICKET,
-		variables: {
-			id,
-		},
-	};
-	const { data } = useCacheQuery<TicketItem>(options);
-	const ticket = data?.ticket;
+	const tickets = useTickets();
 
-	return useMemo(() => ticket, [ticket]);
+	return useMemo(() => findEntityByGuid(tickets)(id), [tickets, id]);
 };
 
 export default useTicketItem;

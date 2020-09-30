@@ -13,7 +13,15 @@ describe('useEvents', () => {
 			return useEventsQueryOptions();
 		});
 
-		const wrapper = ApolloMockedProvider(errorMocks.map((mock) => ({ ...mock, request: queryResult.current })));
+		const wrapper = ApolloMockedProvider(
+			errorMocks.map((mock) => ({
+				...mock,
+				request: {
+					...queryResult.current,
+					query: { ...queryResult.current, query: queryResult.current.query }.query,
+				},
+			}))
+		);
 		/* Set query options and the wrapper */
 
 		const { result } = renderHook(
@@ -40,7 +48,12 @@ describe('useEvents', () => {
 			return useEventsQueryOptions();
 		});
 
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request: queryResult.current })));
+		const wrapper = ApolloMockedProvider(
+			successMocks.map((mock) => ({
+				...mock,
+				request: { ...queryResult.current, query: queryResult.current.query },
+			}))
+		);
 		/* Set query options and the wrapper */
 
 		const { result } = renderHook(
@@ -65,7 +78,12 @@ describe('useEvents', () => {
 			return useEventsQueryOptions();
 		});
 
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request: queryResult.current })));
+		const wrapper = ApolloMockedProvider(
+			successMocks.map((mock) => ({
+				...mock,
+				request: { ...queryResult.current, query: queryResult.current.query },
+			}))
+		);
 		/* Set query options and the wrapper */
 
 		const { result } = renderHook(
@@ -93,7 +111,12 @@ describe('useEvents', () => {
 			return useEventsQueryOptions();
 		});
 
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request: queryResult.current })));
+		const wrapper = ApolloMockedProvider(
+			successMocks.map((mock) => ({
+				...mock,
+				request: { ...queryResult.current, query: queryResult.current.query },
+			}))
+		);
 		/* Set query options and the wrapper */
 
 		const { result } = renderHook(

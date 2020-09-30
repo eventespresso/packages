@@ -24,15 +24,6 @@ export const DATETIME_ATTRIBUTES: any = gql`
 	}
 `;
 
-export const GET_DATETIME: any = gql`
-	query GET_DATETIME($id: ID!) {
-		datetime(id: $id) {
-			...datetimeAttributes
-		}
-	}
-	${DATETIME_ATTRIBUTES}
-`;
-
 export const GET_DATETIMES: any = gql`
 	query GET_DATETIMES($where: EspressoRootQueryDatetimesConnectionWhereArgs) {
 		espressoDatetimes(where: $where) {

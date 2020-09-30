@@ -1,3 +1,5 @@
+import { useCallback, useMemo } from 'react';
+
 import { useCacheQuery } from '@eventespresso/data';
 import useEventQueryOptions from './useEventQueryOptions';
 import { useSystemNotifications } from '@eventespresso/toaster';
@@ -9,14 +11,24 @@ const useEvent = (): Event => {
 	const options = useEventQueryOptions();
 	const toaster = useSystemNotifications();
 
-	const { data } = useCacheQuery<EventData>({
-		...options,
-		fetchPolicy: 'cache-first',
-		// only display error, not loading or success
-		onError: (error): void => {
+	const onError = useCallback(
+		(error): void => {
 			toaster.error({ message: error.message });
 		},
-	});
+		[toaster]
+	);
+
+	const queryOptions = useMemo(
+		() => ({
+			...options,
+			fetchPolicy: 'cache-first' as const,
+			// only display error, not loading or success
+			onError,
+		}),
+		[onError, options]
+	);
+
+	const { data } = useCacheQuery<EventData>(queryOptions);
 
 	return useMemoStringify(data?.espressoEvent);
 };
