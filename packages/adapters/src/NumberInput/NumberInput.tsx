@@ -22,7 +22,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
 
 	return (
 		<ChakraNumberInput {...props}>
-			<NumberInputField {...inputFieldProps} className={inputFieldClassName} />
+			<NumberInputField {...inputFieldProps} className={inputFieldClassName} id={inputFieldProps.name} />
 			{showStepper && (
 				<NumberInputStepper {...inputStepperProps}>
 					<NumberIncrementStepper {...incrementStepperProps} />
