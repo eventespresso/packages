@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 
-import { ReadQueryOptions } from '@eventespresso/data';
+import { CacheQueryOptions } from '@eventespresso/data';
 import useEventId from '../events/useEventId';
 import { GET_EVENT } from './queries';
 
-const useEventQueryOptions = (): ReadQueryOptions => {
+const useEventQueryOptions = (): CacheQueryOptions => {
 	const id = useEventId();
 
 	return useMemo(

@@ -12,7 +12,7 @@ const useOnCreateTicket = (): TicketMutationCallbackFn => {
 	const updateTicketCache = useUpdateTicketCache();
 
 	const onCreateTicket = useCallback(
-		({ proxy, datetimeIds, ticket, tickets, prices }: TicketMutationCallbackFnArgs): void => {
+		({ cache, datetimeIds, ticket, tickets, prices }: TicketMutationCallbackFnArgs): void => {
 			if (ticket.id) {
 				const { nodes = [] } = tickets;
 				const ticketIn = getGuids(nodes);
@@ -20,7 +20,7 @@ const useOnCreateTicket = (): TicketMutationCallbackFn => {
 
 				// Update prices cache for the changed tickets,
 				// to avoid refetching of prices.
-				updatePriceCache({ proxy, prices, ticketIn, ticketId, action: 'add' });
+				updatePriceCache({ cache, prices, ticketIn, ticketId, action: 'add' });
 
 				// if related datetimes are passed
 				if (datetimeIds?.length) {
@@ -61,7 +61,7 @@ const useOnCreateTicket = (): TicketMutationCallbackFn => {
 				}
 			}
 			// Update ticket cache after price cache is updated.
-			updateTicketCache({ proxy, tickets, ticket, action: 'add' });
+			updateTicketCache({ cache, tickets, ticket, action: 'add' });
 		},
 		[addRelation, updateRelations, updateTicketCache]
 	);

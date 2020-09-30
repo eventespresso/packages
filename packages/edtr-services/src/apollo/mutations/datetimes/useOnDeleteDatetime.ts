@@ -12,7 +12,7 @@ const useOnDeleteDatetime = (): DatetimeMutationCallbackFn => {
 	const updateDatetimeCache = useUpdateDatetimeCache();
 
 	const onDeleteDatetime = useCallback(
-		({ proxy, datetimes, datetime, deletePermanently }: DatetimeMutationCallbackFnArgs): void => {
+		({ cache, datetimes, datetime, deletePermanently }: DatetimeMutationCallbackFnArgs): void => {
 			const action = deletePermanently ? 'remove' : 'update';
 			if (datetime.id && deletePermanently) {
 				const { nodes = [] } = datetimes;
@@ -21,7 +21,7 @@ const useOnDeleteDatetime = (): DatetimeMutationCallbackFn => {
 
 				// Update tickets cache for the changed datetimes,
 				// to avoid refetching of tickets.
-				updateTicketCache({ proxy, datetimeIn, datetimeId, action });
+				updateTicketCache({ cache, datetimeIn, datetimeId, action });
 
 				// Remove the datetime from all ticket relations
 				removeRelation({
@@ -36,7 +36,7 @@ const useOnDeleteDatetime = (): DatetimeMutationCallbackFn => {
 				});
 			}
 			// Update datetime cache after tickets cache is updated.
-			updateDatetimeCache({ proxy, datetimes, datetime: { ...datetime, isTrashed: true }, action });
+			updateDatetimeCache({ cache, datetimes, datetime: { ...datetime, isTrashed: true }, action });
 		},
 		[dropRelations, removeRelation, updateDatetimeCache]
 	);

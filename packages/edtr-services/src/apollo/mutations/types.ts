@@ -1,6 +1,5 @@
-import type { DataProxy } from 'apollo-cache';
-import type { OperationVariables, MutationUpdaterFn } from 'apollo-client';
-import type { ExecutionResult } from '@apollo/react-common';
+import type { OperationVariables, MutationUpdaterFn, ApolloCache } from '@apollo/client';
+import type { ExecutionResult } from 'graphql';
 
 import type { MutationInput, MutationType, Entity as BaseEntity, Entity } from '@eventespresso/data';
 import type { Merge, AnyObject } from '@eventespresso/utils';
@@ -8,7 +7,7 @@ import type { ShiftDateArgs } from '@eventespresso/dates';
 import type { Datetime, DatetimeEdge, Ticket, TicketEdge, Price, PriceEdge } from '../types';
 
 export interface MutationCallbackFnArgs {
-	proxy?: DataProxy;
+	cache?: ApolloCache<any>;
 }
 
 interface CommonArgs {
@@ -67,7 +66,7 @@ export enum TypeName {
 }
 
 export type OnUpdateFnOptions<Entity = BaseEntity> = {
-	proxy: DataProxy;
+	cache: ApolloCache<any>;
 	entity: Entity;
 };
 
@@ -92,7 +91,7 @@ export interface MutationBaseProps<MI extends MutationInput = MutationInput> {
 
 export interface MutationUpdaterArgs<E extends Entity, MI extends MutationInput = MutationInput>
 	extends MutationBaseProps<MI> {
-	proxy: DataProxy;
+	cache: ApolloCache<any>;
 	entity: E;
 }
 

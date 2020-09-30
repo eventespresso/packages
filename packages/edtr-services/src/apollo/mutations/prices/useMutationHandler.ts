@@ -31,12 +31,12 @@ const useMutationHandler = (): MH => {
 	}, []);
 
 	const onUpdate = useCallback<MutationUpdater<Price, PriceCommonInput>>(
-		({ proxy, entity: price, input, mutationType }) => {
+		({ cache, entity: price, input, mutationType }) => {
 			const priceTypeId = input?.priceType;
 			// Read the existing data from cache.
 			let data: PricesList;
 			try {
-				data = proxy.readQuery(options);
+				data = cache.readQuery(options);
 			} catch (error) {
 				data = null;
 			}
@@ -44,13 +44,13 @@ const useMutationHandler = (): MH => {
 
 			switch (mutationType) {
 				case MutationType.Create:
-					onCreatePrice({ proxy, prices, price, priceTypeId });
+					onCreatePrice({ cache, prices, price, priceTypeId });
 					break;
 				case MutationType.Update:
 					onUpdatePrice({ price, priceTypeId });
 					break;
 				case MutationType.Delete:
-					onDeletePrice({ proxy, prices, price, deletePermanently: input?.deletePermanently });
+					onDeletePrice({ cache, prices, price, deletePermanently: input?.deletePermanently });
 					break;
 			}
 		},

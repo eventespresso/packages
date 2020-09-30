@@ -3,10 +3,10 @@ import { useMemo } from 'react';
 import { GET_TICKET } from '../tickets';
 import type { Ticket, TicketItem } from '../../types';
 import type { EntityItemProps } from '../types';
-import { useCacheQuery, ReadQueryOptions } from '@eventespresso/data';
+import { useCacheQuery, CacheQueryOptions } from '@eventespresso/data';
 
 const useTicketItem = ({ id }: EntityItemProps): Ticket => {
-	const options: ReadQueryOptions = {
+	const options: CacheQueryOptions = {
 		query: GET_TICKET,
 		variables: {
 			id,

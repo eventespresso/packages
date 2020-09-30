@@ -11,7 +11,7 @@ const useUpdateTicketCache = (): CacheUpdaterFn => {
 	const queryOptions = useTicketQueryOptions();
 
 	const updateTicketCache = useCallback(
-		({ proxy, tickets, ticket, action }: CacheUpdaterFnArgs): void => {
+		({ cache, tickets, ticket, action }: CacheUpdaterFnArgs): void => {
 			const { nodes = [] } = tickets;
 			let newNodes: Array<Ticket> = [],
 				ticketIndex: number;
@@ -46,7 +46,7 @@ const useUpdateTicketCache = (): CacheUpdaterFn => {
 					},
 				},
 			};
-			proxy.writeQuery<TicketsList>(writeOptions);
+			cache.writeQuery<TicketsList>(writeOptions);
 		},
 		[queryOptions]
 	);

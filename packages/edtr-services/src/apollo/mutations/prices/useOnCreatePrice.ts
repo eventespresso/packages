@@ -10,7 +10,7 @@ const useOnCreatePrice = (): PriceMutationCallbackFn => {
 	const updatePriceCache = useUpdatePriceCache();
 
 	const onCreatePrice = useCallback(
-		({ proxy, price, prices, priceTypeId }: PriceMutationCallbackFnArgs): void => {
+		({ cache, price, prices, priceTypeId }: PriceMutationCallbackFnArgs): void => {
 			const { id: priceId } = price;
 			if (priceId && priceTypeId) {
 				updateRelations({
@@ -21,7 +21,7 @@ const useOnCreatePrice = (): PriceMutationCallbackFn => {
 				});
 			}
 			// Update price cache.
-			updatePriceCache({ proxy, prices, price, action: 'add' });
+			updatePriceCache({ cache, prices, price, action: 'add' });
 		},
 		[updatePriceCache, updateRelations]
 	);

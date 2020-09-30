@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import type { ExecutionResult } from '@apollo/react-common';
+import type { ExecutionResult } from 'graphql';
 
 import type { EntityId } from '@eventespresso/data';
 import type { DatetimeEdge } from '../../types';

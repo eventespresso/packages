@@ -10,7 +10,7 @@ const useOnDeletePrice = (): PriceMutationCallbackFn => {
 	const updatePriceCache = useUpdatePriceCache();
 
 	const onDeletePrice = useCallback(
-		({ proxy, prices, price, deletePermanently }: PriceMutationCallbackFnArgs): void => {
+		({ cache, prices, price, deletePermanently }: PriceMutationCallbackFnArgs): void => {
 			const { id: priceId } = price;
 			const action = deletePermanently ? 'remove' : 'update';
 			if (priceId && deletePermanently) {
@@ -27,7 +27,7 @@ const useOnDeletePrice = (): PriceMutationCallbackFn => {
 				});
 			}
 			// Update price cache.
-			updatePriceCache({ proxy, prices, price: { ...price, isTrashed: true }, action });
+			updatePriceCache({ cache, prices, price: { ...price, isTrashed: true }, action });
 		},
 		[dropRelations, removeRelation, updatePriceCache]
 	);

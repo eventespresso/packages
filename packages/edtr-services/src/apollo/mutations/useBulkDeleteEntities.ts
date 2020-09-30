@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useMutationWithFeedback, MutationType } from '@eventespresso/data';
-import type { ExecutionResult } from '@apollo/react-common';
+import type { ExecutionResult } from 'graphql';
 import gql from 'graphql-tag';
 
 import type { EntityId } from '@eventespresso/data';

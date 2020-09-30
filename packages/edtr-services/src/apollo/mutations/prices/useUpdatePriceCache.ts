@@ -11,7 +11,7 @@ const useUpdatePriceCache = (): CacheUpdaterFn => {
 	const queryOptions = usePriceQueryOptions();
 
 	const updatePriceCache = useCallback(
-		({ proxy, prices, price, action }: CacheUpdaterFnArgs): void => {
+		({ cache, prices, price, action }: CacheUpdaterFnArgs): void => {
 			const { nodes = [] } = prices;
 			let newNodes: Array<Price> = [],
 				priceIndex: number;
@@ -46,7 +46,7 @@ const useUpdatePriceCache = (): CacheUpdaterFn => {
 					},
 				},
 			};
-			proxy.writeQuery<PricesList>(writeOptions);
+			cache.writeQuery<PricesList>(writeOptions);
 		},
 		[queryOptions]
 	);

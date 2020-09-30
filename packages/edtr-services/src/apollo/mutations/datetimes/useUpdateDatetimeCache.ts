@@ -11,7 +11,7 @@ const useUpdateDatetimeCache = (): CacheUpdaterFn => {
 	const queryOptions = useDatetimeQueryOptions();
 
 	const updateDatetimeCache = useCallback(
-		({ proxy, datetimes, datetime, action }: CacheUpdaterFnArgs): void => {
+		({ cache, datetimes, datetime, action }: CacheUpdaterFnArgs): void => {
 			const { nodes = [] } = datetimes;
 			let newNodes: Array<Datetime> = [],
 				datetimeIndex: number;
@@ -46,7 +46,7 @@ const useUpdateDatetimeCache = (): CacheUpdaterFn => {
 					},
 				},
 			};
-			proxy.writeQuery<DatetimesList>(writeOptions);
+			cache.writeQuery<DatetimesList>(writeOptions);
 		},
 		[queryOptions]
 	);

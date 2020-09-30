@@ -3,11 +3,11 @@ import { assocPath, pathOr, uniqBy, sortBy, identity } from 'ramda';
 import type { CacheUpdaterFnArgs } from '../types';
 import { DEFAULT_PRICE_LIST_DATA, GET_PRICES } from '../../queries';
 import type { Price, PricesList } from '../../types';
-import { ReadQueryOptions, WriteQueryOptions } from '@eventespresso/data';
+import { CacheQueryOptions, WriteQueryOptions } from '@eventespresso/data';
 import { entityDbId } from '@eventespresso/predicates';
 
-const updatePriceCache = ({ proxy, prices = null, ticketIn, ticketId, action }: CacheUpdaterFnArgs): void => {
-	const queryOptions: ReadQueryOptions = {
+const updatePriceCache = ({ cache, prices = null, ticketIn, ticketId, action }: CacheUpdaterFnArgs): void => {
+	const queryOptions: CacheQueryOptions = {
 		query: GET_PRICES,
 		variables: {
 			where: {
@@ -19,7 +19,7 @@ const updatePriceCache = ({ proxy, prices = null, ticketIn, ticketId, action }: 
 	let data: PricesList;
 	// Read the existing data from cache.
 	try {
-		data = proxy.readQuery<PricesList>(queryOptions);
+		data = cache.readQuery<PricesList>(queryOptions);
 	} catch (error) {
 		// do nothing with the error
 	}
@@ -72,7 +72,7 @@ const updatePriceCache = ({ proxy, prices = null, ticketIn, ticketId, action }: 
 			},
 		},
 	};
-	proxy.writeQuery<PricesList>(writeOptions);
+	cache.writeQuery<PricesList>(writeOptions);
 };
 
 export default updatePriceCache;

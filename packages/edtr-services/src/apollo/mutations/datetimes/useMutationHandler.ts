@@ -25,11 +25,11 @@ const useMutationHandler = (): MH => {
 	const getOptimisticResponse = useOptimisticResponse();
 
 	const onUpdate = useCallback<MutationUpdater<Datetime, DatetimeCommonInput>>(
-		({ proxy, entity: datetime, input, mutationType }) => {
+		({ cache, entity: datetime, input, mutationType }) => {
 			// Read the existing data from cache.
 			let data: DatetimesList;
 			try {
-				data = proxy.readQuery(options);
+				data = cache.readQuery(options);
 			} catch (error) {
 				data = null;
 			}
@@ -38,13 +38,13 @@ const useMutationHandler = (): MH => {
 
 			switch (mutationType) {
 				case MutationType.Create:
-					onCreateDatetime({ proxy, datetimes, datetime, tickets });
+					onCreateDatetime({ cache, datetimes, datetime, tickets });
 					break;
 				case MutationType.Update:
 					onUpdateDatetime({ datetime, tickets });
 					break;
 				case MutationType.Delete:
-					onDeleteDatetime({ proxy, datetimes, datetime, deletePermanently: input?.deletePermanently });
+					onDeleteDatetime({ cache, datetimes, datetime, deletePermanently: input?.deletePermanently });
 					break;
 			}
 		},

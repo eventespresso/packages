@@ -7,7 +7,7 @@ import { MutationInput, MutationType } from '@eventespresso/data';
 import { ucFirst } from '@eventespresso/utils';
 import { mutations } from '../..';
 import type { MockedResponse } from '../../../../context/test/types';
-import { ReadQueryOptions } from '@eventespresso/data';
+import { CacheQueryOptions } from '@eventespresso/data';
 
 const prices = { ...priceEdge, __typename: 'EspressoTicketPricesConnectionEdge' };
 
@@ -29,7 +29,7 @@ export const getMutationMocks = (
 	];
 };
 
-export const getMockRequest = (mutationInput: MutationInput, mutationType: MutationType): ReadQueryOptions => {
+export const getMockRequest = (mutationInput: MutationInput, mutationType: MutationType): CacheQueryOptions => {
 	const input: MutationInput = {
 		clientMutationId: `${mutationType}_TICKET`,
 		...mutationInput,

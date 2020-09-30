@@ -2,10 +2,10 @@ import type { CacheUpdaterFnArgs } from '../types';
 import { GET_TICKETS } from '../../queries';
 import type { TicketsList } from '../../types';
 import { sortBy, identity } from 'ramda';
-import { ReadQueryOptions, WriteQueryOptions } from '@eventespresso/data';
+import { CacheQueryOptions, WriteQueryOptions } from '@eventespresso/data';
 
-const updateTicketCache = ({ proxy, datetimeIn, datetimeId, action }: CacheUpdaterFnArgs): void => {
-	const queryOptions: ReadQueryOptions = {
+const updateTicketCache = ({ cache, datetimeIn, datetimeId, action }: CacheUpdaterFnArgs): void => {
+	const queryOptions: CacheQueryOptions = {
 		query: GET_TICKETS,
 		variables: {
 			where: {
@@ -16,7 +16,7 @@ const updateTicketCache = ({ proxy, datetimeIn, datetimeId, action }: CacheUpdat
 	let data: TicketsList;
 	// Read the existing data from cache.
 	try {
-		data = proxy.readQuery<TicketsList>(queryOptions);
+		data = cache.readQuery<TicketsList>(queryOptions);
 	} catch (error) {
 		data = null;
 	}
@@ -52,7 +52,7 @@ const updateTicketCache = ({ proxy, datetimeIn, datetimeId, action }: CacheUpdat
 
 	// write the data to cache without
 	// mutating the cache directly
-	proxy.writeQuery<TicketsList>(writeOptions);
+	cache.writeQuery<TicketsList>(writeOptions);
 };
 
 export default updateTicketCache;

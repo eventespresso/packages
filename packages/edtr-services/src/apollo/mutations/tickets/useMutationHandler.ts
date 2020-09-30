@@ -26,7 +26,7 @@ const useMutationHandler = (): MH => {
 	const getOptimisticResponse = useOptimisticResponse();
 
 	const onUpdate = useCallback<MutationUpdater<Ticket, TicketCommonInput>>(
-		({ proxy, entity, input, mutationType }) => {
+		({ cache, entity, input, mutationType }) => {
 			// extract prices data to avoid
 			// it going to tickets cache
 			const { prices, ...ticket } = entity;
@@ -34,7 +34,7 @@ const useMutationHandler = (): MH => {
 			// Read the existing data from cache.
 			let data: TicketsList;
 			try {
-				data = proxy.readQuery(options);
+				data = cache.readQuery(options);
 			} catch (error) {
 				data = null;
 			}
@@ -45,13 +45,13 @@ const useMutationHandler = (): MH => {
 
 			switch (mutationType) {
 				case MutationType.Create:
-					onCreateTicket({ proxy, tickets, ticket, datetimeIds, prices });
+					onCreateTicket({ cache, tickets, ticket, datetimeIds, prices });
 					break;
 				case MutationType.Update:
-					onUpdateTicket({ proxy, tickets, ticket, datetimeIds, priceIds });
+					onUpdateTicket({ cache, tickets, ticket, datetimeIds, priceIds });
 					break;
 				case MutationType.Delete:
-					onDeleteTicket({ proxy, tickets, ticket, deletePermanently: input?.deletePermanently });
+					onDeleteTicket({ cache, tickets, ticket, deletePermanently: input?.deletePermanently });
 					break;
 			}
 		},

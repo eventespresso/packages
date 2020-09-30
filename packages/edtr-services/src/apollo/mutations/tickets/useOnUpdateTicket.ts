@@ -10,7 +10,7 @@ const useOnUpdateTicket = (): TicketMutationCallbackFn => {
 	const updateTicketCache = useUpdateTicketCache();
 
 	const onUpdateTicket = useCallback(
-		({ proxy, tickets, ticket, datetimeIds, priceIds }: TicketMutationCallbackFnArgs): void => {
+		({ cache, tickets, ticket, datetimeIds, priceIds }: TicketMutationCallbackFnArgs): void => {
 			if (!ticket?.id) {
 				return;
 			}
@@ -77,9 +77,9 @@ const useOnUpdateTicket = (): TicketMutationCallbackFn => {
 					});
 				}
 			}
-			if (proxy && tickets) {
+			if (cache && tickets) {
 				// Update ticket cache.
-				updateTicketCache({ proxy, tickets, ticket, action: 'update' });
+				updateTicketCache({ cache, tickets, ticket, action: 'update' });
 			}
 		},
 		[addRelation, removeRelation, updateRelations, updateTicketCache]

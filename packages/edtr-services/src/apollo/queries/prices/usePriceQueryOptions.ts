@@ -2,10 +2,10 @@ import { identity, sortBy } from 'ramda';
 
 import useTicketIds from '../tickets/useTicketIds';
 import { GET_PRICES } from '../prices';
-import { EntityId, ReadQueryOptions } from '@eventespresso/data';
+import { EntityId, CacheQueryOptions } from '@eventespresso/data';
 import { useMemoStringify } from '@eventespresso/hooks';
 
-const usePriceQueryOptions = (ticketIn: EntityId[] = []): ReadQueryOptions => {
+const usePriceQueryOptions = (ticketIn: EntityId[] = []): CacheQueryOptions => {
 	const ticketIds = useTicketIds();
 
 	let newTicketIn = ticketIn.length ? ticketIn : ticketIds;
@@ -14,7 +14,7 @@ const usePriceQueryOptions = (ticketIn: EntityId[] = []): ReadQueryOptions => {
 	// thus changing the key used to access apollo cache
 	newTicketIn = sortBy(identity, newTicketIn);
 
-	const options: ReadQueryOptions = {
+	const options: CacheQueryOptions = {
 		query: GET_PRICES,
 		variables: {
 			where: {

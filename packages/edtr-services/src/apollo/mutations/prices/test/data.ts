@@ -2,7 +2,7 @@ import { pickBy, omit } from 'ramda';
 import { ExecutionResult } from 'graphql';
 
 import { nodes as prices } from '../../../queries/prices/test/data';
-import { MutationInput, MutationType, ReadQueryOptions } from '@eventespresso/data';
+import { MutationInput, MutationType, CacheQueryOptions } from '@eventespresso/data';
 import { ucFirst } from '@eventespresso/utils';
 import { mutations } from '../..';
 import type { MockedResponse } from '../../../../context/test/types';
@@ -25,7 +25,7 @@ export const getMutationMocks = (
 	];
 };
 
-export const getMockRequest = (mutationInput: MutationInput, mutationType: MutationType): ReadQueryOptions => {
+export const getMockRequest = (mutationInput: MutationInput, mutationType: MutationType): CacheQueryOptions => {
 	let input: MutationInput = {
 		clientMutationId: `${mutationType}_PRICE`,
 		...mutationInput,

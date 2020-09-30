@@ -1,9 +1,9 @@
 import { GraphQLError } from 'graphql';
 
 import type { Price, PriceEdge } from '../../../types';
-import { ReadQueryOptions } from '@eventespresso/data';
+import { CacheQueryOptions } from '@eventespresso/data';
 
-export const request: ReadQueryOptions = null; // to be generated via Query Options hook
+export const request: CacheQueryOptions = null; // to be generated via Query Options hook
 
 export const nodes: Price[] = [
 	{

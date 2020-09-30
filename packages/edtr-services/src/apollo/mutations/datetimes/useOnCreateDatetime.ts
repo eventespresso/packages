@@ -12,7 +12,7 @@ const useOnCreateDatetime = (): DatetimeMutationCallbackFn => {
 	const updateDatetimeCache = useUpdateDatetimeCache();
 
 	const onCreateDatetime = useCallback(
-		({ proxy, datetimes, datetime, tickets }: DatetimeMutationCallbackFnArgs): void => {
+		({ cache, datetimes, datetime, tickets }: DatetimeMutationCallbackFnArgs): void => {
 			if (datetime.id) {
 				const { nodes = [] } = datetimes;
 				const datetimeIn = getGuids(nodes).sort();
@@ -20,7 +20,7 @@ const useOnCreateDatetime = (): DatetimeMutationCallbackFn => {
 
 				// Update tickets cache for the changed datetimes,
 				// to avoid refetching of tickets.
-				updateTicketCache({ proxy, datetimeIn, datetimeId, action: 'add' });
+				updateTicketCache({ cache, datetimeIn, datetimeId, action: 'add' });
 
 				// if we have related tickets
 				if (tickets?.length) {
@@ -41,7 +41,7 @@ const useOnCreateDatetime = (): DatetimeMutationCallbackFn => {
 				}
 			}
 			// Update datetime cache after tickets cache is updated.
-			updateDatetimeCache({ proxy, datetimes, datetime, action: 'add' });
+			updateDatetimeCache({ cache, datetimes, datetime, action: 'add' });
 		},
 		[addRelation, updateDatetimeCache, updateRelations]
 	);
