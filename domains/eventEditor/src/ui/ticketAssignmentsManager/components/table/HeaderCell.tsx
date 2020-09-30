@@ -13,15 +13,14 @@ const HeaderCell: React.FC<RenderCellProps> = ({ ticket }) => {
 	const { formatForSite: format } = useTimeZoneTime();
 	const startDate = ticket.startDate && format(parseISO(ticket.startDate), 'MMM dd yyyy');
 	const startDateClassName = classNames(bgClassName, 'header-cell-content__after');
+	const price = `${currency.sign} ${ticket.price || 0}`;
 
 	return (
 		<div className='header-cell-content__wrapper'>
 			<div className='header-cell-content'>
-				<div className='ee-focus-priority-8 header-cell-content__id'>{`${__('ID')}: ${ticket.dbId}`}</div>
+				<div className='ee-focus-priority-6 header-cell-content__id'>{`${__('ID')}: ${ticket.dbId}`}</div>
 				<div className='ee-focus-priority-5 header-cell-content__name'>{ticket.name}</div>
-				<div className='ee-focus-priority-8 header-cell-content__price'>{`${currency.sign} ${
-					ticket.price || 0
-				}`}</div>
+				<div className='ee-focus-priority-7 header-cell-content__price'>{price}</div>
 			</div>
 			<div className={startDateClassName}>{startDate}</div>
 		</div>

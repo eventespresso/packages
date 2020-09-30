@@ -1,14 +1,16 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { Button } from '@eventespresso/adapters';
-import type { RenderCellProps } from '../../types';
+import { __ } from '@eventespresso/i18n';
+
 import { useDataState } from '../../data';
-import useCellIcon from './useCellIcon';
+import getCellIcon from './getCellIcon';
+import type { RenderCellProps } from '../../types';
 
 const BodyCell: React.FC<RenderCellProps> = ({ datetime, ticket }) => {
-	const { toggleAssignment } = useDataState();
+	const { getAssignmentStatus, toggleAssignment } = useDataState();
 
-	const getCellIcon = useCellIcon();
+	const status = getAssignmentStatus({ datetimeId: datetime.id, ticketId: ticket.id });
 
 	const onClick = useCallback(() => toggleAssignment({ datetimeId: datetime.id, ticketId: ticket.id }), [
 		datetime.id,
@@ -16,9 +18,11 @@ const BodyCell: React.FC<RenderCellProps> = ({ datetime, ticket }) => {
 		toggleAssignment,
 	]);
 
-	const icon = getCellIcon({ datetimeId: datetime.id, ticketId: ticket.id });
+	const icon = useMemo(() => getCellIcon(status), [status]);
 
-	return <Button icon={icon} margin='auto' onClick={onClick} variant='link' />;
+	return (
+		<Button aria-label={status || __('assign ticket')} icon={icon} margin='auto' onClick={onClick} variant='link' />
+	);
 };
 
 export default BodyCell;

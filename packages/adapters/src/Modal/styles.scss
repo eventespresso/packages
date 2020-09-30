@@ -4,6 +4,10 @@
 	.ee-modal {
 		&__header {
 			&.ee-modal__header {
+				.ee-entity-edit-modal & {
+					color: var(--ee-default-text-color-high-contrast);
+				}
+
 				&.ee-modal--with-border {
 					border-bottom: 0.5px solid var(--ee-border-color);
 				}
