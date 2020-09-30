@@ -1,9 +1,9 @@
 import { GraphQLError } from 'graphql';
 
-import { ReadQueryOptions } from '@eventespresso/data';
+import { CacheQueryOptions } from '@eventespresso/data';
 import { Ticket, TicketEdge } from '@blocksServices/apollo/types';
 
-export const request: ReadQueryOptions = null; // to be set dynamically
+export const request: CacheQueryOptions = null; // to be set dynamically
 
 export const nodes: Ticket[] = [
 	{

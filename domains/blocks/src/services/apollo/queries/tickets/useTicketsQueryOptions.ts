@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 
-import type { QueryOptions } from '@eventespresso/data';
+import type { QueryHookOptions } from '@eventespresso/data';
 
 import { TicketsList } from '@blocksServices/apollo/types';
 import { GET_TICKETS } from './queries';
 
-const useTicketsQueryOptions = (datetime?: string): QueryOptions<TicketsList> => {
-	return useMemo<QueryOptions<TicketsList>>(
+const useTicketsQueryOptions = (datetime?: string): QueryHookOptions<TicketsList> => {
+	return useMemo<QueryHookOptions<TicketsList>>(
 		() => ({
 			query: GET_TICKETS,
 			variables: {

@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 
-import type { QueryOptions } from '@eventespresso/data';
+import type { QueryHookOptions } from '@eventespresso/data';
 
 import { EventsList } from '@blocksServices/apollo/types';
 import { GET_EVENTS } from './queries';
 
-const useEventsQueryOptions = (): QueryOptions<EventsList> => {
-	return useMemo<QueryOptions<EventsList>>(
+const useEventsQueryOptions = (): QueryHookOptions<EventsList> => {
+	return useMemo<QueryHookOptions<EventsList>>(
 		() => ({
 			query: GET_EVENTS,
 			variables: {

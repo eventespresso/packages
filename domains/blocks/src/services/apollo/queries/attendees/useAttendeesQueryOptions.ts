@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 
-import type { AttendeesQueryWhereArgs, QueryOptions } from '@eventespresso/data';
+import type { AttendeesQueryWhereArgs, QueryHookOptions } from '@eventespresso/data';
 
 import { AttendeesList } from '@blocksServices/apollo/types';
 import { GET_ATTENDEES } from './queries';
 
-const useAttendeesQueryOptions = (where: AttendeesQueryWhereArgs, limit?: number): QueryOptions<AttendeesList> => {
-	return useMemo<QueryOptions<AttendeesList>>(
+const useAttendeesQueryOptions = (where: AttendeesQueryWhereArgs, limit?: number): QueryHookOptions<AttendeesList> => {
+	return useMemo<QueryHookOptions<AttendeesList>>(
 		() => ({
 			query: GET_ATTENDEES,
 			variables: {
