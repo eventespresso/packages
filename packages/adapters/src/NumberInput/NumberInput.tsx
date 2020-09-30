@@ -14,6 +14,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
 	decrementStepperProps,
 	incrementStepperProps,
 	showStepper = true,
+	id,
 	inputFieldProps,
 	inputStepperProps,
 	...props
@@ -22,7 +23,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
 
 	return (
 		<ChakraNumberInput {...props}>
-			<NumberInputField {...inputFieldProps} className={inputFieldClassName} id={inputFieldProps.name} />
+			<NumberInputField {...inputFieldProps} className={inputFieldClassName} id={id} />
 			{showStepper && (
 				<NumberInputStepper {...inputStepperProps}>
 					<NumberIncrementStepper {...incrementStepperProps} />

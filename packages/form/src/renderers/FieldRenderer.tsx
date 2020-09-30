@@ -38,7 +38,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 		<FormControl className={className} isInvalid={Boolean(errorMessage)} isRequired={required}>
 			<FormLabel htmlFor={props.input.name}>{label}</FormLabel>
 			{before}
-			<MappedField aria-label={label} aria-describedby={tooltipKey} {...rest} />
+			<MappedField {...rest} aria-describedby={tooltipKey} aria-label={label} id={props.input.name} />
 			{after}
 			<ErrorMessage message={errorMessage} />
 			<HelperText id={tooltipKey}>{description || info}</HelperText>
