@@ -14,6 +14,7 @@ describe('useDatetimes', () => {
 		const { result: queryResult } = renderHook(() => {
 			return useDatetimesQueryOptions(event);
 		});
+		await actWait();
 
 		const wrapper = ApolloMockedProvider(
 			errorMocks.map((mock) => ({
@@ -46,6 +47,7 @@ describe('useDatetimes', () => {
 		const { result: queryResult } = renderHook(() => {
 			return useDatetimesQueryOptions(event);
 		});
+		await actWait();
 
 		const wrapper = ApolloMockedProvider(
 			successMocks.map((mock) => ({
@@ -76,6 +78,7 @@ describe('useDatetimes', () => {
 		const { result: queryResult } = renderHook(() => {
 			return useDatetimesQueryOptions(event);
 		});
+		await actWait();
 
 		const wrapper = ApolloMockedProvider(
 			successMocks.map((mock) => ({
@@ -109,6 +112,7 @@ describe('useDatetimes', () => {
 		const { result: queryResult } = renderHook(() => {
 			return useDatetimesQueryOptions(event);
 		});
+		await actWait();
 
 		const wrapper = ApolloMockedProvider(
 			successMocks.map((mock) => ({

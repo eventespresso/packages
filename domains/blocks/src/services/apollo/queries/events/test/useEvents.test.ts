@@ -12,6 +12,7 @@ describe('useEvents', () => {
 		const { result: queryResult } = renderHook(() => {
 			return useEventsQueryOptions();
 		});
+		await actWait();
 
 		const wrapper = ApolloMockedProvider(
 			errorMocks.map((mock) => ({
@@ -47,6 +48,7 @@ describe('useEvents', () => {
 		const { result: queryResult } = renderHook(() => {
 			return useEventsQueryOptions();
 		});
+		await actWait();
 
 		const wrapper = ApolloMockedProvider(
 			successMocks.map((mock) => ({
@@ -77,6 +79,7 @@ describe('useEvents', () => {
 		const { result: queryResult } = renderHook(() => {
 			return useEventsQueryOptions();
 		});
+		await actWait();
 
 		const wrapper = ApolloMockedProvider(
 			successMocks.map((mock) => ({
@@ -110,6 +113,7 @@ describe('useEvents', () => {
 		const { result: queryResult } = renderHook(() => {
 			return useEventsQueryOptions();
 		});
+		await actWait();
 
 		const wrapper = ApolloMockedProvider(
 			successMocks.map((mock) => ({
