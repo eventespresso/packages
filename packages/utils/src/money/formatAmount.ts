@@ -1,4 +1,4 @@
-import parsedAmount from './parsedAmount';
+import { parsedAmount } from './';
 
 export type FormatAmountFunction = (amount: number | string) => string;
 

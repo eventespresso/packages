@@ -1,4 +1,4 @@
-import { getCurrencySignCharacterCountClassName, getCurrencySignPositionClassName } from './utils';
+import { getCurrencySignCharacterCountClassName, getCurrencySignPositionClassName } from '@eventespresso/utils';
 import { useConfig } from '@eventespresso/services';
 
 const usePriceTypeClassName = (isPercent: boolean): string => {

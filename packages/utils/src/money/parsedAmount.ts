@@ -4,8 +4,6 @@
  * @param {number|string} amount
  * @return {number}
  */
-const parsedAmount = (amount: number | string): number => {
+export const parsedAmount = (amount: number | string): number => {
 	return typeof amount === 'number' ? amount : Number.parseFloat(amount);
 };
-
-export default parsedAmount;

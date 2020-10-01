@@ -1,3 +1,4 @@
-export { default as amountsMatch } from './amountsMatch';
+export * from './amountsMatch';
+export * from './currencySignClassName';
 export * from './formatAmount';
-export { default as parsedAmount } from './parsedAmount';
+export * from './parsedAmount';

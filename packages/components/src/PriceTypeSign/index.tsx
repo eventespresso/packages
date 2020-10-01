@@ -1,16 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import CurrencySign from './CurrencySign';
-import { getCurrencySignPositionClassName } from './utils';
-import PercentSign from './PercentSign';
+import { getCurrencySignPositionClassName } from '@eventespresso/utils';
 import { useConfig } from '@eventespresso/services';
+import { CurrencySign, PercentSign } from '../';
 
 type Props = {
 	isPercent: boolean;
 };
 
-const PriceTypeSign: React.FC<Props> = ({ isPercent }) => {
+export const PriceTypeSign: React.FC<Props> = ({ isPercent }) => {
 	const config = useConfig();
 	const sign = config?.currency?.sign;
 	const signB4 = config?.currency?.signB4;
@@ -21,5 +20,3 @@ const PriceTypeSign: React.FC<Props> = ({ isPercent }) => {
 
 	return isPercent ? <PercentSign className={className} /> : <CurrencySign sign={sign} />;
 };
-
-export default PriceTypeSign;

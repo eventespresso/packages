@@ -6,9 +6,7 @@ type Props = {
 	className?: string;
 };
 
-const PercentSign: React.FC<Props> = (props) => {
+export const PercentSign: React.FC<Props> = (props) => {
 	const className = classNames('ee-percent-sign', props.className);
 	return <div className={className}>{__('%')}</div>;
 };
-
-export default PercentSign;

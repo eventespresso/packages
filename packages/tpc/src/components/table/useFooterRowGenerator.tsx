@@ -1,13 +1,11 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { FormatAmountFunction, parsedAmount } from '@eventespresso/utils';
 import { Cell, FooterRow } from '@eventespresso/components';
 import { TicketPriceField } from '../../fields';
 import ReverseCalculateButton from '../../buttons/ReverseCalculateButton';
 
 interface Props {
-	formatAmount: FormatAmountFunction;
 	reverseCalculate: boolean;
 	toggleCalcDir: VoidFunction;
 }
@@ -15,7 +13,7 @@ interface Props {
 type FooterRowGenerator = (props: Props) => FooterRow;
 
 const useFooterRowGenerator = (): FooterRowGenerator => {
-	return useCallback<FooterRowGenerator>(({ formatAmount, reverseCalculate, toggleCalcDir }: Props) => {
+	return useCallback<FooterRowGenerator>(({ reverseCalculate, toggleCalcDir }: Props) => {
 		const cells: Array<Cell> = [
 			{
 				key: 'id',
@@ -45,18 +43,7 @@ const useFooterRowGenerator = (): FooterRowGenerator => {
 				key: 'amount',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__amount ee-ticket-price-calculator__total ee-number-column',
-				value: (
-					<TicketPriceField
-						component='input'
-						disabled={!reverseCalculate}
-						// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-						format={(price) => formatAmount(price) ?? ''}
-						formatOnBlur
-						// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-						parse={(price) => parsedAmount(price)}
-						type='number'
-					/>
-				),
+				value: <TicketPriceField component='input' disabled={!reverseCalculate} formatOnBlur />,
 			},
 			{
 				key: 'actions',

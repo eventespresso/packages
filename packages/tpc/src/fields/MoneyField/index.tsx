@@ -1,12 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import {
-	CurrencySign,
-	InputWithLabel,
-	PercentSign,
-	getCurrencySignCharacterCountClassName,
-} from '@eventespresso/components';
+import { CurrencySign, InputWithLabel, PercentSign } from '@eventespresso/components';
+import { getCurrencySignCharacterCountClassName } from '@eventespresso/utils';
+
 import { useConfig } from '@eventespresso/services';
 import type { MoneyFieldProps } from './types';
 
