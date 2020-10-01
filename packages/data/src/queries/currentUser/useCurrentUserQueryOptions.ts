@@ -1,5 +1,5 @@
 import { GET_CURRENT_USER } from './queries';
-import { CacheQueryOptions } from '../';
+import type { CacheQueryOptions } from '../';
 
 const useCurrentUserQueryOptions = (): CacheQueryOptions => {
 	const options: CacheQueryOptions = {

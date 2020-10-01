@@ -1,8 +1,8 @@
 import { identity, sortBy } from 'ramda';
 
 import { GET_TICKETS } from '../tickets';
-import { EntityId, TicketsList, TicketsQueryArgs, CacheQueryOptions } from '@eventespresso/data';
-import { TicketEdge } from '../../';
+import type { EntityId, TicketsList, TicketsQueryArgs, CacheQueryOptions } from '@eventespresso/data';
+import type { TicketEdge } from '../../';
 import useDatetimeIds from '../datetimes/useDatetimeIds';
 import { useMemoStringify } from '@eventespresso/hooks';
 

@@ -1,4 +1,5 @@
-import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import type { NormalizedCacheObject } from '@apollo/client';
 import { BatchHttpLink } from '@apollo/client/link/batch-http';
 
 const graphqlEndpoint = window?.eventEspressoData?.api?.graphqlEndpoint || '';

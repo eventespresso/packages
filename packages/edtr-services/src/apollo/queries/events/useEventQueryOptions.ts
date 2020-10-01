@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { CacheQueryOptions } from '@eventespresso/data';
+import type { CacheQueryOptions } from '@eventespresso/data';
 import useEventId from '../events/useEventId';
 import { GET_EVENT } from './queries';
 

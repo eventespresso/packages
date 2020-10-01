@@ -6,7 +6,7 @@ import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
 import { findEntityByGuid } from '@eventespresso/predicates';
 import { removeNullAndUndefined, ucFirst } from '@eventespresso/utils';
 
-import { Ticket } from '../../';
+import type { Ticket } from '../../';
 import { useTickets } from '../../queries';
 
 export const TICKET_DEFAULTS: Ticket = {

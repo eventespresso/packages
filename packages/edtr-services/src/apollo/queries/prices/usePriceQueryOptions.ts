@@ -2,7 +2,7 @@ import { identity, sortBy } from 'ramda';
 
 import useTicketIds from '../tickets/useTicketIds';
 import { GET_PRICES } from '../prices';
-import { EntityId, CacheQueryOptions } from '@eventespresso/data';
+import type { EntityId, CacheQueryOptions } from '@eventespresso/data';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 const usePriceQueryOptions = (ticketIn: EntityId[] = []): CacheQueryOptions => {

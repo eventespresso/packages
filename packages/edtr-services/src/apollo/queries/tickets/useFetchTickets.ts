@@ -5,7 +5,7 @@ import { __ } from '@eventespresso/i18n';
 import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import useTicketQueryOptions from './useTicketQueryOptions';
-import { FetchQueryResult } from '@eventespresso/data';
+import type { FetchQueryResult } from '@eventespresso/data';
 import type { TicketsList } from '../../types';
 
 const useFetchTickets = (skipFetch: boolean = null): FetchQueryResult<TicketsList> => {

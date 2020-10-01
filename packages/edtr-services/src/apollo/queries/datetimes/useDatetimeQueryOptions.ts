@@ -1,7 +1,7 @@
 import useEventId from '../events/useEventId';
 import { GET_DATETIMES } from '../datetimes';
-import { DatetimesList, DatetimesQueryArgs, CacheQueryOptions } from '@eventespresso/data';
-import { DatetimeEdge } from '../../';
+import type { DatetimesList, DatetimesQueryArgs, CacheQueryOptions } from '@eventespresso/data';
+import type { DatetimeEdge } from '../../';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 type DatetimesQueryOptions = CacheQueryOptions<DatetimesList<DatetimeEdge>, DatetimesQueryArgs>;

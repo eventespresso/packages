@@ -1,7 +1,7 @@
 import isEmpty from 'ramda/src/isEmpty';
 import { useRelations } from '@eventespresso/services';
 import useDefaultPriceType from './useDefaultPriceType';
-import { EntityId } from '@eventespresso/data';
+import type { EntityId } from '@eventespresso/data';
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { useMemoStringify } from '@eventespresso/hooks';
 

@@ -5,7 +5,7 @@ import { __ } from '@eventespresso/i18n';
 import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import usePriceQueryOptions from './usePriceQueryOptions';
-import { FetchQueryResult } from '@eventespresso/data';
+import type { FetchQueryResult } from '@eventespresso/data';
 import { useEdtrState } from '../../../hooks';
 import { usePrevious } from '@eventespresso/hooks';
 import type { PricesList } from '../../types';

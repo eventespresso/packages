@@ -1,6 +1,6 @@
 import { useMemoStringify } from '@eventespresso/hooks';
 import { getGuids } from '@eventespresso/predicates';
-import { EntityId } from '@eventespresso/data';
+import type { EntityId } from '@eventespresso/data';
 import useTickets from './useTickets';
 
 const useTicketIds = (): EntityId[] => {

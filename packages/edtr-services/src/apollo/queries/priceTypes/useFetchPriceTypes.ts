@@ -5,7 +5,7 @@ import { __ } from '@eventespresso/i18n';
 import usePriceTypeQueryOptions from './usePriceTypeQueryOptions';
 import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
-import { FetchQueryResult } from '@eventespresso/data';
+import type { FetchQueryResult } from '@eventespresso/data';
 import type { PriceTypesList } from '../../types';
 
 const useFetchPriceTypes = (): FetchQueryResult<PriceTypesList> => {

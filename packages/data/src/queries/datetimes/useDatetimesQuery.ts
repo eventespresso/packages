@@ -1,4 +1,4 @@
-import { QueryHookOptions, QueryResult as ApolloQueryResult } from '@apollo/react-hooks';
+import type { QueryHookOptions, QueryResult as ApolloQueryResult } from '@apollo/react-hooks';
 
 import { useCacheQuery } from '../';
 import type { DatetimesList, DatetimesQueryArgs } from './types';

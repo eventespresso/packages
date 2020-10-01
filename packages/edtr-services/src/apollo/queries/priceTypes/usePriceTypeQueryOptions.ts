@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { CacheQueryOptions } from '@eventespresso/data';
+import type { CacheQueryOptions } from '@eventespresso/data';
 
 import { GET_PRICE_TYPES } from '../priceTypes';
 

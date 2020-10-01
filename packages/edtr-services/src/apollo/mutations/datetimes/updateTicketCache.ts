@@ -2,7 +2,7 @@ import type { CacheUpdaterFnArgs } from '../types';
 import { GET_TICKETS } from '../../queries';
 import type { TicketsList } from '../../types';
 import { sortBy, identity } from 'ramda';
-import { CacheQueryOptions, WriteQueryOptions } from '@eventespresso/data';
+import type { CacheQueryOptions, WriteQueryOptions } from '@eventespresso/data';
 
 const updateTicketCache = ({ cache, datetimeIn, datetimeId, action }: CacheUpdaterFnArgs): void => {
 	const queryOptions: CacheQueryOptions = {

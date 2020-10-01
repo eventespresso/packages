@@ -1,5 +1,5 @@
 import { GET_GENERAL_SETTINGS } from './queries';
-import { CacheQueryOptions } from '../';
+import type { CacheQueryOptions } from '../';
 
 const useGeneralSettingsQueryOptions = (): CacheQueryOptions => {
 	const options: CacheQueryOptions = {
