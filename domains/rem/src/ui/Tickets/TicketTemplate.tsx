@@ -5,12 +5,11 @@ import { __ } from '@eventespresso/i18n';
 import { Button, SelectInput } from '@eventespresso/components';
 import { entityListToSelectOptions } from '@eventespresso/utils';
 import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';
-import { Plus } from '@eventespresso/icons';
 import { useTickets } from '@eventespresso/edtr-services';
 
 import { Container as FormContainer } from './multiStep';
 import EntityOptionsRow from '../EntityOptionsRow';
-import { RemTicket } from '../../data';
+import type { RemTicket } from '../../data';
 
 import './style.scss';
 import useTicketFormConfig from './useTicketFormConfig';
@@ -38,12 +37,7 @@ const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates })
 	const { initialValues: normalizedTicket } = useTicketFormConfig(ticket);
 	const onClick = useCallback(() => addTicketTemplate(normalizedTicket), [addTicketTemplate, normalizedTicket]);
 
-	const addNewID = 'ee-add-new-ticket';
-	const addNew = (
-		<Button buttonText={__('Add New')} className='rem-tickets__form-btn' icon={Plus} onClick={onAddNew} />
-	);
-
-	const selectExistingID = 'ee-select-existing-ticket';
+	const selectExistingID = 'existing-ticket';
 	const selectExisting = (
 		<>
 			<SelectInput id={selectExistingID} options={options} onChangeValue={onChangeValue} />
@@ -57,9 +51,8 @@ const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates })
 
 	return (
 		<EntityOptionsRow
-			addNew={addNew}
-			addNewID={addNewID}
 			afterOptions={isOpen && <FormContainer isOpen={true} onClose={onClose} />}
+			onAddNew={onAddNew}
 			selectExisting={selectExisting}
 			selectExistingID={selectExistingID}
 			type={'ticket'}
