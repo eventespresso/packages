@@ -1,16 +1,16 @@
 import React, { useMemo } from 'react';
 import { FlagsProvider, FeatureFlags } from 'flagged';
-import { intersection } from 'ramda';
+import { concat, uniq } from 'ramda';
 
-import { useSitePermissions, useUserCaps } from '../permissions';
+import { useSitePermissions, useUserCapabilities } from '../permissions';
 
 const FeaturesProvider: React.FC = ({ children }) => {
 	const sitePermissions = useSitePermissions();
-	const userPermissions = useUserCaps();
+	const userPermissions = useUserCapabilities();
 
 	const features = useMemo<FeatureFlags>(() => {
 		// set those permissions/features which are enabled for user as well as the site
-		return intersection(userPermissions, sitePermissions);
+		return uniq(concat(userPermissions, sitePermissions));
 	}, [sitePermissions, userPermissions]);
 
 	return <FlagsProvider features={features}>{children}</FlagsProvider>;
