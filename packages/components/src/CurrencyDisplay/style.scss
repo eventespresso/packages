@@ -1,0 +1,8 @@
+.ee-currency-display {
+	display: flex;
+	justify-content: center;
+
+	.ee-currency-sign {
+		padding: 0 var(--ee-padding-micro);
+	}
+}
