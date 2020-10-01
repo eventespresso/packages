@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import useSitePermissions from './useSitePermissions';
-import useUserCaps from './useUserCaps';
+import useUserCapabilities from './useUserCapabilities';
 import type { CurrentUserCan } from './types';
 
 /**
@@ -15,18 +15,18 @@ import type { CurrentUserCan } from './types';
  */
 const useCurrentUserCan = (): CurrentUserCan => {
 	const sitePermissions = useSitePermissions();
-	const userPermissions = useUserCaps();
+	const userCapabilities = useUserCapabilities();
 
 	return useCallback<CurrentUserCan>(
 		(capability) => {
 			// whether the site has the capability
 			const siteHasPermissions = sitePermissions?.includes(capability);
 			// whether the user has the capability
-			const userHasPermissions = userPermissions?.includes(capability);
+			const userHasPermissions = userCapabilities?.includes(capability);
 
 			return siteHasPermissions && userHasPermissions;
 		},
-		[sitePermissions, userPermissions]
+		[sitePermissions, userCapabilities]
 	);
 };
 
