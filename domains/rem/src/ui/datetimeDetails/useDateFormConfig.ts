@@ -64,6 +64,8 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 						name: 'duration',
 						label: __('Duration'),
 						fieldType: 'number',
+						max: 1000,
+						min: -1,
 					},
 					{
 						name: 'unit',
