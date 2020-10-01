@@ -33,6 +33,14 @@ add_action(
 		require_once __DIR__ . '/lib/Barista.php';
 		$barista = new Barista();
 		$barista->initialize();
+		add_filter(
+            'FHEE__EventEspresso_core_domain_entities_routing_data_nodes_core_SitePermissions__initialize__site_permissions',
+				function() {
+					return  [
+               			 'use_bulk_edit' => true,
+					];
+			}
+        );
 	}
 );
 
