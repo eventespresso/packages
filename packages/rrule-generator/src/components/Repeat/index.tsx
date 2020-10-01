@@ -13,13 +13,15 @@ const Repeat: React.FC<BaseProps> = ({ id }) => {
 		setRepeatFrequency,
 	} = useRRuleState();
 
+	const frequencyId = `${id}-frequency`;
+
 	return (
 		<div className='rrule-generator__form-group-row rrule-generator__form-group-row--align-items-start'>
-			<label htmlFor={id} className='col-form-label'>
+			<label htmlFor={frequencyId} className='col-form-label'>
 				<strong>{__('Repeat')}</strong>
 			</label>
 
-			<Frequency frequency={frequency} id={`${id}-frequency`} onChange={setRepeatFrequency} />
+			<Frequency frequency={frequency} id={frequencyId} onChange={setRepeatFrequency} />
 		</div>
 	);
 };

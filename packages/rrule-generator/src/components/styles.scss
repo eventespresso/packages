@@ -94,6 +94,7 @@
 
 	&__form-control {
 		.rrule-generator & {
+			color: var(--ee-default-text-color-high-contrast);
 			margin-right: 1rem;
 			min-width: 140px;
 			width: 100%;

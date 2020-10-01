@@ -15,10 +15,11 @@ const OnDate: React.FC<OnDateProps> = ({ id, date, label, onChange }) => {
 	const calendarAttributes = useMemo(
 		() => ({
 			'aria-label': label,
-			value: date,
+			id,
 			locale,
+			value: date,
 		}),
-		[date, label, locale]
+		[date, id, label, locale]
 	);
 
 	const onChangeDate = useCallback(
