@@ -1,5 +1,6 @@
 import type { AnyObject } from '@eventespresso/utils';
 import type { CurrencyProps, CurrentUserProps, GeneralSettings, SiteUrlProps } from './config/types';
+import type { Capability } from './permissions';
 
 export interface EventEspressoDomData {
 	api: ApiDomData;
@@ -24,6 +25,7 @@ export type ConfigDomData = {
 	generalSettings: GeneralSettings;
 	locale: LocaleDomData;
 	siteCurrency: CurrencyProps;
+	sitePermissions: Array<Capability>;
 	siteUrls: SiteUrlProps;
 	wp_debug: boolean;
 };

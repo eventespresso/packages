@@ -34,7 +34,7 @@ export type ConfigDataProps = {
 	locale: LocaleProps;
 	nonce: string;
 	/* Permission for the whole site */
-	permissions?: Array<Capability>;
+	sitePermissions?: Array<Capability>;
 	siteUrl: SiteUrlProps;
 	timezone: TimezoneProps;
 	wp_debug: boolean;
@@ -61,7 +61,7 @@ export interface CurrentUserProps {
 	description: string;
 	email: string;
 	/* EE capabilities for the user */
-	espressoCaps?: Array<Capability>;
+	capabilities?: Array<Capability>;
 	firstName: string;
 	name: string;
 	nicename: string;
