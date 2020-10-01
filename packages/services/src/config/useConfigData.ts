@@ -35,6 +35,7 @@ export const useConfigData = (): ConfigDataProps => {
 				user: config?.locale?.user || '',
 			} as LocaleProps),
 			nonce: api?.restApiNonce || '',
+			sitePermissions: config?.sitePermissions || [],
 			siteUrl: SiteUrl({
 				admin: config?.siteUrls?.admin || '',
 				home: config?.siteUrls?.home || '',
@@ -57,6 +58,7 @@ export const useConfigData = (): ConfigDataProps => {
 			config?.siteCurrency,
 			config?.siteUrls?.admin,
 			config?.siteUrls?.home,
+			config?.sitePermissions,
 			config?.wp_debug,
 		]
 	);

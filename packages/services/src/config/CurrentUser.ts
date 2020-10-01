@@ -3,6 +3,7 @@ import type { CurrentUserProps } from './types';
 export const CurrentUser = (userData: CurrentUserProps): CurrentUserProps => {
 	return {
 		id: userData?.id,
+		capabilities: userData?.capabilities,
 		databaseId: userData?.databaseId,
 		description: userData?.description,
 		email: userData?.email,
