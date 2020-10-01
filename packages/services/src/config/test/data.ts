@@ -34,6 +34,7 @@ export const mockEspressoDomData: EventEspressoDomData = {
 			pluginUrl: 'http://www.dev.test/wp-content/plugins/event-espresso-core/',
 		},
 		currentUser: {
+			capabilities: [],
 			description: '',
 			email: 'chef@manzoor.com',
 			firstName: 'Chef',
@@ -71,6 +72,7 @@ export const mockEspressoDomData: EventEspressoDomData = {
 			},
 			user: 'mn-ZR',
 		},
+		sitePermissions: [],
 		siteUrls: {
 			admin: 'http://www.dev.test/wp-admin/',
 			home: 'http://www.dev.test/',
