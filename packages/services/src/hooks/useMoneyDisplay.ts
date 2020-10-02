@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 
-import { formatAmount, FormatAmountFunction } from '@eventespresso/utils';
+import { formatAmount } from '@eventespresso/utils';
 import { useConfig } from '../config';
+import type { FormatAmountFunction } from '@eventespresso/utils';
 import type { CurrencyProps } from '../config';
 
 export type MoneyDisplay = {

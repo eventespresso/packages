@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import type { TicketItemProps } from '../types';
-import { getPropsAreEqual } from '@eventespresso/utils';
-import { CurrencyInput } from '@eventespresso/components';
+import { getPropsAreEqual, parsedAmount } from '@eventespresso/utils';
+import { CurrencyInput, InlineEditText } from '@eventespresso/components';
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
 import { useMemoStringify } from '@eventespresso/hooks';
+import type { TicketItemProps } from '../types';
 
 interface EditablePriceProps extends TicketItemProps {
 	className?: string;
@@ -23,17 +23,39 @@ const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, 
 		[recalculateBasePrice, ticket.price]
 	);
 
+	const onChangeHandler = useCallback(
+		(value: string) => {
+			const newAmount = parsedAmount(value);
+			if (newAmount !== ticket.price) {
+				onChangePrice({ amount: newAmount });
+			}
+		},
+		[onChangePrice, ticket.price]
+	);
+
+	const input = useCallback(
+		(formattedAmount: string) => (
+			<InlineEditText
+				as='span'
+				fitText={false}
+				id={ticket.id}
+				onChangeValue={onChangeHandler}
+				value={formattedAmount}
+			/>
+		),
+		[onChangeHandler, ticket.id]
+	);
+
 	const wrapperProps = useMemoStringify({ className });
 
 	return (
 		<CurrencyInput
-			id={ticket.id}
 			amount={ticket.price}
+			input={input}
 			placeholder={__('set price...')}
-			wrapperProps={wrapperProps}
-			onChange={onChangePrice}
 			tag={'h3'}
 			tooltip={__('edit ticket total...')}
+			wrapperProps={wrapperProps}
 		/>
 	);
 };
