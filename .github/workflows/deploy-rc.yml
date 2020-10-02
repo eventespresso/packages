@@ -4,7 +4,7 @@ on:
     push:
         branches:
             # If the branch name starts with "rc-"
-            - 'rc-**'
+            - rc**
 env:
     API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
     GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
