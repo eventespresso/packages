@@ -42,7 +42,7 @@ const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 				tooltip={__('edit description...')}
 			/>
 
-			<EditablePrice className='entity-card-details__price' entity={ticket} />
+			<EditablePrice className='entity-card-details__price' id={ticket.id} price={ticket.price} />
 
 			<TicketDetailsPanel adminUrl={adminUrl} entity={ticket} eventId={eventId} />
 		</>

@@ -8,11 +8,11 @@ import './style.scss';
 
 const CurrencyInput: React.FC<CurrencyInputProps> = ({ amount, input, tag = 'p', wrapperProps = {}, vertical }) => {
 	const { beforeAmount, afterAmount, formatAmount } = useMoneyDisplay();
+	const formattedAmount = formatAmount(amount);
 	const className = classNames('ee-currency-input', vertical && 'ee-currency-input--vertical');
 	const before = beforeAmount ? <span className={'ee-currency-input__before-amount'}>{beforeAmount} </span> : '';
 	const after = afterAmount ? <span className={'ee-currency-input__after-amount'}> {afterAmount}</span> : '';
 	const Wrapper = tag;
-	const formattedAmount = formatAmount(amount);
 
 	return (
 		<Wrapper {...wrapperProps} className={className}>

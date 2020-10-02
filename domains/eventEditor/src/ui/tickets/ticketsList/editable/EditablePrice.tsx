@@ -5,52 +5,43 @@ import { getPropsAreEqual, parsedAmount } from '@eventespresso/utils';
 import { CurrencyInput, InlineEditText } from '@eventespresso/components';
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
 import { useMemoStringify } from '@eventespresso/hooks';
-import type { TicketItemProps } from '../types';
+import type { EditablePriceProps } from '../types';
 
-interface EditablePriceProps extends TicketItemProps {
-	className?: string;
-}
-
-const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, className }) => {
-	const recalculateBasePrice = useRecalculateBasePrice(ticket.id);
+const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ className, id, price, ...props }) => {
+	const recalculateBasePrice = useRecalculateBasePrice(id);
 	const onChangePrice = useCallback(
 		({ amount }: any): void => {
-			const price = parseFloat(amount);
-			if (price !== ticket.price) {
+			const parsedPrice = parseFloat(amount);
+			if (parsedPrice !== price) {
 				recalculateBasePrice(price);
 			}
 		},
-		[recalculateBasePrice, ticket.price]
+		[price, recalculateBasePrice]
 	);
 
 	const onChangeHandler = useCallback(
 		(value: string) => {
 			const newAmount = parsedAmount(value);
-			if (newAmount !== ticket.price) {
+			if (newAmount !== price) {
 				onChangePrice({ amount: newAmount });
 			}
 		},
-		[onChangePrice, ticket.price]
+		[onChangePrice, price]
 	);
 
 	const input = useCallback(
 		(formattedAmount: string) => (
-			<InlineEditText
-				as='span'
-				fitText={false}
-				id={ticket.id}
-				onChangeValue={onChangeHandler}
-				value={formattedAmount}
-			/>
+			<InlineEditText as='span' fitText={false} id={id} onChangeValue={onChangeHandler} value={formattedAmount} />
 		),
-		[onChangeHandler, ticket.id]
+		[id, onChangeHandler]
 	);
 
 	const wrapperProps = useMemoStringify({ className });
 
 	return (
 		<CurrencyInput
-			amount={ticket.price}
+			{...props}
+			amount={price}
 			input={input}
 			placeholder={__('set price...')}
 			tag={'h3'}
