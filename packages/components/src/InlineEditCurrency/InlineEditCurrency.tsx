@@ -5,13 +5,13 @@ import { parsedAmount } from '@eventespresso/utils';
 import { useMoneyDisplay } from '@eventespresso/services';
 import { InlineEditText } from '../InlineEditInput';
 
-import type { CurrencyInputProps } from './types';
+import type { InlineEditCurrencyProps } from './types';
 
 import './style.scss';
 
 const nullFunc = (args?: any) => null;
 
-const CurrencyInput: React.FC<CurrencyInputProps> = ({
+export const InlineEditCurrency: React.FC<InlineEditCurrencyProps> = ({
 	amount = 0,
 	id = '',
 	onChange = nullFunc,
@@ -50,5 +50,3 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
 		</Wrapper>
 	);
 };
-
-export default CurrencyInput;

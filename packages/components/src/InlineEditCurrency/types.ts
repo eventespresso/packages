@@ -1,4 +1,4 @@
-export interface CurrencyInputProps {
+export interface InlineEditCurrencyProps {
 	amount: string | number;
 	id: string;
 	onChange?: (result?: { amount: string | number; id: string }) => void;

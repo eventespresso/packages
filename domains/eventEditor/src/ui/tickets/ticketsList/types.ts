@@ -1,4 +1,4 @@
-import type { CurrencyInputProps, EntityListViewProps, EntityListItemProps } from '@eventespresso/components';
+import type { InlineEditCurrencyProps, EntityListViewProps, EntityListItemProps } from '@eventespresso/components';
 import type { EntityId } from '@eventespresso/data';
 import type { Ticket } from '@eventespresso/edtr-services';
 import type { TicketsFilterStateManager } from '@edtrServices/filterState';
@@ -10,7 +10,7 @@ export interface TicketItemProps extends Required<Pick<EntityListItemProps<Ticke
 	eventId?: number;
 }
 
-export interface EditablePriceProps extends CurrencyInputProps {
+export interface EditablePriceProps extends InlineEditCurrencyProps {
 	className?: string;
 	id: EntityId;
 	price: number;
