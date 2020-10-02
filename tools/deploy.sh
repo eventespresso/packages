@@ -6,18 +6,18 @@
 # # |                    Description                    | REQUIRED |      DEFAULT       #
 #---------------------------------------------------------------------------------------#
 # 1 | target repository name e.g. "event-espresso-core" |    YES   |         -          #
-# 2 | username of the target repository                 |    NO    |  "eventespresso"   #
-# 3 | build path on the current/this repository         |    NO    |      "build"       #
-# 4 | branch to deploy at, in the target repository     |    NO    |   "barista-prod"   #
+# 2 | branch to deploy at, in the target repository     |    NO    |   "barista-prod"   #
+# 3 | username of the target repository                 |    NO    |  "eventespresso"   #
+# 4 | build path on the current/this repository         |    NO    |      "build"       #
 # 5 | path to assets folder on the target repository    |    NO    |      "assets"      #
 #########################################################################################
 
 ##################################### EXAMPLES ##########################################
 # ./deploy.sh "event-espresso-core"                                                     #
-# ./deploy.sh "event-espresso-core" "eventespresso"                                     #
-# ./deploy.sh "event-espresso-core" "eventespresso" "build"                             #
-# ./deploy.sh "event-espresso-core" "eventespresso" "build" "barista-prod"              #
-# ./deploy.sh "event-espresso-core" "eventespresso" "build" "barista-prod" "assets/dist"#
+# ./deploy.sh "event-espresso-core" "barista-prod"                                      #
+# ./deploy.sh "event-espresso-core" "barista-prod" "eventespresso"                      #
+# ./deploy.sh "event-espresso-core" "barista-prod" "eventespresso" "build"              #
+# ./deploy.sh "event-espresso-core" "barista-prod" "eventespresso" "build" "assets/dist"#
 #########################################################################################
 
 ##################### ENV VARIABLES THAT SHOULD ALREADY BE SET ########################
@@ -38,12 +38,15 @@ set -e
 
 # name of the repo e.g. "event-espresso-core"
 REPO=$1
-# GitHub account username
-USERNAME="${2:-eventespresso}"
-# Default path to build folder
-BUILD_PATH="${3:-build}"
 # The target repo branch
-BRANCH="${4:-barista-prod}"
+BRANCH="${2:-barista-prod}"
+# Convert "refs/heads/barista-prod" to "barista-prod"
+BRANCH="${BRANCH#refs/heads/}"
+# GitHub account username
+# USERNAME="${3:-eventespresso}"
+USERNAME="${3:-manzoorwanijk}"
+# Default path to build folder
+BUILD_PATH="${4:-build}"
 # Default path to assets folder (on target repo)
 ASSETS_PATH="${5:-assets}"
 # This repo
