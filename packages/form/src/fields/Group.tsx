@@ -26,7 +26,7 @@ const Group: React.FC<FieldProps> = ({
 		});
 		return (
 			<div className={wrapperClassName}>
-				<h5 className='field-group-label'>{label}</h5>
+				{label && <h5 className='field-group-label'>{label}</h5>}
 				{before}
 				<div className={groupClassName}>
 					{subFields.map(({ name: fieldname, fieldType, ...props }, i) => {
