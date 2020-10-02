@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 
+import { __ } from '@eventespresso/i18n';
 import { Select, SelectProps } from '../Select';
 import type { PerPageProps } from './types';
 import './style.scss';
@@ -34,6 +35,7 @@ const PerPage: React.FC<PerPageProps> = ({ locale, onChangePerPage, pageNumber, 
 
 	return (
 		<Select
+			aria-label={__('items per page')}
 			className='ee-pagination__per-page'
 			onChangeValue={onChangeValue}
 			rootProps={selectRootProps}
