@@ -123,6 +123,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							label: __('Quantity For Sale'),
 							fieldType: 'number',
 							parseAsInfinity: true,
+							max: 1000000,
 							min: -1,
 							info: sprintf(
 								__(

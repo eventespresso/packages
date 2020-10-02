@@ -193,6 +193,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							label: __('Quantity For Sale'),
 							fieldType: 'number',
 							parseAsInfinity: true,
+							max: 1000000,
 							min: -1,
 							info: sprintf(
 								__(

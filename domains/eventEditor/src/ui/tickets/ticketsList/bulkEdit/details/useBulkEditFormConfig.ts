@@ -113,6 +113,7 @@ const useBulkEditFormConfig = (config?: EspressoFormProps<BulkEditFormShape>): D
 							fieldType: 'number',
 							formControlProps: adjacentFormItemProps,
 							parseAsInfinity: true,
+							max: 1000000,
 							min: -1,
 						},
 						{
