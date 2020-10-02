@@ -1,0 +1,57 @@
+name: Deploy RC
+
+on:
+    push:
+        branches:
+            # If the branch name starts with "rc-"
+            - 'rc-**'
+env:
+    API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+    GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+    GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+    FORCE_COLOR: true
+jobs:
+    # This job checks if we have the corresponding RC branch in at leat 1 target repo
+    check-for-target-rc-branches:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+            - name: Check for taget RC branches
+              # It exits if there is no target RC branch
+              run: |
+                  source tools/utils.sh \
+                  && checkForRcBranches
+    deploy-domains-and-packages:
+        runs-on: ubuntu-latest
+        # There must be at least one target RC branch to continue
+        needs: [check-for-target-rc-branches]
+        steps:
+            - id: yarn-cache
+              name: Get Yarn cache path
+              run: echo "::set-output name=dir::$(yarn cache dir)"
+
+            - uses: actions/checkout@master
+
+            - uses: dcodeIO/setup-node-nvm@master
+              with:
+                  node-version: lts/*
+
+            - uses: actions/cache@master
+              name: Load Yarn cache
+              with:
+                  path: ${{ steps.yarn-cache.outputs.dir }}
+                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-yarn-
+              # Install all dependencies at root
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+              # Build the core domains along with all the packages
+              # because all packages will goto core
+            - name: Build and Deploy core domains and all their packages, if there is RC branch
+              run: source tools/may-be-deploy-rc.sh "event-espresso-core" "build:core"
+
+              # Build REM domain without packages
+              # because core will load/register the packages
+            - name: Build and Deploy REM with its packages, if there is RC branch
+              run: source tools/may-be-deploy-rc.sh "eea-recurring-events-manager" "build:rem"

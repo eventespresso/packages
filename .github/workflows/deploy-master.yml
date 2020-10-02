@@ -1,8 +1,8 @@
-name: Deploy
+name: Deploy Leading Edge (master)
 
 on:
     push:
-        branches: [master] # TODO change this to "production" when ready
+        branches: [master]
 env:
     API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
     GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
