@@ -8,7 +8,7 @@ import type { CurrencyDisplayProps } from './types';
 
 import './style.scss';
 
-export const CurrencyDisplay: React.FC<CurrencyDisplayProps> = ({ children, value, ...props }) => {
+export const CurrencyDisplay: React.FC<CurrencyDisplayProps> = ({ children, value, vertical, ...props }) => {
 	const config = useConfig();
 	const { formatAmount } = useMoneyDisplay();
 
@@ -19,7 +19,13 @@ export const CurrencyDisplay: React.FC<CurrencyDisplayProps> = ({ children, valu
 	const characters = getCurrencySignCharacterCountClassName(sign);
 	const position = getCurrencySignPositionClassName(signB4);
 
-	const className = classNames(props.className, characters, position, 'ee-currency-display');
+	const className = classNames(
+		props.className,
+		characters,
+		position,
+		vertical && 'ee-currency-display--vertical',
+		'ee-currency-display'
+	);
 
 	return (
 		<div className={className}>
