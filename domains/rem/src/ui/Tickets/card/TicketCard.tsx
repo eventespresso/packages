@@ -17,7 +17,7 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 
 	const { isShared, ticketSalesDates, ticketSalesStart, ticketSalesEnd } = tickets?.[ticket.id];
 
-	const beforeDetails = <CurrencyInput id={ticket.id} amount={ticket.price} tag='h5' vertical />;
+	const beforeDetails = <CurrencyInput id={ticket.id} amount={ticket.price} tag='p' vertical />;
 
 	const afterDetails = ticketSalesStart && ticketSalesEnd && (
 		<div className='ee-ticket-offset'>
