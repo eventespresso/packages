@@ -38,6 +38,10 @@
 			.ee-form-item {
 				padding: var(--ee-padding-smaller) 0;
 
+				label {
+					color: var(--ee-color-primary-high-contrast);
+				}
+
 				&-switch {
 					padding: var(--ee-padding-small) 0;
 				}
