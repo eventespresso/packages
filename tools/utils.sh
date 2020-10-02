@@ -14,8 +14,7 @@
 set -e
 
 # GitHub account username
-USERNAME="manzoorwanijk"
-# USERNAME="eventespresso"
+USERNAME="eventespresso"
 # Convert "refs/heads/rc-branch" to "rc-branch"
 BRANCH="${GITHUB_REF#refs/heads/}"
 

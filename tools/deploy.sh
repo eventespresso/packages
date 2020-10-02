@@ -43,8 +43,7 @@ BRANCH="${2:-barista-prod}"
 # Convert "refs/heads/barista-prod" to "barista-prod"
 BRANCH="${BRANCH#refs/heads/}"
 # GitHub account username
-# USERNAME="${3:-eventespresso}"
-USERNAME="${3:-manzoorwanijk}"
+USERNAME="${3:-eventespresso}"
 # Default path to build folder
 BUILD_PATH="${4:-build}"
 # Default path to assets folder (on target repo)
