@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { last } from 'ramda';
 
 import { copyDatetimeFields, isDatetimeInputField, sortDates } from '@eventespresso/predicates';
@@ -8,43 +8,36 @@ import type { GeneratedDate } from '../ui/generatedDates';
 import type { FormState } from './types';
 import { useDatetimeMutator, useDatetimes } from '@eventespresso/edtr-services';
 import useMutateTickets from './useMutateTickets';
-import { Progress, getTotalProgress } from '../utils/getProgress';
+import { useProgress } from '@eventespresso/hooks';
+import { useMemo } from 'react';
+
+const initialProgress = { datetimes: 0, tickets: 0 };
 
 const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate>): (() => Promise<void>) => {
 	const { dateDetails, tickets } = formState;
-	const [progress, setProgress] = useState<Progress>({ datetimes: 0, tickets: 0 });
 	const { createEntity: createDatetime } = useDatetimeMutator();
 	const toUtcISO = useSiteDateToUtcISO();
 	const dates = useDatetimes();
-
-	// updates progress for a given entity type
-	const updateProgress = useCallback((forEntity: keyof Progress, value = 1) => {
-		setProgress((prevProgress) => {
-			// add the value to existing progress for the given entity
-			const updatedProgress = prevProgress[forEntity] + value;
-			return { ...prevProgress, [forEntity]: updatedProgress };
-		});
-	}, []);
-
-	const incrementTicketProgress = useCallback(() => {
-		updateProgress('tickets');
-	}, [updateProgress]);
-
-	const mutateTickets = useMutateTickets({ incrementProgress: incrementTicketProgress });
 
 	const allTickets = Object.values(tickets);
 	const sharedTickets = getSharedTickets(allTickets);
 	const nonSharedTickets = getNonSharedTickets(allTickets);
 
+	const totalItems = useMemo(() => {
+		const sharedTicketsCount = sharedTickets.length;
+		const nonSharedTicketsCount = nonSharedTickets.length;
+		const generatedDatesCount = generatedDates.length;
+
+		return sharedTicketsCount + nonSharedTicketsCount * generatedDatesCount + generatedDatesCount;
+	}, [generatedDates.length, nonSharedTickets.length, sharedTickets.length]);
+
+	const { incrementProgress, totalProgress, updateProgress } = useProgress(totalItems, initialProgress);
+
+	const mutateTickets = useMutateTickets({ incrementProgress: incrementProgress('tickets') });
+
 	useEffect(() => {
-		const totalProgress = getTotalProgress({
-			sharedTickets,
-			nonSharedTickets,
-			generatedDates,
-			progress,
-		});
 		totalProgress && console.log('totalProgress', `${totalProgress}%`);
-	}, [generatedDates, nonSharedTickets, progress, sharedTickets]);
+	}, [totalProgress]);
 
 	return useCallback(async () => {
 		// create shared tickets and collect their ids
