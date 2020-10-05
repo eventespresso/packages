@@ -1,11 +1,10 @@
 import React, { useCallback, useMemo } from 'react';
-import { SelectControl } from '@wordpress/components';
 import { __ } from '@eventespresso/i18n';
 
 import type { AttendeesEditProps } from '../types';
 import { useEvents } from '@blocksServices/apollo';
 import { buildEntitySelectOptions } from '@blocksServices/utils';
-import type { SelectControlProps } from '@blocksComponents/types';
+import { Select as SelectControl } from '../../adapters';
 
 const SelectEvent: React.FC<AttendeesEditProps> = ({ attributes, setAttributes }) => {
 	const { event } = attributes;
@@ -18,9 +17,10 @@ const SelectEvent: React.FC<AttendeesEditProps> = ({ attributes, setAttributes }
 
 	return (
 		<SelectControl
+			id='attendees-select-event'
 			label={__('Select Event')}
 			value={event}
-			options={options as SelectControlProps['options']}
+			options={options}
 			onChange={onChange}
 		/>
 	);
