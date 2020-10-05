@@ -1,31 +1,21 @@
 import React from 'react';
 import classNames from 'classnames';
-import {
-	Modal as ChakraModal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalFooter,
-	ModalHeader,
-	ModalOverlay,
-} from '@chakra-ui/core';
 
+import { Modal as ModalAdapter, ModalCloseButton } from '@eventespresso/adapters';
 import { Button } from '../';
 import { modalCloseButtonProps } from './';
-import type { ModalProps } from '@eventespresso/adapters';
+import type { ModalProps } from './types';
 
 import './styles.scss';
 
 export const Modal: React.FC<ModalProps> = ({
 	cancelButtonProps,
 	children,
-	closeButton,
-	content,
-	destroyOnClose = true,
+	destroyOnClose,
 	footerContent,
-	isClosable = true,
+	isClosable,
 	isOpen,
-	scrollBehavior = 'inside',
+	scrollBehavior,
 	submitButtonProps,
 	title,
 	withBorder,
@@ -49,7 +39,7 @@ export const Modal: React.FC<ModalProps> = ({
 		</>
 	);
 
-	const footerNode = footerContent ? (
+	const footer = footerContent ? (
 		<>
 			{cancelButton && cancelButton}
 			{footerContent}
@@ -58,24 +48,24 @@ export const Modal: React.FC<ModalProps> = ({
 		defaultFooterNode
 	);
 
+	const closeButton = props.closeButton || (
+		<ModalCloseButton {...modalCloseButtonProps} size={null} isDisabled={!isClosable} />
+	);
+
 	return (
-		<ChakraModal
-			closeOnOverlayClick={isClosable}
-			isCentered
+		<ModalAdapter
+			bodyClassName={bodyClassName}
+			className={className}
+			closeButton={closeButton}
+			footer={footer}
+			footerClassName={footerClassName}
+			headerClassName={headerClassName}
+			isClosable={isClosable}
 			isOpen={isOpen}
 			scrollBehavior={scrollBehavior}
-			{...props}
+			title={title}
 		>
-			<ModalOverlay />
-			<ModalContent role='alertdialog' className={className}>
-				<ModalHeader className={headerClassName}>{title}</ModalHeader>
-
-				{closeButton || <ModalCloseButton {...modalCloseButtonProps} size={null} isDisabled={!isClosable} />}
-
-				<ModalBody className={bodyClassName}>{children || content}</ModalBody>
-
-				{footerNode && <ModalFooter className={footerClassName}>{footerNode}</ModalFooter>}
-			</ModalContent>
-		</ChakraModal>
+			{children}
+		</ModalAdapter>
 	);
 };

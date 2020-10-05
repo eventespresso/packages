@@ -1,17 +1,12 @@
-import type React from 'react';
-import type { Modal } from '@chakra-ui/core';
-import type { ButtonProps } from '../Button';
+import { IModal } from '@chakra-ui/core';
 
-export interface ModalProps extends React.ComponentProps<typeof Modal> {
+export interface ModalProps extends Pick<IModal, 'isOpen' | 'scrollBehavior'> {
 	bodyClassName?: string;
-	cancelButtonProps?: ButtonProps;
 	className?: string;
 	closeButton?: React.ReactNode;
-	content?: React.ReactNode;
-	destroyOnClose?: boolean;
-	footerContent?: React.ReactNode;
+	footer?: React.ReactNode;
+	footerClassName?: string;
 	isClosable?: boolean;
-	submitButtonProps?: ButtonProps;
+	headerClassName?: string;
 	title?: React.ReactNode;
-	withBorder?: boolean;
 }
