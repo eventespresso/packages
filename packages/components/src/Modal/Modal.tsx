@@ -15,6 +15,7 @@ export const Modal: React.FC<ModalProps> = ({
 	footerContent,
 	isClosable,
 	isOpen,
+	onClose,
 	scrollBehavior,
 	submitButtonProps,
 	title,
@@ -62,6 +63,7 @@ export const Modal: React.FC<ModalProps> = ({
 			headerClassName={headerClassName}
 			isClosable={isClosable}
 			isOpen={isOpen}
+			onClose={onClose}
 			scrollBehavior={scrollBehavior}
 			title={title}
 		>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal as ChakraModal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/core';
 
-import { ModalProps } from './types';
+import type { ModalProps } from './types';
 
 export const Modal: React.FC<ModalProps> = ({
 	bodyClassName,
