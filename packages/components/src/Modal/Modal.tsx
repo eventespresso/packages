@@ -10,13 +10,13 @@ import {
 	ModalOverlay,
 } from '@chakra-ui/core';
 
-import { Button } from '../Button';
-import type { ModalProps } from './types';
-import modalCloseButtonProps from './modalCloseButtonProps';
+import { Button } from '../';
+import { modalCloseButtonProps } from './';
+import type { ModalProps } from '@eventespresso/adapters';
 
 import './styles.scss';
 
-const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<ModalProps> = ({
 	cancelButtonProps,
 	children,
 	closeButton,
@@ -79,5 +79,3 @@ const Modal: React.FC<ModalProps> = ({
 		</ChakraModal>
 	);
 };
-
-export default Modal;

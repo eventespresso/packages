@@ -3,14 +3,14 @@ import { ESCAPE } from '@wordpress/keycodes';
 import { __ } from '@eventespresso/i18n';
 
 import { canUseDOM } from '@eventespresso/utils';
-import { Modal } from '@eventespresso/adapters';
+import { Modal } from './';
 import { useConfirmationDialog } from '../Confirm';
 import useCancelButtonProps from './useCancelButtonProps';
 import useSubmitButtonProps from './useSubmitButtonProps';
 
 import { ModalWithAlertProps } from './types';
 
-const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
+export const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 	children,
 	onCancel,
 	onSubmit,
@@ -63,5 +63,3 @@ const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 		</>
 	);
 };
-
-export default ModalWithAlert;

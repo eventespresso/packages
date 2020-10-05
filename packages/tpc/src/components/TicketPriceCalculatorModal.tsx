@@ -4,8 +4,7 @@ import { __, sprintf } from '@eventespresso/i18n';
 import TicketPriceCalculator from './TicketPriceCalculator';
 import useResetButtonProps from '../buttons/useResetButtonProps';
 import useSubmitButtonProps from '../buttons/useSubmitButtonProps';
-import { ConfirmClose } from '@eventespresso/components';
-import { Modal, modalCloseButtonProps } from '@eventespresso/adapters';
+import { ConfirmClose, Modal, modalCloseButtonProps } from '@eventespresso/components';
 
 import { useTPCContext } from '../context';
 import { useDataState } from '../data';
