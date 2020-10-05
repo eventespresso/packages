@@ -12,27 +12,29 @@
 		"url": "git+https://github.com/eventespresso/barista.git"
 	},
 	"dependencies": {
-		"@wordpress/block-library": "^2.19.0",
-		"@wordpress/blocks": "^6.17.0",
-		"@wordpress/components": "^9.7.0",
-		"@wordpress/compose": "^3.16.0",
-		"@wordpress/editor": "^9.17.0",
-		"@wordpress/url": "^2.16.0"
+		"@wordpress/block-library": "^2.24.0",
+		"@wordpress/blocks": "^6.22.0",
+		"@wordpress/components": "^10.2.0",
+		"@wordpress/compose": "^3.20.1",
+		"@wordpress/editor": "^9.22.0",
+		"@wordpress/url": "^2.18.0",
+		"react-select": "^3.1.0"
 	},
 	"devDependencies": {
 		"@react-workspaces/react-scripts": "^3.4.0-alpha-01",
-		"@testing-library/jest-dom": "^5.10.1",
-		"@testing-library/react": "^10.4.1",
-		"@testing-library/react-hooks": "^3.3.0",
-		"@testing-library/user-event": "^12.0.7",
-		"@types/jest": "^26.0.1",
-		"@types/node": "^14.0.14",
-		"@types/react": "^16.9.41",
+		"@testing-library/jest-dom": "^5.11.4",
+		"@testing-library/react": "^11.0.4",
+		"@testing-library/react-hooks": "^3.4.2",
+		"@testing-library/user-event": "^12.1.6",
+		"@types/jest": "^26.0.14",
+		"@types/node": "^14.11.2",
+		"@types/react": "^16.9.50",
 		"@types/react-dom": "^16.9.8",
-		"@types/wordpress__block-editor": "^2.2.7",
-		"@types/wordpress__components": "^8.5.3",
+		"@types/react-select": "^3.0.21",
+		"@types/wordpress__block-editor": "^2.2.9",
+		"@types/wordpress__components": "^9.8.2",
 		"@types/wordpress__i18n": "^3.11.0",
-		"typescript": "~3.9.5"
+		"typescript": "^4.0.3"
 	},
 	"peerDependencies": {
 		"react": "^16.13.1",
