@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { last } from 'ramda';
 
 import { copyDatetimeFields, isDatetimeInputField, sortDates } from '@eventespresso/predicates';
@@ -8,8 +8,8 @@ import type { GeneratedDate } from '../ui/generatedDates';
 import type { FormState } from './types';
 import { useDatetimeMutator, useDatetimes } from '@eventespresso/edtr-services';
 import useMutateTickets from './useMutateTickets';
+import useSaveRecurrence from './useSaveRecurrence';
 import { useProgress } from '@eventespresso/hooks';
-import { useMemo } from 'react';
 
 const initialProgress = { datetimes: 0, tickets: 0 };
 
@@ -34,12 +34,20 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 	const { incrementProgress, totalProgress, updateProgress } = useProgress(totalItems, initialProgress);
 
 	const mutateTickets = useMutateTickets({ incrementProgress: incrementProgress('tickets') });
+	const saveRecurrence = useSaveRecurrence();
 
 	useEffect(() => {
 		totalProgress && console.log('totalProgress', `${totalProgress}%`);
 	}, [totalProgress]);
 
+	useEffect(() => {
+		saveRecurrence(formState);
+	}, [formState, saveRecurrence]);
+
 	return useCallback(async () => {
+		// create shared tickets and collect their ids
+		const recurrenceId = await saveRecurrence(formState);
+
 		// create shared tickets and collect their ids
 		const sharedTicketIds = await mutateTickets(sharedTickets, true);
 
@@ -69,7 +77,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 				// order will be the highest order among dates plus its position (index +1) in the list
 				const order = highestDateOrder + index + 1;
 
-				const input = { ...normalizedDateInput, order, startDate, endDate, tickets };
+				const input = { ...normalizedDateInput, order, startDate, endDate, tickets, recurrence: recurrenceId };
 
 				await createDatetime(input);
 				updateProgress('datetimes');
@@ -79,9 +87,11 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 		createDatetime,
 		dateDetails,
 		dates,
+		formState,
 		generatedDates,
 		mutateTickets,
 		nonSharedTickets,
+		saveRecurrence,
 		sharedTickets,
 		toUtcISO,
 		updateProgress,
