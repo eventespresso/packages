@@ -11,6 +11,8 @@ import './styles.scss';
 export const Modal: React.FC<ModalProps> = ({
 	cancelButtonProps,
 	children,
+	closeOnEsc,
+	closeOnOverlayClick,
 	destroyOnClose,
 	footerContent,
 	isClosable,
@@ -58,6 +60,8 @@ export const Modal: React.FC<ModalProps> = ({
 			bodyClassName={bodyClassName}
 			className={className}
 			closeButton={closeButton}
+			closeOnEsc={closeOnEsc}
+			closeOnOverlayClick={closeOnOverlayClick}
 			footer={footer}
 			footerClassName={footerClassName}
 			headerClassName={headerClassName}

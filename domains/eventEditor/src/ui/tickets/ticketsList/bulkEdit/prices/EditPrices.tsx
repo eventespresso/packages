@@ -3,9 +3,9 @@ import { __ } from '@eventespresso/i18n';
 
 import { EntityEditModal } from '@eventespresso/components';
 import { EditModeButtons } from './buttons';
-import { EditMode, EditPricesBaseProps } from './types';
 import { EditTogether } from './editTogether';
 import { EditSeparately } from './editSeparately';
+import type { EditMode, EditPricesBaseProps } from './types';
 
 const EditPrices: React.FC<EditPricesBaseProps> = ({ onClose, isOpen }) => {
 	const [editMode, setEditMode] = useState<EditMode>();

@@ -15,9 +15,16 @@ export const Modal: React.FC<ModalProps> = ({
 	isOpen,
 	scrollBehavior = 'inside',
 	title,
+	...props
 }) => {
 	return (
-		<ChakraModal closeOnOverlayClick={isClosable} isCentered isOpen={isOpen} scrollBehavior={scrollBehavior}>
+		<ChakraModal
+			{...props}
+			closeOnOverlayClick={isClosable}
+			isCentered
+			isOpen={isOpen}
+			scrollBehavior={scrollBehavior}
+		>
 			<ModalOverlay />
 			<ModalContent role='alertdialog' className={className}>
 				<ModalHeader className={headerClassName}>{title}</ModalHeader>
