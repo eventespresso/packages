@@ -2,6 +2,7 @@ import { NewEntitySubscription, ModalSubscription } from '@eventespresso/registr
 import { domain } from '@eventespresso/edtr-services';
 import type { NewEntitySubscriptionCb, ModalSubscriptionCb } from '@eventespresso/registry';
 import RemButton from './RemButton';
+import RemInit from './RemInit';
 import Container from './Modal/Container';
 import { RemGlobalModals } from '../types';
 
@@ -20,5 +21,7 @@ const modalRegistrationHandler: ModalSubscriptionCb<'rem'> = ({ registry }) => {
 	const { registerContainer } = registry;
 
 	registerContainer(RemGlobalModals.MAIN, Container);
+	// this container is only for REM initialization
+	registerContainer('reminit', RemInit);
 };
 modalSubscription.subscribe(modalRegistrationHandler);
