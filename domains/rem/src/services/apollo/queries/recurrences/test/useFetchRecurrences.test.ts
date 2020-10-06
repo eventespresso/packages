@@ -4,31 +4,41 @@ import useFetchRecurrences from '../useFetchRecurrences';
 import useRecurrenceQueryOptions from '../useRecurrenceQueryOptions';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 import { successMocks, errorMocks, nodes } from './data';
+import useInitDatetimeTestCache from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/useInitDatetimeTestCache';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
-describe('useFetchRecurrences()', () => {
+const defaultQueryOptions = { skip: false };
+
+describe('useFetchRecurrences', () => {
 	it('checks for the error state', async () => {
 		/* Set query options and the wrapper */
-		const { result: queryResult, waitForNextUpdate: waitForUpdate } = renderHook(
-			() => useRecurrenceQueryOptions(),
+		const { result: queryResult } = renderHook(
+			() => {
+				useInitDatetimeTestCache();
+				return useRecurrenceQueryOptions();
+			},
 			{
 				wrapper: ApolloMockedProvider(),
 			}
 		);
-
-		await waitForUpdate({ timeout });
+		await actWait();
 
 		const wrapper = ApolloMockedProvider(errorMocks.map((mock) => ({ ...mock, request: queryResult.current })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchRecurrences(), {
-			wrapper,
-		});
+		const { result } = renderHook(
+			() => {
+				return useFetchRecurrences(defaultQueryOptions);
+			},
+			{
+				wrapper,
+			}
+		);
 
 		expect(result.current.error).toBeUndefined();
 		expect(result.current.data).toBeUndefined();
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		expect(result.current.error).toBeDefined();
 		expect(result.current.data).toBeUndefined();
@@ -36,42 +46,67 @@ describe('useFetchRecurrences()', () => {
 
 	it('checks for the loading state', async () => {
 		/* Set query options and the wrapper */
-		const {
-			result: { current: request },
-		} = renderHook(() => useRecurrenceQueryOptions(), {
-			wrapper: ApolloMockedProvider(),
-		});
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
+		const { result: queryResult } = renderHook(
+			() => {
+				useInitDatetimeTestCache();
+				return useRecurrenceQueryOptions();
+			},
+			{
+				wrapper: ApolloMockedProvider(),
+			}
+		);
+		await actWait();
+
+		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request: queryResult.current })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchRecurrences(), {
-			wrapper,
-		});
+		const { result } = renderHook(
+			() => {
+				useInitDatetimeTestCache();
+				return useFetchRecurrences(defaultQueryOptions);
+			},
+			{
+				wrapper,
+			}
+		);
 
 		expect(result.current.loading).toBe(true);
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
+
 		expect(result.current.loading).toBe(false);
 	});
 
 	it('checks for the response data', async () => {
 		/* Set query options and the wrapper */
-		const {
-			result: { current: request },
-		} = renderHook(() => useRecurrenceQueryOptions(), {
-			wrapper: ApolloMockedProvider(),
-		});
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
+		const { result: queryResult } = renderHook(
+			() => {
+				useInitDatetimeTestCache();
+				return useRecurrenceQueryOptions();
+			},
+			{
+				wrapper: ApolloMockedProvider(),
+			}
+		);
+		await actWait();
+
+		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request: queryResult.current })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchRecurrences(), {
-			wrapper,
-		});
+		const { result } = renderHook(
+			() => {
+				useInitDatetimeTestCache();
+				return useFetchRecurrences(defaultQueryOptions);
+			},
+			{
+				wrapper,
+			}
+		);
 
 		expect(result.current.error).toBeUndefined();
 		expect(result.current.data).toBeUndefined();
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		// Data is already written above
 		expect(result.current.data).toBeDefined();
@@ -80,19 +115,32 @@ describe('useFetchRecurrences()', () => {
 
 	it('checks for the entries in response data', async () => {
 		/* Set query options and the wrapper */
-		const {
-			result: { current: request },
-		} = renderHook(() => useRecurrenceQueryOptions(), {
-			wrapper: ApolloMockedProvider(),
-		});
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
+		const { result: queryResult } = renderHook(
+			() => {
+				useInitDatetimeTestCache();
+				return useRecurrenceQueryOptions();
+			},
+			{
+				wrapper: ApolloMockedProvider(),
+			}
+		);
+
+		await actWait();
+
+		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request: queryResult.current })));
 		/* Set query options and the wrapper */
 
-		const { result, waitForNextUpdate } = renderHook(() => useFetchRecurrences(), {
-			wrapper,
-		});
+		const { result } = renderHook(
+			() => {
+				useInitDatetimeTestCache();
+				return useFetchRecurrences(defaultQueryOptions);
+			},
+			{
+				wrapper,
+			}
+		);
 
-		await waitForNextUpdate({ timeout }); // wait for response
+		await actWait();
 
 		expect(result.current.data).toHaveProperty('espressoRecurrences');
 

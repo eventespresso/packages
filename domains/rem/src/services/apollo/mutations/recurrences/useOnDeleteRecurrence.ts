@@ -12,7 +12,7 @@ const useOnDeleteRecurrence = (): RecurrenceMutationCallbackFn => {
 	const onDeleteRecurrence = useCallback(
 		({ cache, recurrences, recurrence }: RecurrenceMutationCallbackFnArgs): void => {
 			const action = 'remove';
-			if (recurrence.id) {
+			if (recurrence?.id) {
 				const { id: recurrenceId } = recurrence;
 
 				// Remove the recurrence from all datetime relations

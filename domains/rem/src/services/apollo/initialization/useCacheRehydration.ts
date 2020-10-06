@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react';
+import { assocPath } from 'ramda';
 
-import useCacheRehydrationData from './useCacheRehydrationData';
 import { useRelations } from '@eventespresso/services';
-import { useUpdateRecurrenceList } from '../../../hooks';
-import { DEFAULT_RECURRENCE_LIST_DATA, useRecurrenceQueryOptions } from '../queries';
 import { getGuids } from '@eventespresso/predicates';
 import { useDatetimes } from '@eventespresso/edtr-services';
-import { assocPath } from 'ramda';
+
+import useCacheRehydrationData from './useCacheRehydrationData';
+import { useUpdateRecurrenceList } from '../../../hooks';
+import { DEFAULT_RECURRENCE_LIST_DATA, useRecurrenceQueryOptions } from '../queries';
 
 /**
  * Returns true if the cache has been rehydrated, false otherwise
@@ -25,7 +26,7 @@ const useCacheRehydration = (): boolean => {
 	const initialized = useRef(false);
 
 	useEffect(() => {
-		// Make aure REM rehydration happens after core
+		// Make sure REM rehydration happens after core
 		if (initialized.current || !isInitialized()) {
 			return;
 		}

@@ -1,10 +1,11 @@
 import { sortBy, identity } from 'ramda';
 
-import { GET_RECURRENCES } from '../recurrences';
-import { RecurrencesList, RecurrencesQueryArgs, CacheQueryOptions, EntityId } from '@eventespresso/data';
-import { RecurrenceEdge } from '../../types';
-import { useMemoStringify } from '@eventespresso/hooks';
+import type { RecurrencesList, RecurrencesQueryArgs, CacheQueryOptions, EntityId } from '@eventespresso/data';
 import { useDatetimeIds } from '@eventespresso/edtr-services';
+import { useMemoStringify } from '@eventespresso/hooks';
+
+import type { RecurrenceEdge } from '../../types';
+import { GET_RECURRENCES } from '../recurrences';
 
 export type RecurrencesQueryOptions = CacheQueryOptions<RecurrencesList<RecurrenceEdge>, RecurrencesQueryArgs>;
 

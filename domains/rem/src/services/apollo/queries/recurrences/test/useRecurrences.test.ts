@@ -4,27 +4,27 @@ import useRecurrences from '../useRecurrences';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 import { nodes } from './data';
 import useInitRecurrenceTestCache from './useInitRecurrenceTestCache';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useRecurrences()', () => {
 	const wrapper = ApolloMockedProvider();
 	it('checks for the empty recurrences', async () => {
-		const { result, waitForNextUpdate } = renderHook(() => useRecurrences(), { wrapper });
+		const { result } = renderHook(() => useRecurrences(), { wrapper });
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		expect(result.current.length).toBe(0);
 	});
 
 	it('checks for the updated recurrences cache', async () => {
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitRecurrenceTestCache();
 				return useRecurrences();
 			},
 			{ wrapper }
 		);
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const { current: cachedRecurrences } = result;
 

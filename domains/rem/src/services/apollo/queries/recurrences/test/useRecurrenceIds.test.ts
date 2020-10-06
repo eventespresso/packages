@@ -5,26 +5,27 @@ import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/t
 import { nodes } from './data';
 import useInitRecurrenceTestCache from './useInitRecurrenceTestCache';
 import { getGuids } from '@eventespresso/predicates';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useRecurrenceIds()', () => {
 	const wrapper = ApolloMockedProvider();
 	it('checks for the empty recurrence IDs', async () => {
-		const { result, waitForValueToChange } = renderHook(() => useRecurrenceIds(), { wrapper });
+		const { result } = renderHook(() => useRecurrenceIds(), { wrapper });
 
-		await waitForValueToChange(() => result.current, { timeout });
+		await actWait();
+
 		expect(result.current.length).toBe(0);
 	});
 
 	it('checks for recurrence IDs after the cache is updated', async () => {
-		const { result, waitForValueToChange } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitRecurrenceTestCache();
 				return useRecurrenceIds();
 			},
 			{ wrapper }
 		);
-		await waitForValueToChange(() => result.current, { timeout });
+		await actWait();
 
 		const { current: cachedRecurrenceIds } = result;
 		const passedRecurrenceIds = getGuids(nodes);

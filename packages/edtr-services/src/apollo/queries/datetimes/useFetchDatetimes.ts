@@ -4,7 +4,8 @@ import { __ } from '@eventespresso/i18n';
 import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import useDatetimeQueryOptions from './useDatetimeQueryOptions';
-import { FetchQueryResult, QueryHookOptions, useQuery } from '@eventespresso/data';
+import { useQuery } from '@eventespresso/data';
+import type { FetchQueryResult, QueryHookOptions } from '@eventespresso/data';
 import type { DatetimesList } from '../../types';
 
 const useFetchDatetimes = (): FetchQueryResult<DatetimesList> => {

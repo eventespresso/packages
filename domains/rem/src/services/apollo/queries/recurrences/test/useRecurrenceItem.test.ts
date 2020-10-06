@@ -1,48 +1,45 @@
-import { renderHook, cleanup } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 
 import useRecurrenceItem from '../useRecurrenceItem';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 import { nodes } from './data';
 import useInitRecurrenceTestCache from './useInitRecurrenceTestCache';
-
-afterEach(() => {
-	cleanup();
-});
+import { actWait } from '@eventespresso/utils/src/test';
 
 describe('useRecurrenceItem', () => {
 	const wrapper = ApolloMockedProvider();
 	const existingRecurrence = nodes[0];
-	it('checks for non existent recurrence when the cache is empty', () => {
-		const { result, waitForValueToChange } = renderHook(() => useRecurrenceItem({ id: existingRecurrence.id }), {
+	it('checks for non existent recurrence when the cache is empty', async () => {
+		const { result } = renderHook(() => useRecurrenceItem({ id: existingRecurrence.id }), {
 			wrapper,
 		});
-		waitForValueToChange(() => result.current);
+		await actWait();
 
 		expect(result.current).toBe(undefined);
 	});
 
-	it('checks for non existent recurrence when the cache is NOT empty', () => {
-		const { result, waitForValueToChange } = renderHook(
+	it('checks for non existent recurrence when the cache is NOT empty', async () => {
+		const { result } = renderHook(
 			() => {
 				useInitRecurrenceTestCache();
 				return useRecurrenceItem({ id: 'fake-id' });
 			},
 			{ wrapper }
 		);
-		waitForValueToChange(() => result.current);
+		await actWait();
 
 		expect(result.current).toBe(undefined);
 	});
 
-	it('checks for an existent recurrence', () => {
-		const { result, waitForValueToChange } = renderHook(
+	it('checks for an existent recurrence', async () => {
+		const { result } = renderHook(
 			() => {
 				useInitRecurrenceTestCache();
 				return useRecurrenceItem({ id: existingRecurrence.id });
 			},
 			{ wrapper }
 		);
-		waitForValueToChange(() => result.current);
+		await actWait();
 
 		const recurrenceItem = result.current;
 

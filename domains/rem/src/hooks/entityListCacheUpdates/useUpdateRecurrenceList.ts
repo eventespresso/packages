@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
 
-import { RecurrencesList, useRecurrenceQueryOptions } from '../../services/apollo';
-import { CacheUpdaterFn, WriteQueryOptions } from '@eventespresso/data';
+import type { CacheUpdaterFn, WriteQueryOptions } from '@eventespresso/data';
 import { useUpdateEntityList } from '@eventespresso/edtr-services';
+
+import { useRecurrenceQueryOptions } from '../../services/apollo';
+import type { RecurrencesList } from '../../services/apollo';
 
 const useUpdateRecurrenceList = (
 	writeQueryOptions: WriteQueryOptions<RecurrencesList> = undefined

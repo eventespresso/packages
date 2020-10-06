@@ -8,7 +8,7 @@ const useOnUpdateRecurrence = (): RecurrenceMutationCallbackFn => {
 
 	const onUpdateRecurrence = useCallback(
 		({ recurrence, datetimeIds }: RecurrenceMutationCallbackFnArgs): void => {
-			if (recurrence.id && datetimeIds && datetimeIds.length) {
+			if (recurrence.id && datetimeIds?.length) {
 				const { id: recurrenceId } = recurrence;
 
 				// make sure to remove recurrence from
