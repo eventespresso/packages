@@ -1,7 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import type { withLabelProps } from './types';
+
+import { generateId } from '@eventespresso/utils';
 import { LabelPosition } from './types';
+import type { withLabelProps } from './types';
 import type { ForwardRefComponent } from '../types';
 import './style.scss';
 
@@ -13,7 +15,6 @@ const withLabel = <P extends withLabelProps>(
 
 	const WithLabel: React.FC<P & refProps> = ({
 		forwardedRef,
-		id,
 		label,
 		labelClassName,
 		labelPosition = LabelPosition.TOP_LEFT,
@@ -25,6 +26,8 @@ const withLabel = <P extends withLabelProps>(
 			label && 'ee-input-label__wrapper',
 			label && labelPosition && `ee-input-label__wrapper--${labelPosition}`
 		);
+
+		const id = props.id ? props.id : label && generateId(label);
 
 		return label ? (
 			<div className={className}>
