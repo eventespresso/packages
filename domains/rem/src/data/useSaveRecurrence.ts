@@ -13,17 +13,17 @@ const useSaveRecurrence = (): Callback => {
 
 	// Async to make sure that prices are handled before updating the recurrence.
 	return useCallback(
-		async ({ rRule, exRule, rDates, exDates, dateDetails: { duration } }) => {
+		async ({ rRule, exRule, rDates, exDates, dateDetails: { duration, unit } }) => {
 			const name = RRule.fromString(rRule).toText();
 
 			// prepare recurrence mutation input
 			const normalizedInput: CreateRecurrenceInput = {
+				name,
 				rRule,
 				exRule,
-				name,
 				rDates: JSON.stringify(rDates),
 				exDates: JSON.stringify(exDates),
-				dateDuration: duration,
+				dateDuration: `${duration}:${unit}`,
 			};
 
 			// create recurrence and wait for the promise to resolve

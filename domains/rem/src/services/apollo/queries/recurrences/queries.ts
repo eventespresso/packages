@@ -12,8 +12,6 @@ export const RECURRENCE_ATTRIBUTES: any = gql`
 		name
 		rDates
 		rRule
-		salesEndOffset
-		salesStartOffset
 	}
 `;
 

@@ -17,8 +17,6 @@ export const nodes: Recurrence[] = [
 		name: 'REC ABC',
 		rDates: 'klm',
 		rRule: 'nop',
-		salesEndOffset: 'qrs',
-		salesStartOffset: 'tuv',
 		__typename: 'EspressoRecurrence',
 	},
 	{
@@ -32,8 +30,6 @@ export const nodes: Recurrence[] = [
 		name: 'REC PQR',
 		rDates: 'klm2',
 		rRule: 'nop2',
-		salesEndOffset: 'qrs2',
-		salesStartOffset: 'tuv2',
 		__typename: 'EspressoRecurrence',
 	},
 	{
@@ -47,8 +43,6 @@ export const nodes: Recurrence[] = [
 		name: 'REC XYZ',
 		rDates: 'klm3',
 		rRule: 'nop3',
-		salesEndOffset: 'qrs3',
-		salesStartOffset: 'tuv3',
 		__typename: 'EspressoRecurrence',
 	},
 ];

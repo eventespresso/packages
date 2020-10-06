@@ -3,15 +3,13 @@ import type { Recurrence } from '../../types';
 
 export interface RecurrenceBaseInput {
 	datetimes?: Array<EntityId>;
-	dateDuration?: number;
+	dateDuration?: string;
 	exDates?: string;
 	exRule?: string;
 	gDates?: string;
 	name?: string;
 	rDates?: string;
 	rRule?: string;
-	salesEndOffset?: string;
-	salesStartOffset?: string;
 }
 
 export type CreateRecurrenceInput = RecurrenceBaseInput;

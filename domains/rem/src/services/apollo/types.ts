@@ -8,8 +8,6 @@ export interface Recurrence extends Entity {
 	rRule: string;
 	gDates: string;
 	name: string;
-	salesEndOffset: string;
-	salesStartOffset: string;
 }
 
 export interface RecurrenceItem {
