@@ -11,7 +11,7 @@ export const Modal: React.FC<ModalProps> = ({
 	footer,
 	footerClassName,
 	headerClassName,
-	isClosable = true,
+	isClosable,
 	isOpen,
 	scrollBehavior = 'inside',
 	title,

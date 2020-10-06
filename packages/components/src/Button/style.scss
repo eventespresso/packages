@@ -264,14 +264,14 @@
 		&.ee-btn--accent {
 			text-shadow: none !important;
 			&:not([disabled]) {
-				background: var(--ee-color-accent);
-				border-color: var(--ee-color-accent);
+				background: var(--ee-color-accent-high-contrast);
+				border-color: var(--ee-color-accent-high-contrast);
 				color: var(--ee-text-on-accent);
 			}
 
 			&:focus:not([disabled]) {
-				background: var(--ee-color-accent);
-				border-color: var(--ee-color-accent-high-contrast);
+				background: var(--ee-color-accent-super-high-contrast);
+				border-color: var(--ee-color-accent-super-high-contrast);
 
 				&.ee-btn--is-active {
 					border-color: var(--ee-color-accent-super-high-contrast);

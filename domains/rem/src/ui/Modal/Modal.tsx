@@ -15,7 +15,6 @@ const Modal: React.FC<BaseProps> = ({ isOpen, onClose, onSubmit }) => {
 			className='ee-rem-modal'
 			isOpen={isOpen}
 			onClose={onClose}
-			showAlertOnEscape={false}
 			title={__('Recurring Events Manager')}
 			withBorder
 		>

@@ -15,7 +15,7 @@ export const Modal: React.FC<ModalProps> = ({
 	closeOnOverlayClick,
 	destroyOnClose,
 	footerContent,
-	isClosable,
+	isClosable = true,
 	isOpen,
 	onClose,
 	scrollBehavior,

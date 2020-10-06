@@ -48,7 +48,13 @@ const withTooltip = <P extends withTooltipProps>(
 			);
 		} else {
 			toolTipped = (
-				<WrappedComponent {...(props as P)} ref={forwardedRef} tooltip={tooltip} tooltipProps={tooltipProps} />
+				<WrappedComponent
+					{...(props as P)}
+					aria-label={tooltip}
+					ref={forwardedRef}
+					tooltip={tooltip}
+					tooltipProps={tooltipProps}
+				/>
 			);
 		}
 

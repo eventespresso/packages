@@ -7,7 +7,7 @@ export interface ModalWithAlertProps extends ModalProps {
 	okBtnText?: string;
 	onCancel?: VoidFunction;
 	onSubmit?: VoidFunction;
-	showAlertOnEscape: boolean;
+	showAlertOnEscape?: boolean;
 }
 
 export interface ModalProps extends ModalAdapterProps {
