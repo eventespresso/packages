@@ -7,7 +7,6 @@ import type { SaveRecurrenceCallback } from './types';
 const useSaveRecurrence = (): SaveRecurrenceCallback => {
 	const { createEntity: createRecurrence } = useRecurrenceMutator();
 
-	// Async to make sure that prices are handled before updating the recurrence.
 	return useCallback(
 		async ({ rRule, exRule, rDates, exDates, dateDetails: { duration, unit } }) => {
 			const name = RRule.fromString(rRule).toText();
