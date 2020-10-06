@@ -34,7 +34,7 @@ const withLabel = <P extends withLabelProps>(
 				<label className='ee-input-label' htmlFor={id}>
 					{label}
 				</label>
-				<WrappedComponent {...(props as P)} id={id} label={label} ref={forwardedRef} />
+				<WrappedComponent {...(props as P)} aria-label={label} id={id} ref={forwardedRef} />
 			</div>
 		) : (
 			<WrappedComponent {...(props as P)} ref={forwardedRef} id={id} />
