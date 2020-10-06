@@ -1,5 +1,4 @@
 import { is } from 'ramda';
-import { v4 as uuidv4 } from 'uuid';
 
 export const camelToSnakeCase = (str: string): string => {
 	return str
@@ -9,7 +8,7 @@ export const camelToSnakeCase = (str: string): string => {
 };
 
 export const generateId = (str: string): string => {
-	return 'ee-' + str.replace(/\s+/g, '-').toLowerCase() + uuidv4();
+	return 'ee-' + str.replace(/\s+/g, '-').toLowerCase();
 };
 
 export const lcFirst = (str: string): string => {

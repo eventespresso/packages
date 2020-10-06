@@ -22,6 +22,7 @@ const DatesByMonthControl: React.FC<DatesByMonthControlProps> = React.memo(({ da
 
 	return (
 		<SelectInput
+			id='dates-by-month'
 			label={__('dates by month')}
 			onChangeValue={setDatesByMonth}
 			options={monthsListWithAllDates}

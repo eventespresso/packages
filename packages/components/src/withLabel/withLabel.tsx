@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { generateId } from '@eventespresso/utils';
 import { LabelPosition } from './types';
 import type { withLabelProps } from './types';
 import type { ForwardRefComponent } from '../types';
@@ -27,7 +26,7 @@ const withLabel = <P extends withLabelProps>(
 			label && labelPosition && `ee-input-label__wrapper--${labelPosition}`
 		);
 
-		const id = props.id ? props.id : label && generateId(label);
+		const id = props.id && 'ee-' + props.id;
 
 		return label ? (
 			<div className={className}>

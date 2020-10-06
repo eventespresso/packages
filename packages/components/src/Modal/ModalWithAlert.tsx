@@ -53,7 +53,7 @@ export const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 		<>
 			<Modal
 				{...props}
-				// closeOnEsc={!showAlertOnEscape}
+				closeOnEsc={!showAlertOnEscape}
 				cancelButtonProps={props.cancelButtonProps || cancelButtonProps}
 				submitButtonProps={props.submitButtonProps || submitButtonProps}
 			>
