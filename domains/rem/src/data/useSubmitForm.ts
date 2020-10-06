@@ -40,13 +40,11 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 		totalProgress && console.log('totalProgress', `${totalProgress}%`);
 	}, [totalProgress]);
 
-	useEffect(() => {
-		saveRecurrence(formState);
-	}, [formState, saveRecurrence]);
-
 	return useCallback(async () => {
 		// create shared tickets and collect their ids
 		const recurrenceId = await saveRecurrence(formState);
+
+		console.log({ recurrenceId });
 
 		// create shared tickets and collect their ids
 		const sharedTicketIds = await mutateTickets(sharedTickets, true);

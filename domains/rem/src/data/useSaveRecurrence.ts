@@ -1,38 +1,41 @@
 import { useCallback } from 'react';
-import { RRule, RRuleSet } from 'rrule';
+import { RRule } from 'rrule';
 
-// import { useTicketMutator } from '@eventespresso/edtr-services';
 import type { EntityId } from '@eventespresso/data';
 
+import { CreateRecurrenceInput, useRecurrenceMutator } from '../services/apollo';
 import type { FormState } from './types';
 
-type Callback = (formState: FormState) => EntityId; //  Promise<EntityId>;
+type Callback = (formState: FormState) => Promise<EntityId>;
 
 const useSaveRecurrence = (): Callback => {
-	// const { createEntity: createTicket } = useTicketMutator();
+	const { createEntity: createRecurrence } = useRecurrenceMutator();
 
-	// Async to make sure that prices are handled before updating the ticket.
+	// Async to make sure that prices are handled before updating the recurrence.
 	return useCallback(
-		/* async  */ ({ rRule, exRule, rDates, exDates, dateDetails }) => {
+		async ({ rRule, exRule, rDates, exDates, dateDetails: { duration } }) => {
 			const name = RRule.fromString(rRule).toText();
 
-			console.log({ name, rDates, exDates, duration: dateDetails?.duration, sOffset: dateDetails?.unit });
-
-			/* // prepare ticket mutation input
-			const normalizedTicketFields = {
-				...copyTicketFields(ticket, isTicketInputField),
-				price: parsedAmount(ticket.price || 0),
-				reverseCalculate: toBoolean(ticket.reverseCalculate),
+			// prepare recurrence mutation input
+			const normalizedInput: CreateRecurrenceInput = {
+				rRule,
+				exRule,
+				name,
+				rDates: JSON.stringify(rDates),
+				exDates: JSON.stringify(exDates),
+				dateDuration: duration,
 			};
 
-			// create ticket and wait for the promise to resolve
-			const result = await createTicket({ ...normalizedTicketFields, prices: relatedPriceIds });
+			// create recurrence and wait for the promise to resolve
+			const result = await createRecurrence(normalizedInput);
 
-			const ticketId = result?.data?.createEspressoTicket?.espressoTicket?.id; */
+			const recurrenceId = result?.data?.createEspressoRecurrence?.espressoRecurrence?.id;
 
-			return '';
+			console.log({ result, recurrenceId });
+
+			return recurrenceId;
 		},
-		[]
+		[createRecurrence]
 	);
 };
 
