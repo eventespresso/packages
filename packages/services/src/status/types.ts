@@ -3,6 +3,7 @@ export enum TypeName {
 	tickets = 'tickets',
 	priceTypes = 'priceTypes',
 	prices = 'prices',
+	recurrence = 'recurrence',
 }
 
 export type StatusGetter = (entity: TypeName) => boolean;

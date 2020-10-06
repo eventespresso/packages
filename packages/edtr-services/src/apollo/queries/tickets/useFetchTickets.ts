@@ -1,11 +1,11 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo, useCallback } from 'react';
 import { useQuery } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
 
 import { useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import useTicketQueryOptions from './useTicketQueryOptions';
-import type { FetchQueryResult } from '@eventespresso/data';
+import type { FetchQueryResult, QueryHookOptions } from '@eventespresso/data';
 import type { TicketsList } from '../../types';
 
 const useFetchTickets = (skipFetch: boolean = null): FetchQueryResult<TicketsList> => {
@@ -20,22 +20,27 @@ const useFetchTickets = (skipFetch: boolean = null): FetchQueryResult<TicketsLis
 	const toaster = useSystemNotifications();
 	const toastId = useRef(null);
 
-	const dismissLoading: VoidFunction = () => toaster.dismiss(toastId.current);
+	const dismissLoading = useCallback(() => toaster.dismiss(toastId.current), [toaster]);
 
-	const { loading, ...result } = useQuery<TicketsList>(query, {
-		...options,
-		skip,
-		onCompleted: (): void => {
-			setIsLoaded(TypeName.tickets, true);
-			dismissLoading();
-			toaster.success({ message: __('tickets initialized') });
-		},
-		onError: (error): void => {
-			setIsError(TypeName.tickets, true);
-			dismissLoading();
-			toaster.error({ message: error.message });
-		},
-	});
+	const queryOptions = useMemo<QueryHookOptions>(
+		() => ({
+			...options,
+			skip,
+			onCompleted: (): void => {
+				setIsLoaded(TypeName.tickets, true);
+				dismissLoading();
+				toaster.success({ message: __('tickets initialized') });
+			},
+			onError: (error): void => {
+				setIsError(TypeName.tickets, true);
+				dismissLoading();
+				toaster.error({ message: error.message });
+			},
+		}),
+		[dismissLoading, options, setIsError, setIsLoaded, skip, toaster]
+	);
+
+	const { loading, ...result } = useQuery<TicketsList>(query, queryOptions);
 
 	useEffect(() => {
 		if (loading) {

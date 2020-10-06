@@ -6,9 +6,9 @@ import type { TicketEdge } from '../../';
 import useDatetimeIds from '../datetimes/useDatetimeIds';
 import { useMemoStringify } from '@eventespresso/hooks';
 
-type DatetimesQueryOptions = CacheQueryOptions<TicketsList<TicketEdge>, TicketsQueryArgs>;
+type TicketsQueryOptions = CacheQueryOptions<TicketsList<TicketEdge>, TicketsQueryArgs>;
 
-const useTicketQueryOptions = (datetimeIn: EntityId[] = []): DatetimesQueryOptions => {
+const useTicketQueryOptions = (datetimeIn: EntityId[] = []): TicketsQueryOptions => {
 	const datetimeIds = useDatetimeIds();
 
 	let newDatetimeIn = datetimeIn.length ? datetimeIn : datetimeIds;
@@ -17,7 +17,7 @@ const useTicketQueryOptions = (datetimeIn: EntityId[] = []): DatetimesQueryOptio
 	// thus changing the key used to access Apollo Cache
 	newDatetimeIn = sortBy(identity, newDatetimeIn);
 
-	const options: DatetimesQueryOptions = {
+	const options: TicketsQueryOptions = {
 		query: GET_TICKETS,
 		variables: {
 			where: {

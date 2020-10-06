@@ -1,5 +1,5 @@
-import { useEffect, useRef, useMemo } from 'react';
-import { useQuery } from '@eventespresso/data';
+import { useEffect, useRef, useMemo, useCallback } from 'react';
+import { QueryHookOptions, useQuery } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
 
 import { useStatus, TypeName } from '@eventespresso/services';
@@ -24,22 +24,27 @@ const useFetchPrices = (skipFetch: boolean = null): Partial<FetchQueryResult<Pri
 	const toaster = useSystemNotifications();
 	const toastId = useRef(null);
 
-	const dismissLoading = (): void => toaster.dismiss(toastId.current);
+	const dismissLoading = useCallback(() => toaster.dismiss(toastId.current), [toaster]);
 
-	const { data, error, loading, startPolling, stopPolling } = useQuery<PricesList>(query, {
-		...options,
-		skip,
-		onCompleted: (): void => {
-			setIsLoaded(TypeName.prices, true);
-			dismissLoading();
-			toaster.success({ message: __('prices initialized') });
-		},
-		onError: (error): void => {
-			setIsError(TypeName.prices, true);
-			dismissLoading();
-			toaster.error({ message: error.message });
-		},
-	});
+	const queryOptions = useMemo<QueryHookOptions>(
+		() => ({
+			...options,
+			skip,
+			onCompleted: (): void => {
+				setIsLoaded(TypeName.prices, true);
+				dismissLoading();
+				toaster.success({ message: __('prices initialized') });
+			},
+			onError: (error): void => {
+				setIsError(TypeName.prices, true);
+				dismissLoading();
+				toaster.error({ message: error.message });
+			},
+		}),
+		[dismissLoading, options, setIsError, setIsLoaded, skip, toaster]
+	);
+
+	const { data, error, loading, startPolling, stopPolling } = useQuery<PricesList>(query, queryOptions);
 
 	useEffect(() => {
 		// if poll interval has changed

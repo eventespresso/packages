@@ -1,5 +1,5 @@
-import { useEffect, useRef, useMemo } from 'react';
-import { useQuery } from '@eventespresso/data';
+import { useEffect, useRef, useMemo, useCallback } from 'react';
+import { QueryHookOptions, useQuery } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
 
 import usePriceTypeQueryOptions from './usePriceTypeQueryOptions';
@@ -15,21 +15,26 @@ const useFetchPriceTypes = (): FetchQueryResult<PriceTypesList> => {
 	const toaster = useSystemNotifications();
 	const toastId = useRef(null);
 
-	const dismissLoading = (): void => toaster.dismiss(toastId.current);
+	const dismissLoading = useCallback(() => toaster.dismiss(toastId.current), [toaster]);
 
-	const { loading, ...result } = useQuery<PriceTypesList>(query, {
-		...options,
-		onCompleted: (): void => {
-			setIsLoaded(TypeName.priceTypes, true);
-			dismissLoading();
-			toaster.success({ message: __('price types initialized') });
-		},
-		onError: (error): void => {
-			setIsError(TypeName.priceTypes, true);
-			dismissLoading();
-			toaster.error({ message: error.message });
-		},
-	});
+	const queryOptions = useMemo<QueryHookOptions>(
+		() => ({
+			...options,
+			onCompleted: (): void => {
+				setIsLoaded(TypeName.priceTypes, true);
+				dismissLoading();
+				toaster.success({ message: __('price types initialized') });
+			},
+			onError: (error): void => {
+				setIsError(TypeName.priceTypes, true);
+				dismissLoading();
+				toaster.error({ message: error.message });
+			},
+		}),
+		[dismissLoading, options, setIsError, setIsLoaded, toaster]
+	);
+
+	const { loading, ...result } = useQuery<PriceTypesList>(query, queryOptions);
 
 	useEffect(() => {
 		if (loading) {
