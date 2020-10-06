@@ -31,8 +31,6 @@ const useSaveRecurrence = (): Callback => {
 
 			const recurrenceId = result?.data?.createEspressoRecurrence?.espressoRecurrence?.id;
 
-			console.log({ result, recurrenceId });
-
 			return recurrenceId;
 		},
 		[createRecurrence]
