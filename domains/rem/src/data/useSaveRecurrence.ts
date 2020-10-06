@@ -1,14 +1,10 @@
 import { useCallback } from 'react';
 import { RRule } from 'rrule';
 
-import type { EntityId } from '@eventespresso/data';
-
 import { CreateRecurrenceInput, useRecurrenceMutator } from '../services/apollo';
-import type { FormState } from './types';
+import type { SaveRecurrenceCallback } from './types';
 
-type Callback = (formState: FormState) => Promise<EntityId>;
-
-const useSaveRecurrence = (): Callback => {
+const useSaveRecurrence = (): SaveRecurrenceCallback => {
 	const { createEntity: createRecurrence } = useRecurrenceMutator();
 
 	// Async to make sure that prices are handled before updating the recurrence.

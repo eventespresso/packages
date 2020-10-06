@@ -1,12 +1,11 @@
 import type { Entity, EntityEdge, RecurrencesList as RecurrenceList } from '@eventespresso/data';
 
 export interface Recurrence extends Entity {
-	dateDuration: number;
+	dateDuration: string;
 	exDates: string;
 	exRule: string;
 	rDates: string;
 	rRule: string;
-	gDates: string;
 	name: string;
 }
 

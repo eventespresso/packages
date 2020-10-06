@@ -71,3 +71,5 @@ export interface FormStateManager extends FormState {
 export type FormStateReducer = Reducer<FormState, DataAction>;
 
 export type StateInitializer = (arg: FormState) => ReducerState<FormStateReducer>;
+
+export type SaveRecurrenceCallback = (formState: FormState) => Promise<EntityId>;

@@ -8,7 +8,6 @@ export const RECURRENCE_ATTRIBUTES: any = gql`
 		dateDuration
 		exDates
 		exRule
-		gDates
 		name
 		rDates
 		rRule
