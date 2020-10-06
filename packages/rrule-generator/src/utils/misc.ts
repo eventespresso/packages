@@ -1,6 +1,8 @@
 import { useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { setSeconds } from 'date-fns';
 
+import { NOW, setTimeToNoon } from '@eventespresso/dates';
 import { RRuleStateManager as RSM, RRuleState } from '../state';
 import { OnChangeInput } from '../components/types';
 import { DEFAULT_CONFIG } from '../context';
@@ -25,10 +27,12 @@ export const useIntervalUpdater = (
 };
 
 export const getDefaultRRuleState = (config = DEFAULT_CONFIG): RRuleState => {
+	// if time picker is enabled, set the seconds to 0, otherwise set the time to noon
+	const date = config?.enableTimepicker ? setSeconds(NOW, 0) : setTimeToNoon(NOW);
 	return {
 		hash: uuidv4(),
 		start: {
-			date: new Date(),
+			date,
 		},
 		repeat: {
 			frequency: config?.frequencies?.[0] || 'YEARLY',
@@ -77,7 +81,7 @@ export const getDefaultRRuleState = (config = DEFAULT_CONFIG): RRuleState => {
 		end: {
 			mode: config?.endModes?.[0] || 'NEVER',
 			after: 1,
-			date: new Date(),
+			date,
 		},
 	};
 };
