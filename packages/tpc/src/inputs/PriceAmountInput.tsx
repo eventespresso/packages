@@ -10,7 +10,7 @@ import { useDataState } from '../data';
 
 import './styles.scss';
 
-const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
+const PriceAmountInput: React.FC<PriceModifierProps> = ({ price, ...props }) => {
 	const { reverseCalculate } = useDataState();
 	const { getValue, setValue } = usePriceAmount({ field: 'amount', price });
 
@@ -31,6 +31,7 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 	return (
 		<MoneyField className={moneyFieldClassName} isPercent={price.isPercent}>
 			<BaseNumberInputField
+				aria-label={__('price type')}
 				className={className}
 				component='input'
 				// because it can affect other tickets that have this price

@@ -1,12 +1,13 @@
 import React from 'react';
-import { __ } from '@eventespresso/i18n';
 
-import type { PriceModifierProps } from '../types';
+import { __ } from '@eventespresso/i18n';
 import { PriceField } from '../fields';
+import type { PriceModifierProps } from '../types';
 
 const PriceNameInput: React.FC<PriceModifierProps> = ({ price }) => {
 	return (
 		<PriceField
+			aria-label={__('price name')}
 			component={'input'}
 			// default prices cannot be changed in TPC
 			disabled={price.isDefault}

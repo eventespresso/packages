@@ -30,6 +30,8 @@ export interface UsePrice {
 	setValue: (value: FieldValue) => void;
 }
 
+export interface UsePriceAmount extends Pick<PriceFieldProps, 'field' | 'price'> {}
+
 export interface PriceFieldProps
 	extends PriceModifierProps,
 		Omit<BaseFieldProps<number | string>, 'getValue' | 'setValue' | 'name'> {

@@ -1,9 +1,10 @@
 import React from 'react';
 
-import type { PriceModifierProps } from '../types';
-import { PriceField } from '../fields';
+import { __ } from '@eventespresso/i18n';
 import { usePriceTypes } from '@eventespresso/edtr-services';
 import { getPriceModifiers } from '@eventespresso/predicates';
+import { PriceField } from '../fields';
+import type { PriceModifierProps } from '../types';
 
 const PriceTypeInput: React.FC<PriceModifierProps> = ({ price }) => {
 	const priceTypes = usePriceTypes();
@@ -12,6 +13,7 @@ const PriceTypeInput: React.FC<PriceModifierProps> = ({ price }) => {
 
 	return (
 		<PriceField
+			aria-label={__('price type')}
 			component={'select'}
 			// price type cannot be changed for base/default price
 			disabled={price.isBasePrice || price.isDefault}

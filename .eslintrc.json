@@ -41,7 +41,7 @@
 		"jest/valid-describe": "off",
 		"no-case-declarations": "warn",
 		"no-prototype-builtins": "off",
-		"no-unused-vars": "error",
+		"no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
 		"react-hooks/exhaustive-deps": "error",
 		"react-hooks/rules-of-hooks": "error",
 		"react/display-name": "off",

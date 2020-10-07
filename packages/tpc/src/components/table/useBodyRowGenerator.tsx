@@ -24,7 +24,7 @@ const useBodyRowGenerator = (): BodyRowGenerator => {
 				key: 'id',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__price-id ee-number-column',
-				value: <PriceIdInput aria-label={__('price id')} price={price} />,
+				value: <PriceIdInput price={price} />,
 			},
 			{
 				key: 'type',

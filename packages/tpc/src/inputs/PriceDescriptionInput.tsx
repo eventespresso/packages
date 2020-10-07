@@ -7,6 +7,7 @@ import { PriceField } from '../fields';
 const PriceDescriptionInput: React.FC<PriceModifierProps> = ({ price }) => {
 	return (
 		<PriceField
+			aria-label={__('price description')}
 			component={'input'}
 			// default prices cannot be changed in TPC
 			disabled={price.isDefault}
