@@ -1,12 +1,10 @@
 import React from 'react';
-import { omit } from 'ramda';
 
+import withoutMeta from './withoutMeta';
 import type { FieldRendererProps } from '../types';
 
 const Hidden: React.FC<FieldRendererProps> = ({ input, ...props }) => {
-	const propsWithoutMeta = omit(['meta'], props);
-
-	return <input {...input} {...propsWithoutMeta} type='hidden' />;
+	return <input {...input} {...props} type='hidden' />;
 };
 
-export default Hidden;
+export default withoutMeta(Hidden);

@@ -1,7 +1,7 @@
 import React from 'react';
-import { omit } from 'ramda';
 
 import { Radio, RadioGroup } from '@eventespresso/adapters';
+import withoutMeta from './withoutMeta';
 import type { FieldRendererProps } from '../types';
 
 const RadioField: React.FC<FieldRendererProps> = ({ input, options, ...props }) => {
@@ -12,13 +12,12 @@ const RadioField: React.FC<FieldRendererProps> = ({ input, options, ...props }) 
 			</Radio>
 		);
 	});
-	const propsWithoutMeta = omit(['meta'], props);
 
 	return (
-		<RadioGroup {...input} {...propsWithoutMeta}>
+		<RadioGroup {...input} {...props}>
 			{children}
 		</RadioGroup>
 	);
 };
 
-export default RadioField;
+export default withoutMeta(RadioField);

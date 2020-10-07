@@ -1,7 +1,7 @@
 import React from 'react';
-import { omit } from 'ramda';
 
 import { Checkbox, CheckboxGroup } from '@eventespresso/adapters';
+import withoutMeta from './withoutMeta';
 import type { FieldRendererProps } from '../types';
 
 const MultiCheck: React.FC<FieldRendererProps> = ({ input, options, ...props }) => {
@@ -13,15 +13,13 @@ const MultiCheck: React.FC<FieldRendererProps> = ({ input, options, ...props }) 
 		);
 	});
 
-	const propsWithoutMeta = omit(['meta'], props);
-
 	const value = input.value || [];
 
 	return (
-		<CheckboxGroup {...input} {...propsWithoutMeta} value={value}>
+		<CheckboxGroup {...input} {...props} value={value}>
 			{children}
 		</CheckboxGroup>
 	);
 };
 
-export default MultiCheck;
+export default withoutMeta(MultiCheck);

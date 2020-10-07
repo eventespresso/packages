@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import { omit } from 'ramda';
 
 import { TimePicker as TimePickerAdapter } from '@eventespresso/dates';
-import type { FieldRendererProps } from '../types';
+import withoutMeta from './withoutMeta';
 import { useFormConfig } from '../hooks';
+import type { FieldRendererProps } from '../types';
 
 const TimePicker: React.FC<FieldRendererProps> = ({
 	className,
@@ -14,7 +14,6 @@ const TimePicker: React.FC<FieldRendererProps> = ({
 	const { locale, timeFormat } = useFormConfig();
 
 	const classname = classNames(className, 'ee-time-picker', 'ee-calendar-datetime-picker', 'ee-input-base-wrapper');
-	const propsWithoutMeta = omit(['meta'], props);
 
 	return (
 		<div className={classname}>
@@ -23,11 +22,11 @@ const TimePicker: React.FC<FieldRendererProps> = ({
 				locale={locale}
 				timeFormat={timeFormat}
 				value={value}
-				{...propsWithoutMeta}
+				{...props}
 				onChange={onInputChange}
 			/>
 		</div>
 	);
 };
 
-export default TimePicker;
+export default withoutMeta(TimePicker);

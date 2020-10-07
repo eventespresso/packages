@@ -53,3 +53,5 @@ export * from './TabbableText';
 export * from './TimezoneTimeInfo';
 export * from './withLabel';
 export * from './withTooltip';
+
+export * from './types';
