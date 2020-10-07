@@ -9,13 +9,15 @@ import type {
 	EntityFilterStateManager,
 	EntityFilterStateReducer,
 } from '../';
+import type { EntityId } from '@eventespresso/data';
 
 export interface DatetimesFilterState extends EntityFilterState {
 	sales: DatetimeSales;
 	status: DatetimeStatus;
+	recurrence: EntityId;
 }
 
-export type DatetimesFilterActionType = 'SET_SALES' | 'SET_STATUS' | EntityFilterActionType;
+export type DatetimesFilterActionType = 'SET_SALES' | 'SET_STATUS' | 'SET_RECURRENCE' | EntityFilterActionType;
 
 export interface DatetimesFilterAction
 	extends Partial<DatetimesFilterState>,
@@ -27,6 +29,7 @@ export interface DatetimesFilterStateManager
 		DatetimesFilterState {
 	setSales: (sales: DatetimeSales) => void;
 	setStatus: (status: DatetimeStatus) => void;
+	setRecurrence: (recurrence: EntityId) => void;
 }
 
 export type DatetimesFilterStateReducer = EntityFilterStateReducer<DatetimesFilterState, DatetimesFilterAction>;

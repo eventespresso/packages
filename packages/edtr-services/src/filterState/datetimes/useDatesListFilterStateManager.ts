@@ -10,12 +10,16 @@ import { datesList } from '../../constants';
 import reducer from './reducer';
 
 type FSM = DatetimesFilterStateManager;
+type DFS = DatetimesFilterState;
 
-const initialState: DatetimesFilterState = {
+const initialState: DFS = {
 	displayStartOrEndDate: DisplayStartOrEndDate.start,
 	sales: DatetimeSales.all,
 	status: DatetimeStatus.activeUpcoming,
+	recurrence: '',
 };
+
+type ResetPageNumber = <K extends keyof DFS>(filter: K, value: DFS[K]) => void;
 
 const useDatesListFilterStateManager = (): FSM => {
 	const [state, dispatch] = useSessionStorageReducer('dates-list-filter-state', reducer, initialState);
@@ -24,9 +28,9 @@ const useDatesListFilterStateManager = (): FSM => {
 
 	const { setPageNumber } = entityFilterState;
 
-	const resetPageNumber = useCallback(
-		(filter: DatetimeSales | DatetimeStatus): void => {
-			if (filter !== state[filter]) {
+	const resetPageNumber = useCallback<ResetPageNumber>(
+		(filter, value) => {
+			if (value !== state[filter]) {
 				setPageNumber(1);
 			}
 		},
@@ -45,7 +49,7 @@ const useDatesListFilterStateManager = (): FSM => {
 
 	const setSales: FSM['setSales'] = useCallback(
 		(sales) => {
-			resetPageNumber(sales);
+			resetPageNumber('sales', sales);
 
 			dispatch({
 				type: 'SET_SALES',
@@ -57,11 +61,23 @@ const useDatesListFilterStateManager = (): FSM => {
 
 	const setStatus: FSM['setStatus'] = useCallback(
 		(status) => {
-			resetPageNumber(status);
+			resetPageNumber('status', status);
 
 			dispatch({
 				type: 'SET_STATUS',
 				status,
+			});
+		},
+		[dispatch, resetPageNumber]
+	);
+
+	const setRecurrence: FSM['setRecurrence'] = useCallback(
+		(recurrence) => {
+			resetPageNumber('recurrence', recurrence);
+
+			dispatch({
+				type: 'SET_RECURRENCE',
+				recurrence,
 			});
 		},
 		[dispatch, resetPageNumber]
@@ -74,8 +90,9 @@ const useDatesListFilterStateManager = (): FSM => {
 			setDisplayStartOrEndDate,
 			setSales,
 			setStatus,
+			setRecurrence,
 		}),
-		[state, setStatus, setSales, setDisplayStartOrEndDate, entityFilterState]
+		[state, entityFilterState, setDisplayStartOrEndDate, setSales, setStatus, setRecurrence]
 	);
 };
 
