@@ -10,7 +10,7 @@ import { useDataState } from '../data';
 
 import './styles.scss';
 
-const PriceAmountInput: React.FC<PriceModifierProps> = ({ price, ...props }) => {
+const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 	const { reverseCalculate } = useDataState();
 	const { getValue, setValue } = usePriceAmount({ field: 'amount', price });
 
