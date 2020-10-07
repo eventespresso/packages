@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 
+import { __ } from '@eventespresso/i18n';
 import { BodyRow } from '@eventespresso/components';
 import PriceAmountInput from '../../inputs/PriceAmountInput';
 import PriceDescriptionInput from '../../inputs/PriceDescriptionInput';
@@ -23,7 +24,7 @@ const useBodyRowGenerator = (): BodyRowGenerator => {
 				key: 'id',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__price-id ee-number-column',
-				value: <PriceIdInput price={price} />,
+				value: <PriceIdInput aria-label={__('price id')} price={price} />,
 			},
 			{
 				key: 'type',

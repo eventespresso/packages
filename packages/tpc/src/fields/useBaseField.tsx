@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import type { BaseFieldProps, FieldValue, InputProps } from './types';
+import type { FieldValue, InputProps, UseBaseField } from './types';
 
-const defaultFormat: BaseFieldProps['format'] = (value, name) => (value === undefined ? '' : value);
-const defaultParse: BaseFieldProps['parse'] = (value, name) => (value === '' ? undefined : value);
+const defaultFormat: UseBaseField['format'] = (value, name) => (value === undefined ? '' : value);
+const defaultParse: UseBaseField['parse'] = (value, name) => (value === '' ? undefined : value);
 
 type BaseField = {
 	handlers: InputProps;
@@ -18,7 +18,7 @@ const useBaseField = ({
 	getValue,
 	setValue,
 	value,
-}: BaseFieldProps): BaseField => {
+}: UseBaseField): BaseField => {
 	let fieldValue = (value || getValue()) as FieldValue;
 
 	if (formatOnBlur) {
