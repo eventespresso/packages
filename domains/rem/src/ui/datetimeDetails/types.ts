@@ -6,6 +6,7 @@ export interface DatetimeDetailsProps {
 }
 
 export interface DateFormShape extends UpdateDatetimeInput {
+	startTime?: Date;
 	duration?: number;
 	unit?: IntervalType;
 }

@@ -1,8 +1,8 @@
 import { pick } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 
-import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/dates';
-import { ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
+import { intervalsToOptions, DATE_INTERVALS, NOW, setTimeToNoon } from '@eventespresso/dates';
+import { Calendar, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import type { EspressoFormProps } from '@eventespresso/form';
 import { Datetime } from '@eventespresso/edtr-services';
 import { validate } from './formValidation';
@@ -16,6 +16,7 @@ type DateFormConfig = EspressoFormProps<DateFormShape>;
 const onSubmit = () => null;
 
 const DATE_DEFAULTS: DateFormShape = {
+	startTime: setTimeToNoon(NOW),
 	unit: 'days',
 	duration: 1,
 };
@@ -58,6 +59,18 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 							name: 'description',
 							label: __('Description'),
 							fieldType: 'rich-text-editor',
+						},
+					],
+				},
+				{
+					name: 'time',
+					icon: Calendar,
+					title: __('Time'),
+					fields: [
+						{
+							name: 'startTime',
+							label: __('Start Time'),
+							fieldType: 'timepicker',
 						},
 					],
 				},
