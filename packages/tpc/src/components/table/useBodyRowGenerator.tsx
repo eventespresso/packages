@@ -1,14 +1,13 @@
 import React, { useCallback } from 'react';
 
-import { __ } from '@eventespresso/i18n';
-import { BodyRow } from '@eventespresso/components';
 import PriceAmountInput from '../../inputs/PriceAmountInput';
 import PriceDescriptionInput from '../../inputs/PriceDescriptionInput';
 import PriceIdInput from '../../inputs/PriceIdInput';
 import PriceNameInput from '../../inputs/PriceNameInput';
 import PriceModifierActions from '../../buttons/PriceModifierActions';
 import PriceTypeInput from '../../inputs/PriceTypeInput';
-import { TpcPriceModifier } from '../../types';
+import type { TpcPriceModifier } from '../../types';
+import type { BodyRow } from '@eventespresso/components';
 
 type Props = {
 	index: number;
