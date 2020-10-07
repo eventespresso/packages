@@ -18,6 +18,7 @@ export interface Cell {
 	id?: string;
 	className?: string;
 	render?: (props: CellRender) => JSX.Element;
+	scope?: 'col' | 'row';
 }
 
 interface CellRender {
