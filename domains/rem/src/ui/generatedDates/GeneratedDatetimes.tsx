@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+
+import { setTimeFromDate } from '@eventespresso/dates';
 
 import GeneratedDatetime from './GeneratedDatetime';
-
 import { GeneratedDatetimesProps } from './types';
 import { useFormState } from '../../data';
 
 const GeneratedDatetimes: React.FC<GeneratedDatetimesProps> = ({ datetimes }) => {
-	const { addExDate, removeRDate, removeExDate } = useFormState();
+	const { addExDate, removeRDate, removeExDate, dateDetails } = useFormState();
+
+	const setStartTime = useMemo(() => setTimeFromDate(dateDetails?.startTime), [dateDetails?.startTime]);
 
 	return (
 		<ul className={'ee-generated-datetime__list'}>
@@ -19,7 +22,7 @@ const GeneratedDatetimes: React.FC<GeneratedDatetimesProps> = ({ datetimes }) =>
 
 				return (
 					<GeneratedDatetime
-						date={date}
+						date={setStartTime(date)}
 						key={ISOStr}
 						ISOStr={ISOStr}
 						number={index + 1}

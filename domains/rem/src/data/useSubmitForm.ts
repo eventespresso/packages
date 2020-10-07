@@ -2,14 +2,16 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { last } from 'ramda';
 
 import { copyDatetimeFields, isDatetimeInputField, sortDates } from '@eventespresso/predicates';
-import { getSharedTickets, getNonSharedTickets, computeDatetimeEndDate } from '../utils';
-import { useSiteDateToUtcISO } from '@eventespresso/services';
-import type { GeneratedDate } from '../ui/generatedDates';
-import type { FormState } from './types';
 import { useDatetimeMutator, useDatetimes } from '@eventespresso/edtr-services';
-import useMutateTickets from './useMutateTickets';
-import useSaveRecurrence from './useSaveRecurrence';
+import { useSiteDateToUtcISO } from '@eventespresso/services';
+import { setTimeFromDate } from '@eventespresso/dates';
 import { useProgress } from '@eventespresso/hooks';
+
+import { getSharedTickets, getNonSharedTickets, computeDatetimeEndDate } from '../utils';
+import type { GeneratedDate } from '../ui/generatedDates';
+import useSaveRecurrence from './useSaveRecurrence';
+import useMutateTickets from './useMutateTickets';
+import type { FormState } from './types';
 
 const initialProgress = { datetimes: 0, tickets: 0 };
 
@@ -50,13 +52,16 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 		// prepare common date mutation input
 		const normalizedDateInput = copyDatetimeFields(dateDetails, isDatetimeInputField);
 
-		const { duration, unit } = dateDetails;
+		const { duration, unit, startTime } = dateDetails;
 
 		const highestDateOrder = last(sortDates({ dates, sortBy: 'order' }))?.order || 0;
 
+		const setStartTime = setTimeFromDate(startTime);
+
 		// Dates can be mutated in parallel
 		await Promise.all(
-			generatedDates.map(async ({ date: start }, index) => {
+			generatedDates.map(async ({ date }, index) => {
+				const start = setStartTime(date);
 				const end = computeDatetimeEndDate(start, unit, duration);
 
 				// create tickets for the date and get the related ids

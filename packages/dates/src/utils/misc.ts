@@ -1,6 +1,6 @@
 import { pipe } from 'ramda';
 import { __ } from '@eventespresso/i18n';
-import { parseISO, toDate } from 'date-fns';
+import { getHours, getMinutes, getSeconds, parseISO, toDate } from 'date-fns';
 import { setHours, setMinutes, setSeconds, setYear, setMonth, setDate } from 'date-fns/fp';
 
 import type { OptionsType } from '@eventespresso/adapters';
@@ -56,6 +56,16 @@ export const setTimeToZeroHour = (date: Date): Date => pipe(setHours(0), setMinu
  * Sets the time of the date object to noon
  */
 export const setTimeToNoon = (date: Date): Date => pipe(setHours(12), setMinutes(0), setSeconds(0))(date);
+
+/**
+ * Sets the time of the date object to from the given time object
+ */
+export const setTimeFromDate = (time: Date) => (date: Date): Date => {
+	const hours = getHours(time);
+	const minutes = getMinutes(time);
+	const seconds = getSeconds(time);
+	return pipe(setHours(hours), setMinutes(minutes), setSeconds(seconds))(date);
+};
 
 /**
  * Sets the date, month and year of the date object to those of today
