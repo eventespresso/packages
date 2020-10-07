@@ -2,6 +2,7 @@ export * from './bulkEdit';
 export * from './config';
 export * from './context';
 export * from './features';
+export * from './filterState';
 export * from './hooks';
 export * from './permissions';
 export * from './relations';
