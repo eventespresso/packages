@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Radio, RadioGroup } from '@eventespresso/adapters';
-import withoutMetaProp from './withoutMeta';
+import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';
 
 const RadioField: React.FC<FieldRendererProps> = ({ input, options, ...props }) => {
@@ -20,4 +20,4 @@ const RadioField: React.FC<FieldRendererProps> = ({ input, options, ...props }) 
 	);
 };
 
-export default withoutMeta(RadioField);
+export default withoutMetaProp(RadioField);

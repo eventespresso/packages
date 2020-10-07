@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Checkbox, CheckboxGroup } from '@eventespresso/adapters';
-import withoutMetaProp from './withoutMeta';
+import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';
 
 const MultiCheck: React.FC<FieldRendererProps> = ({ input, options, ...props }) => {
@@ -22,4 +22,4 @@ const MultiCheck: React.FC<FieldRendererProps> = ({ input, options, ...props }) 
 	);
 };
 
-export default withoutMeta(MultiCheck);
+export default withoutMetaProp(MultiCheck);

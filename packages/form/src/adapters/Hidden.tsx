@@ -1,10 +1,10 @@
 import React from 'react';
 
-import withoutMetaProp from './withoutMeta';
+import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';
 
 const Hidden: React.FC<FieldRendererProps> = ({ input, ...props }) => {
 	return <input {...input} {...props} type='hidden' />;
 };
 
-export default withoutMeta(Hidden);
+export default withoutMetaProp(Hidden);

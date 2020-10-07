@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { TimePicker as TimePickerAdapter } from '@eventespresso/dates';
-import withoutMetaProp from './withoutMeta';
+import withoutMetaProp from './withoutMetaProp';
 import { useFormConfig } from '../hooks';
 import type { FieldRendererProps } from '../types';
 
@@ -29,4 +29,4 @@ const TimePicker: React.FC<FieldRendererProps> = ({
 	);
 };
 
-export default withoutMeta(TimePicker);
+export default withoutMetaProp(TimePicker);
