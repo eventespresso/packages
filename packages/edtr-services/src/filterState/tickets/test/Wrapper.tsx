@@ -1,6 +1,6 @@
 import React from 'react';
-import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
-import { EdtrStateProvider } from '@eventespresso/edtr-services';
+import { ApolloMockedProvider } from '../../../context/test';
+import { EdtrStateProvider } from '../../../context';
 
 const ApolloWrapper = ApolloMockedProvider();
 

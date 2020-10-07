@@ -2,11 +2,15 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { TypeName } from '@eventespresso/services';
-import { domain, datesList } from '@eventespresso/edtr-services';
+import {
+	domain,
+	datesList,
+	DatetimesListProvider,
+	withEntityListContext,
+	useDatesListFilterState,
+} from '@eventespresso/edtr-services';
 import { EntityList } from '@eventespresso/components';
 
-import { DatetimesListProvider, withEntityListContext } from '@edtrServices/context';
-import { useDatesListFilterState } from '@edtrServices/filterState';
 import DatesListButtons from './DatesListButtons';
 import { legendConfig } from './config';
 import { RenderCardView } from './cardView';

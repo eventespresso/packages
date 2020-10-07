@@ -4,8 +4,7 @@ import { __ } from '@eventespresso/i18n';
 import { EntityTable } from '@eventespresso/components';
 import useHeaderRowGenerator from './useHeaderRowGenerator';
 import useBodyRowGenerator from './useBodyRowGenerator';
-import { useDatesListFilterState, useFilteredDates } from '@edtrServices/filterState';
-import { useReorderDatetimes } from '@eventespresso/edtr-services';
+import { useReorderDatetimes, useDatesListFilterState, useFilteredDates } from '@eventespresso/edtr-services';
 import { withBulkEdit } from '@eventespresso/services';
 import { Actions as BulkEditActions } from '../bulkEdit';
 

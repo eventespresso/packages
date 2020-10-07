@@ -2,7 +2,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 
-import { TicketsSales, TicketsStatus } from '@edtrServices/filterState';
+import { TicketsSales, TicketsStatus } from '@eventespresso/predicates';
 
 export const displayStartOrEndDateOptions = {
 	[DisplayStartOrEndDate.start]: __('ticket sales start date only'),

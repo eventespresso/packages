@@ -3,7 +3,7 @@ import { __ } from '@eventespresso/i18n';
 
 import type { Cell, HeaderRowGeneratorFn } from '@eventespresso/components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
-import { TicketsFilterStateManager } from '@edtrServices/filterState';
+import type { TicketsFilterStateManager } from '@eventespresso/edtr-services';
 import Checkbox from './Checkbox';
 
 type TicketsTableHeaderRowGen = HeaderRowGeneratorFn<TicketsFilterStateManager>;

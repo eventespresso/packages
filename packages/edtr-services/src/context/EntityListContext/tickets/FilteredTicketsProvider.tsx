@@ -1,12 +1,14 @@
 import React, { createContext, useEffect } from 'react';
 
-import { domain, ticketsList, useTickets, useEdtrState } from '@eventespresso/edtr-services';
 import { getGuids, notTrashed } from '@eventespresso/predicates';
-import { useFilteredEntities } from '@eventespresso/components';
+import { useFilteredEntities } from '@eventespresso/services';
 import { entityListCacheIdString } from '@eventespresso/utils';
-import type { Ticket } from '@eventespresso/edtr-services';
 
-import { useTicketsListFilterState } from '@edtrServices/filterState';
+import { useTicketsListFilterState } from '../../../filterState';
+import { domain, ticketsList } from '../../../constants';
+import type { Ticket } from '../../../apollo';
+import { useTickets } from '../../../apollo';
+import { useEdtrState } from '../../../hooks';
 
 const FilteredTicketsContext = createContext<Array<Ticket>>(null);
 

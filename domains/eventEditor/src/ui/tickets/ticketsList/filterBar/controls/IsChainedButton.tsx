@@ -4,7 +4,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { IconButton } from '@eventespresso/components';
 import { Link, Unlink } from '@eventespresso/icons';
-import { useTicketsListFilterState } from '@edtrServices/filterState';
+import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 
 import { labels } from './options';
 

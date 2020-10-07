@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 
 import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 import useDatesListFilterStateManager from '../useDatesListFilterStateManager';
-import { DatetimeSales, DatetimeStatus } from '../types';
+import { DatetimeSales, DatetimeStatus } from '@eventespresso/predicates';
 
 describe('useDatesListFilterStateManager', () => {
 	test('useDatesListFilterStateManager result', () => {

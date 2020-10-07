@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import invariant from 'invariant';
 
 import { FilteredTicketsContext } from '../../context';
-import type { Ticket } from '@eventespresso/edtr-services';
+import type { Ticket } from '../../apollo';
 
 const useFilteredTickets = (): Array<Ticket> => {
 	const value = useContext(FilteredTicketsContext);

@@ -11,7 +11,13 @@ import {
 	FilterBarUISubscription,
 	FilterBarUISubscriptionCb,
 } from '@eventespresso/registry';
-import { domain, EdtrGlobalModals, Datetime, DatetimesFilterStateManager } from '@eventespresso/edtr-services';
+import {
+	domain,
+	EdtrGlobalModals,
+	Datetime,
+	DatetimesFilterStateManager,
+	datesList,
+} from '@eventespresso/edtr-services';
 import { FilterBarFilter } from '@eventespresso/components';
 
 import {
@@ -72,10 +78,10 @@ newEntityOptions.subscribe(
 
 // Register datetime filterbar elements
 const filterBar = new FilterBarUISubscription(domain);
-type DatesListFilterBarCallback = FilterBarUISubscriptionCb<DatetimesFilterStateManager, 'dates-list'>;
+type DatesListFilterBarCallback = FilterBarUISubscriptionCb<DatetimesFilterStateManager, typeof datesList>;
 const datesListFilterBar: DatesListFilterBarCallback = ({ listId, registry }) => {
 	// although this is not needed
-	if (listId !== 'dates-list') {
+	if (listId !== datesList) {
 		return;
 	}
 
@@ -114,4 +120,4 @@ const datesListFilterBar: DatesListFilterBarCallback = ({ listId, registry }) =>
 	});
 };
 
-filterBar.subscribe(datesListFilterBar, { listId: 'dates-list' });
+filterBar.subscribe(datesListFilterBar, { listId: datesList });

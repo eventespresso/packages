@@ -4,7 +4,8 @@ import { useDisclosure } from '@chakra-ui/hooks';
 
 import { BulkActions } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { useTicketsListFilterState, TicketsStatus } from '@edtrServices/filterState';
+import { useTicketsListFilterState } from '@eventespresso/edtr-services';
+import { TicketsStatus } from '@eventespresso/predicates';
 import type { BulkActionsProps } from '@eventespresso/components';
 import { withFeature } from '@eventespresso/services';
 

@@ -4,8 +4,7 @@ import { __ } from '@eventespresso/i18n';
 import { EntityTable } from '@eventespresso/components';
 import useHeaderRowGenerator from './useHeaderRowGenerator';
 import useBodyRowGenerator from './useBodyRowGenerator';
-import { useFilteredTickets, useTicketsListFilterState } from '@edtrServices/filterState';
-import { useReorderTickets } from '@eventespresso/edtr-services';
+import { useReorderTickets, useFilteredTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { withBulkEdit } from '@eventespresso/services';
 import { Actions as BulkEditActions } from '../bulkEdit';
 

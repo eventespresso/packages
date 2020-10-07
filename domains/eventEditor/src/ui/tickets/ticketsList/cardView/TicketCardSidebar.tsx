@@ -3,9 +3,8 @@ import { __ } from '@eventespresso/i18n';
 
 import { CalendarDateSwitcher, EditDateRangeButton } from '@eventespresso/components';
 import { getTicketStatusTextLabel } from '@eventespresso/helpers';
-import { useTicketsListFilterState } from '@edtrServices/filterState';
 import { getPropsAreEqual } from '@eventespresso/utils';
-import { useTicketMutator } from '@eventespresso/edtr-services';
+import { useTicketMutator, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { useTimeZoneTime } from '@eventespresso/services';
 import type { DateRange } from '@eventespresso/dates';
 import type { TicketItemProps } from '../types';

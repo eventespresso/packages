@@ -1,5 +1,5 @@
 import { useInitQueries } from '@eventespresso/edtr-services';
-import { useRegisterIsChainedFilter } from '@edtrServices/filterState';
+import { useRegisterIsChainedFilter } from '@eventespresso/edtr-services';
 
 const useEditorInitialization = (): void => {
 	// register isChained filter using hook.

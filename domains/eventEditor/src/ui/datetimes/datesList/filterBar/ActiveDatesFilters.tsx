@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
 
 import { ActiveFilters, FilterTag } from '@eventespresso/components';
+import { useDatesListFilterState } from '@eventespresso/edtr-services';
+import { DatetimeSales, DatetimeStatus } from '@eventespresso/predicates';
 
-import { DatetimeSales, DatetimeStatus, useDatesListFilterState } from '@edtrServices/filterState';
 import { labels, statusOptions, salesOptions } from './controls/options';
 
 const ActiveDatesFilters: React.FC = () => {

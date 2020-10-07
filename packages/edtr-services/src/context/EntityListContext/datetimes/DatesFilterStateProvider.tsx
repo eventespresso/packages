@@ -1,8 +1,8 @@
 import React, { createContext } from 'react';
 
-import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
+import type { DatetimesFilterStateManager } from '../../../filterState';
 
-import { useDatesListFilterStateManager } from '@edtrServices/filterState';
+import { useDatesListFilterStateManager } from '../../../filterState';
 
 const DatesFilterStateContext = createContext<DatetimesFilterStateManager>(null);
 

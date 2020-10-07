@@ -6,7 +6,7 @@ import TicketActionsMenu from '../actionsMenu/TicketActionsMenu';
 import { EntityActionsMenuLayout } from '@eventespresso/components';
 import { EntityCard } from '@eventespresso/components';
 import { ticketStatusBgColorClassName } from '@eventespresso/helpers';
-import { useTicketsListFilterState } from '@edtrServices/filterState';
+import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { getPropsAreEqual } from '@eventespresso/utils';
 import type { TicketItemProps } from '../types';
 

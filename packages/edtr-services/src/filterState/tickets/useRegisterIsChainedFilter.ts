@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 
 import { FilterBarService } from '@eventespresso/registry';
-import { domain, ticketsList } from '@eventespresso/edtr-services';
-import type { Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
+import type { TicketsFilterStateManager } from './types';
+
+import { domain, ticketsList } from '../../constants';
 import useIsChainedFilter from './useIsChainedFilter';
+import type { Ticket } from '../../apollo';
 
 type Domain = typeof domain;
 type TFSM = TicketsFilterStateManager;

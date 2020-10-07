@@ -4,7 +4,7 @@ import DateActionsMenu from '../actionsMenu/DateActionsMenu';
 import { EntityActionsMenuLayout } from '@eventespresso/components';
 import { datetimeStatusBgColorClassName } from '@eventespresso/helpers';
 import { EntityCard } from '@eventespresso/components';
-import { useDatesListFilterState } from '@edtrServices/filterState';
+import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { getPropsAreEqual } from '@eventespresso/utils';
 import DateCardSidebar from './DateCardSidebar';
 import Details from './Details';

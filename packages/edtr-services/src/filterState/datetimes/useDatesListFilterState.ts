@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import invariant from 'invariant';
 
 import { DatesFilterStateContext } from '../../context';
-import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
+import type { DatetimesFilterStateManager } from './types';
 
 const useDatesListFilterState = (): DatetimesFilterStateManager => {
 	const value = useContext(DatesFilterStateContext);

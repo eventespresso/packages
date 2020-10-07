@@ -11,7 +11,7 @@ import {
 	FilterBarUISubscription,
 	FilterBarUISubscriptionCb,
 } from '@eventespresso/registry';
-import { domain, EdtrGlobalModals, Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
+import { domain, EdtrGlobalModals, Ticket, TicketsFilterStateManager, ticketsList } from '@eventespresso/edtr-services';
 import { TicketPriceCalculatorButton, ModalContainer as TPCModalContainer } from '@eventespresso/tpc';
 import { FilterBarFilter } from '@eventespresso/components';
 
@@ -64,10 +64,10 @@ newEntityOptions.subscribe(
 
 // Register ticket filterBar elements
 const filterBar = new FilterBarUISubscription(domain);
-type TicketsListFilterBarCallback = FilterBarUISubscriptionCb<TicketsFilterStateManager, 'tickets-list'>;
+type TicketsListFilterBarCallback = FilterBarUISubscriptionCb<TicketsFilterStateManager, typeof ticketsList>;
 const ticketsListFilterBar: TicketsListFilterBarCallback = ({ listId, registry }) => {
 	// although this is not needed
-	if (listId !== 'tickets-list') {
+	if (listId !== ticketsList) {
 		return;
 	}
 	const { registerElement: registerFilterBarItem } = registry;
@@ -112,4 +112,4 @@ const ticketsListFilterBar: TicketsListFilterBarCallback = ({ listId, registry }
 		);
 	});
 };
-filterBar.subscribe(ticketsListFilterBar, { listId: 'tickets-list' });
+filterBar.subscribe(ticketsListFilterBar, { listId: ticketsList });

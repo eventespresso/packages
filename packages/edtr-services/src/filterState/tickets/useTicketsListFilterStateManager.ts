@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { DisplayStartOrEndDate, SortBy, ticketsList } from '@eventespresso/edtr-services';
-import { useEntityListFilterStateManager } from '@eventespresso/components';
-import { useEdtrState } from '@eventespresso/edtr-services';
+import { DisplayStartOrEndDate, SortBy } from '../types';
+import { ticketsList } from '../../constants';
+import { useEntityListFilterStateManager } from '@eventespresso/services';
+import { useEdtrState } from '../../hooks';
 import { useSessionStorageReducer } from '@eventespresso/storage';
+import { TicketsSales, TicketsStatus } from '@eventespresso/predicates';
 
 import reducer from './reducer';
-import { TicketsSales, TicketsStatus } from './types';
 import type { TicketsFilterState, TicketsFilterStateManager } from './types';
 
 type FSM = TicketsFilterStateManager;

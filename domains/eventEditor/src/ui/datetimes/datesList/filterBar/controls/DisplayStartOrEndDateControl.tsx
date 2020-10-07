@@ -1,6 +1,6 @@
 import React from 'react';
 import { SelectInput } from '@eventespresso/components';
-import { useDatesListFilterState } from '@edtrServices/filterState';
+import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 
 import { labels, displayStartOrEndDateOptions } from './options';

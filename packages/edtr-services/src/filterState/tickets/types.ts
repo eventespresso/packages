@@ -1,4 +1,4 @@
-import type { EntityListFilterStateManager } from '@eventespresso/components';
+import type { EntityListFilterStateManager } from '@eventespresso/services';
 import type { TicketsSales, TicketsStatus } from '@eventespresso/predicates';
 
 import type {

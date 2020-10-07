@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { EntityCardList } from '@eventespresso/components';
+import { useFilteredTickets } from '@eventespresso/edtr-services';
+
 import TicketCard from './TicketCard';
-import { useFilteredTickets } from '@edtrServices/filterState';
 
 const CardView: React.FC = () => {
 	const filteredEntities = useFilteredTickets();

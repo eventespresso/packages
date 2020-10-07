@@ -1,12 +1,14 @@
 import React, { createContext, useEffect } from 'react';
 
-import { domain, datesList, useDatetimes, useEdtrState } from '@eventespresso/edtr-services';
+import { useFilteredEntities } from '@eventespresso/services';
 import { getGuids, notTrashed } from '@eventespresso/predicates';
-import { useFilteredEntities } from '@eventespresso/components';
 import { entityListCacheIdString } from '@eventespresso/utils';
-import type { Datetime } from '@eventespresso/edtr-services';
 
-import { useDatesListFilterState } from '@edtrServices/filterState';
+import { useDatesListFilterState } from '../../../filterState';
+import { domain, datesList } from '../../../constants';
+import type { Datetime } from '../../../apollo';
+import { useDatetimes } from '../../../apollo';
+import { useEdtrState } from '../../../hooks';
 
 const FilteredDatesContext = createContext<Array<Datetime>>(null);
 

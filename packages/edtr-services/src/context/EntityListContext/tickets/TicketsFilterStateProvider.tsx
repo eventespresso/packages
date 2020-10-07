@@ -1,8 +1,8 @@
 import React, { createContext } from 'react';
 
-import type { TicketsFilterStateManager } from '@eventespresso/edtr-services';
+import type { TicketsFilterStateManager } from '../../../filterState';
 
-import { useTicketsListFilterStateManager } from '@edtrServices/filterState';
+import { useTicketsListFilterStateManager } from '../../../filterState';
 
 const TicketsFilterStateContext = createContext<TicketsFilterStateManager>(null);
 

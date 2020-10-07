@@ -6,9 +6,10 @@ import { BulkActions } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { withFeature } from '@eventespresso/services';
 import type { BulkActionsProps } from '@eventespresso/components';
+import { useDatesListFilterState } from '@eventespresso/edtr-services';
+import { DatetimeStatus } from '@eventespresso/predicates';
 
 import Checkbox from '../../tableView/Checkbox';
-import { useDatesListFilterState, DatetimeStatus } from '@edtrServices/filterState';
 import { EditDetails } from '../details';
 import { Delete } from '../delete';
 

@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { EntityCardList } from '@eventespresso/components';
+import { useFilteredDates } from '@eventespresso/edtr-services';
+
 import DateCard from './DateCard';
-import { useFilteredDates } from '@edtrServices/filterState';
 
 const CardView: React.FC = React.memo(() => {
 	const filteredEntities = useFilteredDates();

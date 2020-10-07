@@ -2,11 +2,15 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { TypeName } from '@eventespresso/services';
-import { domain, ticketsList } from '@eventespresso/edtr-services';
+import {
+	domain,
+	ticketsList,
+	TicketsListProvider,
+	withEntityListContext,
+	useTicketsListFilterState,
+} from '@eventespresso/edtr-services';
 import { EntityList } from '@eventespresso/components';
 
-import { TicketsListProvider, withEntityListContext } from '@edtrServices/context';
-import { useTicketsListFilterState } from '@edtrServices/filterState';
 import TicketsListButtons from './TicketsListButtons';
 import { legendConfig } from './config';
 import { RenderCardView } from './cardView';

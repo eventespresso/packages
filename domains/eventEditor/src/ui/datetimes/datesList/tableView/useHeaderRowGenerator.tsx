@@ -4,7 +4,7 @@ import { __ } from '@eventespresso/i18n';
 import { Cell } from '@eventespresso/components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { HeaderRowGeneratorFn } from '@eventespresso/components';
-import { DatetimesFilterStateManager } from '@edtrServices/filterState';
+import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 import Checkbox from './Checkbox';
 
 type DatesTableHeaderRowGen = HeaderRowGeneratorFn<DatetimesFilterStateManager>;

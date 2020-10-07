@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import invariant from 'invariant';
 
 import { TicketsFilterStateContext } from '../../context';
-import type { TicketsFilterStateManager } from '@eventespresso/edtr-services';
+import type { TicketsFilterStateManager } from './types';
 
 const useTicketsListFilterState = (): TicketsFilterStateManager => {
 	const value = useContext(TicketsFilterStateContext);
