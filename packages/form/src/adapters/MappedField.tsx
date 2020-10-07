@@ -1,4 +1,5 @@
 import React from 'react';
+import { dissocPath } from 'ramda';
 
 import { RichTextEditor } from '@eventespresso/rich-text-editor';
 
@@ -15,8 +16,11 @@ import Hidden from './Hidden';
 import NumberField from './Number';
 import type { FieldRendererProps } from '../types';
 
-const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...rest }) => {
+const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props }) => {
 	let Component: React.ComponentType<Omit<FieldRendererProps, 'fieldType'>>;
+
+	const propsWithoutMeta = dissocPath(['input', 'meta'], props);
+
 	switch (fieldType) {
 		case 'datepicker':
 			Component = DatePicker;
@@ -58,7 +62,8 @@ const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...rest }) => {
 			Component = () => null;
 			break;
 	}
-	return Component && <Component {...rest} />;
+
+	return Component && <Component {...propsWithoutMeta} />;
 };
 
 export default MappedField;
