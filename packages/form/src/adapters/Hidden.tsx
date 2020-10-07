@@ -1,6 +1,6 @@
 import React from 'react';
 
-import withoutMeta from './withoutMeta';
+import withoutMetaProp from './withoutMeta';
 import type { FieldRendererProps } from '../types';
 
 const Hidden: React.FC<FieldRendererProps> = ({ input, ...props }) => {

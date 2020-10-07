@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { DatePicker as DatepickerAdapter } from '@eventespresso/dates';
 
-import withoutMeta from './withoutMeta';
+import withoutMetaProp from './withoutMeta';
 import { useFormConfig } from '../hooks';
 import type { FieldRendererProps } from '../types';
 

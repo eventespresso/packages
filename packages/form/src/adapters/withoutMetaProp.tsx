@@ -5,7 +5,7 @@ import type { ForwardRefComponent } from '@eventespresso/components';
 import type { FieldRendererProps } from '../types';
 
 // Removes meta prop from being passed to DOM element.
-const withoutMeta = <P extends FieldRendererProps>(
+const withoutMetaProp = <P extends FieldRendererProps>(
 	WrappedComponent: React.ComponentType<P>
 ): ForwardRefComponent<P, typeof WrappedComponent> => {
 	type Ref = React.Ref<typeof WrappedComponent>;
@@ -23,4 +23,4 @@ const withoutMeta = <P extends FieldRendererProps>(
 	return React.forwardRef(ForwardedComponentWithLabel);
 };
 
-export default withoutMeta;
+export default withoutMetaProp;
