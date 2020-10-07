@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { omit } from 'ramda';
 
 import { DateTimePicker as DateTimePickerAdapter } from '@eventespresso/dates';
 
@@ -16,13 +17,15 @@ const DateTimePicker: React.FC<FieldRendererProps> = ({ className, input: { onCh
 		'ee-input-base-wrapper'
 	);
 
+	const propsWithoutMeta = omit(['meta'], props);
+
 	return (
 		<div className={htmlClass}>
 			<DateTimePickerAdapter
 				{...input}
 				dateFormat={dateTimeFormat}
 				locale={locale}
-				{...props}
+				{...propsWithoutMeta}
 				id={input.name}
 				onChange={onChange}
 			/>

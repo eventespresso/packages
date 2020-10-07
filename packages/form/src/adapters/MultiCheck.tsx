@@ -1,9 +1,10 @@
 import React from 'react';
+import { omit } from 'ramda';
 
 import { Checkbox, CheckboxGroup } from '@eventespresso/adapters';
 import type { FieldRendererProps } from '../types';
 
-const MultiCheck: React.FC<FieldRendererProps> = ({ input, options, ...restProps }) => {
+const MultiCheck: React.FC<FieldRendererProps> = ({ input, options, ...props }) => {
 	const children = options.map(({ label, value, ...rest }, index) => {
 		return (
 			<Checkbox value={value} {...rest} key={`${value}${index}`}>
@@ -12,10 +13,12 @@ const MultiCheck: React.FC<FieldRendererProps> = ({ input, options, ...restProps
 		);
 	});
 
+	const propsWithoutMeta = omit(['meta'], props);
+
 	const value = input.value || [];
 
 	return (
-		<CheckboxGroup {...input} {...restProps} value={value}>
+		<CheckboxGroup {...input} {...propsWithoutMeta} value={value}>
 			{children}
 		</CheckboxGroup>
 	);
