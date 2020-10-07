@@ -3,7 +3,7 @@ import { Alert as ChakraAlert, AlertIcon } from '@chakra-ui/core';
 
 import type { AlertProps } from './types';
 
-const Alert: React.FC<AlertProps> = ({ description, iconProps, ...props }) => (
+const Alert: React.FC<AlertProps> = ({ description, ...props }) => (
 	<ChakraAlert {...props}>
 		<AlertIcon />
 		{description}

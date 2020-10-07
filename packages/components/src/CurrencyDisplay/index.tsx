@@ -8,7 +8,7 @@ import type { CurrencyDisplayProps } from './types';
 
 import './style.scss';
 
-export const CurrencyDisplay: React.FC<CurrencyDisplayProps> = ({ children, value, vertical, ...props }) => {
+export const CurrencyDisplay: React.FC<CurrencyDisplayProps> = ({ value, vertical, ...props }) => {
 	const config = useConfig();
 	const { formatAmount } = useMoneyDisplay();
 

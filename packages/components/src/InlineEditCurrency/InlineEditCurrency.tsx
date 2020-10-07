@@ -9,7 +9,7 @@ import type { InlineEditCurrencyProps } from './types';
 
 import './style.scss';
 
-const nullFunc = (args?: any) => null;
+const nullFunc = () => null;
 
 export const InlineEditCurrency: React.FC<InlineEditCurrencyProps> = ({
 	amount = 0,

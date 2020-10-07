@@ -77,6 +77,10 @@
 		vertical-align: middle;
 		width: auto;
 
+		&--no-margin {
+			margin: 0;
+		}
+
 		&--no-horizontal-margin {
 			margin-left: 0;
 			margin-right: 0;

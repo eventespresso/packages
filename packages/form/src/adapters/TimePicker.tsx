@@ -8,10 +8,6 @@ import { useFormConfig } from '../hooks';
 const TimePicker: React.FC<FieldRendererProps> = ({
 	className,
 	input: { onChange: onInputChange, value, ...input },
-	onChange,
-	onChangeValue,
-	meta,
-	format,
 	...props
 }) => {
 	const { locale, timeFormat } = useFormConfig();

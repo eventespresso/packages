@@ -6,7 +6,7 @@ import { DateTimePicker as DateTimePickerAdapter } from '@eventespresso/dates';
 import type { FieldRendererProps } from '../types';
 import { useFormConfig } from '../hooks';
 
-const DateTimePicker: React.FC<FieldRendererProps> = ({ className, input: { onChange, ...input }, meta, ...props }) => {
+const DateTimePicker: React.FC<FieldRendererProps> = ({ className, input: { onChange, ...input }, ...props }) => {
 	const { locale, dateTimeFormat } = useFormConfig();
 
 	const htmlClass = classNames(
