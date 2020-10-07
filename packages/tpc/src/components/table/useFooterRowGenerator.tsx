@@ -46,7 +46,7 @@ const useFooterRowGenerator = (): FooterRowGenerator => {
 				className: 'ee-ticket-price-calculator__amount ee-ticket-price-calculator__total ee-number-column',
 				value: (
 					<TicketPriceField
-						aria-label={__('ticket price')}
+						aria-label={__('ticket total')}
 						component='input'
 						disabled={!reverseCalculate}
 						formatOnBlur
