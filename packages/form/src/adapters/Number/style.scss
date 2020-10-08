@@ -1,5 +1,13 @@
 .ee-number-input-wrapper {
+	input {
+		z-index: 0;
+
+		&:focus {
+			z-index: 0;
+		}
+	}
+
 	.ee-number-field-stepper {
-		z-index: unset;
+		z-index: 0;
 	}
 }
