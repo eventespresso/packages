@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { FilterBarFilter, SelectInput } from '@eventespresso/components';
+import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 import type { FilterBarUIComponentProps } from '@eventespresso/registry';
-import { useDatesListFilterState } from '@eventespresso/edtr-services';
 
 import { useRecurrences } from '../../../services/apollo';
 
@@ -19,9 +19,11 @@ const RecurrenceControl: React.FC<Props> = () => {
 	const recurrences = useRecurrences();
 
 	const options = useMemo(() => {
-		return recurrences.map(({ dbId, id, name }) => {
+		const recOptions = recurrences.map(({ dbId, id, name }) => {
 			return { value: id, label: `#${dbId}: ${name}` };
 		});
+
+		return [{ value: '', label: '...' }, ...recOptions];
 	}, [recurrences]);
 
 	return (

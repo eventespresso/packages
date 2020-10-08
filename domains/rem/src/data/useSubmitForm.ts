@@ -12,6 +12,7 @@ import type { GeneratedDate } from '../ui/generatedDates';
 import useSaveRecurrence from './useSaveRecurrence';
 import useMutateTickets from './useMutateTickets';
 import type { FormState } from './types';
+import useOnUpdateRecurrence from '../services/apollo/mutations/recurrences/useOnUpdateRecurrence';
 
 const initialProgress = { datetimes: 0, tickets: 0 };
 
@@ -20,6 +21,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 	const { createEntity: createDatetime } = useDatetimeMutator();
 	const toUtcISO = useSiteDateToUtcISO();
 	const dates = useDatetimes();
+	const onUpdateRecurrence = useOnUpdateRecurrence();
 
 	const allTickets = Object.values(tickets);
 	const sharedTickets = getSharedTickets(allTickets);
@@ -43,8 +45,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 	}, [totalProgress]);
 
 	return useCallback(async () => {
-		// create shared tickets and collect their ids
-		const recurrenceId = await saveRecurrence(formState);
+		const recurrence = await saveRecurrence(formState);
 
 		// create shared tickets and collect their ids
 		const sharedTicketIds = await mutateTickets(sharedTickets, true);
@@ -59,7 +60,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 		const setStartTime = setTimeFromDate(startTime);
 
 		// Dates can be mutated in parallel
-		await Promise.all(
+		const datetimeIds = await Promise.all(
 			generatedDates.map(async ({ date }, index) => {
 				const start = setStartTime(date);
 				const end = computeDatetimeEndDate(start, unit, duration);
@@ -78,12 +79,16 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 				// order will be the highest order among dates plus its position (index +1) in the list
 				const order = highestDateOrder + index + 1;
 
-				const input = { ...normalizedDateInput, order, startDate, endDate, tickets, recurrence: recurrenceId };
+				const input = { ...normalizedDateInput, order, startDate, endDate, tickets, recurrence: recurrence.id };
 
-				await createDatetime(input);
+				const result = await createDatetime(input);
+				const datetimeId = result?.data?.createEspressoDatetime?.espressoDatetime?.id;
 				updateProgress('datetimes');
+				return datetimeId;
 			})
 		);
+
+		onUpdateRecurrence({ recurrence, datetimeIds });
 	}, [
 		createDatetime,
 		dateDetails,
@@ -92,6 +97,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 		generatedDates,
 		mutateTickets,
 		nonSharedTickets,
+		onUpdateRecurrence,
 		saveRecurrence,
 		sharedTickets,
 		toUtcISO,

@@ -7,6 +7,7 @@ import type { UpdateTicketInput } from '@eventespresso/edtr-services';
 
 import type { DateFormShape } from '../ui/datetimeDetails/types';
 import type { RemTicketFields } from '../ui/Tickets/types';
+import { Recurrence } from '../services/apollo';
 
 export interface RemTicket extends Entity, RemTicketFields, Omit<UpdateTicketInput, 'prices' | 'id'> {
 	prices?: Array<TpcPriceModifier>;
@@ -72,4 +73,4 @@ export type FormStateReducer = Reducer<FormState, DataAction>;
 
 export type StateInitializer = (arg: FormState) => ReducerState<FormStateReducer>;
 
-export type SaveRecurrenceCallback = (formState: FormState) => Promise<EntityId>;
+export type SaveRecurrenceCallback = (formState: FormState) => Promise<Recurrence>;

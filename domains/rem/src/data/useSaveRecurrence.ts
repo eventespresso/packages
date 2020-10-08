@@ -24,9 +24,9 @@ const useSaveRecurrence = (): SaveRecurrenceCallback => {
 			// create recurrence and wait for the promise to resolve
 			const result = await createRecurrence(normalizedInput);
 
-			const recurrenceId = result?.data?.createEspressoRecurrence?.espressoRecurrence?.id;
+			const recurrence = result?.data?.createEspressoRecurrence?.espressoRecurrence;
 
-			return recurrenceId;
+			return recurrence;
 		},
 		[createRecurrence]
 	);
