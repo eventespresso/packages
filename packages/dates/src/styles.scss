@@ -118,11 +118,14 @@
 	}
 
 	&__month-container {
+		$month-container-height: calc(var(--ee-icon-button-size) * 7.89);
+		$month-container-width: calc(var(--ee-icon-button-size) * 7);
+
 		background-color: var(--ee-background-color);
 		border-bottom: 1px solid var(--ee-color-grey-12);
 		box-sizing: content-box;
-		height: calc(var(--ee-icon-button-size) * 7.89);
-		width: calc(var(--ee-icon-button-size) * 7);
+		height: $month-container-height;
+		width: $month-container-width;
 	}
 
 	&__header {
@@ -315,7 +318,7 @@
 		border-left: none;
 		box-sizing: content-box;
 		display: inline-block;
-		height: calc(var(--ee-icon-button-size) * 7.89);
+		height: calc(var(--ee-icon-button-size) * 7.87);
 		width: calc(var(--ee-icon-button-size) * 2);
 
 		& .react-datepicker-time__header {
