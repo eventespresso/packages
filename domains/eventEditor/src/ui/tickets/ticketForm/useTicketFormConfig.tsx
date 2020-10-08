@@ -167,6 +167,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							label: __('Maximum Quantity'),
 							fieldType: 'number',
 							parseAsInfinity: true,
+							max: 1000000,
 							min: -1,
 							info: sprintf(
 								__(
