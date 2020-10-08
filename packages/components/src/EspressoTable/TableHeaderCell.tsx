@@ -26,6 +26,7 @@ const TableHeaderCell: React.FC<TableHeaderCellProps> = ({
 	);
 
 	if (rowType === 'header') {
+		props.role = 'columnheader';
 		props.scope = 'col';
 	} else if (rowType === 'body') {
 		props.scope = 'row';

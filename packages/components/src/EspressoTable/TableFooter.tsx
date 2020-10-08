@@ -5,10 +5,11 @@ import invariant from 'invariant';
 import { isFunc, isEmpty } from '@eventespresso/utils';
 
 import TableRow from './TableRow';
+import TableDataCell from './TableDataCell';
 import TableHeaderCell from './TableHeaderCell';
 
-import type { TableFooterProps } from './types';
 import { RowType } from './types';
+import type { TableFooterProps } from './types';
 
 const TableFooter: React.FC<TableFooterProps> = ({ tableId, footerRows, rowCount, ...props }) => {
 	const className = classNames(props?.className?.footerClassName, 'ee-rspnsv-table-footer');
@@ -34,22 +35,35 @@ const TableFooter: React.FC<TableFooterProps> = ({ tableId, footerRows, rowCount
 								`Missing "value" property for footer column ${col}.`
 							);
 
-							return isFunc(column.render) ? (
-								column.render({ row, col, column })
-							) : (
-								<TableHeaderCell
-									className={props.className}
-									colNumber={col}
-									id={column.id || `${tableId}-footer-cell`}
-									key={`row-${row}-col-${col}`}
-									rowNumber={row}
-									rowType={RowType.footer}
-									scope={column.scope}
-									tableHeaderCellClassName={column.className}
-								>
-									{column.value || ''}
-								</TableHeaderCell>
-							);
+							const cell =
+								column.as === 'td' ? (
+									<TableDataCell
+										className={props.className}
+										colNumber={col}
+										id={column.id || `${tableId}-footer-cell`}
+										isFooterTd
+										key={`row-${row}-col-${col}`}
+										rowNumber={row}
+										tableDataCellClassName={column.className || ''}
+									>
+										{column.value || ''}
+									</TableDataCell>
+								) : (
+									<TableHeaderCell
+										className={props.className}
+										colNumber={col}
+										id={column.id || `${tableId}-footer-cell`}
+										key={`row-${row}-col-${col}`}
+										rowNumber={row}
+										rowType={RowType.footer}
+										scope={column.scope}
+										tableHeaderCellClassName={column.className}
+									>
+										{column.value || ''}
+									</TableHeaderCell>
+								);
+
+							return isFunc(column.render) ? column.render({ row, col, column }) : cell;
 						})}
 					</TableRow>
 				);

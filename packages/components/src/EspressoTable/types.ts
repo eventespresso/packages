@@ -12,6 +12,7 @@ interface CommonProps {
 }
 
 export interface Cell {
+	as?: 'td';
 	type: string;
 	key: string;
 	value: React.ReactNode;
@@ -115,6 +116,7 @@ export interface TableDataCellProps {
 	rowNumber: number;
 	colNumber: number;
 	id?: string;
+	isFooterTd?: boolean;
 	htmlClassName?: string;
 	tableDataCellClassName?: string;
 }
