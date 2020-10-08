@@ -38,13 +38,19 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 
 	const errorMessageId = props.input.name + '-error-message';
 
-	const ariaDescribedby = isInvalid ? errorMessageId : tooltipKey;
+	const ariaDescribedBy = isInvalid ? errorMessageId : tooltipKey;
 
 	return (
 		<FormControl className={className} isInvalid={isInvalid} isRequired={required}>
 			<FormLabel htmlFor={props.input.name}>{label}</FormLabel>
 			{before}
-			<MappedField {...rest} aria-describedby={ariaDescribedby} aria-label={label} id={props.input.name} />
+			<MappedField
+				{...rest}
+				aria-describedby={ariaDescribedBy}
+				aria-invalid={isInvalid}
+				aria-label={label}
+				id={props.input.name}
+			/>
 			{after}
 			<ErrorMessage id={errorMessageId} message={errorMessage} />
 			<HelperText id={tooltipKey}>{description || info}</HelperText>
