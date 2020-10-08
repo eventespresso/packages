@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 
 import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 import useTicketsListFilterStateManager from '../useTicketsListFilterStateManager';
-import { TicketsSales, TicketsStatus } from '../types';
+import { TicketsSales, TicketsStatus } from '@eventespresso/predicates';
 import wrapper from './Wrapper';
 import { actWait } from '@eventespresso/utils/src/test';
 
