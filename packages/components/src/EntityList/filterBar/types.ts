@@ -1,4 +1,4 @@
-import type { EntityListFilterStateManager as ELFSM, View } from './filterState';
+import type { EntityListFilterStateManager as ELFSM, View } from '@eventespresso/services';
 import type { IconButtonProps, LegendConfig } from '../../..';
 
 export interface CardViewFilterButtonProps extends View, CommonProps, IconButtonProps {

@@ -11,6 +11,7 @@ import reducer from './reducer';
 import type { TicketsFilterState, TicketsFilterStateManager } from './types';
 
 type FSM = TicketsFilterStateManager;
+type TFS = TicketsFilterState;
 
 const initialState: TicketsFilterState = {
 	displayStartOrEndDate: DisplayStartOrEndDate.start,
@@ -18,6 +19,7 @@ const initialState: TicketsFilterState = {
 	sales: TicketsSales.all,
 	status: TicketsStatus.onSaleAndPending,
 };
+type ResetPageNumber = <K extends keyof TFS>(filter: K, value: TFS[K]) => void;
 
 const useTicketsListFilterStateManager = (): FSM => {
 	const [state, dispatch] = useSessionStorageReducer('ticket-list-filter-state', reducer, initialState);
@@ -37,9 +39,9 @@ const useTicketsListFilterStateManager = (): FSM => {
 		}
 	}, [state.isChained, visibleDatetimeIds]);
 
-	const resetPageNumber = useCallback(
-		(filter: TicketsSales | TicketsStatus): void => {
-			if (filter !== state[filter]) {
+	const resetPageNumber = useCallback<ResetPageNumber>(
+		(filter, value) => {
+			if (value !== state[filter]) {
 				setPageNumber(1);
 			}
 		},
@@ -58,7 +60,7 @@ const useTicketsListFilterStateManager = (): FSM => {
 
 	const setSales: FSM['setSales'] = useCallback(
 		(sales) => {
-			resetPageNumber(sales);
+			resetPageNumber('sales', sales);
 
 			dispatch({
 				type: 'SET_SALES',
@@ -70,7 +72,7 @@ const useTicketsListFilterStateManager = (): FSM => {
 
 	const setStatus: FSM['setStatus'] = useCallback(
 		(status) => {
-			resetPageNumber(status);
+			resetPageNumber('status', status);
 			dispatch({
 				type: 'SET_STATUS',
 				status,

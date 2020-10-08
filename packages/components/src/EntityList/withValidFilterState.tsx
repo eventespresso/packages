@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { EntityListFilterBar, EntityListFilterBarProps } from './filterBar';
-import { EntityListFilterStateManager as ELFSM } from './filterBar/filterState';
+import { EntityListFilterStateManager as ELFSM } from '@eventespresso/services';
 
 const withValidFilterState = <FS extends ELFSM>(
 	FilterBarComponent: React.ComponentType<EntityListFilterBarProps<FS>>

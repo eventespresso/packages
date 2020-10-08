@@ -7,15 +7,14 @@ import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getTicketBackgroundColorClassName, ticketStatus } from '@eventespresso/helpers';
 import { shortenGuid } from '@eventespresso/utils';
+import type { BodyRowGeneratorFn } from '@eventespresso/components';
+import type { Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
+
 import TicketActionsMenu from '@edtrUI/tickets/ticketsList/actionsMenu/TicketActionsMenu';
 import TicketQuantity from '../cardView/TicketQuantity';
-import { BodyRowGeneratorFn } from '@eventespresso/components';
-import { TicketsFilterStateManager } from '@edtrServices/filterState';
 import { EditableName } from '../editable';
 import TicketRegistrationsLink from '../../TicketRegistrationsLink';
 import Checkbox from './Checkbox';
-
-import type { Ticket } from '@eventespresso/edtr-services';
 
 import '../../../../../../../packages/styles/src/root/entity-status.css';
 

@@ -5,14 +5,14 @@ import { filter, pipe } from 'ramda';
 import { addZebraStripesOnMobile } from '@eventespresso/components';
 import DateRegistrationsLink from '@edtrUI/datetimes/DateRegistrationsLink';
 import DateActionsMenu from '@edtrUI/datetimes/datesList/actionsMenu/DateActionsMenu';
-import type { Datetime } from '@eventespresso/edtr-services';
+import type { Datetime, DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';
-import { shortenGuid } from '@eventespresso/utils';
-import DateCapacity from '../cardView/DateCapacity';
 import type { BodyRowGeneratorFn } from '@eventespresso/components';
-import type { DatetimesFilterStateManager } from '@edtrServices/filterState';
+import { shortenGuid } from '@eventespresso/utils';
+
+import DateCapacity from '../cardView/DateCapacity';
 import { EditableName } from '../editable';
 import Checkbox from './Checkbox';
 

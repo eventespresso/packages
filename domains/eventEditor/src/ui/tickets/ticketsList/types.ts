@@ -1,7 +1,6 @@
 import type { InlineEditCurrencyProps, EntityListViewProps, EntityListItemProps } from '@eventespresso/components';
 import type { EntityId } from '@eventespresso/data';
-import type { Ticket } from '@eventespresso/edtr-services';
-import type { TicketsFilterStateManager } from '@edtrServices/filterState';
+import type { Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';
 
 export interface TicketsListViewProps extends EntityListViewProps<Ticket, TicketsFilterStateManager> {}
 

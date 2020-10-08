@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
-import type { EntityTableProps } from './types';
-import { Entity } from '@eventespresso/data';
-import { EntityListFilterStateManager } from './filterBar';
-import { ResponsiveTable } from '../..';
+import { EntityListFilterStateManager } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
+import { Entity } from '@eventespresso/data';
+import { ResponsiveTable } from '../..';
+import type { EntityTableProps } from './types';
 
 type ELFSM = EntityListFilterStateManager<any>;
 

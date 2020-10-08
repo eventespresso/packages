@@ -2,11 +2,10 @@ import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { EmptyState, ErrorIndicator, LoadingNotice } from '../..';
-import { EntityListFilterStateManager } from './filterBar';
 import EntityListFilterBar from './withValidFilterState';
 import { Entity } from '@eventespresso/data';
 import { Divider, Heading } from '@eventespresso/adapters';
-import { useStatus } from '@eventespresso/services';
+import { EntityListFilterStateManager, useStatus } from '@eventespresso/services';
 
 import type { EntityListProps } from './types';
 import { EntityPagination } from './pagination';

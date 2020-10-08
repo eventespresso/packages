@@ -1,7 +1,7 @@
 import { allPass, filter, pathEq } from 'ramda';
 import invariant from 'invariant';
 import type { Entity } from '@eventespresso/data';
-import type { EntityListFilterStateManager } from '@eventespresso/components';
+import type { EntityListFilterStateManager } from '@eventespresso/services';
 
 import { SubscriptionManager } from '../subscription';
 import type { FilterBarServiceInterface } from './types';

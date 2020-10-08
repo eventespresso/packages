@@ -1,4 +1,4 @@
-import type { BasicSortBy } from '@eventespresso/components';
+import type { BasicSortBy } from '@eventespresso/services';
 
 export type SortBy = BasicSortBy | 'date' | 'order';
 

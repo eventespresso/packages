@@ -1,7 +1,7 @@
 import { UIRegistry } from '../subscription';
 import { FilterBarUIOptions, FilterBarUIComponentProps } from './types';
 import { FilterBarServiceType } from './types';
-import type { EntityListFilterStateManager } from '@eventespresso/components';
+import type { EntityListFilterStateManager } from '@eventespresso/services';
 type ELFSM = EntityListFilterStateManager<any>;
 
 /**

@@ -1,6 +1,5 @@
 import type { EntityListViewProps, EntityListItemProps } from '@eventespresso/components';
-import type { Datetime } from '@eventespresso/edtr-services';
-import type { DatetimesFilterStateManager } from '@edtrServices/filterState';
+import type { Datetime, DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 
 export interface DatesListViewProps extends EntityListViewProps<Datetime, DatetimesFilterStateManager> {}
 
