@@ -6,7 +6,7 @@ import { dateSalesFilter, dateStatusFilter, sortDates } from '@eventespresso/pre
 import { datesList, domain } from '@eventespresso/edtr-services';
 import { entityListSearch } from '@eventespresso/utils';
 import type { Datetime } from '@eventespresso/edtr-services';
-import type { DatetimesFilterStateManager } from '@edtrServices/filterState';
+import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 
 type Domain = typeof domain;
 type DFSM = DatetimesFilterStateManager;

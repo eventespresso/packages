@@ -39,6 +39,7 @@ export const sortByOptions = {
 
 export const labels = {
 	displayStartOrEndDate: __('display'),
+	recurrence: __('recurrence'),
 	sales: __('sales'),
 	sortBy: __('sort by'),
 	search: __('search'),

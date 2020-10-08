@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
 
+import { __ } from '@eventespresso/i18n';
 import { ActiveFilters, FilterTag } from '@eventespresso/components';
 import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { TicketsSales, TicketsStatus } from '@eventespresso/predicates';
