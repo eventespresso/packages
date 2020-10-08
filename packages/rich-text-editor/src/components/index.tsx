@@ -128,6 +128,7 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 					// eslint-disable-next-line jsx-a11y/click-events-have-key-events
 					<div className={className} onClick={this.focus}>
 						<Editor
+							ariaLabel={this.props['aria-label']}
 							blockStyleFn={getBlockStyle}
 							customStyleMap={styleMap}
 							editorState={editorState}
