@@ -1,16 +1,20 @@
-// this selector is used for specificity
-[role='alertdialog'] {
-	.ee-confirm-close {
-		display: inline-flex;
-		height: var(--ee-padding-big);
-		position: absolute;
-		right: var(--ee-margin-small);
-		top: var(--ee-margin-small);
-		width: var(--ee-padding-big);
-		svg {
-			height: var(--ee-border-radius-big);
-			margin: 0;
-			width: var(--ee-border-radius-big);
+.ee-modal {
+	// this selector is used for specificity
+	@at-root [role='alertdialog']#{&} {
+		.ee-modal__close-btn {
+			display: inline-flex;
+			height: var(--ee-padding-big);
+			position: absolute;
+			right: var(--ee-margin-smaller);
+			top: var(--ee-margin-smaller);
+			width: var(--ee-padding-big);
+			z-index: 1;
+
+			svg {
+				height: var(--ee-border-radius-big);
+				margin: 0;
+				width: var(--ee-border-radius-big);
+			}
 		}
 	}
 }
