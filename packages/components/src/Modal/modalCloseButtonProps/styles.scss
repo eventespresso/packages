@@ -5,10 +5,9 @@
 			display: inline-flex;
 			height: var(--ee-padding-big);
 			position: absolute;
-			right: var(--ee-margin-smaller);
-			top: var(--ee-margin-smaller);
+			right: 5px;
+			top: 4px;
 			width: var(--ee-padding-big);
-			z-index: 1;
 
 			svg {
 				height: var(--ee-border-radius-big);

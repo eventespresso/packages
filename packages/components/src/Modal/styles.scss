@@ -4,6 +4,9 @@
 	.ee-modal {
 		&__header {
 			&.ee-modal__header {
+				position: relative;
+				z-index: 1;
+
 				.ee-entity-edit-modal & {
 					color: var(--ee-default-text-color-high-contrast);
 				}

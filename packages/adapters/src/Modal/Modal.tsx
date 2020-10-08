@@ -27,9 +27,10 @@ export const Modal: React.FC<ModalProps> = ({
 		>
 			<ModalOverlay />
 			<ModalContent role='alertdialog' className={className}>
-				<ModalHeader className={headerClassName}>{title}</ModalHeader>
-
-				{closeButton}
+				<ModalHeader className={headerClassName}>
+					{title}
+					{closeButton}
+				</ModalHeader>
 
 				<ModalBody className={bodyClassName}>{children}</ModalBody>
 
