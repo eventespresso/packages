@@ -1,4 +1,7 @@
 export * from './addSub';
+export * from './types';
+export * from './misc';
+
 export { default as areEqual } from './areEqual';
 export { default as diff } from './diff';
 export { default as sort } from './sort';
@@ -7,6 +10,3 @@ export { default as isOnOrAfterToday } from './isOnOrAfterToday';
 export { default as isOnOrBeforeToday } from './isOnOrBeforeToday';
 export { default as isOnOrAfterDate } from './isOnOrAfterDate';
 export { default as isOnOrBeforeDate } from './isOnOrBeforeDate';
-
-export * from './types';
-export * from './misc';

@@ -121,7 +121,7 @@
 		background-color: var(--ee-background-color);
 		border-bottom: 1px solid var(--ee-color-grey-12);
 		box-sizing: content-box;
-		min-height: calc(var(--ee-icon-button-size) * 6.89);
+		height: calc(var(--ee-icon-button-size) * 7.89);
 		width: calc(var(--ee-icon-button-size) * 7);
 	}
 
@@ -156,7 +156,7 @@
 	&__month {
 		background: var(--ee-color-grey-14);
 		box-sizing: content-box;
-		height: auto;
+		height: calc(var(--ee-icon-button-size) * 6.15);
 		margin: 0;
 
 		/*
