@@ -138,6 +138,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							label: __('Number of Uses'),
 							fieldType: 'number',
 							parseAsInfinity: true,
+							max: 1000,
 							min: 0,
 							info: sprintf(
 								__(
