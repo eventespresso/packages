@@ -17,7 +17,6 @@ const useRecurrenceFilter = (): RecurrenceFilterCallback => {
 			if (!recurrence) {
 				return datetimes;
 			}
-			console.log('recurrence', recurrence);
 			const relatedDatetimeIds = getRelations({
 				entity: 'recurrences',
 				entityId: recurrence,

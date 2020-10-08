@@ -5,7 +5,8 @@ import {
 	FilterBarUISubscription,
 	FilterBarUISubscriptionCb,
 } from '@eventespresso/registry';
-import { domain, datesList, DatetimesFilterStateManager } from '@eventespresso/edtr-services';
+import { domain, datesList } from '@eventespresso/edtr-services';
+import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 
 import RemButton from './RemButton';
 import RemInit from './RemInit';

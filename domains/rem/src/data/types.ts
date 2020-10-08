@@ -7,7 +7,7 @@ import type { UpdateTicketInput } from '@eventespresso/edtr-services';
 
 import type { DateFormShape } from '../ui/datetimeDetails/types';
 import type { RemTicketFields } from '../ui/Tickets/types';
-import { Recurrence } from '../services/apollo';
+import type { Recurrence } from '../services/apollo';
 
 export interface RemTicket extends Entity, RemTicketFields, Omit<UpdateTicketInput, 'prices' | 'id'> {
 	prices?: Array<TpcPriceModifier>;

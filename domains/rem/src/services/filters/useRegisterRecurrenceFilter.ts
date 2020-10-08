@@ -16,7 +16,7 @@ const { registerFilter: registerDatesFilter } = new FilterBarService<Domain, typ
 
 const useRegisterRecurrenceFilter: VoidFunction = () => {
 	const recurrenceFilter = useRecurrenceFilter();
-	// To avoid multiple filter registrations, we will store the aleady registered
+	// To avoid multiple filter registrations, we will store the already registered
 	// filter unSubscribe callback in ref to use it to remove the existing filter.
 	const unSubRecurrenceFilterRef = useRef<VoidFunction>();
 
@@ -26,8 +26,6 @@ const useRegisterRecurrenceFilter: VoidFunction = () => {
 
 		// Register recurrence filter
 		const unSubscribeRecurrenceFilter = registerDatesFilter(({ entityList, filterState }) => {
-			console.log('filterState.recurrence', filterState.recurrence);
-
 			return recurrenceFilter({ recurrence: filterState.recurrence, datetimes: entityList });
 		}, 9); // we want recurrence to run first
 
