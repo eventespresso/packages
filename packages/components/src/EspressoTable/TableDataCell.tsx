@@ -6,9 +6,9 @@ import type { TableDataCellProps } from './types';
 const TableDataCell: React.FC<TableDataCellProps> = ({
 	children,
 	colNumber,
-	tableDataCellClassName,
 	rowNumber,
 	rowType,
+	tableDataCellClassName,
 	...props
 }) => {
 	const id = props.id
