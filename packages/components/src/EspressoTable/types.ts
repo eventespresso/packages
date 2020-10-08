@@ -111,13 +111,13 @@ interface TableClassName {
 }
 
 export interface TableDataCellProps {
-	className: TableClassName;
 	children: React.ReactNode;
-	rowNumber: number;
+	className: TableClassName;
 	colNumber: number;
 	id?: string;
-	isFooterTd?: boolean;
 	htmlClassName?: string;
+	rowNumber: number;
+	rowType: RowType;
 	tableDataCellClassName?: string;
 }
 

@@ -41,9 +41,9 @@ const TableFooter: React.FC<TableFooterProps> = ({ tableId, footerRows, rowCount
 										className={props.className}
 										colNumber={col}
 										id={column.id || `${tableId}-footer-cell`}
-										isFooterTd
 										key={`row-${row}-col-${col}`}
 										rowNumber={row}
+										rowType={RowType.footer}
 										tableDataCellClassName={column.className || ''}
 									>
 										{column.value || ''}

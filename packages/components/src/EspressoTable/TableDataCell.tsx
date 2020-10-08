@@ -6,9 +6,9 @@ import type { TableDataCellProps } from './types';
 const TableDataCell: React.FC<TableDataCellProps> = ({
 	children,
 	colNumber,
-	isFooterTd,
 	tableDataCellClassName,
 	rowNumber,
+	rowType,
 	...props
 }) => {
 	const id = props.id
@@ -17,7 +17,7 @@ const TableDataCell: React.FC<TableDataCellProps> = ({
 
 	const className = classNames(
 		tableDataCellClassName,
-		`ee-rspnsv-table-${isFooterTd ? 'footer' : 'body'}-td`,
+		`ee-rspnsv-table-${rowType}-td`,
 		`ee-col-${colNumber}`,
 		props.className.bodyTdClassName
 	);

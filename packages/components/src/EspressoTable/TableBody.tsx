@@ -45,6 +45,7 @@ const TableBody: React.FC<TableBodyProps> = ({
 				id={cellData.id || `${tableId}-data-cell`}
 				key={`row-${rowNumber}-col-${colNumber}`}
 				rowNumber={rowNumber}
+				rowType={RowType.body}
 				tableDataCellClassName={cellData.className || ''}
 			>
 				<ResponsiveCell heading={column.value} value={cellData.value} />
