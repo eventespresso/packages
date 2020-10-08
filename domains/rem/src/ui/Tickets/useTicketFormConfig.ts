@@ -222,6 +222,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							name: 'min',
 							label: __('Minimum Quantity'),
 							fieldType: 'number',
+							max: 1000000,
 							min: 0,
 							info: sprintf(
 								__(

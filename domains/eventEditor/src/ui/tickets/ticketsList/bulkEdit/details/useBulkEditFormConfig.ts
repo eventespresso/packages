@@ -129,6 +129,7 @@ const useBulkEditFormConfig = (config?: EspressoFormProps<BulkEditFormShape>): D
 							label: __('Minimum Quantity'),
 							fieldType: 'number',
 							formControlProps: adjacentFormItemProps,
+							max: 1000000,
 							min: 0,
 						},
 						{

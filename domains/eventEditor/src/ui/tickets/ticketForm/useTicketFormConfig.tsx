@@ -152,6 +152,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							name: 'min',
 							label: __('Minimum Quantity'),
 							fieldType: 'number',
+							max: 1000000,
 							min: 0,
 							info: sprintf(
 								__(
