@@ -28,7 +28,7 @@ const Preview: React.FC<PreviewProps> = ({
 
 	const previewClassName = classNames('ee-inline-edit__preview-wrapper', className && className);
 
-	let textInput = value;
+	let textInput: string | JSX.Element = value;
 
 	if (fitText) {
 		textInput = (
@@ -43,7 +43,7 @@ const Preview: React.FC<PreviewProps> = ({
 	}
 
 	// the order of the conditional is very important here
-	if (lineCount && typeof value === 'string' && value.length > lineLength) {
+	if (lineCount && value?.length > lineLength) {
 		textInput = <Dotdotdot clamp={lineCount}>{value}</Dotdotdot>;
 	}
 

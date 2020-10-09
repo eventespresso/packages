@@ -18,7 +18,7 @@ export interface InlineEditPreviewProps
 	fitText?: boolean;
 	isEditing?: boolean;
 	onRequestEdit?: VoidFunction;
-	value?: string | JSX.Element;
+	value?: string;
 }
 
 export interface InlineEditInputProps extends Pick<InlineEditProps, 'inputType'> {
