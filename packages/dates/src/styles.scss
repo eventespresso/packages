@@ -380,6 +380,8 @@
 	}
 
 	&--time-only {
+		width: auto;
+
 		.react-datepicker__time-container {
 			height: auto;
 
