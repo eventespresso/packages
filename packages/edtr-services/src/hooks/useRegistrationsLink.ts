@@ -23,8 +23,8 @@ export const useRegistrationsLink = ({ datetime_id, ticket_id }: RegistrationsLi
 		});
 		return addQueryArgs(adminUrl, {
 			event_id: eventId,
-			datetime_id,
-			ticket_id,
+			datetime_id: datetime_id || undefined,
+			ticket_id: ticket_id || undefined,
 			return: 'edit',
 		});
 	}, [datetime_id, eventId, siteUrl.admin, ticket_id]);
