@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
 
-import type { DateItemProps } from '../types';
+import { __ } from '@eventespresso/i18n';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';
 import { InlineEditText } from '@eventespresso/components';
-import { getPropsAreEqual } from '@eventespresso/utils';
+
+import type { DateItemProps } from '../types';
 
 interface EditableNameProps extends DateItemProps {
 	className?: string;
@@ -42,4 +42,4 @@ const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime
 	);
 };
 
-export default React.memo(EditableName, getPropsAreEqual(['entity', 'name']));
+export default EditableName;

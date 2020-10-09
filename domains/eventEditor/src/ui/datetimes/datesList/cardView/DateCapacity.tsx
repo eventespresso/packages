@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { parseInfinity, getPropsAreEqual } from '@eventespresso/utils';
+import { parseInfinity } from '@eventespresso/utils';
 import { InlineEditInfinity, TextProps } from '@eventespresso/components';
 import {
 	useDatetimeMutator,
@@ -38,4 +38,4 @@ const DateCapacity: React.FC<DateItemProps> = ({ entity: datetime }) => {
 	);
 };
 
-export default React.memo(DateCapacity, getPropsAreEqual(['entity']));
+export default DateCapacity;

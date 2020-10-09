@@ -25,4 +25,4 @@ const DateCell: React.FC<RenderCellProps> = ({ datetime }) => {
 	);
 };
 
-export default React.memo(DateCell);
+export default DateCell;

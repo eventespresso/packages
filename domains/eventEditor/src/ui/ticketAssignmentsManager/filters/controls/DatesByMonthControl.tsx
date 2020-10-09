@@ -8,7 +8,7 @@ import type { FilterStateManager } from '../filterState';
 
 type DatesByMonthControlProps = Pick<FilterStateManager, 'datesByMonth' | 'setDatesByMonth'>;
 
-const DatesByMonthControl: React.FC<DatesByMonthControlProps> = React.memo(({ datesByMonth, setDatesByMonth }) => {
+const DatesByMonthControl: React.FC<DatesByMonthControlProps> = ({ datesByMonth, setDatesByMonth }) => {
 	const datetimes = useDatetimes();
 	const monthsList = getMonthsListFromDatetimes(datetimes);
 
@@ -29,6 +29,6 @@ const DatesByMonthControl: React.FC<DatesByMonthControlProps> = React.memo(({ da
 			value={yearMonth}
 		/>
 	);
-});
+};
 
 export default DatesByMonthControl;

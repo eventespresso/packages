@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { CalendarDateSwitcher, EditDateRangeButton } from '@eventespresso/components';
-import { getPropsAreEqual } from '@eventespresso/utils';
 import { getDatetimeStatusTextLabel } from '@eventespresso/helpers';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';
@@ -45,4 +44,4 @@ const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {
 	) : null;
 };
 
-export default React.memo(DateCardSidebar, getPropsAreEqual(['entity', 'cacheId']));
+export default DateCardSidebar;

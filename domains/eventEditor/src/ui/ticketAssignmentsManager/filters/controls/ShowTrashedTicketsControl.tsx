@@ -6,16 +6,17 @@ import type { FilterStateManager } from '../filterState';
 
 type ShowTrashedTicketsControlProps = Pick<FilterStateManager, 'showTrashedTickets' | 'setShowTrashedTickets'>;
 
-const ShowTrashedTicketsControl: React.FC<ShowTrashedTicketsControlProps> = React.memo(
-	({ showTrashedTickets, setShowTrashedTickets }) => {
-		return (
-			<SwitchInput
-				label={__('show trashed tickets')}
-				isChecked={showTrashedTickets}
-				onChangeValue={setShowTrashedTickets}
-			/>
-		);
-	}
-);
+const ShowTrashedTicketsControl: React.FC<ShowTrashedTicketsControlProps> = ({
+	showTrashedTickets,
+	setShowTrashedTickets,
+}) => {
+	return (
+		<SwitchInput
+			label={__('show trashed tickets')}
+			isChecked={showTrashedTickets}
+			onChangeValue={setShowTrashedTickets}
+		/>
+	);
+};
 
 export default ShowTrashedTicketsControl;

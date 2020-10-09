@@ -5,7 +5,6 @@ import { EntityActionsMenuLayout } from '@eventespresso/components';
 import { datetimeStatusBgColorClassName } from '@eventespresso/helpers';
 import { EntityCard } from '@eventespresso/components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
-import { getPropsAreEqual } from '@eventespresso/utils';
 import DateCardSidebar from './DateCardSidebar';
 import Details from './Details';
 import type { DateItemProps } from '../types';
@@ -26,4 +25,4 @@ const DateCard: React.FC<DateItemProps> = ({ entity: date }) => {
 	) : null;
 };
 
-export default React.memo(DateCard, getPropsAreEqual(['entity', 'cacheId']));
+export default DateCard;

@@ -28,4 +28,4 @@ const HeaderCell: React.FC<RenderCellProps> = ({ ticket }) => {
 	);
 };
 
-export default React.memo(HeaderCell);
+export default HeaderCell;

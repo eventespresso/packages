@@ -77,4 +77,4 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 	);
 };
 
-export default React.memo(TicketCard);
+export default TicketCard;

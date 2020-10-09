@@ -4,7 +4,6 @@ import { __ } from '@eventespresso/i18n';
 import type { TicketItemProps } from '../types';
 import { useTicketMutator } from '@eventespresso/edtr-services';
 import { InlineEditText } from '@eventespresso/components';
-import { getPropsAreEqual } from '@eventespresso/utils';
 
 interface EditableNameProps extends TicketItemProps {
 	className?: string;
@@ -42,4 +41,4 @@ const EditableName: React.FC<Partial<EditableNameProps>> = ({ className, entity:
 	);
 };
 
-export default React.memo(EditableName, getPropsAreEqual(['entity', 'name']));
+export default EditableName;

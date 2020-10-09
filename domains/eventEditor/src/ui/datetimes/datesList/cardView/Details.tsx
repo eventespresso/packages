@@ -1,9 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { RichTextEditorModal } from '@eventespresso/components';
-import { getPropsAreEqual } from '@eventespresso/utils';
 import { useConfig } from '@eventespresso/services';
 import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
 
@@ -13,11 +12,11 @@ import { EditableName } from '../editable';
 import type { DateItemProps } from '../types';
 
 const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
-	const {
-		siteUrl: { admin },
-	} = useConfig();
+	const { siteUrl } = useConfig();
 
-	const adminUrl = getAdminUrl({ adminSiteUrl: admin, page: ADMIN_ROUTES.REGISTRATIONS });
+	const adminUrl = useMemo(() => {
+		return getAdminUrl({ adminSiteUrl: siteUrl.admin, page: ADMIN_ROUTES.REGISTRATIONS });
+	}, [siteUrl.admin]);
 
 	const eventId = useEventId();
 
@@ -47,4 +46,4 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 	);
 };
 
-export default React.memo(Details, getPropsAreEqual(['entity', 'cacheId']));
+export default Details;

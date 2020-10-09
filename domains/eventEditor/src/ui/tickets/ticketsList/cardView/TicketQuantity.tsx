@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { parseInfinity, getPropsAreEqual } from '@eventespresso/utils';
+import { parseInfinity } from '@eventespresso/utils';
 import { InlineEditInfinity, TextProps } from '@eventespresso/components';
 import { useTicketMutator } from '@eventespresso/edtr-services';
 import type { TicketItemProps } from '../types';
@@ -28,4 +28,4 @@ const TicketQuantity: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 	);
 };
 
-export default React.memo(TicketQuantity, getPropsAreEqual(['entity', 'cacheId']));
+export default TicketQuantity;

@@ -3,7 +3,6 @@ import { __ } from '@eventespresso/i18n';
 
 import { CalendarDateSwitcher, EditDateRangeButton } from '@eventespresso/components';
 import { getTicketStatusTextLabel } from '@eventespresso/helpers';
-import { getPropsAreEqual } from '@eventespresso/utils';
 import { useTicketMutator, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { useTimeZoneTime } from '@eventespresso/services';
 import type { DateRange } from '@eventespresso/dates';
@@ -44,4 +43,4 @@ const TicketCardSidebar: React.FC<Partial<TicketItemProps>> = ({ entity: ticket 
 	) : null;
 };
 
-export default React.memo(TicketCardSidebar, getPropsAreEqual(['entity', 'cacheId']));
+export default TicketCardSidebar;

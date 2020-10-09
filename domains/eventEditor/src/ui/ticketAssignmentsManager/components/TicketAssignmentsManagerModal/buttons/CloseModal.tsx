@@ -20,4 +20,4 @@ const CloseModal: React.FC = () => {
 	);
 };
 
-export default React.memo(CloseModal);
+export default CloseModal;

@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import type { TicketItemProps } from '../types';
-import { getPropsAreEqual } from '@eventespresso/utils';
 import { InlineEditCurrency } from '@eventespresso/components';
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
 import { useMemoStringify } from '@eventespresso/hooks';
@@ -38,4 +37,4 @@ const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, 
 	);
 };
 
-export default React.memo(EditablePrice, getPropsAreEqual(['entity', 'price']));
+export default EditablePrice;

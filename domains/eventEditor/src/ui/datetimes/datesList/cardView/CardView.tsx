@@ -5,10 +5,10 @@ import { useFilteredDates } from '@eventespresso/edtr-services';
 
 import DateCard from './DateCard';
 
-const CardView: React.FC = React.memo(() => {
+const CardView: React.FC = () => {
 	const filteredEntities = useFilteredDates();
 
 	return <EntityCardList EntityCard={DateCard} entities={filteredEntities} />;
-});
+};
 
 export default CardView;
