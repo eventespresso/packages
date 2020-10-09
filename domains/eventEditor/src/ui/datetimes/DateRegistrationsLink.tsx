@@ -18,21 +18,19 @@ const tooltipProps = { placement: 'top' as const };
 const DateRegistrationsLink: React.FC<Props> = ({ datetime }) => {
 	const { siteUrl } = useConfig();
 
-	const adminUrl = useMemo(() => {
-		return getAdminUrl({ adminSiteUrl: siteUrl.admin, page: ADMIN_ROUTES.REGISTRATIONS });
-	}, [siteUrl.admin]);
-
 	const eventId = useEventId();
 
-	const args = useMemo(
-		() => ({
+	const regListUrl = useMemo(() => {
+		const adminUrl = getAdminUrl({
+			adminSiteUrl: siteUrl.admin,
+			page: ADMIN_ROUTES.REGISTRATIONS,
+		});
+		return addQueryArgs(adminUrl, {
 			event_id: eventId,
 			datetime_id: datetime.dbId,
 			return: 'edit',
-		}),
-		[datetime.dbId, eventId]
-	);
-	const regListUrl = addQueryArgs(adminUrl, args);
+		});
+	}, [datetime.dbId, eventId, siteUrl.admin]);
 
 	const tooltip = __('view ALL registrations for this date.');
 

@@ -17,21 +17,19 @@ const tooltipProps = { placement: 'top' as const };
 const TicketRegistrationsLink: React.FC<Props> = ({ ticket }) => {
 	const { siteUrl } = useConfig();
 
-	const adminUrl = useMemo(() => {
-		return getAdminUrl({ adminSiteUrl: siteUrl.admin, page: ADMIN_ROUTES.REGISTRATIONS });
-	}, [siteUrl.admin]);
-
 	const eventId = useEventId();
 
-	const args = useMemo(
-		() => ({
+	const regListUrl = useMemo(() => {
+		const adminUrl = getAdminUrl({
+			adminSiteUrl: siteUrl.admin,
+			page: ADMIN_ROUTES.REGISTRATIONS,
+		});
+		return addQueryArgs(adminUrl, {
 			event_id: eventId,
 			ticket_id: ticket.dbId,
 			return: 'edit',
-		}),
-		[eventId, ticket.dbId]
-	);
-	const regListUrl = addQueryArgs(adminUrl, args);
+		});
+	}, [eventId, siteUrl.admin, ticket.dbId]);
 
 	const countTitle = __('total registrations.');
 	const tooltip = __('view ALL registrations for this ticket.');
