@@ -32,15 +32,21 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	// we still need to be able to show validation error message
 	const errorMessage = (meta.touched || isDateOrTimePicker) && (meta.error || meta.submitError);
 
+	const isInvalid = Boolean(errorMessage);
+
 	const tooltipKey = info ? props.input.name + '-tooltip' : null;
 
+	const errorMessageId = props.input.name + '-error-message';
+
+	const ariaDescribedby = isInvalid ? errorMessageId : tooltipKey;
+
 	return (
-		<FormControl className={className} isInvalid={Boolean(errorMessage)} isRequired={required}>
+		<FormControl className={className} isInvalid={isInvalid} isRequired={required}>
 			<FormLabel htmlFor={props.input.name}>{label}</FormLabel>
 			{before}
-			<MappedField {...rest} aria-describedby={tooltipKey} aria-label={label} id={props.input.name} />
+			<MappedField {...rest} aria-describedby={ariaDescribedby} aria-label={label} id={props.input.name} />
 			{after}
-			<ErrorMessage message={errorMessage} />
+			<ErrorMessage id={errorMessageId} message={errorMessage} />
 			<HelperText id={tooltipKey}>{description || info}</HelperText>
 		</FormControl>
 	);
