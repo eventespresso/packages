@@ -1,7 +1,6 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { getPropsAreEqual } from '@eventespresso/utils';
 import { Sort } from '@eventespresso/icons';
 
 import { Button, ButtonSize } from '../../../Button';
@@ -31,4 +30,4 @@ const ToggleSortingButton: React.FC<ToggleSortingButtonProps> = ({
 	);
 };
 
-export default React.memo(ToggleSortingButton, getPropsAreEqual(['listId'], ['sortingEnabled']));
+export default ToggleSortingButton;

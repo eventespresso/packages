@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { useMemoStringify } from '@eventespresso/hooks';
-
 import { Banner } from '../Banner';
 
 interface EmptyStateProps {
@@ -12,9 +10,10 @@ interface EmptyStateProps {
 	title?: string;
 }
 
+const iconProps = { name: 'question-outline' };
+
 const EmptyState: React.FC<EmptyStateProps> = ({ children, description, title, ...props }) => {
 	const className = classNames(props.className, 'ee-empty-state');
-	const iconProps = useMemoStringify({ name: 'question-outline' });
 
 	return (
 		<Banner
@@ -34,4 +33,4 @@ const EmptyState: React.FC<EmptyStateProps> = ({ children, description, title, .
 	);
 };
 
-export default React.memo(EmptyState);
+export default EmptyState;

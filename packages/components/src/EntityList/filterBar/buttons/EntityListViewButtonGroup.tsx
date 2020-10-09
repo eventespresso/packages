@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { getPropsAreEqual } from '@eventespresso/utils';
 import { ButtonGroup, ButtonSize } from '../../../Button';
 import CardViewFilterButton from './CardViewFilterButton';
 import TableViewFilterButton from './TableViewFilterButton';
@@ -20,4 +19,4 @@ const EntityListViewButtonGroup: React.FC<EntityListViewButtonGroupProps> = ({
 	);
 };
 
-export default React.memo(EntityListViewButtonGroup, getPropsAreEqual(['listId'], ['view']));
+export default EntityListViewButtonGroup;

@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { getPropsAreEqual } from '@eventespresso/utils';
-import { Entity } from '@eventespresso/data';
+import type { Entity } from '@eventespresso/data';
 import { EntityIDs } from '../EntityIDs';
 import './style.css';
 
@@ -32,4 +31,4 @@ const EntityPaperFrame: React.FC<EntityPaperFrameProps> = ({ children, entity, .
 	);
 };
 
-export default React.memo(EntityPaperFrame, getPropsAreEqual(['cacheId']));
+export default EntityPaperFrame;

@@ -22,4 +22,4 @@ const SimpleEntityCard: React.FC<SimpleEntityCardProps> = ({ afterDetails, befor
 	);
 };
 
-export default React.memo(SimpleEntityCard);
+export default SimpleEntityCard;

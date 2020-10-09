@@ -2,9 +2,8 @@ import React from 'react';
 
 import type { EntityCardListProps } from './types';
 import { Entity } from '@eventespresso/data';
-import { entitiesUnchanged } from '@eventespresso/utils';
 
-const EntityCardList = <E extends Entity>({ EntityCard, entities }: EntityCardListProps<E>) => {
+const EntityCardList = <E extends Entity>({ EntityCard, entities }: EntityCardListProps<E>): JSX.Element => {
 	return (
 		<div className='ee-entity-list__card-view'>
 			{entities.map((entity) => (
@@ -14,4 +13,4 @@ const EntityCardList = <E extends Entity>({ EntityCard, entities }: EntityCardLi
 	);
 };
 
-export default React.memo(EntityCardList, entitiesUnchanged);
+export default EntityCardList;

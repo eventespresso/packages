@@ -17,7 +17,7 @@ export interface EntityIdProps {
 	guid: EntityId;
 }
 
-const EntityIDs: React.FC<EntityIdProps> = React.memo(({ dbid, guid, align = 'left' }) => {
+const EntityIDs: React.FC<EntityIdProps> = ({ dbid, guid, align = 'left' }) => {
 	const { wp_debug } = useConfig();
 
 	const className = classNames('ee-entity-ids', 'ee-focus-priority-9', {
@@ -38,6 +38,6 @@ const EntityIDs: React.FC<EntityIdProps> = React.memo(({ dbid, guid, align = 'le
 			{extraID}
 		</div>
 	);
-});
+};
 
 export default EntityIDs;

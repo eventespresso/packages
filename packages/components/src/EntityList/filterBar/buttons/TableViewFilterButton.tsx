@@ -1,11 +1,9 @@
 import React from 'react';
+
 import { __ } from '@eventespresso/i18n';
-
-import { Button } from '../../../Button';
-
-import { getPropsAreEqual } from '@eventespresso/utils';
 import { TableView } from '@eventespresso/icons';
 
+import { Button } from '../../../Button';
 import type { TableViewFilterButtonProps } from '../types';
 
 const TableViewFilterButton: React.FC<TableViewFilterButtonProps> = ({ listId, setTableView, view, ...rest }) => {
@@ -26,4 +24,4 @@ const TableViewFilterButton: React.FC<TableViewFilterButtonProps> = ({ listId, s
 	);
 };
 
-export default React.memo(TableViewFilterButton, getPropsAreEqual(['listId'], ['view']));
+export default TableViewFilterButton;

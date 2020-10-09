@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@eventespresso/i18n';
 
@@ -17,14 +17,19 @@ interface Props {
 }
 
 const EntityDetailsPanelSold: React.FC<Props> = ({ adminUrl, eventId, sold = 0, type, ...props }) => {
-	const dbId = type === 'date' ? { datetime_id: props.dbId } : { ticket_id: props.dbId };
+	const dbId = useMemo(() => (type === 'date' ? { datetime_id: props.dbId } : { ticket_id: props.dbId }), [
+		props.dbId,
+		type,
+	]);
 
-	const regListUrl = addQueryArgs(adminUrl, {
-		event_id: eventId,
-		_reg_status: 'RAP',
-		return: 'edit',
-		...{ dbId },
-	});
+	const regListUrl = useMemo(() => {
+		return addQueryArgs(adminUrl, {
+			event_id: eventId,
+			_reg_status: 'RAP',
+			return: 'edit',
+			...{ dbId },
+		});
+	}, [adminUrl, dbId, eventId]);
 
 	const tooltip =
 		type === 'date'
@@ -38,4 +43,4 @@ const EntityDetailsPanelSold: React.FC<Props> = ({ adminUrl, eventId, sold = 0, 
 	);
 };
 
-export default React.memo(EntityDetailsPanelSold);
+export default EntityDetailsPanelSold;

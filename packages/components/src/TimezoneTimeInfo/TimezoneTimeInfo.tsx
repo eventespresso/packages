@@ -27,4 +27,4 @@ const TimezoneTimeInfo: React.FC<Props> = ({ date, ...props }) => {
 	);
 };
 
-export default React.memo(TimezoneTimeInfo);
+export default TimezoneTimeInfo;

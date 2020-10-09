@@ -3,7 +3,6 @@ import { useSpring, animated } from 'react-spring';
 import { __ } from '@eventespresso/i18n';
 
 import { CompassFilled } from '@eventespresso/icons';
-import { getPropsAreEqual } from '@eventespresso/utils';
 import { Button, ButtonSize } from '../Button';
 import type { ToggleLegendButtonProps } from './types';
 
@@ -41,4 +40,4 @@ const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({
 	);
 };
 
-export default React.memo(ToggleLegendButton, getPropsAreEqual(['showLegend'], ['isDisabled']));
+export default ToggleLegendButton;

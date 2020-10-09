@@ -22,4 +22,4 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, className, menuLi
 	);
 };
 
-export default React.memo(DropdownMenu);
+export default DropdownMenu;

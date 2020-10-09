@@ -3,7 +3,6 @@ import classNames from 'classnames';
 
 import { Content, Row, Sidebar } from '../Container';
 import { EntityPaperFrame } from '../EntityPaperFrame';
-import { getPropsAreEqual } from '@eventespresso/utils';
 import type { EntityCardProps } from './types';
 import './styles.scss';
 
@@ -39,4 +38,4 @@ const EntityCard: React.FC<EntityCardProps> = ({
 	);
 };
 
-export default React.memo(EntityCard, getPropsAreEqual(['cacheId']));
+export default EntityCard;

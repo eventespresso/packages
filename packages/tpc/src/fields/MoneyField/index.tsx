@@ -44,4 +44,4 @@ const MoneyField: React.FC<MoneyFieldProps> = ({ children, isPercent = false, ..
 	);
 };
 
-export default React.memo(MoneyField);
+export default MoneyField;

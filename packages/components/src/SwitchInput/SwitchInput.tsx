@@ -6,8 +6,8 @@ import type { withTooltipProps } from '../withTooltip';
 
 interface SwitchInputProps extends SwitchProps, Partial<withLabelProps>, Partial<withTooltipProps> {}
 
-const SwitchInput: React.FC<SwitchInputProps> = React.memo((props) => {
+const SwitchInput: React.FC<SwitchInputProps> = (props) => {
 	return <Switch {...props} id={null} />;
-});
+};
 
 export default withLabel(SwitchInput);

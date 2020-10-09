@@ -30,4 +30,4 @@ const Content: React.FC<Props> = ({ date }) => {
 	);
 };
 
-export default React.memo(Content);
+export default Content;

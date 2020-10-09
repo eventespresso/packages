@@ -36,4 +36,4 @@ const TicketPriceField: React.FC<TicketPriceFieldProps> = (props) => {
 	);
 };
 
-export default React.memo(TicketPriceField);
+export default TicketPriceField;

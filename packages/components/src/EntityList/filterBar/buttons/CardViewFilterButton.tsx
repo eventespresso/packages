@@ -2,7 +2,6 @@ import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { AppstoreFilled } from '@eventespresso/icons';
-import { getPropsAreEqual } from '@eventespresso/utils';
 
 import { Button } from '../../../Button';
 import type { CardViewFilterButtonProps } from '../types';
@@ -25,4 +24,4 @@ const CardViewFilterButton: React.FC<CardViewFilterButtonProps> = ({ listId, set
 	);
 };
 
-export default React.memo(CardViewFilterButton, getPropsAreEqual(['listId'], ['view']));
+export default CardViewFilterButton;

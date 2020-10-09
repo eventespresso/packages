@@ -8,10 +8,10 @@ interface Props {
 	message?: string;
 }
 
-export const ErrorMessage: React.FC<Props> = React.memo(({ message }) => {
+export const ErrorMessage: React.FC<Props> = ({ message }) => {
 	return message ? (
 		<FormErrorMessage aria-live='assertive' className='ee-form-error-message'>
 			{message}
 		</FormErrorMessage>
 	) : null;
-});
+};

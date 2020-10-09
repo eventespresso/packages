@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { Badge, Tooltip } from '@eventespresso/adapters';
-import { getPropsAreEqual } from '@eventespresso/utils';
 import type { BadgeProps } from '@eventespresso/adapters';
 
 import './style.scss';
@@ -48,4 +47,4 @@ export const ItemCount: React.FC<ItemCountProps> = ({
 	);
 };
 
-export default React.memo(ItemCount, getPropsAreEqual(['count']));
+export default ItemCount;
