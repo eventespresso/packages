@@ -12,9 +12,7 @@ export interface InlineEditProps extends Partial<ChakraEditableProps>, CommonInp
 }
 
 export interface InlineEditPreviewProps
-	extends Partial<
-		Omit<InlineEditProps, 'onCancel' | 'onChange' | 'onChangeValue' | 'onEdit' | 'onSubmit' | 'value'>
-	> {
+	extends Partial<Omit<InlineEditProps, 'onCancel' | 'onChange' | 'onChangeValue' | 'onEdit' | 'onSubmit'>> {
 	fitText?: boolean;
 	isEditing?: boolean;
 	onRequestEdit?: VoidFunction;
