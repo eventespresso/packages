@@ -5,7 +5,7 @@ import Dotdotdot from 'react-dotdotdot';
 import { TextFit } from '@eventespresso/adapters';
 import { Edit } from '@eventespresso/icons';
 
-import { TabbableText } from '../index';
+import { TabbableText } from '../';
 import type { PreviewProps } from './types';
 
 import './style.scss';
@@ -23,28 +23,15 @@ const Preview: React.FC<PreviewProps> = ({
 	if (isEditing) {
 		return null;
 	}
+
+	const icon = <Edit className={'ee-inline-edit__edit-icon'} />;
+
 	const previewClassName = classNames('ee-inline-edit__preview-wrapper', className && className);
 
-	const trimmedValue =
-		lineCount && typeof value === 'string' && value.length > lineLength ? (
-			<Dotdotdot clamp={lineCount}>{value}</Dotdotdot>
-		) : (
-			value
-		);
-
-	const textInput = (
-		<div className={previewClassName}>
-			<TabbableText
-				icon={<Edit className={'ee-inline-edit__edit-icon'} />}
-				onClick={onRequestEdit}
-				text={trimmedValue}
-				tooltip={tooltip}
-			/>
-		</div>
-	);
+	let textInput = value;
 
 	if (fitText) {
-		return (
+		textInput = (
 			<TextFit
 				max={24} // based on --ee-font-size-bigger: 1.5rem;
 				min={18}
@@ -55,7 +42,20 @@ const Preview: React.FC<PreviewProps> = ({
 		);
 	}
 
-	return textInput;
+	// the order of the conditional is very important here
+	if (lineCount && typeof value === 'string' && value.length > lineLength) {
+		textInput = <Dotdotdot clamp={lineCount}>{value}</Dotdotdot>;
+	}
+
+	return (
+		<TabbableText
+			className={previewClassName}
+			icon={icon}
+			onClick={onRequestEdit}
+			text={textInput}
+			tooltip={tooltip}
+		/>
+	);
 };
 
 export default Preview;

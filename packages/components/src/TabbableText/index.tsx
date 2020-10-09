@@ -4,7 +4,7 @@ import { ENTER } from '@wordpress/keycodes';
 import { __ } from '@eventespresso/i18n';
 
 import { Tooltip } from '@eventespresso/adapters';
-import { TabbableTextProps } from './types';
+import type { TabbableTextProps } from './types';
 
 import './style.scss';
 
