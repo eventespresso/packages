@@ -9,7 +9,7 @@ const inputStepperProps = { className: 'ee-number-field-stepper' };
 
 const Number: React.FC<FieldRendererProps> = ({ input: { onChange, value, ...input }, ...props }) => {
 	const className = classNames('ee-number-input-wrapper', props.className);
-	const ariaValuenow = value?.length ? value : null;
+	const ariaValuenow = String(value)?.length ? value : null;
 
 	return (
 		<NumberInput
