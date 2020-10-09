@@ -50,6 +50,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 				aria-invalid={isInvalid}
 				aria-label={label}
 				id={props.input.name}
+				isInvalid={isInvalid}
 			/>
 			{after}
 			<ErrorMessage id={errorMessageId} message={errorMessage} />
