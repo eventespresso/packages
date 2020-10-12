@@ -10,6 +10,10 @@
 		display: flex;
 		height: 100%;
 
+		&-wrapper {
+			@extend .ee-fade-in;
+		}
+
 		&__sidebar {
 			padding: 0;
 			width: var(--ee-sidebar-width);
@@ -28,7 +32,6 @@
 			box-sizing: border-box;
 			padding: var(--ee-padding-tiny) var(--ee-padding-small);
 			width: calc(100% - var(--ee-sidebar-width) - var(--ee-menu-width));
-			@extend .ee-fade-in;
 		}
 
 		&__details {
