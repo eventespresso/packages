@@ -4,13 +4,6 @@
 	}
 }
 
-@keyframes loading-circle {
-	100% {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
-}
-
 .ee-toaster-notice {
 	--ee-toast-icon-size: 24px;
 	--ee-toast-btn-size: 12px;
