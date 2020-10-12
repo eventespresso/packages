@@ -1,9 +1,3 @@
-@keyframes animation-spin {
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
 .ee-toaster-notice {
 	--ee-toast-icon-size: 24px;
 	--ee-toast-btn-size: 12px;
@@ -37,7 +31,7 @@
 					display: inline-flex;
 					margin: 0 var(--ee-margin-smaller) 0 0;
 					&.ee-loading-spinner {
-						animation: animation-spin 1s infinite linear;
+						animation: var(--ee-animation-spin);
 
 						@media (prefers-reduced-motion: reduce) {
 							animation: none;
@@ -94,7 +88,7 @@
 
 		&--loading {
 			.ee-toaster-notice__icon {
-				animation: animation-spin 1s infinite linear;
+				animation: var(--ee-animation-spin);
 
 				@media (prefers-reduced-motion: reduce) {
 					animation: none;
