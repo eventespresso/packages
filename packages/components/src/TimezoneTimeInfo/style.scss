@@ -1,16 +1,10 @@
 .ee-timezone-info {
 	display: inline-block;
-	margin: 0 auto;
+	margin-right: var(--ee-margin-smaller);
 	position: relative;
 
 	&__button.ee-btn-base {
 		border: none;
-		// font-size: 16px;
-		// height: 30px;
-		margin: var(--ee-margin-micro);
-		// min-width: 30px;
-		padding: 4px;
-		// width: 30px;
 	}
 
 	[role='dialog'] {

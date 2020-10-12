@@ -13,6 +13,14 @@
 		margin-right: unset;
 	}
 
+	&--full-width {
+		width: 100%;
+	}
+
+	&--no-margin {
+		margin: 0;
+	}
+
 	&--align {
 		&-center {
 			margin-left: auto;

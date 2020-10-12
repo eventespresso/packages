@@ -9,10 +9,11 @@
 	color: #302936;
 	font-weight: 600;
 	letter-spacing: 2px;
+	max-width: 300px;
 	padding: var(--ee-padding-micro) var(--ee-padding-smaller) var(--ee-padding-tiny);
 	position: relative;
 	text-shadow: var(--ee-text-shadow-inset-light);
-	white-space: pre;
+	white-space: pre-wrap;
 	width: auto;
 	word-spacing: 0.15rem;
 	z-index: 1401;

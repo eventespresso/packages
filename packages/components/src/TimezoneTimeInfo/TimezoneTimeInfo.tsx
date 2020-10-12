@@ -13,7 +13,7 @@ export interface Props {
 	date: Date;
 }
 
-const TimezoneTimeInfo: React.FC<Props> = ({ date, ...props }) => {
+export const TimezoneTimeInfo: React.FC<Props> = ({ date, ...props }) => {
 	const className = classNames(props.className, 'ee-timezone-info');
 
 	return (
@@ -26,5 +26,3 @@ const TimezoneTimeInfo: React.FC<Props> = ({ date, ...props }) => {
 		</div>
 	);
 };
-
-export default TimezoneTimeInfo;

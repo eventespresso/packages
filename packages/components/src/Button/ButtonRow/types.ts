@@ -1,6 +1,7 @@
 export interface ButtonRowProps {
-	className?: string;
-	noMargin?: boolean;
 	align?: 'center' | 'left' | 'right';
+	className?: string;
+	fullWidth?: boolean;
+	noMargin?: boolean;
 	topBordered?: boolean;
 }
