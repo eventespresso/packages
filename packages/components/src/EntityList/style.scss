@@ -71,11 +71,15 @@
 		}
 	}
 
-	&--no-results.ee-banner[role='alert'] {
-		.ee-banner {
-			&__icon {
-				height: calc(var(--ee-font-size-extreme) * 2);
-				width: calc(var(--ee-font-size-extreme) * 2);
+	&--no-results {
+		@extend .ee-fade-in;
+
+		&.ee-banner[role='alert'] {
+			.ee-banner {
+				&__icon {
+					height: calc(var(--ee-font-size-extreme) * 2);
+					width: calc(var(--ee-font-size-extreme) * 2);
+				}
 			}
 		}
 	}
