@@ -72,10 +72,9 @@
 		text-decoration: none;
 		text-align: center;
 		text-shadow: var(--ee-text-shadow-inset-light);
-		transition: all linear 50ms;
 		vertical-align: middle;
 		width: auto;
-		@include reduce-motion('transition');
+		@include transition(all linear 50ms);
 
 		&--no-margin {
 			margin: 0;
@@ -107,8 +106,7 @@
 
 		svg {
 			fill: currentColor;
-			transition: color 50ms linear, fill 50ms linear;
-			@include reduce-motion('transition');
+			@include transition(color 50ms linear, fill 50ms linear);
 		}
 
 		&--has-icon,

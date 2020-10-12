@@ -292,9 +292,8 @@
 			min-height: var(--ee-icon-button-size);
 			outline: none;
 			padding: var(--ee-padding-micro) var(--ee-padding-tiny);
-			transition: all ease 50ms;
 			width: 100%;
-			@include reduce-motion('transition');
+			@include transition(all ease 50ms);
 		}
 	}
 

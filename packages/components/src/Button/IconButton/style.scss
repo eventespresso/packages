@@ -46,9 +46,9 @@
 
 		svg {
 			display: inline-block;
+
 			path {
-				transition: fill 0.1s ease 0.1s, color 0.1s ease 0.1s !important;
-				@include reduce-motion('transition');
+				@include transition(fill 0.1s ease 0.1s, color 0.1s ease 0.1s !important);
 			}
 		}
 		path {

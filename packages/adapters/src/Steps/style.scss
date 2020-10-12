@@ -191,10 +191,9 @@
 			border-style: solid;
 			border-color: var(--ee-color-grey-10);
 			border-width: 0 1px 1px 0;
-			transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
 			transform: translateY(-50%) translateX(50%) rotate(-45deg);
 			z-index: 1;
-			@include reduce-motion('transition');
+			@include transition(background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease);
 
 			[dir='rtl'] & {
 				left: -15px;

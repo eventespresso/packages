@@ -32,8 +32,7 @@
 	min-height: var(--ee-icon-button-size); // 42px
 	outline: none;
 	padding: var(--ee-padding-micro) var(--ee-padding-tiny);
-	transition: all ease 50ms;
-	@include reduce-motion('transition');
+	@include transition(all ease 50ms);
 }
 
 // this approach is needed in cases when classname cannot be applied directly on input

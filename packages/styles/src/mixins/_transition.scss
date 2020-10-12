@@ -1,0 +1,7 @@
+@import './reduce-motion';
+
+@mixin transition($args...) {
+	transition: $args;
+
+	@include reduce-motion('transition');
+}
