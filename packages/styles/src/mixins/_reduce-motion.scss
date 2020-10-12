@@ -1,0 +1,20 @@
+/**
+ * Allows users to opt-out of animations via OS-level preferences.
+ */
+
+@mixin reduce-motion($property: '') {
+	@if $property == 'transition' {
+		@media (prefers-reduced-motion: reduce) {
+			transition-duration: 0s;
+		}
+	} @else if $property == 'animation' {
+		@media (prefers-reduced-motion: reduce) {
+			animation-duration: 1ms;
+		}
+	} @else {
+		@media (prefers-reduced-motion: reduce) {
+			transition-duration: 0s;
+			animation-duration: 1ms;
+		}
+	}
+}

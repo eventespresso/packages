@@ -2,6 +2,7 @@
  * Event Espresso Form Steps Stylesheet
  * © 2020 Event Espresso
  * ------------------------------------------------------------------------- */
+@import '~@eventespresso/styles/src';
 
 .ee-form-steps {
 	display: flex;
@@ -193,6 +194,7 @@
 			transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
 			transform: translateY(-50%) translateX(50%) rotate(-45deg);
 			z-index: 1;
+			@include reduce-motion('transition');
 
 			[dir='rtl'] & {
 				left: -15px;

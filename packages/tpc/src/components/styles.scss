@@ -1,3 +1,5 @@
+@import '~@eventespresso/styles/src';
+
 $btn: '.ee-button.ee-btn-default';
 $input-number: 'input[type=' number ']';
 $input-text: 'input[type=' text ']';
@@ -35,9 +37,6 @@ $input-text: 'input[type=' text ']';
 		font-weight: bold;
 		font-size: 1.3em;
 		animation: animate_color 2s infinite;
-
-		@media (prefers-reduced-motion: reduce) {
-			animation: none;
-		}
+		@include reduce-motion('animation');
 	}
 }

@@ -1,3 +1,5 @@
+@import '~@eventespresso/styles/src';
+
 [data-baseweb='popover'] {
 	z-index: 2;
 }
@@ -31,6 +33,7 @@
 	outline: none;
 	padding: var(--ee-padding-micro) var(--ee-padding-tiny);
 	transition: all ease 50ms;
+	@include reduce-motion('transition');
 }
 
 // this approach is needed in cases when classname cannot be applied directly on input

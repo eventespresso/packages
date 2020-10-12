@@ -1,3 +1,5 @@
+@import './mixins/reduce-motion';
+
 $animation-spin: ee-animation-spin 1s linear infinite;
 $animation-spin-cc: ee-animation-spin-cc 1s linear infinite;
 $animation-spin-fast: ee-animation-spin 0.25s ease-in infinite;
@@ -39,11 +41,13 @@ $animation: (
 }
 
 .ee-fade-in {
-	opacity: 1;
 	animation: ee-fade-in-opacity 0.25s ease-in-out 1;
+	opacity: 1;
+	@include reduce-motion('animation');
 }
 
 .ee-fade-out {
-	opacity: 0;
 	animation: ee-fade-out-opacity 0.25s ease-in-out 1;
+	opacity: 0;
+	@include reduce-motion('animation');
 }

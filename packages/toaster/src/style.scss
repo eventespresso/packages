@@ -34,10 +34,7 @@
 					margin: 0 var(--ee-margin-smaller) 0 0;
 					&.ee-loading-spinner {
 						animation: var(--ee-animation-spin);
-
-						@media (prefers-reduced-motion: reduce) {
-							animation: none;
-						}
+						@include reduce-motion('animation');
 					}
 				}
 			}
@@ -91,10 +88,7 @@
 		&--loading {
 			.ee-toaster-notice__icon {
 				animation: var(--ee-animation-spin);
-
-				@media (prefers-reduced-motion: reduce) {
-					animation: none;
-				}
+				@include reduce-motion('animation');
 			}
 		}
 

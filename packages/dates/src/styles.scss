@@ -1,3 +1,5 @@
+@import '~@eventespresso/styles/src';
+
 :root {
 	// color variables
 	--ee-date-picker-start-date-bg-color: #a0d6b3; // #84c4bd
@@ -292,6 +294,7 @@
 			padding: var(--ee-padding-micro) var(--ee-padding-tiny);
 			transition: all ease 50ms;
 			width: 100%;
+			@include reduce-motion('transition');
 		}
 	}
 
