@@ -11,7 +11,6 @@ const LoadingNotice: React.FC<LoadingNoticeProps> = ({ children, size = 'lg', ..
 		[props.className]: props.className !== undefined,
 		'ee-loading-notice': true,
 		[`ee-loading-notice--${size}`]: size !== undefined,
-		'ee-fade-in': true,
 	});
 	const ellipsis = String.fromCharCode(8230);
 	const label = props.label || sprintf(_x('loading%s', 'loading...'), ellipsis);

@@ -28,7 +28,6 @@ const TableView: React.FC = () => {
 				filterState={filterState}
 				bodyRowGenerator={bodyRowGenerator}
 				headerRowGenerator={headerRowGenerator}
-				className={'ee-tickets-list-list-view ee-fade-in'}
 				tableId='ticket-entities-table-view'
 				tableCaption={__('Tickets')}
 				onSort={sortTickets}

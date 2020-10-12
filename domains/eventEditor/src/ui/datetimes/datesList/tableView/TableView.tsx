@@ -30,7 +30,6 @@ const TableView: React.FC = () => {
 				filterState={filterState}
 				bodyRowGenerator={bodyRowGenerator}
 				headerRowGenerator={headerRowGenerator}
-				className={'ee-dates-list-list-view ee-fade-in'}
 				tableId='date-entities-table-view'
 				tableCaption={__('Event Dates')}
 				onSort={sortDates}

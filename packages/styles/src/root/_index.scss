@@ -1,7 +1,10 @@
 @import '../_variables.scss';
+@import '../_effects.scss';
+
+$rootVariables: map-merge($heights, $animation);
 
 :root {
-	@each $height, $value in $heights {
-		--ee-height-#{$height}: #{$value};
+	@each $variable, $value in $rootVariables {
+		--ee-#{$variable}: #{$value};
 	}
 }

@@ -1,7 +1,10 @@
+@import '~@eventespresso/styles/src';
+
 .ee-loading-notice {
 	background: var(--ee-color-grey-15);
 	padding: var(--ee-padding-bigger);
 	text-align: center;
+	@extend .ee-fade-in;
 
 	&--small {
 		padding: var(--ee-padding-default);

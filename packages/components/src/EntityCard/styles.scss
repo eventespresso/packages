@@ -1,4 +1,4 @@
-@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+@import '~@eventespresso/styles/src';
 
 .ee-entity-list {
 	.entity-card {
@@ -28,6 +28,7 @@
 			box-sizing: border-box;
 			padding: var(--ee-padding-tiny) var(--ee-padding-small);
 			width: calc(100% - var(--ee-sidebar-width) - var(--ee-menu-width));
+			@extend .ee-fade-in;
 		}
 
 		&__details {

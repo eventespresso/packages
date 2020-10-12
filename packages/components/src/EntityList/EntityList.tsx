@@ -37,9 +37,7 @@ const EntityList = <E extends Entity, ELFS extends EntityListFilterStateManager<
 	if (filterState.total === 0) {
 		const title = noResultsTitle ? noResultsTitle : __('no results found');
 		const description = noResultsDesc ? noResultsDesc : __('try changing filter settings');
-		entityList = (
-			<EmptyState className='ee-entity-list--no-results ee-fade-in' title={title} description={description} />
-		);
+		entityList = <EmptyState className='ee-entity-list--no-results' title={title} description={description} />;
 	} else {
 		entityList = renderList();
 	}

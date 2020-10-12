@@ -3,7 +3,7 @@
  * © 2020 Event Espresso
  * ------------------------------------------------------------------------- */
 
-@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+@import '~@eventespresso/styles/src';
 
 .ee-entity-list {
 	margin: 0 0 var(--ee-margin-big);
@@ -44,6 +44,8 @@
 
 	.ee-entity-table {
 		width: 100%;
+		@extend .ee-fade-in;
+
 		.ee-rspnsv-table-body-row {
 			min-height: 3em;
 		}

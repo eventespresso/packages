@@ -35,13 +35,9 @@ $input-text: 'input[type=' text ']';
 		font-weight: bold;
 		font-size: 1.3em;
 		animation: animate_color 2s infinite;
-	}
-	@keyframes animate_color {
-		from {
-			color: var(--ee-color-secondary-super-high-contrast);
-		}
-		to {
-			color: var(--ee-color-secondary-low-contrast);
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none;
 		}
 	}
 }

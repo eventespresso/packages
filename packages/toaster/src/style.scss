@@ -1,3 +1,16 @@
+@keyframes animation-spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes loading-circle {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
 .ee-toaster-notice {
 	--ee-toast-icon-size: 24px;
 	--ee-toast-btn-size: 12px;
@@ -31,7 +44,11 @@
 					display: inline-flex;
 					margin: 0 var(--ee-margin-smaller) 0 0;
 					&.ee-loading-spinner {
-						animation: loadingCircle 1s infinite linear;
+						animation: animation-spin 1s infinite linear;
+
+						@media (prefers-reduced-motion: reduce) {
+							animation: none;
+						}
 					}
 				}
 			}
@@ -84,7 +101,11 @@
 
 		&--loading {
 			.ee-toaster-notice__icon {
-				animation: var(--ee-animation-spin);
+				animation: animation-spin 1s infinite linear;
+
+				@media (prefers-reduced-motion: reduce) {
+					animation: none;
+				}
 			}
 		}
 
@@ -99,12 +120,5 @@
 				color: #3b413e;
 			}
 		}
-	}
-}
-
-@keyframes loadingCircle {
-	100% {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
 	}
 }
