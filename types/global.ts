@@ -8,7 +8,7 @@ import type { EventEspressoDomData } from '@eventespresso/services';
  */
 export interface EventEspressoData extends EventEspressoDomData {
 	eventEditor?: EventEditorData;
-	rem?: RemDomData;
+	remEditorData?: RemDomData;
 	wpPluginsPage?: WpPluginsPageData;
 }
 
