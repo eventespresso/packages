@@ -58,7 +58,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				key: 'checkbox',
 				type: 'cell',
 				className: 'ee-date-list-cell ee-date-list-col-checkbox ee-rspnsv-table-column-micro',
-				value: <Checkbox id={ticket.id} />,
+				value: <Checkbox dbId={ticket.dbId} id={ticket.id} />,
 			},
 			{
 				key: 'id',
