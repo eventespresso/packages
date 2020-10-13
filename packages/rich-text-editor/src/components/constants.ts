@@ -17,7 +17,7 @@ export const HEADING_BLOCK_TYPES: { label: string; value: DraftBlockType }[] = [
 ];
 
 export const INLINE_STYLES = [
-	{ ariaLabel: __('bold'), label: 'B', style: 'BOLD' },
-	{ ariaLabel: __('italic'), label: 'I', style: 'ITALIC' },
-	{ ariaLabel: __('underline'), label: 'U', style: 'UNDERLINE' },
+	{ 'aria-label': __('bold'), label: 'B', style: 'BOLD' },
+	{ 'aria-label': __('italic'), label: 'I', style: 'ITALIC' },
+	{ 'aria-label': __('underline'), label: 'U', style: 'UNDERLINE' },
 ];
