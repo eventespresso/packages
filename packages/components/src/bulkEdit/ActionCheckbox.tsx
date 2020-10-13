@@ -30,14 +30,17 @@ export const ActionCheckbox: React.FC<ActionCheckboxProps> = ({ id, label, visib
 		}
 	}, [id, selectMultiple, selected.length, toggleSelected, unSelectAll, visibleEntityIds]);
 
+	const ariaLabel = id ? __('select entity') : __('select all entities');
+
 	// for header chekbox, if visible and selected have same length, means all are checked
 	const isChecked = id ? selected.includes(id) : selected.length === visibleEntityIds.length;
+
 	// set "-" icon for header when some are selected
 	const isIndeterminate = !isChecked && selected.length && !id;
 
 	return (
 		<Checkbox
-			aria-label={__('select entity')}
+			aria-label={ariaLabel}
 			className='ee-bulk-edit-actions__checkbox'
 			isChecked={isChecked}
 			isIndeterminate={isIndeterminate}
