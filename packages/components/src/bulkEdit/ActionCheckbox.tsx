@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
 
+import { __, sprintf } from '@eventespresso/i18n';
 import { Checkbox } from '@eventespresso/adapters';
 import { useBulkEdit } from '@eventespresso/services';
 import type { EntityId } from '@eventespresso/data';
@@ -30,7 +30,7 @@ export const ActionCheckbox: React.FC<ActionCheckboxProps> = ({ id, label, visib
 		}
 	}, [id, selectMultiple, selected.length, toggleSelected, unSelectAll, visibleEntityIds]);
 
-	const ariaLabel = id ? __('select entity') : __('select all entities');
+	const ariaLabel = id ? sprintf(__('select entity with id %s'), id) : __('select all entities');
 
 	// for header chekbox, if visible and selected have same length, means all are checked
 	const isChecked = id ? selected.includes(id) : selected.length === visibleEntityIds.length;
