@@ -13,6 +13,13 @@ export const DatePicker: React.FC<DatePickerProps> = ({ inputValue, locale, onCh
 	const datefnsLocale = useMemo(() => locales?.[locale?.replace(/-_/, '')] ?? locales.enUS, [locale]);
 
 	return (
-		<ReactDatePicker onChange={onChange} selected={value} value={inputValue} locale={datefnsLocale} {...props} />
+		<ReactDatePicker
+			calendarClassName='ee-datepicker'
+			onChange={onChange}
+			selected={value}
+			value={inputValue}
+			locale={datefnsLocale}
+			{...props}
+		/>
 	);
 };

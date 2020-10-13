@@ -7,6 +7,7 @@ import type { DatePickerProps } from './types';
 export const TimePicker: React.FC<DatePickerProps> = (props) => {
 	return (
 		<DatePicker
+			calendarClassName='ee-timepicker'
 			dateFormat={props.timeFormat}
 			showTimeSelect
 			showTimeSelectOnly

@@ -3,13 +3,15 @@ import RcPagination from 'rc-pagination';
 
 import 'rc-pagination/assets/index.css';
 import defaultLocale from 'rc-pagination/lib/locale/en_US';
-import './style.scss';
 
+import { __ } from '@eventespresso/i18n';
 import { ChevronLeft, ChevronRight } from '@eventespresso/icons';
 
-import defaultItemRender from './ItemRender';
+import ItemRender from './ItemRender';
 import type { PaginationProps } from './types';
 import PerPage from './PerPage';
+
+import './style.scss';
 
 const DEFAULT_PER_PAGE_OPTIONS = ['2', '6', '12', '24', '48'];
 
@@ -33,10 +35,11 @@ const Pagination: React.FC<PaginationProps> = ({
 		<div className='ee-pagination'>
 			<RcPagination
 				{...props}
+				aria-label={__('pagination')}
 				current={pageNumber}
 				defaultCurrent={defaultPageNumber}
 				hideOnSinglePage={hideOnSinglePage}
-				itemRender={defaultItemRender}
+				itemRender={ItemRender}
 				locale={locale}
 				nextIcon={<ChevronRight size='small' />}
 				onChange={onChangePageNumber}

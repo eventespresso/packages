@@ -30,7 +30,10 @@
 	box-sizing: border-box;
 	color: var(--ee-default-text-color);
 	font-size: var(--ee-font-size-small);
-	width: calc(var(--ee-icon-button-size) * 9 + 2px);
+
+	&.ee-datetime-picker {
+		width: calc(var(--ee-icon-button-size) * 9 + 2px);
+	}
 
 	&__navigation {
 		height: var(--ee-font-size-default);
