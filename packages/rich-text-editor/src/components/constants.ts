@@ -1,4 +1,5 @@
 import { DraftBlockType } from 'draft-js';
+import { __ } from '@eventespresso/i18n';
 
 export const BLOCK_TYPES: { label: string; style: DraftBlockType }[] = [
 	{ label: 'Blockquote', style: 'blockquote' },
@@ -16,7 +17,7 @@ export const HEADING_BLOCK_TYPES: { label: string; value: DraftBlockType }[] = [
 ];
 
 export const INLINE_STYLES = [
-	{ label: 'B', style: 'BOLD' },
-	{ label: 'I', style: 'ITALIC' },
-	{ label: 'U', style: 'UNDERLINE' },
+	{ ariaLabel: __('bold'), label: 'B', style: 'BOLD' },
+	{ ariaLabel: __('italic'), label: 'I', style: 'ITALIC' },
+	{ ariaLabel: __('underline'), label: 'U', style: 'UNDERLINE' },
 ];

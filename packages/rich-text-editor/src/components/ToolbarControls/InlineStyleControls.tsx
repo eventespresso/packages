@@ -11,8 +11,9 @@ const InlineStyleControls: React.FC<InlineStyleControlsProps> = ({ editorState, 
 		<div className='rich-text-editor-controls'>
 			{INLINE_STYLES.map((type) => (
 				<StyleButton
-					key={type.label}
 					active={currentStyle.has(type.style)}
+					aria-label={type['aria-label']}
+					key={type.label}
 					label={type.label}
 					onToggle={onToggle}
 					style={type.style}
