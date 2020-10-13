@@ -21,6 +21,7 @@ const IconButton = forwardRef<typeof IconButtonAdapter, IconButtonProps>(
 			buttonType = ButtonType.DEFAULT,
 			color,
 			icon,
+			noMargin,
 			onClick,
 			...props
 		},
@@ -33,7 +34,8 @@ const IconButton = forwardRef<typeof IconButtonAdapter, IconButtonProps>(
 			color && `ee-icon-button-color--${color}`,
 			borderless && 'ee-icon-button--borderless',
 			buttonSize !== ButtonSize.DEFAULT && [`ee-btn--${buttonSize}`],
-			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`]
+			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],
+			noMargin && 'ee-icon-button--no-margin'
 		);
 
 		return (

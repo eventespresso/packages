@@ -11,4 +11,5 @@ export interface IconButtonProps
 	buttonType?: ButtonType;
 	buttonSize?: ButtonSize;
 	color?: 'white' | 'black';
+	noMargin?: boolean;
 }

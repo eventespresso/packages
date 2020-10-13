@@ -1,7 +1,8 @@
-@import '../_variables.scss';
-@import '../_effects.scss';
+@import '../effects';
+@import '../functions';
+@import '../variables';
 
-$rootVariables: map-merge($heights, $animation);
+$rootVariables: map-collect($animation, $date-picker, $heights);
 
 :root {
 	@each $variable, $value in $rootVariables {

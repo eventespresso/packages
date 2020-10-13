@@ -2,8 +2,24 @@ $height-small: 20px !default;
 $height-default: 30px !default;
 $height-big: 45px !default;
 
+$date-picker-start-date-bg-color: #a0d6b3; // #84c4bd
+$date-picker-start-date-bg-color-hover: #b5e4c6; // #ade0da
+$date-picker-date-in-range-bg-color: #9dcdd5;
+$date-picker-date-in-range-bg-color-hover: #b6d8dd;
+$date-picker-end-date-bg-color: #94b0d6;
+$date-picker-end-date-bg-color-hover: #b1c8e8;
+
 $heights: (
 	'height-small': $height-small,
 	'height-default': $height-default,
 	'height-big': $height-big,
+) !default;
+
+$date-picker: (
+	'date-picker-start-date-bg-color': $date-picker-start-date-bg-color,
+	'date-picker-start-date-bg-color-hover': $date-picker-start-date-bg-color-hover,
+	'date-picker-date-in-range-bg-color': $date-picker-date-in-range-bg-color,
+	'date-picker-date-in-range-bg-color-hover': $date-picker-date-in-range-bg-color-hover,
+	'date-picker-end-date-bg-color': $date-picker-end-date-bg-color,
+	'date-picker-end-date-bg-color-hover': $date-picker-end-date-bg-color-hover,
 ) !default;

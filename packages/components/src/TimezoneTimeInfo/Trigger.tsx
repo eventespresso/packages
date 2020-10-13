@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 
 import { GlobalOutlined } from '@eventespresso/icons';
 import type { TooltipProps } from '@eventespresso/adapters';
-import { useMemoStringify } from '@eventespresso/hooks';
 
 import { IconButton } from '../../';
 
@@ -13,9 +12,9 @@ interface TriggerProps {
 
 const Icon: React.FC = () => <GlobalOutlined /* noMargin */ size='smaller' />;
 
-const Trigger = forwardRef<typeof IconButton, TriggerProps>(({ tooltip, ...props }, ref) => {
-	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'top' });
+const tooltipProps: TooltipProps = { placement: 'top' };
 
+const Trigger = forwardRef<typeof IconButton, TriggerProps>(({ tooltip, ...props }, ref) => {
 	return (
 		<IconButton
 			{...props}

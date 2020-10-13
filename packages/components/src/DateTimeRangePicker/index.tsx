@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import classNames from 'classnames';
-import { head } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { DateTimeRangePicker as DateTimeRangePickerAdapter } from '@eventespresso/dates';
@@ -8,7 +7,7 @@ import type { DateRangePickerProps } from '@eventespresso/dates';
 import { Save } from '@eventespresso/icons';
 import { useConfig } from '@eventespresso/services';
 
-import { ButtonRow, ButtonType, IconButton, TimezoneTimeInfo } from '../';
+import { Button, ButtonType, TimezoneTimeInfo } from '../';
 
 import './styles.scss';
 
@@ -29,19 +28,29 @@ export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ onChange, 
 		'ee-input-base-wrapper'
 	);
 
+	const startDateTZ = <TimezoneTimeInfo date={dates[0]} />;
+	const endDateTZ = <TimezoneTimeInfo date={dates[1]} />;
+
 	return (
 		<div className={className}>
-			<DateTimeRangePickerAdapter required locale={user} onChange={setDates} value={dates} {...props} />
-			<ButtonRow fullWidth noMargin>
-				<TimezoneTimeInfo date={head(dates)} />
-				<IconButton
-					aria-label={__('save')}
-					buttonType={ButtonType.MINIMAL}
-					className={'ee-date-time-range-picker-submit'}
-					icon={Save}
-					onClick={onSave}
-				/>
-			</ButtonRow>
+			<DateTimeRangePickerAdapter
+				endDateTZ={endDateTZ}
+				locale={user}
+				onChange={setDates}
+				required
+				startDateTZ={startDateTZ}
+				value={dates}
+				{...props}
+			/>
+
+			<Button
+				aria-label={__('save')}
+				buttonText={__('save')}
+				buttonType={ButtonType.PRIMARY}
+				icon={Save}
+				noMargin
+				onClick={onSave}
+			/>
 		</div>
 	);
 };

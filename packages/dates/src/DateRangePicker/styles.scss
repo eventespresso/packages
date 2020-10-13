@@ -1,0 +1,64 @@
+@import '~@eventespresso/styles/src';
+
+.date-range-picker {
+	display: flex;
+	align-items: center;
+
+	&__label {
+		color: var(--ee-default-text-color-low-contrast);
+		display: block;
+		font-weight: 600;
+		margin: var(--ee-margin-small) 0 0;
+		width: 100%;
+	}
+
+	&__start-input,
+	&__end-input {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&-legend {
+		&__wrapper {
+			box-sizing: border-box;
+			clear: both;
+			padding: var(--ee-padding-smaller);
+			width: 100%;
+
+			ul {
+				align-items: center;
+				display: flex;
+				flex-flow: row;
+				justify-content: space-between;
+			}
+		}
+
+		&__item {
+			align-items: center;
+			display: flex;
+			flex-flow: row;
+			justify-content: flex-start;
+			margin: 0 0 var(--ee-margin-tiny);
+
+			span {
+				height: var(--ee-icon-button-size-micro);
+				margin: 0 var(--ee-margin-tiny);
+				width: var(--ee-icon-button-size-micro);
+
+				&.legend-item {
+					&__range-start {
+						background: var(--ee-date-picker-start-date-bg-color);
+					}
+
+					&__range-day {
+						background: var(--ee-date-picker-date-in-range-bg-color);
+					}
+
+					&__range-end {
+						background: var(--ee-date-picker-end-date-bg-color);
+					}
+				}
+			}
+		}
+	}
+}
