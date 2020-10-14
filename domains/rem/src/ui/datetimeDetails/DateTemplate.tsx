@@ -17,9 +17,7 @@ const DateTemplate: React.FC<DateTemplateProps> = ({ setTemplate }) => {
 
 	const allDates = useDatetimes();
 
-	const options = useMemo(() => entityListToSelectOptions(allDates, { label: __('Select...'), value: '' }), [
-		allDates,
-	]);
+	const options = useMemo(() => entityListToSelectOptions(allDates, { label: __('Select…'), value: '' }), [allDates]);
 	const datetime = useDatetimeItem({ id: selectedDateId });
 	const onClick = useCallback(() => setTemplate(datetime || {}), [datetime, setTemplate]);
 

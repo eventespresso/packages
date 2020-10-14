@@ -34,7 +34,7 @@ const DatesList: React.FC = () => {
 			headerText={__('Event Dates')}
 			legendConfig={legendConfig}
 			listId={datesList}
-			loadingText={__('loading event dates...')}
+			loadingText={__('loading event dates…')}
 			renderList={renderList}
 		/>
 	);

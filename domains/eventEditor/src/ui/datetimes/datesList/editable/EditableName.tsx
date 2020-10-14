@@ -14,7 +14,7 @@ interface EditableNameProps extends DateItemProps {
 const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime, view = 'card' }) => {
 	const { updateEntity } = useDatetimeMutator(datetime.id);
 
-	const tooltip = __('edit title...');
+	const tooltip = __('edit title…');
 
 	const dateName = datetime.name || tooltip;
 

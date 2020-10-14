@@ -12,7 +12,7 @@ const PriceNameInput: React.FC<PriceModifierProps> = ({ price }) => {
 			// default prices cannot be changed in TPC
 			disabled={price.isDefault}
 			field='name'
-			placeholder={__('label...')}
+			placeholder={__('label…')}
 			price={price}
 			type={'text'}
 		/>

@@ -30,7 +30,7 @@ const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates })
 		: tickets;
 
 	const onChangeValue = useCallback((value) => setSelectedTicketId(value), []);
-	const options = entityListToSelectOptions(filteredTickets, { label: __('Select...'), value: '' });
+	const options = entityListToSelectOptions(filteredTickets, { label: __('Select…'), value: '' });
 
 	const [ticket] = entitiesWithGuIdInArray(tickets, [selectedTicketId]);
 	// convert Ticket to RemTicket

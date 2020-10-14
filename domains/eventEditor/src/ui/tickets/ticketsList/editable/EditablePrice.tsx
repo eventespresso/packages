@@ -28,11 +28,11 @@ const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, 
 		<InlineEditCurrency
 			id={ticket.id}
 			amount={ticket.price}
-			placeholder={__('set price...')}
+			placeholder={__('set price…')}
 			wrapperProps={wrapperProps}
 			onChange={onChangePrice}
 			tag={'h3'}
-			tooltip={__('edit ticket total...')}
+			tooltip={__('edit ticket total…')}
 		/>
 	);
 };

@@ -1,3 +1,5 @@
+/* eslint-disable @wordpress/i18n-no-variables */
+/* eslint-disable @wordpress/i18n-text-domain */
 // import global types.
 import '../../../types';
 import { createI18n } from '@wordpress/i18n';
@@ -15,6 +17,7 @@ export const __ = (text: string): string => {
 };
 
 export const _n = (single: string, plural: string, number: number): string => {
+	// eslint-disable-next-line @wordpress/i18n-text-domain
 	return i18n._n(single, plural, number, TEXT_DOMAIN);
 };
 

@@ -21,7 +21,7 @@ export const TimezoneTimeInfo: React.FC<Props> = ({ date, ...props }) => {
 			<Popover
 				content={<Content date={date} />}
 				header={__('This Date Converted To:')}
-				trigger={<Trigger tooltip={__('click for timezone\ninformation')} />}
+				trigger={<Trigger tooltip={__('click for timezone information')} />}
 			/>
 		</div>
 	);

@@ -24,7 +24,7 @@ const EditableName: React.FC<Partial<EditableNameProps>> = ({ className, entity:
 		[ticket.name, updateEntity]
 	);
 
-	const tooltip = __('edit title...');
+	const tooltip = __('edit title…');
 
 	const ticketName = ticket.name || tooltip;
 

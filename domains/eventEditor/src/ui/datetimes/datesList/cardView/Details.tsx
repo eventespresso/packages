@@ -38,7 +38,7 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 				onUpdate={onUpdate}
 				text={datetime.description}
 				title={__('Edit description')}
-				tooltip={__('edit description...')}
+				tooltip={__('edit description…')}
 			/>
 
 			<DateDetailsPanel adminUrl={adminUrl} entity={datetime} eventId={eventId} />

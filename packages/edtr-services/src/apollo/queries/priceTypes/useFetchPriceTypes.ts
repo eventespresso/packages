@@ -38,7 +38,7 @@ const useFetchPriceTypes = (): FetchQueryResult<PriceTypesList> => {
 
 	useEffect(() => {
 		if (loading) {
-			toastId.current = toaster.loading({ message: __('initializing  price types') });
+			toastId.current = toaster.loading({ message: __('initializing price types') });
 		}
 
 		setIsLoading(TypeName.priceTypes, loading);

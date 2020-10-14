@@ -8,7 +8,7 @@ export const buildEntitySelectOptions = (list: Array<any>, loading: boolean, err
 	if (loading) {
 		return [
 			{
-				label: __('Loading...'),
+				label: __('Loading…'),
 				value: '',
 			},
 		];
@@ -23,7 +23,7 @@ export const buildEntitySelectOptions = (list: Array<any>, loading: boolean, err
 	}
 	return [
 		{
-			label: __('Select...'),
+			label: __('Select…'),
 			value: '',
 		},
 		...list.map(({ id: value, name: label }) => ({ label, value })),

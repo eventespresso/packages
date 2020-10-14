@@ -34,7 +34,7 @@ const TicketsList: React.FC = () => {
 			headerText={__('Available Tickets')}
 			legendConfig={legendConfig}
 			listId={ticketsList}
-			loadingText={__('loading tickets...')}
+			loadingText={__('loading tickets…')}
 			renderList={renderList}
 		/>
 	);

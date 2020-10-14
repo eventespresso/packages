@@ -9,7 +9,7 @@ import type { TabbableTextProps } from './types';
 import './style.scss';
 
 export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, ...props }) => {
-	let tooltip = props.tooltip || __('Click to edit...');
+	let tooltip = props.tooltip || __('Click to edit…');
 	const text = props.text || tooltip;
 	// don't display tooltip if it is being used as placeholder
 	tooltip = text === tooltip ? '' : tooltip;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { __ } from '@eventespresso/i18n';
 
+import { __ } from '@eventespresso/i18n';
 import { Button, ButtonSize, NewEntityOption } from '@eventespresso/components';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
@@ -31,7 +31,7 @@ const AddSingleDate: React.FC<AddSingleDateProps> = ({ isOnlyButton }) => {
 	return (
 		<NewEntityOption
 			className={'ee-new-entity-option__single-datetime'}
-			description={__('Add a single date\nthat only occurs once')}
+			description={__('Add a single date that only occurs once')}
 			icon={Calendar}
 			title={__('Single Date')}
 		>

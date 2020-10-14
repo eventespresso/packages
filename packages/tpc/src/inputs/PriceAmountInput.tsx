@@ -42,7 +42,7 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 				getValue={getValue}
 				name='amount'
 				parse={formatParse()}
-				placeholder={__('amount...')}
+				placeholder={__('amount…')}
 				setValue={setValue}
 				type='number'
 			/>
