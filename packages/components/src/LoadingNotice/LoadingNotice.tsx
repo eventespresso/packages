@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Spinner } from '@eventespresso/adapters';
-import { _x, sprintf } from '@eventespresso/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import type { LoadingNoticeProps } from './types';
 import './style.scss';
@@ -13,15 +13,7 @@ const LoadingNotice: React.FC<LoadingNoticeProps> = ({ children, size = 'lg', ..
 		[`ee-loading-notice--${size}`]: size !== undefined,
 	});
 
-	const ellipsis = String.fromCharCode(8230);
-
-	const label =
-		props.label ||
-		sprintf(
-			/* translators: %s ellipsis */
-			_x('loading%s', 'loading…'),
-			ellipsis
-		);
+	const label = props.label || __('loading…');
 
 	return (
 		<div className={className}>
