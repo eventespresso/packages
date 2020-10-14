@@ -27,7 +27,11 @@ const TicketPriceCalculatorModal: React.FC<TPCModalProps> = ({ onSubmit }) => {
 			bodyClassName='ee-tpc__body'
 			submitButtonProps={submitButtonProps}
 			cancelButtonProps={resetButtonProps}
-			title={sprintf(__('Price Calculator for Ticket: %s'), ticket.name)}
+			title={sprintf(
+				/* translators: %s ticket name */
+				__('Price Calculator for Ticket: %s'),
+				ticket.name
+			)}
 		>
 			<TicketPriceCalculator />
 		</Modal>

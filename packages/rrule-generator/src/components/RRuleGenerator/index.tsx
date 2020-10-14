@@ -23,6 +23,7 @@ const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({ showReadable = true, ..
 			{!hideError && error && (
 				<div className='rrule-generator__alert-danger'>
 					{sprintf(
+						/* translators: %d error message */
 						__('You provided an invalid RRule value to component. %s is not a correct RRule string.'),
 						error.name
 					)}

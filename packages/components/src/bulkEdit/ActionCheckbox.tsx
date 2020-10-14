@@ -31,7 +31,14 @@ export const ActionCheckbox: React.FC<ActionCheckboxProps> = ({ dbId, id, label,
 		}
 	}, [id, selectMultiple, selected.length, toggleSelected, unSelectAll, visibleEntityIds]);
 
-	const ariaLabel = id && dbId ? sprintf(__('select entity with id %s'), String(dbId)) : __('select all entities');
+	const ariaLabel =
+		id && dbId
+			? sprintf(
+					/* translators: %d entity id */
+					__('select entity with id %s'),
+					String(dbId)
+			  )
+			: __('select all entities');
 
 	// for header chekbox, if visible and selected have same length, means all are checked
 	const isChecked = id ? selected.includes(id) : selected.length === visibleEntityIds.length;

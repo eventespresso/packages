@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { __, sprintf } from '@eventespresso/i18n';
+import { __ } from '@eventespresso/i18n';
 
 import { getDefaultTaxes } from '@eventespresso/predicates';
 import { useDataState } from '../data';
@@ -25,10 +25,7 @@ const DefaultTaxesInfo: React.FC = () => {
 
 	return newTaxesFetched ? (
 		<div className='ee-tpc__default-taxes-info'>
-			{sprintf(
-				__('New default taxes are available. Click the "%s" button to add them now.'),
-				__('Add default taxes')
-			)}
+			{__('New default taxes are available. Click the - Add default taxes - button to add them now.')}
 		</div>
 	) : null;
 };
