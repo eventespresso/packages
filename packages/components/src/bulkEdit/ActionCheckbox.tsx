@@ -36,7 +36,7 @@ export const ActionCheckbox: React.FC<ActionCheckboxProps> = ({ dbId, id, label,
 			? sprintf(
 					/* translators: %d entity id */
 					__('select entity with id %d'),
-					String(dbId)
+					dbId
 			  )
 			: __('select all entities');
 
