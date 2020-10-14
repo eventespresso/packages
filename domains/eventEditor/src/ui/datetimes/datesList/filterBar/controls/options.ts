@@ -1,3 +1,4 @@
+/* eslint-disable @wordpress/i18n-translator-comments */
 import { __ } from '@eventespresso/i18n';
 
 import { DisplayStartOrEndDate } from '@eventespresso/edtr-services';

@@ -15,6 +15,7 @@ export const salesOptions = {
 	[TicketsSales.above90Sold]: __('tickets with 90% or more sold'),
 	[TicketsSales.above75Sold]: __('tickets with 75% or more sold'),
 	[TicketsSales.above50Sold]: __('tickets with 50% or more sold'),
+	// eslint-disable-next-line @wordpress/i18n-translator-comments
 	[TicketsSales.below50Sold]: __('tickets with less than 50% sold'),
 };
 

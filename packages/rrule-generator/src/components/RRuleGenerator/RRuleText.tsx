@@ -12,6 +12,7 @@ export interface RRuleTextProps {
 const RRuleText: React.FC<RRuleTextProps> = ({ rRuleString }) => {
 	const rRule = RRule.fromString(rRuleString);
 	const ruleText = sprintf(
+		/* translators: bla bla */
 		__('%1$d,%2$sstarting %3$s'),
 		rRule.toText(),
 		'\n',

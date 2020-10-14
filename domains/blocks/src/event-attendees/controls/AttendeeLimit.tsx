@@ -29,6 +29,7 @@ const AttendeeLimit: React.FC<AttendeesEditProps> = ({ attributes, setAttributes
 			min={1}
 			onChange={onChange}
 			help={sprintf(
+				/* translators: %d attendees count */
 				_n(
 					'Used to adjust the number of attendees displayed (There is %d total attendee for the current filter settings).',
 					'Used to adjust the number of attendees displayed (There are %d total attendees for the current filter settings).',

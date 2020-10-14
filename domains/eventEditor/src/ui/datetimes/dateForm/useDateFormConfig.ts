@@ -1,5 +1,5 @@
 import { useMemo, useCallback } from 'react';
-import { __, sprintf } from '@eventespresso/i18n';
+import { __ } from '@eventespresso/i18n';
 import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
@@ -112,11 +112,8 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 							fieldType: 'number',
 							parseAsInfinity: true,
 							min: -1,
-							info: sprintf(
-								__(
-									'The maximum number of registrants that can attend the event at this particular date.%sSet to 0 to close registration or leave blank for no limit.'
-								),
-								'\n'
+							info: __(
+								'The maximum number of registrants that can attend the event at this particular date. Set to 0 to close registration or leave blank for no limit.'
 							),
 							width: 'small',
 						},

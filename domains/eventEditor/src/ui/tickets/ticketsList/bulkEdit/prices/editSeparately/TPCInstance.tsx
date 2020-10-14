@@ -19,7 +19,13 @@ export const TPCInstance: React.FC<TPCInstanceProps> = ({ setTPCState }) => {
 
 	return (
 		<>
-			<header>{sprintf(__('Edit prices for Ticket: %s'), ticket.name)}</header>
+			<header>
+				{sprintf(
+					/* translators: %s ticket name */
+					__('Edit prices for Ticket: %s'),
+					ticket.name
+				)}
+			</header>
 			<TicketPriceCalculator />
 		</>
 	);

@@ -6,7 +6,13 @@ import { Container as EditModalContainer } from '@eventespresso/components';
 import Content from './Content';
 
 const Container: React.FC<ContainerProps> = ({ entity: ticket, ...props }) => {
-	const title = ticket?.dbId ? sprintf(__('Edit ticket %s'), `#${ticket.dbId}`) : __('New Ticket Details');
+	const title = ticket?.dbId
+		? sprintf(
+				/* translators: %d ticket id, %s entity name */
+				__('Edit ticket %s'),
+				`#${ticket.dbId}`
+		  )
+		: __('New Ticket Details');
 
 	return <EditModalContainer component={Content} entity={ticket} title={title} {...props} />;
 };

@@ -34,6 +34,7 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 					The final string may look like this:
 					"3 days before the start date"
 					*/
+						// eslint-disable-next-line @wordpress/i18n-translator-comments
 						__('%1$d %2$s %3$s the %4$s date'),
 						ticketSalesStart?.unitValue,
 						DATE_INTERVALS?.[ticketSalesStart?.unit],
@@ -54,6 +55,7 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 					The final string may look like this:
 					"3 days before the end date"
 					*/
+						// eslint-disable-next-line @wordpress/i18n-translator-comments
 						__('%1$d %2$s %3$s the %4$s date'),
 						ticketSalesEnd?.unitValue,
 						DATE_INTERVALS?.[ticketSalesEnd?.unit],

@@ -16,7 +16,13 @@ const Container: React.FC = () => {
 	const datetime = useDatetimeItem({ id: getData()?.entityId });
 	const event = useEvent();
 
-	let title = datetime?.dbId ? sprintf(__('Edit datetime %s'), `#${datetime.dbId}`) : __('New Datetime');
+	let title = datetime?.dbId
+		? sprintf(
+				/* translators: %s datetime id */
+				__('Edit datetime %s'),
+				`#${datetime.dbId}`
+		  )
+		: __('New Datetime');
 
 	// add event name to the title
 	title = event?.name ? `${event.name}: ${title}` : title;

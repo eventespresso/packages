@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { __, sprintf } from '@eventespresso/i18n';
 import { pick } from 'ramda';
 
+import { __ } from '@eventespresso/i18n';
 import { intervalsToOptions, DATE_INTERVALS, setDefaultTime } from '@eventespresso/dates';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
@@ -195,11 +195,8 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							parseAsInfinity: true,
 							max: 1000000,
 							min: -1,
-							info: sprintf(
-								__(
-									'The maximum number of this ticket available for sale.%sSet to 0 to stop sales, or leave blank for no limit.'
-								),
-								'\n'
+							info: __(
+								'The maximum number of this ticket available for sale. Set to 0 to stop sales, or leave blank for no limit.'
 							),
 							width: 'small',
 						},
@@ -210,11 +207,8 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							parseAsInfinity: true,
 							max: 1000,
 							min: 0,
-							info: sprintf(
-								__(
-									'Controls the total number of times this ticket can be used, regardless of the number of dates it is assigned to.%sExample: A ticket might have access to 4 different dates, but setting this field to 2 would mean that the ticket could only be used twice. Leave blank for no limit.'
-								),
-								'\n'
+							info: __(
+								'Controls the total number of times this ticket can be used, regardless of the number of dates it is assigned to. Example: A ticket might have access to 4 different dates, but setting this field to 2 would mean that the ticket could only be used twice. Leave blank for no limit.'
 							),
 							width: 'small',
 						},
@@ -224,11 +218,8 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							fieldType: 'number',
 							max: 1000000,
 							min: 0,
-							info: sprintf(
-								__(
-									'The minimum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.%sLeave blank for no minimum.'
-								),
-								'\n'
+							info: __(
+								'The minimum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing. Leave blank for no minimum.'
 							),
 							width: 'small',
 						},
@@ -239,11 +230,8 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							parseAsInfinity: true,
 							max: 1000000,
 							min: -1,
-							info: sprintf(
-								__(
-									'The maximum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing.%sLeave blank for no maximum.'
-								),
-								'\n'
+							info: __(
+								'The maximum quantity that can be selected for this ticket. Use this to create ticket bundles or graduated pricing. Leave blank for no maximum.'
 							),
 							width: 'small',
 						},

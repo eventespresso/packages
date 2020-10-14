@@ -15,7 +15,13 @@ const Container: React.FC = () => {
 	const ticket = useTicketItem({ id: getData()?.entityId });
 	const event = useEvent();
 
-	let title = ticket?.dbId ? sprintf(__('Edit ticket %s'), `#${ticket.dbId}`) : __('New Ticket Details');
+	let title = ticket?.dbId
+		? sprintf(
+				/* translators: %s ticket id */
+				__('Edit ticket %s'),
+				`#${ticket.dbId}`
+		  )
+		: __('New Ticket Details');
 
 	// add event name to the title
 	title = event?.name ? `${event.name}: ${title}` : title;
