@@ -13,8 +13,9 @@ const RRuleText: React.FC<RRuleTextProps> = ({ rRuleString }) => {
 	const rRule = RRule.fromString(rRuleString);
 	const ruleText = sprintf(
 		/* translators: bla bla */
-		__('%1$d, starting %2$s'),
+		__('%1$s,%2$sstarting %3$s'),
 		rRule.toText(),
+		'\n',
 		format(rRule.options.dtstart, LOCALIZED_DATE_FULL_FORMAT)
 	);
 
