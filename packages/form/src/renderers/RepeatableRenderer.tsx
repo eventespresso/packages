@@ -31,7 +31,7 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 							label={
 								<>
 									{sprintf(
-										/* translators: %d the entry order */
+										/* translators: %d the entry number */
 										__('Entry %d'),
 										`${index + 1}`
 									)}
