@@ -8,8 +8,8 @@ import Content from './Content';
 const Container: React.FC<ContainerProps> = ({ entity: ticket, ...props }) => {
 	const title = ticket?.dbId
 		? sprintf(
-				/* translators: %s ticket id */
-				__('Edit ticket %s'),
+				/* translators: %d ticket id */
+				__('Edit ticket %d'),
 				`#${ticket.dbId}`
 		  )
 		: __('New Ticket Details');
