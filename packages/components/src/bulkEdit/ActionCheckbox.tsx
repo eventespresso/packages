@@ -34,7 +34,7 @@ export const ActionCheckbox: React.FC<ActionCheckboxProps> = ({ dbId, id, label,
 	const ariaLabel =
 		id && dbId
 			? sprintf(
-					/* translators: %d entity id */
+					/* translators: %s entity id */
 					__('select entity with id %s'),
 					String(dbId)
 			  )

@@ -125,9 +125,10 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							parseAsInfinity: true,
 							max: 1000000,
 							min: -1,
-							info: __(
-								'The maximum number of this ticket available for sale. Set to 0 to stop sales, or leave blank for no limit.'
-							),
+							info:
+								__('The maximum number of this ticket available for sale.') +
+								'\n' +
+								__('Set to 0 to stop sales, or leave blank for no limit.'),
 							width: 'small',
 						},
 						{
