@@ -112,9 +112,12 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 							fieldType: 'number',
 							parseAsInfinity: true,
 							min: -1,
-							info: __(
-								'The maximum number of registrants that can attend the event at this particular date. Set to 0 to close registration or leave blank for no limit.'
-							),
+							info:
+								__(
+									'The maximum number of registrants that can attend the event at this particular date.'
+								) +
+								'\n' +
+								__('Set to 0 to close registration or leave blank for no limit.'),
 							width: 'small',
 						},
 						{
