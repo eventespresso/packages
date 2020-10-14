@@ -17,7 +17,6 @@ export const __ = (text: string): string => {
 };
 
 export const _n = (single: string, plural: string, number: number): string => {
-	// eslint-disable-next-line @wordpress/i18n-text-domain
 	return i18n._n(single, plural, number, TEXT_DOMAIN);
 };
 
