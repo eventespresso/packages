@@ -6,7 +6,11 @@ import { Close } from '@eventespresso/icons';
 import type { FilterTagProps } from './types';
 
 const FilterTag: React.FC<FilterTagProps> = ({ title, className, onRemove }) => {
-	const ariaLabel = sprintf(__('remove filter - %s'), title);
+	const ariaLabel = sprintf(
+		/* translators: %s filter name */
+		__('remove filter - %s'),
+		title
+	);
 
 	return (
 		<div className={classNames('ee-filter-tag', className)}>
