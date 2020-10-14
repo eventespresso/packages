@@ -18,8 +18,8 @@ const Container: React.FC = () => {
 
 	let title = datetime?.dbId
 		? sprintf(
-				/* translators: %s datetime id */
-				__('Edit datetime %s'),
+				/* translators: %d datetime id */
+				__('Edit datetime %d'),
 				`#${datetime.dbId}`
 		  )
 		: __('New Datetime');
