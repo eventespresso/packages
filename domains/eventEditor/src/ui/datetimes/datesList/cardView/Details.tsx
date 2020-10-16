@@ -8,6 +8,7 @@ import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr
 
 import DateDetailsPanel from './DateDetailsPanel';
 import { EditableName } from '../editable';
+import useDateCardDetailsItems from '../../hooks/useDateCardDetailsItems';
 
 import type { DateItemProps } from '../types';
 
@@ -29,6 +30,8 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 		[updateEntity]
 	);
 
+	const detailsItems = useDateCardDetailsItems(datetime);
+
 	return (
 		<>
 			<EditableName className='entity-card-details__name' entity={datetime} />
@@ -40,6 +43,8 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 				title={__('Edit description')}
 				tooltip={__('edit description…')}
 			/>
+
+			{detailsItems}
 
 			<DateDetailsPanel adminUrl={adminUrl} entity={datetime} eventId={eventId} />
 		</>
