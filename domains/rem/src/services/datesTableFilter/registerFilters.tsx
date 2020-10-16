@@ -19,9 +19,10 @@ const { registerFilter } = new EntityTableFilters<Domain, typeof datesList, DFSM
 const cell: Cell = {
 	key: 'recurrence-series',
 	type: 'cell',
-	className: 'ee-date-list-cell ee-rspnsv-table-column-default',
+	className: 'ee-date-list-cell ee-rspnsv-table-column-tiny ee-centered-column ee-col-5',
 	value: null,
 };
+
 // Register sales filter
 registerFilter(({ row, type, entity }) => {
 	let value: React.ReactNode;
@@ -29,10 +30,10 @@ registerFilter(({ row, type, entity }) => {
 		value = <RecurrenceTag datetime={entity} isTableView />;
 	} else if (type === 'header') {
 		value = (
-			<>
+			<div className='text-center'>
 				<span className={'ee-rspnsv-table-long-label'}>{__('Recurring series')}</span>
 				<span className={'ee-rspnsv-table-short-label'}>{__('Series')}</span>
-			</>
+			</div>
 		);
 	}
 	// insert the cell at index 6

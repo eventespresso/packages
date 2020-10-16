@@ -5,12 +5,12 @@ import { filter, pipe } from 'ramda';
 import { addZebraStripesOnMobile } from '@eventespresso/components';
 import DateRegistrationsLink from '@edtrUI/datetimes/DateRegistrationsLink';
 import DateActionsMenu from '@edtrUI/datetimes/datesList/actionsMenu/DateActionsMenu';
-import type { Datetime, DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';
-import type { BodyRowGeneratorFn } from '@eventespresso/components';
 import { shortenGuid } from '@eventespresso/utils';
+import type { Datetime, DatetimesFilterStateManager } from '@eventespresso/edtr-services';
+import type { BodyRowGeneratorFn } from '@eventespresso/components';
 
 import DateCapacity from '../cardView/DateCapacity';
 import { EditableName } from '../editable';
@@ -33,7 +33,8 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 		const capacity = {
 			key: 'capacity',
 			type: 'cell',
-			className: 'ee-date-list-cell ee-date-list-col-capacity ee-rspnsv-table-column-tiny ee-number-column',
+			className:
+				'ee-date-list-cell ee-date-list-col-capacity ee-rspnsv-table-column-tiny ee-number-column ee-col-5',
 			value: sortingEnabled ? datetime.capacity : <DateCapacity entity={datetime} />,
 		};
 
@@ -72,13 +73,13 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			{
 				key: 'start',
 				type: 'cell',
-				className: 'ee-date-list-cell ee-date-list-col-start ee-rspnsv-table-column-default',
+				className: 'ee-date-list-cell ee-rspnsv-table-column-default',
 				value: format(new Date(datetime.startDate), ENTITY_LIST_DATE_TIME_FORMAT),
 			},
 			{
 				key: 'end',
 				type: 'cell',
-				className: 'ee-date-list-cell ee-date-list-col-end ee-rspnsv-table-column-default',
+				className: 'ee-date-list-cell ee-rspnsv-table-column-default',
 				value: format(new Date(datetime.endDate), ENTITY_LIST_DATE_TIME_FORMAT),
 			},
 			capacity,

@@ -7,6 +7,7 @@ import { useConfig } from '@eventespresso/services';
 import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
 
 import DateDetailsPanel from './DateDetailsPanel';
+
 import { EditableName } from '../editable';
 import useDateCardDetailsItems from '../../hooks/useDateCardDetailsItems';
 

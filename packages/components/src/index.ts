@@ -50,6 +50,7 @@ export * from './SelectInput';
 export * from './Stepper';
 export * from './SwitchInput';
 export * from './TabbableText';
+export * from './Tag';
 export * from './TimezoneTimeInfo';
 export * from './withLabel';
 export * from './withTooltip';

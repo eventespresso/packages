@@ -3,9 +3,10 @@ import { __ } from '@eventespresso/i18n';
 
 import { Cell } from '@eventespresso/components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
-import { HeaderRowGeneratorFn } from '@eventespresso/components';
-import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 import Checkbox from './Checkbox';
+
+import type { HeaderRowGeneratorFn } from '@eventespresso/components';
+import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 
 type DatesTableHeaderRowGen = HeaderRowGeneratorFn<DatetimesFilterStateManager>;
 
@@ -45,7 +46,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 			{
 				key: 'start',
 				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-date-list-col-name-start ee-rspnsv-table-column-default',
+				className: 'ee-date-list-col-hdr ee-rspnsv-table-column-default',
 				value: (
 					<>
 						<span className={'ee-rspnsv-table-long-label'}>{__('Start Date')}</span>
@@ -56,7 +57,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 			{
 				key: 'end',
 				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-date-list-col-end ee-rspnsv-table-column-default',
+				className: 'ee-date-list-col-hdr ee-rspnsv-table-column-default',
 				value: (
 					<>
 						<span className={'ee-rspnsv-table-long-label'}>{__('End Date')}</span>

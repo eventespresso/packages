@@ -89,13 +89,12 @@
 }
 
 .ee-rspnsv-table {
-	.ee-rspnsv-table-body-th {
+	&-th,
+	&-td {
 		display: table-cell;
 	}
 
-	.ee-rspnsv-table-body-td {
-		display: table-cell;
-
+	&-td {
 		&.ee-col-name {
 			span,
 			.ee-entity-list-text {
@@ -176,10 +175,13 @@
 		}
 	}
 
-	.ee-rspnsv-table-header .ee-rspnsv-table-header-th.ee-centered-column,
-	.ee-rspnsv-table-body .ee-rspnsv-table-body-td.ee-centered-column,
-	.ee-rspnsv-table-footer .ee-rspnsv-table-footer-th.ee-centered-column {
-		text-align: center;
+	.ee-rspnsv-table-header .ee-rspnsv-table-header-th,
+	.ee-rspnsv-table-body .ee-rspnsv-table-body-td,
+	.ee-rspnsv-table-footer .ee-rspnsv-table-footer-th {
+		&.ee-centered-column,
+		.text-center {
+			text-align: center;
+		}
 	}
 
 	.ee-rspnsv-table-header-th.ee-entity-list-status-stripe,

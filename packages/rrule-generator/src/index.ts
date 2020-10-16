@@ -4,5 +4,6 @@ export { RRuleGenerator };
 
 export * from './components/types';
 export * from './types';
+export * from './utils';
 
 export default RRuleGenerator;

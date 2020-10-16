@@ -9,6 +9,15 @@ export interface CalendarDateProps {
 	showTime?: boolean;
 }
 
+export type Color = 'dark-green' | 'blue-green' | 'blue';
+
+export type ColorContrast = 'super-high' | 'high' | 'low' | 'super-low';
+
+export interface Colors {
+	color: Color;
+	colorContrast: ColorContrast;
+}
+
 export type clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 export type keyPressHandler = (event: React.KeyboardEventHandler<HTMLButtonElement>) => void;
 
