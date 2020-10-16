@@ -25,10 +25,10 @@ const useEntityTableFilters = <D extends string, L extends string, FS extends EL
 		listId,
 	]);
 
+	type CallbackList = Array<SubscriptionCallback<EntityTableFiltersServiceCbArgs<ELFSM, E>, TableRow>>;
+
 	const getCallbackList = useCallback(
-		(
-			mappedCallbackList: ReturnType<typeof getFilters>
-		): Array<SubscriptionCallback<EntityTableFiltersServiceCbArgs<ELFSM, E>, TableRow>> => {
+		(mappedCallbackList: ReturnType<typeof getFilters>): CallbackList => {
 			const subscriptions = sortBy(pathOr(10, ['options', 'priority']), Object.values(mappedCallbackList));
 			return subscriptions.map(({ callback }) => callback);
 		},
