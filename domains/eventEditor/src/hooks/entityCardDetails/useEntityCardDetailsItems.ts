@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 
 import { Entity } from '@eventespresso/data';
-import { EntityActionsSubscription, EntityCardDetailsRegistry } from '@eventespresso/registry';
+import { EntityCardDetailsSubscription, EntityCardDetailsRegistry } from '@eventespresso/registry';
 import { domain } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
 
-const { getSubscriptions } = new EntityActionsSubscription(domain);
+const { getSubscriptions } = new EntityCardDetailsSubscription(domain);
 
 const useEntityCardDetailsItems = <E extends Entity, T extends string>(
 	entityType: T,

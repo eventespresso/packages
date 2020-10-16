@@ -4,7 +4,13 @@ import { __ } from '@eventespresso/i18n';
 import { EntityTable } from '@eventespresso/components';
 import useHeaderRowGenerator from './useHeaderRowGenerator';
 import useBodyRowGenerator from './useBodyRowGenerator';
-import { useReorderDatetimes, useDatesListFilterState, useFilteredDates } from '@eventespresso/edtr-services';
+import {
+	datesList,
+	domain,
+	useDatesListFilterState,
+	useFilteredDates,
+	useReorderDatetimes,
+} from '@eventespresso/edtr-services';
 import { withBulkEdit } from '@eventespresso/services';
 import { Actions as BulkEditActions } from '../bulkEdit';
 
@@ -26,13 +32,15 @@ const TableView: React.FC = () => {
 		<>
 			<BulkEditActions />
 			<EntityTable
+				bodyRowGenerator={bodyRowGenerator}
+				domain={domain}
 				entities={filteredEntities}
 				filterState={filterState}
-				bodyRowGenerator={bodyRowGenerator}
 				headerRowGenerator={headerRowGenerator}
-				tableId='date-entities-table-view'
-				tableCaption={__('Event Dates')}
+				listId={datesList}
 				onSort={sortDates}
+				tableCaption={__('Event Dates')}
+				tableId='date-entities-table-view'
 			/>
 		</>
 	);

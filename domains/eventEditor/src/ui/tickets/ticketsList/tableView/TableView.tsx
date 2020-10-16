@@ -4,7 +4,13 @@ import { __ } from '@eventespresso/i18n';
 import { EntityTable } from '@eventespresso/components';
 import useHeaderRowGenerator from './useHeaderRowGenerator';
 import useBodyRowGenerator from './useBodyRowGenerator';
-import { useReorderTickets, useFilteredTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
+import {
+	ticketsList,
+	domain,
+	useFilteredTickets,
+	useReorderTickets,
+	useTicketsListFilterState,
+} from '@eventespresso/edtr-services';
 import { withBulkEdit } from '@eventespresso/services';
 import { Actions as BulkEditActions } from '../bulkEdit';
 
@@ -24,13 +30,15 @@ const TableView: React.FC = () => {
 		<>
 			<BulkEditActions />
 			<EntityTable
+				bodyRowGenerator={bodyRowGenerator}
+				domain={domain}
 				entities={filteredEntities}
 				filterState={filterState}
-				bodyRowGenerator={bodyRowGenerator}
 				headerRowGenerator={headerRowGenerator}
-				tableId='ticket-entities-table-view'
-				tableCaption={__('Tickets')}
+				listId={ticketsList}
 				onSort={sortTickets}
+				tableCaption={__('Tickets')}
+				tableId='ticket-entities-table-view'
 			/>
 		</>
 	);
