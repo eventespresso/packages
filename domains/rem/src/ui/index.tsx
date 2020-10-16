@@ -6,8 +6,8 @@ import {
 	ModalSubscription,
 	FilterBarUISubscription,
 	FilterBarUISubscriptionCb,
-	EntityActionsSubscription,
-	EntityActionsSubscriptionCb,
+	EntityCardDetailsSubscription,
+	EntityCardDetailsSubscriptionCb,
 } from '@eventespresso/registry';
 import { domain, datesList } from '@eventespresso/edtr-services';
 import type { DatetimesFilterStateManager, Datetime } from '@eventespresso/edtr-services';
@@ -51,8 +51,12 @@ const datesListFilterBar: DatesListFilterBarCallback = ({ registry }) => {
 filterBar.subscribe(datesListFilterBar, { listId: datesList });
 
 // Register datetime card details item.
-const entityActions = new EntityActionsSubscription(domain);
-const datesActionHandler: EntityActionsSubscriptionCb<Datetime, 'datetime'> = ({ entityType, entity, registry }) => {
+const entityDetails = new EntityCardDetailsSubscription(domain);
+const datesDetailHandler: EntityCardDetailsSubscriptionCb<Datetime, 'datetime'> = ({
+	entityType,
+	entity,
+	registry,
+}) => {
 	// although this is not needed
 	if (entityType !== 'datetime') {
 		return;
@@ -63,4 +67,4 @@ const datesActionHandler: EntityActionsSubscriptionCb<Datetime, 'datetime'> = ({
 	registerMenuItem('recurrenceTag', () => <RecurrenceTag datetime={entity} />);
 };
 
-entityActions.subscribe(datesActionHandler, { entityType: 'datetime' });
+entityDetails.subscribe(datesDetailHandler, { entityType: 'datetime' });
