@@ -19,7 +19,7 @@ type updatePriceArrayProps<T extends Price> = {
  * @param {Price} price
  */
 export const copyPriceFields = <T extends Price>(price: T, predicate = isPriceField): T =>
-	pickBy<T, T>(predicate, price);
+	pickBy<any, T>(predicate, price);
 
 /**
  * updates the price amount

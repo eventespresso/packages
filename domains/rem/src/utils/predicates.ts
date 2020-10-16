@@ -15,8 +15,7 @@ export const getNonSharedTickets = (tickets: Array<RemTicket>): Array<RemTicket>
 	return filter<RemTicket>(isNotShared, tickets);
 };
 
-// is a gDate ?
-export const isGDate = propEq<'type', GeneratedDate['type']>('type', 'gDate');
+export const isGDate = ({ type }: { type: GeneratedDate['type'] }): boolean => type === 'gDate';
 
 export const getGDates = (generatedDates: Array<GeneratedDate>): Array<GeneratedDate> => {
 	return filter<GeneratedDate>(isGDate, generatedDates);
