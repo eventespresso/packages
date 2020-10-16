@@ -2,21 +2,21 @@ import { filterSubscriptionsByOption, SubscriptionManager } from '../subscriptio
 import type { EntityCardDetailsSubscriptionInterface } from './types';
 import { serviceName as service } from './constants';
 
-type EASI = EntityCardDetailsSubscriptionInterface;
+type ECDSI = EntityCardDetailsSubscriptionInterface;
 
 /**
  * D: Domain name e.g. "eventEditor"
  */
-class EntityCardDetailsSubscription<D extends string> implements EASI {
+class EntityCardDetailsSubscription<D extends string> implements ECDSI {
 	private subscriptionManager: SubscriptionManager<D, typeof service>;
 
 	constructor(domain: D) {
 		this.subscriptionManager = new SubscriptionManager<D, typeof service>({ domain, service });
 	}
 
-	subscribe: EASI['subscribe'] = (...args) => this.subscriptionManager.subscribe(...args);
+	subscribe: ECDSI['subscribe'] = (...args) => this.subscriptionManager.subscribe(...args);
 
-	getSubscriptions: EASI['getSubscriptions'] = (args) => {
+	getSubscriptions: ECDSI['getSubscriptions'] = (args) => {
 		return filterSubscriptionsByOption(this.subscriptionManager.getSubscriptions, 'entityType', args?.entityType);
 	};
 }
