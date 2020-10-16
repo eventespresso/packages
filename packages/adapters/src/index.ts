@@ -1,8 +1,6 @@
 import './style.scss'; // global adapters' styles
 
-export * from './Alert';
 export * from './AlertDialog';
-export * from './Avatar';
 export * from './Badge';
 export * from './Banner';
 export * from './Box';

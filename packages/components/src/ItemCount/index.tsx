@@ -2,18 +2,9 @@ import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { Badge, Tooltip } from '@eventespresso/adapters';
-import type { BadgeProps } from '@eventespresso/adapters';
+import type { ItemCountProps } from './types';
 
 import './style.scss';
-
-export interface ItemCountProps extends BadgeProps {
-	children: React.ReactNode;
-	/** Number to show in badge */
-	count?: React.ReactNode;
-	emphasizeZero?: boolean;
-	offset?: [number | string, number | string];
-	zeroCountChar?: string | JSX.Element;
-}
 
 export const ItemCount: React.FC<ItemCountProps> = ({
 	children,
@@ -39,7 +30,7 @@ export const ItemCount: React.FC<ItemCountProps> = ({
 
 	return (
 		<div className='ee-item-count__wrapper'>
-			<Badge {...props} className={className} style={style}>
+			<Badge className={className} style={style}>
 				{countNode}
 			</Badge>
 			{children}

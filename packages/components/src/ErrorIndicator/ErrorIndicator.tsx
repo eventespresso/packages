@@ -1,33 +1,25 @@
 import React from 'react';
 
-import { useMemoStringify } from '@eventespresso/hooks';
-
 import { Banner } from '../Banner';
+import type { ErrorIndicatorProps } from './types';
 
-interface ErrorIndicatorProps {
-	description?: string;
-	title?: string;
-}
+import './style.scss';
 
-const ErrorIndicator: React.FC<ErrorIndicatorProps> = ({ description, title }) => {
-	const iconProps = useMemoStringify({
-		color: 'red.500',
-		name: 'warning-2',
-		size: '96px',
-	});
-
-	return (
-		<Banner
-			description={description}
-			flexDirection='column'
-			justifyContent='center'
-			iconProps={iconProps}
-			status='error'
-			variant='subtle'
-			textAlign='center'
-			title={title}
-		/>
-	);
+const iconProps = {
+	color: 'red.500',
+	name: 'warning-2',
+	size: '96px',
 };
+
+const ErrorIndicator: React.FC<ErrorIndicatorProps> = ({ description, title }) => (
+	<Banner
+		className='ee-error-indicator'
+		description={description}
+		iconProps={iconProps}
+		status='error'
+		title={title}
+		variant='subtle'
+	/>
+);
 
 export default ErrorIndicator;

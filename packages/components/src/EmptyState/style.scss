@@ -1,0 +1,10 @@
+@import '~@eventespresso/styles/src';
+
+.ee-empty-state {
+	background-color: var(--ee-color-grey-15);
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+
+	@extend .ee-fade-in;
+}

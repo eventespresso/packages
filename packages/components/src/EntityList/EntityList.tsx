@@ -5,10 +5,11 @@ import { EmptyState, ErrorIndicator, LoadingNotice } from '../..';
 import EntityListFilterBar from './withValidFilterState';
 import { Entity } from '@eventespresso/data';
 import { Divider, Heading } from '@eventespresso/adapters';
-import { EntityListFilterStateManager, useStatus } from '@eventespresso/services';
+import { useStatus } from '@eventespresso/services';
+import type { EntityListFilterStateManager } from '@eventespresso/services';
 
-import type { EntityListProps } from './types';
 import { EntityPagination } from './pagination';
+import type { EntityListProps } from './types';
 import './style.scss';
 
 const EntityList = <E extends Entity, ELFS extends EntityListFilterStateManager<any>>({
@@ -37,7 +38,7 @@ const EntityList = <E extends Entity, ELFS extends EntityListFilterStateManager<
 	if (filterState.total === 0) {
 		const title = noResultsTitle ? noResultsTitle : __('no results found');
 		const description = noResultsDesc ? noResultsDesc : __('try changing filter settings');
-		entityList = <EmptyState className='ee-entity-list--no-results' title={title} description={description} />;
+		entityList = <EmptyState description={description} title={title} />;
 	} else {
 		entityList = renderList();
 	}

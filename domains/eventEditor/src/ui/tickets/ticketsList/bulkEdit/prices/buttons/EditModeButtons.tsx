@@ -3,7 +3,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { Button } from '@eventespresso/components';
 import { Box, Divider } from '@eventespresso/adapters';
-import { EditMode } from '../types';
+import type { EditMode } from '../types';
 
 export interface EditModeButtonsProps {
 	setEditMode: (editMode: EditMode) => void;
@@ -12,6 +12,7 @@ export interface EditModeButtonsProps {
 export const EditModeButtons: React.FC<EditModeButtonsProps> = ({ setEditMode }) => {
 	const onClickTogether = useCallback(() => setEditMode('together'), [setEditMode]);
 	const onClickSeparate = useCallback(() => setEditMode('separate'), [setEditMode]);
+
 	return (
 		<Box display='flex' alignItems='center' justifyContent='center' height='100%'>
 			<Box>

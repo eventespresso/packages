@@ -2,29 +2,21 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Banner } from '../Banner';
+import type { EmptyStateProps } from './types';
 
-interface EmptyStateProps {
-	children?: React.ReactNode;
-	className?: string;
-	description: string;
-	title?: string;
-}
+import './style.scss';
 
 const iconProps = { name: 'question-outline' };
 
 const EmptyState: React.FC<EmptyStateProps> = ({ children, description, title, ...props }) => {
-	const className = classNames(props.className, 'ee-empty-state');
+	const className = classNames('ee-empty-state', props.className);
 
 	return (
 		<Banner
-			backgroundColor='var(--ee-color-grey-15)'
 			className={className}
 			description={description}
-			flexDirection='column'
-			justifyContent='center'
 			iconProps={iconProps}
 			status='warning'
-			textAlign='center'
 			title={title}
 			variant='subtle'
 		>

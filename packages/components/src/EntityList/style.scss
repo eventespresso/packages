@@ -71,19 +71,6 @@
 		}
 	}
 
-	&--no-results {
-		@extend .ee-fade-in;
-
-		&.ee-banner[role='alert'] {
-			.ee-banner {
-				&__icon {
-					height: calc(var(--ee-font-size-extreme) * 2);
-					width: calc(var(--ee-font-size-extreme) * 2);
-				}
-			}
-		}
-	}
-
 	+ .ee-entity-list {
 		@include min1600px {
 			margin-top: calc(var(--ee-margin-big) * -1);
