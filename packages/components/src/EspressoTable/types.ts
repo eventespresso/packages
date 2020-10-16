@@ -163,4 +163,6 @@ export interface BodyRow extends CommonProps {
 	type?: string;
 }
 
+export type TableRow = BodyRow | FooterRow | HeaderRow;
+
 type TableId = string;

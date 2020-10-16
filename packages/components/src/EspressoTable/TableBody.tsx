@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import invariant from 'invariant';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
@@ -89,10 +89,13 @@ const TableBody: React.FC<TableBodyProps> = ({
 
 	const className = classNames(props?.className?.bodyClassName, 'ee-rspnsv-table-body');
 
-	const tableBodyProps: React.HTMLAttributes<HTMLElement> = {
-		...props,
-		className,
-	};
+	const tableBodyProps = useMemo<React.HTMLAttributes<HTMLElement>>(
+		() => ({
+			...props,
+			className,
+		}),
+		[className, props]
+	);
 
 	return onDragEnd !== null ? (
 		<DragDropContext

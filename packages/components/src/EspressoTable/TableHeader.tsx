@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import invariant from 'invariant';
 
@@ -10,10 +10,13 @@ import { RowType } from './types';
 
 const TableHeader: React.FC<TableHeaderProps> = ({ headerRows, showDragHandle, tableId, ...props }) => {
 	const className = classNames(props.className.headerClassName, 'ee-rspnsv-table-header');
-	const theadProps: React.HTMLAttributes<HTMLElement> = {
-		...props,
-		className,
-	};
+	const theadProps = useMemo<React.HTMLAttributes<HTMLElement>>(
+		() => ({
+			...props,
+			className,
+		}),
+		[className, props]
+	);
 
 	return (
 		<thead {...theadProps}>

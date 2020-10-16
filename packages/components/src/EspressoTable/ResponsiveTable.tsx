@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -31,7 +31,9 @@ const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	...props
 }) => {
 	const primaryHeader = headerRows.find((row) => row.primary === true);
-	const instanceId = props.instanceId || uuidv4();
+	// avoid the ID getting changed on every render
+	const defaultId = useRef(uuidv4()).current;
+	const instanceId = props.instanceId || defaultId;
 	const isScrollable = !!metaData?.isScrollable;
 	const hasRowHeaders = !!metaData?.hasRowHeaders;
 

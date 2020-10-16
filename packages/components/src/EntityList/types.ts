@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { BodyRow, HeaderRow, LegendConfig, ResponsiveTableProps } from '../..';
+import type { BodyRow, HeaderRow, RowType, TableRow, LegendConfig, ResponsiveTableProps } from '../..';
 import type { Entity, EntityId } from '@eventespresso/data';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
 import type { TypeName } from '@eventespresso/services';
@@ -36,10 +36,12 @@ export type HeaderRowGeneratorFn<FS extends ELFSM> = (filerState: FS) => HeaderR
 
 export interface EntityTableProps<E extends Entity, FS extends ELFSM> extends EntityListViewProps<E, FS> {
 	bodyRowGenerator: BodyRowGeneratorFn<E, FS>;
+	domain: string;
 	headerRowGenerator: HeaderRowGeneratorFn<FS>;
+	listId: string;
+	onSort?: ResponsiveTableProps['onDragEnd'];
 	tableCaption?: string;
 	tableId?: string;
-	onSort?: ResponsiveTableProps['onDragEnd'];
 }
 
 export type EntityListComponent<E extends Entity, FS extends ELFSM> = React.ComponentType<EntityListViewProps<E, FS>>;
@@ -56,4 +58,13 @@ export interface EntityListProps<E extends Entity, FS extends ELFSM> extends Par
 	noResultsDesc?: string;
 	noResultsTitle?: string;
 	renderList?: () => React.ReactNode;
+}
+
+export type EntityTableFiltersHook = <D extends string, L extends string, FS extends ELFSM, E extends Entity>(
+	domain: D,
+	listId: L
+) => EntityTableFilters<FS, E>;
+
+export interface EntityTableFilters<FS extends ELFSM, E extends Entity> {
+	applyFilters: (row: TableRow, filterState: FS, type: RowType, entity?: E) => TableRow;
 }
