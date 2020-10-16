@@ -18,7 +18,7 @@ const TicketRegistrationsLink: React.FC<Props> = ({ ticket }) => {
 	const tooltip = __('view ALL registrations for this ticket.');
 
 	return (
-		<ItemCount count={ticket.registrationCount} title={countTitle} emphasizeZero={false}>
+		<ItemCount count={ticket.registrationCount} emphasizeZero={false} title={countTitle}>
 			<RegistrationsLink href={regListUrl} tooltip={tooltip} tooltipProps={tooltipProps} />
 		</ItemCount>
 	);

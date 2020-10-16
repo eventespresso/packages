@@ -6,7 +6,7 @@ import type { EmptyStateProps } from './types';
 
 import './style.scss';
 
-const iconProps = { name: 'question-outline', size: '96px' };
+const iconProps = { name: 'question-outline', size: '72px' };
 
 const EmptyState: React.FC<EmptyStateProps> = ({ children, description, title, ...props }) => {
 	const className = classNames('ee-empty-state', props.className);
