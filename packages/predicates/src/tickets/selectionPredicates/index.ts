@@ -1,4 +1,4 @@
-import { assoc, includes, map, when } from 'ramda';
+import { assoc, includes, map, ObjPred, when } from 'ramda';
 
 import { TICKET_FIELDS, TICKET_INPUT_FIELDS } from '../ticketFields';
 import { entityHasGuid } from '.././../common';
@@ -17,9 +17,9 @@ interface UpdateTicketReverseCalculateProps {
 	tickets: Ticket[];
 }
 
-export const isTicketField = (_: unknown, field: string): boolean => includes(field, TICKET_FIELDS);
+export const isTicketField: ObjPred = (value, field) => includes(field, TICKET_FIELDS);
 
-export const isTicketInputField = (_: unknown, field: string): boolean => includes(field, TICKET_INPUT_FIELDS);
+export const isTicketInputField: ObjPred = (value, field) => includes(field, TICKET_INPUT_FIELDS);
 
 export const updateTicketPrice = (amount: number): ((obj: Ticket) => Ticket) => {
 	return assoc<number, keyof Ticket>('price', amount);

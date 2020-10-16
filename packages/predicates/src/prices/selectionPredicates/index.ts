@@ -1,4 +1,4 @@
-import { allPass, filter, find, includes, propEq } from 'ramda';
+import { allPass, filter, find, includes, ObjPred, propEq } from 'ramda';
 
 import { EntityId, EntityDbId } from '@eventespresso/data';
 import type { Price } from '@eventespresso/edtr-services';
@@ -6,10 +6,10 @@ import { PRICE_FIELDS, PRICE_INPUT_FIELDS } from '../priceFields';
 import { findEntityByDbId, findEntityByGuid, isTax, isBasePrice } from '../../common';
 
 // the following return `true` if price satisfies predicate
-export const isPriceField = (_: unknown, field: string): boolean => includes(field, PRICE_FIELDS);
+export const isPriceField: ObjPred = (value, field) => includes(field, PRICE_FIELDS);
 
 // the following return `true` if price satisfies predicate
-export const isPriceInputField = (_: unknown, field: string): boolean => includes(field, PRICE_INPUT_FIELDS);
+export const isPriceInputField: ObjPred = (value, field) => includes(field, PRICE_INPUT_FIELDS);
 
 // is a default price ?
 export const isDefault = propEq('isDefault', true);
