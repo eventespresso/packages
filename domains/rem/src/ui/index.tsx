@@ -1,18 +1,23 @@
+import React from 'react';
+
 import type { NewEntitySubscriptionCb, ModalSubscriptionCb } from '@eventespresso/registry';
 import {
 	NewEntitySubscription,
 	ModalSubscription,
 	FilterBarUISubscription,
 	FilterBarUISubscriptionCb,
+	EntityActionsSubscription,
+	EntityActionsSubscriptionCb,
 } from '@eventespresso/registry';
 import { domain, datesList } from '@eventespresso/edtr-services';
-import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
+import type { DatetimesFilterStateManager, Datetime } from '@eventespresso/edtr-services';
 
 import RemButton from './RemButton';
 import RemInit from './RemInit';
 import Container from './Modal/Container';
 import { RemGlobalModals } from '../types';
 import { RecurrenceControl } from './filterBar';
+import RecurrenceTag from './RecurrenceTag';
 
 // Register new entity option
 const newEntitySubscription = new NewEntitySubscription(domain);
@@ -44,3 +49,18 @@ const datesListFilterBar: DatesListFilterBarCallback = ({ registry }) => {
 };
 
 filterBar.subscribe(datesListFilterBar, { listId: datesList });
+
+// Register datetime card details item.
+const entityActions = new EntityActionsSubscription(domain);
+const datesActionHandler: EntityActionsSubscriptionCb<Datetime, 'datetime'> = ({ entityType, entity, registry }) => {
+	// although this is not needed
+	if (entityType !== 'datetime') {
+		return;
+	}
+
+	const { registerElement: registerMenuItem } = registry;
+
+	registerMenuItem('recurrenceTag', () => <RecurrenceTag datetime={entity} />);
+};
+
+entityActions.subscribe(datesActionHandler, { entityType: 'datetime' });
