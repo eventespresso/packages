@@ -10,7 +10,7 @@ export interface PaginationProps extends PerPageProps {
 }
 
 export type PerPageOptions = {
-	[key: number]: string; // page number and translated label
+	[key: number]: string; // per page value (number) and translated label (string)
 };
 
 export interface PerPageProps {
