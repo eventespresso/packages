@@ -1,9 +1,9 @@
 module.exports = [
-	/* LEVEL 1 */ [
+	/* LEVEL 1 */ ['events', 'toaster'],
+	/* LEVEL 2 */ [
 		'constants',
 		'data',
 		'dates',
-		'events',
 		'hooks',
 		'icons',
 		'i18n',
@@ -11,11 +11,10 @@ module.exports = [
 		'rich-text-editor',
 		'styles',
 		'storage',
-		'toaster',
 		'utils',
 	],
-	/* LEVEL 2 */ ['adapters', 'config', 'rrule-generator'],
-	/* LEVEL 3 */ ['form', 'predicates', 'services'],
-	/* LEVEL 4 */ ['components', 'edtr-services', 'helpers'],
-	/* LEVEL 5 */ ['tpc'],
+	/* LEVEL 3 */ ['adapters', 'config', 'rrule-generator'],
+	/* LEVEL 4 */ ['form', 'predicates', 'services'],
+	/* LEVEL 5 */ ['components', 'edtr-services', 'helpers'],
+	/* LEVEL 6 */ ['tpc'],
 ];
