@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { FormControl, FormLabel } from '@eventespresso/adapters';
 import { ErrorMessage } from '../ErrorMessage';
 import { HelperText } from '../HelperText';
 
-import { FormControl, FormLabel, MappedField } from '../adapters';
+import { MappedField } from '../adapters';
 import { fieldPropsAreEqual } from '../utils';
 import type { FieldRendererProps } from '../types';
 

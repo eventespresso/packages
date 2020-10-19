@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { FormHelperText } from '../adapters';
-import type { FormHelperTextProps } from '../adapters';
+import { FormHelperText, FormHelperTextProps } from '@eventespresso/adapters';
 
 import './style.scss';
 

@@ -3,8 +3,7 @@ import type { FormRenderProps, FormProps, FieldRenderProps, FieldProps as RFFFie
 import type { FieldArrayProps } from 'react-final-form-arrays';
 import type { FormState, AnyObject } from 'final-form';
 
-import type { ButtonProps, OptionsType } from '@eventespresso/adapters';
-import type { FormControlProps } from './adapters';
+import type { ButtonProps, FormControlProps, OptionsType } from '@eventespresso/adapters';
 import type { FormConfigProviderProps } from './context';
 
 export interface FormButtonProps extends ButtonProps {

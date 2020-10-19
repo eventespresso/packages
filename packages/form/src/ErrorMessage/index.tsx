@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FormErrorMessage } from '../adapters';
+import { FormErrorMessage } from '@eventespresso/adapters';
 import type { ErrorMessageProps } from './types';
 
 import './style.scss';
