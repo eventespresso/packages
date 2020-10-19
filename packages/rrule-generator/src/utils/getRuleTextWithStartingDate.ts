@@ -4,7 +4,7 @@ import format from 'date-fns/format';
 import { __, sprintf } from '@eventespresso/i18n';
 import { LOCALIZED_DATE_FULL_FORMAT } from '@eventespresso/constants';
 
-export const getRuleText = (rRuleString: string): string => {
+export const getRuleTextWithStartingDate = (rRuleString: string): string => {
 	if (!rRuleString?.length) return null;
 
 	const rRule = RRule.fromString(rRuleString);

@@ -6,15 +6,13 @@ import type { ButtonProps } from './types';
 
 type ButtonType = React.ComponentType<ButtonProps>;
 
-const Button = React.forwardRef<ButtonType, ButtonProps>(({ children, buttonText, icon, ...props }, ref) => {
+export const Button = React.forwardRef<ButtonType, ButtonProps>(({ children, buttonText, icon, ...props }, ref) => {
 	const className = classNames('ee-btn-base ee-btn', props.className);
 	const text = children || buttonText;
 
 	return (
-		<ChakraButton leftIcon={icon} {...props} className={className} ref={ref}>
+		<ChakraButton {...props} className={className} leftIcon={icon} ref={ref}>
 			{text && <span>{text}</span>}
 		</ChakraButton>
 	);
 });
-
-export default Button;

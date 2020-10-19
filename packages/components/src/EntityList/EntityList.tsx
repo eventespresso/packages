@@ -1,13 +1,13 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { EmptyState, ErrorIndicator, LoadingNotice } from '../..';
-import EntityListFilterBar from './withValidFilterState';
-import { Entity } from '@eventespresso/data';
-import { Divider, Heading } from '@eventespresso/adapters';
+import { Heading } from '@eventespresso/adapters';
 import { useStatus } from '@eventespresso/services';
+import type { Entity } from '@eventespresso/data';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
 
+import { Divider, EmptyState, ErrorIndicator, LoadingNotice } from '../..';
+import EntityListFilterBar from './withValidFilterState';
 import { EntityPagination } from './pagination';
 import type { EntityListProps } from './types';
 import './style.scss';

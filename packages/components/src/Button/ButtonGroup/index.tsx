@@ -2,8 +2,8 @@ import React, { cloneElement } from 'react';
 import classNames from 'classnames';
 
 import { ButtonGroup as ButtonGroupAdapter } from '@eventespresso/adapters';
-import type { ButtonGroupProps } from './types';
 import { cleanChildren } from './utils';
+import type { ButtonGroupProps } from './types';
 
 import './style.scss';
 
@@ -16,11 +16,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ buttonSize, children, ...prop
 		});
 	});
 
-	return (
-		<ButtonGroupAdapter {...props} className={className}>
-			{clones}
-		</ButtonGroupAdapter>
-	);
+	return <ButtonGroupAdapter className={className}>{clones}</ButtonGroupAdapter>;
 };
 
 export default ButtonGroup;

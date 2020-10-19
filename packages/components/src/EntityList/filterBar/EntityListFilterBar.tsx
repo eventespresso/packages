@@ -6,7 +6,7 @@ import ToggleFiltersButton from './buttons/ToggleFiltersButton';
 import ToggleSortingButton from './buttons/ToggleSortingButton';
 import EntityListViewButtonGroup from './buttons/EntityListViewButtonGroup';
 import { useFilterBarUIElements } from '@eventespresso/registry';
-import { EntityListFilterStateManager as ELFSM } from '@eventespresso/services';
+import type { EntityListFilterStateManager as ELFSM } from '@eventespresso/services';
 import type { EntityListFilterBarProps } from './types';
 
 import './style.scss';

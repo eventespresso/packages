@@ -30,9 +30,11 @@ const DebugInfo: React.FC<DebugInfoProps> = ({ data, asJson = true, asCollapse =
 	const dataToRender = asJson ? JSON.stringify(data, null, 2) : data;
 
 	const output = <Pre>{dataToRender}</Pre>;
+
 	if (!asCollapse) {
 		return output;
 	}
+
 	const buttonText = show ? __('Hide Debug Info') : __('Show Debug Info');
 
 	return (

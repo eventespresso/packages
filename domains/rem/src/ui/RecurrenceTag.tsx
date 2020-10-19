@@ -3,7 +3,7 @@ import React from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 import { Tag } from '@eventespresso/components';
 import { Repeat } from '@eventespresso/icons';
-import { getRuleText } from '@eventespresso/rrule-generator';
+import { getRuleTextWithStartingDate } from '@eventespresso/rrule-generator';
 
 import type { Datetime } from '@eventespresso/edtr-services';
 import { useDateRecurrence } from '../services/apollo';
@@ -16,7 +16,7 @@ type RecurrenceTagProps = {
 const RecurrenceTag: React.FC<RecurrenceTagProps> = ({ datetime, isTableView }) => {
 	const dateRecurrence = useDateRecurrence(datetime?.id);
 	const recurrenceId = dateRecurrence?.dbId;
-	const ruleText = getRuleText(dateRecurrence?.rRule);
+	const ruleText = getRuleTextWithStartingDate(dateRecurrence?.rRule);
 
 	if (!dateRecurrence) {
 		return null;

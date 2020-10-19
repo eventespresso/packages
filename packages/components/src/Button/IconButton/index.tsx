@@ -40,7 +40,6 @@ const IconButton = forwardRef<typeof IconButtonAdapter, IconButtonProps>(
 
 		return (
 			<IconButtonAdapter
-				{...props}
 				aria-label={ariaLabel}
 				className={className}
 				icon={icon}

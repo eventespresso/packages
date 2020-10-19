@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button } from '@eventespresso/components';
-import { Box, Divider } from '@eventespresso/adapters';
+import { Button, Divider } from '@eventespresso/components';
+import { Box } from '@eventespresso/adapters';
 import type { EditMode } from '../types';
 
 export interface EditModeButtonsProps {
@@ -19,7 +19,7 @@ export const EditModeButtons: React.FC<EditModeButtonsProps> = ({ setEditMode })
 				<Button onClick={onClickTogether} buttonText={__('Edit all prices together')} />
 				<p>{__('Edit all the selected ticket prices dynamically')}</p>
 			</Box>
-			<Divider orientation='vertical' height='50%' />
+			<Divider orientation='vertical' />
 			<Box>
 				<Button onClick={onClickSeparate} buttonText={__('Edit prices individually')} />
 				<p>{__('Edit prices for each ticket individually')}</p>

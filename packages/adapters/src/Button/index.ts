@@ -1,7 +1,4 @@
-export { default as Button } from './Button';
-
-export { default as ButtonGroup } from './ButtonGroup';
-
-export { default as IconButton } from './IconButton';
-
+export * from './Button';
+export * from './ButtonGroup';
+export * from './IconButton';
 export * from './types';

@@ -7,7 +7,7 @@ import type { FieldRendererProps } from '../types';
 const MultiCheck: React.FC<FieldRendererProps> = ({ input, options, ...props }) => {
 	const children = options.map(({ label, value, ...rest }, index) => {
 		return (
-			<Checkbox value={value} {...rest} key={`${value}${index}`}>
+			<Checkbox {...rest} key={`${value}${index}`} value={value}>
 				{label}
 			</Checkbox>
 		);

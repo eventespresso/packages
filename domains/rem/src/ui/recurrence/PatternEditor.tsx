@@ -2,9 +2,8 @@ import React, { useCallback, useMemo } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, ButtonRow, DebugInfo } from '@eventespresso/components';
+import { Button, ButtonRow, DebugInfo, Divider } from '@eventespresso/components';
 import { ErrorMessage } from '@eventespresso/form';
-import { Divider } from '@eventespresso/adapters';
 import { CloseCircleOutlined, Repeat } from '@eventespresso/icons';
 
 import { RRuleEditor } from '../rRule';

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { getRuleText } from '../../utils';
+import { getRuleTextWithStartingDate } from '../../utils';
 
 export interface RRuleTextProps {
 	rRuleString?: string;
 }
 
 const RRuleText: React.FC<RRuleTextProps> = ({ rRuleString }) => {
-	const ruleText = getRuleText(rRuleString);
+	const ruleText = getRuleTextWithStartingDate(rRuleString);
 
 	return (
 		ruleText && (

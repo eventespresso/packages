@@ -9,6 +9,7 @@ export * from './CalendarPageDate';
 export * from './Collapsible';
 export * from './ColorSwatch';
 export * from './Confirm';
+export * from './Divider';
 export * from './InlineEditCurrency';
 export * from './CurrencyDisplay';
 export * from './CurrencySign';
