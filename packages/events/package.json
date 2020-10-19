@@ -1,0 +1,43 @@
+{
+	"author": "Event Espresso",
+	"name": "@eventespresso/events",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eventespresso/barista.git"
+	},
+	"private": true,
+	"version": "1.0.6",
+	"main": "src/index.ts",
+	"main:src": "src/index.ts",
+	"scripts": {
+		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
+		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
+	},
+	"dependencies": {
+		"inf-ee": "^1.0.4"
+	},
+	"sideEffects": false,
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"jest": {
+		"collectCoverageFrom": [
+			"src/**/*.{ts,tsx}",
+			"!src/setupTests.{ts,tsx}",
+			"!src/serviceWorker.{ts,jsx}",
+			"!src/**/*.(spec|test|stories).{ts,tsx}"
+		],
+		"coverageThreshold": {
+			"global": {
+				"statements": 98,
+				"branches": 98,
+				"functions": 98,
+				"lines": 98
+			}
+		}
+	},
+	"license": "GPL-3.0"
+}
