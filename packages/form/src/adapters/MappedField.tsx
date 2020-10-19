@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { RichTextEditor } from '@eventespresso/rich-text-editor';
+
 import Text from './Text';
 import TextArea from './TextArea';
 import Select from './Select';
@@ -14,7 +15,7 @@ import Hidden from './Hidden';
 import NumberField from './Number';
 import type { FieldRendererProps } from '../types';
 
-const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props }) => {
+export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props }) => {
 	let Component: React.ComponentType<Omit<FieldRendererProps, 'fieldType'>>;
 
 	switch (fieldType) {
@@ -61,5 +62,3 @@ const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props }) => {
 
 	return Component && <Component {...props} />;
 };
-
-export default MappedField;

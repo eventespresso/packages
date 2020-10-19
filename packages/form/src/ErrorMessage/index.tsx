@@ -1,15 +1,11 @@
 import React from 'react';
 
-import { FormErrorMessage } from '@eventespresso/adapters';
+import { FormErrorMessage } from '../adapters';
+import type { ErrorMessageProps } from './types';
 
 import './style.scss';
 
-interface Props {
-	id?: string;
-	message?: string;
-}
-
-export const ErrorMessage: React.FC<Props> = ({ id, message }) => {
+export const ErrorMessage: React.FC<ErrorMessageProps> = ({ id, message }) => {
 	return message ? (
 		<FormErrorMessage aria-live='assertive' className='ee-form-error-message' id={id}>
 			{message}
