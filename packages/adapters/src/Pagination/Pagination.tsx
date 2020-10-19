@@ -3,27 +3,21 @@ import RcPagination from 'rc-pagination';
 
 import 'rc-pagination/assets/index.css';
 
-import { sprintf, __ } from '@eventespresso/i18n';
+import { __ } from '@eventespresso/i18n';
 import { ChevronLeft, ChevronRight } from '@eventespresso/icons';
 
+import { DEFAULT_LOCALE, DEFAULT_PER_PAGE_OPTIONS } from './constants';
+import type { PaginationProps } from './types';
 import ItemRender from './ItemRender';
-import type { PaginationProps, PerPageOptions } from './types';
 import PerPage from './PerPage';
 
 import './style.scss';
-
-const DEFAULT_PER_PAGE_OPTIONS: PerPageOptions = {
-	2: sprintf(/* translators: %s is per page value */ __('%s / page'), __('2')),
-	6: sprintf(/* translators: %s is per page value */ __('%s / page'), __('6')),
-	12: sprintf(/* translators: %s is per page value */ __('%s / page'), __('12')),
-	24: sprintf(/* translators: %s is per page value */ __('%s / page'), __('24')),
-	48: sprintf(/* translators: %s is per page value */ __('%s / page'), __('48')),
-};
 
 const Pagination: React.FC<PaginationProps> = ({
 	defaultPageNumber = 1,
 	defaultPerPage,
 	hideOnSinglePage = true,
+	locale = DEFAULT_LOCALE,
 	onChangePageNumber,
 	onChangePerPage,
 	pageNumber,
@@ -42,6 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({
 				defaultCurrent={defaultPageNumber}
 				hideOnSinglePage={hideOnSinglePage}
 				itemRender={ItemRender}
+				locale={locale}
 				nextIcon={<ChevronRight size='small' />}
 				onChange={onChangePageNumber}
 				pageSize={perPage}
