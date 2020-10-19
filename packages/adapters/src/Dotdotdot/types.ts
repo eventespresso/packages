@@ -1,3 +1,3 @@
-import { DotdotdotProps } from 'react-dotdotdot';
+import type { DotdotdotProps } from 'react-dotdotdot';
 
-export interface DotDotDotProps extends DotdotdotProps {}
+export interface DotDotDotProps extends Pick<DotdotdotProps, 'clamp'> {}

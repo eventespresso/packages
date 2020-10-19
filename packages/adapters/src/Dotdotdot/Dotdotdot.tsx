@@ -3,6 +3,6 @@ import DotDotDot from 'react-dotdotdot';
 
 import type { DotDotDotProps } from './types';
 
-const Dotdotdot: React.FC<DotDotDotProps> = (props) => <DotDotDot {...props} />;
-
-export default Dotdotdot;
+export const Dotdotdot: React.FC<DotDotDotProps> = ({ children, clamp }) => (
+	<DotDotDot clamp={clamp}>{children}</DotDotDot>
+);

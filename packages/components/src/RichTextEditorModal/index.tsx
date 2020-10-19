@@ -1,12 +1,12 @@
 import React, { useCallback, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import { useDisclosure } from '@chakra-ui/hooks';
-import Dotdotdot from 'react-dotdotdot';
 
-import { TabbableText, ModalWithAlert } from '../';
+import { Dotdotdot } from '@eventespresso/adapters';
 import { Edit } from '@eventespresso/icons';
 import { RichTextEditor } from '@eventespresso/rich-text-editor';
 
+import { TabbableText, ModalWithAlert } from '../';
 import type { RichTextEditorModalProps } from './types';
 
 import './style.scss';
