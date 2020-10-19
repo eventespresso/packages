@@ -1,14 +1,12 @@
 import React from 'react';
-import classNames from 'classnames';
+
 import { Alert as ChakraAlert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/core';
 
 import type { BannerProps } from './types';
 
-export const Banner: React.FC<BannerProps> = ({ children, description, iconProps, status, title, ...props }) => {
-	const className = classNames(props.className, 'ee-banner', status && `ee-banner--${status}`);
-
+export const Banner: React.FC<BannerProps> = ({ children, className, description, iconProps, title, variant }) => {
 	return (
-		<ChakraAlert className={className}>
+		<ChakraAlert className={className} variant={variant}>
 			<AlertIcon className={'ee-banner__icon'} {...iconProps} />
 
 			{title && <AlertTitle className={'ee-banner__title'}>{title}</AlertTitle>}
