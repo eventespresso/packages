@@ -3,6 +3,7 @@ module.exports = [
 		'constants',
 		'data',
 		'dates',
+		'events',
 		'hooks',
 		'icons',
 		'i18n',
