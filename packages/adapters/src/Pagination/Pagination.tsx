@@ -4,16 +4,22 @@ import RcPagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
 import defaultLocale from 'rc-pagination/lib/locale/en_US';
 
-import { __ } from '@eventespresso/i18n';
+import { sprintf, __ } from '@eventespresso/i18n';
 import { ChevronLeft, ChevronRight } from '@eventespresso/icons';
 
 import ItemRender from './ItemRender';
-import type { PaginationProps } from './types';
+import type { PaginationProps, PerPageOptions } from './types';
 import PerPage from './PerPage';
 
 import './style.scss';
 
-const DEFAULT_PER_PAGE_OPTIONS = ['2', '6', '12', '24', '48'];
+const DEFAULT_PER_PAGE_OPTIONS: PerPageOptions = {
+	2: sprintf(/* translators: %s is per page value */ __('%s / page'), __('2')),
+	6: sprintf(/* translators: %s is per page value */ __('%s / page'), __('6')),
+	12: sprintf(/* translators: %s is per page value */ __('%s / page'), __('12')),
+	24: sprintf(/* translators: %s is per page value */ __('%s / page'), __('24')),
+	48: sprintf(/* translators: %s is per page value */ __('%s / page'), __('48')),
+};
 
 const Pagination: React.FC<PaginationProps> = ({
 	defaultPageNumber = 1,
@@ -29,9 +35,7 @@ const Pagination: React.FC<PaginationProps> = ({
 	total,
 	...props
 }) => {
-	const hidePagination = total <= perPage;
-
-	return hidePagination ? null : (
+	return (
 		<div className='ee-pagination'>
 			<RcPagination
 				{...props}
@@ -51,7 +55,6 @@ const Pagination: React.FC<PaginationProps> = ({
 			{showPerPageChanger && (
 				<PerPage
 					defaultPerPage={defaultPerPage}
-					locale={locale}
 					onChangePerPage={onChangePerPage}
 					pageNumber={pageNumber}
 					perPage={perPage}

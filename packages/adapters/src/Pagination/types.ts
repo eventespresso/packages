@@ -3,19 +3,23 @@ import type React from 'react';
 export interface PaginationProps extends PerPageProps {
 	defaultPageNumber?: number;
 	hideOnSinglePage?: boolean;
+	locale?: Locale;
 	onChangePageNumber: (pageNumber: number, perPage: number) => void;
 	showPerPageChanger: boolean;
 	showTotal?: (total: number, range: [number, number]) => React.ReactNode;
 }
 
+export type PerPageOptions = {
+	[key: number]: string; // page number and translated label
+};
+
 export interface PerPageProps {
 	className?: string;
 	defaultPerPage: number;
-	locale?: Locale;
 	onChangePerPage: (newPageNumber: number, newPerPage: number) => void;
 	pageNumber: number;
 	perPage: number;
-	perPageOptions?: string[];
+	perPageOptions?: PerPageOptions;
 	total: number;
 }
 

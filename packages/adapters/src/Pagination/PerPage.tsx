@@ -12,9 +12,7 @@ const calculatePageNumber = (newPerPage: number, prevPerPage: number, total: num
 
 const selectRootProps = { className: 'ee-pagination__per-page-select-wrapper' };
 
-const PerPage: React.FC<PerPageProps> = ({ locale, onChangePerPage, pageNumber, perPage, perPageOptions, total }) => {
-	const buildOptionText = (value: string) => `${value} ${locale?.items_per_page}`;
-
+const PerPage: React.FC<PerPageProps> = ({ onChangePerPage, pageNumber, perPage, perPageOptions, total }) => {
 	const onChangeValue = useCallback<SelectProps['onChangeValue']>(
 		(newPerPage) => {
 			const parsedNewPerPage = parseInt(newPerPage as string, 10);
@@ -42,9 +40,9 @@ const PerPage: React.FC<PerPageProps> = ({ locale, onChangePerPage, pageNumber, 
 			value={perPage}
 			variant='unstyled'
 		>
-			{perPageOptions.map((opt, i) => (
-				<option key={i} value={opt}>
-					{buildOptionText(opt)}
+			{Object.entries(perPageOptions).map(([value, label]) => (
+				<option key={value} value={value}>
+					{label}
 				</option>
 			))}
 		</Select>
