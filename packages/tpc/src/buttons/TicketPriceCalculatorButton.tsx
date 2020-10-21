@@ -10,6 +10,7 @@ import { useGlobalModal } from '@eventespresso/registry';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 import type { BaseProps } from '../types';
+import { SOLD_TICKET_ERROR_MESSAGE } from '../utils';
 
 interface TPCButtonProps extends BaseProps, IconButtonProps {}
 
@@ -25,11 +26,7 @@ const TicketPriceCalculatorButton: React.FC<TPCButtonProps> = ({ ticketId, ...bu
 	const ticket = useTicketItem({ id: ticketId });
 	const isDisabled = Boolean(ticket?.sold);
 
-	const tooltip = isDisabled
-		? __(
-				'Ticket price modifications are blocked for Tickets that have already been sold to registrants, because doing so would negatively affect internal accounting for the event. If you still need to modify ticket prices, then create a copy of those tickets, edit the prices for the new tickets, and then archive the old tickets.'
-		  )
-		: __('ticket price calculator');
+	const tooltip = isDisabled ? SOLD_TICKET_ERROR_MESSAGE : __('ticket price calculator');
 
 	return (
 		<IconButton

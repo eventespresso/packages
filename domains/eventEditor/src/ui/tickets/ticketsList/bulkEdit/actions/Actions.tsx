@@ -1,13 +1,14 @@
-import React, { useState, useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
 
-import { BulkActions } from '@eventespresso/components';
+import { __ } from '@eventespresso/i18n';
+import { BulkActions, Banner } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { useTicketsListFilterState } from '@eventespresso/edtr-services';
-import { TicketsStatus } from '@eventespresso/predicates';
+import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
+import { useTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
+import { entitiesWithGuIdInArray, TicketsStatus } from '@eventespresso/predicates';
 import type { BulkActionsProps } from '@eventespresso/components';
-import { withFeature } from '@eventespresso/services';
+import { withFeature, useBulkEdit } from '@eventespresso/services';
 
 import Checkbox from '../../tableView/Checkbox';
 import { EditDetails } from '../details';
@@ -21,6 +22,14 @@ const Actions: React.FC = () => {
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { status } = useTicketsListFilterState();
+	const { getSelected } = useBulkEdit();
+	const allTickets = useTickets();
+
+	const isEditPricesDisabled = useMemo(() => {
+		const selectedTickets = entitiesWithGuIdInArray(allTickets, getSelected());
+		const isSoldTicketSelected = selectedTickets.some((ticket) => Boolean(ticket.sold));
+		return isSoldTicketSelected;
+	}, [allTickets, getSelected]);
 
 	const areTrashedTickets = status === TicketsStatus.trashedOnly;
 
@@ -40,6 +49,7 @@ const Actions: React.FC = () => {
 		{
 			value: 'edit-prices',
 			label: __('edit ticket prices'),
+			disabled: isEditPricesDisabled,
 		},
 	]);
 
@@ -60,6 +70,9 @@ const Actions: React.FC = () => {
 					{action === 'delete' && <Delete areTrashedTickets={areTrashedTickets} onClose={onClose} />}
 					{action === 'edit-prices' && <EditPrices isOpen={true} onClose={onClose} />}
 				</>
+			)}
+			{isEditPricesDisabled && (
+				<Banner description={SOLD_TICKET_ERROR_MESSAGE} status='error' title={__('Error')} />
 			)}
 		</>
 	);

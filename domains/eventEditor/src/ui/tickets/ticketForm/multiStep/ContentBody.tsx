@@ -5,17 +5,13 @@ import { FormSpy } from '@eventespresso/form';
 import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/components';
 import { useTickets } from '@eventespresso/edtr-services';
 import { findEntityByGuid, hasEmptyPrices } from '@eventespresso/predicates';
-import { TicketPriceCalculator } from '@eventespresso/tpc';
+import { SOLD_TICKET_ERROR_MESSAGE, TicketPriceCalculator } from '@eventespresso/tpc';
 import { usePrevNext } from '@eventespresso/hooks';
 
 import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/components';
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
 import TicketFormSteps from './TicketFormSteps';
 import useDataListener from './useDataListener';
-
-const tooltip = __(
-	'Ticket price modifications are blocked for Tickets that have already been sold to registrants, because doing so would negatively affect internal accounting for the event. If you still need to modify ticket prices, then create a copy of those tickets, edit the prices for the new tickets, and then archive the old tickets.'
-);
 
 /**
  * This component is inside both RFF and TAM contexts, so we can use all of their features
@@ -52,7 +48,7 @@ const ContentBody: React.FC = ({ children }) => {
 										buttonType={ButtonType.SECONDARY}
 										isDisabled={isSaveDisabled || isTicketSold}
 										onClick={next}
-										tooltip={isTicketSold && tooltip}
+										tooltip={isTicketSold && SOLD_TICKET_ERROR_MESSAGE}
 									/>
 									<Next
 										buttonText={__('Skip prices - assign dates')}
