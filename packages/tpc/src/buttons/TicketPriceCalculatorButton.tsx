@@ -32,10 +32,9 @@ const TicketPriceCalculatorButton: React.FC<TPCButtonProps> = ({ ticketId, ...bu
 		<IconButton
 			borderless
 			icon={Calculator}
-			onClick={onOpen}
+			onClick={isDisabled ? null : onOpen}
 			tooltip={tooltip}
 			tooltipProps={tooltipProps}
-			isDisabled={isDisabled}
 			{...buttonProps}
 		/>
 	);

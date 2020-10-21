@@ -46,8 +46,8 @@ const ContentBody: React.FC = ({ children }) => {
 									<Next
 										buttonText={__('Set ticket prices')}
 										buttonType={ButtonType.SECONDARY}
-										isDisabled={isSaveDisabled || isTicketSold}
-										onClick={next}
+										isDisabled={isSaveDisabled}
+										onClick={isTicketSold ? null : next}
 										tooltip={isTicketSold && SOLD_TICKET_ERROR_MESSAGE}
 									/>
 									<Next
