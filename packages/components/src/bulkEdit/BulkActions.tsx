@@ -32,7 +32,7 @@ export const BulkActions = <T extends string>({
 	const isApplyDisabled = !action || !getSelected().length;
 
 	const onClick = useCallback(() => {
-		onApply(action);
+		onApply?.(action);
 	}, [action, onApply]);
 
 	return (

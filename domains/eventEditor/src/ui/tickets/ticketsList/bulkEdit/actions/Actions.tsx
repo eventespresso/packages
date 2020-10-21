@@ -63,7 +63,12 @@ const Actions: React.FC = () => {
 
 	return (
 		<>
-			<BulkActions Checkbox={Checkbox} options={options} onApply={onApply} defaultAction='' />
+			<BulkActions
+				Checkbox={Checkbox}
+				options={options}
+				onApply={isEditPricesDisabled ? null : onApply}
+				defaultAction=''
+			/>
 			{isOpen && (
 				<>
 					{action === 'edit-details' && <EditDetails isOpen={true} onClose={onClose} />}
