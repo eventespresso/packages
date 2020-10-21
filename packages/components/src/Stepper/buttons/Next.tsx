@@ -15,6 +15,7 @@ const Next: React.FC<Props> = ({ isDisabled, onClick, skippable, ...props }) => 
 
 	return (
 		<Button
+			{...props}
 			buttonText={buttonText}
 			buttonType={buttonType}
 			isDisabled={isDisabled}
@@ -24,4 +25,4 @@ const Next: React.FC<Props> = ({ isDisabled, onClick, skippable, ...props }) => 
 	);
 };
 
-export default memo(Next);
+export default Next;

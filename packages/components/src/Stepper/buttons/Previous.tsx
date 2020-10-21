@@ -12,7 +12,7 @@ const Previous: React.FC<Props> = ({ isDisabled, onClick, skippable, ...props })
 	const buttonText = props.buttonText || __('Previous');
 	const leftIcon = memo(() => (skippable ? <ChevronDoubleLeft size='smaller' /> : <ChevronLeft size='smaller' />));
 
-	return <Button buttonText={buttonText} isDisabled={isDisabled} leftIcon={leftIcon} onClick={onClick} />;
+	return <Button {...props} buttonText={buttonText} isDisabled={isDisabled} leftIcon={leftIcon} onClick={onClick} />;
 };
 
-export default memo(Previous);
+export default Previous;

@@ -1,4 +1,4 @@
-import { allPass, filter, find, includes, ObjPred, propEq } from 'ramda';
+import { allPass, anyPass, filter, find, includes, isNil, isEmpty, ObjPred, propEq } from 'ramda';
 
 import { EntityId, EntityDbId } from '@eventespresso/data';
 import type { Price } from '@eventespresso/edtr-services';
@@ -27,3 +27,7 @@ export const getPriceByGuid = (prices: Price[], guid: EntityId): Price => findEn
 export const getTaxes = (prices: Price[]): Price[] => filter<Price>(isTax, prices);
 export const getDefaultTaxes = (prices: Price[]): Price[] => filter(isDefaultTax, prices);
 export const getDefaultPrices = (prices: Price[]): Price[] => filter<Price>(isDefault, prices);
+
+export const hasEmptyPrices = (prices: Price[]): boolean => {
+	return prices.length && prices.some(({ amount }) => anyPass([isNil, isEmpty])(amount));
+};

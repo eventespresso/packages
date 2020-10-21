@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Button, ButtonProps, ButtonType } from '../../../';
@@ -18,4 +18,4 @@ const Submit: React.FC<ButtonProps> = ({ isDisabled, onClick, ...props }) => {
 	);
 };
 
-export default memo(Submit);
+export default Submit;

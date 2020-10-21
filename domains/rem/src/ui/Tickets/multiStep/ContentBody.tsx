@@ -1,11 +1,12 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 import { FormSpy } from '@eventespresso/form';
-import { anyPass, isNil, isEmpty } from 'ramda';
 
 import TicketFormSteps from './TicketFormSteps';
 import { usePrevNext } from '@eventespresso/hooks';
 import { TicketPriceCalculator } from '@eventespresso/tpc';
+import { hasEmptyPrices } from '@eventespresso/predicates';
+
 import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/components';
 import useDataListener from './useDataListener';
 
@@ -25,10 +26,7 @@ const ContentBody: React.FC = ({ children }) => {
 			{({ form, hasSubmitErrors, hasValidationErrors, submitting, values }) => {
 				const isSaveDisabled = submitting || hasValidationErrors || hasSubmitErrors;
 
-				const prices = values?.prices || [];
-				const isTPCSubmitDisabled =
-					prices.length && prices.some(({ amount }) => anyPass([isNil, isEmpty])(amount));
-
+				const isTPCSubmitDisabled = hasEmptyPrices(values?.prices || []);
 				return (
 					<div>
 						<TicketFormSteps current={current} />
@@ -38,7 +36,7 @@ const ContentBody: React.FC = ({ children }) => {
 								{children}
 								<ButtonRow>
 									<Next
-										buttonText={__('Add ticket prices')}
+										buttonText={__('Set ticket prices')}
 										buttonType={ButtonType.SECONDARY}
 										isDisabled={isSaveDisabled}
 										onClick={next}
