@@ -14,10 +14,12 @@ const nullFunc = () => null;
 export const InlineEditCurrency: React.FC<InlineEditCurrencyProps> = ({
 	amount = 0,
 	id = '',
+	isEditDisabled,
 	onChange = nullFunc,
 	tag = 'p',
-	wrapperProps = {},
+	wrapperProps,
 	vertical,
+	tooltip,
 }) => {
 	const { formatAmount, beforeAmount, afterAmount } = useMoneyDisplay();
 	const className = classNames('ee-currency-input', vertical && 'ee-currency-input--vertical');
@@ -42,8 +44,10 @@ export const InlineEditCurrency: React.FC<InlineEditCurrencyProps> = ({
 			<InlineEditText
 				as='span'
 				fitText={false}
+				isDisabled={isEditDisabled}
 				key={id}
 				onChangeValue={onChangeHandler}
+				tooltip={tooltip}
 				value={formattedAmount}
 			/>
 			{after}

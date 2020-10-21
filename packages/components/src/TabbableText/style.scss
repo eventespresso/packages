@@ -3,7 +3,6 @@
 	border-color: var(--ee-background-color); // essentially no border by default
 	border-radius: var(--ee-border-radius-small);
 	border-width: var(--ee-border-width);
-	cursor: pointer;
 	display: inline-flex;
 	justify-content: center;
 	outline: none !important;
@@ -11,19 +10,21 @@
 	min-height: var(--ee-icon-button-size);
 	min-width: var(--ee-icon-button-size);
 
-	&:hover {
-		border-color: var(--ee-color-primary-low-contrast);
-		color: var(--ee-color-primary-high-contrast);
+	&:not(.is-disabled) {
+		&:hover {
+			border-color: var(--ee-color-primary-low-contrast);
+			color: var(--ee-color-primary-high-contrast);
 
-		svg.ee-svg {
-			border-color: none;
-			color: var(--ee-default-text-color-super-low-contrast);
+			svg.ee-svg {
+				border-color: none;
+				color: var(--ee-default-text-color-super-low-contrast);
+			}
 		}
-	}
 
-	&:active,
-	&:focus {
-		border-width: var(--ee-border-width);
-		border-color: var(--ee-color-primary);
+		&:active,
+		&:focus {
+			border-width: var(--ee-border-width);
+			border-color: var(--ee-color-primary);
+		}
 	}
 }

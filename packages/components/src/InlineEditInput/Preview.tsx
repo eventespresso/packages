@@ -12,6 +12,7 @@ import './style.scss';
 const Preview: React.FC<PreviewProps> = ({
 	className,
 	fitText,
+	isDisabled,
 	isEditing,
 	lineCount,
 	lineLength = 25,
@@ -23,7 +24,7 @@ const Preview: React.FC<PreviewProps> = ({
 		return null;
 	}
 
-	const icon = <Edit className={'ee-inline-edit__edit-icon'} />;
+	const icon = isDisabled ? null : <Edit className='ee-inline-edit__edit-icon' />;
 
 	const previewClassName = classNames('ee-inline-edit__preview-wrapper', className && className);
 
@@ -51,6 +52,7 @@ const Preview: React.FC<PreviewProps> = ({
 			className={previewClassName}
 			icon={icon}
 			onClick={onRequestEdit}
+			isDisabled={isDisabled}
 			text={textInput}
 			tooltip={tooltip}
 		/>
