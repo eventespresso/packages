@@ -8,12 +8,12 @@ import type { TabbableTextProps } from './types';
 
 import './style.scss';
 
-export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, isDisabled, ...props }) => {
+export const TabbableText: React.FC<TabbableTextProps> = ({ className, icon, onClick, isDisabled, ...props }) => {
 	let tooltip = props.tooltip || __('Click to edit…');
 	const text = props.text || tooltip;
 	// don't display tooltip if it is being used as placeholder
 	tooltip = text === tooltip ? '' : tooltip;
-	const className = classNames('ee-tabbable-text', props.className, { 'is-disabled': isDisabled });
+	const textClassName = classNames('ee-tabbable-text', className, { 'is-disabled': isDisabled });
 
 	const onKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
@@ -29,7 +29,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({ icon, onClick, isDis
 		<Tooltip tooltip={tooltip}>
 			<div
 				aria-label={props.tooltip}
-				className={className}
+				className={textClassName}
 				onClick={onClick}
 				onKeyDown={onKeyDown}
 				role={isDisabled ? null : 'button'}

@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import classNames from 'classnames';
 
 import { isInfinite, parseInfinity } from '@eventespresso/utils';
 import { InlineEdit } from '@eventespresso/adapters';
@@ -11,7 +10,6 @@ import './style.scss';
 
 const InlineEditInfinity: React.FC<TextProps> = ({ className, onChangeValue, value, ...props }) => {
 	const isInfinity = isInfinite(value);
-	const inputClassName = classNames('ee-inline-edit', 'ee-inline-edit__infinity', className && className);
 
 	const onChangeHandler = useCallback<TextProps['onChangeValue']>(
 		(val) => {
@@ -27,10 +25,11 @@ const InlineEditInfinity: React.FC<TextProps> = ({ className, onChangeValue, val
 		<InlineEdit
 			placeholder=''
 			{...props}
-			className={inputClassName}
+			inputClassName={'ee-inline-edit__infinity'}
 			inputType='number'
 			onChangeValue={onChangeHandler}
 			Preview={InlineEditInfinityPreview}
+			previewClassName={className}
 			value={isInfinity ? '' : value}
 		/>
 	);

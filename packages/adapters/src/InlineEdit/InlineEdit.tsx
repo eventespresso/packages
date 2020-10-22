@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { Editable as ChakraEditable } from '@chakra-ui/core';
 
 import { usePrevious, useIfMounted } from '@eventespresso/hooks';
@@ -7,11 +8,14 @@ import InlineEditPreview from './InlineEditPreview';
 import type { InlineEditProps } from './types';
 
 const InlineEdit: React.FC<InlineEditProps> = ({
+	inputClassName,
 	defaultValue,
 	inputType,
 	onChangeValue,
 	value,
 	placeholder = '',
+	Preview,
+	previewClassName,
 	...props
 }) => {
 	const [currentValue, setCurrentValue] = useState(defaultValue || value);
@@ -40,9 +44,12 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 		}
 	}, [currentValue, onChangeValue]);
 
+	const className = classNames('ee-inline-edit', inputClassName && inputClassName);
+
 	return (
 		<ChakraEditable
 			{...props}
+			className={className}
 			onChange={setCurrentValue}
 			onSubmit={onSubmitHandler}
 			placeholder={placeholder}
@@ -60,11 +67,12 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 					<>
 						<InlineEditPreview
 							{...props}
+							className={previewClassName}
 							isEditing={isEditing}
 							onRequestEdit={onRequestEdit}
+							Preview={Preview}
 							value={currentValue}
 						/>
-
 						<InlineEditInput inputType={inputType} setValue={setCurrentValue} onCancel={onCancelEdit} />
 					</>
 				);
