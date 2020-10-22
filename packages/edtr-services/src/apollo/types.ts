@@ -5,16 +5,16 @@ import type {
 	DatetimesList as DatetimeList,
 	TicketsList as TicketList,
 } from '@eventespresso/data';
+import { CurrentUserProps } from '@eventespresso/services';
 
 export interface Event extends Entity {
-	additionalLimit: number;
+	allowDonations: boolean;
 	allowOverflow: boolean;
+	altRegPage: string;
 	created: string;
 	description: string;
 	displayDescription: boolean;
 	displayTicketSelector: boolean;
-	donations: boolean;
-	externalUrl: string;
 	isActive: boolean;
 	isCancelled: boolean;
 	isExpired: boolean;
@@ -22,14 +22,16 @@ export interface Event extends Entity {
 	isPostponed: boolean;
 	isSoldOut: boolean;
 	isUpcoming: boolean;
+	maxRegistrations: number;
 	memberOnly: boolean;
 	name: string;
 	order: number;
-	phone: string;
+	phoneNumber: string;
 	shortDescription: string;
 	status: string;
 	timezoneString: string;
 	visibleOn: string;
+	wpUser?: Partial<CurrentUserProps>;
 }
 
 export interface EventData {

@@ -9,8 +9,8 @@ const EventMeta: React.FC = () => {
 	const { updateEntity: updateEvent } = useEventMutator(event?.id);
 
 	const onChangeDonations = useCallback<SwitchInputProps['onChangeValue']>(
-		(donations) => {
-			updateEvent({ donations });
+		(allowDonations) => {
+			updateEvent({ allowDonations });
 		},
 		[updateEvent]
 	);
@@ -24,9 +24,13 @@ const EventMeta: React.FC = () => {
 
 	return (
 		<div>
+			<h2>
+				{__('Manager: ')}
+				{event?.wpUser?.name}
+			</h2>
 			<SwitchInput
 				label={__('Enable Donations')}
-				isChecked={event?.donations}
+				isChecked={event?.allowDonations}
 				onChangeValue={onChangeDonations}
 			/>
 			<SwitchInput

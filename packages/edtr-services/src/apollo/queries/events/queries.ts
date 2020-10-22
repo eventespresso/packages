@@ -5,14 +5,13 @@ export const EVENT_ATTRIBUTES: any = gql`
 		id
 		dbId
 		cacheId
-		additionalLimit
+		allowDonations
 		allowOverflow
+		altRegPage
 		created
 		description
 		displayDescription
 		displayTicketSelector
-		donations
-		externalUrl
 		isActive
 		isCancelled
 		isExpired
@@ -20,14 +19,19 @@ export const EVENT_ATTRIBUTES: any = gql`
 		isPostponed
 		isSoldOut
 		isUpcoming
+		maxRegistrations
 		memberOnly
 		name
 		order
-		phone
+		phoneNumber
 		shortDescription
 		status
 		timezoneString
 		visibleOn
+		wpUser {
+			id
+			name
+		}
 	}
 `;
 

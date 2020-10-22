@@ -2,21 +2,21 @@ import type { EntityId } from '@eventespresso/data';
 import type { Event } from '../../';
 
 export interface EventBaseInput {
-	additionalLimit?: number;
+	maxRegistrations?: number;
 	allowOverflow?: boolean;
 	description?: string;
 	displayDescription?: boolean;
 	displayTicketSelector?: boolean;
-	donations?: boolean;
-	externalUrl?: string;
+	allowDonations?: boolean;
+	altRegPage?: string;
 	memberOnly?: boolean;
-	menuOrder?: number;
 	name?: string;
 	order?: number;
-	phone?: string;
+	phoneNumber?: string;
 	shortDescription?: string;
 	timezonestring?: string;
 	visibleOn?: string;
+	wpUser?: number;
 }
 
 export interface UpdateEventInput extends EventBaseInput {
