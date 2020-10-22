@@ -22,7 +22,7 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const hasChanges = text !== props.text;
-	const previewClassName = classNames('ee-inline-edit__preview-wrapper', className && className);
+	const previewClassName = classNames('ee-inline-edit__preview', className && className);
 
 	const onChange = useCallback(
 		(newText: string): void => {
@@ -68,7 +68,7 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 			>
 				<RichTextEditor onChange={onChange} value={text} />
 			</ModalWithAlert>
-			<div className='ee-rich-text-editor__preview-wrapper'>
+			<div className='ee-rich-text-editor__preview'>
 				<TabbableText
 					className={previewClassName}
 					icon={<Edit className={'ee-inline-edit__edit-icon'} />}

@@ -26,7 +26,7 @@ const Preview: React.FC<PreviewProps> = ({
 
 	const icon = isDisabled ? null : <Edit className='ee-inline-edit__edit-icon' />;
 
-	const previewClassName = classNames('ee-inline-edit__preview-wrapper', className);
+	const previewClassName = classNames('ee-inline-edit__preview', className);
 
 	let textInput: string | JSX.Element = value;
 
