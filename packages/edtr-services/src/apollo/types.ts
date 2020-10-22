@@ -13,6 +13,7 @@ export interface Event extends Entity {
 	description: string;
 	displayDescription: boolean;
 	displayTicketSelector: boolean;
+	donations: boolean;
 	externalUrl: string;
 	isActive: boolean;
 	isCancelled: boolean;

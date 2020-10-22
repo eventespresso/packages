@@ -16,6 +16,7 @@ export const nodes: Event[] = [
 		description: 'Test',
 		displayDescription: false,
 		displayTicketSelector: true,
+		donations: false,
 		externalUrl: '',
 		isActive: true,
 		isCancelled: false,

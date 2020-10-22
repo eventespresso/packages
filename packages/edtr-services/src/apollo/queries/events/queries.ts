@@ -11,6 +11,7 @@ export const EVENT_ATTRIBUTES: any = gql`
 		description
 		displayDescription
 		displayTicketSelector
+		donations
 		externalUrl
 		isActive
 		isCancelled
