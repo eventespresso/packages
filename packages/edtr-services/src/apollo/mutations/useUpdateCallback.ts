@@ -19,7 +19,7 @@ const useUpdateCallback = (typeName: TypeName): UpdaterCallback => {
 				const path = ['data', mutationName, `espresso${typeName}`];
 				const entity = pathOr<any>({}, path, result);
 
-				onUpdate({ cache, entity, mutationType, input });
+				onUpdate?.({ cache, entity, mutationType, input });
 			};
 			return update;
 		},

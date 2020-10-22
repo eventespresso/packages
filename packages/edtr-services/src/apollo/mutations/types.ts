@@ -60,6 +60,7 @@ export type CacheUpdaterFn = (args: CacheUpdaterFnArgs) => void;
 
 export enum TypeName {
 	Datetime = 'Datetime',
+	Event = 'Event',
 	Ticket = 'Ticket',
 	Price = 'Price',
 	PriceType = 'PriceType',
