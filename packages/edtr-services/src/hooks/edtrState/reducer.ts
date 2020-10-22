@@ -1,9 +1,11 @@
 import { EdtrStateReducer } from './types';
 
 const reducer: EdtrStateReducer = (state, action) => {
-	const { pricesPollInterval, type, visibleDatetimeIds, visibleTicketIds } = action;
+	const { isRehydrated, pricesPollInterval, type, visibleDatetimeIds, visibleTicketIds } = action;
 
 	switch (type) {
+		case 'SET_IS_REHYDRATED':
+			return { ...state, isRehydrated };
 		case 'SET_VISIBLE_DATETIME_IDS':
 			return { ...state, visibleDatetimeIds };
 		case 'SET_VISIBLE_TICKET_IDS':

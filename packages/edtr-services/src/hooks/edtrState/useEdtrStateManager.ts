@@ -7,6 +7,7 @@ import reducer from './reducer';
 type ESM = EdtrStateManager;
 
 const initialState: EdtrState = {
+	isRehydrated: false,
 	visibleDatetimeIds: [],
 	visibleTicketIds: [],
 	pricesPollInterval: 0, // no polling by default
@@ -16,6 +17,13 @@ const useEdtrStateManager = (): ESM => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	const getState: ESM['getState'] = useCallback(() => state, [state]);
+
+	const setIsRehydrated: ESM['setIsRehydrated'] = useCallback((isRehydrated) => {
+		dispatch({
+			type: 'SET_IS_REHYDRATED',
+			isRehydrated,
+		});
+	}, []);
 
 	const setVisibleDatetimeIds: ESM['setVisibleDatetimeIds'] = useCallback((visibleDatetimeIds) => {
 		dispatch({
@@ -42,11 +50,12 @@ const useEdtrStateManager = (): ESM => {
 		() => ({
 			...state,
 			getState,
+			setIsRehydrated,
 			setVisibleDatetimeIds,
 			setVisibleTicketIds,
 			setPricesPollInterval,
 		}),
-		[getState, setPricesPollInterval, setVisibleDatetimeIds, setVisibleTicketIds, state]
+		[getState, setIsRehydrated, setPricesPollInterval, setVisibleDatetimeIds, setVisibleTicketIds, state]
 	);
 };
 
