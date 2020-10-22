@@ -23,7 +23,7 @@ const useInitQueries = (): void => {
 	// initiate general settings fetching.
 	useFetchGeneralSettings();
 
-	// iniate event data fetching
+	// initiate event data fetching
 	useEvent();
 };
 
