@@ -61,9 +61,6 @@
 					margin: 0;
 					text-align: center;
 					width: 100%;
-					.ee-input-inline {
-						margin: calc(var(--ee-margin-tiny) * -1) 0 0;
-					}
 				}
 
 				&__description {
@@ -74,13 +71,6 @@
 					text-align: center;
 					width: 100%;
 					z-index: 1;
-					textarea {
-						background-color: white;
-						margin: calc(var(--ee-margin-tiny) * -1) 0 0;
-						position: absolute;
-						right: 0;
-						top: 0;
-					}
 				}
 
 				&__price {
