@@ -44,12 +44,12 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 		}
 	}, [currentValue, onChangeValue]);
 
-	const className = classNames('ee-inline-edit', inputClassName && inputClassName);
+	const className = classNames('ee-inline-edit', inputClassName);
 
 	return (
 		<ChakraEditable
 			{...props}
-			className={className}
+			className={previewClassName}
 			onChange={setCurrentValue}
 			onSubmit={onSubmitHandler}
 			placeholder={placeholder}
@@ -67,7 +67,7 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 					<>
 						<InlineEditPreview
 							{...props}
-							className={previewClassName}
+							className={className}
 							isEditing={isEditing}
 							onRequestEdit={onRequestEdit}
 							Preview={Preview}
