@@ -13,7 +13,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({ className, icon, onC
 	const text = props.text || tooltip;
 	// don't display tooltip if it is being used as placeholder
 	tooltip = text === tooltip ? '' : tooltip;
-	const textClassName = classNames('ee-tabbable-text', className, { 'is-disabled': isDisabled });
+	const textClassName = classNames('ee-tabbable-text', className, isDisabled && 'is-disabled');
 
 	const onKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
