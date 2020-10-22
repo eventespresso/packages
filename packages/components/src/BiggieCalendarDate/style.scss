@@ -33,9 +33,9 @@
 			letter-spacing: var(--ee-letter-spacing-font-size-tiny);
 		}
 
-		&__weekday,
-		&__time {
-			line-height: var(--ee-font-size-huge);
+		&__weekday {
+			line-height: var(--ee-font-size-bigger);
+    		margin-top: var(--ee-margin-nano);
 		}
 
 		&__month {
@@ -61,6 +61,10 @@
 			line-height: var(--ee-font-size-big);
 			left: var(--ee-padding-nano);
 			position: relative;
+		}
+
+		&__time {
+			line-height: var(--ee-font-size-huge);
 		}
 	}
 
