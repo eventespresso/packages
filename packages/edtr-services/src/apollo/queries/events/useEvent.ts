@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useCacheQuery } from '@eventespresso/data';
 import useEventQueryOptions from './useEventQueryOptions';
 import { useMemoStringify } from '@eventespresso/hooks';
@@ -9,9 +8,6 @@ const useEvent = (): Event => {
 	const options = useEventQueryOptions();
 
 	const { data } = useCacheQuery<EventData>(options);
-	useEffect(() => {
-		console.log({ data });
-	}, [data]);
 
 	return useMemoStringify(data?.espressoEvent);
 };

@@ -2,9 +2,10 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useEvent from '../useEvent';
 import { ApolloMockedProvider } from '../../../../context/test';
-import { successMocks, errorMocks, nodes } from './data';
+import { errorMocks, nodes } from './data';
 import useEventQueryOptions from '../useEventQueryOptions';
 import { actWait } from '@eventespresso/utils/src/test';
+import useInitEventTestCache from './useInitEventTestCache';
 
 const mockEvent = nodes[0];
 
@@ -29,19 +30,15 @@ describe('useEvent', () => {
 	});
 
 	it('checks for response data', async () => {
-		/* Set query options and the wrapper */
-		const {
-			result: { current: request },
-		} = renderHook(() => useEventQueryOptions(), {
-			wrapper: ApolloMockedProvider(),
-		});
-		await actWait();
-
-		const wrapper = ApolloMockedProvider(successMocks.map((mock) => ({ ...mock, request })));
-		/* Set query options and the wrapper */
-		const { result } = renderHook(() => useEvent(), {
-			wrapper,
-		});
+		const { result } = renderHook(
+			() => {
+				useInitEventTestCache();
+				return useEvent();
+			},
+			{
+				wrapper: ApolloMockedProvider(),
+			}
+		);
 		await actWait();
 
 		expect(result.current).toBeDefined();

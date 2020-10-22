@@ -1,8 +1,8 @@
 import type { EventEditorData } from '../../types';
-import type { Event } from '../../apollo';
 import type { RelationalData } from '@eventespresso/services';
 import { nodes as datetimes, edge as datetimesEdge } from '../../apollo/queries/datetimes/test/data';
 
+import { nodes as events } from '../../apollo/queries/events/test/data';
 import { nodes as tickets, edge as ticketsEdge } from '../../apollo/queries/tickets/test/data';
 import { nodes as prices, edge as pricesEdge } from '../../apollo/queries/prices/test/data';
 import { nodes as priceTypes, edge as priceTypesEdge } from '../../apollo/queries/priceTypes/test/data';
@@ -52,26 +52,8 @@ export const relationalData: RelationalData = {
 };
 
 // Add only what's needed
-export const event: Event = {
-	cacheId: '',
-	dbId: eventId,
-	description: '',
-	id: '',
-	isActive: true,
-	isCancelled: false,
-	isExpired: false,
-	isInactive: false,
-	isPostponed: false,
-	isSoldOut: false,
-	isUpcoming: false,
-	name: '',
-	order: 1,
-	shortDescription: '',
-};
-
-// Add only what's needed
 export const eventEditor: EventEditorData = {
-	event,
+	event: events[0],
 	datetimes: datetimesEdge,
 	tickets: ticketsEdge,
 	prices: pricesEdge,
