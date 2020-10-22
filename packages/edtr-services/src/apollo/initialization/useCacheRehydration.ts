@@ -2,7 +2,13 @@ import { useEffect } from 'react';
 
 import useCacheRehydrationData from './useCacheRehydrationData';
 import { useStatus, TypeName, useRelations } from '@eventespresso/services';
-import { useUpdateDatetimeList, useUpdatePriceList, useUpdatePriceTypeList, useUpdateTicketList } from '../../hooks';
+import {
+	useEdtrState,
+	useUpdateDatetimeList,
+	useUpdatePriceList,
+	useUpdatePriceTypeList,
+	useUpdateTicketList,
+} from '../../hooks';
 import {
 	DEFAULT_DATETIME_LIST_DATA,
 	DEFAULT_TICKET_LIST_DATA,
@@ -22,11 +28,13 @@ import {
 	useUpdateGeneralSettingsCache,
 } from '@eventespresso/data';
 import { getGuids } from '@eventespresso/predicates';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 const useCacheRehydration = (): void => {
 	const { initialize: initializeRelations, isInitialized: relationsInitialized } = useRelations();
 	const { currentUser, eventEditor, generalSettings } = useCacheRehydrationData();
 	const { isLoaded } = useStatus();
+	const { setIsRehydrated } = useEdtrState();
 
 	const {
 		event,
@@ -37,8 +45,8 @@ const useCacheRehydration = (): void => {
 		relations,
 	} = eventEditor;
 
-	const datetimeIn = getGuids(espressoDatetimes?.nodes || []);
-	const ticketIn = getGuids(espressoTickets?.nodes || []);
+	const datetimeIn = useMemoStringify(getGuids(espressoDatetimes?.nodes || []));
+	const ticketIn = useMemoStringify(getGuids(espressoTickets?.nodes || []));
 
 	const priceTypeQueryOptions = usePriceTypeQueryOptions();
 	const updatePriceTypeList = useUpdatePriceTypeList();
@@ -129,6 +137,8 @@ const useCacheRehydration = (): void => {
 			generalSettings,
 		},
 	});
+
+	setIsRehydrated(true);
 };
 
 export default useCacheRehydration;
