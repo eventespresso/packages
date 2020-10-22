@@ -6,7 +6,7 @@ initToaster();
 
 const Init: React.FC = () => {
 	useEditorInitialization();
-	return <div></div>;
+	return null;
 };
 
 export default Init;
