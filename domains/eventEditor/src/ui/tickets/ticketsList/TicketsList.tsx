@@ -8,6 +8,7 @@ import {
 	TicketsListProvider,
 	withEntityListContext,
 	useTicketsListFilterState,
+	useRegisterIsChainedFilter,
 } from '@eventespresso/edtr-services';
 import { EntityList } from '@eventespresso/components';
 
@@ -18,6 +19,9 @@ import { RenderTableView } from './tableView';
 import { ActiveTicketsFilters } from './filterBar';
 
 const TicketsList: React.FC = () => {
+	// register isChained filter using hook.
+	useRegisterIsChainedFilter();
+
 	const filterState = useTicketsListFilterState();
 
 	const renderList = useCallback(() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />), [
