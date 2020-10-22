@@ -10,6 +10,7 @@ import { useEditorInitialization } from '../hooks';
 import { getRegisteredContainers } from '@edtrServices/utils';
 
 import './styles.scss';
+import EventMeta from './EventMeta';
 
 const containers = getRegisteredContainers();
 
@@ -20,6 +21,7 @@ const EventEditor: React.FC = () => {
 
 	return (
 		<>
+			<EventMeta />
 			<DatesList />
 			<TicketsList />
 			{containers}
