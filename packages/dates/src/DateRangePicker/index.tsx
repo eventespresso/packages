@@ -4,7 +4,6 @@ import { __ } from '@eventespresso/i18n';
 
 import { DatePicker, DateTimePicker } from '../';
 import { DateRangePickerLegend } from './DateRangePickerLegend';
-import { isOnOrAfterToday, isOnOrAfterDate, isOnOrBeforeDate } from '../utils';
 import type { DateRangePickerProps } from '../types';
 
 import './styles.scss';
@@ -29,21 +28,8 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 	}, [endDate, startDate]);
 
 	const onChangeStart = useCallback((date) => setStartDate(date), []);
+
 	const onChangeEnd = useCallback((date) => setEndDate(date), []);
-
-	const isAfterStartDate = useCallback(
-		(date) => {
-			return isOnOrAfterDate(date, startDate) && isOnOrAfterToday(date);
-		},
-		[startDate]
-	);
-
-	const isBeforeEndDate = useCallback(
-		(date) => {
-			return isOnOrBeforeDate(date, endDate) && isOnOrAfterToday(date);
-		},
-		[endDate]
-	);
 
 	const className = classNames('date-range-picker', props.className);
 
@@ -56,7 +42,6 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 				<div className='date-range-picker__start-input'>
 					<Component
 						endDate={endDate}
-						filterDate={isBeforeEndDate}
 						fixedHeight
 						inputValue={inputValue?.[0]}
 						onChange={onChangeStart}
@@ -75,7 +60,6 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 				<div className='date-range-picker__end-input'>
 					<Component
 						endDate={endDate}
-						filterDate={isAfterStartDate}
 						fixedHeight
 						inputValue={inputValue?.[1]}
 						onChange={onChangeEnd}

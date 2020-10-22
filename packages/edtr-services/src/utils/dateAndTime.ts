@@ -1,8 +1,9 @@
 import { formatISO, parseISO } from 'date-fns';
-import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
-export const dateErrorMessage = (): string => __('End Date & Time must be set later than the Start Date & Time');
+import { endDateAfterStartDateErrorMessage } from '@eventespresso/dates';
+import { __ } from '@eventespresso/i18n';
+
 export const requiredMessage = (): string => __('Required');
 
 export const datesSchema = {
@@ -15,7 +16,7 @@ export const datesSchema = {
 		.required(() => __('End Date is required'))
 		.typeError(requiredMessage)
 		.when(['startDate'], (startDate: Date, schema: yup.DateSchema) => {
-			return schema.min(startDate, dateErrorMessage);
+			return schema.min(startDate, () => endDateAfterStartDateErrorMessage);
 		}),
 };
 

@@ -87,9 +87,11 @@ export const setDateToToday = (date: Date): Date => {
 export const prepDatesForComparison: PrepDatesComparisonFunc = (firstDate, secondDate, considerTime = false) => {
 	let parsedFirstDate = firstDate instanceof Date ? firstDate : toDate(firstDate);
 	let parsedSecondDate = secondDate instanceof Date ? secondDate : toDate(secondDate);
+
 	if (!considerTime) {
 		parsedFirstDate = setTimeToZeroHour(parsedFirstDate);
 		parsedSecondDate = setTimeToZeroHour(parsedSecondDate);
 	}
+
 	return [parsedFirstDate, parsedSecondDate];
 };

@@ -1,6 +1,7 @@
 export * from './addSub';
-export * from './types';
+export * from './isToday';
 export * from './misc';
+export * from './types';
 
 export { default as areEqual } from './areEqual';
 export { default as diff } from './diff';

@@ -12,17 +12,26 @@ export type ShiftDateArgs = {
 
 export type PrepSingleDateComparisonFunc = (firstDate: Date | number, considerTime: boolean) => Date;
 
-export type PrepDatesComparisonFunc = (
-	firstDate: Date | number,
-	secondDate: Date | number,
-	considerTime: boolean
-) => [Date, Date];
+interface DateComparison<T> {
+	(firstDate: Date | number, secondDate: Date | number, considerTime?: boolean): T;
+}
 
-export type DateComparisonFunc = (
-	firstDate: Date | number,
-	secondDate: Date | number,
-	considerTime?: boolean
-) => boolean;
+export type DateComparisonFunc = DateComparison<boolean>;
+
+export type PrepDatesComparisonFunc = DateComparison<[Date, Date]>;
+
+interface UseDatePickerValidationReturn {
+	startDateIsValid: boolean;
+	startDateIsToday: boolean;
+	startDateAfterToday: boolean;
+	startDateBeforeEndDate: boolean;
+	endDateIsValid: boolean;
+	endDateIsToday: boolean;
+	endDateAfterToday: boolean;
+	endDateAfterStartDate: boolean;
+}
+
+export type UseDatePickerValidation = DateComparison<UseDatePickerValidationReturn>;
 
 // for comparing a date against NOW
 export type SingleDateComparisonFunc = (firstDate: Date | number, considerTime?: boolean) => boolean;

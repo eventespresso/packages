@@ -10,6 +10,7 @@ import type { DateComparisonFunc } from './types';
  */
 const isOnOrAfterDate: DateComparisonFunc = (firstDate, secondDate, considerTime = false) => {
 	const [parsedFirstDate, parsedSecondDate] = prepDatesForComparison(firstDate, secondDate, considerTime);
+
 	return compareAsc(parsedFirstDate, parsedSecondDate) > -1;
 };
 
