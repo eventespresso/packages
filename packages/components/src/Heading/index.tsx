@@ -2,12 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import { Heading as HeadingAdapter } from '@eventespresso/adapters';
 
-import { HeadingProps } from './types';
+import type { HeadingProps } from './types';
 
 import './style.scss';
 
 export const Heading: React.FC<HeadingProps> = ({ topBordered, ...props }) => {
-	const className = classNames(props.className, topBordered && 'ee-heading--top-bordered');
+	const className = classNames('ee-heading', topBordered && 'ee-heading--top-bordered', props.className);
 
 	return <HeadingAdapter {...props} className={className} />;
 };

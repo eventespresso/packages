@@ -1,4 +1,31 @@
+@import '~@eventespresso/styles/src';
+
 .ee-heading {
+	color: var(--ee-color-grey-7);
+	font-family: var(--ee-admin-font-family);
+	font-size: calc(var(--ee-font-size-huge) * 1.45);
+	font-weight: 800;
+	line-height: calc(var(--ee-line-height-modifier) * 0.875);
+	margin: var(--ee-margin-smaller) 0 0;
+	text-shadow: var(--ee-text-shadow-inset-light);
+
+	@at-root h3#{&} {
+		margin-bottom: var(--ee-margin-tiny);
+	}
+
+	@include max782px {
+		line-height: calc(var(--ee-line-height-modifier) * 0.65);
+	}
+
+	@include max480px {
+		font-size: calc(var(--ee-font-size-huge) * 1.25);
+		text-align: center;
+	}
+
+	@include max360px {
+		font-size: calc(var(--ee-font-size-huge) * 1.05);
+	}
+
 	&--top-bordered {
 		border-top: 0.5px solid var(--ee-border-color);
 		margin-top: var(--ee-margin-small);

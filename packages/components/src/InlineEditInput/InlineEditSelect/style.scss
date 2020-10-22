@@ -1,0 +1,19 @@
+.ee-inline-edit-select {
+	.ee-inline-edit__preview-wrapper {
+		background-color: var(--ee-color-primary);
+		border-radius: var(--ee-border-radius-default);
+		color: var(--ee-text-on-primary);
+		font-size: var(--ee-font-size-small);
+		padding: var(--ee-padding-tiny) var(--ee-padding-smaller);
+
+		svg {
+			g {
+				stroke: var(--ee-text-on-primary);
+			}
+		}
+
+		&:hover {
+			color: var(--ee-text-on-primary);
+		}
+	}
+}

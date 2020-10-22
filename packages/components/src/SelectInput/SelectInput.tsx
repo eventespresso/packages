@@ -7,7 +7,7 @@ import { withLabel } from '../withLabel';
 import type { SelectInputProps } from './types';
 
 const SelectInput: React.FC<SelectInputProps> = ({ className, id, ...props }) => {
-	const selectClassName = classNames('ee-input-base ee-select', className);
+	const selectClassName = classNames('ee-select ee-input-base', className);
 
 	return <Select className={selectClassName} id={id} {...props} />;
 };

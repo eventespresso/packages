@@ -1,17 +1,12 @@
 import React from 'react';
-import classNames from 'classnames';
 import { Heading as ChakraHeading } from '@chakra-ui/core';
 
 import type { HeadingProps } from './types';
 
-const Heading: React.FC<HeadingProps> = ({ children, ...props }) => {
-	const className = classNames(props.className, 'ee-heading');
-
+export const Heading: React.FC<HeadingProps> = ({ children, className, ...props }) => {
 	return (
 		<ChakraHeading {...props} className={className}>
 			{children}
 		</ChakraHeading>
 	);
 };
-
-export default Heading;

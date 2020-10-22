@@ -3,9 +3,9 @@ import type { SelectProps as ChakraSelectProps } from '@chakra-ui/core';
 import type { CommonInputProps } from '../types';
 
 export interface OptionProps {
-	value?: React.ReactText;
 	label?: React.ReactNode;
 	options?: Array<Omit<OptionProps, 'options'>>; // for optgroup
+	value?: React.ReactText;
 	[key: string]: any;
 }
 

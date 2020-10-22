@@ -21,5 +21,6 @@ export const objectToSelectOptions = (object: AnyObject, prependEmpty?: boolean)
 	if (prependEmpty) {
 		return [{ label: '', value: '' }, ...options];
 	}
+
 	return options;
 };

@@ -1,0 +1,17 @@
+@import '~@eventespresso/styles/src';
+
+.ee-event-registration-options {
+	.ee-grid {
+		> div {
+			align-items: center;
+			display: flex;
+			flex-direction: column-reverse;
+			height: calc(var(--ee-font-size-extreme) * 2);
+			text-align: center;
+		}
+	}
+
+	h4 {
+		font-size: var(--ee-font-size-tiny);
+	}
+}
