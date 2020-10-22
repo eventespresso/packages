@@ -7,7 +7,13 @@ import type {
 } from '@eventespresso/data';
 
 export interface Event extends Entity {
+	additionalLimit: number;
+	allowOverflow: boolean;
+	created: string;
 	description: string;
+	displayDescription: boolean;
+	displayTicketSelector: boolean;
+	externalUrl: string;
 	isActive: boolean;
 	isCancelled: boolean;
 	isExpired: boolean;
@@ -15,9 +21,14 @@ export interface Event extends Entity {
 	isPostponed: boolean;
 	isSoldOut: boolean;
 	isUpcoming: boolean;
+	memberOnly: boolean;
 	name: string;
 	order: number;
+	phone: string;
 	shortDescription: string;
+	status: string;
+	timezoneString: string;
+	visibleOn: string;
 }
 
 export interface EventData {

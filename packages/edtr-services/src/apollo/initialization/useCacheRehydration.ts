@@ -9,6 +9,7 @@ import {
 	DEFAULT_PRICE_LIST_DATA,
 	DEFAULT_PRICE_TYPE_LIST_DATA,
 	useDatetimeQueryOptions,
+	useEventQueryOptions,
 	usePriceQueryOptions,
 	usePriceTypeQueryOptions,
 	useTicketQueryOptions,
@@ -16,6 +17,7 @@ import {
 import {
 	useCurrentUserQueryOptions,
 	useGeneralSettingsQueryOptions,
+	useUpdateCache,
 	useUpdateCurrentUserCache,
 	useUpdateGeneralSettingsCache,
 } from '@eventespresso/data';
@@ -27,6 +29,7 @@ const useCacheRehydration = (): void => {
 	const { isLoaded } = useStatus();
 
 	const {
+		event,
 		datetimes: espressoDatetimes = DEFAULT_DATETIME_LIST_DATA,
 		tickets: espressoTickets = DEFAULT_TICKET_LIST_DATA,
 		prices: espressoPrices = DEFAULT_PRICE_LIST_DATA,
@@ -55,6 +58,9 @@ const useCacheRehydration = (): void => {
 	const generalSettingsQueryOptions = useGeneralSettingsQueryOptions();
 	const updateGeneralSettings = useUpdateGeneralSettingsCache();
 
+	const eventQueryOptions = useEventQueryOptions();
+	const updateCache = useUpdateCache();
+
 	useEffect(() => {
 		if (!relationsInitialized()) {
 			/* Rehydrate relations */
@@ -67,6 +73,14 @@ const useCacheRehydration = (): void => {
 	if (isLoaded(TypeName.priceTypes)) {
 		return;
 	}
+
+	/* Rehydrate event data */
+	updateCache({
+		...eventQueryOptions,
+		data: {
+			espressoEvent: event,
+		},
+	});
 
 	/* Rehydrate price types */
 	updatePriceTypeList({
