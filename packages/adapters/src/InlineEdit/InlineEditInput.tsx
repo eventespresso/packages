@@ -13,14 +13,14 @@ const insertStrAt = (str: string, subStr: string, pos: number): string => {
 };
 
 const InlineEditInput: React.FC<InlineEditInputProps> = ({ inputType, onCancel, setValue }) => {
-	const className = `ee-input-base ee-input ee-input-inline`;
+	const className = 'ee-input-base ee-input ee-inline-edit--editing';
 
 	if (inputType === 'textarea') {
 		// Since Chakra has no editable textarea yet
 		// we will use this hack
 		const textareaProps: PseudoBoxProps = {
 			as: 'textarea',
-			className: 'ee-input-base ee-textarea',
+			className: 'ee-input-base ee-textarea ee-inline-edit--editing',
 			// pass our own onKeyDown handler for a11y
 			onKeyDown: (e) => {
 				if (e.keyCode === ENTER) {
