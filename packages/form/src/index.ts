@@ -6,7 +6,7 @@ export { FormSpy, useForm, useFormState } from 'react-final-form';
 
 export { default as TestForm } from './TestForm';
 
-export * from './ErrorMessage';
+export * from './Error';
 
 export * from './types';
 
