@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { ActiveFiltersProps } from './types';
