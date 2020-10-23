@@ -162,7 +162,9 @@ class Barista
         if ($style) {
             $styles->remove($handle);
         }
+        // save the handle to use for loading styles for dev env
         $this->styles[ $handle ] = true;
+
         $styles->add($handle, $src, $deps, $ver, $media);
     }
 
