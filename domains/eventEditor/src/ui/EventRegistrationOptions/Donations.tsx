@@ -1,15 +1,21 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Heading, SwitchInput } from '@eventespresso/components';
-import { useEvent } from '@eventespresso/edtr-services';
+import { Heading, SwitchInput, SwitchInputProps } from '@eventespresso/components';
+import { useEvent, useEventMutator } from '@eventespresso/edtr-services';
 
-const Donations: React.FC = ({ isChecked = false }: any) => {
+const Donations: React.FC = () => {
 	const event = useEvent();
+	const { updateEntity: updateEvent } = useEventMutator(event?.id);
 
-	const onChange = useCallback(() => {
-		console.log({ event });
-	}, [event]);
+	const onChange = useCallback<SwitchInputProps['onChangeValue']>(
+		(allowDonations) => {
+			updateEvent({ allowDonations });
+		},
+		[updateEvent]
+	);
+
+	const isChecked = event?.allowDonations;
 
 	const heading = isChecked ? __('Disable Donations') : __('Enable Donations');
 

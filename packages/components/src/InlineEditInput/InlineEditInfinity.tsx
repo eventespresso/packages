@@ -8,17 +8,17 @@ import type { TextProps } from './types';
 
 import './style.scss';
 
-const InlineEditInfinity: React.FC<TextProps> = ({ className, onChangeValue, value, ...props }) => {
+const InlineEditInfinity: React.FC<TextProps> = ({ className, onChange, value, ...props }) => {
 	const isInfinity = isInfinite(value);
 
-	const onChangeHandler = useCallback<TextProps['onChangeValue']>(
+	const onChangeHandler = useCallback<TextProps['onChange']>(
 		(val) => {
-			const parsedValue = parseInfinity(val);
-			if (typeof onChangeValue === 'function') {
-				onChangeValue(parsedValue);
+			const parsedValue = String(parseInfinity(val));
+			if (typeof onChange === 'function') {
+				onChange(parsedValue);
 			}
 		},
-		[onChangeValue]
+		[onChange]
 	);
 
 	return (
@@ -27,7 +27,7 @@ const InlineEditInfinity: React.FC<TextProps> = ({ className, onChangeValue, val
 			{...props}
 			inputClassName={'ee-inline-edit__infinity'}
 			inputType='number'
-			onChangeValue={onChangeHandler}
+			onChange={onChangeHandler}
 			Preview={InlineEditInfinityPreview}
 			previewClassName={className}
 			value={isInfinity ? '' : value}

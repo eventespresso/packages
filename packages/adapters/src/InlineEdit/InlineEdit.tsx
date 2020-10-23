@@ -11,7 +11,7 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 	inputClassName,
 	defaultValue,
 	inputType,
-	onChangeValue,
+	onChange,
 	value,
 	placeholder = '',
 	Preview,
@@ -39,10 +39,10 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 		// Update the curerntly submitted value
 		setPrevSubmitValue(currentValue);
 
-		if (typeof onChangeValue === 'function') {
-			onChangeValue(currentValue);
+		if (typeof onChange === 'function') {
+			onChange(currentValue);
 		}
-	}, [currentValue, onChangeValue]);
+	}, [currentValue, onChange]);
 
 	const className = classNames('ee-inline-edit', inputClassName);
 

@@ -18,7 +18,7 @@ const columns = { base: 2, md: 4 };
 
 const EventRegistrationOptions: React.FC = () => (
 	<div className='ee-event-registration-options'>
-		<Heading as='h3'>{__('Event Registration Options')}</Heading>
+		<Heading as='h3'>{__('Registration Options')}</Heading>
 
 		<Grid columns={columns} spacing='1.25rem'>
 			<ActiveStatus />

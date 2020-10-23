@@ -5,7 +5,9 @@ import type { CommonInputProps } from '../types';
 
 export type InputType = 'heading' | 'number' | 'textarea' | 'text';
 
-export interface InlineEditProps extends Partial<ChakraEditableProps>, CommonInputProps<HTMLInputElement> {
+export interface InlineEditProps
+	extends Partial<ChakraEditableProps>,
+		Omit<CommonInputProps<HTMLInputElement>, 'onChangeValue'> {
 	inputClassName?: string;
 	inputType?: InputType;
 	lineCount?: number;

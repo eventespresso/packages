@@ -2,24 +2,25 @@ import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Heading, InlineEditText } from '@eventespresso/components';
-import { useEvent } from '@eventespresso/edtr-services';
+import { InlineEditProps } from '@eventespresso/adapters';
+import { useEvent, useEventMutator } from '@eventespresso/edtr-services';
 
 const AltRegPage: React.FC = () => {
 	const event = useEvent();
+	const { updateEntity: updateEvent } = useEventMutator(event?.id);
 	const altRegPage = event?.altRegPage;
 
-	const onChange = useCallback(() => {
-		console.log({ event });
-	}, [event]);
-
-	if (!altRegPage) return null;
-
-	const text = __('Alternative Registration Page');
+	const onChange = useCallback<InlineEditProps['onChange']>(
+		(altRegPage) => {
+			updateEvent({ altRegPage });
+		},
+		[updateEvent]
+	);
 
 	return (
 		<div>
-			<Heading as='h4'>{text}</Heading>
-			<InlineEditText onChangeValue={onChange} tag='h4' tooltip={text} value={altRegPage} />
+			<Heading as='h4'>{__('Alternative Registration Page')}</Heading>
+			<InlineEditText placeholder='https://' onChange={onChange} tag='h4' value={altRegPage} />
 		</div>
 	);
 };

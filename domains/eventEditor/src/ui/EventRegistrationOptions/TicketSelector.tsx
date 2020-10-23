@@ -1,13 +1,21 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Heading, SwitchInput } from '@eventespresso/components';
+import { Heading, SwitchInput, SwitchInputProps } from '@eventespresso/components';
+import { useEvent, useEventMutator } from '@eventespresso/edtr-services';
 
-const TicketSelector: React.FC = ({ isChecked = false }: any) => {
-	const onChange = useCallback(() => {
-		//
-	}, []);
+const TicketSelector: React.FC = () => {
+	const event = useEvent();
+	const { updateEntity: updateEvent } = useEventMutator(event?.id);
 
+	const onChange = useCallback<SwitchInputProps['onChangeValue']>(
+		(displayTicketSelector) => {
+			updateEvent({ displayTicketSelector });
+		},
+		[updateEvent]
+	);
+
+	const isChecked = event?.displayTicketSelector;
 	const ariaLabel = isChecked ? __('hide ticket selector') : __('show ticket selector');
 
 	return (
