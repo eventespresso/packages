@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { FormControl, FormLabel } from '@eventespresso/adapters';
-import { ErrorMessage } from '../ErrorMessage';
+import { FormErrorMessage } from '../ErrorMessage';
 import { HelperText } from '../HelperText';
 
 import { MappedField } from '../adapters';
@@ -53,7 +53,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 				isInvalid={isInvalid}
 			/>
 			{after}
-			<ErrorMessage id={errorMessageId} message={errorMessage} />
+			<FormErrorMessage id={errorMessageId} message={errorMessage} />
 			<HelperText id={tooltipKey}>{description || info}</HelperText>
 		</FormControl>
 	);

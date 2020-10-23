@@ -14,6 +14,8 @@
 		.ee-input-label__wrapper {
 			display: inline-grid;
 			padding-bottom: 0;
+			padding-left: 0;
+
 			label {
 				@include max782px {
 					text-align: center;

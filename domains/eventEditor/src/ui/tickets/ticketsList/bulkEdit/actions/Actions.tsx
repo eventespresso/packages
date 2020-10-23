@@ -2,7 +2,8 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
 
 import { __ } from '@eventespresso/i18n';
-import { BulkActions, Banner } from '@eventespresso/components';
+import { BulkActions, Divider } from '@eventespresso/components';
+import { ErrorMessage } from '@eventespresso/form';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
 import { useTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
@@ -77,7 +78,11 @@ const Actions: React.FC = () => {
 				</>
 			)}
 			{isEditPricesDisabled && (
-				<Banner description={SOLD_TICKET_ERROR_MESSAGE} status='error' title={__('Error')} />
+				<>
+					<Divider size='small' />
+					<ErrorMessage message={SOLD_TICKET_ERROR_MESSAGE} />
+					<Divider size='small' />
+				</>
 			)}
 		</>
 	);

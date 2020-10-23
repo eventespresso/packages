@@ -6,10 +6,12 @@ import { withLabel } from '../withLabel';
 
 import type { SelectInputProps } from './types';
 
-const SelectInput: React.FC<SelectInputProps> = ({ className, id, ...props }) => {
-	const selectClassName = classNames('ee-select ee-input-base', className);
+import './style.scss';
 
-	return <Select className={selectClassName} id={id} {...props} />;
+const SelectInput: React.FC<SelectInputProps> = ({ id, ...props }) => {
+	const className = classNames('ee-select', props.className);
+
+	return <Select {...props} className={className} id={id} />;
 };
 
 export default withLabel(SelectInput);

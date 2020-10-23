@@ -1,0 +1,5 @@
+@import '~@eventespresso/styles/src';
+
+.ee-select {
+	@extend .ee-input-base;
+}
