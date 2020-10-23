@@ -2,8 +2,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
 
 import { __ } from '@eventespresso/i18n';
-import { BulkActions, Divider } from '@eventespresso/components';
-import { ErrorMessage } from '@eventespresso/form';
+import { BulkActions, ErrorMessage } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
 import { useTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
@@ -77,13 +76,8 @@ const Actions: React.FC = () => {
 					{action === 'edit-prices' && <EditPrices isOpen={true} onClose={onClose} />}
 				</>
 			)}
-			{isEditPricesDisabled && (
-				<>
-					<Divider size='small' />
-					<ErrorMessage message={SOLD_TICKET_ERROR_MESSAGE} />
-					<Divider size='small' />
-				</>
-			)}
+
+			<ErrorMessage message={isEditPricesDisabled && SOLD_TICKET_ERROR_MESSAGE} variant='subtle' />
 		</>
 	);
 };

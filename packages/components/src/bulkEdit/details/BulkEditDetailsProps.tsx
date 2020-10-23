@@ -1,12 +1,10 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { ErrorMessage } from '@eventespresso/form';
-import type { EspressoFormProps } from '@eventespresso/form';
-
-import { EntityEditModal } from '../../';
+import { EntityEditModal, ErrorMessage } from '../../';
 import FormWrapper from './FormWrapper';
 import { FormWithConfig } from '../../FormWithConfig';
+import type { EspressoFormProps } from '@eventespresso/form';
 
 import './styles.scss';
 

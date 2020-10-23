@@ -28,6 +28,7 @@ export * from './EntityIDs';
 export * from './EntityList';
 export * from './EntityPaperFrame';
 export * from './ErrorIndicator';
+export * from './ErrorMessage';
 export * from './EspressoTable';
 export * from './FilterBarFilter';
 export * from './FormWithConfig';

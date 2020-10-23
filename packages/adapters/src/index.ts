@@ -11,7 +11,6 @@ export * from './Collapse';
 export * from './Divider';
 export * from './Dotdotdot';
 export * from './FormControl';
-export * from './FormErrorMessage';
 export * from './FormHelperText';
 export * from './FormLabel';
 export * from './Grid';
