@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Heading, InlineEditSelect } from '@eventespresso/components';
+import { InlineEditSelect } from '@eventespresso/components';
 import { objectToSelectOptions } from '@eventespresso/utils';
 import { useEvent } from '@eventespresso/edtr-services';
+
+import GridItem from './GridItem';
 
 const status = {
 	isActive: __('Active'),
@@ -27,12 +29,13 @@ const ActiveStatus: React.FC = () => {
 	const id = 'ee-event-registration-active-status';
 
 	return (
-		<div>
-			<Heading as='h4' id={id}>
-				{__('Active Status')}
-			</Heading>
-			<InlineEditSelect aria-describedby={id} onChange={onChange} options={options} value={'isUpcoming'} />
-		</div>
+		<GridItem
+			id={id}
+			input={
+				<InlineEditSelect aria-describedby={id} onChange={onChange} options={options} value={'isUpcoming'} />
+			}
+			label={__('Active Status')}
+		/>
 	);
 };
 

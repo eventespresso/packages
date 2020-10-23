@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Heading, InlineEditSelect } from '@eventespresso/components';
+import { InlineEditSelect } from '@eventespresso/components';
 import { useEvent } from '@eventespresso/edtr-services';
 import { regStatusOptions } from '@eventespresso/predicates';
+
+import GridItem from './GridItem';
 
 const DefaultRegistrationStatus: React.FC = () => {
 	const event = useEvent();
@@ -12,20 +14,21 @@ const DefaultRegistrationStatus: React.FC = () => {
 		console.log({ event });
 	}, [event]);
 
-	const id = 'ee-event-registration-active-status';
+	const id = 'ee-event-registration-default-status';
 
 	return (
-		<div>
-			<Heading as='h4' id={id}>
-				{__('Default Registration Status')}
-			</Heading>
-			<InlineEditSelect
-				aria-describedby={id}
-				onChange={onChange}
-				options={regStatusOptions}
-				value={'Pending Payment'}
-			/>
-		</div>
+		<GridItem
+			id={id}
+			input={
+				<InlineEditSelect
+					aria-describedby={id}
+					onChange={onChange}
+					options={regStatusOptions}
+					value={'Pending Payment'}
+				/>
+			}
+			label={__('Default Registration Status')}
+		/>
 	);
 };
 
