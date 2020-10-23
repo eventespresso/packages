@@ -1,19 +1,21 @@
 import { useCallback, useMemo } from 'react';
 
+import type { EntityId } from '@eventespresso/data';
+import type { EntityTableProps } from '@eventespresso/components';
+
 import type { Ticket, TicketEdge } from '../../types';
 import useReorderEntities from '../useReorderEntities';
-import type { EntityTableProps } from '@eventespresso/components';
 import { TicketsFilterStateManager as DFSM } from '../../../filterState';
 import { useTickets, useTicketQueryOptions } from '../../queries';
 import { useUpdateTicketList } from '../../../hooks';
 
-type SortResponder = EntityTableProps<Ticket, DFSM>['onSort'];
+type SortResponder = EntityTableProps<DFSM>['onSort'];
 
 interface ReorderTickets {
 	sortResponder: SortResponder;
 }
 
-const useReorderTickets = (filteredEntities: Array<Ticket>): ReorderTickets => {
+const useReorderTickets = (filteredEntityIds: Array<EntityId>): ReorderTickets => {
 	const { sortEntities } = useReorderEntities<Ticket>({ entityType: 'TICKET' });
 	const allEntities = useTickets();
 	const queryOptions = useTicketQueryOptions();
@@ -46,13 +48,13 @@ const useReorderTickets = (filteredEntities: Array<Ticket>): ReorderTickets => {
 			}
 			sortEntities({
 				allEntities,
-				filteredEntities,
+				filteredEntityIds,
 				newIndex: destination.index,
 				oldIndex: source.index,
 				updateEntityList,
 			});
 		},
-		[filteredEntities, allEntities, sortEntities, updateEntityList]
+		[filteredEntityIds, allEntities, sortEntities, updateEntityList]
 	);
 
 	return useMemo(() => ({ sortResponder }), [sortResponder]);

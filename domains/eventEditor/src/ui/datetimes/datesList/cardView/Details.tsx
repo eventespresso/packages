@@ -31,7 +31,7 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 		[updateEntity]
 	);
 
-	const detailsItems = useDateCardDetailsItems(datetime);
+	const detailsItems = useDateCardDetailsItems(datetime.id);
 
 	return (
 		<>

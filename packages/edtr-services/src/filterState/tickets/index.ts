@@ -1,6 +1,6 @@
 export { default as useTicketsListFilterState } from './useTicketsListFilterState';
 
-export { default as useFilteredTickets } from './useFilteredTickets';
+export { default as useFilteredTicketIds } from './useFilteredTicketIds';
 
 export { default as useRegisterIsChainedFilter } from './useRegisterIsChainedFilter';
 

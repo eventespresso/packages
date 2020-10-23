@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { EntityCardList } from '@eventespresso/components';
-import { useFilteredDates } from '@eventespresso/edtr-services';
+import { useFilteredDateIds } from '@eventespresso/edtr-services';
 
 import DateCard from './DateCard';
 
 const CardView: React.FC = () => {
-	const filteredEntities = useFilteredDates();
+	const filteredDateIds = useFilteredDateIds();
 
-	return <EntityCardList EntityCard={DateCard} entities={filteredEntities} />;
+	return <EntityCardList EntityCard={DateCard} entityIds={filteredDateIds} />;
 };
 
 export default CardView;

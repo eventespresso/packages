@@ -7,7 +7,7 @@ import useBodyRowGenerator from './useBodyRowGenerator';
 import {
 	ticketsList,
 	domain,
-	useFilteredTickets,
+	useFilteredTicketIds,
 	useReorderTickets,
 	useTicketsListFilterState,
 } from '@eventespresso/edtr-services';
@@ -19,9 +19,9 @@ import { Actions as BulkEditActions } from '../bulkEdit';
  */
 const TableView: React.FC = () => {
 	const filterState = useTicketsListFilterState();
-	const filteredEntities = useFilteredTickets();
+	const filteredTicketIds = useFilteredTicketIds();
 
-	const { sortResponder: sortTickets } = useReorderTickets(filteredEntities);
+	const { sortResponder: sortTickets } = useReorderTickets(filteredTicketIds);
 
 	const bodyRowGenerator = useBodyRowGenerator();
 	const headerRowGenerator = useHeaderRowGenerator();
@@ -32,7 +32,7 @@ const TableView: React.FC = () => {
 			<EntityTable
 				bodyRowGenerator={bodyRowGenerator}
 				domain={domain}
-				entities={filteredEntities}
+				entityIds={filteredTicketIds}
 				filterState={filterState}
 				headerRowGenerator={headerRowGenerator}
 				listId={ticketsList}

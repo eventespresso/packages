@@ -1,10 +1,10 @@
 import React from 'react';
 
-import type { Datetime } from '@eventespresso/edtr-services';
+import type { EntityId } from '@eventespresso/data';
 import { useEntityCardDetailsItems } from '@edtrHooks/index';
 
-const useDateCardDetailsItems = (datetime: Datetime): Array<React.ReactNode> => {
-	return useEntityCardDetailsItems('datetime', datetime);
+const useDateCardDetailsItems = (datetimeId: EntityId): Array<React.ReactNode> => {
+	return useEntityCardDetailsItems('datetime', datetimeId);
 };
 
 export default useDateCardDetailsItems;

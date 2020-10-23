@@ -1,15 +1,25 @@
 import { useMemo } from 'react';
 
-import { findEntityByGuid } from '@eventespresso/predicates';
+import { useCacheQuery, CacheQueryOptions } from '@eventespresso/data';
+import { useMemoStringify } from '@eventespresso/hooks';
 
-import type { Datetime } from '../../types';
+import { GET_DATETIME } from './queries';
+import type { Datetime, DatetimeItem } from '../../types';
 import type { EntityItemProps } from '../types';
-import useDatetimes from './useDatetimes';
 
 const useDatetimeItem = ({ id }: EntityItemProps): Datetime => {
-	const datetimes = useDatetimes();
+	const options = useMemo<CacheQueryOptions>(
+		() => ({
+			query: GET_DATETIME,
+			variables: {
+				id,
+			},
+		}),
+		[id]
+	);
+	const { data } = useCacheQuery<DatetimeItem>(options);
 
-	return useMemo(() => findEntityByGuid(datetimes)(id), [datetimes, id]);
+	return useMemoStringify(data?.datetime);
 };
 
 export default useDatetimeItem;

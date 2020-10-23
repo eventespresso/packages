@@ -31,6 +31,15 @@ export const TICKET_ATTRIBUTES: any = gql`
 	}
 `;
 
+export const GET_TICKET: any = gql`
+	query GET_TICKET($id: ID!) {
+		ticket(id: $id) {
+			...ticketAttributes
+		}
+	}
+	${TICKET_ATTRIBUTES}
+`;
+
 export const GET_TICKETS: any = gql`
 	query GET_TICKETS($where: EspressoRootQueryTicketsConnectionWhereArgs) {
 		espressoTickets(where: $where) {

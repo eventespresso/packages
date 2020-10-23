@@ -8,7 +8,7 @@ import {
 	datesList,
 	domain,
 	useDatesListFilterState,
-	useFilteredDates,
+	useFilteredDateIds,
 	useReorderDatetimes,
 } from '@eventespresso/edtr-services';
 import { withBulkEdit } from '@eventespresso/services';
@@ -21,9 +21,9 @@ import './styles.scss';
  */
 const TableView: React.FC = () => {
 	const filterState = useDatesListFilterState();
-	const filteredEntities = useFilteredDates();
+	const filteredDateIds = useFilteredDateIds();
 
-	const { sortResponder: sortDates } = useReorderDatetimes(filteredEntities);
+	const { sortResponder: sortDates } = useReorderDatetimes(filteredDateIds);
 
 	const bodyRowGenerator = useBodyRowGenerator();
 	const headerRowGenerator = useHeaderRowGenerator();
@@ -34,7 +34,7 @@ const TableView: React.FC = () => {
 			<EntityTable
 				bodyRowGenerator={bodyRowGenerator}
 				domain={domain}
-				entities={filteredEntities}
+				entityIds={filteredDateIds}
 				filterState={filterState}
 				headerRowGenerator={headerRowGenerator}
 				listId={datesList}

@@ -6,7 +6,6 @@ import { EntityIDs } from '../EntityIDs';
 import './style.css';
 
 interface EntityPaperFrameProps {
-	cacheId?: string;
 	children: React.ReactNode;
 	className?: string;
 	entity: Entity;

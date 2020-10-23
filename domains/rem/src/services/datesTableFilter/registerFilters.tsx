@@ -7,14 +7,14 @@ import { insert } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 import { EntityTableFilters } from '@eventespresso/registry';
 import { datesList, domain } from '@eventespresso/edtr-services';
-import type { DatetimesFilterStateManager, Datetime } from '@eventespresso/edtr-services';
+import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 import type { Cell } from '@eventespresso/components';
 import RecurrenceTag from '../../ui/RecurrenceTag';
 
 type Domain = typeof domain;
 type DFSM = DatetimesFilterStateManager;
 
-const { registerFilter } = new EntityTableFilters<Domain, typeof datesList, DFSM, Datetime>(domain, datesList);
+const { registerFilter } = new EntityTableFilters<Domain, typeof datesList, DFSM>(domain, datesList);
 
 const cell: Cell = {
 	key: 'recurrence-series',
@@ -24,10 +24,10 @@ const cell: Cell = {
 };
 
 // Register sales filter
-registerFilter(({ row, type, entity }) => {
+registerFilter(({ row, type, entityId }) => {
 	let value: React.ReactNode;
 	if (type === 'body') {
-		value = <RecurrenceTag datetime={entity} isTableView />;
+		value = <RecurrenceTag datetimeId={entityId} isTableView />;
 	} else if (type === 'header') {
 		value = (
 			<div className='text-center'>

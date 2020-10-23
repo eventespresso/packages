@@ -1,7 +1,6 @@
 import { allPass, filter, pathEq } from 'ramda';
 import invariant from 'invariant';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
-import type { Entity } from '@eventespresso/data';
 
 import { SubscriptionManager } from '../subscription';
 import type { EntityTableFiltersInterface } from './types';
@@ -9,7 +8,7 @@ import { EntityTableFiltersType } from './types';
 
 type ELFSM = EntityListFilterStateManager<any>;
 
-type ETF<L extends string, FS extends ELFSM, E extends Entity> = EntityTableFiltersInterface<L, FS, E>;
+type ETF<L extends string, FS extends ELFSM> = EntityTableFiltersInterface<L, FS>;
 
 type GetSetCbArgs = {
 	listId: string;
@@ -23,8 +22,7 @@ type GetSetCbArgs = {
  * L: List name name e.g. "dates-list", "tickets-list"
  * FS: Filter State (manager): The filter state instance for the current entity list
  */
-class EntityTableFilters<D extends string, L extends string, FS extends ELFSM, E extends Entity>
-	implements ETF<L, FS, E> {
+class EntityTableFilters<D extends string, L extends string, FS extends ELFSM> implements ETF<L, FS> {
 	private subscriptionManager: SubscriptionManager<D, EntityTableFiltersType>;
 
 	public entityListId: L;
@@ -43,7 +41,7 @@ class EntityTableFilters<D extends string, L extends string, FS extends ELFSM, E
 		return this.subscriptionManager.subscribe(callback, { listId, priority, type });
 	};
 
-	getCallbacks = ({ listId = this.entityListId, type }: GetSetCbArgs): ReturnType<ETF<L, FS, E>['getFilters']> => {
+	getCallbacks = ({ listId = this.entityListId, type }: GetSetCbArgs): ReturnType<ETF<L, FS>['getFilters']> => {
 		invariant(listId, 'No `listId` provided');
 		const allSubscriptions = this.subscriptionManager.getSubscriptions();
 
@@ -54,11 +52,11 @@ class EntityTableFilters<D extends string, L extends string, FS extends ELFSM, E
 		return filter(isOfTypeAndForList, allSubscriptions);
 	};
 
-	getFilters: ETF<L, FS, E>['getFilters'] = (listId = this.entityListId) => {
+	getFilters: ETF<L, FS>['getFilters'] = (listId = this.entityListId) => {
 		return this.getCallbacks({ listId, type: 'filter' });
 	};
 
-	registerFilter: ETF<L, FS, E>['registerFilter'] = (callback, priority = 10, listId = this.entityListId) => {
+	registerFilter: ETF<L, FS>['registerFilter'] = (callback, priority = 10, listId = this.entityListId) => {
 		return this.registerCallback({ callback, listId, priority, type: 'filter' });
 	};
 }

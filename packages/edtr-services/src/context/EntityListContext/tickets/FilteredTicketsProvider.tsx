@@ -2,15 +2,15 @@ import React, { createContext, useEffect } from 'react';
 
 import { getGuids, notTrashed } from '@eventespresso/predicates';
 import { useFilteredEntities } from '@eventespresso/services';
-import { entityListCacheIdString } from '@eventespresso/utils';
+import type { EntityId } from '@eventespresso/data';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 import { useTicketsListFilterState } from '../../../filterState';
 import { domain, ticketsList } from '../../../constants';
-import type { Ticket } from '../../../apollo';
 import { useTickets } from '../../../apollo';
 import { useEdtrState } from '../../../hooks';
 
-const FilteredTicketsContext = createContext<Array<Ticket>>(null);
+const FilteredTicketsContext = createContext<Array<EntityId>>(null);
 
 const { Provider, Consumer: FilteredTicketsConsumer } = FilteredTicketsContext;
 
@@ -26,10 +26,10 @@ const FilteredTicketsProvider: React.FC = ({ children }) => {
 	if (filterState.sortingEnabled) {
 		filteredEntities = notTrashed(filteredEntities);
 	}
+	const filteredEntityIds = useMemoStringify(getGuids(filteredEntities));
 
 	// Update Edtr state for bulk edit.
 	const { setVisibleTicketIds } = useEdtrState();
-	const cacheIdStr = entityListCacheIdString(filteredEntities);
 	useEffect(() => {
 		// update only when not sorting
 		if (!sortingEnabled) {
@@ -37,7 +37,7 @@ const FilteredTicketsProvider: React.FC = ({ children }) => {
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [cacheIdStr, sortingEnabled]);
+	}, [filteredEntityIds, sortingEnabled]);
 
 	// set sortBy to 'order' when sorting is enabled
 	useEffect(() => {
@@ -48,7 +48,7 @@ const FilteredTicketsProvider: React.FC = ({ children }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [sortingEnabled]);
 
-	return <Provider value={filteredEntities}>{children}</Provider>;
+	return <Provider value={filteredEntityIds}>{children}</Provider>;
 };
 
 export { FilteredTicketsContext, FilteredTicketsProvider, FilteredTicketsConsumer };

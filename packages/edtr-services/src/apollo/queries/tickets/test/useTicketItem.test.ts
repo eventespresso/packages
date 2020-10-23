@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
+import { actWait } from '@eventespresso/utils/src/test';
 import useTicketItem from '../useTicketItem';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { nodes } from './data';
@@ -8,37 +9,44 @@ import useInitTicketTestCache from './useInitTicketTestCache';
 describe('useTicketItem', () => {
 	const existingTicket = nodes[0];
 	const wrapper = ApolloMockedProvider();
-	it('checks for non existent ticket when the cache is empty', () => {
-		const { result, waitForValueToChange } = renderHook(() => useTicketItem({ id: existingTicket.id }), {
+	const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
+
+	it('checks for non existent ticket when the cache is empty', async () => {
+		const { result } = renderHook(() => useTicketItem({ id: existingTicket.id }), {
 			wrapper,
 		});
-		waitForValueToChange(() => result.current);
+		await actWait();
 
 		expect(result.current).toBe(undefined);
+		expect(consoleWarn).toHaveBeenCalled();
+		consoleWarn.mockRestore();
 	});
 
-	it('checks for non existent ticket when the cache is NOT empty', () => {
-		const { result, waitForValueToChange } = renderHook(
+	it('checks for non existent ticket when the cache is NOT empty', async () => {
+		const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
+		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
 				return useTicketItem({ id: 'fake-id' });
 			},
 			{ wrapper }
 		);
-		waitForValueToChange(() => result.current);
+		await actWait();
 
 		expect(result.current).toBe(undefined);
+		expect(consoleWarn).toHaveBeenCalled();
+		consoleWarn.mockRestore();
 	});
 
-	it('checks for an existent ticket', () => {
-		const { result, waitForValueToChange } = renderHook(
+	it('checks for an existent ticket', async () => {
+		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
 				return useTicketItem({ id: existingTicket.id });
 			},
 			{ wrapper }
 		);
-		waitForValueToChange(() => result.current);
+		await actWait();
 
 		const { current: ticketItem } = result;
 

@@ -1,15 +1,25 @@
 import { useMemo } from 'react';
 
-import { findEntityByGuid } from '@eventespresso/predicates';
-
-import useRecurrences from './useRecurrences';
-import type { Recurrence } from '../../types';
+import { useCacheQuery, CacheQueryOptions } from '@eventespresso/data';
+import { useMemoStringify } from '@eventespresso/hooks';
 import type { EntityItemProps } from '@eventespresso/edtr-services';
 
-const useRecurrenceItem = ({ id }: EntityItemProps): Recurrence => {
-	const recurrences = useRecurrences();
+import { GET_RECURRENCE } from './queries';
+import type { Recurrence, RecurrenceItem } from '../../types';
 
-	return useMemo(() => findEntityByGuid(recurrences)(id), [recurrences, id]);
+const useRecurrenceItem = ({ id }: EntityItemProps): Recurrence => {
+	const options = useMemo<CacheQueryOptions>(
+		() => ({
+			query: GET_RECURRENCE,
+			variables: {
+				id,
+			},
+		}),
+		[id]
+	);
+	const { data } = useCacheQuery<RecurrenceItem>(options);
+
+	return useMemoStringify(data?.recurrence);
 };
 
 export default useRecurrenceItem;

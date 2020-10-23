@@ -1,19 +1,19 @@
 import React, { useMemo } from 'react';
 
-import { Entity } from '@eventespresso/data';
+import type { EntityId } from '@eventespresso/data';
 import { EntityCardDetailsSubscription, EntityCardDetailsRegistry } from '@eventespresso/registry';
 import { domain } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 const { getSubscriptions } = new EntityCardDetailsSubscription(domain);
 
-const useEntityCardDetailsItems = <E extends Entity, T extends string>(
+const useEntityCardDetailsItems = <T extends string>(
 	entityType: T,
-	entity: E,
+	entityId: EntityId,
 	filterByEntityType = true
 ): Array<React.ReactNode> => {
-	const registry = useMemo(() => new EntityCardDetailsRegistry({ domain, entityType, entityId: entity.id }), [
-		entity.id,
+	const registry = useMemo(() => new EntityCardDetailsRegistry({ domain, entityType, entityId }), [
+		entityId,
 		entityType,
 	]);
 
@@ -22,7 +22,7 @@ const useEntityCardDetailsItems = <E extends Entity, T extends string>(
 	const subscriptions = getSubscriptions({ entityType: filterByEntityType ? entityType : null });
 
 	Object.values(subscriptions).forEach(({ callback }) => {
-		callback({ entityType, entity, registry });
+		callback({ entityType, entityId, registry });
 	});
 
 	// it should only change if subscriptions change

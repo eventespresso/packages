@@ -3,9 +3,9 @@ import { useMutation } from '@eventespresso/data';
 import gql from 'graphql-tag';
 import { clone } from 'ramda';
 import { useDebouncedCallback } from 'use-debounce';
-import { MutationResult } from '@apollo/client';
+import type { MutationResult } from '@apollo/client';
 
-import { EntityId } from '@eventespresso/data';
+import type { EntityId } from '@eventespresso/data';
 import { getGuids } from '@eventespresso/predicates';
 import type { Datetime, Ticket } from '../types';
 
@@ -17,7 +17,7 @@ interface ReorderEntitiesProps {
 
 interface CallbackArgs<E extends Entity> {
 	allEntities: Array<E>;
-	filteredEntities: Array<E>;
+	filteredEntityIds: Array<EntityId>;
 	newIndex: number;
 	oldIndex: number;
 	updateEntityList: (updatedEntities: Array<E>) => void;
@@ -73,30 +73,29 @@ const useReorderEntities = <E extends Entity>({ entityType }: ReorderEntitiesPro
 	}, [cancelDebounce]);
 
 	const sortEntities = useCallback<SortCallback<E>>(
-		({ allEntities: allEntitiesList, filteredEntities, newIndex, oldIndex, updateEntityList }) => {
+		({ allEntities: allEntitiesList, filteredEntityIds, newIndex, oldIndex, updateEntityList }) => {
 			if (newIndex === oldIndex || newIndex < 0 || oldIndex < 0) {
 				return;
 			}
 			// cancel existing debounce
 			cancel();
 
-			const entities = clone(filteredEntities);
+			const entityIds = clone(filteredEntityIds);
 			let allEntities = clone(allEntitiesList);
 
 			// remove entity from existing location in filtered list
-			const [removed] = entities.splice(oldIndex, 1);
+			const [removed] = entityIds.splice(oldIndex, 1);
 			// insert removed entity into new location in same list
-			entities.splice(newIndex, 0, removed);
+			entityIds.splice(newIndex, 0, removed);
 			// now loop thru entities in filtered list
-			entities.map((entity, index) => {
-				// reset the order property for all entities in filtered list
-				entity.order = index + 1;
+			const entities = entityIds.map((entityId, index) => {
 				// grab index of reordered entities in list of all entities
-				const indexInAll = allEntities.findIndex((item) => item.id === entity.id);
+				const indexInAll = allEntities.findIndex((item) => item.id === entityId);
 				// remove reordered entities from list of all entities
-				allEntities.splice(indexInAll, 1);
+				const [entity] = allEntities.splice(indexInAll, 1);
 
-				return entity;
+				// reset the order property for all entities in filtered list
+				return { ...entity, order: index + 1 };
 			});
 
 			// insert ordered entities at the beginning of the array

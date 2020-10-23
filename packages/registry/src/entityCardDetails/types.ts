@@ -1,34 +1,32 @@
 import type React from 'react';
-import type { Entity } from '@eventespresso/data';
+import type { Entity, EntityId } from '@eventespresso/data';
 import type { BaseSubscriptionOptions, Subscriptions, ElementProps, UIRegistryInterface } from '../subscription';
 
 export interface EntityCardDetailsSubscriptionsOptions<T extends string> {
 	entityType?: T; // to limit the subscription only to specific entityType
 }
 
-export interface EntityCardDetailsSubscriptionCbArgs<E extends Entity, T extends string, EP extends ElementProps>
+export interface EntityCardDetailsSubscriptionCbArgs<T extends string, EP extends ElementProps>
 	extends EntityCardDetailsSubscriptionsOptions<T> {
-	entity: E;
+	entityId: EntityId;
 	registry: EntityCardDetailsRegistry<EP>;
 }
 
 export interface EntityCardDetailsSubscriptionInterface {
 	subscribe: EntityCardDetailsSubscribeFn;
-	getSubscriptions: <E extends Entity, T extends string, EP extends ElementProps>(
+	getSubscriptions: <T extends string, EP extends ElementProps>(
 		options?: EntityCardDetailsSubscriptionsOptions<T>
-	) => Subscriptions<EntityCardDetailsSubscriptionCbArgs<E, T, EP>, EntityCardDetailsSubscriptionsOptions<T>>;
+	) => Subscriptions<EntityCardDetailsSubscriptionCbArgs<T, EP>, EntityCardDetailsSubscriptionsOptions<T>>;
 }
 
-export type EntityCardDetailsSubscribeFn = <E extends Entity, T extends string, EP extends ElementProps>(
-	cb: EntityCardDetailsSubscriptionCb<E, T, EP>,
+export type EntityCardDetailsSubscribeFn = <T extends string, EP extends ElementProps>(
+	cb: EntityCardDetailsSubscriptionCb<T, EP>,
 	options?: EntityCardDetailsSubscriptionsOptions<T>
 ) => VoidFunction;
 
-export type EntityCardDetailsSubscriptionCb<
-	E extends Entity,
-	T extends string,
-	EP extends ElementProps = ElementProps
-> = (args: EntityCardDetailsSubscriptionCbArgs<E, T, EP>) => void;
+export type EntityCardDetailsSubscriptionCb<T extends string, EP extends ElementProps = ElementProps> = (
+	args: EntityCardDetailsSubscriptionCbArgs<T, EP>
+) => void;
 
 /* UI related types */
 export interface EntityCardDetailsOptions<D extends string, ET extends string> extends BaseSubscriptionOptions<D> {

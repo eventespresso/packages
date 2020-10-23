@@ -7,25 +7,22 @@ import {
 } from '@eventespresso/registry';
 import type { SubscriptionCallback } from '@eventespresso/registry';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
-import type { Entity } from '@eventespresso/data';
+import type { EntityId } from '@eventespresso/data';
 
 import type { EntityTableFilters } from './types';
 import { TableRow, RowType } from '../EspressoTable';
 
 type ELFSM = EntityListFilterStateManager;
 
-const useEntityTableFilters = <D extends string, L extends string, FS extends ELFSM, E extends Entity>(
+const useEntityTableFilters = <D extends string, L extends string, FS extends ELFSM>(
 	domain: D,
 	listId: L
-): EntityTableFilters<FS, E> => {
-	type ETF = EntityTableFilters<FS, E>;
+): EntityTableFilters<FS> => {
+	type ETF = EntityTableFilters<FS>;
 
-	const { getFilters } = useMemo(() => new EntityTableFiltersService<D, L, ELFSM, E>(domain, listId), [
-		domain,
-		listId,
-	]);
+	const { getFilters } = useMemo(() => new EntityTableFiltersService<D, L, ELFSM>(domain, listId), [domain, listId]);
 
-	type CallbackList = Array<SubscriptionCallback<EntityTableFiltersServiceCbArgs<ELFSM, E>, TableRow>>;
+	type CallbackList = Array<SubscriptionCallback<EntityTableFiltersServiceCbArgs<ELFSM>, TableRow>>;
 
 	const getCallbackList = useCallback(
 		(mappedCallbackList: ReturnType<typeof getFilters>): CallbackList => {
@@ -39,13 +36,19 @@ const useEntityTableFilters = <D extends string, L extends string, FS extends EL
 	type GetFilters = ReturnType<typeof getFilters>;
 
 	const applyCallbacks = useCallback(
-		(row: TableRow, filterState: FS, type: RowType, entity: E, mappedCallbackList: GetFilters): TableRow => {
+		(
+			row: TableRow,
+			filterState: FS,
+			type: RowType,
+			entityId: EntityId,
+			mappedCallbackList: GetFilters
+		): TableRow => {
 			let filteredRow = row;
 
 			const callbacks = getCallbackList(mappedCallbackList);
 
 			callbacks.forEach((callback) => {
-				filteredRow = callback({ row: filteredRow, filterState, type, entity });
+				filteredRow = callback({ row: filteredRow, filterState, type, entityId });
 			});
 
 			return filteredRow;

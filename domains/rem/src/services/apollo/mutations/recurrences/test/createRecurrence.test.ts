@@ -4,11 +4,12 @@ import { path } from 'ramda';
 
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
+import { actWait } from '@eventespresso/utils/src/test';
+
 import { getMutationMocks, mockedRecurrences } from './data';
 import useRecurrenceItem from '../../../queries/recurrences/useRecurrenceItem';
 import { useRecurrenceMutator } from '../';
 
-const timeout = 5000; // milliseconds
 describe('createRecurrence', () => {
 	const testInput: MutationInput = {
 		exDates: 'new test exDates',
@@ -23,7 +24,7 @@ describe('createRecurrence', () => {
 	it('checks for the mutation data to be same as the mock data', async () => {
 		const wrapper = ApolloMockedProvider(mutationMocks);
 
-		const { result, waitForValueToChange } = renderHook(() => useRecurrenceMutator(), {
+		const { result } = renderHook(() => useRecurrenceMutator(), {
 			wrapper,
 		});
 
@@ -36,7 +37,7 @@ describe('createRecurrence', () => {
 		});
 
 		// wait for mutation promise to resolve
-		await waitForValueToChange(() => mutationData, { timeout });
+		await actWait();
 
 		expect(mutationData).toEqual(mockResult.data);
 		const pathToName = ['createEspressoRecurrence', 'espressoRecurrence', 'name'];
@@ -50,7 +51,7 @@ describe('createRecurrence', () => {
 	it('checks for the mutation data to be same as that in the cache - useRecurrenceItem', async () => {
 		const wrapper = ApolloMockedProvider(mutationMocks);
 
-		const { result: mutationResult, waitForValueToChange } = renderHook(
+		const { result: mutationResult } = renderHook(
 			() => ({
 				mutator: useRecurrenceMutator(),
 				client: useApolloClient(),
@@ -65,10 +66,10 @@ describe('createRecurrence', () => {
 		});
 
 		// wait for mutation promise to resolve
-		await waitForValueToChange(() => mutationResult.current, { timeout });
+		await actWait();
 
 		const cache = mutationResult.current.client.extract();
-		const { result: cacheResult, waitForNextUpdate } = renderHook(
+		const { result: cacheResult } = renderHook(
 			() => {
 				const client = useApolloClient();
 				// restore the cache from previous render
@@ -80,7 +81,7 @@ describe('createRecurrence', () => {
 			}
 		);
 
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const cachedRecurrence = cacheResult.current;
 

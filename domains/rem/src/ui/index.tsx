@@ -10,7 +10,7 @@ import {
 	EntityCardDetailsSubscriptionCb,
 } from '@eventespresso/registry';
 import { domain, datesList } from '@eventespresso/edtr-services';
-import type { DatetimesFilterStateManager, Datetime } from '@eventespresso/edtr-services';
+import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 
 import RemButton from './RemButton';
 import RemInit from './RemInit';
@@ -52,11 +52,7 @@ filterBar.subscribe(datesListFilterBar, { listId: datesList });
 
 // Register datetime card details item.
 const entityDetails = new EntityCardDetailsSubscription(domain);
-const datesDetailHandler: EntityCardDetailsSubscriptionCb<Datetime, 'datetime'> = ({
-	entityType,
-	entity,
-	registry,
-}) => {
+const datesDetailHandler: EntityCardDetailsSubscriptionCb<'datetime'> = ({ entityType, entityId, registry }) => {
 	// although this is not needed
 	if (entityType !== 'datetime') {
 		return;
@@ -64,7 +60,7 @@ const datesDetailHandler: EntityCardDetailsSubscriptionCb<Datetime, 'datetime'> 
 
 	const { registerElement: registerMenuItem } = registry;
 
-	registerMenuItem('recurrenceTag', () => <RecurrenceTag datetime={entity} />);
+	registerMenuItem('recurrenceTag', () => <RecurrenceTag datetimeId={entityId} />);
 };
 
 entityDetails.subscribe(datesDetailHandler, { entityType: 'datetime' });

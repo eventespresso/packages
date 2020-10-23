@@ -2,7 +2,6 @@ import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { useStatus } from '@eventespresso/services';
-import type { Entity } from '@eventespresso/data';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
 
 import { Divider, EmptyState, ErrorIndicator, Heading, LoadingNotice } from '../..';
@@ -11,7 +10,7 @@ import { EntityPagination } from './pagination';
 import type { EntityListProps } from './types';
 import './style.scss';
 
-const EntityList = <E extends Entity, ELFS extends EntityListFilterStateManager<any>>({
+const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 	activeFilters,
 	domain,
 	entityType,
@@ -23,7 +22,7 @@ const EntityList = <E extends Entity, ELFS extends EntityListFilterStateManager<
 	noResultsDesc,
 	noResultsTitle,
 	renderList,
-}: EntityListProps<E, ELFS>): JSX.Element => {
+}: EntityListProps<ELFS>): JSX.Element => {
 	const { isError, isLoading } = useStatus();
 	const error = isError(entityType);
 	const loading = isLoading(entityType);

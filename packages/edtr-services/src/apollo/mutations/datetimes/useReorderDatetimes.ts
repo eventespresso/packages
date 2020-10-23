@@ -1,19 +1,21 @@
 import { useCallback, useMemo } from 'react';
 
+import type { EntityId } from '@eventespresso/data';
+import type { EntityTableProps } from '@eventespresso/components';
+
 import type { Datetime, DatetimeEdge } from '../../types';
 import useReorderEntities from '../useReorderEntities';
-import type { EntityTableProps } from '@eventespresso/components';
 import { useDatetimes, useDatetimeQueryOptions } from '../../queries';
 import { useUpdateDatetimeList } from '../../../hooks';
 import { DatetimesFilterStateManager as DFSM } from '../../../filterState';
 
-type SortResponder = EntityTableProps<Datetime, DFSM>['onSort'];
+type SortResponder = EntityTableProps<DFSM>['onSort'];
 
 interface ReorderDatetimes {
 	sortResponder: SortResponder;
 }
 
-const useReorderDatetimes = (filteredEntities: Array<Datetime>): ReorderDatetimes => {
+const useReorderDatetimes = (filteredEntityIds: Array<EntityId>): ReorderDatetimes => {
 	const { sortEntities } = useReorderEntities<Datetime>({ entityType: 'DATETIME' });
 	const allEntities = useDatetimes();
 	const queryOptions = useDatetimeQueryOptions();
@@ -46,13 +48,13 @@ const useReorderDatetimes = (filteredEntities: Array<Datetime>): ReorderDatetime
 			}
 			sortEntities({
 				allEntities,
-				filteredEntities,
+				filteredEntityIds,
 				newIndex: destination.index,
 				oldIndex: source.index,
 				updateEntityList,
 			});
 		},
-		[filteredEntities, allEntities, sortEntities, updateEntityList]
+		[filteredEntityIds, allEntities, sortEntities, updateEntityList]
 	);
 
 	return useMemo(() => ({ sortResponder }), [sortResponder]);

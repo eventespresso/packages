@@ -6,17 +6,16 @@ import TicketActionsMenu from '../actionsMenu/TicketActionsMenu';
 import { EntityActionsMenuLayout } from '@eventespresso/components';
 import { EntityCard } from '@eventespresso/components';
 import { ticketStatusBgColorClassName } from '@eventespresso/helpers';
-import { useTicketsListFilterState } from '@eventespresso/edtr-services';
+import { useTicketItem } from '@eventespresso/edtr-services';
 import type { TicketItemProps } from '../types';
 
-const TicketCard: React.FC<TicketItemProps> = ({ entity: ticket }) => {
-	const { displayStartOrEndDate } = useTicketsListFilterState();
+const TicketCard: React.FC<TicketItemProps> = ({ id }) => {
+	const ticket = useTicketItem({ id });
 	const bgClassName = ticketStatusBgColorClassName(ticket);
 
 	return ticket ? (
 		<EntityCard
 			actionsMenu={<TicketActionsMenu entity={ticket} layout={EntityActionsMenuLayout.Vertical} />}
-			cacheId={ticket.cacheId + displayStartOrEndDate}
 			details={<Details entity={ticket} />}
 			entity={ticket}
 			reverse
