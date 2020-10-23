@@ -9,7 +9,7 @@ const EventManager: React.FC = () => {
 
 	const eventManager = event?.wpUser?.name;
 
-	const onChange = useCallback((string: number): void => {
+	const onChange = useCallback((string: string): void => {
 		console.log(string);
 	}, []);
 
@@ -18,7 +18,7 @@ const EventManager: React.FC = () => {
 	return (
 		<div>
 			<Heading as='h4'>{text}</Heading>
-			<InlineEditText onChangeValue={onChange} tag='h4' tooltip={text} value={eventManager} />
+			<InlineEditText onChange={onChange} tag='h4' tooltip={text} value={eventManager} />
 		</div>
 	);
 };

@@ -46,7 +46,7 @@ export const InlineEditCurrency: React.FC<InlineEditCurrencyProps> = ({
 				fitText={false}
 				isDisabled={isEditDisabled}
 				key={id}
-				onChangeValue={onChangeHandler}
+				onChange={onChangeHandler}
 				tooltip={tooltip}
 				value={formattedAmount}
 			/>

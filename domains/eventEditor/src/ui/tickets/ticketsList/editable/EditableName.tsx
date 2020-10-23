@@ -33,7 +33,7 @@ const EditableName: React.FC<Partial<EditableNameProps>> = ({ className, entity:
 			className={className}
 			fitText={view === 'card'}
 			lineCount={lineCount}
-			onChangeValue={onChangeName}
+			onChange={onChangeName}
 			tag={view === 'table' ? 'div' : 'h4'}
 			tooltip={tooltip}
 			value={ticketName}

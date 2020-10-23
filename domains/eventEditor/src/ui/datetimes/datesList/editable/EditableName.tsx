@@ -34,7 +34,7 @@ const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime
 			className={className}
 			fitText={view === 'card'}
 			lineCount={lineCount}
-			onChangeValue={onChangeName}
+			onChange={onChangeName}
 			tag={view === 'table' ? 'div' : 'h4'}
 			tooltip={tooltip}
 			value={dateName}
