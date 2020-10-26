@@ -35,7 +35,6 @@ export * from './Radio';
 export * from './RadioGroup';
 export * from './Select';
 export * from './Spinner';
-export * from './Steps';
 export * from './Switch';
 export * from './TextArea';
 export * from './TextFit';

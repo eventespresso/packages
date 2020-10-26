@@ -1,4 +1,4 @@
-export { ModalCloseButton } from '@chakra-ui/modal';
+export { ModalCloseButton } from '@chakra-ui/core';
 
 export * from './Modal';
 export * from './types';

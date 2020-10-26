@@ -1,3 +1,3 @@
-import type { IconProps as ChakraIconProps } from '@chakra-ui/core';
+import type { IconProps as ChakraIconProps } from '@chakra-ui/icon';
 
-export interface IconProps extends ChakraIconProps {}
+export interface IconProps extends Pick<ChakraIconProps, 'name'> {}

@@ -1,8 +1,7 @@
-import { ModalProps as ChakraModalProps } from '@chakra-ui/modal';
-export type { CloseButtonProps as ModalCloseButtonProps } from '@chakra-ui/close-button';
+import { IModal } from '@chakra-ui/core';
 
 export interface ModalProps
-	extends Pick<ChakraModalProps, 'closeOnOverlayClick' | 'closeOnEsc' | 'isOpen' | 'onClose' | 'scrollBehavior'> {
+	extends Pick<IModal, 'closeOnOverlayClick' | 'closeOnEsc' | 'isOpen' | 'onClose' | 'scrollBehavior'> {
 	bodyClassName?: string;
 	className?: string;
 	closeButton?: React.ReactNode;
