@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { isEqual } from 'date-fns';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
@@ -12,12 +13,7 @@ import {
 import { Save } from '@eventespresso/icons';
 import { useConfig } from '@eventespresso/services';
 
-import {
-	Button,
-	ButtonType,
-	// ErrorMessage,
-	TimezoneTimeInfo,
-} from '../';
+import { Button, ButtonType, ErrorMessage, TimezoneTimeInfo } from '../';
 
 import './styles.scss';
 
@@ -49,6 +45,10 @@ export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ onChange, 
 
 	const endDateTZ = <TimezoneTimeInfo date={dates[1]} />;
 
+	const hasStartDateChanged = !isEqual(value[0], dates[0]);
+
+	const hasEndDateChanged = !isEqual(value[1], dates[1]);
+
 	return (
 		<div className={className}>
 			<DateTimeRangePickerAdapter
@@ -59,11 +59,14 @@ export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ onChange, 
 				startDateTZ={startDateTZ}
 				value={dates}
 			/>
-			{/* {!startDateBeforeEndDate && <ErrorMessage message={startDateBeforeEndDateErrorMessage} />} */}
-			{/* {!endDateAfterStartDate && <ErrorMessage message={endDateAfterStartDateErrorMessage} />} */}
 
-			{!startDateBeforeEndDate && <p>{startDateBeforeEndDateErrorMessage}</p>}
-			{!endDateAfterStartDate && <p>{endDateAfterStartDateErrorMessage}</p>}
+			{hasStartDateChanged && !startDateBeforeEndDate && (
+				<ErrorMessage message={startDateBeforeEndDateErrorMessage} />
+			)}
+
+			{hasEndDateChanged && !endDateAfterStartDate && (
+				<ErrorMessage message={endDateAfterStartDateErrorMessage} />
+			)}
 
 			<Button
 				aria-label={__('save')}
