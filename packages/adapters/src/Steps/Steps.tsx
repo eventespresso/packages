@@ -1,4 +1,4 @@
-import React, { Children, cloneElement, useMemo } from 'react';
+import React, { Children, cloneElement } from 'react';
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 
@@ -29,13 +29,9 @@ const Steps: React.FC<StepsProps> = ({
 
 	const heading = props.heading ?? __('Steps');
 
-	const headingMarginBottom = useMemo(() => ({ base: 4, md: 0 }), []);
-
 	return (
 		<div className={wrapperClassName}>
-			<Heading as='h3' mb={headingMarginBottom}>
-				{heading}
-			</Heading>
+			<Heading as='h3'>{heading}</Heading>
 			<ul className={listClassName}>
 				{Children.map(children, (child: any, index) => {
 					const stepNumber = initial + index;

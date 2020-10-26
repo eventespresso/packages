@@ -3,7 +3,6 @@ import classNames from 'classnames';
 
 import { Modal as ModalAdapter, ModalCloseButton } from '@eventespresso/adapters';
 import { Button } from '../';
-import { modalCloseButtonProps } from './';
 import type { ModalProps } from './types';
 
 import './styles.scss';
@@ -51,9 +50,7 @@ export const Modal: React.FC<ModalProps> = ({
 		defaultFooterNode
 	);
 
-	const closeButton = props.closeButton || (
-		<ModalCloseButton {...modalCloseButtonProps} size={null} isDisabled={!isClosable} />
-	);
+	const closeButton = props.closeButton || <ModalCloseButton size={null} isDisabled={!isClosable} />;
 
 	return (
 		<ModalAdapter

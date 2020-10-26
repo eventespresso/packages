@@ -43,7 +43,7 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 
 	return (
 		<div className={'ee-entity-list'}>
-			<Heading className='ee-entity-list__header' as='h3'>
+			<Heading as='h3' className='ee-entity-list__header'>
 				{headerText}
 			</Heading>
 			<EntityListFilterBar

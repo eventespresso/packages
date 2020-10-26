@@ -10,5 +10,5 @@ export interface ConfirmProps {
 }
 
 export interface ConfirmPropsWithButton extends ConfirmProps {
-	buttonProps: ButtonProps;
+	buttonProps?: ButtonProps;
 }

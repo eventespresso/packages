@@ -26,6 +26,10 @@
 			font-weight: bolder;
 			letter-spacing: var(--ee-letter-spacing-font-size-extreme);
 			line-height: calc(var(--ee-line-height-modifier) * 0.75);
+
+			@include max782px {
+				margin-bottom: var(--ee-margin-small);
+			}
 		}
 
 		&--compact {

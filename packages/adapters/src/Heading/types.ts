@@ -1,3 +1,3 @@
-import type { HeadingProps as ChakraHeadingProps } from '@chakra-ui/core';
+import type { HeadingProps as ChakraHeadingProps } from '@chakra-ui/layout';
 
-export interface HeadingProps extends ChakraHeadingProps {}
+export interface HeadingProps extends Pick<ChakraHeadingProps, 'as' | 'className' | 'id'> {}
