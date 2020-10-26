@@ -11,6 +11,7 @@ import Table from './table/Table';
 import TaxesButtons from '../buttons/taxes/TaxesButtons';
 import { useDataState } from '../data';
 import { useInitStateListeners } from '../stateListeners';
+import { usePricesPolling } from '../hooks';
 
 import './styles.scss';
 
@@ -21,6 +22,8 @@ export interface TicketPriceCalculatorProps {
 const TicketPriceCalculator: React.FC<TicketPriceCalculatorProps> = ({ context }) => {
 	// initialize state listeners
 	useInitStateListeners();
+
+	usePricesPolling();
 
 	const dataState = useDataState();
 

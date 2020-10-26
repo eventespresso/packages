@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { assocPath } from 'ramda';
 
+import { __ } from '@eventespresso/i18n';
+import { useSystemNotifications } from '@eventespresso/toaster';
 import { useRelations } from '@eventespresso/services';
 import { getGuids } from '@eventespresso/predicates';
-import { useDatetimes } from '@eventespresso/edtr-services';
+import { useDatetimes, useIsRehydrated } from '@eventespresso/edtr-services';
 
 import useCacheRehydrationData from './useCacheRehydrationData';
 import { useUpdateRecurrenceList } from '../../../hooks';
@@ -14,6 +16,8 @@ import { DEFAULT_RECURRENCE_LIST_DATA, useRecurrenceQueryOptions } from '../quer
  */
 const useCacheRehydration = (): boolean => {
 	const { getData: getRelationalData, initialize, isInitialized } = useRelations();
+	const [isRehydrated] = useIsRehydrated();
+	const toaster = useSystemNotifications();
 
 	const { recurrences: espressoRecurrences = DEFAULT_RECURRENCE_LIST_DATA, relations } = useCacheRehydrationData();
 
@@ -27,7 +31,7 @@ const useCacheRehydration = (): boolean => {
 
 	useEffect(() => {
 		// Make sure REM rehydration happens after core
-		if (initialized.current || !isInitialized()) {
+		if (initialized.current || !isRehydrated) {
 			return;
 		}
 		/* Rehydrate recurrences */
@@ -37,6 +41,7 @@ const useCacheRehydration = (): boolean => {
 				espressoRecurrences,
 			},
 		});
+		toaster.success({ message: __('recurrences initialized') });
 
 		const relationalData = getRelationalData();
 
@@ -65,8 +70,10 @@ const useCacheRehydration = (): boolean => {
 		getRelationalData,
 		initialize,
 		isInitialized,
+		isRehydrated,
 		recurrenceQueryOptions,
 		relations,
+		toaster,
 		updateRecurrenceList,
 	]);
 

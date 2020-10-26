@@ -1,4 +1,4 @@
-import { useInitQueries } from '../services/apollo';
+import { useCacheRehydration } from '../services/apollo';
 import { useRegisterRecurrenceFilter } from '../services/filters';
 
 const useRemInitialization = (): void => {
@@ -6,7 +6,7 @@ const useRemInitialization = (): void => {
 	useRegisterRecurrenceFilter();
 
 	// Fire initial queries
-	useInitQueries();
+	useCacheRehydration();
 };
 
 export default useRemInitialization;

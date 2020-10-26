@@ -19,9 +19,6 @@ import { RenderTableView } from './tableView';
 import { ActiveTicketsFilters } from './filterBar';
 
 const TicketsList: React.FC = () => {
-	// register isChained filter using hook.
-	useRegisterIsChainedFilter();
-
 	const filterState = useTicketsListFilterState();
 
 	const renderList = useCallback(() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />), [
@@ -44,7 +41,15 @@ const TicketsList: React.FC = () => {
 	);
 };
 
-export default withEntityListContext({
+const EnhancedTicketsList = withEntityListContext({
 	Provider: TicketsListProvider,
 	Component: TicketsList,
 });
+
+const ChainedTicketsList: React.FC = () => {
+	// register isChained filter using hook.
+	useRegisterIsChainedFilter();
+	return <EnhancedTicketsList />;
+};
+
+export default ChainedTicketsList;

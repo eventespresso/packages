@@ -19,21 +19,23 @@ const useFetchRecurrences = (queryOptions?: Partial<RecurrencesQueryOptions>): F
 
 	const dismissLoading = useCallback(() => toaster.dismiss(toastId.current), [toaster]);
 
+	const onCompleted = useCallback(() => {
+		dismissLoading();
+		toastId.current = toaster.success({ message: __('recurrences initialized') });
+	}, [dismissLoading, toaster]);
+
 	const newQueryOptions = useMemo<QueryHookOptions>(
 		() => ({
 			skip,
 			...options,
 			...queryOptions, // priority to passed options
-			onCompleted: (): void => {
-				dismissLoading();
-				toastId.current = toaster.success({ message: __('recurrences initialized') });
-			},
+			onCompleted,
 			onError: (error): void => {
 				dismissLoading();
 				toaster.error({ message: error.message });
 			},
 		}),
-		[dismissLoading, options, queryOptions, skip, toaster]
+		[dismissLoading, onCompleted, options, queryOptions, skip, toaster]
 	);
 
 	const result = useQuery<RecurrencesList>(query, newQueryOptions);
@@ -44,6 +46,14 @@ const useFetchRecurrences = (queryOptions?: Partial<RecurrencesQueryOptions>): F
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [result.loading]);
+
+	useEffect(() => {
+		if (result.data && !isLoaded(TypeName.recurrence)) {
+			onCompleted();
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [result.data]);
 
 	return result;
 };

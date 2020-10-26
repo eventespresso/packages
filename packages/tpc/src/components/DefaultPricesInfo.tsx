@@ -4,15 +4,15 @@ import { __ } from '@eventespresso/i18n';
 
 import { isDefault } from '@eventespresso/predicates';
 import { useConfig } from '@eventespresso/services';
-import { useEdtrState } from '@eventespresso/edtr-services';
 import { useDataState } from '../data';
+import { usePricesPollInterval } from '../hooks';
 
 const DefaultPricesInfo: React.FC = () => {
 	const config = useConfig();
 	const adminUrl = config.siteUrl.admin;
 	const href = adminUrl + '/admin.php?page=pricing';
 
-	const { setPricesPollInterval } = useEdtrState();
+	const setPricesPollInterval = usePricesPollInterval()[1];
 
 	const { prices } = useDataState();
 	const hasDefaultPrice = any(isDefault, prices);
