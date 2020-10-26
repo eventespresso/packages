@@ -8,7 +8,7 @@ import type { EntityId } from '@eventespresso/data';
 import { useDatesListFilterState } from '../../../filterState';
 import { domain, datesList } from '../../../constants';
 import { useDatetimes } from '../../../apollo';
-import { useEdtrState } from '../../../hooks';
+import { useVisibleDatetimeIds } from '../../../hooks';
 
 const FilteredDatesContext = createContext<Array<EntityId>>(null);
 
@@ -16,7 +16,6 @@ const { Provider, Consumer: FilteredDatesConsumer } = FilteredDatesContext;
 
 const FilteredDatesProvider: React.FC = ({ children }) => {
 	const datetimes = useDatetimes();
-
 	const filterState = useDatesListFilterState();
 
 	const { setSortBy, sortingEnabled } = filterState;
@@ -29,7 +28,7 @@ const FilteredDatesProvider: React.FC = ({ children }) => {
 	const filteredEntityIds = useMemoStringify(getGuids(filteredEntities));
 
 	// Update Edtr state for isChained filter
-	const { setVisibleDatetimeIds } = useEdtrState();
+	const setVisibleDatetimeIds = useVisibleDatetimeIds()[1];
 	useEffect(() => {
 		// update only when not sorting
 		if (!sortingEnabled) {

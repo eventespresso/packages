@@ -6,15 +6,16 @@ import { events } from '../../events';
 import type { FetchQueryResult } from '../types';
 import type { Viewer } from '@eventespresso/services';
 
-const useFetchCurrentUser = (): FetchQueryResult<Viewer> => {
+const useFetchCurrentUser = (fetchOptions?: QueryHookOptions): FetchQueryResult<Viewer> => {
 	const options = useMemo<QueryHookOptions<Viewer>>(
 		() => ({
 			// only display error, not loading or success
 			onError: (error): void => {
 				events.emit('fetchUser.error', error);
 			},
+			...fetchOptions,
 		}),
-		[]
+		[fetchOptions]
 	);
 	const result = useQuery<Viewer>(GET_CURRENT_USER, options);
 

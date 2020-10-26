@@ -8,7 +8,7 @@ import { useMemoStringify } from '@eventespresso/hooks';
 import { useTicketsListFilterState } from '../../../filterState';
 import { domain, ticketsList } from '../../../constants';
 import { useTickets } from '../../../apollo';
-import { useEdtrState } from '../../../hooks';
+import { useVisibleTicketIds } from '../../../hooks';
 
 const FilteredTicketsContext = createContext<Array<EntityId>>(null);
 
@@ -29,7 +29,7 @@ const FilteredTicketsProvider: React.FC = ({ children }) => {
 	const filteredEntityIds = useMemoStringify(getGuids(filteredEntities));
 
 	// Update Edtr state for bulk edit.
-	const { setVisibleTicketIds } = useEdtrState();
+	const setVisibleTicketIds = useVisibleTicketIds()[1];
 	useEffect(() => {
 		// update only when not sorting
 		if (!sortingEnabled) {

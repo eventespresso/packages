@@ -1,9 +1,21 @@
 import { useEffect } from 'react';
 
-import useCacheRehydrationData from './useCacheRehydrationData';
-import { useStatus, TypeName, useRelations } from '@eventespresso/services';
+import { __ } from '@eventespresso/i18n';
+import { useRelations, useStatus, TypeName } from '@eventespresso/services';
+import { useSystemNotifications } from '@eventespresso/toaster';
 import {
-	useEdtrState,
+	useCurrentUserQueryOptions,
+	useGeneralSettingsQueryOptions,
+	useUpdateCache,
+	useUpdateCurrentUserCache,
+	useUpdateGeneralSettingsCache,
+} from '@eventespresso/data';
+import { getGuids } from '@eventespresso/predicates';
+import { useMemoStringify } from '@eventespresso/hooks';
+
+import useCacheRehydrationData from './useCacheRehydrationData';
+import {
+	useIsRehydrated,
 	useUpdateDatetimeList,
 	useUpdatePriceList,
 	useUpdatePriceTypeList,
@@ -20,22 +32,13 @@ import {
 	usePriceTypeQueryOptions,
 	useTicketQueryOptions,
 } from '../queries';
-import {
-	useCurrentUserQueryOptions,
-	useGeneralSettingsQueryOptions,
-	useUpdateCache,
-	useUpdateCurrentUserCache,
-	useUpdateGeneralSettingsCache,
-} from '@eventespresso/data';
-import { getGuids } from '@eventespresso/predicates';
-import { useMemoStringify } from '@eventespresso/hooks';
 
-const useCacheRehydration = (): void => {
+const useCacheRehydration = (): boolean => {
+	const toaster = useSystemNotifications();
+	const { setIsLoaded } = useStatus();
 	const { initialize: initializeRelations, isInitialized: relationsInitialized } = useRelations();
 	const { currentUser, eventEditor, generalSettings } = useCacheRehydrationData();
-	const { isLoaded } = useStatus();
-	const { setIsRehydrated } = useEdtrState();
-
+	const [isRehydrated, setIsRehydrated] = useIsRehydrated();
 	const {
 		event,
 		datetimes: espressoDatetimes = DEFAULT_DATETIME_LIST_DATA,
@@ -78,67 +81,79 @@ const useCacheRehydration = (): void => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [relations]);
 
-	if (isLoaded(TypeName.priceTypes)) {
-		return;
-	}
+	useEffect(() => {
+		if (isRehydrated) {
+			return;
+		}
 
-	/* Rehydrate event data */
-	updateCache({
-		...eventQueryOptions,
-		data: {
-			espressoEvent: event,
-		},
-	});
+		/* Rehydrate event data */
+		updateCache({
+			...eventQueryOptions,
+			data: {
+				espressoEvent: event,
+			},
+		});
+		/* Rehydrate price types */
+		updatePriceTypeList({
+			...priceTypeQueryOptions,
+			data: {
+				espressoPriceTypes,
+			},
+		});
+		setIsLoaded(TypeName.priceTypes, true);
+		toaster.success({ message: __('price types initialized') });
 
-	/* Rehydrate price types */
-	updatePriceTypeList({
-		...priceTypeQueryOptions,
-		data: {
-			espressoPriceTypes,
-		},
-	});
+		/* Rehydrate datetimes */
+		updateDatetimeList({
+			...datetimeQueryOptions,
+			data: {
+				espressoDatetimes,
+			},
+		});
+		setIsLoaded(TypeName.datetimes, true);
+		toaster.success({ message: __('datetimes initialized') });
 
-	/* Rehydrate datetimes */
-	updateDatetimeList({
-		...datetimeQueryOptions,
-		data: {
-			espressoDatetimes,
-		},
-	});
+		/* Rehydrate tickets */
+		updateTicketList({
+			...ticketQueryOptions,
+			data: {
+				espressoTickets,
+			},
+		});
+		setIsLoaded(TypeName.tickets, true);
+		toaster.success({ message: __('tickets initialized') });
 
-	/* Rehydrate tickets */
-	updateTicketList({
-		...ticketQueryOptions,
-		data: {
-			espressoTickets,
-		},
-	});
+		/* Rehydrate prices */
+		updatePriceList({
+			...priceQueryOptions,
+			data: {
+				espressoPrices,
+			},
+		});
+		setIsLoaded(TypeName.prices, true);
+		toaster.success({ message: __('prices initialized') });
 
-	/* Rehydrate prices */
-	updatePriceList({
-		...priceQueryOptions,
-		data: {
-			espressoPrices,
-		},
-	});
+		/* Rehydrate current user */
+		updateCurrentUser({
+			...currentUserQueryOptions,
+			data: {
+				viewer: currentUser,
+			},
+		});
 
-	/* Rehydrate current user */
-	updateCurrentUser({
-		...currentUserQueryOptions,
-		data: {
-			viewer: currentUser,
-		},
-	});
+		/* Rehydrate general settings */
+		updateGeneralSettings({
+			...generalSettingsQueryOptions,
+			data: {
+				generalSettings,
+			},
+		});
 
-	/* Rehydrate general settings */
-	updateGeneralSettings({
-		...generalSettingsQueryOptions,
-		data: {
-			generalSettings,
-		},
-	});
+		setIsRehydrated(true);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-	setIsRehydrated(true);
+	return isRehydrated;
 };
 
 export default useCacheRehydration;

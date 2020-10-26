@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import { FilterBarService } from '@eventespresso/registry';
 import type { TicketsFilterStateManager } from './types';
@@ -28,25 +28,27 @@ const useRegisterIsChainedFilter: VoidFunction = () => {
 	// filter unSubscribe callback in ref to use it to remove the existing filter.
 	const unSubIsChainedFilterRef = useRef<VoidFunction>();
 
-	useEffect(() => {
-		// If already register
-		if (typeof unSubIsChainedFilterRef.current === 'function') {
-			// de-register
-			unSubIsChainedFilterRef.current();
-		}
-		// Register isChained filter
-		const unSubscribeIsChainedFilter = registerTicketsFilter(({ entityList, filterState }) => {
+	// If already registered, de-register
+	unSubIsChainedFilterRef.current?.();
+
+	const isChainedFilterCb = useCallback(
+		({ entityList, filterState }) => {
 			return isChainedFilter({ isChained: filterState.isChained, tickets: entityList });
-		}, 9); // we want isChained to run first
+		},
+		[isChainedFilter]
+	);
+	// Register isChained filter
+	const unSubscribeIsChainedFilter = registerTicketsFilter(isChainedFilterCb, 9); // we want isChained to run first
 
-		// update ref, it won't cause rerendersٖ
-		unSubIsChainedFilterRef.current = unSubscribeIsChainedFilter;
+	// update ref, it won't cause rerendersٖ
+	unSubIsChainedFilterRef.current = unSubscribeIsChainedFilter;
 
+	useEffect(() => {
 		// Housekeeping
 		return (): void => {
 			unSubscribeIsChainedFilter();
 		};
-	}, [isChainedFilter, isChainedDeps]);
+	}, [isChainedDeps, unSubscribeIsChainedFilter]);
 };
 
 export default useRegisterIsChainedFilter;

@@ -2,6 +2,7 @@
 import '../../../types';
 
 export * from './client';
+export * from './hooks';
 export * from './events';
 export * from './mutations';
 export * from './queries';

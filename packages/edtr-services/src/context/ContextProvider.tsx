@@ -4,7 +4,6 @@ import { DataProvider } from '@eventespresso/data';
 import { ThemeProvider } from '@eventespresso/adapters';
 import { ConfigProvider, FeaturesProvider, RelationsProvider, StatusProvider } from '@eventespresso/services';
 import { GlobalModalProvider } from '@eventespresso/registry';
-import { EdtrStateProvider } from './EdtrStateContext';
 
 export const ServiceProvider: React.FC = ({ children }) => {
 	return (
@@ -13,9 +12,7 @@ export const ServiceProvider: React.FC = ({ children }) => {
 				<ConfigProvider>
 					<FeaturesProvider>
 						<RelationsProvider>
-							<EdtrStateProvider>
-								<GlobalModalProvider>{children}</GlobalModalProvider>
-							</EdtrStateProvider>
+							<GlobalModalProvider>{children}</GlobalModalProvider>
 						</RelationsProvider>
 					</FeaturesProvider>
 				</ConfigProvider>

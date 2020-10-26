@@ -1,30 +1,32 @@
+import { useMemo } from 'react';
 import { identity, sortBy } from 'ramda';
 
 import useTicketIds from '../tickets/useTicketIds';
 import { GET_PRICES } from '../prices';
 import type { EntityId, CacheQueryOptions } from '@eventespresso/data';
-import { useMemoStringify } from '@eventespresso/hooks';
 
-const usePriceQueryOptions = (ticketIn: EntityId[] = []): CacheQueryOptions => {
+const EMPTY_ARRAY: EntityId[] = [];
+
+const usePriceQueryOptions = (ticketIn = EMPTY_ARRAY): CacheQueryOptions => {
 	const ticketIds = useTicketIds();
 
-	let newTicketIn = ticketIn.length ? ticketIn : ticketIds;
+	return useMemo<CacheQueryOptions>(() => {
+		let newTicketIn = ticketIn.length ? ticketIn : ticketIds;
 
-	// Sort the IDs list which may be out of order,
-	// thus changing the key used to access apollo cache
-	newTicketIn = sortBy(identity, newTicketIn);
+		// Sort the IDs list which may be out of order,
+		// thus changing the key used to access apollo cache
+		newTicketIn = sortBy(identity, newTicketIn);
 
-	const options: CacheQueryOptions = {
-		query: GET_PRICES,
-		variables: {
-			where: {
-				ticketIn: newTicketIn,
-				includeDefaultPrices: true,
+		return {
+			query: GET_PRICES,
+			variables: {
+				where: {
+					ticketIn: newTicketIn,
+					includeDefaultPrices: true,
+				},
 			},
-		},
-	};
-
-	return useMemoStringify(options, newTicketIn);
+		};
+	}, [ticketIds, ticketIn]);
 };
 
 export default usePriceQueryOptions;

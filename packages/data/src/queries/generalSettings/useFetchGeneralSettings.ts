@@ -6,15 +6,16 @@ import { events } from '../../events';
 import type { FetchQueryResult } from '../types';
 import type { GeneralSettingsData } from '@eventespresso/services';
 
-const useFetchGeneralSettings = (): FetchQueryResult<GeneralSettingsData> => {
+const useFetchGeneralSettings = (fetchOptions?: QueryHookOptions): FetchQueryResult<GeneralSettingsData> => {
 	const options = useMemo<QueryHookOptions<GeneralSettingsData>>(
 		() => ({
 			// only display error, not loading or success
 			onError: (error): void => {
 				events.emit('fetchSettings.error', error);
 			},
+			...fetchOptions,
 		}),
-		[]
+		[fetchOptions]
 	);
 	const result = useQuery<GeneralSettingsData>(GET_GENERAL_SETTINGS, options);
 

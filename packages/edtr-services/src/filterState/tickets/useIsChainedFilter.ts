@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { keys, pathOr, pickBy, hasPath } from 'ramda';
 
 import { useRelations } from '@eventespresso/services';
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
 
 import type { Ticket } from '../../apollo';
-import { useEdtrState } from '../../hooks';
+import { useVisibleDatetimeIds } from '../../hooks';
 
 type IsChainedFilterCallback = (args: { isChained: boolean; tickets: Array<Ticket> }) => Array<Ticket>;
 type IsChainedFilterDeps = any;
@@ -14,18 +14,18 @@ type IsChainedFilterTuple = [IsChainedFilterCallback, IsChainedFilterDeps];
 
 const useIsChainedFilter = (): IsChainedFilterTuple => {
 	const { getData } = useRelations();
-	const { visibleDatetimeIds } = useEdtrState();
+	const [visibleDatetimeIds] = useVisibleDatetimeIds();
 
-	const relatedTicketIds = keys(
-		pickBy((relations) => {
-			return (
-				hasPath(['datetimes'], relations) &&
-				pathOr([], ['datetimes'], relations).some((id) => visibleDatetimeIds.includes(id))
-			);
-		}, getData().tickets)
-	);
-
-	const relatedTicketIdsStr = JSON.stringify(relatedTicketIds);
+	const relatedTicketIds = useMemo(() => {
+		return keys(
+			pickBy((relations) => {
+				return (
+					hasPath(['datetimes'], relations) &&
+					pathOr([], ['datetimes'], relations).some((id) => visibleDatetimeIds.includes(id))
+				);
+			}, getData().tickets)
+		);
+	}, [getData, visibleDatetimeIds]);
 
 	const callback = useCallback<IsChainedFilterCallback>(
 		({ isChained, tickets }) => {
@@ -37,11 +37,10 @@ const useIsChainedFilter = (): IsChainedFilterTuple => {
 			return entitiesWithGuIdInArray(tickets, relatedTicketIds);
 		},
 
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[relatedTicketIdsStr]
+		[relatedTicketIds]
 	);
 
-	return [callback, relatedTicketIdsStr];
+	return useMemo(() => [callback, relatedTicketIds], [callback, relatedTicketIds]);
 };
 
 export default useIsChainedFilter;
