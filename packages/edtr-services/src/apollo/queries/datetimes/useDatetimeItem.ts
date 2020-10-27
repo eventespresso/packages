@@ -14,6 +14,7 @@ const useDatetimeItem = ({ id }: EntityItemProps): Datetime => {
 			variables: {
 				id,
 			},
+			returnPartialData: true, // avoid console warnings if data not present
 		}),
 		[id]
 	);

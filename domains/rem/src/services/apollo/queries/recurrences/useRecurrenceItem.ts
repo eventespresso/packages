@@ -14,6 +14,7 @@ const useRecurrenceItem = ({ id }: EntityItemProps): Recurrence => {
 			variables: {
 				id,
 			},
+			returnPartialData: true, // avoid console warnings if data not present
 		}),
 		[id]
 	);

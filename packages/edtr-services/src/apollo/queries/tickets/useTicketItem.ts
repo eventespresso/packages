@@ -14,6 +14,7 @@ const useTicketItem = ({ id }: EntityItemProps): Ticket => {
 			variables: {
 				id,
 			},
+			returnPartialData: true, // avoid console warnings if data not present
 		}),
 		[id]
 	);

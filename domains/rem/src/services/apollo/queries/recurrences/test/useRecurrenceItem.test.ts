@@ -9,7 +9,6 @@ import useInitRecurrenceTestCache from './useInitRecurrenceTestCache';
 describe('useRecurrenceItem', () => {
 	const wrapper = ApolloMockedProvider();
 	const existingRecurrence = nodes[0];
-	const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
 	it('checks for non existent recurrence when the cache is empty', async () => {
 		const { result } = renderHook(() => useRecurrenceItem({ id: existingRecurrence.id }), {
 			wrapper,
@@ -17,12 +16,9 @@ describe('useRecurrenceItem', () => {
 		await actWait();
 
 		expect(result.current).toBe(undefined);
-		expect(consoleWarn).toHaveBeenCalled();
-		consoleWarn.mockRestore();
 	});
 
 	it('checks for non existent recurrence when the cache is NOT empty', async () => {
-		const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
 		const { result } = renderHook(
 			() => {
 				useInitRecurrenceTestCache();
@@ -33,8 +29,6 @@ describe('useRecurrenceItem', () => {
 		await actWait();
 
 		expect(result.current).toBe(undefined);
-		expect(consoleWarn).toHaveBeenCalled();
-		consoleWarn.mockRestore();
 	});
 
 	it('checks for an existent recurrence', async () => {
