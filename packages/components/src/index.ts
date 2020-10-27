@@ -34,6 +34,7 @@ export * from './FilterBarFilter';
 export * from './FormWithConfig';
 export * from './Grid';
 export * from './Heading';
+export * from './HelpIcon';
 export * from './InlineEditCurrency';
 export * from './InlineEditInput';
 export * from './InputWithLabel';
