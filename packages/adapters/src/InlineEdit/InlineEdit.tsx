@@ -8,14 +8,15 @@ import InlineEditPreview from './InlineEditPreview';
 import type { InlineEditProps } from './types';
 
 const InlineEdit: React.FC<InlineEditProps> = ({
-	inputClassName,
+	'aria-describedby': ariaDescribedby,
 	defaultValue,
+	inputClassName,
 	inputType,
 	onChange,
-	value,
 	placeholder = '',
 	Preview,
 	previewClassName,
+	value,
 	...props
 }) => {
 	const [currentValue, setCurrentValue] = useState(defaultValue || value);
@@ -67,6 +68,7 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 					<>
 						<InlineEditPreview
 							{...props}
+							aria-describedby={ariaDescribedby}
 							className={className}
 							isEditing={isEditing}
 							onRequestEdit={onRequestEdit}

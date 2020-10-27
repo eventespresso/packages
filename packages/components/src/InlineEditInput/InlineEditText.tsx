@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import { InlineEdit } from '@eventespresso/adapters';
 import Preview from './Preview';
@@ -6,11 +6,7 @@ import type { TextProps } from './types';
 
 import './style.scss';
 
-const InlineEditText: React.FC<TextProps> = ({ 'aria-describedby': ariaDescribedby, className, tag: as, ...props }) => {
-	const preview = useCallback((previewProps) => <Preview {...previewProps} aria-describedby={ariaDescribedby} />, [
-		ariaDescribedby,
-	]);
-
+const InlineEditText: React.FC<TextProps> = ({ className, tag: as, ...props }) => {
 	return (
 		<InlineEdit
 			placeholder=''
@@ -18,7 +14,7 @@ const InlineEditText: React.FC<TextProps> = ({ 'aria-describedby': ariaDescribed
 			as={as}
 			inputClassName={'ee-inline-edit__text'}
 			inputType='text'
-			Preview={preview}
+			Preview={Preview}
 			previewClassName={className}
 		/>
 	);
