@@ -1,4 +1,3 @@
-import type { MenuProps as ChakraMenuProps } from '@chakra-ui/core';
-import type { AnyObject } from '@eventespresso/utils';
+import type { IMenu } from '@chakra-ui/core';
 
-export type MenuProps = ChakraMenuProps & AnyObject;
+export interface MenuProps extends IMenu {}

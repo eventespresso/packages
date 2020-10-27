@@ -19,7 +19,6 @@ export * from './Icon';
 export * from './InlineEdit';
 export * from './InputWithLabel';
 export * from './Menu';
-export * from './MenuDivider';
 export * from './MenuGroup';
 export * from './MenuItem';
 export * from './MenuItemOption';
