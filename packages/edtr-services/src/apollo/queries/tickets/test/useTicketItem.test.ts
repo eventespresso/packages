@@ -16,7 +16,7 @@ describe('useTicketItem', () => {
 		});
 		await actWait();
 
-		expect(result.current).toBe(undefined);
+		expect(result.current).toEqual({});
 	});
 
 	it('checks for non existent ticket when the cache is NOT empty', async () => {
@@ -29,7 +29,7 @@ describe('useTicketItem', () => {
 		);
 		await actWait();
 
-		expect(result.current).toBe(undefined);
+		expect(result.current).toEqual({});
 	});
 
 	it('checks for an existent ticket', async () => {

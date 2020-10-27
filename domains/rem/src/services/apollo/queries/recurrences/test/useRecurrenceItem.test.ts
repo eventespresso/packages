@@ -15,7 +15,7 @@ describe('useRecurrenceItem', () => {
 		});
 		await actWait();
 
-		expect(result.current).toBe(undefined);
+		expect(result.current).toEqual({});
 	});
 
 	it('checks for non existent recurrence when the cache is NOT empty', async () => {
@@ -28,7 +28,7 @@ describe('useRecurrenceItem', () => {
 		);
 		await actWait();
 
-		expect(result.current).toBe(undefined);
+		expect(result.current).toEqual({});
 	});
 
 	it('checks for an existent recurrence', async () => {
