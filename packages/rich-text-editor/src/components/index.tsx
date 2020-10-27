@@ -2,9 +2,9 @@
 import React from 'react';
 import { Editor, EditorState, RichUtils, DraftBlockType, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
 import { convertFromHTML, convertToHTML } from 'draft-convert';
-import { TAB } from '@wordpress/keycodes';
 import 'draft-js/dist/Draft.css';
 
+import { isTabKey } from '../../../utils/src/keycodes';
 import ToolbarControls from './ToolbarControls';
 
 import { getBlockStyle } from '../utils';
@@ -88,7 +88,7 @@ export class RichTextEditor extends React.Component<RichTextEditorProps, RichTex
 	}
 
 	keyBindingFn(e: SyntheticKeyboardEvent): string | null {
-		if (e.keyCode === TAB && hasCommandModifier(e)) {
+		if (isTabKey(e) && hasCommandModifier(e)) {
 			return 'tab';
 		}
 

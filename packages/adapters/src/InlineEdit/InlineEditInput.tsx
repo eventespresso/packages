@@ -1,7 +1,7 @@
 import React from 'react';
 import { EditableInput as ChakraEditableInput } from '@chakra-ui/core';
-import { ESCAPE, ENTER } from '@wordpress/keycodes';
 
+import { isEnterKey, isEscapeKey } from '@eventespresso/utils';
 import type { PseudoBoxProps } from '@chakra-ui/core';
 import type { InlineEditInputProps } from './types';
 
@@ -22,15 +22,15 @@ const InlineEditInput: React.FC<InlineEditInputProps> = ({ inputType, onCancel, 
 			as: 'textarea',
 			className: 'ee-input-base ee-textarea ee-inline-edit--editing',
 			// pass our own onKeyDown handler for a11y
-			onKeyDown: (e) => {
-				if (e.keyCode === ENTER) {
+			onKeyDown: (e: React.KeyboardEvent) => {
+				if (isEnterKey(e)) {
 					const cursorPosition = (e.target as HTMLInputElement).selectionStart;
 					// prevent submit
 					e.preventDefault();
 
 					// insert newline at the current cursor position
 					setValue((v) => insertStrAt(v, `\n`, cursorPosition));
-				} else if (e.keyCode === ESCAPE) {
+				} else if (isEscapeKey(e)) {
 					onCancel();
 				}
 			},

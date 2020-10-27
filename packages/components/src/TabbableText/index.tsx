@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import classNames from 'classnames';
-import { ENTER } from '@wordpress/keycodes';
-import { __ } from '@eventespresso/i18n';
 
+import { __ } from '@eventespresso/i18n';
 import { Tooltip } from '@eventespresso/adapters';
+import { isEnterKey } from '@eventespresso/utils';
 import type { TabbableTextProps } from './types';
 
 import './style.scss';
@@ -24,7 +24,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({
 
 	const onKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
-			if (e.keyCode === ENTER) {
+			if (isEnterKey(e)) {
 				e.preventDefault();
 				onClick();
 			}

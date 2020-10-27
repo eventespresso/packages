@@ -5,6 +5,7 @@ export * from './boolean';
 export * from './converters';
 export * from './dom';
 export * from './function';
+export * from './keycodes';
 export * from './list';
 export * from './memo';
 export * from './money';

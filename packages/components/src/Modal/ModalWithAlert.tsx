@@ -1,8 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
-import { ESCAPE } from '@wordpress/keycodes';
-import { __ } from '@eventespresso/i18n';
 
-import { canUseDOM } from '@eventespresso/utils';
+import { __ } from '@eventespresso/i18n';
+import { canUseDOM, isEscapeKey } from '@eventespresso/utils';
 import { Modal } from './';
 import { useConfirmationDialog } from '../Confirm';
 import useCancelButtonProps from './useCancelButtonProps';
@@ -28,8 +27,8 @@ export const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 	});
 
 	const onEscape = useCallback(
-		({ keyCode }) => {
-			if (keyCode === ESCAPE) {
+		(e) => {
+			if (isEscapeKey(e)) {
 				onOpen();
 			}
 		},
