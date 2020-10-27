@@ -23,24 +23,10 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"devDependencies": {
-		"@babel/core": "^7.10.3",
-		"@babel/plugin-proposal-object-rest-spread": "^7.10.3",
-		"@babel/plugin-transform-react-jsx": "^7.10.3",
-		"@babel/runtime": "^7.10.3",
-		"@babel/runtime-corejs2": "^7.10.3",
-		"css-loader": "^3.6.0",
-		"style-loader": "^1.2.1"
-	},
 	"dependencies": {
 		"@typeform/embed": "^0.22.0",
-		"classnames": "^2.2.6",
 		"prop-types": "^15.7.2",
 		"react-modal": "^3.11.2"
-	},
-	"peerDependencies": {
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1"
 	},
 	"babel": {
 		"presets": "@wordpress/default"

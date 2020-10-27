@@ -16,34 +16,7 @@
 		"@wordpress/components": "^10.2.0",
 		"@wordpress/url": "^2.18.0"
 	},
-	"devDependencies": {
-		"@react-workspaces/react-scripts": "^3.4.0-alpha-01",
-		"@testing-library/jest-dom": "^5.11.4",
-		"@testing-library/react": "^11.0.4",
-		"@testing-library/react-hooks": "^3.4.2",
-		"@testing-library/user-event": "^12.1.6",
-		"@types/jest": "^26.0.14",
-		"@types/node": "^14.11.2",
-		"@types/react": "^16.9.50",
-		"@types/react-dom": "^16.9.8",
-		"@types/wordpress__components": "^9.8.2",
-		"@types/wordpress__i18n": "^3.11.0",
-		"typescript": "^4.0.3"
-	},
-	"peerDependencies": {
-		"@chakra-ui/hooks": "^1.0.0-next.3",
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1"
-	},
 	"scripts": {
-		"start": "node ./../../scripts/start.js",
-		"build": "node ./../../scripts/build.js",
-		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe"
-	},
-	"babel": {
-		"presets": [
-			"react-app"
-		]
 	}
 }

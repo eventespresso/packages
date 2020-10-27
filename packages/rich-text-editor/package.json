@@ -16,33 +16,12 @@
 	"main": "src/index.ts",
 	"main:src": "src/index.ts",
 	"scripts": {
-		"test": "react-scripts test",
 		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
 		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
 	},
 	"sideEffects": false,
 	"dependencies": {
 		"draft-convert": "^2.1.10",
-		"draft-js": "^0.11.7",
-		"react": "^16.13.1"
-	},
-	"devDependencies": {
-		"@react-workspaces/react-scripts": "^3.4.0-alpha-01",
-		"@testing-library/jest-dom": "^5.11.4",
-		"@testing-library/react": "^11.0.4",
-		"@testing-library/user-event": "^12.1.6",
-		"@types/draft-js": "^0.10.44",
-		"@types/jest": "^26.0.14",
-		"@types/node": "^14.11.2",
-		"@types/react": "^16.9.49",
-		"@types/react-dom": "^16.9.8",
-		"@typescript-eslint/eslint-plugin": "^4.3.0",
-		"@typescript-eslint/parser": "^4.3.0",
-		"react-scripts": "3.4.3",
-		"typescript": "~4.0.3"
-	},
-	"peerDependencies": {
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1"
+		"draft-js": "^0.11.7"
 	}
 }
