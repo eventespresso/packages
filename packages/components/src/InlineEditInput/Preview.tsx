@@ -10,6 +10,7 @@ import type { PreviewProps } from './types';
 import './style.scss';
 
 const Preview: React.FC<PreviewProps> = ({
+	'aria-describedby': ariaDescribedby,
 	className,
 	fitText,
 	isDisabled,
@@ -49,6 +50,7 @@ const Preview: React.FC<PreviewProps> = ({
 
 	return (
 		<TabbableText
+			aria-describedby={ariaDescribedby}
 			className={previewClassName}
 			icon={icon}
 			onClick={onRequestEdit}

@@ -14,7 +14,7 @@ import TicketSelectorCheckbox from './TicketSelector';
 
 import './style.scss';
 
-const columns = { base: 2, md: 4 };
+const columns = { base: 1, sm: 2, md: 4 };
 
 const EventRegistrationOptions: React.FC = () => (
 	<div className='ee-event-registration-options'>

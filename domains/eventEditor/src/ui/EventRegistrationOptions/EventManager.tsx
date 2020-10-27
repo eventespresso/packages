@@ -15,13 +15,12 @@ const EventManager: React.FC = () => {
 	}, []);
 
 	const id = 'ee-event-registration-manager';
-	const text = __('Event Manager');
 
 	return (
 		<GridItem
 			id={id}
-			input={<InlineEditText onChange={onChange} tag='h4' tooltip={text} value={eventManager} />}
-			label={text}
+			input={<InlineEditText aria-describedby={id} onChange={onChange} tag='h4' value={eventManager} />}
+			label={__('Event Manager')}
 		/>
 	);
 };

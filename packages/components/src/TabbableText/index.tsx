@@ -8,7 +8,14 @@ import type { TabbableTextProps } from './types';
 
 import './style.scss';
 
-export const TabbableText: React.FC<TabbableTextProps> = ({ className, icon, onClick, isDisabled, ...props }) => {
+export const TabbableText: React.FC<TabbableTextProps> = ({
+	'aria-describedby': ariaDescribedby,
+	className,
+	icon,
+	onClick,
+	isDisabled,
+	...props
+}) => {
 	let tooltip = props.tooltip || __('Click to edit…');
 	const text = props.text || tooltip;
 	// don't display tooltip if it is being used as placeholder
@@ -28,6 +35,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({ className, icon, onC
 	return (
 		<Tooltip tooltip={tooltip}>
 			<div
+				aria-describedby={ariaDescribedby}
 				aria-label={props.tooltip}
 				className={textClassName}
 				onClick={onClick}

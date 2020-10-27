@@ -20,12 +20,13 @@ const MaxRegistrations: React.FC = () => {
 	);
 
 	const id = 'ee-event-registration-max-reg';
-	const tooltip = __('edit maximum number of registrations allowed per transaction');
 
 	return (
 		<GridItem
 			id={id}
-			input={<InlineEditText onChange={onChange} tag='h4' tooltip={tooltip} value={String(maxReg)} />}
+			input={
+				<InlineEditText aria-describedby={id} onChange={onChange} tag='h4' value={maxReg && String(maxReg)} />
+			}
 			label={__('Maximum Number of Registrations Allowed per Transaction')}
 		/>
 	);

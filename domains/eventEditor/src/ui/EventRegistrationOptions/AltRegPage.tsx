@@ -24,7 +24,15 @@ const AltRegPage: React.FC = () => {
 	return (
 		<GridItem
 			id={id}
-			input={<InlineEditText onChange={onChange} placeholder='https://' tag='h4' value={altRegPage} />}
+			input={
+				<InlineEditText
+					aria-describedby={id}
+					onChange={onChange}
+					placeholder='https://'
+					tag='h4'
+					value={altRegPage}
+				/>
+			}
 			label={__('Alternative Registration Page')}
 		/>
 	);

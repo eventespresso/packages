@@ -20,13 +20,12 @@ const EventPhoneNumber: React.FC = () => {
 	);
 
 	const id = 'ee-event-registration-phone-number';
-	const text = __('Event Phone Number');
 
 	return (
 		<GridItem
 			id={id}
-			input={<InlineEditText onChange={onChange} tag='h4' tooltip={text} value={phoneNumber} />}
-			label={text}
+			input={<InlineEditText aria-describedby={id} onChange={onChange} tag='h4' value={phoneNumber} />}
+			label={__('Event Phone Number')}
 		/>
 	);
 };

@@ -7,4 +7,6 @@ export interface EditableSelectProps extends CommonProps, Pick<InlineEditProps, 
 	isEditing?: boolean;
 }
 
-export interface InlineEditSelectProps extends CommonProps {}
+export interface InlineEditSelectProps extends CommonProps {
+	'aria-describedby'?: string;
+}

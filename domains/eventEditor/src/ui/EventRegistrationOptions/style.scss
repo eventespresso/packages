@@ -14,4 +14,24 @@
 	h4 {
 		font-size: var(--ee-font-size-tiny);
 	}
+
+	.ee-tabbable-text {
+		font-size: var(--ee-font-size-small);
+	}
+
+	.ee-inline-edit-select {
+		.ee-tabbable-text {
+			background-color: var(--ee-color-primary);
+			border-radius: var(--ee-border-radius-default);
+			color: var(--ee-text-on-primary);
+			min-height: auto;
+			padding: var(--ee-padding-tiny) var(--ee-padding-smaller);
+
+			svg {
+				g {
+					stroke: var(--ee-text-on-primary);
+				}
+			}
+		}
+	}
 }

@@ -3,4 +3,44 @@
 .ee-grid {
 	background: var(--ee-background-color);
 	padding: var(--ee-padding-small);
+
+	> div {
+		position: relative;
+
+		&:after {
+			background-color: var(--ee-border-color);
+			content: '';
+			position: absolute;
+
+			@include min700px {
+				height: 100%;
+				right: -11px;
+				width: 1px;
+			}
+		}
+
+		&:last-child {
+			&:after {
+				display: none;
+			}
+		}
+
+		&:nth-child(odd) {
+			&:after {
+				@include min400px {
+					height: 100%;
+					right: -11px;
+					width: 1px;
+				}
+			}
+		}
+
+		&:nth-child(4n) {
+			&:after {
+				@include min700px {
+					display: none;
+				}
+			}
+		}
+	}
 }
