@@ -12,6 +12,7 @@
 		"url": "git+https://github.com/eventespresso/barista.git"
 	},
 	"scripts": {
-		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe"
+		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
+		"update-deps": "npx ncu -p yarn -u"
 	}
 }

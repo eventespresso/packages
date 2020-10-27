@@ -11,11 +11,12 @@
 	"main:src": "src/index.ts",
 	"scripts": {
 		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
+		"update-deps": "npx ncu -p yarn -u",
 		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
 	},
 	"sideEffects": false,
 	"dependencies": {
-		"@wordpress/i18n": "^3.15.0"
+		"@wordpress/i18n": "^3.16.0"
 	},
 	"license": "GPL-3.0"
 }

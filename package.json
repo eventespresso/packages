@@ -23,6 +23,7 @@
 		"start": "node scripts/start.js",
 		"storybook": "yarn workspace @eventespresso/storybook storybook",
 		"test-unit": "node scripts/test.js",
+		"update-deps": "yarn workspaces run update-deps",
 		"test-unit:ci": "FORCE_COLOR=true CI=true yarn test-unit"
 	},
 	"workspaces": {
@@ -120,6 +121,7 @@
 		"lerna": "^3.22.1",
 		"mini-css-extract-plugin": "0.11.2",
 		"node-sass": "^4.14.1",
+		"npm-check": "^5.9.2",
 		"optimize-css-assets-webpack-plugin": "5.0.4",
 		"pnp-webpack-plugin": "1.6.4",
 		"postcss-flexbugs-fixes": "4.2.1",

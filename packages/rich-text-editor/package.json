@@ -17,6 +17,7 @@
 	"main:src": "src/index.ts",
 	"scripts": {
 		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
+		"update-deps": "npx ncu -p yarn -u",
 		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
 	},
 	"sideEffects": false,

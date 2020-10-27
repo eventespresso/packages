@@ -9,7 +9,8 @@
 	},
 	"scripts": {
 		"storybook": "start-storybook -p 9009",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"update-deps": "npx ncu -u"
 	},
 	"sideEffects": false
 }
