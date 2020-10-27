@@ -66,6 +66,8 @@
 	"dependencies": {
 		"classnames": "^2.2.6",
 		"ramda": "^0.27.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
 		"uuid": "^8.3.1"
 	},
 	"devDependencies": {
