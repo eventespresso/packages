@@ -28,7 +28,7 @@ const FilteredDatesProvider: React.FC = ({ children }) => {
 	const filteredEntityIds = useMemoStringify(getGuids(filteredEntities));
 
 	// Update Edtr state for isChained filter
-	const setVisibleDatetimeIds = useVisibleDatetimeIds()[1];
+	const [, setVisibleDatetimeIds] = useVisibleDatetimeIds();
 	useEffect(() => {
 		// update only when not sorting
 		if (!sortingEnabled) {

@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 
 import { usePrices } from '@eventespresso/edtr-services';
-import { useDataState } from '../data';
-import { useEdtrState } from '@eventespresso/edtr-services';
-
 import { getDefaultTaxes, sortByPriceOrderIdAsc, getGuids } from '@eventespresso/predicates';
+
+import usePricesPollInterval from './usePricesPollInterval';
+import { useDataState } from '../data';
 import usePriceToTpcModifier from './usePriceToTpcModifier';
 
 const useAddDefaultTaxes = (): VoidFunction => {
@@ -12,7 +12,7 @@ const useAddDefaultTaxes = (): VoidFunction => {
 	const defaultTaxPrices = getDefaultTaxes(allPrices);
 
 	const { prices, setPrices } = useDataState();
-	const { setPricesPollInterval } = useEdtrState();
+	const [, setPricesPollInterval] = usePricesPollInterval();
 
 	const convertPriceToTpcModifier = usePriceToTpcModifier();
 

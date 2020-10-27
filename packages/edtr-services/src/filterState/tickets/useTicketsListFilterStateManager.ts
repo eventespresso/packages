@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { DisplayStartOrEndDate, SortBy } from '../types';
 import { ticketsList } from '../../constants';
 import { useEntityListFilterStateManager } from '@eventespresso/services';
-import { useEdtrState } from '../../hooks';
+import { useVisibleDatetimeIds } from '../../hooks';
 import { useSessionStorageReducer } from '@eventespresso/storage';
 import { TicketsSales, TicketsStatus } from '@eventespresso/predicates';
 
@@ -26,7 +26,7 @@ const useTicketsListFilterStateManager = (): FSM => {
 
 	const [visibleDatesStr, setVisibleDatesStr] = useState('');
 
-	const { visibleDatetimeIds } = useEdtrState();
+	const [visibleDatetimeIds] = useVisibleDatetimeIds();
 
 	const entityFilterState = useEntityListFilterStateManager<SortBy>('order', ticketsList);
 

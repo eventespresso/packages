@@ -12,7 +12,7 @@ const DefaultPricesInfo: React.FC = () => {
 	const adminUrl = config.siteUrl.admin;
 	const href = adminUrl + '/admin.php?page=pricing';
 
-	const setPricesPollInterval = usePricesPollInterval()[1];
+	const [, setPricesPollInterval] = usePricesPollInterval();
 
 	const { prices } = useDataState();
 	const hasDefaultPrice = any(isDefault, prices);

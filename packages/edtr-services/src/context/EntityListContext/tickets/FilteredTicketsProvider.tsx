@@ -29,7 +29,7 @@ const FilteredTicketsProvider: React.FC = ({ children }) => {
 	const filteredEntityIds = useMemoStringify(getGuids(filteredEntities));
 
 	// Update Edtr state for bulk edit.
-	const setVisibleTicketIds = useVisibleTicketIds()[1];
+	const [, setVisibleTicketIds] = useVisibleTicketIds();
 	useEffect(() => {
 		// update only when not sorting
 		if (!sortingEnabled) {
