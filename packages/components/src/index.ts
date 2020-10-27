@@ -56,6 +56,7 @@ export * from './SwitchInput';
 export * from './TabbableText';
 export * from './Tag';
 export * from './TimezoneTimeInfo';
+export * from './Tooltip';
 export * from './withLabel';
 export * from './withTooltip';
 

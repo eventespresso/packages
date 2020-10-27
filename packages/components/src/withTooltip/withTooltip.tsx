@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Tooltip, TooltipProps } from '@eventespresso/adapters';
+import { Tooltip } from '../';
+import type { TooltipProps } from '@eventespresso/adapters';
 import type { withTooltipProps } from './types';
 import type { ForwardRefComponent } from '../types';
 
