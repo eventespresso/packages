@@ -1,5 +1,1 @@
-export enum Key {
-	Enter = 'Enter',
-	Escape = 'Escape',
-	Tab = 'Tab',
-}
+export type Key = 'Enter' | 'Escape' | 'Tab';
