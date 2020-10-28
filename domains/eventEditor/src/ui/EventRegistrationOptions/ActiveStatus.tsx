@@ -1,13 +1,12 @@
-import React, { useCallback } from 'react';
+import React /* , { useCallback } */ from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { InlineEditSelect } from '@eventespresso/components';
-import { objectToSelectOptions } from '@eventespresso/utils';
-import { useEvent } from '@eventespresso/edtr-services';
+// import { objectToSelectOptions } from '@eventespresso/utils';
+// import { useEvent } from '@eventespresso/edtr-services';
 
 import GridItem from './GridItem';
 
-const status = {
+/* const status = {
 	isActive: __('Active'),
 	isCancelled: __('Cancelled'),
 	isExpired: __('Expired'),
@@ -15,28 +14,20 @@ const status = {
 	isPostponed: __('Postponed'),
 	isSoldOut: __('SoldOut'),
 	isUpcoming: __('Upcoming'),
-};
+}; */
 
-const options = objectToSelectOptions(status);
+// const options = objectToSelectOptions(status);
 
 const ActiveStatus: React.FC = () => {
-	const event = useEvent();
+	/* const event = useEvent();
 
 	const onChange = useCallback(() => {
 		console.log({ event });
-	}, [event]);
+	}, [event]); */
 
 	const id = 'ee-event-registration-active-status';
 
-	return (
-		<GridItem
-			id={id}
-			input={
-				<InlineEditSelect aria-describedby={id} onChange={onChange} options={options} value={'isUpcoming'} />
-			}
-			label={__('Active Status')}
-		/>
-	);
+	return <GridItem id={id} input={null} label={__('Active Status')} />;
 };
 
 export default ActiveStatus;
