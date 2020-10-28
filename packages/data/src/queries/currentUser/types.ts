@@ -1,7 +1,8 @@
 import type { EntityQueryArgs } from '../types';
-import type { Entity, EntityEdge } from '../../types';
+import type { EntityEdge } from '../../types';
 
-export interface User extends Entity {
+export interface User {
+	id: string;
 	description: string;
 	email: string;
 	/* EE capabilities for the user */
@@ -13,6 +14,7 @@ export interface User extends Entity {
 	lastName: string;
 	locale: string;
 	username: string;
+	__typename?: string;
 }
 
 export interface Viewer {

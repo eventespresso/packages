@@ -1,22 +1,10 @@
 import { useMemo } from 'react';
-import {
-	Currency,
-	DateTimeFormats,
-	DateTimeFormatsProps,
-	Locale,
-	LocaleProps,
-	SiteUrl,
-	SiteUrlProps,
-	Timezone,
-	TimezoneProps,
-	ConfigDataProps,
-} from './';
-import { ApiDomData, ConfigDomData } from '../types';
-import { useMemoStringify } from '@eventespresso/hooks';
+import { Currency, DateTimeFormats, Locale, LocaleProps, SiteUrl, Timezone, ConfigDataProps } from './';
+
+const api = window?.eventEspressoData?.api;
+const config = window?.eventEspressoData?.config;
 
 export const useConfigData = (): ConfigDataProps => {
-	const api: ApiDomData = useMemoStringify(window?.eventEspressoData?.api);
-	const config: ConfigDomData = useMemoStringify(window?.eventEspressoData?.config);
 	return useMemo(
 		() => ({
 			brandName: config?.coreDomain?.brandName || 'Event Espresso',
@@ -26,7 +14,7 @@ export const useConfigData = (): ConfigDataProps => {
 			dateTimeFormats: DateTimeFormats({
 				dateFormat: config?.generalSettings?.dateFormat,
 				timeFormat: config?.generalSettings?.timeFormat,
-			} as DateTimeFormatsProps),
+			}),
 			locale: Locale({
 				site: config?.locale?.site || '',
 				siteTimezone: config?.locale?.siteTimezone || {},
@@ -37,27 +25,14 @@ export const useConfigData = (): ConfigDataProps => {
 			siteUrl: SiteUrl({
 				admin: config?.siteUrls?.admin || '',
 				home: config?.siteUrls?.home || '',
-			} as SiteUrlProps),
+			}),
 			timezone: Timezone({
 				city: config?.locale?.siteTimezone?.city || '',
 				name: config?.locale?.siteTimezone?.name || '',
 				offset: config?.locale?.siteTimezone?.offset || 0,
-			} as TimezoneProps),
+			}),
 			wp_debug: config?.wp_debug || false,
 		}),
-		[
-			api?.restApiNonce,
-			config?.coreDomain?.brandName,
-			config?.currentUser,
-			config?.generalSettings,
-			config?.locale?.site,
-			config?.locale?.siteTimezone,
-			config?.locale?.user,
-			config?.siteCurrency,
-			config?.siteUrls?.admin,
-			config?.siteUrls?.home,
-			config?.sitePermissions,
-			config?.wp_debug,
-		]
+		[]
 	);
 };

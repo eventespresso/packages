@@ -1,6 +1,6 @@
 import React, { createContext, useMemo } from 'react';
 
-import { CurrentUser, DateTimeFormats, useConfigData, ConfigDataProps } from '../config';
+import { DateTimeFormats, useConfigData, ConfigDataProps } from '../config';
 import { useCurrentUser, useGeneralSettings } from '@eventespresso/data';
 
 const ConfigContext = createContext<ConfigDataProps | null>(null);
@@ -15,7 +15,7 @@ const ConfigProvider: React.FC = ({ children }) => {
 	const config: ConfigDataProps = useMemo(
 		() => ({
 			...ConfigData,
-			currentUser: currentUser && CurrentUser(currentUser),
+			currentUser,
 			dateTimeFormats: generalSettings && DateTimeFormats(generalSettings),
 		}),
 		[ConfigData, currentUser, generalSettings]

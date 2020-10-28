@@ -9,15 +9,15 @@ export const request: CacheQueryOptions = {
 };
 
 export const currentUser: User = {
+	id: 'dXNlcjox',
 	description: null,
 	email: 'user@eventespresso.com',
 	firstName: null,
-	id: 'dXNlcjox',
+	lastName: null,
+	locale: 'en_US',
 	name: 'admin',
 	nicename: 'admin',
 	nickname: 'admin',
-	lastName: null,
-	locale: 'en_US',
 	username: 'admin',
 	__typename: 'User',
 };

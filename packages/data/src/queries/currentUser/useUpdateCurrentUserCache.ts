@@ -1,6 +1,6 @@
 import type { CacheUpdaterFn, WriteQueryOptions } from '../types';
 import useUpdateCache from '../useUpdateCache';
-import type { Viewer } from '@eventespresso/services';
+import type { Viewer } from './types';
 
 const useUpdateCurrentUserCache = (
 	writeQueryOptions: WriteQueryOptions<Viewer> = undefined

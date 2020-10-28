@@ -1,5 +1,5 @@
 import { WriteQueryOptions, useApolloClient } from '../../../';
-import type { Viewer } from '@eventespresso/services';
+import type { Viewer } from '../types';
 
 import useCurrentUserQueryOptions from '../useCurrentUserQueryOptions';
 import { currentUser } from './data';
