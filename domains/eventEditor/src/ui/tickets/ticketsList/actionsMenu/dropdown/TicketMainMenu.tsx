@@ -20,11 +20,13 @@ const TicketMainMenu: React.FC<TicketMainMenuProps> = ({ ticket }) => {
 		: __(
 				'Are you sure you want to move this ticket to the trash? You can "untrash" this ticket later if you need to.'
 		  );
+
 	const { confirmationDialog, onOpen } = useConfirmationDialog({
 		message,
 		title,
 		onConfirm: trashTicket,
 	});
+
 	const toggleProps: DropdownToggleProps = useMemoStringify({
 		tooltip: __('ticket main menu'),
 		tooltipProps: { placement: 'left' },

@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
-import { Tooltip } from '@eventespresso/adapters';
 import { isEnterKey } from '@eventespresso/utils';
+import { Tooltip } from '../';
 import type { TabbableTextProps } from './types';
 
 import './style.scss';

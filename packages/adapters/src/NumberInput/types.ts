@@ -5,10 +5,11 @@ import type {
 	PseudoBoxProps as ChakraPseudoBoxProps,
 } from '@chakra-ui/core';
 
-export interface NumberInputProps extends ChakraNumberInputProps {
+export interface NumberInputProps
+	extends Pick<ChakraNumberInputProps, 'aria-valuenow' | 'className' | 'id' | 'onChange' | 'value'> {
+	decrementStepperProps?: ChakraPseudoBoxProps;
 	inputFieldProps?: ChakraInputProps;
 	inputStepperProps?: ChakraFlexProps;
-	showStepper?: boolean;
 	incrementStepperProps?: ChakraPseudoBoxProps;
-	decrementStepperProps?: ChakraPseudoBoxProps;
+	showStepper?: boolean;
 }

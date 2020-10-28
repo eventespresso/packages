@@ -5,7 +5,7 @@ import { InputGroup, InputLeftAddon, InputRightAddon } from '@chakra-ui/core';
 
 import type { InputWithLabelProps } from './types';
 
-const InputWithLabel: React.FC<InputWithLabelProps> = ({ children, leftLabel, rightLabel, ...props }) => {
+export const InputWithLabel: React.FC<InputWithLabelProps> = ({ children, leftLabel, rightLabel, ...props }) => {
 	const className = classNames(
 		props.className,
 		leftLabel && 'ee-input-with-label__left-label',
@@ -22,5 +22,3 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({ children, leftLabel, ri
 		</InputGroup>
 	);
 };
-
-export default InputWithLabel;

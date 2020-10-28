@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Tooltip } from '@eventespresso/adapters';
+import { Tooltip } from '../../';
 import type { LinkProps } from '../types';
 
 import '../style.scss';

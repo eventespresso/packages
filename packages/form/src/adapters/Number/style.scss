@@ -1,6 +1,11 @@
+@import '~@eventespresso/styles/src';
+
 .ee-number-input-wrapper {
 	input {
 		z-index: 0;
+
+		@extend .ee-input-base;
+		@extend .ee-input;
 
 		&:focus {
 			z-index: 0;

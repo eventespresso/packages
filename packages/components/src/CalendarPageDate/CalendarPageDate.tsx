@@ -1,8 +1,7 @@
 import React from 'react';
 import { parseISO, isValid } from 'date-fns';
-import { __ } from '@eventespresso/i18n';
 
-import { Tooltip } from '@eventespresso/adapters';
+import { __ } from '@eventespresso/i18n';
 import { useTimeZoneTime } from '@eventespresso/services';
 import {
 	DAY_ONLY_SHORT_FORMAT,
@@ -10,6 +9,7 @@ import {
 	LOCALIZED_DATE_AND_TIME_FULL_FORMAT,
 } from '@eventespresso/constants';
 
+import { Tooltip } from '../';
 import { CalendarPageDateProps, CalendarPageSize } from './types';
 import './style.scss';
 

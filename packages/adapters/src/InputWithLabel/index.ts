@@ -1,3 +1,2 @@
-export { default as InputWithLabel } from './InputWithLabel';
-
+export * from './InputWithLabel';
 export * from './types';
