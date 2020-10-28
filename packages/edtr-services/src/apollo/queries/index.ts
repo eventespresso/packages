@@ -36,4 +36,6 @@ export * from './prices';
 
 export * from './priceTypes';
 
+export * from './users';
+
 export * from './types';

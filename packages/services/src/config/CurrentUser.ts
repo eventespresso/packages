@@ -1,10 +1,9 @@
-import type { CurrentUserProps } from './types';
+import type { User } from '@eventespresso/data';
 
-export const CurrentUser = (userData: CurrentUserProps): CurrentUserProps => {
+export const CurrentUser = (userData: User): User => {
 	return {
 		id: userData?.id,
 		capabilities: userData?.capabilities,
-		databaseId: userData?.databaseId,
 		description: userData?.description,
 		email: userData?.email,
 		firstName: userData?.firstName,

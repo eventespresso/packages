@@ -1,4 +1,5 @@
 export * from './queries';
+export * from './types';
 
 export { default as useCurrentUserQueryOptions } from './useCurrentUserQueryOptions';
 

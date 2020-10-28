@@ -1,8 +1,6 @@
 import { useMemo } from 'react';
 import {
 	Currency,
-	CurrencyProps,
-	CurrentUserProps,
 	DateTimeFormats,
 	DateTimeFormatsProps,
 	Locale,
@@ -22,8 +20,8 @@ export const useConfigData = (): ConfigDataProps => {
 	return useMemo(
 		() => ({
 			brandName: config?.coreDomain?.brandName || 'Event Espresso',
-			currency: Currency(config?.siteCurrency as CurrencyProps),
-			currentUser: config?.currentUser as CurrentUserProps,
+			currency: Currency(config?.siteCurrency),
+			currentUser: config?.currentUser,
 			generalSettings: config?.generalSettings,
 			dateTimeFormats: DateTimeFormats({
 				dateFormat: config?.generalSettings?.dateFormat,

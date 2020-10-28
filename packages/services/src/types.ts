@@ -1,5 +1,7 @@
+import type { User } from '@eventespresso/data';
 import type { AnyObject } from '@eventespresso/utils';
-import type { CurrencyProps, CurrentUserProps, GeneralSettings, SiteUrlProps } from './config/types';
+
+import type { CurrencyProps, GeneralSettings, SiteUrlProps } from './config/types';
 import type { Capability } from './permissions';
 
 export interface EventEspressoDomData {
@@ -21,7 +23,7 @@ export type ApiDomData = {
 
 export type ConfigDomData = {
 	coreDomain: CoreDomainDomData;
-	currentUser: CurrentUserProps;
+	currentUser: User;
 	generalSettings: GeneralSettings;
 	locale: LocaleDomData;
 	siteCurrency: CurrencyProps;

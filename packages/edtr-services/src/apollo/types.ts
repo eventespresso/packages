@@ -4,8 +4,8 @@ import type {
 	Trashable,
 	DatetimesList as DatetimeList,
 	TicketsList as TicketList,
+	User,
 } from '@eventespresso/data';
-import { CurrentUserProps } from '@eventespresso/services';
 
 export interface Event extends Entity {
 	allowDonations: boolean;
@@ -31,7 +31,7 @@ export interface Event extends Entity {
 	status: string;
 	timezoneString: string;
 	visibleOn: string;
-	wpUser?: Partial<CurrentUserProps>;
+	wpUser?: Partial<User>;
 }
 
 export interface EventData {

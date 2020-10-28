@@ -1,4 +1,5 @@
-import type { CurrentUserProps, GeneralSettings, RelationalData } from '@eventespresso/services';
+import type { User } from '@eventespresso/data';
+import type { GeneralSettings, RelationalData } from '@eventespresso/services';
 import type { DatetimeEdge, TicketEdge, PriceEdge, PriceTypeEdge, Event } from './apollo';
 
 export interface EventEditorData {
@@ -12,7 +13,7 @@ export interface EventEditorData {
 
 export interface EditorData {
 	eventEditor: EventEditorData;
-	currentUser?: CurrentUserProps;
+	currentUser?: User;
 	generalSettings?: GeneralSettings;
 }
 

@@ -1,6 +1,6 @@
 import { GraphQLError } from 'graphql';
 
-import type { Viewer, CurrentUserProps } from '@eventespresso/services';
+import type { Viewer, User } from '@eventespresso/data';
 import type { CacheQueryOptions } from '../../types';
 import { GET_CURRENT_USER } from '..';
 
@@ -8,7 +8,7 @@ export const request: CacheQueryOptions = {
 	query: GET_CURRENT_USER,
 };
 
-export const currentUser: CurrentUserProps = {
+export const currentUser: User = {
 	description: null,
 	email: 'user@eventespresso.com',
 	firstName: null,
@@ -18,7 +18,6 @@ export const currentUser: CurrentUserProps = {
 	nickname: 'admin',
 	lastName: null,
 	locale: 'en_US',
-	databaseId: 1,
 	username: 'admin',
 	__typename: 'User',
 };

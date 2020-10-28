@@ -1,3 +1,5 @@
+import type { User } from '@eventespresso/data';
+
 import type { Capability } from '../permissions';
 
 export type JsDataProps = {
@@ -28,7 +30,7 @@ type JsDataTimezoneProps = {
 export type ConfigDataProps = {
 	brandName: string;
 	currency: CurrencyProps;
-	currentUser: CurrentUserProps;
+	currentUser: User;
 	dateTimeFormats: DateTimeFormatsProps;
 	generalSettings: GeneralSettings;
 	locale: LocaleProps;
@@ -49,27 +51,6 @@ export interface CurrencyProps {
 	decimalMark: string;
 	thousandsSeparator: string;
 	subunits?: number;
-}
-
-export interface Viewer {
-	viewer: CurrentUserProps;
-}
-
-export interface CurrentUserProps {
-	id: string;
-	databaseId: number;
-	description: string;
-	email: string;
-	/* EE capabilities for the user */
-	capabilities?: Array<Capability>;
-	firstName: string;
-	name: string;
-	nicename: string;
-	nickname: string;
-	lastName: string;
-	locale: string;
-	username: string;
-	__typename?: string;
 }
 
 export interface GeneralSettingsData {
