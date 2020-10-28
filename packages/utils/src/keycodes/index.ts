@@ -1,7 +1,9 @@
 import { Key } from './types';
 
-export const isEnterKey = (e: React.KeyboardEvent): boolean => e.key === Key.Enter;
+const eventHasKey = (key: Key) => (e: React.KeyboardEvent): boolean => e?.key === key;
 
-export const isEscapeKey = (e: React.KeyboardEvent): boolean => e.key === Key.Escape;
+export const isEnterKey = eventHasKey(Key.Enter);
 
-export const isTabKey = (e: React.KeyboardEvent): boolean => e.key === Key.Tab;
+export const isEscapeKey = eventHasKey(Key.Escape);
+
+export const isTabKey = eventHasKey(Key.Tab);
