@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { EditableInput as ChakraEditableInput } from '@chakra-ui/core';
 
 import { isEnterKey, isEscapeKey } from '@eventespresso/utils';
@@ -15,10 +15,8 @@ const insertStrAt = (str: string, subStr: string, pos: number): string => {
 const InlineEditInput: React.FC<InlineEditInputProps> = ({ inputType, onCancel, setValue }) => {
 	const className = 'ee-input-base ee-input ee-inline-edit--editing';
 
-	if (inputType === 'textarea') {
-		// Since Chakra has no editable textarea yet
-		// we will use this hack
-		const textareaProps: PseudoBoxProps = {
+	const textareaProps: PseudoBoxProps = useMemo(
+		() => ({
 			as: 'textarea',
 			className: 'ee-input-base ee-textarea ee-inline-edit--editing',
 			// pass our own onKeyDown handler for a11y
@@ -34,8 +32,11 @@ const InlineEditInput: React.FC<InlineEditInputProps> = ({ inputType, onCancel, 
 					onCancel();
 				}
 			},
-		};
+		}),
+		[onCancel, setValue]
+	);
 
+	if (inputType === 'textarea') {
 		// @ts-ignore
 		return <ChakraEditableInput {...textareaProps} variant='unstyled' />;
 	}
