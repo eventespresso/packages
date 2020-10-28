@@ -4,7 +4,6 @@ export const GET_CURRENT_USER: any = gql`
 	query GET_CURRENT_USER {
 		viewer {
 			id
-			databaseId
 			description
 			email
 			firstName
