@@ -47,6 +47,7 @@ export * from './Modal';
 export * from './NewEntity';
 export * from './PercentSign';
 export * from './Popover';
+export * from './PopoverForm';
 export * from './PriceTypeSign';
 export * from './RichTextEditorModal';
 export * from './SearchInput';
