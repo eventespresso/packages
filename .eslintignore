@@ -7,3 +7,6 @@
 **/public/**
 !.eslintrc.js
 /packages/adapters/src/TextFit/**
+/packages/react-exit-modal-typeform/**
+/packages/icons/scripts/**
+/packages/styles/bin/**

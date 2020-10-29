@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 // import global types.
-import '../../../types';
+import '../../../packages/types';
 
 import './exitSurvey';
 import './style.css';

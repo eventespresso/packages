@@ -1,5 +1,5 @@
 import '../../../packages/edtr-services/src/publicPath';
 // import global types.
-import '../../../types';
+import '../../../packages/types';
 
 import './ui';
