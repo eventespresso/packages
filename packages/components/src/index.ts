@@ -45,6 +45,7 @@ export * from './LoadingNotice';
 export * from './MediumCalendarDate';
 export * from './Modal';
 export * from './NewEntity';
+export * from './Pagination';
 export * from './PercentSign';
 export * from './Popover';
 export * from './PopoverForm';

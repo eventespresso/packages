@@ -8,6 +8,4 @@ export { default as RegistrationsLink } from './RegistrationsLink';
 
 export * from './filterBar';
 
-export * from './pagination';
-
 export * from './types';

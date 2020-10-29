@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Select, SelectProps } from '../Select';
-import type { PerPageProps } from './types';
+import { Select, SelectProps } from '@eventespresso/adapters';
+import { PerPageProps } from './types';
+
 import './style.scss';
 
 const calculatePageNumber = (newPerPage: number, prevPerPage: number, total: number): number => {

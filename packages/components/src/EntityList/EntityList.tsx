@@ -4,9 +4,8 @@ import { __ } from '@eventespresso/i18n';
 import { useStatus } from '@eventespresso/services';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
 
-import { Divider, EmptyState, ErrorIndicator, Heading, LoadingNotice } from '../..';
+import { Divider, EmptyState, ErrorIndicator, Heading, LoadingNotice, Pagination } from '../..';
 import EntityListFilterBar from './withValidFilterState';
-import { EntityPagination } from './pagination';
 import type { EntityListProps } from './types';
 import './style.scss';
 
@@ -56,7 +55,17 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 			{entityList}
 			{
 				// disable pogination when sorting
-				!filterState.sortingEnabled && <EntityPagination filterState={filterState} />
+				!filterState.sortingEnabled && (
+					<Pagination
+						defaultPerPage={6}
+						onChangePageNumber={filterState.setPageNumber}
+						onChangePerPage={filterState.setPerPage}
+						pageNumber={filterState.pageNumber}
+						perPage={filterState.perPage}
+						showPerPageChanger
+						total={filterState.total}
+					/>
+				)
 			}
 			<div className={'ee-entity-list__footer'}>{footer}</div>
 			<Divider type='dashed' />

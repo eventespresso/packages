@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { CalendarOutlined } from '@eventespresso/icons';
-import { Pagination } from '@eventespresso/adapters';
+import { Pagination } from '@eventespresso/components';
 import { ButtonRow, CollapsibleLegend } from '@eventespresso/components';
 import { usePagination } from '@eventespresso/hooks';
 import { paginateEntities } from '@eventespresso/utils';

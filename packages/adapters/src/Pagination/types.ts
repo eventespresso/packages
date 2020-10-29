@@ -1,27 +1,15 @@
 import type React from 'react';
+import { PaginationProps as RcPaginationProps } from 'rc-pagination';
 
-export interface PaginationProps extends PerPageProps {
+export interface PaginationProps
+	extends Pick<RcPaginationProps, 'current' | 'defaultCurrent' | 'itemRender' | 'onChange' | 'pageSize' | 'total'> {
 	defaultPageNumber?: number;
 	hideOnSinglePage?: boolean;
 	locale?: Locale;
-	onChangePageNumber: (pageNumber: number, perPage: number) => void;
-	showPerPageChanger: boolean;
+	perPageChanger: React.ReactNode;
 	showTotal?: (total: number, range: [number, number]) => React.ReactNode;
 }
 
-export type PerPageOptions = {
-	[key: number]: string; // per page value (number) and translated label (string)
-};
-
-export interface PerPageProps {
-	className?: string;
-	defaultPerPage: number;
-	onChangePerPage: (newPageNumber: number, newPerPage: number) => void;
-	pageNumber: number;
-	perPage: number;
-	perPageOptions?: PerPageOptions;
-	total: number;
-}
 export interface Locale {
 	next_page: string;
 	prev_page: string;
