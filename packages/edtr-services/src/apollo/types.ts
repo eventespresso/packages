@@ -31,7 +31,7 @@ export interface Event extends Entity {
 	status: string;
 	timezoneString: string;
 	visibleOn: string;
-	wpUser?: Partial<User>;
+	manager?: Pick<User, 'id' | 'name'>;
 }
 
 export interface EventData {

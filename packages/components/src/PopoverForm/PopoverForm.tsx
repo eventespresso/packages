@@ -60,7 +60,12 @@ const PopoverForm: React.FC<PopoverFormProps> = ({
 			isOpen={isOpen}
 			onClose={onClosePopover}
 			trigger={
-				<Button buttonText={triggerText} {...triggerProps} className={triggerClassName} onClick={onOpen} />
+				<Button
+					buttonText={triggerText || title}
+					{...triggerProps}
+					className={triggerClassName}
+					onClick={onOpen}
+				/>
 			}
 		/>
 	);

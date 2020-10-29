@@ -2,40 +2,37 @@ import React, { useCallback, useMemo, useState } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { PopoverForm, SelectInput } from '@eventespresso/components';
-import { useEvent, useEventManagers } from '@eventespresso/edtr-services';
+import { useEvent, useEventManagers, useEventMutator } from '@eventespresso/edtr-services';
 import { entityListToSelectOptions } from '@eventespresso/utils';
 
 import GridItem from './GridItem';
-import { find, propEq } from 'ramda';
 
 const EventManager: React.FC = () => {
 	const event = useEvent();
 	const eventManagers = useEventManagers();
-	const [value, setValue] = useState(event?.wpUser?.id);
+	const [newManagerId, setNewManagerId] = useState('');
+	const { updateEntity: updateEvent } = useEventMutator(event?.id);
 
 	const onChangeValue = useCallback((newValue: string): void => {
-		console.log({ newValue });
-		setValue(newValue);
+		setNewManagerId(newValue);
 	}, []);
 
 	const onSubmit = useCallback(() => {
-		console.log({ value });
-	}, [value]);
+		updateEvent({ manager: newManagerId });
+	}, [newManagerId, updateEvent]);
 
 	const onClose = useCallback(() => {
 		// reset value
-		setValue(event?.wpUser?.id);
-	}, [event?.wpUser?.id]);
+		setNewManagerId(event?.manager?.id);
+	}, [event?.manager?.id]);
 
 	const id = 'ee-event-registration-manager';
 
 	const options = useMemo(() => entityListToSelectOptions(eventManagers), [eventManagers]);
 
-	const content = <SelectInput onChangeValue={onChangeValue} value={value} options={options} />;
-
-	const selectedManagerName = useMemo(() => {
-		return find<typeof eventManagers[0]>(propEq('id', value), eventManagers)?.name;
-	}, [eventManagers, value]);
+	const content = (
+		<SelectInput onChangeValue={onChangeValue} value={newManagerId || event?.manager?.id} options={options} />
+	);
 
 	return (
 		<GridItem
@@ -43,7 +40,7 @@ const EventManager: React.FC = () => {
 			input={
 				<PopoverForm
 					title={__('Event Manager')}
-					triggerText={selectedManagerName}
+					triggerText={event?.manager?.name}
 					content={content}
 					onSubmit={onSubmit}
 					onClose={onClose}

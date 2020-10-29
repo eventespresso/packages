@@ -33,7 +33,7 @@ export const nodes: Event[] = [
 		status: 'publish',
 		timezoneString: '',
 		visibleOn: 'October 21, 2020 1:03 pm',
-		wpUser: {
+		manager: {
 			id: 'test',
 			name: 'Test',
 		},

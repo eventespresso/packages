@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
 
-import { useCacheQuery, User, UsersList, QueryHookOptions } from '@eventespresso/data';
+import { useCacheQuery, UsersList, QueryHookOptions } from '@eventespresso/data';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { GET_EVENT_MANAGERS } from './queries';
+import { Event } from '../../types';
 
-const useEventManagers = (): Array<Partial<User>> => {
+const useEventManagers = (): Array<Event['manager']> => {
 	const options = useMemo<QueryHookOptions>(
 		() => ({
 			query: GET_EVENT_MANAGERS,

@@ -28,7 +28,7 @@ export const EVENT_ATTRIBUTES: any = gql`
 		status
 		timezoneString
 		visibleOn
-		wpUser {
+		manager {
 			id
 			name
 		}

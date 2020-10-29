@@ -9,6 +9,7 @@ export interface EventBaseInput {
 	displayTicketSelector?: boolean;
 	allowDonations?: boolean;
 	altRegPage?: string;
+	manager?: string;
 	memberOnly?: boolean;
 	name?: string;
 	order?: number;
@@ -16,7 +17,6 @@ export interface EventBaseInput {
 	shortDescription?: string;
 	timezonestring?: string;
 	visibleOn?: string;
-	wpUser?: number;
 }
 
 export interface UpdateEventInput extends EventBaseInput {
