@@ -1,5 +1,4 @@
-'use strict';
-
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
 const path = require('path');
 const paths = require('./paths');
@@ -15,11 +14,11 @@ if (!NODE_ENV) {
 // https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
 const dotenvFiles = [
 	`${paths.dotenv}.${NODE_ENV}.local`,
-	`${paths.dotenv}.${NODE_ENV}`,
 	// Don't include `.env.local` for `test` environment
 	// since normally you expect tests to produce the same
 	// results for everyone
 	NODE_ENV !== 'test' && `${paths.dotenv}.local`,
+	`${paths.dotenv}.${NODE_ENV}`,
 	paths.dotenv,
 ].filter(Boolean);
 
@@ -54,13 +53,13 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
 	.map((folder) => path.resolve(appDirectory, folder))
 	.join(path.delimiter);
 
-// Grab NODE_ENV and FF_* environment variables and prepare them to be
+// Grab NODE_ENV and REACT_APP_* environment variables and prepare them to be
 // injected into the application via DefinePlugin in webpack configuration.
-const FEATURE_FLAGS = /^FF_/i;
+const REACT_APP = /^REACT_APP_/i;
 
 function getClientEnvironment(publicUrl) {
 	const raw = Object.keys(process.env)
-		.filter((key) => FEATURE_FLAGS.test(key))
+		.filter((key) => REACT_APP.test(key))
 		.reduce(
 			(env, key) => {
 				env[key] = process.env[key];
@@ -83,6 +82,11 @@ function getClientEnvironment(publicUrl) {
 				WDS_SOCKET_HOST: process.env.WDS_SOCKET_HOST,
 				WDS_SOCKET_PATH: process.env.WDS_SOCKET_PATH,
 				WDS_SOCKET_PORT: process.env.WDS_SOCKET_PORT,
+				// Whether or not react-refresh is enabled.
+				// react-refresh is not 100% stable at this time,
+				// which is why it's disabled by default.
+				// It is defined here so it is available in the webpackHotDevClient.
+				FAST_REFRESH: process.env.FAST_REFRESH !== 'false',
 			}
 		);
 	// Stringify all values so we can feed into webpack DefinePlugin
