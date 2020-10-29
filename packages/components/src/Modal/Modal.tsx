@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 
 import { Modal as ModalAdapter, ModalCloseButton } from '@eventespresso/adapters';
@@ -24,6 +24,21 @@ export const Modal: React.FC<ModalProps> = ({
 	withBorder,
 	...props
 }) => {
+	useEffect(() => {
+		if (isOpen) {
+			console.log('Modal mounted');
+			document.body.classList.add('ee-modal--open');
+		}
+	}, [isOpen]);
+
+	const onCloseHandler = useCallback(
+		(e) => {
+			document.body.classList.remove('ee-modal--open');
+			onClose(e);
+		},
+		[onClose]
+	);
+
 	if (destroyOnClose && !isOpen) {
 		return null;
 	}
@@ -67,7 +82,7 @@ export const Modal: React.FC<ModalProps> = ({
 			headerClassName={headerClassName}
 			isClosable={isClosable}
 			isOpen={isOpen}
-			onClose={onClose}
+			onClose={onCloseHandler}
 			scrollBehavior={scrollBehavior}
 			title={title}
 		>

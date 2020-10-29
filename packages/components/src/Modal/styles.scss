@@ -1,6 +1,10 @@
 @import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
 .ee-modal {
+	&--open {
+		overflow-y: overlay !important;
+	}
+
 	.ee-modal {
 		&__header {
 			&.ee-modal__header {
