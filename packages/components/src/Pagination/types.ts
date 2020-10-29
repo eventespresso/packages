@@ -1,6 +1,7 @@
 import type React from 'react';
 
 export interface PaginationProps extends PerPageProps {
+	alignment?: 'left' | 'right';
 	defaultPageNumber?: number;
 	hideOnSinglePage?: boolean;
 	locale?: Locale;

@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import { Pagination as PaginationAdapter } from '@eventespresso/adapters';
 import { DEFAULT_LOCALE, DEFAULT_PER_PAGE_OPTIONS } from './constants';
@@ -9,6 +10,7 @@ import type { PaginationProps } from './types';
 import './style.scss';
 
 export const Pagination: React.FC<PaginationProps> = ({
+	alignment,
 	defaultPageNumber = 1,
 	defaultPerPage,
 	hideOnSinglePage = true,
@@ -21,6 +23,8 @@ export const Pagination: React.FC<PaginationProps> = ({
 	showPerPageChanger,
 	total,
 }) => {
+	const className = classNames('ee-pagination', alignment && `ee-pagination--align-${alignment}`);
+
 	const perPageChanger = showPerPageChanger && (
 		<PerPage
 			defaultPerPage={defaultPerPage}
@@ -33,7 +37,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 	);
 
 	return (
-		<div className='ee-pagination'>
+		<div className={className}>
 			<PaginationAdapter
 				current={pageNumber}
 				defaultCurrent={defaultPageNumber}

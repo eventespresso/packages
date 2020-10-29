@@ -57,6 +57,7 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 				// disable pogination when sorting
 				!filterState.sortingEnabled && (
 					<Pagination
+						alignment='right'
 						defaultPerPage={6}
 						onChangePageNumber={filterState.setPageNumber}
 						onChangePerPage={filterState.setPerPage}

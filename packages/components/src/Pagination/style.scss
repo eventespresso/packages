@@ -9,6 +9,12 @@ $border-radius: var(--ee-border-radius-default);
 	margin: var(--ee-margin-small) 0;
 	padding: var(--ee-padding-small);
 
+	&--align {
+		&-right {
+			justify-content: flex-end;
+		}
+	}
+
 	@include max782px {
 		padding: var(--ee-padding-smaller);
 	}
