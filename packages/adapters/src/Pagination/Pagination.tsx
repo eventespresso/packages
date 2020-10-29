@@ -8,13 +8,13 @@ import { ChevronLeft, ChevronRight } from '@eventespresso/icons';
 import type { PaginationProps } from './types';
 
 export const Pagination: React.FC<PaginationProps> = ({
-	current,
 	defaultCurrent = 1,
 	hideOnSinglePage = true,
 	itemRender,
 	locale,
 	onChange,
-	pageSize,
+	pageNumber,
+	perPage,
 	perPageChanger,
 	total,
 }) => {
@@ -22,14 +22,14 @@ export const Pagination: React.FC<PaginationProps> = ({
 		<>
 			<RcPagination
 				aria-label={__('pagination')}
-				current={current}
+				current={pageNumber}
 				defaultCurrent={defaultCurrent}
 				hideOnSinglePage={hideOnSinglePage}
 				itemRender={itemRender}
 				locale={locale}
 				nextIcon={<ChevronRight size='small' />}
 				onChange={onChange}
-				pageSize={pageSize}
+				pageSize={perPage}
 				prevIcon={<ChevronLeft size='small' />}
 				showSizeChanger={false}
 				total={total}

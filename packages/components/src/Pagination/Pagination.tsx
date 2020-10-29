@@ -39,13 +39,13 @@ export const Pagination: React.FC<PaginationProps> = ({
 	return (
 		<div className={className}>
 			<PaginationAdapter
-				current={pageNumber}
+				pageNumber={pageNumber}
 				defaultCurrent={defaultPageNumber}
 				hideOnSinglePage={hideOnSinglePage}
 				itemRender={ItemRender}
 				locale={locale}
 				onChange={onChangePageNumber}
-				pageSize={perPage}
+				perPage={perPage}
 				perPageChanger={perPageChanger}
 				total={total}
 			/>

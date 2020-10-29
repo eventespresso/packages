@@ -2,7 +2,9 @@ import type React from 'react';
 import { PaginationProps as RcPaginationProps } from 'rc-pagination';
 
 export interface PaginationProps
-	extends Pick<RcPaginationProps, 'current' | 'defaultCurrent' | 'itemRender' | 'onChange' | 'pageSize' | 'total'> {
+	extends Pick<RcPaginationProps, 'defaultCurrent' | 'itemRender' | 'onChange' | 'total'> {
+	pageNumber: number;
+	perPage: number;
 	defaultPageNumber?: number;
 	hideOnSinglePage?: boolean;
 	locale?: Locale;
