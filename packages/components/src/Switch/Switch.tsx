@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import Check from './check';
-import X from './x';
+
+import { SwitchChecked, SwitchUnchecked } from '@eventespresso/icons';
 import { pointerCoord } from './util';
 
 import './style.scss';
 
 const icons = {
-	checked: Check,
-	unchecked: X,
+	checked: <SwitchChecked />,
+	unchecked: <SwitchUnchecked />,
 };
 
 export class Switch extends PureComponent {
