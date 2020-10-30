@@ -1,46 +1,54 @@
 @import '~@eventespresso/styles/src';
 
-.ee-grid {
-	background: var(--ee-background-color);
-	padding: var(--ee-padding-small);
+.ee-grid.ee-grid {
+	display: grid;
+	grid-gap: 0.1rem;
+	grid-template-columns: 1fr;
+	margin: 0 0 var(--ee-margin-big);
 
 	> div {
-		position: relative;
+		align-items: center;
+		background: var(--ee-background-color);
+		color: var(--ee-default-text-color);
+		display: flex;
+		justify-content: space-around;
+		padding: var(--ee-padding-small);
+	}
 
-		&:after {
-			background-color: var(--ee-border-color);
-			content: '';
-			position: absolute;
+	/*  The following rules assume usage within the WP Admin */
 
-			@include min700px {
-				height: 100%;
-				right: -11px;
-				width: 1px;
-			}
-		}
+	/* to counteract Chakra */
+	@include min400px {
+		grid-template-columns: 1fr;
+	}
 
-		&:last-child {
-			&:after {
-				display: none;
-			}
-		}
+	/* two columns min width 240px */
+	@include min600px {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 
-		&:nth-child(odd) {
-			&:after {
-				@include min400px {
-					height: 100%;
-					right: -11px;
-					width: 1px;
-				}
-			}
-		}
+	/* to counteract Chakra */
+	@include min700px {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 
-		&:nth-child(4n) {
-			&:after {
-				@include min700px {
-					display: none;
-				}
-			}
-		}
+	/* because WordPress admin is too cramped here*/
+	@include min850px {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+
+	/* again because WordPress admin */
+	@include min1080px {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	/* bigger screens */
+	@include min1366px {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	/* really bigger screens */
+	@include min1766px {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 }
