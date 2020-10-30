@@ -43,7 +43,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({
 				role={isDisabled ? null : 'button'}
 				tabIndex={isDisabled ? -1 : 0}
 			>
-				{text}
+				<span className={'ee-tabbable-text__inner_wrapper'}>{text}</span>
 				{icon}
 			</div>
 		</Tooltip>
