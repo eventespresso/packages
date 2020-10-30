@@ -55,6 +55,7 @@ export * from './SearchInput';
 export * from './SelectInput';
 export * from './Stepper';
 export * from './Steps';
+export * from './Switch';
 export * from './SwitchInput';
 export * from './TabbableText';
 export * from './Tag';
