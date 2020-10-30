@@ -1,1 +1,1 @@
-export type Key = 'Enter' | 'Escape' | 'Tab';
+export type Key = 'ArrowLeft' | 'ArrowRight' | 'Enter' | 'Escape' | 'Tab';

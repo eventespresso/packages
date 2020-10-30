@@ -6,4 +6,8 @@ export const isEnterKey = eventHasKey('Enter');
 
 export const isEscapeKey = eventHasKey('Escape');
 
+export const isLeftKey = eventHasKey('ArrowLeft');
+
+export const isRightKey = eventHasKey('ArrowRight');
+
 export const isTabKey = eventHasKey('Tab');

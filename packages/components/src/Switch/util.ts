@@ -2,7 +2,14 @@
 // http://drifty.com/
 // from: https://github.com/driftyco/ionic/blob/master/src/util/dom.ts
 
-export function pointerCoord(event) {
+interface Coord {
+	x: number;
+	y: number;
+}
+
+type Event = React.TouchEvent<HTMLDivElement> & MouseEvent;
+
+export const pointerCoord = (event: Event): Coord => {
 	// get coordinates for either a mouse click
 	// or a touch depending on the given event
 	if (event) {
@@ -16,5 +23,6 @@ export function pointerCoord(event) {
 			return { x: pageX, y: event.pageY };
 		}
 	}
+
 	return { x: 0, y: 0 };
-}
+};

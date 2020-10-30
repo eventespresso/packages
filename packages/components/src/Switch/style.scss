@@ -1,6 +1,6 @@
 @import '~@eventespresso/styles/src';
 
-.react-toggle {
+.ee-switch {
 	touch-action: pan-x;
 	display: inline-block;
 	position: relative;
@@ -8,35 +8,23 @@
 	background-color: transparent;
 	border: 0;
 	padding: 0;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	-webkit-tap-highlight-color: transparent;
+
+	&__sr-only {
+		@include visually-hidden();
+	}
 }
 
-.react-toggle-screenreader-only {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-}
-
-.react-toggle--disabled {
+.ee-switch--disabled {
 	cursor: not-allowed;
 	opacity: 0.5;
 	-webkit-transition: opacity 0.25s;
 	transition: opacity 0.25s;
 }
 
-.react-toggle-track {
+.ee-switch-track {
 	width: 50px;
 	height: 24px;
 	padding: 0;
@@ -47,21 +35,21 @@
 	transition: all 0.2s ease;
 }
 
-.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+.ee-switch:hover:not(.ee-switch--disabled) .ee-switch-track {
 	background-color: #000000;
 }
 
-.react-toggle--checked {
-	.react-toggle-track {
+.ee-switch--checked {
+	.ee-switch-track {
 		background-color: #19ab27;
 	}
 
-	&:hover:not(.react-toggle--disabled) .react-toggle-track {
+	&:hover:not(.ee-switch--disabled) .ee-switch-track {
 		background-color: #128d15;
 	}
 }
 
-.react-toggle-track-check {
+.ee-switch-track-check {
 	position: absolute;
 	width: 14px;
 	height: 10px;
@@ -77,14 +65,14 @@
 	transition: opacity 0.25s ease;
 }
 
-.react-toggle--checked .react-toggle-track-check {
+.ee-switch--checked .ee-switch-track-check {
 	opacity: 1;
 	-webkit-transition: opacity 0.25s ease;
 	-moz-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
 }
 
-.react-toggle-track-x {
+.ee-switch-track-x {
 	position: absolute;
 	width: 10px;
 	height: 10px;
@@ -100,11 +88,11 @@
 	transition: opacity 0.25s ease;
 }
 
-.react-toggle--checked .react-toggle-track-x {
+.ee-switch--checked .ee-switch-track-x {
 	opacity: 0;
 }
 
-.react-toggle-thumb {
+.ee-switch-thumb {
 	transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 	position: absolute;
 	top: 1px;
@@ -122,18 +110,18 @@
 	transition: all 0.25s ease;
 }
 
-.react-toggle--checked .react-toggle-thumb {
+.ee-switch--checked .ee-switch-thumb {
 	left: 27px;
 	border-color: #19ab27;
 }
 
-.react-toggle--focus .react-toggle-thumb {
+.ee-switch--focus .ee-switch-thumb {
 	-webkit-box-shadow: 0px 0px 3px 2px #0099e0;
 	-moz-box-shadow: 0px 0px 3px 2px #0099e0;
 	box-shadow: 0px 0px 2px 3px #0099e0;
 }
 
-.react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
+.ee-switch:active:not(.ee-switch--disabled) .ee-switch-thumb {
 	-webkit-box-shadow: 0px 0px 5px 5px #0099e0;
 	-moz-box-shadow: 0px 0px 5px 5px #0099e0;
 	box-shadow: 0px 0px 5px 5px #0099e0;

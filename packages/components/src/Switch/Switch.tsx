@@ -1,8 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import { SwitchChecked, SwitchUnchecked } from '@eventespresso/icons';
+import { isLeftKey, isRightKey } from '@eventespresso/utils';
 import { pointerCoord } from './util';
+import type { SwitchProps } from './types';
 
 import './style.scss';
 
@@ -11,160 +13,181 @@ const icons = {
 	unchecked: <SwitchUnchecked />,
 };
 
-export class Switch extends PureComponent {
-	constructor(props) {
-		super(props);
-		this.handleClick = this.handleClick.bind(this);
-		this.handleTouchStart = this.handleTouchStart.bind(this);
-		this.handleTouchMove = this.handleTouchMove.bind(this);
-		this.handleTouchEnd = this.handleTouchEnd.bind(this);
-		this.handleFocus = this.handleFocus.bind(this);
-		this.handleBlur = this.handleBlur.bind(this);
-		this.previouslyChecked = !!(props.checked || props.defaultChecked);
-		this.state = {
-			checked: !!(props.checked || props.defaultChecked),
-			hasFocus: false,
-		};
-	}
+export const Switch: React.FC<SwitchProps> = ({ checked, defaultChecked, disabled, onBlur, onFocus, ...props }) => {
+	const [innerChecked, setInnerChecked] = useState<boolean>(checked || defaultChecked);
+	const [hasFocus, setHasFocus] = useState<boolean>(false);
+	const ref = useRef<HTMLInputElement>();
+	const touch = useRef({
+		activated: false,
+		moved: false,
+		previouslyChecked: Boolean(checked || defaultChecked),
+		startX: null,
+	});
 
-	componentDidUpdate(prevProps) {
-		if (prevProps.checked !== this.props.checked) {
-			// Disable linting rule here since this usage of setState inside
-			// componentDidUpdate is OK; see
-			// https://reactjs.org/docs/react-component.html#componentdidupdate
-			// eslint-disable-next-line react/no-did-update-set-state
-			this.setState({ checked: !!this.props.checked });
-		}
-	}
+	const className = classNames(
+		'ee-switch',
+		{
+			'ee-switch--checked': innerChecked,
+			'ee-switch--focus': hasFocus,
+			'ee-switch--disabled': disabled,
+		},
+		props.className
+	);
 
-	handleClick(event) {
-		if (this.props.disabled) {
-			return;
-		}
-		const checkbox = this.input;
-		if (event.target !== checkbox && !this.moved) {
-			this.previouslyChecked = checkbox.checked;
+	const handleBlur = useCallback(
+		(event) => {
+			onBlur?.(event);
+
+			setHasFocus(false);
+		},
+		[onBlur]
+	);
+
+	const handleFocus = useCallback(
+		(event) => {
+			onFocus?.(event);
+
+			setHasFocus(true);
+		},
+		[onFocus]
+	);
+
+	const handleTouchStart = useCallback(
+		(event) => {
+			if (disabled) {
+				return;
+			}
+
+			touch.current.startX = pointerCoord(event).x;
+			touch.current.activated = true;
+		},
+		[disabled]
+	);
+
+	const handleTouchMove = useCallback(
+		(event) => {
+			let {
+				current: { activated, startX },
+			} = touch;
+
+			if (!activated) return;
+
+			touch.current.moved = true;
+
+			if (startX) {
+				const currentX = pointerCoord(event).x;
+				if (innerChecked && currentX + 15 < startX) {
+					setInnerChecked(false);
+					startX = currentX;
+					activated = true;
+				} else if (currentX - 15 > startX) {
+					setInnerChecked(true);
+					startX = currentX;
+					activated = currentX < startX + 5;
+				}
+			}
+		},
+		[innerChecked]
+	);
+
+	const handleTouchEnd = useCallback(
+		(event) => {
+			let {
+				current: { moved, startX, previouslyChecked },
+			} = touch;
+
+			if (!moved) return;
+
+			const checkbox = ref.current;
+
 			event.preventDefault();
-			checkbox.focus();
-			checkbox.click();
-			return;
-		}
 
-		const checked = this.props.hasOwnProperty('checked') ? this.props.checked : checkbox.checked;
+			if (startX) {
+				const endX = pointerCoord(event).x;
+				if (previouslyChecked === true && startX + 4 > endX) {
+					if (previouslyChecked !== innerChecked) {
+						setInnerChecked(false);
 
-		this.setState({ checked });
-	}
+						previouslyChecked = innerChecked;
+						checkbox.click();
+					}
+				} else if (startX - 4 < endX) {
+					if (previouslyChecked !== innerChecked) {
+						setInnerChecked(true);
 
-	handleTouchStart(event) {
-		if (this.props.disabled) {
-			return;
-		}
-		this.startX = pointerCoord(event).x;
-		this.activated = true;
-	}
+						previouslyChecked = innerChecked;
 
-	handleTouchMove(event) {
-		if (!this.activated) return;
-		this.moved = true;
+						checkbox.click();
+					}
+				}
 
-		if (this.startX) {
-			const currentX = pointerCoord(event).x;
-			if (this.state.checked && currentX + 15 < this.startX) {
-				this.setState({ checked: false });
-				this.startX = currentX;
-				this.activated = true;
-			} else if (currentX - 15 > this.startX) {
-				this.setState({ checked: true });
-				this.startX = currentX;
-				this.activated = currentX < this.startX + 5;
+				touch.current.activated = false;
+				startX = null;
+				moved = false;
 			}
-		}
-	}
+		},
+		[innerChecked]
+	);
 
-	handleTouchEnd(event) {
-		if (!this.moved) return;
-		const checkbox = this.input;
-		event.preventDefault();
-
-		if (this.startX) {
-			const endX = pointerCoord(event).x;
-			if (this.previouslyChecked === true && this.startX + 4 > endX) {
-				if (this.previouslyChecked !== this.state.checked) {
-					this.setState({ checked: false });
-					this.previouslyChecked = this.state.checked;
-					checkbox.click();
-				}
-			} else if (this.startX - 4 < endX) {
-				if (this.previouslyChecked !== this.state.checked) {
-					this.setState({ checked: true });
-					this.previouslyChecked = this.state.checked;
-					checkbox.click();
-				}
+	const onClick = useCallback(
+		(event): void => {
+			if (disabled) {
+				return;
 			}
 
-			this.activated = false;
-			this.startX = null;
-			this.moved = false;
-		}
-	}
+			const checkbox = ref.current;
 
-	handleFocus(event) {
-		const { onFocus } = this.props;
+			if (event.target !== checkbox && !touch.current.moved) {
+				touch.current.previouslyChecked = checkbox.checked;
+				event.preventDefault();
+				checkbox.focus();
+				checkbox.click();
+				return;
+			}
 
-		if (onFocus) {
-			onFocus(event);
-		}
+			setInnerChecked(checked ? checked : checkbox.checked);
+		},
+		[checked, disabled]
+	);
 
-		this.setState({ hasFocus: true });
-	}
-
-	handleBlur(event) {
-		const { onBlur } = this.props;
-
-		if (onBlur) {
-			onBlur(event);
+	const onKeyDown = useCallback((e) => {
+		if (isLeftKey(e)) {
+			setInnerChecked(false);
 		}
 
-		this.setState({ hasFocus: false });
-	}
+		if (isRightKey(e)) {
+			setInnerChecked(true);
+		}
+	}, []);
 
-	render() {
-		const { className, ...inputProps } = this.props;
-		const classes = classNames(
-			'react-toggle',
-			{
-				'react-toggle--checked': this.state.checked,
-				'react-toggle--focus': this.state.hasFocus,
-				'react-toggle--disabled': this.props.disabled,
-			},
-			className
-		);
-
-		return (
-			<div
-				className={classes}
-				onClick={this.handleClick}
-				onTouchStart={this.handleTouchStart}
-				onTouchMove={this.handleTouchMove}
-				onTouchEnd={this.handleTouchEnd}
-			>
-				<div className='react-toggle-track'>
-					<div className='react-toggle-track-check'>{icons.checked}</div>
-					<div className='react-toggle-track-x'>{icons.unchecked}</div>
-				</div>
-				<div className='react-toggle-thumb' />
-
-				<input
-					{...inputProps}
-					ref={(ref) => {
-						this.input = ref;
-					}}
-					onFocus={this.handleFocus}
-					onBlur={this.handleBlur}
-					className='react-toggle-screenreader-only'
-					type='checkbox'
-				/>
+	return (
+		<div
+			aria-checked={innerChecked}
+			className={className}
+			onClick={onClick}
+			onKeyDown={onKeyDown}
+			onTouchEnd={handleTouchEnd}
+			onTouchMove={handleTouchMove}
+			onTouchStart={handleTouchStart}
+			role='checkbox'
+			tabIndex={0}
+		>
+			<div className='ee-switch-track'>
+				<div className='ee-switch-track-check'>{icons.checked}</div>
+				<div className='ee-switch-track-x'>{icons.unchecked}</div>
 			</div>
-		);
-	}
-}
+			<div className='ee-switch-thumb' />
+
+			<input
+				{...props}
+				aria-checked={innerChecked}
+				checked={innerChecked}
+				ref={ref}
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				className='ee-switch__sr-only'
+				type='checkbox'
+			/>
+		</div>
+	);
+};
