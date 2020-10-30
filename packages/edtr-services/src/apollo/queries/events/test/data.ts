@@ -24,6 +24,10 @@ export const nodes: Event[] = [
 		isPostponed: false,
 		isSoldOut: false,
 		isUpcoming: false,
+		manager: {
+			id: 'test',
+			name: 'Test',
+		},
 		maxRegistrations: 10,
 		memberOnly: false,
 		name: 'Hello',
@@ -33,10 +37,6 @@ export const nodes: Event[] = [
 		status: 'publish',
 		timezoneString: '',
 		visibleOn: 'October 21, 2020 1:03 pm',
-		manager: {
-			id: 'test',
-			name: 'Test',
-		},
 		__typename: 'EspressoEvent',
 	},
 ];

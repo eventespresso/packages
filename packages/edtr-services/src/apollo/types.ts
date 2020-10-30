@@ -22,6 +22,7 @@ export interface Event extends Entity {
 	isPostponed: boolean;
 	isSoldOut: boolean;
 	isUpcoming: boolean;
+	manager?: EventManager;
 	maxRegistrations: number;
 	memberOnly: boolean;
 	name: string;
@@ -31,7 +32,6 @@ export interface Event extends Entity {
 	status: string;
 	timezoneString: string;
 	visibleOn: string;
-	manager?: EventManager;
 }
 
 export type EventManager = Pick<User, 'id' | 'name'>;

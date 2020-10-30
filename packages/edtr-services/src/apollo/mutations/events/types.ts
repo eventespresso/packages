@@ -2,14 +2,14 @@ import type { EntityId } from '@eventespresso/data';
 import type { Event } from '../../';
 
 export interface EventBaseInput {
-	maxRegistrations?: number;
+	allowDonations?: boolean;
 	allowOverflow?: boolean;
+	altRegPage?: string;
 	description?: string;
 	displayDescription?: boolean;
 	displayTicketSelector?: boolean;
-	allowDonations?: boolean;
-	altRegPage?: string;
 	manager?: string;
+	maxRegistrations?: number;
 	memberOnly?: boolean;
 	name?: string;
 	order?: number;

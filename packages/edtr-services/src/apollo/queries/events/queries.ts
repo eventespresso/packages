@@ -19,6 +19,10 @@ export const EVENT_ATTRIBUTES: any = gql`
 		isPostponed
 		isSoldOut
 		isUpcoming
+		manager {
+			id
+			name
+		}
 		maxRegistrations
 		memberOnly
 		name
@@ -28,10 +32,6 @@ export const EVENT_ATTRIBUTES: any = gql`
 		status
 		timezoneString
 		visibleOn
-		manager {
-			id
-			name
-		}
 	}
 `;
 
