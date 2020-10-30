@@ -4,7 +4,7 @@ import type { DatetimeEdge, TicketEdge, PriceEdge, PriceTypeEdge, Event, EventMa
 
 export interface EventEditorData {
 	event?: Event;
-	eventManagers: Array<EventManager>;
+	eventManagers?: Array<EventManager>;
 	datetimes?: DatetimeEdge;
 	tickets?: TicketEdge;
 	prices?: PriceEdge;
