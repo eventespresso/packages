@@ -18,8 +18,10 @@ const EventManager: React.FC = () => {
 	}, []);
 
 	const onSubmit = useCallback(() => {
-		updateEvent({ manager: newManagerId });
-	}, [newManagerId, updateEvent]);
+		if (newManagerId && newManagerId !== event?.manager?.id) {
+			updateEvent({ manager: newManagerId });
+		}
+	}, [event?.manager?.id, newManagerId, updateEvent]);
 
 	const onClose = useCallback(() => {
 		// reset value
