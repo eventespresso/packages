@@ -31,8 +31,10 @@ export interface Event extends Entity {
 	status: string;
 	timezoneString: string;
 	visibleOn: string;
-	manager?: Pick<User, 'id' | 'name'>;
+	manager?: EventManager;
 }
+
+export type EventManager = Pick<User, 'id' | 'name'>;
 
 export interface EventData {
 	espressoEvent: Event;
