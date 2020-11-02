@@ -12,7 +12,15 @@ const icons = {
 	unchecked: <SwitchUnchecked />,
 };
 
-export const Switch: React.FC<SwitchProps> = ({ checked, defaultChecked, disabled, onBlur, onFocus, ...props }) => {
+export const Switch: React.FC<SwitchProps> = ({
+	checked,
+	defaultChecked,
+	disabled,
+	onBlur,
+	onFocus,
+	value,
+	...props
+}) => {
 	const [innerChecked, setInnerChecked] = useState<boolean>(checked || defaultChecked);
 	const [hasFocus, setHasFocus] = useState<boolean>(false);
 	const ref = useRef<HTMLInputElement>();
@@ -101,11 +109,12 @@ export const Switch: React.FC<SwitchProps> = ({ checked, defaultChecked, disable
 				{...props}
 				aria-checked={innerChecked}
 				checked={innerChecked}
-				ref={ref}
+				className='ee-switch__sr-only'
 				onFocus={handleFocus}
 				onBlur={handleBlur}
-				className='ee-switch__sr-only'
+				ref={ref}
 				type='checkbox'
+				value={value}
 			/>
 		</div>
 	);

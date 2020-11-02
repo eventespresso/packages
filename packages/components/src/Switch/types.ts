@@ -3,7 +3,7 @@ interface Icons {
 	unchecked: React.ReactNode;
 }
 
-export interface SwitchProps {
+export interface SwitchProps extends Pick<React.InputHTMLAttributes<HTMLInputElement>, 'value'> {
 	'aria-labelledby': string;
 	'aria-label': string;
 	checked: boolean;
@@ -14,7 +14,6 @@ export interface SwitchProps {
 	id: string;
 	name: string;
 	onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
-	onChange: VoidFunction;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	onFocus: (event: React.FocusEvent<HTMLInputElement>) => void;
-	value: string;
 }
