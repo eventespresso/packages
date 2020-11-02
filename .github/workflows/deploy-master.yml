@@ -4,9 +4,9 @@ on:
     push:
         branches: [master]
 env:
-    API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-    GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
-    GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+    API_TOKEN_GITHUB: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+    GIT_USER_EMAIL: ${{ secrets.GH_ACTIONS_GIT_USER_EMAIL }}
+    GIT_USER_NAME: ${{ secrets.GH_ACTIONS_GIT_USER_NAME }}
     FORCE_COLOR: true
 jobs:
     deploy-domains-and-packages:
