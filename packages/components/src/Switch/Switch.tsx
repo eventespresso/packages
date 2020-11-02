@@ -3,7 +3,6 @@ import classNames from 'classnames';
 
 import { SwitchChecked, SwitchUnchecked } from '@eventespresso/icons';
 import { isLeftKey, isRightKey } from '@eventespresso/utils';
-import { pointerCoord } from './util';
 import type { SwitchProps } from './types';
 
 import './style.scss';
@@ -52,83 +51,6 @@ export const Switch: React.FC<SwitchProps> = ({ checked, defaultChecked, disable
 		[onFocus]
 	);
 
-	const handleTouchStart = useCallback(
-		(event) => {
-			if (disabled) {
-				return;
-			}
-
-			touch.current.startX = pointerCoord(event).x;
-			touch.current.activated = true;
-		},
-		[disabled]
-	);
-
-	const handleTouchMove = useCallback(
-		(event) => {
-			let {
-				current: { activated, startX },
-			} = touch;
-
-			if (!activated) return;
-
-			touch.current.moved = true;
-
-			if (startX) {
-				const currentX = pointerCoord(event).x;
-				if (innerChecked && currentX + 15 < startX) {
-					setInnerChecked(false);
-					startX = currentX;
-					activated = true;
-				} else if (currentX - 15 > startX) {
-					setInnerChecked(true);
-					startX = currentX;
-					activated = currentX < startX + 5;
-				}
-			}
-		},
-		[innerChecked]
-	);
-
-	const handleTouchEnd = useCallback(
-		(event) => {
-			let {
-				current: { moved, startX, previouslyChecked },
-			} = touch;
-
-			if (!moved) return;
-
-			const checkbox = ref.current;
-
-			event.preventDefault();
-
-			if (startX) {
-				const endX = pointerCoord(event).x;
-				if (previouslyChecked === true && startX + 4 > endX) {
-					if (previouslyChecked !== innerChecked) {
-						setInnerChecked(false);
-
-						previouslyChecked = innerChecked;
-						checkbox.click();
-					}
-				} else if (startX - 4 < endX) {
-					if (previouslyChecked !== innerChecked) {
-						setInnerChecked(true);
-
-						previouslyChecked = innerChecked;
-
-						checkbox.click();
-					}
-				}
-
-				touch.current.activated = false;
-				startX = null;
-				moved = false;
-			}
-		},
-		[innerChecked]
-	);
-
 	const onClick = useCallback(
 		(event): void => {
 			if (disabled) {
@@ -166,9 +88,6 @@ export const Switch: React.FC<SwitchProps> = ({ checked, defaultChecked, disable
 			className={className}
 			onClick={onClick}
 			onKeyDown={onKeyDown}
-			onTouchEnd={handleTouchEnd}
-			onTouchMove={handleTouchMove}
-			onTouchStart={handleTouchStart}
 			role='checkbox'
 			tabIndex={0}
 		>
