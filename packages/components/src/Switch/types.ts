@@ -13,7 +13,7 @@ export interface SwitchProps {
 	icons: boolean | Icons;
 	id: string;
 	name: string;
-	onBlur: (event: React.FocusEvent<HTMLInputElement>) => VoidFunction;
+	onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
 	onChange: VoidFunction;
 	onFocus: (event: React.FocusEvent<HTMLInputElement>) => void;
 	value: string;

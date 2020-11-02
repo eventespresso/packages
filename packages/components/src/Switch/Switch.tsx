@@ -33,7 +33,7 @@ export const Switch: React.FC<SwitchProps> = ({ checked, defaultChecked, disable
 		props.className
 	);
 
-	const handleBlur = useCallback(
+	const handleBlur = useCallback<SwitchProps['onBlur']>(
 		(event) => {
 			onBlur?.(event);
 
@@ -42,7 +42,7 @@ export const Switch: React.FC<SwitchProps> = ({ checked, defaultChecked, disable
 		[onBlur]
 	);
 
-	const handleFocus = useCallback(
+	const handleFocus = useCallback<SwitchProps['onFocus']>(
 		(event) => {
 			onFocus?.(event);
 
@@ -52,16 +52,16 @@ export const Switch: React.FC<SwitchProps> = ({ checked, defaultChecked, disable
 	);
 
 	const onClick = useCallback(
-		(event): void => {
+		(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
 			if (disabled) {
 				return;
 			}
 
 			const checkbox = ref.current;
 
-			if (event.target !== checkbox && !touch.current.moved) {
+			if (e.target !== checkbox && !touch.current.moved) {
 				touch.current.previouslyChecked = checkbox.checked;
-				event.preventDefault();
+				e.preventDefault();
 				checkbox.focus();
 				checkbox.click();
 				return;
@@ -72,7 +72,7 @@ export const Switch: React.FC<SwitchProps> = ({ checked, defaultChecked, disable
 		[checked, disabled]
 	);
 
-	const onKeyDown = useCallback((e) => {
+	const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
 		if (isLeftKey(e)) {
 			setInnerChecked(false);
 		}
