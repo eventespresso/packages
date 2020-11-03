@@ -6,17 +6,10 @@ import {
 	PopoverCloseButton,
 	PopoverContent,
 	PopoverHeader,
-	PopoverProps as ChakraPopoverProps,
 	PopoverTrigger,
 } from '@chakra-ui/popover';
 
-export interface PopoverProps extends ChakraPopoverProps {
-	className?: string;
-	content: React.ReactNode;
-	contentClassName?: string;
-	header?: React.ReactNode;
-	trigger: React.ReactNode;
-}
+import type { PopoverProps } from './types';
 
 export const Popover: React.FC<PopoverProps> = ({ content, contentClassName, header, trigger, ...props }) => {
 	return (

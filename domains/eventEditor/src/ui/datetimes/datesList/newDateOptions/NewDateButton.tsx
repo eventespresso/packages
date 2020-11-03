@@ -1,13 +1,15 @@
 import React from 'react';
 
 import useNewDateOptionItems from '@edtrUI/datetimes/hooks/useNewDateOptionItems';
-import OptionsPopoverButton from './OptionsPopoverButton';
+import OptionsModalButton from './OptionsModalButton';
 
 const NewDateButton: React.FC = () => {
 	const optionItems = useNewDateOptionItems();
+
 	if (optionItems.length > 1) {
-		return <OptionsPopoverButton />;
+		return <OptionsModalButton />;
 	}
+
 	return <>{optionItems}</>;
 };
 

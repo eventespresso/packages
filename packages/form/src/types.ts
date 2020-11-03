@@ -26,22 +26,24 @@ interface AdditionalFormProps<FormValues = AnyObject> extends FormConfigProvider
 	debugFields?: Array<keyof FormState<any>>; // The fields from RFF form state to display in debug
 }
 
+type FieldType =
+	| 'datepicker'
+	| 'datetimepicker'
+	| 'group'
+	| 'hidden'
+	| 'multicheck'
+	| 'number'
+	| 'radio'
+	| 'rich-text-editor'
+	| 'select'
+	| 'switch'
+	| 'text'
+	| 'textarea'
+	| 'timepicker';
+
 export interface AdditionalFieldProps<FormValues = AnyObject> {
 	label?: React.ReactNode | string;
-	fieldType:
-		| 'datepicker'
-		| 'datetimepicker'
-		| 'group'
-		| 'hidden'
-		| 'multicheck'
-		| 'number'
-		| 'radio'
-		| 'rich-text-editor'
-		| 'select'
-		| 'switch'
-		| 'text'
-		| 'textarea'
-		| 'timepicker';
+	fieldType: FieldType;
 	htmlType?: string;
 	before?: React.ReactNode | string;
 	after?: React.ReactNode | string;
@@ -56,22 +58,24 @@ export interface AdditionalFieldProps<FormValues = AnyObject> {
 	[key: string]: any;
 }
 
+type Compare =
+	| '='
+	| '!='
+	| '!='
+	| '>'
+	| '>='
+	| '<'
+	| '<='
+	| 'EMPTY'
+	| 'NOT_EMPTY'
+	| 'CONTAINS'
+	| 'NOT_CONTAINS'
+	| 'MATCHES'
+	| 'NOT_MATCHES';
+
 export interface FieldCondition {
 	field: string;
-	compare:
-		| '='
-		| '!='
-		| '!='
-		| '>'
-		| '>='
-		| '<'
-		| '<='
-		| 'EMPTY'
-		| 'NOT_EMPTY'
-		| 'CONTAINS'
-		| 'NOT_CONTAINS'
-		| 'MATCHES'
-		| 'NOT_MATCHES';
+	compare: Compare;
 	value?: any;
 }
 

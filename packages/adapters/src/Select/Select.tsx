@@ -1,11 +1,16 @@
 import React, { useCallback } from 'react';
-import { Select as ChakraSelect } from '@chakra-ui/core';
+import { Select as ChakraSelect } from '@chakra-ui/select';
 
 import type { SelectProps } from './types';
 
-const NoIcon: React.FC = () => null;
-
-const Select: React.FC<SelectProps> = ({ children, className, options = [], onChange, onChangeValue, ...props }) => {
+export const Select: React.FC<SelectProps> = ({
+	children,
+	className,
+	options = [],
+	onChange,
+	onChangeValue,
+	...props
+}) => {
 	const childNodes =
 		children ||
 		options.map(({ label, options: optionGroups, value, ...optionProps }, index) => {
@@ -41,16 +46,8 @@ const Select: React.FC<SelectProps> = ({ children, className, options = [], onCh
 	);
 
 	return (
-		<ChakraSelect
-			className={className}
-			// fix the double icon issue
-			icon={NoIcon}
-			{...props}
-			onChange={onChangeHandler}
-		>
+		<ChakraSelect {...props} className={className} onChange={onChangeHandler}>
 			{childNodes}
 		</ChakraSelect>
 	);
 };
-
-export default Select;

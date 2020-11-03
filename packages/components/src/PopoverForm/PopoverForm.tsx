@@ -7,7 +7,7 @@ import { Save } from '@eventespresso/icons';
 import { Divider } from '@eventespresso/adapters';
 
 import { Button, ButtonType, Popover } from '../../';
-import { PopoverFormProps } from './types';
+import type { PopoverFormProps } from './types';
 
 const PopoverForm: React.FC<PopoverFormProps> = ({
 	content,

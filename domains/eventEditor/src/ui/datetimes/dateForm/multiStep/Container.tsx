@@ -12,7 +12,7 @@ const Container: React.FC = () => {
 	const { getData, isOpen, close: closeModal, setData } = useGlobalModal<EntityEditModalData>(
 		EdtrGlobalModals.EDIT_DATE
 	);
-	const { close: closePopover } = useGlobalModal(EdtrGlobalModals.NEW_DATE_POPOVER);
+	const { close: closePopover } = useGlobalModal(EdtrGlobalModals.NEW_DATE_MODAL);
 	const datetime = useDatetimeItem({ id: getData()?.entityId });
 	const event = useEvent();
 

@@ -1,19 +1,18 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import { __ } from '@eventespresso/i18n';
-
-import { Popover } from '@eventespresso/adapters';
-
+import { Popover } from '../';
 import Content from './Content';
 import Trigger from './Trigger';
 import './style.scss';
 
-export interface Props {
+export interface TimezoneTimeInfoProps {
 	className?: string;
 	date: Date;
 }
 
-export const TimezoneTimeInfo: React.FC<Props> = ({ date, ...props }) => {
+export const TimezoneTimeInfo: React.FC<TimezoneTimeInfoProps> = ({ date, ...props }) => {
 	const className = classNames(props.className, 'ee-timezone-info');
 
 	return (

@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { ModalProps } from '@eventespresso/adapters';
 
-export interface NewEntityPopoverProps extends ModalProps {}
+export interface NewEntityModalProps extends ModalProps {}
 
 export interface NewEntityOptionProps {
 	button?: React.ReactNode;

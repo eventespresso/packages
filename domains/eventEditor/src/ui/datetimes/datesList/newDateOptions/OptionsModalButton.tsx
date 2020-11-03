@@ -6,9 +6,9 @@ import { useGlobalModal } from '@eventespresso/registry';
 import { Calendar } from '@eventespresso/icons';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 
-const OptionsPopoverButton: React.FC = () => {
-	const { open } = useGlobalModal(EdtrGlobalModals.NEW_DATE_POPOVER);
+const OptionsModalButton: React.FC = () => {
+	const { open } = useGlobalModal(EdtrGlobalModals.NEW_DATE_MODAL);
 	return <Button buttonSize={ButtonSize.BIG} buttonText={__('Add New Date')} icon={Calendar} mr={2} onClick={open} />;
 };
 
-export default OptionsPopoverButton;
+export default OptionsModalButton;
