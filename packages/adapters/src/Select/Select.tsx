@@ -3,10 +3,12 @@ import { Select as ChakraSelect } from '@chakra-ui/select';
 
 import type { SelectProps } from './types';
 
+const DEFAULT_OPTIONS = [];
+
 export const Select: React.FC<SelectProps> = ({
 	children,
 	className,
-	options = [],
+	options = DEFAULT_OPTIONS,
 	onChange,
 	onChangeValue,
 	...props
