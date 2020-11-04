@@ -9,10 +9,10 @@ import Content from './Content';
 import { EntityEditModalData } from '@edtrUI/types';
 
 const Container: React.FC = () => {
-	const { getData, isOpen, close: closeModal, setData } = useGlobalModal<EntityEditModalData>(
+	const { getData, isOpen, close: closeEditDateModal, setData } = useGlobalModal<EntityEditModalData>(
 		EdtrGlobalModals.EDIT_DATE
 	);
-	const { close: closePopover } = useGlobalModal(EdtrGlobalModals.NEW_DATE_MODAL);
+	const { close: closeNewDateModal } = useGlobalModal(EdtrGlobalModals.NEW_DATE_MODAL);
 	const datetime = useDatetimeItem({ id: getData()?.entityId });
 	const event = useEvent();
 
@@ -28,11 +28,11 @@ const Container: React.FC = () => {
 	title = event?.name ? `${event.name}: ${title}` : title;
 
 	const onClose = useCallback(() => {
-		closeModal();
-		closePopover();
+		closeEditDateModal();
+		closeNewDateModal();
 		// reset the global modal data
 		setData({ entityId: null });
-	}, [closeModal, closePopover, setData]);
+	}, [closeEditDateModal, closeNewDateModal, setData]);
 
 	return <EditModalContainer component={Content} entity={datetime} title={title} isOpen={isOpen} onClose={onClose} />;
 };

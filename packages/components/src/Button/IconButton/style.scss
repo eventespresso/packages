@@ -40,9 +40,13 @@
 		margin: 0;
 		min-height: var(--ee-icon-button-size);
 		min-width: var(--ee-icon-button-size);
-		padding: var(--ee-padding-micro);
 		top: 0;
-		width: var(--ee-icon-button-size);
+
+		// specificity fix
+		&.ee-icon-button {
+			padding: var(--ee-padding-micro);
+			width: var(--ee-icon-button-size);
+		}
 
 		svg {
 			display: inline-block;

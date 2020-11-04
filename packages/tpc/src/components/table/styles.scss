@@ -1,6 +1,6 @@
 @import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
-.ee-rspnsv-table.ee-ticket-price-calculator  {
+.ee-rspnsv-table.ee-ticket-price-calculator {
 	width: 100%;
 
 	table {
@@ -36,8 +36,7 @@
 		width: 100%;
 	}
 
-	.ee-ticket-price-calculator  {
-
+	.ee-ticket-price-calculator {
 		&__price-id {
 			&.ee-rspnsv-table-header-th,
 			&.ee-rspnsv-table-body-td,
@@ -87,7 +86,7 @@
 			}
 
 			.ee-icon-button {
-				margin-bottom: 0;
+				margin: 0;
 			}
 		}
 
