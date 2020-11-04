@@ -26,7 +26,7 @@ import {
 	SortByControl,
 	StatusControl,
 } from '@edtrUI/datetimes/datesList/filterBar/controls';
-import { NewDatePopover, AddSingleDate } from '@edtrUI/datetimes/datesList/newDateOptions';
+import { NewDateModal, AddSingleDate } from '@edtrUI/datetimes/datesList/newDateOptions';
 import { Container as EditDateContainer } from '@edtrUI/datetimes/dateForm/multiStep';
 import { DateMainMenu } from '@edtrUI/datetimes/datesList/actionsMenu/dropdown';
 import AssignTicketsButton from '@edtrUI/datetimes/datesList/actionsMenu/AssignTicketsButton';
@@ -35,7 +35,7 @@ import AssignTicketsButton from '@edtrUI/datetimes/datesList/actionsMenu/AssignT
 const modals = new ModalSubscription(domain);
 modals.subscribe(({ registry: { registerContainer } }) => {
 	// Register new date popover
-	registerContainer(EdtrGlobalModals.NEW_DATE_MODAL, NewDatePopover);
+	registerContainer(EdtrGlobalModals.NEW_DATE_MODAL, NewDateModal);
 	// Register edit date modal
 	registerContainer(EdtrGlobalModals.EDIT_DATE, EditDateContainer);
 });

@@ -1,3 +1,3 @@
-export { default as NewDateButton } from './NewDateButton';
 export { default as AddSingleDate } from './AddSingleDate';
-export { default as NewDatePopover } from './OptionsModal';
+export { default as NewDateButton } from './NewDateButton';
+export { default as NewDateModal } from './NewDateModal';

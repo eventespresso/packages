@@ -6,7 +6,7 @@ import useNewDateOptionItems from '@edtrUI/datetimes/hooks/useNewDateOptionItems
 import { useGlobalModal } from '@eventespresso/registry';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 
-const OptionsModal: React.FC = () => {
+const NewDateModal: React.FC = () => {
 	const optionItems = useNewDateOptionItems();
 	const { isOpen, close } = useGlobalModal(EdtrGlobalModals.NEW_DATE_MODAL);
 
@@ -19,4 +19,4 @@ const OptionsModal: React.FC = () => {
 	);
 };
 
-export default OptionsModal;
+export default NewDateModal;

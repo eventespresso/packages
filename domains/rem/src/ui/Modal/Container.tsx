@@ -10,7 +10,7 @@ import { RemGlobalModals } from '../../types';
 
 const Container: React.FC = () => {
 	const { isOpen, close } = useGlobalModal(RemGlobalModals.MAIN);
-	const { close: closePopover } = useGlobalModal(EdtrGlobalModals.NEW_DATE_MODAL);
+	const { close: closeModal } = useGlobalModal(EdtrGlobalModals.NEW_DATE_MODAL);
 
 	// rDates and gDates, no exDates
 	const generateDates = useGenerateDates();
@@ -28,12 +28,12 @@ const Container: React.FC = () => {
 	const onSubmit = useCallback(async () => {
 		// close REM modal
 		close();
-		// close new date popover
-		closePopover();
+		// close new date modal
+		closeModal();
 		// submit the data for mutations
 		await submitForm();
 		resetState();
-	}, [close, closePopover, resetState, submitForm]);
+	}, [close, closeModal, resetState, submitForm]);
 
 	const onClose = useCallback(() => {
 		// close REM modal
