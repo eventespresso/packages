@@ -8,7 +8,7 @@ import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 
 const NewDateModal: React.FC = () => {
 	const optionItems = useNewDateOptionItems();
-	const { isOpen, close } = useGlobalModal(EdtrGlobalModals.NEW_DATE_MODAL);
+	const { isOpen, close } = useGlobalModal(EdtrGlobalModals.NEW_DATE);
 
 	return (
 		isOpen && (

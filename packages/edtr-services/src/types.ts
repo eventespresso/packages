@@ -25,7 +25,7 @@ export interface EventEditorDomData {
 export enum EdtrGlobalModals {
 	EDIT_DATE = 'editDate',
 	EDIT_TICKET = 'editTicket',
-	NEW_DATE_MODAL = 'newDateModal',
+	NEW_DATE = 'newDate',
 	TAM = 'tam',
 	TPC = 'tpc',
 }

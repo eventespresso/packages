@@ -10,7 +10,7 @@ import { RemGlobalModals } from '../../types';
 
 const Container: React.FC = () => {
 	const { isOpen, close } = useGlobalModal(RemGlobalModals.MAIN);
-	const { close: closeModal } = useGlobalModal(EdtrGlobalModals.NEW_DATE_MODAL);
+	const { close: closeModal } = useGlobalModal(EdtrGlobalModals.NEW_DATE);
 
 	// rDates and gDates, no exDates
 	const generateDates = useGenerateDates();

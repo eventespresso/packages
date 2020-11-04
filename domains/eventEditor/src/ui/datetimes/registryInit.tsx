@@ -35,7 +35,7 @@ import AssignTicketsButton from '@edtrUI/datetimes/datesList/actionsMenu/AssignT
 const modals = new ModalSubscription(domain);
 modals.subscribe(({ registry: { registerContainer } }) => {
 	// Register new date popover
-	registerContainer(EdtrGlobalModals.NEW_DATE_MODAL, NewDateModal);
+	registerContainer(EdtrGlobalModals.NEW_DATE, NewDateModal);
 	// Register edit date modal
 	registerContainer(EdtrGlobalModals.EDIT_DATE, EditDateContainer);
 });
