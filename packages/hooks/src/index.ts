@@ -1,3 +1,4 @@
+export * from './useOnChange';
 export * from './usePagination';
 export * from './usePrevNext';
 export * from './useProgress';

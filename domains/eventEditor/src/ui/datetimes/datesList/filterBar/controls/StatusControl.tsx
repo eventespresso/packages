@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SelectInput } from '@eventespresso/components';
+import { Select } from '@eventespresso/components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 
@@ -11,7 +11,7 @@ const StatusControl: React.FC = () => {
 	const { status, setStatus } = useDatesListFilterState();
 
 	return (
-		<SelectInput
+		<Select
 			id='dates-list-status-control'
 			label={labels.status}
 			onChangeValue={setStatus}

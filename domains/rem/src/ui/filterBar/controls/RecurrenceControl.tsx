@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { FilterBarFilter, SelectInput } from '@eventespresso/components';
+import { FilterBarFilter, Select } from '@eventespresso/components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 import type { FilterBarUIComponentProps } from '@eventespresso/registry';
@@ -37,7 +37,7 @@ const RecurrenceControl: React.FC<Props> = () => {
 
 	return (
 		<FilterBarFilter>
-			<SelectInput
+			<Select
 				id='dates-list-recurrence-control'
 				label={__('Recurrence pattern')}
 				value={recurrence}

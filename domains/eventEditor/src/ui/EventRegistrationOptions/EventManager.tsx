@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { PopoverForm, SelectInput } from '@eventespresso/components';
+import { PopoverForm, Select } from '@eventespresso/components';
 import { useEvent, useEventManagers, useEventMutator } from '@eventespresso/edtr-services';
 import { entityListToSelectOptions } from '@eventespresso/utils';
 
@@ -33,7 +33,7 @@ const EventManager: React.FC = () => {
 	const options = useMemo(() => entityListToSelectOptions(eventManagers), [eventManagers]);
 
 	const content = (
-		<SelectInput onChangeValue={onChangeValue} value={newManagerId || event?.manager?.id} options={options} />
+		<Select onChangeValue={onChangeValue} value={newManagerId || event?.manager?.id} options={options} />
 	);
 
 	return (

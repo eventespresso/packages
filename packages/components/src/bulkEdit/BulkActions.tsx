@@ -3,9 +3,9 @@ import React, { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { useBulkEdit } from '@eventespresso/services';
 
-import { Button, LabelPosition, SelectInput } from '../';
+import { Button, LabelPosition, Select } from '../';
 import type { ActionCheckboxProps } from './ActionCheckbox';
-import type { SelectInputProps } from '../';
+import type { SelectProps } from '../';
 
 import './styles.scss';
 
@@ -13,7 +13,7 @@ export interface BulkActionsProps<T extends string = string> {
 	Checkbox?: React.ComponentType<ActionCheckboxProps>;
 	defaultAction?: T;
 	onApply: (action: T) => void;
-	options: SelectInputProps['options'];
+	options: SelectProps['options'];
 }
 
 const rootProps = { className: 'ee-bulk-edit-actions__select-wrapper' };
@@ -37,7 +37,7 @@ export const BulkActions = <T extends string>({
 
 	return (
 		<div className='ee-bulk-edit-actions__wrapper'>
-			<SelectInput
+			<Select
 				aria-label={__('bulk actions')}
 				className='ee-bulk-edit-actions__select'
 				id='ee-bulk-edit-actions-select-input'

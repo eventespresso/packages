@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { SwitchInput, SwitchInputProps } from '@eventespresso/components';
+import { Switch, SwitchProps } from '@eventespresso/components';
 import { useEvent, useEventMutator } from '@eventespresso/edtr-services';
 
 import GridItem from './GridItem';
@@ -10,7 +10,7 @@ const Donations: React.FC = () => {
 	const event = useEvent();
 	const { updateEntity: updateEvent } = useEventMutator(event?.id);
 
-	const onChange = useCallback<SwitchInputProps['onChangeValue']>(
+	const onChange = useCallback<SwitchProps['onChangeValue']>(
 		(allowDonations) => {
 			updateEvent({ allowDonations });
 		},
@@ -24,7 +24,7 @@ const Donations: React.FC = () => {
 	return (
 		<GridItem
 			id={id}
-			input={<SwitchInput aria-describedby={id} isChecked={isChecked} onChangeValue={onChange} />}
+			input={<Switch aria-describedby={id} checked={isChecked} onChangeValue={onChange} />}
 			label={heading}
 		/>
 	);

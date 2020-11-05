@@ -3,7 +3,7 @@ import React from 'react';
 import { RichTextEditor } from '@eventespresso/rich-text-editor';
 
 import Text from './Text';
-import TextArea from './TextArea';
+import Textarea from './Textarea';
 import Select from './Select';
 import Switch from './Switch';
 import MultiCheck from './MultiCheck';
@@ -32,7 +32,7 @@ export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props 
 			Component = NumberField;
 			break;
 		case 'textarea':
-			Component = TextArea;
+			Component = Textarea;
 			break;
 		case 'select':
 			Component = Select;

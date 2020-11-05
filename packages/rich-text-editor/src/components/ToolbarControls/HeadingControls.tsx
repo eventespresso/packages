@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Select } from '../../../../adapters/src/Select';
+import { Select } from '../../../../components/src/Select';
 import { HEADING_BLOCK_TYPES } from '../constants';
 import type { BlockStyleControlsProps } from '../types';
 

@@ -4,10 +4,10 @@ const eventHasKey = (key: Key) => (e: React.KeyboardEvent): boolean => e?.key ==
 
 export const isEnterKey = eventHasKey('Enter');
 
-export const isEscapeKey = eventHasKey('Esc') || eventHasKey('Escape');
+export const isEscapeKey = (e: React.KeyboardEvent): boolean => eventHasKey('Esc')(e) || eventHasKey('Escape')(e);
 
-export const isLeftKey = eventHasKey('Left') || eventHasKey('ArrowLeft');
+export const isLeftKey = (e: React.KeyboardEvent): boolean => eventHasKey('Left')(e) || eventHasKey('ArrowLeft')(e);
 
-export const isRightKey = eventHasKey('Right') || eventHasKey('ArrowRight');
+export const isRightKey = (e: React.KeyboardEvent): boolean => eventHasKey('Right')(e) || eventHasKey('ArrowRight')(e);
 
 export const isTabKey = eventHasKey('Tab');

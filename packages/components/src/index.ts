@@ -52,7 +52,7 @@ export * from './PopoverForm';
 export * from './PriceTypeSign';
 export * from './RichTextEditorModal';
 export * from './SearchInput';
-export * from './SelectInput';
+export * from './Select';
 export * from './Stepper';
 export * from './Steps';
 export * from './Switch';

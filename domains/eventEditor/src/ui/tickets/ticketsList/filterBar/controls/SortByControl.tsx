@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectInput } from '@eventespresso/components';
+import { Select } from '@eventespresso/components';
 import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 
@@ -14,7 +14,7 @@ const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useTicketsListFilterState();
 
 	return (
-		<SelectInput
+		<Select
 			id='tickets-list-sort-by-control'
 			label={labels.sortBy}
 			onChangeValue={setSortBy}

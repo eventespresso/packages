@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, SelectInput } from '@eventespresso/components';
+import { Button, Select } from '@eventespresso/components';
 import { entityListToSelectOptions, AnyObject } from '@eventespresso/utils';
 import { useDatetimes, useDatetimeItem } from '@eventespresso/edtr-services';
 
@@ -24,7 +24,7 @@ const DateTemplate: React.FC<DateTemplateProps> = ({ setTemplate }) => {
 	const selectExistingID = 'existing-datetime';
 	const selectExisting = (
 		<>
-			<SelectInput
+			<Select
 				id={selectExistingID}
 				options={options}
 				onChangeValue={onChangeValue}

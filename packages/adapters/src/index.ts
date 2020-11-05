@@ -31,7 +31,7 @@ export * from './RadioGroup';
 export * from './Select';
 export * from './Spinner';
 export * from './Switch';
-export * from './TextArea';
+export * from './Textarea';
 export * from './TextFit';
 export * from './TextInput';
 export * from './Tooltip';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SelectInput } from '@eventespresso/components';
+import { Select } from '@eventespresso/components';
 import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { objectToSelectOptions } from '@eventespresso/utils';
@@ -14,7 +14,7 @@ const StatusControl: React.FC = () => {
 	]);
 
 	return (
-		<SelectInput
+		<Select
 			id='tickets-list-status-control'
 			label={labels.status}
 			onChangeValue={setStatus}

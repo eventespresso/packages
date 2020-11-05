@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SelectInput } from '@eventespresso/components';
+import { Select } from '@eventespresso/components';
 import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 
@@ -15,7 +15,7 @@ const DisplayStartOrEndDateControl: React.FC = () => {
 	const { displayStartOrEndDate, setDisplayStartOrEndDate } = useTicketsListFilterState();
 
 	return (
-		<SelectInput
+		<Select
 			id='tickets-list-display-control'
 			label={labels.displayStartOrEndDate}
 			onChangeValue={setDisplayStartOrEndDate}

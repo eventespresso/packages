@@ -17,6 +17,8 @@ export const Switch: React.FC<SwitchProps> = ({
 	defaultChecked,
 	disabled,
 	onBlur,
+	onChange,
+	onChangeValue,
 	onFocus,
 	value,
 	...props
@@ -59,6 +61,19 @@ export const Switch: React.FC<SwitchProps> = ({
 		[onFocus]
 	);
 
+	const onChangeHandler: SwitchProps['onChange'] = useCallback(
+		(event) => {
+			if (typeof onChangeValue === 'function') {
+				onChangeValue((event.target as HTMLInputElement).checked, event);
+			}
+
+			if (typeof onChange === 'function') {
+				onChange(event);
+			}
+		},
+		[onChange, onChangeValue]
+	);
+
 	const onClick = useCallback(
 		(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
 			if (disabled) {
@@ -82,6 +97,7 @@ export const Switch: React.FC<SwitchProps> = ({
 
 	const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
 		if (isLeftKey(e)) {
+			console.log('isLeftKey');
 			setInnerChecked(false);
 		}
 
@@ -110,8 +126,10 @@ export const Switch: React.FC<SwitchProps> = ({
 				aria-checked={innerChecked}
 				checked={innerChecked}
 				className='ee-switch__sr-only'
-				onFocus={handleFocus}
 				onBlur={handleBlur}
+				onChange={onChangeHandler}
+				onClick={onClick}
+				onFocus={handleFocus}
 				ref={ref}
 				type='checkbox'
 				value={value}

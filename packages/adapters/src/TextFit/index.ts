@@ -1,1 +1,1 @@
-export { default as TextFit } from './TextFit';
+export * from './TextFit';

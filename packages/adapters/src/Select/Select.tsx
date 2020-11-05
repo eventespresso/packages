@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Select as ChakraSelect } from '@chakra-ui/select';
 
+import { useOnChange } from '@eventespresso/hooks';
 import type { SelectProps } from './types';
 
 const DEFAULT_OPTIONS = [];
@@ -13,6 +14,8 @@ export const Select: React.FC<SelectProps> = ({
 	onChangeValue,
 	...props
 }) => {
+	const onChangeHandler = useOnChange({ onChange, onChangeValue });
+
 	const childNodes =
 		children ||
 		options.map(({ label, options: optionGroups, value, ...optionProps }, index) => {
@@ -33,19 +36,6 @@ export const Select: React.FC<SelectProps> = ({
 				</option>
 			);
 		});
-
-	const onChangeHandler: SelectProps['onChange'] = useCallback(
-		(event) => {
-			if (typeof onChangeValue === 'function') {
-				onChangeValue(event.target.value, event);
-			}
-
-			if (typeof onChange === 'function') {
-				onChange(event);
-			}
-		},
-		[onChange, onChangeValue]
-	);
 
 	return (
 		<ChakraSelect {...props} className={className} onChange={onChangeHandler}>

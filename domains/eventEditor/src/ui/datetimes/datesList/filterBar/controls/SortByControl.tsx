@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SelectInput } from '@eventespresso/components';
+import { Select } from '@eventespresso/components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 
@@ -14,7 +14,7 @@ const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useDatesListFilterState();
 
 	return (
-		<SelectInput
+		<Select
 			id='dates-list-sort-by-control'
 			label={labels.sortBy}
 			value={sortBy}

@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, SelectInput } from '@eventespresso/components';
+import { Button, Select } from '@eventespresso/components';
 import { entityListToSelectOptions } from '@eventespresso/utils';
 import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { useTickets } from '@eventespresso/edtr-services';
@@ -40,7 +40,7 @@ const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates })
 	const selectExistingID = 'existing-ticket';
 	const selectExisting = (
 		<>
-			<SelectInput id={selectExistingID} options={options} onChangeValue={onChangeValue} />
+			<Select id={selectExistingID} options={options} onChangeValue={onChangeValue} />
 			<Button
 				buttonText={__('Add')}
 				onClick={onClick}
