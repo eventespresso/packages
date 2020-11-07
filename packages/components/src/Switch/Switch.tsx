@@ -3,6 +3,8 @@ import classNames from 'classnames';
 
 import { SwitchChecked, SwitchUnchecked } from '@eventespresso/icons';
 import { isLeftKey, isRightKey } from '@eventespresso/utils';
+import { useOnChange } from '@eventespresso/hooks';
+import { withLabel } from '../withLabel';
 import type { SwitchProps } from './types';
 
 import './style.scss';
@@ -12,7 +14,7 @@ const icons = {
 	unchecked: <SwitchUnchecked />,
 };
 
-export const Switch: React.FC<SwitchProps> = ({
+const Switch: React.FC<SwitchProps> = ({
 	checked,
 	defaultChecked,
 	disabled,
@@ -26,6 +28,8 @@ export const Switch: React.FC<SwitchProps> = ({
 	const [innerChecked, setInnerChecked] = useState<boolean>(checked || defaultChecked);
 	const [hasFocus, setHasFocus] = useState<boolean>(false);
 	const ref = useRef<HTMLInputElement>();
+	const onChangeHandler = useOnChange({ onChange, onChangeValue });
+
 	const touch = useRef({
 		activated: false,
 		moved: false,
@@ -59,19 +63,6 @@ export const Switch: React.FC<SwitchProps> = ({
 			setHasFocus(true);
 		},
 		[onFocus]
-	);
-
-	const onChangeHandler: SwitchProps['onChange'] = useCallback(
-		(event) => {
-			if (typeof onChangeValue === 'function') {
-				onChangeValue((event.target as HTMLInputElement).checked, event);
-			}
-
-			if (typeof onChange === 'function') {
-				onChange(event);
-			}
-		},
-		[onChange, onChangeValue]
 	);
 
 	const onClick = useCallback(
@@ -137,3 +128,5 @@ export const Switch: React.FC<SwitchProps> = ({
 		</div>
 	);
 };
+
+export default withLabel(Switch);

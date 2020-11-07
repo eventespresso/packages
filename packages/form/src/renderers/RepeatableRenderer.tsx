@@ -53,4 +53,5 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 		</>
 	);
 };
+
 export default RepeatableRenderer;

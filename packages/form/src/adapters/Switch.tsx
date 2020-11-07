@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Switch } from '@eventespresso/adapters';
+import { Switch } from '../../../components/src/Switch';
+import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';
 
 const SwitchField: React.FC<FieldRendererProps> = ({ input, ...props }) => {
-	return <Switch {...input} isChecked={Boolean(input.value)} {...props} />;
+	return <Switch {...input} checked={Boolean(input.value)} {...props} />;
 };
 
-export default SwitchField;
+export default withoutMetaProp(SwitchField);

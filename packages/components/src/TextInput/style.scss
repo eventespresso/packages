@@ -1,5 +1,6 @@
 @import '~@eventespresso/styles/src';
 
-.ee-textarea {
+.ee-text-input {
 	@extend .ee-input-base;
+	@extend .ee-input;
 }

@@ -1,3 +1,4 @@
+import type { withLabelProps } from '../withLabel';
 import type { CommonInputProps } from '@eventespresso/adapters/src/types';
 
 interface Icons {
@@ -6,7 +7,8 @@ interface Icons {
 }
 
 export interface SwitchProps
-	extends Pick<React.InputHTMLAttributes<HTMLInputElement>, 'value'>,
+	extends Partial<withLabelProps>,
+		Pick<React.InputHTMLAttributes<HTMLInputElement>, 'value'>,
 		CommonInputProps<HTMLInputElement, boolean> {
 	'aria-describedby'?: string;
 	'aria-labelledby'?: string;

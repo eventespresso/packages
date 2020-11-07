@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { SwitchInput } from '@eventespresso/components';
+import { Switch } from '@eventespresso/components';
 import type { FilterStateManager } from '../filterState';
 
 type ShowTrashedTicketsControlProps = Pick<FilterStateManager, 'showTrashedTickets' | 'setShowTrashedTickets'>;
@@ -11,11 +11,7 @@ const ShowTrashedTicketsControl: React.FC<ShowTrashedTicketsControlProps> = ({
 	setShowTrashedTickets,
 }) => {
 	return (
-		<SwitchInput
-			label={__('show trashed tickets')}
-			isChecked={showTrashedTickets}
-			onChangeValue={setShowTrashedTickets}
-		/>
+		<Switch label={__('show trashed tickets')} checked={showTrashedTickets} onChangeValue={setShowTrashedTickets} />
 	);
 };
 
