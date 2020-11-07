@@ -34,10 +34,12 @@ const Preview: React.FC<PreviewProps> = ({
 	if (fitText) {
 		textInput = (
 			<TextFit
-				maxFontSize={24} // based on --ee-font-size-bigger: 1.5rem;
-				minFontSize={18}
-				text={textInput}
-			/>
+				max={24} // based on --ee-font-size-bigger: 1.5rem;
+				min={18}
+				mode='single'
+			>
+				{textInput}
+			</TextFit>
 		);
 	}
 

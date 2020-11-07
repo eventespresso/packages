@@ -11,7 +11,7 @@ const ShowExpiredTicketsControl: React.FC<ShowExpiredTicketsControlProps> = ({
 	setShowExpiredTickets,
 }) => {
 	return (
-		<Switch label={__('show expired tickets')} checked={showExpiredTickets} onChangeValue={setShowExpiredTickets} />
+		<Switch checked={showExpiredTickets} label={__('show expired tickets')} onChangeValue={setShowExpiredTickets} />
 	);
 };
 

@@ -28,22 +28,14 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 							{...rest}
 							fieldType={fieldType}
 							name={fieldName}
-							label={
-								<>
-									{sprintf(
-										/* translators: %d the entry number */
-										__('Entry %d'),
-										`${index + 1}`
-									)}
-									<Button
-										className='remove-item'
-										size='sm'
-										icon={CloseOutlined}
-										onClick={onRemove(index)}
-									/>
-								</>
-							}
-						/>
+							label={sprintf(
+								/* translators: %d the entry number */
+								__('Entry %d'),
+								`${index + 1}`
+							)}
+						>
+							<Button className='remove-item' size='sm' icon={CloseOutlined} onClick={onRemove(index)} />
+						</Component>
 					</div>
 				);
 			})}
