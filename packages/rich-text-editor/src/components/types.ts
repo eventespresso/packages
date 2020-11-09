@@ -3,10 +3,10 @@ import type { DraftBlockType } from 'draft-js';
 export type ToggleBlockType = (style: DraftBlockType) => void;
 
 export interface StyleButtonProps {
-	active: boolean;
+	active?: boolean;
 	'aria-label'?: string;
 	icon?: React.ReactNode;
-	label: string;
+	label?: string;
 	onToggle: ToggleBlockType;
-	style: DraftBlockType;
+	style?: DraftBlockType;
 }

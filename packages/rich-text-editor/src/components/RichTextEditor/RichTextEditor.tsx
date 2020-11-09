@@ -63,7 +63,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel
 	return (
 		<>
 			<div className='rich-text-editor-root'>
-				<ToolbarControls type={type} />
+				<ToolbarControls type={type} editorRef={editorRef} />
 				{
 					// eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
 					<div className={editorClassName} onClick={editorRef.current?.focus}>
