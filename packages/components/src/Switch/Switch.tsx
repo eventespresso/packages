@@ -89,7 +89,6 @@ const Switch: React.FC<SwitchProps> = ({
 
 	const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
 		if (isLeftKey(e)) {
-			console.log('isLeftKey');
 			setInnerChecked(false);
 		}
 
