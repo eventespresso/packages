@@ -42,7 +42,7 @@ type FieldType =
 	| 'timepicker';
 
 export interface AdditionalFieldProps<FormValues = AnyObject> {
-	label?: string;
+	label?: string | JSX.Element;
 	fieldType: FieldType;
 	htmlType?: string;
 	before?: React.ReactNode | string;
