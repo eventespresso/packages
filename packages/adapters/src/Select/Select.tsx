@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Select as ChakraSelect } from '@chakra-ui/select';
 
-import { useOnChange } from '@eventespresso/hooks';
+import { useOnChange } from '../hooks';
 import type { SelectProps } from './types';
 
 const DEFAULT_OPTIONS = [];
