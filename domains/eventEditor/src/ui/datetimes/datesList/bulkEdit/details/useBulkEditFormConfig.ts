@@ -53,7 +53,7 @@ const useBulkEditFormConfig = (config?: EspressoFormProps<BulkEditFormShape>): D
 						{
 							name: 'description',
 							label: __('Description'),
-							fieldType: 'rich-text-editor',
+							fieldType: 'simple-text-editor',
 						},
 					],
 				},

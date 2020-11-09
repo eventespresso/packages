@@ -34,7 +34,7 @@ type FieldType =
 	| 'multicheck'
 	| 'number'
 	| 'radio'
-	| 'rich-text-editor'
+	| 'simple-text-editor'
 	| 'select'
 	| 'switch'
 	| 'text'

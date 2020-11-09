@@ -58,7 +58,7 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 						{
 							name: 'description',
 							label: __('Description'),
-							fieldType: 'rich-text-editor',
+							fieldType: 'simple-text-editor',
 						},
 					],
 				},

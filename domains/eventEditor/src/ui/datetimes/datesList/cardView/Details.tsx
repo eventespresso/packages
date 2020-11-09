@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
-import { RichTextEditorModal } from '@eventespresso/components';
+import { SimpleTextEditorModal } from '@eventespresso/components';
 import { useConfig } from '@eventespresso/services';
 import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
 
@@ -37,7 +37,7 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 		<>
 			<EditableName className='entity-card-details__name' entity={datetime} />
 
-			<RichTextEditorModal
+			<SimpleTextEditorModal
 				className='entity-card-details__text'
 				onUpdate={onUpdate}
 				text={datetime.description}

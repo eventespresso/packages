@@ -4,14 +4,14 @@ import { useDisclosure } from '@chakra-ui/hooks';
 
 import { Dotdotdot } from '@eventespresso/adapters';
 import { Edit } from '@eventespresso/icons';
-import { RichTextEditor } from '@eventespresso/rich-text-editor';
+import { SimpleTextEditor } from '@eventespresso/rich-text-editor';
 
 import { TabbableText, ModalWithAlert } from '../';
-import type { RichTextEditorModalProps } from './types';
+import type { SimpleTextEditorModalProps } from './types';
 
 import './style.scss';
 
-export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
+export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 	className,
 	onUpdate,
 	title,
@@ -58,7 +58,7 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 	return (
 		<>
 			<ModalWithAlert
-				className='ee-rich-text-editor-modal'
+				className='ee-simple-text-editor-modal'
 				isOpen={isOpen}
 				onCancel={onCancel}
 				onClose={onCancel}
@@ -66,9 +66,9 @@ export const RichTextEditorModal: React.FC<RichTextEditorModalProps> = ({
 				showAlertOnEscape={hasChanges}
 				title={title}
 			>
-				<RichTextEditor onChange={onChange} value={text} />
+				<SimpleTextEditor onChange={onChange} value={text} />
 			</ModalWithAlert>
-			<div className='ee-rich-text-editor__preview'>
+			<div className='ee-simple-text-editor__preview'>
 				<TabbableText
 					className={previewClassName}
 					icon={<Edit className={'ee-inline-edit__edit-icon'} />}

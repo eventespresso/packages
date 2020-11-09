@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { RichTextEditor } from '@eventespresso/rich-text-editor';
-
 import Text from './Text';
 import Textarea from './Textarea';
 import Select from './Select';
@@ -11,6 +9,7 @@ import Radio from './Radio';
 import DatePicker from './DatePicker';
 import DateTimePicker from './DateTimePicker';
 import TimePicker from './TimePicker';
+import SimpleTextEditor from './SimpleTextEditor';
 import Hidden from './Hidden';
 import NumberField from './Number';
 import type { FieldRendererProps } from '../types';
@@ -46,8 +45,8 @@ export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props 
 		case 'radio':
 			Component = Radio;
 			break;
-		case 'rich-text-editor':
-			Component = RichTextEditor;
+		case 'simple-text-editor':
+			Component = SimpleTextEditor;
 			break;
 		case 'timepicker':
 			Component = TimePicker;

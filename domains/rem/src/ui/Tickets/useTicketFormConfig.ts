@@ -130,7 +130,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 						{
 							name: 'description',
 							label: __('Description'),
-							fieldType: 'rich-text-editor',
+							fieldType: 'simple-text-editor',
 						},
 						{
 							name: 'isShared',

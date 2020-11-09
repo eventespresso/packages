@@ -90,7 +90,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 						{
 							name: 'description',
 							label: __('Description'),
-							fieldType: 'rich-text-editor',
+							fieldType: 'simple-text-editor',
 						},
 					],
 				},

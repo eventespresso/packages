@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
-import { RichTextEditorModal } from '@eventespresso/components';
+import { SimpleTextEditorModal } from '@eventespresso/components';
 import { useConfig } from '@eventespresso/services';
 import { getAdminUrl, useTicketMutator, useEventId } from '@eventespresso/edtr-services';
 
@@ -33,7 +33,7 @@ const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 		<>
 			<EditableName className={'entity-card-details__name'} entity={ticket} />
 
-			<RichTextEditorModal
+			<SimpleTextEditorModal
 				className='entity-card-details__text'
 				onUpdate={onUpdate}
 				text={ticket.description}
