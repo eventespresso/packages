@@ -15,6 +15,7 @@ export * from './FormHelperText';
 export * from './FormLabel';
 export * from './Grid';
 export * from './Heading';
+export * from './hooks';
 export * from './Icon';
 export * from './InlineEdit';
 export * from './InputWithLabel';
