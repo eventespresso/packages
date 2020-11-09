@@ -1,17 +1,19 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import classNames from 'classnames';
-import { Editor, EditorState, RichUtils, DraftBlockType, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
-import { convertFromHTML, convertToHTML } from 'draft-convert';
+import { Editor, RichUtils, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
 import { __ } from '@eventespresso/i18n';
 
 import ToolbarControls from '../ToolbarControls';
-import { RichTextEditorProps } from './types';
+import { DraftEditorProps, RichTextEditorProps } from './types';
 import { isTabKey } from '../../../../utils/src/keycodes';
 import { getBlockStyle } from '../../utils';
 
 import './style.scss';
+import DebugLog from './DebugLog';
+import { withState } from '../../context';
+import { useEditorState } from '../../hooks';
 
 // Custom overrides for "code" style.
 const styleMap = {
@@ -23,51 +25,29 @@ const styleMap = {
 	},
 };
 
-type DraftEditorProps = React.ComponentProps<typeof Editor>;
-
-export const RichTextEditor: React.FC<RichTextEditorProps> = ({
-	'aria-label': ariaLabel,
-	className,
-	placeholder,
-	onChange,
-	type,
-	value,
-}) => {
-	const defaultValue = EditorState.createWithContent(convertFromHTML({})(value || placeholder || ''));
-
-	const [editorState, setEditorState] = useState(defaultValue);
+const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel, className, type }) => {
+	const [editorState, updateEditorState] = useEditorState();
 
 	const editorRef = useRef<Editor>();
-
-	const onChangeHandler = useCallback<DraftEditorProps['onChange']>(
-		(newEditorState) => {
-			const html = convertToHTML({})(newEditorState.getCurrentContent());
-
-			onChange?.(html);
-
-			setEditorState(newEditorState);
-		},
-		[onChange]
-	);
 
 	const handleKeyCommand = useCallback<DraftEditorProps['handleKeyCommand']>(
 		(command) => {
 			const newState = RichUtils.handleKeyCommand(editorState, command);
 
 			if (newState) {
-				onChangeHandler(newState);
+				updateEditorState(newState);
 				return 'handled';
 			}
 
 			if (command === 'tab') {
 				const maxDepth = 4;
-				onChangeHandler(RichUtils.onTab(null, editorState, maxDepth));
+				updateEditorState(RichUtils.onTab(null, editorState, maxDepth));
 				return 'handled';
 			}
 
 			return 'not-handled';
 		},
-		[editorState, onChangeHandler]
+		[editorState, updateEditorState]
 	);
 
 	const keyBindingFn = useCallback<DraftEditorProps['keyBindingFn']>((e) => {
@@ -78,47 +58,33 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
 		return getDefaultKeyBinding(e);
 	}, []);
 
-	const toggleBlockType = useCallback(
-		(blockType: DraftBlockType): void => {
-			onChangeHandler(RichUtils.toggleBlockType(editorState, blockType));
-		},
-		[editorState, onChangeHandler]
-	);
-
-	const toggleInlineStyle = useCallback(
-		(inlineStyle: string): void => {
-			onChangeHandler(RichUtils.toggleInlineStyle(editorState, inlineStyle));
-		},
-		[editorState, onChangeHandler]
-	);
-
 	const editorClassName = classNames('rich-text-editor', className);
 
 	return (
-		<div className='rich-text-editor-root'>
-			<ToolbarControls
-				type={type}
-				editorState={editorState}
-				onToggleBlockType={toggleBlockType}
-				onToggleInlineStyle={toggleInlineStyle}
-			/>
-			{
-				// eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
-				<div className={editorClassName} onClick={editorRef.current?.focus}>
-					<Editor
-						ariaLabel={ariaLabel}
-						blockStyleFn={getBlockStyle}
-						customStyleMap={styleMap}
-						editorState={editorState}
-						handleKeyCommand={handleKeyCommand}
-						keyBindingFn={keyBindingFn}
-						onChange={onChangeHandler}
-						placeholder={__('Write something…')}
-						ref={editorRef}
-						spellCheck={true}
-					/>
-				</div>
-			}
-		</div>
+		<>
+			<div className='rich-text-editor-root'>
+				<ToolbarControls type={type} />
+				{
+					// eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
+					<div className={editorClassName} onClick={editorRef.current?.focus}>
+						<Editor
+							ariaLabel={ariaLabel}
+							blockStyleFn={getBlockStyle}
+							customStyleMap={styleMap}
+							editorState={editorState}
+							handleKeyCommand={handleKeyCommand}
+							keyBindingFn={keyBindingFn}
+							onChange={updateEditorState}
+							placeholder={__('Write something…')}
+							ref={editorRef}
+							spellCheck={true}
+						/>
+					</div>
+				}
+			</div>
+			<DebugLog editorState={editorState} />
+		</>
 	);
 };
+
+export default withState(RichTextEditor);

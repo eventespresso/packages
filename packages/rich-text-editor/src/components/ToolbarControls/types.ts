@@ -1,20 +1,12 @@
-import type { EditorState, DraftBlockType } from 'draft-js';
-
-type toggleBlockType = (style: DraftBlockType) => void;
+import type { EditorState } from 'draft-js';
+import { RichTextEditorProps } from '../RichTextEditor';
+import { ToggleBlockType } from '../types';
 
 export interface ToolbarControlsProps {
-	editorState: EditorState;
-	onToggleBlockType: toggleBlockType;
-	onToggleInlineStyle: toggleBlockType;
-	type?: 'simple' | 'advanced';
+	type?: RichTextEditorProps['type'];
 }
 
-export interface BlockStyleControlsProps {
+export interface BaseControlProps {
 	editorState: EditorState;
-	onToggle: toggleBlockType;
-}
-
-export interface InlineStyleControlsProps {
-	editorState: EditorState;
-	onToggle: toggleBlockType;
+	onToggle: ToggleBlockType;
 }

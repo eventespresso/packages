@@ -1,20 +1,18 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Select } from '../../../../components/src/Select';
+import { useBlockType, useToggleBlockType } from '../../hooks';
 import { HEADING_BLOCK_TYPES } from '../constants';
-import type { BlockStyleControlsProps } from './types';
 
 const rootProps = {
 	className: 'rich-text-editor-controls__heading',
 };
 
-const HeadingControls: React.FC<BlockStyleControlsProps> = ({ editorState, onToggle }) => {
-	const selection = useMemo(() => editorState.getSelection(), [editorState]);
-	const blockType = useMemo(() => editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getType(), [
-		editorState,
-		selection,
-	]);
+const HeadingControls: React.FC = () => {
+	const blockType = useBlockType();
+
+	const onToggle = useToggleBlockType();
 
 	return (
 		<Select

@@ -1,6 +1,6 @@
 import type { DraftBlockType } from 'draft-js';
 
-type ToggleBlockType = (style: DraftBlockType) => void;
+export type ToggleBlockType = (style: DraftBlockType) => void;
 
 export interface StyleButtonProps {
 	active: boolean;

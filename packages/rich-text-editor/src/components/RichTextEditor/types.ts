@@ -1,8 +1,10 @@
-export interface RichTextEditorProps {
+import { Editor } from 'draft-js';
+import { StateProviderProps } from '../../context';
+
+export interface RichTextEditorProps extends StateProviderProps {
 	'aria-label'?: string;
 	className?: string;
-	onChange: (string: string) => void;
-	placeholder?: string;
 	type?: 'simple' | 'advanced';
-	value?: string;
 }
+
+export type DraftEditorProps = React.ComponentProps<typeof Editor>;

@@ -69,4 +69,9 @@ export const INLINE_STYLES: Block[] = [
 		label: 'U',
 		style: 'UNDERLINE',
 	},
+	{
+		'aria-label': __('strikethrough'),
+		label: 'S',
+		style: 'STRIKETHROUGH',
+	},
 ];

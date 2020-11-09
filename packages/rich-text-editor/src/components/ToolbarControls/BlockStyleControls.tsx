@@ -2,9 +2,9 @@ import React from 'react';
 
 import { EditorOl, EditorQuote, EditorUl, IconProps } from '@eventespresso/icons';
 
+import { useBlockType, useToggleBlockType } from '../../hooks';
 import StyleButton from '../StyleButton';
 import { BLOCK_TYPES } from '../constants';
-import type { BlockStyleControlsProps } from './types';
 
 const iconMapping = {
 	Blockquote: EditorQuote,
@@ -12,10 +12,10 @@ const iconMapping = {
 	UL: EditorUl,
 };
 
-const BlockStyleControls: React.FC<BlockStyleControlsProps> = (props) => {
-	const { editorState } = props;
-	const selection = editorState.getSelection();
-	const blockType = editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getType();
+const BlockStyleControls: React.FC = () => {
+	const blockType = useBlockType();
+
+	const onToggle = useToggleBlockType();
 
 	return (
 		<div className='rich-text-editor-controls'>
@@ -28,7 +28,7 @@ const BlockStyleControls: React.FC<BlockStyleControlsProps> = (props) => {
 						key={label}
 						icon={Icon && <Icon noMargin size='small' />}
 						label={label}
-						onToggle={props.onToggle}
+						onToggle={onToggle}
 						style={style}
 					/>
 				);

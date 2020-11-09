@@ -42,6 +42,7 @@ export { default as Save } from './Save';
 export { default as SaveOutlined } from './SaveOutlined';
 export { default as Sort } from './Sort';
 export { default as Spinner } from './Spinner';
+export { default as Strikethrough } from './Strikethrough';
 export { default as SwitchChecked } from './SwitchChecked';
 export { default as SwitchUnchecked } from './SwitchUnchecked';
 export { default as TableView } from './TableView';
