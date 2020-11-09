@@ -1,5 +1,7 @@
-import React from 'react';
-import shallowEqual from './utils/shallowEqual';
+import React, { useEffect, useRef, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
+import { canUseDOM } from '@eventespresso/utils';
 import series from './utils/series';
 import whilst from './utils/whilst';
 import throttle from './utils/throttle';
@@ -16,71 +18,32 @@ function assertElementFitsHeight(el, height) {
 	return el.scrollHeight - 1 <= height;
 }
 
-function noop() {
-	return null;
-}
+const noop = () => null;
 
-export default class TextFit extends React.Component {
-	static defaultProps = {
-		min: 1,
-		max: 100,
-		mode: 'multi',
-		forceSingleModeWidth: true,
-		throttle: 50,
-		autoResize: true,
-		onReady: noop,
-	};
+export const TextFit = ({
+	autoResize = true,
+	children,
+	text,
+	style,
+	min = 1,
+	max = 100,
+	mode = 'multi',
+	forceWidth,
+	forceSingleModeWidth = true,
+	throttle = 50,
+	onReady = noop,
+	...props
+}) => {
+	const [fontSize, setFontSize] = useState(null);
+	const [ready, setReady] = useState(false);
 
-	constructor(props) {
-		super(props);
-		if ('perfectFit' in props) {
-			console.warn('TextFit property perfectFit has been removed.');
-		}
-	}
+	const parent = useRef<HTMLDivElement>();
+	const child = useRef<HTMLDivElement>();
+	const pid = useRef();
 
-	state = {
-		fontSize: null,
-		ready: false,
-	};
-
-	componentDidMount() {
-		const { autoResize } = this.props;
-
-		this.handleWindowResize = throttle(this.handleWindowResize, this.props.throttle);
-
-		if (autoResize) {
-			window.addEventListener('resize', this.handleWindowResize);
-		}
-		this.process();
-	}
-
-	componentDidUpdate(prevProps) {
-		const { ready } = this.state;
-		if (!ready) return;
-		if (shallowEqual(this.props, prevProps)) return;
-		this.process();
-	}
-
-	componentWillUnmount() {
-		const { autoResize } = this.props;
-		if (autoResize) {
-			window.removeEventListener('resize', this.handleWindowResize);
-		}
-		// Setting a new pid will cancel all running processes
-		this.pid = uniqueId();
-	}
-
-	handleWindowResize = () => {
-		this.process();
-	};
-
-	process() {
-		const { min, max, mode, forceSingleModeWidth, onReady } = this.props;
-		const el = this._parent;
-		const wrapper = this._child;
-
-		const originalWidth = innerWidth(el);
-		const originalHeight = innerHeight(el);
+	const process = () => {
+		const originalWidth = innerWidth(parent);
+		const originalHeight = innerHeight(parent);
 
 		if (originalHeight <= 0 || isNaN(originalHeight)) {
 			console.warn(
@@ -103,19 +66,19 @@ export default class TextFit extends React.Component {
 
 		const testPrimary =
 			mode === 'multi'
-				? () => assertElementFitsHeight(wrapper, originalHeight)
-				: () => assertElementFitsWidth(wrapper, originalWidth);
+				? () => assertElementFitsHeight(child, originalHeight)
+				: () => assertElementFitsWidth(child, originalWidth);
 
 		const testSecondary =
 			mode === 'multi'
-				? () => assertElementFitsWidth(wrapper, originalWidth)
-				: () => assertElementFitsHeight(wrapper, originalHeight);
+				? () => assertElementFitsWidth(child, originalWidth)
+				: () => assertElementFitsHeight(child, originalHeight);
 
 		let mid;
-		let low = min;
-		let high = max;
+		let low: number = min;
+		let high: number = max;
 
-		this.setState({ ready: false });
+		setReady(false);
 
 		series(
 			[
@@ -126,13 +89,20 @@ export default class TextFit extends React.Component {
 						() => low <= high,
 						(whilstCallback) => {
 							if (shouldCancelProcess()) return whilstCallback(true);
-							mid = parseInt((low + high) / 2, 10);
-							this.setState({ fontSize: mid }, () => {
-								if (shouldCancelProcess()) return whilstCallback(true);
-								if (testPrimary()) low = mid + 1;
-								else high = mid - 1;
-								return whilstCallback();
-							});
+
+							mid = Math.floor((low + high) / 2);
+
+							setFontSize(mid);
+
+							if (shouldCancelProcess()) return whilstCallback(true);
+
+							if (testPrimary()) {
+								low = mid + 1;
+							} else {
+								high = mid - 1;
+							}
+
+							return whilstCallback();
 						},
 						stepCallback
 					),
@@ -143,13 +113,18 @@ export default class TextFit extends React.Component {
 				(stepCallback) => {
 					if (mode === 'single' && forceSingleModeWidth) return stepCallback();
 					if (testSecondary()) return stepCallback();
+
 					low = min;
 					high = mid;
+
 					return whilst(
 						() => low < high,
 						(whilstCallback) => {
 							if (shouldCancelProcess()) return whilstCallback(true);
-							mid = parseInt((low + high) / 2, 10);
+							mid = Math.floor((low + high) / 2);
+
+							setFontSize(mid);
+
 							this.setState({ fontSize: mid }, () => {
 								if (pid !== this.pid) return whilstCallback(true);
 								if (testSecondary()) low = mid + 1;
@@ -184,42 +159,50 @@ export default class TextFit extends React.Component {
 				this.setState({ ready: true }, () => onReady(mid));
 			}
 		);
-	}
+	};
 
-	render() {
-		const {
-			children,
-			text,
-			style,
-			min,
-			max,
-			mode,
-			forceWidth,
-			forceSingleModeWidth,
-			/* eslint-disable no-shadow */
-			throttle,
-			/* eslint-enable no-shadow */
-			autoResize,
-			onReady,
-			...props
-		} = this.props;
-		const { fontSize, ready } = this.state;
-		const finalStyle = {
-			...style,
-			fontSize: fontSize,
+	useEffect(() => {
+		// this.handleWindowResize = throttle(this.handleWindowResize, this.props.throttle);
+		if (canUseDOM && autoResize) {
+			document.addEventListener('resize', process);
+		}
+
+		process();
+
+		return () => {
+			if (canUseDOM && autoResize) {
+				document.removeEventListener('resize', process);
+			}
+
+			// Setting a new pid will cancel all running processes
+			this.pid = uniqueId();
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-		const wrapperStyle = {
-			display: ready ? 'block' : 'inline-block',
-		};
-		if (mode === 'single') wrapperStyle.whiteSpace = 'nowrap';
+	useEffect(() => {
+		// this.handleWindowResize = throttle(this.handleWindowResize, this.props.throttle);
+		if (ready) {
+			process();
+		}
+	}, [ready]);
 
-		return (
-			<div ref={(c) => (this._parent = c)} style={finalStyle} {...props}>
-				<div ref={(c) => (this._child = c)} style={wrapperStyle}>
-					{text && typeof children === 'function' ? (ready ? children(text) : text) : children}
-				</div>
+	const finalStyle = {
+		...style,
+		fontSize: fontSize,
+	};
+
+	const wrapperStyle = {
+		display: ready ? 'block' : 'inline-block',
+	};
+
+	if (mode === 'single') wrapperStyle.whiteSpace = 'nowrap';
+
+	return (
+		<div ref={parent} style={finalStyle} {...props}>
+			<div ref={child} style={wrapperStyle}>
+				{text && typeof children === 'function' ? (ready ? children(text) : text) : children}
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};

@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Dotdotdot, TextFit } from '@eventespresso/adapters';
+import { Dotdotdot } from '@eventespresso/adapters';
+import { TextFit } from '@eventespresso/components';
 import { Edit } from '@eventespresso/icons';
 
 import { TabbableText } from '../';
