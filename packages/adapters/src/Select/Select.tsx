@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Select as ChakraSelect } from '@chakra-ui/select';
 
 import { useOnChange } from '@eventespresso/hooks';
@@ -14,7 +14,8 @@ export const Select: React.FC<SelectProps> = ({
 	onChangeValue,
 	...props
 }) => {
-	const onChangeHandler = useOnChange({ onChange, onChangeValue });
+	const onChangeHandlerArg = useMemo(() => ({ onChange, onChangeValue }), [onChange, onChangeValue]);
+	const onChangeHandler = useOnChange(onChangeHandlerArg);
 
 	const childNodes =
 		children ||
@@ -38,7 +39,7 @@ export const Select: React.FC<SelectProps> = ({
 		});
 
 	return (
-		<ChakraSelect {...props} className={className} onChange={onChangeHandler}>
+		<ChakraSelect {...props} className={className} iconSize='0px' onChange={onChangeHandler}>
 			{childNodes}
 		</ChakraSelect>
 	);

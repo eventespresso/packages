@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import { SwitchChecked, SwitchUnchecked } from '@eventespresso/icons';
@@ -28,7 +28,8 @@ const Switch: React.FC<SwitchProps> = ({
 	const [innerChecked, setInnerChecked] = useState<boolean>(checked || defaultChecked);
 	const [hasFocus, setHasFocus] = useState<boolean>(false);
 	const ref = useRef<HTMLInputElement>();
-	const onChangeHandler = useOnChange({ onChange, onChangeValue });
+	const onChangeHandlerArg = useMemo(() => ({ onChange, onChangeValue }), [onChange, onChangeValue]);
+	const onChangeHandler = useOnChange(onChangeHandlerArg);
 
 	const touch = useRef({
 		activated: false,
