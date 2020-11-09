@@ -2,7 +2,7 @@ import React from 'react';
 
 import StyleButton from '../StyleButton';
 import { INLINE_STYLES } from '../constants';
-import type { InlineStyleControlsProps } from '../types';
+import type { InlineStyleControlsProps } from './types';
 
 const InlineStyleControls: React.FC<InlineStyleControlsProps> = ({ editorState, onToggle }) => {
 	const currentStyle = editorState.getCurrentInlineStyle();

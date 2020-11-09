@@ -3,7 +3,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { Select } from '../../../../components/src/Select';
 import { HEADING_BLOCK_TYPES } from '../constants';
-import type { BlockStyleControlsProps } from '../types';
+import type { BlockStyleControlsProps } from './types';
 
 const rootProps = {
 	className: 'rich-text-editor-controls__heading',

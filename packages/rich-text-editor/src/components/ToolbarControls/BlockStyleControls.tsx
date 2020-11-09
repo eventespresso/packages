@@ -4,7 +4,7 @@ import { EditorOl, EditorQuote, EditorUl, IconProps } from '@eventespresso/icons
 
 import StyleButton from '../StyleButton';
 import { BLOCK_TYPES } from '../constants';
-import type { BlockStyleControlsProps } from '../types';
+import type { BlockStyleControlsProps } from './types';
 
 const iconMapping = {
 	Blockquote: EditorQuote,

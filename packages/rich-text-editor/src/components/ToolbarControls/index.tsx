@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import BlockStyleControls from './BlockStyleControls';
 import HeadingControls from './HeadingControls';
@@ -8,12 +9,19 @@ import type { ToolbarControlsProps } from './types';
 
 import './style.scss';
 
-const ToolbarControls: React.FC<ToolbarControlsProps> = ({ editorState, onToggleBlockType, onToggleInlineStyle }) => {
+const ToolbarControls: React.FC<ToolbarControlsProps> = ({
+	editorState,
+	onToggleBlockType,
+	onToggleInlineStyle,
+	type = 'simple',
+}) => {
+	const className = classNames('rich-text-editor-controls__wrapper', type);
 	return (
-		<div className='rich-text-editor-controls__wrapper'>
+		<div className={className}>
 			<HeadingControls editorState={editorState} onToggle={onToggleBlockType} />
 			<BlockStyleControls editorState={editorState} onToggle={onToggleBlockType} />
 			<InlineStyleControls editorState={editorState} onToggle={onToggleInlineStyle} />
+			{type === 'advanced' && <>{/* something cool here */}</>}
 		</div>
 	);
 };

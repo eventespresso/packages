@@ -1,36 +1,12 @@
-import type { EditorState, DraftBlockType } from 'draft-js';
-import type { FieldInputProps } from 'react-final-form';
-import type { AnyObject } from 'final-form';
+import type { DraftBlockType } from 'draft-js';
 
-type toggleBlockType = (style: DraftBlockType) => void;
-
-export interface RichTextEditorProps {
-	input?: FieldInputProps<AnyObject>;
-	onChange: (string) => void;
-	placeholder?: string;
-	readonly?: boolean;
-	value?: string;
-}
-
-export interface RichTextEditorState {
-	editorState: EditorState;
-}
+type ToggleBlockType = (style: DraftBlockType) => void;
 
 export interface StyleButtonProps {
 	active: boolean;
 	'aria-label'?: string;
 	icon?: React.ReactNode;
 	label: string;
-	onToggle: toggleBlockType;
+	onToggle: ToggleBlockType;
 	style: DraftBlockType;
-}
-
-export interface BlockStyleControlsProps {
-	editorState: EditorState;
-	onToggle: toggleBlockType;
-}
-
-export interface InlineStyleControlsProps {
-	editorState: EditorState;
-	onToggle: toggleBlockType;
 }
