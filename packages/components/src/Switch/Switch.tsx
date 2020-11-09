@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { SwitchChecked, SwitchUnchecked } from '@eventespresso/icons';
 import { isLeftKey, isRightKey } from '@eventespresso/utils';
-import { useOnChange } from '@eventespresso/adapters';
+import { useOnChange } from '@eventespresso/hooks';
 import { withLabel } from '../withLabel';
 import type { SwitchProps } from './types';
 
