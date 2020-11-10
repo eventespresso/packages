@@ -1,5 +1,9 @@
 @import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
+body.ee-modal-open {
+	overflow: hidden;
+}
+
 .ee-modal {
 	.ee-modal {
 		&__header {
