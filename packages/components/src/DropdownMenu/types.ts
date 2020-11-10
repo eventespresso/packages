@@ -8,6 +8,11 @@ export interface DropdownMenuProps extends Omit<MenuProps, 'isOpen'> {
 	toggleProps?: DropdownToggleProps;
 }
 
+export type DropdownMenuListProps = MenuListProps & {
+	className?: string;
+	isOpen: boolean;
+};
+
 export interface DropdownMenuItemProps extends MenuItemProps {
 	icon?: React.ComponentType<any>;
 	title?: string;
