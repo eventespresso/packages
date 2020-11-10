@@ -11,6 +11,7 @@ const useGlobalModalManager = (): GMM => {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
 	const closeModal: GMM['closeModal'] = useCallback((modalName) => {
+		document.body.classList.remove('ee-modal-open');
 		dispatch({ type: 'CLOSE_MODAL', modalName });
 	}, []);
 
@@ -42,11 +43,13 @@ const useGlobalModalManager = (): GMM => {
 
 	const openModal: GMM['openModal'] = useCallback((modalName) => {
 		dispatch({ type: 'OPEN_MODAL', modalName });
+		document.body.classList.add('ee-modal-open');
 	}, []);
 
 	const openModalWithData: GMM['openModalWithData'] = useCallback((modalName, data) => {
 		dispatch({ type: 'SET_MODAL_DATA', modalName, data });
 		dispatch({ type: 'OPEN_MODAL', modalName });
+		document.body.classList.add('ee-modal-open');
 	}, []);
 
 	const setModalData: GMM['setModalData'] = useCallback((modalName, data) => {
