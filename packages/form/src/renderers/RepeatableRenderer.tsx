@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 
-import { Button } from '@eventespresso/adapters';
+import { Button } from '../../../components';
 import { CloseOutlined } from '@eventespresso/icons';
 import type { RepeatableRendererProps } from '../types';
 import { Field, Group } from '../fields';
@@ -37,7 +37,7 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 									)}
 									<Button
 										className='remove-item'
-										size='sm'
+										size='small'
 										icon={CloseOutlined}
 										onClick={onRemove(index)}
 									/>
