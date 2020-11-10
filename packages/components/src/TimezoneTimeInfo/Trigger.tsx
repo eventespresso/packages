@@ -10,7 +10,7 @@ interface TriggerProps {
 	onClick?: VoidFunction;
 }
 
-const Icon: React.FC = () => <GlobalOutlined /* noMargin */ size='smaller' />;
+const Icon: React.FC = () => <GlobalOutlined size='smaller' />;
 
 const tooltipProps: TooltipProps = { placement: 'top' as const };
 

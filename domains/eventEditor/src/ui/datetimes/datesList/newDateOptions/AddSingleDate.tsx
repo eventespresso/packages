@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Button, ButtonSize, NewEntityOption } from '@eventespresso/components';
+import { Button, NewEntityOption } from '@eventespresso/components';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 import { Calendar } from '@eventespresso/icons';
@@ -19,8 +19,8 @@ const AddSingleDate: React.FC<AddSingleDateProps> = ({ isOnlyButton }) => {
 		<Button
 			buttonText={isOnlyButton ? __('Add New Date') : __('Add Single Date')}
 			onClick={open}
-			buttonSize={isOnlyButton ? ButtonSize.BIG : null}
 			icon={isOnlyButton && Calendar}
+			size={isOnlyButton ? 'big' : 'default'}
 		/>
 	);
 

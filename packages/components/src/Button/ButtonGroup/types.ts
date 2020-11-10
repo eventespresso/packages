@@ -1,6 +1,4 @@
 import type { ButtonGroupProps as ChakraButtonGroupProps } from '@eventespresso/adapters';
-import type { ButtonSize } from '../types';
+import type { Size } from '../../';
 
-export interface ButtonGroupProps extends ChakraButtonGroupProps {
-	buttonSize?: ButtonSize | 'tiny' | 'small' | 'smaller' | 'default' | 'big' | 'huge';
-}
+export interface ButtonGroupProps extends Omit<ChakraButtonGroupProps, 'size'>, Size {}

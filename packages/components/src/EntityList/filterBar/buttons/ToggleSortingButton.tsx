@@ -3,7 +3,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { Sort } from '@eventespresso/icons';
 
-import { Button, ButtonSize } from '../../../Button';
+import { Button } from '../../../Button';
 import type { ToggleSortingButtonProps } from '../types';
 
 const ToggleSortingButton: React.FC<ToggleSortingButtonProps> = ({
@@ -17,12 +17,12 @@ const ToggleSortingButton: React.FC<ToggleSortingButtonProps> = ({
 	return (
 		<Button
 			active={sortingEnabled}
-			buttonSize={ButtonSize.SMALLER}
 			className='ee-filter-bar__btn'
 			icon={Sort}
 			id={id}
-			onClick={toggleSorting}
 			labelClassName='ee-filter-bar__btn-wrap'
+			onClick={toggleSorting}
+			size='smaller'
 			{...rest}
 		>
 			{sortingEnabled ? __('disable sorting') : __('enable sorting')}

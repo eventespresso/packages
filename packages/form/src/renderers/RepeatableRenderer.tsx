@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 
-import { Button } from '@eventespresso/adapters';
+import { Button } from '../../../components/src';
 import { CloseOutlined } from '@eventespresso/icons';
 import type { RepeatableRendererProps } from '../types';
 import { Field, Group } from '../fields';
@@ -14,8 +14,10 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 }) => {
 	const Component = fieldType === 'group' ? Group : Field;
 
-	const onAdd = useCallback(() => fields.push(undefined), [fields]);
-	const onRemove = useCallback((index: number) => () => () => fields.remove(index), [fields]);
+	// TODO: use immutable data structures here
+	// const onAdd = useCallback(() => fields.push(undefined), [fields]);
+	// const onRemove = useCallback((index: number) => () => () => fields.remove(index), [fields]);
+
 	return (
 		<>
 			<div>
@@ -37,9 +39,9 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 									)}
 									<Button
 										className='remove-item'
-										size='sm'
+										size='big'
 										icon={CloseOutlined}
-										onClick={onRemove(index)}
+										// onClick={onRemove(index)}
 									/>
 								</>
 							}
@@ -47,7 +49,10 @@ const RepeatableRenderer: React.FC<Omit<RepeatableRendererProps, 'component'>> =
 					</div>
 				);
 			})}
-			<Button className='add-item' onClick={onAdd}>
+			<Button
+				className='add-item'
+				// onClick={onAdd}
+			>
 				{__('Add')}
 			</Button>
 		</>

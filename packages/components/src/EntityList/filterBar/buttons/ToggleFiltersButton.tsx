@@ -2,7 +2,7 @@ import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Filter } from '@eventespresso/icons';
-import { Button, ButtonSize } from '../../../Button';
+import { Button } from '../../../Button';
 
 import type { ToggleFiltersButtonProps } from '../types';
 
@@ -13,12 +13,12 @@ const ToggleFiltersButton: React.FC<ToggleFiltersButtonProps> = ({ listId, showF
 	return (
 		<Button
 			active={showFilters}
-			buttonSize={ButtonSize.SMALLER}
 			className='ee-filter-bar__btn'
 			icon={Filter}
 			id={filterId}
-			onClick={toggleFilters}
 			labelClassName={'ee-filter-bar__btn-wrap'}
+			onClick={toggleFilters}
+			size='smaller'
 			{...rest}
 		>
 			{tooltip}

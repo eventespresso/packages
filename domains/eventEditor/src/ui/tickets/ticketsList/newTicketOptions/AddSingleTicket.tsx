@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, ButtonSize, NewEntityOption } from '@eventespresso/components';
+import { Button, NewEntityOption } from '@eventespresso/components';
 import { Ticket } from '@eventespresso/icons';
 import { useGlobalModal } from '@eventespresso/registry';
 import { EntityEditModalData } from '@edtrUI/types';
@@ -18,8 +18,8 @@ const AddSingleTicket: React.FC<AddSingleTicketProps> = ({ isOnlyButton }) => {
 		<Button
 			buttonText={__('Add New Ticket')}
 			onClick={open}
-			buttonSize={isOnlyButton ? ButtonSize.BIG : null}
 			icon={isOnlyButton ? Ticket : null}
+			size={isOnlyButton ? 'big' : 'default'}
 		/>
 	);
 

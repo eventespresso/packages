@@ -8,6 +8,7 @@ import type {
 export interface NumberInputProps
 	extends Pick<ChakraNumberInputProps, 'aria-valuenow' | 'className' | 'id' | 'onChange' | 'value'> {
 	decrementStepperProps?: ChakraPseudoBoxProps;
+	disabled?: boolean;
 	inputFieldProps?: ChakraInputProps;
 	inputStepperProps?: ChakraFlexProps;
 	incrementStepperProps?: ChakraPseudoBoxProps;

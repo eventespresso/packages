@@ -2,10 +2,10 @@ import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 
 import { IconButton as IconButtonAdapter } from '@eventespresso/adapters';
-import type { IconButtonProps } from './types';
-import { ButtonSize, ButtonType } from '../types';
+import { ButtonType } from '../types';
 import { withLabel } from '../../withLabel';
 import { withTooltip } from '../../withTooltip';
+import type { IconButtonProps } from './types';
 
 import './style.scss';
 
@@ -15,16 +15,7 @@ export const iconBtnClassName = 'ee-btn-base ee-icon-button';
 
 const IconButton = forwardRef<typeof IconButtonAdapter, IconButtonProps>(
 	(
-		{
-			borderless,
-			buttonSize = ButtonSize.DEFAULT,
-			buttonType = ButtonType.DEFAULT,
-			color,
-			icon,
-			noMargin,
-			onClick,
-			...props
-		},
+		{ borderless, buttonType = ButtonType.DEFAULT, color, icon, noMargin, onClick, size = 'default', ...props },
 		ref
 	) => {
 		const ariaLabel = props['aria-label'] || props.label || props.tooltip;
@@ -33,9 +24,9 @@ const IconButton = forwardRef<typeof IconButtonAdapter, IconButtonProps>(
 			props.className,
 			color && `ee-icon-button-color--${color}`,
 			borderless && 'ee-icon-button--borderless',
-			buttonSize !== ButtonSize.DEFAULT && [`ee-btn--${buttonSize}`],
 			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],
-			noMargin && 'ee-icon-button--no-margin'
+			noMargin && 'ee-icon-button--no-margin',
+			size !== 'default' && [`ee-btn--${size}`]
 		);
 
 		return (

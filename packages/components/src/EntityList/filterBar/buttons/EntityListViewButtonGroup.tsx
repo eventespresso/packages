@@ -12,7 +12,7 @@ const EntityListViewButtonGroup: React.FC<EntityListViewButtonGroupProps> = ({
 	view,
 }) => {
 	return (
-		<ButtonGroup buttonSize='smaller'>
+		<ButtonGroup size='smaller'>
 			<CardViewFilterButton listId={listId} setCardView={setCardView} view={view} />
 			<TableViewFilterButton listId={listId} setTableView={setTableView} view={view} />
 		</ButtonGroup>

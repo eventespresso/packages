@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { __ } from '@eventespresso/i18n';
 
 import { CompassFilled } from '@eventespresso/icons';
-import { Button, ButtonSize } from '../Button';
+import { Button } from '../Button';
 import type { ToggleLegendButtonProps } from './types';
 
 const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({
@@ -29,11 +29,11 @@ const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({
 	return (
 		<Button
 			active={showLegend}
-			buttonSize={ButtonSize.SMALLER}
 			className={className}
 			icon={icon}
 			noHorizontalMargin={noHorizontalMargin}
 			onClick={toggleLegend}
+			size='small'
 		>
 			{tooltip}
 		</Button>

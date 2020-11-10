@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Ticket } from '@eventespresso/icons';
-import { Button, ButtonRow, ButtonSize } from '@eventespresso/components';
+import { Button, ButtonRow } from '@eventespresso/components';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 
@@ -19,7 +19,7 @@ const DatesListButtons: React.FC = () => {
 	return (
 		<ButtonRow>
 			<NewDateButton />
-			<Button buttonSize={ButtonSize.BIG} buttonText={__('Ticket Assignments')} icon={Ticket} onClick={onOpen} />
+			<Button buttonText={__('Ticket Assignments')} icon={Ticket} onClick={onOpen} size='big' />
 		</ButtonRow>
 	);
 };

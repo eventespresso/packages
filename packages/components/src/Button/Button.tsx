@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 
 import { Button as ButtonAdapter } from '@eventespresso/adapters';
-import { ButtonSize, ButtonType } from './types';
+import { ButtonType } from './types';
 import { withLabel } from '../withLabel';
 import { withTooltip } from '../withTooltip';
 import type { ButtonProps } from './types';
@@ -21,7 +21,6 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 	(
 		{
 			active,
-			buttonSize = ButtonSize.DEFAULT,
 			buttonText,
 			buttonType = ButtonType.DEFAULT,
 			icon,
@@ -29,6 +28,7 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 			noHorizontalMargin,
 			noVerticalMargin,
 			onClick,
+			size = 'default',
 			...props
 		},
 		ref
@@ -36,15 +36,15 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 		const hasIconClassName = (props.leftIcon || props.rightIcon || icon) && 'ee-btn--has-icon';
 
 		const className = classNames(
-			props.className,
 			active && 'ee-btn--is-active',
-			buttonSize !== ButtonSize.DEFAULT && [`ee-btn--${buttonSize}`],
 			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],
 			hasIconClassName,
 			!icon && 'ee-noIcon',
 			noMargin && 'ee-btn--no-margin',
 			noHorizontalMargin && 'ee-btn--no-horizontal-margin',
-			noVerticalMargin && 'ee-btn--no-vertical-margin'
+			noVerticalMargin && 'ee-btn--no-vertical-margin',
+			size !== 'default' && [`ee-btn--${size}`],
+			props.className
 		);
 
 		return (
