@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Select } from '../../../../components/src/Select';
+import { Select } from '../../../../adapters/src/Select';
 import { useBlockType, useToggleBlockType } from '../../hooks';
 import { HEADING_BLOCK_TYPES } from '../constants';
 
