@@ -58,11 +58,11 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel
 		return getDefaultKeyBinding(e);
 	}, []);
 
-	const editorClassName = classNames('rich-text-editor', className);
+	const editorClassName = classNames('ee-rich-text-editor', className, `ee-rich-text-editor--${type}`);
 
 	return (
 		<>
-			<div className='rich-text-editor-root'>
+			<div className='ee-rich-text-editor-root'>
 				<ToolbarControls type={type} editorRef={editorRef} />
 				{
 					// eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events

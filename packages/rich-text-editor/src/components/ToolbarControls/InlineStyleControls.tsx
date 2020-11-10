@@ -21,7 +21,7 @@ const InlineStyleControls: React.FC = () => {
 	);
 
 	return (
-		<div className='rich-text-editor-controls'>
+		<div className='ee-rich-text-editor-controls'>
 			{INLINE_STYLES.map((type) => {
 				const Icon = iconMapping?.[type.label];
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 
 import BlockStyleControls from './BlockStyleControls';
 import HeadingControls from './HeadingControls';
@@ -13,13 +12,11 @@ import UrlInput from './UrlInput';
 import LinkControl from './LinkControl';
 
 const ToolbarControls: React.FC<ToolbarControlsProps> = ({ editorRef, type = 'simple' }) => {
-	const className = classNames('rich-text-editor-controls__wrapper', type);
-
 	const { inputRef, urlValue, setUrlValue, isVisible, setIsVisible } = useUrlInputState();
 
 	return (
 		<>
-			<div className={className}>
+			<div className='ee-rich-text-editor-controls__wrapper'>
 				<HeadingControls />
 				<BlockStyleControls />
 				<InlineStyleControls />

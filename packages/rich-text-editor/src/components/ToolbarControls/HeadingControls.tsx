@@ -6,7 +6,7 @@ import { useBlockType, useToggleBlockType } from '../../hooks';
 import { HEADING_BLOCK_TYPES } from '../constants';
 
 const rootProps = {
-	className: 'rich-text-editor-controls__heading',
+	className: 'ee-rich-text-editor-controls__heading',
 };
 
 const HeadingControls: React.FC = () => {

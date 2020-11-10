@@ -1,4 +1,4 @@
-.rich-text-editor {
+.ee-rich-text-editor {
 	&-controls {
 		margin-bottom: 0;
 
@@ -8,7 +8,7 @@
 		}
 
 		&__heading {
-			.rich-text-editor-root & {
+			.ee-rich-text-editor-root & {
 				width: auto;
 
 				select {

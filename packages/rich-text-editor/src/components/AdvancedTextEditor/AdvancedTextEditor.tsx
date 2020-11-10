@@ -5,7 +5,7 @@ import { RichTextEditor } from '../RichTextEditor';
 import { AdvancedTextEditorProps } from './types';
 
 export const AdvancedTextEditor: React.FC<AdvancedTextEditorProps> = (props) => {
-	const className = classNames('advanced-text-editor', props.className);
+	const className = classNames('ee-advanced-text-editor', props.className);
 
 	return <RichTextEditor {...props} className={className} type='advanced' />;
 };

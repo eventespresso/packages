@@ -18,7 +18,7 @@ const BlockStyleControls: React.FC = () => {
 	const onToggle = useToggleBlockType();
 
 	return (
-		<div className='rich-text-editor-controls'>
+		<div className='ee-rich-text-editor-controls'>
 			{BLOCK_TYPES.map(({ label, style }) => {
 				const Icon: React.ComponentType<IconProps> = iconMapping?.[label];
 
