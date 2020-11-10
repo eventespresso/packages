@@ -4,10 +4,6 @@
 		box-shadow: var(--ee-box-shadow-small);
 		padding: var(--ee-padding-smaller) var(--ee-padding-smaller) var(--ee-padding-small);
 
-		&--open {
-			overflow-y: overlay !important;
-		}
-
 		&[role='menu'] {
 			z-index: 2;
 		}
