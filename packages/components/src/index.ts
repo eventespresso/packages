@@ -1,4 +1,5 @@
 export * from './ActiveFilters';
+export * from './AlertDialog';
 export * from './Banner';
 export * from './BiggieCalendarDate';
 export * from './bulkEdit';

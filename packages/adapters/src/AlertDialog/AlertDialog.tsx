@@ -10,8 +10,6 @@ import {
 
 import type { AlertDialogProps } from './types';
 
-import './styles.scss';
-
 export const AlertDialog: React.FC<AlertDialogProps> = ({
 	body,
 	cancelButton,

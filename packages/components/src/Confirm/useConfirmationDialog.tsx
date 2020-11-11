@@ -1,9 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { __ } from '@eventespresso/i18n';
 
-import { AlertDialog } from '@eventespresso/adapters';
-import { Button, ButtonType } from '../Button';
+import { __ } from '@eventespresso/i18n';
+import { AlertDialog, Button, ButtonType } from '../';
 import type { ConfirmProps } from './types';
 
 type UseConfirmationDialog = {
@@ -44,9 +43,9 @@ const useConfirmationDialog = ({
 
 		const confirmationDialog = (
 			<AlertDialog
+				body={message}
 				cancelButton={cancelButton}
 				header={title}
-				body={message}
 				isOpen={isOpen}
 				leastDestructiveRef={cancelRef}
 				okButton={okButton}
