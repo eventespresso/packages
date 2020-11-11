@@ -5,7 +5,7 @@
 		padding: var(--ee-padding-smaller) var(--ee-padding-smaller) var(--ee-padding-small);
 
 		&[role='menu'] {
-			z-index: 2;
+			z-index: 99;
 		}
 	}
 

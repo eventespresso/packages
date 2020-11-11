@@ -13,7 +13,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, className, menuLi
 				<div className='ee-dropdown-menu'>
 					<DropdownToggle isOpen={isOpen} onClose={onClose} {...toggleProps} />
 
-					<DropdownMenuList className={className} {...menuListProps}>
+					<DropdownMenuList className={className} {...menuListProps} placement='left-start'>
 						{children}
 					</DropdownMenuList>
 				</div>
