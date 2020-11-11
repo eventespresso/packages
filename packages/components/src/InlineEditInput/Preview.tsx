@@ -30,7 +30,6 @@ const Preview: React.FC<PreviewProps> = ({
 
 	let textInput: string | JSX.Element = value;
 
-	// the order of the conditional is very important here
 	if (lineCount && String(value)?.length > lineLength) {
 		textInput = <Dotdotdot clamp={lineCount}>{value}</Dotdotdot>;
 	}

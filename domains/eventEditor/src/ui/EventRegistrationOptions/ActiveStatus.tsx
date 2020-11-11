@@ -27,7 +27,14 @@ const ActiveStatus: React.FC = () => {
 
 	const id = 'ee-event-registration-active-status';
 
-	return <GridItem id={id} input={null} label={__('Active Status')} />;
+	return (
+		<GridItem
+			className='ee-event-registration-options__active-status'
+			id={id}
+			input={null}
+			label={__('Active Status')}
+		/>
+	);
 };
 
 export default ActiveStatus;

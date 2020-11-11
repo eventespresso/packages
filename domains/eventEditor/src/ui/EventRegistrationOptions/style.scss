@@ -13,29 +13,8 @@
 				margin: var(--ee-margin-smaller) 0;
 			}
 
-			h4:first-child {
-				color: var(--ee-default-text-color-high-contrast);
-				font-size: var(--ee-font-size-smaller);
-				font-weight: 400;
-				height: 1.8rem;
-				letter-spacing: .0625rem;
-				margin: auto 0 0;
-				max-width: 15rem;
-			}
-
-			h4:last-child,
-			div:last-child {
-				font-size: var(--ee-font-size-default);
-				font-weight: 500;
-				line-height: var(--ee-font-size-bigger);
-			}
-
-			.ee-popover-form__btn {
-				box-sizing: border-box;
-				height: var(--ee-icon-button-size-tiny);
-				margin: 0;
-				min-width: 8rem;
-				padding: var(--ee-padding-micro) var(--ee-padding-tiny);
+			h4 {
+				font-size: var(--ee-font-size-tiny);
 			}
 
 			.ee-tabbable-text {
@@ -64,6 +43,26 @@
 					}
 				}
 			}
+		}
+	}
+
+	&__active-status {
+		h4 {
+			color: var(--ee-default-text-color-high-contrast);
+			font-size: var(--ee-font-size-smaller);
+			font-weight: 400;
+			height: 1.8rem;
+			letter-spacing: 0.0625rem;
+			margin: auto 0 0;
+			max-width: 15rem;
+		}
+	}
+
+	&__alt-reg {
+		h4 {
+			font-size: var(--ee-font-size-default);
+			font-weight: 500;
+			line-height: var(--ee-font-size-bigger);
 		}
 	}
 }

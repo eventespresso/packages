@@ -23,6 +23,7 @@ const AltRegPage: React.FC = () => {
 
 	return (
 		<GridItem
+			className='ee-event-registration-options__alt-reg'
 			id={id}
 			input={
 				<InlineEditText

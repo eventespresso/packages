@@ -119,7 +119,6 @@ const Switch: React.FC<SwitchProps> = ({
 				className='ee-switch__sr-only'
 				onBlur={handleBlur}
 				onChange={onChangeHandler}
-				onClick={onClick}
 				onFocus={handleFocus}
 				ref={ref}
 				type='checkbox'
