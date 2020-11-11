@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { anyPass, isEmpty, isNil } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 
-import type { ButtonProps } from '@eventespresso/adapters';
+import type { ButtonProps } from '@eventespresso/components';
 
 import { useDataState } from '../data';
 import { TPCModalProps } from '../types';
