@@ -36,6 +36,7 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 		const hasIconClassName = (props.leftIcon || props.rightIcon || icon) && 'ee-btn--has-icon';
 
 		const className = classNames(
+			'ee-btn-base ee-btn',
 			active && 'ee-btn--is-active',
 			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],
 			hasIconClassName,

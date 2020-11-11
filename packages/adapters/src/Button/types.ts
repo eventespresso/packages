@@ -4,14 +4,13 @@ import type {
 	ButtonGroupProps as ChakraButtonGroupProps,
 	IconButtonProps as ChakraIconButtonProps,
 } from '@chakra-ui/core';
-import type { Size } from '../types';
 
-export interface ButtonProps extends Partial<Omit<ChakraButtonProps, 'color' | 'size'>>, Size {
+export interface ButtonProps extends Partial<Omit<ChakraButtonProps, 'color'>> {
 	buttonText?: React.ReactNode;
 	icon?: React.ComponentType<any>;
 }
 
-export interface ButtonGroupProps extends Omit<ChakraButtonGroupProps, 'size'>, Size {}
+export interface ButtonGroupProps extends ChakraButtonGroupProps {}
 
 export interface IconButtonProps extends ChakraIconButtonProps {
 	icon?: React.ComponentType<any>;

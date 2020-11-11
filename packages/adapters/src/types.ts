@@ -21,7 +21,3 @@ export interface NumberInputProps extends ChakraNumberInputProps {
 	incrementStepperProps?: ChakraPseudoBoxProps;
 	decrementStepperProps?: ChakraPseudoBoxProps;
 }
-
-export interface Size {
-	size?: 'tiny' | 'small' | 'smaller' | 'default' | 'big' | 'huge';
-}

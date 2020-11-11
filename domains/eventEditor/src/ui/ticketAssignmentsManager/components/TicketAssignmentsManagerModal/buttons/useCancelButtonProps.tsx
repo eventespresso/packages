@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import type { ButtonProps } from '@eventespresso/adapters';
 import { useDataState } from '../../../data';
+import type { ButtonProps } from '@eventespresso/components';
 
 const useCancelButtonProps = (onCloseModal: VoidFunction): ButtonProps => {
 	const { hasOrphanEntities } = useDataState();
