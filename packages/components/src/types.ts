@@ -27,7 +27,3 @@ export interface EditButtonProps {
 }
 
 export type ForwardRefComponent<P, C> = ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<C>>;
-
-export interface Size {
-	size?: 'tiny' | 'small' | 'smaller' | 'default' | 'big' | 'huge';
-}

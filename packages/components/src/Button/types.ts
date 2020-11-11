@@ -1,6 +1,6 @@
 import type React from 'react';
-import type { Size, withLabelProps, withTooltipProps } from '../../';
 import type { ButtonProps as ButtonAdapterProps } from '@eventespresso/adapters';
+import type { withLabelProps, withTooltipProps } from '../../';
 
 export type ClickHandler = (click?: React.MouseEvent<HTMLElement>) => void;
 
@@ -12,7 +12,7 @@ export enum ButtonType {
 	SECONDARY = 'secondary',
 }
 
-export interface ButtonProps extends ButtonAdapterProps, Size, Partial<withLabelProps>, Partial<withTooltipProps> {
+export interface ButtonProps extends ButtonAdapterProps, Partial<withLabelProps>, Partial<withTooltipProps> {
 	active?: boolean;
 	buttonType?: ButtonType | 'accent' | 'default' | 'minimal' | 'primary' | 'secondary';
 	className?: string;

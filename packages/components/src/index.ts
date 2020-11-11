@@ -41,7 +41,6 @@ export * from './InlineEditInput';
 export * from './InputWithLabel';
 export * from './ItemCount';
 export * from './Legend';
-export * from './LoadingIndicator';
 export * from './LoadingNotice';
 export * from './MediumCalendarDate';
 export * from './Modal';

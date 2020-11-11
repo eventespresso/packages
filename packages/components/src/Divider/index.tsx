@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Divider as DividerAdapter } from '@eventespresso/adapters';
-import type { DividerProps } from './types';
+import type { DividerProps } from '@eventespresso/adapters';
 
 import './style.scss';
 
