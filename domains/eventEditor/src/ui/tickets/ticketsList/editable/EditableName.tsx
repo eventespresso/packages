@@ -31,7 +31,6 @@ const EditableName: React.FC<Partial<EditableNameProps>> = ({ className, entity:
 	return (
 		<InlineEditText
 			className={className}
-			fitText={view === 'card'}
 			lineCount={lineCount}
 			onChange={onChangeName}
 			tag={view === 'table' ? 'div' : 'h4'}

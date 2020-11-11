@@ -32,7 +32,6 @@ const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime
 	return (
 		<InlineEditText
 			className={className}
-			fitText={view === 'card'}
 			lineCount={lineCount}
 			onChange={onChangeName}
 			tag={view === 'table' ? 'div' : 'h4'}

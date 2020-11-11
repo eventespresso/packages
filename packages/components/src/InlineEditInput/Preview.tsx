@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Dotdotdot, TextFit } from '@eventespresso/adapters';
+import { Dotdotdot } from '@eventespresso/adapters';
 import { Edit } from '@eventespresso/icons';
 
 import { TabbableText } from '../';
@@ -12,7 +12,6 @@ import './style.scss';
 const Preview: React.FC<PreviewProps> = ({
 	'aria-describedby': ariaDescribedby,
 	className,
-	fitText,
 	isDisabled,
 	isEditing,
 	lineCount,
@@ -30,18 +29,6 @@ const Preview: React.FC<PreviewProps> = ({
 	const previewClassName = classNames('ee-inline-edit__preview', className);
 
 	let textInput: string | JSX.Element = value;
-
-	if (fitText) {
-		textInput = (
-			<TextFit
-				max={24} // based on --ee-font-size-bigger: 1.5rem;
-				min={18}
-				mode='single'
-			>
-				{textInput}
-			</TextFit>
-		);
-	}
 
 	// the order of the conditional is very important here
 	if (lineCount && String(value)?.length > lineLength) {

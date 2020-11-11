@@ -31,7 +31,6 @@ export * from './RadioGroup';
 export * from './Select';
 export * from './Spinner';
 export * from './Textarea';
-export * from './TextFit';
 export * from './TextInput';
 export * from './Tooltip';
 export * from './theme';

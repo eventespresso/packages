@@ -17,7 +17,6 @@ export interface InlineEditProps
 
 export interface InlineEditPreviewProps
 	extends Partial<Omit<InlineEditProps, 'onCancel' | 'onChange' | 'onChangeValue' | 'onEdit' | 'onSubmit'>> {
-	fitText?: boolean;
 	isEditing?: boolean;
 	onRequestEdit?: VoidFunction;
 	value?: string;

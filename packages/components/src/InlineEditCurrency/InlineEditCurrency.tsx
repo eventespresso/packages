@@ -43,7 +43,6 @@ export const InlineEditCurrency: React.FC<InlineEditCurrencyProps> = ({
 			{before}
 			<InlineEditText
 				as='span'
-				fitText={false}
 				isDisabled={isEditDisabled}
 				key={id}
 				onChange={onChangeHandler}

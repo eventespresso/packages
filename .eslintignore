@@ -6,4 +6,3 @@
 **/.git/**
 **/public/**
 !.eslintrc.js
-/packages/adapters/src/TextFit/**
