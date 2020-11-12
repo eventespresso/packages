@@ -3,6 +3,5 @@ import type { withLabelProps, withTooltipProps } from '../../';
 
 export interface SelectProps extends AdapterSelectProps, Partial<withLabelProps>, Partial<withTooltipProps> {
 	onSubmit?: VoidFunction;
-	showSubmit?: boolean;
 	type?: 'inline';
 }

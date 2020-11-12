@@ -8,11 +8,13 @@ import type { SelectProps } from './types';
 
 import './style.scss';
 
-const InlineSelect: React.FC<SelectProps> = ({ onSubmit, showSubmit, ...props }) => {
+const InlineSelect: React.FC<SelectProps> = ({ onSubmit, defaultValue, value, ...props }) => {
+	const isValueChanged = value && defaultValue !== value;
+
 	return (
 		<div className='ee-select__inline-wrapper'>
-			<SelectAdapter {...props} />
-			{showSubmit && (
+			<SelectAdapter value={value} {...props} />
+			{isValueChanged && (
 				<Button buttonType={ButtonType.PRIMARY} icon={Save} noVerticalMargin onClick={onSubmit} size='small' />
 			)}
 		</div>

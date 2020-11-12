@@ -18,13 +18,9 @@ const EventManager: React.FC = () => {
 		setNewManagerId(newValue);
 	}, []);
 
-	const isValueChanged = newManagerId && newManagerId !== managerId;
-
 	const onSubmit = useCallback(() => {
-		if (isValueChanged) {
-			updateEvent({ manager: newManagerId });
-		}
-	}, [isValueChanged, newManagerId, updateEvent]);
+		updateEvent({ manager: newManagerId });
+	}, [newManagerId, updateEvent]);
 
 	const id = 'ee-event-registration-manager';
 
@@ -35,10 +31,10 @@ const EventManager: React.FC = () => {
 			id={id}
 			input={
 				<Select
+					defaultValue={managerId}
 					onChangeValue={onChangeValue}
 					onSubmit={onSubmit}
 					options={options}
-					showSubmit={isValueChanged}
 					type='inline'
 					value={newManagerId}
 				/>
