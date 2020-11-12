@@ -31,6 +31,7 @@ export const Select: React.FC<SelectProps> = ({
 					</optgroup>
 				);
 			}
+
 			return (
 				<option {...optionProps} value={value} key={`${value}${index}`}>
 					{label}
