@@ -4,9 +4,9 @@ import { __ } from '@eventespresso/i18n';
 
 import { parsedAmount } from '@eventespresso/utils';
 
-import type { PriceModifierProps } from '../types';
 import { BaseNumberInputField, MoneyField, usePriceAmount } from '../fields';
 import { useDataState } from '../data';
+import type { PriceModifierProps } from '../types';
 
 import './styles.scss';
 
@@ -15,7 +15,7 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 	const { getValue, setValue } = usePriceAmount({ field: 'amount', price });
 
 	const hasError = Number(price?.amount ?? 0) === 0;
-	const className = classNames('ee-input__price-field', {
+	const className = classNames('ee-input ee-input__price-field', {
 		'ee-input__price-field--has-error': hasError,
 	});
 

@@ -1,5 +1,3 @@
-import './style.scss'; // global adapters' styles
-
 export * from './AlertDialog';
 export * from './Badge';
 export * from './Banner';
