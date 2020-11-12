@@ -1,27 +1,26 @@
 @import '~@eventespresso/styles/src';
 
 .ee-switch {
-	touch-action: pan-x;
-	display: inline-block;
 	position: relative;
-	cursor: pointer;
 	background-color: transparent;
 	border: 0;
+	cursor: pointer;
+	display: inline-block;
+	max-width: 50px !important;
 	padding: 0;
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	-webkit-tap-highlight-color: transparent;
 
+	&--disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+		transition: opacity 0.25s;
+	}
+
 	&__sr-only {
 		@include visually-hidden();
 	}
-}
-
-.ee-switch--disabled {
-	cursor: not-allowed;
-	opacity: 0.5;
-	-webkit-transition: opacity 0.25s;
-	transition: opacity 0.25s;
 }
 
 .ee-switch-track {

@@ -31,13 +31,6 @@ const Switch: React.FC<SwitchProps> = ({
 	const onChangeHandlerArg = useMemo(() => ({ onChange, onChangeValue }), [onChange, onChangeValue]);
 	const onChangeHandler = useOnChange(onChangeHandlerArg);
 
-	const touch = useRef({
-		activated: false,
-		moved: false,
-		previouslyChecked: Boolean(checked || defaultChecked),
-		startX: null,
-	});
-
 	const className = classNames(
 		'ee-switch',
 		{
@@ -66,26 +59,18 @@ const Switch: React.FC<SwitchProps> = ({
 		[onFocus]
 	);
 
-	const onClick = useCallback(
-		(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
-			if (disabled) {
-				return;
-			}
+	const onClick = useCallback((): void => {
+		if (disabled) {
+			return;
+		}
 
-			const checkbox = ref.current;
+		const checkbox = ref?.current;
 
-			if (e.target !== checkbox && !touch.current.moved) {
-				touch.current.previouslyChecked = checkbox.checked;
-				e.preventDefault();
-				checkbox.focus();
-				checkbox.click();
-				return;
-			}
+		checkbox.focus();
+		checkbox.click();
 
-			setInnerChecked(checked ? checked : checkbox.checked);
-		},
-		[checked, disabled]
-	);
+		setInnerChecked(checkbox.checked);
+	}, [disabled]);
 
 	const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
 		if (isLeftKey(e)) {
@@ -119,6 +104,7 @@ const Switch: React.FC<SwitchProps> = ({
 				className='ee-switch__sr-only'
 				onBlur={handleBlur}
 				onChange={onChangeHandler}
+				onClick={onClick}
 				onFocus={handleFocus}
 				ref={ref}
 				type='checkbox'

@@ -15,6 +15,7 @@
 
 			h4 {
 				font-size: var(--ee-font-size-tiny);
+				max-width: 15rem;
 			}
 
 			.ee-tabbable-text {
@@ -24,7 +25,7 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
-					width: 15rem;
+					max-width: 15rem;
 				}
 			}
 
@@ -54,7 +55,6 @@
 			height: 1.8rem;
 			letter-spacing: 0.0625rem;
 			margin: auto 0 0;
-			max-width: 15rem;
 		}
 	}
 
