@@ -9,7 +9,7 @@ import type { SelectProps } from './types';
 import './style.scss';
 
 const InlineSelect: React.FC<SelectProps> = ({ onSubmit, defaultValue, value, ...props }) => {
-	const isValueChanged = value && defaultValue !== value;
+	const isValueChanged = defaultValue && defaultValue !== value;
 
 	return (
 		<div className='ee-select__inline-wrapper'>
