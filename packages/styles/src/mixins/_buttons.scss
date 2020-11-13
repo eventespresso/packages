@@ -1,0 +1,9 @@
+@mixin button-variant($background, $border, $color) {
+	text-shadow: none !important;
+
+	&:not([disabled]) {
+		background: $border;
+		border-color: $border;
+		color: var(--ee-text-on-#{$color});
+	}
+}

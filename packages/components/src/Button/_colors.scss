@@ -1,0 +1,11 @@
+@import '~@eventespresso/styles/src';
+
+.ee-btn-base {
+	&.ee-btn {
+		@each $color, $value in $theme-colors {
+			&.ee-btn--#{$color} {
+				@include button-variant($value, $value, $color);
+			}
+		}
+	}
+}

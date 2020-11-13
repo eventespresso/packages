@@ -16,6 +16,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
 	<AlertDialogAdapter
 		body={body}
 		cancelButton={cancelButton}
+		contentClassName='ee-alert-dialog'
 		header={header}
 		isOpen={isOpen}
 		leastDestructiveRef={leastDestructiveRef}

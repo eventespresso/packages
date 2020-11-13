@@ -4,6 +4,7 @@
  * ------------------------------------------------------------------------- */
 
 @import '~@eventespresso/styles/src';
+@import './colors';
 @import './sizes';
 
 :root {
@@ -205,11 +206,6 @@
 		/* PRIMARY */
 		&.ee-btn--primary {
 			text-shadow: none !important;
-			&:not([disabled]) {
-				background: var(--ee-color-primary);
-				border-color: var(--ee-color-primary);
-				color: var(--ee-text-on-primary);
-			}
 
 			&:focus:not([disabled]) {
 				background: var(--ee-color-primary);
@@ -266,13 +262,6 @@
 
 		/* ACCENT */
 		&.ee-btn--accent {
-			text-shadow: none !important;
-			&:not([disabled]) {
-				background: var(--ee-color-accent-high-contrast);
-				border-color: var(--ee-color-accent-high-contrast);
-				color: var(--ee-text-on-accent);
-			}
-
 			&:focus:not([disabled]) {
 				background: var(--ee-color-accent-super-high-contrast);
 				border-color: var(--ee-color-accent-super-high-contrast);

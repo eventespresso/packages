@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { InlineEdit } from '@eventespresso/adapters';
+import InlineEdit from './InlineEdit';
 import Preview from './Preview';
 import type { TextAreaProps } from './types';
 
@@ -11,11 +11,12 @@ const InlineEditTextArea: React.FC<TextAreaProps> = ({ className, lineCount = 3,
 		<InlineEdit
 			placeholder=''
 			{...props}
-			inputClassName={'ee-inline-edit__textarea'}
+			inputClassName='ee-inline-edit__textarea'
 			lineCount={lineCount}
 			inputType='textarea'
 			Preview={Preview}
 			previewClassName={className}
+			textAreaClassName='ee-input-base ee-textarea'
 		/>
 	);
 };

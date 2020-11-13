@@ -1,0 +1,88 @@
+@import 'colors';
+
+$height-small: 20px !default;
+$height-default: 30px !default;
+$height-big: 45px !default;
+
+$date-picker-start-date-bg-color: #a0d6b3; // #84c4bd
+$date-picker-start-date-bg-color-hover: #b5e4c6; // #ade0da
+$date-picker-date-in-range-bg-color: #9dcdd5;
+$date-picker-date-in-range-bg-color-hover: #b6d8dd;
+$date-picker-end-date-bg-color: #94b0d6;
+$date-picker-end-date-bg-color-hover: #b1c8e8;
+
+$borders: (
+	'border-radius-none': 0px,
+	'border-radius-small': 3px,
+	'border-radius-default': 6px,
+	'border-radius-big': 12px,
+	'border-radius-bigger': 24px,
+	'border-radius-huge': 48px,
+	'border-radius-full': 3000px,
+	'border-width': 2px,
+) !default;
+
+$date-picker: (
+	'date-picker-start-date-bg-color': $date-picker-start-date-bg-color,
+	'date-picker-start-date-bg-color-hover': $date-picker-start-date-bg-color-hover,
+	'date-picker-date-in-range-bg-color': $date-picker-date-in-range-bg-color,
+	'date-picker-date-in-range-bg-color-hover': $date-picker-date-in-range-bg-color-hover,
+	'date-picker-end-date-bg-color': $date-picker-end-date-bg-color,
+	'date-picker-end-date-bg-color-hover': $date-picker-end-date-bg-color-hover,
+) !default;
+
+$font-sizes: (
+	'font-size-micro': 0.6rem,
+	'font-size-tiny': 0.7rem,
+	'font-size-smaller': 0.8rem,
+	'font-size-small': 0.9rem,
+	'font-size-default': 1rem,
+	'font-size-big': 1.2rem,
+	'font-size-bigger': 1.5rem,
+	'font-size-huge': 2rem,
+	'font-size-extreme': 3rem,
+	'line-height-modifier': 1.5,
+) !default;
+
+$heights: (
+	'height-small': $height-small,
+	'height-default': $height-default,
+	'height-big': $height-big,
+) !default;
+
+$spacing-nano: 0.125rem;
+$spacing-micro: 0.25rem;
+$spacing-tiny: 0.5rem;
+$spacing-smaller: 0.75rem;
+$spacing-small: 1rem;
+$spacing-default: 1.5rem;
+$spacing-big: 2rem;
+$spacing-bigger: 2.5rem;
+$spacing-huge: 3rem;
+$spacing-extreme: 4rem;
+
+$margins: (
+	'margin-nano': $spacing-nano,
+	'margin-micro': $spacing-micro,
+	'margin-tiny': $spacing-tiny,
+	'margin-smaller': $spacing-smaller,
+	'margin-small': $spacing-small,
+	'margin-default': $spacing-default,
+	'margin-big': $spacing-big,
+	'margin-bigger': $spacing-bigger,
+	'margin-huge': $spacing-huge,
+	'margin-extreme': $spacing-extreme,
+) !default;
+
+$paddings: (
+	'padding-nano': $spacing-nano,
+	'padding-micro': $spacing-micro,
+	'padding-tiny': $spacing-tiny,
+	'padding-smaller': $spacing-smaller,
+	'padding-small': $spacing-small,
+	'padding-default': $spacing-default,
+	'padding-big': $spacing-big,
+	'padding-bigger': $spacing-bigger,
+	'padding-huge': $spacing-huge,
+	'padding-extreme': $spacing-extreme,
+) !default;

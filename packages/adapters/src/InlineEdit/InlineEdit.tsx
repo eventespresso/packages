@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import classNames from 'classnames';
 import { Editable as ChakraEditable } from '@chakra-ui/core';
 
 import { usePrevious, useIfMounted } from '@eventespresso/hooks';
@@ -10,6 +9,7 @@ import type { InlineEditProps } from './types';
 const InlineEdit: React.FC<InlineEditProps> = ({
 	'aria-describedby': ariaDescribedby,
 	defaultValue,
+	editableInputClassName,
 	inputClassName,
 	inputType,
 	onChange,
@@ -45,8 +45,6 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 		}
 	}, [currentValue, onChange]);
 
-	const className = classNames('ee-inline-edit', inputClassName);
-
 	return (
 		<ChakraEditable
 			{...props}
@@ -69,13 +67,18 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 						<InlineEditPreview
 							{...props}
 							aria-describedby={ariaDescribedby}
-							className={className}
+							className={inputClassName}
 							isEditing={isEditing}
 							onRequestEdit={onRequestEdit}
 							Preview={Preview}
 							value={currentValue}
 						/>
-						<InlineEditInput inputType={inputType} setValue={setCurrentValue} onCancel={onCancelEdit} />
+						<InlineEditInput
+							editableInputClassName={editableInputClassName}
+							inputType={inputType}
+							setValue={setCurrentValue}
+							onCancel={onCancelEdit}
+						/>
 					</>
 				);
 			}}

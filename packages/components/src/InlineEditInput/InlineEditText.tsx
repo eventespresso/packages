@@ -12,7 +12,7 @@ const InlineEditText: React.FC<TextProps> = ({ className, tag: as, ...props }) =
 			placeholder=''
 			{...props}
 			as={as}
-			inputClassName={'ee-inline-edit__text'}
+			inputClassName='ee-inline-edit__text'
 			inputType='text'
 			Preview={Preview}
 			previewClassName={className}

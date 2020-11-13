@@ -1,0 +1,14 @@
+$blue: #297abc;
+$green: #01873a;
+$hot-pink: #de5882;
+$hot-pink-high-contrast: #be3862;
+
+$accent: $hot-pink-high-contrast !default;
+$primary: $blue !default;
+$secondary: $green !default;
+
+$theme-colors: (
+	'accent': $accent,
+	'primary': $primary,
+	'secondary': $secondary,
+) !default;

@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 
 import { isInfinite, parseInfinity } from '@eventespresso/utils';
-import { InlineEdit } from '@eventespresso/adapters';
 
+import InlineEdit from './InlineEdit';
 import InlineEditInfinityPreview from './InlineEditInfinityPreview';
 import type { TextProps } from './types';
 
@@ -25,7 +25,7 @@ const InlineEditInfinity: React.FC<TextProps> = ({ className, onChange, value, .
 		<InlineEdit
 			placeholder=''
 			{...props}
-			inputClassName={'ee-inline-edit__infinity'}
+			inputClassName='ee-inline-edit__infinity'
 			inputType='number'
 			onChange={onChangeHandler}
 			Preview={InlineEditInfinityPreview}

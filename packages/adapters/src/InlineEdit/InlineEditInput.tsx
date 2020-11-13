@@ -12,13 +12,17 @@ const insertStrAt = (str: string, subStr: string, pos: number): string => {
 	return `${str.slice(0, pos)}${subStr}${str.slice(pos)}`;
 };
 
-const InlineEditInput: React.FC<InlineEditInputProps> = ({ inputType, onCancel, setValue }) => {
-	const className = 'ee-input-base ee-input ee-inline-edit--editing';
-
+const InlineEditInput: React.FC<InlineEditInputProps> = ({
+	editableInputClassName,
+	inputType,
+	onCancel,
+	setValue,
+	textAreaClassName,
+}) => {
 	const textareaProps: PseudoBoxProps = useMemo(
 		() => ({
 			as: 'textarea',
-			className: 'ee-input-base ee-textarea ee-inline-edit--editing',
+			className: textAreaClassName,
 			// pass our own onKeyDown handler for a11y
 			onKeyDown: (e: React.KeyboardEvent) => {
 				if (isEnterKey(e)) {
@@ -33,7 +37,7 @@ const InlineEditInput: React.FC<InlineEditInputProps> = ({ inputType, onCancel, 
 				}
 			},
 		}),
-		[onCancel, setValue]
+		[onCancel, setValue, textAreaClassName]
 	);
 
 	if (inputType === 'textarea') {
@@ -42,7 +46,7 @@ const InlineEditInput: React.FC<InlineEditInputProps> = ({ inputType, onCancel, 
 	}
 
 	// @ts-ignore
-	return <ChakraEditableInput className={className} type={inputType} variant='unstyled' />;
+	return <ChakraEditableInput className={editableInputClassName} type={inputType} variant='unstyled' />;
 };
 
 export default InlineEditInput;

@@ -13,6 +13,7 @@ import type { AlertDialogProps } from './types';
 export const AlertDialog: React.FC<AlertDialogProps> = ({
 	body,
 	cancelButton,
+	contentClassName,
 	header,
 	isOpen,
 	leastDestructiveRef,
@@ -21,7 +22,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
 }) => (
 	<ChakraAlertDialog isOpen={isOpen} leastDestructiveRef={leastDestructiveRef} onClose={onClose}>
 		<AlertDialogOverlay />
-		<AlertDialogContent className={'ee-alert-dialog'}>
+		<AlertDialogContent className={contentClassName}>
 			{header && <AlertDialogHeader className={'ee-alert-dialog__header'}>{header}</AlertDialogHeader>}
 			<AlertDialogBody className={'ee-alert-dialog__body'}>{body}</AlertDialogBody>
 			<AlertDialogFooter className={'ee-alert-dialog__footer'}>
