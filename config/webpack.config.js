@@ -459,6 +459,7 @@ module.exports = function (webpackEnv) {
 										getLocalIdent: getCSSModuleLocalIdent,
 									},
 								},
+								'import-glob-loader',
 								'sass-loader'
 							),
 						},
