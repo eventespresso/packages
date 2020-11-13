@@ -203,47 +203,6 @@
 			}
 		}
 
-		/* PRIMARY */
-		&.ee-btn--primary {
-			&:hover:not([disabled]) {
-				background: var(--ee-color-primary);
-				border-color: var(--ee-color-primary-low-contrast);
-
-				&.ee-btn--is-active {
-					border-color: var(--ee-color-primary-super-low-contrast);
-				}
-			}
-		}
-
-		/* SECONDARY */
-		&.ee-btn--secondary {
-			span,
-			svg {
-				color: var(--ee-color-white);
-			}
-
-			&:hover:not([disabled]) {
-				background: var(--ee-color-secondary);
-				border-color: var(--ee-color-secondary-low-contrast);
-
-				&.ee-btn--is-active {
-					border-color: var(--ee-color-secondary-super-low-contrast);
-				}
-			}
-		}
-
-		/* ACCENT */
-		&.ee-btn--accent {
-			&:hover:not([disabled]) {
-				background: var(--ee-color-accent);
-				border-color: var(--ee-color-accent-low-contrast);
-
-				&.ee-btn--is-active {
-					border-color: var(--ee-color-accent-super-low-contrast);
-				}
-			}
-		}
-
 		/* DISABLED */
 		&.ee-btn:disabled,
 		&.ee-btn--primary:disabled,
