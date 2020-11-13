@@ -205,8 +205,6 @@
 
 		/* PRIMARY */
 		&.ee-btn--primary {
-			text-shadow: none !important;
-
 			&:focus:not([disabled]) {
 				background: var(--ee-color-primary);
 				border-color: var(--ee-color-primary-high-contrast);
@@ -228,17 +226,9 @@
 
 		/* SECONDARY */
 		&.ee-btn--secondary {
-			text-shadow: none !important;
-
 			span,
 			svg {
 				color: var(--ee-color-white);
-			}
-
-			&:not([disabled]) {
-				background: var(--ee-color-secondary);
-				border-color: var(--ee-color-secondary);
-				color: var(--ee-text-on-secondary);
 			}
 
 			&:focus:not([disabled]) {
