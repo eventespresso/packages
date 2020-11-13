@@ -205,15 +205,6 @@
 
 		/* PRIMARY */
 		&.ee-btn--primary {
-			&:focus:not([disabled]) {
-				background: var(--ee-color-primary);
-				border-color: var(--ee-color-primary-high-contrast);
-
-				&.ee-btn--is-active {
-					border-color: var(--ee-color-primary-super-high-contrast);
-				}
-			}
-
 			&:hover:not([disabled]) {
 				background: var(--ee-color-primary);
 				border-color: var(--ee-color-primary-low-contrast);
@@ -231,15 +222,6 @@
 				color: var(--ee-color-white);
 			}
 
-			&:focus:not([disabled]) {
-				background: var(--ee-color-secondary);
-				border-color: var(--ee-color-secondary-high-contrast);
-
-				&.ee-btn--is-active {
-					border-color: var(--ee-color-secondary-super-high-contrast);
-				}
-			}
-
 			&:hover:not([disabled]) {
 				background: var(--ee-color-secondary);
 				border-color: var(--ee-color-secondary-low-contrast);
@@ -252,15 +234,6 @@
 
 		/* ACCENT */
 		&.ee-btn--accent {
-			&:focus:not([disabled]) {
-				background: var(--ee-color-accent-super-high-contrast);
-				border-color: var(--ee-color-accent-super-high-contrast);
-
-				&.ee-btn--is-active {
-					border-color: var(--ee-color-accent-super-high-contrast);
-				}
-			}
-
 			&:hover:not([disabled]) {
 				background: var(--ee-color-accent);
 				border-color: var(--ee-color-accent-low-contrast);

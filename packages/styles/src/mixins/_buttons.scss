@@ -2,8 +2,17 @@
 	text-shadow: none !important;
 
 	&:not([disabled]) {
-		background: $border;
+		background: $background;
 		border-color: $border;
 		color: var(--ee-text-on-#{$color});
+	}
+
+	&:focus:not([disabled]) {
+		background: $background;
+		border-color: var(--ee-color-#{$color}-high-contrast);
+
+		&.ee-btn--is-active {
+			border-color: var(--ee-color-#{$color}-super-high-contrast);
+		}
 	}
 }
