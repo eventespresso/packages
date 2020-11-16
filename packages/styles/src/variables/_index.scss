@@ -1,3 +1,4 @@
+@import 'base-colors';
 @import 'colors';
 
 $height-small: 20px !default;
@@ -12,6 +13,7 @@ $date-picker-end-date-bg-color: #94b0d6;
 $date-picker-end-date-bg-color-hover: #b1c8e8;
 
 $borders: (
+	'border-color': #969696,
 	'border-radius-none': 0px,
 	'border-radius-small': 3px,
 	'border-radius-default': 6px,
@@ -30,6 +32,12 @@ $date-picker: (
 	'date-picker-end-date-bg-color': $date-picker-end-date-bg-color,
 	'date-picker-end-date-bg-color-hover': $date-picker-end-date-bg-color-hover,
 ) !default;
+
+$defaults: (
+	color-black: #18181a,
+	text-on-black: #a3a3a5,
+	text-on-white: #595959,
+);
 
 $font-sizes: (
 	'font-size-micro': 0.6rem,
@@ -86,3 +94,7 @@ $paddings: (
 	'padding-huge': $spacing-huge,
 	'padding-extreme': $spacing-extreme,
 ) !default;
+
+$others: (
+	background-color: $white,
+);

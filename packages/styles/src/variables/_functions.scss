@@ -1,0 +1,31 @@
+@use "sass:map"; // https://sass-lang.com/documentation/modules/map
+@use "sass:string"; // https://sass-lang.com/documentation/modules/string
+
+@function prepend-append($declarations, $color) {
+	$colors: ();
+	$key: '';
+
+	@each $property, $value in $declarations {
+		$text-on-string-exists: string.index($property, 'text-on') != null;
+		$on-index-plus-3: string.index($property, 'on') + 3;
+
+		@if ($text-on-string-exists) {
+			@if (string.index($property, 'contrast') != null) {
+				$key: string.insert($property, $color + '-', $on-index-plus-3); // text-on-blue-low-contrast
+			} @else {
+				$key: string.insert($property, '-' + $color, $on-index-plus-3); // text-on-blue
+			}
+		} @else {
+			$key: #{'color' + '-' + $color}; // color-blue
+		}
+
+		$colors: map.merge(
+			$colors,
+			(
+				$key: $value,
+			)
+		);
+	}
+
+	@return $colors;
+}

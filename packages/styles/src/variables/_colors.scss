@@ -1,14 +1,96 @@
-$blue: #297abc;
-$green: #01873a;
-$hot-pink: #de5882;
-$hot-pink-high-contrast: #be3862;
+@use "sass:map";
 
-$accent: $hot-pink-high-contrast !default;
-$primary: $blue !default;
-$secondary: $green !default;
+@import '../functions';
+@import 'base-colors';
+
+$accent: map.get($hot-pink, 'high-contrast') !default;
+$primary: map.get($blue, 'default') !default;
+$secondary: map.get($green, 'default') !default;
 
 $theme-colors: (
 	'accent': $accent,
 	'primary': $primary,
 	'secondary': $secondary,
 ) !default;
+
+$default-text-colors: (
+	default: #595959,
+	super-high-contrast: #191919,
+	high-contrast: #393939,
+	low-contrast: #797979,
+	super-low-contrast: #999999,
+);
+
+$primary-colors: (
+	primary: $primary,
+	primary-super-high-contrast: map.get($blue, 'super-high-contrast'),
+	primary-high-contrast: map.get($blue, 'high-contrast'),
+	primary-low-contrast: map.get($blue, 'low-contrast'),
+	primary-super-low-contrast: map.get($blue, 'super-low-contrast'),
+	text-on: map.get($blue, 'text-on'),
+	text-on-super-high-contrast: map.get($blue, 'text-on-super-high-contrast'),
+	text-on-high-contrast: map.get($blue, 'text-on-high-contrast'),
+	text-on-low-contrast: map.get($blue, 'text-on-low-contrast'),
+	text-on-super-low-contrast: map.get($blue, 'text-on-super-low-contrast'),
+) !default;
+
+$secondary-colors: (
+	secondary: $secondary,
+	secondary-super-high-contrast: map.get($green, 'super-high-contrast'),
+	secondary-high-contrast: map.get($green, 'high-contrast'),
+	secondary-low-contrast: map.get($green, 'low-contrast'),
+	secondary-super-low-contrast: map.get($green, 'super-low-contrast'),
+	text-on: map.get($green, 'text-on'),
+	text-on-super-high-contrast: map.get($green, 'text-on-super-high-contrast'),
+	text-on-high-contrast: map.get($green, 'text-on-high-contrast'),
+	text-on-low-contrast: map.get($green, 'text-on-low-contrast'),
+	text-on-super-low-contrast: map.get($green, 'text-on-super-low-contrast'),
+) !default;
+
+$accent-colors: (
+	accent: $accent,
+	secondary-super-high-contrast: map.get($hot-pink, 'super-high-contrast'),
+	secondary-high-contrast: map.get($hot-pink, 'high-contrast'),
+	secondary-low-contrast: map.get($hot-pink, 'low-contrast'),
+	secondary-super-low-contrast: map.get($hot-pink, 'super-low-contrast'),
+	text-on: map.get($hot-pink, 'text-on'),
+	text-on-super-high-contrast: map.get($hot-pink, 'text-on-super-high-contrast'),
+	text-on-high-contrast: map.get($hot-pink, 'text-on-high-contrast'),
+	text-on-low-contrast: map.get($hot-pink, 'text-on-low-contrast'),
+	text-on-super-low-contrast: map.get($hot-pink, 'text-on-super-low-contrast'),
+) !default;
+
+$grey: (
+	color-grey-1: #161616,
+	text-on-grey-1: #a1a1a1,
+	color-grey-2: #292929,
+	text-on-grey-2: #b4b4b4,
+	color-grey-3: #3c3c3c,
+	text-on-grey-3: #cecece,
+	color-grey-4: #4f4f4f,
+	text-on-grey-4: #eeeeee,
+	color-grey-5: #626262,
+	text-on-grey-5: #ffffff,
+	color-grey-6: #757575,
+	text-on-grey-6: #ffffff,
+	color-grey-7: #888888,
+	text-on-grey-7: #ffffff,
+	color-grey-8: #9b9b9b,
+	text-on-grey-8: #0c0c0c,
+	color-grey-9: #aeaeae,
+	text-on-grey-9: #232323,
+	color-grey-10: #c1c1c1,
+	text-on-grey-10: #333333,
+	color-grey-11: #d4d4d4,
+	text-on-grey-11: #3f3f3f,
+	color-grey-12: #e7e7e7,
+	text-on-grey-12: #4b4b4b,
+	color-grey-13: #ededed,
+	text-on-grey-13: #4e4e4e,
+	color-grey-14: #f3f3f3,
+	text-on-grey-14: #525252,
+	color-grey-15: #f9f9f9,
+	text-on-grey-15: #555555,
+);
+
+$colors: map.merge($colors, $grey);
