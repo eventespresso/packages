@@ -66,7 +66,7 @@ export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 				showAlertOnEscape={hasChanges}
 				title={title}
 			>
-				<SimpleTextEditor onChange={onChange} value={text} />
+				<SimpleTextEditor onChange={onChange} defaultValue={props.text} />
 			</ModalWithAlert>
 			<div className='ee-simple-text-editor__preview'>
 				<TabbableText

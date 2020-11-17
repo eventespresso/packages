@@ -6,6 +6,7 @@ import { getRegisteredContainers } from '@edtrServices/utils';
 import { DatesList } from './datetimes/datesList';
 import EventRegistrationOptions from './EventRegistrationOptions';
 import { TicketsList } from './tickets/ticketsList';
+import EventDescription from './EventDescription';
 import Init from './Init';
 // fire up the service and UI element registry
 import './registryInit';
@@ -18,6 +19,7 @@ const EventEditor: React.FC = () => {
 
 	return isRehydrated ? (
 		<>
+			<EventDescription />
 			<EventRegistrationOptions />
 			<DatesList />
 			<TicketsList />

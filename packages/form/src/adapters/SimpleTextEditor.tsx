@@ -5,7 +5,7 @@ import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';
 
 const SimpleTextEditor: React.FC<FieldRendererProps> = ({ input, ...props }) => {
-	return <SimpleTextEditorAdapter {...input} {...props} />;
+	return <SimpleTextEditorAdapter {...input} {...props} defaultValue={input.value} value={null} />;
 };
 
 export default withoutMetaProp(SimpleTextEditor);
