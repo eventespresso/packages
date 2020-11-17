@@ -1,0 +1,78 @@
+$statuses: (
+	// transaction open
+	TOP: 'orange',
+	// transaction completed
+	TCM: 'green',
+	// transaction incomplete
+	TIN: 'blue',
+	// transaction abandoned
+	TAB: 'gold',
+	// transaction failed
+	TFL: 'hot-pink',
+	// payment approved
+	PAP: 'green',
+	// payment pending
+	PPN: 'blue',
+	// payment failed
+	PFL: 'gold',
+	// payment declined
+	PDC: 'hot-pink',
+	// payment cancelled
+	PCN: 'grey-7',
+	// registration approved
+	RAP: 'green',
+	// registration pending
+	RPP: 'blue',
+	// registration wait list
+	RWL: 'purple',
+	// registration incomplete
+	RIC: 'gold',
+	// registration not approved
+	RNA: 'orange',
+	// registration declined
+	RDC: 'hot-pink',
+	// registration cancelled
+	RCN: 'grey-7',
+	// datetime sold out
+	DTS: 'purple',
+	// datetime active
+	DTA: 'green',
+	// datetime postponed
+	DTP: 'gold',
+	// datetime cancelled
+	DTC: 'hot-pink',
+	// datetime inactive
+	DTI: 'blue-green',
+	// datetime expired
+	DTE: 'grey-6',
+	// datetime trashed
+	DTT: 'grey-3',
+	// datetime upcoming
+	DTU: 'blue',
+	// ticket sold-out
+	TKS: 'purple',
+	// ticket onsale
+	TKO: 'green',
+	// ticket pending
+	TKP: 'blue',
+	// ticket expired
+	TKE: 'grey-6',
+	// ticket archived
+	TKA: 'grey-3'
+);
+
+@each $status, $color in $statuses {
+	.ee-status-color-#{$status} {
+		color: var(--ee-color-#{$color});
+	}
+
+	.ee-status-background-color-#{$status} {
+		background-color: var(--ee-color-#{$color});
+
+		@if ($color == green) {
+			color: var(--ee-text-on-white);
+		} @else {
+			color: var(--ee-text-on-#{$color});
+		}
+	}
+}

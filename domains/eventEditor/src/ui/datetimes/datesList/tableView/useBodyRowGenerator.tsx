@@ -17,8 +17,6 @@ import DateCapacity from '../cardView/DateCapacity';
 import { EditableName } from '../editable';
 import Checkbox from './Checkbox';
 
-import '../../../../../../../packages/styles/src/root/entity-status.css';
-
 type DatesTableBodyRowGen = BodyRowGeneratorFn<DatetimesFilterStateManager>;
 
 const exclude = ['row', 'stripe', 'name', 'actions'];

@@ -17,8 +17,6 @@ import { EditableName } from '../editable';
 import TicketRegistrationsLink from '../../TicketRegistrationsLink';
 import Checkbox from './Checkbox';
 
-import '../../../../../../../packages/styles/src/root/entity-status.css';
-
 type TicketsTableBodyRowGen = BodyRowGeneratorFn<TicketsFilterStateManager>;
 
 const useBodyRowGenerator = (): TicketsTableBodyRowGen => {

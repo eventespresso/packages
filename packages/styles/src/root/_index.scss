@@ -3,6 +3,7 @@
 @import '../effects';
 @import '../functions';
 @import '../variables';
+@import './entity-status';
 
 $rootVariables: map-collect(
 	$animation,
@@ -11,6 +12,7 @@ $rootVariables: map-collect(
 	$date-picker,
 	$defaults,
 	$default-text-colors,
+	$statuses,
 	$font-sizes,
 	$heights,
 	$margins,
