@@ -15,5 +15,3 @@ export const htmlToEditorState = (html: string): EditorState => {
 export const editorStateToHtml = (editorState: EditorState): string => {
 	return draftToHtml(convertToRaw(editorState.getCurrentContent()));
 };
-
-export * from './getBlockStyle';
