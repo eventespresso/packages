@@ -277,7 +277,7 @@ $yellow-green: (
 	text-on-super-low-contrast: #575700,
 );
 
-$colors: map-collect(
+$base-colors: map-collect(
 	prepend-append($blue, 'blue'),
 	prepend-append($blue-green, 'blue-green'),
 	prepend-append($bright-blue, 'bright-blue'),

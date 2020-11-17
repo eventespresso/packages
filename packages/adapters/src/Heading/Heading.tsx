@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading as ChakraHeading } from '@chakra-ui/layout';
+import { Heading as ChakraHeading } from '@chakra-ui/core';
 
 import type { HeadingProps } from './types';
 

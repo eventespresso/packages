@@ -14,11 +14,11 @@ $theme-colors: (
 ) !default;
 
 $default-text-colors: (
-	default: #595959,
-	super-high-contrast: #191919,
-	high-contrast: #393939,
-	low-contrast: #797979,
-	super-low-contrast: #999999,
+	default-text-color: #595959,
+	default-text-color-super-high-contrast: #191919,
+	default-text-color-high-contrast: #393939,
+	default-text-color-low-contrast: #797979,
+	default-text-color-super-low-contrast: #999999,
 );
 
 $primary-colors: (
@@ -97,5 +97,11 @@ $colors: map-collect(
 	prepend-append($primary-colors, 'primary'),
 	prepend-append($secondary-colors, 'secondary'),
 	prepend-append($accent-colors, 'accent'),
-	$grey
+	$grey,
+	(
+		color-white: $white,
+		text-on-white: #595959,
+	)
 );
+
+$colors: map.merge($colors, $base-colors);
