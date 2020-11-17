@@ -1,90 +1,61 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
-import { Editor, RichUtils, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import { Editor, EditorProps } from 'react-draft-wysiwyg';
 
-import { __ } from '@eventespresso/i18n';
-
-import ToolbarControls from '../ToolbarControls';
-import { DraftEditorProps, RichTextEditorProps } from './types';
-import { isTabKey } from '../../../../utils/src/keycodes';
-import { getBlockStyle } from '../../utils';
-
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './style.scss';
-import DebugLog from './DebugLog';
-import { withState } from '../../context';
-import { useEditorState } from '../../hooks';
 
-// Custom overrides for "code" style.
-const styleMap = {
-	CODE: {
-		backgroundColor: 'rgba(0, 0, 0, 0.05)',
-		fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-		fontSize: 16,
-		padding: 2,
-	},
-};
+import { RichTextEditorProps } from './types';
+import { editorStateToHtml, htmlToEditorState } from '../../utils';
 
-const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel, className, type }) => {
-	const [editorState, updateEditorState] = useEditorState();
+const RichTextEditor: React.FC<RichTextEditorProps> = ({
+	className,
+	defaultValue,
+	onChange,
+	placeholder,
+	value,
+	...props
+}) => {
+	const editorClassName = classNames('ee-rich-text-editor', className);
 
-	const editorRef = useRef<Editor>();
+	const editorState = useMemo(() => htmlToEditorState(value || placeholder), [placeholder, value]);
 
-	const handleKeyCommand = useCallback<DraftEditorProps['handleKeyCommand']>(
-		(command) => {
-			const newState = RichUtils.handleKeyCommand(editorState, command);
+	const defaultEditorState = useMemo(() => htmlToEditorState(defaultValue), [defaultValue]);
 
-			if (newState) {
-				updateEditorState(newState);
-				return 'handled';
-			}
-
-			if (command === 'tab') {
-				const maxDepth = 4;
-				updateEditorState(RichUtils.onTab(null, editorState, maxDepth));
-				return 'handled';
-			}
-
-			return 'not-handled';
+	const onEditorStateChange = useCallback<EditorProps['onEditorStateChange']>(
+		(newEditorState) => {
+			const html = editorStateToHtml(newEditorState);
+			onChange?.(html);
 		},
-		[editorState, updateEditorState]
+		[onChange]
 	);
 
-	const keyBindingFn = useCallback<DraftEditorProps['keyBindingFn']>((e) => {
-		if (isTabKey(e as React.KeyboardEvent) && KeyBindingUtil.hasCommandModifier(e)) {
-			return 'tab';
+	/**
+	 * `react-draft-wysiwyg` uses Object.hasProperty() check to decide controlled/uncontrolled state,
+	 * it considers the state to be controlled even if it's undefined ¯\_(ツ)_/¯
+	 * So, we will only pass the state props if they are defined
+	 */
+	const editorProps = useMemo(() => {
+		const stateProps: Partial<EditorProps> = {};
+		if (typeof editorState !== 'undefined') {
+			stateProps.editorState = editorState;
 		}
-
-		return getDefaultKeyBinding(e);
-	}, []);
-
-	const editorClassName = classNames('ee-rich-text-editor', className, `ee-rich-text-editor--${type}`);
+		if (typeof defaultEditorState !== 'undefined') {
+			stateProps.defaultEditorState = defaultEditorState;
+		}
+		return stateProps;
+	}, [defaultEditorState, editorState]);
 
 	return (
-		<>
-			<div className='ee-rich-text-editor-root'>
-				<ToolbarControls type={type} editorRef={editorRef} />
-				{
-					// eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
-					<div className={editorClassName} onClick={editorRef.current?.focus}>
-						<Editor
-							ariaLabel={ariaLabel}
-							blockStyleFn={getBlockStyle}
-							customStyleMap={styleMap}
-							editorState={editorState}
-							handleKeyCommand={handleKeyCommand}
-							keyBindingFn={keyBindingFn}
-							onChange={updateEditorState}
-							placeholder={__('Write something…')}
-							ref={editorRef}
-							spellCheck={true}
-						/>
-					</div>
-				}
-			</div>
-			<DebugLog editorState={editorState} />
-		</>
+		<Editor
+			{...props}
+			{...editorProps}
+			wrapperClassName='ee-rich-text-editor-root'
+			editorClassName={editorClassName}
+			toolbarClassName='ee-rich-text-editor-toolbar'
+			onEditorStateChange={onEditorStateChange}
+		/>
 	);
 };
 
-export default withState(RichTextEditor);
+export default RichTextEditor;
