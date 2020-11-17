@@ -2,7 +2,6 @@
 @import '../mixins';
 @import './functions';
 
-$black: #18181a;
 $white: #ffffff;
 
 $blue: (
@@ -14,7 +13,7 @@ $blue: (
 	text-on: #ffeeff,
 	text-on-super-high-contrast: #9bd5ff,
 	text-on-high-contrast: #f7ffff,
-	text-on-low-contrast: $black,
+	text-on-low-contrast: #000000,
 	text-on-super-low-contrast: #002365,
 ) !default;
 
@@ -24,7 +23,7 @@ $blue-green: (
 	high-contrast: #197f74,
 	low-contrast: #59bfb4,
 	super-low-contrast: #79dfd4,
-	text-on: $black,
+	text-on: #000000,
 	text-on-super-high-contrast: #ceffff,
 	text-on-high-contrast: $white,
 	text-on-low-contrast: #002a1f,
@@ -39,7 +38,7 @@ $bright-blue: (
 	super-low-contrast: #9afdff,
 	text-on: #002745,
 	text-on-super-high-contrast: $white,
-	text-on-high-contrast: $black,
+	text-on-high-contrast: #000000,
 	text-on-low-contrast: #00415f,
 	text-on-super-low-contrast: #00585a,
 );
@@ -63,7 +62,7 @@ $coral: (
 	high-contrast: #cd4d3a,
 	low-contrast: #ff8d7a,
 	super-low-contrast: #ffad9a,
-	text-on: $black,
+	text-on: #000000,
 	text-on-super-high-contrast: $white,
 	text-on-high-contrast: $white,
 	text-on-low-contrast: #4f0000,
@@ -118,7 +117,7 @@ $green: (
 	text-on: #98df98,
 	text-on-super-high-contrast: #f7ffff,
 	text-on-high-contrast: $white,
-	text-on-low-contrast: $black,
+	text-on-low-contrast: #000000,
 	text-on-super-low-contrast: #002d00,
 ) !default;
 
@@ -137,7 +136,7 @@ $gold: (
 
 $indigo: (
 	default: #26203d,
-	super-high-contrast: $black,
+	super-high-contrast: #000000,
 	high-contrast: #06001d,
 	low-contrast: #46405d,
 	super-low-contrast: #66607d,
@@ -184,7 +183,7 @@ $magenta: (
 	text-on-super-high-contrast: #f09ab1,
 	text-on-high-contrast: #ffb5e7,
 	text-on-low-contrast: $white,
-	text-on-super-low-contrast: $black,
+	text-on-super-low-contrast: #000000,
 );
 
 $pink: (
@@ -195,7 +194,7 @@ $pink: (
 	super-low-contrast: #ffcdd9,
 	text-on: #460000,
 	text-on-super-high-contrast: $white,
-	text-on-high-contrast: $black,
+	text-on-high-contrast: #000000,
 	text-on-low-contrast: #661420,
 	text-on-super-low-contrast: #663440,
 );
@@ -209,7 +208,7 @@ $purple: (
 	text-on: $white,
 	text-on-super-high-contrast: #c8acec,
 	text-on-high-contrast: #f9ddff,
-	text-on-low-contrast: $black,
+	text-on-low-contrast: #000000,
 	text-on-super-low-contrast: #2a0e4e,
 );
 
@@ -247,7 +246,7 @@ $violet: (
 	super-low-contrast: #ffe9ff,
 	text-on: #321c47,
 	text-on-super-high-contrast: $white,
-	text-on-high-contrast: $black,
+	text-on-high-contrast: #000000,
 	text-on-low-contrast: #4a345f,
 	text-on-super-low-contrast: #5f495f,
 );
@@ -272,7 +271,7 @@ $yellow-green: (
 	low-contrast: #f3f620,
 	super-low-contrast: #ffff40,
 	text-on: #3c3f00,
-	text-on-super-high-contrast: $black,
+	text-on-super-high-contrast: #000000,
 	text-on-high-contrast: #242700,
 	text-on-low-contrast: #4f5200,
 	text-on-super-low-contrast: #575700,

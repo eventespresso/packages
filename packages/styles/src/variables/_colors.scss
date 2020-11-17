@@ -22,11 +22,11 @@ $default-text-colors: (
 );
 
 $primary-colors: (
-	primary: $primary,
-	primary-super-high-contrast: map.get($blue, 'super-high-contrast'),
-	primary-high-contrast: map.get($blue, 'high-contrast'),
-	primary-low-contrast: map.get($blue, 'low-contrast'),
-	primary-super-low-contrast: map.get($blue, 'super-low-contrast'),
+	default: $primary,
+	super-high-contrast: map.get($blue, 'super-high-contrast'),
+	high-contrast: map.get($blue, 'high-contrast'),
+	low-contrast: map.get($blue, 'low-contrast'),
+	super-low-contrast: map.get($blue, 'super-low-contrast'),
 	text-on: map.get($blue, 'text-on'),
 	text-on-super-high-contrast: map.get($blue, 'text-on-super-high-contrast'),
 	text-on-high-contrast: map.get($blue, 'text-on-high-contrast'),
@@ -35,8 +35,8 @@ $primary-colors: (
 ) !default;
 
 $secondary-colors: (
-	secondary: $secondary,
-	secondary-super-high-contrast: map.get($green, 'super-high-contrast'),
+	default: $secondary,
+	super-high-contrast: map.get($green, 'super-high-contrast'),
 	secondary-high-contrast: map.get($green, 'high-contrast'),
 	secondary-low-contrast: map.get($green, 'low-contrast'),
 	secondary-super-low-contrast: map.get($green, 'super-low-contrast'),
@@ -48,11 +48,11 @@ $secondary-colors: (
 ) !default;
 
 $accent-colors: (
-	accent: $accent,
-	secondary-super-high-contrast: map.get($hot-pink, 'super-high-contrast'),
-	secondary-high-contrast: map.get($hot-pink, 'high-contrast'),
-	secondary-low-contrast: map.get($hot-pink, 'low-contrast'),
-	secondary-super-low-contrast: map.get($hot-pink, 'super-low-contrast'),
+	default: $accent,
+	super-high-contrast: map.get($hot-pink, 'super-high-contrast'),
+	high-contrast: map.get($hot-pink, 'high-contrast'),
+	low-contrast: map.get($hot-pink, 'low-contrast'),
+	super-low-contrast: map.get($hot-pink, 'super-low-contrast'),
 	text-on: map.get($hot-pink, 'text-on'),
 	text-on-super-high-contrast: map.get($hot-pink, 'text-on-super-high-contrast'),
 	text-on-high-contrast: map.get($hot-pink, 'text-on-high-contrast'),
@@ -93,4 +93,9 @@ $grey: (
 	text-on-grey-15: #555555,
 );
 
-$colors: map.merge($colors, $grey);
+$colors: map-collect(
+	prepend-append($primary-colors, 'primary'),
+	prepend-append($secondary-colors, 'secondary'),
+	prepend-append($accent-colors, 'accent'),
+	$grey
+);
