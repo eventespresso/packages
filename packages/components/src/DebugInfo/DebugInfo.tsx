@@ -1,5 +1,4 @@
-import React, { useCallback, useState } from 'react';
-import styled from '@emotion/styled';
+import React, { CSSProperties, useCallback, useState } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Button } from '../Button';
@@ -7,13 +6,13 @@ import { Collapse } from '@eventespresso/adapters';
 
 import type { DebugInfoProps } from './types';
 
-const Pre = styled.pre`
-	border-radius: 5px;
-	box-sizing: border-box;
-	padding: 1em 2em;
-	color: #a9ce47;
-	background-color: #26203d;
-`;
+const style: CSSProperties = {
+	borderRadius: '5px',
+	boxSizing: 'border-box',
+	padding: '1em 2em',
+	color: '#a9ce47',
+	backgroundColor: '#26203d',
+};
 
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
@@ -29,7 +28,7 @@ const DebugInfo: React.FC<DebugInfoProps> = ({ data, asJson = true, asCollapse =
 
 	const dataToRender = asJson ? JSON.stringify(data, null, 2) : data;
 
-	const output = <Pre>{dataToRender}</Pre>;
+	const output = <pre style={style}>{dataToRender}</pre>;
 
 	if (!asCollapse) {
 		return output;

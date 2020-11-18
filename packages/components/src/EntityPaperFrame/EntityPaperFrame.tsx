@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import type { Entity } from '@eventespresso/data';
 import { EntityIDs } from '../EntityIDs';
-import './style.css';
+import './style.scss';
 
 interface EntityPaperFrameProps {
 	children: React.ReactNode;

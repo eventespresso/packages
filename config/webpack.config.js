@@ -27,7 +27,6 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const postcssNormalize = require('postcss-normalize');
-const { pick } = require('ramda');
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -181,6 +180,7 @@ module.exports = function (webpackEnv) {
 			minimizer: [
 				// This is only used in production mode
 				new TerserPlugin({
+					sourceMap: shouldUseSourceMap,
 					terserOptions: {
 						parse: {
 							// We want terser to parse ecma 8 code. However, we don't want it
@@ -218,7 +218,6 @@ module.exports = function (webpackEnv) {
 							ascii_only: true,
 						},
 					},
-					sourceMap: shouldUseSourceMap,
 				}),
 				// This is only used in production mode
 				new OptimizeCSSAssetsPlugin({

@@ -18,9 +18,13 @@ const EventManager: React.FC = () => {
 		setNewManagerId(newValue);
 	}, []);
 
+	const valueHasChanged = newManagerId && newManagerId !== managerId;
+
 	const onSubmit = useCallback(() => {
-		updateEvent({ manager: newManagerId });
-	}, [newManagerId, updateEvent]);
+		if (valueHasChanged) {
+			updateEvent({ manager: newManagerId });
+		}
+	}, [newManagerId, updateEvent, valueHasChanged]);
 
 	const id = 'ee-event-registration-manager';
 
