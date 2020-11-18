@@ -1,38 +1,6 @@
-$statuses: (
-	// transaction open
-	TOP: 'orange',
-	// transaction completed
-	TCM: 'green',
-	// transaction incomplete
-	TIN: 'blue',
-	// transaction abandoned
-	TAB: 'gold',
-	// transaction failed
-	TFL: 'hot-pink',
-	// payment approved
-	PAP: 'green',
-	// payment pending
-	PPN: 'blue',
-	// payment failed
-	PFL: 'gold',
-	// payment declined
-	PDC: 'hot-pink',
-	// payment cancelled
-	PCN: 'grey-7',
-	// registration approved
-	RAP: 'green',
-	// registration pending
-	RPP: 'blue',
-	// registration wait list
-	RWL: 'purple',
-	// registration incomplete
-	RIC: 'gold',
-	// registration not approved
-	RNA: 'orange',
-	// registration declined
-	RDC: 'hot-pink',
-	// registration cancelled
-	RCN: 'grey-7',
+@import '../functions';
+
+$datetime-statuses: (
 	// datetime sold out
 	DTS: 'purple',
 	// datetime active
@@ -48,7 +16,40 @@ $statuses: (
 	// datetime trashed
 	DTT: 'grey-3',
 	// datetime upcoming
-	DTU: 'blue',
+	DTU: 'blue'
+);
+
+$payment-statuses: (
+	// payment approved
+	PAP: 'green',
+	// payment pending
+	PPN: 'blue',
+	// payment failed
+	PFL: 'gold',
+	// payment declined
+	PDC: 'hot-pink',
+	// payment cancelled
+	PCN: 'grey-7'
+);
+
+$registration-statuses: (
+	// registration approved
+	RAP: 'green',
+	// registration pending
+	RPP: 'blue',
+	// registration wait list
+	RWL: 'purple',
+	// registration incomplete
+	RIC: 'gold',
+	// registration not approved
+	RNA: 'orange',
+	// registration declined
+	RDC: 'hot-pink',
+	// registration cancelled
+	RCN: 'grey-7'
+);
+
+$ticket-statuses: (
 	// ticket sold-out
 	TKS: 'purple',
 	// ticket onsale
@@ -59,6 +60,27 @@ $statuses: (
 	TKE: 'grey-6',
 	// ticket archived
 	TKA: 'grey-3'
+);
+
+$transaction-statuses: (
+	// transaction open
+	TOP: 'orange',
+	// transaction completed
+	TCM: 'green',
+	// transaction incomplete
+	TIN: 'blue',
+	// transaction abandoned
+	TAB: 'gold',
+	// transaction failed
+	TFL: 'hot-pink'
+);
+
+$statuses: map-collect(
+	$datetime-statuses,
+	$payment-statuses,
+	$registration-statuses,
+	$ticket-statuses,
+	$transaction-statuses
 );
 
 @each $status, $color in $statuses {
