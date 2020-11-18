@@ -12,28 +12,30 @@ export default {
 	},
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+type ButtonStory = Story<ButtonProps>;
 
-export const Primary = Template.bind({});
+const Template: ButtonStory = (args) => <Button {...args} />;
+
+export const Primary: ButtonStory = Template.bind({});
 Primary.args = {
 	buttonText: 'Primary',
 	buttonType: 'primary',
 };
 
-export const Secondary = Template.bind({});
+export const Secondary: ButtonStory = Template.bind({});
 Secondary.args = {
 	buttonText: 'Secondary',
 	buttonType: 'secondary',
 	size: 'small',
 };
 
-export const Large = Template.bind({});
-Large.args = {
-	buttonText: 'Large',
-	size: 'large',
+export const Big: ButtonStory = Template.bind({});
+Big.args = {
+	buttonText: 'Big',
+	size: 'big',
 };
 
-export const Small = Template.bind({});
+export const Small: ButtonStory = Template.bind({});
 Small.args = {
 	buttonText: 'Small',
 	size: 'small',
