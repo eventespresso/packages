@@ -11,5 +11,3 @@ export const Heading: React.FC<HeadingProps> = ({ topBordered, ...props }) => {
 
 	return <HeadingAdapter {...props} className={className} />;
 };
-
-export default Heading;
