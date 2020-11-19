@@ -18,7 +18,6 @@ const ErrorIndicator: React.FC<ErrorIndicatorProps> = ({ description, title }) =
 		iconProps={iconProps}
 		status='error'
 		title={title}
-		variant='subtle'
 	/>
 );
 

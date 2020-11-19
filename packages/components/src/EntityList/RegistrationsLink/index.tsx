@@ -5,12 +5,8 @@ import { Link, LinkProps } from '../../..';
 
 import './style.scss';
 
-interface Props extends LinkProps {
-	href: string;
-}
-
-const RegistrationsLink: React.FC<Props> = ({ href, ...props }) => {
-	return <Link className='ee-editor-details-reg-url-link' href={href} icon={<Groups />} {...props} />;
+const RegistrationsLink: React.FC<LinkProps> = ({ href, ...props }) => {
+	return <Link {...props} className='ee-editor-details-reg-url-link' href={href} icon={<Groups />} />;
 };
 
 export default RegistrationsLink;

@@ -66,3 +66,6 @@ typings/
 /build
 .yarnrc
 .yarn/
+
+# SB-related
+storybook-static

@@ -3,6 +3,11 @@ const path = require('path');
 module.exports = {
 	stories: ['../packages/**/src/**/*.stories.@(ts|tsx)'],
 	addons: [
+		'@storybook/addon-knobs',
+		'@storybook/addon-storysource',
+		'@storybook/addon-viewport',
+		'@storybook/addon-a11y',
+		,
 		{
 			name: '@storybook/addon-docs',
 			options: { configureJSX: true },
@@ -15,10 +20,6 @@ module.exports = {
 				},
 			},
 		},
-		'@storybook/addon-knobs',
-		'@storybook/addon-storysource',
-		'@storybook/addon-viewport',
-		'@storybook/addon-a11y',
 	],
 	webpackFinal: async (config) => {
 		// Remove the existing css/scss rule

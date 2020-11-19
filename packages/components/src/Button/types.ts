@@ -34,6 +34,6 @@ export interface ButtonGroupProps extends Omit<ButtonGroupAdapterProps, 'size'>,
 export interface LinkProps extends Partial<withTooltipProps> {
 	target?: '_blank' | '_parent' | '_self' | '_top';
 	className?: string;
-	href?: string;
+	href: string;
 	icon?: React.ReactNode;
 }
