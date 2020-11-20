@@ -1,0 +1,66 @@
+.ee-inline-notification.ee-inline-notification {
+	align-items: center;
+	border-radius: var(--ee-border-radius-small);
+	border-style: solid;
+	border-width: 1px;
+	display: inline-flex;
+	font-weight: 600;
+	margin: var(--ee-margin-tiny) 0;
+	padding: var(--ee-padding-micro) var(--ee-padding-smaller) var(--ee-padding-micro) var(--ee-padding-micro);
+
+	svg.ee-svg.ee-svg {
+		color: currentColor;
+		margin-right: var(--ee-margin-smaller);
+	}
+
+	p {
+		color: currentColor;
+		letter-spacing: 2px;
+	}
+
+	&--type {
+		&-error {
+			background-color: var(--ee-color-accent);
+			border-color: var(--ee-color-accent);
+			color: var(--ee-text-on-accent);
+		}
+		&-info {
+			background-color: var(--ee-text-on-primary-super-high-contrast);
+			border-color: var(--ee-text-on-primary-super-high-contrast);
+			color: var(--ee-color-primary-super-high-contrast);
+		}
+		&-success {
+			background-color: var(--ee-color-secondary);
+			border-color: var(--ee-color-secondary);
+			color: var(--ee-text-on-secondary-high-contrast);
+		}
+		&-warning {
+			background-color: var(--ee-color-yellow);
+			border-color: var(--ee-color-yellow);
+			color: var(--ee-color-black);
+		}
+	}
+
+	&--variant {
+		&-subtle {
+			background-color: var(--ee-background-color);
+
+			&.ee-inline-notification--type {
+				&-error {
+					color: var(--ee-color-accent);
+				}
+				&-info {
+					color: var(--ee-color-primary);
+				}
+				&-success {
+					color: var(--ee-color-secondary);
+				}
+				&-warning {
+					svg.ee-svg.ee-svg {
+						color: var(--ee-color-yellow);
+					}
+				}
+			}
+		}
+	}
+}
