@@ -13,6 +13,7 @@ import SimpleTextEditor from './SimpleTextEditor';
 import Hidden from './Hidden';
 import NumberField from './Number';
 import type { FieldRendererProps } from '../types';
+import { fieldPropsAreEqual } from '../utils';
 
 export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props }) => {
 	let Component: React.ComponentType<Omit<FieldRendererProps, 'fieldType'>>;
@@ -61,3 +62,5 @@ export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props 
 
 	return Component && <Component {...props} />;
 };
+
+export default React.memo(MappedField, fieldPropsAreEqual);

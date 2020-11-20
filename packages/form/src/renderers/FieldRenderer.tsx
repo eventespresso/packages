@@ -5,8 +5,7 @@ import { FormControl, FormLabel } from '@eventespresso/adapters';
 import { ErrorMessage } from '../../../components/src/ErrorMessage';
 import { HelperText } from '../HelperText';
 
-import { MappedField } from '../adapters';
-import { fieldPropsAreEqual } from '../utils';
+import MappedField from '../adapters/MappedField';
 import type { FieldRendererProps } from '../types';
 
 const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
@@ -53,10 +52,10 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 				isInvalid={isInvalid}
 			/>
 			{after}
-			<ErrorMessage id={errorMessageId} message={errorMessage} />
+			<ErrorMessage id={errorMessageId} message={errorMessage || meta.data?.fieldNotice} />
 			<HelperText id={tooltipKey}>{description || info}</HelperText>
 		</FormControl>
 	);
 };
 
-export default React.memo(FieldRenderer, fieldPropsAreEqual);
+export default FieldRenderer;

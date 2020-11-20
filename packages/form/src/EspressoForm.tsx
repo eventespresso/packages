@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { Form as ReactFinalForm } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import type { AnyObject } from 'final-form';
+import setFieldData from 'final-form-set-field-data';
 
 import type { EspressoFormProps } from './types';
 import FormRenderer from './renderers/FormRenderer';
@@ -18,6 +19,7 @@ const EspressoForm = <FormValues extends AnyObject>({
 		() => ({
 			...arrayMutators,
 			...mutators,
+			setFieldData,
 			updateFieldValue,
 		}),
 		[mutators]
