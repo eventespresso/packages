@@ -1,16 +1,17 @@
 import { useMemo, useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
 import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { useTicketItem } from '@eventespresso/edtr-services';
+import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
+import { startAndEndDateFixer, useTicketItem } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
+import { useMemoStringify } from '@eventespresso/hooks';
+import { setDefaultTime } from '@eventespresso/dates';
+import { EntityId } from '@eventespresso/data';
+import { __ } from '@eventespresso/i18n';
 import type { EspressoFormProps } from '@eventespresso/form';
 import type { Ticket } from '@eventespresso/edtr-services';
-import { setDefaultTime } from '@eventespresso/dates';
-import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
-import { useMemoStringify } from '@eventespresso/hooks';
-import { EntityId } from '@eventespresso/data';
+
 import { validate } from './formValidation';
 import { TicketFormShape } from './types';
 
@@ -30,6 +31,8 @@ const FIELD_NAMES: Array<keyof Ticket> = [
 	'quantity',
 	'uses',
 ];
+
+const decorators = [startAndEndDateFixer];
 
 const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFormConfig => {
 	const ticket = useTicketItem({ id });
@@ -70,6 +73,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 		() => ({
 			...config,
 			onSubmit: onSubmitFrom,
+			decorators,
 			initialValues,
 			validate,
 			layout: 'horizontal',

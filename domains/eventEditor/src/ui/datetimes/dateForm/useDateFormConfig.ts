@@ -1,23 +1,25 @@
 import { useMemo, useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
 import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { useDatetimeItem } from '@eventespresso/edtr-services';
-import { PLUS_ONE_MONTH } from '@eventespresso/constants';
-import { setDefaultTime } from '@eventespresso/dates';
+import { startAndEndDateFixer, useDatetimeItem } from '@eventespresso/edtr-services';
 import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
-import { useMemoStringify } from '@eventespresso/hooks';
-import { EntityId } from '@eventespresso/data';
-import { validate } from './formValidation';
-
 import type { EspressoFormProps } from '@eventespresso/form';
+import { PLUS_ONE_MONTH } from '@eventespresso/constants';
+import { useMemoStringify } from '@eventespresso/hooks';
+import { setDefaultTime } from '@eventespresso/dates';
+import { EntityId } from '@eventespresso/data';
+import { __ } from '@eventespresso/i18n';
 import type { Datetime } from '@eventespresso/edtr-services';
+
+import { validate } from './formValidation';
 import type { DateFormShape } from './types';
 
 type DateFormConfig = EspressoFormProps<DateFormShape>;
 
 const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'description', 'capacity', 'isTrashed'];
+
+const decorators = [startAndEndDateFixer];
 
 const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormConfig => {
 	const datetime = useDatetimeItem({ id });
@@ -58,6 +60,7 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 		() => ({
 			...config,
 			onSubmit: onSubmitFrom,
+			decorators,
 			initialValues,
 			validate,
 			layout: 'horizontal',
