@@ -10,6 +10,7 @@ jobs:
     chromatic-deployment:
         # Operating System
         runs-on: ubuntu-latest
+        name: Chromatic Deployment
         # Job steps
         steps:
             - name: Checkout repository
