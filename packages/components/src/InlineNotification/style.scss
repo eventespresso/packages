@@ -56,6 +56,8 @@
 					color: var(--ee-color-secondary);
 				}
 				&-warning {
+					color: var(--ee-text-on-yellow);
+
 					svg.ee-svg.ee-svg {
 						color: var(--ee-color-yellow);
 					}
