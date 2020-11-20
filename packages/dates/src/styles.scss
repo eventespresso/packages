@@ -31,6 +31,9 @@
 	color: var(--ee-default-text-color);
 	font-size: var(--ee-font-size-small);
 
+	&-wrapper {
+		min-width: 16rem;
+	}
 	&.ee-datetime-picker {
 		width: calc(var(--ee-icon-button-size) * 9 + 2px);
 	}
