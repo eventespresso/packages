@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { FormControl, FormLabel } from '@eventespresso/adapters';
-import { ErrorMessage } from '../../../components/src/ErrorMessage';
+import { ErrorMessage, InfoMessage } from '../../../components/src';
 import { HelperText } from '../HelperText';
 
 import MappedField from '../adapters/MappedField';
@@ -36,6 +36,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	const tooltipKey = info ? props.input.name + '-tooltip' : null;
 
 	const errorMessageId = props.input.name + '-error-message';
+	const infoMessageId = props.input.name + '-info-message';
 
 	const ariaDescribedBy = isInvalid ? errorMessageId : tooltipKey;
 
@@ -52,7 +53,8 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 				isInvalid={isInvalid}
 			/>
 			{after}
-			<ErrorMessage id={errorMessageId} message={errorMessage || meta.data?.fieldNotice} />
+			<ErrorMessage id={errorMessageId} message={errorMessage} />
+			<InfoMessage id={infoMessageId} message={meta.data?.fieldNotice} />
 			<HelperText id={tooltipKey}>{description || info}</HelperText>
 		</FormControl>
 	);
