@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Banner } from '../Banner';
+import { Banner } from '../';
 import type { ErrorIndicatorProps } from './types';
 
 import './style.scss';
@@ -11,7 +11,7 @@ const iconProps = {
 	size: '96px',
 };
 
-const ErrorIndicator: React.FC<ErrorIndicatorProps> = ({ description, title }) => (
+export const ErrorIndicator: React.FC<ErrorIndicatorProps> = ({ description, title }) => (
 	<Banner
 		className='ee-error-indicator'
 		description={description}
@@ -21,5 +21,3 @@ const ErrorIndicator: React.FC<ErrorIndicatorProps> = ({ description, title }) =
 		variant='subtle'
 	/>
 );
-
-export default ErrorIndicator;
