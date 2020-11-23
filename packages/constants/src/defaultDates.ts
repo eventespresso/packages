@@ -1,9 +1,7 @@
 import { formatISO, parseISO } from 'date-fns';
-import { setHours } from 'date-fns';
 
 // parse and format to make sure it works well for precision tests
-// export const NOW = parseISO(formatISO(new Date()));
-export const NOW = parseISO(formatISO(setHours(new Date(), 23))); // set NOW to past 11 pm
+export const NOW = parseISO(formatISO(new Date()));
 export const CURRENT_YEAR = NOW.getFullYear();
 export const CURRENT_MONTH = NOW.getMonth();
 export const CURRENT_DATE = NOW.getDate(); // day of the month

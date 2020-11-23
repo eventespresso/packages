@@ -18,12 +18,9 @@ describe('isOnOrAfterToday', () => {
 	});
 
 	it('returns true if the date is after today when considerTime is false', () => {
-		// if we are past 11 pm, adding 1 hour will shift the date to the next day
-		const expected = NOW.getHours() >= 23;
-
 		// this test won't fail at midnight, so sleep well
 		const result = isOnOrAfterToday(todayAtZeroHour, false);
-		expect(result).toBe(expected);
+		expect(result).toBe(true);
 	});
 
 	it('returns false if the date is before today when considerTime is true', () => {
