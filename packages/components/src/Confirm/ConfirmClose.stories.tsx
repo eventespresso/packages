@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
-import { ConfirmClose, modalCloseButtonProps } from '../';
+import { ConfirmClose } from '../';
 import type { ConfirmProps } from './types';
 
 export default {
@@ -12,7 +12,7 @@ export default {
 
 type ConfirmStory = Story<ConfirmProps>;
 
-const buttonProps = { ...modalCloseButtonProps, buttonText: 'close' };
+const buttonProps = { buttonText: 'close' };
 
 const Template: ConfirmStory = (args) => <ConfirmClose {...args} buttonProps={buttonProps} />;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
-import { ConfirmDelete, modalCloseButtonProps } from '../';
+import { ConfirmDelete } from '../';
 import type { ConfirmProps } from './types';
 
 export default {
@@ -12,7 +12,7 @@ export default {
 
 type ConfirmStory = Story<ConfirmProps>;
 
-const buttonProps = { ...modalCloseButtonProps, buttonText: 'delete' };
+const buttonProps = { buttonText: 'delete' };
 
 const Template: ConfirmStory = (args) => <ConfirmDelete {...args} buttonProps={buttonProps} />;
 

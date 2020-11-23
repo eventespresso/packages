@@ -14,8 +14,6 @@ export default {
 type BannerStory = Story<ItemCountProps>;
 
 const Template: BannerStory = (args) => {
-	console.log({ args });
-
 	return (
 		<ItemCount {...args} title='title' zeroCountChar='!'>
 			<IconButton borderless icon={Ticket} onClick={null} tooltip={'assign tickets'} />
@@ -31,4 +29,8 @@ export const WithNoItems: BannerStory = Template.bind({
 
 export const WithItems: BannerStory = Template.bind({
 	count: 10,
+});
+
+export const WithNegativeCount: BannerStory = Template.bind({
+	count: -10,
 });
