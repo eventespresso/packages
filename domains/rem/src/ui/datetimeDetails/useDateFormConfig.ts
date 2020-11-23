@@ -40,6 +40,7 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 			...config,
 			onSubmit,
 			initialValues,
+			subscription: {},
 			validate,
 			debugFields: ['values', 'errors'],
 			sections: [

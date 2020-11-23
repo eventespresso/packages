@@ -74,6 +74,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 			...config,
 			onSubmit: onSubmitFrom,
 			decorators,
+			subscription: {},
 			initialValues,
 			validate,
 			layout: 'horizontal',

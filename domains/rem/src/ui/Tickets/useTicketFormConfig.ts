@@ -111,6 +111,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 			...config,
 			initialValues,
 			onSubmit: config?.onSubmit,
+			subscription: {},
 			validate,
 			layout: 'horizontal',
 			debugFields: ['values', 'errors'],
