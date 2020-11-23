@@ -1,6 +1,6 @@
+import { NOW } from '@eventespresso/constants';
 import { setTimeToZeroHour } from '../..';
 import isOnOrAfterToday from '../isOnOrAfterToday';
-import { NOW } from '../../constants';
 
 // lets set the time to today midnight
 const todayAtZeroHour = setTimeToZeroHour(NOW);
@@ -18,12 +18,15 @@ describe('isOnOrAfterToday', () => {
 	});
 
 	it('returns true if the date is after today when considerTime is false', () => {
+		// if we are past 11 pm, adding 1 hour will shift the date to the next day
+		const expected = NOW.getHours() >= 23;
+
 		// this test won't fail at midnight, so sleep well
 		const result = isOnOrAfterToday(todayAtZeroHour, false);
-		expect(result).toBe(true);
+		expect(result).toBe(expected);
 	});
 
-	it('returns false if the first date is before second date when considerTime is true', () => {
+	it('returns false if the date is before today when considerTime is true', () => {
 		// this test won't fail at midnight, so sleep well
 		const result = isOnOrAfterToday(todayAtZeroHour, true);
 		expect(result).toBe(false);
