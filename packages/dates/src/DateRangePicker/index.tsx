@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 
+import { NOW } from '@eventespresso/constants';
 import { DatePicker, DateTimePicker } from '../';
 import { DateRangePickerLegend } from './DateRangePickerLegend';
 import type { DateRangePickerProps } from '../types';
@@ -19,8 +20,8 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 	value,
 	...props
 }) => {
-	const [startDate, setStartDate] = useState(value?.[0] || new Date());
-	const [endDate, setEndDate] = useState(value?.[1] || new Date());
+	const [startDate, setStartDate] = useState(value?.[0] || NOW);
+	const [endDate, setEndDate] = useState(value?.[1] || NOW);
 
 	useEffect(() => {
 		onChange([startDate, endDate]);

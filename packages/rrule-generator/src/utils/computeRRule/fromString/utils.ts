@@ -1,6 +1,7 @@
 import { Options, Weekday } from 'rrule';
 import { format, setMonth } from 'date-fns';
 
+import { NOW } from '@eventespresso/constants';
 import { Month, Day, Which } from '../../../types';
 
 export const getOnMonth = (bymonth: Options['bymonth']): Month => {
@@ -11,7 +12,7 @@ export const getOnMonth = (bymonth: Options['bymonth']): Month => {
 	} else {
 		month = bymonth[0] - 1;
 	}
-	const date = setMonth(new Date(), month);
+	const date = setMonth(NOW, month);
 
 	return format(date, 'MMM') as Month;
 };

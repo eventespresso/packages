@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 
+import { NOW } from '@eventespresso/constants';
 import useRRuleStateManager from '../useRRuleStateManager';
 import { DEFAULT_CONFIG } from '../../context';
 
@@ -39,7 +40,7 @@ describe('RRuleStateManager.setEndDate', () => {
 		const prevHash = result.current.hash;
 
 		act(() => {
-			result.current.setEndDate(new Date());
+			result.current.setEndDate(NOW);
 		});
 
 		expect(result.current).toHaveProperty('hash');

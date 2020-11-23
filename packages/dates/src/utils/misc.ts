@@ -4,6 +4,7 @@ import { getHours, getMinutes, getSeconds, parseISO, toDate } from 'date-fns';
 import { setHours, setMinutes, setSeconds, setYear, setMonth, setDate } from 'date-fns/fp';
 
 import type { OptionsType } from '@eventespresso/adapters';
+import { NOW } from '@eventespresso/constants';
 
 import { add, sub } from './addSub';
 import type { Intervals, ShiftDateArgs } from './types';
@@ -71,13 +72,11 @@ export const setTimeFromDate = (time: Date) => (date: Date): Date => {
  * Sets the date, month and year of the date object to those of today
  */
 export const setDateToToday = (date: Date): Date => {
-	const today = new Date();
-
 	// prettier-ignore
 	return pipe(
-        setDate(today.getDate()),
-        setMonth(today.getMonth()),
-        setYear(today.getFullYear()
+        setDate(NOW.getDate()),
+        setMonth(NOW.getMonth()),
+        setYear(NOW.getFullYear()
     ))(date);
 };
 /**

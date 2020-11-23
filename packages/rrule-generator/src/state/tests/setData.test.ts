@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 
+import { NOW } from '@eventespresso/constants';
 import useRRuleStateManager from '../useRRuleStateManager';
 import { DEFAULT_CONFIG } from '../../context';
 import { getDefaultRRuleState } from '../../utils';
@@ -9,7 +10,7 @@ describe('RRuleStateManager.setData', () => {
 		const defaultState = getDefaultRRuleState(DEFAULT_CONFIG);
 		const { result } = renderHook(() => useRRuleStateManager(DEFAULT_CONFIG));
 
-		const updatedState = { ...defaultState, start: { date: new Date() } };
+		const updatedState = { ...defaultState, start: { date: NOW } };
 
 		act(() => {
 			result.current.setData(updatedState);

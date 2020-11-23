@@ -2,6 +2,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import useRRuleStateManager from '../useRRuleStateManager';
 import { DEFAULT_CONFIG } from '../../context';
+import { NOW } from '@eventespresso/constants';
 
 describe('RRuleStateManager.setStartDate', () => {
 	it('updates the start date to the passed value', () => {
@@ -39,7 +40,7 @@ describe('RRuleStateManager.setStartDate', () => {
 		const prevHash = result.current.hash;
 
 		act(() => {
-			result.current.setStartDate(new Date());
+			result.current.setStartDate(NOW);
 		});
 
 		expect(result.current).toHaveProperty('hash');

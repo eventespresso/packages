@@ -1,10 +1,11 @@
 import { pick } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 
-import { intervalsToOptions, DATE_INTERVALS, NOW, setTimeToNoon } from '@eventespresso/dates';
+import { intervalsToOptions, DATE_INTERVALS, setTimeToNoon } from '@eventespresso/dates';
 import { Calendar, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
+import { NOW } from '@eventespresso/constants';
 import type { EspressoFormProps } from '@eventespresso/form';
-import { Datetime } from '@eventespresso/edtr-services';
+import type { Datetime } from '@eventespresso/edtr-services';
 import { validate } from './formValidation';
 import { DateFormShape } from './types';
 import { DATE_FIELDS_TO_USE } from '../../constants';

@@ -1,5 +1,6 @@
 import { formatISO } from 'date-fns';
 
+import { NOW } from '@eventespresso/constants';
 import { nodes as datetimes } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
 import { sub } from '@eventespresso/dates';
 import recentlyExpiredOnly from './index';
@@ -18,9 +19,9 @@ describe('recentlyExpiredOnly', () => {
 
 	it('Should return an array of recentlyExpiredOnly dates', () => {
 		const filteredDates = recentlyExpiredOnly([
-			{ ...datetime, id: 'abc', endDate: formatISO(sub('weeks', new Date(), 3)) },
-			{ ...datetime, id: 'def', endDate: formatISO(sub('weeks', new Date(), 4)) },
-			{ ...datetime, id: 'xyz', endDate: formatISO(sub('weeks', new Date(), 5)) },
+			{ ...datetime, id: 'abc', endDate: formatISO(sub('weeks', NOW, 3)) },
+			{ ...datetime, id: 'def', endDate: formatISO(sub('weeks', NOW, 4)) },
+			{ ...datetime, id: 'xyz', endDate: formatISO(sub('weeks', NOW, 5)) },
 		]);
 
 		expect(filteredDates.length).toBe(2);

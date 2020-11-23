@@ -2,7 +2,8 @@ import { useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { setSeconds } from 'date-fns';
 
-import { NOW, setTimeToNoon } from '@eventespresso/dates';
+import { NOW } from '@eventespresso/constants';
+import { setTimeToNoon } from '@eventespresso/dates';
 import { RRuleStateManager as RSM, RRuleState } from '../state';
 import { OnChangeInput } from '../components/types';
 import { DEFAULT_CONFIG } from '../context';

@@ -1,4 +1,3 @@
-import { formatISO, parseISO } from 'date-fns';
 import * as yup from 'yup';
 
 import { add, endDateAfterStartDateErrorMessage, sub } from '@eventespresso/dates';
@@ -60,5 +59,3 @@ export const datesSchema = {
 			return schema.min(startDate, () => endDateAfterStartDateErrorMessage);
 		}),
 };
-
-export const now = parseISO(formatISO(new Date()));

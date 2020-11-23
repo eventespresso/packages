@@ -1,3 +1,5 @@
+import { NOW } from '@eventespresso/constants';
+
 import isOnOrBeforeDate from '../isOnOrBeforeDate';
 
 describe('isOnOrBeforeDate', () => {
@@ -57,8 +59,8 @@ describe('isOnOrBeforeDate', () => {
 
 	it('returns false if any of the two or both are null or undefined', () => {
 		[null, undefined].forEach((date) => {
-			expect(isOnOrBeforeDate(new Date(), date)).toBe(false);
-			expect(isOnOrBeforeDate(date, new Date())).toBe(false);
+			expect(isOnOrBeforeDate(NOW, date)).toBe(false);
+			expect(isOnOrBeforeDate(date, NOW)).toBe(false);
 			expect(isOnOrBeforeDate(date, date)).toBe(false);
 		});
 	});

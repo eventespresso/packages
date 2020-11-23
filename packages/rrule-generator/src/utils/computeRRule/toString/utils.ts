@@ -2,6 +2,7 @@ import { WeekdayStr } from 'rrule';
 import { Weekday } from 'rrule/dist/es5/rrule';
 import { parse, getMonth } from 'date-fns';
 
+import { NOW } from '@eventespresso/constants';
 import { Which, Day, Month } from '../../../types';
 import { ALL_WEEKDAYS } from '../../../constants';
 
@@ -58,7 +59,7 @@ export const weekdayStringToNumber = (day: WeekdayStr): number => {
 
 export const getByMonth = (month: Month): number => {
 	// parse 'Jan', 'Feb'
-	const date = parse(month, 'MMM', new Date());
+	const date = parse(month, 'MMM', NOW);
 
 	// +1 because rrule bymonth starts from 1, not from 0
 	return getMonth(date) + 1;

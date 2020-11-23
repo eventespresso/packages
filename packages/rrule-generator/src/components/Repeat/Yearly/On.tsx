@@ -3,6 +3,7 @@ import { __ } from '@eventespresso/i18n';
 import { parse, getDaysInMonth } from 'date-fns';
 import { range } from 'ramda';
 
+import { NOW } from '@eventespresso/constants';
 import { MONTHS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';
 import { OnChangeSelect } from '../../types';
@@ -19,7 +20,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	const isActive = yearly?.mode === 'ON';
 	const on = yearly?.on;
 	// parse 'Jan', 'Feb'
-	const date = parse(on?.month, 'MMM', new Date());
+	const date = parse(on?.month, 'MMM', NOW);
 	// number of days in the selected month
 	const daysInMonth = getDaysInMonth(date);
 
