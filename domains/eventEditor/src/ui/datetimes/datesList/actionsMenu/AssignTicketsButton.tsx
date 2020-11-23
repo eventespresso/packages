@@ -34,7 +34,7 @@ const AssignTicketsButton: React.FC<EntityListItemProps<Datetime>> = ({ entity }
 	}, [entity, openWithData]);
 
 	return (
-		<ItemCount count={count} emphasizeZero title={title} zeroCountChar='!'>
+		<ItemCount count={count} title={title} zeroCountChar='!'>
 			<IconButton
 				borderless
 				icon={Ticket}

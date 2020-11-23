@@ -1,0 +1,34 @@
+$shadows: (
+	box-shadow-tiny: 0 1px 2px rgba(0, 0, 0, 0.6),
+	box-shadow-tiny-diffuse: 0 0 1px rgba(0, 0, 0, 0.3),
+	box-shadow-tiny-inset-diffuse: inset 0 0 1px rgba(0, 0, 0, 0.3),
+	box-shadow-small: (
+		0 2px 4px rgba(0, 0, 0, 0.6),
+		0 4px 8px 4px rgba(0, 0, 0, 0.1),
+	),
+	box-shadow-small-diffuse: 0 1px 2px rgba(0, 0, 0, 0.3),
+	box-shadow-default: (
+		0 3px 6px rgba(0, 0, 0, 0.6),
+		0 8px 16px 8px rgba(0, 0, 0, 0.05),
+	),
+	box-shadow-default-diffuse: 0 1px 3px rgba(0, 0, 0, 0.3),
+	box-shadow-big: (
+		0 5px 10px rgba(0, 0, 0, 0.6),
+		0 0 24px 16px rgba(0, 0, 0, 0.05),
+	),
+	box-shadow-big-diffuse: 0 2px 5px rgba(0, 0, 0, 0.3),
+	box-shadow-wp-icon-btn-hover: (
+		inset 0 0 0 1px var(--ee-color-grey-10),
+		inset 0 0 0 2px var(--ee-color-white),
+		0 1px 1px rgba(25, 30, 35, 0.2),
+	),
+	box-shadow-wp-icon-btn-focus: (
+		inset 0 0 0 1px var(--ee-color-grey-5),
+		inset 0 0 0 2px var(--ee-color-white),
+	),
+	text-shadow-inset: -1px -1px 0 rgba(0, 0, 0, 0.15),
+	text-shadow-inset-light: -1px -1px 0 rgba(255, 255, 255, 0.15),
+	text-shadow-small: 0 1px 2px rgba(0, 0, 0, 0.5),
+	text-shadow-default: 0 2px 4px rgba(0, 0, 0, 0.375),
+	text-shadow-big: 0 3px 6px rgba(0, 0, 0, 0.25),
+);
