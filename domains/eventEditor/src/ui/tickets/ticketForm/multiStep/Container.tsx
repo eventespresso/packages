@@ -17,8 +17,8 @@ const Container: React.FC = () => {
 
 	let title = ticket?.dbId
 		? sprintf(
-				/* translators: %d ticket id */
-				__('Edit ticket %d'),
+				/* translators: %s ticket id */
+				__('Edit ticket %s'),
 				`#${ticket.dbId}`
 		  )
 		: __('New Ticket Details');
