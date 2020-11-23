@@ -20,10 +20,6 @@ module.exports = {
 			},
 		},
 	],
-	babel: async (options) => {
-		console.log('babel', JSON.stringify(options, null, 4));
-		return options;
-	},
 	stories: ['../packages/**/src/**/*.stories.@(ts|tsx)'],
 	webpackFinal: async (config) => {
 		// Remove the existing css/scss rule

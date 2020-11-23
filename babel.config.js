@@ -10,19 +10,22 @@ module.exports = function (api) {
 		'@babel/plugin-proposal-nullish-coalescing-operator',
 	];
 
+	const productionPlugins = [];
+	if (process.env.BUILD_POT !== 'false') {
+		productionPlugins.push([
+			'@wordpress/babel-plugin-makepot',
+			{
+				output: './build/js-translations.pot',
+			},
+		]);
+	}
+
 	return {
 		presets,
 		plugins,
 		env: {
 			production: {
-				plugins: [
-					[
-						'@wordpress/babel-plugin-makepot',
-						{
-							output: './build/js-translations.pot',
-						},
-					],
-				],
+				plugins: productionPlugins,
 			},
 		},
 	};

@@ -9,7 +9,7 @@
 		"build:cra": "node scripts/build.js",
 		"build:packages": "yarn build:cra",
 		"build:rem": "yarn build:cra --domains \"rem\" --packages \"rrule-generator\"",
-		"build-storybook": "build-storybook",
+		"build-storybook": "BUILD_POT=false build-storybook",
 		"chromatic": "chromatic",
 		"deploy": "FORCE_COLOR=true lerna run deploy",
 		"dev": "yarn dev:watch --domains \"eventEditor\"",
