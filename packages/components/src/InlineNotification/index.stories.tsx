@@ -11,7 +11,6 @@ export default {
 	component: InlineNotification,
 	decorators: [withKnobs],
 	parameters: {
-		// the viewports object from the Essentials addon
 		viewport: {
 			viewports: MINIMAL_VIEWPORTS,
 			defaultViewport: 'mobile',
