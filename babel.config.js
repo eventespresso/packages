@@ -19,7 +19,7 @@ module.exports = function (api) {
 					[
 						'@wordpress/babel-plugin-makepot',
 						{
-							output: 'build/js-translations.pot',
+							output: './build/js-translations.pot',
 						},
 					],
 				],
