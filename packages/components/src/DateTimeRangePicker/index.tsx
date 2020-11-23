@@ -52,6 +52,7 @@ export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ onChange, 
 	return (
 		<div className={className}>
 			<DateTimeRangePickerAdapter
+				{...props}
 				endDateTZ={endDateTZ}
 				locale={user}
 				onChange={setDates}

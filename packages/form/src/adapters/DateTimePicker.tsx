@@ -7,7 +7,7 @@ import { useFormConfig } from '../hooks';
 import type { FieldRendererProps } from '../types';
 
 const DateTimePicker: React.FC<FieldRendererProps> = ({ className, input: { onChange, ...input }, ...props }) => {
-	const { locale, dateTimeFormat } = useFormConfig();
+	const { locale, dateTimeFormat, timeFormat } = useFormConfig();
 
 	const htmlClass = classNames(
 		className,
@@ -21,6 +21,7 @@ const DateTimePicker: React.FC<FieldRendererProps> = ({ className, input: { onCh
 			<DateTimePickerAdapter
 				{...input}
 				dateFormat={dateTimeFormat}
+				timeFormat={timeFormat}
 				locale={locale}
 				{...props}
 				id={input.name}
