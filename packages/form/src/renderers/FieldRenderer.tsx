@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { FormControl, FormLabel } from '@eventespresso/adapters';
-import { ErrorMessage, InfoMessage } from '../../../components/src';
+import { ErrorMessage, InfoMessage } from '../../../components/src/InlineNotification';
 import { HelperText } from '../HelperText';
 
 import MappedField from '../adapters/MappedField';
