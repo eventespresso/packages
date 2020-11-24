@@ -1,7 +1,6 @@
 @import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
 .post-type-espresso_events {
-
 	#adminmenuwrap {
 		z-index: 2;
 	}
@@ -12,13 +11,13 @@
 
 	#ee-event-editor {
 		position: relative;
-		z-index: 2;
+		z-index: 1; // more info: https://github.com/eventespresso/barista/pull/437
 	}
 
 	@include max782px {
 		#wpcontent {
 			margin: 0 !important;
-			padding: 0 .75rem !important;
+			padding: 0 0.75rem !important;
 		}
 
 		.wrap {

@@ -33,7 +33,7 @@ Accent.args = {
 export const Primary: ButtonStory = Template.bind({});
 Primary.args = {
 	buttonText: 'Primary',
-	buttonType: 'default',
+	buttonType: 'primary',
 };
 
 export const Secondary: ButtonStory = Template.bind({});
