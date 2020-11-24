@@ -1,4 +1,6 @@
-export interface InlineEditCurrencyProps {
+import type { MoneyDisplay } from '@eventespresso/services';
+
+export interface InlineEditCurrencyProps extends Partial<MoneyDisplay> {
 	amount: string | number;
 	id: string;
 	isEditDisabled?: boolean;

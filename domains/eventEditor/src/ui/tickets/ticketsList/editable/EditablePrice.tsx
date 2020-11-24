@@ -3,6 +3,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { InlineEditCurrency } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
+import { useMoneyDisplay } from '@eventespresso/services';
 import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
 import type { TicketItemProps } from '../types';
@@ -12,6 +13,7 @@ interface EditablePriceProps extends TicketItemProps {
 }
 
 const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, className }) => {
+	const { afterAmount, beforeAmount, formatAmount } = useMoneyDisplay();
 	const recalculateBasePrice = useRecalculateBasePrice(ticket.id);
 	const onChangePrice = useCallback(
 		({ amount }: any): void => {
@@ -31,8 +33,11 @@ const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, 
 
 	return (
 		<InlineEditCurrency
-			id={ticket.id}
+			afterAmount={afterAmount}
 			amount={ticket.price}
+			beforeAmount={beforeAmount}
+			formatAmount={formatAmount}
+			id={ticket.id}
 			isEditDisabled={isEditDisabled}
 			placeholder={__('set price…')}
 			wrapperProps={wrapperProps}

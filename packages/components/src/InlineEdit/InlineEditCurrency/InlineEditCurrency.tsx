@@ -1,8 +1,7 @@
 import React, { useCallback } from 'react';
 import classNames from 'classnames';
 
-import { parsedAmount } from '@eventespresso/utils';
-import { useMoneyDisplay } from '@eventespresso/services';
+import { formatAmount as defaultFormatAmount, parsedAmount } from '@eventespresso/utils';
 import { InlineEditText } from '../InlineEditInput';
 
 import type { InlineEditCurrencyProps } from './types';
@@ -13,6 +12,9 @@ const nullFunc = () => null;
 
 export const InlineEditCurrency: React.FC<InlineEditCurrencyProps> = ({
 	amount = 0,
+	afterAmount,
+	beforeAmount,
+	formatAmount = defaultFormatAmount(2), // default is supplied for SB only
 	id = '',
 	isEditDisabled,
 	onChange = nullFunc,
@@ -21,7 +23,6 @@ export const InlineEditCurrency: React.FC<InlineEditCurrencyProps> = ({
 	vertical,
 	tooltip,
 }) => {
-	const { formatAmount, beforeAmount, afterAmount } = useMoneyDisplay();
 	const className = classNames('ee-currency-input', vertical && 'ee-currency-input--vertical');
 	const before = beforeAmount ? <span className={'ee-currency-input__before-amount'}>{beforeAmount} </span> : '';
 	const after = afterAmount ? <span className={'ee-currency-input__after-amount'}> {afterAmount}</span> : '';

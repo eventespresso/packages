@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Dotdotdot } from '@eventespresso/adapters';
 import { Edit } from '@eventespresso/icons';
 
-import { TabbableText } from '../';
+import { TabbableText } from '../../';
 import type { PreviewProps } from './types';
 
 import './style.scss';

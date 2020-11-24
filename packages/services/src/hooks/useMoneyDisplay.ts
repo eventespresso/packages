@@ -5,7 +5,7 @@ import { useConfig } from '../config';
 import type { FormatAmountFunction } from '@eventespresso/utils';
 import type { CurrencyProps } from '../config';
 
-export type MoneyDisplay = {
+export interface MoneyDisplay {
 	// the currency sign if the currency displays it before the amount (or '')
 	afterAmount: string;
 	// the currency sign if the currency displays it before the amount (or '')
@@ -14,9 +14,9 @@ export type MoneyDisplay = {
 	currency: CurrencyProps;
 	// function for formatting the amount using the correct number of decimal places for the currency
 	formatAmount: FormatAmountFunction;
-};
+}
 
-const useMoneyDisplay = (): MoneyDisplay => {
+export const useMoneyDisplay = (): MoneyDisplay => {
 	const config = useConfig();
 	const afterAmount = config.currency.signB4 ? '' : config.currency.sign;
 	const beforeAmount = config.currency.signB4 ? config.currency.sign : '';
