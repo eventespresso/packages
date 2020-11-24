@@ -2,12 +2,12 @@
 /**
  * The plugin main file.
  *
- * @package 	Event Espresso Barista
- * @author 		Seth Shoultes
+ * @package         Event Espresso Barista
+ * @author          Seth Shoultes
  * @copyright   (c) 2008-2018 Event Espresso  All Rights Reserved.
- * @license 	{@link http://eventespresso.com/support/terms-conditions/}
- * @see 		Plugin Licensing
- * @link 		{@link http://www.eventespresso.com}
+ * @license         {@link http://eventespresso.com/support/terms-conditions/}
+ * @see             Plugin Licensing
+ * @link            {@link http://www.eventespresso.com}
  * Plugin Name: Event Espresso Barista
  * Plugin URI: http://eventespresso.com/?ee_ver=ee4&utm_source=ee4_plugin_admin&utm_medium=link&utm_campaign
  * =wordpress_plugins_page&utm_content=support_link
@@ -28,20 +28,22 @@ define('EE_BARISTA_DIR', trailingslashit(plugin_dir_path(__FILE__)));
 define('EE_BARISTA_URL', trailingslashit(plugins_url('', __FILE__)));
 
 add_action(
-	'AHEE__EE_System__load_espresso_addons',
-	function() {
-		require_once __DIR__ . '/lib/Barista.php';
-		$barista = new Barista();
-		$barista->initialize();
-		add_filter(
-            'FHEE__EventEspresso_core_domain_entities_routing_data_nodes_core_SitePermissions__initialize__site_permissions',
-				function() {
-					return  [
-               			 'use_bulk_edit' => true,
-					];
-			}
+    'AHEE__EE_System__load_espresso_addons',
+    function () {
+        require_once __DIR__ . '/lib/Barista.php';
+        $barista = new Barista();
+        $barista->initialize();
+        add_filter(
+            'FHEE__EventEspresso_core_domain_services_capabilities_FeatureFlags',
+            function () {
+                return [
+                    'use_bulk_edit'             => true,
+                    'use_event_description_rte' => true,
+                    'use_reg_options_meta_box'  => true,
+                ];
+            }
         );
-	}
+    }
 );
 
 add_filter('FHEE__load_Barista', '__return_false');

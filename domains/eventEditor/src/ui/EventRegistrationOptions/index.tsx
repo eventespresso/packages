@@ -2,6 +2,7 @@ import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Grid, Heading } from '@eventespresso/components';
+import { withFeature } from '@eventespresso/services';
 
 import ActiveStatus from './ActiveStatus';
 import AltRegPage from './AltRegPage';
@@ -33,4 +34,4 @@ const EventRegistrationOptions: React.FC = () => (
 	</div>
 );
 
-export default EventRegistrationOptions;
+export default withFeature('use_reg_options_meta_box')(EventRegistrationOptions);
