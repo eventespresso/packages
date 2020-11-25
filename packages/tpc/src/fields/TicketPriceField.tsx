@@ -21,19 +21,19 @@ const TicketPriceField: React.FC<TicketPriceFieldProps> = (props) => {
 
 	const setValue: BFP['setValue'] = useCallback((value) => updateTicketPrice(value), [updateTicketPrice]);
 
-	const input = (
-		<BaseField
-			{...props}
-			format={format}
-			getValue={getValue}
-			name={'ticket.price'}
-			parse={parse}
-			setValue={setValue}
-			type='number'
-		/>
+	return (
+		<MoneyField>
+			<BaseField
+				{...props}
+				format={format}
+				getValue={getValue}
+				name={'ticket.price'}
+				parse={parse}
+				setValue={setValue}
+				type='number'
+			/>
+		</MoneyField>
 	);
-
-	return <MoneyField input={input} />;
 };
 
 export default TicketPriceField;

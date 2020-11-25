@@ -15,11 +15,9 @@ type MoneyFieldStory = Story<MoneyFieldProps>;
 
 const Template: MoneyFieldStory = (args) => {
 	return (
-		<MoneyField
-			{...args}
-			input={<BaseNumberInputField aria-label='label' getValue={noop} name='money-field' setValue={noop} />}
-			sign='$'
-		/>
+		<MoneyField {...args} sign='$'>
+			<BaseNumberInputField aria-label='label' getValue={noop} name='money-field' setValue={noop} />
+		</MoneyField>
 	);
 };
 

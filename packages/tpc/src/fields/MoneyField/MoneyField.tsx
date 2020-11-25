@@ -8,7 +8,7 @@ import type { MoneyFieldProps } from './types';
 
 import './style.scss';
 
-export const MoneyField: React.FC<MoneyFieldProps> = ({ input, isPercent = false, sign, signB4, ...props }) => {
+export const MoneyField: React.FC<MoneyFieldProps> = ({ children, isPercent = false, sign, signB4, ...props }) => {
 	const characters = getCurrencySignCharacterCountClassName(sign);
 
 	const label = isPercent ? (
@@ -30,7 +30,7 @@ export const MoneyField: React.FC<MoneyFieldProps> = ({ input, isPercent = false
 
 	return (
 		<div className={className}>
-			<InputWithLabel input={input} label={label} labelPosition={labelPosition} />
+			<InputWithLabel input={children} label={label} labelPosition={labelPosition} />
 		</div>
 	);
 };

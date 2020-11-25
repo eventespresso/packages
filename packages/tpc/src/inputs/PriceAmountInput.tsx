@@ -28,28 +28,24 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 	const moneyFieldClassName = disabled && 'ee-input--disabled';
 
 	return (
-		<MoneyField
-			className={moneyFieldClassName}
-			input={
-				<BaseNumberInputField
-					aria-label={__('amount')}
-					className={className}
-					component='input'
-					// because it can affect other tickets that have this price
-					// default price amount should not be changeable
-					disabled={disabled}
-					format={formatParse('')}
-					formatOnBlur
-					getValue={getValue}
-					name='amount'
-					parse={formatParse()}
-					placeholder={__('amount…')}
-					setValue={setValue}
-					type='number'
-				/>
-			}
-			isPercent={price.isPercent}
-		/>
+		<MoneyField className={moneyFieldClassName} isPercent={price.isPercent}>
+			<BaseNumberInputField
+				aria-label={__('amount')}
+				className={className}
+				component='input'
+				// because it can affect other tickets that have this price
+				// default price amount should not be changeable
+				disabled={disabled}
+				format={formatParse('')}
+				formatOnBlur
+				getValue={getValue}
+				name='amount'
+				parse={formatParse()}
+				placeholder={__('amount…')}
+				setValue={setValue}
+				type='number'
+			/>
+		</MoneyField>
 	);
 };
 
