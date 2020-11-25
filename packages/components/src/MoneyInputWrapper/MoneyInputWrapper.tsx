@@ -2,12 +2,18 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { getCurrencySignCharacterCountClassName } from '@eventespresso/utils';
-import { CurrencySign, InputWithLabel, PercentSign } from '../';
-import type { MoneyFieldProps } from './types';
+import { CurrencySign, InputWithLabel, PercentSign } from '..';
+import type { MoneyInputWrapperProps } from './types';
 
 import './style.scss';
 
-export const MoneyField: React.FC<MoneyFieldProps> = ({ children, isPercent = false, sign, signB4, ...props }) => {
+export const MoneyInputWrapper: React.FC<MoneyInputWrapperProps> = ({
+	children,
+	isPercent = false,
+	sign,
+	signB4,
+	...props
+}) => {
 	const characters = getCurrencySignCharacterCountClassName(sign);
 
 	const label = isPercent ? (

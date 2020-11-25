@@ -12,7 +12,11 @@ export default {
 type InputWithLabelStory = Story<InputWithLabelProps>;
 
 const Template: InputWithLabelStory = (args) => {
-	return <InputWithLabel {...args} input={<TextInput />} label='label' />;
+	return (
+		<InputWithLabel {...args} label='label'>
+			{<TextInput />}
+		</InputWithLabel>
+	);
 };
 
 export const Default: InputWithLabelStory = Template.bind({});

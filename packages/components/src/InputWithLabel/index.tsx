@@ -12,7 +12,7 @@ export interface InputWithLabelProps extends InputWithLabelAdapterProps {
 	labelPosition?: 'left' | 'right';
 }
 
-export const InputWithLabel: React.FC<InputWithLabelProps> = ({ input, label, labelPosition = 'right' }) => {
+export const InputWithLabel: React.FC<InputWithLabelProps> = ({ children, label, labelPosition = 'right' }) => {
 	const leftLabel = labelPosition === 'left' && label;
 	const leftLabelClassName = leftLabel && 'ee-input-with-label__left-label';
 
@@ -21,5 +21,9 @@ export const InputWithLabel: React.FC<InputWithLabelProps> = ({ input, label, la
 
 	const className = classNames('ee-input-with-label', leftLabelClassName, rightLabelClassName);
 
-	return <InputWithLabelAdapter className={className} input={input} leftLabel={leftLabel} rightLabel={rightLabel} />;
+	return (
+		<InputWithLabelAdapter className={className} leftLabel={leftLabel} rightLabel={rightLabel}>
+			{children}
+		</InputWithLabelAdapter>
+	);
 };

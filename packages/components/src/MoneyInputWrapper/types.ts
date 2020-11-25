@@ -1,6 +1,6 @@
 import type { CurrencyProps } from '@eventespresso/services';
 
-export interface MoneyFieldProps {
+export interface MoneyInputWrapperProps {
 	className?: string;
 	currency?: CurrencyProps;
 	isPercent?: boolean;

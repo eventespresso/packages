@@ -42,7 +42,7 @@ export * from './Legend';
 export * from './LoadingNotice';
 export * from './MediumCalendarDate';
 export * from './Modal';
-export * from './MoneyField';
+export * from './MoneyInputWrapper';
 export * from './NewEntity';
 export * from './Pagination';
 export * from './PercentSign';
