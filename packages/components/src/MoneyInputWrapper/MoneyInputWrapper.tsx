@@ -35,7 +35,9 @@ export const MoneyInputWrapper: React.FC<MoneyInputWrapperProps> = ({
 
 	return (
 		<div className={className}>
-			<InputWithLabel input={children} label={label} labelPosition={labelPosition} />
+			<InputWithLabel label={label} labelPosition={labelPosition}>
+				{children}
+			</InputWithLabel>
 		</div>
 	);
 };
