@@ -1,10 +1,7 @@
 import React from 'react';
 
+import { MoneyField, MoneyFieldProps } from '@eventespresso/components';
 import { useConfig } from '@eventespresso/services';
-import { MoneyField } from './MoneyField';
-import type { MoneyFieldProps } from './types';
-
-import './style.scss';
 
 interface Props extends Omit<MoneyFieldProps, 'sign' | 'signB4'> {}
 

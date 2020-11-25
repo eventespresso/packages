@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 
 import { parsedAmount } from '@eventespresso/utils';
-import { BaseNumberInputField, MoneyField, usePriceAmount } from '../fields';
+import { BaseNumberInputField, MoneyFieldWithConfig, usePriceAmount } from '../fields';
 import { useDataState } from '../data';
 import type { PriceModifierProps } from '../types';
 
@@ -28,7 +28,7 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 	const moneyFieldClassName = disabled && 'ee-input--disabled';
 
 	return (
-		<MoneyField className={moneyFieldClassName} isPercent={price.isPercent}>
+		<MoneyFieldWithConfig className={moneyFieldClassName} isPercent={price.isPercent}>
 			<BaseNumberInputField
 				aria-label={__('amount')}
 				className={className}
@@ -45,7 +45,7 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 				setValue={setValue}
 				type='number'
 			/>
-		</MoneyField>
+		</MoneyFieldWithConfig>
 	);
 };
 

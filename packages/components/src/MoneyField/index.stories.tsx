@@ -1,8 +1,7 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
-import { noop } from '@eventespresso/utils';
-import { BaseNumberInputField } from '../';
+import { TextInput } from '../';
 import { MoneyField } from './MoneyField';
 import type { MoneyFieldProps } from './types';
 
@@ -16,7 +15,7 @@ type MoneyFieldStory = Story<MoneyFieldProps>;
 const Template: MoneyFieldStory = (args) => {
 	return (
 		<MoneyField {...args} sign='$'>
-			<BaseNumberInputField aria-label='label' getValue={noop} name='money-field' setValue={noop} />
+			<TextInput />
 		</MoneyField>
 	);
 };

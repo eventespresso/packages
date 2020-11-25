@@ -1,4 +1,4 @@
-export * from './MoneyField';
+export * from './MoneyFieldWithConfig';
 
 export { default as BaseNumberInputField } from './BaseNumberInputField';
 
