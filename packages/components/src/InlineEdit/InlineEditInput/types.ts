@@ -1,14 +1,14 @@
 import { InlineEditProps, InlineEditPreviewProps } from '@eventespresso/adapters';
 
-export interface TextAreaProps extends Omit<InlineEditProps, 'inputType'> {
-	lineCount?: number;
-	richTextContent?: boolean;
-	tooltip?: string;
-}
-
 export interface TextProps extends Omit<InlineEditProps, 'inputType'> {
 	lineCount?: number;
 	tag?: React.ElementType;
+	tooltip?: string;
+}
+
+export interface TextareaProps extends Omit<InlineEditProps, 'inputType'> {
+	lineCount?: number;
+	richTextContent?: boolean;
 	tooltip?: string;
 }
 

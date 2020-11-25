@@ -1,19 +1,19 @@
 import React from 'react';
 
-import { TextInput } from '@eventespresso/adapters';
-import type { BaseFieldProps } from './types';
+import { TextInput } from '@eventespresso/components';
 import useBaseField from './useBaseField';
+import type { BaseFieldProps } from './types';
 
 const BaseNumberInputField: React.FC<BaseFieldProps> = ({
+	className,
 	component,
+	disabled,
 	format,
 	formatOnBlur,
-	className,
-	disabled,
+	getValue,
 	name,
 	parse,
 	placeholder,
-	getValue,
 	setValue,
 	value,
 	...props

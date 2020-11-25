@@ -4,18 +4,11 @@ import classNames from 'classnames';
 import { CurrencySign, InputWithLabel, PercentSign } from '@eventespresso/components';
 import { getCurrencySignCharacterCountClassName } from '@eventespresso/utils';
 
-import { useConfig } from '@eventespresso/services';
 import type { MoneyFieldProps } from './types';
 
 import './style.scss';
 
-const MoneyField: React.FC<MoneyFieldProps> = ({ children, isPercent = false, ...props }) => {
-	const config = useConfig();
-	const currency = props.currency ?? config?.currency;
-
-	const sign = currency?.sign;
-	const signB4 = currency?.signB4;
-
+export const MoneyField: React.FC<MoneyFieldProps> = ({ input, isPercent = false, sign, signB4, ...props }) => {
 	const characters = getCurrencySignCharacterCountClassName(sign);
 
 	const label = isPercent ? (
@@ -27,21 +20,17 @@ const MoneyField: React.FC<MoneyFieldProps> = ({ children, isPercent = false, ..
 	const labelPosition = isLeftPositioned ? 'left' : 'right';
 
 	const className = classNames(
-		props.className,
+		'ee-money-field',
 		characters,
 		isPercent && 'ee-money-field--with-percent-sign',
 		!isPercent && 'ee-money-field--with-currency-sign',
 		`ee-money-field-sign--${signB4 ? 'before' : 'after'}`,
-		'ee-money-field'
+		props.className
 	);
 
 	return (
 		<div className={className}>
-			<InputWithLabel label={label} labelPosition={labelPosition}>
-				{children}
-			</InputWithLabel>
+			<InputWithLabel input={input} label={label} labelPosition={labelPosition} />
 		</div>
 	);
 };
-
-export default MoneyField;

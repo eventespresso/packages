@@ -1,1 +1,2 @@
-export { default as isFunc } from './isFunc';
+export * from './isFunc';
+export * from './noop';

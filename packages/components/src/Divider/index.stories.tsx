@@ -2,7 +2,7 @@ import React from 'react';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Divider } from './';
-import type { DividerProps } from '@eventespresso/adapters';
+import type { DividerProps } from './types';
 
 export default {
 	component: Divider,

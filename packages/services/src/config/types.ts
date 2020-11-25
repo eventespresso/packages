@@ -41,6 +41,7 @@ export type ConfigDataProps = {
 	timezone: TimezoneProps;
 	wp_debug: boolean;
 };
+
 export interface CurrencyProps {
 	code: string;
 	singularLabel: string;

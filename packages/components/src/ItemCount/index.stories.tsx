@@ -23,14 +23,14 @@ const Template: BannerStory = (args) => {
 
 export const Default: BannerStory = Template.bind({});
 
-export const WithNoItems: BannerStory = Template.bind({
-	count: 0,
-});
+export const WithNoItems: BannerStory = Template.bind({});
+WithNoItems.args = { count: 0 };
 
-export const WithItems: BannerStory = Template.bind({
-	count: 10,
-});
+export const WithItems: BannerStory = Template.bind({});
+WithItems.args = { count: 10 };
 
-export const WithNegativeCount: BannerStory = Template.bind({
-	count: -10,
-});
+export const WithNegativeCount: BannerStory = Template.bind({});
+WithNegativeCount.args = { count: -10 };
+
+export const WithThreeZeroes: BannerStory = Template.bind({});
+WithThreeZeroes.args = { count: 1000 };

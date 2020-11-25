@@ -8,7 +8,7 @@ import type { TextProps } from './types';
 
 import './style.scss';
 
-const InlineEditInfinity: React.FC<TextProps> = ({ className, onChange, value, ...props }) => {
+export const InlineEditInfinity: React.FC<TextProps> = ({ className, onChange, value, ...props }) => {
 	const isInfinity = isInfinite(value);
 
 	const onChangeHandler = useCallback<TextProps['onChange']>(
@@ -34,5 +34,3 @@ const InlineEditInfinity: React.FC<TextProps> = ({ className, onChange, value, .
 		/>
 	);
 };
-
-export default InlineEditInfinity;

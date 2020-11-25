@@ -6,7 +6,7 @@ import type { TextProps } from './types';
 
 import './style.scss';
 
-const InlineEditText: React.FC<TextProps> = ({ className, tag: as, ...props }) => {
+export const InlineEditText: React.FC<TextProps> = ({ className, tag: as, ...props }) => {
 	return (
 		<InlineEdit
 			placeholder=''
@@ -19,5 +19,3 @@ const InlineEditText: React.FC<TextProps> = ({ className, tag: as, ...props }) =
 		/>
 	);
 };
-
-export default InlineEditText;

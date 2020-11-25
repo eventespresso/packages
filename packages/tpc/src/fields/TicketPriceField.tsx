@@ -4,7 +4,7 @@ import { useMoneyDisplay } from '@eventespresso/services';
 import { parsedAmount } from '@eventespresso/utils';
 import { useDataState } from '../data';
 import BaseField from './BaseField';
-import MoneyField from './MoneyField';
+import { MoneyField } from './MoneyField';
 import type { BaseFieldProps, TicketPriceFieldProps } from './types';
 
 type BFP = BaseFieldProps<number>;
@@ -21,19 +21,19 @@ const TicketPriceField: React.FC<TicketPriceFieldProps> = (props) => {
 
 	const setValue: BFP['setValue'] = useCallback((value) => updateTicketPrice(value), [updateTicketPrice]);
 
-	return (
-		<MoneyField>
-			<BaseField
-				{...props}
-				format={format}
-				getValue={getValue}
-				name={'ticket.price'}
-				parse={parse}
-				setValue={setValue}
-				type='number'
-			/>
-		</MoneyField>
+	const input = (
+		<BaseField
+			{...props}
+			format={format}
+			getValue={getValue}
+			name={'ticket.price'}
+			parse={parse}
+			setValue={setValue}
+			type='number'
+		/>
 	);
+
+	return <MoneyField input={input} />;
 };
 
 export default TicketPriceField;

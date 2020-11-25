@@ -2,11 +2,11 @@ import React from 'react';
 
 import InlineEdit from './InlineEdit';
 import Preview from './Preview';
-import type { TextAreaProps } from './types';
+import type { TextareaProps } from './types';
 
 import './style.scss';
 
-const InlineEditTextArea: React.FC<TextAreaProps> = ({ className, lineCount = 3, ...props }) => {
+export const InlineEditTextarea: React.FC<TextareaProps> = ({ className, lineCount = 3, ...props }) => {
 	return (
 		<InlineEdit
 			placeholder=''
@@ -20,5 +20,3 @@ const InlineEditTextArea: React.FC<TextAreaProps> = ({ className, lineCount = 3,
 		/>
 	);
 };
-
-export default InlineEditTextArea;
