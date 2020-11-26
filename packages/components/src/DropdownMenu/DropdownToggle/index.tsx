@@ -1,14 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-
 import { MenuToggle } from '@eventespresso/adapters';
 import { More } from '@eventespresso/icons';
 import { IconButton } from '../../';
 import type { DropdownToggleProps } from '../types';
+import './styles.scss';
 
-import './style.scss';
-
-const DropdownToggle = React.forwardRef<typeof MenuToggle, DropdownToggleProps>(
+export const DropdownToggle = React.forwardRef<typeof MenuToggle, DropdownToggleProps>(
 	({ borderless = true, icon = More, isOpen, ...toggleProps }, ref) => {
 		const className = classNames(
 			toggleProps.className,
@@ -30,5 +28,3 @@ const DropdownToggle = React.forwardRef<typeof MenuToggle, DropdownToggleProps>(
 		);
 	}
 );
-
-export default DropdownToggle;

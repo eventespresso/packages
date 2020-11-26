@@ -1,12 +1,13 @@
 import React from 'react';
 
-import Details from './Details';
-import TicketCardSidebar from './TicketCardSidebar';
-import TicketActionsMenu from '../actionsMenu/TicketActionsMenu';
 import { EntityActionsMenuLayout } from '@eventespresso/components';
 import { EntityCard } from '@eventespresso/components';
 import { ticketStatusBgColorClassName } from '@eventespresso/helpers';
 import { useTicketItem } from '@eventespresso/edtr-services';
+
+import Details from './Details';
+import TicketCardSidebar from './TicketCardSidebar';
+import TicketActionsMenu from '../actionsMenu/TicketActionsMenu';
 import type { TicketItemProps } from '../types';
 
 const TicketCard: React.FC<TicketItemProps> = ({ id }) => {

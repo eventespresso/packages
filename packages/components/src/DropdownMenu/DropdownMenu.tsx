@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Menu } from '@eventespresso/adapters';
-import DropdownMenuList from './DropdownMenuList';
-import DropdownToggle from './DropdownToggle';
-
+import { DropdownMenuList, DropdownToggle } from './';
 import type { DropdownMenuProps } from './types';
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, className, menuListProps, toggleProps }) => {
+import './styles.scss';
+
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, className, menuListProps, toggleProps }) => {
 	return (
 		<Menu>
 			{({ isOpen, onClose }) => (
@@ -21,5 +21,3 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, className, menuLi
 		</Menu>
 	);
 };
-
-export default DropdownMenu;

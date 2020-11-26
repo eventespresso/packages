@@ -1,7 +1,9 @@
 import React from 'react';
-import ConditionalElement from './ConditionalElement';
 import classNames from 'classnames';
+
+import ConditionalElement from './ConditionalElement';
 import type { RowProps } from './types';
+
 import './styles.scss';
 
 /**

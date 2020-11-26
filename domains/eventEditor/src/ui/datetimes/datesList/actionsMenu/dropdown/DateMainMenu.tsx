@@ -5,10 +5,10 @@ import { DropdownMenu, DropdownToggleProps, Copy, Edit, Trash, useConfirmationDi
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 import { useMemoStringify } from '@eventespresso/hooks';
+import type { EntityEditModalData } from '@edtrUI/types';
 
-import type { DateMainMenuProps } from './types';
 import useActions from './useActions';
-import { EntityEditModalData } from '@edtrUI/types';
+import type { DateMainMenuProps } from './types';
 
 const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 	const { copyDate, trashDate, trashed } = useActions({ datetimeId: datetime.id });

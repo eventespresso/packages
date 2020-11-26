@@ -1,7 +1,5 @@
-import './styles.scss';
-
-export { default as DropdownMenu } from './DropdownMenu';
-
-export { default as DropdownMenuItem } from './DropdownMenuItem';
-
+export * from './DropdownMenu';
+export * from './DropdownMenuItem';
+export * from './DropdownMenuList';
+export * from './DropdownToggle';
 export * from './types';

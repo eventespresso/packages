@@ -1,9 +1,8 @@
 import React, { Children, cloneElement } from 'react';
 import classNames from 'classnames';
-
 import { MenuList, MenuListProps } from '@eventespresso/adapters';
 
-const DropdownMenuList: React.FC<MenuListProps> = ({ children, placement = 'top', ...props }) => {
+export const DropdownMenuList: React.FC<MenuListProps> = ({ children, placement = 'top', ...props }) => {
 	const className = classNames('ee-dropdown-menu__list', props.className);
 
 	return (
@@ -14,5 +13,3 @@ const DropdownMenuList: React.FC<MenuListProps> = ({ children, placement = 'top'
 		</MenuList>
 	);
 };
-
-export default DropdownMenuList;
