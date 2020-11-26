@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { pick } from 'ramda';
 
 import { isTrashed } from '@eventespresso/predicates';
-import { useDatetimeItem, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
+import { useDatetimeItem, useDatetimeMutator, useDeleteRelatedTickets, useEventId } from '@eventespresso/edtr-services';
 import { useRelations } from '@eventespresso/services';
 import type { EntityId } from '@eventespresso/data';
 
@@ -23,15 +23,13 @@ const useActions = ({ datetimeId }: useActionsArgs): Actions => {
 
 	const eventId = useEventId();
 
-	const { id, cacheId } = datetime;
-
-	const { createEntity, deleteEntity } = useDatetimeMutator(id);
+	const { createEntity, deleteEntity } = useDatetimeMutator(datetimeId);
 
 	const { getRelations } = useRelations();
 
 	const tickets = getRelations({
 		entity: 'datetimes',
-		entityId: datetime.id,
+		entityId: datetimeId,
 		relation: 'tickets',
 	});
 
@@ -44,10 +42,14 @@ const useActions = ({ datetimeId }: useActionsArgs): Actions => {
 		return createEntity({ ...newDatetime, eventId, tickets });
 	}, [createEntity, datetime, eventId, tickets]);
 
-	const trashed = useMemo(() => isTrashed(datetime), [datetime]);
+	const trashed = isTrashed(datetime);
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const trashDate = useCallback(() => deleteEntity({ id, deletePermanently: trashed }), [cacheId, trashed]);
+	const deleteRelatedTickets = useDeleteRelatedTickets();
+
+	const trashDate = useCallback(async () => {
+		await deleteEntity({ id: datetimeId, deletePermanently: trashed });
+		await deleteRelatedTickets(datetimeId, trashed);
+	}, [deleteEntity, deleteRelatedTickets, datetimeId, trashed]);
 
 	return useMemo(
 		() => ({

@@ -47,6 +47,8 @@ export { default as useDatetimeMutator } from './useDatetimeMutator';
 
 export { default as useReorderDatetimes } from './useReorderDatetimes';
 
+export { default as useDeleteRelatedTickets } from './useDeleteRelatedTickets';
+
 export { default as useBulkEditDatetimes } from './useBulkEditDatetimes';
 
 export { default as useBulkDeleteDatetimes } from './useBulkDeleteDatetimes';
