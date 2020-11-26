@@ -17,7 +17,7 @@ const useOnDelete: OnDelete = ({ areTrashedTickets, onClose }) => {
 		unSelectAll();
 
 		// goodbye folks :wave:
-		bulkDelete(getSelected(), areTrashedTickets);
+		bulkDelete({ entityIds: getSelected(), deletePermanently: areTrashedTickets });
 	}, [areTrashedTickets, bulkDelete, getSelected, onClose, unSelectAll]);
 };
 
