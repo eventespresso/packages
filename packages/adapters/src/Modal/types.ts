@@ -1,7 +1,10 @@
 import { IModal } from '@chakra-ui/core';
 
 export interface ModalProps
-	extends Pick<IModal, 'closeOnOverlayClick' | 'closeOnEsc' | 'isOpen' | 'onClose' | 'scrollBehavior'> {
+	extends Pick<
+		IModal,
+		'closeOnOverlayClick' | 'closeOnEsc' | 'finalFocusRef' | 'isOpen' | 'onClose' | 'scrollBehavior'
+	> {
 	bodyClassName?: string;
 	className?: string;
 	closeButton?: React.ReactNode;

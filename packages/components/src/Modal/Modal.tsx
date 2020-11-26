@@ -14,6 +14,7 @@ export const Modal: React.FC<ModalProps> = ({
 	closeOnEsc,
 	closeOnOverlayClick,
 	destroyOnClose,
+	finalFocusRef,
 	footerContent,
 	isClosable = true,
 	isOpen,
@@ -62,6 +63,7 @@ export const Modal: React.FC<ModalProps> = ({
 			closeButton={closeButton}
 			closeOnEsc={closeOnEsc}
 			closeOnOverlayClick={closeOnOverlayClick}
+			finalFocusRef={finalFocusRef}
 			footer={footer}
 			footerClassName={footerClassName}
 			headerClassName={headerClassName}
