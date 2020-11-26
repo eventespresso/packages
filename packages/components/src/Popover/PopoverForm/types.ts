@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import type { ButtonProps } from '../Button';
+import type { ButtonProps } from '../../Button';
 
 export interface PopoverFormProps {
 	className?: string;

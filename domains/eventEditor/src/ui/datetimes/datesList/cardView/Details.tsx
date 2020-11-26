@@ -1,16 +1,14 @@
 import React, { useCallback, useMemo } from 'react';
-import { __ } from '@eventespresso/i18n';
 
+import { __ } from '@eventespresso/i18n';
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { SimpleTextEditorModal } from '@eventespresso/components';
 import { useConfig } from '@eventespresso/services';
 import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
 
 import DateDetailsPanel from './DateDetailsPanel';
-
 import { EditableName } from '../editable';
 import useDateCardDetailsItems from '../../hooks/useDateCardDetailsItems';
-
 import type { DateItemProps } from '../types';
 
 const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {

@@ -20,9 +20,10 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 	onChange,
 	showStepper = true,
 	value,
+	...props
 }) => {
 	return (
-		<ChakraNumberInput className={className} onChange={onChange} value={value}>
+		<ChakraNumberInput {...props} className={className} onChange={onChange} value={value}>
 			<NumberInputField {...inputFieldProps} id={id} isDisabled={disabled} />
 			{showStepper && (
 				<NumberInputStepper {...inputStepperProps}>

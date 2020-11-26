@@ -1,27 +1,26 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { NumberInput } from '@eventespresso/adapters';
-import type { FieldRendererProps } from '../../types';
+import { NumberInput as NumberInputAdapter, NumberInputProps } from '@eventespresso/adapters';
+
 import './style.scss';
 
 const inputStepperProps = { className: 'ee-number-field-stepper' };
 
-const Number: React.FC<FieldRendererProps> = ({ id, input: { onChange, value, ...input }, ...props }) => {
+export const NumberInput: React.FC<NumberInputProps> = ({ id, inputFieldProps, onChange, value, ...props }) => {
 	const className = classNames('ee-number-input-wrapper', props.className);
-	const ariaValuenow = String(value)?.length ? value : null;
+	const ariaValuenow = String(value)?.length ? Number(value) : null;
 
 	return (
-		<NumberInput
+		<NumberInputAdapter
+			{...props}
 			aria-valuenow={ariaValuenow}
 			className={className}
 			id={id}
-			inputFieldProps={input}
+			inputFieldProps={inputFieldProps}
 			inputStepperProps={inputStepperProps}
 			onChange={onChange}
 			value={value}
 		/>
 	);
 };
-
-export default Number;

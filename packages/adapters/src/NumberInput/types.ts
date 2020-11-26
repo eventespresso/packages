@@ -6,7 +6,21 @@ import type {
 } from '@chakra-ui/core';
 
 export interface NumberInputProps
-	extends Pick<ChakraNumberInputProps, 'aria-valuenow' | 'className' | 'id' | 'onChange' | 'value'> {
+	extends Pick<
+		ChakraNumberInputProps,
+		| 'aria-valuenow'
+		| 'clampValueOnBlur'
+		| 'className'
+		| 'defaultValue'
+		| 'id'
+		| 'keepWithinRange'
+		| 'max'
+		| 'min'
+		| 'onChange'
+		| 'precision'
+		| 'step'
+		| 'value'
+	> {
 	decrementStepperProps?: ChakraPseudoBoxProps;
 	disabled?: boolean;
 	inputFieldProps?: ChakraInputProps;

@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Popover as PopoverAdapter } from '@eventespresso/adapters';
-import type { PopoverProps } from '@eventespresso/adapters';
+import { Popover as PopoverAdapter, PopoverProps } from '@eventespresso/adapters';
 
 import './style.scss';
 
