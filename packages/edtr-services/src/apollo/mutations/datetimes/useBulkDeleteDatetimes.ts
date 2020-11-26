@@ -27,10 +27,10 @@ const useBulkDeleteDatetimes = (): Callback<Promise<ExecutionResult>> => {
 	const deleteRelatedTickets = useDeleteRelatedTickets();
 
 	const updateEntityList = useCallback<Callback<VoidFunction>>(
-		(entityIds, deletePermanently) => () => {
+		(entityIds, deletePermanently) => async () => {
 			// delete related tickets for each date
 			for (const entityId of entityIds) {
-				deleteRelatedTickets(entityId, deletePermanently);
+				await deleteRelatedTickets(entityId, deletePermanently);
 			}
 
 			// Read the existing data from cache.
