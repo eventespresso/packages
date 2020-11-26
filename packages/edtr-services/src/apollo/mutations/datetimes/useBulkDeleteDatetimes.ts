@@ -1,12 +1,16 @@
 import { useCallback } from 'react';
 import type { ExecutionResult } from 'graphql';
 
-import type { EntityId } from '@eventespresso/data';
-import type { DatetimeEdge } from '../../types';
-import { useDatetimes, useDatetimeQueryOptions } from '../../queries';
+import { EntityId, useApolloClient } from '@eventespresso/data';
+import { entitiesWithGuIdNotInArray, findEntityByGuid } from '@eventespresso/predicates';
+
+import type { Datetime, DatetimeEdge, DatetimesList } from '../../types';
+import { useDatetimes, useDatetimeQueryOptions, DEFAULT_DATETIME_LIST_DATA as DEFAULT_LIST_DATA } from '../../queries';
 import { useUpdateDatetimeList } from '../../../hooks';
 import useBulkDeleteEntities from '../useBulkDeleteEntities';
 import { TypeName, cacheNodesFromBulkDelete } from '../';
+import useOnDeleteDatetime from './useOnDeleteDatetime';
+import useDeleteRelatedTickets from './useDeleteRelatedTickets';
 
 type Callback<R = void> = (entityIds: Array<EntityId>, deletePermanently?: boolean) => R;
 
@@ -14,11 +18,45 @@ const useBulkDeleteDatetimes = (): Callback<Promise<ExecutionResult>> => {
 	const allDatetimes = useDatetimes();
 	const queryOptions = useDatetimeQueryOptions();
 	const updateDatetimeList = useUpdateDatetimeList();
+	const onDeleteDatetime = useOnDeleteDatetime();
+
+	const { cache } = useApolloClient();
 
 	const bulkDelete = useBulkDeleteEntities({ entityType: 'DATETIME', typeName: TypeName.Datetime });
 
+	const deleteRelatedTickets = useDeleteRelatedTickets();
+
 	const updateEntityList = useCallback<Callback<VoidFunction>>(
 		(entityIds, deletePermanently) => () => {
+			// delete related tickets for each date
+			for (const entityId of entityIds) {
+				deleteRelatedTickets(entityId, deletePermanently);
+			}
+
+			// Read the existing data from cache.
+			let data: DatetimesList;
+			try {
+				data = cache.readQuery(queryOptions);
+			} catch (error) {
+				data = null;
+			}
+			const datetimes = data?.espressoDatetimes || DEFAULT_LIST_DATA;
+
+			const findDatetime = findEntityByGuid(datetimes.nodes);
+			const filteredDatetimes = { ...datetimes };
+			let datetime: Datetime;
+			// run onDelete handler for every deleted datetime
+			for (const entityId of entityIds) {
+				datetime = findDatetime(entityId);
+				onDeleteDatetime({
+					cache,
+					datetimes: filteredDatetimes,
+					datetime,
+					deletePermanently,
+				});
+				filteredDatetimes.nodes = entitiesWithGuIdNotInArray(filteredDatetimes.nodes, [entityId]);
+			}
+
 			const nodes = cacheNodesFromBulkDelete(entityIds, allDatetimes, deletePermanently);
 
 			const espressoDatetimes: DatetimeEdge = {
@@ -32,7 +70,7 @@ const useBulkDeleteDatetimes = (): Callback<Promise<ExecutionResult>> => {
 				},
 			});
 		},
-		[allDatetimes, queryOptions, updateDatetimeList]
+		[allDatetimes, cache, deleteRelatedTickets, onDeleteDatetime, queryOptions, updateDatetimeList]
 	);
 
 	return useCallback(
