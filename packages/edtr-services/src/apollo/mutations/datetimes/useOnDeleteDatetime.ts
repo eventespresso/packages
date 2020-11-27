@@ -4,7 +4,7 @@ import updateTicketCache from './updateTicketCache';
 import useUpdateDatetimeCache from './useUpdateDatetimeCache';
 import type { DatetimeMutationCallbackFn, DatetimeMutationCallbackFnArgs } from '../types';
 import { useRelations } from '@eventespresso/services';
-import { getGuids } from '@eventespresso/predicates';
+import { getGuids, hasTempId } from '@eventespresso/predicates';
 
 const useOnDeleteDatetime = (): DatetimeMutationCallbackFn => {
 	const { dropRelations, removeRelation } = useRelations();
@@ -14,7 +14,7 @@ const useOnDeleteDatetime = (): DatetimeMutationCallbackFn => {
 	const onDeleteDatetime = useCallback(
 		({ cache, datetimes, datetime, deletePermanently }: DatetimeMutationCallbackFnArgs): void => {
 			const action = deletePermanently ? 'remove' : 'update';
-			if (datetime.id && deletePermanently) {
+			if (!hasTempId(datetime) && deletePermanently) {
 				const { nodes = [] } = datetimes;
 				const datetimeIn = getGuids(nodes);
 				const { id: datetimeId } = datetime;

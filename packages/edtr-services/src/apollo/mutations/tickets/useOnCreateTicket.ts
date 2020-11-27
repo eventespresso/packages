@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { useRelations } from '@eventespresso/services';
-import { getGuids } from '@eventespresso/predicates';
+import { getGuids, hasTempId } from '@eventespresso/predicates';
 import updatePriceCache from './updatePriceCache';
 import useUpdateTicketCache from './useUpdateTicketCache';
 import type { TicketMutationCallbackFn, TicketMutationCallbackFnArgs } from '../types';
@@ -13,7 +13,7 @@ const useOnCreateTicket = (): TicketMutationCallbackFn => {
 
 	const onCreateTicket = useCallback(
 		({ cache, datetimeIds, ticket, tickets, prices }: TicketMutationCallbackFnArgs): void => {
-			if (ticket.id) {
+			if (!hasTempId(ticket)) {
 				const { nodes = [] } = tickets;
 				const ticketIn = getGuids(nodes);
 				const { id: ticketId } = ticket;

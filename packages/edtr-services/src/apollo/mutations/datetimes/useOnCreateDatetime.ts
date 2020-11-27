@@ -4,7 +4,7 @@ import updateTicketCache from './updateTicketCache';
 import useUpdateDatetimeCache from './useUpdateDatetimeCache';
 import type { DatetimeMutationCallbackFn, DatetimeMutationCallbackFnArgs } from '../types';
 import { useRelations } from '@eventespresso/services';
-import { getGuids } from '@eventespresso/predicates';
+import { getGuids, hasTempId } from '@eventespresso/predicates';
 
 const useOnCreateDatetime = (): DatetimeMutationCallbackFn => {
 	const { updateRelations, addRelation } = useRelations();
@@ -13,7 +13,7 @@ const useOnCreateDatetime = (): DatetimeMutationCallbackFn => {
 
 	const onCreateDatetime = useCallback(
 		({ cache, datetimes, datetime, tickets }: DatetimeMutationCallbackFnArgs): void => {
-			if (datetime.id) {
+			if (!hasTempId(datetime)) {
 				const { nodes = [] } = datetimes;
 				const datetimeIn = getGuids(nodes).sort();
 				const { id: datetimeId } = datetime;

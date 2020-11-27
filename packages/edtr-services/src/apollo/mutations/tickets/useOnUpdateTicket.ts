@@ -1,8 +1,10 @@
 import { useCallback } from 'react';
 
+import { useRelations } from '@eventespresso/services';
+import { hasTempId } from '@eventespresso/predicates';
+
 import useUpdateTicketCache from './useUpdateTicketCache';
 import type { TicketMutationCallbackFn, TicketMutationCallbackFnArgs } from '../types';
-import { useRelations } from '@eventespresso/services';
 
 const useOnUpdateTicket = (): TicketMutationCallbackFn => {
 	const { addRelation, removeRelation, updateRelations } = useRelations();
@@ -11,7 +13,7 @@ const useOnUpdateTicket = (): TicketMutationCallbackFn => {
 
 	const onUpdateTicket = useCallback(
 		({ cache, tickets, ticket, datetimeIds, priceIds }: TicketMutationCallbackFnArgs): void => {
-			if (!ticket?.id) {
+			if (hasTempId(ticket)) {
 				return;
 			}
 

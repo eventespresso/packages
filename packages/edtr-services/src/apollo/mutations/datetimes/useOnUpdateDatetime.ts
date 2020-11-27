@@ -1,14 +1,15 @@
 import { useCallback } from 'react';
 
-import type { DatetimeMutationCallbackFn, DatetimeMutationCallbackFnArgs } from '../types';
 import { useRelations } from '@eventespresso/services';
+import { hasTempId } from '@eventespresso/predicates';
+import type { DatetimeMutationCallbackFn, DatetimeMutationCallbackFnArgs } from '../types';
 
 const useOnUpdateDatetime = (): DatetimeMutationCallbackFn => {
 	const { addRelation, removeRelation, updateRelations } = useRelations();
 
 	const onUpdateDatetime = useCallback(
 		({ datetime, tickets }: DatetimeMutationCallbackFnArgs): void => {
-			if (!datetime?.id) {
+			if (hasTempId(datetime)) {
 				return;
 			}
 			const datetimeId = datetime?.id;
