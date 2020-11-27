@@ -3,14 +3,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
-import { findEntityByGuid } from '@eventespresso/predicates';
 import { removeNullAndUndefined, ucFirst } from '@eventespresso/utils';
 
 import type { Ticket } from '../../';
-import { useTickets } from '../../queries';
+import { useLazyTicket } from '../../queries';
 
 export const TICKET_DEFAULTS: Ticket = {
-	id: '',
+	id: `temp:${uuidv4()}`,
 	dbId: 0,
 	cacheId: uuidv4(),
 	description: '',
@@ -42,7 +41,7 @@ export const TICKET_DEFAULTS: Ticket = {
 type OptimisticResCb = (mutationType: MutationType, input: MutationInput) => any;
 
 const useOptimisticResponse = (): OptimisticResCb => {
-	const tickets = useTickets();
+	const getTicket = useLazyTicket();
 
 	return useCallback<OptimisticResCb>(
 		(mutationType, input) => {
@@ -51,7 +50,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 			};
 			// Get rid of null or undefined values
 			const filteredInput = removeNullAndUndefined(input);
-			const ticket = findEntityByGuid(tickets)(input.id);
+			const ticket = getTicket(input.id);
 
 			switch (mutationType) {
 				case MutationType.Create:
@@ -97,7 +96,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 				},
 			};
 		},
-		[tickets]
+		[getTicket]
 	);
 };
 

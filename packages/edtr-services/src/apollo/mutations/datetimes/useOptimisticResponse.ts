@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
 import { ucFirst, removeNullAndUndefined } from '@eventespresso/utils';
-import { findEntityByGuid } from '@eventespresso/predicates';
 import type { Datetime } from '../../types';
-import { useDatetimes } from '../../queries';
+import { useLazyDatetime } from '../../queries';
 
 export const DATETIME_DEFAULTS: Datetime = {
-	id: '',
+	id: `temp:${uuidv4()}`,
 	dbId: 0,
 	cacheId: uuidv4(),
 	capacity: -1,
@@ -33,7 +32,7 @@ export const DATETIME_DEFAULTS: Datetime = {
 type OptimisticResCb = (mutationType: MutationType, input: MutationInput) => any;
 
 const useOptimisticResponse = (): OptimisticResCb => {
-	const datetimes = useDatetimes();
+	const getDatetime = useLazyDatetime();
 
 	return useCallback<OptimisticResCb>(
 		(mutationType, input) => {
@@ -43,7 +42,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 			// Get rid of null or undefined values
 			const filteredInput = removeNullAndUndefined(input);
 
-			const datetime = findEntityByGuid(datetimes)(input.id);
+			const datetime = getDatetime(input.id);
 
 			switch (mutationType) {
 				case MutationType.Create:
@@ -87,7 +86,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 				},
 			};
 		},
-		[datetimes]
+		[getDatetime]
 	);
 };
 
