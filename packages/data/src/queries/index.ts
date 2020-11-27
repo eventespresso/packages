@@ -1,5 +1,7 @@
 export { default as useCacheQuery } from './useCacheQuery';
 
+export { default as useLazyCacheQuery } from './useLazyCacheQuery';
+
 export { default as useUpdateCache } from './useUpdateCache';
 
 export * from './attendees';
