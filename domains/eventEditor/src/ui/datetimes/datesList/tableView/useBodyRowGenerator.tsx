@@ -1,14 +1,13 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { format } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
 import { addZebraStripesOnMobile } from '@eventespresso/components';
-import { filterCellByStartOrEndDate, useDatetimes } from '@eventespresso/edtr-services';
+import { filterCellByStartOrEndDate, useLazyDatetime } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 import type { BodyRowGeneratorFn } from '@eventespresso/components';
-import { idToEntityMap } from '@eventespresso/predicates';
 import { shortenGuid } from '@eventespresso/utils';
 
 import DateRegistrationsLink from '@edtrUI/datetimes/DateRegistrationsLink';
@@ -23,12 +22,12 @@ const exclude = ['row', 'stripe', 'name', 'actions'];
 const addZebraStripes = addZebraStripesOnMobile(exclude);
 
 const useBodyRowGenerator = (): DatesTableBodyRowGen => {
-	const allDatetimes = useDatetimes();
-	const idToDatetimeMap = useMemo(() => idToEntityMap(allDatetimes), [allDatetimes]);
+	const getDatetime = useLazyDatetime();
 
 	return useCallback<DatesTableBodyRowGen>(
 		({ entityId, filterState }) => {
-			const datetime = idToDatetimeMap?.[entityId];
+			const datetime = getDatetime(entityId);
+
 			const { displayStartOrEndDate, sortingEnabled } = filterState;
 			const bgClassName = getDatetimeBackgroundColorClassName(datetime);
 			const id = datetime.dbId || shortenGuid(datetime.id);
@@ -125,7 +124,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				type: 'row',
 			};
 		},
-		[idToDatetimeMap]
+		[getDatetime]
 	);
 };
 

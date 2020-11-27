@@ -1,15 +1,14 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { format } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
 import { Cell, CurrencyDisplay, addZebraStripesOnMobile } from '@eventespresso/components';
-import { filterCellByStartOrEndDate, useTickets } from '@eventespresso/edtr-services';
+import { filterCellByStartOrEndDate, useLazyTicket } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getTicketBackgroundColorClassName, ticketStatus } from '@eventespresso/helpers';
 import { shortenGuid } from '@eventespresso/utils';
 import type { BodyRowGeneratorFn } from '@eventespresso/components';
 import type { TicketsFilterStateManager } from '@eventespresso/edtr-services';
-import { idToEntityMap } from '@eventespresso/predicates';
 
 import TicketActionsMenu from '@edtrUI/tickets/ticketsList/actionsMenu/TicketActionsMenu';
 import TicketQuantity from '../cardView/TicketQuantity';
@@ -20,12 +19,11 @@ import Checkbox from './Checkbox';
 type TicketsTableBodyRowGen = BodyRowGeneratorFn<TicketsFilterStateManager>;
 
 const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
-	const allTickets = useTickets();
-	const idToTicketMap = useMemo(() => idToEntityMap(allTickets), [allTickets]);
+	const getTicket = useLazyTicket();
 
 	return useCallback<TicketsTableBodyRowGen>(
 		({ entityId, filterState }) => {
-			const ticket = idToTicketMap?.[entityId];
+			const ticket = getTicket(entityId);
 			const { displayStartOrEndDate, sortingEnabled } = filterState;
 
 			const bgClassName = getTicketBackgroundColorClassName(ticket);
@@ -133,7 +131,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				type: 'row',
 			};
 		},
-		[idToTicketMap]
+		[getTicket]
 	);
 };
 
