@@ -22,7 +22,6 @@ export * from './NumberInput';
 export * from './Pagination';
 export * from './Popover';
 export * from './Radio';
-export * from './RadioGroup';
 export * from './Select';
 export * from './Spinner';
 export * from './Textarea';

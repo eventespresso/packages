@@ -1,13 +1,16 @@
 import React from 'react';
 
-import { Select } from '@eventespresso/adapters';
+import { Select } from '../../../components/src/Select';
+import type { SelectProps } from '../../../components/src/Select/types';
 import type { FieldRendererProps } from '../types';
 
-const SelectField: React.FC<FieldRendererProps> = ({ input, multiple, ...selectProps }) => {
+interface Props extends Omit<FieldRendererProps, 'width'>, Omit<SelectProps, 'type'> {}
+
+const SelectField: React.FC<Props> = ({ input, multiple, ...props }) => {
 	// make sure the value is an array when mode is "multiple"
 	const value = multiple ? input.value || [] : input.value;
 
-	return <Select {...input} value={value} {...selectProps} />;
+	return <Select {...props} {...input} value={value} />;
 };
 
 export default SelectField;
