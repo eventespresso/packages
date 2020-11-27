@@ -49,12 +49,15 @@ const EntityTable = <FS extends ELFSM>({
 		tableCaption,
 	});
 	const onDragEnd = filterState.sortingEnabled ? onSort : null;
+	// key to make sure the list is refreshed after optimistic responses
+	const key = entityIds.join(':');
 
 	return (
 		<ResponsiveTable
 			bodyRows={bodyRows}
 			className={className}
 			headerRows={headerRows}
+			key={key}
 			metaData={metaData}
 			onDragEnd={onDragEnd}
 		/>
