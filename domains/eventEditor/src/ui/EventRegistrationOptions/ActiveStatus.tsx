@@ -1,10 +1,9 @@
 import React /* , { useCallback } */ from 'react';
 
 import { __ } from '@eventespresso/i18n';
+import { GridItem } from '@eventespresso/components';
 // import { objectToSelectOptions } from '@eventespresso/utils';
 // import { useEvent } from '@eventespresso/edtr-services';
-
-import GridItem from './GridItem';
 
 /* const status = {
 	isActive: __('Active'),

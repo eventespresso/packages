@@ -1,10 +1,9 @@
 import React /* , { useCallback } */ from 'react';
 
 import { __ } from '@eventespresso/i18n';
+import { GridItem } from '@eventespresso/components';
 // import { useEvent } from '@eventespresso/edtr-services';
 // import { regStatusOptions } from '@eventespresso/predicates';
-
-import GridItem from './GridItem';
 
 const DefaultRegistrationStatus: React.FC = () => {
 	// const event = useEvent();

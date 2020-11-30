@@ -1,10 +1,8 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Switch, SwitchProps } from '@eventespresso/components';
+import { GridItem, Switch, SwitchProps } from '@eventespresso/components';
 import { useEvent, useEventMutator } from '@eventespresso/edtr-services';
-
-import GridItem from './GridItem';
 
 const Donations: React.FC = () => {
 	const event = useEvent();
@@ -21,13 +19,9 @@ const Donations: React.FC = () => {
 	const heading = isChecked ? __('Disable Donations') : __('Enable Donations');
 	const id = 'ee-event-donations';
 
-	return (
-		<GridItem
-			id={id}
-			input={<Switch aria-describedby={id} checked={isChecked} onChangeValue={onChange} />}
-			label={heading}
-		/>
-	);
+	const input = <Switch aria-describedby={id} checked={isChecked} onChangeValue={onChange} />;
+
+	return <GridItem id={id} input={input} label={heading} />;
 };
 
 export default Donations;

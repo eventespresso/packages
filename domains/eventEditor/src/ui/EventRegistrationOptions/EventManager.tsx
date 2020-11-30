@@ -1,11 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Select } from '@eventespresso/components';
+import { GridItem, Select } from '@eventespresso/components';
 import { useEvent, useEventManagers, useEventMutator } from '@eventespresso/edtr-services';
 import { entityListToSelectOptions } from '@eventespresso/utils';
-
-import GridItem from './GridItem';
 
 const EventManager: React.FC = () => {
 	const event = useEvent();
@@ -26,22 +24,17 @@ const EventManager: React.FC = () => {
 
 	const options = useMemo(() => entityListToSelectOptions(eventManagers), [eventManagers]);
 
-	return (
-		<GridItem
-			id={id}
-			input={
-				<Select
-					defaultValue={managerId}
-					onChangeValue={onChangeValue}
-					onSubmit={onSubmit}
-					options={options}
-					type='inline'
-					value={newManagerId}
-				/>
-			}
-			label={__('Event Manager')}
+	const input = (
+		<Select
+			defaultValue={managerId}
+			onChangeValue={onChangeValue}
+			onSubmit={onSubmit}
+			options={options}
+			type='inline'
+			value={newManagerId}
 		/>
 	);
+	return <GridItem id={id} input={input} label={__('Event Manager')} />;
 };
 
 export default EventManager;
