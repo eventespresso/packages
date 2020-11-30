@@ -21,19 +21,19 @@ export const WithString: TooltipStory = () => <Tooltip tooltip='This is a chakra
 
 export const WithDisabledButton: TooltipStory = () => (
 	<Tooltip tooltip='Oh oh oh, oh oh'>
-		<Button disabled>Disabled</Button>
+		<Button isDisabled>Disabled</Button>
 	</Tooltip>
 );
 
 export const WithWrappedDisabledButton: TooltipStory = () => (
 	<Tooltip tooltip='Hello world' shouldWrapChildren>
-		<Button disabled>Hover me</Button>
+		<Button isDisabled>Hover me</Button>
 	</Tooltip>
 );
 
 export const WithIsOpenProp: TooltipStory = () => (
 	<Tooltip tooltip='Hello world' isOpen hasArrow>
-		<Button disabled>Disabled</Button>
+		<Button isDisabled>Disabled</Button>
 	</Tooltip>
 );
 

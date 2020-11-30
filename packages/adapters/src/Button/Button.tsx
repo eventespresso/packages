@@ -5,14 +5,12 @@ import type { ButtonProps } from './types';
 
 type ButtonType = React.ComponentType<ButtonProps>;
 
-export const Button = React.forwardRef<ButtonType, ButtonProps>(
-	({ children, disabled, buttonText, icon, ...props }, ref) => {
-		const text = children || buttonText;
+export const Button = React.forwardRef<ButtonType, ButtonProps>(({ children, buttonText, icon, ...props }, ref) => {
+	const text = children || buttonText;
 
-		return (
-			<ChakraButton {...props} isDisabled={disabled} leftIcon={icon} ref={ref}>
-				{text && <span>{text}</span>}
-			</ChakraButton>
-		);
-	}
-);
+	return (
+		<ChakraButton {...props} leftIcon={icon} ref={ref}>
+			{text && <span>{text}</span>}
+		</ChakraButton>
+	);
+});
