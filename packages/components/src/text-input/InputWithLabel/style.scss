@@ -1,9 +1,12 @@
 @import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
+$addon-bg-color: var(--ee-color-grey-14);
+
 .ee-input-with-label {
 	&__left-addon,
 	&__right-addon {
 		.ee-input-with-label & {
+			background-color: $addon-bg-color;
 			border-width: var(--ee-border-width);
 			border-color: var(--ee-border-color);
 			border-radius: var(--ee-border-radius-small);
