@@ -3,4 +3,10 @@
 .ee-text-input {
 	@extend .ee-input-base;
 	@extend .ee-input;
+
+	&.ee-text-input {
+		&[aria-invalid='true'] {
+			border-color: var(--ee-color-accent);
+		}
+	}
 }
