@@ -6,7 +6,7 @@ import { InputWithLabel, InputWithLabelProps } from './';
 
 export default {
 	component: InputWithLabel,
-	title: 'Components/InputWithLabel',
+	title: 'Components/TextInput/InputWithLabel',
 } as Meta;
 
 type InputWithLabelStory = Story<InputWithLabelProps>;

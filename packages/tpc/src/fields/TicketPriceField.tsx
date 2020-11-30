@@ -22,7 +22,7 @@ const TicketPriceField: React.FC<TicketPriceFieldProps> = (props) => {
 	const setValue: BFP['setValue'] = useCallback((value) => updateTicketPrice(value), [updateTicketPrice]);
 
 	return (
-		<MoneyInputWithConfig>
+		<MoneyInputWithConfig disabled={props.disabled}>
 			<BaseField
 				{...props}
 				format={format}

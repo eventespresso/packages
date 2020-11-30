@@ -14,12 +14,22 @@ $addon-bg-color: var(--ee-color-grey-14);
 			margin: 0;
 			padding: 0 var(--ee-padding-micro);
 		}
+	}
 
-		.ee-input--disabled & {
-			background: var(--ee-color-grey-14);
-			border-color: var(--ee-color-grey-11);
-			color: var(--ee-default-text-color-low-contrast);
-			opacity: 0.8;
+	&--disabled {
+		background: var(--ee-color-grey-14);
+		border-color: var(--ee-color-grey-9);
+		color: var(--ee-default-text-color-low-contrast);
+		opacity: 0.8;
+
+		.ee-input-with-label__left-addon,
+		.ee-input-with-label__right-addon {
+			border-color: var(--ee-color-grey-9);
+		}
+
+		.ee-input,
+		.ee-text-input {
+			border-color: var(--ee-color-grey-9);
 		}
 	}
 

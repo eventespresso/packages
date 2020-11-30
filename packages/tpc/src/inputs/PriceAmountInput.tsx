@@ -25,10 +25,8 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 		return isNaN(parsedValue) ? defaultValue : parsedValue;
 	};
 
-	const moneyFieldClassName = disabled && 'ee-input--disabled';
-
 	return (
-		<MoneyInputWithConfig className={moneyFieldClassName} isPercent={price.isPercent}>
+		<MoneyInputWithConfig disabled={disabled} isPercent={price.isPercent}>
 			<BaseNumberInputField
 				aria-label={__('amount')}
 				className={className}

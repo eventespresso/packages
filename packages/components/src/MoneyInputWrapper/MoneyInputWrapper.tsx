@@ -9,6 +9,7 @@ import './style.scss';
 
 export const MoneyInputWrapper: React.FC<MoneyInputWrapperProps> = ({
 	children,
+	disabled,
 	isPercent = false,
 	sign,
 	signB4,
@@ -35,7 +36,7 @@ export const MoneyInputWrapper: React.FC<MoneyInputWrapperProps> = ({
 
 	return (
 		<div className={className}>
-			<InputWithLabel label={label} labelPosition={labelPosition}>
+			<InputWithLabel disabled={disabled} label={label} labelPosition={labelPosition}>
 				{children}
 			</InputWithLabel>
 		</div>
