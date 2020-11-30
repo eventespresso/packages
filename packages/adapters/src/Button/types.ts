@@ -5,8 +5,9 @@ import type {
 	IconButtonProps as ChakraIconButtonProps,
 } from '@chakra-ui/core';
 
-export interface ButtonProps extends Partial<Omit<ChakraButtonProps, 'color'>> {
+export interface ButtonProps extends Partial<Omit<ChakraButtonProps, 'color' | 'isDisabled'>> {
 	buttonText?: React.ReactNode;
+	disabled?: boolean;
 	icon?: React.ComponentType<any>;
 }
 
