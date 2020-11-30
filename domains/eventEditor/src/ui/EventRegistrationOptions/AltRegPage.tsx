@@ -1,11 +1,9 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { InlineEditText } from '@eventespresso/components';
+import { GridItem, InlineEditText } from '@eventespresso/components';
 import { useEvent, useEventMutator } from '@eventespresso/edtr-services';
 import type { InlineEditProps } from '@eventespresso/adapters';
-
-import GridItem from './GridItem';
 
 const AltRegPage: React.FC = () => {
 	const event = useEvent();
@@ -15,10 +13,12 @@ const AltRegPage: React.FC = () => {
 	const id = 'ee-event-registration-alt-reg-page';
 
 	const onChange = useCallback<InlineEditProps['onChange']>(
-		(altRegPage) => {
-			updateEvent({ altRegPage });
+		(newAltRegPage) => {
+			if (newAltRegPage !== altRegPage) {
+				updateEvent({ altRegPage: newAltRegPage });
+			}
 		},
-		[updateEvent]
+		[altRegPage, updateEvent]
 	);
 
 	return (

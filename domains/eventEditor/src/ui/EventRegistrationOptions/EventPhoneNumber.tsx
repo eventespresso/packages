@@ -1,11 +1,9 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { InlineEditText } from '@eventespresso/components';
+import { GridItem, InlineEditText } from '@eventespresso/components';
 import { useEvent, useEventMutator } from '@eventespresso/edtr-services';
 import type { InlineEditProps } from '@eventespresso/adapters';
-
-import GridItem from './GridItem';
 
 const EventPhoneNumber: React.FC = () => {
 	const event = useEvent();
@@ -13,21 +11,19 @@ const EventPhoneNumber: React.FC = () => {
 	const phoneNumber = event?.phoneNumber;
 
 	const onChange = useCallback<InlineEditProps['onChange']>(
-		(phoneNumber) => {
-			updateEvent({ phoneNumber });
+		(newPhoneNumber) => {
+			if (newPhoneNumber !== phoneNumber) {
+				updateEvent({ phoneNumber: newPhoneNumber });
+			}
 		},
-		[updateEvent]
+		[phoneNumber, updateEvent]
 	);
 
 	const id = 'ee-event-registration-phone-number';
 
-	return (
-		<GridItem
-			id={id}
-			input={<InlineEditText aria-describedby={id} onChange={onChange} tag='h4' value={phoneNumber} />}
-			label={__('Event Phone Number')}
-		/>
-	);
+	const input = <InlineEditText aria-describedby={id} onChange={onChange} tag='h4' value={phoneNumber} />;
+
+	return <GridItem id={id} input={input} label={__('Event Phone Number')} />;
 };
 
 export default EventPhoneNumber;
