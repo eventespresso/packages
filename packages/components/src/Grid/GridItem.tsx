@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Heading } from '@eventespresso/components';
+import { Heading } from '../Heading';
 import type { GridItemProps } from './types';
 
-const GridItem: React.FC<GridItemProps> = ({ className, id, input, label }) => (
+export const GridItem: React.FC<GridItemProps> = ({ className, id, input, label }) => (
 	<div className={className}>
 		<Heading as='h4' id={id}>
 			{label}
@@ -11,5 +11,3 @@ const GridItem: React.FC<GridItemProps> = ({ className, id, input, label }) => (
 		{input}
 	</div>
 );
-
-export default GridItem;
