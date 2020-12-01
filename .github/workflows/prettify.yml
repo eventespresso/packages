@@ -1,0 +1,21 @@
+name: Prettify the code
+on:
+    workflow_dispatch:
+
+jobs:
+    prettify:
+        name: Beautify the code
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout the branch
+              uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.head_ref }}
+                  token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+
+            - name: Prettify code
+                uses: creyD/prettier_action@v3.1
+                with:
+                    prettier_options: --write "{config,domains,packages,scripts}/**/*.{ts,tsx,js}"
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
