@@ -4,7 +4,7 @@
 	"license": "GPL-3.0",
 	"scripts": {
 		"build": "yarn build:cra --domains \"all\"",
-		"build:ci": "yarn lint:ci && FORCE_COLOR=true yarn build",
+		"build:ci": "FORCE_COLOR=true yarn build",
 		"build:core": "yarn build:cra --domains \"core\" --skip-packages \"rrule-generator\"",
 		"build:cra": "node scripts/build.js",
 		"build:packages": "yarn build:cra",
