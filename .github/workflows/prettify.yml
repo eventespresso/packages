@@ -1,6 +1,5 @@
 name: Prettify the code
-on:
-    workflow_dispatch:
+on: [workflow_dispatch]
 
 jobs:
     prettify:
