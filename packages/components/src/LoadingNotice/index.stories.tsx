@@ -13,13 +13,17 @@ type LoadingNoticeStory = Story<LoadingNoticeProps>;
 
 export const Basic: LoadingNoticeStory = () => <LoadingNotice />;
 
-export const Size: LoadingNoticeStory = () => (
-	<div>
-		{['small', 'big'].map((size) => (
-			// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
-			<div key={size} style={{ border: '1px solid black', marginBottom: '1rem' }}>
-				<LoadingNotice size={size as LoadingNoticeProps['size']} />
-			</div>
-		))}
-	</div>
-);
+export const Size: LoadingNoticeStory = () => {
+	const sizes = ['small', 'big'];
+	const style = { border: '1px solid black', marginBottom: '1rem' };
+
+	return (
+		<div>
+			{sizes.map((size) => (
+				<div key={size} style={style}>
+					<LoadingNotice size={size as LoadingNoticeProps['size']} />
+				</div>
+			))}
+		</div>
+	);
+};
