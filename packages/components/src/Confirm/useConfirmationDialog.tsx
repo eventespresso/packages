@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
 
 import { __ } from '@eventespresso/i18n';
@@ -18,11 +18,9 @@ const useConfirmationDialog = ({
 	...props
 }: ConfirmProps): UseConfirmationDialog => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const cancelRef = React.useRef();
+	const cancelRef = useRef();
 	const onClickHandler = useCallback(() => {
-		if (typeof onConfirm === 'function') {
-			onConfirm();
-		}
+		onConfirm?.();
 		onClose();
 	}, [onClose, onConfirm]);
 

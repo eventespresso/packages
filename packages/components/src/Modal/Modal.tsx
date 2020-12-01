@@ -2,8 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Modal as ModalAdapter, ModalCloseButton } from '@eventespresso/adapters';
+import { __ } from '@eventespresso/i18n';
+
 import { Button } from '../';
-import { modalCloseButtonProps } from './';
 import type { ModalProps } from './types';
 
 import './styles.scss';
@@ -53,7 +54,11 @@ export const Modal: React.FC<ModalProps> = ({
 	);
 
 	const closeButton = props.closeButton || (
-		<ModalCloseButton {...modalCloseButtonProps} size={null} isDisabled={!isClosable} />
+		<ModalCloseButton
+			aria-label={__('close modal')}
+			className='ee-modal__close-btn ee-icon-button ee-icon-button--borderless'
+			isDisabled={!isClosable}
+		/>
 	);
 
 	return (

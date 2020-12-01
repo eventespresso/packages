@@ -42,6 +42,23 @@ body.ee-modal-open {
 				border-top: 0.5px solid var(--ee-border-color);
 			}
 		}
+		// this selector is used for specificity
+		@at-root [role='alertdialog']#{&} {
+			.ee-modal__close-btn {
+				display: inline-flex;
+				height: var(--ee-padding-big);
+				position: absolute;
+				right: 5px;
+				top: 4px;
+				width: var(--ee-padding-big);
+
+				svg {
+					height: var(--ee-border-radius-big);
+					margin: 0;
+					width: var(--ee-border-radius-big);
+				}
+			}
+		}
 	}
 }
 

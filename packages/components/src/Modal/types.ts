@@ -2,12 +2,13 @@ import type { ModalProps as ModalAdapterProps } from '@eventespresso/adapters';
 import type { ButtonProps } from '../';
 
 export interface ModalWithAlertProps extends ModalProps {
+	alertText?: string;
 	cancelBtnText?: string;
 	header?: string;
 	okBtnText?: string;
 	onCancel?: VoidFunction;
 	onSubmit?: VoidFunction;
-	showAlertOnEscape?: boolean;
+	showAlertOnClose?: boolean;
 }
 
 export interface ModalProps extends ModalAdapterProps {
