@@ -15,8 +15,8 @@ export const Basic: LoadingNoticeStory = () => <LoadingNotice />;
 
 const sizes = ['small', 'big'];
 const style = { border: '1px solid black', marginBottom: '1rem' };
-export const Size: LoadingNoticeStory = () => {
 
+export const Size: LoadingNoticeStory = () => {
 	return (
 		<div>
 			{sizes.map((size) => (
