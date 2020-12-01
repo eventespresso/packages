@@ -14,8 +14,8 @@ jobs:
                   token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
 
             - name: Prettify code
-                uses: creyD/prettier_action@v3.1
-                with:
-                    prettier_options: --write "{config,domains,packages,scripts}/**/*.{ts,tsx,js}"
-                env:
-                    GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+              uses: creyD/prettier_action@v3.1
+              with:
+                  prettier_options: --write "{config,domains,packages,scripts}/**/*.{ts,tsx,js}"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
