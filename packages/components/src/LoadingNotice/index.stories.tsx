@@ -13,9 +13,9 @@ type LoadingNoticeStory = Story<LoadingNoticeProps>;
 
 export const Basic: LoadingNoticeStory = () => <LoadingNotice />;
 
+const sizes = ['small', 'big'];
+const style = { border: '1px solid black', marginBottom: '1rem' };
 export const Size: LoadingNoticeStory = () => {
-	const sizes = ['small', 'big'];
-	const style = { border: '1px solid black', marginBottom: '1rem' };
 
 	return (
 		<div>
