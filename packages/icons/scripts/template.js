@@ -10,13 +10,13 @@ function defaultTemplate({ template }, opts, { imports, interfaces, componentNam
 	import withEnhance from '../withEnhance';
 	import { IconProps } from '../types';	
 
-	${ interfaces}
+	${interfaces}
 
 	const ${componentName} = (props: IconProps): JSX.Element => {
-		return ${ jsx};
+		return ${jsx};
 	}
 
-	export default withEnhance(${ componentName});
+	export default withEnhance(${componentName});
 	`;
 }
 module.exports = defaultTemplate;

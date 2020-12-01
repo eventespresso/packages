@@ -1,4 +1,3 @@
-
 module.exports = {
-  template: require('./scripts/template'),
-}
+	template: require('./scripts/template'),
+};
