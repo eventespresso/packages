@@ -1,4 +1,3 @@
-export type MenuItemProps = {
-	onClick: () => void;
-	title?: string;
-};
+import { DropdownMenuItemProps } from '../../DropdownMenu';
+
+export interface MenuItemProps extends DropdownMenuItemProps {}

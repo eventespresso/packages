@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { DropdownMenu, DropdownToggleProps, Copy, Edit, Trash, useConfirmationDialog } from '@eventespresso/components';
-import { EdtrGlobalModals } from '@eventespresso/edtr-services';
+import { EdtrGlobalModals, useDatesListFilterState } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 import { useMemoStringify } from '@eventespresso/hooks';
 import type { EntityEditModalData } from '@edtrUI/types';
@@ -11,11 +11,13 @@ import useActions from './useActions';
 import type { DateMainMenuProps } from './types';
 
 const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
-	const { copyDate, trashDate, trashed } = useActions({ datetimeId: datetime.id });
+	const { copyDate, trashDate, isTrashed } = useActions(datetime.id);
 	const { openWithData } = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_DATE);
 
-	const title = trashed ? __('Permanently delete Datetime?') : __('Move Datetime to Trash?');
-	const message = trashed
+	const isTheOnlyDate = useDatesListFilterState().total === 1;
+
+	const title = isTrashed ? __('Permanently delete Datetime?') : __('Move Datetime to Trash?');
+	const message = isTrashed
 		? __(
 				'Are you sure you want to permanently delete this datetime? This action is permanent and can not be undone.'
 		  )
@@ -33,18 +35,20 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 		tooltipProps: { placement: 'right' },
 	});
 
-	const trashDateTitle = trashed ? __('delete permanently') : __('trash datetime');
+	const trashDateTitle = isTrashed ? __('delete permanently') : __('trash datetime');
 
 	const onOpenEditModal = useCallback(() => {
 		openWithData({ entityId: datetime.id });
 	}, [datetime.id, openWithData]);
+
+	const cannotBeDeleted = isTrashed && isTheOnlyDate;
 
 	return (
 		<>
 			<DropdownMenu toggleProps={toggleProps}>
 				<Edit onClick={onOpenEditModal} title={__('edit datetime')} />
 				<Copy onClick={copyDate} title={__('copy datetime')} />
-				<Trash onClick={onOpen} title={trashDateTitle} />
+				<Trash onClick={onOpen} title={trashDateTitle} isDisabled={cannotBeDeleted} />
 			</DropdownMenu>
 			{confirmationDialog}
 		</>

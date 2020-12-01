@@ -6,17 +6,13 @@ import { useDatetimeItem, useDatetimeMutator, useDeleteRelatedTickets, useEventI
 import { useRelations } from '@eventespresso/services';
 import type { EntityId } from '@eventespresso/data';
 
-type useActionsArgs = {
-	datetimeId: EntityId;
-};
-
 type Actions = {
 	copyDate: VoidFunction;
 	trashDate: VoidFunction;
-	trashed: boolean;
+	isTrashed: boolean;
 };
 
-const useActions = ({ datetimeId }: useActionsArgs): Actions => {
+const useActions = (datetimeId: EntityId): Actions => {
 	// Make sure to subscribe to Apollo cache
 	// to avoid stale data
 	const datetime = useDatetimeItem({ id: datetimeId });
@@ -55,7 +51,7 @@ const useActions = ({ datetimeId }: useActionsArgs): Actions => {
 		() => ({
 			copyDate,
 			trashDate,
-			trashed,
+			isTrashed: trashed,
 		}),
 		[copyDate, trashDate, trashed]
 	);
