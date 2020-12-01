@@ -54,6 +54,7 @@ export const Modal: React.FC<ModalProps> = ({
 	);
 
 	const closeButton = props.closeButton || (
+		// TODO Vadim said this is too fragile here ¯\_(ツ)_/¯
 		<ModalCloseButton
 			aria-label={__('close modal')}
 			className='ee-modal__close-btn ee-icon-button ee-icon-button--borderless'
