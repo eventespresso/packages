@@ -31,9 +31,9 @@ export const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 
 	/**
 	 * This handler is called when:
-	 * - User clicks the close button
+	 * - User clicks on the close button
 	 * - Esc is pressed on keyboard and closeOnEsc is not disabled
-	 * - User click on the modal overlay and closeOnOverlayClick is not disabled
+	 * - User clicks on the modal overlay and closeOnOverlayClick is not disabled
 	 */
 	const onCloseHandler = useCallback<ModalWithAlertProps['onClose']>(
 		(...args) => (showAlertOnClose ? showAlert() : onClose?.(...args)),

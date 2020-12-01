@@ -63,7 +63,7 @@ export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 				onCancel={onCancel}
 				onClose={onCancel}
 				onSubmit={onSubmit}
-				showAlertOnEscape={hasChanges}
+				showAlertOnClose={hasChanges}
 				title={title}
 			>
 				<SimpleTextEditor onChange={onChange} defaultValue={props.text} />
