@@ -22,7 +22,7 @@ export const Invalid: TextareaStory = () => <Textarea isInvalid placeholder='An 
 export const Controlled: TextareaStory = () => {
 	const [value, setValue] = React.useState('');
 
-	const onChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+	const onChange = useCallback<TextareaProps['onChange']>((e) => {
 		setValue(e.target.value);
 	}, []);
 
