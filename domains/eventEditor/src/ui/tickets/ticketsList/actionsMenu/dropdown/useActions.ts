@@ -6,17 +6,13 @@ import useDeleteTicketHandler from '@edtrUI/tickets/hooks/useDeleteTicketHandler
 import useCopyTicket from './useCopyTicket';
 import type { EntityId } from '@eventespresso/data';
 
-type useActionsArgs = {
-	ticketId: EntityId;
-};
-
 type Actions = {
 	copyTicket: VoidFunction;
 	trashTicket: VoidFunction;
-	trashed: boolean;
+	isTrashed: boolean;
 };
 
-const useActions = ({ ticketId }: useActionsArgs): Actions => {
+const useActions = (ticketId: EntityId): Actions => {
 	// Make sure to subscribe to Apollo cache
 	// to avoid stale data
 	const ticket = useTicketItem({ id: ticketId });
@@ -33,7 +29,7 @@ const useActions = ({ ticketId }: useActionsArgs): Actions => {
 		() => ({
 			copyTicket,
 			trashTicket,
-			trashed,
+			isTrashed: trashed,
 		}),
 		[copyTicket, trashTicket, trashed]
 	);
