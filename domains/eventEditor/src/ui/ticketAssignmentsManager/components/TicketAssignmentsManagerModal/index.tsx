@@ -3,7 +3,6 @@ import { __ } from '@eventespresso/i18n';
 
 import { ModalWithAlert } from '@eventespresso/components';
 
-import CloseModalButton from './buttons/CloseModal';
 import TicketAssignmentsManager from '../TicketAssignmentsManager';
 import useCancelButtonProps from './buttons/useCancelButtonProps';
 import useSubmitButtonProps from './buttons/useSubmitButtonProps';
@@ -24,10 +23,9 @@ const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onClo
 			bodyClassName='ee-ticket-assignments-manager__body'
 			cancelButtonProps={cancelButtonProps}
 			className='ee-ticket-assignments-manager'
-			closeButton={<CloseModalButton />}
 			isOpen={true}
 			onClose={onCloseModal}
-			showAlertOnEscape={hasErrors}
+			showAlertOnClose={hasErrors}
 			submitButtonProps={submitButtonProps}
 			title={title || __('Ticket Assignment Manager')}
 		>

@@ -4,7 +4,7 @@ import { __, sprintf } from '@eventespresso/i18n';
 import TicketPriceCalculator from './TicketPriceCalculator';
 import useResetButtonProps from '../buttons/useResetButtonProps';
 import useSubmitButtonProps from '../buttons/useSubmitButtonProps';
-import { ConfirmClose, Modal, modalCloseButtonProps } from '@eventespresso/components';
+import { ModalWithAlert } from '@eventespresso/components';
 
 import { useTPCContext } from '../context';
 import { useDataState } from '../data';
@@ -19,8 +19,7 @@ const TicketPriceCalculatorModal: React.FC<TPCModalProps> = ({ onSubmit }) => {
 	const submitButtonProps = useSubmitButtonProps(onSubmit);
 
 	return (
-		<Modal
-			closeButton={<ConfirmClose buttonProps={modalCloseButtonProps} onConfirm={onClose} />}
+		<ModalWithAlert
 			isOpen={true}
 			onClose={onClose}
 			className='ee-tpc'
@@ -34,7 +33,7 @@ const TicketPriceCalculatorModal: React.FC<TPCModalProps> = ({ onSubmit }) => {
 			)}
 		>
 			<TicketPriceCalculator />
-		</Modal>
+		</ModalWithAlert>
 	);
 };
 
