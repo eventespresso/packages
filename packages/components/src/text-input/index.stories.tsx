@@ -15,7 +15,7 @@ export const Basic: TextInputStory = () => <TextInput placeholder='Basic input' 
 
 export const Controlled: TextInputStory = () => {
 	const [value, setValue] = React.useState('Starting...');
-	const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value), []);
+	const handleChange = useCallback<TextInputProps['onChange']>((event) => setValue(event.target.value), []);
 
 	return (
 		<>
