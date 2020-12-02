@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
-import { Badge } from '@eventespresso/adapters';
 import { Tooltip } from '../';
 import type { ItemCountProps } from './types';
 
@@ -31,9 +30,9 @@ export const ItemCount: React.FC<ItemCountProps> = ({
 
 	return (
 		<div className='ee-item-count__wrapper'>
-			<Badge className={className} style={style}>
+			<div className={className} style={style}>
 				{countNode}
-			</Badge>
+			</div>
 			{children}
 		</div>
 	);

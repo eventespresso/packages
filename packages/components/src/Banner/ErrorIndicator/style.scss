@@ -2,4 +2,9 @@
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
+
+	.ee-svg {
+		color: var(--ee-color-accent);
+		font-size: var(--ee-font-size-huge);
+	}
 }

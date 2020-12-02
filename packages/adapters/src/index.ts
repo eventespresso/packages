@@ -1,5 +1,4 @@
 export * from './AlertDialog';
-export * from './Badge';
 export * from './Banner';
 export * from './Box';
 export * from './Button';

@@ -9,6 +9,7 @@ import './style.scss';
 export const Banner: React.FC<BannerProps> = ({
 	children,
 	description,
+	icon,
 	iconProps,
 	status,
 	title,
@@ -21,6 +22,7 @@ export const Banner: React.FC<BannerProps> = ({
 		<BannerAdapter
 			className={className}
 			description={description}
+			icon={icon}
 			iconProps={iconProps}
 			title={title}
 			variant={variant}

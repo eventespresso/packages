@@ -4,10 +4,18 @@ import { Alert as ChakraAlert, AlertIcon, AlertTitle, AlertDescription } from '@
 
 import type { BannerProps } from './types';
 
-export const Banner: React.FC<BannerProps> = ({ children, className, description, iconProps, title, variant }) => {
+export const Banner: React.FC<BannerProps> = ({
+	children,
+	className,
+	description,
+	icon,
+	iconProps,
+	title,
+	variant,
+}) => {
 	return (
 		<ChakraAlert className={className} variant={variant}>
-			<AlertIcon className={'ee-banner__icon'} {...iconProps} />
+			{icon ? icon : <AlertIcon className={'ee-banner__icon'} {...iconProps} />}
 
 			{title && <AlertTitle className={'ee-banner__title'}>{title}</AlertTitle>}
 

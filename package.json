@@ -30,7 +30,7 @@
 		"test-unit:ci": "FORCE_COLOR=true CI=true yarn test-unit"
 	},
 	"lint-staged": {
-		"./**/*.{js,jsx,ts,tsx,css,scss}": "yarn eslint"
+		"./**/*.{js,jsx,ts,tsx}": "yarn eslint"
 	},
 	"workspaces": {
 		"packages": [
@@ -82,17 +82,17 @@
 		"@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
 		"@babel/plugin-proposal-optional-chaining": "^7.12.1",
 		"@babel/plugin-transform-runtime": "^7.12.1",
-		"@storybook/addon-a11y": "^6.1.0-beta.7",
-		"@storybook/addon-actions": "^6.1.0-beta.7",
-		"@storybook/addon-docs": "^6.1.0-beta.7",
-		"@storybook/addon-essentials": "^6.1.0-beta.7",
-		"@storybook/addon-knobs": "^6.1.0-beta.7",
-		"@storybook/addon-storyshots": "^6.0.28",
-		"@storybook/addon-storysource": "^6.1.0-beta.7",
-		"@storybook/addon-viewport": "^6.1.0-beta.7",
+		"@storybook/addon-a11y": "^6.1.9",
+		"@storybook/addon-actions": "^6.1.9",
+		"@storybook/addon-docs": "^6.1.9",
+		"@storybook/addon-essentials": "^6.1.9",
+		"@storybook/addon-knobs": "^6.1.9",
+		"@storybook/addon-storyshots": "^6.1.9",
+		"@storybook/addon-storysource": "^6.1.9",
+		"@storybook/addon-viewport": "^6.1.9",
 		"@storybook/preset-scss": "^1.0.3",
-		"@storybook/react": "^6.1.0-beta.7",
-		"@storybook/theming": "^6.0.28",
+		"@storybook/react": "^6.1.9",
+		"@storybook/theming": "^6.1.9",
 		"@svgr/webpack": "5.4.0",
 		"@testing-library/jest-dom": "^5.11.5",
 		"@testing-library/react": "^11.1.0",
@@ -152,7 +152,7 @@
 		"postcss-normalize": "9.0.0",
 		"postcss-preset-env": "6.7.0",
 		"postcss-safe-parser": "5.0.2",
-		"prettier": "^2.1.2",
+		"prettier": "^2.2.1",
 		"react-app-polyfill": "^2.0.0",
 		"react-dev-utils": "^11.0.0",
 		"react-test-renderer": "^17.0.1",

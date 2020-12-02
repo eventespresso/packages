@@ -24,7 +24,7 @@
 	}
 
 	&:hover:not([disabled]) {
-		background: var(--ee-color-primary);
+		background: var(--ee-color-#{$color});
 		border-color: var(--ee-color-#{$color}-low-contrast);
 
 		&.ee-btn--is-active {

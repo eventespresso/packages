@@ -1,7 +1,6 @@
-import type { BadgeProps } from '@eventespresso/adapters';
-
-export interface ItemCountProps extends BadgeProps {
+export interface ItemCountProps {
 	children: React.ReactNode;
+	className?: string;
 	/** Number to show in badge */
 	count?: React.ReactNode;
 	emphasizeZero?: boolean;
