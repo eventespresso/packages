@@ -7,7 +7,6 @@ const SvgAppstoreFilled = (props: IconProps): JSX.Element => {
 		<svg
 			viewBox='64 64 896 896'
 			className='appstoreFilled_svg__ee-svg'
-			data-icon='appstore'
 			fill='currentColor'
 			aria-hidden='true'
 			height='1.25em'

@@ -6,7 +6,6 @@ const SvgArrowDownAlt = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			className='arrow-down-alt_svg__ee-svg'
-			data-icon='appstore'
 			fill='currentColor'
 			aria-hidden='true'
 			height='1.25em'
