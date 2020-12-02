@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import type { Datetime } from '@eventespresso/edtr-services';
-import { isTrashed, inYearAndMonth } from '@eventespresso/predicates';
+import { notTrashed, inYearAndMonth } from '@eventespresso/predicates';
 import { useFilterState } from '../filters';
 
 const useFilteredDatetimes = (allDates: Array<Datetime>): Array<Datetime> => {
@@ -17,7 +17,7 @@ const useFilteredDatetimes = (allDates: Array<Datetime>): Array<Datetime> => {
 	]);
 
 	return useMemo(() => {
-		return showTrashedDates ? datetimes : datetimes.filter((datetime) => !isTrashed(datetime));
+		return showTrashedDates ? datetimes : notTrashed(datetimes);
 	}, [datetimes, showTrashedDates]);
 };
 
