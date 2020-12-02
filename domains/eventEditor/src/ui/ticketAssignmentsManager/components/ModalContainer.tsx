@@ -1,10 +1,8 @@
 import React, { useMemo, useCallback } from 'react';
 import { sprintf, __ } from '@eventespresso/i18n';
-import { pick } from 'ramda';
 
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
-import { useRelations } from '@eventespresso/services';
 import { useConfirmationDialog } from '@eventespresso/components';
 
 import TicketAssignmentsManagerModal from './TicketAssignmentsManagerModal';
@@ -12,11 +10,10 @@ import { withContext } from '../context';
 import { useOnSubmitAssignments } from '../data';
 import type { TAMModalProps } from '../context';
 import type { BaseProps } from '../types';
-import { TAM_ENTITIES } from '../constants';
+import useInvalidDataAlert from './useInvalidDataAlert';
 
 const ModalContainer: React.FC = () => {
 	const { getData, isOpen, close: onClose, openWithData } = useGlobalModal<BaseProps>(EdtrGlobalModals.TAM);
-	const { getData: getRelationalData } = useRelations();
 
 	const submitAssignments = useOnSubmitAssignments();
 
@@ -31,6 +28,8 @@ const ModalContainer: React.FC = () => {
 		title: __('Alert!'),
 		onConfirm: reOpenTamModal,
 	});
+
+	const checkForInvalidData = useInvalidDataAlert(showAlert);
 
 	const { assignmentType, entity } = getData();
 
@@ -59,33 +58,15 @@ const ModalContainer: React.FC = () => {
 		title,
 	]);
 
-	const hasOrphanEntities = useCallback(() => {
-		// simplify the data for loop
-		const data = Object.entries(pick(TAM_ENTITIES, getRelationalData()));
-		for (const [, entityRelations] of data) {
-			for (const [, relations] of Object.entries(entityRelations)) {
-				const tamRelations = pick(TAM_ENTITIES, relations);
-				// flatten the relations
-				const relatedIds = Object.values(tamRelations).flat();
-				if (!relatedIds.length) {
-					return true;
-				}
-			}
-			return false;
-		}
-	}, [getRelationalData]);
-
 	const onSubmit = useCallback<TAMModalProps['onSubmit']>(
 		async (data) => {
 			// close the moal
 			onClose();
 			// submit TAM data
 			await submitAssignments(data);
-			if (hasOrphanEntities()) {
-				showAlert();
-			}
+			checkForInvalidData();
 		},
-		[hasOrphanEntities, onClose, showAlert, submitAssignments]
+		[checkForInvalidData, onClose, submitAssignments]
 	);
 
 	if (!isOpen) {
