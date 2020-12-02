@@ -30,9 +30,27 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 		orphanEntities.datetimes,
 	]);
 
-	const hasOrphanTickets = useCallback(() => orphanEntities.tickets.length > 0, [orphanEntities.tickets]);
+	const hasOrphanEntitiesOfType = useCallback(
+		(entityType: keyof typeof orphanEntities) => {
+			if (
+				// if TAM is for a date, lets not worry about tickets and vice versa
+				(entityType === 'tickets' && props.assignmentType === 'forDate') ||
+				(entityType === 'datetimes' && props.assignmentType === 'forTicket')
+			) {
+				return false;
+			}
+			// if TAM is for a particular date/ticket, we should worry only about that particular date/ticket
+			if (props.assignmentType !== 'forAll') {
+				return orphanEntities[entityType]?.includes(props.entity?.id);
+			}
+			return orphanEntities[entityType]?.length > 0;
+		},
+		[orphanEntities, props.assignmentType, props.entity?.id]
+	);
 
-	const hasOrphanDates = useCallback(() => orphanEntities.datetimes.length > 0, [orphanEntities.datetimes]);
+	const hasOrphanTickets = useCallback(() => hasOrphanEntitiesOfType('tickets'), [hasOrphanEntitiesOfType]);
+
+	const hasOrphanDates = useCallback(() => hasOrphanEntitiesOfType('datetimes'), [hasOrphanEntitiesOfType]);
 
 	const hasOrphanEntities = useCallback(() => hasOrphanTickets() || hasOrphanDates(), [
 		hasOrphanDates,
