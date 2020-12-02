@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Heading } from '../../components/src/Heading';
 import type { SectionProps } from './types';
 
 const NoIcon: SectionProps['icon'] = () => null;
@@ -14,7 +15,9 @@ const FormSectionSidebar: React.FC<Props> = ({ desc, Icon = NoIcon, title }) => 
 	return (
 		<div className='ee-form-section__sidebar'>
 			<Icon className='ee-form-section__sidebar-icon' />
-			<h3 className='ee-form-section__sidebar-heading'>{title}</h3>
+			<Heading as='h3' className='ee-form-section__sidebar-heading'>
+				{title}
+			</Heading>
 			{desc && <div className='ee-form-section__sidebar-desc'>{desc}</div>}
 		</div>
 	);
