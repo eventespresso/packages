@@ -27,6 +27,7 @@
 
 .ee-btn-base {
 	&.ee-icon-button {
+		align-items: center;
 		background: rgba(192, 192, 192, 0.25);
 		border-color: var(--ee-border-color);
 		border-radius: var(--ee-border-radius-small);
@@ -37,6 +38,7 @@
 		color: var(--ee-default-text-color);
 		display: inline-flex;
 		height: var(--ee-icon-button-size);
+		justify-content: center;
 		margin: 0;
 		min-height: var(--ee-icon-button-size);
 		min-width: var(--ee-icon-button-size);

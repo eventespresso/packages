@@ -4,7 +4,7 @@
 	color: var(--ee-color-blue);
 
 	&:not(:hover):not(:focus) {
-		border: none;
+		border-color: transparent;
 	}
 
 	&--no-icon {
