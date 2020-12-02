@@ -13,7 +13,7 @@ export interface SwitchProps
 	'aria-describedby'?: string;
 	'aria-labelledby'?: string;
 	'aria-label'?: string;
-	checked: boolean;
+	checked?: boolean;
 	className?: string;
 	defaultChecked?: boolean;
 	disabled?: boolean;

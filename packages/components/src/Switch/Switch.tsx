@@ -1,9 +1,8 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import { SwitchChecked, SwitchUnchecked } from '@eventespresso/icons';
 import { isLeftKey, isRightKey } from '@eventespresso/utils';
-import { useOnChange } from '@eventespresso/hooks';
 import { withLabel } from '../withLabel';
 import type { SwitchProps } from './types';
 
@@ -22,14 +21,19 @@ const Switch: React.FC<SwitchProps> = ({
 	onChange,
 	onChangeValue,
 	onFocus,
-	value,
 	...props
 }) => {
 	const [innerChecked, setInnerChecked] = useState<boolean>(checked || defaultChecked);
 	const [hasFocus, setHasFocus] = useState<boolean>(false);
 	const ref = useRef<HTMLInputElement>();
-	const onChangeHandlerArg = useMemo(() => ({ onChange, onChangeValue }), [onChange, onChangeValue]);
-	const onChangeHandler = useOnChange(onChangeHandlerArg);
+
+	const onChangeHandler = useCallback<SwitchProps['onChange']>(
+		(event) => {
+			onChangeValue?.(event.target.checked, event);
+			onChange?.(event);
+		},
+		[onChange, onChangeValue]
+	);
 
 	const className = classNames(
 		'ee-switch',
@@ -108,7 +112,6 @@ const Switch: React.FC<SwitchProps> = ({
 				onFocus={handleFocus}
 				ref={ref}
 				type='checkbox'
-				value={value}
 			/>
 		</div>
 	);
