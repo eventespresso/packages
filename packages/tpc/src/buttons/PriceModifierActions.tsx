@@ -8,7 +8,7 @@ import type { PriceModifierProps } from '../types';
 
 const PriceModifierActions: React.FC<PriceModifierProps> = ({ index, price }) => {
 	return (
-		<Box className='ee-price-modifier-actions' display='flex'>
+		<Box display='flex'>
 			<AddPriceModifierButton index={index} key='add' />
 
 			<Divider orientation='vertical' borderColor='transparent' />

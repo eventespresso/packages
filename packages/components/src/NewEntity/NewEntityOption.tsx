@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from '@eventespresso/adapters';
 import classNames from 'classnames';
 import { NewEntityOptionProps } from './types';
 
@@ -11,12 +10,12 @@ const NewEntityOption: React.FC<NewEntityOptionProps> = ({
 	title,
 	...props
 }) => {
-	const className = classNames(props.className, 'ee-new-entity-option');
+	const className = classNames('ee-new-entity-option', props.className);
 
 	return (
 		<div className={className}>
 			<Icon />
-			<Box as='h4'>{title}</Box>
+			<h4>{title}</h4>
 			<p className='ee-new-entity-option__description'>{description}</p>
 			{button || children}
 		</div>
