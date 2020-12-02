@@ -1,4 +1,5 @@
 export { default as AppstoreFilled } from './AppstoreFilled';
+export { default as ArrowDownAlt } from './ArrowDownAlt';
 export { default as Calculator } from './Calculator';
 export { default as CalendarAlt } from './CalendarAlt';
 export { default as Calendar } from './Calendar';

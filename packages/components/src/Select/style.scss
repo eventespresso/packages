@@ -1,11 +1,22 @@
 @import '~@eventespresso/styles/src';
 
-.ee-select {
-	@extend .ee-input-base;
+.ee-select-wrapper {
+	.ee-select {
+		@include ee-base-inputs-styles;
 
-	&__inline-wrapper {
-		align-items: center;
-		display: flex;
-		min-width: 9rem;
+		&__inline-wrapper {
+			align-items: center;
+			display: flex;
+			min-width: 9rem;
+		}
+	}
+
+	.chakra-select__icon-wrapper {
+		right: -2px;
+
+		svg {
+			height: 20px !important;
+			width: 20px !important;
+		}
 	}
 }

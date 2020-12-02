@@ -10,6 +10,7 @@ const SvgTicket = (props: IconProps): JSX.Element => {
 			height='1.25em'
 			viewBox='0 0 20 20'
 			width='1.25em'
+			xmlns='http://www.w3.org/2000/svg'
 			data-custom-icon='true'
 			{...props}
 		>

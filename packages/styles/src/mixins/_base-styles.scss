@@ -1,0 +1,16 @@
+@mixin ee-base-inputs-styles {
+	background: var(--ee-background-color);
+	border-color: var(--ee-border-color);
+	border-radius: var(--ee-border-radius-small);
+	border-style: solid;
+	border-width: var(--ee-border-width);
+	box-shadow: none;
+	color: var(--ee-default-text-color);
+	font-size: var(--ee-font-size-default);
+	line-height: inherit;
+	min-height: var(--ee-icon-button-size); // 42px
+	outline: none;
+	padding: var(--ee-padding-micro) var(--ee-padding-tiny);
+	
+	@include transition(all ease 50ms);
+}
