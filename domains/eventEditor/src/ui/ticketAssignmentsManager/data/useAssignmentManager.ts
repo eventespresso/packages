@@ -1,12 +1,12 @@
+import { useCallback, useMemo } from 'react';
 import { pick, map, mapObjIndexed, isEmpty } from 'ramda';
 
 import { useRelationsManager, RelationFunctionProps } from '@eventespresso/services';
-import { AssignmentManager, TAMRelationalData } from '../types';
-import { useCallback, useMemo } from 'react';
+
+import { AssignmentManager } from '../types';
+import { TAM_ENTITIES } from '../constants';
 
 type AM = AssignmentManager;
-
-const relationsToPick: Array<keyof TAMRelationalData> = ['datetimes', 'tickets'];
 
 /**
  * A wrapper for relations manager.
@@ -131,7 +131,7 @@ const useAssignmentManager = (): AM => {
 		// Now loop through all the relational entities
 		return map((relation) => {
 			// pick only TAM relations, i.e. filter out tickets to prices relations
-			return pick(relationsToPick, relation);
+			return pick(TAM_ENTITIES, relation);
 		}, relationalEntityToUse);
 	}, []);
 
@@ -141,7 +141,7 @@ const useAssignmentManager = (): AM => {
 	const initialize = useCallback<AM['initialize']>(
 		({ data, assignmentType, entity }) => {
 			// pick only datetimes and tickets from relational data
-			let newData = pick(relationsToPick, data);
+			let newData = pick(TAM_ENTITIES, data);
 
 			// Remove other relations from newData
 			newData = mapObjIndexed((relationalEntity, entityType) => {
