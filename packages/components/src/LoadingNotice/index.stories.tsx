@@ -20,8 +20,11 @@ export const Size: LoadingNoticeStory = () => {
 	return (
 		<div>
 			{sizes.map((size) => (
-				<div key={size} style={style}>
-					<LoadingNotice size={size as LoadingNoticeProps['size']} />
+				<div key={size}>
+					{size}
+					<div style={style}>
+						<LoadingNotice size={size as LoadingNoticeProps['size']} />
+					</div>
 				</div>
 			))}
 		</div>

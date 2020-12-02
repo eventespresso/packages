@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Heading as HeadingAdapter } from '@eventespresso/adapters';
 
+import { Heading as HeadingAdapter } from '@eventespresso/adapters';
 import type { HeadingProps } from './types';
 
 import './style.scss';
