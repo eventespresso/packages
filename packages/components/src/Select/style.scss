@@ -1,8 +1,13 @@
 @import '~@eventespresso/styles/src';
 
-.ee-select-wrapper {
+.ee-select-wrapper.ee-select-wrapper {
+	display: inline-flex;
+	width: auto;
+
 	.ee-select {
 		@include ee-base-inputs-styles;
+		appearance: none;
+		padding-right: var(--ee-padding-default);
 
 		&__inline-wrapper {
 			align-items: center;
@@ -12,11 +17,12 @@
 	}
 
 	.chakra-select__icon-wrapper {
-		right: -2px;
+		right: 1px;
 
 		svg {
-			height: 20px !important;
-			width: 20px !important;
+			color: var(--ee-border-color) !important;
+			height: 1.25rem !important;
+			width: 1.25rem !important;
 		}
 	}
 }
