@@ -21,7 +21,6 @@ export const Size: LoadingNoticeStory = () => {
 		<div>
 			{sizes.map((size) => (
 				<div key={size}>
-					{size}
 					<div style={style}>
 						<LoadingNotice size={size as LoadingNoticeProps['size']} />
 					</div>
