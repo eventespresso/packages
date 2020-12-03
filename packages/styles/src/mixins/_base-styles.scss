@@ -1,3 +1,37 @@
+@mixin ee-input-base-focus {
+	&:focus {
+		border-color: var(--ee-color-primary);
+		box-shadow: none;
+		/* Visible in Windows high-contrast themes */
+		outline-color: transparent;
+		outline-width: var(--ee-border-width);
+		outline-style: solid;
+	}
+}
+
+@mixin ee-input-base-hover {
+	&:hover {
+		border-color: var(--ee-color-primary-low-contrast);
+		color: var(--ee-color-primary-high-contrast);
+		box-shadow: none;
+	}
+}
+
+@mixin ee-input-disabled-hover {
+	&:disabled {
+		background: var(--ee-color-grey-14);
+		border-color: var(--ee-color-grey-11);
+		color: var(--ee-default-text-color-low-contrast);
+		cursor: not-allowed;
+		opacity: 0.8;
+
+		&:hover {
+			border-color: var(--ee-color-grey-9);
+			color: var(--ee-default-text-color-low-contrast);
+		}
+	}
+}
+
 @mixin ee-base-inputs-styles {
 	background: var(--ee-background-color);
 	border-color: var(--ee-border-color);
@@ -11,6 +45,12 @@
 	min-height: var(--ee-icon-button-size); // 42px
 	outline: none;
 	padding: var(--ee-padding-micro) var(--ee-padding-tiny);
-	
+
 	@include transition(all ease 50ms);
+
+	@include ee-input-base-focus;
+
+	@include ee-input-base-hover;
+
+	@include ee-input-disabled-hover;
 }

@@ -15,6 +15,16 @@
 			display: flex;
 			min-width: 9rem;
 		}
+
+		&.ee-select {
+			line-height: 1.5;
+			padding: var(--ee-padding-micro) var(--ee-padding-default) var(--ee-padding-micro) var(--ee-padding-smaller);
+
+			[dir='rtl'] & {
+				padding: var(--ee-padding-micro) var(--ee-padding-smaller) var(--ee-padding-micro)
+					var(--ee-padding-default);
+			}
+		}
 	}
 
 	.chakra-select__icon-wrapper {
