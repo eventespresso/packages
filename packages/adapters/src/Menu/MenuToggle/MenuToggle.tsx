@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuButton as ChakraMenuButton } from '@chakra-ui/core';
+import { MenuButton as ChakraMenuButton } from '@chakra-ui/react';
 
 import type { MenuToggleProps } from './types';
 

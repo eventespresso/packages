@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio as ChakraRadio } from '@chakra-ui/core';
+import { Radio as ChakraRadio } from '@chakra-ui/react';
 
 import type { RadioProps } from './types';
 

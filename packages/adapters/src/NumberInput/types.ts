@@ -3,7 +3,7 @@ import type {
 	InputProps as ChakraInputProps,
 	NumberInputProps as ChakraNumberInputProps,
 	PseudoBoxProps as ChakraPseudoBoxProps,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 export interface NumberInputProps
 	extends Pick<

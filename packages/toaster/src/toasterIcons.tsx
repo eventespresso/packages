@@ -1,5 +1,5 @@
 import React from 'react';
-import { theme } from '@chakra-ui/core';
+import { theme } from '@chakra-ui/react';
 
 import { Check, CloseCircleOutlined, InfoCircleOutlined, Spinner } from '@eventespresso/icons';
 

@@ -4,11 +4,12 @@ import type {
 	InputProps as ChakraInputProps,
 	NumberInputProps as ChakraNumberInputProps,
 	PseudoBoxProps as ChakraPseudoBoxProps,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 export type CommonInputEvent<T = Element> = React.ChangeEvent<T> | React.FormEvent<T>;
 
 export interface CommonInputProps<T = Element, V = React.ReactText | boolean> {
+	// eslint-disable-next-line no-unused-vars
 	onChangeValue?: (value: V, event?: CommonInputEvent<T>) => void;
 }
 

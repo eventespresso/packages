@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton as ChakraIconButton } from '@chakra-ui/core';
+import { IconButton as ChakraIconButton } from '@chakra-ui/react';
 
 import type { IconButtonProps } from './types';
 

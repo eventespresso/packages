@@ -5,7 +5,7 @@ import {
 	NumberInputStepper,
 	NumberIncrementStepper,
 	NumberDecrementStepper,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import type { NumberInputProps } from './types';
 

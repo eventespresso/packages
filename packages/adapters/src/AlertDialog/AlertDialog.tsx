@@ -6,7 +6,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogContent,
 	AlertDialogOverlay,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import type { AlertDialogProps } from './types';
 

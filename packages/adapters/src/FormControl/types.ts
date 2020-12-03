@@ -1,3 +1,3 @@
-import type { FormControlProps as ChakraFormControlProps } from '@chakra-ui/core';
+import type { FormControlProps as ChakraFormControlProps } from '@chakra-ui/react';
 
 export interface FormControlProps extends ChakraFormControlProps {}

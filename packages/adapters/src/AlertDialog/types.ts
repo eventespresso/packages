@@ -1,4 +1,4 @@
-import type { IAlertDialog } from '@chakra-ui/core';
+import type { IAlertDialog } from '@chakra-ui/react';
 
 export interface AlertDialogProps extends Omit<IAlertDialog, 'children'> {
 	body?: React.ReactNode;

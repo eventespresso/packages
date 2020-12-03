@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditablePreview as ChakraEditablePreview } from '@chakra-ui/core';
+import { EditablePreview as ChakraEditablePreview } from '@chakra-ui/react';
 
 import type { InlineEditPreviewProps } from './types';
 

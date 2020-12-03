@@ -1,3 +1,3 @@
-import type { IMenu } from '@chakra-ui/core';
+import type { IMenu } from '@chakra-ui/react';
 
 export interface MenuProps extends IMenu {}

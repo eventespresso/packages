@@ -1,4 +1,4 @@
-import { IModal } from '@chakra-ui/core';
+import { IModal } from '@chakra-ui/react';
 
 export interface ModalProps
 	extends Pick<

@@ -1,4 +1,4 @@
-import type { ISpinnerProps } from '@chakra-ui/core';
+import type { ISpinnerProps } from '@chakra-ui/react';
 import type { Size } from '../';
 
 export interface LoadingNoticeProps extends Omit<ISpinnerProps, 'size'> {

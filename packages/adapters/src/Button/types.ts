@@ -3,7 +3,7 @@ import type {
 	ButtonProps as ChakraButtonProps,
 	ButtonGroupProps as ChakraButtonGroupProps,
 	IconButtonProps as ChakraIconButtonProps,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 export interface ButtonProps extends Partial<Omit<ChakraButtonProps, 'color'>> {
 	buttonText?: React.ReactNode;

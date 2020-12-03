@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider as ChakraDivider } from '@chakra-ui/core';
+import { Divider as ChakraDivider } from '@chakra-ui/react';
 
 import type { DividerProps } from './types';
 

@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { EditableProps as ChakraEditableProps } from '@chakra-ui/core';
+import type { EditableProps as ChakraEditableProps } from '@chakra-ui/react';
 
 import type { CommonInputProps } from '../types';
 

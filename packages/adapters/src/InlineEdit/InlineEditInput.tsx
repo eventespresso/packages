@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
-import { EditableInput as ChakraEditableInput } from '@chakra-ui/core';
+import { EditableInput as ChakraEditableInput } from '@chakra-ui/react';
 
 import { isEnterKey, isEscapeKey } from '@eventespresso/utils';
-import type { PseudoBoxProps } from '@chakra-ui/core';
+import type { PseudoBoxProps } from '@chakra-ui/react';
 import type { InlineEditInputProps } from './types';
 
 /**

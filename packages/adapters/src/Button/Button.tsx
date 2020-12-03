@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button as ChakraButton } from '@chakra-ui/core';
+import { Button as ChakraButton } from '@chakra-ui/react';
 
 import type { ButtonProps } from './types';
 
