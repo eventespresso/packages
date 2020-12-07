@@ -4,6 +4,7 @@ export * from './context';
 export * from './features';
 export * from './filterState';
 export * from './hooks';
+export * from './meta';
 export * from './permissions';
 export * from './relations';
 export * from './status';
