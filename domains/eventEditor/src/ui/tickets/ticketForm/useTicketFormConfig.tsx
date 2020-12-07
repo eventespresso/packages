@@ -77,7 +77,6 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 			subscription: {},
 			initialValues,
 			validate,
-			layout: 'horizontal',
 			debugFields: ['values', 'errors'],
 			sections: [
 				{
