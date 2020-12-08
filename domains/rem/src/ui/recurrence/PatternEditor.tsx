@@ -11,7 +11,7 @@ import { useFormState } from '../../data';
 import './style.scss';
 
 const PatternEditor: React.FC = () => {
-	const { isOpen, onClose, onOpen } = useDisclosure({ defaultIsOpen: false });
+	const { isOpen, onClose, onOpen } = useDisclosure(false);
 	const { exRule, rRule, setExRule, setRRule } = useFormState();
 
 	const onRemoveClick = useCallback(() => {
