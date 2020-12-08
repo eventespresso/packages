@@ -20,7 +20,14 @@ const BodyCell: React.FC<RenderCellProps> = ({ datetime, ticket }) => {
 	const icon = useMemo(() => getRelationIcon(status), [status]);
 
 	return (
-		<Button aria-label={status || __('assign ticket')} icon={icon} margin='auto' onClick={onClick} variant='link' />
+		<Button
+			aria-label={status || __('assign ticket')}
+			className='ee-tam-relation-btn'
+			icon={icon}
+			margin='auto'
+			onClick={onClick}
+			variant='link'
+		/>
 	);
 };
 
