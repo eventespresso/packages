@@ -1,5 +1,5 @@
 import React from 'react';
-import { SimpleGrid } from '@chakra-ui/layout';
+import { SimpleGrid } from '@chakra-ui/core';
 
 import type { GridProps } from './types';
 

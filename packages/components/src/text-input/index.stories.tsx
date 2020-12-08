@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Stack } from '@chakra-ui/layout';
+import { Stack } from '@chakra-ui/core';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Divider, TextInput } from '../';
