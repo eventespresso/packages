@@ -1,7 +1,7 @@
 @import '~@eventespresso/styles/src';
 
 .ticket-assignment-manager,
-.ee-legend {
+.ee-ticket-assignments-manager .ee-legend {
 	svg {
 		border-radius: var(--ee-border-radius-default);
 		cursor: pointer;
