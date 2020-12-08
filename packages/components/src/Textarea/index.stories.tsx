@@ -13,8 +13,6 @@ type TextareaStory = Story<TextareaProps>;
 
 export const Basic: TextareaStory = () => <Textarea defaultValue='This is a textarea' />;
 
-export const Rows: TextareaStory = () => <Textarea defaultValue='This is a textarea' rows={12} />;
-
 export const Disabled: TextareaStory = () => <Textarea isDisabled placeholder='A disabled textarea' />;
 
 export const Invalid: TextareaStory = () => <Textarea isInvalid placeholder='An invalid textarea' />;
