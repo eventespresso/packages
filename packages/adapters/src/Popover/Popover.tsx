@@ -7,7 +7,7 @@ import {
 	PopoverContent,
 	PopoverHeader,
 	PopoverTrigger,
-} from '@chakra-ui/popover';
+} from '@chakra-ui/core';
 
 import type { PopoverProps } from './types';
 
