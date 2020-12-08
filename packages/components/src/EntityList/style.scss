@@ -30,6 +30,7 @@
 		display: grid;
 		gap: var(--ee-margin-big);
 		grid-template-columns: repeat(auto-fit, minmax(445px, 1fr));
+		margin-bottom: var(--ee-margin-default);
 		min-height: 260px;
 		width: 100%;
 
@@ -43,6 +44,13 @@
 			max-width: 615px;
 			min-width: 300px;
 			width: 100%;
+		}
+	}
+
+	&__pagination {
+		&.ee-pagination {
+			float: right;
+			margin-top: 0;
 		}
 	}
 

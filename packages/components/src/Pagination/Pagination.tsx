@@ -22,8 +22,9 @@ export const Pagination: React.FC<PaginationProps> = ({
 	perPageOptions = DEFAULT_PER_PAGE_OPTIONS,
 	showPerPageChanger,
 	total,
+	...props
 }) => {
-	const className = classNames('ee-pagination', alignment && `ee-pagination--align-${alignment}`);
+	const className = classNames('ee-pagination', alignment && `ee-pagination--align-${alignment}`, props.className);
 
 	const perPageChanger = showPerPageChanger && (
 		<PerPage
