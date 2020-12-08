@@ -1,6 +1,6 @@
 {
 	"author": "Event Espresso",
-	"name": "@eventespresso/services",
+	"name": "@eventespresso/ioc",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/eventespresso/barista.git"
@@ -14,10 +14,12 @@
 		"update-deps": "npx ncu -p yarn -u",
 		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
 	},
-	"sideEffects": false,
 	"dependencies": {
-		"flagged": "^2.0.1"
+		"@wordpress/hooks": "^2.10.0"
 	},
-	"license": "GPL-3.0",
-	"gitHead": "66fae0230a22c100153cb05f5a624305efc5a8d9"
+	"devDependencies": {
+		"@types/wordpress__hooks": "2.4.1"
+	},
+	"sideEffects": false,
+	"license": "GPL-3.0"
 }

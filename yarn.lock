@@ -4268,6 +4268,11 @@
     "@types/react" "*"
     redux "^4.0.1"
 
+"@types/wordpress__hooks@2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@types/wordpress__hooks/-/wordpress__hooks-2.4.1.tgz#8b43826b2ebe7ee7ae56bb55d84c2fcc95ac3435"
+  integrity sha512-D64GU8bB1F9ajFCHMbunTxx00obZrZdZLS+6zX1LZt0I5MYTGM/SA+pJMmWepvyTRTsFKe8kdVJ0I0a6HQxXsA==
+
 "@types/wordpress__i18n@^3.11.0":
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/@types/wordpress__i18n/-/wordpress__i18n-3.11.0.tgz#c79691535766b99966ea6bdc6f370ef1f1ed58f5"
@@ -10197,7 +10202,7 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-flagged@2.0.1:
+flagged@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/flagged/-/flagged-2.0.1.tgz#2900b3517a18bd0ba8e0080e7fcd1d847e921f06"
   integrity sha512-cKkJdbHruBbi4CAufayqDs1X6PYMKE+MZmG/3mYBPZw1M0dY+tA14tDTkg5+TISQwZ7tTIzwubFZNv4lm7XENw==
@@ -20066,10 +20071,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
-  integrity sha512-ywmr/VrTVCmNTJ6iV2LwIrfG1P+lv6luD8sUJs+2eI9NLGigaN+nUQc13iHqisq7bra9lnmUSYqbJvegraBOPQ==
+typescript@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.2.tgz#6369ef22516fe5e10304aae5a5c4862db55380e9"
+  integrity sha512-thGloWsGH3SOxv1SoY7QojKi0tc+8FnOmiarEGMbd/lar7QOEd3hvlx3Fp5y6FlDUGl9L+pd4n2e+oToGMmhRQ==
 
 ua-parser-js@^0.7.18:
   version "0.7.22"
