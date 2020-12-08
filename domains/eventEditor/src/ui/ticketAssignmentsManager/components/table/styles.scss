@@ -230,6 +230,11 @@
 						height: 100%;
 						width: 100%;
 						margin: 0;
+
+						&:focus {
+							box-shadow: none;
+						}
+
 						span,
 						svg {
 							height: var(--ee-icon-button-size);
