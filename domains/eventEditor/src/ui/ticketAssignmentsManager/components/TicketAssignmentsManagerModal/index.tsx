@@ -29,8 +29,8 @@ const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onClo
 			submitButtonProps={submitButtonProps}
 			title={title || __('Ticket Assignment Manager')}
 		>
-			<CollapsibleLegend columnsPerRow={1} direction='row' legendConfig={legendConfig} />
 			<TicketAssignmentsManager />
+			<CollapsibleLegend columnsPerRow={1} direction='row' legendConfig={legendConfig} />
 		</ModalWithAlert>
 	);
 };
