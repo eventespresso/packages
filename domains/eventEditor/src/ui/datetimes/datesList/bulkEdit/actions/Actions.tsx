@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
-import { useDisclosure } from '@chakra-ui/hooks';
+import { useDisclosure } from '@chakra-ui/core';
 
 import { BulkActions } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';

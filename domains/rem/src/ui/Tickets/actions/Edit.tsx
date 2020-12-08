@@ -3,7 +3,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { IconButton } from '@eventespresso/components';
 import { Edit as EditIcon } from '@eventespresso/icons';
-import { useDisclosure } from '@chakra-ui/hooks';
+import { useDisclosure } from '@chakra-ui/core';
 import { Container as FormContainer } from '../multiStep';
 import { BaseProps } from '../types';
 

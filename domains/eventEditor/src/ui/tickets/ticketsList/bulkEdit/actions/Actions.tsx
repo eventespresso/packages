@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { useDisclosure } from '@chakra-ui/hooks';
+import { useDisclosure } from '@chakra-ui/core';
 
 import { __ } from '@eventespresso/i18n';
 import { BulkActions, ErrorMessage } from '@eventespresso/components';

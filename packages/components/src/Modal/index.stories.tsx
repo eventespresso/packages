@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDisclosure } from '@chakra-ui/hooks';
+import { useDisclosure } from '@chakra-ui/core';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Button, Modal } from '../';

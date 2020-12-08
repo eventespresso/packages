@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { Button, Modal } from '@wordpress/components';
-import { useDisclosure } from '@chakra-ui/hooks';
+import { useDisclosure } from '@chakra-ui/core';
 import { __ } from '@eventespresso/i18n';
 
 type PopupProps = {

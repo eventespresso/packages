@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import Popup from './Popup';
 import ExitSurveyModal from './ExitSurveyModal';
-import { useDisclosure } from '@chakra-ui/hooks';
+import { useDisclosure } from '@chakra-ui/core';
 
 type ExitSurveyProps = {
 	deactivationUrl: string;
