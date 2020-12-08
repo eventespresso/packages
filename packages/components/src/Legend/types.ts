@@ -13,15 +13,15 @@ export interface LegendProps extends LegendBaseProps {
 	legendConfig: LegendConfig<string>;
 }
 
-interface IconType<className = string> {
+interface IconType<ClassName = string> {
 	bgClassName?: string;
-	className?: className;
+	className?: ClassName;
 	description: string;
 	icon: IconName | React.ElementType;
 }
 
-export interface LegendConfig<className> {
-	icons: IconType<className>[];
+export interface LegendConfig<ClassName> {
+	icons: IconType<ClassName>[];
 	swatches?: AnyObject;
 }
 
