@@ -11,6 +11,8 @@ export * from './filterState';
 
 export * from './hooks';
 
+export * from './ioc';
+
 export * from './utils';
 
 export * from './types';
