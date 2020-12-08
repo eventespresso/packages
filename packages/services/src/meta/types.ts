@@ -1,5 +1,4 @@
 import type { EntityId } from '@eventespresso/data';
-import type { AnyObject } from '@eventespresso/utils';
 
 /**
  * It's an object with key as entity GUID
@@ -14,7 +13,11 @@ import type { AnyObject } from '@eventespresso/utils';
  *     },
  * }
  */
-export type EntityMetaMap = AnyObject<AnyObject>;
+export type EntityMetaMap = {
+	[entityId: string]: {
+		[metaKey: string]: any;
+	};
+};
 
 export interface ManageEntityMeta {
 	/**
