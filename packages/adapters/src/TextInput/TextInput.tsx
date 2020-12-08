@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Input as ChakraInput } from '@chakra-ui/input';
+import { Input as ChakraInput } from '@chakra-ui/core';
 
 import { useOnChange } from '@eventespresso/hooks';
 import type { TextInputProps } from './types';
