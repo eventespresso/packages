@@ -11,8 +11,8 @@ export const useEntityMeta = (metaReactiveVar: ReactiveVar<EntityMetaMap>): MEM 
 	const metaMap = useReactiveVar(metaReactiveVar);
 
 	const getMetaValue = useCallback<MEM['getMetaValue']>(
-		(entityId, metaKey) => {
-			return metaMap?.[entityId]?.[metaKey];
+		(entityId, metaKey, defaultValue) => {
+			return metaMap?.[entityId]?.[metaKey] || defaultValue;
 		},
 		[metaMap]
 	);

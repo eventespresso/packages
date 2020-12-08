@@ -20,7 +20,7 @@ export interface ManageEntityMeta {
 	/**
 	 * Get the value for a meta key for a given entity
 	 */
-	getMetaValue: <T>(entityId: EntityId, metaKey: string) => T;
+	getMetaValue: <T>(entityId: EntityId, metaKey: string, defaultValue?: T) => T;
 
 	/**
 	 * Set the value for a meta key for a given entity
