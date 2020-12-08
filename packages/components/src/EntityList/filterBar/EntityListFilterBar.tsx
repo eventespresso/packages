@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Collapsible, Legend, SearchInput, ToggleLegendButton } from '../../..';
+import { Collapsible, SearchInput, ToggleLegendButton } from '../../..';
 import ToggleFiltersButton from './buttons/ToggleFiltersButton';
 import ToggleSortingButton from './buttons/ToggleSortingButton';
 import EntityListViewButtonGroup from './buttons/EntityListViewButtonGroup';
@@ -18,7 +18,6 @@ import './style.scss';
 const EntityListFilterBar = <FS extends ELFSM>({
 	domain,
 	filterState,
-	legendConfig,
 	listId,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
 	const [showLegend, setShowLegend] = useState(false);
@@ -75,10 +74,6 @@ const EntityListFilterBar = <FS extends ELFSM>({
 						setSearchText={setSearchText}
 					/>
 				</div>
-			</Collapsible>
-
-			<Collapsible className='ee-filter-bar__collapsible' show={showLegend}>
-				<Legend legendConfig={legendConfig} termWhiteBg />
 			</Collapsible>
 		</div>
 	);

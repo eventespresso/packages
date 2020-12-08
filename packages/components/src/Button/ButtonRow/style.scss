@@ -2,7 +2,6 @@
 
 .ee-btn-row {
 	display: flex;
-	justify-content: center;
 	padding: var(--ee-padding-nano);
 	max-width: 900px;
 
@@ -19,7 +18,13 @@
 		margin: 0;
 	}
 
-	&--align {
+	&--align-items {
+		&-center {
+			align-items: center;
+		}
+	}
+
+	&--horizontal-align {
 		&-center {
 			margin-left: auto;
 			margin-right: auto;
@@ -41,6 +46,16 @@
 				margin-left: unset;
 				margin-right: auto;
 			}
+		}
+	}
+
+	&--justify-content {
+		&-center {
+			justify-content: center;
+		}
+
+		&-space-between {
+			justify-content: space-between;
 		}
 	}
 

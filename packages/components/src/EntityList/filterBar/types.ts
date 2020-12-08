@@ -1,5 +1,5 @@
 import type { EntityListFilterStateManager as ELFSM, View } from '@eventespresso/services';
-import type { IconButtonProps, LegendConfig } from '../../..';
+import type { IconButtonProps } from '../../..';
 
 export interface CardViewFilterButtonProps extends View, CommonProps, IconButtonProps {
 	setCardView: VoidFunction;
@@ -12,7 +12,6 @@ interface CommonProps {
 export interface EntityListFilterBarProps<FS extends ELFSM> extends CommonProps {
 	domain: string;
 	filterState: FS;
-	legendConfig: LegendConfig<string>;
 }
 
 export interface EntityListViewButtonGroupProps extends CardViewFilterButtonProps, TableViewFilterButtonProps {}

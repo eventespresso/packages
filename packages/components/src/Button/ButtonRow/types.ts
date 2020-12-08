@@ -1,7 +1,11 @@
+import * as CSS from 'csstype';
+
 export interface ButtonRowProps {
-	align?: 'center' | 'left' | 'right';
+	alignItems?: CSS.Property.AlignItems;
 	className?: string;
 	fullWidth?: boolean;
+	horizontalAlign?: 'center' | 'left' | 'right';
+	justifyContent?: CSS.Property.JustifyContent;
 	noMargin?: boolean;
 	topBordered?: boolean;
 }

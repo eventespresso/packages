@@ -11,7 +11,7 @@ export interface FooterButtonsProps {
 
 export const FooterButtons: React.FC<FooterButtonsProps> = ({ onSubmit, onReset, onCancel }) => {
 	return (
-		<ButtonRow align='right' topBordered>
+		<ButtonRow horizontalAlign='right' topBordered>
 			{onReset && <Button buttonText={__('Reset')} onClick={onReset} type='reset' />}
 			{onCancel && <Button buttonText={__('Cancel')} onClick={onCancel} />}
 			<Button buttonText={__('Submit')} buttonType={ButtonType.PRIMARY} onClick={onSubmit} type='submit' />

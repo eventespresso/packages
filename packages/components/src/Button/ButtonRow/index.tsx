@@ -6,20 +6,24 @@ import { ButtonRowProps } from './types';
 import './style.scss';
 
 const ButtonRow: React.FC<ButtonRowProps> = ({
-	align = 'right',
+	alignItems,
 	children,
 	fullWidth,
+	horizontalAlign = 'right',
+	justifyContent = 'center',
 	noMargin,
 	topBordered,
 	...props
 }) => {
 	const className = classNames(
-		props.className,
-		`ee-btn-row--align-${align}`,
+		'ee-btn-row',
+		alignItems && `ee-btn-row--align-items-${alignItems}`,
+		`ee-btn-row--horizontal-align-${horizontalAlign}`,
+		`ee-btn-row--justify-content-${justifyContent}`,
 		fullWidth && 'ee-btn-row--full-width',
 		noMargin && 'ee-btn-row--no-margin',
 		topBordered && 'ee-btn-row--top-bordered',
-		'ee-btn-row'
+		props.className
 	);
 
 	return <div className={className}>{children}</div>;

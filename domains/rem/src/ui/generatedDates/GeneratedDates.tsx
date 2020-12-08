@@ -45,7 +45,7 @@ const GeneratedDates: React.FC = () => {
 					<Warning datetimes={dates} />
 				</div>
 			</div>
-			<ButtonRow align='left'>
+			<ButtonRow horizontalAlign='left'>
 				<CollapsibleLegend columnsPerRow={1} direction='row' legendConfig={legendConfig} />
 			</ButtonRow>
 		</>

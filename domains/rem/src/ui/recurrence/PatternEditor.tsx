@@ -38,7 +38,7 @@ const PatternEditor: React.FC = () => {
 				type='recurrence'
 			/>
 			<Divider type='dotted' />
-			<ButtonRow align='left'>
+			<ButtonRow horizontalAlign='left'>
 				<Button
 					buttonText={showExRule ? __('Remove exclusion pattern') : __('Add exclusion pattern')}
 					noHorizontalMargin
