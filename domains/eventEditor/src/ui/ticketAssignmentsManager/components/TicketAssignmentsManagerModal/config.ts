@@ -25,5 +25,9 @@ export const legendConfig: LegendConfig<RelationClassName> = {
 			description: __('invalid relation'),
 			icon: getRelationIcon(),
 		},
+		{
+			description: __('no relation'),
+			icon: getRelationIcon(),
+		},
 	],
 };
