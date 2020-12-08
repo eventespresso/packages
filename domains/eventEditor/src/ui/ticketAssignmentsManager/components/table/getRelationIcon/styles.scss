@@ -17,6 +17,8 @@
 			background-color: var(--ee-color-accent);
 			border-color: var(--ee-color-accent);
 
+			fill: white !important;
+
 			&:focus {
 				border-color: var(--ee-color-accent-high-contrast);
 			}
