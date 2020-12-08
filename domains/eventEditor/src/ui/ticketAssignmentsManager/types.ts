@@ -60,6 +60,8 @@ export interface DatesAndTickets {
 	tickets: Ticket[];
 }
 
+export type RelationClassName = 'no-assignments' | 'new-assignment' | 'old-assignment' | 'removed-assignment';
+
 export interface RenderTableProps extends DatesAndTickets {}
 
 export interface RenderCellProps {

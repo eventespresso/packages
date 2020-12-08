@@ -2,7 +2,7 @@ import { IconName, Trash } from '@eventespresso/icons';
 import { LegendConfig } from '@eventespresso/components';
 import { __ } from '@eventespresso/i18n';
 
-export const legendConfig: LegendConfig = {
+export const legendConfig: LegendConfig<string> = {
 	icons: [
 		{ icon: IconName.EDIT, description: 'Edit Event Date Details' },
 		{ icon: IconName.GROUPS, description: 'View Registrations for this Date' },

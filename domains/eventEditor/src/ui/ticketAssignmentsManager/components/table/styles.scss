@@ -216,7 +216,10 @@
 					}
 
 					.ee-rspnsv-table-mobile-only-column-value {
+						align-items: center;
+						display: flex;
 						height: 100%;
+						justify-content: center;
 
 						@include max782px {
 							width: 76px; // more info: https://github.com/eventespresso/event-espresso-core/pull/2909#discussion_r434561737
@@ -253,64 +256,6 @@
 
 			&.text-center {
 				text-align: center;
-			}
-		}
-		.no-assignments {
-			button {
-				background-color: var(--ee-color-accent);
-				border-color: var(--ee-color-accent);
-
-				&:focus {
-					border-color: var(--ee-color-accent-high-contrast);
-				}
-				&:hover {
-					border-color: var(--ee-color-accent-low-contrast);
-				}
-			}
-		}
-		.new-assignment {
-			button {
-				background-color: var(--ee-color-secondary);
-				border-color: var(--ee-color-secondary);
-				svg {
-					fill: white !important;
-				}
-				&:focus {
-					border-color: var(--ee-color-secondary-high-contrast);
-				}
-				&:hover {
-					border-color: var(--ee-color-secondary-low-contrast);
-				}
-			}
-		}
-		.old-assignment {
-			button {
-				background-color: var(--ee-color-primary);
-				border-color: var(--ee-color-primary);
-				svg {
-					fill: white !important;
-				}
-				&:focus {
-					border-color: var(--ee-color-primary-high-contrast);
-				}
-				&:hover {
-					border-color: var(--ee-color-primary-low-contrast);
-				}
-			}
-		}
-		.removed-assignment {
-			button {
-				background-color: var(--ee-color-accent);
-				border-color: var(--ee-color-accent);
-				svg {
-					fill: white !important;
-				}
-				&:focus {
-					border-color: var(--ee-color-accent-high-contrast);
-				}
-				&:hover {
-					border-color: var(--ee-color-accent-low-contrast);
-				}
 			}
 		}
 

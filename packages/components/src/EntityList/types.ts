@@ -57,7 +57,7 @@ export interface EntityListProps</* E extends Entity,  */ FS extends ELFSM>
 	entityType: TypeName;
 	footer: React.ReactNode;
 	headerText: string;
-	legendConfig: LegendConfig;
+	legendConfig: LegendConfig<string>;
 	listId: string;
 	loadingText?: string;
 	noResultsDesc?: string;

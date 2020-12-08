@@ -2,7 +2,7 @@ import { __, sprintf } from '@eventespresso/i18n';
 import { format } from 'date-fns';
 
 import { LOCALIZED_DATE_FULL_FORMAT, TIME_ONLY_12H_SHORT_FORMAT } from '@eventespresso/constants';
-import type { DateType } from './types';
+import type { DateType, GeneratedDateClassName } from './types';
 
 /**
  * Formats the date in date and time format.
@@ -13,8 +13,8 @@ export const formatDate = (date: Date): string => {
 	return `${format(date, LOCALIZED_DATE_FULL_FORMAT)} ${format(date, TIME_ONLY_12H_SHORT_FORMAT)}`;
 };
 
-export const getBgClassName = (type: DateType): string => {
-	return `ee-generated-date--${type}`;
+export const getBgClassName = (type: DateType): GeneratedDateClassName => {
+	return `ee-generated-date--${type}` as GeneratedDateClassName;
 };
 
 export const iconClassMap: { [key in DateType]: string } = {

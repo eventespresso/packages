@@ -6,7 +6,7 @@ import BodyCell from './BodyCell';
 import DateCell from './DateCell';
 
 import { useDataState } from '../../data';
-import { DatesAndTickets } from '../../types';
+import type { DatesAndTickets, RelationClassName } from '../../types';
 import useRowClassName from './useRowClassName';
 import useColClassName from './useColClassName';
 
@@ -27,9 +27,10 @@ const useGetBodyRows = ({ datetimes, tickets }: DatesAndTickets): BodyRow[] => {
 
 			const cells: Array<Cell> = tickets.map((ticket) => {
 				const status = getAssignmentStatus({ datetimeId: datetime.id, ticketId: ticket.id });
+				const statusClassName = status && (`${status.toLowerCase()}-assignment` as RelationClassName);
 
 				const className = classNames(
-					status && `${status.toLowerCase()}-assignment`,
+					statusClassName,
 					'ee-date-list-col-hdr ee-rspnsv-table-column-huge text-center relation-cell',
 					getColClass(ticket)
 				);

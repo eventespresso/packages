@@ -12,7 +12,7 @@ interface CommonProps {
 export interface EntityListFilterBarProps<FS extends ELFSM> extends CommonProps {
 	domain: string;
 	filterState: FS;
-	legendConfig: LegendConfig;
+	legendConfig: LegendConfig<string>;
 }
 
 export interface EntityListViewButtonGroupProps extends CardViewFilterButtonProps, TableViewFilterButtonProps {}

@@ -2,9 +2,8 @@ import React, { useCallback, useMemo } from 'react';
 
 import { Button } from '@eventespresso/adapters';
 import { __ } from '@eventespresso/i18n';
-
 import { useDataState } from '../../data';
-import getCellIcon from './getCellIcon';
+import getRelationIcon from './getRelationIcon';
 import type { RenderCellProps } from '../../types';
 
 const BodyCell: React.FC<RenderCellProps> = ({ datetime, ticket }) => {
@@ -18,7 +17,7 @@ const BodyCell: React.FC<RenderCellProps> = ({ datetime, ticket }) => {
 		toggleAssignment,
 	]);
 
-	const icon = useMemo(() => getCellIcon(status), [status]);
+	const icon = useMemo(() => getRelationIcon(status), [status]);
 
 	return (
 		<Button aria-label={status || __('assign ticket')} icon={icon} margin='auto' onClick={onClick} variant='link' />

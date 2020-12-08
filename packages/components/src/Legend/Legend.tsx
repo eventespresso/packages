@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import classNames from 'classnames';
 import { is } from 'ramda';
 
 import { Icon } from '@eventespresso/icons';
@@ -11,14 +12,14 @@ import type { IconName } from '@eventespresso/icons';
 const Legend: React.FC<LegendProps> = ({ columnsPerRow, direction, legendConfig, termWhiteBg }) => {
 	const { icons, swatches } = legendConfig;
 
-	const iconsSource = icons.map(({ bgClassName, description, icon }) => {
+	const iconsSource = icons.map(({ bgClassName, className, description, icon }) => {
 		const term = (!is(String)(icon) && React.createElement(icon)) || (
 			<Icon aria-label={description} name={icon as IconName} svgSize={18} />
 		);
 
 		return {
 			bgClassName,
-			className: 'ee-legend-item',
+			className: classNames('ee-legend-item', className),
 			description,
 			term,
 		};
@@ -44,6 +45,7 @@ const Legend: React.FC<LegendProps> = ({ columnsPerRow, direction, legendConfig,
 
 	return (
 		<DescriptionList
+			className='ee-legend'
 			columnsPerRow={columnsPerRow}
 			direction={direction}
 			dataSource={dataSource}

@@ -1,0 +1,80 @@
+@import '~@eventespresso/styles/src';
+
+.ticket-assignment-manager,
+.ee-legend {
+	svg {
+		border-radius: var(--ee-border-radius-default);
+		cursor: pointer;
+		height: 100% !important;
+		max-height: 70px;
+		max-width: 115px;
+		padding: var(--ee-padding-smaller) 0 !important;
+		width: 100% !important;
+	}
+
+	.no-assignments {
+		svg {
+			background-color: var(--ee-color-accent);
+			border-color: var(--ee-color-accent);
+
+			&:focus {
+				border-color: var(--ee-color-accent-high-contrast);
+			}
+
+			&:hover {
+				border-color: var(--ee-color-accent-low-contrast);
+			}
+		}
+	}
+
+	.new-assignment {
+		svg {
+			background-color: var(--ee-color-secondary);
+			border-color: var(--ee-color-secondary);
+
+			fill: white !important;
+
+			&:focus {
+				border-color: var(--ee-color-secondary-high-contrast);
+			}
+
+			&:hover {
+				border-color: var(--ee-color-secondary-low-contrast);
+			}
+		}
+	}
+
+	.old-assignment {
+		svg {
+			background-color: var(--ee-color-primary);
+			border-color: var(--ee-color-primary);
+
+			fill: white !important;
+
+			&:focus {
+				border-color: var(--ee-color-primary-high-contrast);
+			}
+
+			&:hover {
+				border-color: var(--ee-color-primary-low-contrast);
+			}
+		}
+	}
+
+	.removed-assignment {
+		svg {
+			background-color: var(--ee-color-accent);
+			border-color: var(--ee-color-accent);
+
+			fill: white !important;
+
+			&:focus {
+				border-color: var(--ee-color-accent-high-contrast);
+			}
+
+			&:hover {
+				border-color: var(--ee-color-accent-low-contrast);
+			}
+		}
+	}
+}

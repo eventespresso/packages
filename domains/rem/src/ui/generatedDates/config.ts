@@ -1,11 +1,12 @@
 import { CloseCircleFilled, PlusCircleFilled, Repeat, Trash } from '@eventespresso/icons';
-import { LegendConfig } from '@eventespresso/components';
 import { __ } from '@eventespresso/i18n';
+import type { LegendConfig } from '@eventespresso/components';
+
 import { getBgClassName } from './utils';
 
 import './bg-colors.scss';
 
-export const legendConfig: LegendConfig = {
+export const legendConfig: LegendConfig<string> = {
 	icons: [
 		{
 			bgClassName: getBgClassName('gDate'),
