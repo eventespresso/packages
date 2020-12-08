@@ -20,7 +20,7 @@ const useCacheRehydration = (): boolean => {
 		if (initialized.current || !isRehydrated) {
 			return;
 		}
-		// it's possible that other addons may add their met,
+		// it's possible that other addons may add their meta,
 		// so we will merge it instead of resetting it
 		mergeMetaMap(ticketsMeta);
 
