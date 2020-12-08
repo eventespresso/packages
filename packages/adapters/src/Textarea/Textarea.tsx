@@ -1,5 +1,5 @@
 import React from 'react';
-import { Textarea as ChakraTextarea } from '@chakra-ui/textarea';
+import { Textarea as ChakraTextarea } from '@chakra-ui/core';
 
 import type { TextareaProps } from './types';
 
