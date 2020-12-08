@@ -30,7 +30,7 @@ const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onClo
 			title={title || __('Ticket Assignment Manager')}
 		>
 			<TicketAssignmentsManager />
-			<CollapsibleLegend columnsPerRow={1} direction='row' legendConfig={legendConfig} />
+			<CollapsibleLegend direction='row' legendConfig={legendConfig} />
 		</ModalWithAlert>
 	);
 };
