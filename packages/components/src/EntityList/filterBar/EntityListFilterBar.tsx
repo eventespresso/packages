@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Collapsible, SearchInput, ToggleLegendButton } from '../../..';
+import { Collapsible, SearchInput } from '../../..';
 import ToggleFiltersButton from './buttons/ToggleFiltersButton';
 import ToggleSortingButton from './buttons/ToggleSortingButton';
 import EntityListViewButtonGroup from './buttons/EntityListViewButtonGroup';
@@ -20,9 +20,6 @@ const EntityListFilterBar = <FS extends ELFSM>({
 	filterState,
 	listId,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
-	const [showLegend, setShowLegend] = useState(false);
-	const toggleLegend = useCallback(() => setShowLegend((v) => !v), []);
-
 	const [showEntityFilters, setShowEntityFilters] = useState(false);
 	const toggleEntityFilters = useCallback(() => setShowEntityFilters((v) => !v), []);
 
@@ -35,7 +32,6 @@ const EntityListFilterBar = <FS extends ELFSM>({
 	useEffect(() => {
 		if (sortingEnabled) {
 			setShowEntityFilters(false);
-			setShowLegend(false);
 		}
 	}, [sortingEnabled]);
 
@@ -55,12 +51,6 @@ const EntityListFilterBar = <FS extends ELFSM>({
 					isDisabled={sortingEnabled}
 				/>
 				<ToggleSortingButton listId={listId} sortingEnabled={sortingEnabled} toggleSorting={toggleSorting} />
-				<ToggleLegendButton
-					className='ee-filter-bar__btn ee-btn--small'
-					isDisabled={sortingEnabled}
-					showLegend={showLegend}
-					toggleLegend={toggleLegend}
-				/>
 			</div>
 
 			<Collapsible className='ee-filter-bar__collapsible' show={showEntityFilters}>
