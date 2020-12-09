@@ -6,7 +6,7 @@ import InlineEditInput from './InlineEditInput';
 import InlineEditPreview from './InlineEditPreview';
 import type { InlineEditProps } from './types';
 
-const InlineEdit: React.FC<InlineEditProps> = ({
+export const InlineEdit: React.FC<InlineEditProps> = ({
 	'aria-describedby': ariaDescribedby,
 	defaultValue,
 	editableInputClassName,
@@ -17,7 +17,6 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 	Preview,
 	previewClassName,
 	value,
-	...props
 }) => {
 	const [currentValue, setCurrentValue] = useState(defaultValue || value);
 	const [prevSubmitValue, setPrevSubmitValue] = useState(currentValue);
@@ -47,7 +46,6 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 
 	return (
 		<ChakraEditable
-			{...props}
 			className={previewClassName}
 			onChange={setCurrentValue}
 			onSubmit={onSubmitHandler}
@@ -65,7 +63,6 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 				return (
 					<>
 						<InlineEditPreview
-							{...props}
 							aria-describedby={ariaDescribedby}
 							className={inputClassName}
 							isEditing={isEditing}
@@ -85,5 +82,3 @@ const InlineEdit: React.FC<InlineEditProps> = ({
 		</ChakraEditable>
 	);
 };
-
-export default InlineEdit;

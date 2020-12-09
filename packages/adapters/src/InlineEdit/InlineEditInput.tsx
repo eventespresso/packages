@@ -41,12 +41,10 @@ const InlineEditInput: React.FC<InlineEditInputProps> = ({
 	);
 
 	if (inputType === 'textarea') {
-		// @ts-ignore
-		return <ChakraEditableInput {...textareaProps} variant='unstyled' />;
+		return <ChakraEditableInput {...textareaProps} />;
 	}
 
-	// @ts-ignore
-	return <ChakraEditableInput className={editableInputClassName} type={inputType} variant='unstyled' />;
+	return <ChakraEditableInput className={editableInputClassName} />;
 };
 
 export default InlineEditInput;
