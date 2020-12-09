@@ -17,11 +17,11 @@ const TicketSelector: React.FC = () => {
 
 	const id = 'ee-event-registration-ticket-selector';
 	const isChecked = event?.displayTicketSelector;
-	const ariaLabel = isChecked ? __('hide ticket selector') : __('show ticket selector');
+	const label = isChecked ? __('Ticket Selector Enabled') : __('Ticket Selector Disabled');
 
-	const input = <Switch aria-label={ariaLabel} checked={isChecked} onChangeValue={onChangeValue} />;
+	const input = <Switch aria-describedby={id} checked={isChecked} onChangeValue={onChangeValue} />;
 
-	return <GridItem id={id} input={input} label={__('Display Ticket Selector')} />;
+	return <GridItem id={id} input={input} label={label} />;
 };
 
 export default TicketSelector;

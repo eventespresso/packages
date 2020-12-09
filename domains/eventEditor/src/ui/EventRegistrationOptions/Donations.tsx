@@ -16,7 +16,7 @@ const Donations: React.FC = () => {
 	);
 
 	const isChecked = event?.allowDonations;
-	const heading = isChecked ? __('Disable Donations') : __('Enable Donations');
+	const heading = isChecked ? __('Donations Enabled') : __('Donations Disabled');
 	const id = 'ee-event-donations';
 
 	const input = <Switch aria-describedby={id} checked={isChecked} onChangeValue={onChange} />;
