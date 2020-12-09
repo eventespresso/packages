@@ -227,9 +227,9 @@
 					}
 
 					button {
-						height: 100%;
-						width: 100%;
 						margin: 0;
+						max-height: 100%;
+						max-width: 100%;
 
 						&:focus {
 							box-shadow: none;

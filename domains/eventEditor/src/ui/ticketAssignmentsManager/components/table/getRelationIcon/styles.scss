@@ -1,23 +1,44 @@
 @import '~@eventespresso/styles/src';
 
-.ticket-assignment-manager,
-.ee-ticket-assignments-manager .ee-legend {
-	svg {
+.ee-ticket-assignments-manager {
+	.ee-legend-item dt,
+	.ee-tam-relation-btn {
 		border-radius: var(--ee-border-radius-default);
+		background-color: var(--ee-color-grey-14);
+		border-color: var(--ee-color-grey-14);
 		cursor: pointer;
-		height: 100% !important;
-		max-height: 70px;
-		max-width: 115px;
-		padding: var(--ee-padding-smaller) 0 !important;
-		width: 100% !important;
+		padding: 0;
+
+		&:focus {
+			border-color: var(--ee-color-grey-13);
+		}
+
+		&:hover {
+			border-color: var(--ee-color-grey-15);
+		}
+
+		svg {
+			margin: auto;
+		}
 	}
 
+	.ee-tam-relation-btn {
+		height: 70px;
+		width: 115px;
+	}
+
+	.ee-legend-item dt {
+		height: 28px;
+		margin: 0 var(--ee-margin-smaller);
+		width: 46px;
+	}
+
+
 	.no-assignments {
-		svg {
+		&.ee-legend-item dt,
+		.ee-tam-relation-btn {
 			background-color: var(--ee-color-accent);
 			border-color: var(--ee-color-accent);
-
-			fill: white !important;
 
 			&:focus {
 				border-color: var(--ee-color-accent-high-contrast);
@@ -26,15 +47,18 @@
 			&:hover {
 				border-color: var(--ee-color-accent-low-contrast);
 			}
+
+			svg {
+				fill: white;
+			}
 		}
 	}
 
 	.new-assignment {
-		svg {
+		&.ee-legend-item dt,
+		.ee-tam-relation-btn {
 			background-color: var(--ee-color-secondary);
 			border-color: var(--ee-color-secondary);
-
-			fill: white !important;
 
 			&:focus {
 				border-color: var(--ee-color-secondary-high-contrast);
@@ -43,15 +67,27 @@
 			&:hover {
 				border-color: var(--ee-color-secondary-low-contrast);
 			}
+
+			svg {
+				fill: white;
+				position: relative;
+				top: -.1rem;
+			}
+		}
+
+		&.ee-legend-item dt {
+			svg {
+				top: -.06rem;
+			}
 		}
 	}
 
+
 	.old-assignment {
-		svg {
+		&.ee-legend-item dt,
+		.ee-tam-relation-btn {
 			background-color: var(--ee-color-primary);
 			border-color: var(--ee-color-primary);
-
-			fill: white !important;
 
 			&:focus {
 				border-color: var(--ee-color-primary-high-contrast);
@@ -60,15 +96,26 @@
 			&:hover {
 				border-color: var(--ee-color-primary-low-contrast);
 			}
+
+			svg {
+				fill: white;
+				position: relative;
+				top: -.1rem;
+			}
+		}
+
+		&.ee-legend-item dt {
+			svg {
+				top: -.05rem;
+			}
 		}
 	}
 
 	.removed-assignment {
-		svg {
+		&.ee-legend-item dt,
+		.ee-tam-relation-btn {
 			background-color: var(--ee-color-accent);
 			border-color: var(--ee-color-accent);
-
-			fill: white !important;
 
 			&:focus {
 				border-color: var(--ee-color-accent-high-contrast);
@@ -76,6 +123,10 @@
 
 			&:hover {
 				border-color: var(--ee-color-accent-low-contrast);
+			}
+
+			svg {
+				fill: white;
 			}
 		}
 	}
