@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { hooks, useTicketsMeta, Actions } from '@eventespresso/edtr-services';
+import { hasTempId } from '@eventespresso/predicates';
 import { MutationType } from '@eventespresso/data';
 
 import { NAMESPACE } from '../constants';
@@ -14,27 +15,27 @@ const useTicketMutationAction = (): void => {
 	const { setMetaValue } = useTicketsMeta();
 
 	useEffect(() => {
-		// avoid infinite loop
-		if (!hooks.doingAction('eventEditor.ticket.mutation')) {
-			// make sure to remove the previously registered hook
-			hooks.removeAction(actionName, NAMESPACE);
-			hooks.addAction('eventEditor.ticket.mutation', NAMESPACE, (mutationType, input, ticket) => {
-				switch (mutationType) {
-					case MutationType.Create:
-					case MutationType.Update:
-						// it's possible that the entity is updated partially
-						// thus capabilityRequired may be undefined
-						if (typeof input?.capabilityRequired === 'string') {
-							setMetaValue(ticket?.id, 'capabilityRequired', input.capabilityRequired);
-						}
-						break;
-				}
-			});
-		}
+		// make sure to remove the previously registered hook
+		hooks.removeAction(actionName, NAMESPACE);
+
+		hooks.addAction(actionName, NAMESPACE, (mutationType, input, ticket) => {
+			switch (mutationType) {
+				case MutationType.Create:
+				case MutationType.Update:
+					// it's possible that the entity is updated partially
+					// thus capabilityRequired may be undefined
+					if (typeof input?.capabilityRequired === 'string' && !hasTempId(ticket)) {
+						setMetaValue(ticket?.id, 'capabilityRequired', input.capabilityRequired);
+					}
+
+					break;
+			}
+		});
 
 		// housekeeping
 		return () => hooks.removeAction(actionName, NAMESPACE);
-	}, [setMetaValue]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 };
 
 export default useTicketMutationAction;

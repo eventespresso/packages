@@ -16,7 +16,7 @@ const useTicketFormInitialValues = (): void => {
 		// make sure to remove the previously registered hook
 		hooks.removeFilter(filterName, NAMESPACE);
 
-		hooks.addFilter('eventEditor.ticketForm.initalValues', NAMESPACE, (initialValues, ticket) => {
+		hooks.addFilter(filterName, NAMESPACE, (initialValues, ticket) => {
 			// ticket the value from meta. It will be empty for new tickets
 			const capabilityRequired = getMetaValue<string>(ticket?.id, 'capabilityRequired', '');
 

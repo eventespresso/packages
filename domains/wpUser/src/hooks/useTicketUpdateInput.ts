@@ -14,26 +14,22 @@ const useTicketUpdateInput = (): void => {
 		// make sure to remove the previously registered hook
 		hooks.removeFilter(filterName, NAMESPACE);
 
-		hooks.addFilter(
-			'eventEditor.ticketForm.mutationInput',
-			NAMESPACE,
-			({ capabilityRequiredType, capabilityRequired, ...input }) => {
-				if (capabilityRequiredType === 'custom') {
-					return {
-						...input,
-						capabilityRequired,
-					};
-				} else if (capabilityRequiredType === 'read') {
-					// remove capability if 'read' is selected
-					return {
-						...input,
-						capabilityRequired: '',
-					};
-				}
-
-				return input;
+		hooks.addFilter(filterName, NAMESPACE, ({ capabilityRequiredType, capabilityRequired, ...input }) => {
+			if (capabilityRequiredType === 'custom') {
+				return {
+					...input,
+					capabilityRequired,
+				};
+			} else if (capabilityRequiredType === 'read') {
+				// remove capability if 'read' is selected
+				return {
+					...input,
+					capabilityRequired: '',
+				};
 			}
-		);
+
+			return input;
+		});
 
 		// housekeeping
 		return () => hooks.removeFilter(filterName, NAMESPACE);

@@ -55,7 +55,7 @@ const useTicketFormSections = (): void => {
 		// make sure to remove the previously registered hook
 		hooks.removeFilter(filterName, NAMESPACE);
 
-		hooks.addFilter('eventEditor.ticketForm.sections', NAMESPACE, (sections) => {
+		hooks.addFilter(filterName, NAMESPACE, (sections) => {
 			return [
 				...sections,
 				{

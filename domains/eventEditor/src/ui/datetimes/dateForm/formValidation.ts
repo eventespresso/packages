@@ -1,9 +1,8 @@
 import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
-import { datesSchema } from '@eventespresso/edtr-services';
+import { datesSchema, DateFormShape } from '@eventespresso/edtr-services';
 import { yupToFinalFormErrors } from '@eventespresso/form';
-import { DateFormShape } from './types';
 
 export const validate = async (values: DateFormShape): Promise<any> => {
 	return await yupToFinalFormErrors(validationSchema, values);
