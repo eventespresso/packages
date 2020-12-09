@@ -1,10 +1,18 @@
 import { useEffect } from 'react';
+import { pluck } from 'ramda';
 
 import { hooks, useTicketsMeta, Filters } from '@eventespresso/edtr-services';
 
 import { NAMESPACE } from '../constants';
+import { capabilityOptions } from './capabilityOptions';
 
 const filterName: keyof Filters = 'eventEditor.ticketForm.initalValues';
+
+// Convert select options to a flat array of option values
+const optionValues = capabilityOptions
+	.map(({ options, value }) => (options ? pluck('value', options) : [value]))
+	.flat()
+	.filter(Boolean);
 
 /**
  * A custom hook to update initial values of ticket edit form
@@ -18,15 +26,20 @@ const useTicketFormInitialValues = (): void => {
 
 		hooks.addFilter(filterName, NAMESPACE, (initialValues, ticket) => {
 			// ticket the value from meta. It will be empty for new tickets
-			const capabilityRequired = getMetaValue<string>(ticket?.id, 'capabilityRequired', '');
+			let capabilityRequired = getMetaValue<string>(ticket?.id, 'capabilityRequired', 'read');
+			let customCapabilityRequired = '';
 
-			// if capabilityRequired has a value, it means, cusom option should be selected
-			const capabilityRequiredType = capabilityRequired ? 'custom' : 'read';
+			// if capabilityRequired has some unknown value
+			// it means, custom option should be selected
+			if (!optionValues.includes(capabilityRequired)) {
+				customCapabilityRequired = `${capabilityRequired}`;
+				capabilityRequired = 'custom';
+			}
 
 			return {
 				...initialValues,
-				capabilityRequiredType,
 				capabilityRequired,
+				customCapabilityRequired,
 			};
 		});
 

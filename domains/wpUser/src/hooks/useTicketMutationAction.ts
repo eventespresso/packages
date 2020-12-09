@@ -15,9 +15,6 @@ const useTicketMutationAction = (): void => {
 	const { setMetaValue } = useTicketsMeta();
 
 	useEffect(() => {
-		// make sure to remove the previously registered hook
-		hooks.removeAction(actionName, NAMESPACE);
-
 		hooks.addAction(actionName, NAMESPACE, (mutationType, input, ticket) => {
 			switch (mutationType) {
 				case MutationType.Create:

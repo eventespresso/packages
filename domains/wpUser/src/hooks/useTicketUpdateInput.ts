@@ -11,24 +11,32 @@ const filterName: keyof Filters = 'eventEditor.ticketForm.mutationInput';
  */
 const useTicketUpdateInput = (): void => {
 	useEffect(() => {
-		// make sure to remove the previously registered hook
-		hooks.removeFilter(filterName, NAMESPACE);
+		hooks.addFilter(filterName, NAMESPACE, ({ capabilityRequired, customCapabilityRequired, ...input }) => {
+			switch (true) {
+				// if capabilityRequired is not being updated
+				case typeof capabilityRequired !== 'string':
+					return input;
 
-		hooks.addFilter(filterName, NAMESPACE, ({ capabilityRequiredType, capabilityRequired, ...input }) => {
-			if (capabilityRequiredType === 'custom') {
-				return {
-					...input,
-					capabilityRequired,
-				};
-			} else if (capabilityRequiredType === 'read') {
-				// remove capability if 'read' is selected
-				return {
-					...input,
-					capabilityRequired: '',
-				};
+				case capabilityRequired === 'custom':
+					return {
+						...input,
+						capabilityRequired: customCapabilityRequired,
+					};
+
+				case capabilityRequired === 'read':
+					// remove capability if 'read' is selected
+					return {
+						...input,
+						capabilityRequired: '',
+					};
+
+				// it's some dynamic capability value, selected from the list
+				default:
+					return {
+						...input,
+						capabilityRequired,
+					};
 			}
-
-			return input;
 		});
 
 		// housekeeping
