@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-import { assocPath, mergeDeepRight } from 'ramda';
+import { assocPath, dissocPath, mergeDeepRight } from 'ramda';
 
 import { ReactiveVar, useReactiveVar } from '@eventespresso/data';
 
@@ -25,6 +25,14 @@ export const useEntityMeta = (metaReactiveVar: ReactiveVar<EntityMetaMap>): MEM 
 		[metaReactiveVar, metaMap]
 	);
 
+	const deleteMeta = useCallback<MEM['deleteMeta']>(
+		(entityId, metaKey) => {
+			const newMetaMap = dissocPath<EntityMetaMap>([entityId, metaKey], metaMap);
+			metaReactiveVar(newMetaMap);
+		},
+		[metaReactiveVar, metaMap]
+	);
+
 	const getEntityMeta = useCallback<MEM['getEntityMeta']>(
 		(entityId) => {
 			return metaMap?.[entityId];
@@ -35,6 +43,14 @@ export const useEntityMeta = (metaReactiveVar: ReactiveVar<EntityMetaMap>): MEM 
 	const setEntityMeta = useCallback<MEM['setEntityMeta']>(
 		(entityId, entityMeta) => {
 			const newMetaMap = assocPath([entityId], entityMeta, metaMap);
+			metaReactiveVar(newMetaMap);
+		},
+		[metaReactiveVar, metaMap]
+	);
+
+	const deleteEntityMeta = useCallback<MEM['deleteEntityMeta']>(
+		(entityId) => {
+			const newMetaMap = dissocPath<EntityMetaMap>([entityId], metaMap);
 			metaReactiveVar(newMetaMap);
 		},
 		[metaReactiveVar, metaMap]
@@ -60,6 +76,8 @@ export const useEntityMeta = (metaReactiveVar: ReactiveVar<EntityMetaMap>): MEM 
 
 	return useMemo(
 		() => ({
+			deleteEntityMeta,
+			deleteMeta,
 			getEntityMeta,
 			getMetaMap,
 			getMetaValue,
@@ -68,6 +86,16 @@ export const useEntityMeta = (metaReactiveVar: ReactiveVar<EntityMetaMap>): MEM 
 			setEntityMeta,
 			setMetaValue,
 		}),
-		[getEntityMeta, getMetaMap, getMetaValue, mergeMetaMap, resetMetaMap, setEntityMeta, setMetaValue]
+		[
+			deleteEntityMeta,
+			deleteMeta,
+			getEntityMeta,
+			getMetaMap,
+			getMetaValue,
+			mergeMetaMap,
+			resetMetaMap,
+			setEntityMeta,
+			setMetaValue,
+		]
 	);
 };

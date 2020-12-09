@@ -1,4 +1,13 @@
-import { addAction, addFilter, applyFilters, doAction } from '@wordpress/hooks';
+import {
+	addAction,
+	addFilter,
+	applyFilters,
+	doAction,
+	doingAction,
+	doingFilter,
+	removeAction,
+	removeFilter,
+} from '@wordpress/hooks';
 import type { OmitFirstFromArray } from '@eventespresso/utils';
 
 export type ActionObject = {
@@ -16,17 +25,21 @@ export type Hooks<Actions extends ActionObject, Filters extends ActionObject> = 
 		callback: FilterCallback<Filters[K]>,
 		priority?: number
 	) => void;
-	applyFilters: <K extends keyof Filters>(
-		name: K,
-		firstArg?: Filters[K][0],
-		...args: [...OmitFirstFromArray<Filters[K]>]
-	) => Filters[K][0];
 	addAction: <K extends keyof Actions>(
 		name: K,
 		namespace: string,
 		callback: ActionCallback<Actions[K]>,
 		priority?: number
 	) => void;
+	doingAction: <K extends keyof Actions>(name: K) => boolean;
+	doingFilter: <K extends keyof Actions>(name: K) => boolean;
+	removeAction: <K extends keyof Actions>(name: K, namespace: string) => number;
+	removeFilter: <K extends keyof Filters>(name: K, namespace: string) => number;
+	applyFilters: <K extends keyof Filters>(
+		name: K,
+		firstArg?: Filters[K][0],
+		...args: [...OmitFirstFromArray<Filters[K]>]
+	) => Filters[K][0];
 	doAction: <K extends keyof Actions>(
 		name: K,
 		firstArg?: Actions[K][0],
@@ -36,9 +49,13 @@ export type Hooks<Actions extends ActionObject, Filters extends ActionObject> = 
 
 export const getHooks = <A extends ActionObject, F extends ActionObject>(): Hooks<A, F> => {
 	return {
-		addFilter,
 		addAction,
+		addFilter,
 		applyFilters,
 		doAction,
+		doingAction,
+		doingFilter,
+		removeAction,
+		removeFilter,
 	} as Hooks<A, F>;
 };

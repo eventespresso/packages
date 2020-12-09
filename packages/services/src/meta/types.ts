@@ -31,6 +31,11 @@ export interface ManageEntityMeta {
 	setMetaValue: (entityId: EntityId, metaKey: string, metaValue: any) => void;
 
 	/**
+	 * Delete a meta for a given entity
+	 */
+	deleteMeta: (entityId: EntityId, metaKey: string) => void;
+
+	/**
 	 * Get the whole meta object for the given entity
 	 */
 	getEntityMeta: (entityId: EntityId) => EntityMetaMap[string];
@@ -39,6 +44,11 @@ export interface ManageEntityMeta {
 	 * (Re)set the whole meta object for the given entity
 	 */
 	setEntityMeta: (entityId: EntityId, entityMeta: EntityMetaMap[string]) => void;
+
+	/**
+	 * Delete the whole meta object for the given entity
+	 */
+	deleteEntityMeta: (entityId: EntityId) => void;
 
 	/**
 	 * Get the whole meta object for all the entities
