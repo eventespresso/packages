@@ -1,17 +1,16 @@
 import { useMemo, useCallback } from 'react';
 import { pick } from 'ramda';
-import { applyFilters } from '@wordpress/hooks';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
-import { startAndEndDateFixer, useTicketItem } from '@eventespresso/edtr-services';
+import { startAndEndDateFixer, useTicketItem, hooks } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { setDefaultTime } from '@eventespresso/dates';
 import { EntityId } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
 import type { EspressoFormProps } from '@eventespresso/form';
-import type { Ticket, TicketFormShape, TicketFormConfig } from '@eventespresso/edtr-services';
+import type { Ticket, TicketFormConfig } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
 
@@ -59,7 +58,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 	);
 
 	const initialValues = useMemo(() => {
-		return applyFilters<TicketFormShape>(
+		return hooks.applyFilters(
 			'eventEditor.ticketForm.initalValues',
 			{
 				...pick<Omit<Partial<Ticket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
@@ -71,7 +70,7 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 	}, [endDate, startDate, ticket]);
 
 	const sections = useMemo(() => {
-		return applyFilters<TicketFormConfig['sections']>(
+		return hooks.applyFilters(
 			'eventEditor.ticketForm.sections',
 			[
 				{
