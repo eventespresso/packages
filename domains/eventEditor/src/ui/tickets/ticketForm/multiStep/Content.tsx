@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 
-import { useTicketMutator } from '@eventespresso/edtr-services';
+import { useTicketMutator, hooks } from '@eventespresso/edtr-services';
 import { useMutatePrices } from '@eventespresso/tpc';
 import { FormWithConfig } from '@eventespresso/components';
 import useTicketFormConfig from '../useTicketFormConfig';
@@ -14,7 +14,8 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 
 	const mutateTicket = useCallback(
 		(input) => {
-			return entity?.id ? updateEntity(input) : createEntity(input);
+			const finalInput = hooks.applyFilters('eventEditor.ticketForm.mutationInput', input, entity?.id);
+			return entity?.id ? updateEntity(finalInput) : createEntity(finalInput);
 		},
 		[createEntity, entity?.id, updateEntity]
 	);

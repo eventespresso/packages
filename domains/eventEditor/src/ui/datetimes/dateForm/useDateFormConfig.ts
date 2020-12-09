@@ -10,12 +10,9 @@ import { useMemoStringify } from '@eventespresso/hooks';
 import { setDefaultTime } from '@eventespresso/dates';
 import { EntityId } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
-import type { Datetime } from '@eventespresso/edtr-services';
+import type { Datetime, DateFormShape, DateFormConfig } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
-import type { DateFormShape } from './types';
-
-type DateFormConfig = EspressoFormProps<DateFormShape>;
 
 const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'description', 'capacity', 'isTrashed'];
 

@@ -1,5 +1,6 @@
 import { useMemo, useCallback } from 'react';
 import { pick } from 'ramda';
+import { applyFilters } from '@wordpress/hooks';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
@@ -10,12 +11,9 @@ import { setDefaultTime } from '@eventespresso/dates';
 import { EntityId } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
 import type { EspressoFormProps } from '@eventespresso/form';
-import type { Ticket } from '@eventespresso/edtr-services';
+import type { Ticket, TicketFormShape, TicketFormConfig } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
-import { TicketFormShape } from './types';
-
-type TicketFormConfig = EspressoFormProps<TicketFormShape>;
 
 const FIELD_NAMES: Array<keyof Ticket> = [
 	'id',
@@ -60,25 +58,22 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 		[onSubmit, toUtcISO]
 	);
 
-	const initialValues: TicketFormShape = useMemo(
-		() => ({
-			...pick<Omit<Partial<Ticket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
-			startDate,
-			endDate,
-		}),
-		[endDate, startDate, ticket]
-	);
+	const initialValues = useMemo(() => {
+		return applyFilters<TicketFormShape>(
+			'eventEditor.ticketForm.initalValues',
+			{
+				...pick<Omit<Partial<Ticket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
+				startDate,
+				endDate,
+			},
+			ticket
+		);
+	}, [endDate, startDate, ticket]);
 
-	return useMemo(
-		() => ({
-			...config,
-			onSubmit: onSubmitFrom,
-			decorators,
-			subscription: {},
-			initialValues,
-			validate,
-			debugFields: ['values', 'errors'],
-			sections: [
+	const sections = useMemo(() => {
+		return applyFilters<TicketFormConfig['sections']>(
+			'eventEditor.ticketForm.sections',
+			[
 				{
 					name: 'basics',
 					icon: ProfileOutlined,
@@ -205,8 +200,22 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 					],
 				},
 			],
+			ticket
+		);
+	}, [ticket]);
+
+	return useMemo(
+		() => ({
+			...config,
+			onSubmit: onSubmitFrom,
+			decorators,
+			subscription: {},
+			initialValues,
+			validate,
+			debugFields: ['values', 'errors'],
+			sections,
 		}),
-		[config, initialValues, onSubmitFrom]
+		[config, initialValues, onSubmitFrom, sections]
 	);
 };
 
