@@ -11,7 +11,7 @@ const calculatePageNumber = (newPerPage: number, prevPerPage: number, total: num
 	return Math.floor((total - 1) / perPage) + 1;
 };
 
-const selectRootProps = { className: 'ee-pagination__per-page-select-wrapper' };
+const selectRootProps = { className: 'ee-select-wrapper ee-pagination__per-page-select-wrapper' };
 
 const PerPage: React.FC<PerPageProps> = ({ onChangePerPage, pageNumber, perPage, perPageOptions, total }) => {
 	const onChangeValue = useCallback<SelectProps['onChangeValue']>(
@@ -35,7 +35,7 @@ const PerPage: React.FC<PerPageProps> = ({ onChangePerPage, pageNumber, perPage,
 	return (
 		<Select
 			aria-label={__('items per page')}
-			className='ee-pagination__per-page'
+			className='ee-select ee-pagination__per-page'
 			onChangeValue={onChangeValue}
 			rootProps={selectRootProps}
 			value={perPage}
