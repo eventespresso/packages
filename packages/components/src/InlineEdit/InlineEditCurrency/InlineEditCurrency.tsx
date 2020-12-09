@@ -18,7 +18,7 @@ export const InlineEditCurrency: React.FC<InlineEditCurrencyProps> = ({
 	id = '',
 	isEditDisabled,
 	onChange = nullFunc,
-	tag = 'p',
+	tag = 'div',
 	wrapperProps,
 	vertical,
 	tooltip,
