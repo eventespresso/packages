@@ -5,7 +5,7 @@ import type { GridItemProps } from './types';
 
 export const GridItem: React.FC<GridItemProps> = ({ className, id, input, label }) => (
 	<div className={className}>
-		<Heading as='h4' id={id}>
+		<Heading as='h6' id={id}>
 			{label}
 		</Heading>
 		{input}

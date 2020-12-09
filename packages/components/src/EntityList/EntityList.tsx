@@ -4,16 +4,7 @@ import { __ } from '@eventespresso/i18n';
 import { useStatus } from '@eventespresso/services';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
 
-import {
-	ButtonRow,
-	CollapsibleLegend,
-	Divider,
-	EmptyState,
-	ErrorIndicator,
-	Heading,
-	LoadingNotice,
-	Pagination,
-} from '../..';
+import { ButtonRow, CollapsibleLegend, EmptyState, ErrorIndicator, Heading, LoadingNotice, Pagination } from '../..';
 import EntityListFilterBar from './withValidFilterState';
 import type { EntityListProps } from './types';
 import './style.scss';
@@ -50,7 +41,7 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 	}
 
 	return (
-		<div className={'ee-entity-list'}>
+		<div className='ee-entity-list  ee-edtr-section'>
 			<Heading as='h3' className='ee-entity-list__header'>
 				{headerText}
 			</Heading>
@@ -81,8 +72,6 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 			</ButtonRow>
 
 			<div className={'ee-entity-list__footer'}>{footer}</div>
-
-			<Divider type='dashed' />
 		</div>
 	);
 };

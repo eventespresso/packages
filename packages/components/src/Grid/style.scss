@@ -4,7 +4,7 @@
 	display: grid;
 	grid-gap: 0.1rem;
 	grid-template-columns: 1fr;
-	margin: 0 0 var(--ee-margin-bigger);
+	margin: var(--ee-margin-tiny) 0;
 
 	> div {
 		align-items: center;

@@ -71,6 +71,8 @@
 
 			&-heading.ee-heading.ee-heading {
 				color: var(--ee-default-text-color-high-contrast);
+				font-size: var(--ee-font-size-bigger);
+				margin-top: 0;
 			}
 
 			&-icon.ee-svg.ee-svg {
@@ -78,7 +80,7 @@
 				display: inline-block;
 				font-size: var(--ee-font-size-extreme);
 				height: var(--ee-font-size-extreme);
-				margin: 0 0 var(--ee-margin-small);
+				margin: 0 0 var(--ee-margin-tiny);
 				width: var(--ee-font-size-extreme);
 			}
 

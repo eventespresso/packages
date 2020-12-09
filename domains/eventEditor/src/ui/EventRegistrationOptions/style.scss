@@ -14,12 +14,21 @@
 			}
 
 			h4 {
-				font-size: var(--ee-font-size-tiny);
+				font-size: var(--ee-font-size-big);
+				font-weight: 600;
+			}
+
+			h6 {
+				color: var(--ee-default-text-color-high-contrast);
+				font-size: var(--ee-font-size-small);
+				font-weight: 600;
+				margin: 0;
 				max-width: 15rem;
 			}
 
 			.ee-tabbable-text {
-				font-size: var(--ee-font-size-small);
+				// font-size: var(--ee-font-size-small);
+				// todo: make the above only apply when input has no value (ie: says "click to edit")
 
 				&__inner_wrapper {
 					overflow: hidden;

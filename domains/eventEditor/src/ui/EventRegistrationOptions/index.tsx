@@ -18,7 +18,7 @@ import './style.scss';
 const columns = { base: 1, sm: 2, md: 4 };
 
 const EventRegistrationOptions: React.FC = () => (
-	<div className='ee-event-registration-options'>
+	<div className='ee-event-registration-options ee-edtr-section'>
 		<Heading as='h3'>{__('Registration Options')}</Heading>
 
 		<Grid columns={columns} spacing='1.25rem'>
