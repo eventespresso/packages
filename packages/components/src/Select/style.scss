@@ -2,13 +2,13 @@
 
 .ee-select-wrapper.ee-select-wrapper {
 	display: inline-flex;
+	max-height: calc(var(--ee-icon-button-size) + 4px);
 	width: auto;
 
 	.ee-select {
 		@include ee-base-inputs-styles;
 
 		appearance: none;
-		padding-right: var(--ee-padding-default);
 
 		&__inline-wrapper {
 			align-items: center;
@@ -18,18 +18,16 @@
 
 		&.ee-select {
 			line-height: 1.5;
-			padding: var(--ee-padding-micro) var(--ee-padding-default) var(--ee-padding-micro) var(--ee-padding-smaller);
+			padding: var(--ee-padding-micro) var(--ee-padding-bigger) var(--ee-padding-micro) var(--ee-padding-smaller);
 
 			[dir='rtl'] & {
 				padding: var(--ee-padding-micro) var(--ee-padding-smaller) var(--ee-padding-micro)
-					var(--ee-padding-default);
+					var(--ee-padding-bigger);
 			}
 		}
 	}
 
 	> div {
-		right: 1px;
-
 		svg {
 			color: var(--ee-border-color) !important;
 			height: 1.25rem !important;
