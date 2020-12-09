@@ -5,6 +5,10 @@
 		z-index: 2;
 	}
 
+	#postdivrich {
+		display: none;
+	}
+
 	#ed_toolbar {
 		box-sizing: content-box;
 	}
@@ -12,6 +16,10 @@
 	#ee-event-editor {
 		position: relative;
 		z-index: 1; // more info: https://github.com/eventespresso/barista/pull/437
+
+		.ee-edtr-section {
+			padding: var(--ee-padding-small) 0;
+		}
 	}
 
 	@include max782px {
