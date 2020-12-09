@@ -27,8 +27,9 @@
 			}
 
 			.ee-tabbable-text {
-				// font-size: var(--ee-font-size-small);
-				// todo: make the above only apply when input has no value (ie: says "click to edit")
+				&.ee-tabbable-text--no-text {
+					font-size: var(--ee-font-size-small);
+				}
 
 				&__inner_wrapper {
 					overflow: hidden;

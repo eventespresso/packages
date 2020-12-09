@@ -17,10 +17,19 @@ export const TabbableText: React.FC<TabbableTextProps> = ({
 	...props
 }) => {
 	let tooltip = props.tooltip || __('Click to edit…');
+
 	const text = props.text || tooltip;
+
+	// TODO use isDisabled prop from Tooltip in v1 in order to hide tooltip https://chakra-ui.com/docs/overlay/tooltip#disabled-tooltip
 	// don't display tooltip if it is being used as placeholder
 	tooltip = text === tooltip ? '' : tooltip;
-	const textClassName = classNames('ee-tabbable-text', className, isDisabled && 'is-disabled');
+
+	const textClassName = classNames(
+		'ee-tabbable-text',
+		!props.text && 'ee-tabbable-text--no-text',
+		isDisabled && 'ee-tabbable-text--is-disabled',
+		className
+	);
 
 	const onKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
