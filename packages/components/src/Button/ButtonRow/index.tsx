@@ -10,7 +10,7 @@ const ButtonRow: React.FC<ButtonRowProps> = ({
 	children,
 	fullWidth,
 	horizontalAlign = 'right',
-	justifyContent = 'center',
+	justifyContent,
 	noMargin,
 	topBordered,
 	...props
@@ -19,7 +19,7 @@ const ButtonRow: React.FC<ButtonRowProps> = ({
 		'ee-btn-row',
 		alignItems && `ee-btn-row--align-items-${alignItems}`,
 		`ee-btn-row--horizontal-align-${horizontalAlign}`,
-		`ee-btn-row--justify-content-${justifyContent}`,
+		justifyContent && `ee-btn-row--justify-content-${justifyContent}`,
 		fullWidth && 'ee-btn-row--full-width',
 		noMargin && 'ee-btn-row--no-margin',
 		topBordered && 'ee-btn-row--top-bordered',

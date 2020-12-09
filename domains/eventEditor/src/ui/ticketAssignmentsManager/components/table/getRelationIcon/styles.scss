@@ -33,7 +33,6 @@
 		width: 46px;
 	}
 
-
 	.no-assignments {
 		&.ee-legend-item dt,
 		.ee-tam-relation-btn {
@@ -71,17 +70,16 @@
 			svg {
 				fill: white;
 				position: relative;
-				top: -.1rem;
+				top: -0.1rem;
 			}
 		}
 
 		&.ee-legend-item dt {
 			svg {
-				top: -.06rem;
+				top: -0.06rem;
 			}
 		}
 	}
-
 
 	.old-assignment {
 		&.ee-legend-item dt,
@@ -100,13 +98,13 @@
 			svg {
 				fill: white;
 				position: relative;
-				top: -.1rem;
+				top: -0.1rem;
 			}
 		}
 
 		&.ee-legend-item dt {
 			svg {
-				top: -.05rem;
+				top: -0.05rem;
 			}
 		}
 	}
