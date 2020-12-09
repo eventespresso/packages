@@ -1,18 +1,22 @@
 import { getHooks } from '@eventespresso/ioc';
+import { MutationType, ApolloCache, Entity, EntityId } from '@eventespresso/data';
 import { Ticket } from '../apollo';
+import { TicketFormShape, TicketFormConfig } from '../forms';
 
-type Filters = {
-	'eventEditor.ticketForm.sections': [sections: Array<Record<string, unknown>>, ticket: Ticket];
+type MutationActionArgs<E extends Entity> = [
+	mutationType: MutationType,
+	input: Record<string, any>,
+	entity: E,
+	cache?: ApolloCache<any>
+];
+
+export type Actions = {
+	'eventEditor.ticket.mutation': MutationActionArgs<Ticket>;
 };
-type Actions = {
-	'eventEditor.ticketForm.sections': [sections: Array<Record<string, unknown>>, ticket: Ticket];
+export type Filters = {
+	'eventEditor.ticketForm.initalValues': [initialValues: TicketFormShape, ticket: Ticket];
+	'eventEditor.ticketForm.sections': [sections: TicketFormConfig['sections'], ticket: Ticket];
+	'eventEditor.ticketForm.mutationInput': [input: Record<string, any>, entityId?: EntityId];
 };
 
 export const hooks = getHooks<Actions, Filters>();
-
-hooks.addFilter('eventEditor.ticketForm.sections', 'ok.eventEditor.ticketForm.sections', (val1, val2) => {
-	console.log(val1, val2);
-	return val1;
-});
-
-hooks.applyFilters('eventEditor.ticketForm.sections', [], null);

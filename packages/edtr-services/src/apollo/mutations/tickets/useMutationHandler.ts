@@ -8,6 +8,7 @@ import useOnCreateTicket from './useOnCreateTicket';
 import useOnDeleteTicket from './useOnDeleteTicket';
 import useOnUpdateTicket from './useOnUpdateTicket';
 import useOptimisticResponse from './useOptimisticResponse';
+import { hooks } from '../../../ioc';
 import { DEFAULT_TICKET_LIST_DATA as DEFAULT_LIST_DATA, useTicketQueryOptions } from '../../queries';
 import type { MutationHandler, MutationUpdater } from '../types';
 import { TicketsList, Ticket } from '../../';
@@ -54,6 +55,8 @@ const useMutationHandler = (): MH => {
 					onDeleteTicket({ cache, tickets, ticket, deletePermanently: input?.deletePermanently });
 					break;
 			}
+
+			hooks.doAction('eventEditor.ticket.mutation', mutationType, input, entity, cache);
 		},
 		[onCreateTicket, onDeleteTicket, onUpdateTicket, options]
 	);
