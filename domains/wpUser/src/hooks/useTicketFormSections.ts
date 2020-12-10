@@ -27,6 +27,9 @@ const useTicketFormSections = (): void => {
 							label: __('Ticket Capability Requirement'),
 							fieldType: 'select',
 							options: capabilityOptions,
+							info: __(
+								'It enables you to set restrictions on who can purchase the ticket option. This is an excellent way to create "Member Only" type discounts to people visiting your site.'
+							),
 						},
 						{
 							name: 'customCapabilityRequired',
