@@ -4,6 +4,10 @@ import type { OptionsType } from '@eventespresso/adapters';
 // TODO read these options from DOM data
 const dynamiccapabilityOptions = [
 	{
+		value: 'read',
+		label: __('Read'),
+	},
+	{
 		value: 'access_s2member_level0',
 		label: __('Level 0'),
 	},
@@ -27,8 +31,8 @@ const dynamiccapabilityOptions = [
 
 export const capabilityOptions: OptionsType = [
 	{
-		value: 'read',
-		label: __('Read'),
+		value: 'none',
+		label: __('None'),
 	},
 	...dynamiccapabilityOptions,
 	{

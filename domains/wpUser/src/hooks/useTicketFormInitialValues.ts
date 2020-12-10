@@ -26,7 +26,7 @@ const useTicketFormInitialValues = (): void => {
 
 		hooks.addFilter(filterName, NAMESPACE, (initialValues, ticket) => {
 			// ticket the value from meta. It will be empty for new tickets
-			let capabilityRequired = getMetaValue<string>(ticket?.id, 'capabilityRequired', 'read');
+			let capabilityRequired = getMetaValue<string>(ticket?.id, 'capabilityRequired', 'none');
 			let customCapabilityRequired = '';
 
 			// if capabilityRequired has some unknown value

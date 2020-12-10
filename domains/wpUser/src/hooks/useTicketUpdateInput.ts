@@ -23,8 +23,8 @@ const useTicketUpdateInput = (): void => {
 						capabilityRequired: customCapabilityRequired,
 					};
 
-				case capabilityRequired === 'read':
-					// remove capability if 'read' is selected
+				case capabilityRequired === 'none':
+					// remove capability if 'none' is selected
 					return {
 						...input,
 						capabilityRequired: '',
