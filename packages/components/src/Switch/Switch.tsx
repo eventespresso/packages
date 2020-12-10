@@ -17,13 +17,13 @@ const Switch: React.FC<SwitchProps> = ({
 	checked,
 	defaultChecked,
 	disabled,
+	label,
 	onBlur,
 	onChange,
 	onChangeValue,
 	onFocus,
 	...props
 }) => {
-	const [innerChecked, setInnerChecked] = useState<boolean>(checked || defaultChecked);
 	const [hasFocus, setHasFocus] = useState<boolean>(false);
 	const ref = useRef<HTMLInputElement>();
 
@@ -38,7 +38,7 @@ const Switch: React.FC<SwitchProps> = ({
 	const className = classNames(
 		'ee-switch',
 		{
-			'ee-switch--checked': innerChecked,
+			'ee-switch--checked': checked,
 			'ee-switch--focus': hasFocus,
 			'ee-switch--disabled': disabled,
 		},
@@ -73,22 +73,25 @@ const Switch: React.FC<SwitchProps> = ({
 		checkbox.focus();
 		checkbox.click();
 
-		setInnerChecked(checkbox.checked);
-	}, [disabled]);
+		onChangeValue?.(checkbox.checked);
+	}, [disabled, onChangeValue]);
 
-	const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
-		if (isLeftKey(e)) {
-			setInnerChecked(false);
-		}
+	const onKeyDown = useCallback(
+		(e: React.KeyboardEvent<HTMLDivElement>) => {
+			if (isLeftKey(e)) {
+				onChangeValue?.(false);
+			}
 
-		if (isRightKey(e)) {
-			setInnerChecked(true);
-		}
-	}, []);
+			if (isRightKey(e)) {
+				onChangeValue?.(true);
+			}
+		},
+		[onChangeValue]
+	);
 
 	return (
 		<div
-			aria-checked={innerChecked}
+			aria-checked={checked}
 			className={className}
 			onClick={onClick}
 			onKeyDown={onKeyDown}
@@ -99,11 +102,15 @@ const Switch: React.FC<SwitchProps> = ({
 				<div className='ee-switch-track-check'>{icons.checked}</div>
 				<div className='ee-switch-track-x'>{icons.unchecked}</div>
 			</div>
+
 			<div className='ee-switch-thumb' />
 
 			<input
-				aria-checked={innerChecked}
-				checked={innerChecked}
+				aria-checked={checked}
+				aria-describedby={props['aria-describedby']}
+				aria-label={props['aria-label'] || label}
+				checked={checked}
+				defaultChecked={defaultChecked}
 				className='ee-switch__sr-only'
 				onBlur={handleBlur}
 				onChange={onChangeHandler}
