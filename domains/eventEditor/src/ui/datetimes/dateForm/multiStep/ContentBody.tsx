@@ -11,6 +11,7 @@ import DateFormSteps from './DateFormSteps';
 import useDataListener from './useDataListener';
 
 const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
+
 /**
  * This component is inside both RFF and TAM contexts, so we can use all of their features
  */

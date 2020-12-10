@@ -1,0 +1,28 @@
+@import '~@eventespresso/styles/src';
+
+.ee-form {
+	.ee-render-fields {
+		&--inline {
+			@include min600px {
+				display: flex;
+			}
+
+			.ee-input__wrapper {
+				width: 100%;
+
+				@include min600px {
+					margin-right: 3%;
+					width: 47%;
+				}
+
+				@include min850px {
+					width: 22%;
+				}
+
+				> div {
+					display: flex;
+				}
+			}
+		}
+	}
+}

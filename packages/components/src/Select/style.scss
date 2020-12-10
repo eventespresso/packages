@@ -9,6 +9,7 @@
 		@include ee-base-inputs-styles;
 
 		appearance: none;
+		max-width: none; // .wp-core-ui select override
 
 		&__inline-wrapper {
 			align-items: center;

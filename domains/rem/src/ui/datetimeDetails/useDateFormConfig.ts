@@ -79,6 +79,7 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 				{
 					name: 'length',
 					icon: ProfileOutlined,
+					inline: true,
 					title: __('Length'),
 					fields: [
 						{

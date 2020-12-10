@@ -31,7 +31,7 @@ const FormRenderer: React.FC<FormRendererProps> = (props) => {
 
 					{fields.length ? <RenderFields fields={fields} /> : null}
 
-					{/* May be formWrapper handles form submission */}
+					{/* Maybe formWrapper handles form submission */}
 					{submitButton ? (
 						<Submit
 							hasErrors={hasValidationErrors || hasSubmitErrors}
@@ -54,4 +54,5 @@ const FormRenderer: React.FC<FormRendererProps> = (props) => {
 
 	return formOutput;
 };
+
 export default FormRenderer;
