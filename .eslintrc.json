@@ -6,7 +6,7 @@
 	},
 	"extends": [
 		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@wordpress/eslint-plugin/i18n",
 		"plugin:jest/recommended",
 		"plugin:react/recommended",
@@ -35,6 +35,10 @@
 		"@typescript-eslint/no-empty-interface": "off",
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/no-use-before-define": "off",
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{ "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+		],
 		"comma-dangle": "off",
 		"ee-barista/no-circular-imports": "error",
 		"jest/valid-title": "off",
@@ -42,7 +46,7 @@
 		"jest/valid-describe": "off",
 		"no-case-declarations": "warn",
 		"no-prototype-builtins": "off",
-		"no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+		"no-unused-vars": "off",
 		"react-hooks/exhaustive-deps": "error",
 		"react-hooks/rules-of-hooks": "error",
 		"react/display-name": "off",

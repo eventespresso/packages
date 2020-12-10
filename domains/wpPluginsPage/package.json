@@ -12,7 +12,7 @@
 		"url": "git+https://github.com/eventespresso/barista.git"
 	},
 	"dependencies": {
-		"@typeform/embed": "^0.25.4",
+		"@typeform/embed": "^0.30.0",
 		"@wordpress/components": "^11.1.1",
 		"@wordpress/url": "^2.19.0"
 	},

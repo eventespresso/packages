@@ -102,7 +102,6 @@ const Switch: React.FC<SwitchProps> = ({
 			<div className='ee-switch-thumb' />
 
 			<input
-				{...props}
 				aria-checked={innerChecked}
 				checked={innerChecked}
 				className='ee-switch__sr-only'

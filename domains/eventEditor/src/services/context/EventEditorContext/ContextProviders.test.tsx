@@ -3,7 +3,6 @@ import { useApolloClient } from '@eventespresso/data';
 import { ApolloClient } from '@apollo/client';
 import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
-import { InvariantError } from 'ts-invariant';
 import '@testing-library/jest-dom/extend-expect';
 
 import { useStatus } from '@eventespresso/services';
@@ -12,10 +11,14 @@ import { actWait } from '@eventespresso/utils/src/test';
 
 describe('ContextProviders', () => {
 	it('checks for Apollo context without ContextProviders', async () => {
-		const { result } = renderHook(() => useApolloClient());
+		const {
+			result: { error },
+		} = renderHook(() => useApolloClient());
 		await actWait();
 
-		expect(result.error).toBeInstanceOf(InvariantError);
+		expect(error).toBeInstanceOf(Error);
+		expect(error.name).toEqual('Invariant Violation');
+		expect(typeof error.stack).toEqual('string');
 	});
 
 	it('checks for Apollo context with ContextProviders', async () => {
