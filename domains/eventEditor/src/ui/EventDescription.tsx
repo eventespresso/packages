@@ -12,7 +12,7 @@ const EventDescription: React.FC = () => {
 	return (
 		<div className='ee-event-description ee-edtr-section'>
 			<Heading as='h3'>{__('Event Description')}</Heading>
-			<AdvancedTextEditor onChange={console.log} defaultValue={event.description} />
+			<AdvancedTextEditor onChange={console.log} defaultValue={event?.description} />
 		</div>
 	);
 };

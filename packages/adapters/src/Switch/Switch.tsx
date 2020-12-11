@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { Switch as ChakraSwitch } from '@chakra-ui/core';
 
+import { isEnterKey } from '@eventespresso/utils';
 import { SwitchProps } from './types';
 
 const Switch: React.FC<SwitchProps> = ({ onChange, onChangeValue, ...props }) => {
@@ -12,7 +13,13 @@ const Switch: React.FC<SwitchProps> = ({ onChange, onChangeValue, ...props }) =>
 		[onChange, onChangeValue]
 	);
 
-	return <ChakraSwitch {...props} onChange={onChangeHandler} />;
+	const onKeyDown = useCallback<SwitchProps['onKeyDown']>((e) => {
+		if (isEnterKey(e)) {
+			e.preventDefault();
+		}
+	}, []);
+
+	return <ChakraSwitch {...props} onChange={onChangeHandler} onKeyDown={onKeyDown} />;
 };
 
 export default Switch;
