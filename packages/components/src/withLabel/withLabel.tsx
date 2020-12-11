@@ -7,7 +7,8 @@ import type { ForwardRefComponent } from '../types';
 import './style.scss';
 
 const withLabel = <P extends withLabelProps>(
-	WrappedComponent: React.ComponentType<P>
+	WrappedComponent: React.ComponentType<P>,
+	LabelTag: React.ElementType = 'label'
 ): ForwardRefComponent<P, typeof WrappedComponent> => {
 	type Ref = React.Ref<typeof WrappedComponent>;
 	type refProps = { forwardedRef: Ref };
@@ -30,9 +31,9 @@ const withLabel = <P extends withLabelProps>(
 
 		return label ? (
 			<div className={className}>
-				<label className='ee-input-label' htmlFor={id}>
+				<LabelTag className='ee-input-label' htmlFor={LabelTag === 'label' ? id : null}>
 					{label}
-				</label>
+				</LabelTag>
 				<WrappedComponent {...(props as P)} aria-label={label} id={id} ref={forwardedRef} />
 			</div>
 		) : (
