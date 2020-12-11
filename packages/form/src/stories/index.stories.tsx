@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
-import type { Story, Meta } from '@storybook/react/types-6-0';
+import React from 'react';
+import type { Meta } from '@storybook/react/types-6-0';
 
-import { TestForm } from '../../';
+import EspressoForm from '../EspressoForm';
+
 import config from './config';
 
 export default {
@@ -10,5 +11,5 @@ export default {
 } as Meta;
 
 export const Default = () => {
-	return <TestForm {...config} />;
+	return <EspressoForm {...config} />;
 };

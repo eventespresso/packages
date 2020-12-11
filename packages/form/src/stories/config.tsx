@@ -1,6 +1,5 @@
 import { __ } from '@eventespresso/i18n';
 import { CalendarOutlined } from '@eventespresso/icons';
-import { unitOptions } from '@eventespresso/dates';
 
 import { formConfig } from '../config';
 import type { FieldProps } from '../';
@@ -18,7 +17,7 @@ const ticketSalesFields: Array<FieldProps> = [
 		label: __('Unit'),
 		fieldType: 'select',
 		required: true,
-		options: unitOptions,
+		options: [],
 	},
 	{
 		name: 'position',
