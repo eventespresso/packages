@@ -59,6 +59,7 @@ export * from './Tag';
 export * from './text-input';
 export * from './TimezoneTimeInfo';
 export * from './Tooltip';
+export * from './withDebounce';
 export * from './withLabel';
 export * from './withTooltip';
 
