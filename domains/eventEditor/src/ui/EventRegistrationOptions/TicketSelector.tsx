@@ -19,7 +19,7 @@ const TicketSelector: React.FC = () => {
 	const isChecked = event?.displayTicketSelector;
 	const label = isChecked ? __('Ticket Selector Enabled') : __('Ticket Selector Disabled');
 
-	const input = <Switch aria-describedby={id} checked={isChecked} onChangeValue={onChangeValue} />;
+	const input = <Switch aria-describedby={id} isChecked={isChecked} onChangeValue={onChangeValue} />;
 
 	return <GridItem id={id} input={input} label={label} />;
 };

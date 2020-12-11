@@ -19,7 +19,7 @@ const Donations: React.FC = () => {
 	const heading = isChecked ? __('Donations Enabled') : __('Donations Disabled');
 	const id = 'ee-event-donations';
 
-	const input = <Switch aria-describedby={id} checked={isChecked} onChangeValue={onChange} />;
+	const input = <Switch aria-describedby={id} isChecked={isChecked} onChangeValue={onChange} />;
 
 	return <GridItem id={id} input={input} label={heading} />;
 };
