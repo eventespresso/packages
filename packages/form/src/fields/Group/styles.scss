@@ -6,10 +6,18 @@
 		flex-wrap: wrap;
 
 		> [class*='ee-col--'] {
-			padding: var(--ee-padding-smaller);
+			padding: var(--ee-padding-smaller) var(--ee-padding-smaller) 0 var(--ee-padding-smaller);
+
+			&:first-child {
+				padding-left: 0;
+			}
 		}
 
 		.ee-col {
+			.ee-form-item {
+				padding-bottom: 0;
+			}
+
 			&--4 {
 				.ee-form__label {
 					display: block;
@@ -22,7 +30,21 @@
 				}
 
 				flex: 0 0 auto;
-				width: 25%;
+				width: 100%;
+
+				@include min782px {
+					width: 50%;
+
+					@include max960px {
+						&:nth-child(3) {
+							padding-left: 0;
+						}
+					}
+				}
+
+				@include min960px {
+					width: 25%;
+				}
 			}
 		}
 	}

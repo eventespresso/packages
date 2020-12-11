@@ -156,6 +156,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							conditions: [{ field: 'isShared', compare: '=', value: true }],
 						},
 						{
+							columns: 4,
 							name: 'ticketSalesStart',
 							label: '',
 							fieldType: 'group',
@@ -176,6 +177,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							conditions: [{ field: 'isShared', compare: '=', value: true }],
 						},
 						{
+							columns: 4,
 							name: 'ticketSalesEnd',
 							label: '',
 							fieldType: 'group',

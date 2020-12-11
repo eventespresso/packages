@@ -20,8 +20,6 @@ const Group: React.FC<FieldProps> = ({
 }) => {
 	const visible = useShouldBeVisible(conditions, groupName);
 
-	console.log({ columns });
-
 	if (subFields.length && visible) {
 		// className for the group
 		const className = formControlProps?.className;
