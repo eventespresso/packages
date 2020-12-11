@@ -8,18 +8,22 @@ const TicketSelector: React.FC = () => {
 	const event = useEvent();
 	const { updateEntity: updateEvent } = useEventMutator(event?.id);
 
-	const onChangeValue = useCallback<SwitchProps['onChangeValue']>(
-		(displayTicketSelector) => {
-			updateEvent({ displayTicketSelector });
-		},
-		[updateEvent]
-	);
-
 	const id = 'ee-event-registration-ticket-selector';
 	const isChecked = event?.displayTicketSelector;
 	const label = isChecked ? __('Ticket Selector Enabled') : __('Ticket Selector Disabled');
 
-	const input = <Switch aria-describedby={id} isChecked={isChecked} onChangeValue={onChangeValue} />;
+	const onChangeValue = useCallback<SwitchProps['onChangeValue']>(
+		(displayTicketSelector) => {
+			if (isChecked !== displayTicketSelector) {
+				updateEvent({ displayTicketSelector });
+			}
+		},
+		[isChecked, updateEvent]
+	);
+
+	const input = (
+		<Switch aria-describedby={id} isChecked={isChecked} onChangeValue={onChangeValue} debounceDelay={5000} />
+	);
 
 	return <GridItem id={id} input={input} label={label} />;
 };

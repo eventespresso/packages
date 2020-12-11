@@ -8,18 +8,20 @@ const Donations: React.FC = () => {
 	const event = useEvent();
 	const { updateEntity: updateEvent } = useEventMutator(event?.id);
 
-	const onChange = useCallback<SwitchProps['onChangeValue']>(
-		(allowDonations) => {
-			updateEvent({ allowDonations });
-		},
-		[updateEvent]
-	);
-
 	const isChecked = event?.allowDonations;
 	const heading = isChecked ? __('Donations Enabled') : __('Donations Disabled');
 	const id = 'ee-event-donations';
 
-	const input = <Switch aria-describedby={id} isChecked={isChecked} onChangeValue={onChange} />;
+	const onChange = useCallback<SwitchProps['onChangeValue']>(
+		(allowDonations) => {
+			if (isChecked !== allowDonations) {
+				updateEvent({ allowDonations });
+			}
+		},
+		[isChecked, updateEvent]
+	);
+
+	const input = <Switch aria-describedby={id} isChecked={isChecked} onChangeValue={onChange} debounceDelay={5000} />;
 
 	return <GridItem id={id} input={input} label={heading} />;
 };
