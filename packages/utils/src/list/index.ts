@@ -1,3 +1,5 @@
+import { pluck } from 'ramda';
+
 import type { OptionsType } from '@eventespresso/adapters';
 import { AnyObject } from '../types';
 
@@ -23,4 +25,14 @@ export const objectToSelectOptions = (object: AnyObject, prependEmpty?: boolean)
 	}
 
 	return options;
+};
+
+/**
+ * Converts select options to a flat array of option values
+ */
+export const getOptionValues = (allOptions: OptionsType): Array<string> => {
+	return allOptions
+		.map(({ options, value }) => (options ? pluck('value', options) : [value]))
+		.flat()
+		.filter(Boolean);
 };

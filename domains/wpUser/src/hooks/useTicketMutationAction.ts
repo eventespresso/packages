@@ -24,7 +24,6 @@ const useTicketMutationAction = (): void => {
 					if (typeof input?.capabilityRequired === 'string' && !hasTempId(ticket)) {
 						setMetaValue(ticket?.id, 'capabilityRequired', input.capabilityRequired);
 					}
-
 					break;
 			}
 		});

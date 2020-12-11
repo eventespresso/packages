@@ -5,7 +5,7 @@ import { hooks, Filters } from '@eventespresso/edtr-services';
 import { Groups } from '@eventespresso/icons';
 
 import { NAMESPACE } from '../constants';
-import { capabilityOptions } from './capabilityOptions';
+import useCapabilityOptions from './useCapabilityOptions';
 
 const filterName: keyof Filters = 'eventEditor.ticketForm.sections';
 
@@ -13,6 +13,7 @@ const filterName: keyof Filters = 'eventEditor.ticketForm.sections';
  * A custom hook to to add WP User section to Ticket edit form
  */
 const useTicketFormSections = (): void => {
+	const capabilityOptions = useCapabilityOptions();
 	useEffect(() => {
 		hooks.addFilter(filterName, NAMESPACE, (sections) => {
 			return [
@@ -53,6 +54,7 @@ const useTicketFormSections = (): void => {
 
 		// housekeeping
 		return () => hooks.removeFilter(filterName, NAMESPACE);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 };
 

@@ -1,24 +1,21 @@
 import { useEffect } from 'react';
-import { pluck } from 'ramda';
 
 import { hooks, useTicketsMeta, Filters } from '@eventespresso/edtr-services';
+import { getOptionValues } from '@eventespresso/utils';
+import { useMemoStringify } from '@eventespresso/hooks';
 
 import { NAMESPACE } from '../constants';
-import { capabilityOptions } from './capabilityOptions';
+import useCapabilityOptions from './useCapabilityOptions';
 
 const filterName: keyof Filters = 'eventEditor.ticketForm.initalValues';
-
-// Convert select options to a flat array of option values
-const optionValues = capabilityOptions
-	.map(({ options, value }) => (options ? pluck('value', options) : [value]))
-	.flat()
-	.filter(Boolean);
 
 /**
  * A custom hook to update initial values of ticket edit form
  */
 const useTicketFormInitialValues = (): void => {
 	const { getMetaValue } = useTicketsMeta();
+	const capabilityOptions = useCapabilityOptions();
+	const optionValues = useMemoStringify(getOptionValues(capabilityOptions));
 
 	useEffect(() => {
 		// make sure to remove the previously registered hook
@@ -45,7 +42,7 @@ const useTicketFormInitialValues = (): void => {
 
 		// housekeeping
 		return () => hooks.removeFilter(filterName, NAMESPACE);
-	}, [getMetaValue]);
+	}, [getMetaValue, optionValues]);
 };
 
 export default useTicketFormInitialValues;
