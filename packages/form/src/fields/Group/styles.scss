@@ -1,0 +1,29 @@
+@import '~@eventespresso/styles/src';
+
+.ee-form.ee-form {
+	.ee-row {
+		display: flex;
+		flex-wrap: wrap;
+
+		> [class*='ee-col--'] {
+			padding: var(--ee-padding-smaller);
+		}
+
+		.ee-col {
+			&--4 {
+				.ee-form__label {
+					display: block;
+				}
+
+				.ee-form-item {
+					> div {
+						width: 100%;
+					}
+				}
+
+				flex: 0 0 auto;
+				width: 25%;
+			}
+		}
+	}
+}

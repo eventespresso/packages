@@ -3,16 +3,16 @@
 		display: flex;
 		align-items: center;
 
-		.field-group-label {
+		.ee-field-group__label {
 			font-weight: 600;
 			font-size: 1.2em;
 			line-height: 1.4em;
 			flex-basis: 15%;
 		}
 
-		.field-group-items {
+		.ee-field-group__items {
 			flex-basis: 85%;
-			.field-group-item {
+			.ee-field-group__item {
 				flex-basis: 33% !important;
 			}
 		}

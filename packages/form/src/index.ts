@@ -8,8 +8,6 @@ export { FormSpy, useForm, useFormState } from 'react-final-form';
 
 export { default as setFieldData } from 'final-form-set-field-data';
 
-export { default as TestForm } from './TestForm';
-
 export * from './types';
 
 export * from './utils';

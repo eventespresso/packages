@@ -1,9 +1,7 @@
 import React from 'react';
 import type { Meta } from '@storybook/react/types-6-0';
 
-import EspressoForm from '../EspressoForm';
-
-import config from './config';
+import TestForm from './TestForm';
 
 export default {
 	argTypes: {},
@@ -11,5 +9,5 @@ export default {
 } as Meta;
 
 export const Default = () => {
-	return <EspressoForm {...config} />;
+	return <TestForm />;
 };

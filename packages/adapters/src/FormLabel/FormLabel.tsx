@@ -5,7 +5,7 @@ import type { FormLabelProps } from './types';
 
 export const FormLabel: React.FC<FormLabelProps> = ({ children, htmlFor, as }) => {
 	return (
-		<ChakraFormLabel htmlFor={htmlFor} as={as}>
+		<ChakraFormLabel as={as} className='ee-form__label' htmlFor={htmlFor}>
 			{children}
 		</ChakraFormLabel>
 	);

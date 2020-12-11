@@ -1,4 +1,4 @@
-@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+@import '~@eventespresso/styles/src';
 
 .ee-form {
 	.form-wrapper {
@@ -91,7 +91,7 @@
 		}
 	}
 
-	.field-group-items {
+	.ee-field-group__items {
 		display: flex;
 		flex-wrap: wrap;
 		width: 100%;
@@ -125,7 +125,8 @@
 		.section-body {
 			flex: 0 75%;
 			position: relative;
-			.field-group-item {
+
+			.ee-field-group__item {
 				flex: 0 50%;
 				padding: 0 var(--ee-padding-tiny);
 			}
@@ -135,6 +136,7 @@
 	@media only screen and (max-width: 782px) {
 		.ee-form-section-sidebar {
 			flex: 0 100%;
+
 			h3 {
 				margin: 0 0 var(--ee-margin-default);
 			}
@@ -152,7 +154,7 @@
 			.ee-form-item-pair {
 				width: 100%;
 			}
-			.field-group-item {
+			.ee-field-group__item {
 				flex: 0 100%;
 			}
 		}
