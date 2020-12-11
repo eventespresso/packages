@@ -28,3 +28,4 @@ export * from './Textarea';
 export * from './TextInput';
 export * from './Tooltip';
 export * from './theme';
+export * from './types';
