@@ -89,7 +89,8 @@ cd $CLONE_DIR
 
 # clean the assets path.
 echo "Clean up assets path..."
-rm -rf $ASSETS_PATH/*
+rm -rf $ASSETS_PATH/static/*
+rm -f $ASSETS_PATH/asset-manifest.json
 
 # Make sure the directory exists
 mkdir -p $ASSETS_PATH
