@@ -26,7 +26,7 @@ const useCapabilityOptions = (): OptionsType => {
 		 * 	},
 		 * ];
 		 */
-		const dynamiccapabilityOptions = Object.entries(domCapabilityOptions).map(([optgroup, options]) => {
+		const dynamicCapabilityOptions = Object.entries(domCapabilityOptions).map(([optgroup, options]) => {
 			return {
 				label: optgroup,
 				options: Object.entries(options).map(([value, label]) => ({ value, label })),
@@ -34,7 +34,7 @@ const useCapabilityOptions = (): OptionsType => {
 		});
 
 		return [
-			...dynamiccapabilityOptions,
+			...dynamicCapabilityOptions,
 			{
 				label: __('Custom'),
 				options: [
