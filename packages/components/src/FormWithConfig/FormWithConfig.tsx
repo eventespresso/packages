@@ -6,7 +6,7 @@ import type { AnyObject } from '@eventespresso/utils';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 const FormWithConfig = <FormValues extends AnyObject>(props: EspressoFormProps<FormValues>): JSX.Element => {
-	const { dateTimeFormats, locale } = useConfig();
+	const { dateTimeFormats = {}, locale } = useConfig();
 
 	const config = useMemoStringify<FormConfig>({ ...dateTimeFormats, locale: locale.user });
 

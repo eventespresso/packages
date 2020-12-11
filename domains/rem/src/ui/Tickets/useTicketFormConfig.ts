@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { pick } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
-import { intervalsToOptions, DATE_INTERVALS, setDefaultTime } from '@eventespresso/dates';
+import { setDefaultTime, unitOptions } from '@eventespresso/dates';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
@@ -13,18 +13,13 @@ import { validate } from './formValidation';
 import { TICKET_FIELDS_TO_USE } from '../../constants';
 
 import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
-import type { Intervals } from '@eventespresso/dates';
 import type { RemTicket } from '../../data';
 
 type TicketFormConfig = EspressoFormProps<RemTicket>;
 
-const unitOptions = intervalsToOptions(
-	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS)
-);
-
 const ticketSalesFields: Array<FieldProps> = [
 	{
-		label: __('Unit value'),
+		label: __('Duration'),
 		name: 'unitValue',
 		fieldType: 'number',
 		required: true,

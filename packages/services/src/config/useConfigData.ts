@@ -5,6 +5,7 @@ import { Currency, DateTimeFormats, Locale, LocaleProps, SiteUrl, Timezone, Conf
 export const useConfigData = (): ConfigDataProps => {
 	const api = useMemoStringify(window?.eventEspressoData?.api);
 	const config = useMemoStringify(window?.eventEspressoData?.config);
+
 	return useMemo(
 		() => ({
 			brandName: config?.coreDomain?.brandName || 'Event Espresso',
