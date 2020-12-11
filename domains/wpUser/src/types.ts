@@ -9,6 +9,6 @@ export type CapabilityOptions = {
 };
 
 export interface WpUserData {
-	capabilityOptions: CapabilityOptions;
+	capabilityOptions?: CapabilityOptions;
 	ticketsMeta?: TicketsMeta;
 }
