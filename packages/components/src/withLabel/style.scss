@@ -45,7 +45,9 @@
 		&--top-center,
 		&--top-right {
 			flex-direction: column;
-			label {
+
+			label,
+			legend {
 				margin: 0 var(--ee-margin-micro) var(--ee-margin-micro);
 			}
 		}
