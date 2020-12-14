@@ -99,6 +99,7 @@ export interface RepeatableRendererProps<FieldValue = any>
 export interface FieldProps<FormValues = AnyObject, FieldValue = any>
 	extends AdditionalFieldProps<FormValues>,
 		RFFFieldProps<FieldValue, FieldRendererProps> {
+	columns?: 2 | 3 | 4;
 	name: string & keyof FormValues;
 }
 

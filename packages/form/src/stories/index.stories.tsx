@@ -8,6 +8,14 @@ export default {
 	title: 'Components/Form',
 } as Meta;
 
-export const Default = () => {
-	return <TestForm />;
+export const GrouptWith2Columns = () => {
+	return <TestForm columns={2} />;
+};
+
+export const GrouptWith3Columns = () => {
+	return <TestForm columns={3} />;
+};
+
+export const GrouptWith4Columns = () => {
+	return <TestForm columns={4} />;
 };

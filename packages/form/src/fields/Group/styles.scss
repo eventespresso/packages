@@ -10,24 +10,40 @@
 		}
 
 		.ee-col {
+			flex: 0 0 auto;
+			width: 100%;
+
 			.ee-form-item {
 				padding-bottom: 0;
 			}
 
+			.ee-form__label {
+				display: block;
+			}
+
+			.ee-form-item {
+				> div {
+					width: 100%;
+				}
+			}
+
+			&--2 {
+				@include min782px {
+					width: 50%;
+				}
+			}
+
+			&--3 {
+				@include min782px {
+					width: 50%;
+				}
+
+				@include min960px {
+					width: calc(100% / 3);
+				}
+			}
+
 			&--4 {
-				.ee-form__label {
-					display: block;
-				}
-
-				.ee-form-item {
-					> div {
-						width: 100%;
-					}
-				}
-
-				flex: 0 0 auto;
-				width: 100%;
-
 				@include min782px {
 					width: 50%;
 				}

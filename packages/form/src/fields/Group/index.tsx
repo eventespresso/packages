@@ -24,7 +24,7 @@ const Group: React.FC<FieldProps> = ({
 		// className for the group
 		const className = formControlProps?.className;
 		const groupClassName = classNames('ee-field-group__items ee-row', className);
-		const itemClassName = classNames('ee-field-group__item', columns && `ee-col--${columns}`);
+		const itemClassName = classNames('ee-field-group__item', columns && `ee-col ee-col--${columns}`);
 
 		const wrapperClassName = classNames('ee-field-group__wrapper', {
 			[`${className}-wrapper`]: className,
