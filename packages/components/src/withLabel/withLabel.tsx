@@ -1,19 +1,20 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import type { AnyObject } from '@eventespresso/utils';
 import { LabelPosition } from './types';
-import type { withLabelProps } from './types';
+import type { WithLabelProps } from './types';
 import type { ForwardRefComponent } from '../types';
 import './style.scss';
 
-const withLabel = <P extends withLabelProps>(
+const withLabel = <P extends AnyObject>(
 	WrappedComponent: React.ComponentType<P>,
 	LabelTag: React.ElementType = 'label'
-): ForwardRefComponent<P, typeof WrappedComponent> => {
+): ForwardRefComponent<P & WithLabelProps, typeof WrappedComponent> => {
 	type Ref = React.Ref<typeof WrappedComponent>;
-	type refProps = { forwardedRef: Ref };
+	type RefProps = { forwardedRef: Ref };
 
-	const WithLabel: React.FC<P & refProps> = ({
+	const WithLabel: React.FC<P & WithLabelProps & RefProps> = ({
 		forwardedRef,
 		label,
 		labelClassName,

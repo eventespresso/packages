@@ -4,6 +4,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import type { InternalDebounceProps, withDebounceProps } from './types';
 import type { ForwardRefComponent } from '../types';
 import { useIfMounted, usePrevious } from '@eventespresso/hooks';
+import { AnyObject, noop } from '@eventespresso/utils';
 
 /**
  * HOC to delay calling of `onChangeValue` passed to the `WrappedComponent`
@@ -11,12 +12,12 @@ import { useIfMounted, usePrevious } from '@eventespresso/hooks';
  * @param WrappedComponent The component to debounce the onchange handler for
  * @param isCheckbox Whether the component of a checkbox/switch
  */
-const withDebounce = <P extends withDebounceProps>(
+const withDebounce = <P extends AnyObject>(
 	WrappedComponent: React.ComponentType<P>,
 	isCheckbox = false
-): ForwardRefComponent<P, typeof WrappedComponent> => {
+): ForwardRefComponent<P & withDebounceProps, typeof WrappedComponent> => {
 	type Ref = React.Ref<typeof WrappedComponent>;
-	type RefProps = { forwardedRef: Ref } & InternalDebounceProps;
+	type RefProps = { forwardedRef: Ref } & withDebounceProps & InternalDebounceProps;
 
 	const WithDebounce: React.FC<P & RefProps> = ({
 		forwardedRef,
@@ -26,11 +27,14 @@ const withDebounce = <P extends withDebounceProps>(
 		value,
 		...props
 	}) => {
+		// to use debounce, debounceDelay and onChangeValue should be passed
+		const shouldDebounce = debounceDelay && typeof onChangeValue !== 'undefined';
+
 		const fieldValue = isCheckbox ? isChecked : value;
 
 		const [internalValue, setInternalValue] = useState(fieldValue);
 
-		const { callback } = useDebouncedCallback(onChangeValue, debounceDelay); // delay in MS
+		const { callback } = useDebouncedCallback(onChangeValue || noop, debounceDelay); // delay in MS
 
 		const onChangeHandler = useCallback<typeof onChangeValue>(
 			(newValue, event) => {
@@ -48,19 +52,22 @@ const withDebounce = <P extends withDebounceProps>(
 		useEffect(() => {
 			// update value if updated from consumer
 			ifMounted(() => {
-				if (fieldValue !== previousValue) {
+				if (shouldDebounce && fieldValue !== previousValue) {
 					setInternalValue(fieldValue);
 				}
 			});
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, [fieldValue]);
 
+		// if not debouncing, pass the external field value directly
+		const valueToPass = shouldDebounce ? internalValue : fieldValue;
+
 		return (
 			<WrappedComponent
 				{...(props as P)}
-				value={internalValue}
-				isChecked={isCheckbox ? internalValue : undefined}
-				onChangeValue={onChangeHandler}
+				value={valueToPass}
+				isChecked={isCheckbox ? valueToPass : undefined}
+				onChangeValue={shouldDebounce ? onChangeHandler : onChangeValue}
 				ref={forwardedRef}
 			/>
 		);

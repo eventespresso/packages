@@ -1,20 +1,21 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import type { AnyObject } from '@eventespresso/utils';
 import { Tooltip } from '../';
 import type { TooltipProps } from '@eventespresso/adapters';
-import type { withTooltipProps } from './types';
+import type { WithTooltipProps } from './types';
 import type { ForwardRefComponent } from '../types';
 
 import './style.scss';
 
-const withTooltip = <P extends withTooltipProps>(
-	WrappedComponent: React.ComponentType<P>
-): ForwardRefComponent<P, typeof WrappedComponent> => {
+const withTooltip = <P extends AnyObject>(
+	WrappedComponent: React.ComponentType<P & WithTooltipProps>
+): ForwardRefComponent<P & WithTooltipProps, typeof WrappedComponent> => {
 	// Define ref type
 	type Ref = React.Ref<typeof WrappedComponent>;
-	type refProps = { forwardedRef: Ref };
-	const WithTooltip: React.ComponentType<P & refProps> = ({
+	type RefProps = { forwardedRef: Ref };
+	const WithTooltip: React.ComponentType<P & WithTooltipProps & RefProps> = ({
 		forwardedRef,
 		showTooltipOnMobile = false,
 		tooltip,
@@ -39,6 +40,7 @@ const withTooltip = <P extends withTooltipProps>(
 			toolTipped = (
 				<div className='ee-mobile-help-text__btn-wrap'>
 					<WrappedComponent
+						aria-label={tooltip}
 						{...(props as P)}
 						ref={forwardedRef}
 						tooltip={tooltip}
@@ -50,8 +52,8 @@ const withTooltip = <P extends withTooltipProps>(
 		} else {
 			toolTipped = (
 				<WrappedComponent
-					{...(props as P)}
 					aria-label={tooltip}
+					{...(props as P)}
 					ref={forwardedRef}
 					tooltip={tooltip}
 					tooltipProps={tooltipProps}

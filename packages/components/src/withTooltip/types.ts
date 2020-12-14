@@ -1,6 +1,6 @@
 import type { TooltipProps } from '@eventespresso/adapters';
 
-export interface withTooltipProps {
+export interface WithTooltipProps {
 	buttonText?: React.ReactNode;
 	showTooltipOnMobile?: boolean;
 	tooltip?: string;

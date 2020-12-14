@@ -14,7 +14,7 @@ export enum LabelPosition {
 	LEFT_TOP = 'left-top',
 }
 
-export interface withLabelProps {
+export interface WithLabelProps {
 	id?: string;
 	label?: string;
 	labelClassName?: string;
