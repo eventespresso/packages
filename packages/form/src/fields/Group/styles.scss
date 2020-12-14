@@ -6,11 +6,7 @@
 		flex-wrap: wrap;
 
 		> [class*='ee-col--'] {
-			padding: var(--ee-padding-smaller) var(--ee-padding-smaller) 0 var(--ee-padding-smaller);
-
-			&:first-child {
-				padding-left: 0;
-			}
+			padding: var(--ee-padding-smaller) var(--ee-padding-smaller) 0 0;
 		}
 
 		.ee-col {
@@ -34,12 +30,6 @@
 
 				@include min782px {
 					width: 50%;
-
-					@include max960px {
-						&:nth-child(3) {
-							padding-left: 0;
-						}
-					}
 				}
 
 				@include min960px {

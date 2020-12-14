@@ -35,7 +35,7 @@ const ticketSalesFields: Array<FieldProps> = [
 	},
 	{
 		name: 'startOrEnd',
-		label: __('Start/ end'),
+		label: __('Target Date'),
 		fieldType: 'select',
 		required: true,
 		options: [

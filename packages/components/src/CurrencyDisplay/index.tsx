@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { __ } from '@eventespresso/i18n';
 import { useConfig, useMoneyDisplay } from '@eventespresso/services';
 import { getCurrencySignCharacterCountClassName, getCurrencySignPositionClassName } from '@eventespresso/utils';
 import { CurrencySign } from '../';
@@ -15,23 +16,24 @@ export const CurrencyDisplay: React.FC<CurrencyDisplayProps> = ({ value, vertica
 	const currency = config?.currency;
 	const sign = currency?.sign;
 	const signB4 = currency?.signB4;
+	const signOutput = value ? <CurrencySign sign={sign} /> : __('free');
 
 	const characters = getCurrencySignCharacterCountClassName(sign);
 	const position = getCurrencySignPositionClassName(signB4);
 
 	const className = classNames(
-		props.className,
+		'ee-currency-display',
 		characters,
 		position,
 		vertical && 'ee-currency-display--vertical',
-		'ee-currency-display'
+		props.className
 	);
 
 	return (
 		<div className={className}>
-			{signB4 && <CurrencySign sign={sign} />}
+			{signB4 && signOutput}
 			<span>{formatAmount(value)}</span>
-			{!signB4 && <CurrencySign sign={sign} />}
+			{!signB4 && signOutput}
 		</div>
 	);
 };
