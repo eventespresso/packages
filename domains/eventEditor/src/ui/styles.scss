@@ -10,6 +10,7 @@
 	}
 
 	#ee-event-editor {
+		font-family: var(--ee-admin-font-family);
 		position: relative;
 		z-index: 1; // more info: https://github.com/eventespresso/barista/pull/437
 
