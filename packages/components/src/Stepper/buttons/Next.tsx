@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, ButtonProps, ButtonType } from '../../../';
+import { Button, ButtonType } from '../../../';
 import { ChevronDoubleRight, ChevronRight } from '@eventespresso/icons';
 
-interface Props extends ButtonProps {
+interface Props extends React.ComponentProps<typeof Button> {
 	skippable?: boolean;
 }
 

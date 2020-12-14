@@ -9,15 +9,13 @@ import type { ButtonProps } from './types';
 
 import './style.scss';
 
-type BtnType = React.ComponentType<ButtonProps>;
-
 /**
  * Button wrapper for adding styles
  *
  * forwardRef to be able to accept
  * onMouseEnter, onMouseLeave, onFocus, onClick events from parent
  */
-const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(
 		{
 			active,
@@ -62,6 +60,4 @@ const Button = forwardRef<typeof ButtonAdapter, ButtonProps>(
 	}
 );
 
-// Since withLabel and withTooltip accept only a component type
-// Lets cast it
-export default withLabel(withTooltip(Button as BtnType) as BtnType);
+export default withLabel(withTooltip(Button));

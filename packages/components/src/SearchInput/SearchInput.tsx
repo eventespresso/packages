@@ -2,10 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { TextInput, TextInputProps } from '@eventespresso/adapters';
-import { withLabel, withLabelProps } from '../withLabel';
-import type { withTooltipProps } from '../withTooltip';
+import { withLabel } from '../withLabel';
 
-interface SearchInputProps extends TextInputProps, Partial<withLabelProps>, Partial<withTooltipProps> {
+interface SearchInputProps extends TextInputProps {
 	searchText: string;
 	setSearchText: (text?: string) => void;
 }

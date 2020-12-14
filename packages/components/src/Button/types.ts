@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { Size, withLabelProps, withTooltipProps } from '../../';
+import type { Size } from '../../';
 import type {
 	ButtonProps as ButtonAdapterProps,
 	ButtonGroupProps as ButtonGroupAdapterProps,
@@ -15,11 +15,7 @@ export enum ButtonType {
 	SECONDARY = 'secondary',
 }
 
-export interface ButtonProps
-	extends Omit<ButtonAdapterProps, 'size'>,
-		Size,
-		Partial<withLabelProps>,
-		Partial<withTooltipProps> {
+export interface ButtonProps extends Omit<ButtonAdapterProps, 'size'>, Size {
 	active?: boolean;
 	buttonType?: ButtonType | 'accent' | 'default' | 'minimal' | 'primary' | 'secondary';
 	className?: string;
@@ -31,7 +27,7 @@ export interface ButtonProps
 }
 export interface ButtonGroupProps extends Omit<ButtonGroupAdapterProps, 'size'>, Size {}
 
-export interface LinkProps extends Partial<withTooltipProps> {
+export interface LinkProps extends Omit<ButtonAdapterProps, 'icon'> {
 	target?: '_blank' | '_parent' | '_self' | '_top';
 	className?: string;
 	href: string;

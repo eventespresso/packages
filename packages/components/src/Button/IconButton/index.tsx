@@ -9,16 +9,14 @@ import type { IconButtonProps } from './types';
 
 import './style.scss';
 
-type BtnType = React.ComponentType<IconButtonProps>;
-
 export const iconBtnClassName = 'ee-btn-base ee-icon-button';
 
-const IconButton = forwardRef<typeof IconButtonAdapter, IconButtonProps>(
+const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 	(
 		{ borderless, buttonType = ButtonType.DEFAULT, color, icon, noMargin, onClick, size = 'default', ...props },
 		ref
 	) => {
-		const ariaLabel = props['aria-label'] || props.label || props.tooltip;
+		const ariaLabel = props['aria-label'];
 		const className = classNames(
 			iconBtnClassName,
 			props.className,
@@ -43,4 +41,4 @@ const IconButton = forwardRef<typeof IconButtonAdapter, IconButtonProps>(
 	}
 );
 
-export default withLabel(withTooltip(IconButton as BtnType) as BtnType);
+export default withLabel(withTooltip(IconButton));

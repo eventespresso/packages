@@ -3,7 +3,6 @@ import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Groups } from '@eventespresso/icons';
 import { Link } from './';
-import type { LinkProps } from '../types';
 
 export default {
 	argTypes: {},
@@ -11,7 +10,7 @@ export default {
 	title: 'Components/Button/Link',
 } as Meta;
 
-type LinkStory = Story<LinkProps>;
+type LinkStory = Story<React.ComponentProps<typeof Link>>;
 
 const Template: LinkStory = (args) => (
 	<Link {...args} href='https://eventespresso.com/'>
