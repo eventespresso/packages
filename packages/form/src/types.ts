@@ -133,7 +133,7 @@ export interface SectionProps<FormValues = AnyObject> {
 	icon?: React.ComponentType<{ className: string }>;
 	inline?: boolean;
 	name: string;
-	title?: string | React.ReactNode;
+	title?: React.ReactNode;
 }
 
 type FieldList<FormValues = AnyObject> = Array<FieldProps<FormValues>>;
