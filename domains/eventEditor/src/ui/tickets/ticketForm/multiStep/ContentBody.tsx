@@ -42,7 +42,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 0 && (
 							<>
 								{children}
-								<ButtonRow>
+								<ButtonRow fullWidth>
 									<Next
 										buttonText={__('Set ticket prices')}
 										buttonType={ButtonType.SECONDARY}
@@ -64,7 +64,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 1 && (
 							<>
 								<TicketPriceCalculator context='editTicketForm' />
-								<ButtonRow>
+								<ButtonRow fullWidth>
 									<Previous onClick={prev} />
 									<Next
 										buttonText={__('Save and assign dates')}
@@ -78,7 +78,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 2 && (
 							<>
 								<TicketAssignmentsManager />
-								<ButtonRow>
+								<ButtonRow fullWidth>
 									<Previous
 										buttonText={__('Ticket details')}
 										// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop

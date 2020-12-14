@@ -29,7 +29,7 @@ const ContentFooter: React.FC<BaseProps> = ({ onClose, onSubmit }) => {
 	}
 
 	return (
-		<ButtonRow horizontalAlign='right' topBordered>
+		<ButtonRow fullWidth horizontalAlign='right' topBordered>
 			<CancelButton onClick={onClose} />
 			{
 				// hide previous on first step

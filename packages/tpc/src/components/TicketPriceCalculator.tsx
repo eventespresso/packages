@@ -41,7 +41,7 @@ const TicketPriceCalculator: React.FC<TicketPriceCalculatorProps> = ({ context }
 			<Table prices={dataState.prices} />
 			<DefaultTaxesInfo />
 
-			<ButtonRow>
+			<ButtonRow fullWidth>
 				<DebugInfo data={dataState} />
 				<DefaultPricesInfo />
 				<TaxesButtons />

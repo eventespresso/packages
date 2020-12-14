@@ -34,7 +34,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 0 && (
 							<>
 								{children}
-								<ButtonRow>
+								<ButtonRow fullWidth>
 									<Next
 										buttonText={__('Set ticket prices')}
 										buttonType={ButtonType.SECONDARY}
@@ -53,7 +53,7 @@ const ContentBody: React.FC = ({ children }) => {
 						{current === 1 && (
 							<>
 								<TicketPriceCalculator context='editTicketForm' />
-								<ButtonRow>
+								<ButtonRow fullWidth>
 									<Previous onClick={prev} buttonText={__('Ticket details')} />
 									<Submit
 										onClick={form.submit}

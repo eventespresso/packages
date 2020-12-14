@@ -1,4 +1,4 @@
-@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+@import '~@eventespresso/styles/src';
 
 .ee-btn-row {
 	display: flex;
@@ -6,6 +6,7 @@
 	max-width: 900px;
 
 	&--full-width {
+		max-width: none;
 		width: 100%;
 	}
 
@@ -27,10 +28,18 @@
 
 		&-left {
 			justify-content: flex-start;
+
+			[dir='rtl'] & {
+				justify-content: flex-end;
+			}
 		}
 
 		&-right {
 			justify-content: flex-end;
+
+			[dir='rtl'] & {
+				justify-content: flex-start;
+			}
 		}
 	}
 
