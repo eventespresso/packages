@@ -6,14 +6,19 @@ import { Button, DatePicker } from '@eventespresso/components';
 import { Box } from '@eventespresso/adapters';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { Insert } from '@eventespresso/icons';
-import { useFormState } from '../../data';
-
 import type { DatePickerProps } from '@eventespresso/dates';
 
+import { useFormState, useGenerateDates } from '../../data';
+import { getMaxDatesLimit } from '../../utils';
+
 const RDate: React.FC = () => {
-	const { addRDate } = useFormState();
+	const { addRDate, rRule } = useFormState();
 	const [date, setDate] = useState<DatePickerProps['value']>();
 	const { siteTimeToUtc } = useTimeZoneTime();
+	// rDates and gDates, no exDates
+	const generatedDates = useGenerateDates();
+
+	const maxLimit = getMaxDatesLimit(rRule);
 
 	const onAddDate = useCallback(() => {
 		addRDate(formatISO(siteTimeToUtc(date)));
@@ -24,10 +29,18 @@ const RDate: React.FC = () => {
 		setDate(newDate);
 	}, []);
 
+	// to disable the input if the limit is reached
+	const limitReached = generatedDates.length >= maxLimit;
+
 	return (
 		<Box display='flex' alignItems='center'>
-			<DatePicker onChange={onChange} value={date} />
-			<Button icon={Insert} onClick={onAddDate} buttonText={__('Add Extra Event Date')} isDisabled={!date} />
+			<DatePicker onChange={onChange} value={date} disabled={limitReached} />
+			<Button
+				icon={Insert}
+				onClick={onAddDate}
+				buttonText={__('Add Extra Event Date')}
+				isDisabled={!date || limitReached}
+			/>
 		</Box>
 	);
 };

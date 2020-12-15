@@ -7,6 +7,7 @@ import { CloseCircleOutlined, Repeat } from '@eventespresso/icons';
 
 import { RRuleEditor } from '../rRule';
 import { useFormState } from '../../data';
+import { Warning } from '../generatedDates';
 
 import './style.scss';
 
@@ -37,6 +38,7 @@ const PatternEditor: React.FC = () => {
 				sidebarLabel={__('Recurrence Pattern')}
 				type='recurrence'
 			/>
+			<Warning />
 			<Divider type='dotted' />
 			<ButtonRow horizontalAlign='left'>
 				<Button

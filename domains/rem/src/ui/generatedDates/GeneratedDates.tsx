@@ -19,12 +19,13 @@ import './bg-colors.scss';
 
 const GeneratedDates: React.FC = () => {
 	const dates = useGenerateDates(true);
-	const { pageNumber, perPage, total, setPerPage, setPageNumber } = usePagination(dates?.length);
+	const { pageNumber, perPage, setPerPage, setPageNumber } = usePagination();
 	const paginatedDates = useMemo(() => paginateEntities({ entities: dates, pageNumber, perPage }), [
 		dates,
 		pageNumber,
 		perPage,
 	]);
+	const total = dates?.length;
 
 	return (
 		<>
@@ -42,7 +43,7 @@ const GeneratedDates: React.FC = () => {
 						total={total}
 					/>
 					<RDate />
-					<Warning datetimes={dates} />
+					<Warning />
 				</div>
 			</div>
 			<ButtonRow horizontalAlign='left'>

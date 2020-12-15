@@ -1,4 +1,4 @@
-type PatternType = 'recurrence' | 'exclusion';
+export type PatternType = 'recurrence' | 'exclusion';
 
 interface CommonProps {
 	desc?: string;
@@ -11,7 +11,7 @@ interface CommonProps {
 
 export interface EditorControlsProps {}
 
-export interface PatternEditorProps extends Omit<CommonProps, 'type'> {}
+export interface PatternEditorProps extends CommonProps {}
 
 export interface RRuleEditorProps extends CommonProps, EditorControlsProps {
 	icon?: React.ComponentType<{ className?: string }>;

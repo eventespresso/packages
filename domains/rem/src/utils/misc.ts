@@ -29,11 +29,8 @@ export const DATE_COUNT_LIMITS: { [key in keyof Partial<typeof Frequency>]: numb
  * Returns the limit for generating dates.
  */
 export const getDatesLimit = (rruleString: string): number => {
-	// It's 'DAILY' by default
-	const freq = getRecurrenceFrequency(rruleString);
-
 	// This is the maximum number of dates allowed to be generated
-	const maxLimit = DATE_COUNT_LIMITS?.[freq];
+	const maxLimit = getMaxDatesLimit(rruleString);
 
 	// This is the count set in the pattern
 	const count = getRecurrenceCount(rruleString);
@@ -45,4 +42,14 @@ export const getDatesLimit = (rruleString: string): number => {
 	}
 
 	return maxLimit;
+};
+
+/**
+ * Returns the maximum limit for generating dates.
+ */
+export const getMaxDatesLimit = (rruleString: string): number => {
+	// It's 'DAILY' by default
+	const freq = getRecurrenceFrequency(rruleString);
+
+	return DATE_COUNT_LIMITS?.[freq];
 };
