@@ -11,6 +11,10 @@ export default {
 
 type NumberInputStory = Story<NumberInputProps>;
 
+export const with3VisibleDigits: NumberInputStory = () => (
+	<NumberInput defaultValue={365} showStepper={false} visibleDigits={3} />
+);
+
 export const withMinAndMax: NumberInputStory = () => <NumberInput defaultValue={15} min={10} max={20} />;
 
 export const withStep: NumberInputStory = () => <NumberInput defaultValue={15} min={10} max={30} step={5} />;

@@ -66,6 +66,10 @@
 			padding: 0;
 			max-width: none;
 
+			.ee-number-input {
+				margin-right: var(--ee-margin-smaller);
+			}
+
 			span {
 				color: var(--ee-color-primary-high-contrast);
 				font-size: var(--ee-font-size-default);

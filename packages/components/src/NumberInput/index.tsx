@@ -5,10 +5,28 @@ import { NumberInput as NumberInputAdapter, NumberInputProps } from '@eventespre
 
 import './style.scss';
 
+interface Props extends NumberInputProps {
+	visibleDigits?: number;
+}
+
 const inputStepperProps = { className: 'ee-number-field-stepper' };
 
-export const NumberInput: React.FC<NumberInputProps> = ({ id, inputFieldProps, onChange, value, ...props }) => {
-	const className = classNames('ee-number-input-wrapper', props.className);
+export const NumberInput: React.FC<Props> = ({
+	id,
+	inputFieldProps,
+	onChange,
+	showStepper,
+	value,
+	visibleDigits,
+	...props
+}) => {
+	const className = classNames(
+		'ee-number-input',
+		showStepper === false &&
+			visibleDigits &&
+			`ee-number-input--visible-digits ee-number-input--visible-digits-${visibleDigits}`,
+		props.className
+	);
 	const ariaValuenow = String(value)?.length ? Number(value) : null;
 
 	return (
@@ -20,6 +38,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({ id, inputFieldProps, o
 			inputFieldProps={inputFieldProps}
 			inputStepperProps={inputStepperProps}
 			onChange={onChange}
+			showStepper={showStepper}
 			value={value}
 		/>
 	);

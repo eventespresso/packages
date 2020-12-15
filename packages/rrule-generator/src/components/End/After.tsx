@@ -1,29 +1,28 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
+import { NumberInput } from '../../../../components/src/NumberInput';
 import { AfterProps } from './types';
-import { getNumericValue } from '../../utils';
 
 const After: React.FC<AfterProps> = ({ id, after, onChange }) => {
 	const onChangeAfter = useCallback(
-		(event: React.ChangeEvent<HTMLInputElement>) => {
-			onChange(getNumericValue(event.target.value));
+		(value: number) => {
+			onChange(value);
 		},
 		[onChange]
 	);
 
 	return (
 		<label className='rrule-generator__labelled-input'>
-			<input
+			<NumberInput
 				aria-label={__('End after')}
-				className='rrule-generator__form-control rrule-generator__input'
 				id={id}
 				name={id}
 				onChange={onChangeAfter}
-				type='number'
+				showStepper={false}
 				value={after}
+				visibleDigits={3}
 			/>
-
 			<span>{__('occurrences')}</span>
 		</label>
 	);

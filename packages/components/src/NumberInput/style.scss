@@ -1,14 +1,23 @@
 @import '~@eventespresso/styles/src';
 
-.ee-number-input-wrapper {
+.ee-number-input.ee-number-input {
 	input {
 		z-index: 0;
 
-		@extend .ee-input-base;
-		@extend .ee-input;
+		@include ee-base-inputs-styles;
 
 		&:focus {
 			z-index: 0;
+		}
+	}
+
+	&--visible-digits {
+		input {
+			text-align: center;
+		}
+
+		&-3 {
+			width: 48px;
 		}
 	}
 

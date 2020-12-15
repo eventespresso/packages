@@ -26,5 +26,6 @@ export interface NumberInputProps
 	inputFieldProps?: ChakraInputProps;
 	inputStepperProps?: ChakraFlexProps;
 	incrementStepperProps?: ChakraPseudoBoxProps;
+	name?: string;
 	showStepper?: boolean;
 }
