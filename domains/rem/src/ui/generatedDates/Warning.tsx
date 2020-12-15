@@ -1,11 +1,19 @@
 import React from 'react';
+import { useFormState } from '../../data';
 
-import useLimitsWarning from './useLimitsWarning';
+import { getLimitsWarning, useIsCountCapped } from '../../utils';
 
 const Warning: React.FC = () => {
-	const warning = useLimitsWarning();
+	const isCountCapped = useIsCountCapped();
 
-	return warning && <p className={'rem-max-event-dates-warning'}>{warning}</p>;
+	const { rRule } = useFormState();
+
+	if (!isCountCapped) {
+		return null;
+	}
+	const warning = getLimitsWarning(rRule);
+
+	return <p className={'rem-max-event-dates-warning'}>{warning}</p>;
 };
 
 export default Warning;

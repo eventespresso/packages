@@ -3,17 +3,17 @@ import { __ } from '@eventespresso/i18n';
 
 import { Button, ButtonType, ButtonProps } from '@eventespresso/components';
 import { useGenerateDates } from '../../data';
-import { useLimitsWarning } from '../generatedDates';
+import { useIsCountCapped } from '../../utils';
 
 const SubmitButton: React.FC<ButtonProps> = ({ onClick }) => {
 	// rDates and gDates, no exDates
 	const generateDates = useGenerateDates();
 
-	const warning = useLimitsWarning(true);
+	const isCountCapped = useIsCountCapped(true);
 
-	// either there are no dates to create or
-	// someone is trying to be oversmart
-	const isDisabled = !generateDates.length || Boolean(warning);
+	// either there are no dates to create
+	// or someone is trying to be oversmart
+	const isDisabled = !generateDates.length || isCountCapped;
 
 	return (
 		<Button
