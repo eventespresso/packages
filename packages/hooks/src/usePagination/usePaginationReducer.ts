@@ -4,7 +4,7 @@ import type { PaginationReducer } from './types';
 
 const usePaginationReducer = (): PaginationReducer => {
 	return useCallback<PaginationReducer>((state, action) => {
-		const { type, perPage, pageNumber, total } = action;
+		const { type, perPage, pageNumber } = action;
 
 		switch (type) {
 			case 'SET_PER_PAGE':
@@ -12,9 +12,6 @@ const usePaginationReducer = (): PaginationReducer => {
 
 			case 'SET_PAGE_NUMBER':
 				return { ...state, pageNumber };
-
-			case 'SET_TOTAL':
-				return { ...state, total };
 
 			default:
 				throw new Error('Unexpected action');

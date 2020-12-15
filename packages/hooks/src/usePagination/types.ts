@@ -5,7 +5,7 @@ export interface PaginationState {
 	pageNumber: number;
 }
 
-export type PaginationActionType = 'SET_PER_PAGE' | 'SET_PAGE_NUMBER' | 'SET_TOTAL';
+export type PaginationActionType = 'SET_PER_PAGE' | 'SET_PAGE_NUMBER';
 
 export interface PaginationAction extends Partial<PaginationState> {
 	type: PaginationActionType;
