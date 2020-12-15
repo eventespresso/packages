@@ -3,17 +3,13 @@ import { useCallback, useMemo, useReducer } from 'react';
 import usePaginationReducer from './usePaginationReducer';
 import type { Pagination, PaginationState } from './types';
 
-export const usePagination = (totalItems: number): Pagination => {
-	const initialState = useMemo<PaginationState>(
-		() => ({
-			pageNumber: 1,
-			perPage: 6,
-			total: totalItems,
-		}),
-		[totalItems]
-	);
+const initialState: PaginationState = {
+	pageNumber: 1,
+	perPage: 6,
+};
 
-	const [{ pageNumber, perPage, total }, dispatch] = useReducer(usePaginationReducer(), initialState);
+export const usePagination = (): Pagination => {
+	const [{ pageNumber, perPage }, dispatch] = useReducer(usePaginationReducer(), initialState);
 
 	const setPageNumber: Pagination['setPageNumber'] = useCallback((pageNumber) => {
 		dispatch({
@@ -36,22 +32,13 @@ export const usePagination = (totalItems: number): Pagination => {
 		[pageNumber, setPageNumber]
 	);
 
-	const setTotal: Pagination['setTotal'] = useCallback((total) => {
-		dispatch({
-			type: 'SET_TOTAL',
-			total,
-		});
-	}, []);
-
 	return useMemo(
 		() => ({
 			pageNumber,
 			perPage,
-			total,
 			setPerPage,
 			setPageNumber,
-			setTotal,
 		}),
-		[pageNumber, perPage, setPageNumber, setPerPage, setTotal, total]
+		[pageNumber, perPage, setPageNumber, setPerPage]
 	);
 };
