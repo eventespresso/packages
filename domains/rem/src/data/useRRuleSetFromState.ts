@@ -27,9 +27,9 @@ const useRRuleSetFromState = (rRuleString?: string): RRuleSet => {
 	// clone the string
 	let rRuleToUse = String(rRuleString || '');
 
-	if (!rRuleToUse) {
+	if (!rRuleToUse && rRule) {
 		// set COUNT to a higher value to generate plenty of dates
-		rRuleToUse = rRule?.replace(COUNT_REGEX, COUNT_REPLACE);
+		rRuleToUse = rRule.replace(COUNT_REGEX, COUNT_REPLACE);
 	}
 
 	rruleSet.rrule(RRule.fromString(rRuleToUse));
