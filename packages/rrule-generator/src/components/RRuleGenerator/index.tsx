@@ -10,6 +10,7 @@ import { useRRuleState, useStateListener } from '../../hooks';
 import { withConfig, withState } from '../../context';
 
 import './styles.scss';
+import '../styles.scss';
 
 const RRuleGenerator: React.FC<RRuleGeneratorProps> = ({ showReadable = true, ...props }) => {
 	// set up state listener

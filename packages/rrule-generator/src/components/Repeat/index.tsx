@@ -5,8 +5,6 @@ import { BaseProps } from '../types';
 import Frequency from './Frequency';
 import { useRRuleState } from '../../hooks';
 
-import '../styles.scss';
-
 const Repeat: React.FC<BaseProps> = ({ id }) => {
 	const {
 		repeat: { frequency },

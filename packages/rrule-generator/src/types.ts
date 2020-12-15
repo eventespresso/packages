@@ -62,12 +62,14 @@ export interface EndRule extends StartRule {
 }
 
 export interface RRuleConfig {
-	frequencies?: Array<Frequency>;
-	yearlyModes?: Array<RepeatMode>;
-	monthlyModes?: Array<RepeatMode>;
-	endModes?: Array<EndMode>;
-	weekStartsOn?: Weekday;
-	enableTimepicker?: boolean;
-	locale?: string;
 	calendarComponent?: React.ComponentType<any>;
+	enableTimepicker?: boolean;
+	endModes?: Array<EndMode>;
+	frequencies?: Array<Frequency>;
+	locale?: string;
+	maxEndDate?: Date;
+	maxExecutions?: number;
+	monthlyModes?: Array<RepeatMode>;
+	weekStartsOn?: Weekday;
+	yearlyModes?: Array<RepeatMode>;
 }

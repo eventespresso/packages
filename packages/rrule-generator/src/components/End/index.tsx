@@ -8,19 +8,17 @@ import Mode from './Mode';
 import { useRRuleState } from '../../hooks';
 import { BaseProps } from '../types';
 
-import '../styles.scss';
-
-const End: React.FC<BaseProps> = (props) => {
+const End: React.FC<BaseProps> = ({ id }) => {
 	const { end, setEndMode, setEndAfter, setEndDate } = useRRuleState();
-	const id = `${props.id}-mode`;
+	const endModeId = `${id}-mode`;
 
 	return (
 		<div className='rrule-generator__form-group-row'>
-			<label htmlFor={id} className='col-form-label'>
+			<label htmlFor={endModeId} className='col-form-label'>
 				<strong>{__('End')}</strong>
 			</label>
 
-			<Mode id={id} mode={end.mode} onChange={setEndMode} />
+			<Mode id={endModeId} mode={end.mode} onChange={setEndMode} />
 
 			{end.mode === 'AFTER' && <EndAfter id={`${id}-after`} after={end.after} onChange={setEndAfter} />}
 
