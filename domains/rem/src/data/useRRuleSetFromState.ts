@@ -24,7 +24,8 @@ const useRRuleSetFromState = (rRuleString?: string): RRuleSet => {
 	const { exRule, rRule, exDates, rDates } = useFormState();
 	const rruleSet = new RRuleSet();
 
-	let rRuleToUse = rRuleString;
+	// clone the string
+	let rRuleToUse = String(rRuleString || '');
 
 	if (!rRuleToUse) {
 		// set COUNT to a higher value to generate plenty of dates
