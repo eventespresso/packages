@@ -68,7 +68,7 @@ export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 			>
 				<SimpleTextEditor onChange={onChange} defaultValue={props.text} />
 			</ModalWithAlert>
-			<div className='ee-simple-text-editor__preview' blabla>
+			<div className='ee-simple-text-editor__preview'>
 				<TabbableText
 					className={previewClassName}
 					icon={<Edit className={'ee-inline-edit__edit-icon'} />}
