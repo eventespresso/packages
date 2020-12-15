@@ -236,6 +236,7 @@
 			width: 100%;
 			@include transition(all ease 50ms);
 		}
+		// TODO needs to be fixed by Vadim
 		input[disabled] {
 			background-color: var(--ee-text-on-grey-4);
 		}
