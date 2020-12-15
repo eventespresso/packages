@@ -6,6 +6,8 @@ export { default as useInitialState } from './useInitialState';
 
 export { default as useFormStateManager } from './useFormStateManager';
 
+export { default as useRRuleSetFromState } from './useRRuleSetFromState';
+
 export { default as useSubmitForm } from './useSubmitForm';
 
 export * from './types';
