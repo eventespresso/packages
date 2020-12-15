@@ -236,6 +236,9 @@
 			width: 100%;
 			@include transition(all ease 50ms);
 		}
+		input[disabled] {
+			background-color: var(--ee-text-on-grey-4);
+		}
 	}
 
 	&__input-time-container {

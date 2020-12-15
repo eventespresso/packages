@@ -1,6 +1,6 @@
 import { CommonInputProps } from '@eventespresso/adapters';
 
-export interface withDebounceProps {
+export interface WithDebounceProps {
 	debounceDelay?: number;
 }
 

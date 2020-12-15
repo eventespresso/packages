@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
-import type { InternalDebounceProps, withDebounceProps } from './types';
+import type { InternalDebounceProps, WithDebounceProps } from './types';
 import type { ForwardRefComponent } from '../types';
 import { useIfMounted, usePrevious } from '@eventespresso/hooks';
 import { AnyObject, noop } from '@eventespresso/utils';
@@ -15,9 +15,9 @@ import { AnyObject, noop } from '@eventespresso/utils';
 const withDebounce = <P extends AnyObject>(
 	WrappedComponent: React.ComponentType<P>,
 	isCheckbox = false
-): ForwardRefComponent<P & withDebounceProps, typeof WrappedComponent> => {
+): ForwardRefComponent<P & WithDebounceProps, typeof WrappedComponent> => {
 	type Ref = React.Ref<typeof WrappedComponent>;
-	type RefProps = { forwardedRef: Ref } & withDebounceProps & InternalDebounceProps;
+	type RefProps = { forwardedRef: Ref } & WithDebounceProps & InternalDebounceProps;
 
 	const WithDebounce: React.FC<P & RefProps> = ({
 		forwardedRef,
