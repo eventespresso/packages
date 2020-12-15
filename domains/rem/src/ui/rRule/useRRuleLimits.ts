@@ -15,6 +15,7 @@ const useRRuleLimits = (type: PatternType): Pick<RRuleConfig, 'maxEndDate' | 'ma
 	// Manually excluded dates (exDates) will increase the number of allowed dates
 	const maxExecutions = getMaxDatesLimit(rRule) + exDates.length;
 
+	// replace end date with count to set the limit on number of dates
 	const rRuleToUse = rRule.replace(/UNTIL=[^;]+?;/, `COUNT=${maxExecutions};`);
 
 	const rruleSet = useRRuleSetFromState(rRuleToUse);
