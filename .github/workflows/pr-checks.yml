@@ -5,12 +5,11 @@ on: [pull_request]
 jobs:
     build:
         runs-on: ubuntu-latest
-        name: Lint/Build/Test
+        strategy:
+            matrix:
+                task: [lint, build, test]
+        name: ${{ matrix.task }}
         steps:
-            - name: Get Yarn cache path
-              id: yarn-cache
-              run: echo "::set-output name=dir::$(yarn cache dir)"
-
             - name: Checkout the commit
               uses: actions/checkout@v2
 
@@ -21,21 +20,16 @@ jobs:
                   node-version: lts/*
 
             - name: Load Yarn cache
+              id: yarn-cache
               uses: actions/cache@v2
               with:
-                  path: ${{ steps.yarn-cache.outputs.dir }}
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-yarn-
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
             - name: Install dependencies
+              # install deps only if lockfile has changed
+              if: steps.yarn-cache.outputs.cache-hit != 'true'
               run: yarn install --frozen-lockfile
 
-            - name: Check for lints
-              run: yarn lint:ci
-
-            - name: Build all packages
-              run: yarn build:ci
-
-            - name: Run all unit tests
-              run: yarn test-unit:ci
+            - name: Run ${{ matrix.task }}
+              run: yarn ${{ matrix.task }}:ci
