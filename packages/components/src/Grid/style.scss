@@ -1,14 +1,17 @@
 @import '~@eventespresso/styles/src';
 
-.ee-grid.ee-grid {
+.ee-grid {
 	display: grid;
 	grid-gap: 0.1rem;
 	grid-template-columns: 1fr;
 	margin: var(--ee-margin-tiny) 0;
 
+	&--bordered {
+		color: red;
+	}
+
 	> div {
 		align-items: center;
-		background: var(--ee-background-color);
 		color: var(--ee-default-text-color);
 		display: flex;
 		justify-content: space-around;

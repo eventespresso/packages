@@ -20,6 +20,7 @@ export * from './DescriptionList';
 export * from './Divider';
 export * from './DropdownMenu';
 export * from './EditDateRangeButton';
+export * from './EDTR';
 export * from './EmptyState';
 export * from './EntityActionsMenu';
 export * from './EntityCard';
