@@ -57,6 +57,14 @@ const useOptimisticResponse = (): OptimisticResCb => {
 						...filteredInput,
 						cacheId: uuidv4(),
 					};
+					// if manager is being updated
+					if (input?.manager) {
+						// make sure to properly update manager object
+						espressoEvent.manager = {
+							...event?.manager,
+							id: input?.manager,
+						};
+					}
 					break;
 			}
 
