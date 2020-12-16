@@ -30,10 +30,11 @@
 		}
 	}
 }
+
 .ee-select {
 	&__inline-wrapper {
-		.ee-select:not(:hover):not(:focus) {
-			border-color: transparent !important;
+		.ee-select.ee-select {
+			border-color: transparent;
 		}
 	}
 }
