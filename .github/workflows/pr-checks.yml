@@ -13,7 +13,9 @@ jobs:
             - name: Checkout the commit
               uses: actions/checkout@v2
               with:
-                  fetch-depth: 0 # To make sure --changedSince for jest works
+                  # To make sure --changedSince for jest works as expected
+                  # 0 for test, 1 otherwise
+                  fetch-depth: ${{ ( matrix.task != 'test' && 1 ) || 0 }}
 
             # TODO replace this when setup-node action supports LTS alias
             - name: Set up Node
