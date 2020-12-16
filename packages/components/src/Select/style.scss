@@ -11,12 +11,6 @@
 		appearance: none;
 		max-width: none; // .wp-core-ui select override
 
-		&__inline-wrapper {
-			.ee-select:not(:hover):not(:focus) {
-				border-color: transparent !important;
-			}
-		}
-
 		&.ee-select {
 			line-height: 1.5;
 			padding: var(--ee-padding-micro) var(--ee-padding-bigger) var(--ee-padding-micro) var(--ee-padding-smaller);
@@ -33,6 +27,13 @@
 			color: var(--ee-border-color) !important;
 			height: 1.25rem !important;
 			width: 1.25rem !important;
+		}
+	}
+}
+.ee-select {
+	&__inline-wrapper {
+		.ee-select:not(:hover):not(:focus) {
+			border-color: transparent !important;
 		}
 	}
 }
