@@ -31,5 +31,9 @@ jobs:
               if: steps.cache-deps.outputs.cache-hit != 'true'
               run: yarn install --frozen-lockfile
 
+            - name: Set test CLI args
+              if: ${{ matrix.task == 'test' }}
+              run: echo "CLI_ARGS=--changedSince ${{ github.base_ref }}" >> $GITHUB_ENV
+
             - name: Run ${{ matrix.task }}
-              run: yarn ${{ matrix.task }}:ci
+              run: yarn ${{ matrix.task }}:ci ${{ env.CLI_ARGS }}
