@@ -12,9 +12,9 @@
 		max-width: none; // .wp-core-ui select override
 
 		&__inline-wrapper {
-			align-items: center;
-			display: flex;
-			min-width: 9rem;
+			.ee-select:not(:hover):not(:focus) {
+				border-color: transparent !important;
+			}
 		}
 
 		&.ee-select {

@@ -12,11 +12,11 @@ import { AnyObject, noop } from '@eventespresso/utils';
  * @param WrappedComponent The component to debounce the onchange handler for
  * @param isCheckbox Whether the component of a checkbox/switch
  */
-const withDebounce = <P extends AnyObject>(
+const withDebounce = <P extends AnyObject, R extends any>(
 	WrappedComponent: React.ComponentType<P>,
 	isCheckbox = false
-): ForwardRefComponent<P & WithDebounceProps, typeof WrappedComponent> => {
-	type Ref = React.Ref<typeof WrappedComponent>;
+): ForwardRefComponent<P & WithDebounceProps, R> => {
+	type Ref = React.Ref<R>;
 	type RefProps = { forwardedRef: Ref } & WithDebounceProps & InternalDebounceProps;
 
 	const WithDebounce: React.FC<P & RefProps> = ({
