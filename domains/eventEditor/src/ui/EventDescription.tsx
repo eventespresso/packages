@@ -9,6 +9,10 @@ import { withFeature } from '@eventespresso/services';
 const EventDescription: React.FC = () => {
 	const event = useEvent();
 
+	// remove tiny mce editor
+	const postdivrich = document.getElementById('postdivrich');
+	postdivrich.remove();
+
 	return (
 		<div className='ee-event-description ee-edtr-section'>
 			<Heading as='h3'>{__('Event Description')}</Heading>
