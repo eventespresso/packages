@@ -12,7 +12,8 @@ jobs:
         steps:
             - name: Checkout the commit
               uses: actions/checkout@v2
-              fetch-depth: 0 # To make sure --changedSince for jest works
+              with:
+                  fetch-depth: 0 # To make sure --changedSince for jest works
 
             # TODO replace this when setup-node action supports LTS alias
             - name: Set up Node
