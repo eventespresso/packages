@@ -33,7 +33,7 @@ jobs:
 
             - name: Set test CLI args
               if: ${{ matrix.task == 'test' }}
-              run: echo "CLI_ARGS=--changedSince ${{ github.base_ref }}" >> $GITHUB_ENV
+              run: echo "CLI_ARGS=--changedSince ${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
 
             - name: Run ${{ matrix.task }}
               run: yarn ${{ matrix.task }}:ci ${{ env.CLI_ARGS }}
