@@ -2,9 +2,9 @@ import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { GridItem, Switch } from '@eventespresso/components';
-import type { RegistrationOptionsMetaBoxProps } from './types';
+import type { EventRegistrationOptionsProps } from './types';
 
-interface Props extends Pick<RegistrationOptionsMetaBoxProps, 'displayTicketSelector' | 'onTicketSelectorChange'> {}
+interface Props extends Pick<EventRegistrationOptionsProps, 'displayTicketSelector' | 'onTicketSelectorChange'> {}
 
 const TicketSelector: React.FC<Props> = ({ displayTicketSelector: isChecked, onTicketSelectorChange }) => {
 	const id = 'ee-event-registration-ticket-selector';

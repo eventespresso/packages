@@ -3,10 +3,10 @@ import React, { useCallback } from 'react';
 import { useEvent, useEventManagers, useEventMutator } from '@eventespresso/edtr-services';
 import type { InlineEditProps, SwitchProps } from '@eventespresso/adapters';
 import type { AnyObject } from '@eventespresso/utils';
-import type { RegistrationOptionsMetaBoxProps } from './types';
+import type { EventRegistrationOptionsProps } from './types';
 
 const withData = <P extends AnyObject>(
-	WrappedComponent: React.ComponentType<RegistrationOptionsMetaBoxProps>
+	WrappedComponent: React.ComponentType<EventRegistrationOptionsProps>
 ): React.ComponentType<P> => {
 	const WithData: React.FC<P> = () => {
 		const event = useEvent();

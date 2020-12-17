@@ -2,9 +2,9 @@ import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { GridItem, InlineEditText } from '@eventespresso/components';
-import type { RegistrationOptionsMetaBoxProps } from './types';
+import type { EventRegistrationOptionsProps } from './types';
 
-interface Props extends Pick<RegistrationOptionsMetaBoxProps, 'phoneNumber' | 'onPhoneNumberChange'> {}
+interface Props extends Pick<EventRegistrationOptionsProps, 'phoneNumber' | 'onPhoneNumberChange'> {}
 
 const EventPhoneNumber: React.FC<Props> = ({ onPhoneNumberChange, phoneNumber }) => {
 	const id = 'ee-event-registration-phone-number';

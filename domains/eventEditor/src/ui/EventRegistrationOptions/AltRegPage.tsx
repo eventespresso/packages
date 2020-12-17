@@ -2,9 +2,9 @@ import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { GridItem, InlineEditText } from '@eventespresso/components';
-import type { RegistrationOptionsMetaBoxProps } from './types';
+import type { EventRegistrationOptionsProps } from './types';
 
-interface Props extends Pick<RegistrationOptionsMetaBoxProps, 'altRegPage' | 'onAltRegPageChange'> {}
+interface Props extends Pick<EventRegistrationOptionsProps, 'altRegPage' | 'onAltRegPageChange'> {}
 
 const AltRegPage: React.FC<Props> = ({ altRegPage, onAltRegPageChange }) => {
 	const id = 'ee-event-registration-alt-reg-page';

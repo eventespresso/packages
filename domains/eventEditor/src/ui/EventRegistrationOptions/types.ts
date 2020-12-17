@@ -1,18 +1,19 @@
 import type { InlineEditProps } from '@eventespresso/adapters';
 import type { SelectProps, SwitchProps } from '@eventespresso/components';
+import type { Event, EventManager } from '@eventespresso/edtr-services';
 
-export interface RegistrationOptionsMetaBoxProps {
-	allowDonations: boolean;
-	altRegPage: string;
-	displayTicketSelector: boolean;
-	eventManagers: { id: string; name: string }[];
-	managerId: string;
-	maxReg: number;
+export interface EventRegistrationOptionsProps {
+	allowDonations: Event['allowDonations'];
+	altRegPage: Event['altRegPage'];
+	displayTicketSelector: Event['displayTicketSelector'];
+	eventManagers: EventManager[];
+	managerId: Event['manager']['id'];
+	maxReg: Event['maxRegistrations'];
 	onAltRegPageChange: InlineEditProps['onChange'];
 	onDonationsChange: SwitchProps['onChangeValue'];
 	onManagerChange: SelectProps['onChangeValue'];
 	onMaxRegChange: InlineEditProps['onChange'];
 	onPhoneNumberChange: InlineEditProps['onChange'];
 	onTicketSelectorChange: SwitchProps['onChangeValue'];
-	phoneNumber: string;
+	phoneNumber: Event['phoneNumber'];
 }

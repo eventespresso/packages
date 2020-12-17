@@ -15,13 +15,13 @@ import EventPhoneNumber from './EventPhoneNumber';
 import MaxRegistrations from './MaxRegistrations';
 import TicketSelector from './TicketSelector';
 
-import type { RegistrationOptionsMetaBoxProps } from './types';
+import type { EventRegistrationOptionsProps } from './types';
 
 import './style.scss';
 
 const columns = { base: 1, sm: 2, md: 4 };
 
-const EventRegistrationOptions: React.FC<RegistrationOptionsMetaBoxProps> = ({
+const EventRegistrationOptions: React.FC<EventRegistrationOptionsProps> = ({
 	allowDonations,
 	altRegPage,
 	displayTicketSelector,

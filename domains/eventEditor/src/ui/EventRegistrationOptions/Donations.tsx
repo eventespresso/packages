@@ -2,9 +2,9 @@ import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { GridItem, Switch } from '@eventespresso/components';
-import type { RegistrationOptionsMetaBoxProps } from './types';
+import type { EventRegistrationOptionsProps } from './types';
 
-interface Props extends Pick<RegistrationOptionsMetaBoxProps, 'allowDonations' | 'onDonationsChange'> {}
+interface Props extends Pick<EventRegistrationOptionsProps, 'allowDonations' | 'onDonationsChange'> {}
 
 const Donations: React.FC<Props> = ({ allowDonations: isChecked, onDonationsChange }) => {
 	const heading = isChecked ? __('Donations Enabled') : __('Donations Disabled');
