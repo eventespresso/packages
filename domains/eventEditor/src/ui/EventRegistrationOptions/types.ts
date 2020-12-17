@@ -2,10 +2,8 @@ import type { InlineEditProps } from '@eventespresso/adapters';
 import type { SelectProps, SwitchProps } from '@eventespresso/components';
 import type { Event, EventManager } from '@eventespresso/edtr-services';
 
-export interface EventRegistrationOptionsProps {
-	allowDonations: Event['allowDonations'];
-	altRegPage: Event['altRegPage'];
-	displayTicketSelector: Event['displayTicketSelector'];
+export interface EventRegistrationOptionsProps
+	extends Pick<Event, 'allowDonations' | 'altRegPage' | 'displayTicketSelector' | 'phoneNumber'> {
 	eventManagers: EventManager[];
 	managerId: Event['manager']['id'];
 	maxReg: Event['maxRegistrations'];
@@ -15,5 +13,4 @@ export interface EventRegistrationOptionsProps {
 	onMaxRegChange: InlineEditProps['onChange'];
 	onPhoneNumberChange: InlineEditProps['onChange'];
 	onTicketSelectorChange: SwitchProps['onChangeValue'];
-	phoneNumber: Event['phoneNumber'];
 }
