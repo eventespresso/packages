@@ -1,88 +1,64 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
-import { RegistrationOptionsMetaBox } from '@eventespresso/components';
-import { useEvent, useEventManagers, useEventMutator } from '@eventespresso/edtr-services';
+import { __ } from '@eventespresso/i18n';
+import { Grid, Heading } from '@eventespresso/components';
+import { noop } from '@eventespresso/utils';
 import { withFeature } from '@eventespresso/services';
-import type { InlineEditProps, SwitchProps } from '@eventespresso/adapters';
 
-const EventRegistrationOptions: React.FC = () => {
-	const event = useEvent();
-	const eventManagers = useEventManagers();
+import withData from './withData';
+import ActiveStatus from './ActiveStatus';
+import AltRegPage from './AltRegPage';
+import DefaultRegistrationStatus from './DefaultRegistrationStatus';
+import Donations from './Donations';
+import EventManager from './EventManager';
+import EventPhoneNumber from './EventPhoneNumber';
+import MaxRegistrations from './MaxRegistrations';
+import TicketSelector from './TicketSelector';
 
-	const { updateEntity: updateEvent } = useEventMutator(event?.id);
+import type { RegistrationOptionsMetaBoxProps } from './types';
 
-	const onAltRegPageChange = useCallback<InlineEditProps['onChange']>(
-		(newAltRegPage) => {
-			if (newAltRegPage !== event?.altRegPage) {
-				updateEvent({ altRegPage: newAltRegPage });
-			}
-		},
-		[event?.altRegPage, updateEvent]
-	);
+import './style.scss';
 
-	const onDonationsChange = useCallback<SwitchProps['onChangeValue']>(
-		(allowDonations) => {
-			if (event?.allowDonations !== allowDonations) {
-				updateEvent({ allowDonations });
-			}
-		},
-		[event?.allowDonations, updateEvent]
-	);
+const columns = { base: 1, sm: 2, md: 4 };
 
-	const onManagerChange = useCallback(
-		(newManagerId: string): void => {
-			if (newManagerId !== event?.manager?.id) {
-				updateEvent({ manager: newManagerId });
-			}
-		},
-		[event?.manager?.id, updateEvent]
-	);
+const EventRegistrationOptions: React.FC<RegistrationOptionsMetaBoxProps> = ({
+	allowDonations,
+	altRegPage,
+	displayTicketSelector,
+	eventManagers,
+	managerId,
+	maxReg,
+	onAltRegPageChange = noop,
+	onDonationsChange,
+	onManagerChange,
+	onPhoneNumberChange,
+	onTicketSelectorChange,
+	onMaxRegChange = noop,
+	phoneNumber,
+}) => (
+	<div className='ee-event-registration-options ee-edtr-section'>
+		<Heading as='h3'>{__('Registration Options')}</Heading>
+		<Grid columns={columns} spacing='1.25rem'>
+			<ActiveStatus />
 
-	const onMaxRegChange = useCallback<InlineEditProps['onChange']>(
-		(newMaxRegistrations) => {
-			const maxRegistrations = Number(newMaxRegistrations);
-			if (maxRegistrations !== event?.maxRegistrations) {
-				updateEvent({ maxRegistrations });
-			}
-		},
-		[event?.maxRegistrations, updateEvent]
-	);
+			<DefaultRegistrationStatus />
 
-	const onPhoneNumberChange = useCallback<InlineEditProps['onChange']>(
-		(newPhoneNumber) => {
-			if (newPhoneNumber !== event?.phoneNumber) {
-				updateEvent({ phoneNumber: newPhoneNumber });
-			}
-		},
-		[event?.phoneNumber, updateEvent]
-	);
+			<MaxRegistrations maxReg={maxReg} onMaxRegChange={onMaxRegChange} />
 
-	const onTicketSelectorChange = useCallback<SwitchProps['onChangeValue']>(
-		(displayTicketSelector) => {
-			if (event?.displayTicketSelector !== displayTicketSelector) {
-				updateEvent({ displayTicketSelector });
-			}
-		},
-		[event?.displayTicketSelector, updateEvent]
-	);
+			<TicketSelector
+				displayTicketSelector={displayTicketSelector}
+				onTicketSelectorChange={onTicketSelectorChange}
+			/>
 
-	return (
-		<RegistrationOptionsMetaBox
-			allowDonations={event?.allowDonations}
-			altRegPage={event?.altRegPage}
-			displayTicketSelector={event?.displayTicketSelector}
-			eventManagers={eventManagers}
-			managerId={event?.manager?.id}
-			maxReg={event?.maxRegistrations}
-			onAltRegPageChange={onAltRegPageChange}
-			onDonationsChange={onDonationsChange}
-			onManagerChange={onManagerChange}
-			onMaxRegChange={onMaxRegChange}
-			onPhoneNumberChange={onPhoneNumberChange}
-			onTicketSelectorChange={onTicketSelectorChange}
-			phoneNumber={event?.phoneNumber}
-		/>
-	);
-};
+			<Donations allowDonations={allowDonations} onDonationsChange={onDonationsChange} />
 
-export default withFeature('use_reg_options_meta_box')(EventRegistrationOptions);
+			<EventPhoneNumber phoneNumber={phoneNumber} onPhoneNumberChange={onPhoneNumberChange} />
+
+			<EventManager eventManagers={eventManagers} managerId={managerId} onManagerChange={onManagerChange} />
+
+			<AltRegPage altRegPage={altRegPage} onAltRegPageChange={onAltRegPageChange} />
+		</Grid>
+	</div>
+);
+
+export default withFeature('use_reg_options_meta_box')(withData(EventRegistrationOptions));

@@ -1,12 +1,10 @@
-import React, { useMemo /* , { useCallback } */ } from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
-import { noop } from '@eventespresso/utils';
-import { datetimeStatusBgColorClassName } from '../../../../helpers/src';
-import { GridItem, Select } from '../../';
-
-import { objectToSelectOptions } from '@eventespresso/utils';
+import { GridItem, Select } from '@eventespresso/components';
+import { noop, objectToSelectOptions } from '@eventespresso/utils';
+import { datetimeStatusBgColorClassName } from '@eventespresso/helpers';
 
 const status = {
 	isActive: __('Active'),

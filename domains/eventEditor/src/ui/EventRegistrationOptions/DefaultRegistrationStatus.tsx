@@ -1,9 +1,9 @@
-import React /* , { useCallback } */ from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
 import { noop } from '@eventespresso/utils';
-import { GridItem, Select } from '../../';
+import { GridItem, Select } from '@eventespresso/components';
 import { regStatusOptions } from '@eventespresso/predicates';
 
 const DefaultRegistrationStatus: React.FC = () => {

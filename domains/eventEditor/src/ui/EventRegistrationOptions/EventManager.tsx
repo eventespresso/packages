@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { entityListToSelectOptions } from '@eventespresso/utils';
-import { GridItem, Select } from '../../';
+import { GridItem, Select } from '@eventespresso/components';
 import type { RegistrationOptionsMetaBoxProps } from './types';
 
 interface Props extends Pick<RegistrationOptionsMetaBoxProps, 'eventManagers' | 'managerId' | 'onManagerChange'> {}

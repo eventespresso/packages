@@ -1,5 +1,5 @@
 import type { InlineEditProps } from '@eventespresso/adapters';
-import type { SelectProps, SwitchProps } from '../../';
+import type { SelectProps, SwitchProps } from '@eventespresso/components';
 
 export interface RegistrationOptionsMetaBoxProps {
 	allowDonations: boolean;

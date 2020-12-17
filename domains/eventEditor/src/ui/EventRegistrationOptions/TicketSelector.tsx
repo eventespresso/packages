@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { GridItem, Switch } from '../../';
+import { GridItem, Switch } from '@eventespresso/components';
 import type { RegistrationOptionsMetaBoxProps } from './types';
 
 interface Props extends Pick<RegistrationOptionsMetaBoxProps, 'displayTicketSelector' | 'onTicketSelectorChange'> {}
