@@ -61,6 +61,12 @@ $breakpointsMapping: (
 	}
 }
 
+@mixin min360px {
+	@include breakpoint(360px, min) {
+		@content;
+	}
+}
+
 @mixin min400px {
 	@include breakpoint(400px, min) {
 		@content;
@@ -85,8 +91,15 @@ $breakpointsMapping: (
 		@content;
 	}
 }
+
 @mixin min600px {
 	@include breakpoint(600px, min) {
+		@content;
+	}
+}
+
+@mixin min667px {
+	@include breakpoint(667px, min) {
 		@content;
 	}
 }
@@ -122,6 +135,7 @@ $breakpointsMapping: (
 		@content;
 	}
 }
+
 @mixin min850px {
 	@include breakpoint(850px, min) {
 		@content;
@@ -134,6 +148,7 @@ $breakpointsMapping: (
 		@content;
 	}
 }
+
 @mixin min960px {
 	@include breakpoint(960px, min) {
 		@content;
@@ -165,11 +180,18 @@ $breakpointsMapping: (
 	}
 }
 
+@mixin min1280px {
+	@include breakpoint(1280px, min) {
+		@content;
+	}
+}
+
 @mixin max1366px {
 	@include breakpoint(1366px, max) {
 		@content;
 	}
 }
+
 @mixin min1366px {
 	@include breakpoint(1366px, min) {
 		@content;

@@ -5,14 +5,6 @@ import { useEvent, useEventManagers, useEventMutator } from '@eventespresso/edtr
 import { withFeature } from '@eventespresso/services';
 import type { InlineEditProps, SwitchProps } from '@eventespresso/adapters';
 
-// import AltRegPage from './AltRegPage';
-// import DefaultRegistrationStatus from './DefaultRegistrationStatus';
-// import Donations from './Donations';
-// import EventPhoneNumber from './EventPhoneNumber';
-// import EventManager from './EventManager';
-// import MaxRegistrations from './MaxRegistrations';
-// import TicketSelectorCheckbox from './TicketSelector';
-
 const EventRegistrationOptions: React.FC = () => {
 	const event = useEvent();
 	const eventManagers = useEventManagers();

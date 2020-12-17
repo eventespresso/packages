@@ -89,7 +89,7 @@ $statuses: map-collect(
 	}
 
 	.ee-status-background-color-#{$status} {
-		background-color: var(--ee-color-#{$color});
+		background-color: var(--ee-color-#{$color}) !important;
 
 		@if ($color == green) {
 			color: var(--ee-text-on-white);

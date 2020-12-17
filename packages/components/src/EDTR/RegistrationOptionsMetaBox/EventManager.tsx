@@ -10,7 +10,7 @@ interface Props extends Pick<RegistrationOptionsMetaBoxProps, 'eventManagers' | 
 const EventManager: React.FC<Props> = ({ eventManagers, managerId, onManagerChange }) => {
 	const id = 'ee-event-registration-manager';
 
-	const options = useMemo(() => entityListToSelectOptions(eventManagers), [eventManagers]);
+	const options = useMemo(() => eventManagers && entityListToSelectOptions(eventManagers), [eventManagers]);
 
 	const input = (
 		<Select

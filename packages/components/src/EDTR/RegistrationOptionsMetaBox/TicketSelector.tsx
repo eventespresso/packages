@@ -19,7 +19,7 @@ const TicketSelector: React.FC<Props> = ({ displayTicketSelector: isChecked, onT
 		/>
 	);
 
-	return <GridItem id={id} input={input} label={label} />;
+	return <GridItem id={id} input={input} label={label} size='small' />;
 };
 
 export default TicketSelector;

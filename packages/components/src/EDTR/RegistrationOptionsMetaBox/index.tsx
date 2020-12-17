@@ -51,9 +51,9 @@ export const RegistrationOptionsMetaBox: React.FC<RegistrationOptionsMetaBoxProp
 
 			<Donations allowDonations={allowDonations} onDonationsChange={onDonationsChange} />
 
-			<EventManager eventManagers={eventManagers} managerId={managerId} onManagerChange={onManagerChange} />
-
 			<EventPhoneNumber phoneNumber={phoneNumber} onPhoneNumberChange={onPhoneNumberChange} />
+
+			<EventManager eventManagers={eventManagers} managerId={managerId} onManagerChange={onManagerChange} />
 
 			<AltRegPage altRegPage={altRegPage} onAltRegPageChange={onAltRegPageChange} />
 		</Grid>

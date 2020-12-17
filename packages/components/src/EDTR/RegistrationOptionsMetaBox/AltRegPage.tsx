@@ -23,6 +23,7 @@ const AltRegPage: React.FC<Props> = ({ altRegPage, onAltRegPageChange }) => {
 				/>
 			}
 			label={__('Alternative Registration Page')}
+			size='huge'
 		/>
 	);
 };

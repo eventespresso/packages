@@ -1,2 +1,2 @@
-export * from '@wordpress/hooks';
+// export * from '@wordpress/hooks';
 export * from './hooks';

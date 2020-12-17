@@ -1,4 +1,6 @@
-export interface GridItemProps {
+import type { Size } from '../../';
+
+export interface GridItemProps extends Size {
 	className?: string;
 	id: string;
 	input: JSX.Element;

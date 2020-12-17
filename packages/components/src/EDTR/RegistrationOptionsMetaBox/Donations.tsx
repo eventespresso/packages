@@ -14,7 +14,7 @@ const Donations: React.FC<Props> = ({ allowDonations: isChecked, onDonationsChan
 		<Switch aria-describedby={id} isChecked={isChecked} onChangeValue={onDonationsChange} debounceDelay={5000} />
 	);
 
-	return <GridItem id={id} input={input} label={heading} />;
+	return <GridItem id={id} input={input} label={heading} size='small' />;
 };
 
 export default Donations;

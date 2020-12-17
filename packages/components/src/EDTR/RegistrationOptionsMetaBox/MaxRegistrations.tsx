@@ -12,7 +12,14 @@ const MaxRegistrations: React.FC<Props> = ({ maxReg, onMaxRegChange }) => {
 
 	const input = <InlineEditText aria-describedby={id} onChange={onMaxRegChange} tag='h4' value={strValue} />;
 
-	return <GridItem id={id} input={input} label={__('Maximum Number of Registrations Allowed per Transaction')} />;
+	return (
+		<GridItem
+			id={id}
+			input={input}
+			label={__('Maximum Number of Registrations Allowed per Transaction')}
+			size='small'
+		/>
+	);
 };
 
 export default MaxRegistrations;
