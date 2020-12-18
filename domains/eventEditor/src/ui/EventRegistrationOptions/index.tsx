@@ -5,7 +5,6 @@ import { Grid, Heading } from '@eventespresso/components';
 import { noop } from '@eventespresso/utils';
 import { withFeature } from '@eventespresso/services';
 
-import withData from './withData';
 import ActiveStatus from './ActiveStatus';
 import AltRegPage from './AltRegPage';
 import DefaultRegistrationStatus from './DefaultRegistrationStatus';
@@ -14,6 +13,7 @@ import EventManager from './EventManager';
 import EventPhoneNumber from './EventPhoneNumber';
 import MaxRegistrations from './MaxRegistrations';
 import TicketSelector from './TicketSelector';
+import withData from './withData';
 
 import type { EventRegistrationOptionsProps } from './types';
 
@@ -24,6 +24,7 @@ const columns = { base: 1, sm: 2, md: 4 };
 const EventRegistrationOptions: React.FC<EventRegistrationOptionsProps> = ({
 	allowDonations,
 	altRegPage,
+	defaultRegStatus,
 	displayTicketSelector,
 	eventManagers,
 	managerId,
@@ -35,13 +36,14 @@ const EventRegistrationOptions: React.FC<EventRegistrationOptionsProps> = ({
 	onTicketSelectorChange,
 	onMaxRegChange = noop,
 	phoneNumber,
+	status,
 }) => (
 	<div className='ee-event-registration-options ee-edtr-section'>
 		<Heading as='h3'>{__('Registration Options')}</Heading>
 		<Grid columns={columns} spacing='1.25rem'>
-			<ActiveStatus />
+			<ActiveStatus status={status} />
 
-			<DefaultRegistrationStatus />
+			<DefaultRegistrationStatus defaultRegStatus={defaultRegStatus} />
 
 			<MaxRegistrations maxReg={maxReg} onMaxRegChange={onMaxRegChange} />
 

@@ -85,6 +85,7 @@ const withData = <P extends AnyObject>(
 				onPhoneNumberChange={onPhoneNumberChange}
 				onTicketSelectorChange={onTicketSelectorChange}
 				phoneNumber={event?.phoneNumber}
+				status={event?.status}
 			/>
 		);
 	};

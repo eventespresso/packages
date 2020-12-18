@@ -6,8 +6,11 @@ import { GridItem, Select } from '@eventespresso/components';
 import { datetimeStatus } from '@eventespresso/constants';
 import { noop, objectToSelectOptions } from '@eventespresso/utils';
 import { datetimeStatusBgColorClassName } from '@eventespresso/helpers';
+import type { EventRegistrationOptionsProps } from './types';
 
-const ActiveStatus: React.FC = () => {
+interface Props extends Pick<EventRegistrationOptionsProps, 'status'> {}
+
+const ActiveStatus: React.FC<Props> = ({ status }) => {
 	const bgColorClassName = datetimeStatusBgColorClassName(null);
 	const className = classNames('ee-event-registration-options__status', bgColorClassName);
 
@@ -15,7 +18,7 @@ const ActiveStatus: React.FC = () => {
 
 	const options = useMemo(() => objectToSelectOptions(datetimeStatus), []);
 
-	const input = <Select onChangeValue={noop} options={options} type='inline' value={datetimeStatus.isActive} />;
+	const input = <Select onChangeValue={noop} options={options} type='inline' value={status} />;
 
 	return <GridItem className={className} id={id} input={input} label={__('Active status')} />;
 };
