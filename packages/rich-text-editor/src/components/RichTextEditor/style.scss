@@ -54,6 +54,10 @@
 
 		.rdw-option-wrapper {
 			@include ee-rte-option;
+
+			&.rdw-option-disabled {
+				cursor: not-allowed;
+			}
 		}
 
 		.rdw-block-dropdown,

@@ -19,3 +19,9 @@ export const Default: IconButtonStory = Template.bind({});
 
 export const Borderless: IconButtonStory = Template.bind({});
 Borderless.args = { borderless: true };
+
+export const Disabled: IconButtonStory = Template.bind({});
+Disabled.args = { isDisabled: true };
+
+export const WithTransparentBg: IconButtonStory = Template.bind({});
+WithTransparentBg.args = { transparentBg: true };

@@ -8,4 +8,5 @@ export interface IconButtonProps extends Size, Omit<IconButtonAdapterProps, 'ari
 	buttonType?: ButtonType;
 	color?: 'white' | 'black';
 	noMargin?: boolean;
+	transparentBg?: boolean;
 }

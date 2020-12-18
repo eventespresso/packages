@@ -59,6 +59,7 @@ export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
 					onClick={onOpen}
 					size='small'
 					tooltip={tooltip}
+					transparentBg
 				/>
 			}
 		/>

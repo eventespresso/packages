@@ -57,13 +57,9 @@
 				@include transition(fill 0.1s ease 0.1s, color 0.1s ease 0.1s !important);
 			}
 		}
+
 		path {
 			fill: currentColor;
-		}
-
-		&--active {
-			border-color: var(--ee-color-primary-low-contrast);
-			color: var(--ee-color-primary);
 		}
 
 		&:focus {
@@ -74,8 +70,17 @@
 			@extend .btn-hover;
 		}
 
+		&--active {
+			border-color: var(--ee-color-primary-low-contrast);
+			color: var(--ee-color-primary);
+		}
+
 		&--borderless {
 			border-color: transparent;
+		}
+
+		&--transparent-bg {
+			background-color: var(--ee-button-transparent-background);
 		}
 
 		&--no-margin {

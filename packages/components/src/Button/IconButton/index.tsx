@@ -13,18 +13,29 @@ export const iconBtnClassName = 'ee-btn-base ee-icon-button';
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 	(
-		{ borderless, buttonType = ButtonType.DEFAULT, color, icon, noMargin, onClick, size = 'default', ...props },
+		{
+			borderless,
+			buttonType = ButtonType.DEFAULT,
+			color,
+			icon,
+			noMargin,
+			onClick,
+			size = 'default',
+			transparentBg,
+			...props
+		},
 		ref
 	) => {
 		const ariaLabel = props['aria-label'];
 		const className = classNames(
 			iconBtnClassName,
-			props.className,
 			color && `ee-icon-button-color--${color}`,
 			borderless && 'ee-icon-button--borderless',
 			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],
 			noMargin && 'ee-icon-button--no-margin',
-			size !== 'default' && [`ee-btn--${size}`]
+			transparentBg && 'ee-icon-button--transparent-bg',
+			size !== 'default' && [`ee-btn--${size}`],
+			props.className
 		);
 
 		return (
