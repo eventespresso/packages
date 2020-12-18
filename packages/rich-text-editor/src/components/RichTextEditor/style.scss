@@ -68,10 +68,12 @@
 			min-width: calc(var(--ee-icon-button-size) * 3.36);
 		}
 
-		.rdw-block-dropdown a,
-		.rdw-fontsize-dropdown a,
-		.rdw-fontfamily-dropdown a {
-			justify-content: space-between;
+		.rdw-block-dropdown,
+		.rdw-fontsize-dropdown,
+		.rdw-fontfamily-dropdown {
+			a {
+				justify-content: space-between;
+			}
 		}
 
 		.rdw-dropdown-carettoclose,
