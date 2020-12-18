@@ -12,6 +12,7 @@ export interface Event extends Entity {
 	allowOverflow: boolean;
 	altRegPage: string;
 	created: string;
+	defaultRegStatus: string;
 	description: string;
 	displayDescription: boolean;
 	displayTicketSelector: boolean;

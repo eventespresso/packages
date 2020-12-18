@@ -73,6 +73,7 @@ const withData = <P extends AnyObject>(
 			<WrappedComponent
 				allowDonations={event?.allowDonations}
 				altRegPage={event?.altRegPage}
+				defaultRegStatus={event?.defaultRegStatus}
 				displayTicketSelector={event?.displayTicketSelector}
 				eventManagers={eventManagers}
 				managerId={event?.manager?.id}

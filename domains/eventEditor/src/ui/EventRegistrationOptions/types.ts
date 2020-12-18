@@ -2,8 +2,9 @@ import type { InlineEditProps } from '@eventespresso/adapters';
 import type { SelectProps, SwitchProps } from '@eventespresso/components';
 import type { Event, EventManager } from '@eventespresso/edtr-services';
 
-export interface EventRegistrationOptionsProps
-	extends Pick<Event, 'allowDonations' | 'altRegPage' | 'displayTicketSelector' | 'phoneNumber'> {
+type PickedProps = 'allowDonations' | 'altRegPage' | 'defaultRegStatus' | 'displayTicketSelector' | 'phoneNumber';
+
+export interface EventRegistrationOptionsProps extends Pick<Event, PickedProps> {
 	eventManagers: EventManager[];
 	managerId: Event['manager']['id'];
 	maxReg: Event['maxRegistrations'];
