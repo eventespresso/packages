@@ -4,7 +4,7 @@ import { RichTextEditor } from '../RichTextEditor';
 import { AdvancedTextEditorProps } from './types';
 
 export const AdvancedTextEditor: React.FC<AdvancedTextEditorProps> = (props) => {
-	const className = classNames('ee-advanced-text-editor', props.className);
+	const wrapperClassName = classNames('ee-advanced-text-editor', props.wrapperClassName);
 
-	return <RichTextEditor {...props} className={className} />;
+	return <RichTextEditor {...props} wrapperClassName={wrapperClassName} />;
 };

@@ -8,7 +8,7 @@ import './style.scss';
 import { RichTextEditorProps } from './types';
 import { editorStateToHtml, htmlToEditorState } from '../../utils';
 
-const RichTextEditor: React.FC<RichTextEditorProps> = ({
+export const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	className,
 	defaultValue,
 	onChange,
@@ -17,6 +17,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	...props
 }) => {
 	const editorClassName = classNames('ee-rich-text-editor', className);
+
+	const wrapperClassName = classNames('ee-rich-text-editor__root', props.wrapperClassName);
 
 	const editorState = useMemo(() => htmlToEditorState(value || placeholder), [placeholder, value]);
 
@@ -50,12 +52,10 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 		<Editor
 			{...props}
 			{...editorProps}
-			wrapperClassName='ee-rich-text-editor-root'
 			editorClassName={editorClassName}
-			toolbarClassName='ee-rich-text-editor-toolbar'
 			onEditorStateChange={onEditorStateChange}
+			toolbarClassName='ee-rich-text-editor__toolbar'
+			wrapperClassName={wrapperClassName}
 		/>
 	);
 };
-
-export default RichTextEditor;
