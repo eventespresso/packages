@@ -28,7 +28,7 @@
 .ee-btn-base {
 	&.ee-icon-button {
 		align-items: center;
-		background: rgba(192, 192, 192, 0.25);
+		background-color: var(--ee-button-background);
 		border-color: var(--ee-border-color);
 		border-radius: var(--ee-border-radius-small);
 		border-style: solid;
