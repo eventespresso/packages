@@ -1,7 +1,11 @@
 @import '~@eventespresso/styles/src';
 
+:root {
+	--ee-rte-button-background: hsla(0, 0%, 75.3%, 0.25);
+}
+
 @mixin ee-rte-option {
-	background-color: var(--ee-button-background);
+	background: var(--ee-rte-button-background);
 	border: var(--ee-border-width) solid var(--ee-border-color);
 	border-color: transparent;
 	border-radius: var(--ee-border-radius-small);
@@ -12,7 +16,7 @@
 }
 
 @mixin ee-rte-block-dropdown {
-	background: var(--ee-background-color);
+	background: var(--ee-rte-button-background);
 	border-radius: var(--ee-border-radius-small);
 	border: var(--ee-border-width) solid var(--ee-border-color);
 	box-shadow: none;
