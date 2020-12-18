@@ -30,9 +30,11 @@ const EventRegistrationOptions: React.FC<EventRegistrationOptionsProps> = ({
 	managerId,
 	maxReg,
 	onAltRegPageChange = noop,
+	onDefaultRegStatusChange,
 	onDonationsChange,
 	onManagerChange,
 	onPhoneNumberChange,
+	onStatusChange,
 	onTicketSelectorChange,
 	onMaxRegChange = noop,
 	phoneNumber,
@@ -41,9 +43,12 @@ const EventRegistrationOptions: React.FC<EventRegistrationOptionsProps> = ({
 	<div className='ee-event-registration-options ee-edtr-section'>
 		<Heading as='h3'>{__('Registration Options')}</Heading>
 		<Grid columns={columns} spacing='1.25rem'>
-			<ActiveStatus status={status} />
+			<ActiveStatus status={status} onStatusChange={onStatusChange} />
 
-			<DefaultRegistrationStatus defaultRegStatus={defaultRegStatus} />
+			<DefaultRegistrationStatus
+				defaultRegStatus={defaultRegStatus}
+				onDefaultRegStatusChange={onDefaultRegStatusChange}
+			/>
 
 			<MaxRegistrations maxReg={maxReg} onMaxRegChange={onMaxRegChange} />
 

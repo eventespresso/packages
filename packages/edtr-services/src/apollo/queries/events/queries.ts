@@ -9,6 +9,7 @@ export const EVENT_ATTRIBUTES: any = gql`
 		allowOverflow
 		altRegPage
 		created
+		defaultRegStatus
 		description
 		displayDescription
 		displayTicketSelector

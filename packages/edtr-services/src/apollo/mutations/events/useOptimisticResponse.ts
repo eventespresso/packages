@@ -16,6 +16,7 @@ export const EVENT_DEFAULTS: Event = {
 	altRegPage: '',
 	created: '',
 	description: '',
+	defaultRegStatus: '',
 	displayDescription: false,
 	displayTicketSelector: true,
 	isActive: true,

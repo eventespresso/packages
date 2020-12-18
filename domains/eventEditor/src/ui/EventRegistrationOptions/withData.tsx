@@ -32,10 +32,19 @@ const withData = <P extends AnyObject>(
 			[event?.allowDonations, updateEvent]
 		);
 
+		const onDefaultRegStatusChange = useCallback<InlineEditProps['onChange']>(
+			(defaultRegStatus) => {
+				if (event?.defaultRegStatus !== defaultRegStatus) {
+					updateEvent({ defaultRegStatus });
+				}
+			},
+			[event?.defaultRegStatus, updateEvent]
+		);
+
 		const onManagerChange = useCallback(
-			(newManagerId: string): void => {
+			(newManagerId): void => {
 				if (newManagerId !== event?.manager?.id) {
-					updateEvent({ manager: newManagerId });
+					updateEvent({ manager: newManagerId }); // TODO - check this mutation because manager is an object with properties id and name
 				}
 			},
 			[event?.manager?.id, updateEvent]
@@ -60,6 +69,15 @@ const withData = <P extends AnyObject>(
 			[event?.phoneNumber, updateEvent]
 		);
 
+		const onStatusChange = useCallback<InlineEditProps['onChange']>(
+			(status) => {
+				if (status !== event?.status) {
+					updateEvent({ status });
+				}
+			},
+			[event?.status, updateEvent]
+		);
+
 		const onTicketSelectorChange = useCallback<SwitchProps['onChangeValue']>(
 			(displayTicketSelector) => {
 				if (event?.displayTicketSelector !== displayTicketSelector) {
@@ -79,10 +97,12 @@ const withData = <P extends AnyObject>(
 				managerId={event?.manager?.id}
 				maxReg={event?.maxRegistrations}
 				onAltRegPageChange={onAltRegPageChange}
+				onDefaultRegStatusChange={onDefaultRegStatusChange}
 				onDonationsChange={onDonationsChange}
 				onManagerChange={onManagerChange}
 				onMaxRegChange={onMaxRegChange}
 				onPhoneNumberChange={onPhoneNumberChange}
+				onStatusChange={onStatusChange}
 				onTicketSelectorChange={onTicketSelectorChange}
 				phoneNumber={event?.phoneNumber}
 				status={event?.status}

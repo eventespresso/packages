@@ -15,6 +15,7 @@ export const nodes: Event[] = [
 		altRegPage: '',
 		created: 'October 21, 2020 5:03 pm',
 		description: 'Test',
+		defaultRegStatus: '',
 		displayDescription: false,
 		displayTicketSelector: true,
 		isActive: true,

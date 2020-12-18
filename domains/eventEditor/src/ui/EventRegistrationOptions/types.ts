@@ -15,9 +15,11 @@ export interface EventRegistrationOptionsProps extends Pick<Event, PickedProps> 
 	managerId: Event['manager']['id'];
 	maxReg: Event['maxRegistrations'];
 	onAltRegPageChange: InlineEditProps['onChange'];
+	onDefaultRegStatusChange: InlineEditProps['onChange'];
 	onDonationsChange: SwitchProps['onChangeValue'];
 	onManagerChange: SelectProps['onChangeValue'];
 	onMaxRegChange: InlineEditProps['onChange'];
 	onPhoneNumberChange: InlineEditProps['onChange'];
+	onStatusChange: InlineEditProps['onChange'];
 	onTicketSelectorChange: SwitchProps['onChangeValue'];
 }
