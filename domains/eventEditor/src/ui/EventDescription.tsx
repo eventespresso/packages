@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { AdvancedTextEditor } from '@eventespresso/rich-text-editor';
@@ -9,9 +9,14 @@ import { withFeature } from '@eventespresso/services';
 const EventDescription: React.FC = () => {
 	const event = useEvent();
 
-	// remove tiny mce editor
-	const postdivrich = document.getElementById('postdivrich');
-	postdivrich.remove();
+	useEffect(() => {
+		// remove tiny mce editor
+		const postdivrich = document.getElementById('postdivrich');
+
+		if (postdivrich) {
+			postdivrich.remove();
+		}
+	}, []);
 
 	return (
 		<div className='ee-event-description ee-edtr-section'>
