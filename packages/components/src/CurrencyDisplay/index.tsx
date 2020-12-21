@@ -16,7 +16,7 @@ export const CurrencyDisplay: React.FC<CurrencyDisplayProps> = ({ value, vertica
 	const currency = config?.currency;
 	const sign = currency?.sign;
 	const signB4 = currency?.signB4;
-	const signOutput = value ? <CurrencySign sign={sign} /> : __('free');
+	const signOutput = <CurrencySign sign={sign} />;
 
 	const characters = getCurrencySignCharacterCountClassName(sign);
 	const position = getCurrencySignPositionClassName(signB4);
@@ -31,9 +31,15 @@ export const CurrencyDisplay: React.FC<CurrencyDisplayProps> = ({ value, vertica
 
 	return (
 		<div className={className}>
-			{signB4 && signOutput}
-			<span>{formatAmount(value)}</span>
-			{!signB4 && signOutput}
+			{value ? (
+				<>
+					{signB4 && signOutput}
+					<span>{formatAmount(value)}</span>
+					{!signB4 && signOutput}
+				</>
+			) : (
+				__('free')
+			)}
 		</div>
 	);
 };
