@@ -45,7 +45,13 @@ const Actions: React.FC = () => {
 
 	return (
 		<>
-			<BulkActions Checkbox={Checkbox} defaultAction={options[0].value} onApply={onApply} options={options} />
+			<BulkActions
+				Checkbox={Checkbox}
+				defaultAction={options[0].value}
+				id={'ee-bulk-edit-dates-select-input'}
+				onApply={onApply}
+				options={options}
+			/>
 			{isOpen && (
 				<>
 					{action === 'edit-details' && <EditDetails isOpen={true} onClose={onClose} />}

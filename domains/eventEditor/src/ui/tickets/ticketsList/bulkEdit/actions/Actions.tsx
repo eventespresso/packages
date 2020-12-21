@@ -65,9 +65,10 @@ const Actions: React.FC = () => {
 		<>
 			<BulkActions
 				Checkbox={Checkbox}
-				options={options}
-				onApply={isEditPricesDisabled ? null : onApply}
 				defaultAction=''
+				id={'ee-bulk-edit-tickets-select-input'}
+				onApply={isEditPricesDisabled ? null : onApply}
+				options={options}
 			/>
 			{isOpen && (
 				<>
