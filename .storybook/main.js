@@ -1,5 +1,8 @@
 const path = require('path');
 
+const include = [path.resolve(__dirname, '../domains'), path.resolve(__dirname, '../packages')];
+const stories = ['../domains/**/src/ui/**/*.stories.tsx', '../packages/**/src/**/*.stories.@(ts|tsx)'];
+
 module.exports = {
 	addons: [
 		'@storybook/addon-knobs',
@@ -20,7 +23,7 @@ module.exports = {
 			},
 		},
 	],
-	stories: ['../packages/**/src/**/*.stories.@(ts|tsx)'],
+	stories,
 	webpackFinal: async (config) => {
 		// Remove the existing css/scss rule
 		config.module.rules = config.module.rules.filter((f) => f.test.toString() !== /\.s[ca]ss$/.toString());
@@ -39,7 +42,7 @@ module.exports = {
 					},
 				},
 			],
-			include: path.resolve(__dirname, '../packages'),
+			include,
 			exclude: ['/node_modules/'],
 		});
 
