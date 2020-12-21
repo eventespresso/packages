@@ -37,7 +37,7 @@ const ContentFooter: React.FC<BaseProps> = ({ onClose, onSubmit }) => {
 			}
 			{
 				// hide next on last step
-				current < 3 && <Next onClick={next} isDisabled={isNextDisabled} />
+				current < 3 && <Next isDisabled={isNextDisabled} onClick={next} />
 			}
 			{
 				// last step

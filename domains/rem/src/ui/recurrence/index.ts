@@ -1,1 +1,1 @@
-export { default as PatternEditor } from './PatternEditor';
+export * from './PatternEditor';
