@@ -15,7 +15,7 @@ const Select: React.FC<SelectProps> = ({ id, type, ...props }) => {
 	const className = classNames('ee-select', props.className);
 
 	if (type === 'inline') {
-		return <InlineSelect debounceDelay={5000} {...props} className={className} id={id} rootProps={rootProps} />;
+		return <InlineSelect debounceDelay={2500} {...props} className={className} id={id} rootProps={rootProps} />;
 	}
 
 	return <SelectAdapter {...props} className={className} icon={ArrowDownAlt} id={id} rootProps={rootProps} />;
