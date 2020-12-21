@@ -11,19 +11,19 @@
 		font-size: calc(var(--ee-font-size-huge) * 1.375);
 	}
 	@at-root h3#{&} {
-		font-size: calc(var(--ee-font-size-huge));
+		font-size: var(--ee-font-size-huge);
 		margin: var(--ee-margin-default) 0 0;
 	}
 	@at-root h4#{&} {
-		font-size: calc(var(--ee-font-size-bigger));
+		font-size: var(--ee-font-size-bigger);
 		margin: var(--ee-margin-small) 0 0;
 	}
 	@at-root h5#{&} {
-		font-size: calc(var(--ee-font-size-big));
+		font-size: var(--ee-font-size-big);
 		margin: var(--ee-margin-smaller) 0 0;
 	}
 	@at-root h6#{&} {
-		font-size: calc(var(--ee-font-size-default));
+		font-size: var(--ee-font-size-default);
 		margin: var(--ee-margin-tiny) 0 0;
 	}
 
