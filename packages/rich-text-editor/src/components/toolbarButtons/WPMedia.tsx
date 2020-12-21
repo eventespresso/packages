@@ -6,7 +6,7 @@ import { Image } from '@eventespresso/icons';
 
 import { ToolbarButtonProps } from './types';
 
-const wpMedia = window.wp.media({
+const wpMedia = window.wp?.media({
 	title: __('Select media'),
 	button: {
 		text: __('Select'),
