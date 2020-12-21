@@ -8,9 +8,9 @@ import type { Datetime } from '../../types';
 import { useLazyDatetime } from '../../queries';
 
 export const DATETIME_DEFAULTS: Datetime = {
-	id: `temp:${uuidv4()}`,
+	id: '',
 	dbId: 0,
-	cacheId: uuidv4(),
+	cacheId: '',
 	capacity: -1,
 	description: '',
 	endDate: PLUS_TWO_MONTHS.toISOString(),
@@ -49,6 +49,10 @@ const useOptimisticResponse = (): OptimisticResCb => {
 					espressoDatetime = {
 						...espressoDatetime,
 						...DATETIME_DEFAULTS,
+						// make sure the id is generated on each call to make sure
+						// it is unique for each entity created in bulk
+						id: `temp:${uuidv4()}`,
+						cacheId: uuidv4(),
 						...filteredInput,
 					};
 					break;

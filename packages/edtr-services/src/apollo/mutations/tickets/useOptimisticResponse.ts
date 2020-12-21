@@ -9,9 +9,9 @@ import type { Ticket } from '../../';
 import { useLazyTicket } from '../../queries';
 
 export const TICKET_DEFAULTS: Ticket = {
-	id: `temp:${uuidv4()}`,
+	id: '',
 	dbId: 0,
-	cacheId: uuidv4(),
+	cacheId: '',
 	description: '',
 	endDate: PLUS_TWO_MONTHS.toISOString(),
 	isSoldOut: false,
@@ -57,6 +57,9 @@ const useOptimisticResponse = (): OptimisticResCb => {
 					espressoTicket = {
 						...espressoTicket,
 						...TICKET_DEFAULTS,
+						// make sure the id is generated on each call to make sure
+						// it is unique for each entity created in bulk
+						id: `temp:${uuidv4()}`,
 						...filteredInput,
 						prices: null,
 					};
