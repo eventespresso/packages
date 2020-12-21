@@ -66,6 +66,11 @@
 
 		&--size {
 			&-small {
+				> div {
+					display: grid;
+					margin-bottom: var(--ee-margin-tiny);
+				}
+
 				@include min360px {
 					grid-column-start: span 6;
 				}

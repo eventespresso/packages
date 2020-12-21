@@ -5,15 +5,6 @@
 
 @import '~@eventespresso/styles/src';
 
-:root {
-	--ee-icon-button-size-micro: 24px;
-	--ee-icon-button-size-tiny: 30px;
-	--ee-icon-button-size-small: 36px;
-	--ee-icon-button-size: 42px;
-	--ee-icon-button-size-big: 48px;
-	--ee-icon-button-size-huge: 54px;
-}
-
 .btn-focus {
 	border-color: var(--ee-color-primary);
 	box-shadow: var(--ee-button-box-shadow);
@@ -79,10 +70,6 @@
 			border-color: transparent;
 		}
 
-		&--transparent-bg {
-			background-color: var(--ee-button-transparent-background);
-		}
-
 		&--no-margin {
 			margin: 0;
 		}
@@ -101,6 +88,10 @@
 					border-color: var(--ee-color-white);
 				}
 			}
+		}
+
+		&--transparent-bg {
+			background-color: var(--ee-button-transparent-background);
 		}
 
 		&.ee-btn--tiny {

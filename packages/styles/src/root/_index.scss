@@ -4,6 +4,7 @@
 @import '../functions';
 @import '../variables';
 
+@import './btn';
 @import './entity-status';
 @import './font-styles';
 @import './shadows';
@@ -11,6 +12,7 @@
 $rootVariables: map-collect(
 	$animation,
 	$borders,
+	$btn,
 	$colors,
 	$date-picker,
 	$defaults,
