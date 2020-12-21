@@ -17,5 +17,6 @@ export interface EventEspressoData extends EventEspressoDomData {
 declare global {
 	interface Window {
 		eventEspressoData: EventEspressoData;
+		wp: any;
 	}
 }
