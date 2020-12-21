@@ -11,11 +11,7 @@ const EventDescription: React.FC = () => {
 
 	useEffect(() => {
 		// remove tiny mce editor
-		const postdivrich = document.getElementById('postdivrich');
-
-		if (postdivrich) {
-			postdivrich.remove();
-		}
+		document.getElementById('postdivrich')?.remove();
 	}, []);
 
 	return (
