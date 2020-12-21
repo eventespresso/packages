@@ -7,7 +7,7 @@ import { useRRuleConfig } from '../../hooks';
 
 const After: React.FC<AfterProps> = ({ id, after, onChange }) => {
 	const onChangeAfter = useCallback(
-		(value: number) => {
+		(value) => {
 			onChange(value);
 		},
 		[onChange]

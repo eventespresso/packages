@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useDisclosure } from '@chakra-ui/core';
+import { useDisclosure } from '@chakra-ui/react';
 
 import { __ } from '@eventespresso/i18n';
 // TODO replace import path
@@ -9,7 +9,7 @@ import { RTEWithEditModeProps } from './types';
 import { RichTextEditor } from '../RichTextEditor';
 
 export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode = true, ...props }) => {
-	const { isOpen: isVisualMode, onToggle: toggleEditMode } = useDisclosure(true);
+	const { isOpen: isVisualMode, onToggle: toggleEditMode } = useDisclosure({ defaultIsOpen: true });
 
 	const editor = <RichTextEditor {...props} />;
 

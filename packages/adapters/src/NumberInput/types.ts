@@ -24,7 +24,7 @@ export interface NumberInputProps extends Pick<ChakraNumberInputProps, Picked> {
 	disabled?: boolean;
 	inputFieldProps?: ChakraInputProps;
 	inputStepperProps?: ChakraFlexProps;
-	incrementStepperProps?: ChakraPseudoBoxProps;
+	incrementStepperProps?: ChakraBoxProps;
 	name?: string;
 	showStepper?: boolean;
 }
