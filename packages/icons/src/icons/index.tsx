@@ -26,6 +26,7 @@ export { default as ExclamationCircle } from './ExclamationCircle';
 export { default as Filter } from './Filter';
 export { default as GlobalOutlined } from './GlobalOutlined';
 export { default as Groups } from './Groups';
+export { default as Image } from './Image';
 export { default as InfoCircleFilled } from './InfoCircleFilled';
 export { default as InfoCircleOutlined } from './InfoCircleOutlined';
 export { default as Insert } from './Insert';
