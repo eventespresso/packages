@@ -116,6 +116,13 @@ $breakpointsMapping: (
 	}
 }
 
+/* iPad Portrait */
+@mixin min767px {
+	@include breakpoint(767px, min) {
+		@content;
+	}
+}
+
 /* WordPress Admin Media Query Breakpoint: Tablet */
 @mixin max782px {
 	@include breakpoint(782px, max) {
@@ -236,6 +243,11 @@ $breakpointsMapping: (
 
 @mixin max1920px {
 	@include breakpoint(1920px, max) {
+		@content;
+	}
+}
+@mixin min1920px {
+	@include breakpoint(1920px, min) {
 		@content;
 	}
 }
