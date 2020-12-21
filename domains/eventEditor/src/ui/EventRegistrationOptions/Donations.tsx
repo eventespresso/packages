@@ -10,11 +10,16 @@ const Donations: React.FC<Props> = ({ allowDonations: isChecked, onDonationsChan
 	const heading = isChecked ? __('Donations Enabled') : __('Donations Disabled');
 	const id = 'ee-event-donations';
 
-	const input = (
-		<Switch aria-describedby={id} isChecked={isChecked} onChangeValue={onDonationsChange} debounceDelay={5000} />
+	return (
+		<GridItem id={id} label={heading} size='small'>
+			<Switch
+				aria-describedby={id}
+				isChecked={isChecked}
+				onChangeValue={onDonationsChange}
+				debounceDelay={5000}
+			/>
+		</GridItem>
 	);
-
-	return <GridItem id={id} input={input} label={heading} size='small' />;
 };
 
 export default Donations;

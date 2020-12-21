@@ -10,16 +10,16 @@ const TicketSelector: React.FC<Props> = ({ displayTicketSelector: isChecked, onT
 	const id = 'ee-event-registration-ticket-selector';
 	const label = isChecked ? __('Ticket Selector Enabled') : __('Ticket Selector Disabled');
 
-	const input = (
-		<Switch
-			aria-describedby={id}
-			isChecked={isChecked}
-			onChangeValue={onTicketSelectorChange}
-			debounceDelay={5000}
-		/>
+	return (
+		<GridItem id={id} label={label} size='small'>
+			<Switch
+				aria-describedby={id}
+				isChecked={isChecked}
+				onChangeValue={onTicketSelectorChange}
+				debounceDelay={5000}
+			/>
+		</GridItem>
 	);
-
-	return <GridItem id={id} input={input} label={label} size='small' />;
 };
 
 export default TicketSelector;
