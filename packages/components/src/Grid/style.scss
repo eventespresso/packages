@@ -2,8 +2,8 @@
 
 .ee-grid {
 	display: grid;
-	grid-gap: 0.1rem;
-	grid-template-columns: 1fr;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
 	margin: var(--ee-margin-tiny) 0;
 
 	> div {
@@ -11,7 +11,6 @@
 		background: #fff;
 		background: var(--ee-background-color);
 		box-shadow: var(--ee-box-shadow-tiny-diffuse);
-		color: #595959;
 		color: var(--ee-default-text-color);
 		display: flex;
 		height: unset;
@@ -24,41 +23,14 @@
 		@include min360px {
 			grid-column-start: span 12;
 		}
-		@include min480px {
-			grid-column-start: span 6;
-		}
-		@include min600px {
-			grid-column-start: span 6;
-		}
 		@include min667px {
-			grid-column-start: span 6;
-		}
-		@include min700px {
-			grid-column-start: span 6;
-		}
-		@include min782px {
-			grid-column-start: span 5;
-		}
-		@include min850px {
 			grid-column-start: span 6;
 		}
 		@include min960px {
 			grid-column-start: span 6;
 		}
-		@include min1024px {
-			grid-column-start: span 6;
-		}
-		@include min1080px {
-			grid-column-start: span 6;
-		}
 		@include min1280px {
 			grid-column-start: span 4;
-		}
-		@include min1440px {
-			grid-column-start: span 3;
-		}
-		@include min1600px {
-			grid-column-start: span 3;
 		}
 		@include min1766px {
 			grid-column-start: span 3;
@@ -74,43 +46,16 @@
 				@include min360px {
 					grid-column-start: span 6;
 				}
-				@include min480px {
-					grid-column-start: span 4;
-				}
-				@include min600px {
-					grid-column-start: span 4;
-				}
 				@include min667px {
-					grid-column-start: span 4;
-				}
-				@include min700px {
-					grid-column-start: span 4;
-				}
-				@include min782px {
-					grid-column-start: span 4;
-				}
-				@include min850px {
 					grid-column-start: span 4;
 				}
 				@include min960px {
 					grid-column-start: span 4;
 				}
-				@include min1024px {
-					grid-column-start: span 4;
-				}
-				@include min1080px {
-					grid-column-start: span 4;
-				}
 				@include min1280px {
 					grid-column-start: span 3;
 				}
-				@include min1440px {
-					grid-column-start: span 2;
-				}
 				@include min1600px {
-					grid-column-start: span 2;
-				}
-				@include min1766px {
 					grid-column-start: span 2;
 				}
 			}
@@ -119,37 +64,13 @@
 				@include min360px {
 					grid-column-start: span 12;
 				}
-				@include min480px {
-					grid-column-start: span 12;
-				}
-				@include min600px {
-					grid-column-start: span 8;
-				}
 				@include min667px {
 					grid-column-start: span 6;
 				}
-				@include min700px {
-					grid-column-start: span 6;
-				}
-				@include min782px {
-					grid-column-start: span 6;
-				}
-				@include min850px {
-					grid-column-start: span 12;
-				}
 				@include min960px {
-					grid-column-start: span 10;
-				}
-				@include min1024px {
 					grid-column-start: span 8;
 				}
-				@include min1080px {
-					grid-column-start: span 6;
-				}
 				@include min1280px {
-					grid-column-start: span 6;
-				}
-				@include min1440px {
 					grid-column-start: span 6;
 				}
 				@include min1600px {
@@ -164,83 +85,25 @@
 				@include min360px {
 					grid-column-start: span 12;
 				}
-				@include min480px {
-					grid-column-start: span 12;
-				}
-				@include min600px {
-					grid-column-start: span 12;
-				}
 				@include min667px {
-					grid-column-start: span 12;
-				}
-				@include min700px {
-					grid-column-start: span 12;
-				}
-				@include min782px {
-					grid-column-start: span 10; // maybe 12?
-				}
-				@include min850px {
 					grid-column-start: span 12;
 				}
 				@include min960px {
 					grid-column-start: span 12;
 				}
-				@include min1024px {
-					grid-column-start: span 12;
-				}
-				@include min1080px {
-					grid-column-start: span 12;
-				}
 				@include min1280px {
 					grid-column-start: span 10;
 				}
-				@include min1440px {
-					grid-column-start: span 8;
-				}
 				@include min1600px {
-					grid-column-start: span 8;
+					grid-column-start: span 10;
 				}
 				@include min1766px {
+					grid-column-start: span 8;
+				}
+				@include min1920px {
 					grid-column-start: span 6;
 				}
 			}
 		}
-	}
-
-	/*  The following rules assume usage within the WP Admin */
-
-	/* to counteract Chakra */
-	@include min400px {
-		grid-template-columns: 1fr;
-	}
-
-	/* two columns min width 240px */
-	@include min600px {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	/* to counteract Chakra */
-	@include min700px {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	/* because WordPress admin is too cramped here*/
-	@include min850px {
-		grid-template-columns: repeat(1, minmax(0, 1fr));
-	}
-
-	/* again because WordPress admin */
-	@include min1080px {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	/* bigger screens */
-	@include min1366px {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	/* really bigger screens */
-	@include min1766px {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 }
