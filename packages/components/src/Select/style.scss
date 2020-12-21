@@ -1,41 +1,54 @@
 @import '~@eventespresso/styles/src';
 
-.ee-select-wrapper.ee-select-wrapper {
-	display: inline-flex;
-	max-height: calc(var(--ee-icon-button-size) + 4px);
-	width: auto;
+.ee-select-wrapper {
+    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	// max-height: calc(var(--ee-icon-button-size) + 4px);
+	width: 100%;
 
-	.ee-select {
+	.ee-select.ee-select {
 		@include ee-base-inputs-styles;
 
 		appearance: none;
 		max-width: none; // .wp-core-ui select override
+		line-height: 1.5;
+		padding: var(--ee-padding-micro) var(--ee-padding-bigger) var(--ee-padding-micro) var(--ee-padding-smaller);
 
-		&.ee-select {
-			line-height: 1.5;
-			padding: var(--ee-padding-micro) var(--ee-padding-bigger) var(--ee-padding-micro) var(--ee-padding-smaller);
+		[dir='rtl'] & {
+			padding: var(--ee-padding-micro) var(--ee-padding-smaller) var(--ee-padding-micro)
+				var(--ee-padding-bigger);
+		}
 
-			[dir='rtl'] & {
-				padding: var(--ee-padding-micro) var(--ee-padding-smaller) var(--ee-padding-micro)
-					var(--ee-padding-bigger);
-			}
+		&--inline {
+				border-color: transparent;
+
+				option {
+					color: var(--ee-default-text-color);
+				}
+		}
+
+		option {
+			font-size: var(--ee-font-size-default);
 		}
 	}
 
 	> div {
-		svg {
-			color: var(--ee-border-color) !important;
-			height: 1.25rem !important;
-			width: 1.25rem !important;
+		svg,
+		svg.ee-svg.ee-svg {
+			color: var(--ee-border-color);
+			height: 1.25rem;
+			width: 1.25rem;
 		}
 	}
-}
 
-.ee-select {
-	&__inline-wrapper {
-		.ee-select.ee-select {
-			border-color: transparent;
-			text-align-last: center;
+	&--inline {
+		> div {
+			svg,
+			svg.ee-svg.ee-svg {
+				color: currentColor ;
+				fill: currentColor ;
+			}
 		}
 	}
 }
