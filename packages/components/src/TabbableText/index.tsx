@@ -13,16 +13,13 @@ export const TabbableText: React.FC<TabbableTextProps> = ({
 	className,
 	icon,
 	onClick,
-	isDisabled,
 	...props
 }) => {
-	let tooltip = props.tooltip || __('Click to edit…');
-
+	const tooltip = props.tooltip || __('Click to edit…');
 	const text = props.text || tooltip;
-
-	// TODO use isDisabled prop from Tooltip in v1 in order to hide tooltip https://chakra-ui.com/docs/overlay/tooltip#disabled-tooltip
-	// don't display tooltip if it is being used as placeholder
-	tooltip = text === tooltip ? '' : tooltip;
+	const isDisabled = text === tooltip;
+	const role = props.isDisabled ? null : 'button';
+	const tabIndex = props.isDisabled ? -1 : 0;
 
 	const textClassName = classNames(
 		'ee-tabbable-text',
@@ -42,15 +39,15 @@ export const TabbableText: React.FC<TabbableTextProps> = ({
 	);
 
 	return (
-		<Tooltip tooltip={tooltip}>
+		<Tooltip isDisabled={isDisabled} tooltip={tooltip}>
 			<div
 				aria-describedby={ariaDescribedby}
 				aria-label={props.tooltip}
 				className={textClassName}
 				onClick={onClick}
 				onKeyDown={onKeyDown}
-				role={isDisabled ? null : 'button'}
-				tabIndex={isDisabled ? -1 : 0}
+				role={role}
+				tabIndex={tabIndex}
 			>
 				<span className={'ee-tabbable-text__inner_wrapper'}>{text}</span>
 				{icon}
