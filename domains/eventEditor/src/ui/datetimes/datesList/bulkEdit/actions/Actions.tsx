@@ -48,7 +48,7 @@ const Actions: React.FC = () => {
 			<BulkActions
 				Checkbox={Checkbox}
 				defaultAction={options[0].value}
-				id={'ee-bulk-edit-dates-select-input'}
+				id={'ee-bulk-edit-dates-actions'}
 				onApply={onApply}
 				options={options}
 			/>

@@ -12,7 +12,7 @@ import './styles.scss';
 export interface BulkActionsProps<T extends string = string> {
 	Checkbox?: React.ComponentType<ActionCheckboxProps>;
 	defaultAction?: T;
-	id?: string;
+	id: string;
 	onApply: (action: T) => void;
 	options: SelectProps['options'];
 }
@@ -42,7 +42,7 @@ export const BulkActions = <T extends string>({
 			<Select
 				aria-label={__('bulk actions')}
 				className='ee-bulk-edit-actions__select'
-				id={id || 'ee-bulk-edit-actions-select-input'}
+				id={id}
 				label={__('bulk actions')}
 				labelPosition={'top-left' as LabelPosition}
 				onChangeValue={setValue}
