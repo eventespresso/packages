@@ -24,12 +24,7 @@ const DateTemplate: React.FC<DateTemplateProps> = ({ setTemplate }) => {
 	const selectExistingID = 'existing-datetime';
 	const selectExisting = (
 		<>
-			<Select
-				id={selectExistingID}
-				options={options}
-				onChangeValue={onChangeValue}
-				margin='var(--ee-margin-smaller)'
-			/>
+			<Select id={selectExistingID} options={options} onChangeValue={onChangeValue} />
 			<Button buttonText={__('Select')} onClick={onClick} isDisabled={!selectedDateId} />
 		</>
 	);

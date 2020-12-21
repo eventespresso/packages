@@ -34,6 +34,7 @@ const GeneratedDatetime: React.FC<GeneratedDatetimeProps> = ({ date, ISOStr, typ
 			</div>
 			<div className='ee-generated-datetime__trash'>
 				<IconButton
+					borderless
 					className={iconClassMap[type]}
 					icon={iconActionMap[type]}
 					onClick={onClickTrash}
