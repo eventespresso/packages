@@ -12,6 +12,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	className,
 	defaultValue,
 	onChange,
+	onChangeValue,
 	placeholder,
 	value,
 	...props
@@ -28,8 +29,9 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
 		(newEditorState) => {
 			const html = editorStateToHtml(newEditorState);
 			onChange?.(html);
+			onChangeValue?.(html);
 		},
-		[onChange]
+		[onChange, onChangeValue]
 	);
 
 	/**
