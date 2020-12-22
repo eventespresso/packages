@@ -8,11 +8,8 @@ import type { RRuleEditorProps } from './types';
 import './style.scss';
 
 const RRuleEditor: React.FC<RRuleEditorProps> = ({ desc, icon, id, onChange, rRuleString, sidebarLabel, type }) => {
-	const wrapperClassName = classNames(
-		'rrule-generator-wrapper',
-		type === 'recurrence' && 'rrule-generator-wrapper-recurrence',
-		type === 'exclusion' && 'rrule-generator-wrapper-exclusion'
-	);
+	const wrapperClassName = classNames('rrule-generator-wrapper', type && `rrule-generator-wrapper-${type}`);
+
 	return (
 		<div className={wrapperClassName}>
 			{sidebarLabel && <FormSectionSidebar desc={desc} Icon={icon} title={sidebarLabel} />}

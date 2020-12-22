@@ -8,13 +8,10 @@
 		padding-top: 0.75rem;
 	}
 
-	&__form-group-row:first-child {
-		margin: 3rem 0 1rem;
-	}
-
 	.rrule-text {
 		border-radius: var(--ee-border-width);
 		color: white;
+		font-family: var(--ee-admin-font-family);
 		font-size: 1rem;
 		line-height: 1.5rem;
 		margin-left: 20%;

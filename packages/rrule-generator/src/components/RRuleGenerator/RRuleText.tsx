@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Divider } from '../../../../components';
 import { getRuleTextWithStartingDate } from '../../utils';
 
 export interface RRuleTextProps {
@@ -11,9 +12,10 @@ const RRuleText: React.FC<RRuleTextProps> = ({ rRuleString }) => {
 
 	return (
 		ruleText && (
-			<div className='rrule-generator__form-group-row'>
+			<>
 				<div className='rrule-text'>{ruleText}</div>
-			</div>
+				<Divider size='small' />
+			</>
 		)
 	);
 };

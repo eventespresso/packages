@@ -1,6 +1,6 @@
 import React from 'react';
-import { __, sprintf } from '@eventespresso/i18n';
 
+import { __, sprintf } from '@eventespresso/i18n';
 import Start from '../Start';
 import Repeat from '../Repeat';
 import End from '../End';
