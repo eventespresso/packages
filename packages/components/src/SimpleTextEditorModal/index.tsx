@@ -26,8 +26,8 @@ export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 
 	const onChange = useCallback(
 		(newText: string): void => {
-			newText = newText !== '<p></p>' ? newText : '';
-			setText(newText);
+			const newTextValue = newText !== '<p></p>' ? newText : '';
+			setText(newTextValue);
 		},
 		[setText]
 	);

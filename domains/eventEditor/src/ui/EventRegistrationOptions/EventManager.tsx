@@ -15,12 +15,7 @@ const EventManager: React.FC<Props> = ({ eventManagers, managerId, onManagerChan
 	return (
 		<GridItem id={id} label={__('Event Manager')} size='big'>
 			<Heading as='h4'>
-				<Select
-					onChangeValue={onManagerChange}
-					options={options}
-					type='inline'
-					value={managerId}
-				/>
+				<Select onChangeValue={onManagerChange} options={options} type='inline' value={managerId} />
 			</Heading>
 		</GridItem>
 	);
