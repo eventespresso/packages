@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { GridItem, InlineEditText } from '@eventespresso/components';
+import { GridItem, Heading, InlineEditText } from '@eventespresso/components';
 import type { EventRegistrationOptionsProps } from './types';
 
 interface Props extends Pick<EventRegistrationOptionsProps, 'phoneNumber' | 'onPhoneNumberChange'> {}
@@ -9,9 +9,13 @@ interface Props extends Pick<EventRegistrationOptionsProps, 'phoneNumber' | 'onP
 const EventPhoneNumber: React.FC<Props> = ({ onPhoneNumberChange, phoneNumber }) => {
 	const id = 'ee-event-registration-phone-number';
 
-	const input = <InlineEditText aria-describedby={id} onChange={onPhoneNumberChange} tag='h4' value={phoneNumber} />;
-
-	return <GridItem id={id} input={input} label={__('Event Phone Number')} />;
+	return (
+		<GridItem id={id} label={__('Event Phone Number')} size='big'>
+			<Heading as='h4'>
+				<InlineEditText aria-describedby={id} onChange={onPhoneNumberChange} tag='h4' value={phoneNumber} />
+			</Heading>
+		</GridItem>
+	);
 };
 
 export default EventPhoneNumber;
