@@ -110,10 +110,10 @@ $statuses: map-collect(
 	.ee-status-background-color-#{$status} {
 		background-color: var(--ee-status-color-#{$color}) !important;
 
-		// @if ($color == green) {
+		@if ($color == green) {
 			color: var(--ee-color-white) !important;
-		// } @else {
-		// 	color: var(--ee-text-on-#{$color});
-		// }
+		} @else {
+			color: var(--ee-text-on-#{$color});
+		}
 	}
 }
