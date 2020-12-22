@@ -9,8 +9,6 @@ import { RRuleEditor } from '../rRule';
 import { useFormState } from '../../data';
 import { Warning } from '../generatedDates';
 
-import './style.scss';
-
 export const PatternEditor: React.FC = () => {
 	const { isOpen, onClose, onOpen } = useDisclosure(false);
 	const { exRule, rRule, setExRule, setRRule } = useFormState();
