@@ -12,15 +12,8 @@ const EventManager: React.FC<Props> = ({ eventManagers, managerId, onManagerChan
 
 	const options = useMemo(() => eventManagers && entityListToSelectOptions(eventManagers), [eventManagers]);
 
-	const input = (
-		<Select
-			defaultValue={managerId}
-			onChangeValue={onManagerChange}
-			options={options}
-			type='inline'
-			value={managerId}
-		/>
-	);
+	const input = <Select onChangeValue={onManagerChange} options={options} type='inline' value={managerId} />;
+
 	return <GridItem id={id} input={input} label={__('Event Manager')} />;
 };
 
