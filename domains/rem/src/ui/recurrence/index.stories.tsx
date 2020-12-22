@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta } from '@storybook/react/types-6-0';
 
+import { withContext } from '../../context';
 import { PatternEditor } from './';
 
 export default {
@@ -9,4 +10,6 @@ export default {
 	title: 'Components/PatternEditor',
 } as Meta;
 
-export const Default = () => <PatternEditor />;
+const Template = withContext((args) => <PatternEditor {...args} />);
+
+export const Default = Template.bind({});
