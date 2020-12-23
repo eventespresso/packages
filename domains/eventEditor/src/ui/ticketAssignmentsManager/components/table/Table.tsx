@@ -10,10 +10,10 @@ import './styles.scss';
 
 const metaData = {
 	isScrollable: true,
-	tableId: 'ticket-assignment-manager-table',
+	tableId: 'ee-ticket-assignments-manager-table',
 	tableCaption: __('Ticket Assignment Manager'),
 };
-const className = { tableClassName: 'ticket-assignment-manager' };
+const className = { tableClassName: 'ee-ticket-assignments-manager' };
 
 const Table: React.FC<DatesAndTickets> = ({ datetimes, tickets }) => {
 	const bodyRows = useGetBodyRows({ datetimes, tickets });

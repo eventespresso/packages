@@ -16,7 +16,7 @@ export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode
 	const { defaultValue, onChange, onChangeValue, placeholder, value } = props;
 
 	const onChangeHandler = useCallback(
-		(e: React.ChangeEvent<HTMLInputElement>) => {
+		(e: React.ChangeEvent<HTMLTextAreaElement>) => {
 			const html = e.target.value;
 			onChange?.(html);
 			onChangeValue?.(html);

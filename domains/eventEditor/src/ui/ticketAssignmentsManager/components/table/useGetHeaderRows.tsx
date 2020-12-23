@@ -27,7 +27,7 @@ const useGetHeaderRows = (tickets: Ticket[]): HeaderRow[] => {
 		return [
 			{
 				cells: [emptyCell, ...cells],
-				key: 'ticket-assignment-manager-table-header-row',
+				key: 'ee-ticket-assignments-manager-table-header-row',
 				primary: true,
 				type: 'row',
 			},

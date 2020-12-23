@@ -45,7 +45,7 @@ const useGetBodyRows = ({ datetimes, tickets }: DatesAndTickets): BodyRow[] => {
 
 			return {
 				cells: [datetimeCell, ...cells],
-				className: 'ticket-assignment-manager-table-body-row',
+				className: 'ee-ticket-assignments-manager-table-body-row',
 				rowClassName: getRowClass(datetime),
 				key: datetime.id,
 				primary: true,
