@@ -1,9 +1,9 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { BaseProps } from '../types';
 import Frequency from './Frequency';
 import { useRRuleState } from '../../hooks';
+import type { BaseProps } from '../types';
 
 const Repeat: React.FC<BaseProps> = ({ id }) => {
 	const {

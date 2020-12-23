@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
+import { Select } from '../../../../components';
 import { ModeProps } from './types';
 import { EndMode } from '../../types';
 import { useRRuleConfig } from '../../hooks';
@@ -22,7 +23,7 @@ const Mode: React.FC<ModeProps> = ({ id, mode, onChange }) => {
 	);
 
 	return (
-		<select
+		<Select
 			id={id}
 			className='rrule-generator__form-control rrule-generator__form-control--medium-width rrule-generator__select'
 			value={mode}
@@ -37,7 +38,7 @@ const Mode: React.FC<ModeProps> = ({ id, mode, onChange }) => {
 					</option>
 				);
 			})}
-		</select>
+		</Select>
 	);
 };
 

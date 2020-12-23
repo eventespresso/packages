@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 
+import { Select } from '../../../../components';
 import Yearly from './Yearly';
 import Monthly from './Monthly';
 import Weekly from './Weekly';
@@ -25,7 +26,7 @@ const Frequency: React.FC<FrequencyProps> = ({ id, frequency, onChange }) => {
 
 	return (
 		<div className='rrule-generator__frequency'>
-			<select
+			<Select
 				className='rrule-generator__form-control rrule-generator__select'
 				id={id}
 				name={id}
@@ -40,7 +41,7 @@ const Frequency: React.FC<FrequencyProps> = ({ id, frequency, onChange }) => {
 						</option>
 					);
 				})}
-			</select>
+			</Select>
 
 			{frequency === 'YEARLY' && <Yearly id={`${id}-yearly`} />}
 			{frequency === 'MONTHLY' && <Monthly id={`${id}-monthly`} />}

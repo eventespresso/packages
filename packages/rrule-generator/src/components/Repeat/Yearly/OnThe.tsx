@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
+import { Radio } from '../../../../../adapters';
+import { Select } from '../../../../../components';
 import PositionSelect from '../PositionSelect';
 import { MONTHS, DAYS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';
@@ -47,13 +49,12 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 		<div className='rrule-generator__on-the'>
 			{!isTheOnlyMode && (
 				<label className='rrule-generator__labelled-input'>
-					<input
+					<Radio
 						aria-label={__('Repeat yearly on the')}
 						className='rrule-generator__input-radio'
 						id={id}
-						type='radio'
+						isChecked={isActive}
 						name={id}
-						checked={isActive}
 						value='ON_THE'
 						onChange={onChangeMode}
 					/>
@@ -69,13 +70,13 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				value={onThe.which}
 			/>
 
-			<select
+			<Select
 				id={`${id}-day`}
 				name={`${id}-day`}
 				aria-label={__('Repeat yearly on the day')}
 				className='rrule-generator__form-control rrule-generator__select'
 				value={onThe.day}
-				disabled={!isActive}
+				isDisabled={!isActive}
 				onBlur={onChangeDay}
 				onChange={onChangeDay}
 			>
@@ -84,17 +85,17 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 						{day}
 					</option>
 				))}
-			</select>
+			</Select>
 
 			<span>{__('of')}</span>
 
-			<select
+			<Select
 				id={`${id}-month`}
 				name={`${id}-month`}
 				aria-label={__('Repeat yearly on the month')}
 				className='rrule-generator__form-control rrule-generator__select rrule-generator__month'
 				value={onThe.month}
-				disabled={!isActive}
+				isDisabled={!isActive}
 				onBlur={onChangeMonth}
 				onChange={onChangeMonth}
 			>
@@ -103,7 +104,7 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 						{month}
 					</option>
 				))}
-			</select>
+			</Select>
 		</div>
 	);
 };

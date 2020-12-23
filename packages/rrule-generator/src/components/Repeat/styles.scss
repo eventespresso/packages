@@ -3,8 +3,13 @@
 		flex: 0 1 80%;
 		width: 200px;
 
-		> select.rrule-generator__form-control {
+		.ee-select-wrapper {
+			display: inline-block;
 			width: 220px;
+
+			select {
+				width: 100%;
+			}
 		}
 	}
 }
