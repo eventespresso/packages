@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
+import { useDisclosure } from '@chakra-ui/core';
 
 import { __ } from '@eventespresso/i18n';
 // TODO replace import path
@@ -8,8 +9,8 @@ import { RTEWithEditModeProps } from './types';
 import { RichTextEditor } from '../RichTextEditor';
 
 export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode = true, ...props }) => {
-	const [isVisualMode, setIsVisualMode] = useState(true);
-	const toggleEditMode = useCallback(() => setIsVisualMode((m) => !m), []);
+	useDisclosure();
+	const { isOpen: isVisualMode, onToggle: toggleEditMode } = useDisclosure(true);
 
 	const editor = <RichTextEditor {...props} />;
 
