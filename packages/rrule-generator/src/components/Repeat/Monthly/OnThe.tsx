@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
+import { Divider, Select } from '../../../../../components';
 import { DAYS } from '../../../constants';
 import PositionSelect from '../PositionSelect';
 import { OnProps } from '../types';
@@ -60,22 +61,25 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				value={onThe.which}
 			/>
 
-			<select
+			<Divider orientation='vertical' size='micro' />
+
+			<Select
 				id={`${id}-day`}
 				name={`${id}-day`}
 				aria-label={__('Repeat monthly on the day')}
 				className='rrule-generator__form-control rrule-generator__select rrule-generator__month'
 				value={onThe.day}
-				disabled={!isActive}
+				isDisabled={!isActive}
 				onBlur={onChangeDay}
 				onChange={onChangeDay}
+				width='auto'
 			>
 				{Object.entries(DAYS).map(([key, day]) => (
 					<option key={key} value={key}>
 						{day}
 					</option>
 				))}
-			</select>
+			</Select>
 		</div>
 	);
 };

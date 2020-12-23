@@ -11,6 +11,10 @@
 		&--vertical {
 			margin: 0 var(--ee-margin-default);
 
+			&--micro {
+				margin: 0 var(--ee-margin-micro);
+			}
+
 			&--tiny {
 				margin: 0 var(--ee-margin-tiny);
 			}

@@ -14,6 +14,7 @@ const PositionSelect: React.FC<PositionSelectProps> = ({ id, isActive, onChangeW
 		isDisabled={!isActive}
 		onBlur={onChangeWhich}
 		onChange={onChangeWhich}
+		width='auto'
 	>
 		{Object.entries(WHICH).map(([key, label]) => (
 			<option key={key} value={key}>

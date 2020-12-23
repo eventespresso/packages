@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { range } from 'ramda';
 
+import { Divider, Select } from '../../../../../components';
 import { useRRuleState } from '../../../hooks';
 import { OnProps } from '../types';
 import { OnChangeSelect } from '../../types';
@@ -41,22 +42,24 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				</label>
 			)}
 
-			<select
+			<Divider orientation='vertical' size='micro' />
+
+			<Select
+				aria-label={__('Repeat monthly on a day')}
 				id={`${id}-day`}
 				name={`${id}-day`}
-				aria-label={__('Repeat monthly on a day')}
-				className='rrule-generator__form-control rrule-generator__select rrule-generator__day'
-				value={on.day}
-				disabled={!isActive}
+				isDisabled={!isActive}
 				onBlur={onChangeDay}
 				onChange={onChangeDay}
+				value={on.day}
+				width='auto'
 			>
 				{range(1, 32).map((day) => (
 					<option key={day} value={day}>
 						{day}
 					</option>
 				))}
-			</select>
+			</Select>
 		</div>
 	);
 };
