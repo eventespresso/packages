@@ -5,7 +5,7 @@ import { range } from 'ramda';
 
 import { NOW } from '@eventespresso/constants';
 import { Radio } from '../../../../../adapters';
-import { Select } from '../../../../../components';
+import { Divider, Select } from '../../../../../components';
 import { MONTHS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';
 import { OnChangeSelect } from '../../types';
@@ -68,6 +68,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				isDisabled={!isActive}
 				onBlur={onChangeMonth}
 				onChange={onChangeMonth}
+				width='auto'
 			>
 				{Object.entries(MONTHS).map(([key, month]) => (
 					<option key={key} value={key}>
@@ -75,6 +76,8 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 					</option>
 				))}
 			</Select>
+
+			<Divider orientation='vertical' size='tiny' />
 
 			<Select
 				id={`${id}-day`}
@@ -85,6 +88,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				isDisabled={!isActive}
 				onBlur={onChangeDay}
 				onChange={onChangeDay}
+				width='auto'
 			>
 				{range(1, daysInMonth + 1).map((day) => (
 					<option key={day} value={day}>

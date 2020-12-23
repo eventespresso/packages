@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Radio } from '../../../../../adapters';
-import { Select } from '../../../../../components';
+import { Divider, Select } from '../../../../../components';
 import PositionSelect from '../PositionSelect';
 import { MONTHS, DAYS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';
@@ -69,6 +69,8 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				onChangeWhich={onChangeWhich}
 				value={onThe.which}
 			/>
+
+			<Divider orientation='vertical' size='tiny' />
 
 			<Select
 				id={`${id}-day`}
