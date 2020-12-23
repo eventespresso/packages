@@ -1,3 +1,3 @@
-import { RichTextEditorProps } from '../RichTextEditor';
+import { RTEWithEditModeProps } from '../RTEWithEditMode';
 
-export interface AdvancedTextEditorProps extends RichTextEditorProps {}
+export interface AdvancedTextEditorProps extends RTEWithEditModeProps {}
