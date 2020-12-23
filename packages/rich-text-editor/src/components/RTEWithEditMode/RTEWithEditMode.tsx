@@ -9,7 +9,6 @@ import { RTEWithEditModeProps } from './types';
 import { RichTextEditor } from '../RichTextEditor';
 
 export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode = true, ...props }) => {
-	useDisclosure();
 	const { isOpen: isVisualMode, onToggle: toggleEditMode } = useDisclosure(true);
 
 	const editor = <RichTextEditor {...props} />;
