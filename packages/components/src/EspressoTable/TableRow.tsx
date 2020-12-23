@@ -9,7 +9,7 @@ import type { BodyRow } from './types';
 const TableRow: React.FC<BodyRow> = ({
 	children,
 	rowData,
-	rowNumber,
+	rowNumber: _rowNumber,
 	headerRowCount,
 	rowClassName = '',
 	className,
@@ -21,6 +21,9 @@ const TableRow: React.FC<BodyRow> = ({
 	if (!rowData) {
 		return null;
 	}
+	// clone
+	let rowNumber = _rowNumber;
+
 	const id = props.id ? `${props.id}-row-${rowNumber}` : `ee-rspnsv-table-row-${rowNumber}`;
 	const css = classNames(
 		rowClassName,

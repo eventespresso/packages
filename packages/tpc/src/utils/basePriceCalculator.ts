@@ -1,8 +1,8 @@
 import type { Price } from '@eventespresso/edtr-services';
 import { parsedAmount } from '@eventespresso/utils';
 
-const basePriceCalculator = (currentTotal: number, { isPercent, isDiscount, amount }: Price): number => {
-	amount = parsedAmount(amount || 0);
+const basePriceCalculator = (currentTotal: number, { isPercent, isDiscount, amount: rawAmount }: Price): number => {
+	const amount = parsedAmount(rawAmount || 0);
 	const total = parsedAmount(currentTotal || 0);
 	// NOTE: there's no case for handling base price types because that is what we are calculating
 	// ALSO NOTE: Reverse calculations seem backwards, because, well.. they are!

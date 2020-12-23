@@ -104,8 +104,7 @@ const useReorderEntities = <E extends Entity>({ entityType }: ReorderEntitiesPro
 			// but now we need to reset the order properties for ALL entities
 			allEntities.map((entity, index) => {
 				// add 1 so we don't end up with order: 0
-				entity.order = index + 1;
-				return entity;
+				return { ...entity, order: index + 1 };
 			});
 
 			updateEntityList(allEntities);

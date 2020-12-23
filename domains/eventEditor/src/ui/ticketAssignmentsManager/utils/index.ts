@@ -136,7 +136,10 @@ const getYearWiseMonthsFromDates = (dates: Array<Datetime>): YearWiseMonths => {
 		if (!(month in monthsInTheYear)) {
 			monthsInTheYear[month] = parsedDate.toLocaleString('default', { month: 'long' });
 
-			acc[year] = monthsInTheYear;
+			return {
+				...acc,
+				[year]: monthsInTheYear,
+			};
 		}
 		return acc;
 	}, {});

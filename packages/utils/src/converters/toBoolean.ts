@@ -11,8 +11,8 @@ const toBoolean = (value: any): boolean => {
 	}
 	// return true if a string with value "true", "yes", or "1"
 	if (typeof value === 'string') {
-		value = value.toLowerCase().trim();
-		switch (value) {
+		const safeValue = value.toLowerCase().trim();
+		switch (safeValue) {
 			case 'true':
 			case 'yes':
 			case '1':

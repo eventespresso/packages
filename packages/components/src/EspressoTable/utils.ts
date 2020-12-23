@@ -17,7 +17,10 @@ export const addZebraStripesOnMobile = (exclude: Array<string>) => (cells: Array
 		x++;
 
 		if (x % 2 === 0) {
-			cell.className = classNames(cell.className, 'ee-zebra-stripe-on-mobile');
+			return {
+				...cell,
+				className: classNames(cell.className, 'ee-zebra-stripe-on-mobile'),
+			};
 		}
 
 		return cell;

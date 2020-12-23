@@ -25,20 +25,14 @@ const TableHeaderCell: React.FC<TableHeaderCellProps> = ({
 		props.className[rowTypeClass]
 	);
 
-	if (rowType === 'header') {
-		props.role = 'columnheader';
-		props.scope = 'col';
-	} else if (rowType === 'body') {
-		props.scope = 'row';
-	}
+	const role = rowType === 'header' ? 'columnheader' : props.role;
+	const scope = rowType === 'header' ? 'col' : rowType === 'body' ? 'row' : props.scope;
 
-	const tableHeaderProps: React.HTMLAttributes<HTMLElement> = {
-		...props,
-		className,
-		id,
-	};
-
-	return <th {...tableHeaderProps}>{children}</th>;
+	return (
+		<th {...props} className={className} id={id} role={role} scope={scope}>
+			{children}
+		</th>
+	);
 };
 
 export default TableHeaderCell;
