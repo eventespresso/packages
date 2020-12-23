@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Select } from '../../../../components';
+import { Divider, Select } from '../../../../components';
 import { ModeProps } from './types';
 import { EndMode } from '../../types';
 import { useRRuleConfig } from '../../hooks';
@@ -23,22 +23,18 @@ const Mode: React.FC<ModeProps> = ({ id, mode, onChange }) => {
 	);
 
 	return (
-		<Select
-			id={id}
-			className='rrule-generator__form-control rrule-generator__form-control--medium-width rrule-generator__select'
-			value={mode}
-			name={id}
-			onBlur={onChangeMode}
-			onChange={onChangeMode}
-		>
-			{endModes.map((endMode) => {
-				return (
-					<option key={endMode} value={endMode}>
-						{modeLabels?.[endMode]}
-					</option>
-				);
-			})}
-		</Select>
+		<>
+			<Select id={id} value={mode} name={id} onBlur={onChangeMode} onChange={onChangeMode} width='auto'>
+				{endModes.map((endMode) => {
+					return (
+						<option key={endMode} value={endMode}>
+							{modeLabels?.[endMode]}
+						</option>
+					);
+				})}
+			</Select>
+			<Divider orientation='vertical' size='tiny' />
+		</>
 	);
 };
 

@@ -2,15 +2,25 @@
 	&.ee-divider {
 		&--horizontal {
 			margin: var(--ee-margin-bigger) 0;
+
+			&--small {
+				margin: var(--ee-margin-small) 0;
+			}
 		}
 
 		&--vertical {
 			margin: 0 var(--ee-margin-default);
-		}
 
-		&--size {
-			&-small {
-				margin: var(--ee-margin-small) 0;
+			&--tiny {
+				margin: 0 var(--ee-margin-tiny);
+			}
+
+			&--small {
+				margin: 0 var(--ee-margin-small);
+			}
+
+			&--smaller {
+				margin: 0 var(--ee-margin-smaller);
 			}
 		}
 	}

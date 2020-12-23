@@ -1,6 +1,7 @@
 import React from 'react';
-import { __ } from '@eventespresso/i18n';
 
+import { __ } from '@eventespresso/i18n';
+import { Row } from '../../../../components';
 import EndAfter from './After';
 import OnDate from './OnDate';
 
@@ -13,7 +14,7 @@ const End: React.FC<BaseProps> = ({ id }) => {
 	const endModeId = `${id}-mode`;
 
 	return (
-		<div className='rrule-generator__form-group-row'>
+		<Row align='top'>
 			<label htmlFor={endModeId} className='col-form-label'>
 				<strong>{__('End')}</strong>
 			</label>
@@ -23,7 +24,7 @@ const End: React.FC<BaseProps> = ({ id }) => {
 			{end.mode === 'AFTER' && <EndAfter id={`${id}-after`} after={end.after} onChange={setEndAfter} />}
 
 			{end.mode === 'ON_DATE' && <OnDate id={`${id}-date`} date={end.date} onChange={setEndDate} />}
-		</div>
+		</Row>
 	);
 };
 
