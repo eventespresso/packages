@@ -45,7 +45,7 @@
 		"jest/no-conditional-expect": "off",
 		"jest/valid-describe": "off",
 		"no-case-declarations": "warn",
-		"no-param-reassign": ["off", { "props": true }],
+		"no-param-reassign": ["error", { "props": true }],
 		"no-prototype-builtins": "off",
 		"no-unused-vars": "off",
 		"react-hooks/exhaustive-deps": "error",
