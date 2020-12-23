@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { RRuleGenerator, RRuleConfig } from '@eventespresso/rrule-generator';
 
-import { PatternEditorProps } from './types';
 import useRRuleLimits from './useRRuleLimits';
+import type { PatternEditorProps } from './types';
 
 const defaultConfig: RRuleConfig = {
 	frequencies: ['YEARLY', 'MONTHLY', 'WEEKLY', 'DAILY'],

@@ -1,4 +1,4 @@
-export { default as Container } from './Container';
+export { default as EntityEditModalContainer } from './Container';
 
 export { default as EntityEditModal } from './EntityEditModal';
 

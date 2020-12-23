@@ -7,6 +7,7 @@ import Row from './Row';
 import Sidebar from './Sidebar';
 import Stack from './Stack';
 import type { ContainerProps } from './types';
+
 import './styles.scss';
 
 const Container: React.FC<ContainerProps> = ({

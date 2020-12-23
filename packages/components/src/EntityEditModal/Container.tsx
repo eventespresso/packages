@@ -3,7 +3,7 @@ import React from 'react';
 import EntityEditModal from './EntityEditModal';
 
 import type { Entity } from '@eventespresso/data';
-import type { ContainerProps } from './types';
+import type { EntityEditModalContainerProps } from './types';
 
 const Container = <E extends Entity>({
 	component: Component,
@@ -11,7 +11,7 @@ const Container = <E extends Entity>({
 	isOpen,
 	onClose,
 	title,
-}: ContainerProps<E>): React.ReactElement => {
+}: EntityEditModalContainerProps<E>): React.ReactElement => {
 	return (
 		isOpen && (
 			<EntityEditModal isOpen={isOpen} onClose={onClose} title={title}>

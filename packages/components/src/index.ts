@@ -10,6 +10,7 @@ export * from './CalendarPageDate';
 export * from './Collapsible';
 export * from './ColorSwatch';
 export * from './Confirm';
+export * from './Container';
 export * from './CurrencyDisplay';
 export * from './CurrencySign';
 export * from './DatePicker';

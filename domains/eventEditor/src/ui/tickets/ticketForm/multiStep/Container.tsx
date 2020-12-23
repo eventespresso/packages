@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 
 import { useEvent, useTicketItem, EdtrGlobalModals } from '@eventespresso/edtr-services';
-import { Container as EditModalContainer } from '@eventespresso/components';
+import { EntityEditModalContainer } from '@eventespresso/components';
 import { useGlobalModal } from '@eventespresso/registry';
 
 import Content from './Content';
@@ -32,7 +32,9 @@ const Container: React.FC = () => {
 		setData({ entityId: null });
 	}, [closeModal, setData]);
 
-	return <EditModalContainer component={Content} entity={ticket} title={title} isOpen={isOpen} onClose={onClose} />;
+	return (
+		<EntityEditModalContainer component={Content} entity={ticket} title={title} isOpen={isOpen} onClose={onClose} />
+	);
 };
 
 export default Container;

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 
-import { Container as EditModalContainer } from '@eventespresso/components';
+import { EntityEditModalContainer } from '@eventespresso/components';
 import { useEvent, useDatetimeItem, EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 
@@ -34,7 +34,15 @@ const Container: React.FC = () => {
 		setData({ entityId: null });
 	}, [closeEditDateModal, closeNewDateModal, setData]);
 
-	return <EditModalContainer component={Content} entity={datetime} title={title} isOpen={isOpen} onClose={onClose} />;
+	return (
+		<EntityEditModalContainer
+			component={Content}
+			entity={datetime}
+			title={title}
+			isOpen={isOpen}
+			onClose={onClose}
+		/>
+	);
 };
 
 export default Container;
