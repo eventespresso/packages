@@ -6,7 +6,7 @@ import { Image } from '@eventespresso/icons';
 
 import { ToolbarButtonProps } from './types';
 
-const wpMedia = window.wp?.media({
+const wpMedia = window?.wp?.media({
 	title: __('Select media'),
 	button: {
 		text: __('Select'),
@@ -17,7 +17,7 @@ const wpMedia = window.wp?.media({
 	},
 });
 
-const openMediaModal = () => wpMedia.open();
+const openMediaModal = () => wpMedia?.open();
 
 type AddMediaArgs = {
 	src: string;
@@ -46,7 +46,7 @@ const WPMedia: React.FC<ToolbarButtonProps> = ({ onChange, editorState }) => {
 	);
 
 	const mediaHandler = useCallback(() => {
-		const attachment = wpMedia.state().get('selection').first().toJSON();
+		const attachment = wpMedia?.state()?.get('selection')?.first()?.toJSON();
 
 		const { alt, height, url, type, width } = attachment;
 
@@ -55,11 +55,11 @@ const WPMedia: React.FC<ToolbarButtonProps> = ({ onChange, editorState }) => {
 
 	useEffect(() => {
 		// de-register the previous listener.
-		wpMedia.off('select', mediaHandler);
+		wpMedia?.off('select', mediaHandler);
 
-		wpMedia.on('select', mediaHandler);
+		wpMedia?.on('select', mediaHandler);
 
-		return () => wpMedia.off('select', mediaHandler);
+		return () => wpMedia?.off('select', mediaHandler);
 	}, [mediaHandler]);
 
 	return (
