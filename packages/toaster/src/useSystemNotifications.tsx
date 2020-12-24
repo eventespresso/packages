@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { toast } from 'react-toastify';
 
 import type { DissmissToast, SystemNotificationsToaster, ToastProps, UpdateToast } from './types';
-import Toaster from './Toaster';
+import { Toaster } from './Toaster';
 
 const position = toast.POSITION.BOTTOM_RIGHT as 'bottom-right';
 const className = 'ee-toaster-notice__toast';

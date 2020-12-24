@@ -44,12 +44,6 @@ export enum TOAST_STATUS {
 	WARNING = 'WARNING',
 }
 
-export type Toaster = {
-	dissmiss: DissmissToast;
-	dissmissAll: VoidFunction;
-	exists: (key: ToastKey) => boolean;
-};
-
 export type Toasters = {
 	systemNotifications: SystemNotificationsToaster;
 };
