@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { useDisclosure } from '@chakra-ui/react';
 
 import { __ } from '@eventespresso/i18n';
+import { useDisclosure } from '@eventespresso/hooks';
 // TODO replace import path
 import { Textarea } from '../../../../components/src/Textarea';
 

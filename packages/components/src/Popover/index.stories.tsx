@@ -1,9 +1,9 @@
 import React from 'react';
-import { useDisclosure } from '@chakra-ui/react';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Button, Popover } from '../';
 import { PopoverProps } from '@eventespresso/adapters';
+import { useDisclosure } from '@eventespresso/hooks';
+import { Button, Popover } from '../';
 
 export default {
 	component: Popover,

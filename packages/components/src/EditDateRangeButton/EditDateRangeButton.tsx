@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
-import { useDisclosure } from '@chakra-ui/react';
-import { __ } from '@eventespresso/i18n';
 
+import { __ } from '@eventespresso/i18n';
 import { CalendarOutlined } from '@eventespresso/icons';
-import { useMemoStringify } from '@eventespresso/hooks';
+import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
 
 import { ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
 import type { DateRange } from '@eventespresso/dates';

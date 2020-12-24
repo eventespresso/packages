@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { useDisclosure } from '@chakra-ui/react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
 import { Save } from '@eventespresso/icons';
 import { Divider } from '@eventespresso/adapters';
+import { useDisclosure } from '@eventespresso/hooks';
 
 import { Button, ButtonType, Popover } from '../../';
 import type { PopoverFormProps } from './types';

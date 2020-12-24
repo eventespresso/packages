@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useRef } from 'react';
-import { useDisclosure } from '@chakra-ui/react';
 
 import { __ } from '@eventespresso/i18n';
+import { useDisclosure } from '@eventespresso/hooks';
 import { AlertDialog, Button, ButtonType } from '../';
 import type { ConfirmProps } from './types';
 

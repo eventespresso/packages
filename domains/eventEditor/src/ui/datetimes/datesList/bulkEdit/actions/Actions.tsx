@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
-import { useDisclosure } from '@chakra-ui/react';
 
 import { BulkActions } from '@eventespresso/ee-components';
-import { useMemoStringify } from '@eventespresso/hooks';
+import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
 import { withFeature } from '@eventespresso/services';
 import type { BulkActionsProps } from '@eventespresso/components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';

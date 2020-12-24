@@ -1,7 +1,8 @@
 import React from 'react';
-import { useDisclosure } from '@chakra-ui/react';
+
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
+import { useDisclosure } from '@eventespresso/hooks';
 import { Button, Modal } from '../';
 import { ModalProps } from './types';
 

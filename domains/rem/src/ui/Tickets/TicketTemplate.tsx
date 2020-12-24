@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { useDisclosure } from '@chakra-ui/react';
-import { __ } from '@eventespresso/i18n';
 
+import { __ } from '@eventespresso/i18n';
 import { Button, Select } from '@eventespresso/components';
 import { entityListToSelectOptions } from '@eventespresso/utils';
+import { useDisclosure } from '@eventespresso/hooks';
 import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { useTickets } from '@eventespresso/edtr-services';
 

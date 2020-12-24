@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
-import { useDisclosure } from '@chakra-ui/react';
 
 import { Button, ButtonRow, DebugInfo, Divider, ErrorMessage } from '@eventespresso/components';
+import { useDisclosure } from '@eventespresso/hooks';
 import { CloseCircleOutlined, Repeat } from '@eventespresso/icons';
 
 import { RRuleEditor } from '../rRule';
