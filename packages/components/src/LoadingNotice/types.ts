@@ -1,4 +1,4 @@
-import type { SpinnerProps } from '@chakra-ui/react';
+import type { SpinnerProps } from '@eventespresso/adapters';
 import type { Size } from '../';
 
 export interface LoadingNoticeProps extends Omit<SpinnerProps, 'size'> {

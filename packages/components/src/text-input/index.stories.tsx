@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
-import { Stack } from '@chakra-ui/react';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Divider, TextInput } from '../';
-import { TextInputProps } from '@eventespresso/adapters';
+import { Stack, TextInputProps } from '@eventespresso/adapters';
 
 export default {
 	title: 'Components/TextInput',
