@@ -1,5 +1,3 @@
-export type { SpinnerProps } from '@chakra-ui/react';
-
 export type CommonInputEvent<T = Element> = React.ChangeEvent<T> | React.FormEvent<T>;
 
 export interface CommonInputProps<T = Element, V = React.ReactText | boolean> {
