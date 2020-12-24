@@ -24,7 +24,7 @@
 		"yup": "^0.31.1"
 	},
 	"devDependencies": {
-		"@types/yup": "^0.29.10",
+		"@types/yup": "^0.29.11",
 		"@types/final-form-set-field-data": "1.0.0"
 	},
 	"license": "GPL-3.0",
