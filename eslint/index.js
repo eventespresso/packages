@@ -43,7 +43,7 @@ module.exports = {
 							}
 							// TODO use file system to resolve paths
 							const match = path.match(/[\\/]packages[\\/](?<package>[^\\/]+)[\\/]/);
-							if (match && match.groups.package && match.groups.package) {
+							if (match && match.groups && match.groups.package) {
 								const dependency = importSource.split('/')[1];
 								const sourcePkg = match.groups.package;
 
