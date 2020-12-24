@@ -1,5 +1,5 @@
 import React from 'react';
-import { parseISO, format as formatFunc } from 'date-fns';
+import { parseISO, format } from 'date-fns';
 import { __ } from '@eventespresso/i18n';
 
 import { switchTenseForDate } from '@eventespresso/dates';
@@ -11,7 +11,7 @@ import type { CalendarDateSwitcherProps } from './types';
 const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = ({
 	className,
 	displayDate = DisplayStartOrEndDate.start,
-	formatFn = formatFunc,
+	formatFn = format,
 	labels,
 	...props
 }) => {
