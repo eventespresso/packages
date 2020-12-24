@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
 import type { InternalDebounceProps, WithDebounceProps } from './types';
@@ -62,15 +62,18 @@ const withDebounce = <P extends AnyObject, R extends any>(
 		// if not debouncing, pass the external field value directly
 		const valueToPass = shouldDebounce ? internalValue : fieldValue;
 
-		return (
-			<WrappedComponent
-				{...(props as P)}
-				value={valueToPass}
-				isChecked={isCheckbox ? valueToPass : undefined}
-				onChangeValue={shouldDebounce ? onChangeHandler : onChangeValue}
-				ref={forwardedRef}
-			/>
+		const wrappedCompProps: P = useMemo(
+			() => ({
+				...(props as P),
+				...(isCheckbox && { isChecked: valueToPass }), // conditionally add isChecked
+				onChangeValue: shouldDebounce ? onChangeHandler : onChangeValue,
+				ref: forwardedRef,
+				value: valueToPass,
+			}),
+			[forwardedRef, onChangeHandler, onChangeValue, props, shouldDebounce, valueToPass]
 		);
+
+		return <WrappedComponent {...wrappedCompProps} />;
 	};
 
 	return React.forwardRef((props: P, ref: Ref) => {

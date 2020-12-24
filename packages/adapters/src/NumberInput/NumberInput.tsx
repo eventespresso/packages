@@ -12,7 +12,7 @@ import type { NumberInputProps } from './types';
 export const NumberInput: React.FC<NumberInputProps> = ({
 	className,
 	decrementStepperProps,
-	disabled,
+	isDisabled,
 	id,
 	incrementStepperProps,
 	inputFieldProps,
@@ -25,8 +25,8 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 	const size = inputFieldProps?.size && Number(inputFieldProps?.size);
 
 	return (
-		<ChakraNumberInput {...props} className={className} onChange={onChange} value={value}>
-			<NumberInputField {...inputFieldProps} id={id} size={size} isDisabled={disabled} />
+		<ChakraNumberInput {...props} className={className} isDisabled={isDisabled} onChange={onChange} value={value}>
+			<NumberInputField {...inputFieldProps} id={id} size={size} />
 			{showStepper && (
 				<NumberInputStepper {...inputStepperProps}>
 					<NumberIncrementStepper {...incrementStepperProps} />

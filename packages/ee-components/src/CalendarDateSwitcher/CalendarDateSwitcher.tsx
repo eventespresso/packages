@@ -5,10 +5,8 @@ import { CalendarDateSwitcher as CalendarDateSwitcherUI } from '@eventespresso/c
 
 import type { CalendarDateSwitcherProps } from './types';
 
-const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = (props) => {
+export const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = (props) => {
 	const { formatForSite } = useTimeZoneTime();
 
 	return <CalendarDateSwitcherUI formatFn={formatForSite} {...props} />;
 };
-
-export default CalendarDateSwitcher;

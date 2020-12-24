@@ -19,7 +19,7 @@ export const DropdownToggle = React.forwardRef<HTMLButtonElement, DropdownToggle
 
 		return (
 			<MenuToggle aria-label={tooltip} as='div' className={className} ref={ref}>
-				<IconButton icon={icon} tooltip={tooltip} />
+				<IconButton borderless icon={icon} tooltip={tooltip} />
 			</MenuToggle>
 		);
 	}

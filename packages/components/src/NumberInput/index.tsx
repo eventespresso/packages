@@ -20,13 +20,12 @@ export const NumberInput: React.FC<Props> = ({
 	visibleDigits,
 	...props
 }) => {
-	const className = classNames(
-		'ee-number-input',
+	const visibleDigitsClassName =
 		showStepper === false &&
-			visibleDigits &&
-			`ee-number-input--visible-digits ee-number-input--visible-digits-${visibleDigits}`,
-		props.className
-	);
+		visibleDigits &&
+		`ee-number-input--visible-digits ee-number-input--visible-digits-${visibleDigits}`;
+
+	const className = classNames('ee-number-input', visibleDigitsClassName, props.className);
 	const ariaValuenow = String(value)?.length ? Number(value) : null;
 
 	return (

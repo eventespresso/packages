@@ -1,3 +1,2 @@
-export { default as CalendarDateSwitcher } from './CalendarDateSwitcher';
-
+export * from './CalendarDateSwitcher';
 export * from './types';

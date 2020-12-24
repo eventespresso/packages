@@ -45,25 +45,13 @@ const withTooltip = <P extends AnyObject>(
 			});
 			toolTipped = (
 				<div className='ee-mobile-help-text__btn-wrap'>
-					<WrappedComponent
-						aria-label={tooltip}
-						{...(props as P)}
-						ref={forwardedRef}
-						tooltip={tooltip}
-						tooltipProps={tooltipProps}
-					/>
+					<WrappedComponent aria-label={tooltip} {...(props as P)} ref={forwardedRef} tooltip={tooltip} />
 					<div className={className}>{tooltip}</div>
 				</div>
 			);
 		} else {
 			toolTipped = (
-				<WrappedComponent
-					aria-label={tooltip}
-					{...(props as P)}
-					ref={forwardedRef}
-					tooltip={tooltip}
-					tooltipProps={tooltipProps}
-				/>
+				<WrappedComponent aria-label={tooltip} {...(props as P)} ref={forwardedRef} tooltip={tooltip} />
 			);
 		}
 

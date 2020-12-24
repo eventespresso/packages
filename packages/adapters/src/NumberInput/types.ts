@@ -11,6 +11,7 @@ type Picked =
 	| 'className'
 	| 'defaultValue'
 	| 'id'
+	| 'isDisabled'
 	| 'keepWithinRange'
 	| 'max'
 	| 'min'
@@ -21,7 +22,6 @@ type Picked =
 
 export interface NumberInputProps extends Pick<ChakraNumberInputProps, Picked> {
 	decrementStepperProps?: ChakraBoxProps;
-	disabled?: boolean;
 	inputFieldProps?: ChakraInputProps;
 	inputStepperProps?: ChakraFlexProps;
 	incrementStepperProps?: ChakraBoxProps;

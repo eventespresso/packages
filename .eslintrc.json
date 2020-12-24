@@ -39,10 +39,6 @@
 			{ "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
 		],
 		"@typescript-eslint/no-use-before-define": "off",
-		"@typescript-eslint/no-unused-vars": [
-			"error",
-			{ "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
-		],
 		"comma-dangle": "off",
 		"ee-barista/no-circular-imports": "error",
 		"jest/valid-title": "off",
