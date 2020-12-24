@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useDisclosure } from '@chakra-ui/core';
+import { useDisclosure } from '@chakra-ui/react';
 
 import { Tooltip } from '../../';
 import { InfoCircleOutlined } from '@eventespresso/icons';

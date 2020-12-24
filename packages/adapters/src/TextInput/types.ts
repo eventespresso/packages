@@ -1,4 +1,4 @@
-import type { InputProps as ChakraInputProps } from '@chakra-ui/core';
+import type { InputProps as ChakraInputProps } from '@chakra-ui/react';
 
 import type { CommonInputProps } from '../types';
 

@@ -1,4 +1,4 @@
-import type { SimpleGridProps } from '@chakra-ui/core';
+import type { SimpleGridProps } from '@chakra-ui/react';
 
 export interface GridProps extends SimpleGridProps {
 	className?: string;

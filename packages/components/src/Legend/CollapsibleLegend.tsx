@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDisclosure } from '@chakra-ui/core';
+import { useDisclosure } from '@chakra-ui/react';
 
 import { Collapsible } from '../../';
 import Legend from './Legend';

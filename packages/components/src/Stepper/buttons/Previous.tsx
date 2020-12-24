@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button } from '../../../';
 import { ChevronDoubleLeft, ChevronLeft } from '@eventespresso/icons';
+import { Button } from '../../../';
 
 interface Props extends React.ComponentProps<typeof Button> {
 	skippable?: boolean;
@@ -10,7 +10,7 @@ interface Props extends React.ComponentProps<typeof Button> {
 
 const Previous: React.FC<Props> = ({ isDisabled, onClick, skippable, ...props }) => {
 	const buttonText = props.buttonText || __('Previous');
-	const leftIcon = memo(() => (skippable ? <ChevronDoubleLeft size='smaller' /> : <ChevronLeft size='smaller' />));
+	const leftIcon = skippable ? <ChevronDoubleLeft size='smaller' /> : <ChevronLeft size='smaller' />;
 
 	return <Button {...props} buttonText={buttonText} isDisabled={isDisabled} leftIcon={leftIcon} onClick={onClick} />;
 };

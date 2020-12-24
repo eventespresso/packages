@@ -1,1 +1,1 @@
-export { Editable } from '@chakra-ui/core';
+export { Editable } from '@chakra-ui/react';

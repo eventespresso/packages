@@ -2,26 +2,25 @@ import type {
 	FlexProps as ChakraFlexProps,
 	InputProps as ChakraInputProps,
 	NumberInputProps as ChakraNumberInputProps,
-	PseudoBoxProps as ChakraPseudoBoxProps,
-} from '@chakra-ui/core';
+	BoxProps as ChakraBoxProps,
+} from '@chakra-ui/react';
 
-export interface NumberInputProps
-	extends Pick<
-		ChakraNumberInputProps,
-		| 'aria-valuenow'
-		| 'clampValueOnBlur'
-		| 'className'
-		| 'defaultValue'
-		| 'id'
-		| 'keepWithinRange'
-		| 'max'
-		| 'min'
-		| 'onChange'
-		| 'precision'
-		| 'step'
-		| 'value'
-	> {
-	decrementStepperProps?: ChakraPseudoBoxProps;
+type Picked =
+	| 'aria-valuenow'
+	| 'clampValueOnBlur'
+	| 'className'
+	| 'defaultValue'
+	| 'id'
+	| 'keepWithinRange'
+	| 'max'
+	| 'min'
+	| 'onChange'
+	| 'precision'
+	| 'step'
+	| 'value';
+
+export interface NumberInputProps extends Pick<ChakraNumberInputProps, Picked> {
+	decrementStepperProps?: ChakraBoxProps;
 	disabled?: boolean;
 	inputFieldProps?: ChakraInputProps;
 	inputStepperProps?: ChakraFlexProps;

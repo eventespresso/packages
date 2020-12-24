@@ -18,7 +18,7 @@ const Select: React.FC<SelectProps> = ({ id, type, ...props }) => {
 		return <InlineSelect debounceDelay={2500} {...props} className={className} id={id} rootProps={rootProps} />;
 	}
 
-	return <SelectAdapter {...props} className={className} icon={ArrowDownAlt} id={id} rootProps={rootProps} />;
+	return <SelectAdapter {...props} className={className} icon={<ArrowDownAlt />} id={id} rootProps={rootProps} />;
 };
 
 export default withLabel(Select);

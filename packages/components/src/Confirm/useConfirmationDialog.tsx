@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useRef } from 'react';
-import { useDisclosure } from '@chakra-ui/core';
+import { useDisclosure } from '@chakra-ui/react';
 
 import { __ } from '@eventespresso/i18n';
 import { AlertDialog, Button, ButtonType } from '../';

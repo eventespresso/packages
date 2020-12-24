@@ -1,4 +1,4 @@
-import type { SelectProps as ChakraSelectProps } from '@chakra-ui/core';
+import type { SelectProps as ChakraSelectProps } from '@chakra-ui/react';
 
 import type { CommonInputProps } from '../types';
 

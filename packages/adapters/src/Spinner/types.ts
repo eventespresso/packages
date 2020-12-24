@@ -1,3 +1,3 @@
-import type { ISpinnerProps } from '@chakra-ui/core';
+import type { SpinnerProps as SpinnerAdapterProps } from '@chakra-ui/react';
 
-export interface SpinnerProps extends ISpinnerProps {}
+export interface SpinnerProps extends SpinnerAdapterProps {}

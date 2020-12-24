@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuList as ChakraMenuList } from '@chakra-ui/core';
+import { MenuList as ChakraMenuList } from '@chakra-ui/react';
 
 import type { MenuListProps } from './types';
 

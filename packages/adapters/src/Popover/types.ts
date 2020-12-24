@@ -1,4 +1,4 @@
-import type { PopoverProps as ChakraPopoverProps } from '@chakra-ui/core';
+import type { PopoverProps as ChakraPopoverProps } from '@chakra-ui/react';
 
 export interface PopoverProps extends Pick<ChakraPopoverProps, 'closeOnBlur' | 'isOpen' | 'onClose' | 'placement'> {
 	className?: string;

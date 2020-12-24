@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Menu as ChakraMenu } from '@chakra-ui/core';
+import { Menu as ChakraMenu } from '@chakra-ui/react';
 
 import type { MenuProps } from './types';
 

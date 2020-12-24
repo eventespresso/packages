@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Button, ButtonType } from '../../../';
@@ -11,7 +11,7 @@ interface Props extends React.ComponentProps<typeof Button> {
 const Next: React.FC<Props> = ({ isDisabled, onClick, skippable, ...props }) => {
 	const buttonText = props.buttonText || __('Next');
 	const buttonType = props.buttonType || ButtonType.PRIMARY;
-	const rightIcon = memo(() => (skippable ? <ChevronDoubleRight size='smaller' /> : <ChevronRight size='smaller' />));
+	const rightIcon = skippable ? <ChevronDoubleRight size='smaller' /> : <ChevronRight size='smaller' />;
 
 	return (
 		<Button

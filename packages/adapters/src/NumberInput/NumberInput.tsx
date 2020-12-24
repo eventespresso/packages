@@ -5,7 +5,7 @@ import {
 	NumberInputStepper,
 	NumberIncrementStepper,
 	NumberDecrementStepper,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import type { NumberInputProps } from './types';
 
@@ -22,9 +22,11 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 	value,
 	...props
 }) => {
+	const size = inputFieldProps?.size && Number(inputFieldProps?.size);
+
 	return (
 		<ChakraNumberInput {...props} className={className} onChange={onChange} value={value}>
-			<NumberInputField {...inputFieldProps} id={id} isDisabled={disabled} />
+			<NumberInputField {...inputFieldProps} id={id} size={size} isDisabled={disabled} />
 			{showStepper && (
 				<NumberInputStepper {...inputStepperProps}>
 					<NumberIncrementStepper {...incrementStepperProps} />

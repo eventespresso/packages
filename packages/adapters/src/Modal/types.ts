@@ -1,8 +1,8 @@
-import { IModal } from '@chakra-ui/core';
+import { ModalProps as ModalAdapterProps } from '@chakra-ui/react';
 
 export interface ModalProps
 	extends Pick<
-		IModal,
+		ModalAdapterProps,
 		'closeOnOverlayClick' | 'closeOnEsc' | 'finalFocusRef' | 'isOpen' | 'onClose' | 'scrollBehavior'
 	> {
 	bodyClassName?: string;

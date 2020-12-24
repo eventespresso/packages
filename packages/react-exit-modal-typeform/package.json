@@ -29,7 +29,7 @@
 	"dependencies": {
 		"@typeform/embed": "^0.30.0",
 		"prop-types": "^15.7.2",
-		"react-modal": "^3.11.2"
+		"react-modal": "^3.12.1"
 	},
 	"babel": {
 		"presets": "@wordpress/default"

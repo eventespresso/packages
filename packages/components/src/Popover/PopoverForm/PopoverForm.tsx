@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useDisclosure } from '@chakra-ui/core';
+import { useDisclosure } from '@chakra-ui/react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';

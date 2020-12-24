@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useMemo } from 'react';
 import classNames from 'classnames';
-import { useDisclosure } from '@chakra-ui/core';
+import { useDisclosure } from '@chakra-ui/react';
 
 import { Dotdotdot } from '@eventespresso/adapters';
 import { Edit } from '@eventespresso/icons';

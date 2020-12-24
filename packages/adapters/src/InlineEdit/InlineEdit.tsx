@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Editable as ChakraEditable } from '@chakra-ui/core';
+import { Editable as ChakraEditable } from '@chakra-ui/react';
 
 import { usePrevious, useIfMounted } from '@eventespresso/hooks';
 import InlineEditInput from './InlineEditInput';
@@ -52,7 +52,7 @@ export const InlineEdit: React.FC<InlineEditProps> = ({
 			placeholder={placeholder}
 			value={currentValue}
 		>
-			{({ isEditing, onCancel, onRequestEdit }) => {
+			{({ isEditing, onCancel, onEdit }) => {
 				// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
 				const onCancelEdit = () => {
 					onCancel();
@@ -66,7 +66,7 @@ export const InlineEdit: React.FC<InlineEditProps> = ({
 							aria-describedby={ariaDescribedby}
 							className={inputClassName}
 							isEditing={isEditing}
-							onRequestEdit={onRequestEdit}
+							onRequestEdit={onEdit}
 							Preview={Preview}
 							value={currentValue}
 						/>

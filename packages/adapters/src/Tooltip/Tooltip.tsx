@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip as ChakraTooltip } from '@chakra-ui/core';
+import { Tooltip as ChakraTooltip } from '@chakra-ui/react';
 
 import type { TooltipProps } from './types';
 
@@ -8,7 +8,7 @@ export const Tooltip: React.FC<TooltipProps> = ({ children, tooltip, ...props })
 
 	return (
 		<ChakraTooltip {...props} aria-label={ariaLabel} closeOnClick label={tooltip} hideDelay={250} showDelay={500}>
-			{children && children}
+			{children}
 		</ChakraTooltip>
 	);
 };

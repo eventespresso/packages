@@ -36,7 +36,7 @@ export const Modal: React.FC<ModalProps> = ({
 	const footerClassName = classNames(withBorder && 'ee-modal--with-border', 'ee-modal__footer');
 
 	const cancelButton = cancelButtonProps && <Button mr={3} {...cancelButtonProps} />;
-	const submitButton = submitButtonProps && <Button variantColor='blue' {...submitButtonProps} />;
+	const submitButton = submitButtonProps && <Button colorScheme='blue' {...submitButtonProps} />;
 	const defaultFooterNode = (cancelButton || submitButton) && (
 		<>
 			{cancelButton}

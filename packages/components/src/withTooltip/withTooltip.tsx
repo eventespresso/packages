@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import type { AnyObject } from '@eventespresso/utils';
@@ -19,12 +19,19 @@ const withTooltip = <P extends AnyObject>(
 		forwardedRef,
 		showTooltipOnMobile = false,
 		tooltip,
+		tooltipProps: _tooltipProps,
 		...props
 	}) => {
 		const noTooltip = !tooltip || props.buttonText === tooltip;
 
-		let toolTipped: React.ReactElement;
-		let tooltipProps: TooltipProps = { ...props.tooltipProps };
+		let toolTipped: React.ReactNode;
+
+		const tooltipProps = useMemo<TooltipProps>(() => {
+			if (showTooltipOnMobile) {
+				return { ..._tooltipProps, className: 'ee-mobile-help-text__tooltip' };
+			}
+			return _tooltipProps;
+		}, [_tooltipProps, showTooltipOnMobile]);
 
 		if (noTooltip) {
 			return <WrappedComponent {...(props as P)} ref={forwardedRef} />;
@@ -36,7 +43,6 @@ const withTooltip = <P extends AnyObject>(
 				'ee-mobile-help-text--short': tooltip.length < 25,
 				'ee-mobile-help-text--long': tooltip.length > 50,
 			});
-			tooltipProps = { ...tooltipProps, className: 'ee-mobile-help-text__tooltip' };
 			toolTipped = (
 				<div className='ee-mobile-help-text__btn-wrap'>
 					<WrappedComponent
