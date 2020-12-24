@@ -5,4 +5,5 @@ export * from './DatePicker';
 export * from './DateTimePicker';
 export * from './EditDateRangeButton';
 export * from './EntityEditForm';
+export * from './EntityList';
 export * from './FormWithConfig';
