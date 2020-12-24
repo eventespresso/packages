@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
 import type { EntityId } from '@eventespresso/data';
-import type { EntityTableProps } from '@eventespresso/components';
+import type { EntityTableProps } from '@eventespresso/ee-components';
 
 import type { Datetime, DatetimeEdge } from '../../types';
 import useReorderEntities from '../useReorderEntities';

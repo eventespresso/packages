@@ -10,7 +10,7 @@ import {
 	useTicketsListFilterState,
 	useRegisterIsChainedFilter,
 } from '@eventespresso/edtr-services';
-import { EntityList } from '@eventespresso/components';
+import { EntityList } from '@eventespresso/ee-components';
 
 import { NewTicketButton } from './newTicketOptions';
 import { legendConfig } from './config';

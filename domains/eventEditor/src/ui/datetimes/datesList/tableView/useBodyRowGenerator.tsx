@@ -7,7 +7,7 @@ import { filterCellByStartOrEndDate, useLazyDatetime } from '@eventespresso/edtr
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
-import type { BodyRowGeneratorFn } from '@eventespresso/components';
+import type { BodyRowGeneratorFn } from '@eventespresso/ee-components';
 import { shortenGuid } from '@eventespresso/utils';
 
 import DateRegistrationsLink from '@edtrUI/datetimes/DateRegistrationsLink';

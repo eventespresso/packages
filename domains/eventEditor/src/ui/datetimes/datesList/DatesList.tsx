@@ -9,7 +9,7 @@ import {
 	withEntityListContext,
 	useDatesListFilterState,
 } from '@eventespresso/edtr-services';
-import { EntityList } from '@eventespresso/components';
+import { EntityList } from '@eventespresso/ee-components';
 
 import DatesListButtons from './DatesListButtons';
 import { legendConfig } from './config';

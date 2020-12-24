@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import type { Cell, HeaderRowGeneratorFn } from '@eventespresso/components';
+import type { Cell } from '@eventespresso/components';
+import type { HeaderRowGeneratorFn } from '@eventespresso/ee-components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import type { TicketsFilterStateManager } from '@eventespresso/edtr-services';
 import Checkbox from './Checkbox';
