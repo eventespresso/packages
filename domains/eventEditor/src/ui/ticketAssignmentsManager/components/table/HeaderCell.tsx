@@ -3,7 +3,7 @@ import { parseISO } from 'date-fns';
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 
-import { CurrencyDisplay } from '@eventespresso/components';
+import { CurrencyDisplay } from '@eventespresso/ee-components';
 import { getTicketBackgroundColorClassName } from '@eventespresso/helpers';
 import { useTimeZoneTime } from '@eventespresso/services';
 import type { RenderCellProps } from '../../types';

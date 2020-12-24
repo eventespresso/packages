@@ -2,7 +2,8 @@ import React, { useCallback } from 'react';
 import { format } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
-import { Cell, CurrencyDisplay, addZebraStripesOnMobile } from '@eventespresso/components';
+import { Cell, addZebraStripesOnMobile } from '@eventespresso/components';
+import { CurrencyDisplay } from '@eventespresso/ee-components';
 import { filterCellByStartOrEndDate, useLazyTicket } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getTicketBackgroundColorClassName, ticketStatus } from '@eventespresso/helpers';
