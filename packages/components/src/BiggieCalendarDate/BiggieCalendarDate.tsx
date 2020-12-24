@@ -1,11 +1,8 @@
 import React, { useCallback } from 'react';
 import classNames from 'classnames';
-import { parseISO, isValid } from 'date-fns';
+import { parseISO, isValid, format as formatFunc } from 'date-fns';
 
-import { Button } from '../Button';
 import { Calendar } from '@eventespresso/icons';
-
-import { LabelPosition } from '../withLabel';
 import {
 	DAY_ONLY_SHORT_FORMAT,
 	MONTH_ONLY_FULL_FORMAT,
@@ -13,9 +10,10 @@ import {
 	WEEKDAY_ONLY_FULL_FORMAT,
 	YEAR_ONLY_LONG_FORMAT,
 } from '@eventespresso/constants';
-import { useTimeZoneTime } from '@eventespresso/services';
 
-import type { BiggieCalendarDateProps } from './index';
+import { Button } from '../Button';
+import { LabelPosition } from '../withLabel';
+import type { BiggieCalendarDateProps } from './types';
 import './style.scss';
 
 /**
@@ -23,15 +21,15 @@ import './style.scss';
  */
 export const BiggieCalendarDate: React.FC<BiggieCalendarDateProps> = ({
 	date,
-	editButton = {},
+	editButton,
 	footerText,
 	headerText,
 	onEdit = null,
 	showTime = false,
 	timeRange,
+	formatFn: format = formatFunc,
 	...props
 }) => {
-	const { formatForSite: format } = useTimeZoneTime();
 	const onEditHandler = useCallback((event) => onEdit(event), [onEdit]);
 	const dateObject = date instanceof Date ? date : parseISO(date);
 
@@ -46,8 +44,8 @@ export const BiggieCalendarDate: React.FC<BiggieCalendarDateProps> = ({
 			className='ee-edit-calendar-date-btn'
 			onClick={onEditHandler}
 			onKeyPress={onEditHandler}
-			tooltip={editButton.tooltip}
-			labelPosition={editButton.tooltipPosition as LabelPosition}
+			tooltip={editButton?.tooltip}
+			labelPosition={editButton?.tooltipPosition as LabelPosition}
 			icon={Calendar}
 		/>
 	);

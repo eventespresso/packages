@@ -1,15 +1,14 @@
 import React from 'react';
-import { parseISO, isValid } from 'date-fns';
+import { parseISO, isValid, format as formatFunc } from 'date-fns';
 
 import { __ } from '@eventespresso/i18n';
-import { useTimeZoneTime } from '@eventespresso/services';
 import {
 	DAY_ONLY_SHORT_FORMAT,
 	MONTH_ONLY_LONG_FORMAT,
 	LOCALIZED_DATE_AND_TIME_FULL_FORMAT,
 } from '@eventespresso/constants';
 
-import { Tooltip } from '../';
+import { Tooltip } from '../Tooltip';
 import { CalendarPageDateProps, CalendarPageSize } from './types';
 import './style.scss';
 
@@ -21,12 +20,11 @@ import './style.scss';
 const CalendarPageDate: React.FC<CalendarPageDateProps> = ({
 	startDate,
 	endDate,
+	formatFn: format = formatFunc,
 	size = CalendarPageSize.SMALL,
 	statusClassName,
 	...otherProps
 }) => {
-	const { formatForSite: format } = useTimeZoneTime();
-
 	const startDateObject = startDate instanceof Date ? startDate : parseISO(startDate);
 	const endDateObject = endDate instanceof Date ? endDate : parseISO(endDate);
 	if (!isValid(startDateObject) && !isValid(endDateObject)) {

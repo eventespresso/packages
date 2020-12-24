@@ -1,3 +1,5 @@
+import { CalendarBaseProps } from '../types';
+
 export enum CalendarPageSize {
 	TINY = 'tiny',
 	SMALL = 'small',
@@ -5,7 +7,7 @@ export enum CalendarPageSize {
 	BIG = 'big',
 }
 
-export interface CalendarPageDateProps {
+export interface CalendarPageDateProps extends CalendarBaseProps {
 	startDate?: Date;
 	endDate?: Date;
 	size?: CalendarPageSize;

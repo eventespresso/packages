@@ -1,12 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
-import { differenceInCalendarDays, parseISO, isValid } from 'date-fns';
-import { __ } from '@eventespresso/i18n';
+import { differenceInCalendarDays, parseISO, isValid, format as formatFunc } from 'date-fns';
 
-import { useTimeZoneTime } from '@eventespresso/services';
-import { BiggieCalendarDate, MediumCalendarDate } from '../../';
+import { __ } from '@eventespresso/i18n';
 import { TIME_ONLY_12H_SHORT_FORMAT } from '@eventespresso/constants';
 
+import { BiggieCalendarDate, MediumCalendarDate } from '../../';
 import type { CalendarDateRangeProps } from './types';
 import './style.scss';
 
@@ -17,12 +16,11 @@ const CalendarDateRange: React.FC<CalendarDateRangeProps> = ({
 	className = '',
 	endDate,
 	footerText = '',
+	formatFn: format = formatFunc,
 	headerText = '',
 	showTime = true,
 	startDate,
 }) => {
-	const { formatForSite: format } = useTimeZoneTime();
-
 	const startDateObject = startDate instanceof Date ? startDate : parseISO(startDate);
 	const endDateObject = endDate instanceof Date ? endDate : parseISO(endDate);
 

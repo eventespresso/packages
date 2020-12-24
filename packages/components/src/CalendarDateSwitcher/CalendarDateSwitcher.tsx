@@ -1,5 +1,5 @@
 import React from 'react';
-import { parseISO } from 'date-fns';
+import { parseISO, format as formatFunc } from 'date-fns';
 import { __ } from '@eventespresso/i18n';
 
 import { switchTenseForDate } from '@eventespresso/dates';
@@ -11,6 +11,7 @@ import type { CalendarDateSwitcherProps } from './types';
 const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = ({
 	className,
 	displayDate = DisplayStartOrEndDate.start,
+	formatFn = formatFunc,
 	labels,
 	...props
 }) => {
@@ -30,6 +31,7 @@ const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = ({
 			className={className}
 			date={startDate}
 			footerText={footerText}
+			formatFn={formatFn}
 			headerText={headerText || __('starts')}
 			showTime
 		/>
@@ -42,6 +44,7 @@ const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = ({
 					className={className}
 					date={endDate}
 					footerText={footerText}
+					formatFn={formatFn}
 					headerText={headerText || __('ends')}
 					showTime
 				/>
@@ -52,6 +55,7 @@ const CalendarDateSwitcher: React.FC<CalendarDateSwitcherProps> = ({
 					className={className}
 					endDate={endDate}
 					footerText={footerText}
+					formatFn={formatFn}
 					headerText={headerText}
 					showTime
 					startDate={startDate}

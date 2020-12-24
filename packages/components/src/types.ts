@@ -1,5 +1,9 @@
 import React, { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes } from 'react';
 
+export interface CalendarBaseProps {
+	formatFn?: (date: Date, formatStr: string) => string;
+}
+
 export interface CalendarDateProps {
 	editButton?: EditButtonProps;
 	className?: string;

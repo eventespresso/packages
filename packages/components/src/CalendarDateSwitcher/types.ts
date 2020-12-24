@@ -1,3 +1,5 @@
+import { CalendarBaseProps } from '../types';
+
 export interface CalendarDateLabels {
 	header?: string;
 	headerPast?: string;
@@ -7,7 +9,7 @@ export interface CalendarDateLabels {
 	footerFuture?: string;
 }
 
-export interface CalendarDateSwitcherProps {
+export interface CalendarDateSwitcherProps extends CalendarBaseProps {
 	className?: string;
 	displayDate: DisplayStartOrEndDate;
 	endDate: string;

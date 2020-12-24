@@ -1,10 +1,6 @@
-import type { CalendarDateProps } from '../types';
+import type { CalendarBaseProps, CalendarDateProps } from '../types';
 
-export interface CommonInputProps<T = Element, V = React.ReactText> {
-	onChangeValue?: (value: V, event?: React.ChangeEvent<T> | React.FormEvent<T>) => void;
-}
-
-export interface BiggieCalendarDateProps extends CalendarDateProps {
+export interface BiggieCalendarDateProps extends CalendarDateProps, CalendarBaseProps {
 	date: Date | string;
 	timeRange?: string;
 }
