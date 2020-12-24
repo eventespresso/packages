@@ -13,8 +13,6 @@ export * from './Confirm';
 export * from './Container';
 export * from './CurrencyDisplay';
 export * from './CurrencySign';
-export * from './DatePicker';
-export * from './DateTimePicker';
 export * from './DateTimeRangePicker';
 export * from './DebugInfo';
 export * from './DescriptionList';

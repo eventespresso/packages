@@ -3,6 +3,7 @@ import { isEqual } from 'date-fns';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
+import { Save } from '@eventespresso/icons';
 import {
 	DateTimeRangePicker as DateTimeRangePickerAdapter,
 	DateRangePickerProps,
@@ -10,23 +11,18 @@ import {
 	startDateBeforeEndDateErrorMessage,
 	useDatePickerValidation,
 } from '@eventespresso/dates';
-import { Save } from '@eventespresso/icons';
-import { useConfig } from '@eventespresso/services';
 
 import { Button, ButtonType, ErrorMessage, TimezoneTimeInfo } from '../';
 
 import './styles.scss';
 
-export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ onChange, value, ...props }) => {
+export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ onChange, value, locale, ...props }) => {
 	const [dates, setDates] = useState(value);
 	const { startDateIsValid, startDateBeforeEndDate, endDateIsValid, endDateAfterStartDate } = useDatePickerValidation(
 		dates[0],
 		dates[1],
 		true
 	);
-	const {
-		locale: { user },
-	} = useConfig();
 
 	const onSave: VoidFunction = useCallback(() => {
 		onChange?.(dates);
@@ -54,7 +50,7 @@ export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ onChange, 
 			<DateTimeRangePickerAdapter
 				{...props}
 				endDateTZ={endDateTZ}
-				locale={user}
+				locale={locale}
 				onChange={setDates}
 				required
 				startDateTZ={startDateTZ}

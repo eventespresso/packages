@@ -1,31 +1,26 @@
 import React, { useCallback } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 import { __ } from '@eventespresso/i18n';
-import { parseISO } from 'date-fns';
 
-import { ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
 import { CalendarOutlined } from '@eventespresso/icons';
-import { useConfig, useTimeZoneTime } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 
+import { ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
 import type { DateRange } from '@eventespresso/dates';
-import type { EditDateButtonProps } from './types';
+import type { EditDateRangeButtonProps } from './types';
 
 import './styles.scss';
 
-export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
+export const EditDateRangeButton: React.FC<EditDateRangeButtonProps> = ({
+	dateTimeFormat,
 	header,
+	locale,
 	onEditHandler,
 	startDate,
 	endDate,
 	tooltip,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const {
-		dateTimeFormats: { dateTimeFormat },
-		locale: { user },
-	} = useConfig();
-	const { utcToSiteTime } = useTimeZoneTime();
 
 	const onChange = useCallback(
 		(dates: DateRange) => {
@@ -34,9 +29,11 @@ export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({
 		},
 		[onClose, onEditHandler]
 	);
-	const value = useMemoStringify<DateRange>([utcToSiteTime(parseISO(startDate)), utcToSiteTime(parseISO(endDate))]);
+	const value = useMemoStringify<DateRange>([startDate, endDate]);
 
-	const content = <DateTimeRangePicker dateFormat={dateTimeFormat} locale={user} onChange={onChange} value={value} />;
+	const content = (
+		<DateTimeRangePicker dateFormat={dateTimeFormat} locale={locale} onChange={onChange} value={value} />
+	);
 
 	const headerText = header ? header : __('Edit Start and End Dates and Times');
 
