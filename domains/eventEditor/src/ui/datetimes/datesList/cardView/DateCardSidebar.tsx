@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { CalendarDateSwitcher, EditDateRangeButton } from '@eventespresso/components';
+import { CalendarDateSwitcher } from '@eventespresso/ee-components';
+import { EditDateRangeButton } from '@eventespresso/components';
 import { getDatetimeStatusTextLabel } from '@eventespresso/helpers';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';
