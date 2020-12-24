@@ -1,5 +1,7 @@
 export interface CurrencyDisplayProps {
 	className?: string;
-	value: number | string;
+	sign?: string;
+	signB4?: boolean;
+	value: number | string; // formatted value
 	vertical?: boolean;
 }
