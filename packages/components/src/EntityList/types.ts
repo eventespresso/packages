@@ -8,10 +8,6 @@ export interface ListView {
 	view?: 'card' | 'table';
 }
 
-/* export interface EntityListBaseProps<E extends Entity> {
-	entities: Array<E>;
-} */
-
 export interface EntityCardListProps<E extends Entity> {
 	EntityCard: React.ComponentType<EntityListItemProps<E>>;
 	entityIds: Array<EntityId>;

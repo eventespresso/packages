@@ -13,10 +13,6 @@ import type { TypeName } from '@eventespresso/services';
 
 type ELFSM = EntityListFilterStateManager<any>;
 
-/* export interface EntityListBaseProps<E extends Entity> {
-	entities: Array<E>;
-} */
-
 export interface EntityCardListProps<E extends Entity> {
 	EntityCard: React.ComponentType<EntityListItemProps<E>>;
 	entityIds: Array<EntityId>;
