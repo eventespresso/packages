@@ -1,44 +1,23 @@
 import React from 'react';
-import { __ } from '@eventespresso/i18n';
 
-import { useStatus } from '@eventespresso/services';
-import type { EntityListFilterStateManager } from '@eventespresso/services';
-
-import { ButtonRow, CollapsibleLegend, EmptyState, ErrorIndicator, Heading, LoadingNotice, Pagination } from '../..';
-import EntityListFilterBar from './withValidFilterState';
+import { ButtonRow, ErrorIndicator, Heading, LoadingNotice } from '../..';
 import type { EntityListProps } from './types';
 import './style.scss';
 
-const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
+const EntityList: React.FC<EntityListProps> = ({
 	activeFilters,
-	domain,
-	entityType,
-	filterState,
+	entityList,
+	error,
+	filterBar,
 	footer,
 	headerText,
-	legendConfig,
-	listId,
-	noResultsDesc,
-	noResultsTitle,
-	renderList,
-}: EntityListProps<ELFS>): JSX.Element => {
-	const { isError, isLoading } = useStatus();
-	const error = isError(entityType);
-	const loading = isLoading(entityType);
-
+	legend,
+	loading,
+	pagination,
+}) => {
 	if (loading) return <LoadingNotice />;
 
 	if (error) return <ErrorIndicator />;
-
-	let entityList: React.ReactNode;
-
-	if (filterState.total === 0) {
-		const title = noResultsTitle ? noResultsTitle : __('no results found');
-		const description = noResultsDesc ? noResultsDesc : __('try changing filter settings');
-		entityList = <EmptyState description={description} title={title} />;
-	} else {
-		entityList = renderList();
-	}
 
 	return (
 		<div className='ee-entity-list  ee-edtr-section'>
@@ -46,29 +25,15 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 				{headerText}
 			</Heading>
 
-			<EntityListFilterBar domain={domain} filterState={filterState} listId={listId} />
+			{filterBar}
 
 			{activeFilters}
 
 			{entityList}
 
 			<ButtonRow alignItems='start' justifyContent='space-between'>
-				<CollapsibleLegend direction='row' legendConfig={legendConfig} termWhiteBg />
-				{
-					// disable pogination when sorting
-					!filterState.sortingEnabled && (
-						<Pagination
-							className='ee-entity-list__pagination'
-							defaultPerPage={6}
-							onChangePageNumber={filterState.setPageNumber}
-							onChangePerPage={filterState.setPerPage}
-							pageNumber={filterState.pageNumber}
-							perPage={filterState.perPage}
-							showPerPageChanger
-							total={filterState.total}
-						/>
-					)
-				}
+				{legend}
+				{pagination}
 			</ButtonRow>
 
 			<div className={'ee-entity-list__footer'}>{footer}</div>

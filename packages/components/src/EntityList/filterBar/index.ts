@@ -1,3 +1,4 @@
-export { default as EntityListFilterBar } from './EntityListFilterBar';
+export * from './EntityListFilterBar';
 
+export * from './buttons';
 export * from './types';

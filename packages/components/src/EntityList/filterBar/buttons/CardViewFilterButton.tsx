@@ -6,8 +6,8 @@ import { AppstoreFilled } from '@eventespresso/icons';
 import { Button } from '../../../Button';
 import type { CardViewFilterButtonProps } from '../types';
 
-const CardViewFilterButton: React.FC<CardViewFilterButtonProps> = ({ listId, setCardView, view, ...rest }) => {
-	const filterId = `ee-card-view-btn-${listId}`;
+export const CardViewFilterButton: React.FC<CardViewFilterButtonProps> = ({ id, onClick, view, ...rest }) => {
+	const filterId = `ee-card-view-btn-${id}`;
 
 	return (
 		<Button
@@ -15,7 +15,7 @@ const CardViewFilterButton: React.FC<CardViewFilterButtonProps> = ({ listId, set
 			className='ee-filter-bar__btn'
 			icon={AppstoreFilled}
 			id={filterId}
-			onClick={view !== 'card' ? setCardView : null}
+			onClick={view !== 'card' ? onClick : null}
 			labelClassName={'ee-filter-bar__btn-wrap'}
 			{...rest}
 		>
@@ -23,5 +23,3 @@ const CardViewFilterButton: React.FC<CardViewFilterButtonProps> = ({ listId, set
 		</Button>
 	);
 };
-
-export default CardViewFilterButton;

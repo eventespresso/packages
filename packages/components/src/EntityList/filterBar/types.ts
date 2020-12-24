@@ -1,31 +1,19 @@
-import type { EntityListFilterStateManager as ELFSM, View } from '@eventespresso/services';
-import type { IconButtonProps } from '../../..';
+import type { IconButtonProps, ListView } from '../../..';
 
-export interface CardViewFilterButtonProps extends View, CommonProps, IconButtonProps {
+export interface FilterButtonBaseProps extends IconButtonProps {
+	id?: string;
+	value?: any;
+}
+
+export interface CardViewFilterButtonProps extends ListView, FilterButtonBaseProps {}
+
+export interface TableViewFilterButtonProps extends ListView, FilterButtonBaseProps {}
+
+export interface EntityListViewButtonGroupProps extends CardViewFilterButtonProps, TableViewFilterButtonProps {
+	setTableView: VoidFunction;
 	setCardView: VoidFunction;
 }
 
-interface CommonProps {
-	listId?: string;
-}
+export interface ToggleFiltersButtonProps extends FilterButtonBaseProps {}
 
-export interface EntityListFilterBarProps<FS extends ELFSM> extends CommonProps {
-	domain: string;
-	filterState: FS;
-}
-
-export interface EntityListViewButtonGroupProps extends CardViewFilterButtonProps, TableViewFilterButtonProps {}
-
-export interface TableViewFilterButtonProps extends View, CommonProps, IconButtonProps {
-	setTableView: () => void;
-}
-
-export interface ToggleFiltersButtonProps extends CommonProps, IconButtonProps {
-	showFilters?: boolean;
-	toggleFilters: VoidFunction;
-}
-
-export interface ToggleSortingButtonProps extends CommonProps, IconButtonProps {
-	sortingEnabled?: boolean;
-	toggleSorting: VoidFunction;
-}
+export interface ToggleSortingButtonProps extends FilterButtonBaseProps {}

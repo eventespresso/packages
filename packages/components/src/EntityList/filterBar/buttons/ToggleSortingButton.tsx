@@ -6,28 +6,19 @@ import { Sort } from '@eventespresso/icons';
 import { Button } from '../../../Button';
 import type { ToggleSortingButtonProps } from '../types';
 
-const ToggleSortingButton: React.FC<ToggleSortingButtonProps> = ({
-	listId,
-	sortingEnabled,
-	toggleSorting,
-	...rest
-}) => {
-	const id = `ee-toggle-sorting-btn-${listId}`;
-
+export const ToggleSortingButton: React.FC<ToggleSortingButtonProps> = ({ id, onClick, value, ...rest }) => {
 	return (
 		<Button
-			active={sortingEnabled}
+			active={value}
 			className='ee-filter-bar__btn'
 			icon={Sort}
-			id={id}
+			id={`ee-toggle-sorting-btn-${id}`}
 			labelClassName='ee-filter-bar__btn-wrap'
-			onClick={toggleSorting}
+			onClick={onClick}
 			size='smaller'
 			{...rest}
 		>
-			{sortingEnabled ? __('disable sorting') : __('enable sorting')}
+			{value ? __('disable sorting') : __('enable sorting')}
 		</Button>
 	);
 };
-
-export default ToggleSortingButton;

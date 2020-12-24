@@ -6,8 +6,8 @@ import { TableView } from '@eventespresso/icons';
 import { Button } from '../../../Button';
 import type { TableViewFilterButtonProps } from '../types';
 
-const TableViewFilterButton: React.FC<TableViewFilterButtonProps> = ({ listId, setTableView, view, ...rest }) => {
-	const filterId = `ee-table-view-btn-${listId}`;
+export const TableViewFilterButton: React.FC<TableViewFilterButtonProps> = ({ id, onClick, view, ...rest }) => {
+	const filterId = `ee-table-view-btn-${id}`;
 
 	return (
 		<Button
@@ -15,7 +15,7 @@ const TableViewFilterButton: React.FC<TableViewFilterButtonProps> = ({ listId, s
 			className='ee-filter-bar__btn'
 			icon={TableView}
 			id={filterId}
-			onClick={view !== 'table' ? setTableView : null}
+			onClick={view !== 'table' ? onClick : null}
 			labelClassName={'ee-filter-bar__btn-wrap'}
 			{...rest}
 		>
@@ -23,5 +23,3 @@ const TableViewFilterButton: React.FC<TableViewFilterButtonProps> = ({ listId, s
 		</Button>
 	);
 };
-
-export default TableViewFilterButton;

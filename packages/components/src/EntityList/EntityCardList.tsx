@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { EntityCardListProps } from './types';
-import { Entity } from '@eventespresso/data';
+import type { Entity } from '@eventespresso/data';
 
 const EntityCardList = <E extends Entity>({ EntityCard, entityIds }: EntityCardListProps<E>): JSX.Element => {
 	// key to make sure the list is refreshed after optimistic responses
