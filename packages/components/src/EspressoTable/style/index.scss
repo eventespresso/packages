@@ -203,8 +203,11 @@
 	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-nano:not(.ee-entity-list-status-stripe),
 	.ee-rspnsv-table-body-td.ee-rspnsv-table-column-nano:not(.ee-entity-list-status-stripe),
 	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-nano:not(.ee-entity-list-status-stripe) {
-		padding: 1px;
+		align-items: center;
+		display: inline-flex;
+		justify-content: center;
 		min-width: 50px;
+		padding: var(--ee-padding-default) 0;
 		width: 1.25%;
 	}
 
