@@ -8,6 +8,7 @@ export * from './CalendarDateRange';
 export * from './CalendarDateSwitcher';
 export * from './CalendarPageDate';
 export * from './Collapsible';
+export * from './Checkbox';
 export * from './ColorSwatch';
 export * from './Confirm';
 export * from './Container';

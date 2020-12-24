@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Checkbox, CheckboxProps } from '@eventespresso/adapters';
+import { Checkbox } from '../';
+import type { CheckboxProps } from '@eventespresso/adapters';
 
 export const ActionCheckbox: React.FC<CheckboxProps> = (props) => {
 	const className = classNames(props.className, 'ee-bulk-edit-actions__checkbox');
