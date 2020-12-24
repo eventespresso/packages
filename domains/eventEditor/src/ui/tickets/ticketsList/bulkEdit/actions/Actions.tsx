@@ -2,7 +2,8 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 
 import { __ } from '@eventespresso/i18n';
-import { BulkActions, ErrorMessage } from '@eventespresso/components';
+import { BulkActions } from '@eventespresso/ee-components';
+import { ErrorMessage } from '@eventespresso/components';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
 import { useTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';

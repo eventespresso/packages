@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { useTicketMutator, hooks } from '@eventespresso/edtr-services';
 import { useMutatePrices } from '@eventespresso/tpc';
-import { FormWithConfig } from '@eventespresso/components';
+import { FormWithConfig } from '@eventespresso/ee-components';
 import useTicketFormConfig from '../useTicketFormConfig';
 import ContentWrapper from './ContentWrapper';
 import type { ContentProps } from './types';

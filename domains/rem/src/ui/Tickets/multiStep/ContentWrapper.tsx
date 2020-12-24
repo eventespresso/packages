@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { withContext as withTPCContext } from '@eventespresso/tpc';
+import { useWithEntityFormDetails } from '@eventespresso/ee-components';
+
 import ContentBody from './ContentBody';
 import type { ContentWrapperProps } from './types';
-import { useWithEntityFormDetails } from '@eventespresso/components';
 
 const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
 	return useWithEntityFormDetails(({ entity }) => {

@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { useDisclosure } from '@chakra-ui/react';
 
-import { BulkActions } from '@eventespresso/components';
+import { BulkActions } from '@eventespresso/ee-components';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { withFeature } from '@eventespresso/services';
 import type { BulkActionsProps } from '@eventespresso/components';
@@ -26,6 +26,10 @@ const Actions: React.FC = () => {
 
 	const options = useMemoStringify([
 		{
+			value: '',
+			label: __('bulk actions'),
+		},
+		{
 			value: 'edit-details',
 			label: __('edit datetime details'),
 		},
@@ -47,7 +51,7 @@ const Actions: React.FC = () => {
 		<>
 			<BulkActions
 				Checkbox={Checkbox}
-				defaultAction={options[0].value}
+				defaultAction=''
 				id={'ee-bulk-edit-dates-actions'}
 				onApply={onApply}
 				options={options}

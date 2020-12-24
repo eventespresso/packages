@@ -5,7 +5,7 @@ import {
 	useTicketQuantityForCapacity,
 	useUpdateRelatedTickets,
 } from '@eventespresso/edtr-services';
-import { FormWithConfig } from '@eventespresso/components';
+import { FormWithConfig } from '@eventespresso/ee-components';
 import useDatetimeFormConfig from '../useDateFormConfig';
 import ContentWrapper from './ContentWrapper';
 import type { ContentProps } from './types';

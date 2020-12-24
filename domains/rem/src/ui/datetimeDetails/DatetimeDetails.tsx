@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { isEmpty } from 'ramda';
 
 import { Datetime } from '@eventespresso/edtr-services';
-import { FormWithConfig } from '@eventespresso/components';
+import { FormWithConfig } from '@eventespresso/ee-components';
 import useDatetimeFormConfig from './useDateFormConfig';
 import type { DatetimeDetailsProps } from './types';
 import FormWrapper from './FormWrapper';

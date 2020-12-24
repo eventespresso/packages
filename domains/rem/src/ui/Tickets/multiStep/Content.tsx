@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { FormWithConfig } from '@eventespresso/components';
+import { FormWithConfig } from '@eventespresso/ee-components';
 import useTicketFormConfig from '../useTicketFormConfig';
 import ContentWrapper from './ContentWrapper';
 import type { ContentProps } from './types';

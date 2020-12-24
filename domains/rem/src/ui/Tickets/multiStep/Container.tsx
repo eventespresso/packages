@@ -1,7 +1,7 @@
 import React from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 
-import { EntityEditModalContainer } from '@eventespresso/components';
+import { EntityEditModalContainer } from '@eventespresso/ee-components';
 import Content from './Content';
 import type { ContainerProps } from './types';
 

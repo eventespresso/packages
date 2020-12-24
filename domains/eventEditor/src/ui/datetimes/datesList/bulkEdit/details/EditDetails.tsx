@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { BulkEditDetails } from '@eventespresso/components';
+import { BulkEditDetails } from '@eventespresso/ee-components';
 import useBulkEditFormConfig from './useBulkEditFormConfig';
 import useSubmitForm from './useSubmitForm';
 
