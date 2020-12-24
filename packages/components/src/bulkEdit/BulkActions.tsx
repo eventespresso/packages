@@ -1,18 +1,17 @@
 import React, { useState, useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { useBulkEdit } from '@eventespresso/services';
+import { CheckboxProps } from '@eventespresso/adapters';
 
-import { Button, LabelPosition, Select } from '../';
-import type { ActionCheckboxProps } from './ActionCheckbox';
-import type { SelectProps } from '../';
+import { Button, LabelPosition, Select, SelectProps } from '../';
 
 import './styles.scss';
 
 export interface BulkActionsProps<T extends string = string> {
-	Checkbox?: React.ComponentType<ActionCheckboxProps>;
+	Checkbox?: React.ComponentType<CheckboxProps>;
 	defaultAction?: T;
 	id: string;
+	isApplyDisabled?: boolean;
 	onApply: (action: T) => void;
 	options: SelectProps['options'];
 }
@@ -23,15 +22,13 @@ export const BulkActions = <T extends string>({
 	Checkbox,
 	defaultAction,
 	id,
+	isApplyDisabled,
 	options,
 	onApply,
 }: BulkActionsProps<T>): JSX.Element => {
 	const [action, setAction] = useState<T>(defaultAction);
-	const { getSelected } = useBulkEdit();
 
 	const setValue = useCallback((value) => setAction(value), []);
-
-	const isApplyDisabled = !action || !getSelected().length;
 
 	const onClick = useCallback(() => {
 		onApply?.(action);
@@ -53,7 +50,12 @@ export const BulkActions = <T extends string>({
 			<div className={'ee-bulk-edit-actions__mobile-checkbox'}>
 				<Checkbox label={__('select all')} />
 			</div>
-			<Button buttonText={__('apply')} isDisabled={isApplyDisabled} noVerticalMargin onClick={onClick} />
+			<Button
+				buttonText={__('apply')}
+				isDisabled={isApplyDisabled || !action}
+				noVerticalMargin
+				onClick={onClick}
+			/>
 		</div>
 	);
 };
