@@ -7,7 +7,7 @@ import { BulkActions as BulkActionsUI, BulkActionsProps } from '@eventespresso/u
 export const BulkActions = <T extends string>(props: BulkActionsProps<T>): JSX.Element => {
 	const { getSelected } = useBulkEdit();
 
-	const isApplyDisabled = Boolean(getSelected().length);
+	const isApplyDisabled = Boolean(!getSelected().length);
 
 	return <BulkActionsUI {...props} isApplyDisabled={isApplyDisabled} />;
 };
