@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import type { ButtonProps } from '@eventespresso/components';
+import type { ButtonProps } from '@eventespresso/ui-components';
 
 const useCancelButtonProps = (onCancel: VoidFunction): ButtonProps => {
 	return useMemo<ButtonProps>(() => {
