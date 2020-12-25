@@ -5,6 +5,7 @@ import { useConfig, useTimeZoneTime } from '@eventespresso/services';
 import { EditDateRangeButton as EditDateRangeButtonUI } from '@eventespresso/components';
 
 import type { EditDateButtonProps } from './types';
+import { TimezoneTimeInfo } from '../TimezoneTimeInfo';
 
 export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({ startDate, endDate, ...props }) => {
 	const { dateTimeFormats, locale } = useConfig();
@@ -19,6 +20,7 @@ export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({ startDate, 
 			locale={locale.user}
 			startDate={startDateInSiteTime}
 			endDate={endDateInSiteTime}
+			TimezoneTimeInfo={TimezoneTimeInfo}
 			{...props}
 		/>
 	);
