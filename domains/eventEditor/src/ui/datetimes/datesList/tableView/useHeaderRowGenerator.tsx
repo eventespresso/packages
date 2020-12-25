@@ -12,7 +12,7 @@ type DatesTableHeaderRowGen = HeaderRowGeneratorFn<DatetimesFilterStateManager>;
 
 const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 	return useCallback<DatesTableHeaderRowGen>((filterState) => {
-		const { displayStartOrEndDate } = filterState;
+		const displayStartOrEndDate = filterState?.displayStartOrEndDate;
 
 		const cellsData: Array<Cell> = [
 			{
