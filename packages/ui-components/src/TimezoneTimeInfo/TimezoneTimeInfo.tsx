@@ -11,14 +11,13 @@ import type { TimezoneTimeInfoProps } from './types';
 import './style.scss';
 
 export const TimezoneTimeInfo: React.FC<TimezoneTimeInfoProps> = ({ siteTime, userTime, utcTime, ...props }) => {
-	const className = classNames(props.className, 'ee-timezone-info');
+	const className = classNames('ee-timezone-info', props.className);
 
 	return (
 		<div className={className}>
 			<Popover
 				content={<Content siteTime={siteTime} userTime={userTime} utcTime={utcTime} />}
 				header={__('This Date Converted To:')}
-				placement='top-start'
 				trigger={<Trigger tooltip={__('click for timezone information')} />}
 			/>
 		</div>
