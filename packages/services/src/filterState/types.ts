@@ -1,8 +1,9 @@
 import type { Entity } from '@eventespresso/data';
+import type { ListView } from '@eventespresso/components';
 
 export type BasicSortBy = 'name' | 'id';
 
-export interface EntityListFilterState<SortBy = BasicSortBy> extends View {
+export interface EntityListFilterState<SortBy = BasicSortBy> extends ListView {
 	perPage: number;
 	pageNumber: number;
 	total: number;
@@ -52,8 +53,4 @@ export interface EntityFilterService<E extends Entity, FS extends ELFSM> {
 	applyFilters: (entityList: Array<E>, filterState: FS) => Array<E>;
 	applySearches: (entityList: Array<E>, filterState: FS) => Array<E>;
 	applySorters: (entityList: Array<E>, filterState: FS) => Array<E>;
-}
-
-export interface View {
-	view?: 'card' | 'table';
 }
