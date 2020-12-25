@@ -1,6 +1,3 @@
-/* eslint-disable */
-'use strict';
-
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
@@ -23,10 +20,14 @@ const clearConsole = require('react-dev-utils/clearConsole');
 // const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const { choosePort, createCompiler, prepareProxy, prepareUrls } = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
+const semver = require('semver');
 const paths = require('../config/paths');
 const configFactory = require('../config/webpack.config');
 const createDevServerConfig = require('../config/webpackDevServer.config');
+const getClientEnvironment = require('../config/env');
+const react = require(require.resolve('react', { paths: [paths.appPath] }));
 
+const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
 
@@ -44,7 +45,7 @@ if (process.env.HOST) {
 		chalk.cyan(`Attempting to bind to HOST environment variable: ${chalk.yellow(chalk.bold(process.env.HOST))}`)
 	);
 	console.log(`If this was unintentional, check that you haven't mistakenly set it in your shell.`);
-	console.log(`Learn more here: ${chalk.yellow('https://bit.ly/CRA-advanced-config')}`);
+	console.log(`Learn more here: ${chalk.yellow('https://cra.link/advanced-config')}`);
 	console.log();
 }
 
@@ -66,6 +67,7 @@ checkBrowsers(paths.appPath, isInteractive)
 		const config = configFactory('development');
 		const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 		const appName = require(paths.appPackageJson).name;
+
 		const useTypeScript = fs.existsSync(paths.appTsConfig);
 		const tscCompileOnError = process.env.TSC_COMPILE_ON_ERROR === 'true';
 		const urls = prepareUrls(protocol, HOST, port, paths.publicUrlOrPath.slice(0, -1));
@@ -99,16 +101,10 @@ checkBrowsers(paths.appPath, isInteractive)
 				clearConsole();
 			}
 
-			// We used to support resolving modules according to `NODE_PATH`.
-			// This now has been deprecated in favor of jsconfig/tsconfig.json
-			// This lets you use absolute paths in imports inside large monorepos:
-			if (process.env.NODE_PATH) {
+			if (env.raw.FAST_REFRESH && semver.lt(react.version, '16.10.0')) {
 				console.log(
-					chalk.yellow(
-						'Setting NODE_PATH to resolve modules absolutely has been deprecated in favor of setting baseUrl in jsconfig.json (or tsconfig.json if you are using TypeScript) and will be removed in a future major release of create-react-app.'
-					)
+					chalk.yellow(`Fast Refresh requires React 16.10 or higher. You are using React ${react.version}.`)
 				);
-				console.log();
 			}
 
 			console.log(chalk.cyan('Starting the development server...\n'));
@@ -122,13 +118,12 @@ checkBrowsers(paths.appPath, isInteractive)
 			});
 		});
 
-		if (isInteractive || process.env.CI !== 'true') {
+		if (process.env.CI !== 'true') {
 			// Gracefully exit when stdin ends
 			process.stdin.on('end', function () {
 				devServer.close();
 				process.exit();
 			});
-			process.stdin.resume();
 		}
 	})
 	.catch((err) => {
