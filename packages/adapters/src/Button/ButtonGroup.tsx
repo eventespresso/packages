@@ -1,4 +1,3 @@
-import React from 'react';
 import { ButtonGroup as ChakraButtonGroup } from '@chakra-ui/react';
 
 import type { ButtonGroupProps } from './types';

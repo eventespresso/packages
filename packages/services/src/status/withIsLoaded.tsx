@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useStatus, TypeName } from './';
 
 interface ComponentProps {

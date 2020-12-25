@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { TextInput } from '@eventespresso/ui-components';
 import useBaseField from './useBaseField';
 import type { BaseFieldProps } from './types';

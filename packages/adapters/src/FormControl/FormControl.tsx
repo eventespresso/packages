@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormControl as ChakraFormControl } from '@chakra-ui/react';
 
 import type { FormControlProps } from './types';

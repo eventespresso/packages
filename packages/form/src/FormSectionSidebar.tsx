@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Heading } from '@eventespresso/ui-components';
 
 import type { SectionProps } from './types';

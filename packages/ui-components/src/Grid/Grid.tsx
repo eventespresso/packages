@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { Grid as GridAdapter, GridProps } from '@eventespresso/adapters';

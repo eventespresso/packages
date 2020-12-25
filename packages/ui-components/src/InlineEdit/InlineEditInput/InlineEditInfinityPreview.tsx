@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { isInfinite } from '@eventespresso/utils';
 
 import Preview from './Preview';

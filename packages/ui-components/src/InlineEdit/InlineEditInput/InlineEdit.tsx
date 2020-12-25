@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { InlineEdit as InlineEditAdapter, InlineEditProps } from '@eventespresso/adapters';

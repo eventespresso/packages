@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 

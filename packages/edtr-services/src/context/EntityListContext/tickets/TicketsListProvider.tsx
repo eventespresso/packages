@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { TicketsFilterStateProvider } from './TicketsFilterStateProvider';
 import { FilteredTicketsProvider } from './FilteredTicketsProvider';
 

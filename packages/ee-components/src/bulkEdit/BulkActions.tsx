@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useBulkEdit } from '@eventespresso/services';
 
 import { BulkActions as BulkActionsUI, BulkActionsProps } from '@eventespresso/ui-components';

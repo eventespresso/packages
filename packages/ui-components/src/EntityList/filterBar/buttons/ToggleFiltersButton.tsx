@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { __ } from '@eventespresso/i18n';
 import { Filter } from '@eventespresso/icons';
 import { Button } from '../../../Button';

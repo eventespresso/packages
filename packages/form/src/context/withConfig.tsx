@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { FormConfigProviderProps, FormConfigProvider } from './ConfigProvider';
 
 const withConfig = <P extends FormConfigProviderProps>(Component: React.ComponentType<P>): React.ComponentType<P> => {

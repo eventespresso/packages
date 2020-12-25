@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useDisclosure } from '@eventespresso/hooks';
 import { Collapsible } from '../../';
 import Legend from './Legend';

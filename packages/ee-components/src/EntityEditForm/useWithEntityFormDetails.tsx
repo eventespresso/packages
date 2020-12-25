@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { Entity } from '@eventespresso/data';
 import type { EntityEditBaseProps } from './types';
 

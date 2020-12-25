@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { Modal as ModalAdapter, ModalCloseButton } from '@eventespresso/adapters';

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { __, sprintf } from '@eventespresso/i18n';
 import { useBulkEdit } from '@eventespresso/services';

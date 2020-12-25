@@ -1,4 +1,3 @@
-import React from 'react';
 import { parseISO } from 'date-fns';
 
 import { useConfig, useTimeZoneTime } from '@eventespresso/services';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ButtonRow, DebugInfo } from '@eventespresso/ui-components';
 
 import DefaultPricesInfo from './DefaultPricesInfo';

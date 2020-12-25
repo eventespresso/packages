@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { EntityListFilterStateManager as ELFSM } from '@eventespresso/services';
 
 import { EntityListFilterBar } from './EntityListFilterBar';

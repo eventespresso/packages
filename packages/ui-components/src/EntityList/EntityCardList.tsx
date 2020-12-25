@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { EntityCardListProps } from './types';
 import type { Entity } from '@eventespresso/data';
 

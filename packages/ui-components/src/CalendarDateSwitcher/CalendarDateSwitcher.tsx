@@ -1,4 +1,3 @@
-import React from 'react';
 import { parseISO, format } from 'date-fns';
 import { __ } from '@eventespresso/i18n';
 

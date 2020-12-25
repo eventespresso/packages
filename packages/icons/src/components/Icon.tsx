@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import classNames from 'classnames';
 
 import { svgPath } from './svgPaths';
@@ -7,7 +7,7 @@ import type { IconProps } from '../types';
 /**
  * Custom Event Espresso Dashicons
  */
-const Icon = React.forwardRef<SVGSVGElement, IconProps>(({ className, name, svgSize = 20, color, ...props }, ref) => {
+const Icon = forwardRef<SVGSVGElement, IconProps>(({ className, name, svgSize = 20, color, ...props }, ref) => {
 	const path = svgPath[name];
 
 	if (!path) {

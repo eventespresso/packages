@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { GlobalOutlined } from '@eventespresso/icons';
 import type { TooltipProps } from '@eventespresso/adapters';

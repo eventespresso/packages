@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { useDisclosure } from '@eventespresso/hooks';

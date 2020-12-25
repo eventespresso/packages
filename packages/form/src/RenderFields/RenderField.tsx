@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Field, Group, Repeatable } from '../fields';
 import type { RenderFieldProps } from '../types';
 

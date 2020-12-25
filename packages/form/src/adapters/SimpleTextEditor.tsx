@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { SimpleTextEditor as SimpleTextEditorAdapter } from '@eventespresso/rich-text-editor';
 import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';

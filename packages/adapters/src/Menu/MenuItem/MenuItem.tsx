@@ -1,4 +1,3 @@
-import React from 'react';
 import { MenuItem as ChakraMenuItem } from '@chakra-ui/react';
 
 import type { MenuItemProps } from './types';

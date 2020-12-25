@@ -1,4 +1,3 @@
-import React from 'react';
 import { path, Path } from 'ramda';
 import type { AnyObject } from '../types';
 

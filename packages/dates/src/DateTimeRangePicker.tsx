@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { DateRangePicker } from './DateRangePicker';
 import type { DateRangePickerProps } from './types';
 

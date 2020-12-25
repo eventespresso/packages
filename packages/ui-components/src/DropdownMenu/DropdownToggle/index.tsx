@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import classNames from 'classnames';
 
 import { MenuToggle } from '@eventespresso/adapters';
@@ -8,7 +8,7 @@ import { IconButton } from '../../';
 import type { DropdownToggleProps } from '../types';
 import './styles.scss';
 
-export const DropdownToggle = React.forwardRef<HTMLButtonElement, DropdownToggleProps>(
+export const DropdownToggle = forwardRef<HTMLButtonElement, DropdownToggleProps>(
 	({ borderless = true, icon = More, isOpen, tooltip, ...props }, ref) => {
 		const className = classNames(
 			'ee-dropdown-menu__toggle',

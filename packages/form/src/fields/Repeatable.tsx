@@ -1,4 +1,3 @@
-import React from 'react';
 import { FieldArray } from 'react-final-form-arrays';
 
 import type { FieldProps } from '../types';

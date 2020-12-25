@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { Tooltip as TooltipAdapter, TooltipProps } from '@eventespresso/adapters';

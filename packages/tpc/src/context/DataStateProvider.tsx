@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
 import { BaseProps } from '../types';
 import { DataStateManager, useDataStateManager } from '../data';

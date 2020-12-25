@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Alert as ChakraAlert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
 
 import type { BannerProps } from './types';

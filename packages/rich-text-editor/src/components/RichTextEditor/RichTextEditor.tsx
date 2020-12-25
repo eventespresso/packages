@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+
 import classNames from 'classnames';
 import { Editor, EditorProps } from 'react-draft-wysiwyg';
 

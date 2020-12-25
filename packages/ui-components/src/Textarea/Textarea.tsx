@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { Textarea as TextAreaAdapter, TextareaProps } from '@eventespresso/adapters';

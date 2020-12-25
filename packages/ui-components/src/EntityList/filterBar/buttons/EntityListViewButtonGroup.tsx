@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ButtonGroup } from '../../../Button';
 import { CardViewFilterButton } from './CardViewFilterButton';
 import { TableViewFilterButton } from './TableViewFilterButton';

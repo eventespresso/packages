@@ -1,4 +1,5 @@
-import React, { forwardRef, PropsWithoutRef, ForwardRefExoticComponent, RefAttributes } from 'react';
+import { forwardRef, PropsWithoutRef, ForwardRefExoticComponent, RefAttributes } from 'react';
+
 import classNames from 'classnames';
 
 import { IconProps, IconSize } from './types';

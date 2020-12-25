@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { __ } from '@eventespresso/i18n';
 
 import OnDate, { OnDateProps } from '../OnDate';

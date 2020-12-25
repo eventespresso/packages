@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { EntityDetailProps } from './types';
 
 const EntityDetails: React.FC<EntityDetailProps> = ({ render: Component, ...props }) => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { Checkbox as CheckboxAdapter } from '@eventespresso/adapters';

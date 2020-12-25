@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import classNames from 'classnames';
 import invariant from 'invariant';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';

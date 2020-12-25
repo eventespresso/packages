@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormHelperText as ChakraFormHelperText } from '@chakra-ui/react';
 
 import type { FormHelperTextProps } from './types';

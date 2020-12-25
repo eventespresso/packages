@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import classNames from 'classnames';
 
 import useBaseField from './useBaseField';
@@ -29,7 +29,7 @@ const BaseField: React.FC<BaseFieldProps> = ({
 	const className = classNames(props.className, 'ee-input-base ee-input', component === 'select' && 'ee-select');
 
 	if (typeof component === 'string') {
-		return React.createElement(component, { ...handlers, ...props, className, value: fieldValue }, children);
+		return createElement(component, { ...handlers, ...props, className, value: fieldValue }, children);
 	}
 
 	return null;

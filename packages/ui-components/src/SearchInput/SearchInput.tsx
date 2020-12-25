@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { TextInput, TextInputProps } from '@eventespresso/adapters';

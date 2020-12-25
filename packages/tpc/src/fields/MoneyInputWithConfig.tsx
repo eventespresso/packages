@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { MoneyInputWrapper, MoneyInputWrapperProps } from '@eventespresso/ui-components';
 import { useConfig } from '@eventespresso/services';
 

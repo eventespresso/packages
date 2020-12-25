@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import { Input as ChakraInput } from '@chakra-ui/react';
 
 import { useOnChange } from '@eventespresso/hooks';

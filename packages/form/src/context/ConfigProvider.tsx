@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from 'react';
+import { createContext, useMemo } from 'react';
 
 import { DEFAULT_DATE_FORMAT, DEFAULT_TIME_FORMAT, DATETIME_FORMAT } from '@eventespresso/constants';
 

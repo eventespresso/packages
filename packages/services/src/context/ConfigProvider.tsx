@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from 'react';
+import { createContext, useMemo } from 'react';
 
 import { DateTimeFormats, useConfigData, ConfigDataProps } from '../config';
 import { useCurrentUser, useGeneralSettings } from '@eventespresso/data';

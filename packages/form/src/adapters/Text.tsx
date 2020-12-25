@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { TextInput } from '@eventespresso/ui-components';
 
 import type { FieldRendererProps } from '../types';

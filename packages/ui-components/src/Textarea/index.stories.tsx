@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Textarea } from './';
@@ -18,7 +18,7 @@ export const Disabled: TextareaStory = () => <Textarea isDisabled placeholder='A
 export const Invalid: TextareaStory = () => <Textarea isInvalid placeholder='An invalid textarea' />;
 
 export const Controlled: TextareaStory = () => {
-	const [value, setValue] = React.useState('');
+	const [value, setValue] = useState('');
 
 	const onChange = useCallback<TextareaProps['onChange']>((e) => {
 		setValue(e.target.value);

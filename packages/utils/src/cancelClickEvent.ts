@@ -1,5 +1,3 @@
-import React from 'react';
-
 const { console } = window;
 
 export type ClickEvent = React.KeyboardEvent | React.MouseEvent;

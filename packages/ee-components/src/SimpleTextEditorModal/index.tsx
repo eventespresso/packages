@@ -1,4 +1,5 @@
-import React, { useCallback, useState, useMemo } from 'react';
+import { useCallback, useState, useMemo } from 'react';
+
 import classNames from 'classnames';
 
 import { Dotdotdot } from '@eventespresso/adapters';

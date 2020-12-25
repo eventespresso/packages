@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+
 import { Editable as ChakraEditable } from '@chakra-ui/react';
 
 import { usePrevious, useIfMounted } from '@eventespresso/hooks';

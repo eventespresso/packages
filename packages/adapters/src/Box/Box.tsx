@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box as ChakraBox } from '@chakra-ui/react';
 
 import type { BoxProps } from './types';

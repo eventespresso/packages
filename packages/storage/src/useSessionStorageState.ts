@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
+
 import { useStorageState } from 'react-storage-hooks';
 
 export function useSessionStorageState<S>(

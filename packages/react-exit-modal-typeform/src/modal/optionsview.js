@@ -1,9 +1,4 @@
 import { createElement } from '@wordpress/element';
-/**
- * External Dependencies
- */
-
-import React from 'react';
 import Button from './button';
 import classNames from 'classnames';
 export default function ExitModalOptions(_ref) {

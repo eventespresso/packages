@@ -1,4 +1,3 @@
-import React from 'react';
 import type { AnyObject } from '@eventespresso/utils';
 
 /* alignments correspond to CSS flexbox justify-content values */

@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
+
 import classNames from 'classnames';
 
 import type { AnyObject } from '@eventespresso/utils';
@@ -66,7 +67,7 @@ const withTooltip = <P extends AnyObject>(
 		return <WithTooltip {...props} forwardedRef={ref} />;
 	};
 
-	return React.forwardRef(ForwardedComponentWithTooltip);
+	return forwardRef(ForwardedComponentWithTooltip);
 };
 
 export default withTooltip;

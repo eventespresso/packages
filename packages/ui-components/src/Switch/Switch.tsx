@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { Switch as SwitchAdapter } from '@eventespresso/adapters';

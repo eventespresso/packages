@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { __, sprintf } from '@eventespresso/i18n';

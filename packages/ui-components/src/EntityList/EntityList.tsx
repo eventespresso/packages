@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ButtonRow, ErrorIndicator, Heading, LoadingNotice } from '../..';
 import type { EntityListProps } from './types';
 import './style.scss';

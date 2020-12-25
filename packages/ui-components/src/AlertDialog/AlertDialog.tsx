@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { AlertDialog as AlertDialogAdapter, AlertDialogProps } from '@eventespresso/adapters';
 
 import './styles.scss';

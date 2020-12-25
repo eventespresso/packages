@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { WarningTriangle } from '@eventespresso/icons';
 import { InlineNotification } from './';
 

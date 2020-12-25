@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Form as ReactFinalForm } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import setFieldData from 'final-form-set-field-data';

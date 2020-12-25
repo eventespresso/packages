@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { DataProvider } from './DataProvider';
 import type { AnyObject } from '@eventespresso/utils';
 

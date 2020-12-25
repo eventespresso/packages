@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import InlineEdit from './InlineEdit';
 import Preview from './Preview';

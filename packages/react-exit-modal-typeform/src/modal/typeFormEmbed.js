@@ -4,11 +4,7 @@ import _possibleConstructorReturn from '@babel/runtime/helpers/possibleConstruct
 import _getPrototypeOf from '@babel/runtime/helpers/getPrototypeOf';
 import _inherits from '@babel/runtime/helpers/inherits';
 import { createElement } from '@wordpress/element';
-/**
- * External Dependencies
- */
-
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as tfEmbed from '@typeform/embed';
 

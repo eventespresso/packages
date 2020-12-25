@@ -1,4 +1,5 @@
-import React, { cloneElement } from 'react';
+import { cloneElement } from 'react';
+
 import classNames from 'classnames';
 
 import { ButtonGroup as ButtonGroupAdapter } from '@eventespresso/adapters';

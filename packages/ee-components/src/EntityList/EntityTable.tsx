@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { useMemoStringify } from '@eventespresso/hooks';
 import type { EntityListFilterStateManager } from '@eventespresso/services';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Switch } from '@eventespresso/ui-components';
 
 import withoutMetaProp from './withoutMetaProp';

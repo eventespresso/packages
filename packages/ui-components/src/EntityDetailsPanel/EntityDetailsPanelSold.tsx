@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@eventespresso/i18n';
 

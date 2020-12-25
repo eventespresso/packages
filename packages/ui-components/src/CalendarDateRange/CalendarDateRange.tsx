@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import { differenceInCalendarDays, parseISO, isValid, format as formatFunc } from 'date-fns';
 

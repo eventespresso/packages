@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Divider, TextInput } from '../';
@@ -13,7 +13,7 @@ type TextInputStory = Story<TextInputProps>;
 export const Basic: TextInputStory = () => <TextInput placeholder='Basic input' />;
 
 export const Controlled: TextInputStory = () => {
-	const [value, setValue] = React.useState('Starting...');
+	const [value, setValue] = useState('Starting...');
 	const handleChange = useCallback<TextInputProps['onChange']>((event) => setValue(event.target.value), []);
 
 	return (

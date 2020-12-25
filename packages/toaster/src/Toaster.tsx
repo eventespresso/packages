@@ -1,5 +1,3 @@
-import React from 'react';
-
 import toasterIcons from './toasterIcons';
 import type { ToasterProps } from './types';
 

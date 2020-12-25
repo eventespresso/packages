@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef } from 'react';
 
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
@@ -62,7 +62,7 @@ export const WithScrollBehaviorOutside: ModalStory = () => {
 
 export const ReturnFocus: ModalStory = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const finalRef = React.useRef<any>();
+	const finalRef = useRef<any>();
 
 	return (
 		<>

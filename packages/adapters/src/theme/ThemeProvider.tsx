@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({ styles: null });

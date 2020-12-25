@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { __ } from '@eventespresso/i18n';
 import { usePriceTypes } from '@eventespresso/edtr-services';
 import { getPriceModifiers } from '@eventespresso/predicates';

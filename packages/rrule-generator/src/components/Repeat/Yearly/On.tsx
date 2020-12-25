@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 import { parse, getDaysInMonth } from 'date-fns';
 import { range } from 'ramda';

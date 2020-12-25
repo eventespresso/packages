@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import classnames from 'classnames';
 import { Field as RFFField } from 'react-final-form';
 

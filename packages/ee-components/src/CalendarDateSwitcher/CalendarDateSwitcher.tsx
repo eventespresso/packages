@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useTimeZoneTime } from '@eventespresso/services';
 import { CalendarDateSwitcher as CalendarDateSwitcherUI } from '@eventespresso/ui-components';
 

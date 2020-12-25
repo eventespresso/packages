@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta } from '@storybook/react/types-6-0';
 
 import TestForm from './TestForm';

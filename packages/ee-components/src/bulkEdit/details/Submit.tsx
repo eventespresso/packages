@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+
 import type { FormRenderProps } from 'react-final-form';
 
 import { __ } from '@eventespresso/i18n';

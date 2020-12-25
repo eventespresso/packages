@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Banner } from '../';
 import { WarningTriangle } from '@eventespresso/icons';
 import type { ErrorIndicatorProps } from './types';

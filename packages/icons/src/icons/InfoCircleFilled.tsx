@@ -1,4 +1,3 @@
-import * as React from 'react';
 import withEnhance from '../withEnhance';
 import { IconProps } from '../types';
 

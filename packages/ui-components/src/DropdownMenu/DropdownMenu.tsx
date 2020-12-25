@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Menu } from '@eventespresso/adapters';
 import { DropdownMenuList, DropdownToggle } from './';
 import type { DropdownMenuProps } from './types';

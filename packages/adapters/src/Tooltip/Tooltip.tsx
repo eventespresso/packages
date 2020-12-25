@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tooltip as ChakraTooltip } from '@chakra-ui/react';
 
 import type { TooltipProps } from './types';

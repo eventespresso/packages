@@ -1,5 +1,3 @@
-import React from 'react';
-
 import FormSectionSidebar from './FormSectionSidebar';
 import RenderFields from './RenderFields';
 import type { SectionProps } from './types';

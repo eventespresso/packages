@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { DataProvider } from '@eventespresso/data';
 import { ThemeProvider } from '@eventespresso/adapters';
 import { ConfigProvider, FeaturesProvider, RelationsProvider, StatusProvider } from '@eventespresso/services';

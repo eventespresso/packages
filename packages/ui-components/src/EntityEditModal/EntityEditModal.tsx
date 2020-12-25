@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Modal } from '../';
 import type { EntityEditModalProps } from './types';
 

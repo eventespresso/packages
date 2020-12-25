@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { toast } from 'react-toastify';
 
 import type { DissmissToast, SystemNotificationsToaster, ToastProps, UpdateToast } from './types';

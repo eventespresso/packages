@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+
 import { Switch as ChakraSwitch } from '@chakra-ui/react';
 
 import { isEnterKey } from '@eventespresso/utils';

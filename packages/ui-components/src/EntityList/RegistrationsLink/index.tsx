@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Groups } from '@eventespresso/icons';
 import { Link } from '../../..';
 

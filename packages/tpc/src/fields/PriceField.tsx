@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { useDataState } from '../data';
 import BaseField from './BaseField';

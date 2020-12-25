@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 
 import { Calculator } from '@eventespresso/icons';

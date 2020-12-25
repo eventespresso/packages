@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { RenderSectionsProps } from './types';
 import RenderSection from './RenderSection';
 

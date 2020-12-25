@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback, useState } from 'react';
+import { CSSProperties, useCallback, useState } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Collapse } from '@eventespresso/adapters';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { assocPath, dissocPath, pathOr } from 'ramda';
 import type { AnyObject } from '@eventespresso/utils';
 

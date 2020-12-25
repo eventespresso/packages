@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useForm } from '@eventespresso/form';
 import { useSiteDateToUtcISO } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';

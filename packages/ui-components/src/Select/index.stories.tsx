@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import { useCallback, useState } from 'react';
+
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Select } from '../';
@@ -28,7 +29,7 @@ export const Disabled: SelectStory = () => (
 );
 
 export const SelectControlled: SelectStory = () => {
-	const [value, setValue] = React.useState('');
+	const [value, setValue] = useState('');
 	const handleChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
 		setValue(event.target.value);
 	}, []);

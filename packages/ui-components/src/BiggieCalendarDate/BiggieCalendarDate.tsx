@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+
 import classNames from 'classnames';
 import { parseISO, isValid, format as formatFunc } from 'date-fns';
 

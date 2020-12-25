@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { Banner as BannerAdapter } from '@eventespresso/adapters';

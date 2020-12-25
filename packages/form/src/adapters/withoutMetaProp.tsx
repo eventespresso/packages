@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import { omit } from 'ramda';
 
 import type { ForwardRefComponent } from '@eventespresso/ui-components';
@@ -20,7 +20,7 @@ const withoutMetaProp = <P extends FieldRendererProps>(
 		return <WithoutMeta {...props} forwardedRef={ref} />;
 	};
 
-	return React.forwardRef(ForwardedComponentWithLabel);
+	return forwardRef(ForwardedComponentWithLabel);
 };
 
 export default withoutMetaProp;

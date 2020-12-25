@@ -1,4 +1,3 @@
-import React from 'react';
 import { CheckboxGroup as ChakraCheckboxGroup } from '@chakra-ui/react';
 
 import type { CheckboxGroupProps } from './types';

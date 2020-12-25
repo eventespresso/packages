@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { InfoCircleOutlined } from '@eventespresso/icons';
 import { InlineNotification } from './';
 

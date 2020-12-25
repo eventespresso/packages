@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import classNames from 'classnames';
 
 import type { AnyObject } from '@eventespresso/utils';
@@ -46,7 +46,7 @@ const withLabel = <P extends AnyObject>(
 		return <WithLabel {...props} forwardedRef={ref} />;
 	};
 
-	return React.forwardRef(ForwardedComponentWithLabel);
+	return forwardRef(ForwardedComponentWithLabel);
 };
 
 export default withLabel;

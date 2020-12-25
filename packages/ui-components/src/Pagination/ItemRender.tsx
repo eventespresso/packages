@@ -1,4 +1,3 @@
-import React from 'react';
 import type { PaginationProps as RcPaginationProps } from 'rc-pagination';
 
 import { __ } from '@eventespresso/i18n';

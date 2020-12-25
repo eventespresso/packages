@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
+
 import { useDebouncedCallback } from 'use-debounce';
 
 import type { InternalDebounceProps, WithDebounceProps } from './types';
@@ -76,7 +77,7 @@ const withDebounce = <P extends AnyObject, R extends any>(
 		return <WrappedComponent {...wrappedCompProps} />;
 	};
 
-	return React.forwardRef((props: P, ref: Ref) => {
+	return forwardRef((props: P, ref: Ref) => {
 		return <WithDebounce {...props} forwardedRef={ref} />;
 	});
 };

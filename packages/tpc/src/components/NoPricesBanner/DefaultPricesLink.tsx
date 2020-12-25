@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ADMIN_ROUTES } from '@eventespresso/constants';
 import { getAdminUrl } from '@eventespresso/edtr-services';
 import { Link } from '@eventespresso/ui-components';

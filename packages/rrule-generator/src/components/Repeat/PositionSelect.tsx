@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Select } from '@eventespresso/ui-components';
 
 import { WHICH } from '../../constants';

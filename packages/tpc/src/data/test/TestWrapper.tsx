@@ -1,4 +1,3 @@
-import React from 'react';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 import { ContextProvider } from '../../context';
 import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';

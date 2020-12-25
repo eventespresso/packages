@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 

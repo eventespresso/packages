@@ -1,4 +1,3 @@
-import React from 'react';
 import ConditionalElement from './ConditionalElement';
 import classNames from 'classnames';
 import type { FooterProps } from './types';

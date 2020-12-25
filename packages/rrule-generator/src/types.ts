@@ -1,4 +1,3 @@
-import React from 'react';
 import { Frequency as RRuleFrequency, WeekdayStr } from 'rrule';
 import { MONTHS, DAYS } from './constants';
 

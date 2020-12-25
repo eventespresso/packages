@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Dotdotdot } from '@eventespresso/adapters';
 import type { SimpleEntityCardProps } from '../types';
 

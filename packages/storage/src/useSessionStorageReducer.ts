@@ -1,4 +1,5 @@
-import React, { useMemo, useEffect } from 'react';
+import { useMemo, useEffect } from 'react';
+
 import { useStorageReducer } from 'react-storage-hooks';
 
 export function useSessionStorageReducer<S, A>(

@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 import Text from './Text';
 import Textarea from './Textarea';
@@ -63,4 +63,4 @@ export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props 
 	return Component && <Component {...props} />;
 };
 
-export default React.memo(MappedField, fieldPropsAreEqual);
+export default memo(MappedField, fieldPropsAreEqual);

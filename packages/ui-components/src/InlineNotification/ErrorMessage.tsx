@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ExclamationCircle } from '@eventespresso/icons';
 import { InlineNotification } from './';
 

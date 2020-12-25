@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { ResponsiveCellProps } from './types';
 
 const ResponsiveCell: React.FC<ResponsiveCellProps> = ({ heading, value }) => (

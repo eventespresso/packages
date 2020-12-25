@@ -1,4 +1,5 @@
-import React, { createContext, useMemo, useCallback, useState } from 'react';
+import { createContext, useMemo, useCallback, useState } from 'react';
+
 import { without } from 'ramda';
 
 import { EntityId } from '@eventespresso/data';

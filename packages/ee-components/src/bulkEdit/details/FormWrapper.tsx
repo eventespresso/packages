@@ -1,4 +1,3 @@
-import React from 'react';
 import type { FormRenderProps } from 'react-final-form';
 
 import Submit from './Submit';

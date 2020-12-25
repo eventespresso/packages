@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { EntityEditModal } from '@eventespresso/ui-components';
 import type { Entity } from '@eventespresso/data';
 

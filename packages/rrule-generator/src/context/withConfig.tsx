@@ -1,4 +1,3 @@
-import React from 'react';
 import { ConfigProviderProps, ConfigProvider } from './ConfigProvider';
 
 const withConfig = <P extends ConfigProviderProps>(Component: React.ComponentType<P>): React.ComponentType<P> => {

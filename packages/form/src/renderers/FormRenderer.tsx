@@ -1,4 +1,3 @@
-import React from 'react';
 import { pick } from 'ramda';
 import { FormSpy } from 'react-final-form';
 

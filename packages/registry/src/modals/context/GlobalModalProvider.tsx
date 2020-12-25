@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
 import { GlobalModalManager } from './types';
 import useGlobalModalManager from './useGlobalModalManager';

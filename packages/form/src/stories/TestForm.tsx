@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useFormConfig } from './config';
 import EspressoForm from '../EspressoForm';
 import type { FieldProps } from '../';

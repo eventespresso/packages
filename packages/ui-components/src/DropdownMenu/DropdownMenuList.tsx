@@ -1,4 +1,5 @@
-import React, { Children, cloneElement } from 'react';
+import { Children, cloneElement } from 'react';
+
 import classNames from 'classnames';
 import { MenuList, MenuListProps } from '@eventespresso/adapters';
 

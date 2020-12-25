@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	Popover as ChakraPopover,
 	PopoverArrow,

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Radio, RadioGroup } from '@eventespresso/adapters';
 import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';

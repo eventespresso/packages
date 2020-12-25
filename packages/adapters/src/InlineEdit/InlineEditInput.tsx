@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import { EditableInput as ChakraEditableInput } from '@chakra-ui/react';
 
 import { isEnterKey, isEscapeKey } from '@eventespresso/utils';

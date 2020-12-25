@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { EspressoForm, EspressoFormProps, FormConfig } from '@eventespresso/form';
 import { useConfig } from '@eventespresso/services';
 import type { AnyObject } from '@eventespresso/utils';

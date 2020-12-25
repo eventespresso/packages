@@ -1,4 +1,3 @@
-import React from 'react';
 import { act, render } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
 import '@testing-library/jest-dom/extend-expect';

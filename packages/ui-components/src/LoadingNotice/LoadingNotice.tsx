@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import { Spinner } from '@eventespresso/adapters';
 import { __ } from '@eventespresso/i18n';

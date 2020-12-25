@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ContextHOCArgs {
 	Provider: React.ComponentType;
 	Component: React.ComponentType;

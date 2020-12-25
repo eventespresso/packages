@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
+
 import { isEqual } from 'date-fns';
 import classNames from 'classnames';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	NumberInput as ChakraNumberInput,
 	NumberInputField,

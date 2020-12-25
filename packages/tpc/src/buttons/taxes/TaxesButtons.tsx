@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { usePrices } from '@eventespresso/edtr-services';
 import { useDataState } from '../../data';
 import { getDefaultTaxes } from '@eventespresso/predicates';

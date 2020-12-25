@@ -1,4 +1,4 @@
-import React, { createContext, useEffect } from 'react';
+import { createContext, useEffect } from 'react';
 
 import { useFilteredEntities } from '@eventespresso/services';
 import { getGuids, notTrashed } from '@eventespresso/predicates';

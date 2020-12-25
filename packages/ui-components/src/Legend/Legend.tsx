@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { createElement, useMemo } from 'react';
+
 import classNames from 'classnames';
 import { is } from 'ramda';
 
@@ -13,7 +14,7 @@ const Legend: React.FC<LegendProps> = ({ columnsPerRow, direction, legendConfig,
 	const { icons, swatches } = legendConfig;
 
 	const iconsSource = icons.map(({ bgClassName, className, description, icon }) => {
-		const term = (!is(String)(icon) && React.createElement(icon)) || (
+		const term = (!is(String)(icon) && createElement(icon)) || (
 			<Icon aria-label={description} name={icon as IconName} svgSize={18} />
 		);
 

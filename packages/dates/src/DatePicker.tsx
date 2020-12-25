@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import ReactDatePicker from 'react-datepicker';
 import * as locales from 'date-fns/locale';
 

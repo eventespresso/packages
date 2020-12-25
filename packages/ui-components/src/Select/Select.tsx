@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { Select as SelectAdapter } from '@eventespresso/adapters';

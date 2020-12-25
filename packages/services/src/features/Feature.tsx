@@ -1,4 +1,3 @@
-import React from 'react';
 import { Feature as FlaggedFeature } from 'flagged';
 
 import { FeatureProps } from './types';

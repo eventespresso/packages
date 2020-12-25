@@ -1,4 +1,3 @@
-import React from 'react';
 import { ApolloMockedProvider } from '../../../context/test';
 
 const ApolloWrapper = ApolloMockedProvider();

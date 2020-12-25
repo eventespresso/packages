@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { AtomicBlockUtils } from 'draft-js';
 
 import { __ } from '@eventespresso/i18n';

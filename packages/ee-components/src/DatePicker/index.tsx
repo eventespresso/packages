@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { DatePicker as DatePickerAdapter, DatePickerProps } from '@eventespresso/dates';
 import { useConfig } from '@eventespresso/services';
 

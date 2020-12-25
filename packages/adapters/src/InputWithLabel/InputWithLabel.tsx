@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { InputGroup, InputLeftAddon, InputRightAddon } from '@chakra-ui/react';
 
 import type { InputWithLabelProps } from './types';

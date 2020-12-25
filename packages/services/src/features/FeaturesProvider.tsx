@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import { FlagsProvider, FeatureFlags } from 'flagged';
 import { concat, uniq } from 'ramda';
 

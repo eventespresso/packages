@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Check, CloseCircleOutlined, InfoCircleOutlined, Spinner } from '@eventespresso/icons';
 
 const fontSize = '1.2rem';

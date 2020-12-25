@@ -4,11 +4,7 @@ import _possibleConstructorReturn from '@babel/runtime/helpers/possibleConstruct
 import _getPrototypeOf from '@babel/runtime/helpers/getPrototypeOf';
 import _inherits from '@babel/runtime/helpers/inherits';
 import { createElement } from '@wordpress/element';
-/**
- * External Dependencies
- */
-
-import React from 'react';
+import { Component } from 'react';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
 /**
@@ -130,7 +126,7 @@ var ExitModal =
 		]);
 
 		return ExitModal;
-	})(React.Component);
+	})(Component);
 
 export { ExitModal as default };
 ExitModal.defaultProps = {

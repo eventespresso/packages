@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { DatesFilterStateProvider } from './DatesFilterStateProvider';
 import { FilteredDatesProvider } from './FilteredDatesProvider';
 
