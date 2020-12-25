@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import { DragHandleIcon } from '@chakra-ui/icons';
 import { Draggable } from 'react-beautiful-dnd';
 
+import { DragOutlined } from '@eventespresso/icons';
 import { RowType } from './types';
 import type { BodyRow } from './types';
 
@@ -56,7 +56,7 @@ const TableRow: React.FC<BodyRow> = ({
 						{children}
 						{showDragHandle && (
 							<td {...dragHandleProps}>
-								<DragHandleIcon />
+								<DragOutlined />
 							</td>
 						)}
 					</tr>

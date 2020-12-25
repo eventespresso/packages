@@ -5,15 +5,19 @@ import './style.scss';
 
 import { EntityActionsMenuProps, EntityActionsMenuLayout } from './types';
 
-const EntityActionsMenu: React.FC<EntityActionsMenuProps> = ({
+export const EntityActionsMenu: React.FC<EntityActionsMenuProps> = ({
 	layout = EntityActionsMenuLayout.Horizontal,
 	menuItems,
 	...props
 }) => {
-	const className = classNames(props.className, 'ee-entity-actions-menu', {
-		'ee-entity-actions-menu--horizontal': layout === EntityActionsMenuLayout.Horizontal,
-		'ee-entity-actions-menu--vertical': layout === EntityActionsMenuLayout.Vertical,
-	});
+	const className = classNames(
+		'ee-entity-actions-menu',
+		{
+			'ee-entity-actions-menu--horizontal': layout === EntityActionsMenuLayout.Horizontal,
+			'ee-entity-actions-menu--vertical': layout === EntityActionsMenuLayout.Vertical,
+		},
+		props.className
+	);
 
 	return (
 		<div className={className} {...props}>
@@ -21,5 +25,3 @@ const EntityActionsMenu: React.FC<EntityActionsMenuProps> = ({
 		</div>
 	);
 };
-
-export default EntityActionsMenu;

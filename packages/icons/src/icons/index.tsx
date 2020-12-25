@@ -17,6 +17,7 @@ export { default as CompassFilled } from './CompassFilled';
 export { default as ControlOutlined } from './ControlOutlined';
 export { default as Copy } from './Copy';
 export { default as DownCircleFilled } from './DownCircleFilled';
+export { default as DragOutlined } from './DragOutlined';
 export { default as Edit } from './Edit';
 export { default as EditorOlRtl } from './EditorOlRtl';
 export { default as EditorOl } from './EditorOl';

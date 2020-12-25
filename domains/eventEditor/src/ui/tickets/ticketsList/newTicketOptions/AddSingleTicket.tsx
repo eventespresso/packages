@@ -17,8 +17,8 @@ const AddSingleTicket: React.FC<AddSingleTicketProps> = ({ isOnlyButton }) => {
 	const output = (
 		<Button
 			buttonText={__('Add New Ticket')}
-			onClick={open}
 			icon={isOnlyButton ? Ticket : null}
+			onClick={open}
 			size={isOnlyButton ? 'big' : 'default'}
 		/>
 	);
@@ -26,11 +26,12 @@ const AddSingleTicket: React.FC<AddSingleTicketProps> = ({ isOnlyButton }) => {
 	if (isOnlyButton) {
 		return output;
 	}
+
 	return (
 		<NewEntityOption
-			title={__('Single Ticket')}
-			icon={Ticket}
 			description={__('Add a single ticket and assign the dates to it')}
+			icon={Ticket}
+			title={__('Single Ticket')}
 		>
 			{output}
 		</NewEntityOption>

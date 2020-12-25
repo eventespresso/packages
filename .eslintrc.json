@@ -48,11 +48,17 @@
 		"no-param-reassign": ["error", { "props": true }],
 		"no-prototype-builtins": "off",
 		"no-unused-vars": "off",
-		"react-hooks/exhaustive-deps": "error",
-		"react-hooks/rules-of-hooks": "error",
 		"react/display-name": "off",
+		"react/jsx-sort-props": [
+			"off",
+			{
+				"ignoreCase": true
+			}
+		],
 		"react/prop-types": "off",
-		"react/static-property-placement": "off"
+		"react/static-property-placement": "off",
+		"react-hooks/exhaustive-deps": "error",
+		"react-hooks/rules-of-hooks": "error"
 	},
 	"settings": {
 		"react": {
