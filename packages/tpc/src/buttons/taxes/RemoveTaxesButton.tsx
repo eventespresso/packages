@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { ConfirmDelete } from '@eventespresso/components';
+import { ConfirmDelete } from '@eventespresso/ui-components';
 import { useRemoveAllTaxes } from '../../hooks';
 
 const buttonProps = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { NewEntityModal } from '@eventespresso/components';
+import { NewEntityModal } from '@eventespresso/ui-components';
 import useNewDateOptionItems from '@edtrUI/datetimes/hooks/useNewDateOptionItems';
 import { useGlobalModal } from '@eventespresso/registry';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';

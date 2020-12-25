@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
 
-import { NumberInput } from '../../../../components/src/NumberInput';
+import { __ } from '@eventespresso/i18n';
+import { NumberInput } from '@eventespresso/ui-components';
+
 import { AfterProps } from './types';
 import { useRRuleConfig } from '../../hooks';
 

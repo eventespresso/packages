@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import classNames from 'classnames';
 
 import { CloseCircleFilled, PlusCircleFilled, Repeat, Trash } from '@eventespresso/icons';
-import { IconButton } from '@eventespresso/components';
+import { IconButton } from '@eventespresso/ui-components';
 import { DateType, GeneratedDatetimeProps } from './types';
 import { getBgClassName, formatDate, iconClassMap, tooltipMap } from './utils';
 

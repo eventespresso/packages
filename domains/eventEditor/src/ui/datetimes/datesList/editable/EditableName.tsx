@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { useDatetimeMutator } from '@eventespresso/edtr-services';
-import { InlineEditText } from '@eventespresso/components';
+import { InlineEditText } from '@eventespresso/ui-components';
 
 import type { DateItemProps } from '../types';
 

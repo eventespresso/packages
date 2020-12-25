@@ -1,5 +1,5 @@
 import type { Entity } from '@eventespresso/data';
-import type { ListView } from '@eventespresso/components';
+import type { ListView } from '@eventespresso/ui-components';
 
 export type BasicSortBy = 'name' | 'id';
 

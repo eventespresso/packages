@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Select } from '../../../../components';
+import { Select } from '@eventespresso/ui-components';
+
 import { WHICH } from '../../constants';
 import type { PositionSelectProps } from './types';
 

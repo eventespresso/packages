@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Row } from '../../../../components';
+import { Row } from '@eventespresso/ui-components';
+
 import EndAfter from './After';
 import OnDate from './OnDate';
 

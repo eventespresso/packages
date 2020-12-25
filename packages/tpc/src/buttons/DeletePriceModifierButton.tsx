@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { ConfirmDelete } from '@eventespresso/components';
+import { ConfirmDelete } from '@eventespresso/ui-components';
 import { Trash } from '@eventespresso/icons';
 import { useDataState } from '../data';
 import type { PriceModifierProps } from '../types';

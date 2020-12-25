@@ -4,8 +4,9 @@ import { parse, getDaysInMonth } from 'date-fns';
 import { range } from 'ramda';
 
 import { NOW } from '@eventespresso/constants';
-import { Radio } from '../../../../../adapters';
-import { Divider, Select } from '../../../../../components';
+import { Divider, Select } from '@eventespresso/ui-components';
+import { Radio } from '@eventespresso/adapters';
+
 import { MONTHS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';
 import { OnChangeSelect } from '../../types';

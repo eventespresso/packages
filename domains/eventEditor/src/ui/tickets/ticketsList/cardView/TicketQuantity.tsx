@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { parseInfinity } from '@eventespresso/utils';
-import { InlineEditInfinity, TextProps } from '@eventespresso/components';
+import { InlineEditInfinity, TextProps } from '@eventespresso/ui-components';
 import { useTicketMutator } from '@eventespresso/edtr-services';
 import type { TicketItemProps } from '../types';
 

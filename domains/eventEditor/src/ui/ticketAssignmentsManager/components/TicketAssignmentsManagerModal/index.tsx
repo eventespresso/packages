@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { CollapsibleLegend, ModalWithAlert } from '@eventespresso/components';
+import { CollapsibleLegend, ModalWithAlert } from '@eventespresso/ui-components';
 import { legendConfig } from './config';
 import TicketAssignmentsManager from '../TicketAssignmentsManager';
 import useCancelButtonProps from './buttons/useCancelButtonProps';

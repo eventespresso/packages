@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, Select } from '@eventespresso/components';
+import { Button, Select } from '@eventespresso/ui-components';
 import { entityListToSelectOptions, AnyObject } from '@eventespresso/utils';
 import { useDatetimes, useDatetimeItem } from '@eventespresso/edtr-services';
 

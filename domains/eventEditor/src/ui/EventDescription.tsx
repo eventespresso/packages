@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Heading, AdvancedTextEditor } from '@eventespresso/components';
+import { AdvancedTextEditor } from '@eventespresso/ee-components';
+import { Heading } from '@eventespresso/ui-components';
 import { useEvent, useEventMutator } from '@eventespresso/edtr-services';
 import { withFeature } from '@eventespresso/services';
 

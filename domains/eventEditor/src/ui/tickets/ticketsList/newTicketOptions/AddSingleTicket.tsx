@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, NewEntityOption } from '@eventespresso/components';
+import { Button, NewEntityOption } from '@eventespresso/ui-components';
 import { Ticket } from '@eventespresso/icons';
 import { useGlobalModal } from '@eventespresso/registry';
 import { EntityEditModalData } from '@edtrUI/types';

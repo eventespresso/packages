@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Grid, Heading } from '@eventespresso/components';
+import { Grid, Heading } from '@eventespresso/ui-components';
 import { noop } from '@eventespresso/utils';
 import { withFeature } from '@eventespresso/services';
 

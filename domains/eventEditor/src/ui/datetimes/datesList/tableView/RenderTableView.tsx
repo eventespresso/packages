@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 
-import { LoadingNotice } from '@eventespresso/components';
+import { LoadingNotice } from '@eventespresso/ui-components';
 
 const TableView = React.lazy(() => import(/* webpackChunkName: "dates-table-view" */ './TableView'));
 

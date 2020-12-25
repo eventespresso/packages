@@ -4,7 +4,7 @@ import { __ } from '@eventespresso/i18n';
 import useGetBodyRows from './useGetBodyRows';
 import useGetHeaderRows from './useGetHeaderRows';
 import { DatesAndTickets } from '../../types';
-import { ResponsiveTable } from '@eventespresso/components';
+import { ResponsiveTable } from '@eventespresso/ui-components';
 
 import './styles.scss';
 

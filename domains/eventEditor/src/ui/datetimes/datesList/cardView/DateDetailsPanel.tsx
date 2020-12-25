@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { EntityDetailsPanel, EntityDetailsPanelSold } from '@eventespresso/components';
+import { EntityDetailsPanel, EntityDetailsPanelSold } from '@eventespresso/ui-components';
 import DateRegistrationsLink from '../../DateRegistrationsLink';
 import DateCapacity from './DateCapacity';
 import type { DateItemProps } from '../types';

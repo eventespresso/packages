@@ -3,7 +3,7 @@ import { __ } from '@eventespresso/i18n';
 
 import type { TicketItemProps } from '../types';
 import { useTicketMutator } from '@eventespresso/edtr-services';
-import { InlineEditText } from '@eventespresso/components';
+import { InlineEditText } from '@eventespresso/ui-components';
 
 interface EditableNameProps extends TicketItemProps {
 	className?: string;

@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@eventespresso/i18n';
 import { FormSpy } from '@eventespresso/form';
 
-import { ButtonRow, Next, Previous, Submit } from '@eventespresso/components';
+import { ButtonRow, Next, Previous, Submit } from '@eventespresso/ui-components';
 import { usePrevNext } from '@eventespresso/hooks';
 
 import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/components';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Divider } from '@eventespresso/components';
+import { Divider } from '@eventespresso/ui-components';
 import { Box } from '@eventespresso/adapters';
 import AddPriceModifierButton from './AddPriceModifierButtonData';
 import DeletePriceModifierButton from './DeletePriceModifierButton';

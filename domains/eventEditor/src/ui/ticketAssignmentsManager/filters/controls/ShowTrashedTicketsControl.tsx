@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Switch } from '@eventespresso/components';
+import { Switch } from '@eventespresso/ui-components';
 import type { FilterStateManager } from '../filterState';
 
 type ShowTrashedTicketsControlProps = Pick<FilterStateManager, 'showTrashedTickets' | 'setShowTrashedTickets'>;

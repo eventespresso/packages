@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Switch } from '../../../components/src/Switch';
+import { Switch } from '@eventespresso/ui-components';
+
 import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';
 

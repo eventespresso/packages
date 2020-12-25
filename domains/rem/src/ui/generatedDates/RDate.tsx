@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { formatISO } from 'date-fns';
 
-import { Button } from '@eventespresso/components';
+import { Button } from '@eventespresso/ui-components';
 import { DatePicker } from '@eventespresso/ee-components';
 import { Box } from '@eventespresso/adapters';
 import { useTimeZoneTime } from '@eventespresso/services';

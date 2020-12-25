@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Calendar } from '@eventespresso/icons';
-import { IconButton, EntityListItemProps, ItemCount } from '@eventespresso/components';
+import { IconButton, EntityListItemProps, ItemCount } from '@eventespresso/ui-components';
 import { useRelatedDatetimes, EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { TypeName } from '@eventespresso/services';
 import { withIsLoaded } from '@eventespresso/services';

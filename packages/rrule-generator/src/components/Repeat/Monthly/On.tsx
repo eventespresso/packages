@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
 import { range } from 'ramda';
 
-import { Divider, Select } from '../../../../../components';
+import { __ } from '@eventespresso/i18n';
+import { Divider, Select } from '@eventespresso/ui-components';
+
 import { useRRuleState } from '../../../hooks';
 import { OnProps } from '../types';
 import { OnChangeSelect } from '../../types';

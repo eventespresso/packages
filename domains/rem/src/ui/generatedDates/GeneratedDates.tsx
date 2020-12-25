@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { CalendarOutlined } from '@eventespresso/icons';
-import { Pagination } from '@eventespresso/components';
-import { ButtonRow, CollapsibleLegend } from '@eventespresso/components';
+import { Pagination } from '@eventespresso/ui-components';
+import { ButtonRow, CollapsibleLegend } from '@eventespresso/ui-components';
 import { usePagination } from '@eventespresso/hooks';
 import { paginateEntities } from '@eventespresso/utils';
 import { FormSectionSidebar } from '@eventespresso/form';

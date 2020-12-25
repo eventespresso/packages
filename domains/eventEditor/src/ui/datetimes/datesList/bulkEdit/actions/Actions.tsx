@@ -4,7 +4,7 @@ import { __ } from '@eventespresso/i18n';
 import { BulkActions } from '@eventespresso/ee-components';
 import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
 import { withFeature } from '@eventespresso/services';
-import type { BulkActionsProps } from '@eventespresso/components';
+import type { BulkActionsProps } from '@eventespresso/ui-components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { DatetimeStatus } from '@eventespresso/predicates';
 

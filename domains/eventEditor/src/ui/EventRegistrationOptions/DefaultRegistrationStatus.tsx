@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
-import { GridItem, Heading, Select } from '@eventespresso/components';
+import { GridItem, Heading, Select } from '@eventespresso/ui-components';
 import { regStatusOptions } from '@eventespresso/predicates';
 import type { EventRegistrationOptionsProps } from './types';
 

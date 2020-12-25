@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { RegistrationsLink } from '@eventespresso/components';
+import { RegistrationsLink } from '@eventespresso/ui-components';
 import { useRegistrationsLink } from '@eventespresso/edtr-services';
 import type { Datetime } from '@eventespresso/edtr-services';
 

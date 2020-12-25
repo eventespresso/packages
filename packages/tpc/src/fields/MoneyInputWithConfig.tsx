@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MoneyInputWrapper, MoneyInputWrapperProps } from '@eventespresso/components';
+import { MoneyInputWrapper, MoneyInputWrapperProps } from '@eventespresso/ui-components';
 import { useConfig } from '@eventespresso/services';
 
 interface Props extends Omit<MoneyInputWrapperProps, 'sign' | 'signB4'> {}

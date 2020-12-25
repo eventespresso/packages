@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Calculator } from '@eventespresso/icons';
-import { IconButton, IconButtonProps } from '@eventespresso/components';
+import { IconButton, IconButtonProps } from '@eventespresso/ui-components';
 import { EdtrGlobalModals, useTicketItem } from '@eventespresso/edtr-services';
 import { TypeName, withIsLoaded } from '@eventespresso/services';
 import { useGlobalModal } from '@eventespresso/registry';

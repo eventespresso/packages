@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { useMemoStringify } from '@eventespresso/hooks';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
-import { EntityTable as EntityTableUI, RowType, BodyRow, HeaderRow } from '@eventespresso/components';
+import { EntityTable as EntityTableUI, RowType, BodyRow, HeaderRow } from '@eventespresso/ui-components';
 
 import type { EntityTableProps } from './types';
 import useEntityTableFilters from './useEntityTableFilters';

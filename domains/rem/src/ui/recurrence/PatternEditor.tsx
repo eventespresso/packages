@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, ButtonRow, DebugInfo, Divider, ErrorMessage } from '@eventespresso/components';
+import { Button, ButtonRow, DebugInfo, Divider, ErrorMessage } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
 import { CloseCircleOutlined, Repeat } from '@eventespresso/icons';
 

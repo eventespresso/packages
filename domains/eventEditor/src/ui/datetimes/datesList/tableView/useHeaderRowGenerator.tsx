@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Cell } from '@eventespresso/components';
+import { Cell } from '@eventespresso/ui-components';
 import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 import Checkbox from './Checkbox';
 

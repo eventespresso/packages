@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Steps, Step } from '@eventespresso/components';
+import { Steps, Step } from '@eventespresso/ui-components';
 import { PrevNext } from '@eventespresso/hooks';
 import { Calculator, Calendar, Ticket } from '@eventespresso/icons';
 

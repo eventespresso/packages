@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Plus } from '@eventespresso/icons';
-import { Button } from '@eventespresso/components';
+import { Button } from '@eventespresso/ui-components';
 import { __, sprintf } from '@eventespresso/i18n';
 import './style.scss';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Button, NewEntityOption } from '@eventespresso/components';
+import { Button, NewEntityOption } from '@eventespresso/ui-components';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 import { Calendar } from '@eventespresso/icons';

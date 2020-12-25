@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { ADMIN_ROUTES } from '@eventespresso/constants';
-import { SimpleTextEditorModal } from '@eventespresso/components';
+import { SimpleTextEditorModal } from '@eventespresso/ee-components';
 import { useConfig } from '@eventespresso/services';
 import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
 

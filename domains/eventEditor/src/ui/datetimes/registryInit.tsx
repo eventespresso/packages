@@ -18,7 +18,7 @@ import {
 	DatetimesFilterStateManager,
 	datesList,
 } from '@eventespresso/edtr-services';
-import { FilterBarFilter } from '@eventespresso/components';
+import { FilterBarFilter } from '@eventespresso/ui-components';
 
 import {
 	DisplayStartOrEndDateControl,

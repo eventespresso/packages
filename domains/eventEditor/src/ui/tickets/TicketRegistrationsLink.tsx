@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { RegistrationsLink, ItemCount } from '@eventespresso/components';
+import { RegistrationsLink, ItemCount } from '@eventespresso/ui-components';
 import type { Ticket } from '@eventespresso/edtr-services';
 import { useRegistrationsLink } from '@eventespresso/edtr-services';
 

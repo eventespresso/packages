@@ -1,13 +1,14 @@
 import React, { useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
 
-import { Divider, Select } from '../../../../../components';
+import { __ } from '@eventespresso/i18n';
+import { Divider, Select } from '@eventespresso/ui-components';
+
 import { DAYS } from '../../../constants';
 import PositionSelect from '../PositionSelect';
 import { OnProps } from '../types';
 import { useRRuleState } from '../../../hooks';
 import { OnChangeSelect } from '../../types';
-import { Which, Day } from 'packages/rrule-generator/src/types';
+import { Which, Day } from '../../../types';
 
 const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	const {

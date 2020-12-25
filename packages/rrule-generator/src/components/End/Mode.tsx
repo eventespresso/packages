@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
 
-import { Divider, Select } from '../../../../components';
+import { __ } from '@eventespresso/i18n';
+import { Divider, Select } from '@eventespresso/ui-components';
+
 import { ModeProps } from './types';
 import { EndMode } from '../../types';
 import { useRRuleConfig } from '../../hooks';

@@ -7,7 +7,7 @@ import PriceNameInput from '../../inputs/PriceNameInput';
 import PriceModifierActions from '../../buttons/PriceModifierActions';
 import PriceTypeInput from '../../inputs/PriceTypeInput';
 import type { TpcPriceModifier } from '../../types';
-import type { BodyRow } from '@eventespresso/components';
+import type { BodyRow } from '@eventespresso/ui-components';
 
 type Props = {
 	index: number;

@@ -1,5 +1,5 @@
 import type { InlineEditProps } from '@eventespresso/adapters';
-import type { SelectProps, SwitchProps } from '@eventespresso/components';
+import type { SelectProps, SwitchProps } from '@eventespresso/ui-components';
 import type { Event, EventManager } from '@eventespresso/edtr-services';
 
 type PickedProps =

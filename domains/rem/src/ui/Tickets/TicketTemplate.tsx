@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Button, Select } from '@eventespresso/components';
+import { Button, Select } from '@eventespresso/ui-components';
 import { entityListToSelectOptions } from '@eventespresso/utils';
 import { useDisclosure } from '@eventespresso/hooks';
 import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';

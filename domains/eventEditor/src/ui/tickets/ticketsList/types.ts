@@ -1,4 +1,4 @@
-import type { InlineEditCurrencyProps, EntityListItemProps } from '@eventespresso/components';
+import type { InlineEditCurrencyProps, EntityListItemProps } from '@eventespresso/ui-components';
 import type { EntityListViewProps } from '@eventespresso/ee-components';
 import type { EntityId } from '@eventespresso/data';
 import type { Ticket, TicketsFilterStateManager } from '@eventespresso/edtr-services';

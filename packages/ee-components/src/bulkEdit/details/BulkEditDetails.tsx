@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { EntityEditModal, ErrorMessage } from '@eventespresso/components';
+import { EntityEditModal, ErrorMessage } from '@eventespresso/ui-components';
 import type { EspressoFormProps } from '@eventespresso/form';
 
 import FormWrapper from './FormWrapper';

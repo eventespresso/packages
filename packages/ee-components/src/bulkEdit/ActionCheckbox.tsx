@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 import { useBulkEdit } from '@eventespresso/services';
 import type { EntityId, EntityDbId } from '@eventespresso/data';
-import { ActionCheckbox as ActionCheckboxUI } from '@eventespresso/components';
+import { ActionCheckbox as ActionCheckboxUI } from '@eventespresso/ui-components';
 
 export type ActionCheckboxProps = {
 	dbId?: EntityDbId;

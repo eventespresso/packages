@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button } from '@eventespresso/components';
+import { Button } from '@eventespresso/ui-components';
 import { useAddDefaultPrices } from '../../hooks';
 
 const AddDefaultPricesButton: React.FC = () => {

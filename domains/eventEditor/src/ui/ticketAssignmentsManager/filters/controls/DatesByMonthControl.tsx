@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { useDatetimes } from '@eventespresso/edtr-services';
-import { Select } from '@eventespresso/components';
+import { Select } from '@eventespresso/ui-components';
 import { getMonthsListFromDatetimes } from '../../utils';
 import type { FilterStateManager } from '../filterState';
 

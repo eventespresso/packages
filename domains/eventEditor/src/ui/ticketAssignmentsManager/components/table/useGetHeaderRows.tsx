@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
-import { Cell, HeaderRow } from '@eventespresso/components';
+import { Cell, HeaderRow } from '@eventespresso/ui-components';
 import HeaderCell from './HeaderCell';
 import type { Ticket } from '@eventespresso/edtr-services';
 import useColClassName from './useColClassName';

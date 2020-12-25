@@ -1,7 +1,14 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Copy, Edit, Trash, DropdownMenu, DropdownToggleProps, useConfirmationDialog } from '@eventespresso/components';
+import {
+	Copy,
+	Edit,
+	Trash,
+	DropdownMenu,
+	DropdownToggleProps,
+	useConfirmationDialog,
+} from '@eventespresso/ui-components';
 import { EdtrGlobalModals, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 import { useMemoStringify } from '@eventespresso/hooks';

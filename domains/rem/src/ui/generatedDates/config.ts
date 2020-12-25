@@ -1,6 +1,6 @@
 import { CloseCircleFilled, PlusCircleFilled, Repeat, Trash } from '@eventespresso/icons';
 import { __ } from '@eventespresso/i18n';
-import type { LegendConfig } from '@eventespresso/components';
+import type { LegendConfig } from '@eventespresso/ui-components';
 
 import { getBgClassName } from './utils';
 

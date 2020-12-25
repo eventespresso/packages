@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useBulkEdit } from '@eventespresso/services';
 
-import { BulkActions as BulkActionsUI, BulkActionsProps } from '@eventespresso/components';
+import { BulkActions as BulkActionsUI, BulkActionsProps } from '@eventespresso/ui-components';
 
 export const BulkActions = <T extends string>(props: BulkActionsProps<T>): JSX.Element => {
 	const { getSelected } = useBulkEdit();

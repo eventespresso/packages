@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 
-import { Cell, HeaderRow } from '@eventespresso/components';
+import { Cell, HeaderRow } from '@eventespresso/ui-components';
 import { getCurrencySignPositionClassName } from '@eventespresso/utils';
 
 type Props = {

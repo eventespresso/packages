@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { ModalWithAlert } from '@eventespresso/components';
+import { ModalWithAlert } from '@eventespresso/ui-components';
 
 import { ContentBody, ContentFooter } from '../MultiStep';
 import type { BaseProps } from '../types';

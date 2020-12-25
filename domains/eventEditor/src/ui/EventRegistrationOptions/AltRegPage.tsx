@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { GridItem, Heading, InlineEditText } from '@eventespresso/components';
+import { GridItem, Heading, InlineEditText } from '@eventespresso/ui-components';
 import type { EventRegistrationOptionsProps } from './types';
 
 interface Props extends Pick<EventRegistrationOptionsProps, 'altRegPage' | 'onAltRegPageChange'> {}

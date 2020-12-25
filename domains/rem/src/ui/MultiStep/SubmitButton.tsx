@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, ButtonType, ButtonProps } from '@eventespresso/components';
+import { Button, ButtonType, ButtonProps } from '@eventespresso/ui-components';
 import { useGenerateDates } from '../../data';
 import { useIsCountCapped } from '../../utils';
 

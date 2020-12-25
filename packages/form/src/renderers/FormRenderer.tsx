@@ -2,11 +2,12 @@ import React from 'react';
 import { pick } from 'ramda';
 import { FormSpy } from 'react-final-form';
 
+import { DebugInfo } from '@eventespresso/ui-components';
+
 import type { FormRendererProps } from '../types';
 import Submit from '../Submit';
 import RenderFields from '../RenderFields';
 import RenderSections from '../RenderSections';
-import DebugInfo from '../../../components/src/DebugInfo/DebugInfo'; // to avoid circular dependency, also since it's used only in dev
 
 const EMPTY_ARRAY = [];
 

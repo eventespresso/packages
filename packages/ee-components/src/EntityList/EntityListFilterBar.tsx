@@ -8,7 +8,7 @@ import {
 	EntityListFilterBar as EntityListFilterBarUI,
 	ToggleSortingButton,
 	EntityListViewButtonGroup,
-} from '@eventespresso/components';
+} from '@eventespresso/ui-components';
 
 import type { EntityListFilterBarProps } from './types';
 

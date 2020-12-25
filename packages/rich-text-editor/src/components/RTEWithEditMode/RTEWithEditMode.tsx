@@ -2,8 +2,7 @@ import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { useDisclosure } from '@eventespresso/hooks';
-// TODO replace import path
-import { Textarea } from '../../../../components/src/Textarea';
+import { Textarea, Button } from '@eventespresso/ui-components';
 
 import { RTEWithEditModeProps } from './types';
 import { RichTextEditor } from '../RichTextEditor';
@@ -28,12 +27,9 @@ export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode
 		return editor;
 	}
 
-	// TODO replace button with Button from components
 	return (
 		<div>
-			<button onClick={toggleEditMode} type='button'>
-				{isVisualMode ? __('Code editor') : __('Visual editor')}
-			</button>
+			<Button onClick={toggleEditMode}>{isVisualMode ? __('Code editor') : __('Visual editor')}</Button>
 			<div>
 				{isVisualMode ? (
 					editor

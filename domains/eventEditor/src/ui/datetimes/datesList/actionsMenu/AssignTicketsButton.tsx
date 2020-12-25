@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { useRelatedTickets, EdtrGlobalModals } from '@eventespresso/edtr-services';
-import type { EntityListItemProps } from '@eventespresso/components';
-import { IconButton, ItemCount } from '@eventespresso/components';
+import type { EntityListItemProps } from '@eventespresso/ui-components';
+import { IconButton, ItemCount } from '@eventespresso/ui-components';
 import { TypeName, withIsLoaded } from '@eventespresso/services';
 import { Ticket } from '@eventespresso/icons';
 import type { Datetime } from '@eventespresso/edtr-services';

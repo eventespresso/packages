@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import TicketRegistrationsLink from '../../TicketRegistrationsLink';
-import { EntityDetailsPanel, EntityDetailsPanelSold } from '@eventespresso/components';
+import { EntityDetailsPanel, EntityDetailsPanelSold } from '@eventespresso/ui-components';
 import TicketQuantity from './TicketQuantity';
 import type { TicketItemProps } from '../types';
 

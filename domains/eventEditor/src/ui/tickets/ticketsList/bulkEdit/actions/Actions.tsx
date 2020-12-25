@@ -2,12 +2,12 @@ import React, { useState, useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { BulkActions } from '@eventespresso/ee-components';
-import { ErrorMessage } from '@eventespresso/components';
+import { ErrorMessage } from '@eventespresso/ui-components';
 import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
 import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
 import { useTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { entitiesWithGuIdInArray, TicketsStatus } from '@eventespresso/predicates';
-import type { BulkActionsProps } from '@eventespresso/components';
+import type { BulkActionsProps } from '@eventespresso/ui-components';
 import { withFeature, useBulkEdit } from '@eventespresso/services';
 
 import Checkbox from '../../tableView/Checkbox';

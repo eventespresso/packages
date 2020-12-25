@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { ActiveFilters, FilterTag } from '@eventespresso/components';
+import { ActiveFilters, FilterTag } from '@eventespresso/ui-components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { DatetimeSales, DatetimeStatus } from '@eventespresso/predicates';
 

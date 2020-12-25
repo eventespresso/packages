@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useTimeZoneTime } from '@eventespresso/services';
-import { TimezoneTimeInfo as TimezoneTimeInfoUI } from '@eventespresso/components';
+import { TimezoneTimeInfo as TimezoneTimeInfoUI } from '@eventespresso/ui-components';
 
 export interface TimezoneTimeInfoProps {
 	className?: string;

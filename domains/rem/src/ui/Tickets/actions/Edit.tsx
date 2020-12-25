@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { IconButton } from '@eventespresso/components';
+import { IconButton } from '@eventespresso/ui-components';
 import { Edit as EditIcon } from '@eventespresso/icons';
 import { useDisclosure } from '@eventespresso/hooks';
 import { Container as FormContainer } from '../multiStep';

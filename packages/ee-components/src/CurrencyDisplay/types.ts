@@ -1,3 +1,3 @@
-import { CurrencyDisplayProps as CurrencyDisplayUIProps } from '@eventespresso/components';
+import { CurrencyDisplayProps as CurrencyDisplayUIProps } from '@eventespresso/ui-components';
 
 export interface CurrencyDisplayProps extends CurrencyDisplayUIProps {}

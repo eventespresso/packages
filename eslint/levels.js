@@ -6,7 +6,6 @@ module.exports = [
 	/* LEVEL 5 */ ['rich-text-editor'],
 	/* LEVEL 6 */ ['form', 'rrule-generator'],
 	/* LEVEL 7 */ ['predicates', 'services'],
-	/* LEVEL 8 */ ['components'], // TODO remove this level
 	/* LEVEL 8 */ ['ee-components', 'edtr-services', 'helpers'],
 	/* LEVEL 9 */ ['tpc'],
 ];

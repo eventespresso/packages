@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { EntityEditModal } from '@eventespresso/components';
+import { EntityEditModal } from '@eventespresso/ui-components';
 import { EditModeButtons } from './buttons';
 import { EditTogether } from './editTogether';
 import { EditSeparately } from './editSeparately';

@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 
-import { IconButton } from '@eventespresso/components';
+import { IconButton } from '@eventespresso/ui-components';
 import { Link, Unlink } from '@eventespresso/icons';
 import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 

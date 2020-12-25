@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
-import { Cell, BodyRow } from '@eventespresso/components';
+import { Cell, BodyRow } from '@eventespresso/ui-components';
 import BodyCell from './BodyCell';
 import DateCell from './DateCell';
 

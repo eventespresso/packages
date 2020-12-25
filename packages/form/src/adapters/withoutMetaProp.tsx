@@ -1,7 +1,7 @@
 import React from 'react';
 import { omit } from 'ramda';
 
-import type { ForwardRefComponent } from '@eventespresso/components';
+import type { ForwardRefComponent } from '@eventespresso/ui-components';
 import type { FieldRendererProps } from '../types';
 
 // Removes meta prop from being passed to DOM element.

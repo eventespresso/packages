@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, Divider } from '@eventespresso/components';
+import { Button, Divider } from '@eventespresso/ui-components';
 import { Box } from '@eventespresso/adapters';
 import type { EditMode } from '../types';
 

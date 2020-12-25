@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Select } from '../../../components/src/Select';
-import type { SelectProps } from '../../../components/src/Select/types';
+import { Select, SelectProps } from '@eventespresso/ui-components';
+
 import type { FieldRendererProps } from '../types';
 
 interface Props extends Omit<FieldRendererProps, 'width'>, Omit<SelectProps, 'type'> {}

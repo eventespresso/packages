@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { IconButton } from '@eventespresso/components';
+import { IconButton } from '@eventespresso/ui-components';
 import { Trash as TrashIcon } from '@eventespresso/icons';
 import { useFormState } from '../../../data';
 import type { BaseProps } from '../types';

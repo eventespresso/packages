@@ -3,7 +3,7 @@ import type { FormRenderProps } from 'react-final-form';
 
 import { __ } from '@eventespresso/i18n';
 import { useFormState } from '@eventespresso/form';
-import { Button, ButtonRow, ButtonType, useConfirmationDialog } from '@eventespresso/components';
+import { Button, ButtonRow, ButtonType, useConfirmationDialog } from '@eventespresso/ui-components';
 
 const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true, pristine: true };
 

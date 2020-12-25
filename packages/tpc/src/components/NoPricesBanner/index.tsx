@@ -1,7 +1,7 @@
 import React from 'react';
 import { __, sprintf } from '@eventespresso/i18n';
 
-import { Banner } from '@eventespresso/components';
+import { Banner } from '@eventespresso/ui-components';
 import { createInterpolateElement } from '@eventespresso/utils';
 import AddDefaultPricesButton from './AddDefaultPricesButton';
 import DefaultPricesLink from './DefaultPricesLink';

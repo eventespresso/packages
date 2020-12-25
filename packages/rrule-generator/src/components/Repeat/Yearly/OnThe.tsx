@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Radio } from '../../../../../adapters';
-import { Divider, Select } from '../../../../../components';
+import { Radio } from '@eventespresso/adapters';
+import { Divider, Select } from '@eventespresso/ui-components';
+
 import PositionSelect from '../PositionSelect';
 import { MONTHS, DAYS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';

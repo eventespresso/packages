@@ -13,7 +13,7 @@ import {
 } from '@eventespresso/registry';
 import { domain, EdtrGlobalModals, Ticket, TicketsFilterStateManager, ticketsList } from '@eventespresso/edtr-services';
 import { TicketPriceCalculatorButton, ModalContainer as TPCModalContainer } from '@eventespresso/tpc';
-import { FilterBarFilter } from '@eventespresso/components';
+import { FilterBarFilter } from '@eventespresso/ui-components';
 
 import {
 	DisplayStartOrEndDateControl,

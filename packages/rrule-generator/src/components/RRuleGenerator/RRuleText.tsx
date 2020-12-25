@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Divider } from '../../../../components';
+import { Divider } from '@eventespresso/ui-components';
+
 import { getRuleTextWithStartingDate } from '../../utils';
 
 export interface RRuleTextProps {

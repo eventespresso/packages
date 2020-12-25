@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { useConfirmationDialog } from '@eventespresso/components';
+import { useConfirmationDialog } from '@eventespresso/ui-components';
 import useOnDelete from './useOnDelete';
 import { OnDeleteProps } from './types';
 

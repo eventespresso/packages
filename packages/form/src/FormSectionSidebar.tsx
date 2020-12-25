@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Heading } from '../../components/src/Heading';
+import { Heading } from '@eventespresso/ui-components';
+
 import type { SectionProps } from './types';
 
 const NoIcon: SectionProps['icon'] = () => null;

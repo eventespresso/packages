@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@eventespresso/i18n';
 import { FormSpy } from '@eventespresso/form';
 
-import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/components';
+import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/ui-components';
 import { useTickets } from '@eventespresso/edtr-services';
 import { findEntityByGuid, hasEmptyPrices } from '@eventespresso/predicates';
 import { SOLD_TICKET_ERROR_MESSAGE, TicketPriceCalculator } from '@eventespresso/tpc';

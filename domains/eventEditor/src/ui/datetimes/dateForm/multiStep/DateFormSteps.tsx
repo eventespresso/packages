@@ -2,7 +2,7 @@ import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Calendar, Ticket } from '@eventespresso/icons';
-import { Steps, Step } from '@eventespresso/components';
+import { Steps, Step } from '@eventespresso/ui-components';
 import { PrevNext } from '@eventespresso/hooks';
 
 const DatetimeFormSteps: React.FC<Pick<PrevNext, 'current'>> = ({ current }) => {

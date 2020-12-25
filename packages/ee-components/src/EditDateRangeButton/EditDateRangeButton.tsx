@@ -2,7 +2,7 @@ import React from 'react';
 import { parseISO } from 'date-fns';
 
 import { useConfig, useTimeZoneTime } from '@eventespresso/services';
-import { EditDateRangeButton as EditDateRangeButtonUI } from '@eventespresso/components';
+import { EditDateRangeButton as EditDateRangeButtonUI } from '@eventespresso/ui-components';
 
 import type { EditDateButtonProps } from './types';
 import { TimezoneTimeInfo } from '../TimezoneTimeInfo';

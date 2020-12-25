@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
-import { GridItem, Heading, Select } from '@eventespresso/components';
+import { GridItem, Heading, Select } from '@eventespresso/ui-components';
 import { datetimeStatus } from '@eventespresso/constants';
 import { objectToSelectOptions } from '@eventespresso/utils';
 import { datetimeStatusBgColorClassName } from '@eventespresso/helpers';

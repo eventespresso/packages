@@ -6,7 +6,7 @@ import type {
 	TableRow,
 	LegendConfig,
 	ResponsiveTableProps,
-} from '@eventespresso/components';
+} from '@eventespresso/ui-components';
 import type { Entity, EntityId } from '@eventespresso/data';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
 import type { TypeName } from '@eventespresso/services';

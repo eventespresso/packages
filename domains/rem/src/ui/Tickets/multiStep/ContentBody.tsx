@@ -7,7 +7,7 @@ import { usePrevNext } from '@eventespresso/hooks';
 import { TicketPriceCalculator } from '@eventespresso/tpc';
 import { hasEmptyPrices } from '@eventespresso/predicates';
 
-import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/components';
+import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/ui-components';
 import useDataListener from './useDataListener';
 
 const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };

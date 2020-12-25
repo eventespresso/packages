@@ -1,4 +1,4 @@
-import { EditDateRangeButtonProps as EditDateRangeButtonUIProps } from '@eventespresso/components';
+import { EditDateRangeButtonProps as EditDateRangeButtonUIProps } from '@eventespresso/ui-components';
 
 export interface EditDateButtonProps extends Omit<EditDateRangeButtonUIProps, 'startDate' | 'endDate'> {
 	endDate: string; // ISO string

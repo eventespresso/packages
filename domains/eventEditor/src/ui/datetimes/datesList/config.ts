@@ -1,5 +1,5 @@
 import { IconName, Trash } from '@eventespresso/icons';
-import { LegendConfig } from '@eventespresso/components';
+import { LegendConfig } from '@eventespresso/ui-components';
 import { __ } from '@eventespresso/i18n';
 
 export const legendConfig: LegendConfig<string> = {

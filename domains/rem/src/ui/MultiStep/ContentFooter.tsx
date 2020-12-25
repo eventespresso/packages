@@ -1,7 +1,7 @@
 import React from 'react';
 import { isEmpty } from 'ramda';
 
-import { ButtonRow, Next, Previous } from '@eventespresso/components';
+import { ButtonRow, Next, Previous } from '@eventespresso/ui-components';
 
 import CancelButton from './CancelButton';
 import SubmitButton from './SubmitButton';

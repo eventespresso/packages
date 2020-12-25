@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useConfig, useMoneyDisplay } from '@eventespresso/services';
-import { CurrencyDisplay as CurrencyDisplayUI } from '@eventespresso/components';
+import { CurrencyDisplay as CurrencyDisplayUI } from '@eventespresso/ui-components';
 
 import type { CurrencyDisplayProps } from './types';
 

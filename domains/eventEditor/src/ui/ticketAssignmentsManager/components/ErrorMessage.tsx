@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Banner } from '@eventespresso/components';
+import { Banner } from '@eventespresso/ui-components';
 import { useDataState } from '../data';
 
 interface ErrorMessageProps {

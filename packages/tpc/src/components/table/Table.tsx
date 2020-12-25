@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { ResponsiveTable } from '@eventespresso/components';
+import { ResponsiveTable } from '@eventespresso/ui-components';
 import { useConfig } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
 

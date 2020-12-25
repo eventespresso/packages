@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NumberInput } from '../../../components/src/NumberInput';
+import { NumberInput } from '@eventespresso/ui-components';
 import type { FieldRendererProps } from '../types';
 
 const Number: React.FC<FieldRendererProps> = ({ id, input: { onChange, value, ...input }, ...props }) => {

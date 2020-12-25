@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { TicketPriceField } from '../../fields';
 import ReverseCalculateButton from '../../buttons/ReverseCalculateButton';
-import type { Cell, FooterRow } from '@eventespresso/components';
+import type { Cell, FooterRow } from '@eventespresso/ui-components';
 
 interface Props {
 	reverseCalculate: boolean;

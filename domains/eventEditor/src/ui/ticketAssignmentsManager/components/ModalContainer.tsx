@@ -3,7 +3,7 @@ import { sprintf, __ } from '@eventespresso/i18n';
 
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
-import { useConfirmationDialog } from '@eventespresso/components';
+import { useConfirmationDialog } from '@eventespresso/ui-components';
 
 import TicketAssignmentsManagerModal from './TicketAssignmentsManagerModal';
 import { withContext } from '../context';

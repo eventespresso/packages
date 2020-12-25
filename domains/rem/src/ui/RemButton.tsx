@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, NewEntityOption } from '@eventespresso/components';
+import { Button, NewEntityOption } from '@eventespresso/ui-components';
 import { useGlobalModal } from '@eventespresso/registry';
 import { Rem } from '@eventespresso/icons';
 import { RemGlobalModals } from '../types';

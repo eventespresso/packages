@@ -1,4 +1,4 @@
-import type { EntityListItemProps } from '@eventespresso/components';
+import type { EntityListItemProps } from '@eventespresso/ui-components';
 import type { EntityListViewProps } from '@eventespresso/ee-components';
 import type { Datetime, DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 

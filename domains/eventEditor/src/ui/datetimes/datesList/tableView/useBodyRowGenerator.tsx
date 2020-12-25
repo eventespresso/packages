@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { format } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
-import { addZebraStripesOnMobile } from '@eventespresso/components';
+import { addZebraStripesOnMobile } from '@eventespresso/ui-components';
 import { filterCellByStartOrEndDate, useLazyDatetime } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';

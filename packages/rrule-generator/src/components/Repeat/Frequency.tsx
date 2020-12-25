@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 
-import { Select } from '../../../../components';
+import { Select } from '@eventespresso/ui-components';
+
 import Yearly from './Yearly';
 import Monthly from './Monthly';
 import Weekly from './Weekly';

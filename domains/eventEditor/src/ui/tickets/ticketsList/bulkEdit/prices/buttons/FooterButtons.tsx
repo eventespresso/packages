@@ -1,7 +1,7 @@
 import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { Button, ButtonRow, ButtonType } from '@eventespresso/components';
+import { Button, ButtonRow, ButtonType } from '@eventespresso/ui-components';
 
 export interface FooterButtonsProps {
 	onSubmit: VoidFunction;

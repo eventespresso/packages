@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { EntityActionsMenuLayout } from '@eventespresso/components';
-import { EntityCard } from '@eventespresso/components';
+import { EntityActionsMenuLayout } from '@eventespresso/ui-components';
+import { EntityCard } from '@eventespresso/ui-components';
 import { ticketStatusBgColorClassName } from '@eventespresso/helpers';
 import { useTicketItem } from '@eventespresso/edtr-services';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Select } from '@eventespresso/components';
+import { Select } from '@eventespresso/ui-components';
 import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 

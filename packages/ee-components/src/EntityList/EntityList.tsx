@@ -3,7 +3,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { useStatus } from '@eventespresso/services';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
-import { CollapsibleLegend, EmptyState, Pagination, EntityList as EntityListUI } from '@eventespresso/components';
+import { CollapsibleLegend, EmptyState, Pagination, EntityList as EntityListUI } from '@eventespresso/ui-components';
 
 import EntityListFilterBar from './withValidFilterState';
 import type { EntityListProps } from './types';
