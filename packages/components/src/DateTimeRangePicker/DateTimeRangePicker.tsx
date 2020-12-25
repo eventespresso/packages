@@ -12,11 +12,21 @@ import {
 	useDatePickerValidation,
 } from '@eventespresso/dates';
 
-import { Button, ButtonType, ErrorMessage, TimezoneTimeInfo } from '../';
+import { Button, ButtonType, ErrorMessage } from '../';
 
 import './styles.scss';
 
-export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ onChange, value, locale, ...props }) => {
+export interface DateTimeRangePickerProps extends DateRangePickerProps {
+	TimezoneTimeInfo?: React.ComponentType<{ date: Date }>;
+}
+
+export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
+	onChange,
+	value,
+	locale,
+	TimezoneTimeInfo,
+	...props
+}) => {
 	const [dates, setDates] = useState(value);
 	const { startDateIsValid, startDateBeforeEndDate, endDateIsValid, endDateAfterStartDate } = useDatePickerValidation(
 		dates[0],
@@ -37,9 +47,9 @@ export const DateTimeRangePicker: React.FC<DateRangePickerProps> = ({ onChange, 
 
 	const isDisabled = !startDateIsValid || !endDateIsValid;
 
-	const startDateTZ = <TimezoneTimeInfo date={dates[0]} />;
+	const startDateTZ = TimezoneTimeInfo && <TimezoneTimeInfo date={dates[0]} />;
 
-	const endDateTZ = <TimezoneTimeInfo date={dates[1]} />;
+	const endDateTZ = TimezoneTimeInfo && <TimezoneTimeInfo date={dates[1]} />;
 
 	const hasStartDateChanged = !isEqual(value[0], dates[0]);
 

@@ -1,10 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { parseISO, isValid } from 'date-fns';
-
-import { useTimeZoneTime } from '@eventespresso/services';
-import './style.scss';
-import type { CalendarDateProps } from '../types';
+import { parseISO, isValid, format as formatFunc } from 'date-fns';
 
 import {
 	DAY_ONLY_SHORT_FORMAT,
@@ -14,7 +10,11 @@ import {
 	YEAR_ONLY_LONG_FORMAT,
 } from '@eventespresso/constants';
 
-export interface MediumCalendarDateProps extends CalendarDateProps {
+import type { CalendarBaseProps, CalendarDateProps } from '../types';
+
+import './style.scss';
+
+export interface MediumCalendarDateProps extends CalendarDateProps, CalendarBaseProps {
 	date: Date;
 	addWrapper?: boolean;
 }
@@ -26,11 +26,11 @@ export const MediumCalendarDate: React.FC<MediumCalendarDateProps> = ({
 	date,
 	headerText,
 	footerText,
+	formatFn: format = formatFunc,
 	addWrapper = false,
 	showTime = false,
 	...props
 }) => {
-	const { formatForSite: format } = useTimeZoneTime();
 	const dateObject: Date = date instanceof Date ? date : parseISO(date);
 
 	if (!isValid(dateObject)) {

@@ -1,9 +1,10 @@
 import React, { CSSProperties, useCallback, useState } from 'react';
+
 import { __ } from '@eventespresso/i18n';
+import { Collapse } from '@eventespresso/adapters';
+import { isDev } from '@eventespresso/constants';
 
 import { Button } from '../Button';
-import { Collapse } from '@eventespresso/adapters';
-
 import type { DebugInfoProps } from './types';
 
 const style: CSSProperties = {
@@ -13,8 +14,6 @@ const style: CSSProperties = {
 	color: '#a9ce47',
 	backgroundColor: '#26203d',
 };
-
-const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
 const DebugInfo: React.FC<DebugInfoProps> = ({ data, asJson = true, asCollapse = true }) => {
 	const [show, setShow] = useState(false);

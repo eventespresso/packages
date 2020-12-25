@@ -46,7 +46,7 @@ export * from './NumberInput';
 export * from './Pagination';
 export * from './PercentSign';
 export * from './Popover';
-export * from './PriceTypeSign';
+// export * from './PriceTypeSign';
 export * from './rich-text-editor';
 export * from './SearchInput';
 export * from './Select';

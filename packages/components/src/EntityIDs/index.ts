@@ -1,1 +1,1 @@
-export { default as EntityIDs } from './EntityIDs';
+export * from './EntityIDs';

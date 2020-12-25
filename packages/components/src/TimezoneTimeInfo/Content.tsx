@@ -1,31 +1,26 @@
 import React from 'react';
+
 import { __ } from '@eventespresso/i18n';
 
-import { useTimeZoneTime } from '@eventespresso/services';
+import { TimezoneTimeInfoProps } from './types';
 
-export interface Props {
-	date: Date;
-}
-
-const Content: React.FC<Props> = ({ date }) => {
-	const { formatDateForSite, formatDateForUser, formatUtcDateForSite } = useTimeZoneTime();
-
+const Content: React.FC<TimezoneTimeInfoProps> = ({ siteTime, userTime, utcTime, className }) => {
 	return (
-		<div>
+		<div className={className}>
 			<div className={'ee-focus-priority-8'}>
 				<strong>{__('Your Local Time Zone')}</strong>
 			</div>
-			<div className={'ee-focus-priority-6'}>{formatDateForUser(date)}</div>
+			<div className={'ee-focus-priority-6'}>{userTime}</div>
 			<br />
 			<div className={'ee-focus-priority-8'}>
 				<strong>{__("The Website's Time Zone")}</strong>
 			</div>
-			<div className={'ee-focus-priority-6'}>{formatDateForSite(date)}</div>
+			<div className={'ee-focus-priority-6'}>{siteTime}</div>
 			<br />
 			<div className={'ee-focus-priority-8'}>
 				<strong>{__('UTC (Greenwich Mean Time)')}</strong>
 			</div>
-			<div className={'ee-focus-priority-6'}>{formatUtcDateForSite(date)}</div>
+			<div className={'ee-focus-priority-6'}>{utcTime}</div>
 		</div>
 	);
 };

@@ -17,6 +17,7 @@ export const EditDateRangeButton: React.FC<EditDateRangeButtonProps> = ({
 	onEditHandler,
 	startDate,
 	endDate,
+	TimezoneTimeInfo,
 	tooltip,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,7 +32,13 @@ export const EditDateRangeButton: React.FC<EditDateRangeButtonProps> = ({
 	const value = useMemoStringify<DateRange>([startDate, endDate]);
 
 	const content = (
-		<DateTimeRangePicker dateFormat={dateTimeFormat} locale={locale} onChange={onChange} value={value} />
+		<DateTimeRangePicker
+			dateFormat={dateTimeFormat}
+			locale={locale}
+			onChange={onChange}
+			TimezoneTimeInfo={TimezoneTimeInfo}
+			value={value}
+		/>
 	);
 
 	const headerText = header ? header : __('Edit Start and End Dates and Times');
