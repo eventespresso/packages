@@ -16,9 +16,11 @@ export const TimezoneTimeInfo: React.FC<TimezoneTimeInfoProps> = ({ siteTime, us
 	return (
 		<div className={className}>
 			<Popover
+				isLazy
 				content={<Content siteTime={siteTime} userTime={userTime} utcTime={utcTime} />}
 				header={__('This Date Converted To:')}
 				trigger={<Trigger tooltip={__('click for timezone information')} />}
+				placement='auto-start'
 			/>
 		</div>
 	);
