@@ -49,6 +49,8 @@
 		"no-prototype-builtins": "off",
 		"no-unused-vars": "off",
 		"react/display-name": "off",
+		"react/jsx-uses-react": "off",
+		"react/react-in-jsx-scope": "off",
 		"react/jsx-sort-props": [
 			"off",
 			{
