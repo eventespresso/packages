@@ -1,5 +1,3 @@
-import React from 'react';
-
 import AttendeeListItem from './AttendeeListItem';
 import type { Attendee } from '@blocksServices/apollo/types';
 

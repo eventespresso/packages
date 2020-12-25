@@ -1,4 +1,3 @@
-import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Calculator, Calendar, Ticket } from '@eventespresso/icons';

@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 
 import { EntityDetailsPanel, EntityDetailsPanelSold } from '@eventespresso/ui-components';

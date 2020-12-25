@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import type { EntityId } from '@eventespresso/data';
 import { EntityCardDetailsSubscription, EntityCardDetailsRegistry } from '@eventespresso/registry';

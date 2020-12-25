@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Plus } from '@eventespresso/icons';
 import { Button } from '@eventespresso/ui-components';
 import { __, sprintf } from '@eventespresso/i18n';

@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 
 import type { AttendeesEditProps } from '../types';

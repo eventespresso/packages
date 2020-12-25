@@ -1,5 +1,3 @@
-import React from 'react';
-
 import useNewTicketOptionItems from '@edtrUI/tickets/hooks/useNewTicketOptionItems';
 import OptionsModal from './OptionsModal';
 

@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 import { formatISO } from 'date-fns';
 

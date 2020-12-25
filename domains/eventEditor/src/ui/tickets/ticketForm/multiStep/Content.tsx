@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { useTicketMutator, hooks } from '@eventespresso/edtr-services';
 import { useMutatePrices } from '@eventespresso/tpc';

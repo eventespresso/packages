@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { withContext as withTPCContext } from '@eventespresso/tpc';
 import { useWithEntityFormDetails } from '@eventespresso/ee-components';
 

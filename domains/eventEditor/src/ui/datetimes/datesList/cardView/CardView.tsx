@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { EntityCardList } from '@eventespresso/ui-components';
 import { useFilteredDateIds } from '@eventespresso/edtr-services';
 

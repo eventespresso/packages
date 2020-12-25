@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 
 import { BulkActions } from '@eventespresso/ee-components';

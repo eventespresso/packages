@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useIsRehydrated } from '@eventespresso/edtr-services';
 
 import { getRegisteredContainers } from '@edtrServices/utils';

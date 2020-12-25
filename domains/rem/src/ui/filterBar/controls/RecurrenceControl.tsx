@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { FilterBarFilter, Select } from '@eventespresso/ui-components';

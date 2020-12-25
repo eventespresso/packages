@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { Cell, BodyRow } from '@eventespresso/ui-components';

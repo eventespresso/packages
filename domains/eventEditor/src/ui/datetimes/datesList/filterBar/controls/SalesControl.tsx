@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Select } from '@eventespresso/ui-components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { EntityActionsMenu } from '@eventespresso/ui-components';
 import { Datetime } from '@eventespresso/edtr-services';
 import type { ActionsMenuComponentProps } from '@eventespresso/registry';

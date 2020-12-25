@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { NewEntitySubscription, NewEntityOptionsRegistry } from '@eventespresso/registry';
 import { domain } from '@eventespresso/edtr-services';

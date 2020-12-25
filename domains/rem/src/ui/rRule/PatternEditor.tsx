@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import { RRuleGenerator, RRuleConfig } from '@eventespresso/rrule-generator';
 
 import useRRuleLimits from './useRRuleLimits';

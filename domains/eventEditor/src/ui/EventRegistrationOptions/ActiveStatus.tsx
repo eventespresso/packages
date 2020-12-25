@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';

@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+
 import { SelectControl } from '@wordpress/components';
 import { __ } from '@eventespresso/i18n';
 

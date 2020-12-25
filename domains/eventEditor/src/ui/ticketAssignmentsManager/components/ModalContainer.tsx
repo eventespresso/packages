@@ -1,4 +1,5 @@
-import React, { useMemo, useCallback } from 'react';
+import { useMemo, useCallback } from 'react';
+
 import { sprintf, __ } from '@eventespresso/i18n';
 
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';

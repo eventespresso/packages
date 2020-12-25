@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from 'react';
+import { createContext, useMemo } from 'react';
 
 import type { ProviderProps, ContextProps } from './types';
 import { DataStateProvider } from './DataStateProvider';

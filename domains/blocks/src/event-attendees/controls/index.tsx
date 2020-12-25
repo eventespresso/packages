@@ -1,4 +1,3 @@
-import React from 'react';
 import { InspectorControls } from '@wordpress/block-editor';
 import { __ } from '@eventespresso/i18n';
 import { PanelBody } from '@wordpress/components';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { FormStateProvider } from './FormStateProvider';
 import { StepsStateProvider } from './StepsStateProvider';
 

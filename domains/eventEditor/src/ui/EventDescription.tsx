@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { AdvancedTextEditor } from '@eventespresso/ee-components';

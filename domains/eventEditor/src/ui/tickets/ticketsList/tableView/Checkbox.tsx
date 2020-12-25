@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ActionCheckbox } from '@eventespresso/ee-components';
 import { useVisibleTicketIds } from '@eventespresso/edtr-services';
 import { withFeature } from '@eventespresso/services';

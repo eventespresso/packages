@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { useDisclosure } from '@eventespresso/hooks';
 import Popup from './Popup';

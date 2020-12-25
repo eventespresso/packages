@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 
 import { useConfirmationDialog } from '@eventespresso/ui-components';

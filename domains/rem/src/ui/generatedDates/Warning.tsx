@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFormState } from '../../data';
 
 import { getLimitsWarning, useIsCountCapped } from '../../utils';

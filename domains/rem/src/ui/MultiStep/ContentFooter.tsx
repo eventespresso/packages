@@ -1,4 +1,3 @@
-import React from 'react';
 import { isEmpty } from 'ramda';
 
 import { ButtonRow, Next, Previous } from '@eventespresso/ui-components';

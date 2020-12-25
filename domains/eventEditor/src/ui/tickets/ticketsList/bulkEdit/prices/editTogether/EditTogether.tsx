@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { TicketPriceCalculator, useAddDefaultPrices, withContext as withTPCContext } from '@eventespresso/tpc';
 

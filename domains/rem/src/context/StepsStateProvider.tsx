@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
 import { usePrevNext } from '@eventespresso/hooks';
 import type { StepsState } from './types';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ErrorMessage from './ErrorMessage';
 import { Table } from './table';
 import { FilterBar } from '../filters';

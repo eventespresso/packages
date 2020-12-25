@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { EntityActionsMenuLayout } from '@eventespresso/ui-components';
 import { EntityCard } from '@eventespresso/ui-components';
 import { ticketStatusBgColorClassName } from '@eventespresso/helpers';

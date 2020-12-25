@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 
 import { LoadingNotice } from '@eventespresso/ui-components';
 
-const TableView = React.lazy(() => import(/* webpackChunkName: "tickets-table-view" */ './TableView'));
+const TableView = lazy(() => import(/* webpackChunkName: "tickets-table-view" */ './TableView'));
 
 const RenderTableView: React.FC = () => {
 	return (

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ContextProviders } from '@edtrServices/context';
 import { renderDomElement } from '@eventespresso/utils';
 

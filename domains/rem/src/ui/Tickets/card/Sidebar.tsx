@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { BaseProps } from '../types';
 import { Edit, Trash } from '../actions';
 

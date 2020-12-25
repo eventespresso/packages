@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { format } from 'date-fns';
 import { filter, pipe } from 'ramda';
 

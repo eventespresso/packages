@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+
 import { Button, Modal } from '@wordpress/components';
 import { useDisclosure } from '@eventespresso/hooks';
 import { __ } from '@eventespresso/i18n';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { NewEntitySubscriptionCb, ModalSubscriptionCb } from '@eventespresso/registry';
 import {
 	NewEntitySubscription,

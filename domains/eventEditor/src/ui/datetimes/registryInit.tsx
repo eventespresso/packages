@@ -1,8 +1,6 @@
 /**
  * This file registers the UI elements related to datetime UI via registry package
  */
-import React from 'react';
-
 import {
 	EntityActionsSubscription,
 	EntityActionsSubscriptionCb,

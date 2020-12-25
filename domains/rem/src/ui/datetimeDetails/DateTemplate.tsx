@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 
 import { Button, Select } from '@eventespresso/ui-components';

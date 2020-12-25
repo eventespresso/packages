@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+
 import { __, sprintf } from '@eventespresso/i18n';
 
 import { TicketPriceCalculator, useDataState } from '@eventespresso/tpc';

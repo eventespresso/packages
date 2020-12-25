@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+
 import type { FormRenderProps } from 'react-final-form';
 import { useFormState } from '../../data';
 

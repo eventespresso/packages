@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 
 import { LoadingNotice } from '@eventespresso/ui-components';
 
-const CardView = React.lazy(() => import(/* webpackChunkName: "tickets-card-view" */ './CardView'));
+const CardView = lazy(() => import(/* webpackChunkName: "tickets-card-view" */ './CardView'));
 
 const RenderCardView: React.FC = () => {
 	return (

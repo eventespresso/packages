@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ActionCheckbox } from '@eventespresso/ee-components';
 import { useVisibleDatetimeIds } from '@eventespresso/edtr-services';
 import { withFeature } from '@eventespresso/services';

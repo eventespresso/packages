@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { AttendeesEditProps } from '../types';
 import SortOrderControl from '@blocksComponents/SortOrderControl';

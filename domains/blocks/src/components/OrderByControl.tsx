@@ -1,4 +1,3 @@
-import React from 'react';
 import { SelectControl } from '@wordpress/components';
 import { __ } from '@eventespresso/i18n';
 

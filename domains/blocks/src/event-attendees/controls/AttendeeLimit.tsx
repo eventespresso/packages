@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+
 import { TextControl } from '@wordpress/components';
 import { __, _n, sprintf } from '@eventespresso/i18n';
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { Datetime } from '@eventespresso/edtr-services';
 import { useEntityActionsMenuItems } from '@edtrHooks/index';
 

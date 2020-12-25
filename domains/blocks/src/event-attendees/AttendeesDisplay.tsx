@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+
 import { Placeholder, Spinner } from '@wordpress/components';
 import { __ } from '@eventespresso/i18n';
 

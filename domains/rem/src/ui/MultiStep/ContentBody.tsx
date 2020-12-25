@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { PatternEditor } from '../recurrence';
 import { DatetimeDetails } from '../datetimeDetails';
 import { GeneratedDates } from '../generatedDates';

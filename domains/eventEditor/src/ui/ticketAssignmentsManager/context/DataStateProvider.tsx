@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
 import { useMemoStringify } from '@eventespresso/hooks';
 import { DataStateManager, BaseProps } from '../types';

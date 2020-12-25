@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { useEvent, useEventManagers, useEventMutator } from '@eventespresso/edtr-services';
 import type { InlineEditProps, SwitchProps } from '@eventespresso/adapters';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { __ } from '@eventespresso/i18n';
 import { Button, NewEntityOption } from '@eventespresso/ui-components';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';

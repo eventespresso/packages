@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Spinner } from '@eventespresso/adapters';
 import { initToaster } from '@eventespresso/toaster';
 import { useEditorInitialization } from '../hooks';

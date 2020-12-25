@@ -1,4 +1,3 @@
-import React from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { Steps as StepsAdapter, Step } from '@eventespresso/ui-components';

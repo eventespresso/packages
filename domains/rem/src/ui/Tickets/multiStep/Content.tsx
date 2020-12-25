@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import { FormWithConfig } from '@eventespresso/ee-components';
 import useTicketFormConfig from '../useTicketFormConfig';

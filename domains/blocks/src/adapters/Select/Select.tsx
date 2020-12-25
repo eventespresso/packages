@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+
 import ReactSelect from 'react-select';
 import { find, propEq } from 'ramda';
 

@@ -1,7 +1,7 @@
 /**
  * This file registers the filters for dates table via registry package
  */
-import React from 'react';
+
 import { insert } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';

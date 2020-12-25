@@ -1,5 +1,3 @@
-import React from 'react';
-
 import AvatarImage from '@blocksComponents/AvatarImage';
 import { Attendee } from '@blocksServices/apollo/types';
 

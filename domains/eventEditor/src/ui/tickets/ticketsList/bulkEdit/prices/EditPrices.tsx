@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 
 import { EntityEditModal } from '@eventespresso/ui-components';

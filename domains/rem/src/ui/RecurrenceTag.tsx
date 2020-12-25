@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { __, sprintf } from '@eventespresso/i18n';
 import { Tag } from '@eventespresso/ui-components';
 import { Repeat } from '@eventespresso/icons';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useWithEntityFormDetails } from '@eventespresso/ee-components';
 import { withContext as withTPCContext } from '@eventespresso/tpc';
 import { withContext as withTAMContext } from '@edtrUI/ticketAssignmentsManager/context';

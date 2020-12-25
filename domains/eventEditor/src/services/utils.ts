@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ModalSubscription, ModalRegistry } from '@eventespresso/registry';
 import { domain } from '@eventespresso/edtr-services';
 

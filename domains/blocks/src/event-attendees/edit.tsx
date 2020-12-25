@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { withDataProvider } from '@eventespresso/data';
 import { AttendeesEditProps } from './types';
 import Controls from './controls';

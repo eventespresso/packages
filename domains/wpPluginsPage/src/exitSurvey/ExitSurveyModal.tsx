@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Modal } from '@wordpress/components';
 import ExitSurveyContent from './ExitSurveyContent';
 import './styles.scss';

@@ -1,4 +1,4 @@
-import React, { CSSProperties, useMemo } from 'react';
+import { CSSProperties, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 
