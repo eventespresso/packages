@@ -7,5 +7,5 @@ import { toolbar } from './toolbar';
 export const SimpleTextEditor: React.FC<SimpleTextEditorProps> = (props) => {
 	const wrapperClassName = classNames('ee-simple-text-editor', props.wrapperClassName);
 
-	return <RTEWithEditMode {...props} toolbar={toolbar} wrapperClassName={wrapperClassName} />;
+	return <RTEWithEditMode enableEditMode={false} {...props} toolbar={toolbar} wrapperClassName={wrapperClassName} />;
 };

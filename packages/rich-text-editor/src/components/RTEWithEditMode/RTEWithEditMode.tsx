@@ -1,15 +1,15 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { useDisclosure } from '@eventespresso/hooks';
-import { Textarea, Button } from '@eventespresso/ui-components';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/adapters';
+import { Textarea } from '@eventespresso/ui-components';
 
 import { RTEWithEditModeProps } from './types';
 import { RichTextEditor } from '../RichTextEditor';
 
-export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode = true, ...props }) => {
-	const { isOpen: isVisualMode, onToggle: toggleEditMode } = useDisclosure({ defaultIsOpen: true });
+import './style.scss';
 
+export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode = true, ...props }) => {
 	const editor = <RichTextEditor {...props} />;
 
 	const { defaultValue, onChange, onChangeValue, placeholder, value } = props;
@@ -28,20 +28,23 @@ export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode
 	}
 
 	return (
-		<div>
-			<Button onClick={toggleEditMode}>{isVisualMode ? __('Code editor') : __('Visual editor')}</Button>
-			<div>
-				{isVisualMode ? (
-					editor
-				) : (
+		<Tabs align='end' variant='enclosed' wrapperClassName='ee-rte-with-edit-mode'>
+			<TabList>
+				<Tab>{__('Visual editor')}</Tab>
+				<Tab>{__('HTML editor')}</Tab>
+			</TabList>
+			<TabPanels>
+				<TabPanel>{editor}</TabPanel>
+				<TabPanel>
 					<Textarea
+						className='ee-html-editor'
 						defaultValue={defaultValue}
 						placeholder={placeholder}
 						value={value}
 						onChange={onChangeHandler}
 					/>
-				)}
-			</div>
-		</div>
+				</TabPanel>
+			</TabPanels>
+		</Tabs>
 	);
 };
