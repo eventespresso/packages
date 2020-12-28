@@ -19,7 +19,8 @@
 		flex-flow: column nowrap;
 		width: 100%;
 
-		@include min782px {
+		@include min667px {
+			align-items: start;
 			flex-flow: row nowrap;
 		}
 	}
@@ -27,13 +28,17 @@
 	&__option {
 		align-items: flex-start;
 		display: flex;
-
 		flex-flow: column nowrap;
 		justify-content: flex-start;
+		width: 100%;
 
 		[dir='rtl'] & {
 			align-items: flex-end;
 			justify-content: flex-end;
+		}
+
+		@include min360px {
+			align-items: center;
 		}
 
 		@include min782px {
@@ -43,6 +48,20 @@
 		label {
 			padding-bottom: var(--ee-padding-smaller);
 			width: 100%;
+
+			+ .ee-btn {
+				@include min667px {
+					margin-top: 0;
+				}
+			}
+
+			@include min360px {
+				text-align: center;
+			}
+
+			@include min667px {
+				padding: var(--ee-padding-smaller);
+			}
 		}
 	}
 
@@ -51,8 +70,12 @@
 		flex: 0 1 10%;
 		font-size: var(--ee-font-size-big);
 		font-weight: 700;
-		padding: var(--ee-padding-small) 0 0;
+		padding: var(--ee-padding-small) 0 var(--ee-padding-small);
 		text-align: center;
+
+		@include min667px {
+			padding: var(--ee-padding-default);
+		}
 	}
 
 	&__input {
@@ -62,7 +85,14 @@
 		justify-content: flex-start;
 		width: 100%;
 
+		.ee-btn {
+			@include min782px {
+				margin-top: 0;
+			}
+		}
+
 		@include min782px {
+			align-items: flex-start;
 			flex-flow: row nowrap;
 		}
 
