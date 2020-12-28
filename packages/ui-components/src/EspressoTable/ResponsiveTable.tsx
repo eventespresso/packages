@@ -46,7 +46,7 @@ const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	);
 
 	const wrapperClassName = classNames(
-		className.tableClassName,
+		className?.tableClassName,
 		'ee-rspnsv-table__outer_wrapper',
 		isScrollable && 'ee-rspnsv-table__is-scrollable'
 	);
@@ -69,7 +69,7 @@ const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 		return null;
 	}
 
-	const tableId = metaData.tableId || `ee-rspnsv-table-${instanceId}`;
+	const tableId = metaData?.tableId || `ee-rspnsv-table-${instanceId}`;
 	const tableCaption = metaData.tableCaption;
 	const captionID = `${tableId}-caption`;
 	const headerRowCount = headerRows.length;
