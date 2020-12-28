@@ -7,6 +7,7 @@ import Modal from './Modal';
 import { useFormState, useGenerateDates, useSubmitForm } from '../../data';
 import { withContext, useStepsState } from '../../context';
 import { RemGlobalModals } from '../../types';
+import { ContentBody, ContentFooter } from '../MultiStep';
 
 const Container: React.FC = () => {
 	const { isOpen, close } = useGlobalModal(RemGlobalModals.MAIN);
@@ -41,7 +42,12 @@ const Container: React.FC = () => {
 		resetState();
 	}, [close, resetState]);
 
-	return isOpen && <Modal isOpen={true} onClose={onClose} onSubmit={onSubmit} />;
+	return (
+		<Modal isOpen={isOpen} onClose={onClose}>
+			<ContentBody />
+			<ContentFooter onSubmit={onSubmit} onClose={onClose} />
+		</Modal>
+	);
 };
 
 export default withContext(Container);

@@ -9,4 +9,5 @@ export interface RemDomData {
 
 export enum RemGlobalModals {
 	MAIN = 'rem',
+	BULK_ADD_TICKETS = 'bulkAddTickets',
 }

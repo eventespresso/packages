@@ -37,7 +37,7 @@ export type Hooks<Actions extends ActionObject, Filters extends ActionObject> = 
 	removeFilter: <K extends keyof Filters>(name: K, namespace: string) => number;
 	applyFilters: <K extends keyof Filters>(
 		name: K,
-		firstArg?: Filters[K][0],
+		firstArg: Filters[K][0],
 		...args: [...OmitFirstFromArray<Filters[K]>]
 	) => Filters[K][0];
 	doAction: <K extends keyof Actions>(

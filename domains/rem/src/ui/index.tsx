@@ -12,7 +12,8 @@ import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 
 import RemButton from './RemButton';
 import RemInit from './RemInit';
-import Container from './Modal/Container';
+import { Container as MainContainer } from './Modal';
+import { Container as BulkAddTicketsContainer } from './bulkAddTickets';
 import { RemGlobalModals } from '../types';
 import { RecurrenceControl } from './filterBar';
 import RecurrenceTag from './RecurrenceTag';
@@ -26,12 +27,14 @@ const newDateOptionsHandler: NewEntitySubscriptionCb<'datetime'> = ({ registry }
 };
 newEntitySubscription.subscribe(newDateOptionsHandler, { entityType: 'datetime' });
 
-// Register REM modal
+// Register REM modals
 const modalSubscription = new ModalSubscription(domain);
 const modalRegistrationHandler: ModalSubscriptionCb<'rem'> = ({ registry }) => {
 	const { registerContainer } = registry;
 
-	registerContainer(RemGlobalModals.MAIN, Container);
+	registerContainer(RemGlobalModals.MAIN, MainContainer);
+
+	registerContainer(RemGlobalModals.BULK_ADD_TICKETS, BulkAddTicketsContainer);
 	// this container is only for REM initialization
 	registerContainer('reminit', RemInit);
 };
