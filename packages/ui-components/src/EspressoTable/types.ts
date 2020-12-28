@@ -15,7 +15,7 @@ export interface Cell {
 	as?: 'td';
 	type: string;
 	key: string;
-	value: React.ReactNode;
+	value?: React.ReactNode;
 	id?: string;
 	className?: string;
 	render?: (props: CellRender) => JSX.Element;
