@@ -70,7 +70,7 @@
 		flex: 0 1 10%;
 		font-size: var(--ee-font-size-big);
 		font-weight: 700;
-		padding: var(--ee-padding-small) 0 var(--ee-padding-small);
+		padding: var(--ee-padding-small) 0;
 		text-align: center;
 
 		@include min667px {
