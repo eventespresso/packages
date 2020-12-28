@@ -31,9 +31,9 @@ $datetime-statuses: (
 	// datetime inactive
 	DTI: 'blue-green',
 	// datetime expired
-	DTE: 'grey-6',
+	DTE: 'dark-grey',
 	// datetime trashed
-	DTT: 'grey-3',
+	DTT: 'charcoal',
 	// datetime upcoming
 	DTU: 'blue'
 );
@@ -48,7 +48,7 @@ $payment-statuses: (
 	// payment declined
 	PDC: 'hot-pink',
 	// payment cancelled
-	PCN: 'grey-7'
+	PCN: 'dark-grey'
 );
 
 $registration-statuses: (
@@ -65,7 +65,7 @@ $registration-statuses: (
 	// registration declined
 	RDC: 'hot-pink',
 	// registration cancelled
-	RCN: 'grey-7'
+	RCN: 'dark-grey'
 );
 
 $ticket-statuses: (
@@ -76,9 +76,9 @@ $ticket-statuses: (
 	// ticket pending
 	TKP: 'blue',
 	// ticket expired
-	TKE: 'grey-6',
+	TKE: 'dark-grey',
 	// ticket archived
-	TKA: 'grey-3'
+	TKA: 'charcoal'
 );
 
 $transaction-statuses: (
@@ -110,7 +110,7 @@ $statuses: map-collect(
 	.ee-status-background-color-#{$status} {
 		background-color: var(--ee-status-color-#{$color}) !important;
 
-		@if ($color == green) {
+		@if ($color == 'green' or $color ==  'charcoal' or $color ==  'dark-grey') {
 			color: var(--ee-color-white) !important;
 		} @else {
 			color: var(--ee-text-on-#{$color});
