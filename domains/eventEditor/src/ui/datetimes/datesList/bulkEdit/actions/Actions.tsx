@@ -6,8 +6,9 @@ import { BulkActions } from '@eventespresso/ee-components';
 import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
 import { withFeature } from '@eventespresso/services';
 import type { BulkActionsProps } from '@eventespresso/ui-components';
-import { useDatesListFilterState } from '@eventespresso/edtr-services';
+import { useDatesListFilterState, hooks } from '@eventespresso/edtr-services';
 import { DatetimeStatus } from '@eventespresso/predicates';
+import { useBulkEdit } from '@eventespresso/services';
 
 import Checkbox from '../../tableView/Checkbox';
 import { EditDetails } from '../details';
@@ -17,6 +18,7 @@ type Action = 'edit-details' | 'delete' | '';
 
 const Actions: React.FC = () => {
 	const [action, setAction] = useState<Action>('');
+	const bulkEdit = useBulkEdit();
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -24,27 +26,33 @@ const Actions: React.FC = () => {
 
 	const areTrashedDates = status === DatetimeStatus.trashedOnly;
 
-	const options = useMemoStringify([
-		{
-			value: '',
-			label: __('bulk actions'),
-		},
-		{
-			value: 'edit-details',
-			label: __('edit datetime details'),
-		},
-		{
-			value: 'delete',
-			label: areTrashedDates ? __('delete datetimes') : __('trash datetimes'),
-		},
-	]);
+	const options = useMemoStringify(
+		hooks.applyFilters('eventEditor.datetimes.bulkEdit.actions', [
+			{
+				value: '',
+				label: __('bulk actions'),
+			},
+			{
+				value: 'edit-details',
+				label: __('edit datetime details'),
+			},
+			{
+				value: 'delete',
+				label: areTrashedDates ? __('delete datetimes') : __('trash datetimes'),
+			},
+		])
+	);
 
 	const onApply = useCallback<BulkActionsProps<Action>['onApply']>(
-		(action) => {
-			setAction(action);
-			onOpen();
+		(newAction) => {
+			setAction(newAction);
+			// if it's a core action
+			if (['edit-details', 'delete', ''].includes(newAction)) {
+				onOpen();
+			}
+			hooks.doAction('eventEditor.datetimes.bulkEdit.apply', newAction, bulkEdit);
 		},
-		[onOpen]
+		[bulkEdit, onOpen]
 	);
 
 	return (

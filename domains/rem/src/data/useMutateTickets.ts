@@ -9,7 +9,7 @@ import { computeTicketDate } from '../utils';
 
 type Callback = (
 	tickets: Array<RemTicket>,
-	sharedTickets?: boolean,
+	areSharedTickets?: boolean,
 	// these are the start and end dates of the related datetime
 	startAndEndDate?: StartAndEndDate
 ) => Promise<Array<EntityId>>;
@@ -24,16 +24,16 @@ const useMutateTickets = ({ incrementProgress }: MutateTicketsArgs): Callback =>
 
 	// Async to make sure that prices are handled before updating the ticket.
 	return useCallback(
-		async (tickets, sharedTickets, dates) => {
+		async (tickets, areSharedTickets, dates) => {
 			return await Promise.all(
 				tickets.map(async (ticket) => {
 					const startDate = toUtcISO(
-						sharedTickets
+						areSharedTickets
 							? ticket.ticketSalesDates.startDate
 							: computeTicketDate(dates, ticket.ticketSalesStart)
 					);
 					const endDate = toUtcISO(
-						sharedTickets
+						areSharedTickets
 							? ticket.ticketSalesDates.endDate
 							: computeTicketDate(dates, ticket.ticketSalesEnd)
 					);
