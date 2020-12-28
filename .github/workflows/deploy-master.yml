@@ -11,44 +11,52 @@ env:
 jobs:
     deploy-domains-and-packages:
         runs-on: ubuntu-latest
+        name: Deploy domains and packages
         steps:
-            - id: yarn-cache
-              name: Get Yarn cache path
-              run: echo "::set-output name=dir::$(yarn cache dir)"
+            - name: Checkout the commit
+              uses: actions/checkout@v2
 
-            - uses: actions/checkout@master
-
-            - uses: dcodeIO/setup-node-nvm@master
+            # TODO replace this when setup-node action supports LTS alias
+            - name: Set up Node
+              uses: dcodeIO/setup-node-nvm@master
               with:
                   node-version: lts/*
 
-            - uses: actions/cache@master
-              name: Load Yarn cache
+            - name: Cache dependencies
+              id: cache-deps
+              uses: actions/cache@v2
               with:
-                  path: ${{ steps.yarn-cache.outputs.dir }}
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-yarn-
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
             # Install all dependencies at root
             - name: Install dependencies
+              # install deps only if lockfile has changed
+              if: steps.cache-deps.outputs.cache-hit != 'true'
               run: yarn install --frozen-lockfile
+
             # Build the core domains along with all the packages
             # because all packages will goto core
             - name: Build core domains and all their packages
               run: yarn build:core
+
             # Deploy the built assets to core repo's assets/dist
             - name: Deploy to event-espresso-core
               run: source tools/deploy.sh "event-espresso-core"
+
             # Build REM domain without packages
             # because core will load/register the packages
             - name: Build REM with its packages
               run: yarn build:rem
+
             # Deploy the built assets to REM assets/dist
             - name: Deploy to REM
               run: source tools/deploy.sh "eea-recurring-events-manager"
+
             # Build WP User domain without packages
             - name: Build wpUser
               run: yarn build:wpUser
+
             # Deploy the built assets to WP User assets/dist
             - name: Deploy to WP User
               run: source tools/deploy.sh "eea-wpuser-integration"

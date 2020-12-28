@@ -14,24 +14,30 @@ jobs:
         name: Chromatic Deployment
         # Job steps
         steps:
-            - id: yarn-cache
-              name: Get Yarn cache path
-              run: echo "::set-output name=dir::$(yarn cache dir)"
-
-            - name: Checkout repository
+            - name: Checkout the commit
               uses: actions/checkout@v2
               with:
                   fetch-depth: 0 # 👈 Required to retrieve git history
 
-            - uses: actions/cache@master
-              name: Load Yarn cache
+            # TODO replace this when setup-node action supports LTS alias
+            - name: Set up Node
+              uses: dcodeIO/setup-node-nvm@master
               with:
-                  path: ${{ steps.yarn-cache.outputs.dir }}
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-yarn-
+                  node-version: lts/*
+
+            - name: Cache dependencies
+              id: cache-deps
+              uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+            # Install all dependencies at root
             - name: Install dependencies
-              run: yarn
+              # install deps only if lockfile has changed
+              if: steps.cache-deps.outputs.cache-hit != 'true'
+              run: yarn install --frozen-lockfile
+
               # 👇 Adds Chromatic as a step in the workflow
             - name: Deploy to Chromatic
               uses: chromaui/action@v1
