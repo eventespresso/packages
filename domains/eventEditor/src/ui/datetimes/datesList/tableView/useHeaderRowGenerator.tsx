@@ -40,7 +40,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 			{
 				key: 'name',
 				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-date-list-col-name ee-rspnsv-table-column-big',
+				className: 'ee-date-list-col-hdr ee-date-list-col-name ee-rspnsv-table-column-huge',
 				value: __('Name'),
 			},
 			{

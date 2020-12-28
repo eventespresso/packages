@@ -45,7 +45,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				key: 'name',
 				type: 'cell',
 				className:
-					'ee-date-list-cell ee-date-list-col-name ee-col-name ee-rspnsv-table-column-bigger ee-rspnsv-table-hide-on-mobile',
+					'ee-date-list-cell ee-date-list-col-name ee-col-name ee-rspnsv-table-column-huge ee-rspnsv-table-hide-on-mobile',
 				value: sortingEnabled ? (
 					datetime.name
 				) : (

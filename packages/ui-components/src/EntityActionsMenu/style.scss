@@ -7,6 +7,14 @@
 		flex-direction: row;
 		justify-content: flex-start;
 
+		.ee-dropdown-menu {
+			margin-right: var(--ee-margin-tiny);
+
+			&__toggle {
+				padding: 0;
+			}
+		}
+
 		.ee-btn-base.ee-icon-button {
 			margin: 0 var(--ee-margin-tiny) 0 0;
 		}
