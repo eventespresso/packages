@@ -1,10 +1,10 @@
 .ee-rte-with-edit-mode {
-	padding: 0.75rem;
-	border-radius: 12px;
+	padding: var(--ee-padding-smaller);
+	border-radius: var(--ee-border-radius-default);
 	box-shadow: var(--ee-box-shadow-tiny-diffuse);
 	background: var(--ee-background-color);
 	border-color: var(--ee-border-color);
-	margin-top: 0.5em;
+	margin-top: var(--ee-margin-tiny);
 
 	.ee-tabs {
 		&__tab-list {
@@ -19,7 +19,7 @@
 	}
 
 	.ee-html-editor {
-		min-height: 15em;
+		min-height: 15rem;
 		border: none;
 		resize: none;
 	}
