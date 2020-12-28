@@ -6,7 +6,7 @@ import { Button, Select } from '@eventespresso/ui-components';
 import { entityListToSelectOptions, AnyObject } from '@eventespresso/utils';
 import { useDatetimes, useDatetimeItem } from '@eventespresso/edtr-services';
 
-import EntityOptionsRow from '../EntityOptionsRow';
+import { EntityOptionsRow } from '../EntityOptionsRow';
 
 interface DateTemplateProps {
 	setTemplate: (date: AnyObject) => void;

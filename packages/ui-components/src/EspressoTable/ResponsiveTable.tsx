@@ -31,7 +31,6 @@ const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	onDragUpdate,
 	...props
 }) => {
-	console.log(headerRows);
 	const primaryHeader = headerRows.find((row) => row.primary === true);
 	// avoid the ID getting changed on every render
 	const defaultId = useRef(uuidv4()).current;

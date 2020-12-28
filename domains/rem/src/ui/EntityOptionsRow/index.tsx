@@ -11,7 +11,7 @@ interface EntityOptionsRowProps {
 	type: 'datetime' | 'ticket';
 }
 
-const EntityOptionsRow: React.FC<EntityOptionsRowProps> = ({
+export const EntityOptionsRow: React.FC<EntityOptionsRowProps> = ({
 	afterOptions,
 	onAddNew,
 	selectExisting,
@@ -55,5 +55,3 @@ const EntityOptionsRow: React.FC<EntityOptionsRowProps> = ({
 		</div>
 	);
 };
-
-export default EntityOptionsRow;

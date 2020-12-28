@@ -8,7 +8,7 @@ import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@
 import { useTickets } from '@eventespresso/edtr-services';
 
 import { Container as FormContainer } from './multiStep';
-import EntityOptionsRow from '../EntityOptionsRow';
+import { EntityOptionsRow } from '../EntityOptionsRow';
 import type { RemTicket } from '../../data';
 
 import './style.scss';
