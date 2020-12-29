@@ -32,6 +32,7 @@
 		grid-template-columns: repeat(auto-fit, minmax(445px, 1fr));
 		margin-bottom: var(--ee-margin-default);
 		min-height: 260px;
+		overflow: hidden;
 		width: 100%;
 
 		@include max480px {
