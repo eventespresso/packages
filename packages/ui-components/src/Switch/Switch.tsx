@@ -5,6 +5,8 @@ import type { SwitchProps } from './types';
 import { withLabel } from '../withLabel';
 import { withDebounce } from '../withDebounce';
 
+import './style.scss';
+
 const Switch: React.FC<SwitchProps> = (props) => {
 	const className = classNames('ee-switch', props.className);
 

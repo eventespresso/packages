@@ -1,0 +1,10 @@
+.ee-switch {
+	.chakra-switch__thumb {
+		&[aria-checked='true'],
+		&[data-checked] {
+			[dir='rtl'] & {
+				transform: translateX(-0.875rem);
+			}
+		}
+	}
+}
