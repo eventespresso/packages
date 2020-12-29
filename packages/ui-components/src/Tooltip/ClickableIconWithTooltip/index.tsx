@@ -23,8 +23,10 @@ export const ClickableIconWithTooltip: React.FC<ClickableIconWithTooltipProps> =
 	const icon = <Icon className={className} onClick={onToggle} />;
 
 	return (
-		<Tooltip isOpen={isOpen} tooltip={tooltipText}>
-			{icon}
-		</Tooltip>
+		<div className='ee-clickable-tooltip__wrapper'>
+			<Tooltip isOpen={isOpen} shouldWrapChildren tooltip={tooltipText}>
+				{icon}
+			</Tooltip>
+		</div>
 	);
 };

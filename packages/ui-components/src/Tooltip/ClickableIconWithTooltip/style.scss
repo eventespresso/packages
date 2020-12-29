@@ -1,3 +1,16 @@
 .ee-clickable-tooltip {
 	cursor: pointer;
+
+	&__wrapper {
+		span {
+			outline: none;
+
+			&:focus {
+				svg {
+					border: 1px solid var(--ee-color-primary-low-contrast);
+					border-radius: 50%;
+				}
+			}
+		}
+	}
 }
