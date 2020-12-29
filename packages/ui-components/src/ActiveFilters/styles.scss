@@ -44,6 +44,10 @@
 		padding: var(--ee-padding-nano) var(--ee-padding-nano) var(--ee-padding-nano) var(--ee-padding-smaller);
 		position: relative;
 
+		[dir='rtl'] & {
+			padding-right: var(--ee-padding-smaller);
+		}
+
 		&__close-btn {
 			align-items: center;
 			border: 1px solid transparent;
