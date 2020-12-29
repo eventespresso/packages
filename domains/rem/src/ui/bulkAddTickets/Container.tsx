@@ -19,16 +19,11 @@ const Container: React.FC = () => {
 	const { reset: resetFormState, tickets } = useFormState();
 	const submitForm = useSubmitForm(tickets, getData()?.entityIds || DEFAULT_DATETIME_IDS);
 
-	const resetState = useCallback(() => {
-		// reset REM state
-		resetFormState();
-	}, [resetFormState]);
-
 	const resetData = useCallback(() => {
-		resetState();
+		resetFormState();
 		// reset the global modal data
 		setData({ entityIds: null });
-	}, [resetState, setData]);
+	}, [resetFormState, setData]);
 
 	const onSubmit = useCallback(async () => {
 		// close modal
