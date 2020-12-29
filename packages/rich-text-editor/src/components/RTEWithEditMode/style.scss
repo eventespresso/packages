@@ -3,7 +3,6 @@
 .ee-rte-with-edit-mode {
 	margin-top: var(--ee-margin-small);
 
-
 	@include min700px {
 		margin-top: calc(var(--ee-margin-big) * -1);
 	}
@@ -22,15 +21,15 @@
 			button:hover,
 			button:visited,
 			button[data-focus] {
-				background: rgba(192, 192, 192, .25);
-				border: 3px solid rgba(192, 192, 192, .25);
+				background: var(--ee-button-transparent-background);
+				border: 3px solid var(--ee-button-transparent-background);
 				border-bottom: none !important;
 				border-bottom-color: transparent !important;
 				box-shadow: none !important;
 				margin: 0 0 0 var(--ee-margin-tiny);
 
 				&[data-selected],
-				&[aria-selected=true] {
+				&[aria-selected='true'] {
 					background: var(--ee-background-color);
 					border-color: var(--ee-background-color);
 					color: var(--ee-default-text-color);
