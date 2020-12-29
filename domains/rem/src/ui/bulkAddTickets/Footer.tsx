@@ -4,7 +4,7 @@ import { __ } from '@eventespresso/i18n';
 import { ButtonRow, Button, ButtonType } from '@eventespresso/ui-components';
 
 import { useFormState } from '../../data';
-import { BaseProps } from '../types';
+import type { BaseProps } from '../types';
 
 const Footer: React.FC<BaseProps> = ({ onClose, onSubmit }) => {
 	const { tickets } = useFormState();

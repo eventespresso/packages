@@ -2,8 +2,8 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { parseISO } from 'date-fns';
 
 import { useProgress } from '@eventespresso/hooks';
-import type { EntityId } from '@eventespresso/data';
 import { useLazyDatetime } from '@eventespresso/edtr-services';
+import type { EntityId } from '@eventespresso/data';
 
 import { getSharedTickets, getNonSharedTickets } from '../../utils';
 import useMutateTickets from '../../data/useMutateTickets';

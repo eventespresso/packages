@@ -16,6 +16,8 @@ import { Delete } from '../delete';
 
 type Action = 'edit-details' | 'delete' | '';
 
+const actions: Array<Action> = ['edit-details', 'delete', ''];
+
 const Actions: React.FC = () => {
 	const [action, setAction] = useState<Action>('');
 	const bulkEdit = useBulkEdit();
@@ -47,7 +49,7 @@ const Actions: React.FC = () => {
 		(newAction) => {
 			setAction(newAction);
 			// if it's a core action
-			if (['edit-details', 'delete', ''].includes(newAction)) {
+			if (actions.includes(newAction)) {
 				onOpen();
 			}
 			hooks.doAction('eventEditor.datetimes.bulkEdit.apply', newAction, bulkEdit);

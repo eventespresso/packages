@@ -1,6 +1,5 @@
 import { useCacheRehydration } from '../services/apollo';
 import { useRegisterRecurrenceFilter } from '../services/filters';
-import useDatesBulkEditAction from './useDatesBulkEditAction';
 import useDatesBulkEditActions from './useDatesBulkEditActions';
 
 const useRemInitialization = (): void => {
@@ -8,7 +7,6 @@ const useRemInitialization = (): void => {
 	useRegisterRecurrenceFilter();
 
 	useDatesBulkEditActions();
-	useDatesBulkEditAction();
 
 	// Fire initial queries
 	useCacheRehydration();
