@@ -31,5 +31,9 @@
 		display: inline-block;
 		font-size: var(--ee-font-size-bigger);
 		margin: 0 0 0 var(--ee-margin-big);
+
+		[dir='rtl'] & {
+			margin: 0 var(--ee-margin-big) 0 0;
+		}
 	}
 }
