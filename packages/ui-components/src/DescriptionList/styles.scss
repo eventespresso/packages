@@ -66,6 +66,10 @@
 		dd {
 			margin: 0;
 			vertical-align: middle;
+
+			[dir='rtl'] & {
+				padding-right: var(--ee-padding-tiny);
+			}
 		}
 	}
 }
