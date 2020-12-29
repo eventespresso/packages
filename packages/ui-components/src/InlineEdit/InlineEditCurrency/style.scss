@@ -12,12 +12,12 @@
 		align-self: center;
 	}
 
-	[dir='rtl'] & {
-		writing-mode: vertical-rl;
-	}
-
 	&--vertical {
 		transform: rotate(180deg);
 		writing-mode: vertical-lr;
+
+		[dir='rtl'] & {
+			writing-mode: vertical-rl;
+		}
 	}
 }
