@@ -61,6 +61,11 @@
 			outline: none !important;
 			width: calc(var(--ee-icon-button-size-micro) - 6px);
 
+			[dir='rtl'] & {
+				margin-left: 0;
+				margin-right: var(--ee-margin-micro);
+			}
+
 			&:focus,
 			&:hover {
 				background: var(--ee-color-primary);

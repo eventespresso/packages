@@ -6,6 +6,10 @@
 
 		@include ee-base-inputs-styles;
 
+		[dir='rtl'] & {
+			padding-right: var(--ee-padding-big);
+		}
+
 		&:focus {
 			z-index: 0;
 		}
