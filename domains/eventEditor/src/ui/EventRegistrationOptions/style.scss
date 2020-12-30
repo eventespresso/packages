@@ -23,21 +23,19 @@
 			.ee-select-wrapper--inline,
 			.ee-tabbable-text:not(.ee-tabbable-text--no-text) {
 				color: var(--ee-default-text-color-super-low-contrast);
-				font-size: var(--ee-font-size-bigger);
+				font-size: var(--ee-font-size-big);
 				font-weight: 700;
-				position: relative;
-				margin: 0;
 				height: var(--ee-font-size-extreme);
+				margin: 0;
+				position: relative;
 
-				@include min850px {
-					font-size: var(--ee-font-size-default);
-				}
-				@include min960px {
-					font-size: var(--ee-font-size-big);
-				}
-				@include min1080px {
+				@include min1280px {
 					font-size: var(--ee-font-size-bigger);
 				}
+			}
+
+			.ee-tabbable-text:not(.ee-tabbable-text--no-text) {
+				max-width: 100%;
 			}
 
 			.ee-tabbable-text {
@@ -46,59 +44,9 @@
 				&__inner_wrapper {
 					height: var(--ee-font-size-huge);
 					line-height: var(--ee-font-size-huge);
-					max-width: 15rem;
+					max-width: 100%;
 					overflow: hidden;
-					text-overflow: ellipsis;
 					white-space: nowrap;
-
-					@include min360px {
-						max-width: 18rem;
-					}
-					@include min480px {
-						max-width: 24rem;
-					}
-					@include min600px {
-						max-width: 32rem;
-					}
-					@include min667px {
-						max-width: 36rem;
-					}
-					@include min767px {
-						max-width: 42rem;
-					}
-					@include min782px {
-						max-width: 32rem;	// because wordpress admin
-					}
-					@include min850px {
-						max-width: 25rem; 	// also because wordpress admin
-					}
-					@include min960px {
-						max-width: 25rem; 	// again... because wordpress admin
-					}
-					@include min1024px {
-						max-width: 27rem;	// sigh... wordpress admin
-					}
-					@include min1080px {
-						max-width: 30rem;
-					}
-					@include min1280px {
-						max-width: 35rem;
-					}
-					@include min1366px {
-						max-width: 39rem;
-					}
-					@include min1440px {
-						max-width: 43rem;
-					}
-					@include min1600px {
-						max-width: 51rem;
-					}
-					@include min1766px {
-						max-width: 47rem;
-					}
-					@include min1920px {
-						max-width: 39rem;
-					}
 				}
 			}
 
@@ -113,7 +61,7 @@
 					color: inherit;
 					font-size: inherit;
 					height: 100%;
-					padding: 0 var(--ee-padding-bigger) 0 var(--ee-padding-tiny);
+					padding: 0 var(--ee-padding-default) 0 var(--ee-padding-tiny);
 
 					option {
 						font-size: var(--ee-font-size-default);
@@ -121,7 +69,9 @@
 				}
 
 				> div {
-					right: 0.75rem;
+					font-size: var(--ee-font-size-default);
+					right: 0.375rem;
+    				width: 1rem;
 				}
 			}
 		}
@@ -134,15 +84,17 @@
 
 		h6,
 		.ee-tabbable-text.ee-tabbable-text--no-text {
-			font-size: var(--ee-font-size-small);
+			font-size: var(--ee-font-size-smaller);
 			letter-spacing: 1px;
 		}
 
 		h6 {
 			color: var(--ee-default-text-color-high-contrast);
-			font-weight: 600;
+			font-weight: 400;
 			margin: 0;
 			max-width: unset;
+			text-align: start !important;
+			text-shadow: none !important;
 		}
 
 		.ee-tabbable-text.ee-tabbable-text--no-text {
@@ -154,24 +106,16 @@
 		&.ee-status-background {
 			.ee-heading.ee-status-heading {
 				color: var(--ee-color-white) !important;
-				font-size: var(--ee-font-size-huge);
-				height: calc(var(--ee-font-size-default) * 3);
 				width: 100%;
 
 				.ee-select-wrapper--inline {
 					.ee-select--inline {
 						background-color: transparent !important;
 						color: var(--ee-color-white) !important;
-						font-size: calc(var(--ee-font-size-default) * 1.75);
+						font-size: var(--ee-font-size-big);
 
-						@include min850px {
-							font-size: var(--ee-font-size-big);
-						}
 						@include min1080px {
 							font-size: var(--ee-font-size-bigger);
-						}
-						@include min1440px {
-							font-size: calc(var(--ee-font-size-default) * 1.75);
 						}
 
 						option {
