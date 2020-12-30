@@ -1,5 +1,6 @@
 @import '~@eventespresso/styles/src';
 
+
 .post-type-espresso_events {
 	#adminmenuwrap {
 		z-index: 2;
@@ -20,16 +21,22 @@
 	}
 
 	#wpcontent {
-		padding: 0 var(--ee-padding-tiny) !important;
+		// margin: 0;
+		padding: 0 var(--ee-padding-tiny);
+
+		#wpbody-content > .wrap {
+			margin: 0;
+			padding: 0;
+		}
 	}
 
-	@include max782px {
+	@include min782px {
 		#wpcontent {
-			margin: 0 !important;
-		}
+			padding: 0 0 0 var(--ee-padding-small);
 
-		.wrap {
-			margin-right: 0;
+			#wpbody-content > .wrap {
+				padding: var(--ee-padding-micro) var(--ee-padding-smaller) 0 0;
+			}
 		}
 	}
 }
