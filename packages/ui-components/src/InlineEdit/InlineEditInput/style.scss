@@ -44,11 +44,11 @@
 			position: relative;
 			right: -0.5rem;
 			width: 1rem;
-			z-index: 1;
+			z-index: 0;
 
 			[dir='rtl'] & {
 				right: 0.5rem;
-			}
+			}			
 		}
 	}
 
