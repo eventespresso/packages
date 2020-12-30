@@ -27,11 +27,13 @@
 	}
 
 	&__card-view {
+		box-sizing: border-box;
 		display: grid;
 		gap: var(--ee-margin-big);
-		grid-template-columns: repeat(auto-fit, minmax(445px, 1fr));
-		margin-bottom: var(--ee-margin-default);
+		grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 		min-height: 260px;
+		overflow: hidden;
+		padding: 0 var(--ee-padding-micro) var(--ee-padding-default);
 		width: 100%;
 
 		@include max480px {
@@ -41,7 +43,7 @@
 
 		.ee-entity-card-wrapper {
 			justify-self: center;
-			max-width: 615px;
+			max-width: 600px;
 			min-width: 300px;
 			width: 100%;
 		}

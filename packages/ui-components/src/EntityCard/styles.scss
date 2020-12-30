@@ -3,7 +3,7 @@
 .ee-entity-list {
 	.entity-card {
 		--ee-sidebar-width: 9rem;
-		--ee-menu-width: 42px;
+		--ee-menu-width: 44px;
 
 		align-items: stretch;
 		box-sizing: border-box;
@@ -107,7 +107,7 @@
 
 		&__menu {
 			box-sizing: content-box;
-			padding: var(--ee-padding-tiny);
+			padding: 0 var(--ee-padding-tiny);
 			text-align: center;
 			width: var(--ee-menu-width);
 		}
