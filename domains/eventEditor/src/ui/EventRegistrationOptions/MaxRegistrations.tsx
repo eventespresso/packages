@@ -9,7 +9,7 @@ const MaxRegistrations: React.FC<Props> = ({ maxReg, onMaxRegChange }) => {
 	const strValue = maxReg && String(maxReg);
 
 	return (
-		<GridItem id={id} label={__('Max Registrations per Transaction')} size='small'>
+		<GridItem id={id} label={__('Max Registrations per Transaction')} size='smaller'>
 			<Heading as='h4' className={'ee-status-heading'}>
 				<InlineEditText aria-describedby={id} onChange={onMaxRegChange} tag='h4' value={strValue} />
 			</Heading>

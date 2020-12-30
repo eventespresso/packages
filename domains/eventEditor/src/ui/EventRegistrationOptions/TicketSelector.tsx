@@ -9,7 +9,7 @@ const TicketSelector: React.FC<Props> = ({ displayTicketSelector: isChecked, onT
 	const label = isChecked ? __('Ticket Selector Enabled') : __('Ticket Selector Disabled');
 
 	return (
-		<GridItem id={id} label={label} size='small'>
+		<GridItem id={id} label={label} size='smaller'>
 			<Switch
 				aria-describedby={id}
 				isChecked={isChecked}

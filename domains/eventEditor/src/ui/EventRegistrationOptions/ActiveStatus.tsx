@@ -20,7 +20,7 @@ const ActiveStatus: React.FC<Props> = ({ status, onStatusChange }) => {
 	const options = useMemo(() => objectToSelectOptions(datetimeStatus), []);
 
 	return (
-		<GridItem className={className} id={id} label={__('Active status')}>
+		<GridItem className={className} id={id} label={__('Active status')} size='small'>
 			<Heading as='h4' className={'ee-status-heading'}>
 				<Select onChangeValue={onStatusChange} options={options} type='inline' value={status} />
 			</Heading>
