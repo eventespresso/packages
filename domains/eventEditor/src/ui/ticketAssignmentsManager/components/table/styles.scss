@@ -143,6 +143,10 @@
 							text-overflow: ellipsis;
 							white-space: nowrap;
 							width: calc(300px - (var(--ee-padding-small) * 2));
+
+							[dir='rtl'] & {
+								display: inline;
+							}
 						}
 					}
 				}

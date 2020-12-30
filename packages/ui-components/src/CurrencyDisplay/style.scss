@@ -11,16 +11,16 @@
 		padding: 0 var(--ee-padding-micro);
 	}
 
-	[dir='rtl'] & {
-		writing-mode: vertical-rl;
-	}
-
 	&--vertical {
 		font-size: var(--ee-font-size-big);
 		font-weight: 900;
 		letter-spacing: 2px;
 		transform: rotate(180deg);
 		writing-mode: vertical-lr;
+
+		[dir='rtl'] & {
+			writing-mode: vertical-rl;
+		}
 
 		.ee-currency-sign {
 			padding: var(--ee-padding-micro) 0;
