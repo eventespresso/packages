@@ -5,6 +5,7 @@ import type { EntityListFilterStateManager as ELFSM } from '@eventespresso/servi
 import {
 	SearchInput,
 	EntityListFilterBar as EntityListFilterBarUI,
+	ToggleBulkActionsButton,
 	ToggleSortingButton,
 	EntityListViewButtonGroup,
 } from '@eventespresso/ui-components';
@@ -20,7 +21,17 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 	filterState,
 	listId,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
-	const { searchText, setCardView, setTableView, setSearchText, sortingEnabled, toggleSorting, view } = filterState;
+	const {
+		searchText,
+		setCardView,
+		setTableView,
+		setSearchText,
+		showBulkActions,
+		sortingEnabled,
+		toggleBulkActions,
+		toggleSorting,
+		view,
+	} = filterState;
 
 	const filerBarItems = useFilterBarUIElements({ domain, filterState, listId });
 
@@ -31,6 +42,8 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 			<EntityListViewButtonGroup id={listId} setCardView={setCardView} setTableView={setTableView} view={view} />
 
 			<ToggleSortingButton id={listId} value={sortingEnabled} onClick={toggleSorting} />
+
+			<ToggleBulkActionsButton id={listId} value={showBulkActions} onClick={toggleBulkActions} />
 		</>
 	);
 

@@ -5,7 +5,7 @@ function defaultTemplate({ template }, opts, { imports, interfaces, componentNam
 	}
 	const typeScriptTpl = template.smart({ plugins });
 
-	return typeScriptTpl.ast`${imports}
+	return typeScriptTpl.ast`
 	
 	import withEnhance from '../withEnhance';
 	import { IconProps } from '../types';	

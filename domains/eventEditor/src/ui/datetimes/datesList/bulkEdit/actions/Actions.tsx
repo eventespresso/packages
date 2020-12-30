@@ -3,12 +3,13 @@ import { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { BulkActions } from '@eventespresso/ee-components';
+import { Collapsible } from '@eventespresso/ui-components';
 import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
 import { withFeature } from '@eventespresso/services';
-import type { BulkActionsProps } from '@eventespresso/ui-components';
 import { useDatesListFilterState, hooks } from '@eventespresso/edtr-services';
 import { DatetimeStatus } from '@eventespresso/predicates';
 import { useBulkEdit } from '@eventespresso/services';
+import type { BulkActionsProps } from '@eventespresso/ui-components';
 
 import Checkbox from '../../tableView/Checkbox';
 import { EditDetails } from '../details';
@@ -24,7 +25,7 @@ const Actions: React.FC = () => {
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const { status } = useDatesListFilterState();
+	const { status, showBulkActions } = useDatesListFilterState();
 
 	const areTrashedDates = status === DatetimeStatus.trashedOnly;
 
@@ -58,7 +59,7 @@ const Actions: React.FC = () => {
 	);
 
 	return (
-		<>
+		<Collapsible show={showBulkActions}>
 			<BulkActions
 				Checkbox={Checkbox}
 				defaultAction=''
@@ -72,7 +73,7 @@ const Actions: React.FC = () => {
 					{action === 'delete' && <Delete areTrashedDates={areTrashedDates} onClose={onClose} />}
 				</>
 			)}
-		</>
+		</Collapsible>
 	);
 };
 

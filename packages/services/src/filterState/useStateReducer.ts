@@ -5,7 +5,9 @@ import type { BasicSortBy, EntityListFilterStateReducer } from './types';
 const useStateReducer = <SortBy = BasicSortBy>(): EntityListFilterStateReducer<SortBy> => {
 	return useCallback<EntityListFilterStateReducer<SortBy>>((state, action) => {
 		const { type, perPage, pageNumber, total, searchText, sortBy, view } = action;
+
 		let sortingEnabled: boolean;
+
 		switch (type) {
 			case 'SET_SEARCH_TEXT':
 				return { ...state, searchText };
@@ -25,6 +27,9 @@ const useStateReducer = <SortBy = BasicSortBy>(): EntityListFilterStateReducer<S
 			case 'SET_VIEW':
 				// disable sorting when card view is selected
 				return { ...state, view, sortingEnabled: view === 'card' ? false : state.sortingEnabled };
+
+			case 'TOGGLE_BULK_ACTIONS':
+				return { ...state, showBulkActions: !state.showBulkActions };
 
 			case 'TOGGLE_SORTING':
 				sortingEnabled = !state.sortingEnabled;

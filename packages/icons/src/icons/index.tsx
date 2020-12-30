@@ -43,6 +43,7 @@ export { default as Repeat } from './Repeat';
 export { default as Rotate } from './Rotate';
 export { default as Save } from './Save';
 export { default as SaveOutlined } from './SaveOutlined';
+export { default as SelectMultiple } from './SelectMultiple';
 export { default as Sort } from './Sort';
 export { default as Spinner } from './Spinner';
 export { default as Strikethrough } from './Strikethrough';
