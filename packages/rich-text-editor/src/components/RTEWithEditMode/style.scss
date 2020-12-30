@@ -3,7 +3,7 @@
 .ee-rte-with-edit-mode {
 	margin-top: var(--ee-margin-small);
 
-	@include min700px {
+	@include min1280px {
 		margin-top: calc(var(--ee-margin-big) * -1);
 	}
 
@@ -52,7 +52,10 @@
 			box-shadow: var(--ee-box-shadow-tiny-diffuse);
 
 			> div {
-				padding: var(--ee-padding-small);
+				padding: var(--ee-padding-tiny);
+				@include min667px {
+					padding: var(--ee-padding-small);
+				}
 			}
 		}
 	}

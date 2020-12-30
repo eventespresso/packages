@@ -6,8 +6,9 @@
 	border-color: transparent;
 	border-radius: var(--ee-border-radius-small);
 	box-shadow: var(--ee-button-box-shadow);
-	padding: var(--ee-padding-micro);
 	height: var(--ee-icon-button-size);
+	margin: var(--ee-margin-nano);
+	padding: var(--ee-padding-micro);
 	width: var(--ee-icon-button-size);
 
 	&:focus {
@@ -19,17 +20,16 @@
 }
 
 @mixin ee-rte-block-dropdown {
-	// background: var(--ee-button-background-rte);
 	background: var(--ee-background-color);
 	border-radius: var(--ee-border-radius-small);
 	border: var(--ee-border-width) solid var(--ee-border-color);
 	box-shadow: none;
 	color: var(--ee-default-text-color);
 	font-size: var(--ee-font-size-default);
+	max-width: none;
 	min-height: var(--ee-icon-button-size);
 	outline: none;
 	padding: var(--ee-padding-micro) var(--ee-padding-tiny);
-	max-width: none;
 
 	@include transition(all 50ms ease);
 
@@ -108,15 +108,22 @@
 		border: none;
 		border-bottom: 3px solid rgba(192, 192, 192, .5);
 		border-radius: 0;
-		margin: 0 var(--ee-margin-smaller);
-		padding: var(--ee-padding-small) 0;
+		margin: 0 var(--ee-margin-micro);
+		padding: var(--ee-padding-tiny) 0;
+
+		@include min667px {
+			margin: 0 var(--ee-margin-smaller);
+			padding: var(--ee-padding-small) 0;
+		}
 
 		.rdw-inline-wrapper,
 		.rdw-fontfamily-wrapper,
 		.rdw-list-wrapper,
 		.rdw-text-align-wrapper {
 			.ee-advanced-text-editor & {
-				margin-right: calc(var(--ee-icon-button-size) * 1.2);
+				@include min667px {
+					margin-right: calc(var(--ee-icon-button-size) * 1.1);
+				}
 			}
 		}
 
