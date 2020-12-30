@@ -9,6 +9,25 @@
 
 	.ee-select.ee-select {
 		@include ee-base-inputs-styles;
+		@at-root {
+			select#{&} {
+				@include ee-base-inputs-styles;
+
+				&:focus {
+					@include ee-input-base-focus;
+				}
+
+				&:hover {
+					@include ee-input-base-hover;
+				}
+			}
+		}
+
+		@include ee-input-base-focus;
+
+		@include ee-input-base-hover;
+
+		@include ee-input-disabled-hover;
 
 		appearance: none;
 		max-width: none; // .wp-core-ui select override

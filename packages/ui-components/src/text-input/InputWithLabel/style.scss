@@ -38,6 +38,15 @@ $addon-bg-color: var(--ee-color-grey-14);
 			border-bottom-right-radius: 0;
 			border-right: none;
 			border-top-right-radius: 0;
+
+			[dir='rtl'] & {
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: var(--ee-border-radius-small);
+				border-left: none;
+				border-right: var(--ee-border-width) solid var(--ee-border-color);
+				border-top-left-radius: 0;
+				border-top-right-radius: var(--ee-border-radius-small);
+			}
 		}
 	}
 

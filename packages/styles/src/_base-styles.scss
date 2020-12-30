@@ -5,32 +5,22 @@
 	@include ee-base-inputs-styles;
 
 	&.ee-input,
-	&.ee-select,
 	&.ee-textarea {
 		@at-root {
-			select#{&},
-			input[type='text']#{&},
-			input[type='password']#{&},
-			input[type='date']#{&},
-			input[type='datetime']#{&},
-			input[type='datetime-local']#{&},
-			input[type='email']#{&},
-			input[type='month']#{&},
-			input[type='number']#{&},
-			input[type='search']#{&},
-			input[type='tel']#{&},
-			input[type='text']#{&},
-			input[type='time']#{&},
-			input[type='url']#{&},
-			input[type='week']#{&} {
-				@include ee-base-inputs-styles;
+			$types: 'text', 'password', 'date', 'datetime', 'datetime-local', 'email', 'month', 'number', 'search',
+				'tel', 'time', 'url', 'week';
 
-				&:focus {
-					@include ee-input-base-focus;
-				}
+			@each $type in $types {
+				input[type='#{$type}']#{&} {
+					@include ee-base-inputs-styles;
 
-				&:hover {
-					@include ee-input-base-hover;
+					&:focus {
+						@include ee-input-base-focus;
+					}
+
+					&:hover {
+						@include ee-input-base-hover;
+					}
 				}
 			}
 		}
