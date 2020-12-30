@@ -6,7 +6,7 @@ import { BulkActions } from '@eventespresso/ee-components';
 import { Collapsible } from '@eventespresso/ui-components';
 import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
 import { withFeature } from '@eventespresso/services';
-import { useDatesListFilterState, hooks } from '@eventespresso/edtr-services';
+import { useDatesListFilterState, useShowDatetimeBA, hooks } from '@eventespresso/edtr-services';
 import { DatetimeStatus } from '@eventespresso/predicates';
 import { useBulkEdit } from '@eventespresso/services';
 import type { BulkActionsProps } from '@eventespresso/ui-components';
@@ -22,10 +22,11 @@ const actions: Array<Action> = ['edit-details', 'delete', ''];
 const Actions: React.FC = () => {
 	const [action, setAction] = useState<Action>('');
 	const bulkEdit = useBulkEdit();
+	const [showBulkActions] = useShowDatetimeBA();
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const { status, showBulkActions } = useDatesListFilterState();
+	const { status } = useDatesListFilterState();
 
 	const areTrashedDates = status === DatetimeStatus.trashedOnly;
 

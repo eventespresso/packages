@@ -1,17 +1,16 @@
 import { __ } from '@eventespresso/i18n';
-
 import { useFilterBarUIElements } from '@eventespresso/registry';
-import type { EntityListFilterStateManager as ELFSM } from '@eventespresso/services';
 import {
 	SearchInput,
 	EntityListFilterBar as EntityListFilterBarUI,
-	ToggleBulkActionsButton,
 	ToggleSortingButton,
 	EntityListViewButtonGroup,
 } from '@eventespresso/ui-components';
 
+import type { EntityListFilterStateManager as ELFSM } from '@eventespresso/services';
 import type { EntityListFilterBarProps } from './types';
 
+import { ToggleBulkActionsButton } from '../bulkEdit';
 /**
  * EntityListFilterBar
  * a group of inputs for controlling how a list of entities is displayed
@@ -21,17 +20,7 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 	filterState,
 	listId,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
-	const {
-		searchText,
-		setCardView,
-		setTableView,
-		setSearchText,
-		showBulkActions,
-		sortingEnabled,
-		toggleBulkActions,
-		toggleSorting,
-		view,
-	} = filterState;
+	const { searchText, setCardView, setTableView, setSearchText, sortingEnabled, toggleSorting, view } = filterState;
 
 	const filerBarItems = useFilterBarUIElements({ domain, filterState, listId });
 
@@ -43,7 +32,7 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 
 			<ToggleSortingButton id={listId} value={sortingEnabled} onClick={toggleSorting} />
 
-			<ToggleBulkActionsButton id={listId} value={showBulkActions} onClick={toggleBulkActions} />
+			<ToggleBulkActionsButton id={listId} />
 		</>
 	);
 
