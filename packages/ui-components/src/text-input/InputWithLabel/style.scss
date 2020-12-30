@@ -55,6 +55,14 @@ $addon-bg-color: var(--ee-color-grey-14);
 		.ee-text-input {
 			border-bottom-left-radius: 0 !important;
 			border-top-left-radius: 0 !important;
+
+			[dir='rtl'] & {
+				border-bottom-left-radius: var(--ee-border-radius-small) !important;
+				border-top-left-radius: var(--ee-border-radius-small) !important;
+
+				border-bottom-right-radius: 0 !important;
+				border-top-right-radius: 0 !important;
+			}
 		}
 	}
 
