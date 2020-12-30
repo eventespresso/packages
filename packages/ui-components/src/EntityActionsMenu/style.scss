@@ -10,6 +10,11 @@
 		.ee-dropdown-menu {
 			margin-right: var(--ee-margin-tiny);
 
+			[dir='rtl'] & {
+				margin-left: var(--ee-margin-small);
+				margin-right: 0;
+			}
+
 			&__toggle {
 				padding: 0;
 			}
