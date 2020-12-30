@@ -1,4 +1,8 @@
 .ee-dropdown-menu {
+	&__wrapper {
+		z-index: 2;
+	}
+
 	&__list {
 		border: 1px solid var(--ee-border-color);
 		box-shadow: var(--ee-box-shadow-small);

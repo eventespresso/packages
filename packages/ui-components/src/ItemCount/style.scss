@@ -40,7 +40,7 @@
 		text-shadow: var(--ee-text-shadow-inset);
 		top: 0;
 		vertical-align: top;
-		z-index: 0;
+		z-index: 1;
 
 		&--no-items {
 			background: var(--ee-color-hot-pink);

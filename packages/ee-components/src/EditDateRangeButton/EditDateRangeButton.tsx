@@ -3,8 +3,8 @@ import { parseISO } from 'date-fns';
 import { useConfig, useTimeZoneTime } from '@eventespresso/services';
 import { EditDateRangeButton as EditDateRangeButtonUI } from '@eventespresso/ui-components';
 
-import type { EditDateButtonProps } from './types';
 import { TimezoneTimeInfo } from '../TimezoneTimeInfo';
+import type { EditDateButtonProps } from './types';
 
 export const EditDateRangeButton: React.FC<EditDateButtonProps> = ({ startDate, endDate, ...props }) => {
 	const { dateTimeFormats, locale } = useConfig();
