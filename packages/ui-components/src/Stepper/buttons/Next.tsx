@@ -1,17 +1,15 @@
-import { __, isRTL } from '@eventespresso/i18n';
+import { __ } from '@eventespresso/i18n';
 
-import { ChevronDoubleLeft, ChevronDoubleRight, ChevronLeft, ChevronRight } from '@eventespresso/icons';
 import { Button, ButtonType } from '../../../';
+import { StepperButtonProps } from './types';
+import { getStepperIconComponent } from '../utils';
 
-interface Props extends React.ComponentProps<typeof Button> {
-	skippable?: boolean;
-}
-
-const Next: React.FC<Props> = ({ isDisabled, onClick, skippable, ...props }) => {
+const Next: React.FC<StepperButtonProps> = ({ isDisabled, onClick, skipsSteps, ...props }) => {
 	const buttonText = props.buttonText || __('Next');
 	const buttonType = props.buttonType || ButtonType.PRIMARY;
-	const leftIcon = isRTL() && skippable ? <ChevronDoubleLeft size='smaller' /> : <ChevronLeft size='smaller' />;
-	const rightIcon = !isRTL() && skippable ? <ChevronDoubleRight size='smaller' /> : <ChevronRight size='smaller' />;
+
+	const IconComponent = getStepperIconComponent({ skipsSteps });
+	const rightIcon = <IconComponent size='smaller' />;
 
 	return (
 		<Button
@@ -19,7 +17,6 @@ const Next: React.FC<Props> = ({ isDisabled, onClick, skippable, ...props }) => 
 			buttonText={buttonText}
 			buttonType={buttonType}
 			isDisabled={isDisabled}
-			leftIcon={leftIcon}
 			onClick={onClick}
 			rightIcon={rightIcon}
 		/>

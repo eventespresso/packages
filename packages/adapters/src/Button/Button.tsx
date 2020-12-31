@@ -9,7 +9,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		const text = children || buttonText;
 
 		return (
-			<ChakraButton {...props} leftIcon={leftIcon} ref={ref}>
+			<ChakraButton leftIcon={leftIcon} {...props} ref={ref}>
 				{text && <span>{text}</span>}
 			</ChakraButton>
 		);

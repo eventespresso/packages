@@ -1,15 +1,14 @@
 import { __ } from '@eventespresso/i18n';
 
-import { ChevronDoubleLeft, ChevronLeft } from '@eventespresso/icons';
 import { Button } from '../../../';
+import { getStepperIconComponent } from '../utils';
+import { StepperButtonProps } from './types';
 
-interface Props extends React.ComponentProps<typeof Button> {
-	skippable?: boolean;
-}
-
-const Previous: React.FC<Props> = ({ isDisabled, onClick, skippable, ...props }) => {
+const Previous: React.FC<StepperButtonProps> = ({ isDisabled, onClick, skipsSteps, ...props }) => {
 	const buttonText = props.buttonText || __('Previous');
-	const leftIcon = skippable ? <ChevronDoubleLeft size='smaller' /> : <ChevronLeft size='smaller' />;
+
+	const IconComponent = getStepperIconComponent({ skipsSteps, isNext: false });
+	const leftIcon = <IconComponent size='smaller' />;
 
 	return <Button {...props} buttonText={buttonText} isDisabled={isDisabled} leftIcon={leftIcon} onClick={onClick} />;
 };
