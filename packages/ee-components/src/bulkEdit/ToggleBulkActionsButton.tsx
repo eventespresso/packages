@@ -12,7 +12,10 @@ export const ToggleBulkActionsButton: React.FC<ToggleBulkActionsButtonProps> = (
 	const [showTicketBA, setShowTicketBA] = useShowTicketBA();
 	const setShowBulkActions = (type === 'datetimes' && setShowDatetimeBA) || (type === 'tickets' && setShowTicketBA);
 	const showBulkActions = (type === 'datetimes' && showDatetimeBA) || (type === 'tickets' && showTicketBA);
-	const onClick = useCallback(() => setShowBulkActions(!showBulkActions), [setShowBulkActions, showBulkActions]);
+	const onClick = useCallback(() => setShowBulkActions && setShowBulkActions?.(!showBulkActions), [
+		setShowBulkActions,
+		showBulkActions,
+	]);
 	const tooltip = showBulkActions ? __('hide bulk actions') : __('show bulk actions');
 
 	return (
