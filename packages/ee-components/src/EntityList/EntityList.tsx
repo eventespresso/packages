@@ -1,8 +1,8 @@
 import { __ } from '@eventespresso/i18n';
 
 import { useStatus } from '@eventespresso/services';
-import type { EntityListFilterStateManager } from '@eventespresso/services';
 import { CollapsibleLegend, EmptyState, Pagination, EntityList as EntityListUI } from '@eventespresso/ui-components';
+import type { EntityListFilterStateManager } from '@eventespresso/services';
 
 import EntityListFilterBar from './withValidFilterState';
 import type { EntityListProps } from './types';
@@ -34,7 +34,9 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 		entityList = renderList();
 	}
 
-	const filterBar = <EntityListFilterBar domain={domain} filterState={filterState} listId={listId} />;
+	const filterBar = (
+		<EntityListFilterBar domain={domain} entityType={entityType} filterState={filterState} listId={listId} />
+	);
 
 	const legend = <CollapsibleLegend direction='row' legendConfig={legendConfig} termWhiteBg />;
 

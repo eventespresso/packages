@@ -2,13 +2,16 @@ import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { SelectMultiple } from '@eventespresso/icons';
-import { Button, FilterButtonBaseProps } from '@eventespresso/ui-components';
+import { Button } from '@eventespresso/ui-components';
+import { useShowDatetimeBA, useShowTicketBA } from '@eventespresso/edtr-services';
+import type { ToggleBulkActionsButtonProps } from './types';
 
-import { useShowDatetimeBA } from '@eventespresso/edtr-services';
-
-export const ToggleBulkActionsButton: React.FC<FilterButtonBaseProps> = ({ id }) => {
+export const ToggleBulkActionsButton: React.FC<ToggleBulkActionsButtonProps> = ({ entityType: type, id }) => {
 	const filterId = `ee-toggle-bulk-actions-btn-${id}`;
-	const [showBulkActions, setShowBulkActions] = useShowDatetimeBA();
+	const [showDatetimeBA, setShowDatetimeBA] = useShowDatetimeBA();
+	const [showTicketBA, setShowTicketBA] = useShowTicketBA();
+	const setShowBulkActions = (type === 'datetimes' && setShowDatetimeBA) || (type === 'tickets' && setShowTicketBA);
+	const showBulkActions = (type === 'datetimes' && showDatetimeBA) || (type === 'tickets' && showTicketBA);
 	const onClick = useCallback(() => setShowBulkActions(!showBulkActions), [setShowBulkActions, showBulkActions]);
 	const tooltip = showBulkActions ? __('hide bulk actions') : __('show bulk actions');
 

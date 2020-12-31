@@ -17,6 +17,7 @@ import { ToggleBulkActionsButton } from '../bulkEdit';
  */
 export const EntityListFilterBar = <FS extends ELFSM>({
 	domain,
+	entityType,
 	filterState,
 	listId,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
@@ -29,10 +30,8 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 	const mainButtons = (
 		<>
 			<EntityListViewButtonGroup id={listId} setCardView={setCardView} setTableView={setTableView} view={view} />
-
 			<ToggleSortingButton id={listId} value={sortingEnabled} onClick={toggleSorting} />
-
-			<ToggleBulkActionsButton id={listId} />
+			{view === 'table' && <ToggleBulkActionsButton id={listId} entityType={entityType} />}
 		</>
 	);
 

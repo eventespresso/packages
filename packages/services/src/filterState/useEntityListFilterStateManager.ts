@@ -18,7 +18,6 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 			pageNumber: 1,
 			total: null,
 			searchText: '',
-			showBulkActions: false,
 			sortBy: defaultSortBy,
 			sortingEnabled: false,
 			view,
@@ -93,12 +92,6 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 		});
 	}, []);
 
-	const toggleBulkActions: FSM['toggleBulkActions'] = useCallback(() => {
-		dispatch({
-			type: 'TOGGLE_BULK_ACTIONS',
-		});
-	}, []);
-
 	const toggleSorting: FSM['toggleSorting'] = useCallback(() => {
 		dispatch({
 			type: 'TOGGLE_SORTING',
@@ -116,7 +109,6 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 			setCardView,
 			setTableView,
 			setSearchText,
-			toggleBulkActions,
 			toggleSorting,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps

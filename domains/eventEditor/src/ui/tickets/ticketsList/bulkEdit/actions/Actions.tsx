@@ -2,13 +2,13 @@ import { useState, useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { BulkActions } from '@eventespresso/ee-components';
-import { ErrorMessage } from '@eventespresso/ui-components';
+import { Collapsible, ErrorMessage } from '@eventespresso/ui-components';
 import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
 import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
-import { useTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
+import { useShowTicketBA, useTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { entitiesWithGuIdInArray, TicketsStatus } from '@eventespresso/predicates';
-import type { BulkActionsProps } from '@eventespresso/ui-components';
 import { withFeature, useBulkEdit } from '@eventespresso/services';
+import type { BulkActionsProps } from '@eventespresso/ui-components';
 
 import Checkbox from '../../tableView/Checkbox';
 import { EditDetails } from '../details';
@@ -21,6 +21,7 @@ const Actions: React.FC = () => {
 	const [action, setAction] = useState<Action>('');
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [showBulkActions] = useShowTicketBA();
 	const { status } = useTicketsListFilterState();
 	const { getSelected } = useBulkEdit();
 	const allTickets = useTickets();
@@ -62,7 +63,7 @@ const Actions: React.FC = () => {
 	);
 
 	return (
-		<>
+		<Collapsible show={showBulkActions}>
 			<BulkActions
 				Checkbox={Checkbox}
 				defaultAction=''
@@ -79,7 +80,7 @@ const Actions: React.FC = () => {
 			)}
 
 			<ErrorMessage message={isEditPricesDisabled && SOLD_TICKET_ERROR_MESSAGE} variant='subtle' />
-		</>
+		</Collapsible>
 	);
 };
 

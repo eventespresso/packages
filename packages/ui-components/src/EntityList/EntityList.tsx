@@ -2,7 +2,7 @@ import { ButtonRow, ErrorIndicator, Heading, LoadingNotice } from '../..';
 import type { EntityListProps } from './types';
 import './style.scss';
 
-const EntityList: React.FC<EntityListProps> = ({
+export const EntityList: React.FC<EntityListProps> = ({
 	activeFilters,
 	entityList,
 	error,
@@ -38,5 +38,3 @@ const EntityList: React.FC<EntityListProps> = ({
 		</div>
 	);
 };
-
-export default EntityList;

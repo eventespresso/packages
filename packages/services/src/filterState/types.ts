@@ -8,7 +8,6 @@ export interface EntityListFilterState<SortBy = BasicSortBy> extends ListView {
 	pageNumber: number;
 	total: number;
 	searchText: string;
-	showBulkActions: boolean;
 	sortBy: SortBy;
 	sortingEnabled: boolean;
 }
@@ -20,7 +19,6 @@ export type EntityListFilterActionType =
 	| 'SET_TOTAL'
 	| 'SET_SEARCH_TEXT'
 	| 'SET_VIEW'
-	| 'TOGGLE_BULK_ACTIONS'
 	| 'TOGGLE_SORTING';
 
 export interface EntityListFilterAction<SortBy = BasicSortBy> extends Partial<EntityListFilterState<SortBy>> {
@@ -36,7 +34,6 @@ export interface EntityListFilterStateManager<SortBy = BasicSortBy> extends Enti
 	setSearchText: (text: string) => void;
 	setCardView: VoidFunction;
 	setTableView: VoidFunction;
-	toggleBulkActions: VoidFunction;
 	toggleSorting: VoidFunction;
 }
 
