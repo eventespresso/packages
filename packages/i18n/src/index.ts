@@ -10,7 +10,7 @@ export const TEXT_DOMAIN = 'event_espresso';
 // create i18n instance with translation data and text domain
 const i18n = createI18n(i18nData, TEXT_DOMAIN);
 
-export const { setLocaleData, isRTL } = i18n;
+export const { setLocaleData } = i18n;
 
 export const __ = (text: string): string => {
 	return i18n.__(text, TEXT_DOMAIN);
@@ -27,5 +27,7 @@ export const _nx = (single: string, plural: string, number: number, context: str
 export const _x = (single: string, context: string): string => {
 	return i18n._x(single, context, TEXT_DOMAIN);
 };
+
+export const isRTL = (): boolean => document.documentElement.dir === 'rtl';
 
 export { sprintf } from '@wordpress/i18n';
