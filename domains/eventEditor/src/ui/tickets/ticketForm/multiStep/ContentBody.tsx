@@ -54,7 +54,7 @@ const ContentBody: React.FC = ({ children }) => {
 										isDisabled={isSaveDisabled}
 										// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
 										onClick={() => goto(2)}
-										skippable
+										skipsSteps
 									/>
 								</ButtonRow>
 							</>
@@ -82,7 +82,7 @@ const ContentBody: React.FC = ({ children }) => {
 										buttonText={__('Ticket details')}
 										// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
 										onClick={() => goto(0)}
-										skippable
+										skipsSteps
 									/>
 									<Previous onClick={prev} />
 									<Submit onClick={form.submit} isDisabled={isSubmitDisabled} />
