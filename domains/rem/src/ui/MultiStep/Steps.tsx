@@ -1,16 +1,16 @@
 import { __ } from '@eventespresso/i18n';
-
 import { Steps as StepsAdapter, Step } from '@eventespresso/ui-components';
-import type { PrevNext } from '@eventespresso/hooks';
 import { Calendar, CalendarOutlined, Repeat, Ticket } from '@eventespresso/icons';
+import type { PrevNext } from '@eventespresso/hooks';
+
+const firstStepIcon = () => <Repeat noMargin size='bigger' />;
 
 const Steps: React.FC<Pick<PrevNext, 'current'>> = ({ current }) => {
 	return (
 		<StepsAdapter compact current={current} showStepNumber>
 			<Step
-				className={'ee-rem-form-step-pattern-editor'}
 				description={__('define how recurring dates are generated')}
-				icon={Repeat}
+				icon={firstStepIcon}
 				title={__('Pattern Editor')}
 			/>
 			<Step

@@ -3,14 +3,4 @@
 .ee-rem-modal {
 	max-width: 75rem !important;
 	overflow: auto;
-
-	&__body {
-		.ee-rem-form-step-pattern-editor {
-			.ee-form-step__icon svg {
-				height: 1.9rem;
-				width: 1.9rem;
-				margin: 0;
-			}
-		}
-	}
 }

@@ -1,13 +1,13 @@
 import { Children, cloneElement } from 'react';
-
 import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 
 import { Heading } from '../Heading';
 import type { StepsProps } from './types';
+
 import './style.scss';
 
-const Steps: React.FC<StepsProps> = ({
+export const Steps: React.FC<StepsProps> = ({
 	children,
 	compact,
 	current = 0,
@@ -17,9 +17,9 @@ const Steps: React.FC<StepsProps> = ({
 	...props
 }) => {
 	const wrapperClassName = classNames(
-		props.className,
+		'ee-form-steps__wrapper',
 		compact && `ee-form-steps__wrapper--compact`,
-		'ee-form-steps__wrapper'
+		props.className
 	);
 
 	const listClassName = classNames(
@@ -51,5 +51,3 @@ const Steps: React.FC<StepsProps> = ({
 		</div>
 	);
 };
-
-export default Steps;
