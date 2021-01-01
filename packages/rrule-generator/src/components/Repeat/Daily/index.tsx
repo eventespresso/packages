@@ -23,7 +23,9 @@ const Daily: React.FC<BaseProps> = ({ id }) => {
 					id={`${id}-interval`}
 					name={`${id}-interval`}
 					onChange={onChangeInterval}
+					showStepper={false}
 					value={daily?.interval}
+					visibleDigits={3}
 				/>
 				<span>{__('day(s)')}</span>
 			</label>

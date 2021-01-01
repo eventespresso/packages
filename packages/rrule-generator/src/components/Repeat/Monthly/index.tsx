@@ -38,7 +38,9 @@ const Monthly: React.FC<BaseProps> = ({ id }) => {
 					id={`${id}-interval`}
 					name={`${id}-interval`}
 					onChange={onChangeInterval}
+					showStepper={false}
 					value={monthly?.interval}
+					visibleDigits={3}
 				/>
 				<span>{__('month(s)')}</span>
 			</label>

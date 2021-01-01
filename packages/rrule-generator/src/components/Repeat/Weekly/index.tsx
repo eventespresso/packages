@@ -40,7 +40,9 @@ const Weekly: React.FC<BaseProps> = ({ id }) => {
 					id={`${id}-interval`}
 					name={`${id}-interval`}
 					onChange={onChangeInterval}
+					showStepper={false}
 					value={weekly?.interval}
+					visibleDigits={3}
 				/>
 				<span>{__('week(s)')}</span>
 			</label>

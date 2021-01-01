@@ -49,6 +49,14 @@
 			white-space: nowrap;
 		}
 
+		.ee-select-wrapper {
+			width: auto;
+
+			select {
+				width: auto;
+			}
+		}
+
 		.ee-radio__wrapper {
 			+ span {
 				padding-left: 0;
