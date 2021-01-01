@@ -8,12 +8,11 @@ const PositionSelect: React.FC<PositionSelectProps> = ({ id, isActive, onChangeW
 		aria-label={props['aria-label']}
 		id={`${id}-which`}
 		name={`${id}-which`}
-		className='rrule-generator__form-control rrule-generator__select'
-		value={value}
+		className=' rrule-generator__select'
 		isDisabled={!isActive}
 		onBlur={onChangeWhich}
 		onChange={onChangeWhich}
-		width='auto'
+		value={value}
 	>
 		{Object.entries(WHICH).map(([key, label]) => (
 			<option key={key} value={key}>

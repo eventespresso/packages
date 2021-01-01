@@ -1,0 +1,13 @@
+@import '~@eventespresso/styles/src';
+
+.ee-radio {
+	&__wrapper {
+		label {
+			display: flex;
+		}
+
+		.chakra-radio__label {
+			white-space: nowrap;
+		}
+	}
+}

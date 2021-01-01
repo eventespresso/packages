@@ -5,8 +5,7 @@ import { parse, getDaysInMonth } from 'date-fns';
 import { range } from 'ramda';
 
 import { NOW } from '@eventespresso/constants';
-import { Divider, Select } from '@eventespresso/ui-components';
-import { Radio } from '@eventespresso/adapters';
+import { Divider, Radio, Select } from '@eventespresso/ui-components';
 
 import { MONTHS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';
@@ -47,25 +46,24 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	return (
 		<div className='rrule-generator__on'>
 			{!isTheOnlyMode && (
-				<label className='rrule-generator__labelled-input'>
-					<Radio
-						aria-label={__('Repeat yearly on')}
-						isChecked={isActive}
-						className='rrule-generator__input-radio'
-						id={id}
-						name={id}
-						value='ON'
-						onChange={onChangeMode}
-					/>
-					<span>{__('on')}</span>
-				</label>
+				<Radio
+					aria-label={__('Repeat yearly on')}
+					className='rrule-generator__input-radio'
+					id={id}
+					isChecked={isActive}
+					name={id}
+					onChange={onChangeMode}
+					value='ON'
+				>
+					{__('on')}
+				</Radio>
 			)}
 
 			<Select
 				id={`${id}-month`}
 				name={`${id}-month`}
 				aria-label={__('Repeat yearly on month')}
-				className='rrule-generator__form-control rrule-generator__select rrule-generator__month'
+				className=' rrule-generator__select rrule-generator__month'
 				value={on.month}
 				isDisabled={!isActive}
 				onBlur={onChangeMonth}
@@ -85,7 +83,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				id={`${id}-day`}
 				name={`${id}-day`}
 				aria-label={__('Repeat yearly on a day')}
-				className='rrule-generator__form-control rrule-generator__select rrule-generator__day'
+				className=' rrule-generator__select rrule-generator__day'
 				value={on.day}
 				isDisabled={!isActive}
 				onBlur={onChangeDay}

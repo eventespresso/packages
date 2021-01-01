@@ -1,4 +1,5 @@
 import { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes } from 'react';
+import type { LabelPosition } from '../';
 
 export interface CalendarBaseProps {
 	formatFn?: (date: Date, formatStr: string) => string;
@@ -27,7 +28,7 @@ export type keyPressHandler = (event: React.KeyboardEventHandler<HTMLButtonEleme
 
 export interface EditButtonProps {
 	tooltip: string;
-	tooltipPosition: string;
+	tooltipPosition: LabelPosition;
 }
 
 export type ForwardRefComponent<P, C> = ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<C>>;

@@ -2,7 +2,6 @@ import { forwardRef } from 'react';
 import classNames from 'classnames';
 
 import type { AnyObject } from '@eventespresso/utils';
-import { LabelPosition } from './types';
 import type { WithLabelProps } from './types';
 import type { ForwardRefComponent } from '../types';
 import './style.scss';
@@ -18,7 +17,7 @@ const withLabel = <P extends AnyObject>(
 		forwardedRef,
 		label,
 		labelClassName,
-		labelPosition = LabelPosition.TOP_LEFT,
+		labelPosition = 'top-left',
 		...props
 	}) => {
 		const className = classNames(

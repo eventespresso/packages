@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { CheckboxProps } from '@eventespresso/adapters';
 
-import { Button, LabelPosition, Select, SelectProps } from '../';
+import { Button, Select, SelectProps } from '../';
 
 import './styles.scss';
 
@@ -41,7 +41,7 @@ export const BulkActions = <T extends string>({
 				className='ee-bulk-edit-actions__select'
 				id={id}
 				label={__('bulk actions')}
-				labelPosition={'top-left' as LabelPosition}
+				labelPosition='top-left'
 				onChangeValue={setValue}
 				options={options}
 				rootProps={rootProps}

@@ -13,7 +13,7 @@ export default {
 type SelectStory = Story<SelectProps>;
 
 export const Basic: SelectStory = () => (
-	<Select placeholder='Select option'>
+	<Select aria-label='label' placeholder='Select option'>
 		<option value='Option 1'>Option 1</option>
 		<option value='Option 2'>Option 2</option>
 		<option value='Option 3'>Option 3</option>
@@ -21,7 +21,7 @@ export const Basic: SelectStory = () => (
 );
 
 export const Disabled: SelectStory = () => (
-	<Select placeholder='Select option' isDisabled>
+	<Select aria-label='label' placeholder='Select option' isDisabled>
 		<option value='Option 1'>Option 1</option>
 		<option value='Option 2'>Option 2</option>
 		<option value='Option 3'>Option 3</option>
@@ -35,7 +35,7 @@ export const SelectControlled: SelectStory = () => {
 	}, []);
 
 	return (
-		<Select value={value} onChange={handleChange} placeholder='Controlled select'>
+		<Select aria-label='label' onChange={handleChange} placeholder='Controlled select' value={value}>
 			<option value='Option 1'>Option 1</option>
 			<option value='Option 2'>Option 2</option>
 			<option value='Option 3'>Option 3</option>

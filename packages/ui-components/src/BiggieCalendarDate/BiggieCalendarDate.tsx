@@ -13,7 +13,6 @@ import {
 } from '@eventespresso/constants';
 
 import { Button } from '../Button';
-import { LabelPosition } from '../withLabel';
 import type { BiggieCalendarDateProps } from './types';
 import './style.scss';
 
@@ -46,7 +45,7 @@ export const BiggieCalendarDate: React.FC<BiggieCalendarDateProps> = ({
 			onClick={onEditHandler}
 			onKeyPress={onEditHandler}
 			tooltip={editButton?.tooltip}
-			labelPosition={editButton?.tooltipPosition as LabelPosition}
+			labelPosition={editButton?.tooltipPosition}
 			icon={Calendar}
 		/>
 	);

@@ -46,6 +46,7 @@ export * from './NumberInput';
 export * from './Pagination';
 export * from './PercentSign';
 export * from './Popover';
+export * from './Radio';
 export * from './SearchInput';
 export * from './Select';
 export * from './Stepper';

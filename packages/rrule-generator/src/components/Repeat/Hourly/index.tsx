@@ -18,7 +18,7 @@ const Hourly: React.FC<BaseProps> = ({ id }) => {
 				<span>{__('every')}</span>
 				<input
 					aria-label={__('Repeat hourly interval')}
-					className='rrule-generator__form-control rrule-generator__input'
+					className=' rrule-generator__input'
 					id={`${id}-interval`}
 					name={`${id}-interval`}
 					onChange={onChangeInterval}
