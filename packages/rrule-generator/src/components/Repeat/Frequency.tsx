@@ -28,7 +28,7 @@ const Frequency: React.FC<FrequencyProps> = ({ id, frequency, onChange }) => {
 	return (
 		<div className='rrule-generator__frequency'>
 			<Select
-				className=' rrule-generator__select'
+				className='rrule-generator__select'
 				id={id}
 				name={id}
 				onBlur={onChangeFrequency}

@@ -1,7 +1,9 @@
 import { __ } from '@eventespresso/i18n';
-import { BaseProps } from '../../types';
+import { Divider, NumberInput } from '@eventespresso/ui-components';
+
 import { useRRuleState } from '../../../hooks';
 import { useIntervalUpdater } from '../../../utils';
+import type { BaseProps } from '../../types';
 
 const Daily: React.FC<BaseProps> = ({ id }) => {
 	const {
@@ -15,13 +17,12 @@ const Daily: React.FC<BaseProps> = ({ id }) => {
 		<div className='rrule-generator__form-group-row rrule-generator__form-group-row--align-items-start rrule-generator__form-group-row--no-label rrule-generator__repeat-daily'>
 			<label className='rrule-generator__labelled-input'>
 				<span>{__('every')}</span>
-				<input
+				<Divider orientation='vertical' size='tiny' />
+				<NumberInput
 					aria-label={__('Repeat daily interval')}
-					className=' rrule-generator__input'
 					id={`${id}-interval`}
 					name={`${id}-interval`}
 					onChange={onChangeInterval}
-					type='number'
 					value={daily?.interval}
 				/>
 				<span>{__('day(s)')}</span>

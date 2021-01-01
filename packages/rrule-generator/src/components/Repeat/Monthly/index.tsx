@@ -1,13 +1,14 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
+import { Divider, NumberInput } from '@eventespresso/ui-components';
 
 import On from './On';
 import OnThe from './OnThe';
-import { BaseProps, OnChangeInput } from '../../types';
 import { useRRuleConfig, useRRuleState } from '../../../hooks';
-import { RepeatMode } from '../../../types';
 import { useIntervalUpdater } from '../../../utils';
+import type { BaseProps, OnChangeInput } from '../../types';
+import type { RepeatMode } from '../../../types';
 
 const Monthly: React.FC<BaseProps> = ({ id }) => {
 	const {
@@ -31,13 +32,12 @@ const Monthly: React.FC<BaseProps> = ({ id }) => {
 		<div className='rrule-generator__form-group-row rrule-generator__form-group-row--align-items-start rrule-generator__form-group-row--no-label rrule-generator__repeat-monthly'>
 			<label className='rrule-generator__labelled-input'>
 				<span>{__('every')}</span>
-				<input
+				<Divider orientation='vertical' size='tiny' />
+				<NumberInput
 					aria-label={__('Repeat monthly interval')}
-					className=' rrule-generator__input'
 					id={`${id}-interval`}
 					name={`${id}-interval`}
 					onChange={onChangeInterval}
-					type='number'
 					value={monthly?.interval}
 				/>
 				<span>{__('month(s)')}</span>

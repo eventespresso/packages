@@ -3,8 +3,8 @@ import { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { NumberInput } from '@eventespresso/ui-components';
 
-import { AfterProps } from './types';
 import { useRRuleConfig } from '../../hooks';
+import type { AfterProps } from './types';
 
 const After: React.FC<AfterProps> = ({ id, after, onChange }) => {
 	const onChangeAfter = useCallback(

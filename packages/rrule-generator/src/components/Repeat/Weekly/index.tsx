@@ -1,11 +1,12 @@
 import { useCallback } from 'react';
-
 import { __ } from '@eventespresso/i18n';
 
-import { BaseProps, OnChangeInput } from '../../types';
+import { Divider, NumberInput } from '@eventespresso/ui-components';
+
 import { useRRuleState } from '../../../hooks';
 import { SHORT_DAYS } from '../../../constants';
 import { useIntervalUpdater } from '../../../utils';
+import type { BaseProps, OnChangeInput } from '../../types';
 
 import './styles.scss';
 
@@ -33,17 +34,14 @@ const Weekly: React.FC<BaseProps> = ({ id }) => {
 		<div className='rrule-generator__form-group-row rrule-generator__form-group-row--align-items-start rrule-generator__form-group-row--no-label rrule-generator__repeat-weekly'>
 			<label className='rrule-generator__labelled-input'>
 				<span>{__('every')}</span>
-
-				<input
+				<Divider orientation='vertical' size='tiny' />
+				<NumberInput
+					aria-label={__('Repeat weekly interval')}
 					id={`${id}-interval`}
 					name={`${id}-interval`}
-					aria-label={__('Repeat weekly interval')}
-					className=' rrule-generator__input'
-					type='number'
 					onChange={onChangeInterval}
 					value={weekly?.interval}
 				/>
-
 				<span>{__('week(s)')}</span>
 			</label>
 
@@ -55,7 +53,7 @@ const Weekly: React.FC<BaseProps> = ({ id }) => {
 					return (
 						<label htmlFor={dayId} key={dayName} className={isDayActive ? 'active' : ''}>
 							<input
-								className=' rrule-generator__input'
+								className='rrule-generator__form-control rrule-generator__input'
 								type='checkbox'
 								id={dayId}
 								name={dayId}

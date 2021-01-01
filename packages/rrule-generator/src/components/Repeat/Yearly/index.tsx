@@ -3,8 +3,8 @@ import { useCallback } from 'react';
 import On from './On';
 import OnThe from './OnThe';
 import { useRRuleState, useRRuleConfig } from '../../../hooks';
-import { RepeatMode } from '../../../types';
-import { OnChangeInput, BaseProps } from '../../types';
+import type { RepeatMode } from '../../../types';
+import type { OnChangeInput, BaseProps } from '../../types';
 
 const Yearly: React.FC<BaseProps> = ({ id }) => {
 	const { setRepeatMode } = useRRuleState();

@@ -9,9 +9,9 @@ import { Divider, Radio, Select } from '@eventespresso/ui-components';
 
 import { MONTHS } from '../../../constants';
 import { useRRuleState } from '../../../hooks';
-import { OnChangeSelect } from '../../types';
-import { Month } from '../../../types';
-import { OnProps } from '../types';
+import type { OnChangeSelect } from '../../types';
+import type { Month } from '../../../types';
+import type { OnProps } from '../types';
 
 const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	const {
@@ -48,7 +48,6 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 			{!isTheOnlyMode && (
 				<Radio
 					aria-label={__('Repeat yearly on')}
-					className='rrule-generator__input-radio'
 					id={id}
 					isChecked={isActive}
 					name={id}
@@ -63,7 +62,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				id={`${id}-month`}
 				name={`${id}-month`}
 				aria-label={__('Repeat yearly on month')}
-				className=' rrule-generator__select rrule-generator__month'
+				className='rrule-generator__select rrule-generator__month'
 				value={on.month}
 				isDisabled={!isActive}
 				onBlur={onChangeMonth}
@@ -83,7 +82,7 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 				id={`${id}-day`}
 				name={`${id}-day`}
 				aria-label={__('Repeat yearly on a day')}
-				className=' rrule-generator__select rrule-generator__day'
+				className='rrule-generator__select rrule-generator__day'
 				value={on.day}
 				isDisabled={!isActive}
 				onBlur={onChangeDay}

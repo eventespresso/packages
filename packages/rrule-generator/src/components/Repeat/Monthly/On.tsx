@@ -1,14 +1,13 @@
 import { useCallback } from 'react';
-
 import { range } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
-import { Divider, Select } from '@eventespresso/ui-components';
+import { Divider, Radio, Select } from '@eventespresso/ui-components';
 
 import { useRRuleState } from '../../../hooks';
-import { OnProps } from '../types';
 import { OnChangeSelect } from '../../types';
 import { getNumericValue } from '../../../utils';
+import type { OnProps } from '../types';
 
 const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	const {
@@ -30,15 +29,13 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 		<div className='rrule-generator__on'>
 			{!isTheOnlyMode && (
 				<label className='rrule-generator__labelled-input'>
-					<input
+					<Radio
 						aria-label={__('Repeat monthly on')}
-						className='rrule-generator__input-radio'
 						id={id}
+						isChecked={isActive}
 						name={id}
-						type='radio'
-						value='ON'
-						checked={isActive}
 						onChange={onChangeMode}
+						value='ON'
 					/>
 					<span>{__('on day')}</span>
 				</label>

@@ -5,7 +5,6 @@ import { setSeconds } from 'date-fns';
 import { NOW } from '@eventespresso/constants';
 import { setTimeToNoon } from '@eventespresso/dates';
 import { RRuleStateManager as RSM, RRuleState } from '../state';
-import { OnChangeInput } from '../components/types';
 import { DEFAULT_CONFIG } from '../context';
 
 export const getNumericValue = (value: unknown, defaultValue?: 0): number => {
@@ -18,10 +17,10 @@ export const getNumericValue = (value: unknown, defaultValue?: 0): number => {
 export const useIntervalUpdater = (
 	repeatKey: Parameters<RSM['setRepeatInterval']>[0],
 	setRepeatInterval: RSM['setRepeatInterval']
-): OnChangeInput => {
+) => {
 	return useCallback(
-		(event) => {
-			setRepeatInterval(repeatKey, getNumericValue(event.target.value));
+		(value) => {
+			setRepeatInterval(repeatKey, getNumericValue(value));
 		},
 		[repeatKey, setRepeatInterval]
 	);
