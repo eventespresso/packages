@@ -53,12 +53,12 @@ const Weekly: React.FC<BaseProps> = ({ id }) => {
 					return (
 						<label htmlFor={dayId} key={dayName} className={isDayActive ? 'active' : ''}>
 							<input
+								checked={isDayActive}
 								className='rrule-generator__form-control rrule-generator__input'
-								type='checkbox'
 								id={dayId}
 								name={dayId}
-								checked={isDayActive}
 								onChange={onChangeDays}
+								type='checkbox'
 							/>
 							<span>{SHORT_DAYS?.[dayName]}</span>
 						</label>

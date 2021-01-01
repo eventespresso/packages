@@ -35,12 +35,12 @@
 
 		&-body {
 			padding: var(--ee-padding-smaller) 0;
+
 			.ee-form-item {
 				padding: var(--ee-padding-smaller) 0;
 
 				label {
 					color: var(--ee-default-text-color-high-contrast);
-					margin-bottom: 0;
 				}
 
 				&-switch {
@@ -53,9 +53,11 @@
 					margin: var(--ee-margin-default) 0;
 					padding-right: var(--ee-padding-default);
 					width: 50%;
+
 					label {
-						display: flex;
 						align-items: center;
+						display: flex;
+						margin-bottom: 0;
 					}
 				}
 

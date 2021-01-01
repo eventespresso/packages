@@ -39,17 +39,16 @@ const OnThe: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	return (
 		<div className='rrule-generator__on-the'>
 			{!isTheOnlyMode && (
-				<label className='rrule-generator__labelled-input'>
-					<Radio
-						aria-label={__('Repeat monthly on the')}
-						id={id}
-						isChecked={isActive}
-						name={id}
-						onChange={onChangeMode}
-						value='ON_THE'
-					/>
-					<span>{__('on the')}</span>
-				</label>
+				<Radio
+					aria-label={__('Repeat monthly on the')}
+					id={id}
+					isChecked={isActive}
+					name={id}
+					onChange={onChangeMode}
+					value='ON_THE'
+				>
+					{__('on the')}
+				</Radio>
 			)}
 
 			<PositionSelect

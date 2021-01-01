@@ -28,17 +28,16 @@ const On: React.FC<OnProps> = ({ id, isTheOnlyMode, onChangeMode }) => {
 	return (
 		<div className='rrule-generator__on'>
 			{!isTheOnlyMode && (
-				<label className='rrule-generator__labelled-input'>
-					<Radio
-						aria-label={__('Repeat monthly on')}
-						id={id}
-						isChecked={isActive}
-						name={id}
-						onChange={onChangeMode}
-						value='ON'
-					/>
-					<span>{__('on day')}</span>
-				</label>
+				<Radio
+					aria-label={__('Repeat monthly on')}
+					id={id}
+					isChecked={isActive}
+					name={id}
+					onChange={onChangeMode}
+					value='ON'
+				>
+					{__('on day')}
+				</Radio>
 			)}
 
 			<Divider orientation='vertical' size='micro' />
