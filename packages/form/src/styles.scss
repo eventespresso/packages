@@ -40,11 +40,13 @@
 
 				label {
 					color: var(--ee-default-text-color-high-contrast);
+					margin-bottom: 0;
 				}
 
 				&-switch {
 					padding: var(--ee-padding-small) 0;
 				}
+
 				&-pair {
 					box-sizing: border-box;
 					display: inline-flex;
@@ -56,6 +58,7 @@
 						align-items: center;
 					}
 				}
+
 				.ee-icon--info-circle-outlined {
 					color: var(--ee-color-primary-low-contrast);
 					margin: 0 var(--ee-margin-tiny);
