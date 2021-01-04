@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 
-import { Heading } from '../Heading';
 import type { GridItemProps } from './types';
 
 export const GridItem: React.FC<GridItemProps> = ({ children, id, label, size, ...props }) => {
@@ -8,9 +7,9 @@ export const GridItem: React.FC<GridItemProps> = ({ children, id, label, size, .
 
 	return (
 		<div className={className}>
-			<Heading as='h6' id={id}>
+			<label className='ee-grid__item-label' id={id}>
 				{label}
-			</Heading>
+			</label>
 			{children}
 		</div>
 	);

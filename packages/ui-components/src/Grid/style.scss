@@ -13,6 +13,12 @@
 		grid-gap: var(--ee-padding-small);
 	}
 
+	.ee-grid__item {
+		&-label {
+			line-height: calc(var(--ee-line-height-modifier) * 0.875);
+		}
+	}
+
 	.ee-grid__item.ee-grid__item {
 		align-items: flex-start;
 		background: #fff;
@@ -143,6 +149,7 @@
 		}
 	}
 }
+
 /* 2 column admin columns don't kick in until around 850px */
 /* with sidebar menu collapsed (folded) */
 .columns-2 {

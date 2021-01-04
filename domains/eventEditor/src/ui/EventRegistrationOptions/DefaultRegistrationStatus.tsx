@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
-import { GridItem, Heading, Select } from '@eventespresso/ui-components';
+import { GridItem, Select } from '@eventespresso/ui-components';
 import { regStatusOptions } from '@eventespresso/predicates';
 import type { EventRegistrationOptionsProps } from './types';
 
@@ -13,14 +13,14 @@ const DefaultRegistrationStatus: React.FC<Props> = ({ defaultRegStatus, onDefaul
 
 	return (
 		<GridItem className={className} id={id} label={__('Default Registration Status')}>
-			<Heading as='h4' className={'ee-status-heading'}>
+			<div className='ee-reg-option__value'>
 				<Select
 					onChangeValue={onDefaultRegStatusChange}
 					options={regStatusOptions}
 					type='inline'
 					value={defaultRegStatus}
 				/>
-			</Heading>
+			</div>
 		</GridItem>
 	);
 };

@@ -19,7 +19,7 @@ import './style.scss';
 
 const columns = { base: 1, sm: 2, md: 4 };
 
-const EventRegistrationOptions: React.FC<EventRegistrationOptionsProps> = ({
+export const EventRegistrationOptions: React.FC<Partial<EventRegistrationOptionsProps>> = ({
 	allowDonations,
 	altRegPage,
 	defaultRegStatus,

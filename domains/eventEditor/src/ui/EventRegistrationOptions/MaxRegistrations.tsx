@@ -1,5 +1,5 @@
 import { __ } from '@eventespresso/i18n';
-import { GridItem, Heading, InlineEditText } from '@eventespresso/ui-components';
+import { GridItem, InlineEditText } from '@eventespresso/ui-components';
 import type { EventRegistrationOptionsProps } from './types';
 
 interface Props extends Pick<EventRegistrationOptionsProps, 'maxReg' | 'onMaxRegChange'> {}
@@ -10,9 +10,9 @@ const MaxRegistrations: React.FC<Props> = ({ maxReg, onMaxRegChange }) => {
 
 	return (
 		<GridItem id={id} label={__('Max Registrations per Transaction')} size='smaller'>
-			<Heading as='h4' className={'ee-status-heading'}>
+			<div className='ee-reg-option__value'>
 				<InlineEditText aria-describedby={id} onChange={onMaxRegChange} tag='h4' value={strValue} />
-			</Heading>
+			</div>
 		</GridItem>
 	);
 };

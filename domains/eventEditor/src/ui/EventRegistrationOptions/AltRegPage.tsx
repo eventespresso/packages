@@ -1,5 +1,5 @@
 import { __ } from '@eventespresso/i18n';
-import { GridItem, Heading, InlineEditText } from '@eventespresso/ui-components';
+import { GridItem, InlineEditText } from '@eventespresso/ui-components';
 import type { EventRegistrationOptionsProps } from './types';
 
 interface Props extends Pick<EventRegistrationOptionsProps, 'altRegPage' | 'onAltRegPageChange'> {}
@@ -14,7 +14,7 @@ const AltRegPage: React.FC<Props> = ({ altRegPage, onAltRegPageChange }) => {
 			label={__('Alternative Registration Page')}
 			size='huge'
 		>
-			<Heading as='h4'>
+			<div className='ee-reg-option__value'>
 				<InlineEditText
 					aria-describedby={id}
 					onChange={onAltRegPageChange}
@@ -22,7 +22,7 @@ const AltRegPage: React.FC<Props> = ({ altRegPage, onAltRegPageChange }) => {
 					tag='h4'
 					value={altRegPage}
 				/>
-			</Heading>
+			</div>
 		</GridItem>
 	);
 };
