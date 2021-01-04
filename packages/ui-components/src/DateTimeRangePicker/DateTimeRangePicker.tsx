@@ -36,10 +36,10 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 	}, [dates, onChange]);
 
 	const className = classNames(
-		props.className,
 		'ee-date-time-range-picker',
 		'ee-calendar-datetime-picker',
-		'ee-input-base-wrapper'
+		'ee-input-base-wrapper',
+		props.className
 	);
 
 	const isDisabled = !startDateBeforeEndDate || !endDateAfterStartDate;

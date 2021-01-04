@@ -2,7 +2,6 @@
  * -------------------------------------------------------------------------*/
 @import '~@eventespresso/styles/src/mixins/breakpoints.scss';
 
-
 @include max1600px {
 	.ee-rspnsv-table {
 		.ee-rspnsv-table-short-label {
@@ -114,6 +113,7 @@
 
 		.ee-rspnsv-table-mobile-only-column-header {
 			display: inline-block;
+			float: left;
 			margin: auto 0;
 			padding-right: var(--ee-padding-small);
 			text-align: right;
@@ -163,9 +163,6 @@
 		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-nano:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-nano:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-nano:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-micro:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-micro:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-micro:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-tiny:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-tiny:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-tiny:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
@@ -175,18 +172,12 @@
 		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-small:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-small:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-small:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-default:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-default:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-default:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-big:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-big:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-big:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-bigger:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-bigger:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-bigger:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-huge:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-huge:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-huge:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-header-th.ee-rspnsv-table-column-extreme:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-body-td.ee-rspnsv-table-column-extreme:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
 		.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-extreme:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile),
@@ -196,6 +187,7 @@
 			padding: var(--ee-padding-micro) var(--ee-padding-smaller);
 			width: 100%;
 		}
+
 		.ee-rspnsv-table-body-td.ee-col-1 {
 			padding-top: var(--ee-padding-small) !important;
 		}

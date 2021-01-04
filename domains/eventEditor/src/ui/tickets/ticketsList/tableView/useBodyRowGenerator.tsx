@@ -34,8 +34,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 			const name = {
 				key: 'name',
 				type: 'cell',
-				className:
-					'ee-ticket-list-cell ee-ticket-list-col-name ee-col-name ee-rspnsv-table-column-bigger ee-rspnsv-table-hide-on-mobile',
+				className: 'ee-col-name ee-rspnsv-table-column-bigger ee-rspnsv-table-hide-on-mobile',
 				value: sortingEnabled ? (
 					ticket.name
 				) : (
@@ -50,8 +49,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 			const quantity = {
 				key: 'quantity',
 				type: 'cell',
-				className:
-					'ee-ticket-list-cell ee-ticket-list-col-quantity ee-rspnsv-table-column-tiny ee-number-column',
+				className: 'ee-ticket-list-cell ee-col-capacity ee-rspnsv-table-column-tiny ee-number-column',
 				value: sortingEnabled ? ticket.quantity : <TicketQuantity entity={ticket} />,
 			};
 
@@ -65,7 +63,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				{
 					key: 'checkbox',
 					type: 'cell',
-					className: 'ee-date-list-cell ee-date-list-col-checkbox ee-rspnsv-table-column-micro',
+					className: 'ee-rspnsv-table-column-micro',
 					value: <Checkbox dbId={ticket.dbId} id={ticket.id} />,
 				},
 				{

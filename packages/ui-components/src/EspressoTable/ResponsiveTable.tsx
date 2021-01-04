@@ -19,7 +19,7 @@ import './style/phone-style.scss';
 
 const EMPTY_ARRAY = [];
 
-const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
+export const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	bodyRows = EMPTY_ARRAY,
 	className,
 	footerRows = EMPTY_ARRAY,
@@ -113,5 +113,3 @@ const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 		</div>
 	);
 };
-
-export default ResponsiveTable;

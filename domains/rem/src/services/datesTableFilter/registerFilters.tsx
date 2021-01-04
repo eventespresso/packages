@@ -19,7 +19,7 @@ const { registerFilter } = new EntityTableFilters<Domain, typeof datesList, DFSM
 const cell: Cell = {
 	key: 'recurrence-series',
 	type: 'cell',
-	className: 'ee-date-list-cell ee-rspnsv-table-column-tiny ee-centered-column ee-col-5',
+	className: 'ee-rspnsv-table-column-tiny ee-centered-column ',
 	value: null,
 };
 

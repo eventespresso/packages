@@ -1,123 +1,179 @@
-import { useCallback } from 'react';
-import { __ } from '@eventespresso/i18n';
+import { useCallback, useMemo } from 'react';
 
-import { Cell } from '@eventespresso/ui-components';
-import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
-import Checkbox from './Checkbox';
+import { __ } from '@eventespresso/i18n';
+import { filterCellByStartOrEndDate, useShowDatetimeBA } from '@eventespresso/edtr-services';
+import { Cell, getCell } from '@eventespresso/ui-components';
 
 import type { HeaderRowGeneratorFn } from '@eventespresso/ee-components';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 
+import Checkbox from './Checkbox';
+
 type DatesTableHeaderRowGen = HeaderRowGeneratorFn<DatetimesFilterStateManager>;
 
 const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
-	return useCallback<DatesTableHeaderRowGen>((filterState) => {
-		const displayStartOrEndDate = filterState?.displayStartOrEndDate;
+	const [showBulkActions] = useShowDatetimeBA();
 
-		const cellsData: Array<Cell> = [
-			{
+	const stripeCell = useMemo(
+		() =>
+			getCell({
+				className: 'ee-entity-list-status-stripe',
 				key: 'stripe',
-				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-entity-list-status-stripe ee-rspnsv-table-column-nano',
+				size: 'nano',
 				value: '',
-			},
-			{
+			}),
+		[]
+	);
+
+	const checkboxCell = useMemo(
+		() =>
+			showBulkActions && {
 				key: 'checkbox',
 				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-date-list-col-checkbox ee-rspnsv-table-column-micro',
+				size: 'nano',
 				value: (
 					<div className={'ee-rspnsv-table-hide-on-mobile'}>
 						<Checkbox />
 					</div>
 				),
 			},
-			{
+		[showBulkActions]
+	);
+
+	const IDCell = useMemo(
+		() =>
+			getCell({
 				key: 'id',
-				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-date-list-col-id ee-number-column ee-rspnsv-table-column-nano',
+				size: 'micro',
+				textAlign: 'right',
 				value: __('ID'),
-			},
-			{
+			}),
+		[]
+	);
+
+	const nameCell = useMemo(
+		() =>
+			getCell({
 				key: 'name',
-				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-date-list-col-name ee-rspnsv-table-column-huge',
+				size: 'huge',
 				value: __('Name'),
-			},
-			{
+			}),
+		[]
+	);
+
+	const startCell = useMemo(
+		() =>
+			getCell({
 				key: 'start',
-				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-rspnsv-table-column-default',
+				size: 'default',
 				value: (
 					<>
 						<span className={'ee-rspnsv-table-long-label'}>{__('Start Date')}</span>
 						<span className={'ee-rspnsv-table-short-label'}>{__('Start')}</span>
 					</>
 				),
-			},
-			{
+			}),
+		[]
+	);
+
+	const endCell = useMemo(
+		() =>
+			getCell({
 				key: 'end',
-				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-rspnsv-table-column-default',
+				size: 'default',
 				value: (
 					<>
 						<span className={'ee-rspnsv-table-long-label'}>{__('End Date')}</span>
 						<span className={'ee-rspnsv-table-short-label'}>{__('End')}</span>
 					</>
 				),
-			},
-			{
+			}),
+		[]
+	);
+
+	const capacityCell = useMemo(
+		() =>
+			getCell({
+				className: 'ee-col-capacity',
 				key: 'capacity',
-				type: 'cell',
-				className:
-					'ee-date-list-col-hdr ee-date-list-col-capacity ee-rspnsv-table-column-tiny ee-number-column',
+				size: 'tiny',
+				textAlign: 'right',
 				value: (
 					<>
 						<span className={'ee-rspnsv-table-long-label'}>{__('Capacity')}</span>
 						<span className={'ee-rspnsv-table-short-label'}>{__('Cap')}</span>
 					</>
 				),
-			},
-			{
+			}),
+		[]
+	);
+
+	const soldCell = useMemo(
+		() =>
+			getCell({
 				key: 'sold',
-				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-date-list-col-sold ee-rspnsv-table-column-tiny ee-number-column',
+				size: 'tiny',
+				textAlign: 'right',
 				value: __('Sold'),
-			},
-			{
+			}),
+		[]
+	);
+
+	const registrationsCell = useMemo(
+		() =>
+			getCell({
 				key: 'registrations',
-				type: 'cell',
-				className:
-					'ee-date-list-col-hdr ee-date-list-col-registrations ee-rspnsv-table-column-smaller ee-centered-column',
+				size: 'smaller',
+				textAlign: 'center',
 				value: (
 					<>
 						<span className={'ee-rspnsv-table-long-label'}>{__('Reg list')}</span>
 						<span className={'ee-rspnsv-table-short-label'}>{__('Regs')}</span>
 					</>
 				),
-			},
-			{
-				key: 'actions',
-				type: 'cell',
-				className: 'ee-date-list-col-hdr ee-actions-column ee-rspnsv-table-column-big ee-centered-column',
-				value: (
-					<>
-						<span className={'ee-rspnsv-table-long-label'}>{__('Actions')}</span>
-						<span className={'ee-rspnsv-table-short-label'}>{__('Actions')}</span>
-					</>
-				),
-			},
-		];
+			}),
+		[]
+	);
 
-		const cells = cellsData.filter(filterCellByStartOrEndDate(displayStartOrEndDate));
+	return useCallback<DatesTableHeaderRowGen>(
+		(filterState) => {
+			const displayStartOrEndDate = filterState?.displayStartOrEndDate;
 
-		return {
-			cells,
-			className: 'ee-editor-date-list-items-header-row',
-			key: 'dates-list-header',
-			primary: true,
-			type: 'row',
-		};
-	}, []);
+			const cellsData: Array<Cell> = [
+				stripeCell,
+				checkboxCell,
+				IDCell,
+				nameCell,
+				startCell,
+				endCell,
+				capacityCell,
+				soldCell,
+				registrationsCell,
+				{
+					key: 'actions',
+					type: 'cell',
+					className: 'ee-actions-column ee-rspnsv-table-column-big ee-centered-column',
+					value: (
+						<>
+							<span className={'ee-rspnsv-table-long-label'}>{__('Actions')}</span>
+							<span className={'ee-rspnsv-table-short-label'}>{__('Actions')}</span>
+						</>
+					),
+				},
+			];
+
+			const cells = cellsData.filter(Boolean).filter(filterCellByStartOrEndDate(displayStartOrEndDate));
+
+			return {
+				cells,
+				className: 'ee-editor-date-list-items-header-row',
+				key: 'dates-list-header',
+				primary: true,
+				type: 'row',
+			};
+		},
+		[IDCell, capacityCell, checkboxCell, endCell, nameCell, registrationsCell, soldCell, startCell, stripeCell]
+	);
 };
 
 export default useHeaderRowGenerator;

@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 
-import type { Cell } from './types';
+import type { Cell } from '../types';
+
+export * from './getCell';
 
 /**
  * adds 'ee-zebra-stripe-on-mobile' css class to every other table cell

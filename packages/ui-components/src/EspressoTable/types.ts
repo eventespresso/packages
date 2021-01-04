@@ -6,6 +6,7 @@ import type {
 	OnDragEndResponder,
 } from 'react-beautiful-dnd';
 import { AnyObject } from 'react-final-form';
+import type { Size } from '../';
 
 interface CommonProps {
 	showDragHandle?: boolean;
@@ -13,13 +14,13 @@ interface CommonProps {
 
 export interface Cell {
 	as?: 'td';
-	type: string;
-	key: string;
-	value?: React.ReactNode;
-	id?: string;
 	className?: string;
+	id?: string;
+	key: string;
 	render?: (props: CellRender) => JSX.Element;
 	scope?: 'col' | 'row';
+	type: string;
+	value?: React.ReactNode;
 }
 
 interface CellRender {
@@ -33,6 +34,12 @@ export interface FooterRow {
 	cells: Cell[];
 	footerRowClassName?: string;
 	id?: string;
+}
+
+export interface GetCell extends Partial<Size>, Pick<Cell, 'key' | 'value'> {
+	className?: string;
+	showValueOnMobile?: boolean;
+	textAlign?: 'center' | 'right';
 }
 
 export interface HeaderRow {

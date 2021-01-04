@@ -94,22 +94,6 @@
 		display: table-cell;
 	}
 
-	&-td {
-		&.ee-col-name {
-			span,
-			.ee-entity-list-text {
-				font-size: var(--ee-font-size-small);
-				font-weight: bold;
-				line-height: 1.1 !important;
-			}
-		}
-
-		.ee-rspnsv-table-mobile-only-column-value {
-			display: block;
-			width: 100%;
-		}
-	}
-
 	.ee-rspnsv-table-short-label,
 	.ee-rspnsv-table-show-on-mobile,
 	.ee-rspnsv-table-mobile-only-column-header {
@@ -200,48 +184,11 @@
 		margin: var(--ee-margin-nano);
 	}
 
-	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-nano:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-body-td.ee-rspnsv-table-column-nano:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-nano:not(.ee-entity-list-status-stripe) {
-		min-width: 50px;
-		padding: var(--ee-padding-nano) 0 0 0;
-		width: 1.25%;
-	}
-
-	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-micro:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-body-td.ee-rspnsv-table-column-micro:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-micro:not(.ee-entity-list-status-stripe) {
-		padding: var(--ee-padding-nano);
-		min-width: 70px;
-		width: 2.5%;
-	}
-
-	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-tiny:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-body-td.ee-rspnsv-table-column-tiny:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-tiny:not(.ee-entity-list-status-stripe) {
-		padding: var(--ee-padding-nano);
-		width: 5%;
-	}
-
-	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-smaller:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-body-td.ee-rspnsv-table-column-smaller:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-smaller:not(.ee-entity-list-status-stripe) {
-		padding: var(--ee-padding-nano) var(--ee-padding-micro);
-		width: 7.5%;
-	}
-
 	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-small:not(.ee-entity-list-status-stripe),
 	.ee-rspnsv-table-body-td.ee-rspnsv-table-column-small:not(.ee-entity-list-status-stripe),
 	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-small:not(.ee-entity-list-status-stripe) {
 		padding: var(--ee-padding-nano) var(--ee-padding-micro);
 		width: 10%;
-	}
-
-	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-default:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-body-td.ee-rspnsv-table-column-default:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-default:not(.ee-entity-list-status-stripe) {
-		padding: var(--ee-padding-nano) var(--ee-padding-smaller);
-		width: 12.5%;
 	}
 
 	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-big:not(.ee-entity-list-status-stripe),
@@ -256,13 +203,6 @@
 	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-bigger:not(.ee-entity-list-status-stripe) {
 		padding: var(--ee-padding-nano) var(--ee-padding-smaller);
 		width: 17.5%;
-	}
-
-	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-huge:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-body-td.ee-rspnsv-table-column-huge:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-huge:not(.ee-entity-list-status-stripe) {
-		padding: var(--ee-padding-nano) var(--ee-padding-smaller);
-		width: 20%;
 	}
 
 	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-extreme:not(.ee-entity-list-status-stripe),

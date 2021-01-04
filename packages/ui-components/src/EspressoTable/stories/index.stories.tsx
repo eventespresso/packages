@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta } from '@storybook/react/types-6-0';
 
-import ResponsiveTable from '../ResponsiveTable';
+import { ResponsiveTable } from '../ResponsiveTable';
 
 import { bodyRows, headerRows } from './data';
 

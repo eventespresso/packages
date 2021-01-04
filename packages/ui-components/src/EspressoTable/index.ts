@@ -16,6 +16,6 @@ export const EspressoTable = {
 	TableDataCell,
 };
 
-export { default as ResponsiveTable } from './ResponsiveTable';
+export * from './ResponsiveTable';
 export * from './utils';
 export * from './types';
