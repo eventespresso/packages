@@ -6,7 +6,7 @@
 # # |                    Description                    | REQUIRED |      DEFAULT       #
 #---------------------------------------------------------------------------------------#
 # 1 | target repository name e.g. "event-espresso-core" |    YES   |         -          #
-# 2 | branch to deploy at, in the target repository     |    NO    |     "barista"      #
+# 2 | branch to deploy at, in the target repository     |    NO    |       "dev"        #
 # 3 | username of the target repository                 |    NO    |  "eventespresso"   #
 # 4 | build path on the current/this repository         |    NO    |      "build"       #
 # 5 | path to assets folder on the target repository    |    NO    |      "assets"      #
@@ -14,10 +14,10 @@
 
 ##################################### EXAMPLES ##########################################
 # ./deploy.sh "event-espresso-core"                                                     #
-# ./deploy.sh "event-espresso-core" "barista"                                           #
-# ./deploy.sh "event-espresso-core" "barista" "eventespresso"                           #
-# ./deploy.sh "event-espresso-core" "barista" "eventespresso" "build"                   #
-# ./deploy.sh "event-espresso-core" "barista" "eventespresso" "build" "assets/dist"     #
+# ./deploy.sh "event-espresso-core" "dev"                                               #
+# ./deploy.sh "event-espresso-core" "dev" "eventespresso"                               #
+# ./deploy.sh "event-espresso-core" "dev" "eventespresso" "build"                       #
+# ./deploy.sh "event-espresso-core" "dev" "eventespresso" "build" "assets/dist"         #
 #########################################################################################
 
 ##################### ENV VARIABLES THAT SHOULD ALREADY BE SET ########################
@@ -39,8 +39,8 @@ set -e
 # name of the repo e.g. "event-espresso-core"
 REPO=$1
 # The target repo branch
-BRANCH="${2:-barista}"
-# Convert "refs/heads/barista" to "barista"
+BRANCH="${2:-dev}"
+# Convert "refs/heads/dev" to "dev"
 BRANCH="${BRANCH#refs/heads/}"
 # GitHub account username
 USERNAME="${3:-eventespresso}"
