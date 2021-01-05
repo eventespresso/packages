@@ -29,11 +29,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 	...props
 }) => {
 	const [dates, setDates] = useState(value);
-	const { startDateIsValid, startDateBeforeEndDate, endDateIsValid, endDateAfterStartDate } = useDatePickerValidation(
-		dates[0],
-		dates[1],
-		true
-	);
+	const { startDateBeforeEndDate, endDateAfterStartDate } = useDatePickerValidation(dates[0], dates[1], true);
 
 	const onSave: VoidFunction = useCallback(() => {
 		onChange?.(dates);
@@ -46,7 +42,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 		'ee-input-base-wrapper'
 	);
 
-	const isDisabled = !startDateIsValid || !endDateIsValid;
+	const isDisabled = !startDateBeforeEndDate || !endDateAfterStartDate;
 
 	const startDateTZ = TimezoneTimeInfo && <TimezoneTimeInfo date={dates[0]} />;
 
