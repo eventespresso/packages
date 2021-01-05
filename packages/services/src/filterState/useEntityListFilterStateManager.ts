@@ -11,6 +11,7 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 	type FSM = ELFSM<SortBy>;
 
 	const [view, setView] = useSessionStorageState<FSM['view']>(`${listId}-view`, 'card');
+	const [sortBy, setLocalSortBy] = useSessionStorageState<FSM['sortBy']>(`${listId}-sortBy`, defaultSortBy);
 
 	const initialState = useMemo<EntityListFilterState<SortBy>>(
 		() => ({
@@ -18,18 +19,25 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 			pageNumber: 1,
 			total: null,
 			searchText: '',
-			sortBy: defaultSortBy,
+			sortBy,
 			sortingEnabled: false,
 			view,
 		}),
-		[defaultSortBy, view]
+		[sortBy, view]
 	);
 	const [state, dispatch] = useReducer(useStateReducer<SortBy>(), initialState);
 
+	// Update `view` in local storage when it changes
 	useEffect(() => {
 		setView(state.view);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [state.view]);
+
+	// Update `sortBy` in local storage when it changes
+	useEffect(() => {
+		setLocalSortBy(state.sortBy);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [state.sortBy]);
 
 	const getState: FSM['getState'] = useCallback(() => state, [state]);
 
