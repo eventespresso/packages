@@ -49,13 +49,6 @@
 				justify-content: center;
 			}
 		}
-
-		.ee-actions-column {
-			.ee-entity-menu {
-				display: flex;
-				justify-content: center;
-			}
-		}
 	}
 
 	.ee-rspnsv-table-header .ee-rspnsv-table-header-th,
@@ -168,13 +161,6 @@
 		}
 	}
 
-	.ee-rspnsv-table-header-th.ee-entity-list-status-stripe,
-	.ee-rspnsv-table-body-td.ee-entity-list-status-stripe {
-		max-width: 10px;
-		min-width: 5px;
-		width: 0.25%;
-	}
-
 	.ee-status-stripe-div {
 		width: 100%;
 	}
@@ -189,13 +175,6 @@
 	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-small:not(.ee-entity-list-status-stripe) {
 		padding: var(--ee-padding-nano) var(--ee-padding-micro);
 		width: 10%;
-	}
-
-	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-big:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-body-td.ee-rspnsv-table-column-big:not(.ee-entity-list-status-stripe),
-	.ee-rspnsv-table-footer-th.ee-rspnsv-table-column-big:not(.ee-entity-list-status-stripe) {
-		padding: var(--ee-padding-nano) var(--ee-padding-smaller);
-		width: 15%;
 	}
 
 	.ee-rspnsv-table-header-th.ee-rspnsv-table-column-bigger:not(.ee-entity-list-status-stripe),

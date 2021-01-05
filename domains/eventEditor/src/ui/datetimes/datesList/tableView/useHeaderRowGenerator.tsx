@@ -20,6 +20,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 				className: 'ee-entity-list-status-stripe',
 				key: 'stripe',
 				size: 'nano',
+				textAlign: 'center',
 				value: '',
 			}),
 		[]
@@ -27,16 +28,17 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 
 	const checkboxCell = useMemo(
 		() =>
-			showBulkActions && {
+			showBulkActions &&
+			getCell({
 				key: 'checkbox',
-				type: 'cell',
-				size: 'nano',
+				size: 'micro',
+				textAlign: 'center',
 				value: (
 					<div className={'ee-rspnsv-table-hide-on-mobile'}>
 						<Checkbox />
 					</div>
 				),
-			},
+			}),
 		[showBulkActions]
 	);
 
@@ -135,6 +137,21 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 		[]
 	);
 
+	const actionsCell = useMemo(
+		() =>
+			getCell({
+				key: 'actions',
+				size: 'big',
+				value: (
+					<>
+						<span className={'ee-rspnsv-table-long-label'}>{__('Actions')}</span>
+						<span className={'ee-rspnsv-table-short-label'}>{__('Actions')}</span>
+					</>
+				),
+			}),
+		[]
+	);
+
 	return useCallback<DatesTableHeaderRowGen>(
 		(filterState) => {
 			const displayStartOrEndDate = filterState?.displayStartOrEndDate;
@@ -149,17 +166,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 				capacityCell,
 				soldCell,
 				registrationsCell,
-				{
-					key: 'actions',
-					type: 'cell',
-					className: 'ee-actions-column ee-rspnsv-table-column-big ee-centered-column',
-					value: (
-						<>
-							<span className={'ee-rspnsv-table-long-label'}>{__('Actions')}</span>
-							<span className={'ee-rspnsv-table-short-label'}>{__('Actions')}</span>
-						</>
-					),
-				},
+				actionsCell,
 			];
 
 			const cells = cellsData.filter(Boolean).filter(filterCellByStartOrEndDate(displayStartOrEndDate));
@@ -172,7 +179,18 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 				type: 'row',
 			};
 		},
-		[IDCell, capacityCell, checkboxCell, endCell, nameCell, registrationsCell, soldCell, startCell, stripeCell]
+		[
+			actionsCell,
+			capacityCell,
+			checkboxCell,
+			endCell,
+			IDCell,
+			nameCell,
+			registrationsCell,
+			soldCell,
+			startCell,
+			stripeCell,
+		]
 	);
 };
 

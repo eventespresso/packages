@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { Cell, GetCell } from '../types';
 
-import './cell.scss';
+import '../style/cell.scss';
 
 export const getCell = ({ key, size, showValueOnMobile, textAlign, value, ...props }: GetCell): Cell => {
 	const className = classNames(

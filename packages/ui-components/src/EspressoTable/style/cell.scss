@@ -39,16 +39,46 @@
 
 	.ee-table {
 		&-cell {
-			&:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile) {
-				.columns-2 & {
-					@include max1280px {
-						padding: var(--ee-padding-micro) var(--ee-padding-smaller) !important;
-						width: 100% !important;
-					}
+			&.ee-actions-column {
+				.ee-entity-menu {
+					display: flex;
+					justify-content: center;
+				}
+			}
 
+			&.ee-rspnsv-table-header-th,
+			&.ee-rspnsv-table-body-td {
+				&.ee-entity-list-status-stripe {
+					max-width: 10px;
+					min-width: 5px;
+					width: 0.25%;
+
+					@include max1280px {
+						max-width: unset;
+						width: 0.4%;
+					}
+				}
+			}
+
+			&:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile) {
+				@include max1280px {
+					padding: var(--ee-padding-micro) var(--ee-padding-smaller);
+					width: 100%;
+				}
+
+				@include max782px {
+					padding: var(--ee-padding-smaller) !important;
+					width: 100% !important;
+				}
+			}
+
+			&.ee-rspnsv-table-body-td,
+			&.ee-rspnsv-table-footer-td {
+				&:not(.ee-rspnsv-table-hide-on-mobile) {
 					@include max782px {
-						padding: var(--ee-padding-smaller) !important;
-						width: 100% !important;
+						display: block;
+						text-align: left;
+						width: 100%;
 					}
 				}
 			}
@@ -111,12 +141,25 @@
 					}
 				}
 
+				&-big {
+					&.ee-rspnsv-table-header-th,
+					&.ee-rspnsv-table-body-td,
+					&.ee-rspnsv-table-footer-th {
+						&:not(.ee-entity-list-status-stripe) {
+							padding: var(--ee-padding-nano) var(--ee-padding-smaller);
+							width: 15%;
+						}
+					}
+				}
+
 				&-huge {
 					&.ee-rspnsv-table-header-th,
 					&.ee-rspnsv-table-body-td,
 					&.ee-rspnsv-table-footer-th {
-						padding: var(--ee-padding-nano) var(--ee-padding-smaller);
-						width: 20%;
+						&:not(.ee-entity-list-status-stripe) {
+							padding: var(--ee-padding-nano) var(--ee-padding-smaller);
+							width: 20%;
+						}
 					}
 				}
 			}
@@ -124,6 +167,10 @@
 			&--text-align {
 				&-center {
 					text-align: center;
+
+					@include max782px {
+						text-align: center !important;
+					}
 				}
 
 				&-right {

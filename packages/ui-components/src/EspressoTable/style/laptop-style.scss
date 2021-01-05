@@ -89,13 +89,6 @@
 			width: 100%;
 		}
 
-		.ee-rspnsv-table-body .ee-rspnsv-table-body-td:not(.ee-rspnsv-table-hide-on-mobile),
-		.ee-rspnsv-table-footer .ee-rspnsv-table-footer-td:not(.ee-rspnsv-table-hide-on-mobile) {
-			display: block;
-			text-align: left;
-			width: 100%;
-		}
-
 		.ee-rspnsv-table-body {
 			.ee-rspnsv-table-body-td.ee-zebra-stripe-on-mobile {
 				background: var(--ee-color-grey-15);
@@ -194,14 +187,6 @@
 	}
 
 	/* COLUMN SIZES */
-
-	.ee-rspnsv-table {
-		.ee-rspnsv-table-header-th.ee-entity-list-status-stripe,
-		.ee-rspnsv-table-body-td.ee-entity-list-status-stripe {
-			max-width: unset;
-			width: 0.4%;
-		}
-	}
 
 	.columns-2 .ee-rspnsv-table .ee-rspnsv-table-body-td.ee-entity-list-status-stripe {
 		width: 100%;

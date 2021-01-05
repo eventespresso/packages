@@ -40,6 +40,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				className: classNames('ee-entity-list-status-stripe', bgClassName),
 				key: 'stripe',
 				showValueOnMobile: true,
+				textAlign: 'center',
 				value: datetime.name,
 			});
 
@@ -47,7 +48,8 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				showBulkActions &&
 				getCell({
 					key: 'cell',
-					size: 'nano',
+					size: 'micro',
+					textAlign: 'center',
 					value: <Checkbox dbId={datetime.dbId} id={datetime.id} />,
 				});
 
@@ -74,14 +76,12 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			});
 
 			const startCell = getCell({
-				className: 'ee-rspnsv-table-hide-on-mobile',
 				key: 'start',
 				size: 'default',
 				value: format(new Date(datetime.startDate), ENTITY_LIST_DATE_TIME_FORMAT),
 			});
 
 			const endCell = getCell({
-				className: 'ee-rspnsv-table-hide-on-mobile',
 				key: 'end',
 				size: 'default',
 				value: format(new Date(datetime.endDate), ENTITY_LIST_DATE_TIME_FORMAT),
@@ -108,6 +108,12 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				value: sortingEnabled ? '-' : <DateRegistrationsLink datetime={datetime} />,
 			});
 
+			const actionsCell = getCell({
+				key: 'actions',
+				size: 'big',
+				value: sortingEnabled ? '-' : <DateActionsMenu entity={datetime} />,
+			});
+
 			const cellsData = [
 				stripeCell,
 				bulkActionCheckboxCell,
@@ -118,12 +124,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				capacityCell,
 				soldCell,
 				registrationsCell,
-				{
-					key: 'actions',
-					type: 'cell',
-					className: 'ee-date-list-col-actions ee-actions-column ee-rspnsv-table-column-big',
-					value: sortingEnabled ? '-' : <DateActionsMenu entity={datetime} />,
-				},
+				actionsCell,
 			].filter(Boolean);
 
 			const filterCells = filter(filterCellByStartOrEndDate(displayStartOrEndDate));

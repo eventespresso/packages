@@ -7,8 +7,8 @@ import { insert } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 import { EntityTableFilters } from '@eventespresso/registry';
 import { datesList, domain } from '@eventespresso/edtr-services';
+import { Cell, getCell } from '@eventespresso/ui-components';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
-import type { Cell } from '@eventespresso/ui-components';
 import RecurrenceTag from '../../ui/RecurrenceTag';
 
 type Domain = typeof domain;
@@ -16,12 +16,12 @@ type DFSM = DatetimesFilterStateManager;
 
 const { registerFilter } = new EntityTableFilters<Domain, typeof datesList, DFSM>(domain, datesList);
 
-const cell: Cell = {
+const cell: Cell = getCell({
 	key: 'recurrence-series',
-	type: 'cell',
-	className: 'ee-rspnsv-table-column-tiny ee-centered-column ',
+	size: 'tiny',
+	textAlign: 'center',
 	value: null,
-};
+});
 
 // Register sales filter
 registerFilter(({ row, type, entityId }) => {
