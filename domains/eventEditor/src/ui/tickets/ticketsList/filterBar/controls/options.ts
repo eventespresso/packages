@@ -45,7 +45,6 @@ export const sortByOptions = {
 	name: __('ticket name'),
 	id: __('ticket ID'),
 	order: __('custom order'),
-	search: __('search'),
 };
 
 export const labels = {
