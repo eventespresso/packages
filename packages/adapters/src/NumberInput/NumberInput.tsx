@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import {
 	NumberInput as ChakraNumberInput,
 	NumberInputField,
@@ -17,14 +18,30 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 	inputFieldProps,
 	inputStepperProps,
 	onChange,
+	onChangeValue,
 	showStepper = true,
 	value,
 	...props
 }) => {
 	const size = inputFieldProps?.size && Number(inputFieldProps?.size);
 
+	const onChangeHandler = useCallback<NumberInputProps['onChange']>(
+		(valueAsString, valueAsNumber) => {
+			onChangeValue?.(valueAsNumber);
+
+			onChange?.(valueAsString, valueAsNumber);
+		},
+		[onChange, onChangeValue]
+	);
+
 	return (
-		<ChakraNumberInput {...props} className={className} isDisabled={isDisabled} onChange={onChange} value={value}>
+		<ChakraNumberInput
+			{...props}
+			className={className}
+			isDisabled={isDisabled}
+			onChange={onChangeHandler}
+			value={value}
+		>
 			<NumberInputField {...inputFieldProps} id={id} size={size} />
 			{showStepper && (
 				<NumberInputStepper {...inputStepperProps}>

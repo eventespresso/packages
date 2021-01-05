@@ -5,6 +5,8 @@ import type {
 	BoxProps as ChakraBoxProps,
 } from '@chakra-ui/react';
 
+import type { CommonInputProps } from '../types';
+
 type Picked =
 	| 'aria-valuenow'
 	| 'clampValueOnBlur'
@@ -20,7 +22,7 @@ type Picked =
 	| 'step'
 	| 'value';
 
-export interface NumberInputProps extends Pick<ChakraNumberInputProps, Picked> {
+export interface NumberInputProps extends Pick<ChakraNumberInputProps, Picked>, CommonInputProps<HTMLInputElement> {
 	decrementStepperProps?: ChakraBoxProps;
 	inputFieldProps?: ChakraInputProps;
 	inputStepperProps?: ChakraFlexProps;
