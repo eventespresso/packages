@@ -175,7 +175,12 @@ const useHeaderRowGenerator = (): TicketsTableHeaderRowGen => {
 				actionsCell,
 			];
 
-			const cells = cellsData.filter(Boolean).filter(filterCellByStartOrEndDate(displayStartOrEndDate));
+			const cells = cellsData
+				.filter(
+					// removes falsy values
+					Boolean
+				)
+				.filter(filterCellByStartOrEndDate(displayStartOrEndDate));
 
 			return {
 				cells,

@@ -132,7 +132,10 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				soldCell,
 				registrationsCell,
 				actionsCell,
-			].filter(Boolean);
+			].filter(
+				// removes falsy values
+				Boolean
+			);
 
 			const exclude = ['row', 'stripe', 'name', 'actions'];
 

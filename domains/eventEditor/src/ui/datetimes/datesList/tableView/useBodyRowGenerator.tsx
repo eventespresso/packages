@@ -127,7 +127,10 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				soldCell,
 				registrationsCell,
 				actionsCell,
-			].filter(Boolean);
+			].filter(
+				// removes falsy values
+				Boolean
+			);
 
 			const filterCells = filter(filterCellByStartOrEndDate(displayStartOrEndDate));
 
