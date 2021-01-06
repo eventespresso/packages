@@ -2,17 +2,6 @@
  * -------------------------------------------------------------------------*/
 @import '~@eventespresso/styles/src';
 
-/* Tablet Landscape */
-@include max1024px {
-	.ee-rspnsv-table {
-		.ee-rspnsv-table-header-th.ee-entity-list-status-stripe,
-		.ee-rspnsv-table-body-td.ee-entity-list-status-stripe {
-			max-width: unset;
-			width: 0.5%;
-		}
-	}
-}
-
 /* WordPress Admin Media Query Breakpoint: Tablet */
 @include max782px {
 	.ee-rspnsv-table {

@@ -57,6 +57,11 @@
 						max-width: unset;
 						width: 0.4%;
 					}
+
+					@include max1024px {
+						max-width: unset;
+						width: 0.5%;
+					}
 				}
 			}
 
@@ -75,10 +80,12 @@
 			&.ee-rspnsv-table-body-td,
 			&.ee-rspnsv-table-footer-td {
 				&:not(.ee-rspnsv-table-hide-on-mobile) {
-					@include max782px {
-						display: block;
-						text-align: left;
-						width: 100%;
+					.columns-2 & {
+						@include max1280px {
+							display: block;
+							text-align: left;
+							width: 100%;
+						}
 					}
 				}
 			}

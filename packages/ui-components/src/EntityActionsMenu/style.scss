@@ -23,6 +23,10 @@
 		.ee-btn-base.ee-icon-button {
 			margin: 0 var(--ee-margin-tiny) 0 0;
 		}
+
+		.ee-table-cell--text-align-center & {
+			justify-content: center;
+		}
 	}
 
 	&--vertical {

@@ -142,6 +142,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 			getCell({
 				key: 'actions',
 				size: 'big',
+				textAlign: 'center',
 				value: (
 					<>
 						<span className={'ee-rspnsv-table-long-label'}>{__('Actions')}</span>

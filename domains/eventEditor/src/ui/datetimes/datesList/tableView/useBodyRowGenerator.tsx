@@ -88,6 +88,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			});
 
 			const capacityCell = getCell({
+				className: 'ee-col-capacity',
 				key: 'capacity',
 				size: 'tiny',
 				textAlign: 'right',
@@ -111,6 +112,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			const actionsCell = getCell({
 				key: 'actions',
 				size: 'big',
+				textAlign: 'center',
 				value: sortingEnabled ? '-' : <DateActionsMenu entity={datetime} />,
 			});
 
