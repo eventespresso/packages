@@ -2,8 +2,8 @@ import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { filterCellByStartOrEndDate, useShowDatetimeBA } from '@eventespresso/edtr-services';
-import { CellData } from '@eventespresso/ui-components';
 
+import type { CellData } from '@eventespresso/ui-components';
 import type { HeaderRowGeneratorFn } from '@eventespresso/ee-components';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 

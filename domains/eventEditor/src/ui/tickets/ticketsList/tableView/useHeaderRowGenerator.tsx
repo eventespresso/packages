@@ -1,8 +1,9 @@
 import { useCallback, useMemo } from 'react';
-import { __ } from '@eventespresso/i18n';
 
-import { CellData } from '@eventespresso/ui-components';
+import { __ } from '@eventespresso/i18n';
 import { filterCellByStartOrEndDate, useShowTicketBA } from '@eventespresso/edtr-services';
+
+import type { CellData } from '@eventespresso/ui-components';
 import type { HeaderRowGeneratorFn } from '@eventespresso/ee-components';
 import type { TicketsFilterStateManager } from '@eventespresso/edtr-services';
 

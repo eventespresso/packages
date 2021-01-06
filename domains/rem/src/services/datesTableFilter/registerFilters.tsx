@@ -7,8 +7,10 @@ import { insert } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 import { EntityTableFilters } from '@eventespresso/registry';
 import { datesList, domain } from '@eventespresso/edtr-services';
-import { CellData } from '@eventespresso/ui-components';
+
+import type { CellData } from '@eventespresso/ui-components';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
+
 import RecurrenceTag from '../../ui/RecurrenceTag';
 
 type Domain = typeof domain;
