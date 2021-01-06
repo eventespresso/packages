@@ -1,5 +1,8 @@
 @import '~@eventespresso/styles/src';
 
+html.wp-toolbar {
+	overflow-x: hidden;
+}
 
 .post-type-espresso_events {
 	#adminmenuwrap {
