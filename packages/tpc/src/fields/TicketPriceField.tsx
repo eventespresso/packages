@@ -19,7 +19,9 @@ const TicketPriceField: React.FC<TicketPriceFieldProps> = (props) => {
 
 	const parse: BFP['parse'] = useCallback((price) => parsedAmount(price), []);
 
-	const setValue: BFP['setValue'] = useCallback((value) => updateTicketPrice(value), [updateTicketPrice]);
+	const setValue: BFP['setValue'] = useCallback((value) => updateTicketPrice(parsedAmount(value)), [
+		updateTicketPrice,
+	]);
 
 	return (
 		<MoneyInputWithConfig disabled={props.disabled}>
