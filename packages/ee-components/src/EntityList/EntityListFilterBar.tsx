@@ -3,7 +3,6 @@ import { useFilterBarUIElements } from '@eventespresso/registry';
 import {
 	SearchInput,
 	EntityListFilterBar as EntityListFilterBarUI,
-	ToggleSortingButton,
 	EntityListViewButtonGroup,
 } from '@eventespresso/ui-components';
 
@@ -30,7 +29,6 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 	const mainButtons = (
 		<>
 			<EntityListViewButtonGroup id={listId} setCardView={setCardView} setTableView={setTableView} view={view} />
-			<ToggleSortingButton id={listId} value={sortingEnabled} onClick={toggleSorting} />
 			{view === 'table' && <ToggleBulkActionsButton id={listId} entityType={entityType} />}
 		</>
 	);

@@ -15,5 +15,3 @@ export interface EntityListViewButtonGroupProps extends CardViewFilterButtonProp
 }
 
 export interface ToggleFiltersButtonProps extends FilterButtonBaseProps {}
-
-export interface ToggleSortingButtonProps extends FilterButtonBaseProps {}
