@@ -42,7 +42,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 		[showBulkActions]
 	);
 
-	const IDCell = useMemo(
+	const idCell = useMemo(
 		() =>
 			getCell({
 				key: 'id',
@@ -160,7 +160,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 			const cellsData: Array<Cell> = [
 				stripeCell,
 				checkboxCell,
-				IDCell,
+				idCell,
 				nameCell,
 				startCell,
 				endCell,
@@ -185,7 +185,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 			capacityCell,
 			checkboxCell,
 			endCell,
-			IDCell,
+			idCell,
 			nameCell,
 			registrationsCell,
 			soldCell,

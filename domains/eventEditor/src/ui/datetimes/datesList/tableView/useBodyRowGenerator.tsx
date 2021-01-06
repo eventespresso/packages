@@ -53,7 +53,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 					value: <Checkbox dbId={datetime.dbId} id={datetime.id} />,
 				});
 
-			const IDCell = getCell({
+			const idCell = getCell({
 				key: 'id',
 				size: 'micro',
 				textAlign: 'right',
@@ -119,7 +119,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			const cellsData = [
 				stripeCell,
 				bulkActionCheckboxCell,
-				IDCell,
+				idCell,
 				nameCell,
 				startCell,
 				endCell,

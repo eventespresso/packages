@@ -50,7 +50,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 					value: <Checkbox dbId={ticket.dbId} id={ticket.id} />,
 				});
 
-			const IDCell = getCell({
+			const idCell = getCell({
 				key: 'id',
 				size: 'micro',
 				textAlign: 'right',
@@ -123,7 +123,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 			const cellsData: Array<Cell> = [
 				stripeCell,
 				bulkActionCheckboxCell,
-				IDCell,
+				idCell,
 				nameCell,
 				startCell,
 				endCell,
