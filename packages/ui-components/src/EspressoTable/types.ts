@@ -23,6 +23,11 @@ export interface Cell {
 	value?: React.ReactNode;
 }
 
+export interface CellData extends Omit<Cell, 'type'>, Size {
+	showValueOnMobile?: boolean;
+	textAlign?: 'center' | 'end';
+}
+
 interface CellRender {
 	row: any;
 	col: any;
@@ -31,19 +36,13 @@ interface CellRender {
 }
 
 export interface FooterRow {
-	cells: Cell[];
+	cells: CellData[];
 	footerRowClassName?: string;
 	id?: string;
 }
 
-export interface GetCell extends Partial<Size>, Pick<Cell, 'key' | 'value'> {
-	className?: string;
-	showValueOnMobile?: boolean;
-	textAlign?: 'center' | 'right';
-}
-
 export interface HeaderRow {
-	cells: Cell[];
+	cells: CellData[];
 	children?: React.ReactNode;
 	className?: string;
 	extraProps?: AnyObject;
@@ -154,7 +153,7 @@ export interface TableHeaderCellProps {
 }
 
 export interface BodyRow extends CommonProps {
-	cells?: Cell[];
+	cells?: CellData[];
 	children?: React.ReactNode;
 	className?: TableClassName | string;
 	headerRows?: HeaderRow[];

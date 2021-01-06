@@ -1,14 +1,14 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
 
-import { BodyRow, Cell, getCell } from '@eventespresso/ui-components';
+import type { BodyRow, CellData } from '@eventespresso/ui-components';
+
 import BodyCell from './BodyCell';
 import DateCell from './DateCell';
-
 import { useDataState } from '../../data';
-import type { DatesAndTickets, RelationClassName } from '../../types';
 import useRowClassName from './useRowClassName';
 import useColClassName from './useColClassName';
+import type { DatesAndTickets, RelationClassName } from '../../types';
 
 const useGetBodyRows = ({ datetimes, tickets }: DatesAndTickets): BodyRow[] => {
 	const { getAssignmentStatus } = useDataState();
@@ -18,26 +18,25 @@ const useGetBodyRows = ({ datetimes, tickets }: DatesAndTickets): BodyRow[] => {
 
 	return useMemo(() => {
 		return datetimes.map((datetime) => {
-			const datetimeCell: Cell = {
-				key: 'datetime',
-				type: 'cell',
+			const datetimeCell: CellData = {
 				className: 'ee-rspnsv-table-column-micro date-cell',
+				key: 'datetime',
 				value: <DateCell datetime={datetime} />,
 			};
 
-			const cells: Array<Cell> = tickets.map((ticket) => {
+			const cells: Array<CellData> = tickets.map((ticket) => {
 				const status = getAssignmentStatus({ datetimeId: datetime.id, ticketId: ticket.id });
 				const statusClassName = status && (`${status.toLowerCase()}-assignment` as RelationClassName);
 
 				const className = classNames('relation-cell', statusClassName, getColClass(ticket));
 
-				const cell = getCell({
+				const cell: CellData = {
 					className,
 					key: ticket.id,
 					size: 'huge',
 					textAlign: 'center',
 					value: <BodyCell datetime={datetime} ticket={ticket} />,
-				});
+				};
 
 				return cell;
 			});

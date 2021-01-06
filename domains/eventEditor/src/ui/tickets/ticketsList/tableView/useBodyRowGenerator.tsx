@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { format } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
-import { addZebraStripesOnMobile, Cell, getCell } from '@eventespresso/ui-components';
+import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
 import { CurrencyDisplay } from '@eventespresso/ee-components';
 import { filterCellByStartOrEndDate, useLazyTicket, useShowTicketBA } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
@@ -33,31 +33,29 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 			const id = ticket.dbId || shortenGuid(ticket.id);
 			const statusClassName = ticketStatus(ticket);
 
-			const stripeCell = getCell({
+			const stripeCell: CellData = {
 				className: classNames('ee-entity-list-status-stripe', bgClassName),
 				key: 'stripe',
 				showValueOnMobile: true,
 				textAlign: 'center',
 				value: ticket.name,
-			});
+			};
 
-			const bulkActionCheckboxCell =
-				showBulkActions &&
-				getCell({
-					key: 'cell',
-					size: 'micro',
-					textAlign: 'center',
-					value: <Checkbox dbId={ticket.dbId} id={ticket.id} />,
-				});
+			const bulkActionCheckboxCell: CellData = showBulkActions && {
+				key: 'cell',
+				size: 'micro',
+				textAlign: 'center',
+				value: <Checkbox dbId={ticket.dbId} id={ticket.id} />,
+			};
 
-			const idCell = getCell({
+			const idCell: CellData = {
 				key: 'id',
 				size: 'micro',
-				textAlign: 'right',
+				textAlign: 'end',
 				value: id,
-			});
+			};
 
-			const nameCell = getCell({
+			const nameCell: CellData = {
 				className: 'ee-col-name ee-rspnsv-table-hide-on-mobile',
 				key: 'name',
 				size: 'huge',
@@ -70,57 +68,57 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 						view={'table'}
 					/>
 				),
-			});
+			};
 
-			const startCell = getCell({
+			const startCell: CellData = {
 				key: 'start',
 				size: 'default',
 				value: format(new Date(ticket.startDate), ENTITY_LIST_DATE_TIME_FORMAT),
-			});
+			};
 
-			const endCell = getCell({
+			const endCell: CellData = {
 				key: 'end',
 				size: 'default',
 				value: format(new Date(ticket.endDate), ENTITY_LIST_DATE_TIME_FORMAT),
-			});
+			};
 
-			const priceCell = getCell({
+			const priceCell: CellData = {
 				key: 'price',
 				size: 'tiny',
-				textAlign: 'right',
+				textAlign: 'end',
 				value: <CurrencyDisplay value={ticket.price} />,
-			});
+			};
 
-			const soldCell = getCell({
+			const soldCell: CellData = {
 				key: 'sold',
 				size: 'tiny',
-				textAlign: 'right',
+				textAlign: 'end',
 				value: ticket.sold,
-			});
+			};
 
-			const quantityCell = getCell({
-				className: 'ee-col-capacity',
+			const quantityCell: CellData = {
+				className: 'ee-col__inline-edit',
 				key: 'quantity',
 				size: 'tiny',
-				textAlign: 'right',
+				textAlign: 'end',
 				value: sortingEnabled ? ticket.quantity : <TicketQuantity entity={ticket} />,
-			});
+			};
 
-			const registrationsCell = getCell({
+			const registrationsCell: CellData = {
 				key: 'registrations',
 				size: 'smaller',
 				textAlign: 'center',
 				value: sortingEnabled ? '-' : <TicketRegistrationsLink ticket={ticket} />,
-			});
+			};
 
-			const actionsCell = getCell({
+			const actionsCell: CellData = {
 				key: 'actions',
 				size: 'big',
 				textAlign: 'center',
 				value: sortingEnabled ? '-' : <TicketActionsMenu entity={ticket} />,
-			});
+			};
 
-			const cellsData: Array<Cell> = [
+			const cellsData: Array<CellData> = [
 				stripeCell,
 				bulkActionCheckboxCell,
 				idCell,

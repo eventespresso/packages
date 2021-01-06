@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { format } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
-import { addZebraStripesOnMobile, getCell } from '@eventespresso/ui-components';
+import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
 import { filterCellByStartOrEndDate, useLazyDatetime, useShowDatetimeBA } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';
@@ -36,31 +36,29 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			const id = datetime.dbId || shortenGuid(datetime.id);
 			const statusClassName = datetimeStatus(datetime);
 
-			const stripeCell = getCell({
+			const stripeCell: CellData = {
 				className: classNames('ee-entity-list-status-stripe', bgClassName),
 				key: 'stripe',
 				showValueOnMobile: true,
 				textAlign: 'center',
 				value: datetime.name,
-			});
+			};
 
-			const bulkActionCheckboxCell =
-				showBulkActions &&
-				getCell({
-					key: 'cell',
-					size: 'micro',
-					textAlign: 'center',
-					value: <Checkbox dbId={datetime.dbId} id={datetime.id} />,
-				});
+			const bulkActionCheckboxCell: CellData = showBulkActions && {
+				key: 'cell',
+				size: 'micro',
+				textAlign: 'center',
+				value: <Checkbox dbId={datetime.dbId} id={datetime.id} />,
+			};
 
-			const idCell = getCell({
+			const idCell: CellData = {
 				key: 'id',
 				size: 'micro',
-				textAlign: 'right',
+				textAlign: 'end',
 				value: id,
-			});
+			};
 
-			const nameCell = getCell({
+			const nameCell: CellData = {
 				className: 'ee-col-name ee-rspnsv-table-hide-on-mobile',
 				key: 'name',
 				size: 'huge',
@@ -73,50 +71,50 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 						view={'table'}
 					/>
 				),
-			});
+			};
 
-			const startCell = getCell({
+			const startCell: CellData = {
 				key: 'start',
 				size: 'default',
 				value: format(new Date(datetime.startDate), ENTITY_LIST_DATE_TIME_FORMAT),
-			});
+			};
 
-			const endCell = getCell({
+			const endCell: CellData = {
 				key: 'end',
 				size: 'default',
 				value: format(new Date(datetime.endDate), ENTITY_LIST_DATE_TIME_FORMAT),
-			});
+			};
 
-			const capacityCell = getCell({
-				className: 'ee-col-capacity',
+			const capacityCell: CellData = {
+				className: 'ee-col__inline-edit',
 				key: 'capacity',
 				size: 'tiny',
-				textAlign: 'right',
+				textAlign: 'end',
 				value: sortingEnabled ? datetime.capacity : <DateCapacity entity={datetime} />,
-			});
+			};
 
-			const soldCell = getCell({
+			const soldCell: CellData = {
 				key: 'sold',
 				size: 'tiny',
-				textAlign: 'right',
+				textAlign: 'end',
 				value: datetime.sold || 0,
-			});
+			};
 
-			const registrationsCell = getCell({
+			const registrationsCell: CellData = {
 				key: 'registrations',
 				size: 'smaller',
 				textAlign: 'center',
 				value: sortingEnabled ? '-' : <DateRegistrationsLink datetime={datetime} />,
-			});
+			};
 
-			const actionsCell = getCell({
+			const actionsCell: CellData = {
 				key: 'actions',
 				size: 'big',
 				textAlign: 'center',
 				value: sortingEnabled ? '-' : <DateActionsMenu entity={datetime} />,
-			});
+			};
 
-			const cellsData = [
+			const cellsData: Array<CellData> = [
 				stripeCell,
 				bulkActionCheckboxCell,
 				idCell,

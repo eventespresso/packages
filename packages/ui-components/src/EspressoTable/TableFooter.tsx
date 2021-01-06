@@ -6,6 +6,7 @@ import { isFunc, isEmpty } from '@eventespresso/utils';
 import TableRow from './TableRow';
 import TableDataCell from './TableDataCell';
 import TableHeaderCell from './TableHeaderCell';
+import { enhanceCell } from './utils';
 
 import { RowType } from './types';
 import type { TableFooterProps } from './types';
@@ -28,7 +29,7 @@ const TableFooter: React.FC<TableFooterProps> = ({ tableId, footerRows, rowCount
 						rowClassName={footerRow.footerRowClassName}
 						className={props.className}
 					>
-						{footerRow.cells.map((column, col) => {
+						{footerRow.cells.map(enhanceCell).map((column, col) => {
 							invariant(
 								column.hasOwnProperty('value'),
 								`Missing "value" property for footer column ${col}.`

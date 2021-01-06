@@ -6,7 +6,7 @@ import { ResponsiveTable } from '../EspressoTable';
 import type { EntityTableProps } from './types';
 
 export const EntityTable: React.FC<EntityTableProps> = ({ bodyRows, headerRows, metaData, onDragEnd, ...props }) => {
-	const className = useMemoStringify({ tableClassName: classNames(props.className, 'ee-entity-table') }, [
+	const className = useMemoStringify({ tableClassName: classNames('ee-entity-table', props.className) }, [
 		props.className,
 	]);
 

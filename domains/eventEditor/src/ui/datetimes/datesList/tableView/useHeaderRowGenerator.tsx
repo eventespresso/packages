@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { filterCellByStartOrEndDate, useShowDatetimeBA } from '@eventespresso/edtr-services';
-import { Cell, getCell } from '@eventespresso/ui-components';
+import { CellData } from '@eventespresso/ui-components';
 
 import type { HeaderRowGeneratorFn } from '@eventespresso/ee-components';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
@@ -14,22 +14,20 @@ type DatesTableHeaderRowGen = HeaderRowGeneratorFn<DatetimesFilterStateManager>;
 const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 	const [showBulkActions] = useShowDatetimeBA();
 
-	const stripeCell = useMemo(
-		() =>
-			getCell({
-				className: 'ee-entity-list-status-stripe',
-				key: 'stripe',
-				size: 'nano',
-				textAlign: 'center',
-				value: '',
-			}),
+	const stripeCell: CellData = useMemo(
+		() => ({
+			className: 'ee-entity-list-status-stripe',
+			key: 'stripe',
+			size: 'nano',
+			textAlign: 'center',
+			value: '',
+		}),
 		[]
 	);
 
-	const checkboxCell = useMemo(
+	const checkboxCell: CellData = useMemo(
 		() =>
-			showBulkActions &&
-			getCell({
+			showBulkActions && {
 				key: 'checkbox',
 				size: 'micro',
 				textAlign: 'center',
@@ -38,118 +36,110 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 						<Checkbox />
 					</div>
 				),
-			}),
+			},
 		[showBulkActions]
 	);
 
-	const idCell = useMemo(
-		() =>
-			getCell({
-				key: 'id',
-				size: 'micro',
-				textAlign: 'right',
-				value: __('ID'),
-			}),
+	const idCell: CellData = useMemo(
+		() => ({
+			key: 'id',
+			size: 'micro',
+			textAlign: 'end',
+			value: __('ID'),
+		}),
 		[]
 	);
 
-	const nameCell = useMemo(
-		() =>
-			getCell({
-				key: 'name',
-				size: 'huge',
-				value: __('Name'),
-			}),
+	const nameCell: CellData = useMemo(
+		() => ({
+			key: 'name',
+			size: 'huge',
+			value: __('Name'),
+		}),
 		[]
 	);
 
-	const startCell = useMemo(
-		() =>
-			getCell({
-				key: 'start',
-				size: 'default',
-				value: (
-					<>
-						<span className={'ee-rspnsv-table-long-label'}>{__('Start Date')}</span>
-						<span className={'ee-rspnsv-table-short-label'}>{__('Start')}</span>
-					</>
-				),
-			}),
+	const startCell: CellData = useMemo(
+		() => ({
+			key: 'start',
+			size: 'default',
+			value: (
+				<>
+					<span className={'ee-rspnsv-table-long-label'}>{__('Start Date')}</span>
+					<span className={'ee-rspnsv-table-short-label'}>{__('Start')}</span>
+				</>
+			),
+		}),
 		[]
 	);
 
-	const endCell = useMemo(
-		() =>
-			getCell({
-				key: 'end',
-				size: 'default',
-				value: (
-					<>
-						<span className={'ee-rspnsv-table-long-label'}>{__('End Date')}</span>
-						<span className={'ee-rspnsv-table-short-label'}>{__('End')}</span>
-					</>
-				),
-			}),
+	const endCell: CellData = useMemo(
+		() => ({
+			key: 'end',
+			size: 'default',
+			value: (
+				<>
+					<span className={'ee-rspnsv-table-long-label'}>{__('End Date')}</span>
+					<span className={'ee-rspnsv-table-short-label'}>{__('End')}</span>
+				</>
+			),
+		}),
 		[]
 	);
 
-	const capacityCell = useMemo(
-		() =>
-			getCell({
-				className: 'ee-col-capacity',
-				key: 'capacity',
-				size: 'tiny',
-				textAlign: 'right',
-				value: (
-					<>
-						<span className={'ee-rspnsv-table-long-label'}>{__('Capacity')}</span>
-						<span className={'ee-rspnsv-table-short-label'}>{__('Cap')}</span>
-					</>
-				),
-			}),
+	const capacityCell: CellData = useMemo(
+		() => ({
+			className: 'ee-col__inline-edit',
+			key: 'capacity',
+			size: 'tiny',
+			textAlign: 'end',
+			value: (
+				<>
+					<span className={'ee-rspnsv-table-long-label'}>{__('Capacity')}</span>
+					<span className={'ee-rspnsv-table-short-label'}>{__('Cap')}</span>
+				</>
+			),
+		}),
 		[]
 	);
 
-	const soldCell = useMemo(
-		() =>
-			getCell({
-				key: 'sold',
-				size: 'tiny',
-				textAlign: 'right',
-				value: __('Sold'),
-			}),
+	const soldCell: CellData = useMemo(
+		() => ({
+			key: 'sold',
+			size: 'tiny',
+			textAlign: 'end',
+			value: __('Sold'),
+		}),
 		[]
 	);
 
-	const registrationsCell = useMemo(
-		() =>
-			getCell({
-				key: 'registrations',
-				size: 'smaller',
-				textAlign: 'center',
-				value: (
-					<>
-						<span className={'ee-rspnsv-table-long-label'}>{__('Reg list')}</span>
-						<span className={'ee-rspnsv-table-short-label'}>{__('Regs')}</span>
-					</>
-				),
-			}),
+	const registrationsCell: CellData = useMemo(
+		() => ({
+			key: 'registrations',
+			size: 'smaller',
+			textAlign: 'center',
+			value: (
+				<>
+					<span className={'ee-rspnsv-table-long-label'}>{__('Reg list')}</span>
+					<span className={'ee-rspnsv-table-short-label'}>{__('Regs')}</span>
+				</>
+			),
+		}),
 		[]
 	);
 
-	const actionsCell = useMemo(
-		() =>
-			getCell({
-				key: 'actions',
-				size: 'big',
-				textAlign: 'center',
-				value: (
-					<>
-						<span className={'ee-rspnsv-table-long-label'}>{__('Actions')}</span>
-						<span className={'ee-rspnsv-table-short-label'}>{__('Actions')}</span>
-					</>
-				),
-			}),
+	const actionsCell: CellData = useMemo(
+		() => ({
+			key: 'actions',
+			size: 'big',
+			textAlign: 'center',
+			value: (
+				<>
+					<span className={'ee-rspnsv-table-long-label'}>{__('Actions')}</span>
+					<span className={'ee-rspnsv-table-short-label'}>{__('Actions')}</span>
+				</>
+			),
+		}),
 		[]
 	);
 
@@ -157,7 +147,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 		(filterState) => {
 			const displayStartOrEndDate = filterState?.displayStartOrEndDate;
 
-			const cellsData: Array<Cell> = [
+			const cellsData: Array<CellData> = [
 				stripeCell,
 				checkboxCell,
 				idCell,

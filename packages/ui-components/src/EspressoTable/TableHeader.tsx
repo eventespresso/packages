@@ -5,6 +5,7 @@ import invariant from 'invariant';
 
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
+import { enhanceCell } from './utils';
 
 import type { TableHeaderProps } from './types';
 import { RowType } from './types';
@@ -31,7 +32,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ headerRows, showDragHandle, t
 					rowNumber={row}
 					rowType={RowType.header}
 				>
-					{headerRow.cells.map((column, col) => {
+					{headerRow?.cells.map(enhanceCell).map((column, col) => {
 						invariant(column.hasOwnProperty('value'), `Missing "value" property for header column ${col}.`);
 
 						return typeof column?.render === 'function' ? (

@@ -1,28 +1,26 @@
 import { useMemo } from 'react';
 
-import { Cell, getCell, HeaderRow } from '@eventespresso/ui-components';
+import { CellData, HeaderRow } from '@eventespresso/ui-components';
 import HeaderCell from './HeaderCell';
 import type { Ticket } from '@eventespresso/edtr-services';
 import useColClassName from './useColClassName';
 
-const emptyCell: Cell = getCell({
+const emptyCell: CellData = {
 	key: 'empty',
 	size: 'huge',
 	value: '',
-});
+};
 
 const useGetHeaderRows = (tickets: Ticket[]): HeaderRow[] => {
 	const getColClass = useColClassName();
 
 	return useMemo<HeaderRow[]>(() => {
-		const cells: Array<Cell> = tickets.map((ticket) =>
-			getCell({
-				className: getColClass(ticket),
-				key: ticket.id,
-				size: 'huge',
-				value: <HeaderCell ticket={ticket} />,
-			})
-		);
+		const cells: Array<CellData> = tickets.map((ticket) => ({
+			className: getColClass(ticket),
+			key: ticket.id,
+			size: 'huge',
+			value: <HeaderCell ticket={ticket} />,
+		}));
 
 		return [
 			{

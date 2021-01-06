@@ -5,6 +5,7 @@ import invariant from 'invariant';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 import { isFunc } from '@eventespresso/utils';
+import { enhanceCell } from './utils';
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
 import TableDataCell from './TableDataCell';
@@ -70,7 +71,7 @@ const TableBody: React.FC<TableBodyProps> = ({
 				showDragHandle={showDragHandle}
 				sortable={sortable}
 			>
-				{row.cells.map((cellData, colNumber) => {
+				{row.cells.map(enhanceCell).map((cellData, colNumber) => {
 					const column = primaryHeader.cells[colNumber];
 					invariant(column !== undefined, `Missing data for column ${colNumber} in row ${rowNumber}.`);
 					invariant(

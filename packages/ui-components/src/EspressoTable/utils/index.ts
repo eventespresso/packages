@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 import type { Cell } from '../types';
 
-export * from './getCell';
+export * from './enhanceCell';
 
 /**
  * adds 'ee-zebra-stripe-on-mobile' css class to every other table cell
