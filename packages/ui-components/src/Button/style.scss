@@ -67,6 +67,10 @@
 		width: fit-content;
 		@include transition(all linear 50ms);
 
+		&--no-box-shadow {
+			box-shadow: none;
+		}
+
 		&--no-margin {
 			margin: 0;
 		}

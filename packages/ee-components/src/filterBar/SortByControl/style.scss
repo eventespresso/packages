@@ -1,0 +1,11 @@
+@import '~@eventespresso/styles/src';
+
+.ee-sort-by-control {
+	align-items: flex-end;
+	display: flex;
+	padding-bottom: var(--ee-padding-tiny);
+
+	.ee-input-label__wrapper {
+		padding-bottom: 0;
+	}
+}

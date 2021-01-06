@@ -6,6 +6,7 @@ export * from './DateTimePicker';
 export * from './EditDateRangeButton';
 export * from './EntityEditForm';
 export * from './EntityList';
+export * from './filterBar';
 export * from './FormWithConfig';
 export * from './rich-text-editor';
 export * from './SimpleTextEditorModal';

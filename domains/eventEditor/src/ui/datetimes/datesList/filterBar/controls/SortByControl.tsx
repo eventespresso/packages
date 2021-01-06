@@ -1,25 +1,15 @@
-import { Select } from '@eventespresso/ui-components';
+import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 
 import { labels, sortByOptions } from './options';
 
 const options = objectToSelectOptions(sortByOptions);
-/**
- * filter for controlling the sorting of a list of Event Dates
- */
+
 const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useDatesListFilterState();
 
-	return (
-		<Select
-			id='dates-list-sort-by-control'
-			label={labels.sortBy}
-			value={sortBy}
-			options={options}
-			onChangeValue={setSortBy}
-		/>
-	);
+	return <SortByControlUI label={labels.sortBy} onChangeValue={setSortBy} options={options} value={sortBy} />;
 };
 
 export default SortByControl;

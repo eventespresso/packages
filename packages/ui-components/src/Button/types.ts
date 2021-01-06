@@ -19,6 +19,7 @@ export interface ButtonProps extends Omit<ButtonAdapterProps, 'size'>, Size {
 	active?: boolean;
 	buttonType?: ButtonType | 'accent' | 'default' | 'minimal' | 'primary' | 'secondary';
 	className?: string;
+	noBoxShadow?: boolean;
 	noMargin?: boolean;
 	noHorizontalMargin?: boolean;
 	noVerticalMargin?: boolean;
