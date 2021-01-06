@@ -5,7 +5,7 @@ import type { SortByControlProps } from './types';
 
 import './style.scss';
 
-export const SortByControl: React.FC<SortByControlProps> = ({ label, onChangeValue, options, value }) => {
+export const SortByControl: React.FC<SortByControlProps> = ({ entityType, label, onChangeValue, options, value }) => {
 	return (
 		<div className='ee-sort-by-control'>
 			<Select
@@ -15,7 +15,10 @@ export const SortByControl: React.FC<SortByControlProps> = ({ label, onChangeVal
 				onChangeValue={onChangeValue}
 				value={value}
 			/>
-			<Button noMargin>{__('reorder dates')}</Button>
+			<Button noBoxShadow noMargin>
+				{entityType === 'datetimes' && __('reorder dates')}
+				{entityType === 'tickets' && __('reorder tickets')}
+			</Button>
 		</div>
 	);
 };
