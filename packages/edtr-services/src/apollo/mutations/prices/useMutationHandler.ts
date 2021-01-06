@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
-import { OperationVariables } from 'apollo-client';
 
+import useMutationVariables from './useMutationVariables';
 import useOnCreatePrice from './useOnCreatePrice';
 import useOnDeletePrice from './useOnDeletePrice';
 import useOnUpdatePrice from './useOnUpdatePrice';
 import type { MutationHandler, MutationUpdater } from '../types';
-import { MutationType, MutationInput } from '@eventespresso/data';
+import { MutationType } from '@eventespresso/data';
 import { PricesList, Price } from '../../';
 import { DEFAULT_PRICE_LIST_DATA as DEFAULT_LIST_DATA, usePriceQueryOptions } from '../../queries';
 import type { PriceCommonInput } from './types';
@@ -18,17 +18,7 @@ const useMutationHandler = (): MH => {
 	const onCreatePrice = useOnCreatePrice();
 	const onUpdatePrice = useOnUpdatePrice();
 	const onDeletePrice = useOnDeletePrice();
-
-	const createVariables = useCallback((mutationType: MutationType, input: MutationInput): OperationVariables => {
-		const mutationInput: MutationInput = {
-			clientMutationId: `${mutationType}_PRICE`,
-			...input,
-		};
-
-		return {
-			input: mutationInput,
-		};
-	}, []);
+	const getMutationVariables = useMutationVariables();
 
 	const onUpdate = useCallback<MutationUpdater<Price, PriceCommonInput>>(
 		({ cache, entity: price, input, mutationType }) => {
@@ -59,11 +49,11 @@ const useMutationHandler = (): MH => {
 
 	const mutator = useCallback<MH>(
 		(mutationType, input) => {
-			const variables = createVariables(mutationType, input);
+			const variables = getMutationVariables(mutationType, input);
 
 			return { variables, onUpdate };
 		},
-		[createVariables, onUpdate]
+		[getMutationVariables, onUpdate]
 	);
 
 	return mutator;
