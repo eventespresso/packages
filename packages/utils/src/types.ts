@@ -19,3 +19,7 @@ export interface Disclosure {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 export type OmitFirstFromArray<T extends any[]> = T extends [infer A, ...infer R] ? R : never;
+
+export type KeysOfType<Obj, Type> = {
+	[K in keyof Obj]: Obj[K] extends Type ? K : never;
+}[keyof Obj];
