@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { OperationVariables } from 'apollo-client';
+import type { OperationVariables } from 'apollo-client';
 
 import type { MutationType, MutationInput } from '@eventespresso/data';
 import { KeysOfType, normalizeNumericFields } from '@eventespresso/utils';
