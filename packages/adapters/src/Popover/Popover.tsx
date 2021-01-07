@@ -10,7 +10,7 @@ import {
 
 import type { PopoverProps } from './types';
 
-export const Popover: React.FC<PopoverProps> = ({ content, contentClassName, header, trigger, ...props }) => {
+export const Popover: React.FC<PopoverProps> = ({ content, contentClassName, header, trigger, children, ...props }) => {
 	return (
 		<ChakraPopover {...props}>
 			<PopoverTrigger>{trigger}</PopoverTrigger>
@@ -22,7 +22,7 @@ export const Popover: React.FC<PopoverProps> = ({ content, contentClassName, hea
 						{header}
 					</PopoverHeader>
 				)}
-				<PopoverBody>{content}</PopoverBody>
+				<PopoverBody>{content || children}</PopoverBody>
 			</PopoverContent>
 		</ChakraPopover>
 	);

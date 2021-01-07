@@ -48,13 +48,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 		return (
 			<ButtonAdapter
+				tabIndex={0}
 				{...props}
 				buttonText={buttonText}
 				className={className}
 				icon={icon}
 				onClick={onClick}
 				ref={ref}
-				tabIndex={0}
 			/>
 		);
 	}
