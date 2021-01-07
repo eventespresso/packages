@@ -1,0 +1,71 @@
+.ee-rich-text-editor {
+	border-top: 1px solid #ddd;
+	cursor: text;
+	font-size: 16px;
+	margin-top: 10px;
+
+	&-root {
+		border-color: var(--ee-border-color);
+		border-radius: var(--ee-border-radius-small);
+		border-style: solid;
+		border-width: var(--ee-border-width);
+		padding: var(--ee-padding-micro) var(--ee-padding-tiny);
+
+		.link-popover {
+			z-index: 99;
+		}
+	}
+
+	&--hidePlaceholder {
+		.public-DraftEditorPlaceholder-inner {
+			display: none;
+		}
+	}
+
+	&-blockquote {
+		border-left: 5px solid var(--ee-text-on-grey-4);
+		font-style: italic;
+		margin: 1rem 0;
+		padding: var(--ee-padding-micro) var(--ee-padding-tiny);
+	}
+
+	&__style-button {
+		border-color: transparent;
+		border-radius: var(--ee-border-radius-small);
+		border-style: solid;
+		border-width: var(--ee-border-width);
+		cursor: pointer;
+		display: inline-block;
+		padding: var(--ee-padding-nano) var(--ee-margin-smaller);
+
+		&:hover,
+		&:focus {
+			border-color: var(--ee-color-primary);
+		}
+
+		&--active {
+			color: var(--ee-color-primary-high-contrast);
+
+			svg {
+				color: var(--ee-color-primary-high-contrast);
+			}
+		}
+	}
+
+	.DraftEditor-root {
+		.public-DraftStyleDefault-block {
+			color: var(--ee-default-text-color-high-contrast);
+			font-weight: 100;
+		}
+	}
+
+	.public-DraftEditor-content,
+	.public-DraftEditorPlaceholder-root {
+		margin: 0 -15px -15px;
+		padding: 15px;
+	}
+
+	.public-DraftEditor-content {
+		min-height: 100px;
+	}
+}
