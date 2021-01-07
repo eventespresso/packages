@@ -9626,7 +9626,7 @@ draftjs-to-html@^0.9.1:
   resolved "https://registry.yarnpkg.com/draftjs-to-html/-/draftjs-to-html-0.9.1.tgz#1c870fbb588d2390204cb4d0ee7e04ad0c709969"
   integrity sha512-fFstE6+IayaVFBEvaFt/wN8vdj8FsTRzij7dy7LI9QIwf5LgfHFi9zSpvCg+feJ2tbYVqHxUkjcibwpsTpgFVQ==
 
-draftjs-utils@^0.10.2:
+draftjs-utils@0.10.2, draftjs-utils@^0.10.2:
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/draftjs-utils/-/draftjs-utils-0.10.2.tgz#a7f16d2c1c174ac38ba3bbf700c256f176b2699c"
   integrity sha512-EstHqr3R3JVcilJrBaO/A+01GvwwKmC7e4TCjC7S94ZeMh4IVmf60OuQXtHHpwItK8C2JCi3iljgN5KHkJboUg==
@@ -18306,6 +18306,17 @@ reakit@1.1.0:
     reakit-system "^0.13.0"
     reakit-utils "^0.13.0"
     reakit-warning "^0.4.0"
+
+reakit@1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/reakit/-/reakit-1.3.4.tgz#1c83614130fbcee624ba510547db79c90b3435a4"
+  integrity sha512-aLR0GBOc9vELTk4PKK/zndBbIs4RSw4B7GSGY6yoMHQ/vna0iLNd5BMhjtXspD/B7hhkYERlT6di8pIyD3HSPw==
+  dependencies:
+    "@popperjs/core" "^2.5.4"
+    body-scroll-lock "^3.1.5"
+    reakit-system "^0.15.1"
+    reakit-utils "^0.15.1"
+    reakit-warning "^0.6.1"
 
 reakit@^1.1.0:
   version "1.3.2"
