@@ -3,9 +3,11 @@
 .ee-ticket-assignments-manager {
 	.ee-legend-item dt,
 	.ee-tam-relation-btn {
-		border-radius: var(--ee-border-radius-default);
 		background-color: var(--ee-color-grey-14);
 		border-color: var(--ee-color-grey-14);
+		border-radius: var(--ee-border-radius-default);
+		border-style: solid;
+		border-width: var(--ee-border-width);
 		cursor: pointer;
 		padding: 0;
 
@@ -38,6 +40,8 @@
 		.ee-tam-relation-btn {
 			background-color: var(--ee-color-accent);
 			border-color: var(--ee-color-accent);
+
+			@extend .ee-error-pulse;
 
 			&:focus {
 				border-color: var(--ee-color-accent-high-contrast);

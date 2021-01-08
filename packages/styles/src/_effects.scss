@@ -22,6 +22,23 @@ $animation: (
 	}
 }
 
+@keyframes ee-error-pulse {
+	0% {
+		background-color: var(--ee-color-accent-low-contrast);
+	}
+	50% {
+		background-color: var(--ee-color-accent-high-contrast);
+	}
+	100% {
+		background-color: var(--ee-color-accent-low-contrast);
+	}
+}
+
+.ee-error-pulse {
+	animation: ee-error-pulse 3s infinite;
+	@include reduce-motion('animation');
+}
+
 @keyframes ee-fade-in-opacity {
 	0% {
 		opacity: 0;
