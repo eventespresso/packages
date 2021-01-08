@@ -3,7 +3,7 @@
 @import '../functions';
 @import 'base-colors';
 
-$accent: map.get($hot-pink, 'high-contrast') !default;
+$accent: map.get($hot-pink, 'default') !default;
 $primary: map.get($blue, 'default') !default;
 $secondary: map.get($green, 'default') !default;
 
@@ -37,9 +37,9 @@ $primary-colors: (
 $secondary-colors: (
 	default: $secondary,
 	super-high-contrast: map.get($green, 'super-high-contrast'),
-	secondary-high-contrast: map.get($green, 'high-contrast'),
-	secondary-low-contrast: map.get($green, 'low-contrast'),
-	secondary-super-low-contrast: map.get($green, 'super-low-contrast'),
+	high-contrast: map.get($green, 'high-contrast'),
+	low-contrast: map.get($green, 'low-contrast'),
+	super-low-contrast: map.get($green, 'super-low-contrast'),
 	text-on: map.get($green, 'text-on'),
 	text-on-super-high-contrast: map.get($green, 'text-on-super-high-contrast'),
 	text-on-high-contrast: map.get($green, 'text-on-high-contrast'),

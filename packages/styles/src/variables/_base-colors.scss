@@ -96,13 +96,13 @@ $dark-green: (
 );
 
 $hot-pink: (
-	default: #de5882,
+	default: #be3862,
 	super-high-contrast: #9e1842,
-	high-contrast: #be3862,
-	low-contrast: #fe78a2,
-	super-low-contrast: #ff98c2,
+	high-contrast: #ae2852,
+	low-contrast: #ce4872,
+	super-low-contrast: #de5882,
 	text-on: $white,
-	text-on-super-high-contrast: #ffecff,
+	text-on-super-high-contrast: $white,
 	text-on-high-contrast: $white,
 	text-on-low-contrast: #3d0000,
 	text-on-super-low-contrast: #5e0021,
