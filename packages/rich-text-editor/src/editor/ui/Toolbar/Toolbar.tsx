@@ -1,9 +1,9 @@
 import { CSSProperties, Fragment } from 'react';
 import { EditorState, Modifier, RichUtils } from 'draft-js';
-import { useToolbarState, Toolbar, ToolbarItem } from 'reakit/Toolbar';
+import { useToolbarState, Toolbar as ReakitToolbar, ToolbarItem } from 'reakit/Toolbar';
 import { Button } from '@eventespresso/ui-components';
 
-import { toolbar as defaultToolbar } from '../defaultToolbar';
+import { defaultToolbar } from '../defaultToolbar';
 import { useEditorState } from '../../hooks';
 import Link from './Link';
 
@@ -31,17 +31,17 @@ const toggleInlineStyle = (style, editorState, onChange) => {
 	}
 };
 
-export const ToolbarControls = () => {
+export const Toolbar = () => {
 	const toolbar = useToolbarState({ loop: true });
 	const [editorState, updateEditorState] = useEditorState();
 
 	return (
-		<Toolbar {...toolbar} aria-label='RTE Toolbar'>
+		<ReakitToolbar {...toolbar} aria-label='RTE Toolbar'>
 			{defaultToolbar.options.map((option) => {
 				const config = defaultToolbar?.[option];
 				return (
 					<Fragment key={option}>
-						{config.options.map((item) => {
+						{(config?.items as string[])?.map((item) => {
 							const itemConfig = config?.[item];
 
 							const Icon = itemConfig?.icon;
@@ -69,8 +69,8 @@ export const ToolbarControls = () => {
 					</Fragment>
 				);
 			})}
-		</Toolbar>
+		</ReakitToolbar>
 	);
 };
 
-export default ToolbarControls;
+export default Toolbar;

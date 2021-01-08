@@ -6,7 +6,7 @@ import 'draft-js/dist/Draft.css';
 import { __ } from '@eventespresso/i18n';
 import { isTabKey } from '@eventespresso/utils';
 
-import ToolbarControls from '../ToolbarControls/ToolbarControls';
+import { Toolbar } from '../Toolbar';
 import { DraftEditorProps, RichTextEditorProps } from './types';
 import { getBlockStyle } from '../../utils';
 
@@ -64,8 +64,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel
 	return (
 		<>
 			<div className='ee-rich-text-editor-root'>
-				{/* <ToolbarControls type={type} editorRef={editorRef} /> */}
-				<ToolbarControls />
+				<Toolbar />
 				<div className={editorClassName}>
 					<Editor
 						ariaLabel={ariaLabel}
