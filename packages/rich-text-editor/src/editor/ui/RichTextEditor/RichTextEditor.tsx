@@ -14,7 +14,6 @@ import DebugLog from './DebugLog';
 import { withState } from '../../context';
 import { useEditorState } from '../../hooks';
 
-import './Draft.css';
 import './style.scss';
 
 // Custom overrides for "code" style.
