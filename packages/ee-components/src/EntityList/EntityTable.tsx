@@ -17,7 +17,6 @@ const EntityTable = <FS extends ELFSM>({
 	filterState,
 	headerRowGenerator,
 	listId,
-	onSort,
 	tableCaption,
 	tableId,
 }: Partial<EntityTableProps<FS>>): JSX.Element => {
@@ -43,8 +42,6 @@ const EntityTable = <FS extends ELFSM>({
 		tableCaption,
 	});
 
-	const onDragEnd = filterState?.sortingEnabled ? onSort : null;
-
 	// key to make sure the list is refreshed after optimistic responses
 	const key = entityIds?.join(':');
 
@@ -55,7 +52,6 @@ const EntityTable = <FS extends ELFSM>({
 			headerRows={headerRows}
 			key={key}
 			metaData={metaData}
-			onDragEnd={onDragEnd}
 		/>
 	);
 };

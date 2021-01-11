@@ -68,6 +68,10 @@
 					margin: 0;
 					text-align: center;
 					width: 100%;
+
+					.chakra-editable__input {
+						margin-bottom: var(--ee-margin-tiny);
+					}
 				}
 
 				&__description {

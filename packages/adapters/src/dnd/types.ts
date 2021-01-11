@@ -1,44 +1,29 @@
-import type { AnyObject } from 'react-final-form';
-import type { Size } from '../';
+import type {
+	OnBeforeCaptureResponder,
+	OnBeforeDragStartResponder,
+	OnDragStartResponder,
+	OnDragUpdateResponder,
+	OnDragEndResponder,
+} from 'react-beautiful-dnd';
 
-export interface Cell {
-	as?: 'td';
-	className?: string;
-	id?: string;
-	key: string;
-	render?: (props: CellRender) => JSX.Element;
-	scope?: 'col' | 'row';
-	type: string;
-	value?: React.ReactNode;
+export interface DragAndDropProps extends Responders {
+	asContainer: 'div' | 'ol' | 'ul';
+	asItem: 'div' | 'li';
+	droppableId: string;
+	items: any[];
 }
 
-export interface CellData extends Omit<Cell, 'type'>, Size {
-	showValueOnMobile?: boolean;
-	textAlign?: 'center' | 'end';
+export interface DraggableProps extends Pick<DragAndDropProps, 'asItem' | 'droppableId'> {
+	content: React.ReactNode;
+	index: number;
 }
 
-interface CellRender {
-	row: any;
-	col: any;
-	column: any;
-	cellData?: any;
-}
-
-export interface FooterRow {
-	cells: CellData[];
-	footerRowClassName?: string;
-	id?: string;
-}
-
-export interface HeaderRow {
-	cells: CellData[];
-	children?: React.ReactNode;
-	className?: string;
-	extraProps?: AnyObject;
-	id?: string;
-	key: string;
-	primary: boolean;
-	type: string;
+interface Responders {
+	onBeforeCapture?: OnBeforeCaptureResponder;
+	onBeforeDragStart?: OnBeforeDragStartResponder;
+	onDragStart?: OnDragStartResponder;
+	onDragUpdate?: OnDragUpdateResponder;
+	onDragEnd?: OnDragEndResponder;
 }
 
 export interface ResponsiveCellProps {
@@ -46,7 +31,7 @@ export interface ResponsiveCellProps {
 	value: string;
 }
 
-export interface ResponsiveTableProps {
+export interface ResponsiveTableProps extends Responders, CommonProps {
 	bodyRows: BodyRow[];
 	className?: TableClassName;
 	footerRows?: FooterRow[];
@@ -74,7 +59,7 @@ export interface TableProps {
 	tableId?: string;
 }
 
-export interface TableBodyProps {
+export interface TableBodyProps extends Responders, CommonProps {
 	bodyRows: BodyRow[];
 	className: TableClassName;
 	headerRowCount: number;
@@ -108,14 +93,14 @@ export interface TableDataCellProps {
 	tableDataCellClassName?: string;
 }
 
-export interface TableFooterProps {
+export interface TableFooterProps extends CommonProps {
 	className: TableClassName;
 	footerRows: FooterRow[];
 	tableId: string;
 	rowCount: number;
 }
 
-export interface TableHeaderProps {
+export interface TableHeaderProps extends CommonProps {
 	className: TableClassName;
 	headerRows: HeaderRow[];
 	tableId: TableId;
@@ -133,7 +118,7 @@ export interface TableHeaderCellProps {
 	tableHeaderCellClassName?: string;
 }
 
-export interface BodyRow {
+export interface BodyRow extends CommonProps {
 	cells?: CellData[];
 	children?: React.ReactNode;
 	className?: TableClassName | string;

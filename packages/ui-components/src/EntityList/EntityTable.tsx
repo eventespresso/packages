@@ -5,7 +5,7 @@ import { useMemoStringify } from '@eventespresso/hooks';
 import { ResponsiveTable } from '../EspressoTable';
 import type { EntityTableProps } from './types';
 
-export const EntityTable: React.FC<EntityTableProps> = ({ bodyRows, headerRows, metaData, onDragEnd, ...props }) => {
+export const EntityTable: React.FC<EntityTableProps> = ({ bodyRows, headerRows, metaData, ...props }) => {
 	const className = useMemoStringify({ tableClassName: classNames('ee-entity-table', props.className) }, [
 		props.className,
 	]);
@@ -17,7 +17,6 @@ export const EntityTable: React.FC<EntityTableProps> = ({ bodyRows, headerRows, 
 			className={className}
 			headerRows={headerRows}
 			metaData={metaData}
-			onDragEnd={onDragEnd}
 		/>
 	);
 };

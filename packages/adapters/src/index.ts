@@ -6,6 +6,7 @@ export * from './Checkbox';
 export * from './CheckboxGroup';
 export * from './Collapse';
 export * from './Divider';
+export * from './dnd';
 export * from './Dotdotdot';
 export * from './FormControl';
 export * from './FormHelperText';

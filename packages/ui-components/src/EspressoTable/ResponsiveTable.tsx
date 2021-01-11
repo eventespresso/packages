@@ -25,7 +25,6 @@ export const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	footerRows = EMPTY_ARRAY,
 	headerRows = EMPTY_ARRAY,
 	metaData,
-	onBeforeDragStart,
 	onDragEnd,
 	onDragStart,
 	onDragUpdate,

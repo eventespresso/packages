@@ -5,8 +5,10 @@ import { clone } from 'ramda';
 import { useDebouncedCallback } from 'use-debounce';
 import type { MutationResult } from '@apollo/client';
 
-import type { EntityId } from '@eventespresso/data';
+import { __ } from '@eventespresso/i18n';
 import { getGuids } from '@eventespresso/predicates';
+import { useSystemNotifications } from '@eventespresso/toaster';
+import type { EntityId } from '@eventespresso/data';
 import type { Datetime, Ticket } from '../types';
 
 type Entity = Datetime | Ticket;
@@ -41,6 +43,7 @@ interface ReorderEntities<E extends Entity> {
 }
 
 const useReorderEntities = <E extends Entity>({ entityType }: ReorderEntitiesProps): ReorderEntities<E> => {
+	const toaster = useSystemNotifications();
 	const [allEntityGuids, setAllEntityGuids] = useState<Array<EntityId>>([]);
 	const allEntityGuidsStr = allEntityGuids.join(':');
 
@@ -63,6 +66,7 @@ const useReorderEntities = <E extends Entity>({ entityType }: ReorderEntitiesPro
 	useEffect(() => {
 		if (allEntityGuids.length) {
 			done();
+			toaster.success({ message: __('reordering has been applied') });
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps

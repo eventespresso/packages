@@ -11,4 +11,5 @@ const useDatesListFilterState = (): DatetimesFilterStateManager => {
 
 	return value;
 };
+
 export default useDatesListFilterState;

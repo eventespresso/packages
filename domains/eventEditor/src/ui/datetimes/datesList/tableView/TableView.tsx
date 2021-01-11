@@ -1,16 +1,11 @@
 import { __ } from '@eventespresso/i18n';
 
 import { EntityTable } from '@eventespresso/ee-components';
-import useHeaderRowGenerator from './useHeaderRowGenerator';
-import useBodyRowGenerator from './useBodyRowGenerator';
-import {
-	datesList,
-	domain,
-	useDatesListFilterState,
-	useFilteredDateIds,
-	useReorderDatetimes,
-} from '@eventespresso/edtr-services';
+import { datesList, domain, useDatesListFilterState, useFilteredDateIds } from '@eventespresso/edtr-services';
 import { withBulkEdit } from '@eventespresso/services';
+
+import useBodyRowGenerator from './useBodyRowGenerator';
+import useHeaderRowGenerator from './useHeaderRowGenerator';
 import { Actions as BulkEditActions } from '../bulkEdit';
 
 import './styles.scss';
@@ -21,8 +16,6 @@ import './styles.scss';
 const TableView: React.FC = () => {
 	const filterState = useDatesListFilterState();
 	const filteredDateIds = useFilteredDateIds();
-
-	const { sortResponder: sortDates } = useReorderDatetimes(filteredDateIds);
 
 	const bodyRowGenerator = useBodyRowGenerator();
 	const headerRowGenerator = useHeaderRowGenerator();
@@ -37,7 +30,6 @@ const TableView: React.FC = () => {
 				filterState={filterState}
 				headerRowGenerator={headerRowGenerator}
 				listId={datesList}
-				onSort={sortDates}
 				tableCaption={__('Event Dates')}
 				tableId='date-entities-table-view'
 			/>

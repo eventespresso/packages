@@ -1,13 +1,14 @@
 import { useCallback, useMemo } from 'react';
 
+import { datetimesDroppableId } from '@eventespresso/constants';
 import type { EntityId } from '@eventespresso/data';
 import type { EntityTableProps } from '@eventespresso/ee-components';
 
-import type { Datetime, DatetimeEdge } from '../../types';
 import useReorderEntities from '../useReorderEntities';
 import { useDatetimes, useDatetimeQueryOptions } from '../../queries';
 import { useUpdateDatetimeList } from '../../../hooks';
 import { DatetimesFilterStateManager as DFSM } from '../../../filterState';
+import type { Datetime, DatetimeEdge } from '../../types';
 
 type SortResponder = EntityTableProps<DFSM>['onSort'];
 
@@ -41,11 +42,12 @@ const useReorderDatetimes = (filteredEntityIds: Array<EntityId>): ReorderDatetim
 		({ destination, source }) => {
 			const noDestination = !destination;
 			const noChange = source?.index === destination?.index && destination?.droppableId === source?.droppableId;
-			const notOurListOfInterest = destination?.droppableId !== 'date-entities-table-view-droppable';
+			const notOurListOfInterest = destination?.droppableId !== datetimesDroppableId;
 
 			if (noDestination || noChange || notOurListOfInterest) {
 				return;
 			}
+
 			sortEntities({
 				allEntities,
 				filteredEntityIds,

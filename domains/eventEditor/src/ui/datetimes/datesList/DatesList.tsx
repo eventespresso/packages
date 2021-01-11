@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-
 import { TypeName } from '@eventespresso/services';
 import {
 	domain,

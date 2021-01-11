@@ -18,7 +18,7 @@ const Table: React.FC<DatesAndTickets> = ({ datetimes, tickets }) => {
 	const bodyRows = useGetBodyRows({ datetimes, tickets });
 	const headerRows = useGetHeaderRows(tickets);
 
-	return <ResponsiveTable bodyRows={bodyRows} headerRows={headerRows} metaData={metaData} className={className} />;
+	return <ResponsiveTable bodyRows={bodyRows} className={className} headerRows={headerRows} metaData={metaData} />;
 };
 
 export default Table;

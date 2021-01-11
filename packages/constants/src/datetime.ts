@@ -1,5 +1,7 @@
 import { __ } from '@eventespresso/i18n';
 
+export const datetimesDroppableId = 'date-entities-droppable';
+
 export const datetimeStatus = {
 	isActive: __('Active'),
 	isCancelled: __('Cancelled'),

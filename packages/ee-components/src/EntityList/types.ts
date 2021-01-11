@@ -1,12 +1,6 @@
 import type React from 'react';
-import type {
-	BodyRow,
-	HeaderRow,
-	RowType,
-	TableRow,
-	LegendConfig,
-	ResponsiveTableProps,
-} from '@eventespresso/ui-components';
+import type { BodyRow, HeaderRow, LegendConfig, RowType, TableRow } from '@eventespresso/ui-components';
+import type { DragAndDropProps } from '@eventespresso/adapters';
 import type { Entity, EntityId } from '@eventespresso/data';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
 import type { TypeName } from '@eventespresso/services';
@@ -44,7 +38,7 @@ export interface EntityTableProps<FS extends ELFSM> extends EntityListViewProps<
 	entityIds: Array<EntityId>;
 	headerRowGenerator: HeaderRowGeneratorFn<FS>;
 	listId: string;
-	onSort?: ResponsiveTableProps['onDragEnd'];
+	onSort?: DragAndDropProps['onDragEnd'];
 	tableCaption?: string;
 	tableId?: string;
 }
