@@ -1,8 +1,14 @@
-import React, { Component, useCallback, useState } from 'react';
-import type { Story, Meta } from '@storybook/react/types-6-0';
+import React, { useCallback, useState } from 'react';
+import type { Meta } from '@storybook/react/types-6-0';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
+import { DragAndDrop } from '@eventespresso/ui-components';
 import { nodes } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
+
+export default {
+	component: DragAndDrop,
+	title: 'Components/DragAndDrop',
+} as Meta;
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -33,6 +39,48 @@ const getListStyle = (isDraggingOver) => ({
 	padding: grid,
 	width: 250,
 });
+
+export const ReorderEntities = () => {
+	const [items, setItems] = useState<Array<any>>(nodes);
+
+	const onDragEnd = useCallback(
+		(result) => {
+			// dropped outside the list
+			if (!result.destination) {
+				return;
+			}
+
+			const reorderedItems = reorder(items, result.source.index, result.destination.index);
+
+			setItems(reorderedItems);
+		},
+		[items]
+	);
+
+	const renderDraggableItems = useCallback(
+		(item) => ({
+			...item,
+			content: (
+				<>
+					<span>{item.id})</span>
+					<span>{item.name}: </span>
+				</>
+			),
+		}),
+		[]
+	);
+
+	return (
+		<DragAndDrop
+			asContainer='ul'
+			asItem='li'
+			droppableId='droppable'
+			items={items}
+			onDragEnd={onDragEnd}
+			renderDraggableItems={renderDraggableItems}
+		/>
+	);
+};
 
 export const SimpleDragAndDrop = () => {
 	const [items, setItems] = useState<Array<any>>(nodes);
@@ -80,8 +128,3 @@ export const SimpleDragAndDrop = () => {
 		</DragDropContext>
 	);
 };
-
-export default {
-	component: SimpleDragAndDrop,
-	title: 'Components/SimpleDragAndDrop',
-} as Meta;

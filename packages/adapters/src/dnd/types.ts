@@ -11,10 +11,12 @@ export interface DragAndDropProps extends Responders {
 	asItem: 'div' | 'li';
 	droppableId: string;
 	items: any[];
+	renderDraggableItems: (items: any[]) => DraggableProps;
 }
 
-export interface DraggableProps extends Pick<DragAndDropProps, 'asItem' | 'droppableId'> {
+export interface DraggableProps extends Pick<DragAndDropProps, 'asItem'> {
 	content: React.ReactNode;
+	id: string;
 	index: number;
 }
 

@@ -1,6 +1,5 @@
 import { __ } from '@eventespresso/i18n';
-import { DragAndDrop } from '@eventespresso/adapters';
-import { Button, Modal, Select } from '@eventespresso/ui-components';
+import { Button, DragAndDrop, Modal, Select } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
 
 import type { SortByControlProps } from './types';

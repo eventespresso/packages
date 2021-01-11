@@ -1,7 +1,7 @@
-import { Draggable as DraggableAdapter } from 'react-beautiful-dnd';
+import classNames from 'classnames';
 
+import { Draggable as DraggableAdapter, DraggableProps } from '@eventespresso/adapters';
 import { DragOutlined } from '@eventespresso/icons';
-import type { DraggableProps } from './types';
 
 const Draggable: React.FC<DraggableProps> = ({ asItem: AsItem, content, index, ...props }) => {
 	if (!content) {
@@ -11,18 +11,10 @@ const Draggable: React.FC<DraggableProps> = ({ asItem: AsItem, content, index, .
 	return (
 		<DraggableAdapter key={props.id} draggableId={props.id} index={index}>
 			{({ innerRef, draggableProps, dragHandleProps }, { isDragging }) => {
+				const className = classNames('ee-draggable', isDragging && 'ee-draggable--is-dragging');
+
 				return (
-					<AsItem
-						ref={innerRef}
-						// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
-						style={{
-							...draggableProps.style,
-							border: isDragging ? '1px solid var(--ee-color-bright-blue)' : 'none',
-							display: isDragging ? 'table' : 'table-row',
-						}}
-						{...draggableProps}
-						{...dragHandleProps}
-					>
+					<AsItem className={className} ref={innerRef} {...draggableProps} {...dragHandleProps}>
 						<DragOutlined />
 						{content}
 					</AsItem>

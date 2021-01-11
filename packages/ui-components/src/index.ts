@@ -18,6 +18,7 @@ export * from './DateTimeRangePicker';
 export * from './DebugInfo';
 export * from './DescriptionList';
 export * from './Divider';
+export * from './dnd';
 export * from './DropdownMenu';
 export * from './EditDateRangeButton';
 export * from './EmptyState';

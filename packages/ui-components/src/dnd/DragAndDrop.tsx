@@ -1,7 +1,9 @@
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import classNames from 'classnames';
 
+import { DragDropContext, Droppable, DragAndDropProps } from '@eventespresso/adapters';
 import Draggable from './Draggable';
-import type { DragAndDropProps } from './types';
+
+import './style.scss';
 
 export const DragAndDrop: React.FC<DragAndDropProps> = ({
 	asContainer: AsContainer,
@@ -12,10 +14,13 @@ export const DragAndDrop: React.FC<DragAndDropProps> = ({
 	onDragEnd,
 	onDragStart,
 	onDragUpdate,
+	renderDraggableItems,
 }) => {
-	const draggableItems = items.map((item, index) => (
-		<Draggable asItem={asItem} content={item.name} id={item.id} index={index} key={item?.id} />
-	));
+	const draggableItems = items
+		.map(renderDraggableItems)
+		.map((item, index) => (
+			<Draggable asItem={asItem} content={item.content} id={item.id} index={index} key={item?.id} />
+		));
 
 	return (
 		<DragDropContext
@@ -26,14 +31,10 @@ export const DragAndDrop: React.FC<DragAndDropProps> = ({
 		>
 			<Droppable droppableId={droppableId}>
 				{({ innerRef, droppableProps, placeholder }, { isDraggingOver }) => {
-					// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
-					const style = {
-						border: isDraggingOver ? '1px solid lightgreen' : 'none',
-						borderSpacing: isDraggingOver ? '2px' : '0',
-					};
+					const className = classNames('ee-droppable', isDraggingOver && 'ee-droppable--is-dragging-over');
 
 					return (
-						<AsContainer ref={innerRef} style={style} {...droppableProps}>
+						<AsContainer {...droppableProps} className={className} ref={innerRef}>
 							{draggableItems}
 							{placeholder}
 						</AsContainer>

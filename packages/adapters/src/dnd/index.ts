@@ -1,2 +1,2 @@
-export * from './DragAndDrop';
+export { Draggable, DragDropContext, Droppable } from 'react-beautiful-dnd';
 export * from './types';

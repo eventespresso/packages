@@ -1,0 +1,40 @@
+@import '~@eventespresso/styles/src';
+
+.ee-droppable {
+	border: 1px solid transparent;
+	border-radius: var(--ee-border-radius-default);
+
+	li {
+		align-items: center;
+		border: 1px dashed transparent;
+		border-radius: var(--ee-border-radius-small);
+		display: flex;
+
+		list-style: none;
+
+		.ee-svg {
+			opacity: 0;
+			@include transition(opacity linear 100ms);
+		}
+
+		&:hover {
+			border-color: var(--ee-color-secondary);
+
+			.ee-svg {
+				opacity: 1;
+			}
+		}
+	}
+
+	&--is-dragging-over {
+		border-color: var(--ee-color-secondary);
+	}
+}
+
+.ee-draggable {
+	&--is-dragging {
+		.ee-svg.ee-svg {
+			opacity: 1;
+		}
+	}
+}
