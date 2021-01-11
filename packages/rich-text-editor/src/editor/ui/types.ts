@@ -1,3 +1,5 @@
+import type { ToolbarStateReturn } from 'reakit/Toolbar';
+
 export type ToolbarOption =
 	| 'inline'
 	| 'blockType'
@@ -58,7 +60,7 @@ export type BaseToolbarOptionConfig<K extends string | number> = {
 
 export type ToolbarOptionConfig<K extends keyof ToolbarOptionItems> = BaseProps &
 	BaseToolbarOptionConfig<ToolbarOptionItems[K]> & {
-		component?: React.ComponentType;
+		component?: React.ComponentType<ToolbarItemProps<K>>;
 		items: Array<ToolbarOptionItems[K]>;
 		asDropdown?: boolean;
 	};
@@ -70,3 +72,17 @@ export type BaseToolBarConfig<Option extends ToolbarOption> = {
 export type ToolBarConfig = BaseToolBarConfig<ToolbarOption> & {
 	options: Array<ToolbarOption>;
 };
+
+export interface ToolbarProps {
+	toolbar?: ToolBarConfig;
+}
+
+export interface ToolbarControlProps<Option extends ToolbarOption> {
+	config: ToolbarOptionConfig<Option>;
+	toolbar: ToolbarStateReturn;
+}
+
+export interface ToolbarItemProps<Option extends ToolbarOption> extends ToolbarControlProps<Option> {
+	onChange: (key: string | number, value?: any) => void;
+	currentValue?: any;
+}

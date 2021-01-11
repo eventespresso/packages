@@ -14,6 +14,7 @@ import DebugLog from './DebugLog';
 import { withState } from '../../context';
 import { useEditorState } from '../../hooks';
 
+import './Draft.css';
 import './style.scss';
 
 // Custom overrides for "code" style.
@@ -26,7 +27,7 @@ const styleMap = {
 	},
 };
 
-const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel, className, type }) => {
+const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel, className, toolbar, type }) => {
 	const [editorState, updateEditorState] = useEditorState();
 
 	const editorRef = useRef<Editor>();
@@ -64,7 +65,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel
 	return (
 		<>
 			<div className='ee-rich-text-editor-root'>
-				<Toolbar />
+				<Toolbar toolbar={toolbar} />
 				<div className={editorClassName}>
 					<Editor
 						ariaLabel={ariaLabel}

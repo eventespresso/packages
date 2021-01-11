@@ -1,4 +1,4 @@
-import { Link } from '@eventespresso/icons';
+import { Link, Unlink } from '@eventespresso/icons';
 import { ToolBarConfig } from './types';
 
 const createIcon = (text: string) => () => <>{text}</>;
@@ -15,23 +15,23 @@ const unordered = createIcon('UL');
 const ordered = createIcon('OL');
 const indent = createIcon('Ind');
 const outdent = createIcon('Outd');
-const left = createIcon('A-L');
-const right = createIcon('A-R');
-const center = createIcon('A-C');
-const justify = createIcon('A-J');
-const unlink = createIcon('Unlink');
+const left = createIcon('Align-L');
+const right = createIcon('Align-R');
+const center = createIcon('Align-C');
+const justify = createIcon('Align-J');
+const unlink = Unlink;
 const link = Link;
 
 export const defaultToolbar: ToolBarConfig = {
 	options: [
 		'inline',
 		'blockType',
-		// 'fontSize',
-		// 'fontFamily',
-		// 'list',
-		// 'textAlign',
+		'fontFamily',
+		'fontSize',
+		'list',
+		'textAlign',
 		// 'colorPicker',
-		// 'link',
+		'link',
 		// 'emoji',
 		// 'image',
 		// 'remove',
@@ -62,7 +62,7 @@ export const defaultToolbar: ToolBarConfig = {
 		items: ['Arial', 'Georgia', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana'],
 	},
 	list: {
-		items: ['unordered', 'ordered', 'indent', 'outdent'],
+		items: ['unordered', 'ordered'],
 		unordered: { icon: unordered },
 		ordered: { icon: ordered },
 		indent: { icon: indent },
