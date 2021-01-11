@@ -53,6 +53,10 @@
 		}
 	}
 
+	&--inline {
+		display: inline-flex;
+	}
+
 	.chakra-select__icon-wrapper {
 		[dir='rtl'] & {
 			left: 0;

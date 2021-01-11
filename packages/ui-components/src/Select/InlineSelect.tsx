@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, forwardRef } from 'react';
 
 import classNames from 'classnames';
 
@@ -9,7 +9,7 @@ import { withDebounce } from '../withDebounce';
 
 import './style.scss';
 
-const InlineSelect: React.FC<SelectProps> = (props) => {
+const InlineSelect = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
 	const className = classNames('ee-select--inline', props.className);
 	const rootClassName = classNames('ee-select-wrapper--inline', props?.rootProps?.className);
 	const rootProps = useMemo(() => ({ ...props.rootProps, className: rootClassName }), [
@@ -17,7 +17,7 @@ const InlineSelect: React.FC<SelectProps> = (props) => {
 		rootClassName,
 	]);
 
-	return <SelectAdapter {...props} className={className} rootProps={rootProps} />;
-};
+	return <SelectAdapter {...props} ref={ref} className={className} rootProps={rootProps} />;
+});
 
 export default withDebounce(InlineSelect);
