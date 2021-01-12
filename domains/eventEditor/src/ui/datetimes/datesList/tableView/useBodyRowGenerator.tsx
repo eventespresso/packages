@@ -30,7 +30,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 		({ entityId, filterState }) => {
 			const datetime = getDatetime(entityId);
 
-			const { displayStartOrEndDate, sortingEnabled } = filterState;
+			const { displayStartOrEndDate } = filterState;
 
 			const bgClassName = getDatetimeBackgroundColorClassName(datetime);
 			const id = datetime.dbId || shortenGuid(datetime.id);
@@ -62,9 +62,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				className: 'ee-col-name ee-rspnsv-table-hide-on-mobile',
 				key: 'name',
 				size: 'huge',
-				value: sortingEnabled ? (
-					datetime.name
-				) : (
+				value: (
 					<EditableName
 						className={'ee-entity-list-text ee-focus-priority-5'}
 						entity={datetime}
@@ -90,7 +88,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				key: 'capacity',
 				size: 'tiny',
 				textAlign: 'end',
-				value: sortingEnabled ? datetime.capacity : <DateCapacity entity={datetime} />,
+				value: <DateCapacity entity={datetime} />,
 			};
 
 			const soldCell: CellData = {
@@ -104,14 +102,14 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				key: 'registrations',
 				size: 'smaller',
 				textAlign: 'center',
-				value: sortingEnabled ? '-' : <DateRegistrationsLink datetime={datetime} />,
+				value: <DateRegistrationsLink datetime={datetime} />,
 			};
 
 			const actionsCell: CellData = {
 				key: 'actions',
 				size: 'big',
 				textAlign: 'center',
-				value: sortingEnabled ? '-' : <DateActionsMenu entity={datetime} />,
+				value: <DateActionsMenu entity={datetime} />,
 			};
 
 			const cellsData: Array<CellData> = [

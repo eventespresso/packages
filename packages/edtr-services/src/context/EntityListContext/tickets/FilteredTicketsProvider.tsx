@@ -1,6 +1,6 @@
 import { createContext, useEffect } from 'react';
 
-import { getGuids, notTrashed } from '@eventespresso/predicates';
+import { getGuids } from '@eventespresso/predicates';
 import { useFilteredEntities } from '@eventespresso/services';
 import type { EntityId } from '@eventespresso/data';
 import { useMemoStringify } from '@eventespresso/hooks';
@@ -19,34 +19,15 @@ const FilteredTicketsProvider: React.FC = ({ children }) => {
 
 	const filterState = useTicketsListFilterState();
 
-	const { setSortBy, sortingEnabled } = filterState;
+	const filteredEntities = useFilteredEntities(domain, ticketsList, tickets, filterState);
 
-	let filteredEntities = useFilteredEntities(domain, ticketsList, tickets, filterState);
-
-	if (filterState.sortingEnabled) {
-		filteredEntities = notTrashed(filteredEntities);
-	}
 	const filteredEntityIds = useMemoStringify(getGuids(filteredEntities));
 
 	// Update Edtr state for bulk edit.
 	const [, setVisibleTicketIds] = useVisibleTicketIds();
 	useEffect(() => {
-		// update only when not sorting
-		if (!sortingEnabled) {
-			setVisibleTicketIds(getGuids(filteredEntities));
-		}
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [filteredEntityIds, sortingEnabled]);
-
-	// set sortBy to 'order' when sorting is enabled
-	useEffect(() => {
-		if (sortingEnabled) {
-			setSortBy('order');
-		}
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [sortingEnabled]);
+		setVisibleTicketIds(getGuids(filteredEntities));
+	}, [filteredEntities, filteredEntityIds, setVisibleTicketIds]);
 
 	return <Provider value={filteredEntityIds}>{children}</Provider>;
 };

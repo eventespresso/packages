@@ -40,7 +40,7 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 
 	const legend = <CollapsibleLegend direction='row' legendConfig={legendConfig} termWhiteBg />;
 
-	const pagination = !filterState.sortingEnabled && ( // disable pogination when sorting
+	const pagination = (
 		<Pagination
 			className='ee-entity-list__pagination'
 			defaultPerPage={6}

@@ -27,7 +27,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 	return useCallback<TicketsTableBodyRowGen>(
 		({ entityId, filterState }) => {
 			const ticket = getTicket(entityId);
-			const { displayStartOrEndDate, sortingEnabled } = filterState;
+			const { displayStartOrEndDate } = filterState;
 
 			const bgClassName = getTicketBackgroundColorClassName(ticket);
 			const id = ticket.dbId || shortenGuid(ticket.id);
@@ -59,9 +59,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				className: 'ee-col-name ee-rspnsv-table-hide-on-mobile',
 				key: 'name',
 				size: 'huge',
-				value: sortingEnabled ? (
-					ticket.name
-				) : (
+				value: (
 					<EditableName
 						className={'ee-entity-list-text ee-focus-priority-5'}
 						entity={ticket}
@@ -101,21 +99,21 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				key: 'quantity',
 				size: 'tiny',
 				textAlign: 'end',
-				value: sortingEnabled ? ticket.quantity : <TicketQuantity entity={ticket} />,
+				value: <TicketQuantity entity={ticket} />,
 			};
 
 			const registrationsCell: CellData = {
 				key: 'registrations',
 				size: 'smaller',
 				textAlign: 'center',
-				value: sortingEnabled ? '-' : <TicketRegistrationsLink ticket={ticket} />,
+				value: <TicketRegistrationsLink ticket={ticket} />,
 			};
 
 			const actionsCell: CellData = {
 				key: 'actions',
 				size: 'big',
 				textAlign: 'center',
-				value: sortingEnabled ? '-' : <TicketActionsMenu entity={ticket} />,
+				value: <TicketActionsMenu entity={ticket} />,
 			};
 
 			const cellsData: Array<CellData> = [

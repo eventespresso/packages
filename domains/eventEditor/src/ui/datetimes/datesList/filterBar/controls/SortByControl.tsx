@@ -1,12 +1,13 @@
 import { useCallback } from 'react';
+import { format } from 'date-fns';
 
 import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
 import {
+	DatetimeEdge,
 	useDatesListFilterState,
 	useFilteredDateIds,
 	useReorderDatetimes,
 	useDatetimeQueryOptions,
-	DatetimeEdge,
 	useUpdateDatetimeList,
 } from '@eventespresso/edtr-services';
 
@@ -33,6 +34,11 @@ const SortByControl: React.FC = () => {
 				<>
 					<span>{item.dbId})</span>
 					<span>{item.name}: </span>
+					<span>{format(new Date(item.startDate), 'LLL')}</span>
+					<span>
+						{format(new Date(item.startDate), 'd')} - {format(new Date(item.endDate), 'd')}
+					</span>
+					<span>{format(new Date(item.endDate), 'yyyy')}</span>
 				</>
 			),
 		}),

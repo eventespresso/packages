@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import { useMemoStringify } from '@eventespresso/hooks';
-import { isFunc, isEmpty } from '@eventespresso/utils';
+import { isEmpty } from '@eventespresso/utils';
 import Table from './Table';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
@@ -25,9 +25,6 @@ export const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	footerRows = EMPTY_ARRAY,
 	headerRows = EMPTY_ARRAY,
 	metaData,
-	onDragEnd,
-	onDragStart,
-	onDragUpdate,
 	...props
 }) => {
 	const primaryHeader = headerRows.find((row) => row.primary === true);
@@ -72,7 +69,6 @@ export const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 	const captionID = `${tableId}-caption`;
 	const headerRowCount = headerRows.length;
 	const tableRowCount = bodyRows.length;
-	const showDragHandle = props.showDragHandle && isFunc(onDragEnd);
 
 	return (
 		<div className={wrapperClassName}>
@@ -82,23 +78,13 @@ export const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 				className={cssClasses.tableClassName}
 				tableId={tableId}
 			>
-				<TableHeader
-					className={cssClasses}
-					headerRows={headerRows}
-					showDragHandle={showDragHandle}
-					tableId={tableId}
-				/>
+				<TableHeader className={cssClasses} headerRows={headerRows} tableId={tableId} />
 				<TableBody
 					bodyRows={bodyRows}
 					className={cssClasses}
 					hasRowHeaders={hasRowHeaders}
 					headerRowCount={headerRowCount}
-					onBeforeDragStart={onBeforeDragStart}
-					onDragStart={onDragStart}
-					onDragUpdate={onDragUpdate}
-					onDragEnd={onDragEnd}
 					primaryHeader={primaryHeader}
-					showDragHandle={showDragHandle}
 					tableId={tableId}
 				/>
 				<TableFooter
@@ -106,7 +92,6 @@ export const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 					footerRows={footerRows}
 					tableId={tableId}
 					rowCount={headerRowCount + tableRowCount}
-					showDragHandle={showDragHandle}
 				/>
 			</Table>
 		</div>

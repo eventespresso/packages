@@ -20,7 +20,7 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 	filterState,
 	listId,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
-	const { searchText, setCardView, setTableView, setSearchText, sortingEnabled, toggleSorting, view } = filterState;
+	const { searchText, setCardView, setTableView, setSearchText, view } = filterState;
 
 	const filerBarItems = useFilterBarUIElements({ domain, filterState, listId });
 
@@ -48,12 +48,5 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 		</>
 	);
 
-	return (
-		<EntityListFilterBarUI
-			collapsibleButtons={collapsibleButtons}
-			disableFilters={sortingEnabled}
-			id={listId}
-			mainButtons={mainButtons}
-		/>
-	);
+	return <EntityListFilterBarUI collapsibleButtons={collapsibleButtons} id={listId} mainButtons={mainButtons} />;
 };

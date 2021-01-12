@@ -13,7 +13,7 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 	entityList: Array<E>,
 	filterState: FS
 ): Array<E> => {
-	const { pageNumber, perPage, searchText, setPageNumber, setTotal, sortBy, sortingEnabled, total } = filterState;
+	const { pageNumber, perPage, searchText, setPageNumber, setTotal, sortBy, total } = filterState;
 
 	const { applyFilters, applySearches, applySorters } = useEntityFilterService<D, L, E, ELFSM>(domain, listId);
 
@@ -21,9 +21,6 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 	// Filter the list
 	cacheIds = entityListCacheIdString(entityList);
 	const filteredEntities = useMemo<Array<E>>(() => {
-		if (sortingEnabled) {
-			return entityList;
-		}
 		return applyFilters(entityList, filterState);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [applyFilters, cacheIds, filterState]);
@@ -31,9 +28,6 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 	// search entities
 	cacheIds = entityListCacheIdString(filteredEntities);
 	const searchResults = useMemo<Array<E>>(() => {
-		if (sortingEnabled) {
-			return filteredEntities;
-		}
 		return applySearches(filteredEntities, filterState);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [applySearches, cacheIds, searchText]);
@@ -48,13 +42,10 @@ const useFilteredEntities = <D extends string, L extends string, E extends Entit
 	// paginate it
 	cacheIds = entityListCacheIdString(sortedEntities);
 	const paginatedEntities = useMemo<Array<E>>(() => {
-		if (sortingEnabled) {
-			return sortedEntities;
-		}
 		// entities for current page
 		return paginateEntities({ entities: sortedEntities, pageNumber, perPage });
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [cacheIds, perPage, pageNumber, sortingEnabled]);
+	}, [cacheIds, perPage, pageNumber]);
 
 	// Avoid synchronous state update
 	useEffect(() => {

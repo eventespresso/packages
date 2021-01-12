@@ -20,7 +20,6 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 			total: null,
 			searchText: '',
 			sortBy,
-			sortingEnabled: false,
 			view,
 		}),
 		[sortBy, view]
@@ -100,12 +99,6 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 		});
 	}, []);
 
-	const toggleSorting: FSM['toggleSorting'] = useCallback(() => {
-		dispatch({
-			type: 'TOGGLE_SORTING',
-		});
-	}, []);
-
 	return useMemo(
 		() => ({
 			...state,
@@ -117,7 +110,6 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 			setCardView,
 			setTableView,
 			setSearchText,
-			toggleSorting,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[state]

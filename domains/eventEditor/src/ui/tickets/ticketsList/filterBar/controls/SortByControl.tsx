@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
+import { format } from 'date-fns';
 
-import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
+import { CurrencyDisplay, SortByControl as SortByControlUI } from '@eventespresso/ee-components';
 import {
 	TicketEdge,
 	useFilteredTicketIds,
@@ -35,6 +36,15 @@ const SortByControl: React.FC = () => {
 				<>
 					<span>{item.dbId})</span>
 					<span>{item.name}: </span>
+					<span>
+						<CurrencyDisplay value={item.price} />
+					</span>
+					<span>-</span>
+					<span>{format(new Date(item.startDate), 'LLL')}</span>
+					<span>
+						{format(new Date(item.startDate), 'd')} - {format(new Date(item.endDate), 'd')}
+					</span>
+					<span>{format(new Date(item.endDate), 'yyyy')}</span>
 				</>
 			),
 		}),

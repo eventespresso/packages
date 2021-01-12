@@ -12,7 +12,6 @@ describe('useEntityListFilterStateManager', () => {
 		expect(typeof result.current.pageNumber).toBe('number');
 		expect(typeof result.current.searchText).toBe('string');
 		expect(typeof result.current.sortBy).toBe('string');
-		expect(typeof result.current.sortingEnabled).toBe('boolean');
 		expect(typeof result.current.view).toBe('string');
 	});
 
@@ -24,7 +23,6 @@ describe('useEntityListFilterStateManager', () => {
 		expect(result.current.total).toBe(null);
 		expect(result.current.searchText).toBe('');
 		expect(result.current.sortBy).toBe('id');
-		expect(result.current.sortingEnabled).toBe(false);
 		expect(result.current.view).toBe('card');
 	});
 
@@ -128,18 +126,5 @@ describe('useEntityListFilterStateManager', () => {
 		});
 		// after the update
 		expect(result.current.view).toBe('card');
-
-		// before the update
-		expect(result.current.sortingEnabled).toBe(false);
-		act(() => {
-			result.current.toggleSorting();
-		});
-		// after the update
-		expect(result.current.sortingEnabled).toBe(true);
-		// lets disable sorting
-		act(() => {
-			result.current.toggleSorting();
-		});
-		expect(result.current.sortingEnabled).toBe(false);
 	});
 });
