@@ -51,6 +51,10 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel
 		[editorState, updateEditorState]
 	);
 
+	/**
+	 * A function that accepts a synthetic key event and returns the matching DraftEditorCommand constant,
+	 * or null if no command should be invoked.
+	 */
 	const keyBindingFn = useCallback<DraftEditorProps['keyBindingFn']>((e) => {
 		if (isTabKey(e as any) && KeyBindingUtil.hasCommandModifier(e)) {
 			return 'tab';
