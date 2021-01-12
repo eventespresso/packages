@@ -12,4 +12,5 @@ const useFilteredTicketIds = (): Array<EntityId> => {
 
 	return value;
 };
+
 export default useFilteredTicketIds;

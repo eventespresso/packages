@@ -4,9 +4,14 @@ import type { Datetime, SortBy, Ticket } from '@eventespresso/edtr-services';
 
 import type { EntityType } from '../../';
 
-export interface SortByControlProps extends EntityType, Pick<SelectProps, 'label' | 'onChangeValue' | 'options'> {
+export interface SortByControlProps
+	extends EntityType,
+		Pick<DragAndDropProps, 'renderDraggableItems'>,
+		Pick<SelectProps, 'label' | 'onChangeValue' | 'options'> {
 	draggableItems: Datetime[] | Ticket[];
 	droppableId: string;
+	id: string;
 	onSort: DragAndDropProps['onDragEnd'];
+	onSubmit: VoidFunction;
 	value: SortBy;
 }

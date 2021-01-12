@@ -1,11 +1,15 @@
-import { useMemo } from 'react';
+import { useCallback } from 'react';
+
 import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
 import {
 	useDatesListFilterState,
 	useFilteredDateIds,
-	useLazyDatetime,
 	useReorderDatetimes,
+	useDatetimeQueryOptions,
+	DatetimeEdge,
+	useUpdateDatetimeList,
 } from '@eventespresso/edtr-services';
+
 import { objectToSelectOptions } from '@eventespresso/utils';
 import { datetimesDroppableId } from '@eventespresso/constants';
 import { TypeName } from '@eventespresso/services';
@@ -17,18 +21,51 @@ const options = objectToSelectOptions(sortByOptions);
 const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useDatesListFilterState();
 	const filteredDateIds = useFilteredDateIds();
-	const { sortResponder: sortDates } = useReorderDatetimes(filteredDateIds);
-	const getDatetime = useLazyDatetime();
-	const draggableItems = useMemo(() => filteredDateIds.map(getDatetime), [filteredDateIds, getDatetime]);
+	const { allOrderedEntities, done, sortResponder } = useReorderDatetimes(filteredDateIds);
+
+	const queryOptions = useDatetimeQueryOptions();
+	const updateDatetimeList = useUpdateDatetimeList();
+
+	const renderDraggableItems = useCallback(
+		(item) => ({
+			...item,
+			content: (
+				<>
+					<span>{item.dbId})</span>
+					<span>{item.name}: </span>
+				</>
+			),
+		}),
+		[]
+	);
+
+	const updateEntityList = useCallback(() => {
+		const espressoDatetimes: DatetimeEdge = {
+			nodes: allOrderedEntities,
+			__typename: 'EspressoRootQueryDatetimesConnection',
+		};
+
+		done();
+
+		updateDatetimeList({
+			...queryOptions,
+			data: {
+				espressoDatetimes,
+			},
+		});
+	}, [allOrderedEntities, done, queryOptions, updateDatetimeList]);
 
 	return (
 		<SortByControlUI
-			draggableItems={draggableItems}
+			draggableItems={allOrderedEntities}
 			droppableId={datetimesDroppableId}
 			entityType={TypeName.datetimes}
+			id='dates-list-sort-by-control'
 			label={labels.sortBy}
+			renderDraggableItems={renderDraggableItems}
 			onChangeValue={setSortBy}
-			onSort={sortDates}
+			onSort={sortResponder}
+			onSubmit={updateEntityList}
 			options={options}
 			value={sortBy}
 		/>

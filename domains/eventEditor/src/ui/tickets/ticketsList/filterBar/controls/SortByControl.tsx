@@ -1,6 +1,17 @@
-import { Select } from '@eventespresso/ui-components';
-import { useTicketsListFilterState } from '@eventespresso/edtr-services';
+import { useCallback } from 'react';
+
+import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
+import {
+	TicketEdge,
+	useFilteredTicketIds,
+	useReorderTickets,
+	useTicketQueryOptions,
+	useTicketsListFilterState,
+	useUpdateTicketList,
+} from '@eventespresso/edtr-services';
+import { ticketDroppableId } from '@eventespresso/constants';
 import { objectToSelectOptions } from '@eventespresso/utils';
+import { TypeName } from '@eventespresso/services';
 
 import { labels, sortByOptions } from './options';
 
@@ -11,13 +22,53 @@ const options = objectToSelectOptions(sortByOptions);
  */
 const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useTicketsListFilterState();
+	const filteredTicketIds = useFilteredTicketIds();
+	const { allOrderedEntities, done, sortResponder } = useReorderTickets(filteredTicketIds);
+
+	const queryOptions = useTicketQueryOptions();
+	const updateTicketList = useUpdateTicketList();
+
+	const renderDraggableItems = useCallback(
+		(item) => ({
+			...item,
+			content: (
+				<>
+					<span>{item.dbId})</span>
+					<span>{item.name}: </span>
+				</>
+			),
+		}),
+		[]
+	);
+
+	const updateEntityList = useCallback(() => {
+		const espressoTickets: TicketEdge = {
+			nodes: allOrderedEntities,
+			__typename: 'EspressoRootQueryTicketsConnection',
+		};
+
+		done();
+
+		updateTicketList({
+			...queryOptions,
+			data: {
+				espressoTickets,
+			},
+		});
+	}, [allOrderedEntities, done, queryOptions, updateTicketList]);
 
 	return (
-		<Select
+		<SortByControlUI
+			draggableItems={allOrderedEntities}
+			droppableId={ticketDroppableId}
+			entityType={TypeName.tickets}
 			id='tickets-list-sort-by-control'
 			label={labels.sortBy}
 			onChangeValue={setSortBy}
 			options={options}
+			onSort={sortResponder}
+			onSubmit={updateEntityList}
+			renderDraggableItems={renderDraggableItems}
 			value={sortBy}
 		/>
 	);
