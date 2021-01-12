@@ -1,33 +1,33 @@
-import { useCallback } from 'react';
+// import { useCallback } from 'react';
 
-import { __ } from '@eventespresso/i18n';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/adapters';
-import { Textarea } from '@eventespresso/ui-components';
+// import { __ } from '@eventespresso/i18n';
+// import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/adapters';
+// import { Textarea } from '@eventespresso/ui-components';
 
 import { RTEWithEditModeProps } from './types';
 import { RichTextEditor } from '../RichTextEditor';
 
 import './style.scss';
 
-export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode = true, ...props }) => {
+export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode = false, ...props }) => {
 	const editor = <RichTextEditor {...props} />;
 
-	const { defaultValue, onChange, onChangeValue, placeholder, value } = props;
+	// const { defaultValue, onChange, onChangeValue, placeholder, value } = props;
 
-	const onChangeHandler = useCallback(
+	/* const onChangeHandler = useCallback(
 		(e: React.ChangeEvent<HTMLTextAreaElement>) => {
 			const html = e.target.value;
 			onChange?.(html);
 			onChangeValue?.(html);
 		},
 		[onChange, onChangeValue]
-	);
+	); */
 
 	if (!enableEditMode) {
 		return editor;
 	}
 
-	return (
+	/* return (
 		<Tabs align='end' variant='enclosed' wrapperClassName='ee-rte-with-edit-mode'>
 			<TabList>
 				<Tab>{__('Visual editor')}</Tab>
@@ -46,5 +46,5 @@ export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode
 				</TabPanel>
 			</TabPanels>
 		</Tabs>
-	);
+	); */
 };

@@ -13,4 +13,4 @@ const Switch: React.FC<SwitchProps> = (props) => {
 	return <SwitchAdapter {...props} className={className} />;
 };
 
-export default withDebounce(withLabel(Switch, 'legend'), true);
+export default withDebounce(withLabel(Switch, 'legend'), 'isChecked');

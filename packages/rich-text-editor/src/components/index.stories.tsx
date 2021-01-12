@@ -11,6 +11,7 @@ export default {
 } as Meta;
 
 type RTEStory = Story<RichTextEditorProps>;
+// const toolbar: ToolBarConfig = assocPath(['image', 'component'], WPMedia, defaultToolbar);
 
 export const Simple: RTEStory = () => <SimpleTextEditor onChange={noop} />;
 

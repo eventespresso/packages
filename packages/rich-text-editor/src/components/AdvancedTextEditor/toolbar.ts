@@ -1,4 +1,6 @@
-export const toolbar = {
+import { ToolBarConfig } from '../RichTextEditor';
+
+export const toolbar: ToolBarConfig = {
 	options: [
 		'inline',
 		'blockType',
@@ -6,10 +8,10 @@ export const toolbar = {
 		'fontFamily',
 		'list',
 		'textAlign',
-		'colorPicker',
+		// 'colorPicker',
 		'link',
-		'embedded',
-		'emoji',
+		// 'embedded',
+		// 'emoji',
 		// 'image', disable image in favor of WP Media
 		'remove',
 		'history',

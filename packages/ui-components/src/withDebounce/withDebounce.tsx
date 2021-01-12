@@ -11,33 +11,28 @@ import { AnyObject, noop } from '@eventespresso/utils';
  * HOC to delay calling of `onChangeValue` passed to the `WrappedComponent`
  *
  * @param WrappedComponent The component to debounce the onchange handler for
- * @param isCheckbox Whether the component of a checkbox/switch
+ * @param valueProp The prop to use for passing the value, e.g. 'isChecked' for Switch/checkbox
  */
 const withDebounce = <P extends AnyObject, R extends any>(
 	WrappedComponent: React.ComponentType<P>,
-	isCheckbox = false
+	valueProp: string = 'value',
+	changeHandler: string = 'onChangeValue'
 ): ForwardRefComponent<P & WithDebounceProps, R> => {
 	type Ref = React.Ref<R>;
 	type RefProps = { forwardedRef: Ref } & WithDebounceProps & InternalDebounceProps;
 
-	const WithDebounce: React.FC<P & RefProps> = ({
-		forwardedRef,
-		debounceDelay,
-		onChangeValue,
-		isChecked,
-		value,
-		...props
-	}) => {
+	const WithDebounce: React.FC<P & RefProps> = ({ forwardedRef, debounceDelay, ...props }) => {
+		const onChangeValue = props[changeHandler];
 		// to use debounce, debounceDelay and onChangeValue should be passed
 		const shouldDebounce = debounceDelay && typeof onChangeValue !== 'undefined';
 
-		const fieldValue = isCheckbox ? isChecked : value;
+		const fieldValue = props[valueProp];
 
 		const [internalValue, setInternalValue] = useState(fieldValue);
 
 		const { callback } = useDebouncedCallback(onChangeValue || noop, debounceDelay); // delay in MS
 
-		const onChangeHandler = useCallback<typeof onChangeValue>(
+		const onChangeHandler = useCallback(
 			(newValue, event) => {
 				// set the value only if the field is controlled
 				if (typeof internalValue !== 'undefined') {
@@ -66,10 +61,9 @@ const withDebounce = <P extends AnyObject, R extends any>(
 		const wrappedCompProps: P = useMemo(
 			() => ({
 				...(props as P),
-				...(isCheckbox && { isChecked: valueToPass }), // conditionally add isChecked
-				onChangeValue: shouldDebounce ? onChangeHandler : onChangeValue,
+				[changeHandler]: shouldDebounce ? onChangeHandler : onChangeValue,
 				ref: forwardedRef,
-				value: valueToPass,
+				[valueProp]: valueToPass,
 			}),
 			[forwardedRef, onChangeHandler, onChangeValue, props, shouldDebounce, valueToPass]
 		);
