@@ -1,14 +1,15 @@
 import { useCallback, useMemo, useState } from 'react';
 
+import { ticketDroppableId } from '@eventespresso/constants';
 import type { EntityId } from '@eventespresso/data';
 import type { EntityTableProps } from '@eventespresso/ee-components';
 
 import { ReorderEntities, useReorderEntities } from '../useReorderEntities';
-import { TicketsFilterStateManager as DFSM } from '../../../filterState';
+import { TicketsFilterStateManager as TFSM } from '../../../filterState';
 import { useTickets, useLazyTicket } from '../../queries';
 import type { Ticket } from '../../types';
 
-type SortResponder = EntityTableProps<DFSM>['onSort'];
+type SortResponder = EntityTableProps<TFSM>['onSort'];
 
 interface ReorderTickets extends Pick<ReorderEntities<Ticket>, 'done'> {
 	allOrderedEntities: Ticket[];
@@ -27,7 +28,7 @@ const useReorderTickets = (filteredEntityIds: Array<EntityId>): ReorderTickets =
 		({ destination, source }) => {
 			const noDestination = !destination;
 			const noChange = source?.index === destination?.index && destination?.droppableId === source?.droppableId;
-			const notOurListOfInterest = destination?.droppableId !== 'ticket-entities-table-view-droppable';
+			const notOurListOfInterest = destination?.droppableId !== ticketDroppableId;
 
 			if (noDestination || noChange || notOurListOfInterest) {
 				return;
