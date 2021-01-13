@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { format } from 'date-fns';
 
 import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
 import {
@@ -15,23 +14,14 @@ import { objectToSelectOptions } from '@eventespresso/utils';
 import { datetimesDroppableId } from '@eventespresso/constants';
 import { TypeName } from '@eventespresso/services';
 
-import { labels, sortByOptions } from './options';
+import { labels, sortByOptions } from '../options';
+import DraggableTicket from './DraggableTicket';
 
 const options = objectToSelectOptions(sortByOptions);
 
-const renderDraggableItems = (item) => ({
-	...item,
-	content: (
-		<>
-			<span>{item.dbId})</span>
-			<span>{item.name}: </span>
-			<span>{format(new Date(item.startDate), 'LLL')}</span>
-			<span>
-				{format(new Date(item.startDate), 'd')} - {format(new Date(item.endDate), 'd')}
-			</span>
-			<span>{format(new Date(item.endDate), 'yyyy')}</span>
-		</>
-	),
+const renderDraggableItems = (datetime) => ({
+	...datetime,
+	content: <DraggableTicket {...datetime} />,
 });
 
 const SortByControl: React.FC = () => {

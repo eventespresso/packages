@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
-import { format } from 'date-fns';
 
-import { CurrencyDisplay, SortByControl as SortByControlUI } from '@eventespresso/ee-components';
+import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
 import {
 	TicketEdge,
 	useFilteredTicketIds,
@@ -14,27 +13,14 @@ import { ticketDroppableId } from '@eventespresso/constants';
 import { objectToSelectOptions } from '@eventespresso/utils';
 import { TypeName } from '@eventespresso/services';
 
-import { labels, sortByOptions } from './options';
+import { labels, sortByOptions } from '../options';
+import DraggableTicket from './DraggableTicket';
 
 const options = objectToSelectOptions(sortByOptions);
 
-const renderDraggableItems = (item) => ({
-	...item,
-	content: (
-		<>
-			<span>{item.dbId})</span>
-			<span>{item.name}: </span>
-			<span>
-				<CurrencyDisplay value={item.price} />
-			</span>
-			<span>-</span>
-			<span>{format(new Date(item.startDate), 'LLL')}</span>
-			<span>
-				{format(new Date(item.startDate), 'd')} - {format(new Date(item.endDate), 'd')}
-			</span>
-			<span>{format(new Date(item.endDate), 'yyyy')}</span>
-		</>
-	),
+const renderDraggableItems = (ticket) => ({
+	...ticket,
+	content: <DraggableTicket {...ticket} />,
 });
 
 /**
