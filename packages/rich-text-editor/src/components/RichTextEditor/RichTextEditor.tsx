@@ -12,7 +12,7 @@ import { DraftEditorProps, RichTextEditorProps } from './types';
 import { getBlockStyle } from '../../utils';
 import blockRenderer from './render';
 
-import DebugLog from './DebugLog';
+import { WithEditMode } from '../WithEditMode';
 import { withState } from '../../context';
 import { useEditorState } from '../../hooks';
 
@@ -29,7 +29,12 @@ const styleMap = {
 	},
 };
 
-const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel, className, toolbar }) => {
+const RichTextEditor: React.FC<RichTextEditorProps> = ({
+	'aria-label': ariaLabel,
+	className,
+	enableEditMode,
+	toolbar,
+}) => {
 	const [editorState, updateEditorState] = useEditorState();
 
 	const editorRef = useRef<Editor>();
@@ -68,29 +73,32 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel
 
 	const editorClassName = classNames('ee-rich-text-editor', className);
 
-	return (
+	const visualEditor = (
 		<>
-			<div className='ee-rich-text-editor-root'>
-				<Toolbar toolbar={toolbar} />
-				<div className={editorClassName}>
-					<Editor
-						ariaLabel={ariaLabel}
-						blockRenderMap={blockRenderMap}
-						blockRendererFn={blockRenderer}
-						blockStyleFn={getBlockStyle}
-						customStyleMap={styleMap}
-						editorState={editorState}
-						handleKeyCommand={handleKeyCommand}
-						keyBindingFn={keyBindingFn}
-						onChange={updateEditorState}
-						placeholder={__('Write something…')}
-						ref={editorRef}
-						spellCheck={true}
-					/>
-				</div>
+			<Toolbar toolbar={toolbar} />
+			<div className={editorClassName}>
+				<Editor
+					ariaLabel={ariaLabel}
+					blockRenderMap={blockRenderMap}
+					blockRendererFn={blockRenderer}
+					blockStyleFn={getBlockStyle}
+					customStyleMap={styleMap}
+					editorState={editorState}
+					handleKeyCommand={handleKeyCommand}
+					keyBindingFn={keyBindingFn}
+					onChange={updateEditorState}
+					placeholder={__('Write something…')}
+					ref={editorRef}
+					spellCheck={true}
+				/>
 			</div>
-			<DebugLog editorState={editorState} />
 		</>
+	);
+
+	return (
+		<div className='ee-rich-text-editor-root'>
+			{enableEditMode ? <WithEditMode visualEditor={visualEditor} /> : visualEditor}
+		</div>
 	);
 };
 

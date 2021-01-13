@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 
-import { RTEWithEditMode } from '../RTEWithEditMode';
-import { AdvancedTextEditorProps } from './types';
+import { RichTextEditor, RichTextEditorProps } from '../RichTextEditor';
 import { toolbar } from './toolbar';
 
-export const AdvancedTextEditor: React.FC<AdvancedTextEditorProps> = (props) => {
+export const AdvancedTextEditor: React.FC<RichTextEditorProps> = (props) => {
 	const className = classNames('ee-advanced-text-editor', props.className);
 
-	return <RTEWithEditMode toolbar={toolbar} {...props} className={className} />;
+	return <RichTextEditor toolbar={toolbar} {...props} className={className} enableEditMode />;
 };

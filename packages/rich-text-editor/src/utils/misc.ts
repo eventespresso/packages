@@ -40,7 +40,8 @@ export const changeStyleKeys = (style: AnyObject) => {
 	if (style) {
 		for (const key in style) {
 			const value = style[key];
-			newStyleObj[key === 'CODE' ? 'monospace' : key.toLowerCase()] = value;
+			const styleKey = key === 'CODE' ? 'monospace' : key.toLowerCase();
+			newStyleObj[styleKey] = value;
 		}
 		return newStyleObj;
 	}

@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 
-import { RTEWithEditMode } from '../RTEWithEditMode';
-import { SimpleTextEditorProps } from './types';
+import { RichTextEditor, RichTextEditorProps } from '../RichTextEditor';
 import { toolbar } from './toolbar';
 
-export const SimpleTextEditor: React.FC<SimpleTextEditorProps> = (props) => {
+export const SimpleTextEditor: React.FC<RichTextEditorProps> = (props) => {
 	const className = classNames('ee-simple-text-editor', props.className);
 
-	return <RTEWithEditMode enableEditMode={false} {...props} toolbar={toolbar} className={className} />;
+	return <RichTextEditor enableEditMode={false} {...props} toolbar={toolbar} className={className} />;
 };
