@@ -15,13 +15,13 @@ import { datetimesDroppableId } from '@eventespresso/constants';
 import { TypeName } from '@eventespresso/services';
 
 import { labels, sortByOptions } from '../options';
-import DraggableTicket from './DraggableTicket';
+import DraggableDatetime from './DraggableDatetime';
 
 const options = objectToSelectOptions(sortByOptions);
 
 const renderDraggableItems = (datetime) => ({
 	...datetime,
-	content: <DraggableTicket {...datetime} />,
+	content: <DraggableDatetime {...datetime} />,
 });
 
 const SortByControl: React.FC = () => {

@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 
 import { Datetime } from '@eventespresso/edtr-services';
 
-const DraggableTicket: React.FC<Datetime> = ({ dbId, endDate, name, startDate }) => (
+const DraggableDatetime: React.FC<Datetime> = ({ dbId, endDate, name, startDate }) => (
 	<>
 		<span>{dbId})</span>
 		<span>{name}: </span>
@@ -14,4 +14,4 @@ const DraggableTicket: React.FC<Datetime> = ({ dbId, endDate, name, startDate })
 	</>
 );
 
-export default DraggableTicket;
+export default DraggableDatetime;
