@@ -19,7 +19,7 @@ interface ReorderDatetimes extends Pick<ReorderEntities<Datetime>, 'done'> {
 export const useReorderDatetimes = (filteredEntityIds: Array<EntityId>): ReorderDatetimes => {
 	const getDatetime = useLazyDatetime();
 	const datetimes = useMemo(() => filteredEntityIds.map(getDatetime), [filteredEntityIds, getDatetime]);
-	const [allOrderedEntities, setallOrderedEntities] = useState<Array<Datetime>>(datetimes);
+	const [allOrderedEntities, setAllOrderedEntities] = useState<Array<Datetime>>(datetimes);
 
 	const { sortEntities, done } = useReorderEntities<Datetime>({ entityType: 'DATETIME' });
 	const allEntities = useDatetimes();
@@ -41,7 +41,7 @@ export const useReorderDatetimes = (filteredEntityIds: Array<EntityId>): Reorder
 				oldIndex: source.index,
 			});
 
-			setallOrderedEntities(allSortedEntities);
+			setAllOrderedEntities(allSortedEntities);
 		},
 		[allEntities, filteredEntityIds, sortEntities]
 	);

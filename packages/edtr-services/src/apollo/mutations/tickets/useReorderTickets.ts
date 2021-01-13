@@ -18,7 +18,7 @@ interface ReorderTickets extends Pick<ReorderEntities<Ticket>, 'done'> {
 const useReorderTickets = (filteredEntityIds: Array<EntityId>): ReorderTickets => {
 	const getTicket = useLazyTicket();
 	const tickets = useMemo(() => filteredEntityIds.map(getTicket), [filteredEntityIds, getTicket]);
-	const [allOrderedEntities, setallOrderedEntities] = useState<Array<Ticket>>(tickets);
+	const [allOrderedEntities, setAllOrderedEntities] = useState<Array<Ticket>>(tickets);
 
 	const { sortEntities, done } = useReorderEntities<Ticket>({ entityType: 'TICKET' });
 	const allEntities = useTickets();
@@ -40,7 +40,7 @@ const useReorderTickets = (filteredEntityIds: Array<EntityId>): ReorderTickets =
 				oldIndex: source.index,
 			});
 
-			setallOrderedEntities(allSortedEntities);
+			setAllOrderedEntities(allSortedEntities);
 		},
 		[filteredEntityIds, allEntities, sortEntities]
 	);
