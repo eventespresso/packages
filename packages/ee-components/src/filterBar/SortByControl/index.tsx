@@ -22,28 +22,20 @@ export const SortByControl: React.FC<SortByControlProps> = ({
 	value,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const disabled = value !== 'order';
-	const tooltip = disabled && __('reordering is available only when custom order is selected');
 	const text =
 		(entityType === 'datetimes' && __('reorder dates')) || (entityType === 'tickets' && __('reorder tickets'));
 
 	const onSubmitHandler = useCallback(() => {
+		onChangeValue('order');
 		onSubmit();
 		onClose();
-	}, [onClose, onSubmit]);
+	}, [onChangeValue, onClose, onSubmit]);
 
 	return (
 		<>
 			<div className='ee-sort-by-control'>
 				<Select id={id} label={label} options={options} onChangeValue={onChangeValue} value={value} />
-				<Button
-					buttonText={text}
-					isDisabled={disabled}
-					onClick={onOpen}
-					noBoxShadow
-					noMargin
-					tooltip={tooltip}
-				/>
+				<Button buttonText={text} onClick={onOpen} noMargin />
 			</div>
 			<ModalWithAlert
 				className='ee-filter-bar-modal__reorder-entitites'

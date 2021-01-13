@@ -7,10 +7,11 @@ import type { EntityType } from '../../';
 export interface SortByControlProps
 	extends EntityType,
 		Pick<DragAndDropProps, 'renderDraggableItems'>,
-		Pick<SelectProps, 'label' | 'onChangeValue' | 'options'> {
+		Pick<SelectProps, 'label' | 'options'> {
 	draggableItems: Datetime[] | Ticket[];
 	droppableId: string;
 	id: string;
+	onChangeValue: (sortBy: SortBy) => void;
 	onSort: DragAndDropProps['onDragEnd'];
 	onSubmit: VoidFunction;
 	value: SortBy;

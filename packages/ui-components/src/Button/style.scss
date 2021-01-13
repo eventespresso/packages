@@ -67,11 +67,6 @@
 		width: fit-content;
 		@include transition(all linear 50ms);
 
-		&--no-box-shadow {
-			border-color: var(--ee-border-color);
-			box-shadow: none;
-		}
-
 		&--no-margin {
 			margin: 0;
 		}
