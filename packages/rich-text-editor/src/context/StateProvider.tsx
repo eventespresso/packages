@@ -10,9 +10,11 @@ export type RTEState = [state: EditorState, setInternalState: DraftEditorProps['
 
 export interface StateProviderProps {
 	editorState?: EditorState;
+	defaultEditorState?: EditorState;
 	onChange?: (string: string) => void;
 	onChangeEditorState?: (editorState: EditorState) => void;
 	value?: string;
+	defaultValue?: string;
 }
 
 const StateContext = createContext<RTEState>(null);
@@ -21,14 +23,16 @@ const { Provider, Consumer: StateConsumer } = StateContext;
 
 const StateProvider: React.FC<StateProviderProps> = ({
 	children,
+	defaultEditorState,
+	defaultValue,
 	editorState,
 	onChange,
 	onChangeEditorState,
 	value,
 }) => {
-	const defaultValue = editorState || htmlToEditorState(value);
+	const defaultState = defaultEditorState || htmlToEditorState(defaultValue);
 
-	const [internalState, setInternalState] = useState(defaultValue);
+	const [internalState, setInternalState] = useState(defaultState);
 
 	const ifMounted = useIfMounted();
 
@@ -49,7 +53,7 @@ const StateProvider: React.FC<StateProviderProps> = ({
 	// if state changes from the consumer
 	useEffect(() => {
 		ifMounted(() => {
-			if (previousState !== editorState) {
+			if (typeof editorState !== 'undefined' && previousState !== editorState) {
 				setInternalState(editorState);
 			}
 		});
@@ -57,9 +61,11 @@ const StateProvider: React.FC<StateProviderProps> = ({
 	}, [editorState]);
 	useEffect(() => {
 		ifMounted(() => {
-			const newState = htmlToEditorState(value);
-			if (previousState !== newState) {
-				setInternalState(newState);
+			if (typeof value !== 'undefined') {
+				const newState = htmlToEditorState(value);
+				if (previousState !== newState) {
+					setInternalState(newState);
+				}
 			}
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps

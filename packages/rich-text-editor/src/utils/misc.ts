@@ -4,18 +4,28 @@ import htmlToDraft from 'html-to-draftjs';
 
 import type { AnyObject } from '@eventespresso/utils';
 
-export const htmlToEditorState = (html: string): EditorState => {
+export const htmlToEditorState = (html: string, defaultEmpty = true): EditorState => {
 	let state: EditorState;
 	if (html) {
 		const contentBlock = htmlToDraft(html);
 		const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
 		state = EditorState.createWithContent(contentState);
 	}
-	return state || EditorState.createEmpty();
+	if (!state && defaultEmpty) {
+		return EditorState.createEmpty();
+	}
+	return state;
 };
 
-export const editorStateToHtml = (editorState: EditorState): string => {
-	return draftToHtml(convertToRaw(editorState.getCurrentContent()));
+export const editorStateToHtml = (editorState: EditorState, defaultEmpty = true): string => {
+	let html: string;
+	if (editorState) {
+		html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+	}
+	if (!html && defaultEmpty) {
+		return '';
+	}
+	return html;
 };
 
 /**

@@ -69,7 +69,7 @@ export type BaseToolBarConfig<Option extends ToolbarOption> = {
 };
 
 export type ToolBarConfig = BaseToolBarConfig<ToolbarOption> & {
-	options: Array<ToolbarOption>;
+	options?: Array<ToolbarOption>;
 };
 
 export interface ToolbarProps {

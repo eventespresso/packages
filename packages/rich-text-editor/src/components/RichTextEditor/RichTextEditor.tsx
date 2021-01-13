@@ -1,6 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import classNames from 'classnames';
 import { Editor, RichUtils, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
+import { blockRenderMap, getCustomStyleMap } from 'draftjs-utils';
 import 'draft-js/dist/Draft.css';
 
 import { __ } from '@eventespresso/i18n';
@@ -9,6 +10,7 @@ import { isTabKey } from '@eventespresso/utils';
 import { Toolbar } from './Toolbar';
 import { DraftEditorProps, RichTextEditorProps } from './types';
 import { getBlockStyle } from '../../utils';
+import blockRenderer from './render';
 
 import DebugLog from './DebugLog';
 import { withState } from '../../context';
@@ -18,6 +20,7 @@ import './style.scss';
 
 // Custom overrides for "code" style.
 const styleMap = {
+	...getCustomStyleMap(),
 	CODE: {
 		backgroundColor: 'rgba(0, 0, 0, 0.05)',
 		fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
@@ -72,6 +75,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ 'aria-label': ariaLabel
 				<div className={editorClassName}>
 					<Editor
 						ariaLabel={ariaLabel}
+						blockRenderMap={blockRenderMap}
+						blockRendererFn={blockRenderer}
 						blockStyleFn={getBlockStyle}
 						customStyleMap={styleMap}
 						editorState={editorState}

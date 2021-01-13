@@ -12,7 +12,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({ toolbar }) => {
 	const toolbarState = useToolbarState({ loop: true });
 
 	const toolbarConfig = useMemo<ToolbarProps['toolbar']>(
-		() => mergeDeepRight(defaultToolbar, toolbar) as ToolbarProps['toolbar'],
+		() => mergeDeepRight(defaultToolbar, toolbar || {}) as ToolbarProps['toolbar'],
 		[toolbar]
 	);
 
