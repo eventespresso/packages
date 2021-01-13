@@ -1,5 +1,5 @@
-import { withContext as withTPCContext } from '@eventespresso/tpc';
 import { useBulkEdit } from '@eventespresso/services';
+import { withTPCContext } from '@eventespresso/edtr-services';
 
 import { EditPricesBaseProps } from '../types';
 import { TPCInstance } from './TPCInstance';

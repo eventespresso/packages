@@ -3,15 +3,14 @@ import { useEffect } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { getDefaultTaxes } from '@eventespresso/predicates';
-import { usePrices } from '@eventespresso/edtr-services';
-import { useDataState } from '../data';
+import { usePrices, useTPCDataState } from '@eventespresso/edtr-services';
 import { usePricesPollInterval } from '../hooks';
 
 const DefaultTaxesInfo: React.FC = () => {
 	const allPrices = usePrices();
 	const defaultTaxPrices = getDefaultTaxes(allPrices);
 
-	const { prices } = useDataState();
+	const { prices } = useTPCDataState();
 	const tpcDefaultTaxPrices = getDefaultTaxes(prices);
 	const [pricesPollInterval, setPricesPollInterval] = usePricesPollInterval();
 

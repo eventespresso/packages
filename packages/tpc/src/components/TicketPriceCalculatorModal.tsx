@@ -1,19 +1,17 @@
 import { __, sprintf } from '@eventespresso/i18n';
+import { ModalWithAlert } from '@eventespresso/ui-components';
+import { useTPCContext, useTPCDataState } from '@eventespresso/edtr-services';
 
 import TicketPriceCalculator from './TicketPriceCalculator';
 import useResetButtonProps from '../buttons/useResetButtonProps';
 import useSubmitButtonProps from '../buttons/useSubmitButtonProps';
-import { ModalWithAlert } from '@eventespresso/ui-components';
-
-import { useTPCContext } from '../context';
-import { useDataState } from '../data';
-import { TPCModalProps } from '../types';
+import type { TPCModalProps } from '../types';
 
 import './styles.scss';
 
 const TicketPriceCalculatorModal: React.FC<TPCModalProps> = ({ onSubmit }) => {
 	const { onClose } = useTPCContext();
-	const { ticket } = useDataState();
+	const { ticket } = useTPCDataState();
 	const resetButtonProps = useResetButtonProps();
 	const submitButtonProps = useSubmitButtonProps(onSubmit);
 

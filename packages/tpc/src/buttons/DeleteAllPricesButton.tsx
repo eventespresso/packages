@@ -1,14 +1,12 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-
-import { ConfirmDelete } from '@eventespresso/ui-components';
-import { useDataState } from '../data';
-import { ButtonType } from '@eventespresso/ui-components';
+import { ButtonType, ConfirmDelete } from '@eventespresso/ui-components';
+import { useTPCDataState } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
 
 const DeleteAllPricesButton: React.FC = () => {
-	const { prices, deletePrice, updateTicketPrice } = useDataState();
+	const { prices, deletePrice, updateTicketPrice } = useTPCDataState();
 
 	const buttonProps = useMemoStringify({
 		buttonText: __('Delete all prices'),

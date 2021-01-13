@@ -8,17 +8,18 @@ const ConfigContext = createContext<ConfigDataProps | null>(null);
 const { Provider, Consumer: ConfigConsumer } = ConfigContext;
 
 const ConfigProvider: React.FC = ({ children }) => {
-	const ConfigData = useConfigData();
+	const configData = useConfigData();
 	const currentUser = useCurrentUser();
 	const generalSettings = useGeneralSettings();
+	const dateTimeFormats = generalSettings && DateTimeFormats(generalSettings);
 
 	const config: ConfigDataProps = useMemo(
 		() => ({
-			...ConfigData,
+			...configData,
 			currentUser,
-			dateTimeFormats: generalSettings && DateTimeFormats(generalSettings),
+			dateTimeFormats,
 		}),
-		[ConfigData, currentUser, generalSettings]
+		[configData, currentUser, dateTimeFormats]
 	);
 
 	return <Provider value={config}>{children}</Provider>;

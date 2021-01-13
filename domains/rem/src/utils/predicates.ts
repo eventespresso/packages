@@ -1,6 +1,7 @@
 import { filter, propEq } from 'ramda';
 
-import { RemTicket } from '../data';
+import type { RemTicket } from '@eventespresso/edtr-services';
+
 import { GeneratedDate } from '../ui/generatedDates';
 
 // is a shared ticket ?

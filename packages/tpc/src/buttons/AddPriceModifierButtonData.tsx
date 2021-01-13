@@ -3,17 +3,17 @@ import { useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import AddPriceModifierButton from './AddPriceModifierButton';
-import { usePriceTypeForPrice } from '@eventespresso/edtr-services';
-import type { PriceModifierProps, TpcPriceModifier } from '../types';
+import { usePriceTypeForPrice, useTPCDataState, TpcPriceModifier } from '@eventespresso/edtr-services';
+
 import { usePriceModifier } from '../hooks';
 import defaultPrice from '../defaultPriceModifier';
-import { useDataState } from '../data';
+import type { PriceModifierProps } from '../types';
 
 const AddPriceModifierButtonData: React.FC<Partial<PriceModifierProps>> = ({ index }) => {
 	const defaultPriceModifier = usePriceModifier(defaultPrice);
 	const baseType = usePriceTypeForPrice(defaultPriceModifier.id);
 
-	const { addPrice } = useDataState();
+	const { addPrice } = useTPCDataState();
 
 	const addPriceModifier = useCallback(() => {
 		const newPrice: TpcPriceModifier = {

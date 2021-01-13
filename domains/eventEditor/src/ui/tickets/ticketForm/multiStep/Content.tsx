@@ -3,10 +3,10 @@ import { useCallback, useMemo } from 'react';
 import { useTicketMutator, hooks } from '@eventespresso/edtr-services';
 import { useMutatePrices } from '@eventespresso/tpc';
 import { FormWithConfig } from '@eventespresso/ee-components';
+import useCapQuantity from '@edtrUI/tickets/hooks/useCapQuantity';
 import useTicketFormConfig from '../useTicketFormConfig';
 import ContentWrapper from './ContentWrapper';
 import type { ContentProps } from './types';
-import useCapQuantity from '@edtrUI/tickets/hooks/useCapQuantity';
 
 const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 	const { createEntity, updateEntity } = useTicketMutator();

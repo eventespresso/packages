@@ -1,12 +1,9 @@
 import { useState, useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-
-import { Button, Select } from '@eventespresso/ui-components';
+import { EntityOptionsRow } from '@eventespresso/ee-components';
 import { entityListToSelectOptions, AnyObject } from '@eventespresso/utils';
 import { useDatetimes, useDatetimeItem } from '@eventespresso/edtr-services';
-
-import { EntityOptionsRow } from '../EntityOptionsRow';
 
 interface DateTemplateProps {
 	setTemplate: (date: AnyObject) => void;
@@ -14,27 +11,20 @@ interface DateTemplateProps {
 
 const DateTemplate: React.FC<DateTemplateProps> = ({ setTemplate }) => {
 	const [selectedDateId, setSelectedDateId] = useState('');
-	const onChangeValue = useCallback((value) => setSelectedDateId(value), []);
-
+	const onSelectChange = useCallback((value) => setSelectedDateId(value), []);
 	const allDates = useDatetimes();
 
 	const options = useMemo(() => entityListToSelectOptions(allDates, { label: __('Select…'), value: '' }), [allDates]);
 	const datetime = useDatetimeItem({ id: selectedDateId });
-	const onClick = useCallback(() => setTemplate(datetime || {}), [datetime, setTemplate]);
-
-	const selectExistingID = 'existing-datetime';
-	const selectExisting = (
-		<>
-			<Select id={selectExistingID} options={options} onChangeValue={onChangeValue} />
-			<Button buttonText={__('Select')} onClick={onClick} isDisabled={!selectedDateId} />
-		</>
-	);
+	const onAddNew = useCallback(() => setTemplate(datetime || {}), [datetime, setTemplate]);
 
 	return (
 		<EntityOptionsRow
-			onAddNew={onClick}
-			selectExisting={selectExisting}
-			selectExistingID={selectExistingID}
+			isSelectButtonDisabled={!selectedDateId}
+			onAddNew={onAddNew}
+			onSelect={onAddNew}
+			onSelectChange={onSelectChange}
+			options={options}
 			type={'datetime'}
 		/>
 	);

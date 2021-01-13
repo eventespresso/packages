@@ -14,6 +14,7 @@ import {
 import { EntityList } from '@eventespresso/ee-components';
 
 import { NewTicketButton } from './newTicketOptions';
+import { DefaultTicketsButton } from './defaultTickets';
 import { legendConfig } from './config';
 import { RenderCardView } from './cardView';
 import { RenderTableView } from './tableView';
@@ -26,13 +27,20 @@ const TicketsList: React.FC = () => {
 		filterState.view,
 	]);
 
+	const footer = (
+		<>
+			<NewTicketButton />
+			<DefaultTicketsButton />
+		</>
+	);
+
 	return (
 		<EntityList
 			activeFilters={<ActiveTicketsFilters />}
 			domain={domain}
 			entityType={TypeName.tickets}
 			filterState={filterState}
-			footer={<NewTicketButton />}
+			footer={footer}
 			headerText={__('Available Tickets')}
 			legendConfig={legendConfig}
 			listId={ticketsList}

@@ -1,7 +1,9 @@
 import { useCallback } from 'react';
 
-import { useGlobalModal } from '@eventespresso/registry';
 import { __ } from '@eventespresso/i18n';
+import { useGlobalModal } from '@eventespresso/registry';
+import { useTickets } from '@eventespresso/edtr-services';
+import { TicketTemplates } from '@eventespresso/ee-components';
 
 import { Modal } from '../Modal';
 import { useFormState } from '../../data';
@@ -9,14 +11,15 @@ import { withContext } from '../../context';
 import { RemGlobalModals } from '../../types';
 import Footer from './Footer';
 import useSubmitForm from './useSubmitForm';
-import Tickets from '../Tickets';
 
 const DEFAULT_DATETIME_IDS = [];
 
 const Container: React.FC = () => {
+	const defaultTickets = useTickets();
+
 	const { getData, isOpen, close, setData } = useGlobalModal(RemGlobalModals.BULK_ADD_TICKETS);
 
-	const { reset: resetFormState, tickets } = useFormState();
+	const { addTicket, reset: resetFormState, tickets } = useFormState();
 	const submitForm = useSubmitForm(tickets, getData()?.entityIds || DEFAULT_DATETIME_IDS);
 
 	const resetData = useCallback(() => {
@@ -42,7 +45,7 @@ const Container: React.FC = () => {
 
 	return (
 		<Modal isOpen={isOpen} onClose={onClose} title={__('Bulk Add Tickets')}>
-			<Tickets />
+			<TicketTemplates addTicket={addTicket} defaultTickets={defaultTickets} ticketTemplates={tickets} />
 			<Footer onSubmit={onSubmit} onClose={onClose} />
 		</Modal>
 	);

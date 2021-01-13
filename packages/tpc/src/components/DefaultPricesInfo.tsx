@@ -5,7 +5,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { isDefault } from '@eventespresso/predicates';
 import { useConfig } from '@eventespresso/services';
-import { useDataState } from '../data';
+import { useTPCDataState } from '@eventespresso/edtr-services';
 import { usePricesPollInterval } from '../hooks';
 
 const DefaultPricesInfo: React.FC = () => {
@@ -15,7 +15,7 @@ const DefaultPricesInfo: React.FC = () => {
 
 	const [, setPricesPollInterval] = usePricesPollInterval();
 
-	const { prices } = useDataState();
+	const { prices } = useTPCDataState();
 	const hasDefaultPrice = any(isDefault, prices);
 
 	const onClickLink = useCallback(() => {

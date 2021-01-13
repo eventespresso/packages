@@ -1,12 +1,11 @@
 import { useMemo, useCallback } from 'react';
 
 import { useGlobalModal } from '@eventespresso/registry';
+import { EdtrGlobalModals, withTPCContext } from '@eventespresso/edtr-services';
 
 import TicketPriceCalculatorModal from './TicketPriceCalculatorModal';
-import { withContext } from '../context';
-import type { BaseProps, TPCModalProps } from '../types';
-import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useOnSubmitPrices } from '../hooks';
+import type { BaseProps, TPCModalProps } from '../types';
 
 const ModalContainer: React.FC = () => {
 	const { getData, isOpen, close: onClose } = useGlobalModal<BaseProps>(EdtrGlobalModals.TPC);
@@ -24,10 +23,13 @@ const ModalContainer: React.FC = () => {
 	);
 
 	const contextProps = useMemo(() => ({ ticketId, onClose }), [onClose, ticketId]);
+
 	if (!isOpen) {
 		return null;
 	}
-	const Component = withContext(TicketPriceCalculatorModal, contextProps);
+
+	const Component = withTPCContext(TicketPriceCalculatorModal, contextProps);
+
 	return <Component onSubmit={onSubmit} />;
 };
 

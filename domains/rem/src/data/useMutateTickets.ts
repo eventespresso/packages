@@ -1,11 +1,12 @@
 import { useCallback } from 'react';
 
 import { useSiteDateToUtcISO } from '@eventespresso/services';
+import type { RemTicket } from '@eventespresso/edtr-services';
 import type { EntityId } from '@eventespresso/data';
 
-import type { RemTicket, StartAndEndDate } from './types';
 import useMutateTicket from './useMutateTicket';
 import { computeTicketDate } from '../utils';
+import type { StartAndEndDate } from './types';
 
 type Callback = (
 	tickets: Array<RemTicket>,

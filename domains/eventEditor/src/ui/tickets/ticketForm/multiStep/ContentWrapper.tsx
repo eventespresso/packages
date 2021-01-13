@@ -1,9 +1,8 @@
 import { useWithEntityFormDetails } from '@eventespresso/ee-components';
-import { withContext as withTPCContext } from '@eventespresso/tpc';
+import { Datetime, Ticket, withTPCContext } from '@eventespresso/edtr-services';
 import { withContext as withTAMContext } from '@edtrUI/ticketAssignmentsManager/context';
 import ContentBody from './ContentBody';
 
-import type { Datetime, Ticket } from '@eventespresso/edtr-services';
 import type { ContentWrapperProps } from './types';
 
 const WithTPC: React.FC<ContentWrapperProps> = (props) => {

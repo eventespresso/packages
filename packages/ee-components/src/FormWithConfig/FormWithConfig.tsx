@@ -1,7 +1,7 @@
 import { EspressoForm, EspressoFormProps, FormConfig } from '@eventespresso/form';
 import { useConfig } from '@eventespresso/services';
-import type { AnyObject } from '@eventespresso/utils';
 import { useMemoStringify } from '@eventespresso/hooks';
+import type { AnyObject } from '@eventespresso/utils';
 
 const FormWithConfig = <FormValues extends AnyObject>(props: EspressoFormProps<FormValues>): JSX.Element => {
 	const { dateTimeFormats, locale } = useConfig();

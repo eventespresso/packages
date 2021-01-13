@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useReducer } from 'react';
 
-import type { FormStateManager, FormStateManagerHook } from './types';
 import useDataReducer, { initialState } from './useFormStateReducer';
 import useInitialState from './useInitialState';
+import type { FormStateManager, FormStateManagerHook } from './types';
 
 type FSM = FormStateManager;
 

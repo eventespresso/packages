@@ -1,5 +1,5 @@
-import type { DateTimeFormatsProps } from './types';
 import { defaultDateFormat, defaultTimeFormat } from './defaultDateTimeFormats';
+import type { DateTimeFormatsProps } from './types';
 
 export const DateTimeFormats = (formats: DateTimeFormatsProps): DateTimeFormatsProps => {
 	const maybeDefault = {
@@ -10,6 +10,6 @@ export const DateTimeFormats = (formats: DateTimeFormatsProps): DateTimeFormatsP
 
 	return {
 		...maybeDefault,
-		dateTimeFormat: maybeDefault.dateFormat + ' ' + maybeDefault.timeFormat,
+		dateTimeFormat: maybeDefault?.dateFormat + ' ' + maybeDefault?.timeFormat,
 	};
 };

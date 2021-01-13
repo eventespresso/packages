@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
-import { TicketPriceCalculator, useAddDefaultPrices, withContext as withTPCContext } from '@eventespresso/tpc';
+import { TicketPriceCalculator, useAddDefaultPrices } from '@eventespresso/tpc';
+import { withTPCContext } from '@eventespresso/edtr-services';
 
 import { FooterButtons } from '../buttons';
 import { EditPricesBaseProps } from '../types';

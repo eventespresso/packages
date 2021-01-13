@@ -1,6 +1,6 @@
-import { add, sub } from '@eventespresso/dates';
-import type { IntervalType } from '@eventespresso/dates';
-import { TicketSatesFields } from '../ui/Tickets/types';
+import { add, IntervalType, sub } from '@eventespresso/dates';
+import type { TicketSatesFields } from '@eventespresso/edtr-services';
+
 import { StartAndEndDate } from '../data';
 
 export const computeDatetimeEndDate = (startDate: Date, unit: IntervalType, duration: number): Date => {
