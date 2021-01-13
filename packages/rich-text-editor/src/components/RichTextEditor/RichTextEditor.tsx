@@ -32,7 +32,7 @@ const styleMap = {
 const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	'aria-label': ariaLabel,
 	className,
-	enableEditMode,
+	enableEditMode = true,
 	toolbar,
 }) => {
 	const [editorState, updateEditorState] = useEditorState();

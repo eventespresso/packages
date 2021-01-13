@@ -2,7 +2,6 @@ import { useCallback, useEffect } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { AdvancedTextEditor } from '@eventespresso/ee-components';
-import { editorStateToHtml } from '@eventespresso/rich-text-editor';
 import { Heading } from '@eventespresso/ui-components';
 import { useEvent, useEventMutator } from '@eventespresso/edtr-services';
 import { withFeature } from '@eventespresso/services';
@@ -14,11 +13,10 @@ const EventDescription: React.FC = () => {
 
 	const { updateEntity: updateEvent } = useEventMutator(event?.id);
 
-	const onChangeDescription = useCallback<AdvancedTextEditorProps['onChangeEditorState']>(
+	const onChangeDescription = useCallback<AdvancedTextEditorProps['onChange']>(
 		(newDescription) => {
-			const html = editorStateToHtml(newDescription);
-			if (html !== event?.description) {
-				updateEvent({ description: html });
+			if (newDescription !== event?.description) {
+				updateEvent({ description: newDescription });
 			}
 		},
 		[event?.description, updateEvent]
@@ -32,11 +30,7 @@ const EventDescription: React.FC = () => {
 	return (
 		<div className='ee-event-description ee-edtr-section'>
 			<Heading as='h3'>{__('Event Description')}</Heading>
-			<AdvancedTextEditor
-				onChangeEditorState={onChangeDescription}
-				value={event?.description}
-				debounceDelay={3000}
-			/>
+			<AdvancedTextEditor onChange={onChangeDescription} value={event?.description} debounceDelay={4000} />
 		</div>
 	);
 };
