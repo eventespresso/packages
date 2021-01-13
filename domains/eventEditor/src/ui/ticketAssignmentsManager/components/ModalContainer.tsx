@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from 'react';
+import { useMemo, useCallback, useState, useEffect } from 'react';
 
 import { sprintf, __ } from '@eventespresso/i18n';
 
@@ -15,6 +15,7 @@ import useInvalidDataAlert from './useInvalidDataAlert';
 
 const ModalContainer: React.FC = () => {
 	const { getData, isOpen, close: onClose, openWithData } = useGlobalModal<BaseProps>(EdtrGlobalModals.TAM);
+	const [shouldValidateData, setShouldValidateData] = useState(false);
 
 	const submitAssignments = useOnSubmitAssignments();
 
@@ -65,10 +66,20 @@ const ModalContainer: React.FC = () => {
 			onClose();
 			// submit TAM data
 			await submitAssignments(data);
-			checkForInvalidData();
+			// fire up data validation
+			setShouldValidateData(true);
 		},
-		[checkForInvalidData, onClose, submitAssignments]
+		[onClose, submitAssignments]
 	);
+
+	useEffect(() => {
+		if (shouldValidateData) {
+			checkForInvalidData();
+			// calm down the archers
+			setShouldValidateData(false);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [shouldValidateData]);
 
 	if (!isOpen) {
 		return <>{confirmationDialog}</>;
