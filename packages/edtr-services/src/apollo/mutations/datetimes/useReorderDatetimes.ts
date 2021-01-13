@@ -4,10 +4,10 @@ import { datetimesDroppableId } from '@eventespresso/constants';
 import type { EntityId } from '@eventespresso/data';
 import type { EntityTableProps } from '@eventespresso/ee-components';
 
-import { ReorderEntities, useReorderEntities } from '../../useReorderEntities';
-import { useDatetimes, useLazyDatetime } from '../../../queries';
-import { DatetimesFilterStateManager as DFSM } from '../../../../filterState';
-import type { Datetime } from '../../../types';
+import { ReorderEntities, useReorderEntities } from '../useReorderEntities';
+import { useDatetimes, useLazyDatetime } from '../../queries';
+import { DatetimesFilterStateManager as DFSM } from '../../../filterState';
+import type { Datetime } from '../../types';
 
 type SortResponder = EntityTableProps<DFSM>['onSort'];
 
@@ -16,7 +16,7 @@ interface ReorderDatetimes extends Pick<ReorderEntities<Datetime>, 'done'> {
 	sortResponder: SortResponder;
 }
 
-export const useReorderDatetimes = (filteredEntityIds: Array<EntityId>): ReorderDatetimes => {
+const useReorderDatetimes = (filteredEntityIds: Array<EntityId>): ReorderDatetimes => {
 	const getDatetime = useLazyDatetime();
 	const datetimes = useMemo(() => filteredEntityIds.map(getDatetime), [filteredEntityIds, getDatetime]);
 	const [allOrderedEntities, setAllOrderedEntities] = useState<Array<Datetime>>(datetimes);
@@ -48,3 +48,5 @@ export const useReorderDatetimes = (filteredEntityIds: Array<EntityId>): Reorder
 
 	return useMemo(() => ({ allOrderedEntities, done, sortResponder }), [allOrderedEntities, done, sortResponder]);
 };
+
+export default useReorderDatetimes;

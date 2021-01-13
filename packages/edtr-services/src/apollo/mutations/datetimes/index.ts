@@ -53,6 +53,6 @@ export { default as useBulkDeleteDatetimes } from './useBulkDeleteDatetimes';
 
 export { default as useUpdateRelatedTickets } from './useUpdateRelatedTickets';
 
-export * from './useReorderDatetimes';
+export { default as useReorderDatetimes } from './useReorderDatetimes';
 
 export * from './types';
