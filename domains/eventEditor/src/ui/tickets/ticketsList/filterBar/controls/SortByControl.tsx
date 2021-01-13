@@ -18,6 +18,25 @@ import { labels, sortByOptions } from './options';
 
 const options = objectToSelectOptions(sortByOptions);
 
+const renderDraggableItems = (item) => ({
+	...item,
+	content: (
+		<>
+			<span>{item.dbId})</span>
+			<span>{item.name}: </span>
+			<span>
+				<CurrencyDisplay value={item.price} />
+			</span>
+			<span>-</span>
+			<span>{format(new Date(item.startDate), 'LLL')}</span>
+			<span>
+				{format(new Date(item.startDate), 'd')} - {format(new Date(item.endDate), 'd')}
+			</span>
+			<span>{format(new Date(item.endDate), 'yyyy')}</span>
+		</>
+	),
+});
+
 /**
  * filter for controlling the sorting of a list of Event Dates
  */
@@ -28,28 +47,6 @@ const SortByControl: React.FC = () => {
 
 	const queryOptions = useTicketQueryOptions();
 	const updateTicketList = useUpdateTicketList();
-
-	const renderDraggableItems = useCallback(
-		(item) => ({
-			...item,
-			content: (
-				<>
-					<span>{item.dbId})</span>
-					<span>{item.name}: </span>
-					<span>
-						<CurrencyDisplay value={item.price} />
-					</span>
-					<span>-</span>
-					<span>{format(new Date(item.startDate), 'LLL')}</span>
-					<span>
-						{format(new Date(item.startDate), 'd')} - {format(new Date(item.endDate), 'd')}
-					</span>
-					<span>{format(new Date(item.endDate), 'yyyy')}</span>
-				</>
-			),
-		}),
-		[]
-	);
 
 	const updateEntityList = useCallback(() => {
 		const espressoTickets: TicketEdge = {

@@ -19,6 +19,21 @@ import { labels, sortByOptions } from './options';
 
 const options = objectToSelectOptions(sortByOptions);
 
+const renderDraggableItems = (item) => ({
+	...item,
+	content: (
+		<>
+			<span>{item.dbId})</span>
+			<span>{item.name}: </span>
+			<span>{format(new Date(item.startDate), 'LLL')}</span>
+			<span>
+				{format(new Date(item.startDate), 'd')} - {format(new Date(item.endDate), 'd')}
+			</span>
+			<span>{format(new Date(item.endDate), 'yyyy')}</span>
+		</>
+	),
+});
+
 const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useDatesListFilterState();
 	const filteredDateIds = useFilteredDateIds();
@@ -26,24 +41,6 @@ const SortByControl: React.FC = () => {
 
 	const queryOptions = useDatetimeQueryOptions();
 	const updateDatetimeList = useUpdateDatetimeList();
-
-	const renderDraggableItems = useCallback(
-		(item) => ({
-			...item,
-			content: (
-				<>
-					<span>{item.dbId})</span>
-					<span>{item.name}: </span>
-					<span>{format(new Date(item.startDate), 'LLL')}</span>
-					<span>
-						{format(new Date(item.startDate), 'd')} - {format(new Date(item.endDate), 'd')}
-					</span>
-					<span>{format(new Date(item.endDate), 'yyyy')}</span>
-				</>
-			),
-		}),
-		[]
-	);
 
 	const updateEntityList = useCallback(() => {
 		const espressoDatetimes: DatetimeEdge = {
