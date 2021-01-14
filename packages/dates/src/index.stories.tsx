@@ -1,10 +1,8 @@
-// import { useCallback, useState } from 'react';
 import { always } from 'ramda';
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { DateRangePicker, DateTimePicker } from './';
 
-// import type { DateRange } from '@eventespresso/dates';
 import type { DateRangePickerProps } from './types';
 
 export default {
