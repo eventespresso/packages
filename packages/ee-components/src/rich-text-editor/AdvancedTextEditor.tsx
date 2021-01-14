@@ -5,4 +5,4 @@ const AdvancedTextEditor: React.FC<RichTextEditorProps> = (props) => {
 	return <ATE {...props} />;
 };
 
-export default withDebounce(AdvancedTextEditor, 'editorState', 'onChangeEditorState');
+export default withDebounce(AdvancedTextEditor, 'value', 'onChange');
