@@ -11,6 +11,7 @@ import { ColorPickerProps } from './types';
 import { BLACK_COLOR } from './constants';
 import { withLabel } from '../withLabel';
 import { withDebounce } from '../withDebounce';
+import { equalColorString } from './utils';
 
 import './color-picker.scss';
 
@@ -24,10 +25,9 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ color, defaultColor, o
 
 	const onChangeColor = useCallback<ColorPickerProps['onChange']>(
 		(newValue) => {
-			if (newValue !== internalValue) {
-				const valueWithoutSpaces = newValue.replace(/\s/g, '');
-				onChange?.(valueWithoutSpaces);
-				setInternalValue(valueWithoutSpaces);
+			if (!equalColorString(newValue, internalValue)) {
+				onChange?.(newValue);
+				setInternalValue(newValue);
 			}
 		},
 		[internalValue, onChange]
@@ -37,7 +37,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ color, defaultColor, o
 	// if the value changes from the consumer
 	useEffect(() => {
 		ifMounted(() => {
-			setInternalValue(color?.replace(/\s/g, ''));
+			setInternalValue(color);
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [color]);
