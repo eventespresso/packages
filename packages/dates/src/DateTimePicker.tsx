@@ -8,9 +8,9 @@ export const DateTimePicker: React.FC<DatePickerProps> = (props) => {
 	return (
 		<DatePicker
 			calendarClassName='ee-datetime-picker'
+			dateFormat={DEFAULT_DATETIME_FORMAT}
 			showTimeSelect
 			timeCaption={__('time')}
-			dateFormat={DEFAULT_DATETIME_FORMAT}
 			{...props}
 		/>
 	);
