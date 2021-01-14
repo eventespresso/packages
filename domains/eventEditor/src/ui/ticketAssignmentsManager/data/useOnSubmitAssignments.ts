@@ -51,7 +51,9 @@ const useOnSubmitAssignments = (): Callback => {
 				}
 				uniqueInputs.push({ id, quantity });
 			});
-			await bulkEditTickets({ uniqueInputs });
+			if (uniqueInputs?.length) {
+				await bulkEditTickets({ uniqueInputs });
+			}
 		},
 		[allDates, allTickets, bulkEditTickets, getExistingData]
 	);
