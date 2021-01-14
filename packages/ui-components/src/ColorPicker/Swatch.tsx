@@ -7,7 +7,11 @@ import { Button } from '../Button';
 import { SwatchProps } from './types';
 
 const Swatch: React.FC<SwatchProps> = ({ color, onSelect, isSelected, name, ...props }) => {
-	const className = classNames('ee-color-swatches__swatch', props.className, { 'is-selected': isSelected });
+	const className = classNames(
+		'ee-color-swatches__swatch',
+		isSelected && 'ee-color-swatches__swatch--is-selected',
+		props.className
+	);
 
 	const style = useMemo(() => ({ background: color }), [color]);
 

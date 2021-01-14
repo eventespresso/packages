@@ -9,7 +9,7 @@ export interface SwatchProps extends Omit<ButtonProps, 'onSelect'> {
 	className?: string;
 	color?: string;
 	isSelected?: boolean;
-	onSelect: (color: string) => void;
+	onSelect?: (color: string) => void;
 }
 
 export type PresetColor = {
