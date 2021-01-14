@@ -2,6 +2,7 @@ import { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 
 import { sprintf, __ } from '@eventespresso/i18n';
+import { Button } from '../Button';
 
 import { SwatchProps } from './types';
 
@@ -15,13 +16,13 @@ const Swatch: React.FC<SwatchProps> = ({ color, onSelect, isSelected, name, ...p
 	const ariaLabel = sprintf(/* translators: color name */ __('Color: %s'), name);
 
 	return (
-		<button
+		<Button
 			{...props}
 			aria-label={ariaLabel}
 			aria-pressed={isSelected}
 			className={className}
-			style={style}
 			onClick={onClick}
+			style={style}
 		/>
 	);
 };
