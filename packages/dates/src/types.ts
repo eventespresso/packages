@@ -12,14 +12,17 @@ export interface DatePickerProps extends Omit<ReactDatePickerProps, OmittedProps
 
 export type DateRange = [Date, Date];
 
-export interface DateRangePickerProps extends Omit<ReactDatePickerProps, OmittedProps> {
+export interface DateRangePickerProps extends ShowTime, Omit<ReactDatePickerProps, OmittedProps> {
 	endDateTZ?: React.ReactNode;
 	endLabel?: string;
 	inputValue?: [string, string];
 	locale?: string; // "en-US", "en_US", "ar" etc.
 	onChange: (dates: DateRange) => void;
-	showTime?: boolean;
 	startLabel?: string;
 	startDateTZ?: React.ReactNode;
 	value?: DateRange;
+}
+
+export interface ShowTime {
+	showTime?: boolean;
 }

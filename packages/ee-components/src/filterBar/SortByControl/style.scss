@@ -11,6 +11,10 @@
 }
 
 .ee-filter-bar-modal__reorder-entitites {
+	@include min667px {
+		min-width: 38rem;
+	}
+
 	.ee-droppable {
 		.ee-draggable {
 			> span {

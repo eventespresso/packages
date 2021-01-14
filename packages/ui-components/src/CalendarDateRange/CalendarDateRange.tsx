@@ -6,6 +6,7 @@ import { TIME_ONLY_12H_SHORT_FORMAT } from '@eventespresso/constants';
 
 import { BiggieCalendarDate, MediumCalendarDate } from '../../';
 import type { CalendarDateRangeProps } from './types';
+
 import './style.scss';
 
 /**
