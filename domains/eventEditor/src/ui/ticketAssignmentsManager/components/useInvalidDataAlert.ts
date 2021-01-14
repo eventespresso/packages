@@ -5,15 +5,16 @@ import { useRelations } from '@eventespresso/services';
 
 import { TAM_ENTITIES } from '../constants';
 
-const useInvalidDataAlert = (showAlert: VoidFunction): VoidFunction => {
+type Callback = (check: boolean) => void;
+
+const useInvalidDataAlert = (showAlert: VoidFunction): Callback => {
 	const { getData } = useRelations();
 	const [validateData, setValidateData] = useState(false);
-
-	const checkForInvalidData = useCallback(() => setValidateData(true), []);
 
 	const hasOrphanEntities = useCallback(() => {
 		// simplify the data for loop
 		const data = Object.entries(pick(TAM_ENTITIES, getData()));
+
 		for (const [, entityRelations] of data) {
 			for (const [, relations] of Object.entries(entityRelations)) {
 				const tamRelations = pick(TAM_ENTITIES, relations);
@@ -32,9 +33,10 @@ const useInvalidDataAlert = (showAlert: VoidFunction): VoidFunction => {
 			showAlert();
 			setValidateData(false);
 		}
-	}, [hasOrphanEntities, showAlert, validateData]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [validateData]);
 
-	return checkForInvalidData;
+	return setValidateData;
 };
 
 export default useInvalidDataAlert;
