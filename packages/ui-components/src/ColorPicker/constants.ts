@@ -4,6 +4,9 @@ import { PresetColor } from './types';
 
 export const BLACK_COLOR = '#000000';
 
+/**
+ * Copied from @wordpress/block-editor
+ */
 export const PRESET_COLORS: Array<PresetColor> = [
 	{
 		name: __('Black'),
