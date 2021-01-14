@@ -9,9 +9,10 @@ import link from './link';
 import textAlign from './textAlign';
 import image from './image';
 import remove from './remove';
+import colorPicker from './colorPicker';
 
 const controls: {
 	[K in ToolbarOption]?: React.ComponentType<ToolbarControlProps<K>>;
-} = { inline, blockType, fontFamily, fontSize, list, link, textAlign, image, remove };
+} = { inline, blockType, fontFamily, fontSize, colorPicker, list, link, textAlign, image, remove };
 
 export default controls;

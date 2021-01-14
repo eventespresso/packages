@@ -33,7 +33,7 @@ const Component: React.FC<ToolbarItemProps<'image'>> = ({ toolbar, onChange, con
 					{config.icon && <config.icon />}
 				</ToolbarItem>
 			}
-			aria-label={__('Add mage')}
+			aria-label={__('Add image')}
 			onClose={toggleImagePopover}
 			className='image-popover'
 		>

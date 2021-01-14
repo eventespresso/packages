@@ -1,4 +1,4 @@
-import { Link, Unlink, Image, Close } from '@eventespresso/icons';
+import { Link, Unlink, Image, Close, Edit } from '@eventespresso/icons';
 import { ToolBarConfig } from './types';
 
 const createIcon = (text: string) => () => <>{text}</>;
@@ -30,7 +30,7 @@ export const defaultToolbar: ToolBarConfig = {
 		'fontSize',
 		'list',
 		'textAlign',
-		// 'colorPicker',
+		'colorPicker',
 		'link',
 		// 'emoji',
 		'image',
@@ -82,6 +82,9 @@ export const defaultToolbar: ToolBarConfig = {
 	},
 	image: {
 		icon: () => <Image size='small' />,
+	},
+	colorPicker: {
+		icon: Edit,
 	},
 	remove: {
 		icon: () => <Close size='small' />,
