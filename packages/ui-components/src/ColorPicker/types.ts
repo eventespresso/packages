@@ -1,11 +1,11 @@
-import type { ButtonHTMLAttributes } from 'react';
 import type { ColorPickerProps as ColorPickerAdapterProps } from '@eventespresso/adapters';
+import type { ButtonProps } from '../Button';
 
 export interface ColorPickerProps extends ColorPickerAdapterProps {
 	defaultColor?: string;
 }
 
-export interface SwatchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onSelect'> {
+export interface SwatchProps extends Omit<ButtonProps, 'onSelect'> {
 	className?: string;
 	color?: string;
 	isSelected?: boolean;
