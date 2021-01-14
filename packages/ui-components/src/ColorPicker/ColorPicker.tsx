@@ -9,8 +9,12 @@ import { Button, ButtonType } from '../Button';
 import { ColorSwatches } from './ColorSwatches';
 import { ColorPickerProps } from './types';
 import { BLACK_COLOR } from './constants';
+import { withLabel } from '../withLabel';
+import { withDebounce } from '../withDebounce';
 
 import './color-picker.scss';
+
+const CustomColorPicker = withDebounce(withLabel<ColorPickerProps>(ColorPickerAdapter), 'color', 'onChange');
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({ color, defaultColor, onChange, ...props }) => {
 	const className = classNames('ee-color-picker', props.className);
@@ -21,8 +25,9 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ color, defaultColor, o
 	const onChangeColor = useCallback<ColorPickerProps['onChange']>(
 		(newValue) => {
 			if (newValue !== internalValue) {
-				onChange?.(newValue);
-				setInternalValue(newValue);
+				const valueWithoutSpaces = newValue.replace(/\s/g, '');
+				onChange?.(valueWithoutSpaces);
+				setInternalValue(valueWithoutSpaces);
 			}
 		},
 		[internalValue, onChange]
@@ -32,9 +37,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ color, defaultColor, o
 	// if the value changes from the consumer
 	useEffect(() => {
 		ifMounted(() => {
-			if (typeof color !== 'undefined') {
-				setInternalValue(color);
-			}
+			setInternalValue(color?.replace(/\s/g, ''));
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [color]);
@@ -46,10 +49,11 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ color, defaultColor, o
 			<ColorSwatches color={internalValue} onChange={onChangeColor} className='ee-color-picker__swatches' />
 
 			{showCustomColor ? (
-				<ColorPickerAdapter
+				<CustomColorPicker
 					className='ee-color-picker__control'
 					color={internalValue}
 					onChange={onChangeColor}
+					debounceDelay={200}
 				/>
 			) : (
 				<Button

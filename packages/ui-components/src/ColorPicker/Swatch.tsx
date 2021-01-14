@@ -2,9 +2,12 @@ import { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 
 import { sprintf, __ } from '@eventespresso/i18n';
+import { Check } from '@eventespresso/icons';
 import { Button } from '../Button';
 
 import { SwatchProps } from './types';
+
+const SelectedIcon = () => <Check size='tiny' />;
 
 const Swatch: React.FC<SwatchProps> = ({ color, onSelect, isSelected, name, ...props }) => {
 	const className = classNames(
@@ -25,6 +28,7 @@ const Swatch: React.FC<SwatchProps> = ({ color, onSelect, isSelected, name, ...p
 			aria-label={ariaLabel}
 			aria-pressed={isSelected}
 			className={className}
+			icon={isSelected ? SelectedIcon : null}
 			onClick={onClick}
 			style={style}
 		/>

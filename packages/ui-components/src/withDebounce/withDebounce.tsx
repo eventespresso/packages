@@ -15,18 +15,18 @@ import { AnyObject, noop } from '@eventespresso/utils';
  */
 const withDebounce = <P extends AnyObject, R extends any>(
 	WrappedComponent: React.ComponentType<P>,
-	valueProp: string = 'value',
-	changeHandler: string = 'onChangeValue'
+	valueProp: keyof P = 'value',
+	changeHandler: keyof P = 'onChangeValue'
 ): ForwardRefComponent<P & WithDebounceProps, R> => {
 	type Ref = React.Ref<R>;
 	type RefProps = { forwardedRef: Ref } & WithDebounceProps & InternalDebounceProps;
 
 	const WithDebounce: React.FC<P & RefProps> = ({ forwardedRef, debounceDelay, ...props }) => {
-		const onChangeValue = props[changeHandler];
+		const onChangeValue = props[changeHandler as string];
 		// to use debounce, debounceDelay and onChangeValue should be passed
 		const shouldDebounce = debounceDelay && typeof onChangeValue !== 'undefined';
 
-		const fieldValue = props[valueProp];
+		const fieldValue = props[valueProp as string];
 
 		const [internalValue, setInternalValue] = useState(fieldValue);
 
