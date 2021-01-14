@@ -1,0 +1,15 @@
+.ee-color-swatches {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: var(--ee-margin-small);
+
+	&__swatch {
+		margin: var(--ee-margin-micro);
+		border: 0.5px solid var(--ee-border-color);
+		border-radius: var(--ee-border-radius-small);
+		height: var(--ee-font-size-bigger);
+		width: var(--ee-font-size-bigger);
+		cursor: pointer;
+	}
+}
