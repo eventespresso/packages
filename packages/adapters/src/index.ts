@@ -5,6 +5,7 @@ export * from './Button';
 export * from './Checkbox';
 export * from './CheckboxGroup';
 export * from './Collapse';
+export * from './ColorPicker';
 export * from './Divider';
 export * from './dnd';
 export * from './Dotdotdot';
