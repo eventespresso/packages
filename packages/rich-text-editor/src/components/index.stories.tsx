@@ -1,17 +1,16 @@
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
-import { noop } from '../../../utils';
 import { AdvancedTextEditor, RichTextEditor, SimpleTextEditor } from './';
 import type { RichTextEditorProps } from './RichTextEditor';
 
 export default {
 	argTypes: {},
 	component: RichTextEditor,
-	title: 'Components/RichTextEditor',
+	title: 'Components/RichTextEditor_Exp',
 } as Meta;
 
 type RTEStory = Story<RichTextEditorProps>;
 
-export const Simple: RTEStory = () => <SimpleTextEditor onChange={noop} />;
+export const Simple: RTEStory = () => <SimpleTextEditor onChange={console.log} />;
 
-export const Advanced: RTEStory = () => <AdvancedTextEditor onChange={noop} toolbar={null} />;
+export const Advanced: RTEStory = () => <AdvancedTextEditor onChange={console.log} toolbar={null} />;
