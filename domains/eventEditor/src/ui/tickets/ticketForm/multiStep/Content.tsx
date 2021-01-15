@@ -21,13 +21,18 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 	);
 	const getCappedQuantity = useCapQuantity();
 	const onSubmit = useCallback(
-		({ prices, deletedPrices, ...fields }) => {
-			mutatePrices(prices, deletedPrices).then((relatedPriceIds) => {
-				const quantity = getCappedQuantity(fields.datetimes, fields.quantity);
-				const input = { ...fields, prices: relatedPriceIds, quantity };
-				mutateTicket(input);
-			});
+		async ({ prices, deletedPrices, ...fields }) => {
+			// close the modal
 			onClose();
+
+			// mutate prices
+			const relatedPriceIds = await mutatePrices(prices, deletedPrices);
+			//  get the capped quantity for ticket based on the related date(s)
+			const quantity = getCappedQuantity(fields.datetimes, fields.quantity);
+
+			const input = { ...fields, prices: relatedPriceIds, quantity };
+
+			await mutateTicket(input);
 		},
 		[getCappedQuantity, mutatePrices, mutateTicket, onClose]
 	);
