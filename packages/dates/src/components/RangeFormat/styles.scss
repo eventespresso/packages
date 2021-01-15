@@ -8,12 +8,6 @@
 		margin-right: var(--ee-margin-tiny);
 		padding: var(--ee-padding-tiny) 0;
 
-		&:first-child {
-			[dir='rtl'] & {
-				margin: 0 var(--ee-margin-tiny);
-			}
-		}
-
 		[dir='rtl'] & {
 			margin-left: var(--ee-margin-tiny);
 			margin-right: 0;
