@@ -4,6 +4,7 @@ import type { FieldArrayProps } from 'react-final-form-arrays';
 import type { FormState, AnyObject } from 'final-form';
 
 import type { ButtonProps, FormControlProps, OptionsType } from '@eventespresso/adapters';
+import type { IconComponent } from '@eventespresso/icons';
 import type { FormConfigProviderProps } from './context';
 
 export interface FormButtonProps extends ButtonProps {
@@ -130,7 +131,7 @@ export interface SectionProps<FormValues = AnyObject> {
 	 */
 	addSectionToFieldNames?: boolean;
 	fields: FieldList<FormValues>;
-	icon?: React.ComponentType<{ className: string }>;
+	icon?: IconComponent;
 	inline?: boolean;
 	name: string;
 	title?: React.ReactNode;
