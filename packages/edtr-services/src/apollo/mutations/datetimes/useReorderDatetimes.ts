@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { datetimesDroppableId } from '@eventespresso/constants';
 import type { EntityId } from '@eventespresso/data';
@@ -23,6 +23,10 @@ const useReorderDatetimes = (filteredEntityIds: Array<EntityId>): ReorderDatetim
 
 	const { sortEntities, done } = useReorderEntities<Datetime>({ entityType: 'DATETIME' });
 	const allEntities = useDatetimes();
+
+	useEffect(() => {
+		setAllOrderedEntities(datetimes);
+	}, [datetimes]);
 
 	const sortResponder = useCallback<SortResponder>(
 		({ destination, source }) => {

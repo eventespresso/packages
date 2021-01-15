@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { ticketDroppableId } from '@eventespresso/constants';
 import type { EntityId } from '@eventespresso/data';
@@ -23,6 +23,10 @@ const useReorderTickets = (filteredEntityIds: Array<EntityId>): ReorderTickets =
 
 	const { sortEntities, done } = useReorderEntities<Ticket>({ entityType: 'TICKET' });
 	const allEntities = useTickets();
+
+	useEffect(() => {
+		setAllOrderedEntities(tickets);
+	}, [tickets]);
 
 	const sortResponder = useCallback<SortResponder>(
 		({ destination, source }) => {
