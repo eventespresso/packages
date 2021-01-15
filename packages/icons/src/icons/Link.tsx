@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgLink = (props: IconProps): JSX.Element => {
@@ -17,4 +17,4 @@ const SvgLink = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgLink);
+export default withClassName(SvgLink);

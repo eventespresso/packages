@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgInsert = (props: IconProps): JSX.Element => {
@@ -20,4 +20,4 @@ const SvgInsert = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgInsert);
+export default withClassName(SvgInsert);

@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgRotate = (props: IconProps): JSX.Element => {
@@ -16,4 +16,4 @@ const SvgRotate = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgRotate);
+export default withClassName(SvgRotate);

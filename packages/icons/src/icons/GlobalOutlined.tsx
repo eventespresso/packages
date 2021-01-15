@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgGlobalOutlined = (props: IconProps): JSX.Element => {
@@ -18,4 +18,4 @@ const SvgGlobalOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgGlobalOutlined);
+export default withClassName(SvgGlobalOutlined);

@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgEditorOl = (props: IconProps): JSX.Element => {
@@ -17,4 +17,4 @@ const SvgEditorOl = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgEditorOl);
+export default withClassName(SvgEditorOl);

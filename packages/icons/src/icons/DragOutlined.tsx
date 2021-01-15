@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgDragOutlined = (props: IconProps): JSX.Element => {
@@ -17,4 +17,4 @@ const SvgDragOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgDragOutlined);
+export default withClassName(SvgDragOutlined);

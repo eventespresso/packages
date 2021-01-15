@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgSpinner = (props: IconProps): JSX.Element => {
@@ -27,4 +27,4 @@ const SvgSpinner = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgSpinner);
+export default withClassName(SvgSpinner);

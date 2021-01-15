@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgCloseCircleOutlined = (props: IconProps): JSX.Element => {
@@ -19,4 +19,4 @@ const SvgCloseCircleOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgCloseCircleOutlined);
+export default withClassName(SvgCloseCircleOutlined);

@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgClose = (props: IconProps): JSX.Element => {
@@ -12,4 +12,4 @@ const SvgClose = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgClose);
+export default withClassName(SvgClose);

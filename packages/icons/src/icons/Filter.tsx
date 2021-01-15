@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgFilter = (props: IconProps): JSX.Element => {
@@ -9,4 +9,4 @@ const SvgFilter = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgFilter);
+export default withClassName(SvgFilter);

@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgSwitchUnchecked = (props: IconProps): JSX.Element => {
@@ -12,4 +12,4 @@ const SvgSwitchUnchecked = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgSwitchUnchecked);
+export default withClassName(SvgSwitchUnchecked);

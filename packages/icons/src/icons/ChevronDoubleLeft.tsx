@@ -1,4 +1,4 @@
-import withEnhance from '../withEnhance';
+import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
 const SvgChevronDoubleLeft = (props: IconProps): JSX.Element => {
@@ -18,4 +18,4 @@ const SvgChevronDoubleLeft = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withEnhance(SvgChevronDoubleLeft);
+export default withClassName(SvgChevronDoubleLeft);
