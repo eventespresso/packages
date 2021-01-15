@@ -1,4 +1,4 @@
-function defaultTemplate({ template }, opts, { imports, interfaces, componentName, props, jsx, exports }) {
+function defaultTemplate({ template }, opts, { interfaces, componentName, jsx }) {
 	const plugins = ['jsx'];
 	if (opts.typescript) {
 		plugins.push('typescript');
@@ -7,7 +7,7 @@ function defaultTemplate({ template }, opts, { imports, interfaces, componentNam
 
 	return typeScriptTpl.ast`
 	
-	import withEnhance from '../withEnhance';
+	import withClassName from '../withClassName';
 	import { IconProps } from '../types';	
 
 	${interfaces}
@@ -16,7 +16,7 @@ function defaultTemplate({ template }, opts, { imports, interfaces, componentNam
 		return ${jsx};
 	}
 
-	export default withEnhance(${componentName});
+	export default withClassName(${componentName});
 	`;
 }
 module.exports = defaultTemplate;

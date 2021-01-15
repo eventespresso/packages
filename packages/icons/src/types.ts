@@ -24,3 +24,5 @@ export type IconSize = 'big' | 'bigger' | 'small' | 'smaller' | 'tiny';
 export type SvgPath = {
 	[key in IconName]: string;
 };
+
+export type IconComponent = React.ComponentType<IconProps>;
