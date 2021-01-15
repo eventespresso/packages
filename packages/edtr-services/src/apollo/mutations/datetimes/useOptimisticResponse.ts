@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
-import { ucFirst, removeNullAndUndefined } from '@eventespresso/utils';
+import { ucFirst } from '@eventespresso/utils';
 import type { Datetime } from '../../types';
 import { useLazyDatetime } from '../../queries';
 
@@ -39,8 +39,6 @@ const useOptimisticResponse = (): OptimisticResCb => {
 			let espressoDatetime: Partial<Datetime> = {
 				__typename: 'EspressoDatetime',
 			};
-			// Get rid of null or undefined values
-			const filteredInput = removeNullAndUndefined(input);
 
 			const datetime = getDatetime(input.id);
 
@@ -53,7 +51,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 						// it is unique for each entity created in bulk
 						id: `temp:${uuidv4()}`,
 						cacheId: uuidv4(),
-						...filteredInput,
+						...input,
 					};
 					break;
 				case MutationType.Delete:
@@ -61,7 +59,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 						...espressoDatetime,
 						...DATETIME_DEFAULTS, // to avoid pollution of test console
 						...datetime,
-						...filteredInput,
+						...input,
 						isTrashed: true,
 						cacheId: uuidv4(),
 					};
@@ -70,7 +68,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 					espressoDatetime = {
 						...espressoDatetime,
 						...datetime,
-						...filteredInput,
+						...input,
 						cacheId: uuidv4(),
 					};
 					break;

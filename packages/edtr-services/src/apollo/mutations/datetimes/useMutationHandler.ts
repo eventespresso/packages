@@ -1,5 +1,8 @@
 import { useCallback } from 'react';
 
+import { normalizeNumericFields, removeNullAndUndefined } from '@eventespresso/utils';
+import { MutationType } from '@eventespresso/data';
+
 import useMutationVariables from './useMutationVariables';
 import useOnCreateDatetime from './useOnCreateDatetime';
 import useOnDeleteDatetime from './useOnDeleteDatetime';
@@ -7,10 +10,10 @@ import useOnUpdateDatetime from './useOnUpdateDatetime';
 import useOptimisticResponse from './useOptimisticResponse';
 import { DEFAULT_DATETIME_LIST_DATA as DEFAULT_LIST_DATA } from '../../queries';
 import type { DatetimesList, Datetime } from '../../types';
-import { MutationType } from '@eventespresso/data';
 import type { MutationHandler, MutationUpdater } from '../types';
 import { useDatetimeQueryOptions } from '../../queries/datetimes';
 import type { DatetimeCommonInput } from './types';
+import { NUMERIC_FIELDS } from './constants';
 
 type MH = MutationHandler<Datetime, DatetimeCommonInput>;
 
@@ -53,8 +56,13 @@ const useMutationHandler = (): MH => {
 
 	const mutationHandler = useCallback<MH>(
 		(mutationType, input) => {
-			const variables = getMutationVariables(mutationType, input);
-			const optimisticResponse = getOptimisticResponse(mutationType, input);
+			// Get rid of null or undefined values
+			const filteredInput = removeNullAndUndefined(input);
+			// normalize numeric fields
+			const normalizedInput = normalizeNumericFields(NUMERIC_FIELDS, filteredInput);
+
+			const variables = getMutationVariables(mutationType, normalizedInput);
+			const optimisticResponse = getOptimisticResponse(mutationType, normalizedInput);
 
 			return { variables, optimisticResponse, onUpdate };
 		},

@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
-import { removeNullAndUndefined, ucFirst } from '@eventespresso/utils';
+import { ucFirst } from '@eventespresso/utils';
 
 import type { Ticket } from '../../';
 import { useLazyTicket } from '../../queries';
@@ -48,8 +48,6 @@ const useOptimisticResponse = (): OptimisticResCb => {
 			let espressoTicket: Partial<Ticket> = {
 				__typename: 'EspressoTicket',
 			};
-			// Get rid of null or undefined values
-			const filteredInput = removeNullAndUndefined(input);
 			const ticket = getTicket(input.id);
 
 			switch (mutationType) {
@@ -60,7 +58,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 						// make sure the id is generated on each call to make sure
 						// it is unique for each entity created in bulk
 						id: `temp:${uuidv4()}`,
-						...filteredInput,
+						...input,
 						prices: null,
 					};
 					break;
@@ -69,7 +67,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 						...espressoTicket,
 						...TICKET_DEFAULTS, // to avoid pollution of test console
 						...ticket,
-						...filteredInput,
+						...input,
 						isTrashed: true,
 						cacheId: uuidv4(),
 					};
@@ -78,7 +76,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 					espressoTicket = {
 						...espressoTicket,
 						...ticket,
-						...filteredInput,
+						...input,
 						cacheId: uuidv4(),
 						prices: null,
 					};
