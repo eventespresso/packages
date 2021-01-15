@@ -6,7 +6,7 @@ import { __ } from '@eventespresso/i18n';
 import { NOW } from '@eventespresso/constants';
 import { DatePicker, DateTimePicker } from '../';
 import { DateRangePickerLegend } from './DateRangePickerLegend';
-import type { DateRangePickerProps } from '../types';
+import type { DateRangePickerProps } from '../../types';
 
 import './styles.scss';
 

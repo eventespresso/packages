@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import * as locales from 'date-fns/locale';
 
-import { DatePickerProps } from './types';
+import { DatePickerProps } from '../types';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles.scss';

@@ -23,6 +23,25 @@ export interface DateRangePickerProps extends ShowTime, Omit<ReactDatePickerProp
 	value?: DateRange;
 }
 
+export interface RangeFormatProps extends ShowTime {
+	endDate: string;
+	formatTokens: RangeFormatTokens;
+	startDate: string;
+}
+
+interface RangeFormatTokens {
+	ampm?: string;
+	day?: string;
+	daySeparator?: string;
+	hour?: string;
+	min?: string;
+	month?: string;
+	monthSeparator?: string;
+	timeSeparator?: string;
+	year?: string;
+	yearSeparator?: string;
+}
+
 export interface ShowTime {
 	showTime?: boolean;
 }

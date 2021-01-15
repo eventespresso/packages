@@ -1,7 +1,6 @@
 export * from './addSub';
 export * from './isToday';
 export * from './misc';
-export * from './rangeFormat';
 export * from './types';
 
 export { default as areEqual } from './areEqual';

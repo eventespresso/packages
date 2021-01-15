@@ -1,7 +1,7 @@
 import { __ } from '@eventespresso/i18n';
 
 import { DatePicker } from './DatePicker';
-import type { DatePickerProps } from './types';
+import type { DatePickerProps } from '../types';
 
 export const TimePicker: React.FC<DatePickerProps> = (props) => {
 	return (

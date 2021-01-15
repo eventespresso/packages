@@ -1,6 +1,8 @@
 import { CurrencyDisplay } from '@eventespresso/ee-components';
-import { rangeFormat } from '@eventespresso/dates';
+import { RangeFormat } from '@eventespresso/dates';
 import { Ticket } from '@eventespresso/edtr-services';
+
+const formatTokens = { month: 'LLL' };
 
 const DraggableTicket: React.FC<Ticket> = ({ dbId, endDate, name, price, startDate }) => (
 	<>
@@ -10,13 +12,7 @@ const DraggableTicket: React.FC<Ticket> = ({ dbId, endDate, name, price, startDa
 			<CurrencyDisplay value={price} />
 		</span>
 		<span>-</span>
-		<span>
-			{rangeFormat({
-				formatTokens: { month: 'LLL' },
-				range: [new Date(startDate), new Date(endDate)],
-				showTime: true,
-			})}
-		</span>
+		<RangeFormat endDate={endDate} formatTokens={formatTokens} showTime startDate={startDate} />
 	</>
 );
 

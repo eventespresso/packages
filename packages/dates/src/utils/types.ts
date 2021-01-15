@@ -1,4 +1,3 @@
-import type { DateRange, ShowTime } from '../types';
 import type { IntervalType } from './addSub';
 
 export type TzDateFn = (date: Date | string | number, timezone: string) => Date;
@@ -30,26 +29,6 @@ interface UseDatePickerValidationReturn {
 	endDateIsToday: boolean;
 	endDateAfterToday: boolean;
 	endDateAfterStartDate: boolean;
-}
-
-export type RangeFormat = string;
-
-export interface RangeFormatProps extends ShowTime {
-	formatTokens: RangeFormatTokens;
-	range: DateRange;
-}
-
-interface RangeFormatTokens {
-	ampm?: string;
-	day?: string;
-	daySeparator?: string;
-	hour?: string;
-	min?: string;
-	month?: string;
-	monthSeparator?: string;
-	timeSeparator?: string;
-	year?: string;
-	yearSeparator?: string;
 }
 
 // for comparing a date against NOW

@@ -3,7 +3,7 @@ import type { Story, Meta } from '@storybook/react/types-6-0';
 
 import { DateRangePicker, DateTimePicker } from './';
 
-import type { DateRangePickerProps } from './types';
+import type { DateRangePickerProps } from '../types';
 
 export default {
 	component: DateRangePicker,
