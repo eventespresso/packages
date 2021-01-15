@@ -5,7 +5,7 @@ import { Button } from '@eventespresso/ui-components';
 
 export const ToolbarItem = forwardRef<typeof ReakitToolbarItem, React.ComponentProps<typeof ReakitToolbarItem>>(
 	(props, ref) => {
-		return <ReakitToolbarItem as={Button} {...props} ref={ref} />;
+		return <ReakitToolbarItem as={Button} {...props} ref={ref} className='ee-rich-text-editor__toolbar-item' />;
 	}
 );
 

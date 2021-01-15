@@ -17,7 +17,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({ toolbar }) => {
 	);
 
 	return (
-		<ReakitToolbar {...toolbarState} aria-label={__('RTE Toolbar')}>
+		<ReakitToolbar {...toolbarState} aria-label={__('RTE Toolbar')} className='ee-rich-text-editor__toolbar'>
 			{toolbarConfig.options.map((option) => {
 				const config = toolbarConfig?.[option];
 				const Control = controls[option];

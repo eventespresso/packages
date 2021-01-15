@@ -1,26 +1,24 @@
-import { Link, Unlink, Image, Close, Edit } from '@eventespresso/icons';
+import {
+	AlignCenter,
+	AlignJustify,
+	AlignLeft,
+	AlignRight,
+	Code,
+	ColorPicker,
+	FormatBold,
+	FormatItalic,
+	FormatListBullets,
+	FormatListNumbered,
+	FormatUnderline,
+	Image,
+	Link,
+	RemoveFormatting,
+	Strikethrough,
+	Subscript,
+	Superscript,
+	Unlink,
+} from '@eventespresso/icons';
 import { ToolBarConfig } from './types';
-
-const createIcon = (text: string) => () => <>{text}</>;
-
-// TODO replace these with real icons
-const bold = createIcon('B');
-const italic = createIcon('I');
-const underline = createIcon('U');
-const strikethrough = createIcon('S');
-const monospace = createIcon('{}');
-const superscript = createIcon('X²');
-const subscript = createIcon('X₂');
-const unordered = createIcon('UL');
-const ordered = createIcon('OL');
-const indent = createIcon('Ind');
-const outdent = createIcon('Outd');
-const left = createIcon('Align-L');
-const right = createIcon('Align-R');
-const center = createIcon('Align-C');
-const justify = createIcon('Align-J');
-const unlink = Unlink;
-const link = Link;
 
 export const defaultToolbar: ToolBarConfig = {
 	options: [
@@ -39,15 +37,15 @@ export const defaultToolbar: ToolBarConfig = {
 	],
 	inline: {
 		items: ['bold', 'italic', 'underline', 'strikethrough', 'monospace', 'superscript', 'subscript'],
-		bold: { icon: bold },
-		italic: { icon: italic },
-		underline: { icon: underline },
+		bold: { icon: FormatBold },
+		italic: { icon: FormatItalic },
+		underline: { icon: FormatUnderline },
 		strikethrough: {
-			icon: strikethrough,
+			icon: Strikethrough,
 		},
-		monospace: { icon: monospace },
-		superscript: { icon: superscript },
-		subscript: { icon: subscript },
+		monospace: { icon: Code },
+		superscript: { icon: Superscript },
+		subscript: { icon: Subscript },
 	},
 	blockType: {
 		asDropdown: true,
@@ -63,30 +61,28 @@ export const defaultToolbar: ToolBarConfig = {
 	},
 	list: {
 		items: ['unordered', 'ordered'],
-		unordered: { icon: unordered },
-		ordered: { icon: ordered },
-		indent: { icon: indent },
-		outdent: { icon: outdent },
+		unordered: { icon: FormatListBullets },
+		ordered: { icon: FormatListNumbered },
 	},
 	textAlign: {
 		items: ['left', 'center', 'right', 'justify'],
-		left: { icon: left },
-		center: { icon: center },
-		right: { icon: right },
-		justify: { icon: justify },
+		left: { icon: AlignLeft },
+		center: { icon: AlignCenter },
+		right: { icon: AlignRight },
+		justify: { icon: AlignJustify },
 	},
 	link: {
 		items: ['link', 'unlink'],
-		link: { icon: link },
-		unlink: { icon: unlink },
+		link: { icon: Link },
+		unlink: { icon: Unlink },
 	},
 	image: {
 		icon: () => <Image size='small' />,
 	},
 	colorPicker: {
-		icon: Edit,
+		icon: ColorPicker,
 	},
 	remove: {
-		icon: () => <Close size='small' />,
+		icon: RemoveFormatting,
 	},
 };
