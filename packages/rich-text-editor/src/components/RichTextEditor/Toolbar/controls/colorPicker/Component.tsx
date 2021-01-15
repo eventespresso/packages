@@ -36,7 +36,6 @@ const Component: React.FC<ToolbarItemProps<'colorPicker'>> = ({ currentValue, to
 			}
 			aria-label={__('Set color')}
 			onClose={toggleColorPickerPopover}
-			className='colorpicker-popover'
 		>
 			<p>{__('Text color')}</p>
 			<ColorPicker onChange={onChangeTextColor} color={currentValue.color} />

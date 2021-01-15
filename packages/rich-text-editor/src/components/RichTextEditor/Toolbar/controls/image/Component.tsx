@@ -35,7 +35,6 @@ const Component: React.FC<ToolbarItemProps<'image'>> = ({ toolbar, onChange, con
 			}
 			aria-label={__('Add image')}
 			onClose={toggleImagePopover}
-			className='image-popover'
 		>
 			<TextInput
 				ref={inputRef}

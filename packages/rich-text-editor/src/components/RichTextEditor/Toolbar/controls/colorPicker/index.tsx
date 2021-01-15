@@ -12,16 +12,12 @@ const ColorPicker: React.FC<ToolbarControlProps<'colorPicker'>> = (props) => {
 	const [editorState, setEditorState] = useEditorState();
 	const [currentValues, setCurrentValues] = useState<ColorData>({ color: '', bgcolor: '' });
 
-	const setSelectionValues = useCallback(() => {
+	// update current color details when cursor position changes
+	useEffect(() => {
 		const color = getSelectionCustomInlineStyle(editorState, ['COLOR']).COLOR;
 		const bgcolor = getSelectionCustomInlineStyle(editorState, ['BGCOLOR']).BGCOLOR;
 		setCurrentValues({ color, bgcolor });
 	}, [editorState]);
-
-	// update current color details when cursor position changes
-	useEffect(() => {
-		setSelectionValues();
-	}, [setSelectionValues]);
 
 	const setColor = useCallback(
 		(type: ColorType, color: string) => {
