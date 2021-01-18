@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import classNames from 'classnames';
 
 import { ToolbarItem } from '../../ToolbarItem';
 import { ToolbarItemProps } from '../../types';
@@ -17,12 +16,11 @@ const Component: React.FC<ToolbarItemProps<'inline'>> = ({ toolbar, currentValue
 			{config?.items?.map((item) => {
 				const itemConfig = config?.[item];
 				const Icon = itemConfig?.icon;
-				const className = classNames({
-					active: currentValue?.[item] === true || (item === 'monospace' && currentValue?.CODE),
-				});
+
+				const isActive = currentValue?.[item] === true || (item === 'monospace' && currentValue?.CODE);
 
 				return (
-					<ToolbarItem {...toolbar} key={item} className={className} onClick={getOnClick(item)}>
+					<ToolbarItem {...toolbar} isActive={isActive} key={item} onClick={getOnClick(item)}>
 						{(Icon && <Icon />) || item}
 					</ToolbarItem>
 				);
