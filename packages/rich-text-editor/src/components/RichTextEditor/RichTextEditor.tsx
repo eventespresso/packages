@@ -18,17 +18,6 @@ import { useEditorState } from '../../hooks';
 
 import './style.scss';
 
-// Custom overrides for "code" style.
-const styleMap = {
-	...getCustomStyleMap(),
-	CODE: {
-		backgroundColor: 'rgba(0, 0, 0, 0.05)',
-		fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-		fontSize: 16,
-		padding: 2,
-	},
-};
-
 const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	'aria-label': ariaLabel,
 	className,
@@ -71,6 +60,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 		return getDefaultKeyBinding(e);
 	}, []);
 
+	const customStyleMap = getCustomStyleMap();
+
 	const editorClassName = classNames('ee-rich-text-editor', className);
 
 	const visualEditor = (
@@ -82,7 +73,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 					blockRenderMap={blockRenderMap}
 					blockRendererFn={blockRenderer}
 					blockStyleFn={getBlockStyle}
-					customStyleMap={styleMap}
+					customStyleMap={customStyleMap}
 					editorState={editorState}
 					handleKeyCommand={handleKeyCommand}
 					keyBindingFn={keyBindingFn}
