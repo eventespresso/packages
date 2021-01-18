@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo } from 'react';
+import { useCallback, useState, useMemo, useEffect } from 'react';
 import { useMutation } from '@eventespresso/data';
 import gql from 'graphql-tag';
 import { clone } from 'ramda';
@@ -13,18 +13,18 @@ import type { Datetime, Ticket } from '../types';
 
 type Entity = Datetime | Ticket;
 
-interface ReorderEntitiesProps {
+interface ReorderEntitiesProps<E extends Entity> {
 	entityType: 'DATETIME' | 'TICKET';
+	filteredEntities: Array<E>;
 }
 
 interface CallbackArgs<E extends Entity> {
 	allEntities: Array<E>;
-	filteredEntityIds: Array<EntityId>;
 	newIndex: number;
 	oldIndex: number;
 }
 
-type SortCallback<E extends Entity> = (args: CallbackArgs<E>) => E[];
+type SortCallback<E extends Entity> = (args: CallbackArgs<E>) => Array<E>;
 
 const REORDER_ENTITIES = gql`
 	mutation REORDER_ENTITIES($input: ReorderEspressoEntitiesInput!) {
@@ -35,19 +35,29 @@ const REORDER_ENTITIES = gql`
 `;
 
 export interface ReorderEntities<E extends Entity> {
+	allReorderedEntities: Array<E>;
 	cancel: VoidFunction;
 	done: VoidFunction;
 	result: MutationResult;
 	sortEntities: SortCallback<E>;
+	updateEntityList?: VoidFunction;
 }
 
-export const useReorderEntities = <E extends Entity>({ entityType }: ReorderEntitiesProps): ReorderEntities<E> => {
+export const useReorderEntities = <E extends Entity>({
+	entityType,
+	filteredEntities,
+}: ReorderEntitiesProps<E>): ReorderEntities<E> => {
 	const toaster = useSystemNotifications();
 	const [allEntityGuids, setAllEntityGuids] = useState<Array<EntityId>>([]);
+	const [allReorderedEntities, setAllOrderedEntities] = useState<Array<E>>(filteredEntities);
 
 	const [mutate, result] = useMutation(REORDER_ENTITIES);
 
 	const { callback: runMutation, cancel: cancelDebounce } = useDebouncedCallback(mutate, 5000); // delay in MS
+
+	useEffect(() => {
+		setAllOrderedEntities(filteredEntities);
+	}, [filteredEntities]);
 
 	const done = useCallback(() => {
 		runMutation({
@@ -68,20 +78,22 @@ export const useReorderEntities = <E extends Entity>({ entityType }: ReorderEnti
 	}, [cancelDebounce]);
 
 	const sortEntities = useCallback<SortCallback<E>>(
-		({ allEntities: allEntitiesList, filteredEntityIds, newIndex, oldIndex }) => {
+		({ allEntities: allEntitiesList, newIndex, oldIndex }) => {
 			if (newIndex === oldIndex || newIndex < 0 || oldIndex < 0) {
 				return;
 			}
 			// cancel existing debounce
 			cancel();
 
-			const entityIds = clone(filteredEntityIds);
+			const entityIds = clone(allReorderedEntities.map(({ id }) => id));
 			let allEntities = clone(allEntitiesList);
 
 			// remove entity from existing location in filtered list
 			const [removed] = entityIds.splice(oldIndex, 1);
+
 			// insert removed entity into new location in same list
 			entityIds.splice(newIndex, 0, removed);
+
 			// now loop thru entities in filtered list
 			const entities = entityIds.map((entityId, index) => {
 				// grab index of reordered entities in list of all entities
@@ -96,18 +108,27 @@ export const useReorderEntities = <E extends Entity>({ entityType }: ReorderEnti
 			// insert ordered entities at the beginning of the array
 			// which means trashed ones will land up at the end
 			allEntities = [...entities, ...allEntities];
+
 			// but now we need to reset the order properties for ALL entities
 			allEntities.map((entity, index) => {
 				// add 1 so we don't end up with order: 0
 				return { ...entity, order: index + 1 };
 			});
 
+			setAllOrderedEntities(entities);
+
 			setAllEntityGuids(getGuids(allEntities));
 
 			return allEntities;
 		},
-		[cancel]
+		[allReorderedEntities, cancel]
 	);
 
-	return useMemo(() => ({ cancel, done, result, sortEntities }), [cancel, done, result, sortEntities]);
+	return useMemo(() => ({ allReorderedEntities, cancel, done, result, sortEntities }), [
+		allReorderedEntities,
+		cancel,
+		done,
+		result,
+		sortEntities,
+	]);
 };

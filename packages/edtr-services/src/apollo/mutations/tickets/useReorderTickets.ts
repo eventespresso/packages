@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { ticketDroppableId } from '@eventespresso/constants';
 import type { EntityId } from '@eventespresso/data';
@@ -6,27 +6,45 @@ import type { EntityTableProps } from '@eventespresso/ee-components';
 
 import { ReorderEntities, useReorderEntities } from '../useReorderEntities';
 import { TicketsFilterStateManager as TFSM } from '../../../filterState';
-import { useTickets, useLazyTicket } from '../../queries';
-import type { Ticket } from '../../types';
+import { useTickets, useTicketQueryOptions, useLazyTicket } from '../../queries';
+import { useUpdateTicketList } from '../../../hooks';
+import type { Ticket, TicketEdge } from '../../types';
 
 type SortResponder = EntityTableProps<TFSM>['onSort'];
 
-interface ReorderTickets extends Pick<ReorderEntities<Ticket>, 'done'> {
-	allOrderedEntities: Ticket[];
+interface ReorderTickets extends Pick<ReorderEntities<Ticket>, 'allReorderedEntities' | 'updateEntityList'> {
 	sortResponder: SortResponder;
 }
 
 const useReorderTickets = (filteredEntityIds: Array<EntityId>): ReorderTickets => {
+	const [allUpdatedEntities, setAllUpdatedEntities] = useState<Array<Ticket>>([]);
 	const getTicket = useLazyTicket();
-	const tickets = useMemo(() => filteredEntityIds.map(getTicket), [filteredEntityIds, getTicket]);
-	const [allOrderedEntities, setAllOrderedEntities] = useState<Array<Ticket>>(tickets);
+	const filteredTickets = useMemo(() => filteredEntityIds.map(getTicket), [filteredEntityIds, getTicket]);
 
-	const { sortEntities, done } = useReorderEntities<Ticket>({ entityType: 'TICKET' });
+	const { allReorderedEntities, done, sortEntities } = useReorderEntities<Ticket>({
+		entityType: 'TICKET',
+		filteredEntities: filteredTickets,
+	});
+
 	const allEntities = useTickets();
 
-	useEffect(() => {
-		setAllOrderedEntities(tickets);
-	}, [tickets]);
+	const queryOptions = useTicketQueryOptions();
+	const updateTicketList = useUpdateTicketList();
+	const updateEntityList = useCallback(() => {
+		const espressoTickets: TicketEdge = {
+			nodes: allUpdatedEntities,
+			__typename: 'EspressoRootQueryTicketsConnection',
+		};
+
+		done();
+
+		updateTicketList({
+			...queryOptions,
+			data: {
+				espressoTickets,
+			},
+		});
+	}, [allUpdatedEntities, done, queryOptions, updateTicketList]);
 
 	const sortResponder = useCallback<SortResponder>(
 		({ destination, source }) => {
@@ -40,17 +58,20 @@ const useReorderTickets = (filteredEntityIds: Array<EntityId>): ReorderTickets =
 
 			const allSortedEntities = sortEntities({
 				allEntities,
-				filteredEntityIds,
 				newIndex: destination.index,
 				oldIndex: source.index,
 			});
 
-			setAllOrderedEntities(allSortedEntities);
+			setAllUpdatedEntities(allSortedEntities);
 		},
-		[filteredEntityIds, allEntities, sortEntities]
+		[allEntities, sortEntities]
 	);
 
-	return useMemo(() => ({ allOrderedEntities, done, sortResponder }), [allOrderedEntities, done, sortResponder]);
+	return useMemo(() => ({ allReorderedEntities, sortResponder, updateEntityList }), [
+		allReorderedEntities,
+		sortResponder,
+		updateEntityList,
+	]);
 };
 
 export default useReorderTickets;

@@ -23,7 +23,6 @@ const useStateReducer = <SortBy = BasicSortBy>(): EntityListFilterStateReducer<S
 				return { ...state, sortBy };
 
 			case 'SET_VIEW':
-				// disable sorting when card view is selected
 				return { ...state, view };
 
 			default:

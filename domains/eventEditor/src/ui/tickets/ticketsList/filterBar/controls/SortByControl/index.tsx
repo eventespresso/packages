@@ -1,14 +1,5 @@
-import { useCallback } from 'react';
-
 import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
-import {
-	TicketEdge,
-	useFilteredTicketIds,
-	useReorderTickets,
-	useTicketQueryOptions,
-	useTicketsListFilterState,
-	useUpdateTicketList,
-} from '@eventespresso/edtr-services';
+import { useFilteredTicketIds, useReorderTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { ticketDroppableId } from '@eventespresso/constants';
 import { objectToSelectOptions } from '@eventespresso/utils';
 import { TypeName } from '@eventespresso/services';
@@ -29,30 +20,13 @@ const renderDraggableItems = (ticket) => ({
 const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useTicketsListFilterState();
 	const filteredTicketIds = useFilteredTicketIds();
-	const { allOrderedEntities, done, sortResponder } = useReorderTickets(filteredTicketIds);
-
-	const queryOptions = useTicketQueryOptions();
-	const updateTicketList = useUpdateTicketList();
-
-	const updateEntityList = useCallback(() => {
-		const espressoTickets: TicketEdge = {
-			nodes: allOrderedEntities,
-			__typename: 'EspressoRootQueryTicketsConnection',
-		};
-
-		done();
-
-		updateTicketList({
-			...queryOptions,
-			data: {
-				espressoTickets,
-			},
-		});
-	}, [allOrderedEntities, done, queryOptions, updateTicketList]);
+	const { allReorderedEntities: draggableItems, sortResponder, updateEntityList } = useReorderTickets(
+		filteredTicketIds
+	);
 
 	return (
 		<SortByControlUI
-			draggableItems={allOrderedEntities}
+			draggableItems={draggableItems}
 			droppableId={ticketDroppableId}
 			entityType={TypeName.tickets}
 			id='tickets-list-sort-by-control'

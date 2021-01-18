@@ -1,4 +1,5 @@
 import { format, isSameDay, isSameMonth, isSameYear } from 'date-fns';
+import { useMemo } from 'react';
 
 import type { RangeFormatProps, RangeFormatTokens } from '../../types';
 
@@ -19,22 +20,17 @@ const DEFAULT_FORMAT_TOKENS: RangeFormatTokens = {
 
 export const RangeFormat: React.FC<RangeFormatProps> = ({
 	endDate,
-	formatTokens = DEFAULT_FORMAT_TOKENS,
+	formatTokens,
 	showTime,
 	startDate,
 }: RangeFormatProps) => {
-	const {
-		ampm,
-		day,
-		daySeparator,
-		hour,
-		min,
-		month,
-		monthSeparator,
-		timeSeparator,
-		year,
-		yearSeparator,
-	} = formatTokens;
+	const { ampm, day, daySeparator, hour, min, month, monthSeparator, timeSeparator, year, yearSeparator } = useMemo(
+		() => ({
+			...DEFAULT_FORMAT_TOKENS,
+			...formatTokens,
+		}),
+		[formatTokens]
+	);
 
 	const start = new Date(startDate);
 	const end = new Date(endDate);

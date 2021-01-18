@@ -1,14 +1,5 @@
-import { useCallback } from 'react';
-
 import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
-import {
-	DatetimeEdge,
-	useDatesListFilterState,
-	useFilteredDateIds,
-	useReorderDatetimes,
-	useDatetimeQueryOptions,
-	useUpdateDatetimeList,
-} from '@eventespresso/edtr-services';
+import { useDatesListFilterState, useFilteredDateIds, useReorderDatetimes } from '@eventespresso/edtr-services';
 
 import { objectToSelectOptions } from '@eventespresso/utils';
 import { datetimesDroppableId } from '@eventespresso/constants';
@@ -27,30 +18,13 @@ const renderDraggableItems = (datetime) => ({
 const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useDatesListFilterState();
 	const filteredDateIds = useFilteredDateIds();
-	const { allOrderedEntities, done, sortResponder } = useReorderDatetimes(filteredDateIds);
-
-	const queryOptions = useDatetimeQueryOptions();
-	const updateDatetimeList = useUpdateDatetimeList();
-
-	const updateEntityList = useCallback(() => {
-		const espressoDatetimes: DatetimeEdge = {
-			nodes: allOrderedEntities,
-			__typename: 'EspressoRootQueryDatetimesConnection',
-		};
-
-		done();
-
-		updateDatetimeList({
-			...queryOptions,
-			data: {
-				espressoDatetimes,
-			},
-		});
-	}, [allOrderedEntities, done, queryOptions, updateDatetimeList]);
+	const { allReorderedEntities: draggableItems, sortResponder, updateEntityList } = useReorderDatetimes(
+		filteredDateIds
+	);
 
 	return (
 		<SortByControlUI
-			draggableItems={allOrderedEntities}
+			draggableItems={draggableItems}
 			droppableId={datetimesDroppableId}
 			entityType={TypeName.datetimes}
 			id='dates-list-sort-by-control'
