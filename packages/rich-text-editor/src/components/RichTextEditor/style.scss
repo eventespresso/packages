@@ -1,3 +1,5 @@
+@import '~@eventespresso/styles/src';
+
 .ee-rich-text-editor {
 	cursor: text;
 	font-size: 16px;
@@ -25,8 +27,13 @@
 		padding: var(--ee-padding-tiny) 0;
 		display: flex;
 		flex-wrap: wrap;
+
 		&-popover .ee-popover__content {
-			max-width: 300px;
+			width: 100%;
+
+			@include min480px {
+				max-width: 300px;
+			}
 		}
 	}
 
