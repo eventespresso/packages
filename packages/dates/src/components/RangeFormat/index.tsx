@@ -4,23 +4,38 @@ import type { RangeFormatProps } from '../../types';
 
 import './styles.scss';
 
+const DEFAULT_FORMAT_TOKENS = {
+	ampm: 'aaaa',
+	day: 'd',
+	daySeparator: '-',
+	hour: 'h',
+	min: 'mm',
+	month: 'LLLL',
+	monthSeparator: '-',
+	timeSeparator: '-',
+	year: 'yyyy',
+	yearSeparator: '-',
+};
+
 export const RangeFormat: React.FC<RangeFormatProps> = ({
 	endDate,
-	formatTokens: {
-		ampm = 'aaaa',
-		day = 'd',
-		daySeparator = '-',
-		hour = 'h',
-		min = 'mm',
-		month = 'LLLL',
-		monthSeparator = '-',
-		timeSeparator = '-',
-		year = 'yyyy',
-		yearSeparator = '-',
-	},
+	formatTokens = DEFAULT_FORMAT_TOKENS,
 	showTime,
 	startDate,
 }: RangeFormatProps) => {
+	const {
+		ampm,
+		day,
+		daySeparator,
+		hour,
+		min,
+		month,
+		monthSeparator,
+		timeSeparator,
+		year,
+		yearSeparator,
+	} = formatTokens;
+
 	const start = new Date(startDate);
 	const end = new Date(endDate);
 
