@@ -1,10 +1,10 @@
 import { format, isSameDay, isSameMonth, isSameYear } from 'date-fns';
 
-import type { RangeFormatProps } from '../../types';
+import type { RangeFormatProps, RangeFormatTokens } from '../../types';
 
 import './styles.scss';
 
-const DEFAULT_FORMAT_TOKENS = {
+const DEFAULT_FORMAT_TOKENS: RangeFormatTokens = {
 	ampm: 'aaaa',
 	day: 'd',
 	daySeparator: '-',

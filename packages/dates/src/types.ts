@@ -29,7 +29,7 @@ export interface RangeFormatProps extends ShowTime {
 	startDate: string;
 }
 
-interface RangeFormatTokens {
+export interface RangeFormatTokens {
 	ampm?: string;
 	day?: string;
 	daySeparator?: string;
