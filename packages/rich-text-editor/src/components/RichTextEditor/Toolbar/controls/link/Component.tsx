@@ -1,11 +1,12 @@
 import { useCallback, useRef, useState } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Switch, Button, Popover, TextInput } from '@eventespresso/ui-components';
+import { Switch, Button, TextInput } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
 
 import { ToolbarItem } from '../../ToolbarItem';
 import { ToolbarItemProps } from '../../types';
+import { ToolbarPopover } from '../../ToolbarPopover';
 
 const Component: React.FC<ToolbarItemProps<'link'>> = ({ currentValue, toolbar, onChange, config }) => {
 	const { isOpen: isUrlPopoverOpen, onClose: onCloseUrlPopover, onToggle: toggleUrlPopover } = useDisclosure({
@@ -40,17 +41,15 @@ const Component: React.FC<ToolbarItemProps<'link'>> = ({ currentValue, toolbar, 
 
 	return (
 		<>
-			<Popover
+			<ToolbarPopover
 				initialFocusRef={inputRef}
 				isOpen={isUrlPopoverOpen}
 				trigger={
-					<ToolbarItem {...toolbar} onClick={onClickTrigger}>
+					<ToolbarItem {...toolbar} aria-label={__('Edit link')} onClick={onClickTrigger}>
 						{link.icon && <link.icon />}
 					</ToolbarItem>
 				}
-				aria-label={__('Edit link')}
 				onClose={toggleUrlPopover}
-				className='link-popover'
 			>
 				<TextInput value={title} placeholder={__('URL title')} onChangeValue={setTitle as typeof onChange} />
 				<br />
@@ -70,7 +69,7 @@ const Component: React.FC<ToolbarItemProps<'link'>> = ({ currentValue, toolbar, 
 				</Button>
 				&emsp;
 				<Button onClick={onCloseUrlPopover}>{'Cancel'}</Button>
-			</Popover>
+			</ToolbarPopover>
 
 			<ToolbarItem {...toolbar} onClick={removeLink}>
 				{unlink.icon && <unlink.icon />}

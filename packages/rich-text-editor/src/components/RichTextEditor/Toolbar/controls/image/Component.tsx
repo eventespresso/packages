@@ -1,11 +1,12 @@
 import { useCallback, useRef, useState } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Button, Popover, TextInput } from '@eventespresso/ui-components';
+import { Button, TextInput } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
 
 import { ToolbarItem } from '../../ToolbarItem';
 import { ToolbarItemProps } from '../../types';
+import { ToolbarPopover } from '../../ToolbarPopover';
 
 const Component: React.FC<ToolbarItemProps<'image'>> = ({ toolbar, onChange, config }) => {
 	const { isOpen: isImagePopoverOpen, onClose: onCloseImagePopover, onToggle: toggleImagePopover } = useDisclosure({
@@ -25,15 +26,14 @@ const Component: React.FC<ToolbarItemProps<'image'>> = ({ toolbar, onChange, con
 	}, [onChange, src, alt, width, height, onCloseImagePopover]);
 
 	return (
-		<Popover
+		<ToolbarPopover
 			initialFocusRef={inputRef}
 			isOpen={isImagePopoverOpen}
 			trigger={
-				<ToolbarItem {...toolbar} onClick={toggleImagePopover}>
+				<ToolbarItem {...toolbar} aria-label={__('Add image')} onClick={toggleImagePopover}>
 					{config.icon && <config.icon />}
 				</ToolbarItem>
 			}
-			aria-label={__('Add image')}
 			onClose={toggleImagePopover}
 		>
 			<TextInput
@@ -56,7 +56,7 @@ const Component: React.FC<ToolbarItemProps<'image'>> = ({ toolbar, onChange, con
 			</Button>
 			&emsp;
 			<Button onClick={onCloseImagePopover}>{'Cancel'}</Button>
-		</Popover>
+		</ToolbarPopover>
 	);
 };
 

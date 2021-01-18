@@ -1,11 +1,12 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { ColorPicker, Popover } from '@eventespresso/ui-components';
+import { ColorPicker } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
 
 import { ToolbarItem } from '../../ToolbarItem';
 import { ToolbarItemProps } from '../../types';
+import { ToolbarPopover } from '../../ToolbarPopover';
 
 const Component: React.FC<ToolbarItemProps<'colorPicker'>> = ({ currentValue, toolbar, onChange, config }) => {
 	const { isOpen: isColorPickerPopoverOpen, onToggle: toggleColorPickerPopover } = useDisclosure({
@@ -27,21 +28,20 @@ const Component: React.FC<ToolbarItemProps<'colorPicker'>> = ({ currentValue, to
 	);
 
 	return (
-		<Popover
+		<ToolbarPopover
 			isOpen={isColorPickerPopoverOpen}
 			trigger={
-				<ToolbarItem {...toolbar} onClick={toggleColorPickerPopover}>
+				<ToolbarItem {...toolbar} aria-label={__('Set color')} onClick={toggleColorPickerPopover}>
 					{config.icon && <config.icon />}
 				</ToolbarItem>
 			}
-			aria-label={__('Set color')}
 			onClose={toggleColorPickerPopover}
 		>
 			<p>{__('Text color')}</p>
 			<ColorPicker onChange={onChangeTextColor} color={currentValue.color} />
 			<p>{__('Background color')}</p>
 			<ColorPicker onChange={onChangeBgColor} color={currentValue.bgcolor} />
-		</Popover>
+		</ToolbarPopover>
 	);
 };
 
