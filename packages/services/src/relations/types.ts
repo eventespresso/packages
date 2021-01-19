@@ -33,14 +33,14 @@ export interface RelationAction extends CommonProps<null> {
 }
 
 export interface RelationsManager {
-	initialize: (data: RelationalData) => void;
-	isInitialized: () => boolean;
+	addRelation: <ForEntity extends RelationEntity>(options: RelationFunctionProps<ForEntity>) => void;
+	dropRelations: <ForEntity extends RelationEntity>(options: RelationFunctionProps<ForEntity>) => void;
 	getData: () => RelationalData;
 	getRelations: <ForEntity extends RelationEntity>(options: RelationFunctionProps<ForEntity>) => EntityId[];
-	addRelation: <ForEntity extends RelationEntity>(options: RelationFunctionProps<ForEntity>) => void;
-	updateRelations: <ForEntity extends RelationEntity>(options: RelationFunctionProps<ForEntity>) => void;
+	initialize: (data: RelationalData) => void;
+	isInitialized: () => boolean;
 	removeRelation: <ForEntity extends RelationEntity>(options: RelationFunctionProps<ForEntity>) => void;
-	dropRelations: <ForEntity extends RelationEntity>(options: RelationFunctionProps<ForEntity>) => void;
+	updateRelations: <ForEntity extends RelationEntity>(options: RelationFunctionProps<ForEntity>) => void;
 }
 
 export type RelationsReducer = (state: RelationalData, action: RelationAction) => RelationalData;

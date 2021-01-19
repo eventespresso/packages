@@ -130,14 +130,14 @@ const useRelationsManager = (data: RelationalData = INITIAL_STATE): RM => {
 
 	return useMemo(
 		() => ({
-			initialize,
-			isInitialized,
+			addRelation,
+			dropRelations,
 			getData,
 			getRelations,
-			addRelation,
+			initialize,
+			isInitialized,
 			removeRelation,
 			updateRelations,
-			dropRelations,
 		}),
 		[addRelation, dropRelations, getData, getRelations, initialize, isInitialized, removeRelation, updateRelations]
 	);

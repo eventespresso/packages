@@ -11,10 +11,9 @@ import type { TAMModalProps } from '../../context/types';
 import '../styles.scss';
 
 const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onCloseModal, onSubmit, title }) => {
-	const { hasOrphanEntities } = useDataState();
-	const cancelButtonProps = useCancelButtonProps(onCloseModal);
+	const { hasOrphanEntities, initialDataIsValid } = useDataState();
+	const cancelButtonProps = useCancelButtonProps(onCloseModal, !initialDataIsValid);
 	const submitButtonProps = useSubmitButtonProps(onSubmit);
-
 	const hasErrors = hasOrphanEntities();
 
 	return (

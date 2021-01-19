@@ -53,6 +53,7 @@ export interface DataStateManager extends AssignmentManager {
 	hasOrphanDates: () => boolean;
 	hasOrphanEntities: () => boolean;
 	hasOrphanTickets: () => boolean;
+	initialDataIsValid: boolean;
 }
 
 export interface DatesAndTickets {

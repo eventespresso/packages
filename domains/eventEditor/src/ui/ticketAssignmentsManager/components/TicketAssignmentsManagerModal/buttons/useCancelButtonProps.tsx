@@ -4,10 +4,9 @@ import { __ } from '@eventespresso/i18n';
 import { useDataState } from '../../../data';
 import type { ButtonProps } from '@eventespresso/ui-components';
 
-const useCancelButtonProps = (onCloseModal: VoidFunction): ButtonProps => {
+const useCancelButtonProps = (onCloseModal: VoidFunction, hasErrors?: boolean): ButtonProps => {
 	const { hasOrphanEntities } = useDataState();
-
-	const hasErrors = hasOrphanEntities();
+	const disabled = hasErrors !== undefined ? hasErrors : hasOrphanEntities();
 
 	const onClick: ButtonProps['onClick'] = useCallback(() => {
 		onCloseModal();
@@ -16,11 +15,11 @@ const useCancelButtonProps = (onCloseModal: VoidFunction): ButtonProps => {
 	return useMemo<ButtonProps>(
 		() => ({
 			buttonText: __('Cancel'),
-			isDisabled: hasErrors,
+			isDisabled: disabled,
 			onClick,
 			type: 'reset',
 		}),
-		[hasErrors, onClick]
+		[disabled, onClick]
 	);
 };
 

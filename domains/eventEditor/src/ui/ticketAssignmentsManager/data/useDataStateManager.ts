@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useMemo } from 'react';
+import { useEffect, useCallback, useMemo, useState } from 'react';
 
 import { EntityId } from '@eventespresso/data';
 import { useRelations } from '@eventespresso/services';
@@ -6,6 +6,7 @@ import { useAssignmentManager, useValidation } from './';
 import { AssignmentStatus, BaseProps, DataStateManager } from '../types';
 
 const useDataStateManager = (props: BaseProps): DataStateManager => {
+	const [initialDataIsValid, setInitialDataIsValid] = useState(false);
 	const assignmentManager = useAssignmentManager();
 	// The existing relations to be used to create initial data
 	// and to calculate difference between new and old data
@@ -14,13 +15,6 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 
 	const { initialize, isInitialized } = assignmentManager;
 	const initialized = isInitialized();
-
-	useEffect(() => {
-		if (!initialized) {
-			// initialize with existing data
-			initialize({ data: relations.getData(), ...props });
-		}
-	}, [initialize, initialized, props, relations]);
 
 	const hasNoAssignedDates = useCallback(({ ticketId }) => orphanEntities.tickets.includes(ticketId), [
 		orphanEntities.tickets,
@@ -90,6 +84,17 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 		[assignmentManager, getOldRelation]
 	);
 
+	useEffect(() => {
+		if (!initialized) {
+			const data = relations.getData();
+			// initialize with existing data
+			initialize({ data, ...props });
+			// now check if there are any orphaned entities in the intial data and save the result
+			const hasOrphans = orphanEntities?.datetimes?.length !== 0 || orphanEntities?.tickets?.length !== 0;
+			setInitialDataIsValid(!hasOrphans);
+		}
+	}, [initialize, initialized, orphanEntities, props, relations, setInitialDataIsValid]);
+
 	return useMemo(
 		() => ({
 			...assignmentManager,
@@ -99,6 +104,7 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 			hasOrphanDates,
 			hasOrphanEntities,
 			hasOrphanTickets,
+			initialDataIsValid,
 		}),
 		[
 			assignmentManager,
@@ -108,6 +114,7 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 			hasOrphanDates,
 			hasOrphanEntities,
 			hasOrphanTickets,
+			initialDataIsValid,
 		]
 	);
 };
