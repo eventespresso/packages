@@ -4,7 +4,7 @@ export const getBlockStyle = (block: ContentBlock): string | null => {
 	const textAlign = block?.getData()?.get('text-align');
 
 	if (textAlign) {
-		return `ee-rich-text-editor-align-${textAlign}`;
+		return `ee-rich-text-editor--align-${textAlign}`;
 	}
 
 	const blockType: DraftBlockType = block.getType();
