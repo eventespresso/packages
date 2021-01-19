@@ -2,7 +2,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { PresetColor } from './types';
 
-export const BLACK_COLOR = 'rgb(0,0,0)';
+export const BLACK_COLOR = '#000000';
 
 export const PRESET_COLORS: Array<PresetColor> = [
 	{
@@ -11,46 +11,46 @@ export const PRESET_COLORS: Array<PresetColor> = [
 	},
 	{
 		name: __('Cyan bluish gray'),
-		color: 'rgb(171,184,195)',
+		color: '#abb8c3',
 	},
 	{
 		name: __('White'),
-		color: 'rgb(255,255,255)',
+		color: '#ffffff',
 	},
 	{
 		name: __('Pale pink'),
-		color: 'rgb(247,141,167)',
+		color: '#f78da7',
 	},
 	{
 		name: __('Vivid red'),
-		color: 'rgb(207,46,46)',
+		color: '#cf2e2e',
 	},
 	{
 		name: __('Luminous vivid orange'),
-		color: 'rgb(255,105,0)',
+		color: '#ff6900',
 	},
 	{
 		name: __('Luminous vivid amber'),
-		color: 'rgb(252,185,0)',
+		color: '#fcb900',
 	},
 	{
 		name: __('Light green cyan'),
-		color: 'rgb(123,220,181)',
+		color: '#7bdcb5',
 	},
 	{
 		name: __('Vivid green cyan'),
-		color: 'rgb(0,208,132)',
+		color: '#00d084',
 	},
 	{
 		name: __('Pale cyan blue'),
-		color: 'rgb(142,209,252)',
+		color: '#8ed1fc',
 	},
 	{
 		name: __('Vivid cyan blue'),
-		color: 'rgb(6,147,227)',
+		color: '#0693e3',
 	},
 	{
 		name: __('Vivid purple'),
-		color: 'rgb(155,81,224)',
+		color: '#9b51e0',
 	},
 ];
