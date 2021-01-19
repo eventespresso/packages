@@ -89,7 +89,7 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 			const data = relations.getData();
 			// initialize with existing data
 			initialize({ data, ...props });
-			// now check if there are any orphaned entities in the intial data and save the result
+			// now check if there are any orphaned entities in the initial data and save the result
 			const hasOrphans = orphanEntities?.datetimes?.length !== 0 || orphanEntities?.tickets?.length !== 0;
 			setInitialDataIsValid(!hasOrphans);
 		}
