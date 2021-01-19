@@ -9,9 +9,6 @@ export const validate = async (values: DateFormShape): Promise<any> => {
 };
 
 const validationSchema = yup.object({
-	name: yup
-		.string()
-		.required(() => __('Name is required'))
-		.min(3, () => __('Name must be at least three characters')),
+	name: yup.string(),
 	...datesSchema,
 });

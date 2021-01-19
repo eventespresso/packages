@@ -82,8 +82,6 @@ const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFo
 							name: 'name',
 							label: __('Name'),
 							fieldType: 'text',
-							min: 3,
-							required: true,
 						},
 						{
 							name: 'description',
