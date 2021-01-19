@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-
 import {
 	Copy,
 	Edit,
@@ -12,11 +11,12 @@ import {
 } from '@eventespresso/ui-components';
 import { EdtrGlobalModals, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
-import { useMemoStringify } from '@eventespresso/hooks';
 
 import type { TicketMainMenuProps } from './types';
 import useActions from './useActions';
 import { EntityEditModalData } from '@edtrUI/types';
+
+const toggleProps: DropdownToggleProps = { tooltip: __('ticket main menu') };
 
 const TicketMainMenu: React.FC<TicketMainMenuProps> = ({ ticket }) => {
 	const { copyTicket, trashTicket, isTrashed } = useActions(ticket.id);
@@ -36,8 +36,6 @@ const TicketMainMenu: React.FC<TicketMainMenuProps> = ({ ticket }) => {
 		title,
 		onConfirm: trashTicket,
 	});
-
-	const toggleProps: DropdownToggleProps = useMemoStringify({ tooltip: __('ticket main menu') });
 
 	const trashTicketTitle = isTrashed ? __('delete permanently') : __('trash ticket');
 
