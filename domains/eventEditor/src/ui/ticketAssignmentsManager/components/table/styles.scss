@@ -66,7 +66,7 @@
 					width: 300px;
 
 					> div {
-						align-items: start;
+						align-items: flex-start;
 						display: flex;
 						flex-direction: column;
 						font-weight: normal;
@@ -263,6 +263,7 @@
 						span,
 						svg {
 							height: var(--ee-icon-button-size);
+							margin: 0;
 							padding: 0;
 							width: var(--ee-icon-button-size);
 						}

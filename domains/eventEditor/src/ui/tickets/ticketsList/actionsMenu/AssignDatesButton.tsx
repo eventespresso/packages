@@ -7,9 +7,7 @@ import { IconButton, EntityListItemProps, ItemCount } from '@eventespresso/ui-co
 import { useRelatedDatetimes, EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { TypeName } from '@eventespresso/services';
 import { withIsLoaded } from '@eventespresso/services';
-import { useMemoStringify } from '@eventespresso/hooks';
 import type { Ticket } from '@eventespresso/edtr-services';
-import type { TooltipProps } from '@eventespresso/adapters';
 import { useGlobalModal } from '@eventespresso/registry';
 
 import { BaseProps } from '@edtrUI/ticketAssignmentsManager';
@@ -30,21 +28,13 @@ const AssignDatesButton: React.FC<EntityListItemProps<Ticket>> = ({ entity }) =>
 				'There are no event dates assigned to this ticket. Please click the calendar icon to update the assignments.'
 		  );
 
-	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'left' });
-
 	const onOpen = useCallback(() => {
 		openWithData({ entity, assignmentType: 'forTicket' });
 	}, [entity, openWithData]);
 
 	return (
 		<ItemCount count={count} emphasizeZero title={title} zeroCountChar='!'>
-			<IconButton
-				borderless
-				icon={Calendar}
-				onClick={onOpen}
-				tooltip={__('assign dates')}
-				tooltipProps={tooltipProps}
-			/>
+			<IconButton borderless icon={Calendar} onClick={onOpen} tooltip={__('assign dates')} />
 		</ItemCount>
 	);
 };

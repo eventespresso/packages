@@ -37,10 +37,7 @@ const TicketMainMenu: React.FC<TicketMainMenuProps> = ({ ticket }) => {
 		onConfirm: trashTicket,
 	});
 
-	const toggleProps: DropdownToggleProps = useMemoStringify({
-		tooltip: __('ticket main menu'),
-		tooltipProps: { placement: 'left' },
-	});
+	const toggleProps: DropdownToggleProps = useMemoStringify({ tooltip: __('ticket main menu') });
 
 	const trashTicketTitle = isTrashed ? __('delete permanently') : __('trash ticket');
 

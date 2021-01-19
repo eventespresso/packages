@@ -38,10 +38,7 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 		onConfirm: trashDate,
 	});
 
-	const toggleProps: DropdownToggleProps = useMemoStringify({
-		tooltip: __('event date main menu'),
-		tooltipProps: { placement: 'right' },
-	});
+	const toggleProps: DropdownToggleProps = useMemoStringify({ tooltip: __('event date main menu') });
 
 	const trashDateTitle = isTrashed ? __('delete permanently') : __('trash datetime');
 

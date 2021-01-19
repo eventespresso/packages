@@ -1,8 +1,6 @@
 import { forwardRef } from 'react';
 
 import { GlobalOutlined } from '@eventespresso/icons';
-import type { TooltipProps } from '@eventespresso/adapters';
-
 import { IconButton } from '../../';
 
 interface TriggerProps {
@@ -12,8 +10,6 @@ interface TriggerProps {
 
 const Icon: React.FC = () => <GlobalOutlined size='smaller' />;
 
-const tooltipProps: TooltipProps = { placement: 'top' as const };
-
 const Trigger = forwardRef<typeof IconButton, TriggerProps>(({ tooltip, ...props }, ref) => {
 	return (
 		<IconButton
@@ -22,7 +18,6 @@ const Trigger = forwardRef<typeof IconButton, TriggerProps>(({ tooltip, ...props
 			className='ee-timezone-info__button'
 			icon={Icon}
 			tooltip={tooltip}
-			tooltipProps={tooltipProps}
 			ref={ref}
 		/>
 	);

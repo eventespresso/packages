@@ -7,7 +7,7 @@ import './styles.scss';
 export const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, className, menuListProps, toggleProps }) => {
 	return (
 		<div className='ee-dropdown-menu__wrapper'>
-			<Menu placement='left-start'>
+			<Menu placement='right-start'>
 				{({ isOpen, onClose }) => (
 					<div className='ee-dropdown-menu'>
 						<DropdownToggle isOpen={isOpen} onClose={onClose} {...toggleProps} />

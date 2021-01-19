@@ -7,8 +7,6 @@ import { IconButton, IconButtonProps } from '@eventespresso/ui-components';
 import { EdtrGlobalModals, useTicketItem } from '@eventespresso/edtr-services';
 import { TypeName, withIsLoaded } from '@eventespresso/services';
 import { useGlobalModal } from '@eventespresso/registry';
-import { useMemoStringify } from '@eventespresso/hooks';
-import type { TooltipProps } from '@eventespresso/adapters';
 
 import type { BaseProps } from '../types';
 import { SOLD_TICKET_ERROR_MESSAGE } from '../utils';
@@ -17,8 +15,6 @@ interface TPCButtonProps extends BaseProps, IconButtonProps {}
 
 const TicketPriceCalculatorButton: React.FC<TPCButtonProps> = ({ ticketId, ...buttonProps }) => {
 	const { openWithData } = useGlobalModal<BaseProps>(EdtrGlobalModals.TPC);
-
-	const tooltipProps = useMemoStringify<TooltipProps>({ placement: 'left' });
 
 	const onOpen = useCallback(() => {
 		openWithData({ ticketId });
@@ -35,7 +31,6 @@ const TicketPriceCalculatorButton: React.FC<TPCButtonProps> = ({ ticketId, ...bu
 			icon={Calculator}
 			onClick={isDisabled ? null : onOpen}
 			tooltip={tooltip}
-			tooltipProps={tooltipProps}
 			{...buttonProps}
 		/>
 	);
