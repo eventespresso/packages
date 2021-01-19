@@ -10,7 +10,7 @@ export type RTEState = [state: EditorState, setInternalState: DraftEditorProps['
 
 export interface StateProviderProps {
 	defaultValue?: string;
-	onChange: (string: string) => void;
+	onChange?: (string: string) => void;
 	value?: string;
 }
 

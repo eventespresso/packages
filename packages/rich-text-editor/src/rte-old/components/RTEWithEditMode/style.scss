@@ -4,7 +4,7 @@
 	margin-top: var(--ee-margin-small);
 
 	@include min1280px {
-		margin-top: calc(var(--ee-margin-big) * -1);
+		margin-top: calc(var(--ee-margin-bigger) * -1);
 	}
 
 	.ee-tabs {
