@@ -8,5 +8,6 @@ export * from './EntityEditForm';
 export * from './EntityList';
 export * from './filterBar';
 export * from './FormWithConfig';
+export * from './RangeFormat';
 export * from './rich-text-editor';
 export * from './SimpleTextEditorModal';
