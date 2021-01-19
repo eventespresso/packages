@@ -22,7 +22,7 @@
 	$text-alignments: right, left, center, justify;
 
 	@each $text-alignment in $text-alignments {
-		&-align-#{$text-alignment} {
+		&--align-#{$text-alignment} {
 			text-align: $text-alignment;
 			& > div {
 				display: inline-block;
