@@ -25,6 +25,7 @@ export interface DateRangePickerProps extends ShowTime, Omit<ReactDatePickerProp
 
 export interface RangeFormatProps extends ShowTime {
 	endDate: string;
+	formatFn?: (date: Date, formatStr: string) => string;
 	formatTokens: RangeFormatTokens;
 	startDate: string;
 }
