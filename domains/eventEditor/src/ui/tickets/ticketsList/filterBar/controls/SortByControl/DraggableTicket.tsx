@@ -1,4 +1,5 @@
-import { CurrencyDisplay, RangeFormat } from '@eventespresso/ee-components';
+import { CurrencyDisplay } from '@eventespresso/ee-components';
+import { RangeFormat } from '@eventespresso/dates';
 import { Ticket } from '@eventespresso/edtr-services';
 
 const formatTokens = { month: 'LLL' };

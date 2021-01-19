@@ -1,4 +1,4 @@
-import { RangeFormat } from '@eventespresso/ee-components';
+import { RangeFormat } from '@eventespresso/dates';
 import type { Datetime } from '@eventespresso/edtr-services';
 
 const formatTokens = { month: 'LLL' };
