@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { BaseProps } from '@edtrUI/ticketAssignmentsManager';
 import { EdtrGlobalModals, useRelatedTickets } from '@eventespresso/edtr-services';
 import { IconButton, ItemCount } from '@eventespresso/ui-components';
 import { Ticket } from '@eventespresso/icons';
 import { TypeName, withIsLoaded } from '@eventespresso/services';
 import { useGlobalModal } from '@eventespresso/registry';
+import type { BaseProps } from '@edtrUI/ticketAssignmentsManager';
 
 import type { Datetime } from '@eventespresso/edtr-services';
 import type { EntityListItemProps } from '@eventespresso/ui-components';
