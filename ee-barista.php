@@ -40,6 +40,7 @@ add_action(
                     'use_bulk_edit'             => true,
                     'use_event_description_rte' => true,
                     'use_reg_options_meta_box'  => true,
+                    'use_experimental_rte'      => true,
                 ];
             }
         );
