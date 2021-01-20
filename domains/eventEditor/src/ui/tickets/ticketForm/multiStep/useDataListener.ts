@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useForm } from '@eventespresso/form';
 import { pick } from 'ramda';
 
+import { useForm } from '@eventespresso/form';
 import { useDataState as useTPCDataState } from '@eventespresso/tpc';
 import { Ticket } from '@eventespresso/edtr-services';
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';

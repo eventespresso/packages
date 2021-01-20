@@ -1,31 +1,16 @@
 import { useCallback } from 'react';
 
-import { __, sprintf } from '@eventespresso/i18n';
-
-import { useEvent, useTicketItem, EdtrGlobalModals } from '@eventespresso/edtr-services';
-import { EntityEditModalContainer } from '@eventespresso/ee-components';
+import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 
 import Content from './Content';
 import { EntityEditModalData } from '@edtrUI/types';
+import useSubmitForm from './useSubmitForm';
 
 const Container: React.FC = () => {
 	const { getData, isOpen, close: closeModal, setData } = useGlobalModal<EntityEditModalData>(
 		EdtrGlobalModals.EDIT_TICKET
 	);
-	const ticket = useTicketItem({ id: getData()?.entityId });
-	const event = useEvent();
-
-	let title = ticket?.dbId
-		? sprintf(
-				/* translators: %s ticket id */
-				__('Edit ticket %s'),
-				`#${ticket.dbId}`
-		  )
-		: __('New Ticket Details');
-
-	// add event name to the title
-	title = event?.name ? `${event.name}: ${title}` : title;
 
 	const onClose = useCallback(() => {
 		closeModal();
@@ -33,9 +18,11 @@ const Container: React.FC = () => {
 		setData({ entityId: null });
 	}, [closeModal, setData]);
 
-	return (
-		<EntityEditModalContainer component={Content} entity={ticket} title={title} isOpen={isOpen} onClose={onClose} />
-	);
+	const entityId = getData()?.entityId;
+
+	const onSubmit = useSubmitForm(entityId, onClose);
+
+	return isOpen && <Content entityId={entityId} onClose={onClose} onSubmit={onSubmit} />;
 };
 
 export default Container;
