@@ -1,63 +1,23 @@
-import { __ } from '@eventespresso/i18n';
-import { FormSpy } from '@eventespresso/form';
-
-import { ButtonRow, Next, Previous, Submit } from '@eventespresso/ui-components';
-import { usePrevNext } from '@eventespresso/hooks';
-
 import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/components';
-import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
 import DateFormSteps from './DateFormSteps';
 import useDataListener from './useDataListener';
-
-const subscription = { submitting: true, hasValidationErrors: true, hasSubmitErrors: true };
+import { ContentBodyProps } from './types';
 
 /**
  * This component is inside both RFF and TAM contexts, so we can use all of their features
  */
-const ContentBody: React.FC = ({ children }) => {
+const ContentBody: React.FC<ContentBodyProps> = ({ children: body, steps }) => {
 	// init data listener to update RFF data
 	useDataListener();
 
-	const { current, prev, next } = usePrevNext();
-	const { hasOrphanEntities } = useTAMDataState();
-
-	const isSubmitDisabled = hasOrphanEntities();
-
 	return (
-		<FormSpy subscription={subscription}>
-			{({ form, hasSubmitErrors, hasValidationErrors, submitting }) => {
-				const isSaveDisabled = submitting || hasValidationErrors || hasSubmitErrors;
+		<div>
+			<DateFormSteps current={steps.current} />
+			{/* RFF fields */}
+			{steps.current === 0 && body}
 
-				return (
-					<div>
-						<DateFormSteps current={current} />
-						{/* RFF fields */}
-						{current === 0 && (
-							<>
-								{children}
-								<ButtonRow fullWidth>
-									<Next
-										buttonText={__('Save and assign tickets')}
-										onClick={next}
-										isDisabled={isSaveDisabled}
-									/>
-								</ButtonRow>
-							</>
-						)}
-
-						{current === 1 && (
-							<>
-								<TicketAssignmentsManager />
-								<ButtonRow fullWidth>
-									<Previous onClick={prev} />
-									<Submit onClick={form.submit} isDisabled={isSubmitDisabled} />
-								</ButtonRow>
-							</>
-						)}
-					</div>
-				);
-			}}
-		</FormSpy>
+			{steps.current === 1 && <TicketAssignmentsManager />}
+		</div>
 	);
 };
 

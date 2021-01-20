@@ -1,9 +1,20 @@
-import type { Datetime, DateFormShape } from '@eventespresso/edtr-services';
 import type { FormRenderProps } from 'react-final-form';
 
+import type { DateFormShape } from '@eventespresso/edtr-services';
+import type { PrevNext } from '@eventespresso/hooks';
+import type { EntityId } from '@eventespresso/data';
+import type { AnyObject } from '@eventespresso/utils';
+
+export type OnSubmit = (fields: AnyObject) => void;
+
 export interface ContentProps {
-	entity: Datetime;
+	entityId: EntityId;
 	onClose: VoidFunction;
+	onSubmit: OnSubmit;
+}
+
+export interface ContentBodyProps {
+	steps?: PrevNext;
 }
 
 export interface ContentWrapperProps extends FormRenderProps<DateFormShape> {}
