@@ -1,4 +1,3 @@
-import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
 import { datesSchema, TicketFormShape } from '@eventespresso/edtr-services';
