@@ -17,9 +17,6 @@ export const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 	showAlertOnClose = true,
 	...props
 }) => {
-	const cancelButtonProps = useCancelButtonProps(onCancel);
-	const submitButtonProps = useSubmitButtonProps(onSubmit);
-
 	const title = __('Alert!');
 	const message = alertText || __('Are you sure you want to close this?');
 
@@ -39,6 +36,14 @@ export const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 		(...args) => (showAlertOnClose ? showAlert() : onClose?.(...args)),
 		[showAlertOnClose, showAlert, onClose]
 	);
+
+	const onCancelHandler = useCallback<ModalWithAlertProps['onCancel']>(
+		() => (showAlertOnClose ? showAlert() : onCancel?.()),
+		[showAlertOnClose, showAlert, onCancel]
+	);
+
+	const cancelButtonProps = useCancelButtonProps(onCancel && onCancelHandler);
+	const submitButtonProps = useSubmitButtonProps(onSubmit);
 
 	return (
 		<>

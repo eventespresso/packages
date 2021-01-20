@@ -1,3 +1,5 @@
-import type { ModalProps } from '@eventespresso/adapters';
+import type { ModalWithAlertProps } from '../Modal';
 
-export interface EntityEditModalProps extends Partial<ModalProps> {}
+export interface EntityEditModalProps extends Partial<ModalWithAlertProps> {
+	showCancelButton?: boolean;
+}

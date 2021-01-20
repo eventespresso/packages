@@ -1,21 +1,30 @@
-import { Modal } from '../';
+import { ModalWithAlert } from '../';
 import type { EntityEditModalProps } from './types';
 
 import './styles.scss';
 
-const EntityEditModal: React.FC<EntityEditModalProps> = ({ isOpen, onClose, title, children, ...rest }) => {
+const EntityEditModal: React.FC<EntityEditModalProps> = ({
+	children,
+	footerContent,
+	isOpen,
+	onClose,
+	showCancelButton = true,
+	title,
+	...rest
+}) => {
 	return (
-		<Modal
+		<ModalWithAlert
 			bodyClassName='ee-entity-edit-modal__body'
 			className='ee-entity-edit-modal'
-			closeOnOverlayClick={false}
+			footerContent={footerContent}
 			isOpen={isOpen}
 			onClose={onClose}
+			onCancel={showCancelButton && onClose}
 			title={title}
 			{...rest}
 		>
 			{children}
-		</Modal>
+		</ModalWithAlert>
 	);
 };
 
