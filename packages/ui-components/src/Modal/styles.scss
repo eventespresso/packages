@@ -4,6 +4,11 @@ body.ee-modal-open {
 	overflow: hidden;
 }
 
+.chakra-portal {
+	position: relative;
+	z-index: 9991;
+}
+
 .ee-modal {
 	.ee-modal {
 		&__header {
