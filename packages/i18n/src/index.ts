@@ -2,15 +2,22 @@
 /* eslint-disable @wordpress/i18n-text-domain */
 // import global types.
 import '../../../types';
-import { createI18n } from '@wordpress/i18n';
+import * as wpI18n from '@wordpress/i18n';
 
 const i18nData = window?.eventEspressoData?.i18n;
 export const TEXT_DOMAIN = 'event_espresso';
 
+const createI18n = wpI18n.createI18n;
+
 // create i18n instance with translation data and text domain
-const i18n = createI18n(i18nData, TEXT_DOMAIN);
+const i18n = createI18n?.(i18nData, TEXT_DOMAIN) || wpI18n;
 
 export const { setLocaleData } = i18n;
+
+// just in case we are on an older version of WP
+if (createI18n === undefined) {
+	setLocaleData(i18nData, TEXT_DOMAIN);
+}
 
 export const __ = (text: string): string => {
 	return i18n.__(text, TEXT_DOMAIN);
