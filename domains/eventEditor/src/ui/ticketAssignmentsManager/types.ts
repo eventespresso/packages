@@ -41,6 +41,7 @@ export interface AssignmentManager {
 	getAssignedTickets: (args: Pick<AssignmentFnArgs, 'datetimeId'>) => EntityId[];
 	getData: RelationsManager['getData'];
 	initialize: (props: InitializeProps) => void;
+	isDirty: boolean;
 	isInitialized: RelationsManager['isInitialized'];
 	removeAssignment: (args: SetAssignmentFnArgs) => void;
 	toggleAssignment: (args: AssignmentFnArgs) => void;
