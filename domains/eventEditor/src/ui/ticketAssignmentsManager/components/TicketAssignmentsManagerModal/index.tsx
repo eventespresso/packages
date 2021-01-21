@@ -11,7 +11,7 @@ import type { TAMModalProps } from '../../context/types';
 import '../styles.scss';
 
 const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onCloseModal, onSubmit, title }) => {
-	const { hasOrphanEntities, initialDataIsValid } = useDataState();
+	const { hasOrphanEntities, initialDataIsValid, isDirty } = useDataState();
 	const cancelButtonProps = useCancelButtonProps(onCloseModal, !initialDataIsValid);
 	const submitButtonProps = useSubmitButtonProps(onSubmit);
 	const hasErrors = hasOrphanEntities();
@@ -23,7 +23,8 @@ const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onClo
 			className='ee-ticket-assignments-manager'
 			isOpen={true}
 			onClose={onCloseModal}
-			showAlertOnClose={hasErrors}
+			onCancel={onCloseModal}
+			showAlertOnClose={isDirty || hasErrors}
 			submitButtonProps={submitButtonProps}
 			title={title || __('Ticket Assignment Manager')}
 		>
