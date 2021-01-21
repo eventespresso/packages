@@ -9,6 +9,7 @@ export * from './keycodes';
 export * from './list';
 export * from './memo';
 export * from './money';
+export * from './misc';
 export * from './number';
 export * from './pagination';
 export * from './predicates';
