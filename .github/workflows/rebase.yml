@@ -1,5 +1,8 @@
 name: Automatic Rebase
 on:
+    push:
+        branches:
+            - auto-**
     issue_comment:
         types: [created]
 jobs:
