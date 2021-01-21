@@ -5,7 +5,7 @@ import { useGlobalModal } from '@eventespresso/registry';
 
 import Content from './Content';
 import { EntityEditModalData } from '@edtrUI/types';
-import useSubmitForm from './useSubmitForm';
+import useOnSubmit from './useOnSubmit';
 
 const Container: React.FC = () => {
 	const { getData, isOpen, close: closeModal, setData } = useGlobalModal<EntityEditModalData>(
@@ -18,9 +18,9 @@ const Container: React.FC = () => {
 		setData({ entityId: null });
 	}, [closeModal, setData]);
 
-	const entityId = getData()?.entityId;
+	const { entityId } = getData();
 
-	const onSubmit = useSubmitForm(entityId, onClose);
+	const onSubmit = useOnSubmit(entityId, onClose);
 
 	return isOpen && <Content entityId={entityId} onClose={onClose} onSubmit={onSubmit} />;
 };

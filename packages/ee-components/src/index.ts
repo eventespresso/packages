@@ -11,3 +11,4 @@ export * from './FormWithConfig';
 export * from './RangeFormat';
 export * from './rich-text-editor';
 export * from './SimpleTextEditorModal';
+export * from './withFormSubscription';

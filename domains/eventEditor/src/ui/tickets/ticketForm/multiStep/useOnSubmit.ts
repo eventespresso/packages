@@ -7,7 +7,7 @@ import type { EntityId } from '@eventespresso/data';
 import useCapQuantity from '@edtrUI/tickets/hooks/useCapQuantity';
 import { OnSubmit } from './types';
 
-const useSubmitForm = (ticketId: EntityId, onClose: VoidFunction): OnSubmit => {
+const useOnSubmit = (ticketId: EntityId, onClose: VoidFunction): OnSubmit => {
 	const { createEntity, updateEntity } = useTicketMutator();
 	const mutatePrices = useMutatePrices();
 
@@ -40,4 +40,4 @@ const useSubmitForm = (ticketId: EntityId, onClose: VoidFunction): OnSubmit => {
 	return onSubmit;
 };
 
-export default useSubmitForm;
+export default useOnSubmit;

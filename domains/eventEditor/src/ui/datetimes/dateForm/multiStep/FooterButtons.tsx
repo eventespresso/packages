@@ -1,57 +1,35 @@
 import { __ } from '@eventespresso/i18n';
-import { FormSpy } from '@eventespresso/form';
 
 import { ButtonRow, Next, Previous, Submit } from '@eventespresso/ui-components';
+import { withFormSubscription, FormSubscriptionProps } from '@eventespresso/ee-components';
 import type { PrevNext } from '@eventespresso/hooks';
 
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
+import { ASSIGN_TICKETS_STEP, DATE_DETAILS_STEP } from './constants';
 
-/**
- * This component is inside both RFF and TAM contexts, so we can use all of their features
- */
-const subscription = {
-	values: true,
-	submitting: true,
-	hasValidationErrors: true,
-	hasSubmitErrors: true,
-	pristine: true,
-};
-
-type FooterButtonsProps = {
+interface FooterButtonsProps extends FormSubscriptionProps {
 	steps: PrevNext;
-};
+}
 
-const FooterButtons: React.FC<FooterButtonsProps> = ({ steps }) => {
+const FooterButtons: React.FC<FooterButtonsProps> = ({ form, isSaveDisabled, steps }) => {
 	const { current, prev, next } = steps;
 	const { hasOrphanEntities } = useTAMDataState();
 	const isSubmitDisabled = hasOrphanEntities();
 
 	return (
-		<FormSpy subscription={subscription}>
-			{({ form, hasSubmitErrors, hasValidationErrors, submitting, pristine }) => {
-				const isSaveDisabled = submitting || hasValidationErrors || hasSubmitErrors || pristine;
+		<ButtonRow>
+			{current === DATE_DETAILS_STEP && (
+				<Next buttonText={__('Save and assign tickets')} onClick={next} isDisabled={isSaveDisabled} />
+			)}
 
-				return (
-					<ButtonRow>
-						{current === 0 && (
-							<Next
-								buttonText={__('Save and assign tickets')}
-								onClick={next}
-								isDisabled={isSaveDisabled}
-							/>
-						)}
-
-						{current === 1 && (
-							<>
-								<Previous onClick={prev} />
-								<Submit onClick={form.submit} isDisabled={isSubmitDisabled} />
-							</>
-						)}
-					</ButtonRow>
-				);
-			}}
-		</FormSpy>
+			{current === ASSIGN_TICKETS_STEP && (
+				<>
+					<Previous onClick={prev} />
+					<Submit onClick={form.submit} isDisabled={isSubmitDisabled} />
+				</>
+			)}
+		</ButtonRow>
 	);
 };
 
-export default FooterButtons;
+export default withFormSubscription(FooterButtons);

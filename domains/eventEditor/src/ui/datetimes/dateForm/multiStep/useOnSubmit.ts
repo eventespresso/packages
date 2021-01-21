@@ -10,7 +10,7 @@ import type { EntityId } from '@eventespresso/data';
 
 import { OnSubmit } from './types';
 
-const useSubmitForm = (entityId: EntityId, onClose: VoidFunction): OnSubmit => {
+const useOnSubmit = (entityId: EntityId, onClose: VoidFunction): OnSubmit => {
 	const { createEntity, updateEntity } = useDatetimeMutator();
 	const datetime = useDatetimeItem({ id: entityId });
 
@@ -51,4 +51,4 @@ const useSubmitForm = (entityId: EntityId, onClose: VoidFunction): OnSubmit => {
 	return onSubmit;
 };
 
-export default useSubmitForm;
+export default useOnSubmit;

@@ -4,6 +4,7 @@ import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/compo
 import TicketFormSteps from './TicketFormSteps';
 import useDataListener from './useDataListener';
 import { ContentBodyProps } from './types';
+import { ASSIGN_DATES_STEP, TICKET_DETAILS_STEP, TICKET_PRICES_STEP } from './constants';
 
 const ContentBody: React.FC<ContentBodyProps> = ({ children: body, steps }) => {
 	// init data listener to update RFF data
@@ -13,9 +14,9 @@ const ContentBody: React.FC<ContentBodyProps> = ({ children: body, steps }) => {
 		<div>
 			<TicketFormSteps current={steps.current} />
 			{/* RFF fields */}
-			{steps.current === 0 && body}
-			{steps.current === 1 && <TicketPriceCalculator context='editTicketForm' />}
-			{steps.current === 2 && <TicketAssignmentsManager />}
+			{steps.current === TICKET_DETAILS_STEP && body}
+			{steps.current === TICKET_PRICES_STEP && <TicketPriceCalculator context='editTicketForm' />}
+			{steps.current === ASSIGN_DATES_STEP && <TicketAssignmentsManager />}
 		</div>
 	);
 };
