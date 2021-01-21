@@ -6,7 +6,7 @@ import { Button, ButtonRow, DebugInfo, Divider, ErrorMessage } from '@eventespre
 import { useDisclosure } from '@eventespresso/hooks';
 import { CloseCircleOutlined, Repeat } from '@eventespresso/icons';
 
-import { RRuleEditor } from '../rRule';
+import { RRuleEditor, RRuleEditorProps } from '../rRule';
 import { useFormState } from '../../data';
 import { Warning } from '../generatedDates';
 
@@ -25,14 +25,32 @@ export const PatternEditor: React.FC = () => {
 
 	const debugData = useMemo(() => ({ rRule, exRule }), [exRule, rRule]);
 
+	const onChangeRRule = useCallback<RRuleEditorProps['onChange']>(
+		(newRRule) => {
+			if (newRRule !== rRule) {
+				setRRule(newRRule);
+			}
+		},
+		[rRule, setRRule]
+	);
+
+	const onChangeExRule = useCallback<RRuleEditorProps['onChange']>(
+		(newExRule) => {
+			if (newExRule !== exRule) {
+				setExRule(newExRule);
+			}
+		},
+		[exRule, setExRule]
+	);
+
 	return (
 		<>
 			<ErrorMessage message={!rRule && __('You must set a recurrence pattern')} />
 			<RRuleEditor
 				desc={__('defines a rule or repeating pattern for generating event dates that occur regularly')}
 				icon={Repeat}
-				id={'r-rule'}
-				onChange={setRRule}
+				id='r-rule'
+				onChange={onChangeRRule}
 				rRuleString={rRule}
 				sidebarLabel={__('Recurrence Pattern')}
 				type='recurrence'
@@ -50,8 +68,8 @@ export const PatternEditor: React.FC = () => {
 				<RRuleEditor
 					desc={__('defines a rule or repeating pattern that will remove dates from those generated above')}
 					icon={CloseCircleOutlined}
-					id={'ex-rule'}
-					onChange={setExRule}
+					id='ex-rule'
+					onChange={onChangeExRule}
 					rRuleString={exRule}
 					sidebarLabel={__('Exclusion Pattern')}
 					type='exclusion'
