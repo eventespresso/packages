@@ -1,16 +1,15 @@
 import { withContext as withTPCContext } from '@eventespresso/tpc';
-import { useWithEntityFormDetails } from '@eventespresso/ee-components';
 
-import ContentBody from './ContentBody';
 import type { ContentWrapperProps } from './types';
+import Modal from './Modal';
 
 const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
-	return useWithEntityFormDetails(({ entity }) => {
-		const Component = withTPCContext(ContentBody, {
-			ticketId: entity.id,
-		});
-		return <Component {...props} />;
-	}, 'NEW_TICKET');
+	const { values } = props.form.getState();
+
+	const Component = withTPCContext(Modal, {
+		ticketId: values.id,
+	});
+	return <Component {...props} />;
 };
 
 export default ContentWrapper;

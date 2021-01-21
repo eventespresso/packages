@@ -1,16 +1,9 @@
-import { useCallback } from 'react';
-
 import { __ } from '@eventespresso/i18n';
 
-import { IconButton } from '@eventespresso/ui-components';
+import { IconButton, IconButtonProps } from '@eventespresso/ui-components';
 import { Trash as TrashIcon } from '@eventespresso/icons';
-import { useFormState } from '../../../data';
-import type { BaseProps } from '../types';
 
-const Trash: React.FC<BaseProps> = ({ ticket }) => {
-	const { deleteTicket } = useFormState();
-	const onClick = useCallback(() => deleteTicket(ticket?.id), [deleteTicket, ticket?.id]);
-
+const Trash: React.FC<IconButtonProps> = ({ onClick }) => {
 	return <IconButton borderless icon={TrashIcon} onClick={onClick} tooltip={__('trash ticket')} />;
 };
 

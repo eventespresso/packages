@@ -4,7 +4,6 @@ import { __, sprintf } from '@eventespresso/i18n';
 import './style.scss';
 
 interface EntityOptionsRowProps {
-	afterOptions?: React.ReactNode;
 	onAddNew: VoidFunction;
 	selectExisting: React.ReactNode;
 	selectExistingID: string;
@@ -12,7 +11,6 @@ interface EntityOptionsRowProps {
 }
 
 export const EntityOptionsRow: React.FC<EntityOptionsRowProps> = ({
-	afterOptions,
 	onAddNew,
 	selectExisting,
 	selectExistingID,
@@ -51,7 +49,6 @@ export const EntityOptionsRow: React.FC<EntityOptionsRowProps> = ({
 					/>
 				</div>
 			</div>
-			{afterOptions}
 		</div>
 	);
 };

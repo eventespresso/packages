@@ -8,10 +8,9 @@ import { DATE_INTERVALS } from '@eventespresso/dates';
 
 import Sidebar from './Sidebar';
 import { useFormState } from '../../../data';
+import { TicketCardProps } from './types';
 
-import type { BaseProps } from '../types';
-
-const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
+const TicketCard: React.FC<TicketCardProps> = ({ ticket, onEdit }) => {
 	const { tickets } = useFormState();
 	const { formatForSite } = useTimeZoneTime();
 
@@ -66,7 +65,7 @@ const TicketCard: React.FC<BaseProps> = ({ ticket }) => {
 		</div>
 	);
 
-	const sidebar = <Sidebar ticket={ticket} />;
+	const sidebar = <Sidebar onEdit={onEdit} ticket={ticket} />;
 
 	return (
 		<SimpleEntityCard

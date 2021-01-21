@@ -1,19 +1,25 @@
-import { __, sprintf } from '@eventespresso/i18n';
+import { useCallback } from 'react';
 
-import { EntityEditModalContainer } from '@eventespresso/ee-components';
 import Content from './Content';
 import type { ContainerProps } from './types';
+import { useFormState } from '../../../data';
 
-const Container: React.FC<ContainerProps> = ({ entity: ticket, ...props }) => {
-	const title = ticket?.dbId
-		? sprintf(
-				/* translators: %d ticket id */
-				__('Edit ticket %d'),
-				`#${ticket.dbId}`
-		  )
-		: __('New Ticket Details');
+const Container: React.FC<ContainerProps> = ({ entity, isOpen, onClose }) => {
+	const { addTicket, updateTicket } = useFormState();
 
-	return <EntityEditModalContainer component={Content} entity={ticket} title={title} {...props} />;
+	const onSubmit = useCallback(
+		(values) => {
+			if (entity?.id) {
+				updateTicket(entity?.id, values);
+			} else {
+				addTicket(values);
+			}
+			onClose();
+		},
+		[addTicket, entity?.id, onClose, updateTicket]
+	);
+
+	return isOpen && <Content entity={entity} onClose={onClose} onSubmit={onSubmit} />;
 };
 
 export default Container;

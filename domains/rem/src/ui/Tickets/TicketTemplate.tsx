@@ -3,24 +3,22 @@ import { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { Button, Select } from '@eventespresso/ui-components';
 import { entityListToSelectOptions } from '@eventespresso/utils';
-import { useDisclosure } from '@eventespresso/hooks';
 import { getGuids, entitiesWithGuIdNotInArray, entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { useTickets } from '@eventespresso/edtr-services';
 
-import { Container as FormContainer } from './multiStep';
 import { EntityOptionsRow } from '../EntityOptionsRow';
 import type { RemTicket } from '../../data';
+import useTicketFormConfig from './useTicketFormConfig';
 
 import './style.scss';
-import useTicketFormConfig from './useTicketFormConfig';
 
 interface Props {
 	ticketTemplates: RemTicket[];
 	addTicketTemplate: (ticket: Partial<RemTicket>) => void;
+	onAddNew: VoidFunction;
 }
 
-const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates }) => {
-	const { isOpen, onClose, onOpen: onAddNew } = useDisclosure();
+const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates, onAddNew }) => {
 	const [selectedTicketId, setSelectedTicketId] = useState('');
 
 	const tickets = useTickets();
@@ -51,11 +49,10 @@ const TicketTemplate: React.FC<Props> = ({ addTicketTemplate, ticketTemplates })
 
 	return (
 		<EntityOptionsRow
-			afterOptions={isOpen && <FormContainer isOpen={true} onClose={onClose} />}
 			onAddNew={onAddNew}
 			selectExisting={selectExisting}
 			selectExistingID={selectExistingID}
-			type={'ticket'}
+			type='ticket'
 		/>
 	);
 };
