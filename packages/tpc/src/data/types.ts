@@ -7,6 +7,7 @@ import type { BaseProps, TpcPriceModifier } from '../types';
 export interface DataState extends Prices {
 	ticket: Partial<Ticket>;
 	deletedPrices: Array<EntityId>;
+	isDirty: boolean;
 }
 
 export type DataActionType =
