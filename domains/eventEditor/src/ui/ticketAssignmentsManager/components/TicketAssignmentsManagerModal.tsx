@@ -8,7 +8,7 @@ import TicketAssignmentsManager from './TicketAssignmentsManager';
 import { useDataState } from '../data';
 import type { TAMModalProps } from '../context/types';
 
-import '../styles.scss';
+import './styles.scss';
 
 const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onCloseModal, onSubmit, title }) => {
 	const { hasOrphanEntities, isDirty, getData } = useDataState();
