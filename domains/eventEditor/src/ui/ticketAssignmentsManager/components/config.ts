@@ -1,7 +1,7 @@
 import { __ } from '@eventespresso/i18n';
-import getRelationIcon from '../../components/table/getRelationIcon';
+import getRelationIcon from '../components/table/getRelationIcon';
 import type { LegendConfig } from '@eventespresso/ui-components';
-import type { RelationClassName } from '../../types';
+import type { RelationClassName } from '../types';
 
 export const legendConfig: LegendConfig<RelationClassName> = {
 	icons: [

@@ -4,9 +4,9 @@ import { __ } from '@eventespresso/i18n';
 
 import { CollapsibleLegend, ModalWithAlert, ModalWithAlertProps } from '@eventespresso/ui-components';
 import { legendConfig } from './config';
-import TicketAssignmentsManager from '../TicketAssignmentsManager';
-import { useDataState } from '../../data';
-import type { TAMModalProps } from '../../context/types';
+import TicketAssignmentsManager from './TicketAssignmentsManager';
+import { useDataState } from '../data';
+import type { TAMModalProps } from '../context/types';
 
 import '../styles.scss';
 
