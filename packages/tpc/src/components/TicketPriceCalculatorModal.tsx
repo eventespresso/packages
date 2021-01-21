@@ -24,6 +24,7 @@ const TicketPriceCalculatorModal: React.FC<TPCModalProps> = ({ onSubmit }) => {
 			className='ee-tpc'
 			isOpen={true}
 			onClose={onClose}
+			onCancel={onClose}
 			// show alert only if dirty
 			showAlertOnClose={isDirty}
 			submitButtonProps={submitButtonProps}
