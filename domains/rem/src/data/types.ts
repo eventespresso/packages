@@ -29,6 +29,7 @@ export interface FormState {
 	salesEndOffset?: string;
 	salesStartOffset?: string;
 	tickets: AnyObject<RemTicket>;
+	isDirty: boolean;
 }
 
 export type DataActionType =
