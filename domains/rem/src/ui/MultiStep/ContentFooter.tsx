@@ -2,13 +2,13 @@ import { isEmpty } from 'ramda';
 
 import { ButtonRow, Next, Previous } from '@eventespresso/ui-components';
 
-import CancelButton from './CancelButton';
 import SubmitButton from './SubmitButton';
 import { useStepsState } from '../../context';
 import { useFormState } from '../../data';
 import { BaseProps } from '../types';
+import { DATE_DETAILS_STEP, GENERATED_DATES_STEP, PATTERN_EDITOR_STEP, TICKETS_STEP } from './constants';
 
-const ContentFooter: React.FC<BaseProps> = ({ onClose, onSubmit }) => {
+const ContentFooter: React.FC<BaseProps> = ({ onSubmit }) => {
 	const { current, next, prev } = useStepsState();
 	const { rRule, dateDetails, tickets } = useFormState();
 
@@ -16,31 +16,30 @@ const ContentFooter: React.FC<BaseProps> = ({ onClose, onSubmit }) => {
 	const dateNameLen = dateDetails?.name?.length;
 
 	switch (current) {
-		case 0: // pattern step
+		case PATTERN_EDITOR_STEP:
 			isNextDisabled = !rRule;
 			break;
-		case 1: // date details step
-			isNextDisabled = !dateNameLen || dateNameLen < 3;
+		case DATE_DETAILS_STEP:
+			isNextDisabled = !dateNameLen;
 			break;
-		case 2: // tickets step
+		case TICKETS_STEP:
 			isNextDisabled = isEmpty(tickets);
 			break;
 	}
 
 	return (
-		<ButtonRow fullWidth horizontalAlign='right' topBordered>
-			<CancelButton onClick={onClose} />
+		<ButtonRow horizontalAlign='right' topBordered>
 			{
 				// hide previous on first step
-				current > 0 && <Previous onClick={prev} />
+				current > PATTERN_EDITOR_STEP && <Previous onClick={prev} />
 			}
 			{
 				// hide next on last step
-				current < 3 && <Next isDisabled={isNextDisabled} onClick={next} />
+				current < GENERATED_DATES_STEP && <Next isDisabled={isNextDisabled} onClick={next} />
 			}
 			{
 				// last step
-				current === 3 && <SubmitButton onClick={onSubmit} />
+				current === GENERATED_DATES_STEP && <SubmitButton onClick={onSubmit} />
 			}
 		</ButtonRow>
 	);

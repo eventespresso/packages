@@ -15,7 +15,7 @@ const Container: React.FC = () => {
 
 	// rDates and gDates, no exDates
 	const generateDates = useGenerateDates();
-	const { getData, reset: resetFormState } = useFormState();
+	const { getData, reset: resetFormState, isDirty } = useFormState();
 	const { reset: resetStepState } = useStepsState();
 	const submitForm = useSubmitForm(getData(), generateDates);
 
@@ -42,10 +42,11 @@ const Container: React.FC = () => {
 		resetState();
 	}, [close, resetState]);
 
+	const footerContent = <ContentFooter onSubmit={onSubmit} onClose={onClose} />;
+
 	return (
-		<Modal isOpen={isOpen} onClose={onClose}>
+		<Modal isOpen={isOpen} onClose={onClose} showAlertOnClose={isDirty} footerContent={footerContent}>
 			<ContentBody />
-			<ContentFooter onSubmit={onSubmit} onClose={onClose} />
 		</Modal>
 	);
 };
