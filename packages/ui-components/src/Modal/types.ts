@@ -5,6 +5,7 @@ export interface ModalWithAlertProps extends ModalProps {
 	alertText?: string;
 	cancelBtnText?: string;
 	header?: string;
+	isSubmitDisabled?: boolean;
 	okBtnText?: string;
 	onCancel?: VoidFunction;
 	onSubmit?: VoidFunction;

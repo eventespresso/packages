@@ -11,6 +11,7 @@ import { ModalWithAlertProps } from './types';
 export const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 	alertText,
 	children,
+	isSubmitDisabled,
 	onCancel,
 	onClose,
 	onSubmit,
@@ -43,7 +44,7 @@ export const ModalWithAlert: React.FC<ModalWithAlertProps> = ({
 	);
 
 	const cancelButtonProps = useCancelButtonProps(onCancel && onCancelHandler);
-	const submitButtonProps = useSubmitButtonProps(onSubmit);
+	const submitButtonProps = useSubmitButtonProps(onSubmit, isSubmitDisabled);
 
 	return (
 		<>
