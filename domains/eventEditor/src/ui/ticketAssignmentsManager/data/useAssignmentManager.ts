@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { pick, map, mapObjIndexed, isEmpty } from 'ramda';
 
 import { useRelationsManager, RelationFunctionProps } from '@eventespresso/services';
@@ -22,6 +22,8 @@ const useAssignmentManager = (): AM => {
 		isInitialized,
 		removeRelation,
 	} = useRelationsManager();
+
+	const [isDirty, setIsDirty] = useState(false);
 
 	const getAssignedTickets = useCallback<AM['getAssignedTickets']>(
 		({ datetimeId }) => {
@@ -71,6 +73,8 @@ const useAssignmentManager = (): AM => {
 				addRelation(datetimeToTickets);
 				addRelation(ticketsToDatetimes);
 			}
+
+			setIsDirty(true);
 		},
 		[addRelation, removeRelation]
 	);
@@ -161,6 +165,7 @@ const useAssignmentManager = (): AM => {
 			getAssignedTickets,
 			getData,
 			initialize,
+			isDirty,
 			isInitialized,
 			removeAssignment,
 			toggleAssignment,
@@ -171,6 +176,7 @@ const useAssignmentManager = (): AM => {
 			getAssignedTickets,
 			getData,
 			initialize,
+			isDirty,
 			isInitialized,
 			removeAssignment,
 			toggleAssignment,
