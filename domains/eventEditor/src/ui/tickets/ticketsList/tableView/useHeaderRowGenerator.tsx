@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { filterCellByStartOrEndDate, useShowTicketBA } from '@eventespresso/edtr-services';
+import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 
 import type { CellData } from '@eventespresso/ui-components';
 import type { HeaderRowGeneratorFn } from '@eventespresso/ee-components';
@@ -12,8 +12,6 @@ import Checkbox from './Checkbox';
 type TicketsTableHeaderRowGen = HeaderRowGeneratorFn<TicketsFilterStateManager>;
 
 const useHeaderRowGenerator = (): TicketsTableHeaderRowGen => {
-	const [showBulkActions] = useShowTicketBA();
-
 	const stripeCell: CellData = useMemo(
 		() => ({
 			className: 'ee-entity-list-status-stripe',
@@ -23,21 +21,6 @@ const useHeaderRowGenerator = (): TicketsTableHeaderRowGen => {
 			value: '',
 		}),
 		[]
-	);
-
-	const checkboxCell: CellData = useMemo(
-		() =>
-			showBulkActions && {
-				key: 'checkbox',
-				size: 'micro',
-				textAlign: 'center',
-				value: (
-					<div className={'ee-rspnsv-table-hide-on-mobile'}>
-						<Checkbox />
-					</div>
-				),
-			},
-		[showBulkActions]
 	);
 
 	const idCell: CellData = useMemo(
@@ -149,7 +132,18 @@ const useHeaderRowGenerator = (): TicketsTableHeaderRowGen => {
 
 	return useCallback<TicketsTableHeaderRowGen>(
 		(filterState) => {
-			const { displayStartOrEndDate } = filterState;
+			const { displayStartOrEndDate, showBulkActions } = filterState;
+
+			const checkboxCell: CellData = showBulkActions && {
+				key: 'checkbox',
+				size: 'micro',
+				textAlign: 'center',
+				value: (
+					<div className={'ee-rspnsv-table-hide-on-mobile'}>
+						<Checkbox />
+					</div>
+				),
+			};
 
 			const cellsData: Array<CellData> = [
 				stripeCell,
@@ -183,7 +177,6 @@ const useHeaderRowGenerator = (): TicketsTableHeaderRowGen => {
 		[
 			idCell,
 			actionsCell,
-			checkboxCell,
 			endCell,
 			nameCell,
 			priceCell,

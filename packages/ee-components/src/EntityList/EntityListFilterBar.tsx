@@ -4,23 +4,30 @@ import {
 	SearchInput,
 	EntityListFilterBar as EntityListFilterBarUI,
 	EntityListViewButtonGroup,
+	ToggleBulkActionsButton,
 } from '@eventespresso/ui-components';
 
 import type { EntityListFilterStateManager as ELFSM } from '@eventespresso/services';
 import type { EntityListFilterBarProps } from './types';
 
-import { ToggleBulkActionsButton } from '../bulkEdit';
 /**
  * EntityListFilterBar
  * a group of inputs for controlling how a list of entities is displayed
  */
 export const EntityListFilterBar = <FS extends ELFSM>({
 	domain,
-	entityType,
 	filterState,
 	listId,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
-	const { searchText, setCardView, setTableView, setSearchText, view } = filterState;
+	const {
+		searchText,
+		setCardView,
+		setSearchText,
+		setTableView,
+		showBulkActions,
+		toggleBulkActions,
+		view,
+	} = filterState;
 
 	const filerBarItems = useFilterBarUIElements({ domain, filterState, listId });
 
@@ -29,7 +36,9 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 	const mainButtons = (
 		<>
 			<EntityListViewButtonGroup id={listId} setCardView={setCardView} setTableView={setTableView} view={view} />
-			{view === 'table' && <ToggleBulkActionsButton id={listId} entityType={entityType} />}
+			{view === 'table' && (
+				<ToggleBulkActionsButton id={listId} onClick={toggleBulkActions} value={showBulkActions} />
+			)}
 		</>
 	);
 

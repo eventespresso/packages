@@ -4,12 +4,7 @@ import { __ } from '@eventespresso/i18n';
 import { BulkActions } from '@eventespresso/ee-components';
 import { Collapsible, ErrorMessage } from '@eventespresso/ui-components';
 import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
-import {
-	SOLD_TICKET_ERROR_MESSAGE,
-	useShowTicketBA,
-	useTickets,
-	useTicketsListFilterState,
-} from '@eventespresso/edtr-services';
+import { SOLD_TICKET_ERROR_MESSAGE, useTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { entitiesWithGuIdInArray, TicketsStatus } from '@eventespresso/predicates';
 import { withFeature, useBulkEdit } from '@eventespresso/services';
 import type { BulkActionsProps } from '@eventespresso/ui-components';
@@ -25,8 +20,7 @@ const Actions: React.FC = () => {
 	const [action, setAction] = useState<Action>('');
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const [showBulkActions] = useShowTicketBA();
-	const { status } = useTicketsListFilterState();
+	const { status, showBulkActions } = useTicketsListFilterState();
 	const { getSelected } = useBulkEdit();
 	const allTickets = useTickets();
 

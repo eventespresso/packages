@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { filterCellByStartOrEndDate, useShowDatetimeBA } from '@eventespresso/edtr-services';
+import { filterCellByStartOrEndDate } from '@eventespresso/edtr-services';
 
 import type { CellData } from '@eventespresso/ui-components';
 import type { HeaderRowGeneratorFn } from '@eventespresso/ee-components';
@@ -12,8 +12,6 @@ import Checkbox from './Checkbox';
 type DatesTableHeaderRowGen = HeaderRowGeneratorFn<DatetimesFilterStateManager>;
 
 const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
-	const [showBulkActions] = useShowDatetimeBA();
-
 	const stripeCell: CellData = useMemo(
 		() => ({
 			className: 'ee-entity-list-status-stripe',
@@ -23,21 +21,6 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 			value: '',
 		}),
 		[]
-	);
-
-	const checkboxCell: CellData = useMemo(
-		() =>
-			showBulkActions && {
-				key: 'checkbox',
-				size: 'micro',
-				textAlign: 'center',
-				value: (
-					<div className={'ee-rspnsv-table-hide-on-mobile'}>
-						<Checkbox />
-					</div>
-				),
-			},
-		[showBulkActions]
 	);
 
 	const idCell: CellData = useMemo(
@@ -145,7 +128,18 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 
 	return useCallback<DatesTableHeaderRowGen>(
 		(filterState) => {
-			const displayStartOrEndDate = filterState?.displayStartOrEndDate;
+			const { displayStartOrEndDate, showBulkActions } = filterState;
+
+			const checkboxCell: CellData = showBulkActions && {
+				key: 'checkbox',
+				size: 'micro',
+				textAlign: 'center',
+				value: (
+					<div className={'ee-rspnsv-table-hide-on-mobile'}>
+						<Checkbox />
+					</div>
+				),
+			};
 
 			const cellsData: Array<CellData> = [
 				stripeCell,
@@ -175,18 +169,7 @@ const useHeaderRowGenerator = (): DatesTableHeaderRowGen => {
 				type: 'row',
 			};
 		},
-		[
-			actionsCell,
-			capacityCell,
-			checkboxCell,
-			endCell,
-			idCell,
-			nameCell,
-			registrationsCell,
-			soldCell,
-			startCell,
-			stripeCell,
-		]
+		[actionsCell, capacityCell, endCell, idCell, nameCell, registrationsCell, soldCell, startCell, stripeCell]
 	);
 };
 

@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
 import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
-import { filterCellByStartOrEndDate, useLazyDatetime, useShowDatetimeBA } from '@eventespresso/edtr-services';
+import { filterCellByStartOrEndDate, useLazyDatetime } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';
 import { shortenGuid } from '@eventespresso/utils';
@@ -24,13 +24,12 @@ const addZebraStripes = addZebraStripesOnMobile(exclude);
 
 const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 	const getDatetime = useLazyDatetime();
-	const [showBulkActions] = useShowDatetimeBA();
 
 	return useCallback<DatesTableBodyRowGen>(
 		({ entityId, filterState }) => {
 			const datetime = getDatetime(entityId);
 
-			const { displayStartOrEndDate } = filterState;
+			const { displayStartOrEndDate, showBulkActions } = filterState;
 
 			const bgClassName = getDatetimeBackgroundColorClassName(datetime);
 			const id = datetime.dbId || shortenGuid(datetime.id);
@@ -140,7 +139,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				type: 'row',
 			};
 		},
-		[getDatetime, showBulkActions]
+		[getDatetime]
 	);
 };
 

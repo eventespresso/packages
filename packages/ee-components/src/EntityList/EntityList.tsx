@@ -34,9 +34,7 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 		entityList = renderList();
 	}
 
-	const filterBar = (
-		<EntityListFilterBar domain={domain} entityType={entityType} filterState={filterState} listId={listId} />
-	);
+	const filterBar = <EntityListFilterBar domain={domain} filterState={filterState} listId={listId} />;
 
 	const legend = <CollapsibleLegend direction='row' legendConfig={legendConfig} termWhiteBg />;
 

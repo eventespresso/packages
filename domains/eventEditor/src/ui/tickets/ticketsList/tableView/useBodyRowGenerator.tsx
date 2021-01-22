@@ -5,7 +5,7 @@ import { filter, pipe } from 'ramda';
 
 import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
 import { CurrencyDisplay } from '@eventespresso/ee-components';
-import { filterCellByStartOrEndDate, useLazyTicket, useShowTicketBA } from '@eventespresso/edtr-services';
+import { filterCellByStartOrEndDate, useLazyTicket } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getTicketBackgroundColorClassName, ticketStatus } from '@eventespresso/helpers';
 import { shortenGuid } from '@eventespresso/utils';
@@ -22,12 +22,11 @@ type TicketsTableBodyRowGen = BodyRowGeneratorFn<TicketsFilterStateManager>;
 
 const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 	const getTicket = useLazyTicket();
-	const [showBulkActions] = useShowTicketBA();
 
 	return useCallback<TicketsTableBodyRowGen>(
 		({ entityId, filterState }) => {
 			const ticket = getTicket(entityId);
-			const { displayStartOrEndDate } = filterState;
+			const { displayStartOrEndDate, showBulkActions } = filterState;
 
 			const bgClassName = getTicketBackgroundColorClassName(ticket);
 			const id = ticket.dbId || shortenGuid(ticket.id);
@@ -148,7 +147,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				type: 'row',
 			};
 		},
-		[getTicket, showBulkActions]
+		[getTicket]
 	);
 };
 

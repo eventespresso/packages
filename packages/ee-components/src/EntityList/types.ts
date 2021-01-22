@@ -67,7 +67,7 @@ export interface EntityTableFilters<FS extends ELFSM> {
 	applyFilters: (row: TableRow, filterState: FS, type: RowType, entityId?: EntityId) => TableRow;
 }
 
-export interface EntityListFilterBarProps<FS extends ELFSM> extends EntityType {
+export interface EntityListFilterBarProps<FS extends ELFSM> {
 	domain: string;
 	filterState: FS;
 	listId?: string;
