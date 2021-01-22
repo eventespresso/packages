@@ -4,7 +4,7 @@ import { pick } from 'ramda';
 import { sortByPriceOrderIdAsc } from '@eventespresso/predicates';
 
 import { useMemoStringify } from '@eventespresso/hooks';
-import { TICKET_FIELDS_FOR_REM } from '../../constants';
+import { TICKET_FIELDS_FOR_TPC } from '../../constants';
 import { useTicketItem, useTicketPrices } from '../../apollo/queries/tickets';
 import usePriceToTpcModifier from '../data/usePriceToTpcModifier';
 import type { StateInitializer } from './types';
@@ -18,7 +18,7 @@ import type { Ticket } from '../../';
 export const useTPCInitialState = ({ ticketId }: BaseTPCProps): StateInitializer => {
 	// get the full ticket object
 	const wholeTicket = useTicketItem({ id: ticketId });
-	const ticket: Partial<Ticket> = useMemoStringify(wholeTicket ? pick(TICKET_FIELDS_FOR_REM, wholeTicket) : {});
+	const ticket: Partial<Ticket> = useMemoStringify(wholeTicket ? pick(TICKET_FIELDS_FOR_TPC, wholeTicket) : {});
 
 	// get all related prices
 	const unSortedPrices = useTicketPrices(ticketId);

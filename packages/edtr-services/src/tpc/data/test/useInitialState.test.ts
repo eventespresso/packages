@@ -26,7 +26,7 @@ describe('TPC:useInitialState', () => {
 		expect(initialState).toHaveProperty('prices');
 
 		expect(initialState.ticket.id).toBe(mockTicket.id);
-		// expect(initialState.ticket.reverseCalculate).toBe(mockTicket.reverseCalculate);
+		expect(initialState.ticket.reverseCalculate).toBe(mockTicket.reverseCalculate);
 
 		expect(Array.isArray(initialState.prices)).toBe(true);
 	});

@@ -2,7 +2,7 @@ import { pick } from 'ramda';
 
 import { EntityId } from '@eventespresso/data';
 import { RelationsManager } from '@eventespresso/services';
-import { Ticket, TICKET_FIELDS_FOR_REM } from '../../';
+import { Ticket, TICKET_FIELDS_FOR_TPC } from '../../';
 
 interface ShouldUpdateTicketProps {
 	existingTicket: Ticket;
@@ -39,7 +39,7 @@ const shouldUpdateTicket = ({
 		return true;
 	}
 
-	const existingTicketJson = JSON.stringify(pick(TICKET_FIELDS_FOR_REM, existingTicket));
+	const existingTicketJson = JSON.stringify(pick(TICKET_FIELDS_FOR_TPC, existingTicket));
 	const newTicketJson = JSON.stringify(newTicket);
 
 	// if ticket fields have changed
