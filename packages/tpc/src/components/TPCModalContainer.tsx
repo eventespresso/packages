@@ -7,7 +7,7 @@ import { wait } from '@eventespresso/utils';
 import TicketPriceCalculatorModal from './TicketPriceCalculatorModal';
 import type { BaseProps, TPCModalProps } from '../types';
 
-const ModalContainer: React.FC = () => {
+export const TPCModalContainer: React.FC = () => {
 	const { getData, isOpen, close: onClose } = useGlobalModal<BaseProps>(EdtrGlobalModals.TPC);
 	const { ticketId } = getData();
 
@@ -31,5 +31,3 @@ const ModalContainer: React.FC = () => {
 	const Component = withTPCContext(TicketPriceCalculatorModal, contextProps);
 	return <Component onSubmit={onSubmit} />;
 };
-
-export default ModalContainer;

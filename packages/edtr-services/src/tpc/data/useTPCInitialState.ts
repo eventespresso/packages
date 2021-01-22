@@ -4,7 +4,7 @@ import { pick } from 'ramda';
 import { sortByPriceOrderIdAsc } from '@eventespresso/predicates';
 
 import { useMemoStringify } from '@eventespresso/hooks';
-import { TICKET_FIELDS_FOR_TPC } from '../../constants';
+import { TICKET_FIELDS_FOR_TPC } from '@eventespresso/constants';
 import { useTicketItem, useTicketPrices } from '../../apollo/queries/tickets';
 import usePriceToTpcModifier from '../data/usePriceToTpcModifier';
 import type { StateInitializer } from './types';

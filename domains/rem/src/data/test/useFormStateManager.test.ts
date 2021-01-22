@@ -2,9 +2,10 @@ import { head } from 'ramda';
 import { act, renderHook } from '@testing-library/react-hooks';
 import { formatISO } from 'date-fns';
 
+import type { RemTicket } from '@eventespresso/edtr-services';
+
 import useFormStateManager from '../useFormStateManager';
 import type { DateFormShape } from '../../ui/datetimeDetails/types';
-import { RemTicket } from '../types';
 
 describe('REM.useFormStateManager', () => {
 	it('checks types for state values', () => {

@@ -3,10 +3,10 @@ import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
-import { startAndEndDateFixer, useTicketItem, hooks } from '@eventespresso/edtr-services';
+import { useTicketItem, hooks } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { setDefaultTime } from '@eventespresso/dates';
+import { setDefaultTime, startAndEndDateFixer } from '@eventespresso/dates';
 import { EntityId } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
 import type { EspressoFormProps } from '@eventespresso/form';

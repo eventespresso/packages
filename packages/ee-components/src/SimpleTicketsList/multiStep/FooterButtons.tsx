@@ -1,9 +1,9 @@
 import { __ } from '@eventespresso/i18n';
 import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/ui-components';
-import { withFormSubscription, FormSubscriptionProps } from '@eventespresso/ee-components';
 import { hasEmptyPrices } from '@eventespresso/predicates';
 import type { PrevNext } from '@eventespresso/hooks';
 
+import { withFormSubscription, FormSubscriptionProps } from '../../';
 import { TICKET_DETAILS_STEP, TICKET_PRICES_STEP } from './constants';
 
 interface FooterButtonsProps extends FormSubscriptionProps {

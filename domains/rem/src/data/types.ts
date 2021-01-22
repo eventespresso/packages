@@ -2,16 +2,10 @@ import type { Reducer, ReducerState } from 'react';
 
 import type { AnyObject } from '@eventespresso/utils';
 import type { Entity, EntityId } from '@eventespresso/data';
-import type { TPCPriceModifier, UpdateTicketInput } from '@eventespresso/edtr-services';
+import type { RemTicket } from '@eventespresso/edtr-services';
 
 import type { DateFormShape } from '../ui/datetimeDetails/types';
-import type { RemTicketFields } from '../ui/Tickets/types';
 import type { Recurrence } from '../services/apollo';
-
-export interface RemTicket extends Entity, RemTicketFields, Omit<UpdateTicketInput, 'prices' | 'id'> {
-	prices?: Array<TPCPriceModifier>;
-	isShared: boolean;
-}
 
 export type StartAndEndDate = {
 	startDate: Date;
@@ -27,7 +21,7 @@ export interface FormState {
 	rRule: string;
 	salesEndOffset?: string;
 	salesStartOffset?: string;
-	tickets: AnyObject<RemTicket>;
+	tickets: AnyObject<Entity>;
 	isDirty: boolean;
 }
 
@@ -45,7 +39,7 @@ export type DataActionType =
 	| 'RESET';
 
 export interface DataAction extends Partial<FormState> {
-	type: DataActionType;
+	type?: DataActionType;
 	id?: EntityId;
 	ticket?: Partial<RemTicket>;
 	date?: string;

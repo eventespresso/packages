@@ -45,6 +45,7 @@ export const EntityOptionsRow: React.FC<EntityOptionsRowProps> = ({
 						buttonText={__('Add New')}
 						icon={Plus}
 						id={addNewID}
+						noVerticalMargin
 						onClick={onAddNew}
 					/>
 				</div>

@@ -5,8 +5,7 @@ import { __ } from '@eventespresso/i18n';
 import { Button, Select } from '@eventespresso/ui-components';
 import { entityListToSelectOptions, AnyObject } from '@eventespresso/utils';
 import { useDatetimes, useDatetimeItem } from '@eventespresso/edtr-services';
-
-import { EntityOptionsRow } from '../EntityOptionsRow';
+import { EntityOptionsRow } from '@eventespresso/ee-components';
 
 interface DateTemplateProps {
 	setTemplate: (date: AnyObject) => void;
@@ -26,7 +25,7 @@ const DateTemplate: React.FC<DateTemplateProps> = ({ setTemplate }) => {
 	const selectExisting = (
 		<>
 			<Select id={selectExistingID} options={options} onChangeValue={onChangeValue} />
-			<Button buttonText={__('Select')} onClick={onClick} isDisabled={!selectedDateId} />
+			<Button buttonText={__('Select')} onClick={onClick} noVerticalMargin isDisabled={!selectedDateId} />
 		</>
 	);
 

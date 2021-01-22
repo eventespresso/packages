@@ -1,18 +1,18 @@
 import { __, sprintf } from '@eventespresso/i18n';
 
-import { CurrencyDisplay } from '@eventespresso/ee-components';
 import { SimpleEntityCard } from '@eventespresso/ui-components';
 import { LOCALIZED_DATE_AND_TIME_SHORT_FORMAT } from '@eventespresso/constants';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { DATE_INTERVALS } from '@eventespresso/dates';
 
 import Sidebar from './Sidebar';
-import { useFormState } from '../../../data';
-import { TicketCardProps } from './types';
+import { CurrencyDisplay } from '../../';
+import { useFormState } from '../hooks';
+import type { TicketCardProps } from './types';
 
 const TicketCard: React.FC<TicketCardProps> = ({ ticket, onEdit }) => {
-	const { tickets } = useFormState();
 	const { formatForSite } = useTimeZoneTime();
+	const { tickets } = useFormState();
 
 	const { isShared, ticketSalesDates, ticketSalesStart, ticketSalesEnd } = tickets?.[ticket.id];
 

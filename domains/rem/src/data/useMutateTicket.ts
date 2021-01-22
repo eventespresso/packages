@@ -2,10 +2,8 @@ import { useCallback } from 'react';
 
 import { copyTicketFields, isTicketInputField } from '@eventespresso/predicates';
 import { parsedAmount, toBoolean } from '@eventespresso/utils';
-import { useMutatePrices, useTicketMutator } from '@eventespresso/edtr-services';
+import { RemTicket, useMutatePrices, useTicketMutator } from '@eventespresso/edtr-services';
 import type { EntityId } from '@eventespresso/data';
-
-import type { RemTicket } from './types';
 
 type Callback = (ticket: RemTicket) => Promise<EntityId>;
 

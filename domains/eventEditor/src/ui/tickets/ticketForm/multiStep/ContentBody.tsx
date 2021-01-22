@@ -1,5 +1,4 @@
 import { TicketPriceCalculator } from '@eventespresso/tpc';
-
 import { TicketAssignmentsManager } from '@edtrUI/ticketAssignmentsManager/components';
 import TicketFormSteps from './TicketFormSteps';
 import useDataListener from './useDataListener';

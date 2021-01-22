@@ -2,12 +2,11 @@ import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
 import { yupToFinalFormErrors } from '@eventespresso/form';
-import { IntervalType } from '@eventespresso/dates';
-import { datesSchema, requiredMessage } from '@eventespresso/edtr-services';
-import { TicketSalesDates } from './types';
-import { RemTicket } from '../../data';
+import { datesSchema, requiredMessage, IntervalType, SalesDates } from '@eventespresso/dates';
+import type { Entity } from '@eventespresso/data';
+import type { AnyObject } from '@eventespresso/utils';
 
-export const validate = async (values: RemTicket): Promise<any> => {
+export const validate = async <E extends Entity>(values: E): Promise<any> => {
 	return await yupToFinalFormErrors(validationSchema, values);
 };
 
@@ -29,7 +28,7 @@ const requiredWhenIsSharedEquals = <T extends any>(
 	}) as yup.WhenOptionsBuilderFunction<T>;
 };
 
-const salesDatesSchema = yup.object<TicketSalesDates>().when(
+const salesDatesSchema = yup.object<SalesDates>().when(
 	'isShared',
 	// make it required when `isShared` is true
 	requiredWhenIsSharedEquals(true, datesSchema)
@@ -49,7 +48,7 @@ const ticketSalesSchema = yup.object().when(
 	})
 );
 
-const validationSchema = yup.object<Partial<RemTicket>>({
+const validationSchema = yup.object<AnyObject>({
 	name: yup
 		.string()
 		.required(() => __('Name is required'))

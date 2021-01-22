@@ -1,9 +1,11 @@
-import { TicketPriceCalculator } from '@eventespresso/tpc';
-
+// import { TicketPriceCalculator } from '@eventespresso/tpc';
 import TicketFormSteps from './TicketFormSteps';
 import useDataListener from './useDataListener';
-import { ContentBodyProps } from './types';
-import { TICKET_DETAILS_STEP, TICKET_PRICES_STEP } from './constants';
+import {
+	TICKET_DETAILS_STEP,
+	//  TICKET_PRICES_STEP
+} from './constants';
+import type { ContentBodyProps } from './types';
 
 /**
  * This component is inside both RFF and TAM contexts, so we can use all of their features
@@ -18,7 +20,7 @@ const ContentBody: React.FC<ContentBodyProps> = ({ children: body, steps }) => {
 			{/* RFF fields */}
 			{steps.current === TICKET_DETAILS_STEP && body}
 
-			{steps.current === TICKET_PRICES_STEP && <TicketPriceCalculator context='editTicketForm' />}
+			{/* {steps.current === TICKET_PRICES_STEP && <TicketPriceCalculator context='editTicketForm' />} */}
 		</div>
 	);
 };

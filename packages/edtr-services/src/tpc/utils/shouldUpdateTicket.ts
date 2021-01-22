@@ -2,7 +2,8 @@ import { pick } from 'ramda';
 
 import { EntityId } from '@eventespresso/data';
 import { RelationsManager } from '@eventespresso/services';
-import { Ticket, TICKET_FIELDS_FOR_TPC } from '../../';
+import { TICKET_FIELDS_FOR_TPC } from '@eventespresso/constants';
+import { Ticket } from '../../';
 
 interface ShouldUpdateTicketProps {
 	existingTicket: Ticket;

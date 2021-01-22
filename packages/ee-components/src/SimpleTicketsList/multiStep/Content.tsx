@@ -1,5 +1,4 @@
-import { FormWithConfig } from '@eventespresso/ee-components';
-
+import { FormWithConfig } from '../../';
 import useTicketFormConfig from '../useTicketFormConfig';
 import ContentWrapper from './ContentWrapper';
 import type { ContentProps } from './types';

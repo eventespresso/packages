@@ -6,8 +6,8 @@ import { usePrevNext } from '@eventespresso/hooks';
 
 import ContentBody from './ContentBody';
 
-import type { ContentWrapperProps } from './types';
 import FooterButtons from './FooterButtons';
+import type { ContentWrapperProps } from './types';
 
 const Modal: React.FC<ContentWrapperProps> = ({ onClose, ...props }) => {
 	const steps = usePrevNext();

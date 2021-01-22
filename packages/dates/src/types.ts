@@ -43,6 +43,11 @@ export interface RangeFormatTokens {
 	yearSeparator?: string;
 }
 
+export interface SalesDates {
+	startDate: string | Date;
+	endDate: string | Date;
+}
+
 export interface ShowTime {
 	showTime?: boolean;
 }

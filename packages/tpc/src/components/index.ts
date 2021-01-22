@@ -1,2 +1,2 @@
 export { default as TicketPriceCalculator } from './TicketPriceCalculator';
-export { default as ModalContainer } from './ModalContainer';
+export * from './TPCModalContainer';

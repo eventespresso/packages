@@ -3,12 +3,15 @@ import { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { Button, DragAndDrop, ModalWithAlert, Select } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
+import type { Entity } from '@eventespresso/data';
 
 import type { SortByControlProps } from './types';
 
 import './style.scss';
 
-export const SortByControl: React.FC<SortByControlProps> = ({
+export interface E extends Entity {}
+
+export const SortByControl: React.FC<SortByControlProps<E>> = ({
 	draggableItems,
 	droppableId,
 	entityType,
