@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import type { Meta } from '@storybook/react/types-6-0';
-import { DragAndDrop } from '@eventespresso/ui-components';
-import { nodes } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
+import { DragAndDrop } from './DragAndDrop';
+import { data } from './data';
 
 export default {
 	component: DragAndDrop,
@@ -18,7 +18,7 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 export const ReorderEntities = () => {
-	const [items, setItems] = useState<Array<any>>(nodes);
+	const [items, setItems] = useState<Array<any>>(data);
 
 	const onDragEnd = useCallback(
 		(result) => {
