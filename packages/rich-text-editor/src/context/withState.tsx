@@ -1,4 +1,3 @@
-import React from 'react';
 import { StateProvider, StateProviderProps } from './StateProvider';
 
 const withState = <P extends StateProviderProps>(Component: React.ComponentType<P>): React.ComponentType<P> => {
