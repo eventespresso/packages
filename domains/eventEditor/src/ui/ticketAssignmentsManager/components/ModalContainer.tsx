@@ -1,10 +1,10 @@
 import { useMemo, useCallback } from 'react';
 
 import { sprintf, __ } from '@eventespresso/i18n';
-
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 import { useConfirmationDialog } from '@eventespresso/ui-components';
+import { wait } from '@eventespresso/utils';
 
 import TicketAssignmentsManagerModal from './TicketAssignmentsManagerModal';
 import { withContext } from '../context';
@@ -62,6 +62,8 @@ const ModalContainer: React.FC = () => {
 	const onSubmit = useCallback<TAMModalProps['onSubmit']>(
 		async (data) => {
 			validateData(false);
+			// wait the next event cycle to fire up isLoading for submit button
+			await wait();
 			// close the moal
 			onClose();
 			// submit TAM data

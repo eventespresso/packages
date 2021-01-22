@@ -1,22 +1,19 @@
-import { useCallback } from 'react';
-
 import { __ } from '@eventespresso/i18n';
+import { CollapsibleLegend, ModalWithAlert } from '@eventespresso/ui-components';
 
-import { CollapsibleLegend, ModalWithAlert, ModalWithAlertProps } from '@eventespresso/ui-components';
 import { legendConfig } from './config';
 import TicketAssignmentsManager from './TicketAssignmentsManager';
 import { useDataState } from '../data';
 import type { TAMModalProps } from '../context/types';
+import useSubmitButtonProps from './useSubmitButtonProps';
 
 import './styles.scss';
 
 const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onCloseModal, onSubmit, title }) => {
-	const { hasOrphanEntities, isDirty, getData } = useDataState();
+	const { hasOrphanEntities, isDirty } = useDataState();
 	const hasErrors = hasOrphanEntities();
 
-	const onSubmitHandler: ModalWithAlertProps['onSubmit'] = useCallback(() => {
-		onSubmit(getData());
-	}, [getData, onSubmit]);
+	const submitButtonProps = useSubmitButtonProps(onSubmit);
 
 	return (
 		<ModalWithAlert
@@ -26,7 +23,7 @@ const TicketAssignmentsManagerModal: React.FC<Partial<TAMModalProps>> = ({ onClo
 			isSubmitDisabled={hasErrors}
 			onClose={onCloseModal}
 			onCancel={onCloseModal}
-			onSubmit={onSubmitHandler}
+			submitButtonProps={submitButtonProps}
 			showAlertOnClose={isDirty || hasErrors}
 			title={title || __('Ticket Assignment Manager')}
 		>

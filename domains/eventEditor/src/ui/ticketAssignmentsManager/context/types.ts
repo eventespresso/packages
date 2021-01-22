@@ -13,5 +13,5 @@ export interface ContextProps extends BaseProps, ExtraContextProps {}
 export interface WithContextProps extends ExtraContextProps, BaseProps {}
 
 export interface TAMModalProps extends ExtraContextProps, BaseProps {
-	onSubmit: (data: RelationalData) => void;
+	onSubmit: (data: RelationalData) => Promise<void>;
 }
