@@ -10,7 +10,7 @@ const subscription = {
 
 export type FormSubscriptionProps = {
 	form?: FormApi;
-	isSaveDisabled?: boolean;
+	hasErrors?: boolean;
 	pristine?: boolean;
 	submitting?: boolean;
 };
@@ -19,13 +19,13 @@ export const withFormSubscription = <P extends FormSubscriptionProps>(FormCompon
 	const WithFormSpy: React.FC<P> = ({ ...props }) => (
 		<FormSpy subscription={subscription}>
 			{({ form, hasSubmitErrors, hasValidationErrors, submitting, pristine }) => {
-				const isSaveDisabled = submitting || hasValidationErrors || hasSubmitErrors;
+				const hasErrors = hasValidationErrors || hasSubmitErrors;
 
 				return (
 					<FormComponent
 						{...props}
 						form={form}
-						isSaveDisabled={isSaveDisabled}
+						hasErrors={hasErrors}
 						pristine={pristine}
 						submitting={submitting}
 					/>
