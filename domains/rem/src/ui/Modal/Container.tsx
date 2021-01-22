@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 
 import { useGlobalModal } from '@eventespresso/registry';
 import { EdtrGlobalModals } from '@eventespresso/edtr-services';
+import { wait } from '@eventespresso/utils';
 
 import Modal from './Modal';
 import { useFormState, useGenerateDates, useSubmitForm } from '../../data';
@@ -27,6 +28,8 @@ const Container: React.FC = () => {
 	}, [resetFormState, resetStepState]);
 
 	const onSubmit = useCallback(async () => {
+		// wait the next event cycle to fire up isLoading for submit button
+		await wait();
 		// close REM modal
 		close();
 		// close new date modal
@@ -42,7 +45,7 @@ const Container: React.FC = () => {
 		resetState();
 	}, [close, resetState]);
 
-	const footerContent = <ContentFooter onSubmit={onSubmit} onClose={onClose} />;
+	const footerContent = <ContentFooter onSubmit={onSubmit} />;
 
 	return (
 		<Modal isOpen={isOpen} onClose={onClose} showAlertOnClose={isDirty} footerContent={footerContent}>

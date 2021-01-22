@@ -1,10 +1,9 @@
-import { __ } from '@eventespresso/i18n';
+import { ButtonProps, Submit } from '@eventespresso/ui-components';
 
-import { Button, ButtonType, ButtonProps } from '@eventespresso/ui-components';
 import { useGenerateDates } from '../../data';
 import { useIsCountCapped } from '../../utils';
 
-const SubmitButton: React.FC<ButtonProps> = ({ onClick }) => {
+const SubmitButton: React.FC<ButtonProps> = (props) => {
 	// rDates and gDates, no exDates
 	const generateDates = useGenerateDates();
 
@@ -14,15 +13,7 @@ const SubmitButton: React.FC<ButtonProps> = ({ onClick }) => {
 	// or someone is trying to be oversmart
 	const isDisabled = !generateDates.length || isCountCapped;
 
-	return (
-		<Button
-			buttonText={__('Submit')}
-			buttonType={ButtonType.PRIMARY}
-			isDisabled={isDisabled}
-			type='submit'
-			onClick={onClick}
-		/>
-	);
+	return <Submit {...props} isDisabled={isDisabled} />;
 };
 
 export default SubmitButton;
