@@ -13,4 +13,9 @@ type RTEStory = Story<RichTextEditorProps>;
 
 export const Simple: RTEStory = () => <SimpleTextEditor onChange={console.log} />;
 
-export const Advanced: RTEStory = () => <AdvancedTextEditor onChange={console.log} toolbar={null} />;
+const html =
+	'<p>This is some <strong>bold</strong> text, this <strong><em>bold and italic</em></strong>, <em><ins>italic underline</ins></em>, <span style="color: red;">red</span>, <span style="color: red;background-color: green;">red with green</span> bg, <code>code</code></p>';
+
+export const Advanced: RTEStory = () => (
+	<AdvancedTextEditor defaultValue={html} onChange={console.log} toolbar={null} />
+);
