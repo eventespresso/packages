@@ -1,5 +1,5 @@
 import type { EntityId } from '@eventespresso/data';
-import type { TPCDataState, TPCPriceModifier } from '@eventespresso/edtr-services';
+import type { Price, TPCDataState, TPCPriceModifier } from '@eventespresso/edtr-services';
 
 export interface BaseProps {
 	ticketId: EntityId;
