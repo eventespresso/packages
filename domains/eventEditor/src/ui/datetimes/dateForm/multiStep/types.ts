@@ -17,4 +17,6 @@ export interface ContentBodyProps {
 	steps?: PrevNext;
 }
 
-export interface ContentWrapperProps extends FormRenderProps<DateFormShape> {}
+export interface ContentWrapperProps extends FormRenderProps<DateFormShape> {
+	onClose: VoidFunction;
+}

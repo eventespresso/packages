@@ -7,6 +7,7 @@ import {
 	useDatetimeItem,
 } from '@eventespresso/edtr-services';
 import type { EntityId } from '@eventespresso/data';
+import { wait } from '@eventespresso/utils';
 
 import { OnSubmit } from './types';
 
@@ -18,11 +19,15 @@ const useOnSubmit = (entityId: EntityId, onClose: VoidFunction): OnSubmit => {
 	const ticketQuantityForCapacity = useTicketQuantityForCapacity();
 
 	const onSubmit = useCallback(
-		(fields) => {
+		async (fields) => {
+			// wait the next event cycle to fire up isLoading for submit button
+			await wait();
+
+			onClose();
 			// If it's an existing entity
 			if (entityId) {
 				// Update it
-				updateEntity(fields);
+				await updateEntity(fields);
 
 				// whether date capacity has been changed
 				const capacityChanged = fields?.capacity !== datetime?.capacity;
@@ -33,9 +38,8 @@ const useOnSubmit = (entityId: EntityId, onClose: VoidFunction): OnSubmit => {
 				}
 			} else {
 				// otherwise create it
-				createEntity(fields);
+				await createEntity(fields);
 			}
-			onClose();
 		},
 		[
 			createEntity,

@@ -34,8 +34,8 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 	const { onSubmit } = config;
 
 	const onSubmitFrom: DateFormConfig['onSubmit'] = useCallback(
-		({ startDate, endDate, ...values }, form, ...restParams) => {
-			return onSubmit(
+		async ({ startDate, endDate, ...values }, form, ...restParams) => {
+			return await onSubmit(
 				{ ...values, startDate: toUtcISO(startDate), endDate: toUtcISO(endDate) },
 				form,
 				...restParams

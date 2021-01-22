@@ -11,7 +11,7 @@ interface FooterButtonsProps extends FormSubscriptionProps {
 	steps: PrevNext;
 }
 
-const FooterButtons: React.FC<FooterButtonsProps> = ({ form, isSaveDisabled, steps }) => {
+const FooterButtons: React.FC<FooterButtonsProps> = ({ form, hasErrors, steps, submitting }) => {
 	const { current, prev, next } = steps;
 	const { hasOrphanEntities } = useTAMDataState();
 	const isSubmitDisabled = hasOrphanEntities();
@@ -19,13 +19,13 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ form, isSaveDisabled, ste
 	return (
 		<ButtonRow>
 			{current === DATE_DETAILS_STEP && (
-				<Next buttonText={__('Save and assign tickets')} onClick={next} isDisabled={isSaveDisabled} />
+				<Next buttonText={__('Save and assign tickets')} onClick={next} isDisabled={hasErrors || submitting} />
 			)}
 
 			{current === ASSIGN_TICKETS_STEP && (
 				<>
-					<Previous onClick={prev} />
-					<Submit onClick={form.submit} isDisabled={isSubmitDisabled} />
+					<Previous onClick={prev} isDisabled={submitting} />
+					<Submit onClick={form.submit} isDisabled={isSubmitDisabled} isLoading={submitting} />
 				</>
 			)}
 		</ButtonRow>
