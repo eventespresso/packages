@@ -10,7 +10,7 @@ import type { TPCModalProps } from '../types';
 
 const useSubmitButtonProps = (onSubmit: TPCModalProps['onSubmit']): ButtonProps => {
 	const { prices, getData } = useTPCDataState();
-	const [isSubmitting, setIsSubmitting] = useState(false);	
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const isDisabled = prices.length && prices.some(({ amount }) => anyPass([isNil, isEmpty])(amount));
 
