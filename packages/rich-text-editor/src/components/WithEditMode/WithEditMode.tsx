@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { extractInlineStyle } from 'draftjs-utils';
 
 import { __ } from '@eventespresso/i18n';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/adapters';
@@ -40,6 +41,7 @@ export const WithEditMode: React.FC<WithEditModeProps> = ({ visualEditor }) => {
 		ifMounted(() => {
 			if (typeof value !== 'undefined' && previousValue !== value) {
 				const newState = htmlToEditorState(value);
+				extractInlineStyle(newState);
 				updateEditorState(newState);
 			}
 		});

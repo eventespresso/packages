@@ -5,6 +5,7 @@ import { useIfMounted, usePrevious } from '@eventespresso/hooks';
 
 import { DraftEditorProps } from '../components';
 import { editorStateToHtml, htmlToEditorState } from '../utils';
+import { useInitEditor } from '../hooks';
 
 export type RTEState = [state: EditorState, setInternalState: DraftEditorProps['onChange']];
 
@@ -20,6 +21,8 @@ const { Provider, Consumer: StateConsumer } = StateContext;
 
 const StateProvider: React.FC<StateProviderProps> = ({ children, defaultValue, onChange, value }) => {
 	const defaultState = htmlToEditorState(defaultValue);
+
+	useInitEditor(defaultState);
 
 	const [internalState, setInternalState] = useState(defaultState);
 

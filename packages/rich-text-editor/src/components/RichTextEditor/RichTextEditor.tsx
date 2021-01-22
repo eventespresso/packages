@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import classNames from 'classnames';
 import { Editor, RichUtils, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
 import { blockRenderMap, getCustomStyleMap } from 'draftjs-utils';
