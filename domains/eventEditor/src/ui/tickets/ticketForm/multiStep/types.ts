@@ -17,4 +17,6 @@ export interface ContentBodyProps {
 	steps?: PrevNext;
 }
 
-export interface ContentWrapperProps extends FormRenderProps<TicketFormShape> {}
+export interface ContentWrapperProps extends FormRenderProps<TicketFormShape> {
+	onClose: VoidFunction;
+}

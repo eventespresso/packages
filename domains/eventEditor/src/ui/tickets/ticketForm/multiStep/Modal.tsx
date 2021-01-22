@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { EntityEditModal } from '@eventespresso/ui-components';
-import { EdtrGlobalModals, useEvent } from '@eventespresso/edtr-services';
+import { EdtrGlobalModals, useEvent, useTicketItem } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 import { __, sprintf } from '@eventespresso/i18n';
 import { usePrevNext } from '@eventespresso/hooks';
@@ -12,24 +12,26 @@ import type { ContentWrapperProps } from './types';
 import type { EntityEditModalData } from '@edtrUI/types';
 import FooterButtons from './FooterButtons';
 
-const Modal: React.FC<ContentWrapperProps> = (props) => {
-	const { isOpen, close: closeModal } = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_TICKET);
+const Modal: React.FC<ContentWrapperProps> = ({ onClose, ...props }) => {
+	const { isOpen } = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_TICKET);
 	const event = useEvent();
 	const steps = usePrevNext();
 	const [isPristine, setIsPristine] = useState(true);
 
 	const { values } = props.form.getState();
 
+	const ticket = useTicketItem({ id: values?.id });
+
 	useEffect(() => {
 		return props.form.subscribe(({ pristine }) => setIsPristine(pristine), { pristine: true });
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	let title = values?.dbId
+	let title = ticket?.dbId
 		? sprintf(
 				/* translators: %s ticket id */
 				__('Edit ticket %s'),
-				`#${values.dbId}`
+				`#${ticket.dbId}`
 		  )
 		: __('New Ticket Details');
 
@@ -42,7 +44,7 @@ const Modal: React.FC<ContentWrapperProps> = (props) => {
 		<EntityEditModal
 			isOpen={isOpen}
 			footerContent={footerButtons}
-			onClose={closeModal}
+			onClose={onClose}
 			showAlertOnClose={!isPristine}
 			title={title}
 		>

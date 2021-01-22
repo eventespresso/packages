@@ -15,7 +15,7 @@ interface FooterButtonsProps extends FormSubscriptionProps {
 	steps: PrevNext;
 }
 
-const FooterButtons: React.FC<FooterButtonsProps> = ({ form, isSaveDisabled, steps }) => {
+const FooterButtons: React.FC<FooterButtonsProps> = ({ form, hasErrors, steps, submitting }) => {
 	const { current, goto, prev, next } = steps;
 	const { hasOrphanEntities } = useTAMDataState();
 	const isSubmitDisabled = hasOrphanEntities();
@@ -37,13 +37,13 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ form, isSaveDisabled, ste
 					<Next
 						buttonText={__('Set ticket prices')}
 						buttonType={ButtonType.SECONDARY}
-						isDisabled={isSaveDisabled}
+						isDisabled={hasErrors}
 						onClick={isTicketSold ? null : next}
 						tooltip={isTicketSold && SOLD_TICKET_ERROR_MESSAGE}
 					/>
 					<Next
 						buttonText={__('Skip prices - assign dates')}
-						isDisabled={isSaveDisabled}
+						isDisabled={hasErrors}
 						onClick={gotoTAM}
 						skipsSteps
 					/>
@@ -59,9 +59,14 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ form, isSaveDisabled, ste
 
 			{current === ASSIGN_DATES_STEP && (
 				<>
-					<Previous buttonText={__('Ticket details')} onClick={gotoDetails} skipsSteps />
-					<Previous onClick={prev} />
-					<Submit onClick={form.submit} isDisabled={isSubmitDisabled} />
+					<Previous
+						buttonText={__('Ticket details')}
+						onClick={gotoDetails}
+						isDisabled={submitting}
+						skipsSteps
+					/>
+					<Previous onClick={prev} isDisabled={submitting} />
+					<Submit onClick={form.submit} isDisabled={isSubmitDisabled} isLoading={submitting} />
 				</>
 			)}
 		</ButtonRow>

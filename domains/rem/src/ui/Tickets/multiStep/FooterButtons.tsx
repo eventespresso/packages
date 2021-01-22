@@ -10,7 +10,7 @@ interface FooterButtonsProps extends FormSubscriptionProps {
 	steps: PrevNext;
 }
 
-const FooterButtons: React.FC<FooterButtonsProps> = ({ form, isSaveDisabled, steps }) => {
+const FooterButtons: React.FC<FooterButtonsProps> = ({ form, hasErrors, steps }) => {
 	const { current, prev, next } = steps;
 
 	const { values } = form.getState();
@@ -25,10 +25,10 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ form, isSaveDisabled, ste
 					<Next
 						buttonText={__('Set ticket prices')}
 						buttonType={ButtonType.SECONDARY}
-						isDisabled={isSaveDisabled}
+						isDisabled={hasErrors}
 						onClick={next}
 					/>
-					<Submit buttonText={__('Skip prices - Save')} isDisabled={isSaveDisabled} onClick={form.submit} />
+					<Submit buttonText={__('Skip prices - Save')} isDisabled={hasErrors} onClick={form.submit} />
 				</>
 			)}
 
