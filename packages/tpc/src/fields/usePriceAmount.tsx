@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import useTPCDataState from '@eventespresso/edtr-services/src/tpc/data/useTPCDataState';
+import { useTPCDataState } from '@eventespresso/edtr-services';
 import type { BaseFieldProps, UsePrice, UsePriceAmount } from './types';
 
 type BFP = BaseFieldProps;
