@@ -1,11 +1,12 @@
 import { useMemo, useCallback } from 'react';
 
 import { useGlobalModal } from '@eventespresso/registry';
+import { wait } from '@eventespresso/utils';
+import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 
 import TicketPriceCalculatorModal from './TicketPriceCalculatorModal';
 import { withContext } from '../context';
 import type { BaseProps, TPCModalProps } from '../types';
-import { EdtrGlobalModals } from '@eventespresso/edtr-services';
 import { useOnSubmitPrices } from '../hooks';
 
 const ModalContainer: React.FC = () => {
@@ -14,11 +15,13 @@ const ModalContainer: React.FC = () => {
 
 	const submitPrices = useOnSubmitPrices();
 	const onSubmit = useCallback<TPCModalProps['onSubmit']>(
-		(data) => {
+		async (data) => {
+			// wait the next event cycle to fire up isLoading for submit button
+			await wait();
 			// close TPC modal
 			onClose();
 			// submit form
-			submitPrices(data);
+			await submitPrices(data);
 		},
 		[submitPrices, onClose]
 	);

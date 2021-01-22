@@ -7,7 +7,7 @@ export interface BaseProps {
 }
 
 export interface TPCModalProps {
-	onSubmit: (data: DataState) => void;
+	onSubmit: (data: DataState) => Promise<void>;
 }
 
 export interface TpcPriceModifier extends Price {
