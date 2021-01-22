@@ -4,3 +4,5 @@ export const isEqualJson = (first: any, second: any): boolean => {
 
 	return firstJson === secondJson;
 };
+
+export const wait = (milliseconds = 0) => new Promise((resolve) => setTimeout(resolve, milliseconds));
