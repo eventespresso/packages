@@ -15,11 +15,12 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 
 	const initialState = useMemo<EntityListFilterState<SortBy>>(
 		() => ({
-			perPage: 6,
 			pageNumber: 1,
-			total: null,
+			perPage: 6,
 			searchText: '',
+			showBulkActions: false,
 			sortBy,
+			total: null,
 			view,
 		}),
 		[sortBy, view]
@@ -92,6 +93,12 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 		});
 	}, []);
 
+	const toggleBulkActions: FSM['toggleBulkActions'] = useCallback(() => {
+		dispatch({
+			type: 'TOGGLE_BULK_ACTIONS',
+		});
+	}, []);
+
 	const setSearchText: FSM['setSearchText'] = useCallback((searchText) => {
 		dispatch({
 			searchText,
@@ -103,13 +110,14 @@ const useEntityListFilterStateManager = <SortBy = BasicSortBy>(defaultSortBy: So
 		() => ({
 			...state,
 			getState,
-			setSortBy,
-			setPerPage,
-			setPageNumber,
-			setTotal,
 			setCardView,
-			setTableView,
+			setPageNumber,
+			setPerPage,
 			setSearchText,
+			setSortBy,
+			setTableView,
+			setTotal,
+			toggleBulkActions,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[state]

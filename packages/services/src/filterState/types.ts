@@ -4,19 +4,21 @@ import type { ListView } from '@eventespresso/ui-components';
 export type BasicSortBy = 'name' | 'id';
 
 export interface EntityListFilterState<SortBy = BasicSortBy> extends ListView {
-	perPage: number;
 	pageNumber: number;
-	total: number;
+	perPage: number;
 	searchText: string;
+	showBulkActions: boolean;
 	sortBy: SortBy;
+	total: number;
 }
 
 export type EntityListFilterActionType =
-	| 'SET_SORT_BY'
-	| 'SET_PER_PAGE'
 	| 'SET_PAGE_NUMBER'
-	| 'SET_TOTAL'
+	| 'SET_PER_PAGE'
 	| 'SET_SEARCH_TEXT'
+	| 'TOGGLE_BULK_ACTIONS'
+	| 'SET_SORT_BY'
+	| 'SET_TOTAL'
 	| 'SET_VIEW';
 
 export interface EntityListFilterAction<SortBy = BasicSortBy> extends Partial<EntityListFilterState<SortBy>> {
@@ -25,13 +27,14 @@ export interface EntityListFilterAction<SortBy = BasicSortBy> extends Partial<En
 
 export interface EntityListFilterStateManager<SortBy = BasicSortBy> extends EntityListFilterState<SortBy> {
 	getState: () => EntityListFilterState<SortBy>;
-	setSortBy: (sortBy: SortBy) => void;
-	setPerPage: (newPageNumber: number, newPerPage: number) => void;
-	setPageNumber: (page: number) => void;
-	setTotal: (total: number) => void;
-	setSearchText: (text: string) => void;
 	setCardView: VoidFunction;
+	setPageNumber: (page: number) => void;
+	setPerPage: (newPageNumber: number, newPerPage: number) => void;
+	setSearchText: (text: string) => void;
+	setSortBy: (sortBy: SortBy) => void;
 	setTableView: VoidFunction;
+	setTotal: (total: number) => void;
+	toggleBulkActions: VoidFunction;
 }
 
 export type EntityListFilterStateReducer<SortBy = BasicSortBy> = (
