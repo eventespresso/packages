@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { pick } from 'ramda';
 
 import { useForm } from '@eventespresso/form';
-import { useDataState as useTPCDataState } from '@eventespresso/tpc';
-import { Ticket } from '@eventespresso/edtr-services';
+import { Ticket, useTPCDataState } from '@eventespresso/edtr-services';
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
 
 // The fields that need to be synced from TPC to ticket edit form

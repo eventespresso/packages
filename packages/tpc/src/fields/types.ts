@@ -1,8 +1,9 @@
 import { InputHTMLAttributes } from 'react';
 
 import type { AnyObject } from '@eventespresso/utils';
+import type { TPCPriceModifier } from '@eventespresso/edtr-services';
 
-import type { PriceModifierProps, TpcPriceModifier } from '../types';
+import type { PriceModifierProps } from '../types';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -35,7 +36,7 @@ export interface UsePriceAmount extends Pick<PriceFieldProps, 'field' | 'price'>
 export interface PriceFieldProps
 	extends PriceModifierProps,
 		Omit<BaseFieldProps<number | string>, 'getValue' | 'setValue' | 'name'> {
-	field: keyof TpcPriceModifier;
+	field: keyof TPCPriceModifier;
 }
 
 export interface TicketPriceFieldProps extends Omit<BaseFieldProps<number>, 'getValue' | 'setValue' | 'name'> {}

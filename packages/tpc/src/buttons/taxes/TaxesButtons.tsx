@@ -1,5 +1,4 @@
-import { usePrices } from '@eventespresso/edtr-services';
-import { useDataState } from '../../data';
+import { usePrices, useTPCDataState } from '@eventespresso/edtr-services';
 import { getDefaultTaxes } from '@eventespresso/predicates';
 
 import AddDefaultTaxesButton from './AddDefaultTaxesButton';
@@ -9,7 +8,7 @@ const TaxesButtons: React.FC = () => {
 	const allPrices = usePrices();
 	const defaultTaxPrices = getDefaultTaxes(allPrices);
 
-	const { prices } = useDataState();
+	const { prices } = useTPCDataState();
 	const tpcDefaultTaxPrices = getDefaultTaxes(prices);
 
 	// since we load all the default prices in EDTR

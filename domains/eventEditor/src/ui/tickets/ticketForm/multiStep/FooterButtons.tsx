@@ -3,9 +3,8 @@ import { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/ui-components';
 import { withFormSubscription, FormSubscriptionProps } from '@eventespresso/ee-components';
-import { useLazyTicket } from '@eventespresso/edtr-services';
+import { SOLD_TICKET_ERROR_MESSAGE, useLazyTicket } from '@eventespresso/edtr-services';
 import { hasEmptyPrices } from '@eventespresso/predicates';
-import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
 import type { PrevNext } from '@eventespresso/hooks';
 
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';

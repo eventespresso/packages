@@ -2,14 +2,15 @@ import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 
 import { parsedAmount } from '@eventespresso/utils';
+import { useTPCDataState } from '@eventespresso/edtr-services';
 import { BaseNumberInputField, MoneyInputWithConfig, usePriceAmount } from '../fields';
-import { useDataState } from '../data';
+
 import type { PriceModifierProps } from '../types';
 
 import './styles.scss';
 
 const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
-	const { reverseCalculate } = useDataState();
+	const { reverseCalculate } = useTPCDataState();
 	const { getValue, setValue } = usePriceAmount({ field: 'amount', price });
 
 	const hasError = Number(price?.amount ?? 0) === 0;

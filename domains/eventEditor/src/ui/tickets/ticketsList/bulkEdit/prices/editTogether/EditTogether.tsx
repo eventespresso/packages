@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 
-import { TicketPriceCalculator, useAddDefaultPrices, withContext as withTPCContext } from '@eventespresso/tpc';
+import { useAddDefaultPrices, withTPCContext } from '@eventespresso/edtr-services';
+import { TicketPriceCalculator } from '@eventespresso/tpc';
 
 import { FooterButtons } from '../buttons';
-import { EditPricesBaseProps } from '../types';
 import useOnSubmitPrices from './useOnSubmitPrices';
+import type { EditPricesBaseProps } from '../types';
 
 const EditTogether: React.FC<EditPricesBaseProps> = ({ onClose }) => {
 	const addDefaultPrices = useAddDefaultPrices();

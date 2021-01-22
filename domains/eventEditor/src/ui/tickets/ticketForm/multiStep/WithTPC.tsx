@@ -1,4 +1,4 @@
-import { withContext as withTPCContext } from '@eventespresso/tpc';
+import { withTPCContext } from '@eventespresso/edtr-services';
 
 import type { ContentWrapperProps } from './types';
 import Modal from './Modal';

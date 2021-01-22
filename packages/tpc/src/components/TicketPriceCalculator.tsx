@@ -1,4 +1,5 @@
 import { ButtonRow, DebugInfo } from '@eventespresso/ui-components';
+import { usePricesPolling, useTPCDataState, useTPCInitStateListeners } from '@eventespresso/edtr-services';
 
 import DefaultPricesInfo from './DefaultPricesInfo';
 import DefaultTaxesInfo from './DefaultTaxesInfo';
@@ -7,9 +8,6 @@ import DeleteAllPricesButton from '../buttons/DeleteAllPricesButton';
 import NoPricesBanner from './NoPricesBanner';
 import Table from './table/Table';
 import TaxesButtons from '../buttons/taxes/TaxesButtons';
-import { useDataState } from '../data';
-import { useInitStateListeners } from '../stateListeners';
-import { usePricesPolling } from '../hooks';
 
 import './styles.scss';
 
@@ -19,11 +17,11 @@ export interface TicketPriceCalculatorProps {
 
 const TicketPriceCalculator: React.FC<TicketPriceCalculatorProps> = ({ context }) => {
 	// initialize state listeners
-	useInitStateListeners();
+	useTPCInitStateListeners();
 
 	usePricesPolling();
 
-	const dataState = useDataState();
+	const dataState = useTPCDataState();
 
 	if (!dataState.prices?.length) {
 		return (

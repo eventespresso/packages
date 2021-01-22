@@ -1,11 +1,11 @@
 import { useCallback, useMemo, useRef } from 'react';
 
-import { DataState } from '@eventespresso/tpc';
 import { AnyObject } from '@eventespresso/utils';
+import type { TPCDataState } from '@eventespresso/edtr-services';
 
 export interface ManageTPCStates {
-	setTPCState: (dataState: DataState) => void;
-	getDataStates: () => AnyObject<DataState>;
+	setTPCState: (dataState: TPCDataState) => void;
+	getTPCDataStates: () => AnyObject<TPCDataState>;
 }
 
 export const useManageTPCStates = (): ManageTPCStates => {
@@ -15,7 +15,7 @@ export const useManageTPCStates = (): ManageTPCStates => {
 	 * Since this is not used anywhere in the view, rather only used on final submission
 	 * useRef is made for this, to avoid any unnecessary re-renders
 	 */
-	const dataStates = useRef<AnyObject<DataState>>({});
+	const dataStates = useRef<AnyObject<TPCDataState>>({});
 
 	const setTPCState = useCallback<ManageTPCStates['setTPCState']>(
 		(dataState) => {
@@ -24,7 +24,7 @@ export const useManageTPCStates = (): ManageTPCStates => {
 		[dataStates]
 	);
 
-	const getDataStates = useCallback<ManageTPCStates['getDataStates']>(() => dataStates.current, [dataStates]);
+	const getTPCDataStates = useCallback<ManageTPCStates['getTPCDataStates']>(() => dataStates.current, [dataStates]);
 
-	return useMemo(() => ({ setTPCState, getDataStates }), [setTPCState, getDataStates]);
+	return useMemo(() => ({ setTPCState, getTPCDataStates }), [setTPCState, getTPCDataStates]);
 };

@@ -1,13 +1,12 @@
 import type { EntityId } from '@eventespresso/data';
-import type { Price } from '@eventespresso/edtr-services';
-import { DataState } from './data';
+import type { TPCDataState, TPCPriceModifier } from '@eventespresso/edtr-services';
 
 export interface BaseProps {
 	ticketId: EntityId;
 }
 
 export interface TPCModalProps {
-	onSubmit: (data: DataState) => Promise<void>;
+	onSubmit: (data: TPCDataState) => Promise<void>;
 }
 
 export interface TpcPriceModifier extends Price {
@@ -18,6 +17,6 @@ export interface TpcPriceModifier extends Price {
 }
 
 export interface PriceModifierProps {
-	price: TpcPriceModifier;
+	price: TPCPriceModifier;
 	index?: number;
 }

@@ -1,12 +1,11 @@
 import { useCallback } from 'react';
 
 import { any } from 'ramda';
-import { __ } from '@eventespresso/i18n';
 
+import { __ } from '@eventespresso/i18n';
 import { isDefault } from '@eventespresso/predicates';
 import { useConfig } from '@eventespresso/services';
-import { useDataState } from '../data';
-import { usePricesPollInterval } from '../hooks';
+import { usePricesPollInterval, useTPCDataState } from '@eventespresso/edtr-services';
 
 const DefaultPricesInfo: React.FC = () => {
 	const config = useConfig();
@@ -15,7 +14,7 @@ const DefaultPricesInfo: React.FC = () => {
 
 	const [, setPricesPollInterval] = usePricesPollInterval();
 
-	const { prices } = useDataState();
+	const { prices } = useTPCDataState();
 	const hasDefaultPrice = any(isDefault, prices);
 
 	const onClickLink = useCallback(() => {

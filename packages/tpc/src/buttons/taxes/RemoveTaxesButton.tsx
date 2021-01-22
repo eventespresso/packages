@@ -1,7 +1,7 @@
 import { __ } from '@eventespresso/i18n';
 
 import { ConfirmDelete } from '@eventespresso/ui-components';
-import { useRemoveAllTaxes } from '../../hooks';
+import { useRemoveAllTaxes } from '@eventespresso/edtr-services';
 
 const buttonProps = {
 	buttonText: __('Remove taxes'),

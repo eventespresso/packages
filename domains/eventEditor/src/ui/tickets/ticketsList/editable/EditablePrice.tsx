@@ -5,7 +5,7 @@ import { __ } from '@eventespresso/i18n';
 import { InlineEditCurrency } from '@eventespresso/ui-components';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { useMoneyDisplay } from '@eventespresso/services';
-import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
+import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/edtr-services';
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
 import type { TicketItemProps } from '../types';
 

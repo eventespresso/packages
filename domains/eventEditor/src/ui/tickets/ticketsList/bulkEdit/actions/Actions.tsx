@@ -4,8 +4,12 @@ import { __ } from '@eventespresso/i18n';
 import { BulkActions } from '@eventespresso/ee-components';
 import { Collapsible, ErrorMessage } from '@eventespresso/ui-components';
 import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
-import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
-import { useShowTicketBA, useTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
+import {
+	SOLD_TICKET_ERROR_MESSAGE,
+	useShowTicketBA,
+	useTickets,
+	useTicketsListFilterState,
+} from '@eventespresso/edtr-services';
 import { entitiesWithGuIdInArray, TicketsStatus } from '@eventespresso/predicates';
 import { withFeature, useBulkEdit } from '@eventespresso/services';
 import type { BulkActionsProps } from '@eventespresso/ui-components';
