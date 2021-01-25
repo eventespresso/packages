@@ -1,5 +1,6 @@
 export * from './useDisclosure';
 export * from './useOnChange';
+export * from './useOnClickOutside';
 export * from './usePagination';
 export * from './usePrevNext';
 export * from './useProgress';
