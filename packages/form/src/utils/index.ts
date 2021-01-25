@@ -4,8 +4,6 @@ import type { FieldMetaState, FieldRenderProps, FormRenderProps } from 'react-fi
 
 import type { FieldConditions } from '../types';
 
-export * from './dateAndTime';
-
 type ValidateStatus = '' | 'error' | 'success' | 'warning' | 'validating';
 
 export const getValidateStatus = ({ touched, error, submitError }: FieldMetaState<any>): ValidateStatus => {

@@ -3,14 +3,14 @@ import { pick } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { useDatetimeItem } from '@eventespresso/edtr-services';
+import { Datetime, DateFormShape, DateFormConfig, useDatetimeItem } from '@eventespresso/edtr-services';
 import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
+import { startAndEndDateFixer } from '@eventespresso/ee-components';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { setDefaultTime } from '@eventespresso/dates';
 import { EntityId } from '@eventespresso/data';
-import { EspressoFormProps, startAndEndDateFixer } from '@eventespresso/form';
-import type { Datetime, DateFormShape, DateFormConfig } from '@eventespresso/edtr-services';
+import { EspressoFormProps } from '@eventespresso/form';
 
 import { validate } from './formValidation';
 
