@@ -1,5 +1,5 @@
 import { add, sub } from '@eventespresso/dates';
-import type { TicketSatesFields } from '@eventespresso/edtr-services';
+import type { TicketSalesFields } from '@eventespresso/edtr-services';
 import type { IntervalType } from '@eventespresso/dates';
 
 import { StartAndEndDate } from '../data';
@@ -11,7 +11,7 @@ export const computeDatetimeEndDate = (startDate: Date, unit: IntervalType, dura
 /**
  * computes the ticket start or end date based upon the start and end date of datetime
  */
-export const computeTicketDate = (startAndEndDate: StartAndEndDate, ticketSales: TicketSatesFields): Date => {
+export const computeTicketDate = (startAndEndDate: StartAndEndDate, ticketSales: TicketSalesFields): Date => {
 	const { position, startOrEnd, unit, unitValue } = ticketSales || {};
 	const { startDate, endDate } = startAndEndDate || {};
 	switch (true) {

@@ -32,16 +32,16 @@ export enum EdtrGlobalModals {
 	TPC = 'tpc',
 }
 
-export type TicketSatesFields = {
+export type TicketSalesFields = {
 	position?: 'before' | 'after';
 	startOrEnd?: 'start' | 'end';
 	unit?: IntervalType;
 	unitValue?: number;
 };
 
-export interface RemTicketFields extends Partial<TicketSatesFields>, Partial<SalesDates> {
+export interface RemTicketFields extends Partial<TicketSalesFields>, Partial<SalesDates> {
 	ticketSalesDates?: SalesDates;
-	ticketSalesStart?: TicketSatesFields;
-	ticketSalesEnd?: TicketSatesFields;
+	ticketSalesStart?: TicketSalesFields;
+	ticketSalesEnd?: TicketSalesFields;
 	isShared?: boolean;
 }
