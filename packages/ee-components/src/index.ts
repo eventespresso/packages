@@ -12,7 +12,8 @@ export * from './FormWithConfig';
 export * from './RangeFormat';
 export * from './rich-text-editor';
 export * from './SimpleTextEditorModal';
-export * from './SimpleTicketsList';
 export * from './types';
 export * from './utils';
 export * from './withFormSubscription';
+
+export { default as SimpleTicketsList } from './SimpleTicketsList';

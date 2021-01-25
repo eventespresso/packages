@@ -33,4 +33,6 @@ export interface Offset {
 	endOffsetFrom?: string;
 }
 
-export interface SimpleTicketsListProps extends FormState {}
+export interface SimpleTicketsListProps extends FormState {
+	StepRender: React.ComponentType<any>;
+}

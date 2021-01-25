@@ -7,12 +7,13 @@ import TicketTemplate from './TicketTemplate';
 import { TicketCard } from './card';
 import { Container } from './multiStep';
 import { withFormState } from './context';
+import type { SimpleTicketsListProps } from './types';
 
 import './style.scss';
 
 interface Ticket extends Entity {}
 
-export const SimpleTicketsList = withFormState((props) => {
+const SimpleTicketsList: React.FC<SimpleTicketsListProps> = ({ StepRender, ...props }) => {
 	const { tickets } = props?.formState;
 
 	const { isOpen, onClose, onOpen } = useDisclosure();
@@ -33,7 +34,7 @@ export const SimpleTicketsList = withFormState((props) => {
 
 	return (
 		<div className='rem-tickets'>
-			<Container onClose={onClose} isOpen={isOpen} entity={currentTicket} />
+			<Container onClose={onClose} isOpen={isOpen} entity={currentTicket} StepRender={StepRender} />
 			<TicketTemplate onAddNew={onAddNew} />
 			<div className='rem-tickets__list'>
 				{Object.entries(tickets).map(([id, ticket]) => (
@@ -44,4 +45,6 @@ export const SimpleTicketsList = withFormState((props) => {
 			</div>
 		</div>
 	);
-});
+};
+
+export default withFormState(SimpleTicketsList);

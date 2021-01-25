@@ -8,7 +8,10 @@ import type { AnyObject } from '@eventespresso/utils';
 
 interface Ticket extends Entity {}
 
-export interface ContainerProps extends ContentProps, Omit<Disclosure, 'onOpen'> {}
+export interface ContainerProps
+	extends ContentProps,
+		Omit<Disclosure, 'onOpen'>,
+		Pick<ContentBodyProps, 'StepRender'> {}
 
 export type OnSubmit = (fields: AnyObject) => void;
 
@@ -20,6 +23,10 @@ export interface ContentProps {
 
 export interface ContentBodyProps {
 	steps?: PrevNext;
+	StepRender: React.ComponentType<any>;
 }
 
-export interface ContentWrapperProps extends ContainerProps, FormRenderProps<TicketFormShape> {}
+export interface ContentWrapperProps
+	extends ContainerProps,
+		FormRenderProps<TicketFormShape>,
+		Pick<ContentBodyProps, 'StepRender'> {}

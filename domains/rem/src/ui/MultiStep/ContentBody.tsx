@@ -8,6 +8,8 @@ import { useStepsState } from '../../context';
 import { useFormState } from '../../data';
 import { DATE_DETAILS_STEP, GENERATED_DATES_STEP, PATTERN_EDITOR_STEP, TICKETS_STEP } from './constants';
 
+import RemStepRender from './RemStepRender';
+
 const ContentBody: React.FC = () => {
 	const formState = useFormState();
 	const { current } = useStepsState();
@@ -20,7 +22,7 @@ const ContentBody: React.FC = () => {
 			{current === DATE_DETAILS_STEP && <DatetimeDetails />}
 			{
 				// @ts-ignore
-				current === TICKETS_STEP && <SimpleTicketsList formState={formState} />
+				current === TICKETS_STEP && <SimpleTicketsList formState={formState} StepRender={RemStepRender} />
 			}
 			{current === GENERATED_DATES_STEP && <GeneratedDates />}
 		</>

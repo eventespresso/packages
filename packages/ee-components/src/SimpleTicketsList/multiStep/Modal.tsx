@@ -9,7 +9,7 @@ import ContentBody from './ContentBody';
 import FooterButtons from './FooterButtons';
 import type { ContentWrapperProps } from './types';
 
-const Modal: React.FC<ContentWrapperProps> = ({ onClose, ...props }) => {
+const Modal: React.FC<ContentWrapperProps> = ({ onClose, StepRender, ...props }) => {
 	const steps = usePrevNext();
 	const [isPristine, setIsPristine] = useState(true);
 
@@ -38,7 +38,7 @@ const Modal: React.FC<ContentWrapperProps> = ({ onClose, ...props }) => {
 			showAlertOnClose={!isPristine}
 			title={title}
 		>
-			<ContentBody {...props} steps={steps} />
+			<ContentBody {...props} steps={steps} StepRender={StepRender} />
 		</EntityEditModal>
 	);
 };

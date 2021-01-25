@@ -4,7 +4,7 @@ import Content from './Content';
 import { useFormState } from '../hooks';
 import type { ContainerProps } from './types';
 
-const Container: React.FC<ContainerProps> = ({ entity, isOpen, onClose }) => {
+const Container: React.FC<ContainerProps> = ({ entity, isOpen, onClose, StepRender }) => {
 	const { addTicket, updateTicket } = useFormState();
 
 	const onSubmit = useCallback(
@@ -19,7 +19,7 @@ const Container: React.FC<ContainerProps> = ({ entity, isOpen, onClose }) => {
 		[addTicket, entity?.id, onClose, updateTicket]
 	);
 
-	return isOpen && <Content entity={entity} onClose={onClose} onSubmit={onSubmit} />;
+	return isOpen && <Content entity={entity} onClose={onClose} onSubmit={onSubmit} StepRender={StepRender} />;
 };
 
 export default Container;
