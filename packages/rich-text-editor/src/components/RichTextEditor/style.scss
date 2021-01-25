@@ -69,6 +69,26 @@
 			}
 		}
 	}
+	.ee-rich-text-editor__image-toolbar {
+		position: absolute;
+		bottom: 15px;
+	}
+	&--image {
+		display: flex;
+		position: relative;
+	}
+	&--image-wrapper {
+		position: relative;
+	}
+	&--image-align-center {
+		justify-content: center;
+	}
+	&--image-align-right {
+		justify-content: flex-end;
+	}
+	figure {
+		border-width: 0px;
+	}
 
 	.DraftEditor-root {
 		.public-DraftStyleDefault-block {
