@@ -2,8 +2,8 @@ import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
 import { yupToFinalFormErrors } from '@eventespresso/form';
-import { requiredMessage, IntervalType, SalesDates } from '@eventespresso/dates';
-import { datesSchema } from '@eventespresso/form';
+import { IntervalType, SalesDates } from '@eventespresso/dates';
+import { datesSchema, requiredMessage } from '@eventespresso/form';
 import type { Entity } from '@eventespresso/data';
 import type { AnyObject } from '@eventespresso/utils';
 

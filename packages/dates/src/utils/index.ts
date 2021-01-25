@@ -1,5 +1,4 @@
 export * from './addSub';
-export * from './dateAndTime';
 export * from './isToday';
 export * from './misc';
 export * from './types';

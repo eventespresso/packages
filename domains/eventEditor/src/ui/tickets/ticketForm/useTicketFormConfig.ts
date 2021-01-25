@@ -6,10 +6,10 @@ import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/service
 import { useTicketItem, hooks } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { setDefaultTime, startAndEndDateFixer } from '@eventespresso/dates';
+import { setDefaultTime } from '@eventespresso/dates';
 import { EntityId } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
-import type { EspressoFormProps } from '@eventespresso/form';
+import { EspressoFormProps, startAndEndDateFixer } from '@eventespresso/form';
 import type { Ticket, TicketFormConfig } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
