@@ -7,21 +7,21 @@ import { useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { PLUS_ONE_MONTH, TICKET_FIELDS_FOR_TPC } from '@eventespresso/constants';
 import { useMemoStringify } from '@eventespresso/hooks';
+import type { AnyObject } from '@eventespresso/utils';
 import type { Entity } from '@eventespresso/data';
 
 import { validate } from './formValidation';
 
 import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
 import type { Intervals } from '@eventespresso/dates';
-import type { RemTicket } from '@eventespresso/edtr-services';
 
-type TicketFormConfig = EspressoFormProps<RemTicket>;
+interface Ticket extends Entity, AnyObject {}
+
+type TicketFormConfig = EspressoFormProps<Ticket>;
 
 const unitOptions = intervalsToOptions(
 	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS)
 );
-
-interface Ticket extends Entity {}
 
 const ticketSalesFields: Array<FieldProps> = [
 	{
@@ -78,7 +78,7 @@ const useTicketFormConfig = (ticket?: Ticket, config?: Partial<TicketFormConfig>
 	const startDate = useMemoStringify(setDefaultTime(utcToSiteTime(PLUS_ONE_MONTH), 'start'));
 	const endDate = useMemoStringify(setDefaultTime(utcToSiteTime(PLUS_ONE_MONTH), 'end'));
 
-	const TICKET_DEFAULTS: Partial<RemTicket> = useMemo(
+	const TICKET_DEFAULTS: Partial<Ticket> = useMemo(
 		() => ({
 			ticketSalesStart: {
 				position: 'before',
@@ -101,7 +101,7 @@ const useTicketFormConfig = (ticket?: Ticket, config?: Partial<TicketFormConfig>
 		[endDate, startDate]
 	);
 
-	const initialValues = useMemoStringify<Partial<RemTicket>>({
+	const initialValues = useMemoStringify<Partial<Ticket>>({
 		...TICKET_DEFAULTS,
 		...config?.initialValues,
 		...pick(TICKET_FIELDS_FOR_TPC, ticket || {}),

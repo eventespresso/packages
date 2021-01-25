@@ -1,7 +1,7 @@
 import { filter, propEq } from 'ramda';
 
-import type { RemTicket } from '@eventespresso/edtr-services';
-import { GeneratedDate } from '../ui/generatedDates';
+import type { RemTicket } from '../data/types';
+import type { GeneratedDate } from '../ui/generatedDates';
 
 // is a shared ticket ?
 export const isShared = propEq('isShared', true);

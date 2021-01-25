@@ -1,10 +1,8 @@
-import type { Entity, User } from '@eventespresso/data';
+import type { User } from '@eventespresso/data';
 import type { GeneralSettings, RelationalData } from '@eventespresso/services';
 import type { IntervalType } from '@eventespresso/dates';
 import type { SalesDates } from '@eventespresso/ee-components';
 import type { DatetimeEdge, TicketEdge, PriceEdge, PriceTypeEdge, Event, EventManager } from './apollo';
-import type { TPCPriceModifier } from './tpc';
-import type { UpdateTicketInput } from './';
 
 export interface EventEditorData {
 	event?: Event;
@@ -46,9 +44,4 @@ export interface RemTicketFields extends Partial<TicketSatesFields>, Partial<Sal
 	ticketSalesStart?: TicketSatesFields;
 	ticketSalesEnd?: TicketSatesFields;
 	isShared?: boolean;
-}
-
-export interface RemTicket extends Entity, RemTicketFields, Omit<UpdateTicketInput, 'prices' | 'id'> {
-	prices?: Array<TPCPriceModifier>;
-	isShared: boolean;
 }
