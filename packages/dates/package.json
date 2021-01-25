@@ -18,10 +18,10 @@
 	"dependencies": {
 		"date-fns": "^2.16.1",
 		"date-fns-tz": "^1.0.12",
-		"react-datepicker": "^3.3.0"
+		"react-datepicker": "^3.4.1"
 	},
 	"devDependencies": {
-		"@types/react-datepicker": "^3.1.2"
+		"@types/react-datepicker": "^3.1.3"
 	},
 	"license": "GPL-3.0",
 	"gitHead": "66fae0230a22c100153cb05f5a624305efc5a8d9"

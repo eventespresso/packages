@@ -27,12 +27,12 @@
 		"draftjs-utils": "0.10.2",
 		"html-to-draftjs": "^1.5.0",
 		"react-draft-wysiwyg": "^1.14.5",
-		"reakit": "1.3.4"
+		"reakit": "1.3.5"
 	},
 	"devDependencies": {
 		"@types/draft-js": "^0.10.44",
 		"@types/draftjs-to-html": "^0.8.0",
 		"@types/html-to-draftjs": "^1.4.0",
-		"@types/react-draft-wysiwyg": "^1.13.0"
+		"@types/react-draft-wysiwyg": "^1.13.1"
 	}
 }

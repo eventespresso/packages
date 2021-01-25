@@ -27,7 +27,7 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@typeform/embed": "^0.30.0",
+		"@typeform/embed": "^0.34.0",
 		"prop-types": "^15.7.2",
 		"react-modal": "^3.12.1"
 	},

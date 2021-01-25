@@ -15,7 +15,7 @@
 		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
 	},
 	"dependencies": {
-		"@wordpress/hooks": "^2.10.0"
+		"@wordpress/hooks": "^2.11.0"
 	},
 	"devDependencies": {
 		"@types/wordpress__hooks": "2.4.1"

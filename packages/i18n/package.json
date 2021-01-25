@@ -16,7 +16,7 @@
 	},
 	"sideEffects": false,
 	"dependencies": {
-		"@wordpress/i18n": "^3.16.0"
+		"@wordpress/i18n": "^3.17.0"
 	},
 	"license": "GPL-3.0"
 }
