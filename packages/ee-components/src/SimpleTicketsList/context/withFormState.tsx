@@ -1,13 +1,13 @@
-import { ConfigProviderProps, ConfigProvider } from './FormStateProvider';
+import { FormProviderProps, FormProvider } from './FormStateProvider';
 
-export const withFormState = <P extends ConfigProviderProps>(
+export const withFormState = <P extends FormProviderProps>(
 	Component: React.ComponentType<P>
 ): React.ComponentType<P> => {
 	const WrappedComponent: React.ComponentType<P> = (props) => {
 		return (
-			<ConfigProvider formState={props.formState}>
+			<FormProvider formState={props.formState}>
 				<Component {...props} />
-			</ConfigProvider>
+			</FormProvider>
 		);
 	};
 	return WrappedComponent;
