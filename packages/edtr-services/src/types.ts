@@ -1,6 +1,7 @@
 import type { Entity, User } from '@eventespresso/data';
 import type { GeneralSettings, RelationalData } from '@eventespresso/services';
-import type { IntervalType, SalesDates } from '@eventespresso/dates';
+import type { IntervalType } from '@eventespresso/dates';
+import type { SalesDates } from '@eventespresso/ee-components';
 import type { DatetimeEdge, TicketEdge, PriceEdge, PriceTypeEdge, Event, EventManager } from './apollo';
 import type { TPCPriceModifier } from './tpc';
 import type { UpdateTicketInput } from './';

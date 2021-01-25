@@ -2,10 +2,11 @@ import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
 import { yupToFinalFormErrors } from '@eventespresso/form';
-import { IntervalType, SalesDates } from '@eventespresso/dates';
+import { IntervalType } from '@eventespresso/dates';
 import { datesSchema, requiredMessage } from '@eventespresso/form';
 import type { Entity } from '@eventespresso/data';
 import type { AnyObject } from '@eventespresso/utils';
+import type { SalesDates } from '../types';
 
 export const validate = async <E extends Entity>(values: E): Promise<any> => {
 	return await yupToFinalFormErrors(validationSchema, values);

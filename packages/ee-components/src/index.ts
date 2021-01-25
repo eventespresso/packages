@@ -13,4 +13,5 @@ export * from './RangeFormat';
 export * from './rich-text-editor';
 export * from './SimpleTextEditorModal';
 export * from './SimpleTicketsList';
+export * from './types';
 export * from './withFormSubscription';
