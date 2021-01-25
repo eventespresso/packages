@@ -1,7 +1,7 @@
 import type { Reducer, ReducerState } from 'react';
 
 import type { AnyObject } from '@eventespresso/utils';
-import type { Entity, EntityId } from '@eventespresso/data';
+import type { EntityId } from '@eventespresso/data';
 import type { RemTicket } from '@eventespresso/edtr-services';
 
 import type { DateFormShape } from '../ui/datetimeDetails/types';
@@ -21,7 +21,7 @@ export interface FormState {
 	rRule: string;
 	salesEndOffset?: string;
 	salesStartOffset?: string;
-	tickets: AnyObject<Entity>;
+	tickets: AnyObject<RemTicket>;
 	isDirty: boolean;
 }
 

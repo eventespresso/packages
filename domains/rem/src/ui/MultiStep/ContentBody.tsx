@@ -16,8 +16,12 @@ const ContentBody: React.FC = () => {
 		<>
 			<Steps current={current} />
 			{current === PATTERN_EDITOR_STEP && <PatternEditor />}
+
 			{current === DATE_DETAILS_STEP && <DatetimeDetails />}
-			{current === TICKETS_STEP && <SimpleTicketsList formState={formState} />}
+			{
+				// @ts-ignore
+				current === TICKETS_STEP && <SimpleTicketsList formState={formState} />
+			}
 			{current === GENERATED_DATES_STEP && <GeneratedDates />}
 		</>
 	);

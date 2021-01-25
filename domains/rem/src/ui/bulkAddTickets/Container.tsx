@@ -42,7 +42,10 @@ const Container: React.FC = () => {
 
 	return (
 		<Modal isOpen={isOpen} onClose={onClose} title={__('Bulk Add Tickets')}>
-			<SimpleTicketsList formState={formState} />
+			<SimpleTicketsList
+				// @ts-ignore
+				formState={formState}
+			/>
 			<Footer onSubmit={onSubmit} onClose={onClose} />
 		</Modal>
 	);

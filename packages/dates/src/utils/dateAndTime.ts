@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { __ } from '@eventespresso/i18n';
 
 import { add, endDateAfterStartDateErrorMessage, sub } from '../../';
-export type { Decorator } from 'final-form';
+import type { Decorator } from 'final-form';
 
 export const startAndEndDateFixer: Decorator<any, any> = (form) => {
 	let previousValues: any = {};
