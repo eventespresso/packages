@@ -1,7 +1,6 @@
 import type { User } from '@eventespresso/data';
 import type { GeneralSettings, RelationalData } from '@eventespresso/services';
 import type { IntervalType } from '@eventespresso/dates';
-import type { SalesDates } from '@eventespresso/ee-components';
 import type { DatetimeEdge, TicketEdge, PriceEdge, PriceTypeEdge, Event, EventManager } from './apollo';
 
 export interface EventEditorData {
@@ -38,10 +37,3 @@ export type TicketSalesFields = {
 	unit?: IntervalType;
 	unitValue?: number;
 };
-
-export interface RemTicketFields extends Partial<TicketSalesFields>, Partial<SalesDates> {
-	ticketSalesDates?: SalesDates;
-	ticketSalesStart?: TicketSalesFields;
-	ticketSalesEnd?: TicketSalesFields;
-	isShared?: boolean;
-}

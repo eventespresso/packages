@@ -2,7 +2,8 @@ import type { Reducer, ReducerState } from 'react';
 
 import type { AnyObject } from '@eventespresso/utils';
 import type { Entity, EntityId } from '@eventespresso/data';
-import type { RemTicketFields, TPCPriceModifier, UpdateTicketInput } from '@eventespresso/edtr-services';
+import type { SalesDates } from '@eventespresso/ee-components';
+import type { TicketSalesFields, TPCPriceModifier, UpdateTicketInput } from '@eventespresso/edtr-services';
 
 import type { DateFormShape } from '../ui/datetimeDetails/types';
 import type { Recurrence } from '../services/apollo';
@@ -64,6 +65,13 @@ export interface FormStateManager extends FormState {
 }
 
 export type FormStateReducer = Reducer<FormState, DataAction>;
+
+export interface RemTicketFields extends Partial<TicketSalesFields>, Partial<SalesDates> {
+	ticketSalesDates?: SalesDates;
+	ticketSalesStart?: TicketSalesFields;
+	ticketSalesEnd?: TicketSalesFields;
+	isShared?: boolean;
+}
 
 export interface RemTicket extends Entity, RemTicketFields, Omit<UpdateTicketInput, 'prices' | 'id'> {
 	prices?: Array<TPCPriceModifier>;
