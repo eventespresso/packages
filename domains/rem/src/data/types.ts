@@ -39,7 +39,7 @@ export type DataActionType =
 	| 'RESET';
 
 export interface DataAction extends Partial<FormState> {
-	type?: DataActionType;
+	type: DataActionType;
 	id?: EntityId;
 	ticket?: Partial<RemTicket>;
 	date?: string;

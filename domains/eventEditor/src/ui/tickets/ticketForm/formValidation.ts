@@ -1,8 +1,7 @@
 import * as yup from 'yup';
 
 import { TicketFormShape } from '@eventespresso/edtr-services';
-import { datesSchema } from '@eventespresso/dates';
-import { yupToFinalFormErrors } from '@eventespresso/form';
+import { datesSchema, yupToFinalFormErrors } from '@eventespresso/form';
 
 export const validate = async (values: TicketFormShape): Promise<any> => {
 	return await yupToFinalFormErrors(validationSchema, values);
