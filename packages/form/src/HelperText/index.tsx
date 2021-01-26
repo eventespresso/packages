@@ -1,8 +1,9 @@
-import { FormHelperTextProps } from '@eventespresso/adapters';
-import { HelpIcon } from '@eventespresso/ui-components';
+import { HelpIcon, HelpIconProps } from '@eventespresso/ui-components';
 
 import './style.scss';
 
-export const HelperText: React.FC<FormHelperTextProps> = ({ tooltipText }) => {
+interface Props extends Pick<HelpIconProps, 'tooltipText'> {}
+
+export const HelperText: React.FC<Props> = ({ tooltipText }) => {
 	return tooltipText ? <HelpIcon clickable tooltipText={tooltipText} /> : null;
 };

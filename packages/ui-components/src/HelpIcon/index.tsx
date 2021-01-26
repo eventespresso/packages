@@ -5,7 +5,7 @@ import { ClickableIconWithTooltip } from '../../';
 
 import './style.scss';
 
-interface HelpIconProps {
+export interface HelpIconProps {
 	className?: string;
 	clickable?: boolean;
 	tooltipText?: string;
