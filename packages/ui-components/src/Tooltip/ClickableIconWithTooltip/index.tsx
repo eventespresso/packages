@@ -1,11 +1,12 @@
+import { useRef } from 'react';
 import classNames from 'classnames';
 
 import { InfoCircleOutlined } from '@eventespresso/icons';
-import { useDisclosure } from '@eventespresso/hooks';
+import { useDisclosure, useOnClickOutside } from '@eventespresso/hooks';
+
 import { Tooltip } from '../../';
 
 import './style.scss';
-import { useEffect, useRef } from 'react';
 
 interface ClickableIconWithTooltipProps {
 	className?: string;
@@ -24,19 +25,7 @@ export const ClickableIconWithTooltip: React.FC<ClickableIconWithTooltipProps> =
 
 	const icon = <Icon className={className} onClick={onToggle} size='small' />;
 
-	useEffect(() => {
-		const handleClickOutside = (event) => {
-			if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-				onClose();
-			}
-		};
-
-		document.addEventListener('mousedown', handleClickOutside);
-
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
-		};
-	}, [onClose]);
+	useOnClickOutside(wrapperRef.current, onClose);
 
 	return (
 		<div className='ee-clickable-tooltip__wrapper' ref={wrapperRef}>
