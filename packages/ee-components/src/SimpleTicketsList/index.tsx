@@ -33,10 +33,10 @@ const SimpleTicketsList: React.FC<SimpleTicketsListProps> = ({ StepRender, ...pr
 	);
 
 	return (
-		<div className='rem-tickets'>
+		<div className='ee-simple-tickets-list'>
 			<Container onClose={onClose} isOpen={isOpen} entity={currentTicket} StepRender={StepRender} />
 			<TicketTemplate onAddNew={onAddNew} />
-			<div className='rem-tickets__list'>
+			<div className='ee-simple-tickets-list__card'>
 				{Object.entries(tickets).map(([id, ticket]) => (
 					<Fragment key={id}>
 						<TicketCard ticket={ticket} onEdit={onEdit} />
