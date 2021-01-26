@@ -1,3 +1,5 @@
+export { Clickable } from 'reakit/Clickable';
+
 export * from './AlertDialog';
 export * from './Banner';
 export * from './Box';
