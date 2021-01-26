@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta } from '@storybook/react/types-6-0';
 
-import { Button, Select } from '@eventespresso/ui-components';
+import { Button, Select } from '../../';
 import { noop } from '@eventespresso/utils';
 import { EntityOptionsRow } from './';
 
@@ -34,12 +34,5 @@ const selectExisting = (
 );
 
 export const Default = () => {
-	return (
-		<EntityOptionsRow
-			selectExisting={selectExisting}
-			selectExistingID={selectExistingID}
-			onAddNew={noop}
-			type='datetime'
-		/>
-	);
+	return <EntityOptionsRow selectExisting={selectExisting} selectExistingID={selectExistingID} onAddNew={noop} />;
 };
