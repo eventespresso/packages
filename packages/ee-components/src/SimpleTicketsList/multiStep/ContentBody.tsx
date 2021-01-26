@@ -8,7 +8,7 @@ const ContentBody: React.FC<ContentBodyProps> = ({ StepRender, steps }) => {
 	// init data listener to update RFF data
 	useDataListener();
 
-	return <StepRender step={steps.current} />;
+	return <StepRender currentStep={steps.current} />;
 };
 
 export default ContentBody;
