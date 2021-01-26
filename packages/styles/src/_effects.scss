@@ -1,4 +1,4 @@
-@import './mixins/reduce-motion';
+@use './mixins/reduce-motion';
 
 $animation-spin: ee-animation-spin 1s linear infinite;
 $animation-spin-cc: ee-animation-spin-cc 1s linear infinite;
