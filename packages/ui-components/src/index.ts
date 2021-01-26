@@ -51,6 +51,7 @@ export * from './Popover';
 export * from './Radio';
 export * from './SearchInput';
 export * from './Select';
+export * from './SimpleEntityList';
 export * from './Stepper';
 export * from './Steps';
 export * from './Switch';
