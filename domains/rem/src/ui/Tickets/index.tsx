@@ -1,46 +1,48 @@
-import { Fragment, useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 
-import { useDisclosure } from '@eventespresso/hooks';
+import { SimpleEntityList } from '@eventespresso/ui-components';
+import { useTickets } from '@eventespresso/edtr-services';
+import { useTimeZoneTime } from '@eventespresso/services';
 
-import TicketTemplate from './TicketTemplate';
-import { TicketCard } from './card';
+import TicketCard from './TicketCard';
 import { useFormState, RemTicket } from '../../data';
-import { Container } from './multiStep';
+import { normalizeTicketForRem } from '../../utils';
+import Content from './multiStep/Content';
 
 import './style.scss';
 
 const Tickets: React.FC = () => {
-	const { addTicket, tickets } = useFormState();
-	const { isOpen, onClose, onOpen } = useDisclosure();
-	const [currentTicket, seCurrentTicket] = useState<RemTicket>();
+	const { addTicket, tickets, deleteTicket } = useFormState();
+	const templates = (useTickets() as unknown) as RemTicket[];
+	const { utcToSiteTime } = useTimeZoneTime();
 
-	const ticketTemplates = useMemo(() => Object.values(tickets), [tickets]);
-
-	const onAddNew = useCallback(() => {
-		seCurrentTicket(null);
-		onOpen();
-	}, [onOpen]);
-
-	const onEdit = useCallback(
+	const deleteEntity = useCallback(
 		(ticket: RemTicket) => {
-			seCurrentTicket(ticket);
-			onOpen();
+			deleteTicket(ticket.id);
 		},
-		[onOpen]
+		[deleteTicket]
+	);
+
+	const entities = useMemo(() => Object.values(tickets), [tickets]);
+
+	const addEntity = useCallback(
+		(entiy) => {
+			const normalizedTicket = normalizeTicketForRem(entiy, utcToSiteTime);
+			addTicket(normalizedTicket);
+		},
+		[addTicket, utcToSiteTime]
 	);
 
 	return (
-		<div className='rem-tickets'>
-			<Container onClose={onClose} isOpen={isOpen} entity={currentTicket} />
-			<TicketTemplate addTicketTemplate={addTicket} ticketTemplates={ticketTemplates} onAddNew={onAddNew} />
-			<div className='rem-tickets__list'>
-				{Object.entries(tickets).map(([id, ticket]) => (
-					<Fragment key={id}>
-						<TicketCard ticket={ticket} onEdit={onEdit} />
-					</Fragment>
-				))}
-			</div>
-		</div>
+		<SimpleEntityList
+			ContentRenderer={Content}
+			addEntity={addEntity}
+			className='rem-tickets'
+			deleteEntity={deleteEntity}
+			entities={entities}
+			templates={templates}
+			EntityRenderer={TicketCard}
+		/>
 	);
 };
 

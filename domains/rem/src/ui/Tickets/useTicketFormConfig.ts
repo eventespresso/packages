@@ -2,19 +2,18 @@ import { useMemo } from 'react';
 import { pick } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
-import { intervalsToOptions, DATE_INTERVALS, setDefaultTime } from '@eventespresso/dates';
+import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/dates';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { Ticket } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
-import { TICKET_FIELDS_TO_USE } from '../../constants';
 
 import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
 import type { Intervals } from '@eventespresso/dates';
 import type { RemTicket } from '../../data';
+import { normalizeTicketForRem } from '../../utils';
 
 type TicketFormConfig = EspressoFormProps<RemTicket>;
 
@@ -74,37 +73,7 @@ const ticketSalesFields: Array<FieldProps> = [
 const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<TicketFormConfig>): TicketFormConfig => {
 	const { utcToSiteTime } = useTimeZoneTime();
 
-	const startDate = useMemoStringify(setDefaultTime(utcToSiteTime(PLUS_ONE_MONTH), 'start'));
-	const endDate = useMemoStringify(setDefaultTime(utcToSiteTime(PLUS_ONE_MONTH), 'end'));
-
-	const TICKET_DEFAULTS: Partial<RemTicket> = useMemo(
-		() => ({
-			ticketSalesStart: {
-				position: 'before',
-				startOrEnd: 'start',
-				unit: 'months',
-				unitValue: 1,
-			},
-			ticketSalesEnd: {
-				position: 'before',
-				startOrEnd: 'start',
-				unit: 'days',
-				unitValue: 1,
-			},
-			ticketSalesDates: {
-				startDate,
-				endDate,
-			},
-			isShared: false,
-		}),
-		[endDate, startDate]
-	);
-
-	const initialValues = useMemoStringify<Partial<RemTicket>>({
-		...TICKET_DEFAULTS,
-		...config?.initialValues,
-		...pick(TICKET_FIELDS_TO_USE, ticket || {}),
-	});
+	const initialValues = useMemoStringify(normalizeTicketForRem(ticket, utcToSiteTime));
 
 	return useMemo(
 		() => ({

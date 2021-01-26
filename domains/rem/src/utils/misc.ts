@@ -1,6 +1,13 @@
 import { Frequency } from 'rrule';
+import { pick } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
+import { Ticket, TICKET_FIELDS_FOR_TPC } from '@eventespresso/edtr-services';
+import type { TimeZoneTime } from '@eventespresso/services';
+import { PLUS_ONE_MONTH } from '@eventespresso/constants';
+import { setDefaultTime } from '@eventespresso/dates';
+
+import type { RemTicket } from '../data';
 
 // "freq" is the named capturing group
 const FREQ_PATTERN = /FREQ=(?<freq>(?:YEAR|MONTH|WEEK|DAI)LY)/;
@@ -71,4 +78,37 @@ export const getLimitsWarning = (rRule: string): string => {
 	}
 
 	return '';
+};
+
+export const normalizeTicketForRem = (
+	ticket: RemTicket | Ticket,
+	utcToSiteTime: TimeZoneTime['utcToSiteTime']
+): RemTicket => {
+	const startDate = setDefaultTime(utcToSiteTime(PLUS_ONE_MONTH), 'start');
+	const endDate = setDefaultTime(utcToSiteTime(PLUS_ONE_MONTH), 'end');
+
+	const TICKET_DEFAULTS = {
+		ticketSalesStart: {
+			position: 'before',
+			startOrEnd: 'start',
+			unit: 'months',
+			unitValue: 1,
+		},
+		ticketSalesEnd: {
+			position: 'before',
+			startOrEnd: 'start',
+			unit: 'days',
+			unitValue: 1,
+		},
+		ticketSalesDates: {
+			startDate,
+			endDate,
+		},
+		isShared: false,
+	};
+
+	return {
+		...TICKET_DEFAULTS,
+		...pick(TICKET_FIELDS_FOR_TPC, ticket || {}),
+	} as RemTicket;
 };
