@@ -1,3 +1,5 @@
 import type { BoxProps } from '@chakra-ui/react';
 
-export interface FormHelperTextProps extends Pick<BoxProps, 'className' | 'id'> {}
+export interface FormHelperTextProps extends Pick<BoxProps, 'className' | 'id'> {
+	tooltipText?: string;
+}

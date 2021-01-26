@@ -2,12 +2,16 @@
 	cursor: pointer;
 
 	&__wrapper {
+		display: inline-flex;
+		width: auto !important;
+
 		span {
+			display: inherit;
 			outline: none;
 
 			&:focus {
 				svg {
-					border: 1px solid var(--ee-color-primary-low-contrast);
+					border: 0.5px solid var(--ee-color-primary-low-contrast);
 					border-radius: 50%;
 				}
 			}

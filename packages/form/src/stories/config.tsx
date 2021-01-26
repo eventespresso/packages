@@ -7,6 +7,7 @@ import type { TestFormProps } from './TestForm';
 const ticketSalesFields: Array<FieldProps> = [
 	{
 		label: __('Duration'),
+		info: 'bla bla info',
 		name: 'unitValue',
 		fieldType: 'number',
 		required: true,

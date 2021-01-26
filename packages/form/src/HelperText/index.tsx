@@ -1,11 +1,8 @@
-import { FormHelperText, FormHelperTextProps } from '@eventespresso/adapters';
+import { FormHelperTextProps } from '@eventespresso/adapters';
+import { HelpIcon } from '@eventespresso/ui-components';
 
 import './style.scss';
 
-export const HelperText: React.FC<FormHelperTextProps> = ({ children, id }) => {
-	return children ? (
-		<FormHelperText className='ee-form-helper-text' id={id}>
-			{children}
-		</FormHelperText>
-	) : null;
+export const HelperText: React.FC<FormHelperTextProps> = ({ tooltipText }) => {
+	return tooltipText ? <HelpIcon clickable tooltipText={tooltipText} /> : null;
 };

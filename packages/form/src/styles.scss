@@ -41,6 +41,8 @@
 
 				label {
 					color: var(--ee-default-text-color-high-contrast);
+					display: inline-flex !important;
+					margin-bottom: 0;
 				}
 
 				&-switch {

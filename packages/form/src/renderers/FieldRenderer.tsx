@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import { FormControl, FormLabel } from '@eventespresso/adapters';
-import { ErrorMessage, InfoMessage } from '@eventespresso/ui-components';
+import { Box, FormControl, FormLabel } from '@eventespresso/adapters';
+import { Divider, ErrorMessage, InfoMessage } from '@eventespresso/ui-components';
 
 import { HelperText } from '../HelperText';
 
@@ -48,9 +48,15 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 
 	return (
 		<FormControl className={className} isInvalid={isInvalid} isRequired={required}>
-			<FormLabel as={formLabelAs} htmlFor={formLabelFor}>
-				{label}
-			</FormLabel>
+			<Box alignItems='center' display='flex'>
+				<FormLabel as={formLabelAs} htmlFor={formLabelFor}>
+					{label}
+				</FormLabel>
+				<HelperText id={tooltipKey} tooltipText={description || info} />
+			</Box>
+
+			<Divider size='smaller' />
+
 			{before}
 			<MappedField
 				{...rest}
@@ -63,7 +69,6 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 			{after}
 			<ErrorMessage id={errorMessageId} message={errorMessage} />
 			<InfoMessage id={infoMessageId} message={meta.data?.fieldNotice} />
-			<HelperText id={tooltipKey}>{description || info}</HelperText>
 		</FormControl>
 	);
 };
