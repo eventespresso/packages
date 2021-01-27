@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-
 import { TypeName } from '@eventespresso/services';
 import {
 	domain,
@@ -13,7 +12,7 @@ import {
 } from '@eventespresso/edtr-services';
 import { EntityList } from '@eventespresso/ee-components';
 
-import { NewTicketButton } from './newTicketOptions';
+import TicketsListFooter from './TicketsListFooter';
 import { legendConfig } from './config';
 import { RenderCardView } from './cardView';
 import { RenderTableView } from './tableView';
@@ -32,7 +31,7 @@ const TicketsList: React.FC = () => {
 			domain={domain}
 			entityType={TypeName.tickets}
 			filterState={filterState}
-			footer={<NewTicketButton />}
+			footer={<TicketsListFooter />}
 			headerText={__('Available Tickets')}
 			legendConfig={legendConfig}
 			listId={ticketsList}

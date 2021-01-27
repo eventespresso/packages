@@ -14,7 +14,7 @@ import type { Ticket, TicketFormConfig } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
 
-const FIELD_NAMES: Array<keyof Ticket> = [
+export const FIELD_NAMES: Array<keyof Ticket> = [
 	'id',
 	'description',
 	'isDefault',
@@ -31,7 +31,7 @@ const FIELD_NAMES: Array<keyof Ticket> = [
 
 const decorators = [startAndEndDateFixer];
 
-const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFormConfig => {
+export const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFormConfig => {
 	const ticket = useTicketItem({ id });
 
 	const toUtcISO = useSiteDateToUtcISO();

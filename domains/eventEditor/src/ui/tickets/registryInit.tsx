@@ -22,6 +22,7 @@ import {
 } from '@edtrUI/tickets/ticketsList/filterBar/controls';
 import { TicketMainMenu } from '@edtrUI/tickets/ticketsList/actionsMenu/dropdown';
 import { Container as EditTicketContainer } from '@edtrUI/tickets/ticketForm/multiStep';
+import DefaultTicketContainer from '@edtrUI/tickets/defaultTickets/Container';
 import AssignDatesButton from '@edtrUI/tickets/ticketsList/actionsMenu/AssignDatesButton';
 import { AddSingleTicket } from '@edtrUI/tickets/ticketsList/newTicketOptions';
 
@@ -30,6 +31,8 @@ const modals = new ModalSubscription(domain);
 modals.subscribe(({ registry: { registerContainer } }) => {
 	// Register edit ticket modal
 	registerContainer(EdtrGlobalModals.EDIT_TICKET, EditTicketContainer);
+	// Register default tickets modal
+	registerContainer(EdtrGlobalModals.DEFAULT_TICKETS, DefaultTicketContainer);
 	// Register TPC modal
 	registerContainer(EdtrGlobalModals.TPC, TPCModalContainer);
 });
