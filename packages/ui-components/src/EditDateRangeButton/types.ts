@@ -1,3 +1,4 @@
+import type { PopoverProps } from '@eventespresso/adapters';
 import type { DateRange } from '@eventespresso/dates';
 import type { LabelPosition } from '../withLabel';
 import type { ButtonProps } from '../Button';
@@ -9,6 +10,7 @@ export interface EditDateRangeButtonProps extends ButtonProps, Pick<DateTimeRang
 	header?: string;
 	locale?: string;
 	onEditHandler: (dates: DateRange) => void;
+	popoverPlacement?: PopoverProps['placement'];
 	startDate: Date;
 	tooltip?: string;
 	tooltipPosition?: LabelPosition;

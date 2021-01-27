@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { CalendarOutlined } from '@eventespresso/icons';
-import { useDisclosure, useMemoStringify } from '@eventespresso/hooks';
+import { useDisclosure, useMemoStringify, useViewportWidthGreaterThan } from '@eventespresso/hooks';
 
 import { ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
 import type { DateRange } from '@eventespresso/dates';
@@ -17,10 +17,12 @@ export const EditDateRangeButton: React.FC<EditDateRangeButtonProps> = ({
 	onEditHandler,
 	startDate,
 	endDate,
+	popoverPlacement,
 	TimezoneTimeInfo,
 	tooltip,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const isMobile = !useViewportWidthGreaterThan(505);
 
 	const onChange = useCallback(
 		(dates: DateRange) => {
@@ -43,14 +45,18 @@ export const EditDateRangeButton: React.FC<EditDateRangeButtonProps> = ({
 
 	const headerText = header ? header : __('Edit Start and End Dates and Times');
 
+	const placement = isMobile ? 'auto' : popoverPlacement;
+
 	return (
 		<Popover
+			isLazy
 			className='ee-edit-calendar-date-range'
 			closeOnBlur={false}
 			content={content}
 			header={<strong>{headerText}</strong>}
 			isOpen={isOpen}
 			onClose={onClose}
+			placement={placement}
 			trigger={
 				<IconButton
 					aria-label={headerText}

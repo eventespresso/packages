@@ -3,6 +3,11 @@
 	margin-left: var(--ee-margin-smaller);
 	position: relative;
 
+	[dir='rtl'] & {
+		margin-left: 0;
+		margin-right: var(--ee-margin-smaller);
+	}
+
 	&__button.ee-btn-base {
 		border: none;
 

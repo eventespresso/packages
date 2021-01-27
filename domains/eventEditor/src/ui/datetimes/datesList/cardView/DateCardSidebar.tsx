@@ -37,6 +37,7 @@ const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {
 				endDate={date.endDate}
 				header={__('Edit Event Date')}
 				onEditHandler={onEditHandler}
+				popoverPlacement='right-end'
 				startDate={date.startDate}
 				tooltip={__('edit start and end dates')}
 			/>

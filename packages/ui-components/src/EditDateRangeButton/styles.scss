@@ -1,11 +1,11 @@
 .ee-edit-calendar-date-range {
 	&.ee-popover {
 		z-index: auto;
-	}
 
-	.ee-popover__content[role='dialog'] {
-		min-width: 18rem;
-		max-width: 24rem;
+		[data-popper-reference-hidden='false'] {
+			min-width: 23rem;
+			max-width: 24rem;
+		}
 	}
 
 	.entity-card & {

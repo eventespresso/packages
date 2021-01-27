@@ -20,14 +20,10 @@
 		color: var(--ee-default-text-color-high-contrast);
 		font-weight: normal;
 		min-width: 20rem;
-		left: 50%;
 		padding: var(--ee-padding-small);
-		position: absolute;
-		transform: translateX(-50%);
 		width: max-content;
 
 		@include max850px {
-			left: 0;
 			transform: none;
 		}
 

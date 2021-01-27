@@ -36,8 +36,9 @@ const TicketCardSidebar: React.FC<Partial<TicketItemProps>> = ({ entity: ticket 
 				endDate={ticket.endDate}
 				header={__('Edit Ticket Sale Dates')}
 				onEditHandler={onEditHandler}
-				tooltip={__('edit ticket sales start and end dates')}
+				popoverPlacement='left-end'
 				startDate={ticket.startDate}
+				tooltip={__('edit ticket sales start and end dates')}
 			/>
 			<div className={'ee-ticket-status-label'}>{statusText}</div>
 		</>

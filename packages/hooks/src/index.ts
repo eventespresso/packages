@@ -4,6 +4,7 @@ export * from './useOnClickOutside';
 export * from './usePagination';
 export * from './usePrevNext';
 export * from './useProgress';
+export * from './useViewportWidthGreaterThan';
 
 export { default as useIfMounted } from './useIfMounted';
 
