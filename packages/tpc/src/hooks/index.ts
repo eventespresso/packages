@@ -17,3 +17,5 @@ export { default as usePricesPollInterval } from './usePricesPollInterval';
 export { default as useRemoveAllTaxes } from './useRemoveAllTaxes';
 
 export { default as usePriceToTpcModifier } from './usePriceToTpcModifier';
+
+export { default as useSyncTPCToRFF } from './useSyncTPCToRFF';
