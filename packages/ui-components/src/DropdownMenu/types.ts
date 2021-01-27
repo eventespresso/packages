@@ -4,6 +4,7 @@ import type { WithTooltipProps } from '../withTooltip';
 
 export interface DropdownMenuProps extends Omit<MenuProps, 'isOpen'> {
 	className?: string;
+	wrapperClassName?: string;
 	menuListProps?: MenuListProps;
 	toggleProps?: DropdownToggleProps;
 }
