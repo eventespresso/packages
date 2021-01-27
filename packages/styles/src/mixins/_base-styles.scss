@@ -1,3 +1,5 @@
+@import './transition';
+
 @mixin ee-input-base-focus {
 	&:focus {
 		border-color: var(--ee-color-primary);
@@ -53,4 +55,32 @@
 	@include ee-input-base-hover;
 
 	@include ee-input-disabled-hover;
+}
+
+@mixin ee-input-base {
+	@include ee-base-inputs-styles;
+
+	&.ee-input,
+	&.ee-textarea {
+		@at-root {
+			$types: 'text', 'password', 'date', 'datetime', 'datetime-local', 'email', 'month', 'number', 'search',
+				'tel', 'time', 'url', 'week';
+
+			@each $type in $types {
+				input[type='#{$type}']#{&} {
+					@include ee-base-inputs-styles;
+
+					@include ee-input-base-focus;
+
+					@include ee-input-base-hover;
+				}
+			}
+		}
+
+		@include ee-input-base-focus;
+
+		@include ee-input-base-hover;
+
+		@include ee-input-disabled-hover;
+	}
 }

@@ -1,13 +1,13 @@
 @use "sass:map";
 
-@use '../effects';
-@use '../functions';
-@use '../variables';
+@import '../effects';
+@import '../functions';
+@import '../variables';
 
-@use './btn';
-@use './entity-status';
-@use './font-styles';
-@use './shadows';
+@import './btn';
+@import './entity-status';
+@import './font-styles';
+@import './shadows';
 
 $rootVariables: map-collect(
 	$animation,

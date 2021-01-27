@@ -1,10 +1,10 @@
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/mixins/base-styles';
 
 .ee-select-wrapper {
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
-	// max-height: calc(var(--ee-icon-button-size) + 4px);
 	width: 100%;
 
 	.ee-select.ee-select {

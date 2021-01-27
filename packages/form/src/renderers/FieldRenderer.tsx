@@ -4,7 +4,6 @@ import { Box, FormControl, FormLabel } from '@eventespresso/adapters';
 import { Divider, ErrorMessage, InfoMessage } from '@eventespresso/ui-components';
 
 import { HelperText } from '../HelperText';
-
 import MappedField from '../adapters/MappedField';
 import type { FieldRendererProps } from '../types';
 
@@ -19,7 +18,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	}
 
 	const className = classNames(
-		'ee-input__wrapper ee-form-item',
+		'ee-form-item',
 		info && 'ee-form-item--has-info',
 		`ee-form-item__${rest.fieldType}`,
 		formControlProps?.className

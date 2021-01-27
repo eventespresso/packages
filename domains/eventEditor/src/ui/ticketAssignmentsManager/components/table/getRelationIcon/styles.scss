@@ -1,4 +1,5 @@
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/effects';
 
 .ee-ticket-assignments-manager {
 	.ee-legend-item dt,
@@ -41,7 +42,7 @@
 			background-color: var(--ee-color-accent);
 			border-color: var(--ee-color-accent);
 
-			@extend .ee-error-pulse;
+			@include ee-error-pulse;
 
 			&:focus {
 				border-color: var(--ee-color-accent-high-contrast);

@@ -2,7 +2,8 @@
  * Event Espresso Form Steps Stylesheet
  * © 2020 Event Espresso
  * ------------------------------------------------------------------------- */
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/mixins/transition';
 
 .ee-form-steps {
 	display: flex;

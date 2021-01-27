@@ -3,7 +3,8 @@
  * © 2020 Event Espresso
  * ------------------------------------------------------------------------- */
 
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/mixins/transition';
 @import './colors';
 @import './sizes';
 

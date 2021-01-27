@@ -1,10 +1,6 @@
 // Configuration
-// @use "functions";
-@use 'variables';
-@use 'mixins';
-// @use "utilities";
+@import 'variables';
+@import 'mixins';
 
 // Layout & components
-@use 'root';
-
-@use './base-styles';
+@import 'root';

@@ -2,7 +2,8 @@
  * Event Espresso Recurring_Events Stylesheet
  * (c) 2018 Event Espresso
  * -------------------------------------------------------------------------*/
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/mixins/transition';
 
 .rrule-generator {
 	&-wrapper {

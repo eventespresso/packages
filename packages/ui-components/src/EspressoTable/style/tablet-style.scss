@@ -1,6 +1,6 @@
 /* Media Queries for specific screen sizes
  * -------------------------------------------------------------------------*/
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
 
 /* WordPress Admin Media Query Breakpoint: Tablet */
 @include max782px {

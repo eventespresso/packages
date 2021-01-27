@@ -1,4 +1,5 @@
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/mixins/reduce-motion';
 
 .ee-toaster-notice {
 	--ee-toast-icon-size: 24px;

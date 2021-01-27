@@ -1,4 +1,5 @@
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/mixins/transition';
 
 .ee-droppable {
 	border: 1px solid transparent;

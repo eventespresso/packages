@@ -1,4 +1,4 @@
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
 
 .ee-form {
 	.ee-render-fields {
@@ -7,7 +7,7 @@
 				display: flex;
 			}
 
-			.ee-input__wrapper {
+			.ee-form-item {
 				width: 100%;
 
 				@include min600px {

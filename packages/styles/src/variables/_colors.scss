@@ -1,7 +1,7 @@
 @use "sass:map";
 
-@use '../functions';
-@use 'base-colors';
+@import './base-colors';
+@import './prepend-append';
 
 $accent: map.get($hot-pink, 'default') !default;
 $primary: map.get($blue, 'default') !default;

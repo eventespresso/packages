@@ -1,5 +1,6 @@
-@use '../functions';
-@use '../mixins';
+@import '../functions';
+@import '../mixins';
+@import './prepend-append';
 
 $white: #ffffff;
 

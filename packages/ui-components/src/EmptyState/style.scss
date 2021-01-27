@@ -1,4 +1,5 @@
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/effects';
 
 .ee-empty-state {
 	background-color: var(--ee-color-grey-15);
@@ -6,5 +7,5 @@
 	justify-content: center;
 	text-align: center;
 
-	@extend .ee-fade-in;
+	@include ee-fade-in;
 }

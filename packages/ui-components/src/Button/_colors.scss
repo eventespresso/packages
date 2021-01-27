@@ -1,4 +1,5 @@
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/variables';
+@import '~@eventespresso/styles/src/mixins/buttons';
 
 .ee-btn-base {
 	&.ee-btn {

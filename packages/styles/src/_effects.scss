@@ -1,4 +1,4 @@
-@use './mixins/reduce-motion';
+@import './mixins/reduce-motion';
 
 $animation-spin: ee-animation-spin 1s linear infinite;
 $animation-spin-cc: ee-animation-spin-cc 1s linear infinite;
@@ -34,7 +34,7 @@ $animation: (
 	}
 }
 
-.ee-error-pulse {
+@mixin ee-error-pulse {
 	animation: ee-error-pulse 3s infinite;
 	@include reduce-motion('animation');
 }
@@ -57,7 +57,7 @@ $animation: (
 	}
 }
 
-.ee-fade-in {
+@mixin ee-fade-in {
 	animation: ee-fade-in-opacity 0.25s ease-in-out 1;
 	opacity: 1;
 	@include reduce-motion('animation');

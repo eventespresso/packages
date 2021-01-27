@@ -1,7 +1,7 @@
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/base-styles';
 
 .ee-textarea {
-	@extend .ee-input-base;
+	@include ee-input-base;
 
 	&[aria-invalid='true'] {
 		border-color: var(--ee-color-accent);

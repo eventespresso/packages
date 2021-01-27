@@ -1,10 +1,11 @@
-@import '~@eventespresso/styles/src';
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/effects';
 
 .ee-loading-notice {
 	background: var(--ee-color-grey-15);
 	padding: var(--ee-padding-bigger);
 	text-align: center;
-	@extend .ee-fade-in;
+	@include ee-fade-in;
 
 	&--small {
 		padding: var(--ee-padding-default);

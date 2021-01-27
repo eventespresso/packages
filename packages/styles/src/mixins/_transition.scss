@@ -1,4 +1,4 @@
-@use './reduce-motion';
+@import './reduce-motion';
 
 @mixin transition($args...) {
 	transition: $args;
