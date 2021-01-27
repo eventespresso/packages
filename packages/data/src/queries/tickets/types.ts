@@ -6,6 +6,10 @@ export interface TicketsQueryWhereArgs {
 	datetimeId?: number;
 	datetimeIdIn?: Array<number>;
 	datetimeIn?: Array<string>;
+	isDefault?: boolean;
+	isRequired?: boolean;
+	isTaxable?: boolean;
+	isTrashed?: boolean;
 }
 
 export type TicketsQueryArgs = EntityQueryArgs<TicketsQueryWhereArgs>;

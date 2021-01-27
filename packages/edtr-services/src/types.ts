@@ -23,6 +23,7 @@ export interface EventEditorDomData {
 }
 
 export enum EdtrGlobalModals {
+	DEFAULT_TICKETS = 'defaultTickets',
 	EDIT_DATE = 'editDate',
 	EDIT_TICKET = 'editTicket',
 	NEW_DATE = 'newDate',
