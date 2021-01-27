@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { CalendarOutlined } from '@eventespresso/icons';
 import { useDisclosure, useMemoStringify, useViewportWidthGreaterThan } from '@eventespresso/hooks';
+import { RESPONSIVE_CARD_SWITCH_BREAKPOINT } from '@eventespresso/constants';
 
 import { ButtonType, DateTimeRangePicker, IconButton, Popover } from '../../';
 import type { DateRange } from '@eventespresso/dates';
@@ -22,7 +23,7 @@ export const EditDateRangeButton: React.FC<EditDateRangeButtonProps> = ({
 	tooltip,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const isMobile = !useViewportWidthGreaterThan(505);
+	const isMobile = !useViewportWidthGreaterThan(RESPONSIVE_CARD_SWITCH_BREAKPOINT);
 
 	const onChange = useCallback(
 		(dates: DateRange) => {
