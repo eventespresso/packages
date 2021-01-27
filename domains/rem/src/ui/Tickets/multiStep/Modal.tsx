@@ -4,12 +4,12 @@ import { EntityEditModal } from '@eventespresso/ui-components';
 import { __, sprintf } from '@eventespresso/i18n';
 import { usePrevNext } from '@eventespresso/hooks';
 
-import ContentBody from './ContentBody';
+import ModalBody from './ModalBody';
 
-import type { ContentWrapperProps } from './types';
+import type { ContextProviderProps } from './types';
 import FooterButtons from './FooterButtons';
 
-const Modal: React.FC<ContentWrapperProps> = ({ onClose, ...props }) => {
+const Modal: React.FC<ContextProviderProps> = ({ onClose, ...props }) => {
 	const steps = usePrevNext();
 	const [isPristine, setIsPristine] = useState(true);
 
@@ -38,7 +38,7 @@ const Modal: React.FC<ContentWrapperProps> = ({ onClose, ...props }) => {
 			showAlertOnClose={!isPristine}
 			title={title}
 		>
-			<ContentBody {...props} steps={steps} />
+			<ModalBody {...props} steps={steps} />
 		</EntityEditModal>
 	);
 };

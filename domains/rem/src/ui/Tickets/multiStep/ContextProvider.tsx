@@ -1,9 +1,9 @@
 import { withContext as withTPCContext } from '@eventespresso/tpc';
 
-import type { ContentWrapperProps } from './types';
+import type { ContextProviderProps } from './types';
 import Modal from './Modal';
 
-const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
+const ContextProvider: React.FC<ContextProviderProps> = (props) => {
 	const { values } = props.form.getState();
 
 	const Component = withTPCContext(Modal, {
@@ -12,4 +12,4 @@ const ContentWrapper: React.FC<ContentWrapperProps> = (props) => {
 	return <Component {...props} />;
 };
 
-export default ContentWrapper;
+export default ContextProvider;

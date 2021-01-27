@@ -7,18 +7,16 @@ import type { PrevNext } from '@eventespresso/hooks';
 import type { AnyObject } from '@eventespresso/utils';
 import { RemTicket } from '../../../data';
 
-export interface ContainerProps extends ContentProps, Omit<Disclosure, 'onOpen'> {}
-
 export type OnSubmit = (fields: AnyObject) => void;
 
-export interface ContentProps {
+export interface ContentRendererProps {
 	entity?: RemTicket;
 	onClose: VoidFunction;
 	onSubmit?: OnSubmit;
 }
 
-export interface ContentBodyProps {
+export interface ModalBodyProps {
 	steps?: PrevNext;
 }
 
-export interface ContentWrapperProps extends FormRenderProps<TicketFormShape>, ContainerProps {}
+export interface ContextProviderProps extends FormRenderProps<TicketFormShape>, Omit<Disclosure, 'onOpen'> {}

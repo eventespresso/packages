@@ -7,7 +7,7 @@ import { useTimeZoneTime } from '@eventespresso/services';
 import TicketCard from './TicketCard';
 import { useFormState, RemTicket } from '../../data';
 import { normalizeTicketForRem } from '../../utils';
-import Content from './multiStep/Content';
+import { ContentRenderer } from './multiStep';
 
 import './style.scss';
 
@@ -35,7 +35,7 @@ const Tickets: React.FC = () => {
 
 	return (
 		<SimpleEntityList
-			ContentRenderer={Content}
+			ContentRenderer={ContentRenderer}
 			addEntity={addEntity}
 			className='rem-tickets'
 			deleteEntity={deleteEntity}

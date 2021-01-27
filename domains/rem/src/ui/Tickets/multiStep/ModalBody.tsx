@@ -2,13 +2,13 @@ import { TicketPriceCalculator } from '@eventespresso/tpc';
 
 import TicketFormSteps from './TicketFormSteps';
 import useDataListener from './useDataListener';
-import { ContentBodyProps } from './types';
+import { ModalBodyProps } from './types';
 import { TICKET_DETAILS_STEP, TICKET_PRICES_STEP } from './constants';
 
 /**
  * This component is inside both RFF and TAM contexts, so we can use all of their features
  */
-const ContentBody: React.FC<ContentBodyProps> = ({ children: body, steps }) => {
+const ModalBody: React.FC<ModalBodyProps> = ({ children: body, steps }) => {
 	// init data listener to update RFF data
 	useDataListener();
 
@@ -23,4 +23,4 @@ const ContentBody: React.FC<ContentBodyProps> = ({ children: body, steps }) => {
 	);
 };
 
-export default ContentBody;
+export default ModalBody;

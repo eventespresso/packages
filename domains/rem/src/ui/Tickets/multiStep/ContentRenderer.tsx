@@ -3,11 +3,11 @@ import { useCallback } from 'react';
 import { FormWithConfig } from '@eventespresso/ee-components';
 
 import useTicketFormConfig from '../useTicketFormConfig';
-import ContentWrapper from './ContentWrapper';
-import type { ContentProps } from './types';
+import ContextProvider from './ContextProvider';
+import type { ContentRendererProps } from './types';
 import { useFormState } from '../../../data';
 
-const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
+const ContentRenderer: React.FC<ContentRendererProps> = ({ entity, onClose }) => {
 	const { addTicket, updateTicket } = useFormState();
 
 	const onSubmit = useCallback(
@@ -23,7 +23,7 @@ const Content: React.FC<ContentProps> = ({ entity, onClose }) => {
 	);
 	const formConfig = useTicketFormConfig(entity, { onSubmit });
 
-	return <FormWithConfig {...formConfig} formWrapper={ContentWrapper as any} onClose={onClose} />;
+	return <FormWithConfig {...formConfig} formWrapper={ContextProvider as any} onClose={onClose} />;
 };
 
-export default Content;
+export default ContentRenderer;
