@@ -23,8 +23,8 @@ const ModalBody: React.FC = () => {
 	const entities = useMemo(() => Object.values(tickets), [tickets]);
 
 	const addEntity = useCallback(
-		(entiy) => {
-			addTicket({ ...entiy, isNew: true });
+		(entity) => {
+			addTicket({ ...entity, isNew: true });
 		},
 		[addTicket]
 	);
