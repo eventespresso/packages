@@ -1,5 +1,6 @@
 import { createElement } from 'react';
 import classNames from 'classnames';
+import { TextInput } from '@eventespresso/ui-components';
 
 import useBaseField from './useBaseField';
 import type { BaseFieldProps } from './types';
@@ -27,6 +28,14 @@ const BaseField: React.FC<BaseFieldProps> = ({
 		value,
 	});
 	const className = classNames(props.className, 'ee-input-base ee-input', component === 'select' && 'ee-select');
+
+	if (props?.type === 'text') {
+		return (
+			<TextInput {...handlers} {...props} className={className} value={fieldValue}>
+				{children}
+			</TextInput>
+		);
+	}
 
 	if (typeof component === 'string') {
 		return createElement(component, { ...handlers, ...props, className, value: fieldValue }, children);
