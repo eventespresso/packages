@@ -4,19 +4,18 @@ import { __ } from '@eventespresso/i18n';
 import { ResponsiveTable } from '@eventespresso/ui-components';
 import { useConfig } from '@eventespresso/services';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { Prices, useTPCDataState } from '@eventespresso/edtr-services';
 
 import useBodyRowGenerator from './useBodyRowGenerator';
 import useFooterRowGenerator from './useFooterRowGenerator';
 import useHeaderRowGenerator from './useHeaderRowGenerator';
+import { useDataState } from '../../data';
+import type { TableProps } from '../../data/types';
 
 import './styles.scss';
 
-interface TableProps extends Prices {}
-
 const Table: React.FC<TableProps> = ({ prices }) => {
 	const config = useConfig();
-	const { reverseCalculate, toggleCalcDir } = useTPCDataState();
+	const { reverseCalculate, toggleCalcDir } = useDataState();
 	const signB4 = config?.currency?.signB4;
 
 	const bodyRowGenerator = useBodyRowGenerator();

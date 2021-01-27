@@ -1,18 +1,17 @@
 import { useCallback } from 'react';
 
-import type { TPCPriceModifier } from '@eventespresso/edtr-services';
-import type { BodyRow } from '@eventespresso/ui-components';
-
 import PriceAmountInput from '../../inputs/PriceAmountInput';
 import PriceDescriptionInput from '../../inputs/PriceDescriptionInput';
 import PriceIdInput from '../../inputs/PriceIdInput';
 import PriceNameInput from '../../inputs/PriceNameInput';
 import PriceModifierActions from '../../buttons/PriceModifierActions';
 import PriceTypeInput from '../../inputs/PriceTypeInput';
+import type { TpcPriceModifier } from '../../types';
+import type { BodyRow } from '@eventespresso/ui-components';
 
 type Props = {
 	index: number;
-	price?: TPCPriceModifier;
+	price?: TpcPriceModifier;
 };
 
 type BodyRowGenerator = (props: Props) => BodyRow;

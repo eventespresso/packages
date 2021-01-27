@@ -1,7 +1,7 @@
 import { __ } from '@eventespresso/i18n';
 
 import { Button } from '@eventespresso/ui-components';
-import { useAddDefaultTaxes } from '@eventespresso/edtr-services';
+import { useAddDefaultTaxes } from '../../hooks';
 
 const AddDefaultTaxesButton: React.FC = () => {
 	const addDefaultTaxes = useAddDefaultTaxes();

@@ -1,12 +1,9 @@
 import { useCallback } from 'react';
 
-import { useOnSubmitPrices } from '@eventespresso/edtr-services';
-import type { ManageTPCStates } from './useManageTPCStates';
+import { useOnSubmitPrices } from '@eventespresso/tpc';
+import { ManageTPCStates } from './useManageTPCStates';
 
-const useOnSubmit = (
-	onClose: VoidFunction,
-	getDataStates: ManageTPCStates['getTPCDataStates']
-): (() => Promise<void>) => {
+const useOnSubmit = (onClose: VoidFunction, getDataStates: ManageTPCStates['getDataStates']): (() => Promise<void>) => {
 	const submitPrices = useOnSubmitPrices();
 
 	return useCallback(async () => {

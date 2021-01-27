@@ -1,12 +1,12 @@
 import { useCallback, useMemo } from 'react';
 
-import { useTPCDataState } from '@eventespresso/edtr-services';
+import { useDataState } from '../data';
 import type { BaseFieldProps, UsePrice, UsePriceAmount } from './types';
 
 type BFP = BaseFieldProps;
 
 const usePriceAmount = ({ field, price }: UsePriceAmount): UsePrice => {
-	const { updatePrice } = useTPCDataState();
+	const { updatePrice } = useDataState();
 
 	const getValue = useCallback<BFP['getValue']>(() => price[field], [field, price]);
 

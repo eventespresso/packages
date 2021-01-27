@@ -2,16 +2,15 @@ import { useEffect } from 'react';
 
 import { __, sprintf } from '@eventespresso/i18n';
 
-import { TicketPriceCalculator } from '@eventespresso/tpc';
-import { useTPCDataState } from '@eventespresso/edtr-services';
-import type { ManageTPCStates } from './useManageTPCStates';
+import { TicketPriceCalculator, useDataState } from '@eventespresso/tpc';
+import { ManageTPCStates } from './useManageTPCStates';
 
 export interface TPCInstanceProps {
 	setTPCState: ManageTPCStates['setTPCState'];
 }
 
 export const TPCInstance: React.FC<TPCInstanceProps> = ({ setTPCState }) => {
-	const { ticket, getData } = useTPCDataState();
+	const { ticket, getData } = useDataState();
 
 	useEffect(() => {
 		setTPCState(getData());

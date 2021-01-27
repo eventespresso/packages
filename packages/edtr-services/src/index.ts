@@ -15,8 +15,6 @@ export * from './hooks';
 
 export * from './ioc';
 
-export * from './tpc';
+export * from './utils';
 
 export * from './types';
-
-export * from './utils';

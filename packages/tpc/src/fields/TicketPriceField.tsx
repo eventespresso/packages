@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import { useMoneyDisplay } from '@eventespresso/services';
 import { parsedAmount } from '@eventespresso/utils';
-import { useTPCDataState } from '@eventespresso/edtr-services';
+import { useDataState } from '../data';
 import BaseField from './BaseField';
 import { MoneyInputWithConfig } from './';
 import type { BaseFieldProps, TicketPriceFieldProps } from './types';
@@ -10,7 +10,7 @@ import type { BaseFieldProps, TicketPriceFieldProps } from './types';
 type BFP = BaseFieldProps<number>;
 
 const TicketPriceField: React.FC<TicketPriceFieldProps> = (props) => {
-	const { ticket, updateTicketPrice } = useTPCDataState();
+	const { ticket, updateTicketPrice } = useDataState();
 	const { formatAmount } = useMoneyDisplay();
 
 	const format: BFP['format'] = useCallback((price) => formatAmount(price) ?? '', [formatAmount]);

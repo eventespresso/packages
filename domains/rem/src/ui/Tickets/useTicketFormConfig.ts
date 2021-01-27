@@ -7,9 +7,10 @@ import { useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { Ticket, TICKET_FIELDS_FOR_TPC } from '@eventespresso/edtr-services';
+import { Ticket } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
+import { TICKET_FIELDS_TO_USE } from '../../constants';
 
 import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
 import type { Intervals } from '@eventespresso/dates';
@@ -102,7 +103,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 	const initialValues = useMemoStringify<Partial<RemTicket>>({
 		...TICKET_DEFAULTS,
 		...config?.initialValues,
-		...pick(TICKET_FIELDS_FOR_TPC, ticket || {}),
+		...pick(TICKET_FIELDS_TO_USE, ticket || {}),
 	});
 
 	return useMemo(

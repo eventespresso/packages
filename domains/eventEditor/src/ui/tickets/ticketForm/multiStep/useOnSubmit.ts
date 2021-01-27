@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
-import { useMutatePrices, useTicketMutator, hooks } from '@eventespresso/edtr-services';
+import { useTicketMutator, hooks } from '@eventespresso/edtr-services';
+import { useMutatePrices } from '@eventespresso/tpc';
 import type { EntityId } from '@eventespresso/data';
 import { wait } from '@eventespresso/utils';
 

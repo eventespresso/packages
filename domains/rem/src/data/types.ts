@@ -2,14 +2,15 @@ import type { Reducer, ReducerState } from 'react';
 
 import type { AnyObject } from '@eventespresso/utils';
 import type { Entity, EntityId } from '@eventespresso/data';
-import type { TPCPriceModifier, UpdateTicketInput } from '@eventespresso/edtr-services';
+import type { TpcPriceModifier } from '@eventespresso/tpc';
+import type { UpdateTicketInput } from '@eventespresso/edtr-services';
 
 import type { DateFormShape } from '../ui/datetimeDetails/types';
 import type { RemTicketFields } from '../ui/Tickets/types';
 import type { Recurrence } from '../services/apollo';
 
 export interface RemTicket extends Entity, RemTicketFields, Omit<UpdateTicketInput, 'prices' | 'id'> {
-	prices?: Array<TPCPriceModifier>;
+	prices?: Array<TpcPriceModifier>;
 	isShared: boolean;
 }
 

@@ -1,4 +1,4 @@
-import { withTPCContext } from '@eventespresso/edtr-services';
+import { withContext as withTPCContext } from '@eventespresso/tpc';
 import { useBulkEdit } from '@eventespresso/services';
 
 import { EditPricesBaseProps } from '../types';
@@ -10,9 +10,9 @@ import useOnSubmit from './useOnSubmit';
 const EditSeparately: React.FC<EditPricesBaseProps> = ({ onClose }) => {
 	const { getSelected } = useBulkEdit();
 
-	const { getTPCDataStates, setTPCState } = useManageTPCStates();
+	const { getDataStates, setTPCState } = useManageTPCStates();
 
-	const onSubmit = useOnSubmit(onClose, getTPCDataStates);
+	const onSubmit = useOnSubmit(onClose, getDataStates);
 
 	const ticketIds = getSelected();
 

@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
-import { useTPCDataState } from '@eventespresso/edtr-services';
 import type { ButtonProps } from '@eventespresso/ui-components';
+import { useDataState } from '../data';
 
 const useResetButtonProps = (): ButtonProps => {
-	const { reset } = useTPCDataState();
+	const { reset } = useDataState();
 
 	return useMemo<ButtonProps>(
 		() => ({

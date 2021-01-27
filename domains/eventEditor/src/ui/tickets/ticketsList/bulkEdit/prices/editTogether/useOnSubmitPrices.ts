@@ -1,18 +1,13 @@
 import { useCallback } from 'react';
 
-import {
-	useMutatePrices,
-	useTPCDataState,
-	useTicketMutator,
-	useTicketPrices,
-	useBulkDeletePrices,
-} from '@eventespresso/edtr-services';
+import { useTicketMutator, useTicketPrices, useBulkDeletePrices } from '@eventespresso/edtr-services';
 import { parsedAmount, toBoolean } from '@eventespresso/utils';
+import { useDataState, useMutatePrices } from '@eventespresso/tpc';
 import { isNotDefault, getGuids } from '@eventespresso/predicates';
 import { useBulkEdit } from '@eventespresso/services';
 
 const useOnSubmitPrices = (onClose: VoidFunction): (() => Promise<void>) => {
-	const { prices, ticket } = useTPCDataState();
+	const { prices, ticket } = useDataState();
 	const { getSelected } = useBulkEdit();
 
 	const { updateEntity: updateTicket } = useTicketMutator();

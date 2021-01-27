@@ -4,11 +4,12 @@ import { __ } from '@eventespresso/i18n';
 
 import { Calculator } from '@eventespresso/icons';
 import { IconButton, IconButtonProps } from '@eventespresso/ui-components';
-import { EdtrGlobalModals, SOLD_TICKET_ERROR_MESSAGE, useTicketItem } from '@eventespresso/edtr-services';
+import { EdtrGlobalModals, useTicketItem } from '@eventespresso/edtr-services';
 import { TypeName, withIsLoaded } from '@eventespresso/services';
 import { useGlobalModal } from '@eventespresso/registry';
 
 import type { BaseProps } from '../types';
+import { SOLD_TICKET_ERROR_MESSAGE } from '../utils';
 
 interface TPCButtonProps extends BaseProps, IconButtonProps {}
 

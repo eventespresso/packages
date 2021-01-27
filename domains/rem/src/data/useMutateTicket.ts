@@ -2,7 +2,8 @@ import { useCallback } from 'react';
 
 import { copyTicketFields, isTicketInputField } from '@eventespresso/predicates';
 import { parsedAmount, toBoolean } from '@eventespresso/utils';
-import { useMutatePrices, useTicketMutator } from '@eventespresso/edtr-services';
+import { useTicketMutator } from '@eventespresso/edtr-services';
+import { useMutatePrices } from '@eventespresso/tpc';
 import type { EntityId } from '@eventespresso/data';
 
 import type { RemTicket } from './types';
