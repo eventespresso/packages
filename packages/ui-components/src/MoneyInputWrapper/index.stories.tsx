@@ -24,3 +24,6 @@ SignBefore.args = { signB4: true };
 
 export const SignAfter: MoneyInputWrapperStory = Template.bind({});
 SignAfter.args = { signB4: false };
+
+export const Disabled: MoneyInputWrapperStory = Template.bind({});
+Disabled.args = { disabled: true, signB4: true };

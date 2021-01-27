@@ -16,6 +16,12 @@ $addon-bg-color: var(--ee-color-grey-14);
 		}
 	}
 
+	.ee-input,
+	.ee-text-input {
+		border-color: var(--ee-border-color);
+		border-width: var(--ee-border-width);
+	}
+
 	&--disabled {
 		background: var(--ee-color-grey-14);
 		border-color: var(--ee-color-grey-9);
