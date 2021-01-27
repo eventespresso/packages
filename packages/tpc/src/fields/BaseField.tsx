@@ -31,7 +31,7 @@ const BaseField: React.FC<BaseFieldProps> = ({
 
 	if (props?.type === 'text') {
 		return (
-			<TextInput {...handlers} {...props} className={className} value={fieldValue}>
+			<TextInput {...handlers} {...props} className={className} value={fieldValue as string}>
 				{children}
 			</TextInput>
 		);
