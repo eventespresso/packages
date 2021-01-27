@@ -32,7 +32,6 @@ const ToggleLegendButton: React.FC<ToggleLegendButtonProps> = ({
 			icon={icon}
 			noHorizontalMargin={noHorizontalMargin}
 			onClick={toggleLegend}
-			size='small'
 		>
 			{tooltip}
 		</Button>

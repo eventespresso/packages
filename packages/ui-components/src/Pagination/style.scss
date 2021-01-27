@@ -47,7 +47,6 @@ $border-radius: var(--ee-border-radius-default);
 		justify-content: center;
 
 		[dir='rtl'] & {
-			border: $border-style;
 			border-right: 0;
 		}
 
@@ -70,11 +69,11 @@ $border-radius: var(--ee-border-radius-default);
 			background: var(--ee-background-color);
 			border: $border-style;
 			line-height: 0.9;
-			height: 2.8rem;
-			min-height: 2.8rem;
-			min-width: 2.8rem;
+			height: var(--ee-icon-button-size); // 42px
+			min-height: var(--ee-icon-button-size); // 42px
+			min-width: var(--ee-icon-button-size); // 42px
 			margin: 0 0 0 calc(var(--ee-border-width) * -1);
-			width: 2.8rem;
+			width: var(--ee-icon-button-size); // 42px
 			z-index: 1;
 
 			// prev
@@ -82,9 +81,12 @@ $border-radius: var(--ee-border-radius-default);
 				border-left: $border-style;
 				border-top-left-radius: $border-radius;
 				border-bottom-left-radius: $border-radius;
+				&[aria-disabled='true'] {
+					color: var(--ee-color-grey-11);
+				}
 
 				[dir='rtl'] & {
-					border-right: $border-style;
+					border-right-color: var(--ee-color-grey-11);
 					border-top-left-radius: 0;
 					border-bottom-left-radius: 0;
 					border-top-right-radius: $border-radius;
@@ -110,6 +112,9 @@ $border-radius: var(--ee-border-radius-default);
 				border-right: $border-style;
 				border-top-right-radius: $border-radius;
 				border-bottom-right-radius: $border-radius;
+				&[aria-disabled='true'] {
+					color: var(--ee-color-grey-11);
+				}
 
 				[dir='rtl'] & {
 					border-left: $border-style;
@@ -136,6 +141,7 @@ $border-radius: var(--ee-border-radius-default);
 			&:hover:not([aria-disabled='true']) {
 				border-color: var(--ee-color-primary-low-contrast);
 				box-shadow: none;
+				color: var(--ee-color-primary-low-contrast);
 				z-index: 2;
 
 				a {
@@ -187,7 +193,7 @@ $border-radius: var(--ee-border-radius-default);
 	}
 
 	&__per-page {
-		height: 2.8rem;
+		height: var(--ee-icon-button-size); // 42px
 
 		&-select-wrapper {
 			.ee-pagination & {
