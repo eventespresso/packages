@@ -23,10 +23,6 @@
 		padding: var(--ee-padding-small);
 		width: max-content;
 
-		@include max850px {
-			transform: none;
-		}
-
 		@include max480px {
 			width: 100%;
 		}
