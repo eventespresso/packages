@@ -7,5 +7,5 @@ export interface PopoverProps extends Pick<ChakraPopoverProps, PickedProps> {
 	content?: React.ReactNode;
 	contentClassName?: string;
 	header?: React.ReactNode;
-	trigger: React.ReactNode;
+	trigger?: React.ReactNode;
 }

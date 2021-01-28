@@ -1,25 +1,37 @@
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
+import { useDisclosure } from '@eventespresso/hooks';
+import { GlobalOutlined } from '@eventespresso/icons';
 
+import { IconButton } from '../../';
 import { Popover } from '../';
 import Content from './Content';
-import Trigger from './Trigger';
 import type { TimezoneTimeInfoProps } from './types';
 
 import './style.scss';
 
+const Icon: React.FC = () => <GlobalOutlined size='smaller' />;
+
 export const TimezoneTimeInfo: React.FC<TimezoneTimeInfoProps> = ({ siteTime, userTime, utcTime, ...props }) => {
+	const { isOpen, onClose, onToggle } = useDisclosure();
 	const className = classNames('ee-timezone-info', props.className);
 
 	return (
 		<div className={className}>
+			<IconButton
+				borderless
+				className='ee-timezone-info__button'
+				icon={Icon}
+				onClick={onToggle}
+				tooltip={__('click for timezone information')}
+			/>
 			<Popover
 				isLazy
 				content={<Content siteTime={siteTime} userTime={userTime} utcTime={utcTime} />}
 				header={__('This Date Converted To:')}
-				trigger={<Trigger tooltip={__('click for timezone information')} />}
-				placement='auto-start'
+				isOpen={isOpen}
+				onClose={onClose}
 			/>
 		</div>
 	);
