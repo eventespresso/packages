@@ -1,42 +1,37 @@
-import { useMemo } from 'react';
-import { uniq } from 'ramda';
+import { useCallback } from 'react';
 
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
 import { useRelations } from '@eventespresso/services';
 import { EntityId } from '@eventespresso/data';
-import { usePrices } from '../prices';
+import { usePrices, useDefaultTicketsPrices } from '../prices';
 import type { Price } from '../../types';
+
+type GetTicketPrices = (ticketId: EntityId, isDefault?: boolean) => Array<Price>;
 /**
  * A custom react hook for retrieving the related prices
  * for the given `ticket` identified by `ticket.id`
  *
  * @param {string|string[]}  ticketId ticket.id
  */
-const useTicketPrices = (ticketId: EntityId | Array<EntityId>): Price[] => {
+const useTicketPrices = (): GetTicketPrices => {
 	const prices = usePrices();
+	const defaultTicketsPrices = useDefaultTicketsPrices();
 	const { getRelations } = useRelations();
 
-	// get related price ids for all the ticket ids
-	const allRelatedPricesIds = useMemo(() => {
-		// if single ticketId is passed, convert it to array.
-		const ticketIds = Array.isArray(ticketId) ? ticketId : [ticketId];
-		const relatedPricesIds = ticketIds.reduce<Array<EntityId>>((priceIds, ticketId) => {
+	return useCallback<GetTicketPrices>(
+		(ticketId, isDefault) => {
 			const relatedPricesIds = getRelations({
 				entity: 'tickets',
 				entityId: ticketId,
 				relation: 'prices',
 			});
-			return [...priceIds, ...relatedPricesIds];
-		}, []);
 
-		// default taxes may be repeated.
-		return uniq(relatedPricesIds);
-	}, [getRelations, ticketId]);
+			const pricesToUse = isDefault ? defaultTicketsPrices : prices;
 
-	const relatedPriceIdsStr = JSON.stringify(allRelatedPricesIds);
-
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	return useMemo(() => entitiesWithGuIdInArray(prices, allRelatedPricesIds), [relatedPriceIdsStr, prices]);
+			return entitiesWithGuIdInArray(pricesToUse, relatedPricesIds);
+		},
+		[defaultTicketsPrices, getRelations, prices]
+	);
 };
 
 export default useTicketPrices;
