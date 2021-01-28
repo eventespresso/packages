@@ -1,8 +1,9 @@
 import { useCallback, useMemo } from 'react';
 
 import { SimpleEntityList } from '@eventespresso/ui-components';
-import { useTickets } from '@eventespresso/edtr-services';
+import { useTickets, useTicketPrices } from '@eventespresso/edtr-services';
 import { useTimeZoneTime } from '@eventespresso/services';
+import { usePrepTemplatePrices } from '@eventespresso/tpc';
 
 import TicketCard from './TicketCard';
 import { useFormState, RemTicket } from '../../data';
@@ -13,6 +14,8 @@ const Tickets: React.FC = () => {
 	const { addTicket, tickets, deleteTicket } = useFormState();
 	const templates = (useTickets() as unknown) as RemTicket[];
 	const { utcToSiteTime } = useTimeZoneTime();
+	const getTicketPrices = useTicketPrices();
+	const prepTemplatePrices = usePrepTemplatePrices();
 
 	const deleteEntity = useCallback(
 		(ticket: RemTicket) => {
@@ -24,11 +27,14 @@ const Tickets: React.FC = () => {
 	const entities = useMemo(() => Object.values(tickets), [tickets]);
 
 	const addEntity = useCallback(
-		(entiy) => {
-			const normalizedTicket = normalizeTicketForRem(entiy, utcToSiteTime);
-			addTicket(normalizedTicket);
+		(entity) => {
+			const normalizedTicket = normalizeTicketForRem(entity, utcToSiteTime);
+			const ticketPrices = getTicketPrices(entity.id);
+			const prices = prepTemplatePrices(ticketPrices);
+
+			addTicket({ ...normalizedTicket, prices });
 		},
-		[addTicket, utcToSiteTime]
+		[addTicket, getTicketPrices, prepTemplatePrices, utcToSiteTime]
 	);
 
 	return (
