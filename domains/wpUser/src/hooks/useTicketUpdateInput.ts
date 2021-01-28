@@ -4,7 +4,7 @@ import { hooks, Filters } from '@eventespresso/edtr-services';
 
 import { NAMESPACE } from '../constants';
 
-const filterName: keyof Filters = 'eventEditor.ticketForm.mutationInput';
+const filterName: keyof Filters = 'eventEditor.ticket.mutationInput';
 
 /**
  * A custom hook to update initial values of ticket edit form

@@ -2,9 +2,9 @@ import { useCallback } from 'react';
 
 import { useSiteDateToUtcISO } from '@eventespresso/services';
 import type { EntityId } from '@eventespresso/data';
+import { useMutateTicket } from '@eventespresso/tpc';
 
 import type { RemTicket, StartAndEndDate } from './types';
-import useMutateTicket from './useMutateTicket';
 import { computeTicketDate } from '../utils';
 
 type Callback = (
@@ -37,7 +37,7 @@ const useMutateTickets = ({ incrementProgress }: MutateTicketsArgs): Callback =>
 							? ticket.ticketSalesDates.endDate
 							: computeTicketDate(dates, ticket.ticketSalesEnd)
 					);
-					const input = { ...ticket, startDate, endDate };
+					const input = { ...ticket, startDate, endDate, isNew: true };
 					const ticketId = await mutateTicket(input);
 					incrementProgress?.();
 					return ticketId;

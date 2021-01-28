@@ -20,7 +20,7 @@ export type Actions = {
 export type Filters = {
 	'eventEditor.ticketForm.initalValues': [initialValues: TicketFormShape, ticket: Ticket];
 	'eventEditor.ticketForm.sections': [sections: TicketFormConfig['sections'], ticket: Ticket];
-	'eventEditor.ticketForm.mutationInput': [input: Record<string, any>, entityId?: EntityId];
+	'eventEditor.ticket.mutationInput': [input: Record<string, any>, entityId?: EntityId];
 	'eventEditor.datetimes.bulkEdit.actions': [actions: OptionsType];
 };
 

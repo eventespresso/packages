@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 
 import { useTicketMutator } from '@eventespresso/edtr-services';
+import { useMutateTicket } from '@eventespresso/tpc';
 
-import useMutateTicket from './useMutateTicket';
 import type { DataState } from './types';
 
 type UseSubmitForm = (dataState: DataState) => () => Promise<void>;
