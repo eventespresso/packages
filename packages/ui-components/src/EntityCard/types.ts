@@ -12,6 +12,7 @@ export interface EntityCardProps {
 export interface SimpleEntityCardProps {
 	afterDetails?: JSX.Element;
 	beforeDetails?: JSX.Element;
+	className?: string;
 	id: string;
 	name: string;
 	sidebar?: JSX.Element;

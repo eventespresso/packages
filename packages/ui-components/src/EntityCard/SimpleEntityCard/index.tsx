@@ -1,11 +1,21 @@
+import classNames from 'classnames';
+
 import { Dotdotdot } from '@eventespresso/adapters';
 import type { SimpleEntityCardProps } from '../types';
 
 import './styles.scss';
 
-const SimpleEntityCard: React.FC<SimpleEntityCardProps> = ({ afterDetails, beforeDetails, name, sidebar }) => {
+const SimpleEntityCard: React.FC<SimpleEntityCardProps> = ({
+	afterDetails,
+	beforeDetails,
+	name,
+	sidebar,
+	...props
+}) => {
+	const className = classNames('ee-simple-entity-card', props.className);
+
 	return (
-		<div className='ee-simple-entity-card'>
+		<div className={className}>
 			{beforeDetails && beforeDetails}
 
 			<div className='ee-simple-entity-card__details'>

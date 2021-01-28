@@ -3,13 +3,9 @@
 	border: 1px solid var(--ee-border-color);
 	display: flex;
 	flex-wrap: wrap;
-	margin: var(--ee-margin-tiny) var(--ee-margin-small);
+	margin: var(--ee-margin-tiny);
 	max-width: 19rem;
 	min-height: 8rem;
-
-	&:first-child {
-		margin-left: 0;
-	}
 
 	&__details {
 		border-left: 1px dotted var(--ee-border-color);
@@ -30,8 +26,12 @@
 	}
 
 	&__sidebar {
-		margin: var(--ee-margin-micro);
+		margin: var(--ee-margin-micro) var(--ee-margin-micro) var(--ee-margin-micro) auto;
 		width: var(--ee-icon-button-size); // 42px
+
+		[dir='rtl'] & {
+			margin: var(--ee-margin-micro) auto var(--ee-margin-micro) var(--ee-margin-micro);
+		}
 	}
 
 	.ee-icon-button {

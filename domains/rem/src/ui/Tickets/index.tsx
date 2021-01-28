@@ -9,8 +9,6 @@ import { useFormState, RemTicket } from '../../data';
 import { normalizeTicketForRem } from '../../utils';
 import { ContentRenderer } from './multiStep';
 
-import './style.scss';
-
 const Tickets: React.FC = () => {
 	const { addTicket, tickets, deleteTicket } = useFormState();
 	const templates = (useTickets() as unknown) as RemTicket[];

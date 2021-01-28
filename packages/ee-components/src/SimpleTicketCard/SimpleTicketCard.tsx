@@ -1,26 +1,38 @@
 import { __ } from '@eventespresso/i18n';
 import { SimpleEntityCard } from '@eventespresso/ui-components';
+import { isSB } from '@eventespresso/constants';
 
 import { CurrencyDisplay } from '../CurrencyDisplay';
 import Sidebar from './Sidebar';
-import { SimpleTicketCardProps } from './types';
+import type { SimpleTicketCardProps } from './types';
+
+import './style.scss';
 
 export const SimpleTicketCard: React.FC<SimpleTicketCardProps> = ({
+	entity: ticket,
 	onDelete,
 	onEdit,
 	renderEndDate,
 	renderStartDate,
 	showAfterDetails = true,
-	entity: ticket,
 }) => {
-	const beforeDetails = <CurrencyDisplay value={ticket.price} vertical />;
+	const beforeDetails = isSB ? null : <CurrencyDisplay value={ticket.price} vertical />;
 
 	const afterDetails = showAfterDetails && (
 		<div className='ee-ticket-offset'>
-			<div className={'ee-ticket-offset__label'}>{__('starts')}</div>
-			<div className={'ee-ticket-offset__date'}>{renderStartDate?.(ticket)}</div>
-			<div className={'ee-ticket-offset__label'}>{__('ends')}</div>
-			<div className={'ee-ticket-offset__date'}>{renderEndDate?.(ticket)}</div>
+			{renderStartDate && (
+				<>
+					<div className={'ee-ticket-offset__label'}>{__('starts')}</div>
+					<div className={'ee-ticket-offset__date'}>{renderStartDate?.(ticket)}</div>
+				</>
+			)}
+
+			{renderEndDate && (
+				<>
+					<div className={'ee-ticket-offset__label'}>{__('ends')}</div>
+					<div className={'ee-ticket-offset__date'}>{renderEndDate?.(ticket)}</div>
+				</>
+			)}
 		</div>
 	);
 
@@ -30,6 +42,7 @@ export const SimpleTicketCard: React.FC<SimpleTicketCardProps> = ({
 		<SimpleEntityCard
 			afterDetails={afterDetails}
 			beforeDetails={beforeDetails}
+			className='ee-simple-ticket-card'
 			id={ticket.id}
 			name={ticket.name}
 			sidebar={sidebar}

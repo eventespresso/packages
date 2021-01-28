@@ -6,7 +6,9 @@ import type { Entity } from '@eventespresso/data';
 
 import Container from './Container';
 import EntityTemplate from './EntityTemplate';
-import { SimpleEntityListProps } from './types';
+import type { SimpleEntityListProps } from './types';
+
+import './style.scss';
 
 export const SimpleEntityList = <E extends Entity>({
 	ContentRenderer,
