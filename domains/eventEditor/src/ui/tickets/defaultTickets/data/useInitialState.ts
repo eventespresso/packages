@@ -1,7 +1,9 @@
 import { useCallback } from 'react';
 
-import { useDefaultTickets, useDefaultTicketsPrices } from '@eventespresso/edtr-services';
+import { useDefaultTickets } from '@eventespresso/edtr-services';
 import { idToEntityMap } from '@eventespresso/predicates';
+import { useTicketPrices } from '@eventespresso/edtr-services';
+import { usePriceToTpcModifier, preparePricesForTpc } from '@eventespresso/tpc';
 
 import type { StateInitializer } from './types';
 
@@ -10,16 +12,26 @@ import type { StateInitializer } from './types';
  */
 const useInitialState = (): StateInitializer => {
 	const defaultTickets = useDefaultTickets();
-	useDefaultTicketsPrices();
+	const getTicketPrices = useTicketPrices();
+	const convertPriceToTpcModifier = usePriceToTpcModifier();
 
 	return useCallback<StateInitializer>(
 		(initialState) => {
-			const normalizedTickets = defaultTickets.map((ticket) => ({ ...ticket, prices: [] }));
+			const normalizedTickets = defaultTickets.map((ticket) => {
+				// get all related prices
+				const unSortedPrices = getTicketPrices(ticket.id, true);
+
+				// convert to TPC price objects
+				const prices = preparePricesForTpc(unSortedPrices, convertPriceToTpcModifier);
+
+				return { ...ticket, prices };
+			});
 
 			const tickets = idToEntityMap(normalizedTickets);
+
 			return { ...initialState, tickets };
 		},
-		[defaultTickets]
+		[convertPriceToTpcModifier, defaultTickets, getTicketPrices]
 	);
 };
 

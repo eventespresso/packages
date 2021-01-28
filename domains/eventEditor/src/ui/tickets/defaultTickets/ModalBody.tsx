@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo } from 'react';
 
 import { SimpleEntityList } from '@eventespresso/ui-components';
-import { useTickets } from '@eventespresso/edtr-services';
+import { useTickets, useTicketPrices } from '@eventespresso/edtr-services';
+import { usePrepTemplatePrices } from '@eventespresso/tpc';
 
 import { DefaultTicket, useDataState } from './data';
 import TicketCard from './TicketCard';
@@ -12,6 +13,8 @@ import './styles.scss';
 const ModalBody: React.FC = () => {
 	const { addTicket, tickets, deleteTicket, reset } = useDataState();
 	const templates = useTickets();
+	const getTicketPrices = useTicketPrices();
+	const prepTemplatePrices = usePrepTemplatePrices();
 
 	const deleteEntity = useCallback(
 		(ticket: DefaultTicket) => {
@@ -24,9 +27,11 @@ const ModalBody: React.FC = () => {
 
 	const addEntity = useCallback(
 		(entity) => {
-			addTicket({ ...entity, isNew: true });
+			const ticketPrices = getTicketPrices(entity.id);
+			const prices = prepTemplatePrices(ticketPrices);
+			addTicket({ ...entity, isNew: true, prices });
 		},
-		[addTicket]
+		[addTicket, getTicketPrices, prepTemplatePrices]
 	);
 
 	// reset state on mount

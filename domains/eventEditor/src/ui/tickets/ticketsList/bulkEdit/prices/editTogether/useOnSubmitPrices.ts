@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 
-import { useTicketMutator, useTicketPrices, useBulkDeletePrices } from '@eventespresso/edtr-services';
-import { parsedAmount, toBoolean } from '@eventespresso/utils';
-import { useDataState, useMutatePrices } from '@eventespresso/tpc';
+import { Price, useTicketPrices, useBulkDeletePrices } from '@eventespresso/edtr-services';
+import { useDataState, useMutateTicket } from '@eventespresso/tpc';
 import { isNotDefault, getGuids } from '@eventespresso/predicates';
 import { useBulkEdit } from '@eventespresso/services';
 
@@ -10,22 +9,26 @@ const useOnSubmitPrices = (onClose: VoidFunction): (() => Promise<void>) => {
 	const { prices, ticket } = useDataState();
 	const { getSelected } = useBulkEdit();
 
-	const { updateEntity: updateTicket } = useTicketMutator();
-	const mutatePrices = useMutatePrices();
+	const mutateTicket = useMutateTicket();
 
-	// prices related to all the selected tickets
-	const relatedPrices = useTicketPrices(getSelected());
+	const getTicketPrices = useTicketPrices();
 
 	const deletePrices = useBulkDeletePrices();
-
-	// prices may contain default taxes,
-	// we need to make sure they are not deleted.
-	const nonDefaultPrices = relatedPrices.filter(isNotDefault);
 
 	// Async to make sure that prices are handled before updating the ticket.
 	return useCallback(async () => {
 		// lower down the curtains
 		onClose();
+
+		// prices related to all the selected tickets
+		const relatedPrices = getSelected().reduce<Price[]>(
+			(prices, ticketId) => [...prices, ...getTicketPrices(ticketId)],
+			[]
+		);
+
+		// prices may contain default taxes,
+		// we need to make sure they are not deleted.
+		const nonDefaultPrices = relatedPrices.filter(isNotDefault);
 		// delete all non-default prices
 		await deletePrices(getGuids(nonDefaultPrices));
 
@@ -33,20 +36,15 @@ const useOnSubmitPrices = (onClose: VoidFunction): (() => Promise<void>) => {
 		await Promise.all(
 			// loop through all the selected tickets and update thei price information
 			getSelected().map(async (ticketId) => {
-				// create/update prices and collect their ids
-				const relatedPriceIds = await mutatePrices(prices);
-
-				// Finally update the ticket and its price relation
-				await updateTicket({
+				await mutateTicket({
+					...ticket,
 					id: ticketId,
-					price: parsedAmount(ticket.price || 0),
-					reverseCalculate: toBoolean(ticket.reverseCalculate),
-					isTaxable: toBoolean(ticket.isTaxable),
-					prices: relatedPriceIds,
+					isModified: true,
+					prices,
 				});
 			})
 		);
-	}, [deletePrices, getSelected, mutatePrices, nonDefaultPrices, onClose, prices, ticket, updateTicket]);
+	}, [deletePrices, getSelected, getTicketPrices, mutateTicket, onClose, prices, ticket]);
 };
 
 export default useOnSubmitPrices;

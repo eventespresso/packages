@@ -7,14 +7,14 @@ import { Ticket } from '@eventespresso/edtr-services';
 import { useMutatePrices, usePriceToTpcModifier } from '@eventespresso/tpc';
 
 const useCopyTicket = (ticket: Ticket): VoidFunction => {
-	const relatedPrices = useTicketPrices(ticket?.id);
+	const getTicketPrices = useTicketPrices();
 	const { createEntity } = useTicketMutator();
 	const { getRelations } = useRelations();
 	const convertPriceToTpcModifier = usePriceToTpcModifier();
 	const mutatePrices = useMutatePrices();
 
 	return useCallback(() => {
-		const prices = relatedPrices.map((price) => {
+		const prices = getTicketPrices(ticket?.id).map((price) => {
 			const priceModifier = convertPriceToTpcModifier(price);
 			// if it's a default tax
 			if (isDefaultTax(price)) {
@@ -46,7 +46,7 @@ const useCopyTicket = (ticket: Ticket): VoidFunction => {
 			// now finally create the ticket
 			createEntity(input);
 		});
-	}, [convertPriceToTpcModifier, createEntity, getRelations, mutatePrices, relatedPrices, ticket]);
+	}, [convertPriceToTpcModifier, createEntity, getRelations, getTicketPrices, mutatePrices, ticket]);
 };
 
 export default useCopyTicket;

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useReducer } from 'react';
+import { useCallback, useMemo, useReducer } from 'react';
 
 import type { DataStateManager, DataStateManagerHook } from './types';
 import useDataReducer, { initialState } from './useDataStateReducer';
@@ -10,10 +10,6 @@ const useDataStateManager: DataStateManagerHook = () => {
 	const initializer = useInitialState();
 	const dataReducer = useDataReducer(initializer);
 	const [state, dispatch] = useReducer(dataReducer, initialState, initializer);
-
-	useEffect(() => {
-		console.log('state', state);
-	}, [state]);
 
 	const getData: DSM['getData'] = useCallback(() => state, [state]);
 

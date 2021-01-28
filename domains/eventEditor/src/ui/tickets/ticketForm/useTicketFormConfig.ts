@@ -183,13 +183,6 @@ export const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): T
 							width: 'small',
 						},
 						{
-							name: 'isDefault',
-							label: __('Default Ticket'),
-							fieldType: 'switch',
-							info: __('If enabled, the ticket will appear on all new events.'),
-							width: 'small',
-						},
-						{
 							name: 'isTrashed',
 							label: __('Trash'),
 							fieldType: 'switch',

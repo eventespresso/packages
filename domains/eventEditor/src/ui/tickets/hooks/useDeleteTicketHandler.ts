@@ -13,7 +13,7 @@ type Callback = (deletePermanently?: boolean) => Promise<void>;
 
 const useDeleteTicketHandler = (id: EntityId): Callback => {
 	const { deleteEntity: deleteTicket } = useTicketMutator();
-	const relatedPrices = useTicketPrices(id);
+	const getTicketPrices = useTicketPrices();
 	const priceQueryOptions = usePriceQueryOptions();
 	const client = useApolloClient();
 
@@ -23,7 +23,7 @@ const useDeleteTicketHandler = (id: EntityId): Callback => {
 	 */
 	const deleteRelatedPrices = useCallback<VoidFunction>(() => {
 		// The prices that are not default or tax prices.
-		const pricesToDelete = relatedPrices.filter(({ isDefault, isTax }) => !isDefault && !isTax);
+		const pricesToDelete = getTicketPrices(id).filter(({ isDefault, isTax }) => !isDefault && !isTax);
 		// if we have nothing to delete
 		if (!pricesToDelete.length) {
 			return;
@@ -41,7 +41,7 @@ const useDeleteTicketHandler = (id: EntityId): Callback => {
 			...priceQueryOptions,
 			data: newData,
 		});
-	}, [client, priceQueryOptions, relatedPrices]);
+	}, [client, getTicketPrices, id, priceQueryOptions]);
 
 	return useCallback<Callback>(
 		(deletePermanently) => {
