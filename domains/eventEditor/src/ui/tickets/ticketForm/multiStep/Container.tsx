@@ -20,7 +20,7 @@ const Container: React.FC = () => {
 
 	const { entityId } = getData();
 
-	const onSubmit = useOnSubmit(entityId, onClose);
+	const onSubmit = useOnSubmit(onClose);
 
 	return isOpen && <Content entityId={entityId} onClose={onClose} onSubmit={onSubmit} />;
 };

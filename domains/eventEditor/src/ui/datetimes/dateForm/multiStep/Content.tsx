@@ -8,7 +8,7 @@ import type { ContentProps } from './types';
 
 const Content: React.FC<ContentProps> = ({ entityId, onClose, onSubmit }) => {
 	const config = useMemo(() => ({ onSubmit }), [onSubmit]);
-	const formConfig = useDatetimeFormConfig(entityId || 'NEW_DATE', config);
+	const formConfig = useDatetimeFormConfig(entityId, config);
 
 	return <FormWithConfig {...formConfig} formWrapper={ContentWrapper} onClose={onClose} />;
 };

@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import { getGuids } from '@eventespresso/predicates';
 import { MutationType } from '@eventespresso/data';
-import { normalizeNumericFields, removeNullAndUndefined } from '@eventespresso/utils';
+import { normalizeBooleanFields, normalizeNumericFields, removeNullAndUndefined } from '@eventespresso/utils';
 
 import useMutationVariables from './useMutationVariables';
 import useOnCreateTicket from './useOnCreateTicket';
@@ -14,7 +14,7 @@ import { DEFAULT_TICKET_LIST_DATA as DEFAULT_LIST_DATA, useTicketQueryOptions } 
 import type { MutationHandler, MutationUpdater } from '../types';
 import { TicketsList, Ticket } from '../../';
 import type { TicketCommonInput } from './types';
-import { NUMERIC_FIELDS } from './constants';
+import { BOOLEAN_FIELDS, NUMERIC_FIELDS } from './constants';
 
 type MH = MutationHandler<Ticket, TicketCommonInput>;
 
@@ -67,7 +67,9 @@ const useMutationHandler = (): MH => {
 			// Get rid of null or undefined values
 			const filteredInput = removeNullAndUndefined(input);
 			// normalize numeric fields
-			const normalizedInput = normalizeNumericFields(NUMERIC_FIELDS, filteredInput);
+			let normalizedInput = normalizeNumericFields(NUMERIC_FIELDS, filteredInput);
+			// normalize boolean fields
+			normalizedInput = normalizeBooleanFields(BOOLEAN_FIELDS, normalizedInput);
 
 			const variables = getMutationVariables(mutationType, normalizedInput);
 			const optimisticResponse = getOptimisticResponse(mutationType, normalizedInput);

@@ -13,3 +13,11 @@ export const NUMERIC_FIELDS: Array<KeysOfType<TicketBaseInput, number>> = [
 	'uses',
 	'wpUser',
 ];
+
+export const BOOLEAN_FIELDS: Array<KeysOfType<TicketBaseInput, boolean>> = [
+	'isDefault',
+	'isRequired',
+	'isTaxable',
+	'isTrashed',
+	'reverseCalculate',
+];
