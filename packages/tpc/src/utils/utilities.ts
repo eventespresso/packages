@@ -1,9 +1,11 @@
 import { prop } from 'ramda';
 
-import type { TpcPriceModifier } from '../types';
-import type { PriceType } from '@eventespresso/edtr-services';
+import type { Price, PriceType } from '@eventespresso/edtr-services';
 import type { EntityId } from '@eventespresso/data';
-import { findEntityByGuid } from '@eventespresso/predicates';
+import { findEntityByGuid, sortByPriceOrderIdAsc } from '@eventespresso/predicates';
+
+import type { TpcPriceModifier } from '../types';
+import type { PriceToTpcModifier } from '../hooks/usePriceToTpcModifier';
 
 // returns GUID for price modifier's related price type
 export const getPriceModifierPriceTypeGuid = (price: TpcPriceModifier): EntityId => prop('priceType', price);
@@ -26,4 +28,16 @@ export const updatePriceModifier = (price: TpcPriceModifier, priceType?: PriceTy
 		priceType: priceType?.id,
 		priceTypeOrder: priceType?.order,
 	};
+};
+
+export const preparePricesForTpc = (
+	prices: Array<Price>,
+	convertPriceToTpcModifier: PriceToTpcModifier
+): Array<TpcPriceModifier> => {
+	//sort'em
+	const sortedPrices = sortByPriceOrderIdAsc(prices);
+
+	// convert to TPC price objects by adding
+	// "priceType" and "priceTypeOrder"
+	return sortedPrices.map(convertPriceToTpcModifier);
 };

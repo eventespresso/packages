@@ -5,16 +5,16 @@ import { useRelations } from '@eventespresso/services';
 import { Price, usePriceTypes } from '@eventespresso/edtr-services';
 import { TpcPriceModifier } from '../types';
 
-type Callback = (price: Price) => TpcPriceModifier;
+export type PriceToTpcModifier = (price: Price) => TpcPriceModifier;
 
-const usePriceToTpcModifier = (): Callback => {
+const usePriceToTpcModifier = (): PriceToTpcModifier => {
 	const { getRelations } = useRelations();
 	const allPriceTypes = usePriceTypes();
 	const priceTypeIdOrder = useMemo(() => {
 		return allPriceTypes.reduce((acc, { id, order }) => assocPath([id], order, acc), {});
 	}, [allPriceTypes]);
 
-	return useCallback<Callback>(
+	return useCallback<PriceToTpcModifier>(
 		(price) => {
 			const priceTypes = getRelations({
 				entity: 'prices',

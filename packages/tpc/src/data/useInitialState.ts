@@ -1,14 +1,14 @@
 import { useCallback } from 'react';
 import { pick } from 'ramda';
 
-import type { StateInitializer } from './types';
-import type { BaseProps } from '../types';
-import { sortByPriceOrderIdAsc } from '@eventespresso/predicates';
-import { TICKET_FIELDS_TO_USE } from '../utils/constants';
 import { useTicketItem, useTicketPrices } from '@eventespresso/edtr-services';
 import type { Ticket } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
-import usePriceToTpcModifier from '../hooks/usePriceToTpcModifier';
+
+import type { StateInitializer } from './types';
+import type { BaseProps } from '../types';
+import { TICKET_FIELDS_TO_USE, preparePricesForTpc } from '../utils';
+import { usePriceToTpcModifier } from '../hooks';
 
 /**
  * Initializes the data state dynamically by
@@ -19,21 +19,21 @@ const useInitialState = ({ ticketId }: BaseProps): StateInitializer => {
 	const wholeTicket = useTicketItem({ id: ticketId });
 	const ticket: Partial<Ticket> = useMemoStringify(wholeTicket ? pick(TICKET_FIELDS_TO_USE, wholeTicket) : {});
 
-	// get all related prices
-	const unSortedPrices = useTicketPrices(ticketId);
-	//sort'em
-	const sortedPrices = useMemoStringify(sortByPriceOrderIdAsc(unSortedPrices));
+	const getTicketPrices = useTicketPrices();
 
 	const convertPriceToTpcModifier = usePriceToTpcModifier();
-	// convert to TPC price objects by adding
-	// "priceType" and "priceTypeOrder"
-	const prices = useMemoStringify(sortedPrices.map(convertPriceToTpcModifier));
 
 	return useCallback<StateInitializer>(
 		(initialState) => {
+			// get all related prices
+			const unSortedPrices = getTicketPrices(ticketId);
+
+			// convert to TPC price objects
+			const prices = preparePricesForTpc(unSortedPrices, convertPriceToTpcModifier);
+
 			return { ...initialState, ticket, prices };
 		},
-		[ticket, prices]
+		[getTicketPrices, ticketId, convertPriceToTpcModifier, ticket]
 	);
 };
 

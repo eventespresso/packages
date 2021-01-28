@@ -10,6 +10,8 @@ export { default as useMutateTicket } from './useMutateTicket';
 
 export { default as useOnSubmitPrices } from './useOnSubmitPrices';
 
+export { default as usePrepTemplatePrices } from './usePrepTemplatePrices';
+
 export { default as usePriceModifier } from './usePriceModifier';
 
 export { default as usePriceToTpcModifier } from './usePriceToTpcModifier';
