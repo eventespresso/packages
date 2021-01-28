@@ -10,7 +10,11 @@ import useOnDeleteTicket from './useOnDeleteTicket';
 import useOnUpdateTicket from './useOnUpdateTicket';
 import useOptimisticResponse from './useOptimisticResponse';
 import { hooks } from '../../../ioc';
-import { DEFAULT_TICKET_LIST_DATA as DEFAULT_LIST_DATA, useTicketQueryOptions } from '../../queries';
+import {
+	DEFAULT_TICKET_LIST_DATA as DEFAULT_LIST_DATA,
+	useTicketQueryOptions,
+	useDefaultTicketsQueryOptions,
+} from '../../queries';
 import type { MutationHandler, MutationUpdater } from '../types';
 import { TicketsList, Ticket } from '../../';
 import type { TicketCommonInput } from './types';
@@ -19,7 +23,8 @@ import { BOOLEAN_FIELDS, NUMERIC_FIELDS } from './constants';
 type MH = MutationHandler<Ticket, TicketCommonInput>;
 
 const useMutationHandler = (): MH => {
-	const options = useTicketQueryOptions();
+	const queryOptions = useTicketQueryOptions();
+	const defaultTicketsQueryOptions = useDefaultTicketsQueryOptions();
 
 	const onCreateTicket = useOnCreateTicket();
 	const onUpdateTicket = useOnUpdateTicket();
@@ -37,7 +42,7 @@ const useMutationHandler = (): MH => {
 			// Read the existing data from cache.
 			let data: TicketsList;
 			try {
-				data = cache.readQuery(options);
+				data = cache.readQuery(ticket.isDefault ? defaultTicketsQueryOptions : queryOptions);
 			} catch (error) {
 				data = null;
 			}
@@ -60,7 +65,7 @@ const useMutationHandler = (): MH => {
 
 			hooks.doAction('eventEditor.ticket.mutation', mutationType, input, entity, cache);
 		},
-		[onCreateTicket, onDeleteTicket, onUpdateTicket, options]
+		[defaultTicketsQueryOptions, onCreateTicket, onDeleteTicket, onUpdateTicket, queryOptions]
 	);
 	const mutator = useCallback<MH>(
 		(mutationType, input) => {
@@ -72,6 +77,11 @@ const useMutationHandler = (): MH => {
 			normalizedInput = normalizeBooleanFields(BOOLEAN_FIELDS, normalizedInput);
 
 			const variables = getMutationVariables(mutationType, normalizedInput);
+
+			if (input.isDefault) {
+				// no optimistic response for default tickets
+				return { variables, onUpdate };
+			}
 			const optimisticResponse = getOptimisticResponse(mutationType, normalizedInput);
 
 			return { variables, optimisticResponse, onUpdate };
