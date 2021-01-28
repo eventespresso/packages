@@ -47,6 +47,7 @@
 	cursor: text;
 	font-size: var(--ee-font-size-big);
 	margin: 0;
+	overflow-x: hidden;
 
 	&__root {
 		border: none;
