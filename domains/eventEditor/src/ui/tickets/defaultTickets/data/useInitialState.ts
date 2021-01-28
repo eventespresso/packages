@@ -1,6 +1,6 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 
-import { useDefaultTickets } from '@eventespresso/edtr-services';
+import { useDefaultTickets, useDefaultTicketsPrices } from '@eventespresso/edtr-services';
 import { idToEntityMap } from '@eventespresso/predicates';
 
 import type { StateInitializer } from './types';
@@ -10,16 +10,16 @@ import type { StateInitializer } from './types';
  */
 const useInitialState = (): StateInitializer => {
 	const defaultTickets = useDefaultTickets();
-	const normalizedTickets = useMemo(() => defaultTickets.map((ticket) => ({ ...ticket, prices: [] })), [
-		defaultTickets,
-	]);
+	useDefaultTicketsPrices();
 
 	return useCallback<StateInitializer>(
 		(initialState) => {
+			const normalizedTickets = defaultTickets.map((ticket) => ({ ...ticket, prices: [] }));
+
 			const tickets = idToEntityMap(normalizedTickets);
 			return { ...initialState, tickets };
 		},
-		[normalizedTickets]
+		[defaultTickets]
 	);
 };
 

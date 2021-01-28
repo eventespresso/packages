@@ -1,12 +1,13 @@
 import { useMemo } from 'react';
 import { identity, isNil, sortBy } from 'ramda';
 
-import { GET_TICKETS } from '../tickets';
 import type { EntityId, TicketsList, TicketsQueryArgs, CacheQueryOptions } from '@eventespresso/data';
-import type { TicketEdge } from '../../';
-import useDatetimeIds from '../datetimes/useDatetimeIds';
 
-type TicketsQueryOptions = CacheQueryOptions<TicketsList<TicketEdge>, TicketsQueryArgs>;
+import { GET_TICKETS } from '../tickets';
+import type { TicketEdge } from '../../';
+import { useDatetimeIds } from '../datetimes';
+
+export type TicketsQueryOptions = CacheQueryOptions<TicketsList<TicketEdge>, TicketsQueryArgs>;
 
 const useTicketQueryOptions = (datetimeIn?: EntityId[], queryArgs?: TicketsQueryArgs['where']): TicketsQueryOptions => {
 	const datetimeIds = useDatetimeIds();
