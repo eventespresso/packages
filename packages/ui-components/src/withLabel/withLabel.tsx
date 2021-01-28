@@ -14,17 +14,21 @@ const withLabel = <P extends AnyObject>(
 	type RefProps = { forwardedRef: Ref };
 
 	const WithLabel: React.FC<P & WithLabelProps & RefProps> = ({
+		fontWeightNormal,
 		forwardedRef,
 		label,
 		labelClassName,
 		labelPosition = 'top-left',
+		noPadding,
 		...props
 	}) => {
 		const className = classNames(
 			'ee-input__wrapper',
 			labelClassName,
 			label && 'ee-input-label__wrapper',
-			label && labelPosition && `ee-input-label__wrapper--${labelPosition}`
+			label && labelPosition && `ee-input-label__wrapper--${labelPosition}`,
+			fontWeightNormal && `ee-input-label__wrapper--font-weight-normal`,
+			noPadding && `ee-input-label__wrapper--no-padding`
 		);
 
 		const id = props.id && 'ee-' + props.id;

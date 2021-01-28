@@ -75,6 +75,12 @@
 			margin: 0;
 		}
 
+		&--no-padding {
+			&.ee-icon-button {
+				padding: 0;
+			}
+		}
+
 		&-color {
 			&--white {
 				background: rgba(255, 255, 255, 0.1);

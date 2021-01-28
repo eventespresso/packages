@@ -7,6 +7,10 @@
 	padding: var(--ee-padding-tiny);
 	width: calc(var(--ee-icon-button-size) + 2px);
 
+	&--no-padding {
+		padding: 0;
+	}
+
 	span {
 		pointer-events: initial;
 	}

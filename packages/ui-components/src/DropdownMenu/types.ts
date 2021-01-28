@@ -1,5 +1,6 @@
 import type { MenuProps, MenuItemProps, MenuToggleProps, MenuListProps } from '@eventespresso/adapters';
-import type { IconButton } from '../Button';
+import type { Size } from '../../';
+import type { IconButton, IconButtonProps } from '../Button';
 import type { WithTooltipProps } from '../withTooltip';
 
 export interface DropdownMenuProps extends Omit<MenuProps, 'isOpen'> {
@@ -15,10 +16,13 @@ export interface DropdownMenuItemProps extends Omit<MenuItemProps, 'icon'> {
 }
 
 export interface DropdownToggleProps
-	extends MenuToggleProps,
+	extends Size,
+		MenuToggleProps,
+		Pick<IconButtonProps, 'noPadding'>,
 		Pick<React.ComponentProps<typeof IconButton>, keyof WithTooltipProps> {
 	borderless?: boolean;
 	icon?: React.ComponentType<any>;
 	isOpen?: boolean;
+	noPadding?: boolean;
 	onClose?: VoidFunction;
 }

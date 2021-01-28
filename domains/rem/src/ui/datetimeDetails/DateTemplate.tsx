@@ -35,7 +35,7 @@ const DateTemplate: React.FC<DateTemplateProps> = ({ setTemplate }) => {
 			onAddNew={onClick}
 			selectExisting={selectExisting}
 			selectExistingID={selectExistingID}
-			type={'datetime'}
+			type='datetime'
 		/>
 	);
 };

@@ -19,6 +19,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 			color,
 			icon,
 			noMargin,
+			noPadding,
 			onClick,
 			size = 'default',
 			transparentBg,
@@ -33,6 +34,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 			borderless && 'ee-icon-button--borderless',
 			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],
 			noMargin && 'ee-icon-button--no-margin',
+			noPadding && 'ee-icon-button--no-padding',
 			transparentBg && 'ee-icon-button--transparent-bg',
 			size !== 'default' && [`ee-btn--${size}`],
 			props.className

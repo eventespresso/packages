@@ -17,6 +17,7 @@ const AddSingleTicket: React.FC<AddSingleTicketProps> = ({ isOnlyButton }) => {
 		<Button
 			buttonText={__('Add New Ticket')}
 			icon={isOnlyButton ? Ticket : null}
+			noVerticalMargin
 			onClick={open}
 			size={isOnlyButton ? 'big' : 'default'}
 		/>

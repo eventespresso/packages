@@ -9,6 +9,10 @@ export default {
 	title: 'Components/PatternEditor',
 } as Meta;
 
-const Template = withContext((args) => <PatternEditor {...args} />);
+export const Default = withContext((args) => <PatternEditor {...args} />);
 
-export const Default = Template.bind({});
+export const DefaultRTE = withContext((args) => (
+	<div dir='rtl'>
+		<PatternEditor {...args} />
+	</div>
+));

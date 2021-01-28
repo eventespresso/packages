@@ -13,15 +13,14 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
 	className,
 	menuListProps,
 	toggleProps,
-	wrapperClassName,
+	...props
 }) => {
 	const isRTL = getRTL();
 	const placement = isRTL ? 'left-start' : 'right-start';
-
-	const _wrapperClassName = classNames(wrapperClassName, 'ee-dropdown-menu__wrapper');
+	const wrapperClassName = classNames('ee-dropdown-menu__wrapper', props.wrapperClassName);
 
 	return (
-		<div className={_wrapperClassName}>
+		<div className={wrapperClassName}>
 			<Menu placement={placement}>
 				{({ isOpen, onClose }) => (
 					<div className='ee-dropdown-menu'>

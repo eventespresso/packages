@@ -9,17 +9,18 @@ import type { DropdownToggleProps } from '../types';
 import './styles.scss';
 
 export const DropdownToggle = forwardRef<HTMLButtonElement, DropdownToggleProps>(
-	({ borderless = true, icon = More, isOpen, tooltip, ...props }, ref) => {
+	({ borderless = true, icon = More, isOpen, noPadding, size, tooltip, ...props }, ref) => {
 		const className = classNames(
 			'ee-dropdown-menu__toggle',
 			isOpen && 'ee-dropdown-menu__toggle--open',
+			noPadding && 'ee-dropdown-menu__toggle--no-padding',
 			borderless && 'ee-icon-button--borderless',
 			props.className
 		);
 
 		return (
 			<MenuToggle aria-label={tooltip} as='div' className={className} ref={ref}>
-				<IconButton borderless icon={icon} tooltip={tooltip} />
+				<IconButton borderless icon={icon} size={size} tooltip={tooltip} />
 			</MenuToggle>
 		);
 	}

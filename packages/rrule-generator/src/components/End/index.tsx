@@ -20,7 +20,17 @@ const End: React.FC<BaseProps> = ({ id }) => {
 
 			<Mode id={endModeId} mode={end.mode} onChange={setEndMode} />
 
-			{end.mode === 'AFTER' && <EndAfter id={`${id}-after`} after={end.after} onChange={setEndAfter} />}
+			{end.mode === 'AFTER' && (
+				<EndAfter
+					after={end.after}
+					fontWeightNormal
+					id={`${id}-after`}
+					label={__('occurrences')}
+					labelPosition='right-middle'
+					noPadding
+					onChange={setEndAfter}
+				/>
+			)}
 
 			{end.mode === 'ON_DATE' && <OnDate id={`${id}-date`} date={end.date} onChange={setEndDate} />}
 		</Row>

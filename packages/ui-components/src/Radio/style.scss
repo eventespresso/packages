@@ -8,6 +8,10 @@
 
 		.chakra-radio__label {
 			white-space: nowrap;
+
+			[dir='rtl'] & {
+				margin-left: var(--ee-margin-tiny);
+			}
 		}
 	}
 }

@@ -14,8 +14,10 @@ export type LabelPosition =
 	| 'left-top';
 
 export interface WithLabelProps {
+	fontWeightNormal?: boolean;
 	id?: string;
 	label?: string;
 	labelClassName?: string;
 	labelPosition?: LabelPosition;
+	noPadding?: boolean;
 }
