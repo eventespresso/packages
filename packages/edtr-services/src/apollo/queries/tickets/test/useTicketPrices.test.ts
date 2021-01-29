@@ -14,21 +14,21 @@ describe('useTicketPrices', () => {
 	const existingTicket = nodes[0];
 
 	it('returns empty array for ticket prices when the ticket exists and the cache is empty', async () => {
-		const { result } = renderHook(() => useTicketPrices(existingTicket.id), { wrapper });
+		const { result } = renderHook(() => useTicketPrices(), { wrapper });
 
 		await actWait();
 
-		const { current: cachedTicketPrices } = result;
+		const cachedTicketPrices = result.current(existingTicket.id);
 
 		expect(cachedTicketPrices).toEqual([]);
 	});
 
 	it('returns empty array for ticket prices when the ticket does not exist and the cache is empty', async () => {
-		const { result } = renderHook(() => useTicketPrices('fake-id'), { wrapper });
+		const { result } = renderHook(() => useTicketPrices(), { wrapper });
 
 		await actWait();
 
-		const { current: cachedTicketPrices } = result;
+		const cachedTicketPrices = result.current('fake-id');
 
 		expect(cachedTicketPrices).toEqual([]);
 	});
@@ -37,14 +37,14 @@ describe('useTicketPrices', () => {
 		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
-				return useTicketPrices('fake-id');
+				return useTicketPrices();
 			},
 			{ wrapper }
 		);
 
 		await actWait();
 
-		const { current: cachedTicketPrices } = result;
+		const cachedTicketPrices = result.current('fake-id');
 
 		expect(cachedTicketPrices).toEqual([]);
 	});
@@ -53,14 +53,14 @@ describe('useTicketPrices', () => {
 		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
-				return useTicketPrices(existingTicket.id);
+				return useTicketPrices();
 			},
 			{ wrapper }
 		);
 
 		await actWait();
 
-		const { current: cachedTicketPrices } = result;
+		const cachedTicketPrices = result.current(existingTicket.id);
 
 		expect(cachedTicketPrices).toEqual([]);
 	});
@@ -79,13 +79,13 @@ describe('useTicketPrices', () => {
 			() => {
 				useInitTicketTestCache();
 				useInitPriceTestCache();
-				return useTicketPrices(existingTicket.id);
+				return useTicketPrices();
 			},
 			{ wrapper }
 		);
 		await actWait();
 
-		const { current: cachedTicketPrices } = result;
+		const cachedTicketPrices = result.current(existingTicket.id);
 
 		const cachedTicketPriceIds = getGuids(cachedTicketPrices);
 
