@@ -41,14 +41,21 @@ const usePrepTemplatePrices = (): PrepTemplatePrices => {
 			//sort'em
 			const sortedPrices = sortByPriceOrderIdAsc(prices);
 
-			const hasBasePrice = sortedPrices.filter(isBasePrice).length;
-			// if there is no basePrice
-			if (!hasBasePrice && addBasePrice) {
-				// add the base price with `isNew` flag to make sure it's created on submit
-				// `order` as 1 to make sure it remains at the top
-				return [{ ...basePrice, order: 1, isNew: true }, ...sortedPrices];
+			if (!addBasePrice) {
+				// if we're not going to add a base price,
+				// then no need to check for one or do anything else
+				return sortedPrices;
 			}
-			return sortedPrices;
+
+			const hasBasePrice = sortedPrices.filter(isBasePrice).length;
+			if (hasBasePrice) {
+				// if we already have a basePrice, then we are all good
+				return sortedPrices;
+			}
+			// need to add a base price...
+			// setting the `isNew` flag to true will ensure the base price is created on submit
+			// setting `order` as 1 to ensure it remains at the top
+			return [{ ...basePrice, order: 1, isNew: true }, ...sortedPrices];
 		},
 		[basePrice, convertPriceToTpcModifier]
 	);
