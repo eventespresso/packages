@@ -190,7 +190,7 @@
 
 			&--text-align {
 				&-center {
-					text-align: center;
+					text-align: center !important;
 
 					@include max782px {
 						text-align: center !important;

@@ -4,6 +4,7 @@
 	&__wrapper {
 		align-items: flex-end;
 		display: flex;
+		padding-bottom: var(--ee-padding-smaller);
 		width: 100%;
 
 		@include max782px {
@@ -33,15 +34,6 @@
 		&.ee-input-base.ee-select {
 			max-width: fit-content;
 		}
-	}
-
-	&__checkbox {
-		margin: var(--ee-margin-tiny);
-
-		/* div:first-of-type {
-			background-color: var(--ee-background-color);
-			border-color: var(--ee-border-color);
-		} */
 	}
 
 	&__mobile-checkbox {
