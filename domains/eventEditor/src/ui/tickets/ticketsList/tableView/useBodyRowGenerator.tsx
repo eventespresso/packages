@@ -1,12 +1,13 @@
 import { useCallback } from 'react';
 import classNames from 'classnames';
-import { format } from 'date-fns';
+import { parseISO } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
 import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
 import { CurrencyDisplay } from '@eventespresso/ee-components';
 import { filterCellByStartOrEndDate, useTickets } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
+import { useTimeZoneTime } from '@eventespresso/services';
 import { getTicketBackgroundColorClassName, ticketStatus } from '@eventespresso/helpers';
 import { findEntityByGuid } from '@eventespresso/predicates';
 import { shortenGuid } from '@eventespresso/utils';
@@ -25,6 +26,7 @@ type TicketsTableBodyRowGen = BodyRowGeneratorFn<TicketsFilterStateManager>;
 const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 	const tickets = useTickets();
 	const getTicket = useCallback((id: EntityId) => findEntityByGuid(tickets)(id), [tickets]);
+	const { formatForSite: format } = useTimeZoneTime();
 
 	return useCallback<TicketsTableBodyRowGen>(
 		({ entityId, filterState }) => {
@@ -73,13 +75,13 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 			const startCell: CellData = {
 				key: 'start',
 				size: 'default',
-				value: format(new Date(ticket.startDate), ENTITY_LIST_DATE_TIME_FORMAT),
+				value: format(parseISO(ticket.startDate), ENTITY_LIST_DATE_TIME_FORMAT),
 			};
 
 			const endCell: CellData = {
 				key: 'end',
 				size: 'default',
-				value: format(new Date(ticket.endDate), ENTITY_LIST_DATE_TIME_FORMAT),
+				value: format(parseISO(ticket.endDate), ENTITY_LIST_DATE_TIME_FORMAT),
 			};
 
 			const priceCell: CellData = {
@@ -150,7 +152,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				type: 'row',
 			};
 		},
-		[getTicket]
+		[format, getTicket]
 	);
 };
 

@@ -1,11 +1,12 @@
 import { useCallback } from 'react';
 import classNames from 'classnames';
-import { format } from 'date-fns';
+import { parseISO } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
 import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
 import { filterCellByStartOrEndDate, useDatetimes } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
+import { useTimeZoneTime } from '@eventespresso/services';
 import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';
 import { findEntityByGuid } from '@eventespresso/predicates';
 import { shortenGuid } from '@eventespresso/utils';
@@ -27,6 +28,7 @@ const addZebraStripes = addZebraStripesOnMobile(exclude);
 const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 	const datetimes = useDatetimes();
 	const getDatetime = useCallback((id: EntityId) => findEntityByGuid(datetimes)(id), [datetimes]);
+	const { formatForSite: format } = useTimeZoneTime();
 
 	return useCallback<DatesTableBodyRowGen>(
 		({ entityId, filterState }) => {
@@ -76,13 +78,13 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			const startCell: CellData = {
 				key: 'start',
 				size: 'default',
-				value: format(new Date(datetime.startDate), ENTITY_LIST_DATE_TIME_FORMAT),
+				value: format(parseISO(datetime.startDate), ENTITY_LIST_DATE_TIME_FORMAT),
 			};
 
 			const endCell: CellData = {
 				key: 'end',
 				size: 'default',
-				value: format(new Date(datetime.endDate), ENTITY_LIST_DATE_TIME_FORMAT),
+				value: format(parseISO(datetime.endDate), ENTITY_LIST_DATE_TIME_FORMAT),
 			};
 
 			const capacityCell: CellData = {
@@ -142,7 +144,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				type: 'row',
 			};
 		},
-		[getDatetime]
+		[format, getDatetime]
 	);
 };
 
