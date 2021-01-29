@@ -5,10 +5,12 @@ import { filter, pipe } from 'ramda';
 
 import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
 import { CurrencyDisplay } from '@eventespresso/ee-components';
-import { filterCellByStartOrEndDate, useLazyTicket } from '@eventespresso/edtr-services';
+import { filterCellByStartOrEndDate, useTickets } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { getTicketBackgroundColorClassName, ticketStatus } from '@eventespresso/helpers';
+import { findEntityByGuid } from '@eventespresso/predicates';
 import { shortenGuid } from '@eventespresso/utils';
+import type { EntityId } from '@eventespresso/data';
 import type { BodyRowGeneratorFn } from '@eventespresso/ee-components';
 import type { TicketsFilterStateManager } from '@eventespresso/edtr-services';
 
@@ -21,7 +23,8 @@ import Checkbox from './Checkbox';
 type TicketsTableBodyRowGen = BodyRowGeneratorFn<TicketsFilterStateManager>;
 
 const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
-	const getTicket = useLazyTicket();
+	const tickets = useTickets();
+	const getTicket = useCallback((id: EntityId) => findEntityByGuid(tickets)(id), [tickets]);
 
 	return useCallback<TicketsTableBodyRowGen>(
 		({ entityId, filterState }) => {
