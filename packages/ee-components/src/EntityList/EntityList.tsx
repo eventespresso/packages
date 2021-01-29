@@ -1,6 +1,6 @@
 import { __ } from '@eventespresso/i18n';
 
-import { useStatus } from '@eventespresso/services';
+import { useFeature, useStatus } from '@eventespresso/services';
 import { CollapsibleLegend, EmptyState, Pagination, EntityList as EntityListUI } from '@eventespresso/ui-components';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
 
@@ -23,6 +23,7 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 	const { isError, isLoading } = useStatus();
 	const error = isError(entityType);
 	const loading = isLoading(entityType);
+	const showBulkActions = useFeature('use_bulk_edit');
 
 	let entityList: React.ReactNode;
 
@@ -34,7 +35,14 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 		entityList = renderList();
 	}
 
-	const filterBar = <EntityListFilterBar domain={domain} filterState={filterState} listId={listId} />;
+	const filterBar = (
+		<EntityListFilterBar
+			domain={domain}
+			filterState={filterState}
+			listId={listId}
+			showBulkActionsToggle={showBulkActions}
+		/>
+	);
 
 	const legend = <CollapsibleLegend direction='row' legendConfig={legendConfig} termWhiteBg />;
 

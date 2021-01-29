@@ -45,13 +45,11 @@ export interface EntityTableProps<FS extends ELFSM> extends EntityListViewProps<
 
 export type EntityListComponent<FS extends ELFSM> = React.ComponentType<EntityListViewProps<FS>>;
 
-export interface EntityListProps<FS extends ELFSM> extends Partial<EntityListViewProps<FS>>, EntityType {
+export interface EntityListProps<FS extends ELFSM> extends EntityType, EntityListFilterBarProps<FS> {
 	activeFilters?: React.ReactNode;
-	domain: string;
 	footer: React.ReactNode;
 	headerText: string;
 	legendConfig: LegendConfig<string>;
-	listId: string;
 	loadingText?: string;
 	noResultsDesc?: string;
 	noResultsTitle?: string;
@@ -67,10 +65,10 @@ export interface EntityTableFilters<FS extends ELFSM> {
 	applyFilters: (row: TableRow, filterState: FS, type: RowType, entityId?: EntityId) => TableRow;
 }
 
-export interface EntityListFilterBarProps<FS extends ELFSM> {
+export interface EntityListFilterBarProps<FS extends ELFSM> extends Partial<EntityListViewProps<FS>> {
 	domain: string;
-	filterState: FS;
 	listId?: string;
+	showBulkActionsToggle?: boolean;
 }
 
 export interface EntityType {

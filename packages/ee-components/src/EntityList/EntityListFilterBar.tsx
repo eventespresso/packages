@@ -18,6 +18,7 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 	domain,
 	filterState,
 	listId,
+	showBulkActionsToggle,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
 	const {
 		searchText,
@@ -36,7 +37,7 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 	const mainButtons = (
 		<>
 			<EntityListViewButtonGroup id={listId} setCardView={setCardView} setTableView={setTableView} view={view} />
-			{view === 'table' && (
+			{showBulkActionsToggle && view === 'table' && (
 				<ToggleBulkActionsButton id={listId} onClick={toggleBulkActions} value={showBulkActions} />
 			)}
 		</>
