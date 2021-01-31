@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import classNames from 'classnames';
 
 import { InfoCircleOutlined } from '@eventespresso/icons';
@@ -24,6 +24,8 @@ export const ClickableIconWithTooltip: React.FC<ClickableIconWithTooltipProps> =
 }) => {
 	const { isOpen, onClose, onToggle } = useDisclosure();
 	const wrapperRef = useRef(null);
+	const portalProps = useMemo(() => ({ appendToParent: false, containerRef: wrapperRef }), []);
+
 	const className = classNames('ee-clickable-tooltip', props.className);
 
 	const icon = <Icon className={className} size='small' />;
@@ -32,7 +34,7 @@ export const ClickableIconWithTooltip: React.FC<ClickableIconWithTooltipProps> =
 
 	return (
 		<div className='ee-clickable-tooltip__wrapper' ref={wrapperRef} role='tooltip'>
-			<Tooltip isOpen={isOpen} tooltip={tooltipText}>
+			<Tooltip isOpen={isOpen} portalProps={portalProps} tooltip={tooltipText}>
 				<Clickable as='span' id={id} onClick={onToggle}>
 					{icon}
 				</Clickable>

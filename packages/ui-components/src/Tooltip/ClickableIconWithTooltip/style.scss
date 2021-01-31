@@ -5,6 +5,10 @@
 		display: inline-flex;
 		width: auto !important;
 
+		.ee-tooltip {
+			min-width: 250px;
+		}
+
 		span {
 			display: inherit;
 			outline: none;
