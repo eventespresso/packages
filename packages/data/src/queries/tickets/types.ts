@@ -6,6 +6,9 @@ export interface TicketsQueryWhereArgs {
 	datetimeId?: number;
 	datetimeIdIn?: Array<number>;
 	datetimeIn?: Array<string>;
+	event?: string;
+	eventId?: number;
+	includeDefaultTickets?: true;
 	isDefault?: boolean;
 	isRequired?: boolean;
 	isTaxable?: boolean;

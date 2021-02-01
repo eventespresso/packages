@@ -14,6 +14,8 @@ export * from './events';
 
 export * from './generalSettings';
 
+export * from './prices';
+
 export * from './recurrences';
 
 export * from './registrations';
