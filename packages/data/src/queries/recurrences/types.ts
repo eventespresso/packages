@@ -6,6 +6,8 @@ export interface RecurrencesQueryWhereArgs {
 	datetimeId?: number;
 	datetimeIdIn?: Array<number>;
 	datetimeIn?: Array<string>;
+	event?: string;
+	eventId?: number;
 }
 
 export type RecurrencesQueryArgs = EntityQueryArgs<RecurrencesQueryWhereArgs>;
