@@ -8,6 +8,7 @@ import { MutationType, MutationInput } from '@eventespresso/data';
 import { ApolloMockedProvider } from '../../../../context/test';
 import { getMutationMocks, mockedDatetimes } from './data';
 import { nodes as tickets } from '../../../queries/tickets/test/data';
+import { nodes as events } from '../../../queries/events/test/data';
 import useDatetimeItem from '../../../queries/datetimes/useDatetimeItem';
 import useDatetimeIds from '../../../queries/datetimes/useDatetimeIds';
 import useInitTicketTestCache from '../../../queries/tickets/test/useInitTicketTestCache';
@@ -19,6 +20,7 @@ import { actWait } from '@eventespresso/utils/src/test';
 describe('createDatetime', () => {
 	let testInput: MutationInput = { name: 'New Test Date', description: 'New Test Desc' };
 	const mockedDatetime = mockedDatetimes.CREATE;
+	const mockedEvent = events[0];
 
 	const ticketIds = getGuids(tickets);
 
@@ -232,7 +234,7 @@ describe('createDatetime', () => {
 
 		// check if query options are updated,
 		// which means the cache is updated
-		expect(queryOptions.variables.where.datetimeIn).toContain(mockedDatetime.id);
+		expect(queryOptions.variables.where.eventId).toBe(mockedEvent.dbId);
 		expect(cachedTickets).toBeDefined();
 	});
 });
