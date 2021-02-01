@@ -67,6 +67,7 @@ export { default as SwitchUnchecked } from './SwitchUnchecked';
 export { default as TableView } from './TableView';
 export { default as Ticket } from './Ticket';
 export { default as Trash } from './Trash';
+export { default as Undo } from './Undo';
 export { default as Unlink } from './Unlink';
 export { default as UpCircleFilled } from './UpCircleFilled';
 export { default as Warning } from './Warning';
