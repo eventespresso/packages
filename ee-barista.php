@@ -37,10 +37,11 @@ add_action(
             'FHEE__EventEspresso_core_domain_services_capabilities_FeatureFlags',
             function () {
                 return [
-                    'use_bulk_edit'             => true,
-                    'use_event_description_rte' => true,
-                    'use_reg_options_meta_box'  => true,
-                    'use_experimental_rte'      => true,
+                    'use_bulk_edit'              => true,
+                    'use_default_ticket_manager' => true,
+                    'use_event_description_rte'  => true,
+                    'use_experimental_rte'       => true,
+                    'use_reg_options_meta_box'   => true,
                 ];
             }
         );
