@@ -8,8 +8,8 @@ import { getMutationMocks, mockedPrices } from './data';
 import { nodes as priceTypes } from '../../../queries/priceTypes/test/data';
 import useInitPriceTestCache from '../../../queries/prices/test/useInitPriceTestCache';
 import { usePriceMutator } from '../';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('updatePrice', () => {
 	let testInput: MutationInput = { name: 'New Test Price', description: 'New Test Desc' };
 	const mockedPrice = mockedPrices.UPDATE;
@@ -23,7 +23,7 @@ describe('updatePrice', () => {
 	it('checks for the mutation data to be same as the mock data', async () => {
 		const wrapper = ApolloMockedProvider(mutationMocks);
 
-		const { result, waitForValueToChange } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useInitPriceTestCache();
 				return usePriceMutator(mockedPrice.id);
@@ -42,7 +42,7 @@ describe('updatePrice', () => {
 		});
 
 		// wait for mutation promise to resolve
-		await waitForValueToChange(() => mutationData, { timeout });
+		await actWait();
 
 		expect(mutationData).toEqual(mockResult.data);
 		const pathToName = ['updateEspressoPrice', 'espressoPrice', 'name'];
@@ -61,7 +61,7 @@ describe('updatePrice', () => {
 
 		const wrapper = ApolloMockedProvider(mutationMocks);
 
-		const { result: mutationResult, waitForNextUpdate, waitForValueToChange } = renderHook(
+		const { result: mutationResult } = renderHook(
 			() => ({
 				mutator: usePriceMutator(mockedPrice.id),
 				relationsManager: useRelations(),
@@ -71,14 +71,14 @@ describe('updatePrice', () => {
 			}
 		);
 
-		await waitForValueToChange(() => mutationResult.current, { timeout });
+		await actWait();
 
 		act(() => {
 			mutationResult.current.mutator.updateEntity(testInput);
 		});
 
 		// wait for mutation promise to resolve
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		// check if price is related to all the passed prices
 		const relatedPriceTypeIds = mutationResult.current.relationsManager.getRelations({

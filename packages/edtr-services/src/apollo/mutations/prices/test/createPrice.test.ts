@@ -10,8 +10,8 @@ import usePrices from '../../../queries/prices/usePrices';
 import { nodes as priceTypes } from '../../../queries/priceTypes/test/data';
 import { usePriceMutator, CreatePriceInput } from '../';
 import { getGuids } from '@eventespresso/predicates';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('createPrice', () => {
 	const mockedPrice = mockedPrices.CREATE;
 
@@ -29,7 +29,7 @@ describe('createPrice', () => {
 	it('checks for the mutation data to be same as the mock data', async () => {
 		const wrapper = ApolloMockedProvider(mutationMocks);
 
-		const { result, waitForValueToChange } = renderHook(() => usePriceMutator(), {
+		const { result } = renderHook(() => usePriceMutator(), {
 			wrapper,
 		});
 
@@ -42,7 +42,7 @@ describe('createPrice', () => {
 		});
 
 		// wait for mutation promise to resolve
-		await waitForValueToChange(() => mutationData, { timeout });
+		await actWait();
 
 		expect(mutationData).toEqual(mockResult.data);
 		const pathToName = ['createEspressoPrice', 'espressoPrice', 'name'];
@@ -56,7 +56,7 @@ describe('createPrice', () => {
 	it('checks for the mutation data to be same as that in the cache - usePrices', async () => {
 		const wrapper = ApolloMockedProvider(mutationMocks);
 
-		const { result: mutationResult, waitForNextUpdate } = renderHook(
+		const { result: mutationResult } = renderHook(
 			() => ({
 				mutator: usePriceMutator(),
 				client: useApolloClient(),
@@ -71,10 +71,10 @@ describe('createPrice', () => {
 		});
 
 		// wait for mutation promise to resolve
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const cache = mutationResult.current.client.extract();
-		const { result: cacheResult, waitForNextUpdate: waitForUpdate } = renderHook(
+		const { result: cacheResult } = renderHook(
 			() => {
 				const client = useApolloClient();
 				// restore the cache from previous render
@@ -87,7 +87,7 @@ describe('createPrice', () => {
 		);
 
 		// wait for mutation promise to resolve
-		await waitForUpdate({ timeout });
+		await actWait();
 
 		const cachedPriceIds = getGuids(cacheResult.current);
 
@@ -102,7 +102,7 @@ describe('createPrice', () => {
 
 		const wrapper = ApolloMockedProvider(mutationMocks);
 
-		const { result: mutationResult, waitForNextUpdate } = renderHook(
+		const { result: mutationResult } = renderHook(
 			() => ({
 				mutator: usePriceMutator(),
 				relationsManager: useRelations(),
@@ -117,7 +117,7 @@ describe('createPrice', () => {
 		});
 
 		// wait for mutation promise to resolve
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		// check if price is related to all the passed prices
 		const relatedPriceTypeIds = mutationResult.current.relationsManager.getRelations({
