@@ -1,15 +1,15 @@
 import { useCallback, useMemo } from 'react';
 
 import { isTrashed } from '@eventespresso/predicates';
-import { useTicketItem } from '@eventespresso/edtr-services';
-import useDeleteTicketHandler from '@edtrUI/tickets/hooks/useDeleteTicketHandler';
+import { useTicketItem, useTicketMutator } from '@eventespresso/edtr-services';
 import useCopyTicket from './useCopyTicket';
 import type { EntityId } from '@eventespresso/data';
 
 type Actions = {
-	copyTicket: VoidFunction;
-	trashTicket: VoidFunction;
+	copyTicket: () => Promise<void>;
 	isTrashed: boolean;
+	hasRegistrations?: boolean;
+	untrashTicket: VoidFunction;
 };
 
 const useActions = (ticketId: EntityId): Actions => {
@@ -17,21 +17,26 @@ const useActions = (ticketId: EntityId): Actions => {
 	// to avoid stale data
 	const ticket = useTicketItem({ id: ticketId });
 
-	const deleteTicket = useDeleteTicketHandler(ticketId);
-
 	const trashed = isTrashed(ticket);
 
-	const trashTicket = useCallback(() => deleteTicket(trashed), [deleteTicket, trashed]);
-
 	const copyTicket = useCopyTicket(ticket);
+
+	const { updateEntity: updateTicket } = useTicketMutator();
+
+	const untrashTicket = useCallback(() => {
+		updateTicket({ id: ticketId, isTrashed: false });
+	}, [ticketId, updateTicket]);
+
+	const hasRegistrations = Boolean(ticket.sold);
 
 	return useMemo(
 		() => ({
 			copyTicket,
-			trashTicket,
+			hasRegistrations,
 			isTrashed: trashed,
+			untrashTicket,
 		}),
-		[copyTicket, trashTicket, trashed]
+		[copyTicket, hasRegistrations, trashed, untrashTicket]
 	);
 };
 

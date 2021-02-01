@@ -1,34 +1,20 @@
 import { useCallback } from 'react';
 
-import { useTicketPrices, useTicketMutator } from '@eventespresso/edtr-services';
-import { isTicketInputField, copyTicketFields, isDefaultTax } from '@eventespresso/predicates';
+import { useTicketPrices } from '@eventespresso/edtr-services';
+import { isTicketInputField, copyTicketFields } from '@eventespresso/predicates';
 import { useRelations } from '@eventespresso/services';
 import { Ticket } from '@eventespresso/edtr-services';
-import { useMutatePrices, usePriceToTpcModifier } from '@eventespresso/tpc';
+import { useMutateTicket, usePrepTemplatePrices } from '@eventespresso/tpc';
 
-const useCopyTicket = (ticket: Ticket): VoidFunction => {
+const useCopyTicket = (ticket: Ticket): (() => Promise<void>) => {
 	const getTicketPrices = useTicketPrices();
-	const { createEntity } = useTicketMutator();
 	const { getRelations } = useRelations();
-	const convertPriceToTpcModifier = usePriceToTpcModifier();
-	const mutatePrices = useMutatePrices();
+	const prepTemplatePrices = usePrepTemplatePrices();
 
-	return useCallback(() => {
-		const prices = getTicketPrices(ticket?.id).map((price) => {
-			const priceModifier = convertPriceToTpcModifier(price);
-			// if it's a default tax
-			if (isDefaultTax(price)) {
-				// return without cloning
-				return priceModifier;
-			}
-			return {
-				...priceModifier,
-				// clone it
-				isNew: true,
-				// avoid default price getting duplicated
-				isDefault: false,
-			};
-		});
+	const mutateTicket = useMutateTicket();
+
+	return useCallback(async () => {
+		const prices = prepTemplatePrices(getTicketPrices(ticket?.id), false);
 
 		// get the related datetime ids
 		const datetimes = getRelations({
@@ -39,14 +25,12 @@ const useCopyTicket = (ticket: Ticket): VoidFunction => {
 
 		const newTicket = copyTicketFields(ticket, isTicketInputField);
 
-		// create the prices
-		mutatePrices(prices).then((relatedPriceIds) => {
-			// add related prices and datetimes to mutation input
-			const input = { ...newTicket, prices: relatedPriceIds, datetimes };
-			// now finally create the ticket
-			createEntity(input);
-		});
-	}, [convertPriceToTpcModifier, createEntity, getRelations, getTicketPrices, mutatePrices, ticket]);
+		// add datetimes and prices to mutation input
+		const input = { ...newTicket, prices, datetimes, sold: 0, isNew: true };
+
+		// now finally create the ticket
+		await mutateTicket(input);
+	}, [getRelations, getTicketPrices, mutateTicket, prepTemplatePrices, ticket]);
 };
 
 export default useCopyTicket;

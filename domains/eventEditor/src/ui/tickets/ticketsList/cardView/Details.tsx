@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { ADMIN_ROUTES } from '@eventespresso/constants';
-import { SimpleTextEditorModal } from '@eventespresso/ee-components';
+import { CurrencyDisplay, SimpleTextEditorModal } from '@eventespresso/ee-components';
 import { useConfig } from '@eventespresso/services';
 import { getAdminUrl, useTicketMutator, useEventId } from '@eventespresso/edtr-services';
 
@@ -42,7 +42,11 @@ const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 				tooltip={__('edit description…')}
 			/>
 
-			<EditablePrice className='entity-card-details__price' entity={ticket} />
+			{ticket.sold ? (
+				<CurrencyDisplay className='entity-card-details__price' value={ticket.price} />
+			) : (
+				<EditablePrice className='entity-card-details__price' entity={ticket} />
+			)}
 
 			<TicketDetailsPanel adminUrl={adminUrl} entity={ticket} eventId={eventId} />
 		</>
