@@ -4,8 +4,8 @@ import type { EntityEdge } from '../../types';
 export interface PricesQueryWhereArgs {
 	event?: string;
 	eventId?: number;
-	includeDefaultPrices?: true;
-	includeDefaultTicketsPrices?: true;
+	includeDefaultPrices?: boolean;
+	includeDefaultTicketsPrices?: boolean;
 	isDefault?: boolean;
 }
 
