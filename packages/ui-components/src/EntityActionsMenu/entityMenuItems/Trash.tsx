@@ -1,7 +1,7 @@
 import { __ } from '@eventespresso/i18n';
+import { Trash as TrashIcon } from '@eventespresso/icons';
 
 import { DropdownMenuItem } from '../../DropdownMenu';
-import { Trash as TrashIcon } from '@eventespresso/icons';
 import type { MenuItemProps } from './types';
 
 const Trash: React.FC<MenuItemProps> = ({ onClick, ...props }) => {
