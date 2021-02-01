@@ -4,13 +4,12 @@ import { findIndex, update } from 'ramda';
 import { WriteQueryOptions } from '@eventespresso/data';
 import { entityHasGuid } from '@eventespresso/predicates';
 
-import { useTicketQueryOptions, useDefaultTicketsQueryOptions } from '../../queries';
+import { useTicketQueryOptions } from '../../queries';
 import type { CacheUpdaterFn, CacheUpdaterFnArgs } from '../types';
 import { Ticket, TicketsList } from '../../';
 
 const useUpdateTicketCache = (): CacheUpdaterFn => {
 	const queryOptions = useTicketQueryOptions();
-	const defaultTicketsQueryOptions = useDefaultTicketsQueryOptions();
 
 	const updateTicketCache = useCallback(
 		({ cache, tickets, ticket, action }: CacheUpdaterFnArgs): void => {
@@ -37,12 +36,10 @@ const useUpdateTicketCache = (): CacheUpdaterFn => {
 					break;
 			}
 
-			const options = ticket.isDefault ? defaultTicketsQueryOptions : queryOptions;
-
 			// write the data to cache without
 			// mutating the cache directly
 			const writeOptions: WriteQueryOptions = {
-				...options,
+				...queryOptions,
 				data: {
 					espressoTickets: {
 						...tickets,
@@ -52,7 +49,7 @@ const useUpdateTicketCache = (): CacheUpdaterFn => {
 			};
 			cache.writeQuery<TicketsList>(writeOptions);
 		},
-		[defaultTicketsQueryOptions, queryOptions]
+		[queryOptions]
 	);
 
 	return updateTicketCache;

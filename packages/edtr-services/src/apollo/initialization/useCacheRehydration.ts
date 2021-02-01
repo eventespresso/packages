@@ -10,8 +10,6 @@ import {
 	useUpdateCurrentUserCache,
 	useUpdateGeneralSettingsCache,
 } from '@eventespresso/data';
-import { getGuids } from '@eventespresso/predicates';
-import { useMemoStringify } from '@eventespresso/hooks';
 
 import useCacheRehydrationData from './useCacheRehydrationData';
 import {
@@ -48,19 +46,16 @@ const useCacheRehydration = (): boolean => {
 		relations,
 	} = eventEditor;
 
-	const datetimeIn = useMemoStringify(getGuids(espressoDatetimes?.nodes || []));
-	const ticketIn = useMemoStringify(getGuids(espressoTickets?.nodes || []));
-
 	const priceTypeQueryOptions = usePriceTypeQueryOptions();
 	const updatePriceTypeList = useUpdatePriceTypeList();
 
 	const datetimeQueryOptions = useDatetimeQueryOptions();
 	const updateDatetimeList = useUpdateDatetimeList();
 
-	const ticketQueryOptions = useTicketQueryOptions(datetimeIn);
+	const ticketQueryOptions = useTicketQueryOptions();
 	const updateTicketList = useUpdateTicketList();
 
-	const priceQueryOptions = usePriceQueryOptions(ticketIn);
+	const priceQueryOptions = usePriceQueryOptions();
 	const updatePriceList = useUpdatePriceList();
 
 	const currentUserQueryOptions = useCurrentUserQueryOptions();

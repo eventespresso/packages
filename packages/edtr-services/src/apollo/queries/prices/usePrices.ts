@@ -1,16 +1,17 @@
-import { CacheQueryOptions, useCacheQuery } from '@eventespresso/data';
+import { usePricesQuery } from '@eventespresso/data';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { getCacheIds } from '@eventespresso/predicates';
 
-import type { Price, PricesList } from '../../types';
+import type { Price, PriceEdge } from '../../types';
 import usePriceQueryOptions from './usePriceQueryOptions';
 
 /**
  * A custom react hook to retrieve all the prices from cache
  */
-const usePrices = (queryOptions?: CacheQueryOptions): Price[] => {
+const usePrices = (): Price[] => {
 	const options = usePriceQueryOptions();
-	const { data } = useCacheQuery<PricesList>(queryOptions || options);
+
+	const { data } = usePricesQuery<PriceEdge>(options);
 
 	const nodes = data?.espressoPrices?.nodes || [];
 

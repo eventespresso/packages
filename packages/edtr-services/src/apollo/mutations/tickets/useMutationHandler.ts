@@ -10,11 +10,7 @@ import useOnDeleteTicket from './useOnDeleteTicket';
 import useOnUpdateTicket from './useOnUpdateTicket';
 import useOptimisticResponse from './useOptimisticResponse';
 import { hooks } from '../../../ioc';
-import {
-	DEFAULT_TICKET_LIST_DATA as DEFAULT_LIST_DATA,
-	useTicketQueryOptions,
-	useDefaultTicketsQueryOptions,
-} from '../../queries';
+import { DEFAULT_TICKET_LIST_DATA as DEFAULT_LIST_DATA, useTicketQueryOptions } from '../../queries';
 import type { MutationHandler, MutationUpdater } from '../types';
 import { TicketsList, Ticket } from '../../';
 import type { TicketCommonInput } from './types';
@@ -24,7 +20,6 @@ type MH = MutationHandler<Ticket, TicketCommonInput>;
 
 const useMutationHandler = (): MH => {
 	const queryOptions = useTicketQueryOptions();
-	const defaultTicketsQueryOptions = useDefaultTicketsQueryOptions();
 
 	const onCreateTicket = useOnCreateTicket();
 	const onUpdateTicket = useOnUpdateTicket();
@@ -42,7 +37,7 @@ const useMutationHandler = (): MH => {
 			// Read the existing data from cache.
 			let data: TicketsList;
 			try {
-				data = cache.readQuery(ticket.isDefault ? defaultTicketsQueryOptions : queryOptions);
+				data = cache.readQuery(queryOptions);
 			} catch (error) {
 				data = null;
 			}
@@ -65,7 +60,7 @@ const useMutationHandler = (): MH => {
 
 			hooks.doAction('eventEditor.ticket.mutation', mutationType, input, entity, cache);
 		},
-		[defaultTicketsQueryOptions, onCreateTicket, onDeleteTicket, onUpdateTicket, queryOptions]
+		[onCreateTicket, onDeleteTicket, onUpdateTicket, queryOptions]
 	);
 	const mutator = useCallback<MH>(
 		(mutationType, input) => {

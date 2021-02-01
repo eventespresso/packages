@@ -1,11 +1,10 @@
-import useDefaultTicketsQueryOptions from './useDefaultTicketsQueryOptions';
+import { isDefault } from '@eventespresso/predicates';
+
 import useTickets from './useTickets';
 import type { Ticket } from '../../types';
 
 const useDefaultTickets = (): Array<Ticket> => {
-	const options = useDefaultTicketsQueryOptions();
-
-	return useTickets(options);
+	return useTickets(isDefault);
 };
 
 export default useDefaultTickets;

@@ -1,20 +1,23 @@
-import { useMemoStringify } from '@eventespresso/hooks';
-import { useTicketsQuery } from '@eventespresso/data';
-import { getCacheIds } from '@eventespresso/predicates';
+import { useMemo } from 'react';
+import { filter } from 'ramda';
 
-import useTicketQueryOptions, { TicketsQueryOptions } from './useTicketQueryOptions';
+import { useTicketsQuery } from '@eventespresso/data';
+import { getCacheIds, TicketPred, isNotDefault } from '@eventespresso/predicates';
+
+import useTicketQueryOptions from './useTicketQueryOptions';
 import type { Ticket, TicketEdge } from '../../types';
 
-const useTickets = (queryOptions?: TicketsQueryOptions): Array<Ticket> => {
+const useTickets = (filterBy: TicketPred = isNotDefault): Array<Ticket> => {
 	const options = useTicketQueryOptions();
 
-	const { data } = useTicketsQuery<TicketEdge>(queryOptions || options);
+	const { data } = useTicketsQuery<TicketEdge>(options);
 
 	const nodes = data?.espressoTickets?.nodes || [];
 
 	const cacheIds = getCacheIds(nodes);
 
-	return useMemoStringify(nodes, cacheIds);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	return useMemo(() => filter(filterBy, nodes), [cacheIds]);
 };
 
 export default useTickets;

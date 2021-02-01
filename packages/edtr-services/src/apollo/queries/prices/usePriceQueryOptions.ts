@@ -1,31 +1,29 @@
 import { useMemo } from 'react';
-import { identity, sortBy } from 'ramda';
 
-import type { EntityId, CacheQueryOptions } from '@eventespresso/data';
+import type { PricesList, PricesQueryArgs, CacheQueryOptions } from '@eventespresso/data';
 
-import useTicketIds from '../tickets/useTicketIds';
 import { GET_PRICES } from '../prices';
+import useEventId from '../events/useEventId';
+import type { PriceEdge } from '../../';
 
-const usePriceQueryOptions = (ticketIn?: EntityId[]): CacheQueryOptions => {
-	const ticketIds = useTicketIds();
+export type PricesQueryOptions = CacheQueryOptions<PricesList<PriceEdge>, PricesQueryArgs>;
 
-	return useMemo<CacheQueryOptions>(() => {
-		let newTicketIn = ticketIn || ticketIds;
+const usePriceQueryOptions = (queryArgs?: PricesQueryArgs['where']): PricesQueryOptions => {
+	const eventId = useEventId();
 
-		// Sort the IDs list which may be out of order,
-		// thus changing the key used to access apollo cache
-		newTicketIn = sortBy(identity, newTicketIn);
-
+	return useMemo(() => {
 		return {
 			query: GET_PRICES,
 			variables: {
 				where: {
-					ticketIn: newTicketIn,
+					eventId,
+					includeDefaultTicketsPrices: true,
 					includeDefaultPrices: true,
+					...queryArgs,
 				},
 			},
 		};
-	}, [ticketIds, ticketIn]);
+	}, [eventId, queryArgs]);
 };
 
 export default usePriceQueryOptions;

@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import usePriceQueryOptions from '../usePriceQueryOptions';
 import { ApolloMockedProvider } from '../../../../context/test';
-import { nodes } from '../../tickets/test/data';
+import { nodes } from '../../events/test/data';
 import useInitTicketTestCache from '../../tickets/test/useInitTicketTestCache';
 import { getGuids } from '@eventespresso/predicates';
 import { actWait } from '@eventespresso/utils/src/test';
@@ -19,6 +19,6 @@ describe('usePriceQueryOptions()', () => {
 		);
 		await actWait();
 
-		expect(result.current.variables.where.ticketIn).toEqual(getGuids(nodes).sort());
+		expect(result.current.variables.where.eventId).toEqual(getGuids(nodes).sort());
 	});
 });
