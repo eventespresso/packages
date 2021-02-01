@@ -44,7 +44,7 @@ const ModalBody: React.FC = () => {
 		<SimpleEntityList
 			ContentRenderer={ContentRenderer}
 			addEntity={addEntity}
-			className='rem-tickets'
+			className='default-tickets'
 			deleteEntity={deleteEntity}
 			entities={entities}
 			templates={templates as any}

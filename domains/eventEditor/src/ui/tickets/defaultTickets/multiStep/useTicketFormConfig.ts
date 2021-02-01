@@ -13,8 +13,8 @@ const useTicketFormConfig = (ticket?: DefaultTicket, config?: EspressoFormProps)
 		() => ({
 			...newConfig,
 			initialValues: {
-				...pick<Omit<Partial<DefaultTicket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
 				...newConfig?.initialValues,
+				...pick<Omit<Partial<DefaultTicket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
 			},
 		}),
 		[newConfig, ticket]

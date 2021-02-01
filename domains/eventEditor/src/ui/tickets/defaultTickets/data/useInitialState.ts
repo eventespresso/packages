@@ -19,7 +19,7 @@ const useInitialState = (): StateInitializer => {
 		(initialState) => {
 			const normalizedTickets = defaultTickets.map((ticket) => {
 				// get all related prices
-				const unSortedPrices = getTicketPrices(ticket.id, true);
+				const unSortedPrices = getTicketPrices(ticket.id);
 
 				// convert to TPC price objects
 				const prices = preparePricesForTpc(unSortedPrices, convertPriceToTpcModifier);
