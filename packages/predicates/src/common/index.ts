@@ -1,4 +1,5 @@
 export * from './filters';
+export * from './isDefault';
 export * from './isExpired';
 export * from './isTrashed';
 export * from './isValidOrTrashed';
