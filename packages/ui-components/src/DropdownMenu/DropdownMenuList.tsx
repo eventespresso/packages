@@ -1,16 +1,15 @@
 import { Children, cloneElement } from 'react';
-
 import classNames from 'classnames';
+
 import { MenuList, MenuListProps } from '@eventespresso/adapters';
+import { cleanChildren } from '@eventespresso/utils';
 
 export const DropdownMenuList: React.FC<MenuListProps> = ({ children, ...props }) => {
 	const className = classNames('ee-dropdown-menu__list', props.className);
 
-	const items = Children.toArray(children).filter(Boolean);
-
 	return (
 		<MenuList {...props} className={className}>
-			{Children.map(items, (child: any) => {
+			{Children.map(cleanChildren(children), (child: any) => {
 				return cloneElement(child);
 			})}
 		</MenuList>
