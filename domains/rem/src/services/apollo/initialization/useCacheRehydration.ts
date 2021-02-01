@@ -4,8 +4,7 @@ import { assocPath } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import { useRelations } from '@eventespresso/services';
-import { getGuids } from '@eventespresso/predicates';
-import { useDatetimes, useIsRehydrated } from '@eventespresso/edtr-services';
+import { useIsRehydrated } from '@eventespresso/edtr-services';
 
 import useCacheRehydrationData from './useCacheRehydrationData';
 import { useUpdateRecurrenceList } from '../../../hooks';
@@ -21,10 +20,7 @@ const useCacheRehydration = (): boolean => {
 
 	const { recurrences: espressoRecurrences = DEFAULT_RECURRENCE_LIST_DATA, relations } = useCacheRehydrationData();
 
-	// use the dates from EDTR Apollo cache
-	const datetimeIn = getGuids(useDatetimes());
-
-	const recurrenceQueryOptions = useRecurrenceQueryOptions(datetimeIn);
+	const recurrenceQueryOptions = useRecurrenceQueryOptions();
 	const updateRecurrenceList = useUpdateRecurrenceList();
 
 	const initialized = useRef(false);
