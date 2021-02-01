@@ -2,9 +2,8 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useTicketQueryOptions from '../useTicketQueryOptions';
 import { ApolloMockedProvider } from '../../../../context/test';
-import { nodes } from '../../datetimes/test/data';
+import { nodes } from '../../events/test/data';
 import useInitDatetimeTestCache from '../../datetimes/test/useInitDatetimeTestCache';
-import { getGuids } from '@eventespresso/predicates';
 import { actWait } from '@eventespresso/utils/src/test';
 
 describe('useTicketQueryOptions', () => {
@@ -19,6 +18,6 @@ describe('useTicketQueryOptions', () => {
 		);
 		await actWait();
 
-		expect(result.current.variables.where.datetimeIn).toEqual(getGuids(nodes).sort());
+		expect(result.current.variables.where.eventId).toEqual(nodes[0].dbId);
 	});
 });
