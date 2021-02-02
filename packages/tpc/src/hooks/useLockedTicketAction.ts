@@ -33,7 +33,7 @@ const getConfirmButtonText = (action: Action): string => {
 /**
  *
  * @param ticket {Ticket}
- * @param actions {Array<Action>} The actions to take on confirmation.
+ * @param action {Action} The action to take on confirmation.
  *
  * The actions may depend upon the situation. For example,
  * - When a user tries to delete a locked ticket, we just show them an alert, but take no action
