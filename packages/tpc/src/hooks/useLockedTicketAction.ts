@@ -23,7 +23,7 @@ const getConfirmButtonText = (action: Action): string => {
 
 		case 'COPY/TRASH':
 		case 'COPY/TRASH/SHOW_TPC':
-			return __('Copy and trash this ticket');
+			return __('Copy and archive this ticket');
 
 		default:
 			return __('OK');
