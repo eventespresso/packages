@@ -1,11 +1,14 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-
+import { Clickable } from '@eventespresso/adapters';
 import { InlineEditCurrency } from '@eventespresso/ui-components';
+import { CurrencyDisplay } from '@eventespresso/ee-components';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { useMoneyDisplay } from '@eventespresso/services';
-import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
+import { isLocked } from '@eventespresso/predicates';
+import { useLockedTicketAction } from '@eventespresso/tpc';
+
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
 import type { TicketItemProps } from '../types';
 
@@ -25,21 +28,26 @@ const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, 
 		},
 		[recalculateBasePrice, ticket.price]
 	);
+	const { alertContainer, showAlert } = useLockedTicketAction(ticket, 'COPY/TRASH');
 
 	const wrapperProps = useMemoStringify({ className });
 
-	const isEditDisabled = Boolean(ticket.sold);
+	const isTicketLocked = isLocked(ticket);
 
-	const tooltip = isEditDisabled ? SOLD_TICKET_ERROR_MESSAGE : __('edit ticket total…');
+	const tooltip = __('edit ticket total…');
 
-	return (
+	return isTicketLocked ? (
+		<Clickable as='div' onClick={showAlert}>
+			<CurrencyDisplay className={className} value={ticket.price} />
+			{alertContainer}
+		</Clickable>
+	) : (
 		<InlineEditCurrency
 			afterAmount={afterAmount}
 			amount={ticket.price}
 			beforeAmount={beforeAmount}
 			formatAmount={formatAmount}
 			id={ticket.id}
-			isEditDisabled={isEditDisabled}
 			placeholder={__('set price…')}
 			wrapperProps={wrapperProps}
 			onChange={onChangePrice}

@@ -1,15 +1,15 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-
 import { Calculator } from '@eventespresso/icons';
 import { IconButton, IconButtonProps } from '@eventespresso/ui-components';
 import { EdtrGlobalModals, useTicketItem } from '@eventespresso/edtr-services';
 import { TypeName, withIsLoaded } from '@eventespresso/services';
 import { useGlobalModal } from '@eventespresso/registry';
+import { isLocked } from '@eventespresso/predicates';
 
 import type { BaseProps } from '../types';
-import { SOLD_TICKET_ERROR_MESSAGE } from '../utils';
+import { useLockedTicketAction } from '../hooks';
 
 interface TPCButtonProps extends BaseProps, IconButtonProps {}
 
@@ -21,18 +21,23 @@ const TicketPriceCalculatorButton: React.FC<TPCButtonProps> = ({ ticketId, ...bu
 	}, [ticketId, openWithData]);
 
 	const ticket = useTicketItem({ id: ticketId });
-	const isDisabled = Boolean(ticket?.sold);
+	const { alertContainer, showAlert } = useLockedTicketAction(ticket, 'COPY/TRASH/SHOW_TPC');
 
-	const tooltip = isDisabled ? SOLD_TICKET_ERROR_MESSAGE : __('ticket price calculator');
+	const isTicketLocked = isLocked(ticket);
+
+	const tooltip = __('ticket price calculator');
 
 	return (
-		<IconButton
-			borderless
-			icon={Calculator}
-			onClick={isDisabled ? null : onOpen}
-			tooltip={tooltip}
-			{...buttonProps}
-		/>
+		<>
+			<IconButton
+				borderless
+				icon={Calculator}
+				onClick={isTicketLocked ? showAlert : onOpen}
+				tooltip={tooltip}
+				{...buttonProps}
+			/>
+			{alertContainer}
+		</>
 	);
 };
 
