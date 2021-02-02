@@ -1,19 +1,20 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import type { EntityId } from '@eventespresso/data';
-import { useTicketsListFilterState } from '@eventespresso/edtr-services';
+import { Ticket, useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { Trash, useConfirmationDialog } from '@eventespresso/ui-components';
+import { isTrashed as isTicketTrashed, isLocked } from '@eventespresso/predicates';
+import { useLockedTicketAction } from '@eventespresso/tpc';
 
 import useDeleteTicketHandler from '@edtrUI/tickets/hooks/useDeleteTicketHandler';
 
 export interface DeleteTicketProps {
-	isTrashed?: boolean;
-	onWarn?: VoidFunction;
-	ticketId: EntityId;
+	ticket: Ticket;
 }
 
-export const DeleteTicket: React.FC<DeleteTicketProps> = ({ isTrashed, onWarn, ticketId }) => {
+export const DeleteTicket: React.FC<DeleteTicketProps> = ({ ticket }) => {
+	const isTrashed = isTicketTrashed(ticket);
+
 	const title = isTrashed ? __('Permanently delete Ticket?') : __('Move Ticket to Trash?');
 
 	const message = isTrashed
@@ -22,29 +23,33 @@ export const DeleteTicket: React.FC<DeleteTicketProps> = ({ isTrashed, onWarn, t
 				'Are you sure you want to move this ticket to the trash? You can "untrash" this ticket later if you need to.'
 		  );
 
-	const deleteTicket = useDeleteTicketHandler(ticketId);
+	const deleteTicket = useDeleteTicketHandler(ticket.id);
 
 	const onConfirmDelete = useCallback(() => {
 		deleteTicket(isTrashed);
 	}, [deleteTicket, isTrashed]);
 
-	const { confirmationDialog, onOpen } = useConfirmationDialog({
+	const { confirmationDialog, onOpen: confirmDelete } = useConfirmationDialog({
 		message,
 		title,
 		onConfirm: onConfirmDelete,
 	});
+
+	const { alertContainer, showAlert } = useLockedTicketAction(ticket);
+
 	const isTheOnlyTicket = useTicketsListFilterState().total === 1;
 
 	const cannotBeDeleted = isTrashed && isTheOnlyTicket;
 
 	const deleteTicketTitle = isTrashed ? __('delete permanently') : __('trash ticket');
 
-	const onDelete = (isTrashed && onWarn) || onOpen;
+	const onDelete = isTrashed && isLocked(ticket) ? showAlert : confirmDelete;
 
 	return (
 		<>
 			<Trash onClick={onDelete} title={deleteTicketTitle} isDisabled={cannotBeDeleted} />
 			{confirmationDialog}
+			{alertContainer}
 		</>
 	);
 };
