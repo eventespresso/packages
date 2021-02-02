@@ -1,3 +1,4 @@
+export { default as isLocked } from './isLocked';
 export { default as isOnSale } from './isOnSale';
 export { default as isPending } from './isPending';
 export { default as isTicketSoldOut } from './isSoldOut';
