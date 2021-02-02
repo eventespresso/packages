@@ -1,7 +1,10 @@
 import { useEffect, useCallback, useMemo, useState } from 'react';
+import { omit } from 'ramda';
 
 import { EntityId } from '@eventespresso/data';
 import { useRelations } from '@eventespresso/services';
+import { useDefaultTicketIds } from '@eventespresso/edtr-services';
+
 import { useAssignmentManager, useValidation } from './';
 import { AssignmentStatus, BaseProps, DataStateManager } from '../types';
 
@@ -12,6 +15,7 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 	// and to calculate difference between new and old data
 	const relations = useRelations();
 	const orphanEntities = useValidation(assignmentManager);
+	const defaultTicketIds = useDefaultTicketIds();
 
 	const { initialize, isInitialized } = assignmentManager;
 	const initialized = isInitialized();
@@ -87,13 +91,15 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 	useEffect(() => {
 		if (!initialized) {
 			const data = relations.getData();
+			// remove default tickets from TAM relations
+			data.tickets = omit(defaultTicketIds, data.tickets || {});
 			// initialize with existing data
 			initialize({ data, ...props });
 			// now check if there are any orphaned entities in the initial data and save the result
 			const hasOrphans = orphanEntities?.datetimes?.length !== 0 || orphanEntities?.tickets?.length !== 0;
 			setInitialDataIsValid(!hasOrphans);
 		}
-	}, [initialize, initialized, orphanEntities, props, relations, setInitialDataIsValid]);
+	}, [defaultTicketIds, initialize, initialized, orphanEntities, props, relations, setInitialDataIsValid]);
 
 	return useMemo(
 		() => ({
