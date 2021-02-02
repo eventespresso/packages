@@ -3,9 +3,7 @@ import { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { ButtonRow, ButtonType, Next, Previous, Submit } from '@eventespresso/ui-components';
 import { withFormSubscription, FormSubscriptionProps } from '@eventespresso/ee-components';
-import { useLazyTicket } from '@eventespresso/edtr-services';
 import { hasEmptyPrices } from '@eventespresso/predicates';
-import { SOLD_TICKET_ERROR_MESSAGE } from '@eventespresso/tpc';
 import type { PrevNext } from '@eventespresso/hooks';
 
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
@@ -19,7 +17,6 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ form, hasErrors, steps, s
 	const { current, goto, prev, next } = steps;
 	const { hasOrphanEntities } = useTAMDataState();
 	const isSubmitDisabled = hasOrphanEntities();
-	const getTicket = useLazyTicket();
 
 	const gotoDetails = useCallback(() => goto(TICKET_DETAILS_STEP), [goto]);
 	const gotoTAM = useCallback(() => goto(ASSIGN_DATES_STEP), [goto]);
@@ -27,8 +24,6 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ form, hasErrors, steps, s
 	const { values } = form.getState();
 
 	const isTPCSubmitDisabled = hasEmptyPrices(values?.prices || []);
-	const ticket = values?.id && getTicket(values?.id);
-	const isTicketSold = Boolean(ticket?.sold);
 
 	return (
 		<ButtonRow>
@@ -38,8 +33,7 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ form, hasErrors, steps, s
 						buttonText={__('Set ticket prices')}
 						buttonType={ButtonType.SECONDARY}
 						isDisabled={hasErrors}
-						onClick={isTicketSold ? null : next}
-						tooltip={isTicketSold && SOLD_TICKET_ERROR_MESSAGE}
+						onClick={next}
 					/>
 					<Next
 						buttonText={__('Skip prices - assign dates')}

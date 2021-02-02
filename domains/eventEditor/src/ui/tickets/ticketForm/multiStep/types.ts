@@ -1,6 +1,6 @@
 import type { FormRenderProps } from 'react-final-form';
 
-import type { TicketFormShape } from '@eventespresso/edtr-services';
+import type { Ticket, TicketFormShape } from '@eventespresso/edtr-services';
 import type { PrevNext } from '@eventespresso/hooks';
 import type { EntityId } from '@eventespresso/data';
 import type { AnyObject } from '@eventespresso/utils';
@@ -15,6 +15,7 @@ export interface ContentProps {
 
 export interface ContentBodyProps {
 	steps?: PrevNext;
+	ticket: Ticket;
 }
 
 export interface ContentWrapperProps extends FormRenderProps<TicketFormShape> {
