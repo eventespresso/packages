@@ -6,6 +6,7 @@ import ReverseCalculateButton from '../../buttons/ReverseCalculateButton';
 import type { Cell, FooterRow } from '@eventespresso/ui-components';
 
 interface Props {
+	isDisabled?: boolean;
 	reverseCalculate: boolean;
 	toggleCalcDir: VoidFunction;
 }
@@ -13,7 +14,7 @@ interface Props {
 type FooterRowGenerator = (props: Props) => FooterRow;
 
 const useFooterRowGenerator = (): FooterRowGenerator => {
-	return useCallback<FooterRowGenerator>(({ reverseCalculate, toggleCalcDir }: Props) => {
+	return useCallback<FooterRowGenerator>(({ isDisabled, reverseCalculate, toggleCalcDir }: Props) => {
 		const cells: Array<Cell> = [
 			{
 				key: 'id',
@@ -49,7 +50,7 @@ const useFooterRowGenerator = (): FooterRowGenerator => {
 					<TicketPriceField
 						aria-label={__('ticket total')}
 						component='input'
-						disabled={!reverseCalculate}
+						disabled={isDisabled || !reverseCalculate}
 						formatOnBlur
 					/>
 				),
@@ -58,7 +59,9 @@ const useFooterRowGenerator = (): FooterRowGenerator => {
 				key: 'actions',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__actions',
-				value: <ReverseCalculateButton reverseCalculate={reverseCalculate} toggleCalcDir={toggleCalcDir} />,
+				value: !isDisabled && (
+					<ReverseCalculateButton reverseCalculate={reverseCalculate} toggleCalcDir={toggleCalcDir} />
+				),
 			},
 		];
 

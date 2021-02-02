@@ -10,6 +10,20 @@ export const initialState: DataState = {
 	prices: [],
 	deletedPrices: [],
 	isDirty: false,
+	isDisabled: false,
+};
+
+const hasOnlyNameOrDesc = (price: Partial<TpcPriceModifier>) => {
+	if (price) {
+		const allowedKeys = ['name', 'description'];
+		for (const key in price) {
+			if (!allowedKeys.includes(key)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	return false;
 };
 
 const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
@@ -25,6 +39,11 @@ const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 				retainedPrices: Array<TpcPriceModifier>,
 				updatedPrices: Array<TpcPriceModifier>,
 				newState: DataState;
+
+			// if TPC is disabled, we only allow changing of price name and description
+			if (state.isDisabled && (type !== 'UPDATE_PRICE' || !hasOnlyNameOrDesc(fieldValues))) {
+				return state;
+			}
 
 			switch (type) {
 				case 'TOGGLE_CALC_DIR':

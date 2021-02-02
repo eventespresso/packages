@@ -4,6 +4,7 @@ import { pick } from 'ramda';
 import { useTicketItem, useTicketPrices } from '@eventespresso/edtr-services';
 import type { Ticket } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
+import { isLocked } from '@eventespresso/predicates';
 
 import type { StateInitializer } from './types';
 import type { BaseProps } from '../types';
@@ -17,6 +18,7 @@ import { usePriceToTpcModifier } from '../hooks';
 const useInitialState = ({ ticketId }: BaseProps): StateInitializer => {
 	// get the full ticket object
 	const wholeTicket = useTicketItem({ id: ticketId });
+	const isDisabled = isLocked(wholeTicket || {});
 	const ticket: Partial<Ticket> = useMemoStringify(wholeTicket ? pick(TICKET_FIELDS_TO_USE, wholeTicket) : {});
 
 	const getTicketPrices = useTicketPrices();
@@ -31,9 +33,9 @@ const useInitialState = ({ ticketId }: BaseProps): StateInitializer => {
 			// convert to TPC price objects
 			const prices = preparePricesForTpc(unSortedPrices, convertPriceToTpcModifier);
 
-			return { ...initialState, ticket, prices };
+			return { ...initialState, isDisabled, ticket, prices };
 		},
-		[getTicketPrices, ticketId, convertPriceToTpcModifier, ticket]
+		[getTicketPrices, ticketId, convertPriceToTpcModifier, isDisabled, ticket]
 	);
 };
 

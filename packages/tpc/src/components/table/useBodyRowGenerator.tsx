@@ -11,13 +11,14 @@ import type { BodyRow } from '@eventespresso/ui-components';
 
 type Props = {
 	index: number;
+	isDisabled?: boolean;
 	price?: TpcPriceModifier;
 };
 
 type BodyRowGenerator = (props: Props) => BodyRow;
 
 const useBodyRowGenerator = (): BodyRowGenerator => {
-	return useCallback<BodyRowGenerator>(({ index, price }: Props) => {
+	return useCallback<BodyRowGenerator>(({ index, isDisabled, price }: Props) => {
 		const cells = [
 			{
 				key: 'id',
@@ -53,7 +54,7 @@ const useBodyRowGenerator = (): BodyRowGenerator => {
 				key: 'actions',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__actions',
-				value: <PriceModifierActions index={index} price={price} />,
+				value: !isDisabled && <PriceModifierActions index={index} price={price} />,
 			},
 		];
 

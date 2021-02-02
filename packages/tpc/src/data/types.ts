@@ -8,6 +8,7 @@ export interface DataState extends Prices {
 	ticket: Partial<Ticket>;
 	deletedPrices: Array<EntityId>;
 	isDirty: boolean;
+	isDisabled?: boolean;
 }
 
 export type DataActionType =

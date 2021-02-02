@@ -10,6 +10,7 @@ import TaxesButtons from '../buttons/taxes/TaxesButtons';
 import { useDataState } from '../data';
 import { useInitStateListeners } from '../stateListeners';
 import { usePricesPolling } from '../hooks';
+import LockedTicketsBanner from './LockedTicketsBanner';
 
 import './styles.scss';
 
@@ -36,15 +37,18 @@ const TicketPriceCalculator: React.FC<TicketPriceCalculatorProps> = ({ context }
 
 	return (
 		<>
+			<LockedTicketsBanner />
 			<Table prices={dataState.prices} />
 			<DefaultTaxesInfo />
 
-			<ButtonRow fullWidth>
-				<DebugInfo data={dataState} />
-				<DefaultPricesInfo />
-				<TaxesButtons />
-				<DeleteAllPricesButton />
-			</ButtonRow>
+			{!dataState.isDisabled && (
+				<ButtonRow fullWidth>
+					<DefaultPricesInfo />
+					<TaxesButtons />
+					<DeleteAllPricesButton />
+				</ButtonRow>
+			)}
+			<DebugInfo data={dataState} />
 		</>
 	);
 };

@@ -9,7 +9,7 @@ import type { PriceModifierProps } from '../types';
 import './styles.scss';
 
 const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
-	const { reverseCalculate } = useDataState();
+	const { reverseCalculate, isDisabled } = useDataState();
 	const { getValue, setValue } = usePriceAmount({ field: 'amount', price });
 
 	const hasError = Number(price?.amount ?? 0) === 0;
@@ -17,7 +17,7 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 		'ee-input__price-field--has-error': hasError,
 	});
 
-	const disabled = (reverseCalculate && price.isBasePrice) || price.isDefault;
+	const disabled = isDisabled || (reverseCalculate && price.isBasePrice) || price.isDefault;
 
 	const formatParse = (defaultValue = null) => (amount: any) => {
 		const parsedValue = parsedAmount(amount);

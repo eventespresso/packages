@@ -48,7 +48,7 @@ const Modal: React.FC<ContentWrapperProps> = ({ onClose, ...props }) => {
 			showAlertOnClose={!isPristine}
 			title={title}
 		>
-			<ContentBody {...props} ticket={ticket} steps={steps} />
+			<ContentBody {...props} steps={steps} />
 		</EntityEditModal>
 	);
 };

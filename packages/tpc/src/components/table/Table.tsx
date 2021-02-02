@@ -15,22 +15,23 @@ import './styles.scss';
 
 const Table: React.FC<TableProps> = ({ prices }) => {
 	const config = useConfig();
-	const { reverseCalculate, toggleCalcDir } = useDataState();
+	const { isDisabled, reverseCalculate, toggleCalcDir } = useDataState();
 	const signB4 = config?.currency?.signB4;
 
 	const bodyRowGenerator = useBodyRowGenerator();
 	const footerRowGenerator = useFooterRowGenerator();
 	const headerRowGenerator = useHeaderRowGenerator();
 
-	const bodyRows = useMemo(() => prices.map((price, index) => bodyRowGenerator({ index, price })), [
+	const bodyRows = useMemo(() => prices.map((price, index) => bodyRowGenerator({ index, isDisabled, price })), [
 		bodyRowGenerator,
+		isDisabled,
 		prices,
 	]);
 
 	const footerRows = useMemo(() => {
-		const footerRow = footerRowGenerator({ reverseCalculate, toggleCalcDir });
+		const footerRow = footerRowGenerator({ isDisabled, reverseCalculate, toggleCalcDir });
 		return [footerRow];
-	}, [footerRowGenerator, reverseCalculate, toggleCalcDir]);
+	}, [footerRowGenerator, isDisabled, reverseCalculate, toggleCalcDir]);
 
 	const headerRows = useMemo(() => {
 		const headerRow = headerRowGenerator({ signB4 });
