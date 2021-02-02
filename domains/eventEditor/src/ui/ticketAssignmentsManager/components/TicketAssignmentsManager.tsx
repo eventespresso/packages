@@ -3,6 +3,7 @@ import { Table } from './table';
 import { FilterBar } from '../filters';
 import { useDatesAndTickets } from '../data';
 import { useDataState } from '../data';
+import Debug from './Debug';
 
 const TicketAssignmentsManager: React.FC = () => {
 	const datesAndTickets = useDatesAndTickets();
@@ -13,6 +14,7 @@ const TicketAssignmentsManager: React.FC = () => {
 			<FilterBar />
 			<ErrorMessage dataState={dataState} />
 			<Table {...datesAndTickets} />
+			<Debug />
 		</>
 	);
 };
