@@ -1,12 +1,14 @@
 import { useCallback } from 'react';
 
 import { useTicketPrices } from '@eventespresso/edtr-services';
-import { isTicketInputField, copyTicketFields } from '@eventespresso/predicates';
 import { useRelations } from '@eventespresso/services';
 import { Ticket } from '@eventespresso/edtr-services';
-import { useMutateTicket, usePrepTemplatePrices } from '@eventespresso/tpc';
+import type { EntityId } from '@eventespresso/data';
 
-const useCopyTicket = (ticket: Ticket): (() => Promise<void>) => {
+import useMutateTicket from './useMutateTicket';
+import usePrepTemplatePrices from './usePrepTemplatePrices';
+
+const useCopyTicket = (ticket: Ticket): (() => Promise<EntityId>) => {
 	const getTicketPrices = useTicketPrices();
 	const { getRelations } = useRelations();
 	const prepTemplatePrices = usePrepTemplatePrices();
@@ -23,13 +25,11 @@ const useCopyTicket = (ticket: Ticket): (() => Promise<void>) => {
 			relation: 'datetimes',
 		});
 
-		const newTicket = copyTicketFields(ticket, isTicketInputField);
-
 		// add datetimes and prices to mutation input
-		const input = { ...newTicket, prices, datetimes, sold: 0, isNew: true };
+		const input = { ...ticket, prices, datetimes, sold: 0, isNew: true };
 
 		// now finally create the ticket
-		await mutateTicket(input);
+		return await mutateTicket(input);
 	}, [getRelations, getTicketPrices, mutateTicket, prepTemplatePrices, ticket]);
 };
 
