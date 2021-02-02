@@ -2,7 +2,11 @@ export { default as useAddDefaultPrices } from './useAddDefaultPrices';
 
 export { default as useAddDefaultTaxes } from './useAddDefaultTaxes';
 
+export { default as useCopyTicket } from './useCopyTicket';
+
 export { default as useDefaultBasePrice } from './useDefaultBasePrice';
+
+export { default as useLockedTicketAction } from './useLockedTicketAction';
 
 export { default as useMutatePrices } from './useMutatePrices';
 
