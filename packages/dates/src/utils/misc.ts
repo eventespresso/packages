@@ -111,7 +111,7 @@ type AdjustEndDateArgs = {
 };
 
 /**
- * utility function to see if end date needs to adjusted
+ * utility function to see if end date needs to be adjusted
  * based upon the new start date
  */
 export const mayBeAdjustEndDate = ({
