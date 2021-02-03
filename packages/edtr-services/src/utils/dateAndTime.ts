@@ -34,7 +34,7 @@ export const startAndEndDateFixer: Decorator<any, any> = (form) => {
 						const newEndDate = add('minutes', startDate, difference);
 						form.change('endDate', newEndDate);
 						form.mutators.setFieldData('endDate', { changedFromStartDate: true });
-						endDateFieldNotice = __('End date has been adusted');
+						endDateFieldNotice = __('End date has been adjusted');
 					}
 
 					form.mutators.setFieldData('endDate', { fieldNotice: endDateFieldNotice });

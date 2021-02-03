@@ -36,7 +36,7 @@ export const EditDateRangeButton: React.FC<EditDateRangeButtonProps> = ({
 
 	const content = (
 		<DateTimeRangePicker
-			dateAjustedMessage={__('End date has been adusted')}
+			dateAjustedMessage={__('End date has been adjusted')}
 			dateFormat={dateTimeFormat}
 			enforceDatesInOrder
 			locale={locale}
