@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { add, endDateAfterStartDateErrorMessage, sub } from '@eventespresso/dates';
+import { add, diff, endDateAfterStartDateErrorMessage } from '@eventespresso/dates';
 import { __ } from '@eventespresso/i18n';
 import { Decorator } from '@eventespresso/form';
 
@@ -11,11 +11,14 @@ export const startAndEndDateFixer: Decorator<any, any> = (form) => {
 		({ values }) => {
 			form.batch(() => {
 				const { endDate, startDate } = values;
-				const startDateChanged = startDate !== previousValues.startDate;
-				const endDateChanged = endDate !== previousValues.endDate;
+
+				const previousStartDate = previousValues.startDate;
+				const previousEndDate = previousValues.endDate;
+
+				const startDateChanged = startDate !== previousStartDate;
+				const endDateChanged = endDate !== previousEndDate;
 
 				const isStartDateAfterEndDate = startDate > endDate;
-				const isEndDateBeforeStartDate = endDate < startDate;
 
 				const isEndDateNotPristine = !form.getFieldState('endDate')?.pristine;
 				const changedFromStartDate = form.getFieldState('endDate')?.data?.changedFromStartDate;
@@ -25,31 +28,24 @@ export const startAndEndDateFixer: Decorator<any, any> = (form) => {
 					let endDateFieldNotice: string;
 
 					if (isStartDateAfterEndDate) {
-						// set end date 1 hour after start date
-						const endDate = add('hours', startDate, 1);
-						form.change('endDate', endDate);
+						// calculate the difference between previous start and end date in minutes
+						const difference = diff('minutes', previousEndDate, previousStartDate);
+						// add the difference to end date
+						const newEndDate = add('minutes', startDate, difference);
+						form.change('endDate', newEndDate);
 						form.mutators.setFieldData('endDate', { changedFromStartDate: true });
-						endDateFieldNotice = __('End date has been set one hour after start date');
+						endDateFieldNotice = __('End date has been adusted');
 					}
 
 					form.mutators.setFieldData('endDate', { fieldNotice: endDateFieldNotice });
 				}
 
 				if (endDateChanged) {
-					let startDateFieldNotice: string;
-
-					if (isEndDateBeforeStartDate) {
-						const startDate = sub('hours', endDate, 1);
-						form.change('startDate', startDate);
-						startDateFieldNotice = __('Start date has been set one hour before end date');
-					}
-
 					if (isEndDateNotPristine && !changedFromStartDate) {
 						form.mutators.setFieldData('endDate', { fieldNotice: null });
 					}
 
 					form.mutators.setFieldData('endDate', { changedFromStartDate: false });
-					form.mutators.setFieldData('startDate', { fieldNotice: startDateFieldNotice });
 				}
 			});
 			previousValues = values;
