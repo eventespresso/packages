@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { add, diff, endDateAfterStartDateErrorMessage, mayBeAdjustEndDate } from '@eventespresso/dates';
+import { endDateAfterStartDateErrorMessage, mayBeAdjustEndDate } from '@eventespresso/dates';
 import { __ } from '@eventespresso/i18n';
 import { Decorator } from '@eventespresso/form';
 

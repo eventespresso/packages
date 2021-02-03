@@ -10,7 +10,6 @@ import { add, sub } from './addSub';
 import diff from './diff';
 import type { Intervals, ShiftDateArgs } from './types';
 import type { PrepDatesComparisonFunc } from './types';
-import isOnOrBeforeDate from './isOnOrBeforeDate';
 
 export const DATE_INTERVALS: Intervals = {
 	months: __('month(s)'),
