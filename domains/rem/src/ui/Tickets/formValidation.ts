@@ -1,10 +1,10 @@
-import { __ } from '@eventespresso/i18n';
 import * as yup from 'yup';
 
+import { __ } from '@eventespresso/i18n';
 import { yupToFinalFormErrors } from '@eventespresso/form';
 import { IntervalType } from '@eventespresso/dates';
 import { datesSchema, requiredMessage } from '@eventespresso/edtr-services';
-import { TicketSalesDates } from './types';
+
 import { RemTicket } from '../../data';
 
 export const validate = async (values: RemTicket): Promise<any> => {
@@ -14,11 +14,8 @@ export const validate = async (values: RemTicket): Promise<any> => {
 /**
  * switches required schema based on the value of isShared
  */
-const requiredWhenIsSharedEquals = <T extends any>(
-	isSharedEquals: boolean,
-	objectShape: yup.ObjectSchemaDefinition<yup.ObjectSchema['shape']>
-): yup.WhenOptionsBuilderFunction<T> => {
-	return ((isShared: boolean, schema: yup.ObjectSchema) => {
+const requiredWhenIsSharedEquals = (isSharedEquals: boolean, objectShape: Record<string, yup.BaseSchema>) => {
+	return (isShared: boolean, schema: yup.BaseSchema) => {
 		// if isShared equals the expected value
 		if (isShared === isSharedEquals) {
 			// make the field required and set its shape
@@ -26,10 +23,10 @@ const requiredWhenIsSharedEquals = <T extends any>(
 		}
 		// otherwise return the actual schema
 		return schema;
-	}) as yup.WhenOptionsBuilderFunction<T>;
+	};
 };
 
-const salesDatesSchema = yup.object<TicketSalesDates>().when(
+const salesDatesSchema = yup.object().when(
 	'isShared',
 	// make it required when `isShared` is true
 	requiredWhenIsSharedEquals(true, datesSchema)
@@ -49,7 +46,7 @@ const ticketSalesSchema = yup.object().when(
 	})
 );
 
-const validationSchema = yup.object<Partial<RemTicket>>({
+const validationSchema = yup.object({
 	name: yup
 		.string()
 		.required(() => __('Name is required'))

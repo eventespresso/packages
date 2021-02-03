@@ -120,7 +120,7 @@ export const evalFieldConditions = (conditions: FieldConditions, formData: AnyOb
  * @param validationSchema
  * @param values
  */
-export const yupToFinalFormErrors = async <T>(validationSchema: ObjectSchema, values: T): Promise<AnyObject> => {
+export const yupToFinalFormErrors = async <T>(validationSchema: ObjectSchema<any>, values: T): Promise<AnyObject> => {
 	try {
 		await validationSchema.validate(values, { abortEarly: false });
 	} catch (err) {
