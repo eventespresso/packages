@@ -42,6 +42,10 @@ type FieldType =
 	| 'textarea'
 	| 'timepicker';
 
+export interface FieldWrapperProps extends Omit<FieldRendererProps, 'component'> {
+	component: React.ComponentType<Omit<FieldRendererProps, 'fieldType'>>;
+}
+
 export interface AdditionalFieldProps<FormValues = AnyObject> {
 	label?: string | JSX.Element;
 	fieldType: FieldType;
@@ -55,6 +59,7 @@ export interface AdditionalFieldProps<FormValues = AnyObject> {
 	conditions?: FieldConditions;
 	formControlProps?: FormControlProps;
 	parseAsInfinity?: boolean;
+	wrapper?: React.ComponentType<FieldWrapperProps>;
 	[key: string]: any;
 }
 

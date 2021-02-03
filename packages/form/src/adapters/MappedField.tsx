@@ -15,7 +15,9 @@ import NumberField from './Number';
 import type { FieldRendererProps } from '../types';
 import { fieldPropsAreEqual } from '../utils';
 
-export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props }) => {
+const DefaultComponent = () => null;
+
+export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, wrapper: Wrapper, ...props }) => {
 	let Component: React.ComponentType<Omit<FieldRendererProps, 'fieldType'>>;
 
 	switch (fieldType) {
@@ -56,11 +58,11 @@ export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, ...props 
 			Component = Hidden;
 			break;
 		default:
-			Component = () => null;
+			Component = DefaultComponent;
 			break;
 	}
 
-	return Component && <Component {...props} />;
+	return Wrapper ? <Wrapper {...props} fieldType={fieldType} component={Component} /> : <Component {...props} />;
 };
 
 export default memo(MappedField, fieldPropsAreEqual);
