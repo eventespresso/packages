@@ -4,6 +4,7 @@ export * from './CurrencyDisplay';
 export * from './DatePicker';
 export * from './DateTimePicker';
 export * from './EditDateRangeButton';
+export * from './EndDateFieldWrapper';
 export * from './EntityEditForm';
 export * from './EntityList';
 export * from './filterBar';
