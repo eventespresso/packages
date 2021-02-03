@@ -100,12 +100,9 @@ describe('deletePrice', () => {
 
 		await actWait();
 
-		act(async () => {
+		await act(async () => {
 			await mutationResult.current.mutator.deleteEntity(testInput);
 		});
-
-		// wait for mutation promise to resolve
-		await actWait();
 
 		const relatedTicketIds = mutationResult.current.relationsManager.getRelations({
 			entity: 'prices',
