@@ -54,6 +54,12 @@ export const setDefaultTime = (date: Date, type: 'start' | 'end' = 'start'): Dat
 export const setTimeToZeroHour = (date: Date): Date => pipe(setHours(0), setMinutes(0), setSeconds(0))(date);
 
 /**
+ * Sets the time of the date object to 23:59:59
+ */
+export const setTimeToJustBeforeZeroHour = (date: Date): Date =>
+	pipe(setHours(23), setMinutes(59), setSeconds(59))(date);
+
+/**
  * Sets the time of the date object to noon
  */
 export const setTimeToNoon = (date: Date): Date => pipe(setHours(12), setMinutes(0), setSeconds(0))(date);

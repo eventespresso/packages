@@ -16,6 +16,7 @@ export interface DateRangePickerProps extends ShowTime, Omit<ReactDatePickerProp
 	endDateTZ?: React.ReactNode;
 	endLabel?: string;
 	inputValue?: [string, string];
+	limitEndByStart?: boolean;
 	locale?: string; // "en-US", "en_US", "ar" etc.
 	onChange: (dates: DateRange) => void;
 	startLabel?: string;
