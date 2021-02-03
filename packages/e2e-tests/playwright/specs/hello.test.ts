@@ -1,15 +1,11 @@
 import playwright from 'playwright';
-
-import { activatePlugin } from '../../e2e-test-utils/src/activate-plugin';
-import { changeSiteTimezone } from '../../e2e-test-utils/src/change-site-timezone';
-import { installPlugin } from '../../e2e-test-utils/src/install-plugin';
-
 let page: import('playwright').Page;
 
-describe('hello', () => {
-	// test.jestPlaywrightDebug('failed', async () => {
+describe('hello playwright', () => {
 	it('should work', async () => {
-		const browser = await playwright['chromium'].launch({ headless: false, slowMo: 200 });
+		const browser = await playwright['chromium'].launch({
+			headless: false,
+		});
 		const context = await browser.newContext();
 		page = await context.newPage();
 
@@ -25,13 +21,7 @@ describe('hello', () => {
 
 		const title = await page.title();
 
-		expect(title).toBe('Dashboard ‹ South Korea Best Korea — WordPress');
-
-		//await installPlugin('event-espresso-decaf', 'event espresso', page);
-
-		// await activatePlugin('event-espresso-decaf', page);
-
-		await changeSiteTimezone('UTC+10', page);
+		expect(title).toBe('Dashboard ‹ North Korea Best Korea — WordPress');
 
 		await browser.close();
 	});
