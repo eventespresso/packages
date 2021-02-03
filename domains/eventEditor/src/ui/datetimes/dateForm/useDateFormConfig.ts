@@ -8,6 +8,7 @@ import type { EspressoFormProps } from '@eventespresso/form';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { setDefaultTime } from '@eventespresso/dates';
+import { EndDateFieldWrapper } from '@eventespresso/ee-components';
 import { EntityId } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
 import type { Datetime, DateFormShape, DateFormConfig } from '@eventespresso/edtr-services';
@@ -97,6 +98,7 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 							label: __('End Date'),
 							fieldType: 'datetimepicker',
 							required: true,
+							wrapper: EndDateFieldWrapper,
 						},
 					],
 				},

@@ -11,6 +11,7 @@ import { EntityId } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
 import type { EspressoFormProps } from '@eventespresso/form';
 import type { Ticket, TicketFormConfig } from '@eventespresso/edtr-services';
+import { EndDateFieldWrapper } from '@eventespresso/ee-components';
 
 import { validate } from './formValidation';
 
@@ -106,6 +107,7 @@ export const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): T
 							label: __('End Date'),
 							fieldType: 'datetimepicker',
 							required: true,
+							wrapper: EndDateFieldWrapper,
 						},
 					],
 				},

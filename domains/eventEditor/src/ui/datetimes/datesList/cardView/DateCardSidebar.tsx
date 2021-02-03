@@ -15,7 +15,7 @@ const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {
 	const { updateEntity } = useDatetimeMutator(date.id);
 	const { siteTimeToUtc } = useTimeZoneTime();
 
-	const onEditHandler = useCallback(
+	const onChange = useCallback(
 		([start, end]: DateRange): void => {
 			// convert start & end dates to proper UTC "startDate" and "endDate"
 			const startDate = siteTimeToUtc(start).toISOString();
@@ -36,7 +36,7 @@ const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {
 			<EditDateRangeButton
 				endDate={date.endDate}
 				header={__('Edit Event Date')}
-				onEditHandler={onEditHandler}
+				onChange={onChange}
 				popoverPlacement='right-end'
 				startDate={date.startDate}
 				tooltip={__('edit start and end dates')}
