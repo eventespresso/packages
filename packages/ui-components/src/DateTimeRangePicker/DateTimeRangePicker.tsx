@@ -7,11 +7,10 @@ import { __ } from '@eventespresso/i18n';
 import { Save } from '@eventespresso/icons';
 import { usePrevious } from '@eventespresso/hooks';
 import {
-	add,
-	diff,
-	DateTimeRangePicker as DateTimeRangePickerAdapter,
 	DateRangePickerProps,
+	DateTimeRangePicker as DateTimeRangePickerAdapter,
 	endDateAfterStartDateErrorMessage,
+	mayBeAdjustEndDate,
 	startDateBeforeEndDateErrorMessage,
 	useDatePickerValidation,
 } from '@eventespresso/dates';
@@ -62,22 +61,28 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
 
 	const previousDates = usePrevious(dates);
 	useEffect(() => {
-		const [startDate] = dates;
+		const [startDate, endDate] = dates;
 		const startDateChanged = previousDates?.[0] && previousDates?.[0] !== startDate;
 
 		if (startDateChanged) {
 			setComputedEndDate(null);
 		}
 
-		if (enforceDatesInOrder && startDateChanged && !startDateBeforeEndDate) {
-			const [previousStartDate, previousEndDate] = previousDates;
-			// calculate the difference between previous start and end date in minutes.
-			const difference = diff('minutes', previousEndDate, previousStartDate);
-			// add the difference to end date
-			const newEndDate = add('minutes', startDate, difference);
+		if (enforceDatesInOrder && startDateChanged) {
+			const [prevStartDate, prevEndDate] = previousDates;
 
-			setDates([startDate, newEndDate]);
-			setComputedEndDate(newEndDate);
+			const newEndDate = mayBeAdjustEndDate({
+				newEndDate: endDate,
+				newStartDate: startDate,
+				prevEndDate,
+				prevStartDate,
+			});
+
+			// if end date has been adjusted
+			if (newEndDate !== endDate) {
+				setDates([startDate, newEndDate]);
+				setComputedEndDate(newEndDate);
+			}
 		}
 	}, [dates, enforceDatesInOrder, hasEndDateChanged, hasStartDateChanged, previousDates, startDateBeforeEndDate]);
 

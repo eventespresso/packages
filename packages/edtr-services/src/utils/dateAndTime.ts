@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { add, diff, endDateAfterStartDateErrorMessage } from '@eventespresso/dates';
+import { add, diff, endDateAfterStartDateErrorMessage, mayBeAdjustEndDate } from '@eventespresso/dates';
 import { __ } from '@eventespresso/i18n';
 import { Decorator } from '@eventespresso/form';
 
@@ -12,13 +12,11 @@ export const startAndEndDateFixer: Decorator<any, any> = (form) => {
 			form.batch(() => {
 				const { endDate, startDate } = values;
 
-				const previousStartDate = previousValues.startDate;
-				const previousEndDate = previousValues.endDate;
+				const prevStartDate = previousValues.startDate;
+				const prevEndDate = previousValues.endDate;
 
-				const startDateChanged = startDate !== previousStartDate;
-				const endDateChanged = endDate !== previousEndDate;
-
-				const isStartDateAfterEndDate = startDate > endDate;
+				const startDateChanged = startDate !== prevStartDate;
+				const endDateChanged = endDate !== prevEndDate;
 
 				const isEndDateNotPristine = !form.getFieldState('endDate')?.pristine;
 				const changedFromStartDate = form.getFieldState('endDate')?.data?.changedFromStartDate;
@@ -27,11 +25,14 @@ export const startAndEndDateFixer: Decorator<any, any> = (form) => {
 					// there should be no notice unless things are not in order
 					let endDateFieldNotice: string;
 
-					if (isStartDateAfterEndDate) {
-						// calculate the difference between previous start and end date in minutes
-						const difference = diff('minutes', previousEndDate, previousStartDate);
-						// add the difference to end date
-						const newEndDate = add('minutes', startDate, difference);
+					const newEndDate = mayBeAdjustEndDate({
+						newEndDate: endDate,
+						newStartDate: startDate,
+						prevEndDate,
+						prevStartDate,
+					});
+					// if end date has been adjusted
+					if (newEndDate !== endDate) {
 						form.change('endDate', newEndDate);
 						form.mutators.setFieldData('endDate', { changedFromStartDate: true });
 						endDateFieldNotice = __('End date has been adjusted');

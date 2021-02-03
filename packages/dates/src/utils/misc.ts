@@ -7,8 +7,10 @@ import type { OptionsType } from '@eventespresso/adapters';
 import { NOW } from '@eventespresso/constants';
 
 import { add, sub } from './addSub';
+import diff from './diff';
 import type { Intervals, ShiftDateArgs } from './types';
 import type { PrepDatesComparisonFunc } from './types';
+import isOnOrBeforeDate from './isOnOrBeforeDate';
 
 export const DATE_INTERVALS: Intervals = {
 	months: __('month(s)'),
@@ -99,4 +101,32 @@ export const prepDatesForComparison: PrepDatesComparisonFunc = (firstDate, secon
 	}
 
 	return [parsedFirstDate, parsedSecondDate];
+};
+
+type AdjustEndDateArgs = {
+	newEndDate: Date;
+	newStartDate: Date;
+	prevEndDate: Date;
+	prevStartDate: Date;
+};
+
+/**
+ * utility function to see if end date needs to adjusted
+ * based upon the new start date
+ */
+export const mayBeAdjustEndDate = ({
+	newEndDate,
+	newStartDate,
+	prevEndDate,
+	prevStartDate,
+}: AdjustEndDateArgs): Date => {
+	const isStartDateAfterEndDate = newStartDate > newEndDate;
+
+	if (isStartDateAfterEndDate) {
+		// calculate the difference between previous start and end date in minutes.
+		const difference = diff('minutes', prevEndDate, prevStartDate);
+		// add the difference to end date
+		return add('minutes', newStartDate, difference);
+	}
+	return newEndDate;
 };
