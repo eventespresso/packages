@@ -11,8 +11,8 @@ import playwright from 'playwright';
 // 	visitAdminPage,
 // } from '../e2e-test-utils';
 
-import { setBrowserViewport } from '../e2e-test-utils/src/set-browser-viewport';
-import { switchUserToAdmin } from '../e2e-test-utils/src/switch-user-to-admin';
+import { setBrowserViewport } from '../utils/set-browser-viewport';
+import { switchUserToAdmin } from '../utils/switch-user-to-admin';
 
 // import { addQueryArgs } from '@wordpress/url';
 

@@ -5607,17 +5607,6 @@
     "@babel/runtime" "^7.12.5"
     lodash "^4.17.19"
 
-"@wordpress/e2e-test-utils@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@wordpress/e2e-test-utils/-/e2e-test-utils-5.0.3.tgz#179239a7ad49a4136a539fa55af3742c7d40a287"
-  integrity sha512-RaukiVx7tPxzPqah4sxwo2uYjIv09BsgJYybAKpFlryp/TDd3aFrH9nUwNDHgyLqrEeF+Q1NuMCd0XLg404rgg==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@wordpress/keycodes" "^2.18.3"
-    "@wordpress/url" "^2.21.2"
-    lodash "^4.17.19"
-    node-fetch "^2.6.0"
-
 "@wordpress/editor@^9.25.2":
   version "9.25.2"
   resolved "https://registry.yarnpkg.com/@wordpress/editor/-/editor-9.25.2.tgz#51b43b07d89e5a78d84e00c260ca891400325aec"
@@ -5703,13 +5692,6 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-"@wordpress/hooks@^2.11.1":
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/@wordpress/hooks/-/hooks-2.11.1.tgz#86ad30cb20a8212f8c119894ff197574c84360e4"
-  integrity sha512-20nsvmLH5/iw9P6M7kiEBBQ7X7G3pEbqED/aN5dqkMCklDyar+OZqYBzdpGGsthXVYgomfNy6QQZWELkGJbcbw==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-
 "@wordpress/html-entities@^2.10.0":
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/@wordpress/html-entities/-/html-entities-2.10.0.tgz#7352c2e294605d37323439d2bd7c4b0c5bf32fd1"
@@ -5723,19 +5705,6 @@
   integrity sha512-CTZ0oezI6BT5GlmiE4X0fzRY6i7bNsX6hxiROkGlpREY6q4s1pnwhM8ggLIaP18Bvkb/HDkUEENDrv3iwM/LIQ==
   dependencies:
     "@babel/runtime" "^7.12.5"
-    gettext-parser "^1.3.1"
-    lodash "^4.17.19"
-    memize "^1.1.0"
-    sprintf-js "^1.1.1"
-    tannin "^1.2.0"
-
-"@wordpress/i18n@^3.18.0":
-  version "3.18.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/i18n/-/i18n-3.18.0.tgz#08f0ff63ef26fb6d2ac50683f4ad90d3b64b3960"
-  integrity sha512-e1uFWhWYnT0B6s3hyy+xS0S3bwabrvkZA84xxitiIcQvGnZDUPntqv6M9+VrgJVlmd2MR2TbCGJ5xKFAVFr/gA==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@wordpress/hooks" "^2.11.1"
     gettext-parser "^1.3.1"
     lodash "^4.17.19"
     memize "^1.1.0"
@@ -5787,15 +5756,6 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@wordpress/i18n" "^3.17.0"
-    lodash "^4.17.19"
-
-"@wordpress/keycodes@^2.18.3":
-  version "2.18.3"
-  resolved "https://registry.yarnpkg.com/@wordpress/keycodes/-/keycodes-2.18.3.tgz#116ea96bcf507daff7d6ccb4ef3dcd508eb2d61e"
-  integrity sha512-Lenyw+K2KgiqddBv5fDCh2JRfXFrONWNvPfv1DKXzHXTvBSI0JkU1RVP5WZTcVuEtctCZWL5JbhrkG2I26w68g==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@wordpress/i18n" "^3.18.0"
     lodash "^4.17.19"
 
 "@wordpress/media-utils@^1.19.2":
@@ -5924,15 +5884,6 @@
   version "2.21.1"
   resolved "https://registry.yarnpkg.com/@wordpress/url/-/url-2.21.1.tgz#618e0390579cc8e628b438d0991795ee2381b9d0"
   integrity sha512-BDUCCDMET9X+qpUH/ZkFrq0PoptBwOFAIxHDUKm2jZ4FqEsQw6O6j4I/QyQDEy1nJosEssXO3gdNZuUEmNc1rw==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    lodash "^4.17.19"
-    react-native-url-polyfill "^1.1.2"
-
-"@wordpress/url@^2.21.2":
-  version "2.21.2"
-  resolved "https://registry.yarnpkg.com/@wordpress/url/-/url-2.21.2.tgz#7689e7e633aeab74fbf6c16e4d051b2fd7872a2f"
-  integrity sha512-bLHg4pTo/9mQUkK1s1MU/Sjgnzfy2AkPvPn4ObGA8/4CFkMsDhQGAVhhw5YuezcxvaJkBiKJ+BxgFJ1QKksF6w==
   dependencies:
     "@babel/runtime" "^7.12.5"
     lodash "^4.17.19"
@@ -16637,24 +16588,6 @@ pkg-up@3.1.0, pkg-up@^3.1.0:
   integrity sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==
   dependencies:
     find-up "^3.0.0"
-
-playwright-chromium@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/playwright-chromium/-/playwright-chromium-1.8.0.tgz#5e68b07ee27e5fe132f758c40a5ee37a0e501288"
-  integrity sha512-DMyWmFPXkW0Tm5yBx2pV3m5F8qBSk29+DuZd21liwnG8qNZX43zEY1QpsS51zWPYFgi+nHkRr343GycyAoSUzQ==
-  dependencies:
-    commander "^6.1.0"
-    debug "^4.1.1"
-    extract-zip "^2.0.1"
-    https-proxy-agent "^5.0.0"
-    jpeg-js "^0.4.2"
-    mime "^2.4.6"
-    pngjs "^5.0.0"
-    progress "^2.0.3"
-    proper-lockfile "^4.1.1"
-    proxy-from-env "^1.1.0"
-    rimraf "^3.0.2"
-    ws "^7.3.1"
 
 playwright-core@>=1.2.0:
   version "1.8.0"
