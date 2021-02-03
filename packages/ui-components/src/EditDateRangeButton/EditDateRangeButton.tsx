@@ -15,7 +15,7 @@ export const EditDateRangeButton: React.FC<EditDateRangeButtonProps> = ({
 	dateTimeFormat,
 	header,
 	locale,
-	onEditHandler,
+	onChange,
 	startDate,
 	endDate,
 	popoverPlacement,
@@ -25,20 +25,22 @@ export const EditDateRangeButton: React.FC<EditDateRangeButtonProps> = ({
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const isMobile = !useViewportWidthGreaterThan(RESPONSIVE_CARD_SWITCH_BREAKPOINT);
 
-	const onChange = useCallback(
+	const onChangeHandler = useCallback(
 		(dates: DateRange) => {
-			onEditHandler(dates);
+			onChange(dates);
 			onClose();
 		},
-		[onClose, onEditHandler]
+		[onClose, onChange]
 	);
 	const value = useMemoStringify<DateRange>([startDate, endDate]);
 
 	const content = (
 		<DateTimeRangePicker
+			dateAjustedMessage={__('End date has been adusted')}
 			dateFormat={dateTimeFormat}
+			enforceDatesInOrder
 			locale={locale}
-			onChange={onChange}
+			onChange={onChangeHandler}
 			TimezoneTimeInfo={TimezoneTimeInfo}
 			value={value}
 		/>

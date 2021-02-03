@@ -4,12 +4,14 @@ import type { LabelPosition } from '../withLabel';
 import type { ButtonProps } from '../Button';
 import { DateTimeRangePickerProps } from '../DateTimeRangePicker';
 
-export interface EditDateRangeButtonProps extends ButtonProps, Pick<DateTimeRangePickerProps, 'TimezoneTimeInfo'> {
+export interface EditDateRangeButtonProps
+	extends Omit<ButtonProps, 'onChange'>,
+		Pick<DateTimeRangePickerProps, 'TimezoneTimeInfo'> {
 	dateTimeFormat?: string;
 	endDate: Date;
 	header?: string;
 	locale?: string;
-	onEditHandler: (dates: DateRange) => void;
+	onChange: (dates: DateRange) => void;
 	popoverPlacement?: PopoverProps['placement'];
 	startDate: Date;
 	tooltip?: string;
