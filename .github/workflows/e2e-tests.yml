@@ -18,7 +18,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                part: [1, 2, 3, 4]
+                part: [1, 2]
 
         steps:
             - uses: actions/checkout@v2
@@ -51,9 +51,11 @@ jobs:
               run: |
                   npm run wp-env start
 
-            # - name: Running the tests
-            #   run: |
-            #       npm run test:e2e
+            - name: Setup Playwright
+              uses: microsoft/playwright-github-action@v1
+
+            - name: Running the tests
+              run: npm run test:e2e
 
             - name: Archive debug artifacts (screenshots, HTML snapshots)
               uses: actions/upload-artifact@v2

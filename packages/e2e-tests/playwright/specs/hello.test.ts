@@ -7,7 +7,7 @@ describe('hello playwright', () => {
 		});
 		const context = await browser.newContext();
 		const page: Page = await context.newPage();
-		const host = process.env.CI ? 'http://localhost:8889' : 'http://ee.local/wp-admin';
+		const host = process.env.CI ? 'http://localhost:8889/' : 'http://ee.local/wp-admin/';
 
 		await page.goto(host);
 		await page.focus('#user_login');
