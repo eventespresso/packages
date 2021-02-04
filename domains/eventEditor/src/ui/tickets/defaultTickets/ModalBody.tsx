@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo } from 'react';
 
-import { SimpleEntityList } from '@eventespresso/ui-components';
+import { SimpleEntityList, DebugInfo } from '@eventespresso/ui-components';
 import { useTickets, useTicketPrices } from '@eventespresso/edtr-services';
 import { usePrepTemplatePrices } from '@eventespresso/tpc';
 
@@ -11,7 +11,7 @@ import { ContentRenderer } from './multiStep';
 import './styles.scss';
 
 const ModalBody: React.FC = () => {
-	const { addTicket, tickets, deleteTicket, reset } = useDataState();
+	const { addTicket, tickets, deleteTicket, reset, getData } = useDataState();
 	const templates = useTickets();
 	const getTicketPrices = useTicketPrices();
 	const prepTemplatePrices = usePrepTemplatePrices();
@@ -29,7 +29,7 @@ const ModalBody: React.FC = () => {
 		(entity) => {
 			const ticketPrices = getTicketPrices(entity.id);
 			const prices = prepTemplatePrices(ticketPrices);
-			addTicket({ ...entity, isNew: true, prices });
+			addTicket({ ...entity, isNew: true, dbId: 0, prices });
 		},
 		[addTicket, getTicketPrices, prepTemplatePrices]
 	);
@@ -41,14 +41,17 @@ const ModalBody: React.FC = () => {
 	}, []);
 
 	return (
-		<SimpleEntityList
-			ContentRenderer={ContentRenderer}
-			addEntity={addEntity}
-			deleteEntity={deleteEntity}
-			entities={entities}
-			templates={templates as any}
-			EntityRenderer={TicketCard}
-		/>
+		<>
+			<SimpleEntityList
+				ContentRenderer={ContentRenderer}
+				addEntity={addEntity}
+				deleteEntity={deleteEntity}
+				entities={entities}
+				templates={templates as any}
+				EntityRenderer={TicketCard}
+			/>
+			<DebugInfo data={getData()} />
+		</>
 	);
 };
 

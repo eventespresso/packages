@@ -1,30 +1,26 @@
-import { useEffect, useState } from 'react';
-
 import { EntityEditModal } from '@eventespresso/ui-components';
 import { __, sprintf } from '@eventespresso/i18n';
 import { usePrevNext } from '@eventespresso/hooks';
+import { useIsPristine } from '@eventespresso/form';
 
 import ModalBody from './ModalBody';
 
 import type { ContextProviderProps } from './types';
 import FooterButtons from './FooterButtons';
+import { useDataState } from '../data';
 
 const Modal: React.FC<ContextProviderProps> = ({ onClose, ...props }) => {
 	const steps = usePrevNext();
-	const [isPristine, setIsPristine] = useState(true);
+	const isPristine = useIsPristine();
+	const { tickets } = useDataState();
 
-	const { values } = props.form.getState();
+	const ticketId = props.form.getState().values?.id;
 
-	useEffect(() => {
-		return props.form.subscribe(({ pristine }) => setIsPristine(pristine), { pristine: true });
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	const title = values?.dbId
+	const title = tickets[ticketId]?.dbId
 		? sprintf(
-				/* translators: %d ticket id */
-				__('Edit ticket %d'),
-				`#${values.dbId}`
+				/* translators: %s ticket id */
+				__('Edit ticket %s'),
+				`#${tickets[ticketId].dbId}`
 		  )
 		: __('New Ticket Details');
 
