@@ -7,11 +7,13 @@ import { actWait } from '@eventespresso/utils/src/test';
 
 const mockTicket = tickets[0];
 
+const getTicket = () => mockTicket;
+
 describe('TPC:useInitialState', () => {
 	it('returns the computed initial state for the passed ticketId', async () => {
 		const { result } = renderHook(
 			() => {
-				return useInitialState({ ticketId: mockTicket.id });
+				return useInitialState({ ticketId: mockTicket.id, getTicket });
 			},
 			{
 				wrapper: TestWrapper,
