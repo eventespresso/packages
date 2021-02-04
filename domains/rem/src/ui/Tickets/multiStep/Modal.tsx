@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-
 import { EntityEditModal } from '@eventespresso/ui-components';
 import { __, sprintf } from '@eventespresso/i18n';
 import { usePrevNext } from '@eventespresso/hooks';
+import { useIsPristine } from '@eventespresso/form';
 
 import ModalBody from './ModalBody';
 
@@ -11,14 +10,9 @@ import FooterButtons from './FooterButtons';
 
 const Modal: React.FC<ContextProviderProps> = ({ onClose, ...props }) => {
 	const steps = usePrevNext();
-	const [isPristine, setIsPristine] = useState(true);
+	const isPristine = useIsPristine();
 
 	const { values } = props.form.getState();
-
-	useEffect(() => {
-		return props.form.subscribe(({ pristine }) => setIsPristine(pristine), { pristine: true });
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
 
 	const title = values?.dbId
 		? sprintf(
