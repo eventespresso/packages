@@ -13,7 +13,7 @@ export interface ContentProps {
 	onSubmit: OnSubmit;
 }
 
-export interface ContentBodyProps {
+export interface ModalBodyProps {
 	steps?: PrevNext;
 }
 

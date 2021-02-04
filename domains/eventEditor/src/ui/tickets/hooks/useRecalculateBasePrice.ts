@@ -4,13 +4,14 @@ import { EntityId } from '@eventespresso/data';
 import { calculateBasePrice, useInitialState } from '@eventespresso/tpc';
 import { getBasePrice } from '@eventespresso/predicates';
 import { useDefaultBasePrice, useMutatePrices } from '@eventespresso/tpc';
-import { useTicketMutator } from '@eventespresso/edtr-services';
+import { useLazyTicket, useTicketMutator } from '@eventespresso/edtr-services';
 
 type Callback = (ticketPrice: number) => void;
 
 const useRecalculateBasePrice = (ticketId: EntityId): Callback => {
+	const getTicket = useLazyTicket();
 	// This will give us the exact state expected by `calculateBasePrice()`
-	const getDataState = useInitialState({ ticketId });
+	const getDataState = useInitialState({ ticketId, getTicket });
 	// This default price will be added if there is none
 	const defaultBasePrice = useDefaultBasePrice();
 	const mutatePrices = useMutatePrices();

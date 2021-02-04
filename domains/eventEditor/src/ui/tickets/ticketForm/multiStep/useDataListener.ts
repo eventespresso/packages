@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
 import { useForm } from '@eventespresso/form';
-import { useSyncTPCToRFF } from '@eventespresso/tpc';
 import { useDataState as useTAMDataState } from '@edtrUI/ticketAssignmentsManager/data';
 
 /**
@@ -18,8 +17,6 @@ const useDataListener: VoidFunction = () => {
 		// update value of `datetimes` field in RFF state
 		mutators.updateFieldValue('datetimes', data?.tickets?.[id]?.datetimes);
 	}, [data, id, mutators]);
-
-	useSyncTPCToRFF();
 };
 
 export default useDataListener;
