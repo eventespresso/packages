@@ -51,9 +51,9 @@ jobs:
               run: |
                   npm run wp-env start
 
-            - name: Running the tests
-              run: |
-                  npm run test:e2e
+            # - name: Running the tests
+            #   run: |
+            #       npm run test:e2e
 
             - name: Archive debug artifacts (screenshots, HTML snapshots)
               uses: actions/upload-artifact@v2
