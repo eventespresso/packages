@@ -41,10 +41,11 @@ jobs:
               with:
                   node-version: 14.x
 
-            - name: Npm install and build
-              run: |
-                  npm ci
-                  FORCE_REDUCED_MOTION=true npm run build
+            # Install all dependencies at root
+            - name: Install dependencies
+              # install deps only if lockfile has changed
+              if: steps.cache-deps.outputs.cache-hit != 'true'
+              run: yarn install --frozen-lockfile
 
             - name: Install WordPress
               run: |
