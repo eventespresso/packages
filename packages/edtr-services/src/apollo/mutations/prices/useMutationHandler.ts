@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { MutationType } from '@eventespresso/data';
-import { normalizeNumericFields, removeNullAndUndefined } from '@eventespresso/utils';
+import { normalizeNumericFields, normalizeBooleanFields, removeNullAndUndefined } from '@eventespresso/utils';
 
 import useMutationVariables from './useMutationVariables';
 import useOnCreatePrice from './useOnCreatePrice';
@@ -11,7 +11,7 @@ import type { MutationHandler, MutationUpdater } from '../types';
 import { PricesList, Price } from '../../';
 import { DEFAULT_PRICE_LIST_DATA as DEFAULT_LIST_DATA, usePriceQueryOptions } from '../../queries';
 import type { PriceCommonInput } from './types';
-import { NUMERIC_FIELDS } from './constants';
+import { BOOLEAN_FIELDS, NUMERIC_FIELDS } from './constants';
 
 type MH = MutationHandler<Price, PriceCommonInput>;
 
@@ -54,8 +54,9 @@ const useMutationHandler = (): MH => {
 		(mutationType, input) => {
 			// Get rid of null or undefined values
 			const filteredInput = removeNullAndUndefined(input);
-			// normalize numeric fields
-			const normalizedInput = normalizeNumericFields(NUMERIC_FIELDS, filteredInput);
+			let normalizedInput = normalizeNumericFields(NUMERIC_FIELDS, filteredInput);
+			// normalize boolean fields
+			normalizedInput = normalizeBooleanFields(BOOLEAN_FIELDS, normalizedInput);
 
 			const variables = getMutationVariables(mutationType, normalizedInput);
 
