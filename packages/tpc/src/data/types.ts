@@ -1,11 +1,15 @@
 import type { Reducer, ReducerState } from 'react';
 
-import type { EntityId } from '@eventespresso/data';
+import type { Entity, EntityId } from '@eventespresso/data';
 import type { Ticket } from '@eventespresso/edtr-services';
 import type { BaseProps, TpcPriceModifier } from '../types';
 
+export interface TpcTicket
+	extends Partial<Entity>,
+		Partial<Pick<Ticket, 'id' | 'isTaxable' | 'name' | 'price' | 'reverseCalculate'>> {}
+
 export interface DataState extends Prices {
-	ticket: Partial<Ticket>;
+	ticket: TpcTicket;
 	deletedPrices: Array<EntityId>;
 	isDirty: boolean;
 	isDisabled?: boolean;
@@ -23,7 +27,7 @@ export type DataActionType =
 
 export interface DataAction extends Partial<DataState>, Partial<UpdatePriceArgs> {
 	type: DataActionType;
-	ticketPrice?: Ticket['price'];
+	ticketPrice?: TpcTicket['price'];
 	price?: TpcPriceModifier;
 	index?: number;
 }
@@ -44,7 +48,7 @@ export interface DataStateManager extends DataState {
 	setPrices: (prices: DataState['prices']) => void;
 	toggleCalcDir: VoidFunction;
 	updatePrice: (args: UpdatePriceArgs) => void;
-	updateTicketPrice: (ticketPrice: Ticket['price']) => void;
+	updateTicketPrice: (ticketPrice: TpcTicket['price']) => void;
 }
 
 export type DataStateReducer = Reducer<DataState, DataAction>;

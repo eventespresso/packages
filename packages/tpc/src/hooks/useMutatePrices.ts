@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { EntityId } from '@eventespresso/data';
-import { cloneAndNormalizePrice } from '@eventespresso/predicates';
+import { copyPriceFields, isPriceInputField } from '@eventespresso/predicates';
 import { usePriceMutator } from '@eventespresso/edtr-services';
 import { TpcPriceModifier } from '../types';
 
@@ -13,47 +13,28 @@ const useMutatePrices = (): Callback => {
 	// Async to make sure that prices are handled before updating the ticket.
 	return useCallback(
 		async (prices, deletedPriceIds = []) => {
-			const relatedPriceIds: EntityId[] = [];
+			let relatedPriceIds: EntityId[];
 
 			if (prices?.length) {
 				// make sure to complete all price mutatons before updating the ticket
-				await Promise.all(
+				relatedPriceIds = await Promise.all(
 					// convert the price mutatons into promises
-					prices.map(({ isNew, isModified, ...price }) => {
+					prices.map(async ({ isNew, isModified, ...price }) => {
 						// if it's not new or modified, no need to do anything
 						// but base price needs to be updated anyway which may been modified by revCalc
 						if (!(isNew || isModified) && !price.isBasePrice) {
 							// retain the existing relation
-							relatedPriceIds.push(price.id);
-							return Promise.resolve(price);
+							return price.id;
 						}
-						const normalizedPriceFields = cloneAndNormalizePrice(price);
+						const normalizedPriceFields = copyPriceFields(price, isPriceInputField);
 						// if it's a newly added price
 						if (isNew) {
-							return new Promise((resolve, onError) => {
-								createPrice({ ...normalizedPriceFields })
-									.then(({ data }) => {
-										const price = data?.createEspressoPrice?.espressoPrice;
-										relatedPriceIds.push(price?.id);
-										resolve(price);
-									})
-									.catch(onError);
-							});
+							const result = await createPrice(normalizedPriceFields);
+							return result?.data?.createEspressoPrice?.espressoPrice?.id;
 						}
 						// it's surely an existing price that's been modified
-						return new Promise((resolve, onError) => {
-							const onCompleted = ({
-								data: {
-									updateEspressoPrice: { espressoPrice: price },
-								},
-							}: any): void => {
-								relatedPriceIds.push(price.id);
-								resolve(price);
-							};
-							updatePrice({ id: price.id, ...normalizedPriceFields })
-								.then(onCompleted)
-								.catch(onError);
-						});
+						const result = await updatePrice({ id: price.id, ...normalizedPriceFields });
+						return result?.data?.updateEspressoPrice?.espressoPrice?.id;
 					})
 				);
 			}
@@ -63,7 +44,7 @@ const useMutatePrices = (): Callback => {
 				await Promise.all(deletedPriceIds.map((id) => deletePrice({ id, deletePermanently: true })));
 			}
 
-			return relatedPriceIds;
+			return (relatedPriceIds || []).filter(Boolean);
 		},
 		[createPrice, deletePrice, updatePrice]
 	);

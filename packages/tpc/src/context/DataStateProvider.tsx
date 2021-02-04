@@ -7,8 +7,8 @@ const DataStateContext = createContext<DataStateManager>(null);
 
 const { Provider, Consumer: DataStateConsumer } = DataStateContext;
 
-const DataStateProvider: React.FC<BaseProps> = ({ children, ticketId }) => {
-	const data = useDataStateManager({ ticketId });
+const DataStateProvider: React.FC<BaseProps> = ({ children, ...props }) => {
+	const data = useDataStateManager(props);
 
 	return <Provider value={data}>{children}</Provider>;
 };

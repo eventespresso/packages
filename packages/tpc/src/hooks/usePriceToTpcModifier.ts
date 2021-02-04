@@ -25,9 +25,11 @@ const usePriceToTpcModifier = (): PriceToTpcModifier => {
 			// convert to TPC price objects by adding
 			// "priceType" and "priceTypeOrder"
 			return {
-				...price,
+				// it's possible that we are already editing a price
+				// which will have price type fields set, those will be preferred
 				priceType: priceTypeId,
 				priceTypeOrder: priceTypeIdOrder[priceTypeId],
+				...price,
 			};
 		},
 		[getRelations, priceTypeIdOrder]

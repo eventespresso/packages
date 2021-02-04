@@ -1,9 +1,11 @@
 import type { EntityId } from '@eventespresso/data';
-import type { Price } from '@eventespresso/edtr-services';
-import { DataState } from './data';
+import type { Price, useTicketPrices } from '@eventespresso/edtr-services';
+import { DataState, TpcTicket } from './data';
 
 export interface BaseProps {
 	ticketId: EntityId;
+	getTicketPrices?: ReturnType<typeof useTicketPrices>;
+	getTicket?: (id: EntityId) => TpcTicket;
 }
 
 export interface TPCModalProps {

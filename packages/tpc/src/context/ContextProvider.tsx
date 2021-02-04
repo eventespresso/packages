@@ -7,12 +7,12 @@ const Context = createContext<ContextProps>(null);
 
 const { Provider, Consumer } = Context;
 
-const ContextProvider: React.FC<ProviderProps> = ({ children, ticketId, onClose }) => {
+const ContextProvider: React.FC<ProviderProps> = ({ onClose, ...props }) => {
 	const value = useMemo(() => ({ onClose }), [onClose]);
 
 	return (
 		<Provider value={value}>
-			<DataStateProvider ticketId={ticketId}>{children}</DataStateProvider>
+			<DataStateProvider {...props} />
 		</Provider>
 	);
 };

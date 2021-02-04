@@ -1,9 +1,9 @@
 import { assoc, map, pickBy, when } from 'ramda';
 
 import type { Price } from '@eventespresso/edtr-services';
-import { toBoolean, toInteger, parsedAmount } from '@eventespresso/utils';
+import { parsedAmount } from '@eventespresso/utils';
 import { isBasePrice } from '../common';
-import { isPriceField, isPriceInputField } from './selectionPredicates';
+import { isPriceField } from './selectionPredicates';
 import { entityHasGuid } from '../common';
 
 type updatePriceArrayProps<T extends Price> = {
@@ -67,19 +67,3 @@ export const updatePriceTypeForPrice = <T extends Price>({ prices, guid, type }:
  */
 export const updatePriceAmountForPrice = <T extends Price>({ prices, guid, amount }: updatePriceArrayProps<T>): T[] =>
 	map(when(entityHasGuid(guid), updatePriceAmount(amount)), prices);
-
-/**
- * shallow copies the supplied price and normalizes fields for persistence
- *
- * @param {Price} price
- * @return {Price} price
- */
-export const cloneAndNormalizePrice = <T extends Price>(price: T): T => {
-	const priceFields = copyPriceFields(price, isPriceInputField);
-	return {
-		...priceFields,
-		amount: parsedAmount(price.amount || '0'),
-		isDefault: toBoolean(price.isDefault),
-		order: toInteger(price.order),
-	};
-};
