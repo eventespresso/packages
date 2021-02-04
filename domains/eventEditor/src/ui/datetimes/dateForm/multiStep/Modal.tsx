@@ -5,8 +5,7 @@ import { __, sprintf } from '@eventespresso/i18n';
 import { usePrevNext } from '@eventespresso/hooks';
 import { useIsPristine } from '@eventespresso/form';
 
-import ContentBody from './ContentBody';
-
+import ModalBody from './ModalBody';
 import type { ContentWrapperProps } from './types';
 import type { EntityEditModalData } from '@edtrUI/types';
 import FooterButtons from './FooterButtons';
@@ -42,7 +41,7 @@ const Modal: React.FC<ContentWrapperProps> = ({ onClose, ...props }) => {
 			showAlertOnClose={!isPristine}
 			title={title}
 		>
-			<ContentBody {...props} steps={steps} />
+			<ModalBody {...props} steps={steps} />
 		</EntityEditModal>
 	);
 };

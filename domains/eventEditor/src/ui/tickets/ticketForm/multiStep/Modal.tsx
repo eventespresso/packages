@@ -6,7 +6,6 @@ import { usePrevNext } from '@eventespresso/hooks';
 import { useIsPristine } from '@eventespresso/form';
 
 import ModalBody from './ModalBody';
-
 import type { ContentWrapperProps } from './types';
 import type { EntityEditModalData } from '@edtrUI/types';
 import FooterButtons from './FooterButtons';
