@@ -156,10 +156,12 @@ export async function trashExistingPosts(postType = 'post', page) {
 // other posts/comments/etc. aren't dirtying tests and tests don't depend on
 // each other's side-effects.
 beforeAll(async () => {
-	// const browser = await playwright['chromium'].launch();
-	// const context = await browser.newContext();
-	// const page = await context.newPage();
-	// await page.goto('http://ee.local/wp-admin');
+	const host = process.env.CI ? 'http://localhost:8889' : 'http://ee.local/wp-admin';
+	const browser = await playwright['chromium'].launch();
+	const context = await browser.newContext();
+	const page = await context.newPage();
+
+	await page.goto(host);
 	// await setupBrowser(page);
 	// await enablePageDialogAccept();
 	// await observeConsoleLogging();
