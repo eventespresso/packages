@@ -4,4 +4,5 @@ module.exports = {
 	testPathIgnorePatterns: ['/node_modules/'],
 	reporters: undefined,
 	setupFilesAfterEnv: ['<rootDir>/config/setup-playwright.js', '@wordpress/jest-console'],
+	verbose: process.env.CI === 'true',
 };

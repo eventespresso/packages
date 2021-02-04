@@ -7,7 +7,7 @@ describe('hello playwright', () => {
 		});
 		const context = await browser.newContext();
 		const page: Page = await context.newPage();
-		const host = process.env.CI ? 'http://localhost:8889/' : 'http://ee.local/wp-admin/';
+		const host = process.env.CI ? 'http://localhost:8889/wp-admin/' : 'http://ee.local/wp-admin/';
 
 		await page.goto(host);
 		await page.focus('#user_login');
@@ -17,7 +17,8 @@ describe('hello playwright', () => {
 		await Promise.all([page.waitForNavigation(), page.click('#wp-submit')]);
 
 		const title = await page.title();
-		expect(title).toBe('Dashboard ‹ North Korea Best Korea — WordPress');
+
+		expect(title).toBe('Dashboard ‹ barista — WordPress');
 
 		await browser.close();
 	});
