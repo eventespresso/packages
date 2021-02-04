@@ -92,9 +92,9 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 		if (!initialized) {
 			const data = relations.getData();
 			// remove default tickets from TAM relations
-			data.tickets = omit(defaultTicketIds, data.tickets || {});
+			const newData = { ...data, tickets: omit(defaultTicketIds, data.tickets || {}) };
 			// initialize with existing data
-			initialize({ data, ...props });
+			initialize({ data: newData, ...props });
 			// now check if there are any orphaned entities in the initial data and save the result
 			const hasOrphans = orphanEntities?.datetimes?.length !== 0 || orphanEntities?.tickets?.length !== 0;
 			setInitialDataIsValid(!hasOrphans);
