@@ -107,12 +107,9 @@ describe('createTicket', () => {
 
 		await actWait();
 
-		act(() => {
-			mutationResult.current.mutator.createEntity(testInput);
+		await act(async () => {
+			await mutationResult.current.mutator.createEntity(testInput);
 		});
-
-		// wait for mutation promise to resolve
-		await actWait();
 
 		const cache = mutationResult.current.client.extract();
 		const { result: cacheResult } = renderHook(
