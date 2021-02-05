@@ -11,7 +11,6 @@
 		"build:rem": "yarn build:cra --domains \"rem\" --packages \"rrule-generator\"",
 		"build:wpUser": "yarn build:cra --domains \"wpUser\" --skip-all-packages",
 		"build-storybook": "BUILD_POT=false build-storybook",
-		"chromatic": "chromatic",
 		"compile": "yarn tsc",
 		"deploy": "FORCE_COLOR=true lerna run deploy",
 		"dev": "yarn dev:watch --domains \"eventEditor\"",
@@ -30,8 +29,7 @@
 		"test": "node scripts/test.js",
 		"test:ci": "FORCE_COLOR=true CI=true yarn test",
 		"test:e2e": "jest --config packages/e2e-tests/jest.playwright.config.js",
-		"update-deps": "npx ncu -u && yarn workspaces run update-deps",
-		"wp-env": "wp-env"
+		"update-deps": "npx ncu -u && yarn workspaces run update-deps"
 	},
 	"lint-staged": {
 		"./**/*.{js,jsx,ts,tsx}": "yarn eslint"

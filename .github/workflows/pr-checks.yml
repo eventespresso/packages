@@ -42,6 +42,7 @@ jobs:
               run: yarn ${{ matrix.task }}:ci ${{ env.CLI_ARGS }}
     e2e:
         name: E2E Tests
+        needs: [build]
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -59,7 +60,11 @@ jobs:
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
             - name: Install dependencies
+              if: steps.cache-deps.outputs.cache-hit != 'true'
               run: yarn install --frozen-lockfile
+
+            - name: Make sure PlayWright doesn't play it wrong
+              run: yarn add -WD playwright
 
             - name: Install WordPress
               run: yarn wp-env start
