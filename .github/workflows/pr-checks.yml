@@ -59,7 +59,7 @@ jobs:
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
             - name: Install dependencies
-              run: PLAYWRIGHT_BROWSERS_PATH=0 yarn install --frozen-lockfile
+              run: yarn install --frozen-lockfile && yarn add -WD playwright
 
             - name: Install WordPress
               run: npm run wp-env start
