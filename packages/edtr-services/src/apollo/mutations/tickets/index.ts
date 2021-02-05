@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@eventespresso/data';
 import { TICKET_ATTRIBUTES } from '../../queries/tickets';
 import { PRICE_ATTRIBUTES } from '../../queries/prices';
 

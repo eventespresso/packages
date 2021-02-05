@@ -1,7 +1,5 @@
-import type { ApolloError } from 'apollo-client';
 import { __ } from '@eventespresso/i18n';
-
-import type { Order, EntityQueryOrderBy, AttendeesOrderByFields } from '@eventespresso/data';
+import type { ApolloError, Order, EntityQueryOrderBy, AttendeesOrderByFields } from '@eventespresso/data';
 import type { OptionsType } from '@eventespresso/adapters';
 
 export const buildEntitySelectOptions = (list: Array<any>, loading: boolean, error: ApolloError): OptionsType => {

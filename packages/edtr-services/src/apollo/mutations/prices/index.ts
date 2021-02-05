@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@eventespresso/data';
 import { PRICE_ATTRIBUTES } from '../../queries/prices';
 
 export const CREATE_PRICE = gql`

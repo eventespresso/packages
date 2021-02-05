@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
-import type { OperationVariables } from 'apollo-client';
 
-import type { MutationType, MutationInput } from '@eventespresso/data';
+import type { MutationType, MutationInput, OperationVariables } from '@eventespresso/data';
 
 import { useEventId } from '../../queries/events';
 

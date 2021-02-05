@@ -1,11 +1,10 @@
 import { useCallback, useState, useMemo, useEffect } from 'react';
-import { useMutation } from '@eventespresso/data';
-import gql from 'graphql-tag';
 import { clone } from 'ramda';
 import { useDebouncedCallback } from 'use-debounce';
 import type { MutationResult } from '@apollo/client';
 
 import { __ } from '@eventespresso/i18n';
+import { gql, useMutation } from '@eventespresso/data';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import { getGuids } from '@eventespresso/predicates';
 import type { EntityId } from '@eventespresso/data';

@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@eventespresso/data';
 import { RECURRENCE_ATTRIBUTES } from '../../queries/recurrences';
 
 export const CREATE_RECURRENCE = gql`

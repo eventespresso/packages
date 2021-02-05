@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
-import { OperationVariables } from 'apollo-client';
+
+import { MutationType, MutationInput, OperationVariables } from '@eventespresso/data';
 
 import useOptimisticResponse from './useOptimisticResponse';
 import type { MutationHandler } from '../types';
-import { MutationType, MutationInput } from '@eventespresso/data';
 import type { Event } from '../../';
 import type { EventBaseInput } from './types';
 

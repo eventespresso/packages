@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@eventespresso/data';
 
 export const PRICE_TYPE_ATTRIBUTES: any = gql`
 	fragment priceTypeAttributes on EspressoPriceType {

@@ -1,9 +1,8 @@
-import { GraphQLRequest } from 'apollo-link';
 import { pickBy } from 'ramda';
 import { ExecutionResult } from 'graphql';
 
 import { nodes as datetimes } from '../../../queries/datetimes/test/data';
-import { MutationInput, MutationType } from '@eventespresso/data';
+import { GraphQLRequest, MutationInput, MutationType } from '@eventespresso/data';
 import { ucFirst } from '@eventespresso/utils';
 import { eventId } from '../../../../context/test';
 import type { MockedResponse } from '../../../../context/test/types';

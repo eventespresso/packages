@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@eventespresso/data';
 
 export const TICKET_ATTRIBUTES: any = gql`
 	fragment blocksTicketAttributes on EspressoTicket {

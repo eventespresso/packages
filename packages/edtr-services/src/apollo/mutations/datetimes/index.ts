@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@eventespresso/data';
 import { DATETIME_ATTRIBUTES } from '../../queries/datetimes';
 
 export const CREATE_DATETIME = gql`
