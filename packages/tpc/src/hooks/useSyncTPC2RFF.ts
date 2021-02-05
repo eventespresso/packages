@@ -15,7 +15,7 @@ const TPC_TICKET_FIELDS_TO_SYNC: Array<keyof Ticket> = ['isTaxable', 'price', 'r
  * A custom hook which subscribes and TPC data and updates
  * RFF data when needed.
  */
-const useSyncTPCToRFF = (initialPrices?: TpcPriceModifier[]) => {
+const useSyncTPC2RFF = (initialPrices?: TpcPriceModifier[]) => {
 	const { mutators } = useForm();
 
 	const { deletedPrices, prices, ticket, setPrices } = useDataState();
@@ -41,4 +41,4 @@ const useSyncTPCToRFF = (initialPrices?: TpcPriceModifier[]) => {
 	}, []);
 };
 
-export default useSyncTPCToRFF;
+export default useSyncTPC2RFF;

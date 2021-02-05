@@ -26,4 +26,4 @@ export { default as usePricesPolling } from './usePricesPolling';
 
 export { default as useRemoveAllTaxes } from './useRemoveAllTaxes';
 
-export { default as useSyncTPCToRFF } from './useSyncTPCToRFF';
+export { default as useSyncTPC2RFF } from './useSyncTPC2RFF';

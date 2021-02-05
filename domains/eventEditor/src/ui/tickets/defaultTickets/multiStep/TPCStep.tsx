@@ -1,7 +1,7 @@
-import { TicketPriceCalculator, useSyncTPCToRFF } from '@eventespresso/tpc';
+import { TicketPriceCalculator, useSyncTPC2RFF } from '@eventespresso/tpc';
 
 const TPCStep = () => {
-	useSyncTPCToRFF();
+	useSyncTPC2RFF();
 
 	return <TicketPriceCalculator context='editTicketForm' />;
 };
