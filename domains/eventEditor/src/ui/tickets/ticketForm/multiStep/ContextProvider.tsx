@@ -15,7 +15,7 @@ const ContextProvider: React.FC<ContentWrapperProps> = (props) => {
 	const values = useFormValues<TicketFormShape>(initialValues);
 
 	const ticket = useTicketItem({ id: values?.id });
-	const convertPriceToTpcModifier = usePriceToTpcModifier();
+	const priceToTpcModifier = usePriceToTpcModifier();
 	const getTheTicketPrices = useTicketPrices();
 
 	// add defaults from Apollo cache and override the set values from form state
@@ -26,14 +26,11 @@ const ContextProvider: React.FC<ContentWrapperProps> = (props) => {
 	const getTicketPrices = useCallback(
 		(ticketId: string) => {
 			// we have prices in the form values, it means they have been added, lets use those
-			let prices = values?.prices;
-			if (!prices) {
-				const unSortedPrices = getTheTicketPrices(ticketId);
-				prices = preparePricesForTpc(unSortedPrices, convertPriceToTpcModifier);
-			}
+			const prices = values?.prices || preparePricesForTpc(getTheTicketPrices(ticketId), priceToTpcModifier);
+
 			return prices;
 		},
-		[convertPriceToTpcModifier, getTheTicketPrices, values?.prices]
+		[priceToTpcModifier, getTheTicketPrices, values?.prices]
 	);
 
 	return (
