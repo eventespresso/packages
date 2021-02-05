@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useReactiveVar, ReactiveVar } from '@apollo/react-hooks';
+import { useReactiveVar, ReactiveVar } from '@apollo/client';
 
 export type ReactiveVariable<T> = [T, ReactiveVar<T>];
 

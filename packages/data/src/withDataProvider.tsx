@@ -1,7 +1,7 @@
 import { DataProvider } from './DataProvider';
 import type { AnyObject } from '@eventespresso/utils';
 
-const withDataProvider = <P extends AnyObject>(Component: React.ComponentType<P>): React.FC<P> => {
+export const withDataProvider = <P extends AnyObject>(Component: React.ComponentType<P>): React.FC<P> => {
 	const WrappedComponent: React.FC<P> = (props) => {
 		return (
 			<DataProvider>
@@ -12,5 +12,3 @@ const withDataProvider = <P extends AnyObject>(Component: React.ComponentType<P>
 
 	return WrappedComponent;
 };
-
-export default withDataProvider;

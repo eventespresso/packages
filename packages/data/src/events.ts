@@ -1,4 +1,4 @@
-import type { ApolloError } from '@apollo/react-hooks';
+import type { ApolloError } from '@apollo/client';
 
 import { EventEmitter } from '@eventespresso/events';
 

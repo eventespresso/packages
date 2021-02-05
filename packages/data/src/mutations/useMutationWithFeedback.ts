@@ -1,7 +1,6 @@
 import { useCallback, useRef } from 'react';
-import { MutationTuple, useMutation } from '@apollo/react-hooks';
+import { MutationTuple, OperationVariables, useMutation } from '@apollo/client';
 import { DocumentNode } from 'graphql';
-import { OperationVariables } from 'apollo-client';
 import { v4 as uuidv4 } from 'uuid';
 
 import type { MutationType } from './types';

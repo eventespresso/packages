@@ -1,4 +1,4 @@
-import type { QueryHookOptions, QueryResult as ApolloQueryResult } from '@apollo/react-hooks';
+import type { QueryHookOptions, QueryResult as ApolloQueryResult } from '@apollo/client';
 
 import { useCacheQuery } from '../';
 import type { RecurrencesList, RecurrencesQueryArgs } from './types';

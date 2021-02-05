@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useApolloClient, DataProxy, OperationVariables } from '@apollo/react-hooks';
+import { useApolloClient, DataProxy, OperationVariables } from '@apollo/client';
 
 type Callback<T = any, V = OperationVariables> = (options: DataProxy.Query<V, T>) => T;
 
