@@ -11,14 +11,12 @@ on:
 
 jobs:
     admin:
-        name: Admin - ${{ matrix.part }}
+        name: Admin
 
         runs-on: ubuntu-latest
 
         strategy:
             fail-fast: false
-            matrix:
-                part: [1, 2, 3, 4]
 
         steps:
             - uses: actions/checkout@v2
@@ -53,7 +51,7 @@ jobs:
 
             - name: Archive debug artifacts (screenshots, HTML snapshots)
               uses: actions/upload-artifact@v2
-              if: always()
+              if: failure()
               with:
                   name: failures-artifacts
                   path: artifacts
