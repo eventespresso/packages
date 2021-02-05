@@ -40,3 +40,42 @@ jobs:
 
             - name: Run ${{ matrix.task }}
               run: yarn ${{ matrix.task }}:ci ${{ env.CLI_ARGS }}
+    e2e:
+        needs: [build]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Set up Node
+              uses: dcodeIO/setup-node-nvm@master
+              with:
+                  node-version: lts/*
+
+            - name: Cache dependencies
+              id: cache-deps
+              uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+            - name: Install dependencies
+              # install deps only if lockfile has changed
+              if: steps.cache-deps.outputs.cache-hit != 'true'
+              run: yarn install --frozen-lockfile
+
+            - name: Install WordPress
+              run: |
+                  npm run wp-env start
+
+            - name: Setup Playwright
+              uses: microsoft/playwright-github-action@v1
+
+            - name: Running the tests
+              run: yarn test:e2e
+
+            - name: Archive debug artifacts (screenshots, HTML snapshots)
+              uses: actions/upload-artifact@v2
+              if: failure()
+              with:
+                  name: failures-artifacts
+                  path: artifacts
