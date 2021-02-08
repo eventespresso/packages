@@ -15,7 +15,7 @@ const EventManager: React.FC<Props> = ({ eventManagers, managerId, onManagerChan
 	return (
 		<GridItem id={id} label={__('Event Manager')}>
 			<div className='ee-reg-option__value'>
-				<Select onChangeValue={onManagerChange} options={options} type='inline' value={managerId} />
+				<Select flow='inline' onChangeValue={onManagerChange} options={options} value={managerId} />
 			</div>
 		</GridItem>
 	);

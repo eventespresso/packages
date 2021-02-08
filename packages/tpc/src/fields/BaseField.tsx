@@ -32,6 +32,7 @@ const BaseField: React.FC<BaseFieldProps> = ({
 	if (component === 'select') {
 		return (
 			<Select
+				{...props}
 				aria-label={props['aria-label']}
 				isDisabled={props.disabled}
 				// @ts-ignore

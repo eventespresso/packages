@@ -5,7 +5,7 @@
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
-	width: 100%;
+	width: 100% !important;
 
 	.ee-select.ee-select {
 		@include ee-base-inputs-styles;
