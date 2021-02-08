@@ -10,9 +10,9 @@ import { visitAdminPage } from './visit-admin-page';
  *
  * @param {string} slug Plugin slug.
  */
-export async function activatePlugin(slug, page) {
+export async function activatePlugin(slug) {
 	// await switchUserToAdmin();
-	await visitAdminPage('plugins.php', null, page);
+	await visitAdminPage('plugins.php', null);
 	const disableLink = await page.$(`tr[data-slug="${slug}"] .deactivate a`);
 
 	if (disableLink) {

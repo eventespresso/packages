@@ -164,5 +164,4 @@ beforeAll(async () => {
 	// await enablePageDialogAccept();
 	// await observeConsoleLogging();
 	// await trashExistingPosts(page);
-	// await activatePlugin('gutenberg-test-plugin-disables-the-css-animations');
 });

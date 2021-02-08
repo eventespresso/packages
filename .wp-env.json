@@ -1,0 +1,11 @@
+{
+	"core": "WordPress/WordPress",
+	"env": {
+		"tests": {
+			"mappings": {
+				"wp-content/plugins/gutenberg-test-plugins": "./packages/e2e-tests/plugins"
+			}
+		}
+	},
+	"plugins": ["."]
+}
