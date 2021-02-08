@@ -11,18 +11,18 @@ import './style.scss';
 
 const rootProps = { className: 'ee-select-wrapper', width: 'max-content' };
 
-const Select = forwardRef<HTMLSelectElement, SelectProps>(({ id, type, ...props }, ref) => {
+const Select = forwardRef<HTMLSelectElement, SelectProps>(({ flow, id, ...props }, ref) => {
 	const className = classNames('ee-select', props.className);
 
-	if (type === 'inline') {
+	if (flow === 'inline') {
 		return (
 			<InlineSelect
 				debounceDelay={2500}
 				{...props}
 				className={className}
 				id={id}
-				rootProps={rootProps}
 				ref={ref}
+				rootProps={rootProps}
 			/>
 		);
 	}
@@ -30,10 +30,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(({ id, type, ...props 
 	return (
 		<SelectAdapter
 			{...props}
-			ref={ref}
 			className={className}
 			icon={<ArrowDownAlt />}
 			id={id}
+			ref={ref}
 			rootProps={rootProps}
 		/>
 	);
