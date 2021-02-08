@@ -15,6 +15,7 @@ jobs:
               with:
                   # To make sure all history is fetched for jest --changedSince to work as expected
                   fetch-depth: ${{ ( matrix.task != 'test' && 1 ) || 0 }} # 0 for test, 1 otherwise
+                  token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
 
             # TODO replace this when setup-node action supports LTS alias
             - name: Set up Node
@@ -42,7 +43,7 @@ jobs:
               run: yarn ${{ matrix.task }}:ci ${{ env.CLI_ARGS }}
     e2e:
         name: E2E Tests
-        needs: [build]
+        # needs: [build]
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -72,15 +73,13 @@ jobs:
             - name: Setup Playwright
               uses: microsoft/playwright-github-action@v1
 
-            - name: Create event-espresso-core folder
-              run: mkdir event-espresso-core
-
             - name: Check out event-espresso-core
-              uses: actions/checkout@v2
+              uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
               with:
                   repository: eventespresso/event-espresso-core
                   path: event-espresso-core
                   ref: dev
+                  token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
 
             - name: Running the tests
               run: yarn test:e2e
