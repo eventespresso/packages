@@ -8,5 +8,5 @@
 			}
 		}
 	},
-	"plugins": ["event-espresso-core"]
+	"plugins": ["."]
 }

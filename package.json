@@ -147,7 +147,6 @@
 		"eslint-plugin-testing-library": "^3.10.1",
 		"eslint-webpack-plugin": "^2.4.3",
 		"file-loader": "6.2.0",
-		"folio": "^0.3.17",
 		"fs-extra": "^9.1.0",
 		"html-webpack-plugin": "4.5.1",
 		"husky": "^5.0.4",
