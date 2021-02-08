@@ -8,7 +8,7 @@ describe('hello playwright', () => {
 
 		const title = await page.title();
 
-		expect(title).toBe('Dashboard ‹ North Korea Best Korea — WordPress');
+		expect(title).toBe('Dashboard ‹ barista — WordPress');
 
 		await activatePlugin('gutenberg-test-plugin-disables-the-css-animations');
 
