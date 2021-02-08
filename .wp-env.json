@@ -3,7 +3,7 @@
 	"env": {
 		"tests": {
 			"mappings": {
-				"wp-content/plugins/event-espresso-core": "./build",
+				"wp-content/plugins/event-espresso-core": "./event-espresso-core",
 				"wp-content/plugins/gutenberg-test-plugins": "./packages/e2e-tests/plugins"
 			}
 		}

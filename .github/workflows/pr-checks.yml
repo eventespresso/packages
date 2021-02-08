@@ -72,6 +72,16 @@ jobs:
             - name: Setup Playwright
               uses: microsoft/playwright-github-action@v1
 
+            - name: Create event-espresso-core folder
+              run: mkdir event-espresso-core
+
+            - name: Check out event-espresso-core
+              uses: actions/checkout@v2
+              with:
+                  repository: eventespresso/event-espresso-core
+                  path: event-espresso-core
+                  ref: dev
+
             - name: Running the tests
               run: yarn test:e2e
 
