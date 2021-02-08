@@ -73,13 +73,21 @@ jobs:
             - name: Setup Playwright
               uses: microsoft/playwright-github-action@v1
 
-            - name: Check out event-espresso-core
-              uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
-              with:
-                  repository: eventespresso/event-espresso-core
-                  path: event-espresso-core
-                  ref: dev
-                  token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+            # - name: Check out event-espresso-core
+            #   uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
+            #   env:
+            #       GIT_TRACE: 1
+            #       GIT_CURL_VERBOSE: 1
+            #   with:
+            #       repository: eventespresso/event-espresso-core
+            #       path: event-espresso-core
+            #       persist-credentials: true
+            #       ref: dev
+            #       token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+
+            # Deploy the built assets to core repo's assets/dist
+            - name: Deploy to event-espresso-core
+              run: source tools/deploy-test.sh "event-espresso-core" "dev"
 
             - name: Running the tests
               run: yarn test:e2e
