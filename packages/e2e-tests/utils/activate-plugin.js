@@ -11,8 +11,11 @@ import { visitAdminPage } from './visit-admin-page';
  * @param {string} slug Plugin slug.
  */
 export async function activatePlugin(slug) {
-	// await switchUserToAdmin();
+	await switchUserToAdmin();
 	await visitAdminPage('plugins.php', null);
+
+	await page.screenshot({ path: 'screenshot.png' });
+
 	const disableLink = await page.$(`tr[data-slug="${slug}"] .deactivate a`);
 
 	if (disableLink) {
@@ -24,5 +27,5 @@ export async function activatePlugin(slug) {
 
 	await page.isVisible(`tr[data-slug="${slug}"] .deactivate a`);
 
-	// await switchUserToTest();
+	await switchUserToTest();
 }

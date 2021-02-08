@@ -77,7 +77,7 @@ jobs:
 
             - name: Archive debug artifacts (screenshots, HTML snapshots)
               uses: actions/upload-artifact@v2
-              if: failure()
+              # if: failure()
               with:
                   name: failures-artifacts
                   path: artifacts

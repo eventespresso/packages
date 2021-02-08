@@ -6,7 +6,7 @@ describe('hello playwright', () => {
 	it('should work', async () => {
 		await loginUser();
 
-		await activatePlugin('gutenberg-test-plugin-disables-the-css-animations');
+		await activatePlugin('event-espresso-core');
 
 		expect(true).toBe(true);
 

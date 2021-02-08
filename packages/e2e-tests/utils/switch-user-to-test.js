@@ -12,5 +12,6 @@ export async function switchUserToTest() {
 	if (WP_USERNAME === WP_ADMIN_USER.username) {
 		return;
 	}
+
 	await loginUser();
 }

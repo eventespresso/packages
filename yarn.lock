@@ -5803,15 +5803,6 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-"@wordpress/jest-console@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@wordpress/jest-console/-/jest-console-4.0.1.tgz#4ae0fd1a427b74b2c62ed33aa1386984a34ec5e8"
-  integrity sha512-LVCfRvBkXvmd5xIxg41IMwu0mLHSY4XU2IrotCXZ8EjO3nNJwqPp3ZF6MNHRFXMzvU6qeKqaajvw4p7LnkdIzQ==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    jest-matcher-utils "^26.6.2"
-    lodash "^4.17.19"
-
 "@wordpress/keyboard-shortcuts@^1.13.6":
   version "1.13.6"
   resolved "https://registry.yarnpkg.com/@wordpress/keyboard-shortcuts/-/keyboard-shortcuts-1.13.6.tgz#99f83ff02d796a5975e5f3958aacaf81e06ce375"
