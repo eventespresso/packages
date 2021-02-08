@@ -6,9 +6,7 @@ describe('hello playwright', () => {
 	it('should work', async () => {
 		await loginUser();
 
-		// await activatePlugin('event-espresso-core');
-
-		await activatePlugin('gutenberg-test-plugin-nonce');
+		await activatePlugin('event-espresso-core');
 
 		expect(true).toBe(true);
 
