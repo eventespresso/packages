@@ -26,7 +26,7 @@ const cacheConfig: InMemoryCacheConfig = {
 export const cache = new InMemoryCache(cacheConfig);
 
 export const getClient = (): ApolloClient<NormalizedCacheObject> => {
-	// add nonce only if exists
+	// add nonce only if exists.
 	const headers = nonce
 		? {
 				'X-WP-Nonce': nonce,
