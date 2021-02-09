@@ -201,7 +201,7 @@ describe('createTicket', () => {
 
 		await actWait();
 
-		await  act(async () => {
+		await act(async () => {
 			await mutationResult.current.mutator.createEntity(testInput);
 		});
 
