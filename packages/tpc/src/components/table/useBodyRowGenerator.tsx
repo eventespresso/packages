@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 
 import PriceAmountInput from '../../inputs/PriceAmountInput';
 import PriceDescriptionInput from '../../inputs/PriceDescriptionInput';
+import PriceOrderInput from '../../inputs/PriceOrderInput';
 import PriceIdInput from '../../inputs/PriceIdInput';
 import PriceNameInput from '../../inputs/PriceNameInput';
 import PriceModifierActions from '../../buttons/PriceModifierActions';
@@ -25,6 +26,12 @@ const useBodyRowGenerator = (): BodyRowGenerator => {
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__price-id ee-number-column',
 				value: <PriceIdInput price={price} />,
+			},
+			{
+				key: 'order',
+				type: 'cell',
+				className: 'ee-ticket-price-calculator__price-order ee-number-column',
+				value: <PriceOrderInput price={price} />,
 			},
 			{
 				key: 'type',

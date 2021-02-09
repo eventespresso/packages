@@ -23,6 +23,12 @@ const useHeaderRowGenerator = (): HeaderRowGenerator => {
 				value: __('ID'),
 			},
 			{
+				key: 'order',
+				type: 'cell',
+				className: 'ee-ticket-price-calculator__price-order ee-number-column',
+				value: __('Order'),
+			},
+			{
 				key: 'type',
 				type: 'cell',
 				className: 'ee-ticket-price-calculator__price-type',

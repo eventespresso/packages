@@ -23,6 +23,12 @@ const useFooterRowGenerator = (): FooterRowGenerator => {
 				value: '',
 			},
 			{
+				key: 'order',
+				type: 'cell',
+				className: '',
+				value: '',
+			},
+			{
 				key: 'type',
 				type: 'cell',
 				className: '',
