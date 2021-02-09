@@ -60,7 +60,7 @@ git config --global user.email "$GIT_USER_EMAIL"
 git config --global user.name "$GIT_USER_NAME"
 
 echo "  Repo: $REPO"
-CLONE_DIR="__${REPO}__clone__"
+CLONE_DIR="${REPO}"
 echo "  Clone dir: $CLONE_DIR"
 
 # make sure the directory is empty
