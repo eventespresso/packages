@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { parseInfinity } from '@eventespresso/utils';
-import { InlineEditInfinity, TextProps } from '@eventespresso/ui-components';
+import { InlineEditInfinity, InlineEditProps } from '@eventespresso/ui-components';
 import {
 	useDatetimeMutator,
 	useUpdateRelatedTickets,
@@ -17,7 +17,7 @@ const DateCapacity: React.FC<DateItemProps> = ({ entity: datetime }) => {
 	const updateRelatedTickets = useUpdateRelatedTickets(datetime.id);
 	const ticketQuantityForCapacity = useTicketQuantityForCapacity();
 
-	const onChange: TextProps['onChange'] = useCallback(
+	const onChange: InlineEditProps['onChange'] = useCallback(
 		(cap) => {
 			const capacity = parseInfinity(cap);
 			if (capacity !== datetime.capacity) {

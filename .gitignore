@@ -1,3 +1,6 @@
+# Artifacts
+artifacts
+
 # Logs
 logs
 *.log
@@ -57,18 +60,19 @@ typings/
 # next.js build output
 .next
 
-#ide & os
+# ide & os
 .DS_Store
 .vscode/
 *.code-workspace
 
-#composer
+# composer
 /vendor/
 
-#temp
+# temp
 /build
 .yarnrc
 .yarn/
 
 # SB-related
 storybook-static
+

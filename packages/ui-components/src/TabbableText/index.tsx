@@ -12,6 +12,7 @@ import './style.scss';
 export const TabbableText: React.FC<TabbableTextProps> = ({
 	'aria-describedby': ariaDescribedby,
 	className,
+	'data-testid': dataTestId,
 	icon,
 	onClick,
 	...props
@@ -45,6 +46,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({
 				aria-describedby={ariaDescribedby}
 				aria-label={props.tooltip}
 				className={textClassName}
+				data-testid={dataTestId}
 				onClick={onClick}
 				onKeyDown={onKeyDown}
 				role={role}

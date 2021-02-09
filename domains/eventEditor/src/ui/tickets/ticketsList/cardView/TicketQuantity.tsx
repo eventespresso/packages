@@ -3,14 +3,14 @@ import { useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 
 import { parseInfinity } from '@eventespresso/utils';
-import { InlineEditInfinity, TextProps } from '@eventespresso/ui-components';
+import { InlineEditInfinity, InlineEditProps } from '@eventespresso/ui-components';
 import { useTicketMutator } from '@eventespresso/edtr-services';
 import type { TicketItemProps } from '../types';
 
 const TicketQuantity: React.FC<TicketItemProps> = ({ entity: ticket }) => {
 	const { updateEntity } = useTicketMutator(ticket.id);
 
-	const onChange: TextProps['onChange'] = useCallback(
+	const onChange: InlineEditProps['onChange'] = useCallback(
 		(qty) => {
 			const quantity = parseInfinity(qty);
 			if (quantity !== ticket.quantity) {

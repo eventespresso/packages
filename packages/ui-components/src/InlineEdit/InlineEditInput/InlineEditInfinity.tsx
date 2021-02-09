@@ -4,14 +4,14 @@ import { isInfinite, parseInfinity } from '@eventespresso/utils';
 
 import InlineEdit from './InlineEdit';
 import InlineEditInfinityPreview from './InlineEditInfinityPreview';
-import type { TextProps } from './types';
+import type { InlineEditProps } from './types';
 
 import './style.scss';
 
-export const InlineEditInfinity: React.FC<TextProps> = ({ className, onChange, value, ...props }) => {
+export const InlineEditInfinity: React.FC<InlineEditProps> = ({ className, onChange, value, ...props }) => {
 	const isInfinity = isInfinite(value);
 
-	const onChangeHandler = useCallback<TextProps['onChange']>(
+	const onChangeHandler = useCallback<InlineEditProps['onChange']>(
 		(val) => {
 			const parsedValue = String(parseInfinity(val));
 			if (typeof onChange === 'function') {

@@ -21,7 +21,14 @@ const ActiveStatus: React.FC<Props> = ({ status, onStatusChange }) => {
 	return (
 		<GridItem className={className} id={id} label={__('Active status')} size='small'>
 			<div className='ee-reg-option__value'>
-				<Select flow='inline' noBorderColor onChangeValue={onStatusChange} options={options} value={status} />
+				<Select
+					data-testid={`${id}-select`}
+					flow='inline'
+					noBorderColor
+					onChangeValue={onStatusChange}
+					options={options}
+					value={status}
+				/>
 			</div>
 		</GridItem>
 	);

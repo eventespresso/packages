@@ -1,4 +1,6 @@
 export async function createNewEvent({ title } = {}) {
+	await page.screenshot({ path: `artifacts/createNewEvent.png` });
+
 	await page.click(`.toplevel_page_espresso_events > a`);
 
 	await page.click(`#add-new-event`);
