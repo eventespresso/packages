@@ -39,12 +39,11 @@ const Component: React.FC<ToolbarItemProps<'blockType'>> = ({ currentValue, tool
 		<ToolbarItem
 			{...toolbar}
 			as={Select as any}
+			//@ts-ignore
 			debounceDelay={0}
+			flow='inline'
 			onChangeValue={onChangeValue}
-			//@ts-ignore
 			options={options}
-			//@ts-ignore
-			type='inline'
 			value={currentValue}
 		/>
 	) : (

@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useMemo } from 'react';
 import classNames from 'classnames';
 
 import { Select as SelectAdapter } from '@eventespresso/adapters';
@@ -9,34 +9,36 @@ import type { SelectProps } from './types';
 
 import './style.scss';
 
-const rootProps = { className: 'ee-select-wrapper', width: 'max-content' };
+const Select = forwardRef<HTMLSelectElement, SelectProps>(
+	({ fitContainer, flow, id, noBorderColor, ...props }, ref) => {
+		const className = classNames('ee-select', noBorderColor && 'ee-select--no-border-color', props.className);
+		const wrapperClassName = classNames('ee-select-wrapper', fitContainer && 'ee-select-wrapper--fit-container');
+		const rootProps = useMemo(() => ({ className: wrapperClassName, width: 'max-content' }), [wrapperClassName]);
 
-const Select = forwardRef<HTMLSelectElement, SelectProps>(({ flow, id, ...props }, ref) => {
-	const className = classNames('ee-select', props.className);
+		if (flow === 'inline') {
+			return (
+				<InlineSelect
+					debounceDelay={2500}
+					{...props}
+					className={className}
+					id={id}
+					ref={ref}
+					rootProps={rootProps}
+				/>
+			);
+		}
 
-	if (flow === 'inline') {
 		return (
-			<InlineSelect
-				debounceDelay={2500}
+			<SelectAdapter
 				{...props}
 				className={className}
+				icon={<ArrowDownAlt />}
 				id={id}
 				ref={ref}
 				rootProps={rootProps}
 			/>
 		);
 	}
-
-	return (
-		<SelectAdapter
-			{...props}
-			className={className}
-			icon={<ArrowDownAlt />}
-			id={id}
-			ref={ref}
-			rootProps={rootProps}
-		/>
-	);
-});
+);
 
 export default withLabel(Select);

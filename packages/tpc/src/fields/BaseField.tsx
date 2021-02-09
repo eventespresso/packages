@@ -34,6 +34,7 @@ const BaseField: React.FC<BaseFieldProps> = ({
 			<Select
 				{...props}
 				aria-label={props['aria-label']}
+				fitContainer
 				isDisabled={props.disabled}
 				// @ts-ignore
 				onBlur={handlers?.onBlur}

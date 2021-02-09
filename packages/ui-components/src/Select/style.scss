@@ -5,7 +5,10 @@
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
-	width: 100% !important;
+
+	&--fit-container {
+		width: 100% !important;
+	}
 
 	.ee-select.ee-select {
 		@include ee-base-inputs-styles;
@@ -41,11 +44,13 @@
 		}
 
 		&--inline {
-			border-color: transparent;
-
 			option {
 				color: var(--ee-default-text-color);
 			}
+		}
+
+		&--no-border-color {
+			border-color: transparent;
 		}
 
 		option {
