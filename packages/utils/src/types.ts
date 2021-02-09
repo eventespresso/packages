@@ -23,3 +23,7 @@ export type OmitFirstFromArray<T extends any[]> = T extends [infer A, ...infer R
 export type KeysOfType<Obj, Type> = {
 	[K in keyof Obj]: Obj[K] extends Type ? K : never;
 }[keyof Obj];
+
+export type BoolField<F extends string> = Record<F, boolean>;
+
+export type EntityFieldPred<Field extends string, FieldType = any> = (entity: Record<Field, FieldType>) => boolean;
