@@ -6,9 +6,13 @@ describe('hello playwright', () => {
 	it('should work', async () => {
 		await loginUser();
 
-		await activatePlugin('event-espresso-core');
+		await activatePlugin('event-espresso');
 
-		expect(true).toBe(true);
+		await page.click(`.toplevel_page_espresso_events > a`);
+
+		const espressoAdmin = await page.$eval('.espresso-admin', (el) => el.innerHTML);
+
+		expect(espressoAdmin).toContain('Event Espresso&nbsp;-&nbsp;Events');
 
 		await browser.close();
 	});

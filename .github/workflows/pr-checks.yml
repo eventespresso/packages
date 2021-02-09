@@ -67,34 +67,30 @@ jobs:
             - name: Make sure PlayWright doesn't play it wrong
               run: yarn add -WD playwright
 
+            - name: Check out event-espresso-core
+              uses: actions/checkout@v2
+              with:
+                  repository: eventespresso/event-espresso-core
+                  path: event-espresso-core
+                  persist-credentials: true
+                  ref: dev
+                  token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+
+            - name: Build event-espresso-core
+              run: cd event-espresso-core && yarn && yarn build
+
             - name: Install WordPress
               run: yarn wp-env start
 
             - name: Setup Playwright
               uses: microsoft/playwright-github-action@v1
 
-            # - name: Check out event-espresso-core
-            #   uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
-            #   env:
-            #       GIT_TRACE: 1
-            #       GIT_CURL_VERBOSE: 1
-            #   with:
-            #       repository: eventespresso/event-espresso-core
-            #       path: event-espresso-core
-            #       persist-credentials: true
-            #       ref: dev
-            #       token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
-
-            # Deploy the built assets to core repo's assets/dist
-            - name: Deploy to event-espresso-core
-              run: source tools/deploy-test.sh "event-espresso-core" "dev"
-
             - name: Running the tests
               run: yarn test:e2e
 
             - name: Archive debug artifacts (screenshots, HTML snapshots)
               uses: actions/upload-artifact@v2
-              # if: failure()
+              if: failure()
               with:
                   name: failures-artifacts
                   path: artifacts

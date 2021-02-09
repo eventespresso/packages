@@ -25,7 +25,7 @@ export async function activatePlugin(slug) {
 
 	await page.click(`tr[data-slug="${slug}"] .activate a`);
 
-	await page.isVisible(`tr[data-slug="${slug}"] .deactivate a`);
+	// await page.isVisible(`tr[data-slug="${slug}"] .deactivate a`);
 
 	await page.screenshot({ path: `artifacts/activatePlugin-after.png` });
 
