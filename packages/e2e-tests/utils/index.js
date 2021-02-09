@@ -11,6 +11,7 @@ export { clickMenuItem } from './click-menu-item';
 export { clickOnCloseModalButton } from './click-on-close-modal-button';
 export { clickOnMoreMenuItem } from './click-on-more-menu-item';
 export { createNewPost } from './create-new-post';
+export { createNewEvent } from './create-new-event';
 export { createURL } from './create-url';
 export { deactivatePlugin } from './deactivate-plugin';
 export { deleteTheme } from './delete-theme';
