@@ -1,8 +1,7 @@
 import { omit } from 'ramda';
 
-import { isPriceField, getBasePrice, getPriceByDbId, getPriceByGuid, getTaxes } from './index';
+import { isPriceField, getBasePrice, getTaxes } from './index';
 import { nodes as prices } from '@eventespresso/edtr-services/src/apollo/queries/prices/test/data';
-import { getGuids } from '../../common';
 
 describe('isPriceField', () => {
 	it('should return true if field is included in price type', () => {
@@ -33,40 +32,6 @@ describe('getBasePrice', () => {
 		const updatedPrices = prices.map((price) => ({ ...price, isBasePrice: false }));
 		const result = getBasePrice(updatedPrices);
 		expect(result).toBeUndefined();
-	});
-});
-
-describe('getPriceByDbId', () => {
-	it('should return price entities with corresponding dbId', () => {
-		const dbIds = prices.map(({ dbId }) => dbId);
-		dbIds.forEach((dbId) => {
-			const price = getPriceByDbId(prices, dbId);
-			expect(price.dbId).toBe(dbId);
-		});
-	});
-
-	it('should return undefined if there is no corresponding entity to the specified dbId', () => {
-		const dbId = Number(
-			'01100101011101100110010101101110011101000110010101110011011100000111001001100101011100110111001101101111'
-		);
-		const entity = getPriceByDbId(prices, dbId);
-		expect(entity).toBeUndefined();
-	});
-});
-
-describe('getPriceByGuid', () => {
-	it('should return price entity with corresponding id', () => {
-		const ids = getGuids(prices);
-		ids.forEach((id) => {
-			const price = getPriceByGuid(prices, id);
-			expect(price.id).toBe(id);
-		});
-	});
-
-	it('should return undefined if there is no corresponding price entity to the specified id', () => {
-		const id = 'a b c d e f g h i j k l m n o p q r s t u v w x y z';
-		const entity = getPriceByGuid(prices, id);
-		expect(entity).toBeUndefined();
 	});
 });
 

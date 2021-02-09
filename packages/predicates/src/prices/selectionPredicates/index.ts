@@ -1,9 +1,9 @@
 import { allPass, anyPass, filter, find, includes, isNil, isEmpty, ObjPred } from 'ramda';
 
-import { EntityId, EntityDbId } from '@eventespresso/data';
-import type { Price } from '@eventespresso/edtr-services';
+import type { BoolField, EntityFieldPred } from '@eventespresso/utils';
+
 import { PRICE_FIELDS, PRICE_INPUT_FIELDS } from '../priceFields';
-import { findEntityByDbId, findEntityByGuid, isTax, isBasePrice, isDefault } from '../../common';
+import { isTax, isNotTax, isBasePrice, isDefault } from '../../common';
 
 // the following return `true` if price satisfies predicate
 export const isPriceField: ObjPred = (value, field) => includes(field, PRICE_FIELDS);
@@ -12,18 +12,24 @@ export const isPriceField: ObjPred = (value, field) => includes(field, PRICE_FIE
 export const isPriceInputField: ObjPred = (value, field) => includes(field, PRICE_INPUT_FIELDS);
 
 // is a default tax ?
-export const isDefaultTax = allPass([isDefault, isTax]);
+export const isDefaultTax: EntityFieldPred<'isDefault' | 'isTax', boolean> = allPass([isDefault, isTax]);
 
 // returns price if found in array of prices
-export const getBasePrice = (prices: Price[]): Price => find<Price>(isBasePrice)(prices);
-export const getPriceByDbId = (prices: Price[], dbId: EntityDbId): Price => findEntityByDbId(prices)(dbId);
-export const getPriceByGuid = (prices: Price[], guid: EntityId): Price => findEntityByGuid(prices)(guid);
+export const getBasePrice = <P extends BoolField<'isBasePrice'>>(prices: Array<P>): P => find<P>(isBasePrice)(prices);
 
 // returns array of prices that satisfy predicate
-export const getTaxes = (prices: Price[]): Price[] => filter<Price>(isTax, prices);
-export const getDefaultTaxes = (prices: Price[]): Price[] => filter(isDefaultTax, prices);
-export const getDefaultPrices = (prices: Price[]): Price[] => filter<Price>(isDefault, prices);
+export const getTaxes = <P extends BoolField<'isTax'>>(prices: Array<P>): Array<P> => filter<P>(isTax, prices);
 
-export const hasEmptyPrices = (prices: Price[]): boolean => {
+// returns array of non tax price modifiers
+export const getNonTaxModifiers = <P extends BoolField<'isTax'>>(prices: Array<P>): Array<P> =>
+	filter<P>(isNotTax, prices);
+
+export const getDefaultTaxes = <P extends BoolField<'isDefault' | 'isTax'>>(prices: Array<P>): Array<P> =>
+	filter<P>(isDefaultTax, prices);
+
+export const getDefaultPrices = <P extends BoolField<'isDefault'>>(prices: Array<P>): Array<P> =>
+	filter<P>(isDefault, prices);
+
+export const hasEmptyPrices = <P extends Record<'amount', number>>(prices: Array<P>): boolean => {
 	return prices.length && prices.some(({ amount }) => anyPass([isNil, isEmpty])(amount));
 };
