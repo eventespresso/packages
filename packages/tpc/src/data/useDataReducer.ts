@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
-import { any, append, findIndex, insert, update } from 'ramda';
+import { any, append, findIndex, has, insert, last, update } from 'ramda';
 
 import { DataStateReducer, StateInitializer, DataState } from './types';
-import { entityHasGuid, isTax } from '@eventespresso/predicates';
+import { entityHasGuid, isTax, sortByPriceOrderIdAsc } from '@eventespresso/predicates';
 import { TpcPriceModifier } from '../types';
 
 export const initialState: DataState = {
@@ -34,6 +34,7 @@ const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 			let isTaxable: boolean,
 				newPrices: Array<TpcPriceModifier>,
 				priceIndex: number,
+				order: number,
 				priceToUpdate: TpcPriceModifier,
 				updatedPrice: TpcPriceModifier,
 				retainedPrices: Array<TpcPriceModifier>,
@@ -42,6 +43,15 @@ const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 
 			// if TPC is disabled, we only allow changing of price name and description
 			if (state.isDisabled && (type !== 'UPDATE_PRICE' || !hasOnlyNameOrDesc(fieldValues))) {
+				return state;
+			}
+
+			// if price order is being updated
+			const isOrderChanged = fieldValues && has('order', fieldValues);
+
+			// we won't allo price order to be less than 2
+			// because that is reserved for base price
+			if (isOrderChanged && fieldValues.order < 2) {
 				return state;
 			}
 
@@ -76,16 +86,20 @@ const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 					break;
 
 				case 'ADD_PRICE':
+					if (index !== undefined) {
+						const orderOfThePriceAtIndex = state.prices?.[index - 1]?.order || 0;
+						// add only 1 to make sure the price is added just after the index
+						order = +orderOfThePriceAtIndex + 1;
+					} else {
+						const orderOfTheLastPrice = last(state.prices)?.order || 0;
+						order = +orderOfTheLastPrice + 10;
+					}
+
 					newPrices =
-						typeof index !== 'undefined' ? insert(index, price, state.prices) : append(price, state.prices);
-					newPrices = newPrices.map((newPrice, index) => {
-						// order of base price is <= 1
-						if (!newPrice.isBasePrice) {
-							const order = (index + 1) * 10; // steps of 10, +1 to avoid 0 order
-							return { ...newPrice, order };
-						}
-						return newPrice;
-					});
+						index !== undefined
+							? insert(index, { ...price, order }, state.prices)
+							: append({ ...price, order }, state.prices);
+
 					newState = {
 						...state,
 						prices: newPrices,
@@ -106,7 +120,13 @@ const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 					updatedPrice = { ...priceToUpdate, ...fieldValues, isModified: true };
 
 					// update the prices list
-					updatedPrices = update<typeof state.prices[0]>(priceIndex, updatedPrice, state.prices);
+					updatedPrices = update(priceIndex, updatedPrice, state.prices);
+
+					if (isOrderChanged) {
+						// sort them by order
+						updatedPrices = sortByPriceOrderIdAsc(updatedPrices);
+					}
+
 					isTaxable = any(isTax, updatedPrices);
 					newState =
 						priceIndex > -1
