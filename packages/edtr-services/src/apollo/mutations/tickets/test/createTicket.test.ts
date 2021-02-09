@@ -151,8 +151,8 @@ describe('createTicket', () => {
 
 		await actWait();
 
-		act(() => {
-			mutationResult.current.mutator.createEntity(testInput);
+		act(async () => {
+			await mutationResult.current.mutator.createEntity(testInput);
 		});
 
 		// wait for mutation promise to resolve
@@ -201,8 +201,8 @@ describe('createTicket', () => {
 
 		await actWait();
 
-		act(() => {
-			mutationResult.current.mutator.createEntity(testInput);
+		act(async () => {
+			await mutationResult.current.mutator.createEntity(testInput);
 		});
 
 		// wait for mutation promise to resolve
