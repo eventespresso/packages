@@ -8,14 +8,12 @@ import { toggleMoreMenu } from './toggle-more-menu';
  *
  * @param {string} mode String editor mode.
  */
-export async function switchEditorModeTo( mode ) {
+export async function switchEditorModeTo(mode) {
 	await toggleMoreMenu();
-	const [ button ] = await page.$x(
-		`//button/span[contains(text(), '${ mode } editor')]`
-	);
-	await button.click( 'button' );
+	const [button] = await page.$x(`//button/span[contains(text(), '${mode} editor')]`);
+	await button.click('button');
 	await toggleMoreMenu();
-	if ( mode === 'Code' ) {
-		await page.waitForSelector( '.editor-post-text-editor' );
+	if (mode === 'Code') {
+		await page.waitForSelector('.editor-post-text-editor');
 	}
 }

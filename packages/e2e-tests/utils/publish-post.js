@@ -13,8 +13,8 @@ export async function publishPost() {
 	await openPublishPanel();
 
 	// Publish the post
-	await page.click( '.editor-post-publish-button' );
+	await page.click('.editor-post-publish-button');
 
 	// A success notice should show up
-	return page.waitForSelector( '.components-snackbar' );
+	return page.waitForSelector('.components-snackbar');
 }

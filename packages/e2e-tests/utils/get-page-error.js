@@ -20,6 +20,6 @@ const REGEXP_PHP_ERROR = /(<b>)?(Fatal error|Recoverable fatal error|Warning|Par
  */
 export async function getPageError() {
 	const content = await page.content();
-	const match = content.match( REGEXP_PHP_ERROR );
-	return match ? match[ 0 ] : null;
+	const match = content.match(REGEXP_PHP_ERROR);
+	return match ? match[0] : null;
 }

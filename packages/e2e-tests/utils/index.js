@@ -46,18 +46,12 @@ export { installTheme } from './install-theme';
 export { isCurrentURL } from './is-current-url';
 export { isInDefaultBlock } from './is-in-default-block';
 export { loginUser } from './login-user';
-export {
-	enableFocusLossObservation,
-	disableFocusLossObservation,
-} from './observe-focus-loss';
+export { enableFocusLossObservation, disableFocusLossObservation } from './observe-focus-loss';
 export { openDocumentSettingsSidebar } from './open-document-settings-sidebar';
 export { openPublishPanel } from './open-publish-panel';
 export { trashAllPosts } from './posts';
 export { pressKeyTimes } from './press-key-times';
-export {
-	pressKeyWithModifier,
-	setClipboardData,
-} from './press-key-with-modifier';
+export { pressKeyWithModifier, setClipboardData } from './press-key-with-modifier';
 export { publishPost } from './publish-post';
 export { publishPostWithPrePublishChecksDisabled } from './publish-post-with-pre-publish-checks-disabled';
 export { saveDraft } from './save-draft';

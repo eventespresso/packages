@@ -16,36 +16,29 @@ import { isThemeInstalled } from './theme-installed';
  * @param {string?} settings.newThemeSlug A theme to switch to if the theme to delete is active. Required if the theme to delete is active.
  * @param {string?} settings.newThemeSearchTerm A search term to use if the new theme is not findable by its slug.
  */
-export async function deleteTheme(
-	slug,
-	{ newThemeSlug, newThemeSearchTerm } = {}
-) {
+export async function deleteTheme(slug, { newThemeSlug, newThemeSearchTerm } = {}) {
 	await switchUserToAdmin();
 
-	if ( newThemeSlug ) {
-		await installTheme( newThemeSlug, newThemeSearchTerm );
-		await activateTheme( newThemeSlug );
+	if (newThemeSlug) {
+		await installTheme(newThemeSlug, newThemeSearchTerm);
+		await activateTheme(newThemeSlug);
 	} else {
-		await visitAdminPage( 'themes.php' );
+		await visitAdminPage('themes.php');
 	}
 
-	if ( ! ( await isThemeInstalled( slug ) ) ) {
+	if (!(await isThemeInstalled(slug))) {
 		await switchUserToTest();
 		return;
 	}
 
-	await page.click( `[data-slug="${ slug }"]` );
-	await page.waitForSelector( '.theme-actions .delete-theme' );
-	await page.click( '.theme-actions .delete-theme' );
-	await page.waitForSelector( 'body:not(.modal-open)' );
+	await page.click(`[data-slug="${slug}"]`);
+	await page.waitForSelector('.theme-actions .delete-theme');
+	await page.click('.theme-actions .delete-theme');
+	await page.waitForSelector('body:not(.modal-open)');
 
 	// Wait for the theme to be removed from the page.
 	// eslint-disable-next-line no-restricted-syntax
-	await page.waitForFunction(
-		( themeSlug ) =>
-			! document.querySelector( `[data-slug="${ themeSlug }"]` ),
-		slug
-	);
+	await page.waitForFunction((themeSlug) => !document.querySelector(`[data-slug="${themeSlug}"]`), slug);
 
 	await switchUserToTest();
 }

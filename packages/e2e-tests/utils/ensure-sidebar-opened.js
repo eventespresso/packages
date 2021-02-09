@@ -8,10 +8,8 @@ export async function ensureSidebarOpened() {
 	// if the element matching the given selector does not exist. Thus, if an
 	// error is thrown, it can be inferred that the sidebar is not opened.
 	try {
-		return page.$eval( '.edit-post-sidebar', () => {} );
-	} catch ( error ) {
-		return page.click(
-			'.edit-post-header__settings [aria-label="Settings"]'
-		);
+		return page.$eval('.edit-post-sidebar', () => {});
+	} catch (error) {
+		return page.click('.edit-post-header__settings [aria-label="Settings"]');
 	}
 }
