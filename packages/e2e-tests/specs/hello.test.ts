@@ -9,7 +9,7 @@ describe('EE', () => {
 	it('should activate event-espresso-core', async () => {
 		await loginUser();
 
-		await saveVideo(page, '/artifacts/video.mp4');
+		await saveVideo(page, 'artifacts/video.mp4');
 
 		process.env.CI !== 'true' && (await activatePlugin('event-espresso'));
 
