@@ -14,12 +14,12 @@ export async function activatePlugin(slug) {
 	await switchUserToAdmin();
 	await visitAdminPage('plugins.php', null);
 
-	const disableLink = await page.$(`tr[data-slug="${slug}"] .deactivate a`);
+	// const disableLink = await page.$(`tr[data-slug="${slug}"] .deactivate a`);
 
-	if (disableLink) {
-		await switchUserToTest();
-		return;
-	}
+	// if (disableLink) {
+	// 	await switchUserToTest();
+	// 	return;
+	// }
 
 	await page.click(`tr[data-slug="${slug}"] .activate a`);
 
