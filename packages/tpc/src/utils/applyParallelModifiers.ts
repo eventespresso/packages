@@ -6,10 +6,12 @@ const applyParallelModifiers = (baseAmount: number, modifiers: Array<TpcPriceMod
 		const priceAmount = parsedAmount(amount) || 0;
 
 		// calculate the modification value
-		let modification = isPercent ? (priceAmount / 100) * baseAmount : priceAmount;
-		// whether we want to add or subtract
-		modification = isDiscount ? -modification : modification;
+		const modification = isPercent ? (priceAmount / 100) * baseAmount : priceAmount;
 
+		if (isDiscount) {
+			// subtract the modification from previous value
+			return prevValue - modification;
+		}
 		// add the modification to the previous value
 		return prevValue + modification;
 	}, 0);

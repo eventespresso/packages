@@ -7,7 +7,7 @@ import { DataState } from '../data';
 import applyParallelModifiers from './applyParallelModifiers';
 
 const calculateTicketTotal = (prices: DataState['prices']): number => {
-	// if there is no wealth or or a king, you know what happens
+	// if there is no wealth or a king, you know what happens
 	if (!prices?.length || !getBasePrice(prices)) {
 		return 0;
 	}

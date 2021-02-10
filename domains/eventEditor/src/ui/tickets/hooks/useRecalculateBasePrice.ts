@@ -22,11 +22,11 @@ const useRecalculateBasePrice = (ticketId: EntityId): Callback => {
 		async (ticketPrice) => {
 			let tpcData = getDataState(null);
 			// Make sure the new ticket price is used
-			const updatedTicket = { ...tpcData?.ticket, price: ticketPrice };
+			const updatedTicket = { ...tpcData.ticket, price: ticketPrice };
 			tpcData = { ...tpcData, ticket: updatedTicket };
 
-			const existingBasePrice = getBasePrice(tpcData?.prices);
-			const priceModifiers = getPriceModifiers(tpcData?.prices || []);
+			const existingBasePrice = getBasePrice(tpcData.prices);
+			const priceModifiers = getPriceModifiers(tpcData.prices);
 			// get the updated base price amount
 			const newBasePriceAmount = calculateBasePrice(tpcData.ticket?.price, tpcData.prices);
 
