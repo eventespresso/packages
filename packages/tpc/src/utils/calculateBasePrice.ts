@@ -4,6 +4,7 @@ import { getPriceModifiers } from '@eventespresso/predicates';
 import { parsedAmount, groupByProp } from '@eventespresso/utils';
 import { DataState } from '../data';
 import undoParallelModifiers from './undoParallelModifiers';
+import { TPC_PRICE_DECIMAL_PLACES } from './constants';
 
 const calculateBasePrice = (ticketTotal: number, prices: DataState['prices']): number => {
 	const parsedTicketTotal = parsedAmount(ticketTotal);
@@ -26,7 +27,7 @@ const calculateBasePrice = (ticketTotal: number, prices: DataState['prices']): n
 	);
 
 	// Save the price upto 6 decimals places
-	const amount = parsedAmount(newBasePriceAmount).toFixed(6);
+	const amount = parsedAmount(newBasePriceAmount).toFixed(TPC_PRICE_DECIMAL_PLACES);
 
 	return parsedAmount(amount);
 };
