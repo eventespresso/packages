@@ -49,7 +49,7 @@ const useDataReducer = (initializer: StateInitializer): DataStateReducer => {
 			// if price order is being updated
 			const isOrderChanged = fieldValues && has('order', fieldValues);
 
-			// we won't allo price order to be less than 2
+			// we won't allow price order to be less than 2
 			// because that is reserved for base price
 			if (isOrderChanged && fieldValues.order < 2) {
 				return state;
