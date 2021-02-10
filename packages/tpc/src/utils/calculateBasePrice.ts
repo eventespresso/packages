@@ -14,7 +14,7 @@ const calculateBasePrice = (ticketTotal: number, prices: DataState['prices']): n
 
 	const priceModifiers = getPriceModifiers(prices);
 
-	// Since the keys are numberic, it should be sorted in ASC by default
+	// Since the keys are numeric, it should be sorted in ASC by default
 	const orderToPriceMap = groupByProp('order', priceModifiers);
 
 	const newBasePriceAmount = reduceRight(
