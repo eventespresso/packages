@@ -1,7 +1,9 @@
 import { useCallback } from 'react';
 
-import { parsedAmount, isEqualJson } from '@eventespresso/utils';
+import { parsedAmount } from '@eventespresso/utils';
 import { useMoneyDisplay } from '@eventespresso/services';
+import { getBasePrice } from '@eventespresso/predicates';
+
 import { useDataState } from '../data';
 import { calculateBasePrice, calculateTicketTotal } from '../utils';
 import usePriceChangeListener from './usePriceChangeListener';
@@ -9,26 +11,29 @@ import usePriceTypeChangeListener from './usePriceTypeChangeListener';
 import useTicketTotalChangeListener from './useTicketTotalChangeListener';
 
 const useStateListeners = (): void => {
-	const { getData, reverseCalculate, setPrices, updateTicketPrice, ticket, prices } = useDataState();
+	const { reverseCalculate, updateTicketPrice, updatePrice, ticket, prices } = useDataState();
 	const { formatAmount } = useMoneyDisplay();
 
 	const updateBasePrice = useCallback(() => {
-		const newPrices = calculateBasePrice(getData());
+		const basePrice = getBasePrice(prices);
+
+		const newBasePriceAmount = calculateBasePrice(ticket.price, prices);
+
 		// avoid unnecessary update
-		if (!isEqualJson(prices, newPrices)) {
-			setPrices(newPrices);
+		if (basePrice?.amount !== newBasePriceAmount) {
+			updatePrice({ id: basePrice?.id, fieldValues: { amount: newBasePriceAmount } });
 		}
-	}, [getData, prices, setPrices]);
+	}, [prices, ticket.price, updatePrice]);
 
 	const updateTicketTotal = useCallback(() => {
-		let ticketTotal = calculateTicketTotal(getData());
+		let ticketTotal = calculateTicketTotal(prices);
 		ticketTotal = parsedAmount(formatAmount(ticketTotal));
 		ticketTotal = isNaN(ticketTotal) ? 0 : ticketTotal;
 		// avoid unnecessary update
 		if (ticket.price !== ticketTotal) {
 			updateTicketPrice(ticketTotal);
 		}
-	}, [formatAmount, getData, ticket.price, updateTicketPrice]);
+	}, [formatAmount, prices, ticket.price, updateTicketPrice]);
 
 	const calculatePrice = useCallback(() => {
 		if (reverseCalculate) {

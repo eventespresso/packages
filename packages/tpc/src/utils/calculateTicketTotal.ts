@@ -6,20 +6,14 @@ import { parsedAmount, groupByProp } from '@eventespresso/utils';
 import { DataState } from '../data';
 import applyParallelModifiers from './applyParallelModifiers';
 
-const calculateTicketTotal = (state: DataState): DataState['ticket']['price'] => {
-	const ticket = state?.ticket;
-	if (!ticket) {
-		return null;
-	}
-	const allPrices = state?.prices;
-
+const calculateTicketTotal = (prices: DataState['prices']): number => {
 	// if there is no wealth or or a king, you know what happens
-	if (!allPrices?.length || !getBasePrice(allPrices)) {
-		return ticket.price;
+	if (!prices?.length || !getBasePrice(prices)) {
+		return 0;
 	}
 
 	// lets honour the king of prices
-	const basePrice = getBasePrice(allPrices);
+	const basePrice = getBasePrice(prices);
 	const basePriceAmount = parsedAmount(basePrice.amount);
 
 	// if the king has no value, it's not good for the "story"
@@ -28,7 +22,7 @@ const calculateTicketTotal = (state: DataState): DataState['ticket']['price'] =>
 	}
 
 	// if the battle lasts this far, pawns also matter
-	const priceModifiers = getPriceModifiers(allPrices);
+	const priceModifiers = getPriceModifiers(prices);
 
 	// lets divide them into teams based on ther `order`
 	// Since the keys are numberic, it should be sorted by default

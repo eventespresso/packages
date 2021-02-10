@@ -1,21 +1,18 @@
 import { reduceRight } from 'ramda';
 
-import { getPriceModifiers, updateBasePriceAmount } from '@eventespresso/predicates';
+import { getPriceModifiers } from '@eventespresso/predicates';
 import { parsedAmount, groupByProp } from '@eventespresso/utils';
-import { TpcPriceModifier } from '../types';
 import { DataState } from '../data';
 import undoParallelModifiers from './undoParallelModifiers';
 
-const calculateBasePrice = (state: DataState): DataState['prices'] => {
-	const ticketTotal = parsedAmount(state.ticket?.price);
+const calculateBasePrice = (ticketTotal: number, prices: DataState['prices']): number => {
+	const parsedTicketTotal = parsedAmount(ticketTotal);
 
-	const allPrices = state.prices;
-
-	if (!ticketTotal || !allPrices?.length) {
-		return state.prices;
+	if (!parsedTicketTotal || !prices?.length) {
+		return 0;
 	}
 
-	const priceModifiers = getPriceModifiers(allPrices);
+	const priceModifiers = getPriceModifiers(prices);
 
 	// Since the keys are numberic, it should be sorted in ASC by default
 	const orderToPriceMap = groupByProp('order', priceModifiers);
@@ -30,11 +27,8 @@ const calculateBasePrice = (state: DataState): DataState['prices'] => {
 
 	// Save the price upto 6 decimals places
 	const amount = parsedAmount(newBasePriceAmount).toFixed(6);
-	const newPrices = updateBasePriceAmount<TpcPriceModifier>({
-		prices: state.prices,
-		amount: parsedAmount(amount),
-	});
-	return newPrices;
+
+	return parsedAmount(amount);
 };
 
 export default calculateBasePrice;

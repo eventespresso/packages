@@ -2,7 +2,6 @@ import { assoc, map, pickBy, when } from 'ramda';
 
 import type { Price } from '@eventespresso/edtr-services';
 import { parsedAmount } from '@eventespresso/utils';
-import { isBasePrice } from '../common';
 import { isPriceField } from './selectionPredicates';
 import { entityHasGuid } from '../common';
 
@@ -35,18 +34,6 @@ export const updatePriceAmount = <T extends Price>(amount: number) => (price: T)
  */
 export const updatePriceType = <T extends Price>(type: string) => (price: T): T =>
 	assoc<string, T, string>('priceType', type, price);
-
-/**
- * given an array of prices, finds and updates the base price amount
- *
- * @param {Price[]} prices
- * @param {number} amount
- * @return {Price[]}
- */
-export const updateBasePriceAmount = <T extends Price>({ prices, amount }: updatePriceArrayProps<T>): T[] => {
-	// @ts-ignore
-	return map<Price, Price>(when(isBasePrice, updatePriceAmount(amount)), prices);
-};
 
 /**
  * given an array of prices, finds and updates price type for price matching the supplied GUID

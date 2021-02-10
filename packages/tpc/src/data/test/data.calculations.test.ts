@@ -68,7 +68,7 @@ describe('TPC:data.calculations', () => {
 		expect(ticketTotalBefore).not.toEqual(ticketTotalAfter);
 
 		// calculate th expected ticket total
-		const calculatedTicketTotal = calculateTicketTotal(result.current.dataState.getData());
+		const calculatedTicketTotal = calculateTicketTotal(result.current.dataState.getData().prices);
 
 		expect(calculatedTicketTotal).toEqual(ticketTotalAfter);
 	});
@@ -124,7 +124,7 @@ describe('TPC:data.calculations', () => {
 		});
 
 		const basePriceAfter = getBasePrice(result.current.dataState.getData().prices);
-		const ticketTotalAfter = result.current.dataState.getData().ticket.price;
+		const ticketTotalAfter = result.current.dataState.getData().ticket?.price;
 
 		// ticket total should not change because reverseCalculate is true
 		expect(ticketTotalBefore).toEqual(ticketTotalAfter);
@@ -132,10 +132,12 @@ describe('TPC:data.calculations', () => {
 		expect(basePriceBefore.amount).not.toEqual(basePriceAfter.amount);
 
 		// calculate the expected base price
-		const newPrices = calculateBasePrice(result.current.dataState.getData());
-		const calculatedBasePrice = getBasePrice(newPrices);
+		const newPriceAmount = calculateBasePrice(
+			result.current.dataState.ticket?.price,
+			result.current.dataState.prices
+		);
 
-		expect(calculatedBasePrice.amount).toEqual(basePriceAfter.amount);
+		expect(newPriceAmount).toEqual(basePriceAfter.amount);
 	});
 
 	it('updates the amount of an existing price and base price to reflect the change in ticket total when reverseCalculate is false', async () => {
@@ -177,7 +179,7 @@ describe('TPC:data.calculations', () => {
 		expect(ticketTotalBefore).not.toEqual(ticketTotalAfter);
 
 		// calculate th expected ticket total
-		const calculatedTicketTotal = calculateTicketTotal(result.current.getData());
+		const calculatedTicketTotal = calculateTicketTotal(result.current.getData().prices);
 
 		expect(calculatedTicketTotal).toEqual(ticketTotalAfter);
 	});
@@ -221,10 +223,12 @@ describe('TPC:data.calculations', () => {
 		expect(basePriceBefore.amount).not.toEqual(basePriceAfter.amount);
 
 		// calculate the expected base price
-		const newPrices = calculateBasePrice(result.current.dataState.getData());
-		const calculatedBasePrice = getBasePrice(newPrices);
+		const newPriceAmount = calculateBasePrice(
+			result.current.dataState.getData().ticket?.price,
+			result.current.dataState.getData().prices
+		);
 
-		expect(calculatedBasePrice.amount).toEqual(basePriceAfter.amount);
+		expect(newPriceAmount).toEqual(basePriceAfter.amount);
 	});
 
 	it('updates the ticket total to reflect the change in base price when reverseCalculate is true', async () => {
@@ -267,10 +271,12 @@ describe('TPC:data.calculations', () => {
 		expect(basePriceBefore.amount).not.toEqual(basePriceAfter.amount);
 
 		// calculate the expected base price
-		const newPrices = calculateBasePrice(result.current.dataState.getData());
-		const calculatedBasePrice = getBasePrice(newPrices);
+		const newPriceAmount = calculateBasePrice(
+			result.current.dataState.getData().ticket?.price,
+			result.current.dataState.getData().prices
+		);
 
-		expect(calculatedBasePrice.amount).toEqual(basePriceAfter.amount);
+		expect(newPriceAmount).toEqual(basePriceAfter.amount);
 	});
 
 	it('updates the priceType of an existing price to reflect the change in ticket total when reverseCalculate is false', async () => {
@@ -311,7 +317,7 @@ describe('TPC:data.calculations', () => {
 		expect(ticketTotalBefore).not.toEqual(ticketTotalAfter);
 
 		// calculate th expected ticket total
-		const calculatedTicketTotal = calculateTicketTotal(result.current.getData());
+		const calculatedTicketTotal = calculateTicketTotal(result.current.getData().prices);
 
 		expect(calculatedTicketTotal).toEqual(ticketTotalAfter);
 	});
@@ -356,9 +362,11 @@ describe('TPC:data.calculations', () => {
 		expect(basePriceBefore.amount).not.toEqual(basePriceAfter.amount);
 
 		// calculate the expected base price
-		const newPrices = calculateBasePrice(result.current.dataState.getData());
-		const calculatedBasePrice = getBasePrice(newPrices);
+		const newPriceAmount = calculateBasePrice(
+			result.current.dataState.getData().ticket?.price,
+			result.current.dataState.getData().prices
+		);
 
-		expect(calculatedBasePrice.amount).toEqual(basePriceAfter.amount);
+		expect(newPriceAmount).toEqual(basePriceAfter.amount);
 	});
 });

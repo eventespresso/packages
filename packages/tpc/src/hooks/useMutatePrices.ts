@@ -21,8 +21,7 @@ const useMutatePrices = (): Callback => {
 					// convert the price mutatons into promises
 					prices.map(async ({ isNew, isModified, ...price }) => {
 						// if it's not new or modified, no need to do anything
-						// but base price needs to be updated anyway which may been modified by revCalc
-						if (!(isNew || isModified) && !price.isBasePrice) {
+						if (!(isNew || isModified)) {
 							// retain the existing relation
 							return price.id;
 						}
