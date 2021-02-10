@@ -25,16 +25,16 @@ const useRecalculateBasePrice = (ticketId: EntityId): Callback => {
 			const updatedTicket = { ...tpcData?.ticket, price: ticketPrice };
 			tpcData = { ...tpcData, ticket: updatedTicket };
 
-			const exitingBasePrice = getBasePrice(tpcData?.prices);
+			const existingBasePrice = getBasePrice(tpcData?.prices);
 			const priceModifiers = getPriceModifiers(tpcData?.prices || []);
 			// get the updated base price amount
 			const newBasePriceAmount = calculateBasePrice(tpcData.ticket?.price, tpcData.prices);
 
 			// if the ticket does not have a base price,
 			// that means it was free and now a price has been added ¯\_(ツ)_/¯
-			const newBasePrice = exitingBasePrice
+			const newBasePrice = existingBasePrice
 				? // add the exiting base price
-				  { ...exitingBasePrice, isModified: true }
+				  { ...existingBasePrice, isModified: true }
 				: // add the default price
 				  { ...defaultBasePrice, order: 1, isNew: true };
 
