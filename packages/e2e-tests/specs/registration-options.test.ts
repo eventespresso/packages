@@ -28,14 +28,14 @@ describe('Edit Registration Options', () => {
 			page.selectOption(registrationDefaultStatusSelect, 'APPROVED' as RegistrationStatus),
 		]);
 
-		expect(await registrationStatusResponse.status()).toBe(200);
+		expect(registrationStatusResponse.status()).toBe(200);
 
 		const [activeStatusResponse] = await Promise.all([
 			page.waitForResponse('**/graphql'),
 			page.selectOption(activeStatusSelect, 'isUpcoming'),
 		]);
 
-		expect(await activeStatusResponse.status()).toBe(200);
+		expect(activeStatusResponse.status()).toBe(200);
 
 		expect(await activeStatusResponse?.text()).toContain('Variable \\"$input\\" got invalid value');
 
@@ -54,14 +54,14 @@ describe('Edit Registration Options', () => {
 			page.click('[aria-describedby="ee-event-registration-ticket-selector"]'),
 		]);
 
-		expect(await ticketSelectorResponse.status()).toBe(200);
+		expect(ticketSelectorResponse.status()).toBe(200);
 
 		const [donationsResponse] = await Promise.all([
 			page.waitForResponse('**/graphql'),
 			page.click('[aria-describedby="ee-event-donations"]'),
 		]);
 
-		expect(await donationsResponse.status()).toBe(200);
+		expect(donationsResponse.status()).toBe(200);
 
 		await capture.stop();
 
