@@ -21,8 +21,6 @@ describe('usePriceToTpcModifier', () => {
 
 		expect(updatedPrice).toHaveProperty('priceType');
 		expect(updatedPrice.priceType).toBeDefined();
-		expect(updatedPrice).toHaveProperty('priceTypeOrder');
-		expect(updatedPrice.priceTypeOrder).toBeDefined();
 	});
 
 	it('returns the updated TPC price modifier without price type details for a non existing price', async () => {
@@ -40,7 +38,5 @@ describe('usePriceToTpcModifier', () => {
 
 		expect(updatedPrice).toHaveProperty('priceType');
 		expect(updatedPrice.priceType).toBeUndefined();
-		expect(updatedPrice).toHaveProperty('priceTypeOrder');
-		expect(updatedPrice.priceTypeOrder).toBeUndefined();
 	});
 });

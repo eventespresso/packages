@@ -26,7 +26,6 @@ export const updatePriceModifier = (price: TpcPriceModifier, priceType?: PriceTy
 		isPercent: priceType?.isPercent,
 		isTax: priceType?.isTax,
 		priceType: priceType?.id,
-		priceTypeOrder: priceType?.order,
 	};
 };
 
@@ -37,7 +36,6 @@ export const preparePricesForTpc = (
 	//sort'em
 	const sortedPrices = sortByPriceOrderIdAsc(prices);
 
-	// convert to TPC price objects by adding
-	// "priceType" and "priceTypeOrder"
+	// convert to TPC price objects by adding "priceType"
 	return sortedPrices.map(convertPriceToTpcModifier);
 };

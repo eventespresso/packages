@@ -14,7 +14,6 @@ export interface TPCModalProps {
 
 export interface TpcPriceModifier extends Price {
 	priceType: EntityId;
-	priceTypeOrder: number | string;
 	isNew?: boolean;
 	isModified?: boolean;
 }

@@ -8,9 +8,8 @@ const usePriceModifier = (price: Price): TpcPriceModifier => {
 		() => ({
 			...price,
 			priceType: priceType?.id,
-			priceTypeOrder: priceType?.order,
 		}),
-		[price, priceType?.id, priceType?.order]
+		[price, priceType?.id]
 	);
 };
 
