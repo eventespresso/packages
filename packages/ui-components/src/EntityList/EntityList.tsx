@@ -1,10 +1,11 @@
 import { ButtonRow, ErrorIndicator, Heading, LoadingNotice } from '../..';
 import type { EntityListProps } from './types';
+
 import './style.scss';
 
 export const EntityList: React.FC<EntityListProps> = ({
 	activeFilters,
-	className,
+	'data-testid': dataTestId,
 	entityList,
 	error,
 	filterBar,
@@ -19,7 +20,7 @@ export const EntityList: React.FC<EntityListProps> = ({
 	if (error) return <ErrorIndicator />;
 
 	return (
-		<div className={className}>
+		<div className='ee-entity-list ee-edtr-section' data-testid={dataTestId}>
 			<Heading as='h3' className='ee-entity-list__header'>
 				{headerText}
 			</Heading>

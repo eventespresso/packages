@@ -1,7 +1,7 @@
 import { InlineEditProps as InlineEditAdapterProps, InlineEditPreviewProps } from '@eventespresso/adapters';
 
 export interface InlineEditProps extends Omit<InlineEditAdapterProps, 'inputType'> {
-	['data-testid']?: string;
+	'data-testid'?: string;
 	lineCount?: number;
 	tag?: React.ElementType;
 	tooltip?: string;

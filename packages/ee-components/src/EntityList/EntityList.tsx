@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 import { __ } from '@eventespresso/i18n';
 import { useFeature, useStatus } from '@eventespresso/services';
 import { CollapsibleLegend, EmptyState, Pagination, EntityList as EntityListUI } from '@eventespresso/ui-components';
@@ -60,12 +58,10 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 		/>
 	);
 
-	const className = classNames('ee-entity-list', `ee-entity-list--type-${entityType}`);
-
 	return (
 		<EntityListUI
 			activeFilters={activeFilters}
-			className={className}
+			data-testid={`ee-entity-list-${entityType}`}
 			entityList={entityList}
 			error={error}
 			filterBar={filterBar}

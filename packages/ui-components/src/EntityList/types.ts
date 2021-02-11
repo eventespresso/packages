@@ -26,6 +26,7 @@ export interface EntityTableProps extends Omit<ResponsiveTableProps, 'className'
 export interface EntityListProps {
 	activeFilters?: React.ReactNode;
 	className?: string;
+	'data-testid'?: string;
 	entityList: React.ReactNode;
 	error?: boolean;
 	filterBar?: React.ReactNode;

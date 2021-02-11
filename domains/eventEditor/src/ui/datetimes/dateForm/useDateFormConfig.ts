@@ -72,9 +72,9 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 					fields: [
 						{
 							'data-testid': 'add-single-date-name',
-							name: 'name',
-							label: __('Name'),
 							fieldType: 'text',
+							label: __('Name'),
+							name: 'name',
 						},
 						{
 							name: 'description',
