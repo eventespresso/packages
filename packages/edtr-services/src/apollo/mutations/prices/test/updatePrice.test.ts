@@ -35,14 +35,11 @@ describe('updatePrice', () => {
 
 		let mutationData: any;
 
-		act(() => {
-			result.current.updateEntity(testInput).then(({ data }) => {
+		await act(async () => {
+			await result.current.updateEntity(testInput).then(({ data }) => {
 				mutationData = data;
 			});
 		});
-
-		// wait for mutation promise to resolve
-		await actWait();
 
 		expect(mutationData).toEqual(mockResult.data);
 		const pathToName = ['updateEspressoPrice', 'espressoPrice', 'name'];
@@ -73,12 +70,9 @@ describe('updatePrice', () => {
 
 		await actWait();
 
-		act(() => {
-			mutationResult.current.mutator.updateEntity(testInput);
+		await act(async () => {
+			await mutationResult.current.mutator.updateEntity(testInput);
 		});
-
-		// wait for mutation promise to resolve
-		await actWait();
 
 		// check if price is related to all the passed prices
 		const relatedPriceTypeIds = mutationResult.current.relationsManager.getRelations({
