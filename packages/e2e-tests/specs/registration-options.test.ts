@@ -55,12 +55,12 @@ describe('Edit Registration Options', () => {
 
 		// expect(await maxRegResponse.status()).toBe(200);
 
-		const [ticketSelectorResponse] = await Promise.all([
-			page.waitForResponse('**/graphql'),
-			page.click('[aria-describedby="ee-event-registration-ticket-selector"]'),
-		]);
+		// const [ticketSelectorResponse] = await Promise.all([
+		// 	page.waitForResponse('**/graphql'),
+		// 	page.click('[aria-describedby="ee-event-registration-ticket-selector"]'),
+		// ]);
 
-		expect(ticketSelectorResponse.status()).toBe(200);
+		// expect(ticketSelectorResponse.status()).toBe(200);
 
 		// const [donationsResponse] = await Promise.all([
 		// 	page.waitForResponse('**/graphql'),
