@@ -9,11 +9,16 @@ import { TPC_PRICE_DECIMAL_PLACES } from './constants';
 const calculateBasePrice = (ticketTotal: number, prices: DataState['prices']): number => {
 	const parsedTicketTotal = parsedAmount(ticketTotal);
 
-	if (!parsedTicketTotal || !prices?.length) {
+	if (!parsedTicketTotal) {
 		return 0;
 	}
 
-	const priceModifiers = getPriceModifiers(prices);
+	const priceModifiers = getPriceModifiers(prices || []);
+
+	// if there are no modifiers, return ticket total
+	if (!prices?.length) {
+		return parsedTicketTotal;
+	}
 
 	// Since the keys are numeric, it should be sorted in ASC by default
 	const orderToPriceMap = groupByProp('order', priceModifiers);

@@ -24,11 +24,11 @@ const undoParallelModifiers = (subTotal: number, modifiers: Array<TpcPriceModifi
 		}
 	);
 
-	const fixedPriceModifications = modifications.fixedPrices;
+	// Lets first adjust the fixed price modifications
+	const newSubTotal = subTotal - modifications.fixedPrices;
 
-	const afterPercentMods = subTotal / (1 + modifications.percents / 100);
-
-	return afterPercentMods - fixedPriceModifications;
+	// finally we can adjust the percents
+	return newSubTotal / (1 + modifications.percents / 100);
 };
 
 export default undoParallelModifiers;
