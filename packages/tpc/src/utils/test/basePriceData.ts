@@ -28,7 +28,7 @@ export const basePriceTestCases: Array<TestCase> = [
 	{
 		basePrice: 10,
 		name: 'calculates the base price when taxes have same order',
-		// taxes have same order               see ▼               ▼
+		// taxes have same order
 		prices: [fixedSurcharge(5), [tax(8), tax(12)]],
 		total: 18,
 	},
