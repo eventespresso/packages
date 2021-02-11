@@ -35,14 +35,9 @@ describe('createPrice', () => {
 
 		let mutationData: any;
 
-		act(() => {
-			result.current.createEntity(testInput).then(({ data }) => {
-				mutationData = data;
-			});
+		await act(async () => {
+			mutationData = await result.current.createEntity(testInput);
 		});
-
-		// wait for mutation promise to resolve
-		await actWait();
 
 		expect(mutationData).toEqual(mockResult.data);
 		const pathToName = ['createEspressoPrice', 'espressoPrice', 'name'];
@@ -66,12 +61,9 @@ describe('createPrice', () => {
 			}
 		);
 
-		act(() => {
-			mutationResult.current.mutator.createEntity(testInput);
+		await act(async () => {
+			await mutationResult.current.mutator.createEntity(testInput);
 		});
-
-		// wait for mutation promise to resolve
-		await actWait();
 
 		const cache = mutationResult.current.client.extract();
 		const { result: cacheResult } = renderHook(
@@ -112,8 +104,8 @@ describe('createPrice', () => {
 			}
 		);
 
-		act(() => {
-			mutationResult.current.mutator.createEntity(newTestInput);
+		await act(async () => {
+			await mutationResult.current.mutator.createEntity(newTestInput);
 		});
 
 		// wait for mutation promise to resolve

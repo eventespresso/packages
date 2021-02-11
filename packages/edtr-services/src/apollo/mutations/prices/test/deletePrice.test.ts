@@ -28,10 +28,8 @@ describe('deletePrice', () => {
 
 		let mutationData: any;
 
-		act(() => {
-			result.current.deleteEntity().then(({ data }) => {
-				mutationData = data;
-			});
+		await act(async () => {
+			mutationData = await result.current.deleteEntity();
 		});
 
 		// wait for mutation promise to resolve
@@ -64,12 +62,9 @@ describe('deletePrice', () => {
 
 		await actWait();
 
-		act(() => {
-			mutationResult.current.mutator.deleteEntity({});
+		await act(async () => {
+			await mutationResult.current.mutator.deleteEntity({});
 		});
-
-		// wait for mutation promise to resolve
-		await actWait();
 
 		const relatedTicketIds = mutationResult.current.relationsManager.getRelations({
 			entity: 'prices',
@@ -141,12 +136,9 @@ describe('deletePrice', () => {
 
 		await actWait();
 
-		act(() => {
-			mutationResult.current.mutator.deleteEntity({});
+		await act(async () => {
+			await mutationResult.current.mutator.deleteEntity({});
 		});
-
-		// wait for mutation promise to resolve
-		await actWait();
 
 		const relatedPriceTypeIds = mutationResult.current.relationsManager.getRelations({
 			entity: 'prices',
