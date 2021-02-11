@@ -1,6 +1,5 @@
-import { Trashable } from '@eventespresso/data';
-import { isTrashed } from '../../isTrashed';
+import { filter } from 'ramda';
 
-export const notTrashed = <T extends Trashable>(entities: T[]): T[] => {
-	return entities.filter((entity) => !isTrashed(entity));
-};
+import { isNotTrashed } from '../../isTrashed';
+
+export const notTrashed = filter(isNotTrashed);
