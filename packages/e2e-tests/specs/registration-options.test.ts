@@ -13,7 +13,7 @@ describe('Edit Registration Options', () => {
 
 		await loginUser();
 
-		await page.screenshot({ path: `artifats/before.png` });
+		await page.screenshot({ path: `artifacts/before.png` });
 
 		process.env.CI === 'true' && (await activatePlugin('event-espresso'));
 
@@ -21,7 +21,7 @@ describe('Edit Registration Options', () => {
 
 		await createNewEvent({ title: 'to be deleted' });
 
-		await page.screenshot({ path: `artifats/after.png` });
+		await page.screenshot({ path: `artifacts/after.png` });
 
 		const registrationDefaultStatusSelect = '[data-testid="ee-event-registration-default-status-select"]';
 		const activeStatusSelect = '[data-testid="ee-event-registration-active-status-select"]';
@@ -31,14 +31,14 @@ describe('Edit Registration Options', () => {
 			page.selectOption(registrationDefaultStatusSelect, 'APPROVED' as RegistrationStatus),
 		]);
 
-		expect(registrationStatusResponse.status()).toBe(200);
+		expect(await registrationStatusResponse.status()).toBe(200);
 
 		const [activeStatusResponse] = await Promise.all([
 			page.waitForResponse('**/graphql'),
 			page.selectOption(activeStatusSelect, 'isUpcoming'),
 		]);
 
-		expect(activeStatusResponse.status()).toBe(200);
+		expect(await activeStatusResponse.status()).toBe(200);
 
 		expect(await activeStatusResponse?.text()).toContain('Variable \\"$input\\" got invalid value');
 
