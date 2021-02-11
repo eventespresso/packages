@@ -11,7 +11,7 @@ export async function activatePlugin(slug) {
 	await switchUserToAdmin();
 	await visitAdminPage('plugins.php', null);
 
-	await page.screenshot({ path: `activatePlugin-before.png` });
+	await page.screenshot({ path: `artifats/activatePlugin-before.png` });
 
 	const disableLink = await page.$(`tr[data-slug="${slug}"] .deactivate a`);
 
@@ -24,5 +24,5 @@ export async function activatePlugin(slug) {
 
 	await switchUserToTest();
 
-	await page.screenshot({ path: `activatePlugin-after.png` });
+	await page.screenshot({ path: `artifats/activatePlugin-after.png` });
 }

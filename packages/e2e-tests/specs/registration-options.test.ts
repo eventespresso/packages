@@ -13,15 +13,15 @@ describe('Edit Registration Options', () => {
 
 		await loginUser();
 
-		await page.screenshot({ path: `before.png` });
+		await page.screenshot({ path: `artifats/before.png` });
 
 		process.env.CI === 'true' && (await activatePlugin('event-espresso'));
 
-		await page.screenshot({ path: `after.png` });
-
 		expect(true).toBe(true);
 
-		// await createNewEvent({ title: 'to be deleted' });
+		await createNewEvent({ title: 'to be deleted' });
+
+		await page.screenshot({ path: `artifats/after.png` });
 
 		// const registrationDefaultStatusSelect = '[data-testid="ee-event-registration-default-status-select"]';
 		// const activeStatusSelect = '[data-testid="ee-event-registration-active-status-select"]';
