@@ -22,13 +22,13 @@ export const basePriceTestCases: Array<TestCase> = [
 		basePrice: 0,
 		name: 'returns 0 when ticket total is undefined',
 		prices: [fixedSurcharge(5), tax(8), tax(12)],
-		total: 0,
+		total: undefined,
 	},
 	{
 		basePrice: 0,
 		name: 'returns 0 when ticket total is null',
 		prices: [fixedSurcharge(5), tax(8), tax(12)],
-		total: 0,
+		total: null,
 	},
 	{
 		basePrice: 10,

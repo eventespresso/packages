@@ -24,6 +24,11 @@ const calculateTicketTotal = (prices: DataState['prices']): number => {
 	// if the battle lasts this far, pawns also matter
 	const priceModifiers = getPriceModifiers(prices);
 
+	// if there is no army, king has to fight alone
+	if (!priceModifiers.length) {
+		return basePriceAmount;
+	}
+
 	// lets divide them into teams based on ther `order`
 	// Since the keys are numberic, it should be sorted by default
 	const orderToPriceMap = groupByProp('order', priceModifiers);
