@@ -85,22 +85,22 @@ export const ticketTotalTestCases: Array<TestCase> = [
 		total: 11.4,
 	},
 	{
-		name: 'percent dicount and percent surcharge SHOULD NOT cancel each other when in different order',
+		name: 'percent discount and percent surcharge SHOULD NOT cancel each other when in different order',
 		prices: [basePrice(10), percentSurcharge(5), percentDiscount(5)],
 		total: 9.975,
 	},
 	{
-		name: 'percent dicount and percent surcharge SHOULD cancel each other when in same order',
+		name: 'percent discount and percent surcharge SHOULD cancel each other when in same order',
 		prices: [basePrice(10), [percentSurcharge(5), percentDiscount(5)]],
 		total: 10,
 	},
 	{
-		name: 'fixed dicount and fixed surcharge SHOULD cancel each other when in different order',
+		name: 'fixed discount and fixed surcharge SHOULD cancel each other when in different order',
 		prices: [basePrice(10), fixedSurcharge(5), fixedDiscount(5)],
 		total: 10,
 	},
 	{
-		name: 'fixed dicount and fixed surcharge SHOULD cancel each other when in same order',
+		name: 'fixed discount and fixed surcharge SHOULD cancel each other when in same order',
 		prices: [basePrice(10), [fixedSurcharge(5), fixedDiscount(5)]],
 		total: 10,
 	},
