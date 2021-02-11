@@ -11,6 +11,7 @@
 	@at-root .ee-edtr-section > h3#{&} {
 		font-size: calc(var(--ee-font-size-huge) * 1.375);
 	}
+
 	@at-root h3#{&} {
 		font-size: var(--ee-font-size-huge);
 		margin: var(--ee-margin-default) 0 0;

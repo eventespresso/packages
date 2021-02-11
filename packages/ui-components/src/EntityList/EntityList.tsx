@@ -4,6 +4,7 @@ import './style.scss';
 
 export const EntityList: React.FC<EntityListProps> = ({
 	activeFilters,
+	className,
 	entityList,
 	error,
 	filterBar,
@@ -18,7 +19,7 @@ export const EntityList: React.FC<EntityListProps> = ({
 	if (error) return <ErrorIndicator />;
 
 	return (
-		<div className='ee-entity-list  ee-edtr-section'>
+		<div className={className}>
 			<Heading as='h3' className='ee-entity-list__header'>
 				{headerText}
 			</Heading>

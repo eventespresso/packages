@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
-import { Entity } from '@eventespresso/data';
 import { EntityActionsSubscription, EntityActionsMenuRegistry } from '@eventespresso/registry';
 import { domain } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
+import type { Entity } from '@eventespresso/data';
 
 const { getSubscriptions } = new EntityActionsSubscription(domain);
 

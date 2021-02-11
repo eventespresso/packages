@@ -19,7 +19,12 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ form, hasErrors, steps, s
 	return (
 		<ButtonRow>
 			{current === DATE_DETAILS_STEP && (
-				<Next buttonText={__('Save and assign tickets')} onClick={next} isDisabled={hasErrors} />
+				<Next
+					buttonText={__('Save and assign tickets')}
+					data-testid='save-and-assign-tickets'
+					onClick={next}
+					isDisabled={hasErrors}
+				/>
 			)}
 
 			{current === ASSIGN_TICKETS_STEP && (
