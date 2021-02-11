@@ -27,10 +27,9 @@ describe('calculateBasePrice', () => {
 
 	// now lets run the actual base price tests
 	basePriceTestCases.forEach(({ basePrice, name, prices, total }) => {
-		const testPrices = createPrices(prices.map(convertToModifier));
-		const calculatedPrice = calculateBasePrice(total, testPrices);
-
 		it(name, () => {
+			const testPrices = createPrices(prices.map(convertToModifier));
+			const calculatedPrice = calculateBasePrice(total, testPrices);
 			expect(calculatedPrice).toBe(basePrice);
 		});
 	});

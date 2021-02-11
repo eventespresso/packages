@@ -29,10 +29,9 @@ describe('calculateTicketTotal', () => {
 
 	// now lets run the actual ticket total tests
 	ticketTotalTestCases.forEach(({ name, prices, total }) => {
-		const testPrices = createPrices(prices.map(convertToModifier));
-		const calculatedTotal = calculateTicketTotal(testPrices);
-
 		it(name, () => {
+			const testPrices = createPrices(prices.map(convertToModifier));
+			const calculatedTotal = calculateTicketTotal(testPrices);
 			expect(calculatedTotal).toBe(total);
 		});
 	});
