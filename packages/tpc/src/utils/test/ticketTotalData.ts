@@ -1,7 +1,7 @@
 import { TestCase, basePrice, fixedDiscount, fixedSurcharge, percentDiscount, percentSurcharge, tax } from './utils';
 
 /**
- * `order` prop of the pries will be set based on their index in the array
+ * `order` prop of the prices will be set based on their index in the array
  * starting with base price with order 1
  * If two or more prices should have the same order, place them in an array
  */
