@@ -5,12 +5,12 @@ import './style.scss';
 
 export const EntityList: React.FC<EntityListProps> = ({
 	activeFilters,
-	'data-testid': dataTestId,
 	entityList,
 	error,
 	filterBar,
 	footer,
 	headerText,
+	id,
 	legend,
 	loading,
 	pagination,
@@ -20,7 +20,7 @@ export const EntityList: React.FC<EntityListProps> = ({
 	if (error) return <ErrorIndicator />;
 
 	return (
-		<div className='ee-entity-list ee-edtr-section' data-testid={dataTestId}>
+		<div className='ee-entity-list ee-edtr-section' id={id}>
 			<Heading as='h3' className='ee-entity-list__header'>
 				{headerText}
 			</Heading>

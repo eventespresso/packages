@@ -61,12 +61,12 @@ const EntityList = <ELFS extends EntityListFilterStateManager<any>>({
 	return (
 		<EntityListUI
 			activeFilters={activeFilters}
-			data-testid={`ee-entity-list-${entityType}`}
 			entityList={entityList}
 			error={error}
 			filterBar={filterBar}
 			footer={footer}
 			headerText={headerText}
+			id={`ee-entity-list-${entityType}`}
 			legend={legend}
 			loading={loading}
 			pagination={pagination}

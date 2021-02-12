@@ -4381,7 +4381,7 @@
   resolved "https://registry.yarnpkg.com/@tannin/postfix/-/postfix-1.1.0.tgz#6071f4204ae26c2e885cf3a3f1203a9f71e3f291"
   integrity sha512-oocsqY7g0cR+Gur5jRQLSrX2OtpMLMse1I10JQBm8CdGMrDkh1Mg2gjsiquMHRtBs4Qwu5wgEp5GgIYHk4SNPw==
 
-"@testing-library/dom@^7.28.1":
+"@testing-library/dom@^7.22.2", "@testing-library/dom@^7.28.1":
   version "7.29.4"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.29.4.tgz#1647c2b478789621ead7a50614ad81ab5ae5b86c"
   integrity sha512-CtrJRiSYEfbtNGtEsd78mk1n1v2TUbeABlNIcOCJdDfkN5/JTOwQEbbQpoSRxGqzcWPgStMvJ4mNolSuBRv1NA==
@@ -17009,6 +17009,14 @@ playwright-core@>=1.2.0, playwright-core@^1.4.1:
     rimraf "^3.0.2"
     ws "^7.3.1"
 
+playwright-testing-library@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/playwright-testing-library/-/playwright-testing-library-2.7.0.tgz#85ac2c45323d65170c71098db5748721a5b38022"
+  integrity sha512-AZ1oMFForckK05IBAMHD4ffa85+qUP4IwG6RYBzwkBcIVUkRAHNWabFeMTXnFIeUDMETtmUqoIaLBcaVIgYFZg==
+  dependencies:
+    "@testing-library/dom" "^7.22.2"
+    wait-for-expect "^3.0.2"
+
 playwright-video@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/playwright-video/-/playwright-video-2.4.0.tgz#3e7def8144bbd130774075d301d66e205eb445c9"
@@ -22304,6 +22312,11 @@ w3c-xmlserializer@^2.0.0:
   integrity sha512-4tzD0mF8iSiMiNs30BiLO3EpfGLZUT2MSX/G+o7ZywDzliWQ3OPtTZ0PTC3B3ca1UAf4cJMHB+2Bf56EriJuRA==
   dependencies:
     xml-name-validator "^3.0.0"
+
+wait-for-expect@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/wait-for-expect/-/wait-for-expect-3.0.2.tgz#d2f14b2f7b778c9b82144109c8fa89ceaadaa463"
+  integrity sha512-cfS1+DZxuav1aBYbaO/kE06EOS8yRw7qOFoD3XtjTkYvCvh3zUvNST8DXK/nPaeqIzIv3P3kL3lRJn8iwOiSag==
 
 wait-on@^5.2.1:
   version "5.2.1"

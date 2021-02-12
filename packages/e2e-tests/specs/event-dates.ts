@@ -1,9 +1,13 @@
 /// <reference types="jest-playwright-preset" />
 /// <reference types="expect-playwright" />
 
+import { getDocument, queries } from 'playwright-testing-library';
+
 import { saveVideo } from 'playwright-video';
 
 import { activatePlugin, addNewDate, createNewEvent, loginUser } from '../utils';
+
+const { getByText } = queries;
 
 describe('Event Dates', () => {
 	it('should add new date', async () => {
@@ -17,15 +21,15 @@ describe('Event Dates', () => {
 
 		await createNewEvent({ title: 'to be deleted' });
 
+		const $document = await getDocument(page);
+
 		const newDateName = 'brand new date';
 
 		await addNewDate({ name: newDateName });
 
-		const newDateNameNode = await page.$eval(
-			'[data-testid="ee-entity-list-datetimes"] .ee-entity-card-wrapper .entity-card-details__name',
-			(el) => el.innerHTML
-		);
-		expect(newDateNameNode).toContain(newDateName);
+		const $newDateNameNode = await getByText($document, newDateName);
+
+		expect(await $newDateNameNode.innerHTML()).toContain(newDateName);
 
 		await capture.stop();
 		await browser.close();
