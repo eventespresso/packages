@@ -17,8 +17,6 @@ describe('Available Tickets', () => {
 
 		process.env.CI === 'true' && (await activatePlugin('event-espresso'));
 
-		expect(true).toBe(true);
-
 		await createNewEvent({ title: 'to be deleted' });
 
 		const newTicketName = 'one way ticket';
@@ -39,6 +37,8 @@ describe('Available Tickets', () => {
 		const newTicketCurrencyNode = await page.$eval('#ee-entity-list-tickets', (el) => el.innerHTML);
 
 		expect(newTicketCurrencyNode).toContain(newTicketAmount);
+
+		await page.waitForTimeout(2000); // the ticket list is not updated instantly
 
 		await capture.stop();
 		await browser.close();
