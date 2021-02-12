@@ -34,9 +34,12 @@ describe('Available Tickets', () => {
 
 		expect(newTicketNameNode).toContain(newTicketName);
 
-		// const newTicketCurrencyNode = await page.$eval('#ee-entity-list-tickets', (el) => el.innerHTML);
+		const newTicketCurrencyNode = await page.$eval(
+			`text=${newTicketName}`,
+			(e) => e.closest('.ee-currency-input').innerHTML
+		);
 
-		// expect(newTicketCurrencyNode).toContain(newTicketAmount);
+		expect(newTicketCurrencyNode).toContain('1419.10');
 
 		await page.waitForTimeout(2000);
 
