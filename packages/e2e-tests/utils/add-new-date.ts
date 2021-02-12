@@ -1,11 +1,11 @@
 export const addNewDate = async ({ name }: any = {}) => {
-	await page.click('[data-testid="add-single-date"]');
+	await page.click('text=Add New Date');
 
-	await page.focus('[data-testid="add-single-date-name"]');
+	await page.focus('.ee-render-fields >> text=Name');
 
-	await page.type('[data-testid="add-single-date-name"]', name);
+	await page.type('.ee-render-fields >> text=Name', name);
 
-	await page.click('[data-testid="save-and-assign-tickets"]');
+	await page.click('[type=button] >> text=Save and assign tickets"');
 
 	await page.click('[aria-label="assign ticket"]');
 
