@@ -15,8 +15,8 @@ const DefaultRegistrationStatus: React.FC<Props> = ({ defaultRegStatus, onDefaul
 		<GridItem className={className} id={id} label={__('Default Registration Status')}>
 			<div className='ee-reg-option__value'>
 				<Select
-					data-testid={`${id}-select`}
 					flow='inline'
+					id={`${id}-select`}
 					noBorderColor
 					onChangeValue={onDefaultRegStatusChange}
 					options={regStatusOptions}

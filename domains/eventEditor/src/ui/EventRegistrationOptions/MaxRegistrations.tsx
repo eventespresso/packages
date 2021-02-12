@@ -13,7 +13,7 @@ const MaxRegistrations: React.FC<Props> = ({ maxReg, onMaxRegChange }) => {
 			<div className='ee-reg-option__value'>
 				<InlineEditText
 					aria-describedby={id}
-					data-testid={`${id}-inline-edit`}
+					id={`${id}-inline-edit`}
 					onChange={onMaxRegChange}
 					tag='h4'
 					value={strValue}
