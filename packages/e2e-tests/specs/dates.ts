@@ -9,7 +9,7 @@ import { activatePlugin, addNewDate, createNewEvent, loginUser } from '../utils'
 
 const { getByText } = queries;
 
-describe('Event Dates', () => {
+describe('eventDates', () => {
 	it('should add new date', async () => {
 		const capture = await saveVideo(page, 'artifacts/new-date.mp4');
 

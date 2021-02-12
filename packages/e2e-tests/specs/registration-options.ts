@@ -7,7 +7,7 @@ import type { RegistrationStatus } from '@eventespresso/data';
 
 import { activatePlugin, createNewEvent, loginUser } from '../utils';
 
-describe('Edit Registration Options', () => {
+describe('editRegistrationOptions', () => {
 	it('should activate event-espresso-core', async () => {
 		// const capture = await saveVideo(page, 'artifacts/video.mp4');
 
