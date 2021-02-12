@@ -36,7 +36,10 @@ describe('Available Tickets', () => {
 
 		const newTicketCurrencyNode = await page.$eval(
 			`text=${newTicketName}`,
-			(e) => e.closest('.ee-currency-input').innerHTML
+			(e) =>
+				e
+					.closest('.ee-entity-card-wrapper')
+					.querySelector('.ee-currency-input .ee-tabbable-text__inner_wrapper').innerHTML
 		);
 
 		expect(newTicketCurrencyNode).toContain('1419.10');

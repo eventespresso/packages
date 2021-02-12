@@ -14,7 +14,6 @@ const insertStrAt = (str: string, subStr: string, pos: number): string => {
 };
 
 const InlineEditInput: React.FC<InlineEditInputProps> = ({
-	'data-testid': dataTestId,
 	editableInputClassName,
 	inputType,
 	onCancel,
@@ -43,10 +42,10 @@ const InlineEditInput: React.FC<InlineEditInputProps> = ({
 	);
 
 	if (inputType === 'textarea') {
-		return <ChakraEditableInput {...textareaProps} data-testid={dataTestId} />;
+		return <ChakraEditableInput {...textareaProps} />;
 	}
 
-	return <ChakraEditableInput className={editableInputClassName} data-testid={dataTestId} />;
+	return <ChakraEditableInput className={editableInputClassName} />;
 };
 
 export default InlineEditInput;

@@ -9,7 +9,6 @@ export interface InlineEditProps
 	extends Partial<ChakraEditableProps>,
 		Omit<CommonInputProps<HTMLInputElement>, 'onChangeValue'> {
 	editableInputClassName?: string;
-	'data-testid'?: string;
 	inputClassName?: string;
 	inputType?: InputType;
 	lineCount?: number;
@@ -27,7 +26,6 @@ export interface InlineEditPreviewProps
 
 export interface InlineEditInputProps
 	extends Pick<InlineEditProps, 'editableInputClassName' | 'inputType' | 'textAreaClassName'> {
-	'data-testid'?: string;
 	onCancel: VoidFunction;
 	setValue: React.Dispatch<React.SetStateAction<string>>;
 }

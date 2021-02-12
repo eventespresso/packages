@@ -1,6 +1,4 @@
-import type { InlineEditProps } from '../InlineEdit/InlineEditInput/types';
-
-export interface TabbableTextProps extends Pick<InlineEditProps, 'data-testid'> {
+export interface TabbableTextProps {
 	'aria-describedby'?: string;
 	className?: string;
 	icon?: React.ReactNode;
