@@ -43,7 +43,7 @@ jobs:
               run: yarn ${{ matrix.task }}:ci ${{ env.CLI_ARGS }}
     e2e:
         name: E2E Tests
-        # needs: [build]
+        needs: [build]
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -90,7 +90,7 @@ jobs:
 
             - name: Archive debug artifacts (screenshots, HTML snapshots)
               uses: actions/upload-artifact@v2
-              # if: failure()
+              if: failure()
               with:
                   name: failures-artifacts
                   path: artifacts
