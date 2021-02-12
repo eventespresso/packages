@@ -5,7 +5,7 @@ export const addNewDate = async ({ name }: any = {}) => {
 
 	await page.type('.ee-render-fields >> text=Name', name);
 
-	await page.click('[type=button] >> text=Save and assign tickets"');
+	await page.click('[type=button] >> text=Save and assign tickets');
 
 	await page.click('[aria-label="assign ticket"]');
 
