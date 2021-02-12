@@ -25,5 +25,5 @@ export const addNewTicket = async ({ amount, name }: any = {}) => {
 
 	await page.click('button[type=submit]');
 
-	await page.waitForTimeout(1000); // the ticket list is not updated instantly
+	await page.waitForTimeout(2000); // the ticket list is not updated instantly
 };
