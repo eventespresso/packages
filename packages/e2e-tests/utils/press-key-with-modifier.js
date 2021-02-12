@@ -1,12 +1,5 @@
-/**
- * External dependencies
- */
-import { capitalize } from 'lodash';
-
-/**
- * WordPress dependencies
- */
 import { modifiers, SHIFT, ALT, CTRL } from '@wordpress/keycodes';
+import { ucFirst } from '@eventespresso/utils';
 
 /**
  * Emulates a Ctrl+A SelectAll key combination by dispatching custom keyboard
@@ -163,8 +156,8 @@ export async function pressKeyWithModifier(modifier, key) {
 
 	await Promise.all(
 		mappedModifiers.map(async (mod) => {
-			const capitalizedMod = capitalize(ctrlSwap(mod));
-			return page.keyboard.down(capitalizedMod);
+			const ucFirstdMod = ucFirst(ctrlSwap(mod));
+			return page.keyboard.down(ucFirstdMod);
 		})
 	);
 
@@ -172,8 +165,8 @@ export async function pressKeyWithModifier(modifier, key) {
 
 	await Promise.all(
 		mappedModifiers.map(async (mod) => {
-			const capitalizedMod = capitalize(ctrlSwap(mod));
-			return page.keyboard.up(capitalizedMod);
+			const ucFirstdMod = ucFirst(ctrlSwap(mod));
+			return page.keyboard.up(ucFirstdMod);
 		})
 	);
 }

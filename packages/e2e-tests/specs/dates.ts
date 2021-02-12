@@ -11,7 +11,7 @@ const { getByText } = queries;
 
 describe('Event Dates', () => {
 	it('should add new date', async () => {
-		const capture = await saveVideo(page, 'artifacts/new-date-video.mp4');
+		const capture = await saveVideo(page, 'artifacts/new-date.mp4');
 
 		await loginUser();
 

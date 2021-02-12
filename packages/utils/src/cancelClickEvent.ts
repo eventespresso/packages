@@ -1,5 +1,3 @@
-const { console } = window;
-
 export type ClickEvent = React.KeyboardEvent | React.MouseEvent;
 
 interface CancelClickInterface {

@@ -1,6 +1,8 @@
+export * from './add-new-date';
+export * from './add-new-ticket';
+
 export { activatePlugin } from './activate-plugin';
 export { activateTheme } from './activate-theme';
-export * from './add-new-date';
 export { arePrePublishChecksEnabled } from './are-pre-publish-checks-enabled';
 export { changeSiteTimezone } from './change-site-timezone';
 export { canvas } from './canvas';
