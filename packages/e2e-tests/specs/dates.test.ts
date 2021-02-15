@@ -17,8 +17,6 @@ describe('eventDates', () => {
 
 		process.env.CI === 'true' && (await activatePlugin('event-espresso'));
 
-		expect(true).toBe(true);
-
 		await createNewEvent({ title: 'to be deleted' });
 
 		const $document = await getDocument(page);

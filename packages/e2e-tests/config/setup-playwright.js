@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 import playwright from 'playwright';
 
 // import {
@@ -13,6 +15,7 @@ import playwright from 'playwright';
 
 import { setBrowserViewport } from '../utils/set-browser-viewport';
 import { switchUserToAdmin } from '../utils/switch-user-to-admin';
+import { activatePlugin, loginUser } from '../utils';
 
 // import { addQueryArgs } from '@wordpress/url';
 
@@ -156,6 +159,10 @@ export async function trashExistingPosts(postType = 'post', page) {
 // other posts/comments/etc. aren't dirtying tests and tests don't depend on
 // each other's side-effects.
 beforeAll(async () => {
+	await loginUser();
+
+	process.env.CI === 'true' && (await activatePlugin('event-espresso'));
+
 	// const browser = await playwright['chromium'].launch();
 	// const context = await browser.newContext();
 	// const page = await context.newPage();

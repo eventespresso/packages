@@ -58,6 +58,7 @@ const useFooterRowGenerator = (): FooterRowGenerator => {
 						component='input'
 						disabled={isDisabled || !reverseCalculate}
 						formatOnBlur
+						id='ticket-price-total'
 					/>
 				),
 			},

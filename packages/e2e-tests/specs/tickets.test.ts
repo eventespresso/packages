@@ -44,8 +44,6 @@ describe('availableTickets', () => {
 
 		expect(newTicketCurrencyNode).toContain('1419.10');
 
-		await page.waitForTimeout(2000);
-
 		await capture.stop();
 		await browser.close();
 	});
