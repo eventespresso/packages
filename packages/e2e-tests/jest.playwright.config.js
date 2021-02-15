@@ -3,7 +3,7 @@ module.exports = {
 	globalSetup: 'jest-playwright-preset/setup.js',
 	reporters: undefined,
 	setupFilesAfterEnv: ['<rootDir>/config/setup-playwright.js'],
-	testMatch: ['**/specs/**/*.[jt]s', '**/?(*.)spec.[jt]s'],
+	testMatch: ['**/specs/**/*test.[jt]s', '**/?(*.)spec.[jt]s'],
 	testEnvironmentOptions: {
 		'jest-playwright': {
 			launchOptions: {
