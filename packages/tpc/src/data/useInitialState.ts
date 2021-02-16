@@ -8,6 +8,7 @@ import type { StateInitializer } from './types';
 import type { BaseProps } from '../types';
 import { TICKET_FIELDS_TO_USE, preparePricesForTpc } from '../utils';
 import { usePriceToTpcModifier } from '../hooks';
+import { hooks } from '../ioc';
 
 /**
  * Initializes the data state dynamically by
@@ -17,7 +18,8 @@ const useInitialState = ({ getTicket, getTicketPrices, ticketId }: BaseProps): S
 	// get the full ticket object
 	const wholeTicket = getTicket(ticketId);
 
-	const isDisabled = isLocked(wholeTicket || {});
+	const isDisabled = hooks.applyFilters('tpc.ticket.isDisabled', isLocked(wholeTicket || {}), wholeTicket);
+
 	const ticket = useMemoStringify(wholeTicket ? pick(TICKET_FIELDS_TO_USE, wholeTicket) : {});
 
 	const convertPriceToTpcModifier = usePriceToTpcModifier();
