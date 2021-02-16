@@ -1,6 +1,4 @@
-import { EntityType } from './types';
-
-export const entityPlurals: Partial<Record<EntityType, `${EntityType}${string}`>> = {
+export const entityPlurals = {
 	datetime: 'datetimes',
 	default_price: 'default_prices',
 	default_price_type: 'default_price_types',
