@@ -1,6 +1,9 @@
+import { useMemo } from 'react';
+
 import { __ } from '@eventespresso/i18n';
+import { EMPTY_OBJECT } from '@eventespresso/constants';
 import { Button, NewEntityOption } from '@eventespresso/ui-components';
-import { EdtrGlobalModals } from '@eventespresso/edtr-services';
+import { EdtrGlobalModals, hooks } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 import { Calendar } from '@eventespresso/icons';
 
@@ -13,14 +16,22 @@ type AddSingleDateProps = {
 const AddSingleDate: React.FC<AddSingleDateProps> = ({ isOnlyButton }) => {
 	const { open } = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_DATE);
 
-	const output = (
-		<Button
-			buttonText={isOnlyButton ? __('Add New Date') : __('Add Single Date')}
-			onClick={open}
-			icon={isOnlyButton && Calendar}
-			size={isOnlyButton ? 'big' : 'default'}
-		/>
-	);
+	const output = useMemo(() => {
+		const additionalProps = hooks.applyFilters('eventEditor.addSingleDate.buttonProps', EMPTY_OBJECT, isOnlyButton);
+
+		return hooks.applyFilters(
+			// replacement filter for the button.
+			'eventEditor.addSingleDate.button',
+			<Button
+				buttonText={isOnlyButton ? __('Add New Date') : __('Add Single Date')}
+				onClick={open}
+				icon={isOnlyButton && Calendar}
+				size={isOnlyButton ? 'big' : 'default'}
+				{...additionalProps}
+			/>,
+			isOnlyButton
+		);
+	}, [isOnlyButton, open]);
 
 	if (isOnlyButton) {
 		return output;

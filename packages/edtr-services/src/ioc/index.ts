@@ -2,8 +2,10 @@ import { getHooks } from '@eventespresso/ioc';
 import type { MutationType, ApolloCache, Entity, EntityId } from '@eventespresso/data';
 import type { OptionsType } from '@eventespresso/adapters';
 import type { BulkEdit } from '@eventespresso/services';
+import type { ButtonProps } from '@eventespresso/ui-components';
+import type { SimpleTextEditorModalProps } from '@eventespresso/ee-components';
 
-import { Ticket } from '../apollo';
+import { Datetime, Ticket } from '../apollo';
 import { TicketFormShape, TicketFormConfig } from '../forms';
 
 type MutationActionArgs<E extends Entity> = [
@@ -22,6 +24,10 @@ export type Filters = {
 	'eventEditor.ticketForm.sections': [sections: TicketFormConfig['sections'], ticket: Ticket];
 	'eventEditor.ticket.mutationInput': [input: Record<string, any>, entityId?: EntityId];
 	'eventEditor.datetimes.bulkEdit.actions': [actions: OptionsType];
+	'eventEditor.addSingleDate.button': [button: JSX.Element, isOnlyButton: boolean];
+	'eventEditor.addSingleDate.buttonProps': [props: Partial<ButtonProps>, isOnlyButton: boolean];
+	'eventEditor.datetimes.inlineDescriptionProps': [props: Partial<SimpleTextEditorModalProps>, entity: Datetime];
+	'eventEditor.tickets.inlineDescriptionProps': [props: Partial<SimpleTextEditorModalProps>, entity: Ticket];
 };
 
 export const hooks = getHooks<Actions, Filters>();

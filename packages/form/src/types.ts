@@ -142,6 +142,6 @@ export interface SectionProps<FormValues = AnyObject> {
 	title?: React.ReactNode;
 }
 
-type FieldList<FormValues = AnyObject> = Array<FieldProps<FormValues>>;
+export type FieldList<FormValues = AnyObject> = Array<FieldProps<FormValues>>;
 
-type SectionList<FormValues = AnyObject> = Array<SectionProps<FormValues>>;
+export type SectionList<FormValues = AnyObject> = Array<SectionProps<FormValues>>;

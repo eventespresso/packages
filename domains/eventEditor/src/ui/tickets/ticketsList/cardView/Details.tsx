@@ -2,10 +2,10 @@ import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 
-import { ADMIN_ROUTES } from '@eventespresso/constants';
+import { ADMIN_ROUTES, EMPTY_OBJECT } from '@eventespresso/constants';
 import { SimpleTextEditorModal } from '@eventespresso/ee-components';
 import { useConfig } from '@eventespresso/services';
-import { getAdminUrl, useTicketMutator, useEventId } from '@eventespresso/edtr-services';
+import { getAdminUrl, useTicketMutator, useEventId, hooks } from '@eventespresso/edtr-services';
 
 import { EditableName, EditablePrice } from '../editable';
 import TicketDetailsPanel from './TicketDetailsPanel';
@@ -30,6 +30,10 @@ const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 		[updateEntity]
 	);
 
+	const additionalProps = useMemo(() => {
+		return hooks.applyFilters('eventEditor.tickets.inlineDescriptionProps', EMPTY_OBJECT, ticket);
+	}, [ticket]);
+
 	return (
 		<>
 			<EditableName className={'entity-card-details__name'} entity={ticket} />
@@ -40,6 +44,7 @@ const Details: React.FC<Partial<TicketItemProps>> = ({ entity: ticket }) => {
 				text={ticket.description}
 				title={__('Edit description')}
 				tooltip={__('edit description…')}
+				{...additionalProps}
 			/>
 
 			<EditablePrice className='entity-card-details__price' entity={ticket} />

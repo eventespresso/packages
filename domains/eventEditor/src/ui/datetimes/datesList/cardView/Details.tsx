@@ -1,10 +1,10 @@
 import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { ADMIN_ROUTES } from '@eventespresso/constants';
+import { ADMIN_ROUTES, EMPTY_OBJECT } from '@eventespresso/constants';
 import { SimpleTextEditorModal } from '@eventespresso/ee-components';
 import { useConfig } from '@eventespresso/services';
-import { getAdminUrl, useDatetimeMutator, useEventId } from '@eventespresso/edtr-services';
+import { getAdminUrl, useDatetimeMutator, useEventId, hooks } from '@eventespresso/edtr-services';
 
 import DateDetailsPanel from './DateDetailsPanel';
 import { EditableName } from '../editable';
@@ -31,6 +31,10 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 
 	const detailsItems = useDateCardDetailsItems(datetime.id);
 
+	const additionalProps = useMemo(() => {
+		return hooks.applyFilters('eventEditor.datetimes.inlineDescriptionProps', EMPTY_OBJECT, datetime);
+	}, [datetime]);
+
 	return (
 		<>
 			<EditableName className='entity-card-details__name' entity={datetime} />
@@ -41,6 +45,7 @@ const Details: React.FC<DateItemProps> = ({ entity: datetime }) => {
 				text={datetime.description}
 				title={__('Edit description')}
 				tooltip={__('edit description…')}
+				{...additionalProps}
 			/>
 
 			{detailsItems}
