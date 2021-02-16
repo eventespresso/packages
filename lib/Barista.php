@@ -24,6 +24,7 @@ class Barista
         add_action('wp_default_scripts', [$this, 'registerScripts']);
         add_action('wp_default_styles', [$this, 'registerPackagesStyles']);
         add_action('admin_enqueue_scripts', [$this, 'addAssets']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueueScripts']);
     }
 
 
@@ -259,6 +260,22 @@ class Barista
                         $version
                     );
                 }
+            }
+        }
+    }
+
+
+    /**
+     * Enqueues assets that are loaded by exernal plugins/services.
+     */
+    public function enqueueScripts()
+    {
+        $scripts = ['eventSmart'];
+
+        foreach ($scripts as $handle) {
+            $handle = 'eventespresso-' . $handle;
+            if (wp_script_is($handle, 'registered')) {
+                wp_enqueue_script($handle);
             }
         }
     }
