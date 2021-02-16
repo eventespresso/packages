@@ -22,6 +22,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			buttonText,
 			buttonType = ButtonType.DEFAULT,
 			icon,
+			isDisabled,
 			noMargin,
 			noHorizontalMargin,
 			noVerticalMargin,
@@ -53,7 +54,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				buttonText={buttonText}
 				className={className}
 				icon={icon}
-				onClick={onClick}
+				isDisabled={isDisabled}
+				// disable click handler if button is disabled
+				onClick={isDisabled ? null : onClick}
 				ref={ref}
 			/>
 		);

@@ -14,6 +14,7 @@ import './style.scss';
 
 export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 	className,
+	isDisabled,
 	onUpdate,
 	title,
 	tooltip,
@@ -73,6 +74,7 @@ export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 				<TabbableText
 					className={previewClassName}
 					icon={<Edit className={'ee-inline-edit__edit-icon'} />}
+					isDisabled={isDisabled}
 					onClick={onOpen}
 					text={preview}
 					tooltip={tooltip}
@@ -81,3 +83,5 @@ export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 		</>
 	);
 };
+
+export * from './types';

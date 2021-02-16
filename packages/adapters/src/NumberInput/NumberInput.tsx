@@ -27,11 +27,13 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
 	const onChangeHandler = useCallback<NumberInputProps['onChange']>(
 		(valueAsString, valueAsNumber) => {
-			onChangeValue?.(valueAsNumber);
+			if (!isDisabled) {
+				onChangeValue?.(valueAsNumber);
 
-			onChange?.(valueAsString, valueAsNumber);
+				onChange?.(valueAsString, valueAsNumber);
+			}
 		},
-		[onChange, onChangeValue]
+		[isDisabled, onChange, onChangeValue]
 	);
 
 	return (
