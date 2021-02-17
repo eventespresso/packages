@@ -3,19 +3,15 @@
 
 // import { saveVideo } from 'playwright-video';
 
-import type { RegistrationStatus } from '@eventespresso/data';
+// import type { RegistrationStatus } from '@eventespresso/data';
 
-import { activatePlugin, createNewEvent, loginUser } from '../utils';
+import { createNewEvent } from '../utils';
 
 describe('editRegistrationOptions', () => {
 	it('should activate event-espresso-core', async () => {
 		// const capture = await saveVideo(page, 'artifacts/video.mp4');
 
-		await loginUser();
-
 		await page.screenshot({ path: `artifacts/before.png` });
-
-		process.env.CI === 'true' && (await activatePlugin('event-espresso'));
 
 		await createNewEvent({ title: 'to be deleted' });
 
