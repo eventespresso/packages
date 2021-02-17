@@ -2,7 +2,7 @@ import { useMemo, useCallback } from 'react';
 import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { startAndEndDateFixer, useDatetimeItem } from '@eventespresso/edtr-services';
+import { startAndEndDateFixer, useDatetimeItem, hooks } from '@eventespresso/edtr-services';
 import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
 import type { EspressoFormProps } from '@eventespresso/form';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
@@ -11,7 +11,7 @@ import { setDefaultTime } from '@eventespresso/dates';
 import { EndDateFieldWrapper } from '@eventespresso/ee-components';
 import { EntityId } from '@eventespresso/data';
 import { __ } from '@eventespresso/i18n';
-import type { Datetime, DateFormShape, DateFormConfig } from '@eventespresso/edtr-services';
+import type { Datetime, DateFormConfig } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
 
@@ -45,26 +45,22 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 		[onSubmit, toUtcISO]
 	);
 
-	const initialValues: DateFormShape = useMemo(
-		() => ({
-			...pick<Partial<Datetime>, keyof Datetime>(FIELD_NAMES, datetime || {}),
-			startDate,
-			endDate,
-		}),
-		[datetime, endDate, startDate]
-	);
+	const initialValues = useMemo(() => {
+		return hooks.applyFilters(
+			'eventEditor.dateForm.initalValues',
+			{
+				...pick<Partial<Datetime>, keyof Datetime>(FIELD_NAMES, datetime || {}),
+				startDate,
+				endDate,
+			},
+			datetime
+		);
+	}, [datetime, endDate, startDate]);
 
-	return useMemo(
-		() => ({
-			...config,
-			onSubmit: onSubmitFrom,
-			decorators,
-			initialValues,
-			subscription: {},
-			validate,
-			layout: 'horizontal',
-			debugFields: ['values', 'errors'],
-			sections: [
+	const sections = useMemo(() => {
+		return hooks.applyFilters(
+			'eventEditor.dateForm.sections',
+			[
 				{
 					name: 'basics',
 					icon: ProfileOutlined,
@@ -129,8 +125,23 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 					],
 				},
 			],
+			datetime
+		);
+	}, [datetime]);
+
+	return useMemo(
+		() => ({
+			...config,
+			onSubmit: onSubmitFrom,
+			decorators,
+			initialValues,
+			subscription: {},
+			validate,
+			layout: 'horizontal',
+			debugFields: ['values', 'errors'],
+			sections,
 		}),
-		[config, initialValues, onSubmitFrom]
+		[config, initialValues, onSubmitFrom, sections]
 	);
 };
 

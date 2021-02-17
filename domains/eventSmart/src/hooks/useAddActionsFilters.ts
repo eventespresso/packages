@@ -1,11 +1,11 @@
 import { useFilterElementProps } from './useFilterElementProps';
 import { useFilterElements } from './useFilterElements';
-import { useTicketFormSections } from './useTicketFormSections';
+import { useFilterFormFields } from './useFilterFormFields';
 
 const useAddActionsFilters = (): void => {
 	useFilterElementProps();
 	useFilterElements();
-	useTicketFormSections();
+	useFilterFormFields();
 };
 
 export default useAddActionsFilters;
