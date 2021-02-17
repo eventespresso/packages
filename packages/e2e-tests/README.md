@@ -10,7 +10,7 @@ Node.js and NPM are required. The latest LTS version of Node.js is used to devel
 
 First, ensure that Docker is running. You can do this by clicking on the Docker icon in the system tray or menu bar.
 
-Then, change to a directory that contains a barista:
+Then, change to the barista directory:
 
 ```sh
 $ cd ~/barista
