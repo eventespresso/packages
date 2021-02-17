@@ -7,7 +7,7 @@
 
 // import { createNewEvent } from '../utils';
 
-describe('editRegistrationOptions', () => {
+describe.skip('editRegistrationOptions', () => {
 	it('should activate event-espresso-core', async () => {
 		// const capture = await saveVideo(page, 'artifacts/video.mp4');
 		// await page.screenshot({ path: `artifacts/before.png` });
