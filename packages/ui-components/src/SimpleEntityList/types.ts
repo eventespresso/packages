@@ -1,5 +1,7 @@
 import type { Entity } from '@eventespresso/data';
 
+import { IconButtonProps } from '../Button';
+
 export interface EntityTemplateProps<E extends Entity> {
 	className?: string;
 	templates: Array<E>;
@@ -9,9 +11,11 @@ export interface EntityTemplateProps<E extends Entity> {
 }
 
 export interface SimpleEntityRendererProps<E extends Entity> {
+	deleteButtonProps?: IconButtonProps;
+	editButtonProps?: IconButtonProps;
 	entity: E;
-	onEdit: (entity: Entity) => void;
 	onDelete: (entity: Entity) => void;
+	onEdit: (entity: Entity) => void;
 }
 
 export interface SimpleEntityListProps<E extends Entity> extends EntityTemplateProps<E> {

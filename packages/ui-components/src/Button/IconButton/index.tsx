@@ -18,6 +18,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 			buttonType = ButtonType.DEFAULT,
 			color,
 			icon,
+			isDisabled,
 			noMargin,
 			noPadding,
 			onClick,
@@ -42,12 +43,14 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 
 		return (
 			<IconButtonAdapter
+				tabIndex={0}
 				{...props}
 				aria-label={ariaLabel}
 				className={className}
 				icon={icon}
-				onClick={onClick}
-				tabIndex={0}
+				isDisabled={isDisabled}
+				// disable click handler if button is disabled
+				onClick={isDisabled ? null : onClick}
 				ref={ref}
 			/>
 		);
