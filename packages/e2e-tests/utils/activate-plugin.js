@@ -11,7 +11,13 @@ export async function activatePlugin(slug) {
 	await switchUserToAdmin();
 	await visitAdminPage('plugins.php', null);
 
-	const disableLink = await page.$eval(`tr[data-slug="${slug}"] .deactivate a`, (el) => el.innerHTML);
+	let disableLink;
+
+	try {
+		disableLink = await page.$eval(`tr[data-slug="${slug}"] .deactivate a`, (el) => el?.innerHTML);
+	} catch (err) {
+		console.log(err);
+	}
 
 	if (disableLink) {
 		await switchUserToTest();
