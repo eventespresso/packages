@@ -5,13 +5,17 @@ import { getDocument, queries } from 'playwright-testing-library';
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewDate, createNewEvent } from '../utils';
+import { activatePlugin, addNewDate, createNewEvent, loginUser } from '../utils';
 
 const { getByText } = queries;
 
 describe('eventDates', () => {
 	it('should add new date', async () => {
 		const capture = await saveVideo(page, 'artifacts/new-date.mp4');
+
+		// await loginUser();
+
+		process.env.CI === 'true' && (await activatePlugin('event-espresso'));
 
 		await createNewEvent({ title: 'to be deleted' });
 

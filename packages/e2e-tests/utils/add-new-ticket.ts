@@ -11,7 +11,9 @@ export const addNewTicket = async ({ amount, name }: any = {}) => {
 
 	await page.click('[type=button] >> text=Set ticket prices');
 
-	await page.click('[type=button] >> text=Add default prices');
+	await page.waitForTimeout(1000);
+
+	await page.click('text=Add default prices');
 
 	await page.click('[aria-label="amount"]');
 

@@ -4,7 +4,7 @@ import { Button } from '../../../Button';
 import type { ToggleBulkActionsButtonProps } from '../types';
 
 export const ToggleBulkActionsButton: React.FC<ToggleBulkActionsButtonProps> = ({ value, onClick, id }) => {
-	const filterId = id && `ee-toggle-bulk-actions-btn-${id}`;
+	const filterId = `ee-toggle-bulk-actions-btn-${id}`;
 	const tooltip = value ? __('hide bulk actions') : __('show bulk actions');
 
 	return (
