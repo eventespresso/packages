@@ -5,7 +5,7 @@ import { Link } from '@eventespresso/ui-components';
 import { __ } from '@eventespresso/i18n';
 
 import { NAMESPACE } from '../constants';
-import { useCanUseEdtr } from './useCanUseEdtr';
+import { useCanUseAdvancedEditor } from './useCanUseAdvancedEditor';
 
 const addSingleDate: keyof Filters = 'eventEditor.addSingleDate.button';
 
@@ -13,7 +13,7 @@ const addSingleDate: keyof Filters = 'eventEditor.addSingleDate.button';
  * A custom hook to replace different UI elements
  */
 export const useFilterElements = (): void => {
-	const canUseEdtr = useCanUseEdtr();
+	const canUseEdtr = useCanUseAdvancedEditor();
 
 	useEffect(() => {
 		hooks.addFilter(addSingleDate, NAMESPACE, (jsx) => {

@@ -4,7 +4,7 @@ import { hooks as edtrHooks, Filters as EdtrFilters } from '@eventespresso/edtr-
 import { hooks as tpcHooks, Filters as TpcFilters } from '@eventespresso/tpc';
 
 import { NAMESPACE } from '../constants';
-import { useCanUseEdtr } from './useCanUseEdtr';
+import { useCanUseAdvancedEditor } from './useCanUseAdvancedEditor';
 
 const datesInlineDesc: keyof EdtrFilters = 'eventEditor.datetimes.inlineDescriptionProps';
 const ticketsInlineDesc: keyof EdtrFilters = 'eventEditor.tickets.inlineDescriptionProps';
@@ -15,7 +15,7 @@ const tpcDisabled: keyof TpcFilters = 'tpc.ticket.isDisabled';
  * A custom hook to change the props for different UI elements
  */
 export const useFilterElementProps = (): void => {
-	const canUseEdtr = useCanUseEdtr();
+	const canUseEdtr = useCanUseAdvancedEditor();
 
 	useEffect(() => {
 		const isDisabled = !canUseEdtr;

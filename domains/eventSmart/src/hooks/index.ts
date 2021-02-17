@@ -1,1 +1,1 @@
-export { default as useESInitialization } from './useESInitialization';
+export * from './useEventSmartInit';

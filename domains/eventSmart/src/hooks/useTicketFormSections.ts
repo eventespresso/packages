@@ -4,7 +4,7 @@ import { adjust, findIndex, lensProp, pipe, propEq, set } from 'ramda';
 import { hooks, Filters } from '@eventespresso/edtr-services';
 
 import { NAMESPACE } from '../constants';
-import { useCanUseEdtr } from './useCanUseEdtr';
+import { useCanUseAdvancedEditor } from './useCanUseAdvancedEditor';
 
 const filterName: keyof Filters = 'eventEditor.ticketForm.sections';
 
@@ -15,7 +15,7 @@ const fieldsLens = lensProp<any>('fields');
  * A custom hook to disable fields in Ticket edit form
  */
 export const useTicketFormSections = (): void => {
-	const canUseEdtr = useCanUseEdtr();
+	const canUseEdtr = useCanUseAdvancedEditor();
 
 	useEffect(() => {
 		hooks.addFilter(filterName, NAMESPACE, (sections) => {

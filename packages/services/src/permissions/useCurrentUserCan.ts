@@ -33,6 +33,13 @@ const useCurrentUserCan = (): CurrentUserCan => {
 
 			const pluralEntityType = entityPlurals[entityType] || entityType;
 
+			// e.g. ee_delete_others_default_tickets, ee_read_others_default_tickets
+			const computedOthersCap = `ee_${capability}_others_${pluralEntityType}`;
+			// return true if user can manage ANY entity of this type
+			if (permissions?.includes(computedOthersCap)) {
+				return true;
+			}
+
 			// e.g. ee_edit_default_tickets, ee_delete_others_default_tickets
 			const computedPluralCap = `ee_${capability}_${pluralEntityType}`;
 
@@ -40,22 +47,13 @@ const useCurrentUserCan = (): CurrentUserCan => {
 				return true;
 			}
 
-			if (!entity?.userId) {
-				return false;
-			}
-
-			/**
-			 * if we are dealing with a single entity permission check,
-			 * we need to check the ownership
-			 */
-			if (entity.userId === currentUser.id) {
+			// if we are dealing with a single entity permission check,
+			// we need to check the ownership
+			if (entity?.userId === currentUser.id) {
 				return true;
 			}
 
-			// e.g. ee_delete_others_default_tickets, ee_read_others_default_tickets
-			const computedOthersCap = `ee_${capability}_others_${pluralEntityType}`;
-
-			return permissions?.includes(computedOthersCap);
+			return false;
 		},
 		[currentUser.id, permissions]
 	);
