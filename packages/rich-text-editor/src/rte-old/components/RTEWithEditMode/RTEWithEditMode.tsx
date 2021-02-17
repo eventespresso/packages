@@ -9,8 +9,8 @@ import { RichTextEditor } from '../RichTextEditor';
 
 import './style.scss';
 
-export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode = true, ...props }) => {
-	const editor = <RichTextEditor {...props} />;
+export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode = true, isDisabled, ...props }) => {
+	const editor = <RichTextEditor readOnly={isDisabled} toolbarHidden={isDisabled} {...props} />;
 
 	const { defaultValue, onChange, onChangeValue, placeholder, value } = props;
 
@@ -39,6 +39,7 @@ export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode
 					<Textarea
 						className='ee-html-editor'
 						defaultValue={defaultValue}
+						isDisabled={isDisabled}
 						placeholder={placeholder}
 						value={value}
 						onChange={onChangeHandler}

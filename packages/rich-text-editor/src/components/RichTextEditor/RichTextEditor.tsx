@@ -22,7 +22,9 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	'aria-label': ariaLabel,
 	className,
 	enableEditMode = true,
+	isDisabled,
 	toolbar,
+	...props
 }) => {
 	const [editorState, updateEditorState] = useEditorState();
 
@@ -69,6 +71,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 			<Toolbar toolbar={toolbar} />
 			<div className={editorClassName}>
 				<Editor
+					{...props}
 					ariaLabel={ariaLabel}
 					blockRenderMap={blockRenderMap}
 					blockRendererFn={blockRenderer}
@@ -79,6 +82,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 					keyBindingFn={keyBindingFn}
 					onChange={updateEditorState}
 					placeholder={__('Write something…')}
+					readOnly={isDisabled}
 					ref={editorRef}
 					spellCheck={true}
 				/>
@@ -88,7 +92,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 
 	return (
 		<div className='ee-rich-text-editor-root'>
-			{enableEditMode ? <WithEditMode visualEditor={visualEditor} /> : visualEditor}
+			{enableEditMode ? <WithEditMode isDisabled={isDisabled} visualEditor={visualEditor} /> : visualEditor}
 		</div>
 	);
 };

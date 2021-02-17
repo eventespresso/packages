@@ -12,10 +12,11 @@ import { editorStateToHtml, htmlToEditorState } from '../../utils';
 import './style.scss';
 
 export interface WithEditModeProps {
+	isDisabled?: boolean;
 	visualEditor?: React.ReactNode;
 }
 
-export const WithEditMode: React.FC<WithEditModeProps> = ({ visualEditor }) => {
+export const WithEditMode: React.FC<WithEditModeProps> = ({ isDisabled, visualEditor }) => {
 	const [editorState, updateEditorState] = useEditorState();
 	const [value, setValue] = useState<string>();
 
@@ -62,7 +63,12 @@ export const WithEditMode: React.FC<WithEditModeProps> = ({ visualEditor }) => {
 			<TabPanels>
 				<TabPanel>{visualEditor}</TabPanel>
 				<TabPanel>
-					<Textarea className='ee-html-editor' value={value} onChange={onChangeHandler} />
+					<Textarea
+						className='ee-html-editor'
+						isDisabled={isDisabled}
+						onChange={onChangeHandler}
+						value={value}
+					/>
 				</TabPanel>
 			</TabPanels>
 		</Tabs>

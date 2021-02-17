@@ -6,6 +6,7 @@ export interface RichTextEditorProps extends ToolbarProps, StateProviderProps {
 	'aria-label'?: string;
 	className?: string;
 	enableEditMode?: boolean;
+	isDisabled?: boolean;
 }
 
 export type DraftEditorProps = React.ComponentProps<typeof Editor>;
