@@ -27,6 +27,7 @@ export const TICKET_ATTRIBUTES: any = gql`
 		reverseCalculate
 		sold
 		startDate
+		userId
 		uses
 	}
 `;

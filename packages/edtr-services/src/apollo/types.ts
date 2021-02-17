@@ -1,5 +1,6 @@
 import type {
 	Entity,
+	EntityId,
 	EntityEdge,
 	Trashable,
 	DatetimesList as DatetimeList,
@@ -119,6 +120,7 @@ export interface Ticket extends Entity, Trashable {
 	reverseCalculate: boolean;
 	sold: number;
 	startDate: string; // ISO string
+	userId: EntityId;
 	uses: number;
 }
 

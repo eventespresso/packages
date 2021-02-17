@@ -6,7 +6,7 @@ import type { ButtonProps } from '@eventespresso/ui-components';
 import type { SimpleTextEditorModalProps } from '@eventespresso/ee-components';
 
 import { Datetime, Ticket } from '../apollo';
-import { TicketFormShape, TicketFormConfig } from '../forms';
+import { DateFormShape, DateFormConfig, TicketFormShape, TicketFormConfig } from '../forms';
 
 type MutationActionArgs<E extends Entity> = [
 	mutationType: MutationType,
@@ -22,6 +22,8 @@ export type Actions = {
 export type Filters = {
 	'eventEditor.ticketForm.initalValues': [initialValues: TicketFormShape, ticket: Ticket];
 	'eventEditor.ticketForm.sections': [sections: TicketFormConfig['sections'], ticket: Ticket];
+	'eventEditor.dateForm.initalValues': [initialValues: DateFormShape, datetime: Datetime];
+	'eventEditor.dateForm.sections': [sections: DateFormConfig['sections'], datetime: Datetime];
 	'eventEditor.ticket.mutationInput': [input: Record<string, any>, entityId?: EntityId];
 	'eventEditor.datetimes.bulkEdit.actions': [actions: OptionsType];
 	'eventEditor.addSingleDate.button': [button: JSX.Element, isOnlyButton: boolean];
