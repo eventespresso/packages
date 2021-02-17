@@ -20,15 +20,10 @@ const useCurrentUserCan = (): CurrentUserCan => {
 	const currentUser = useCurrentUser();
 
 	return useCallback<CurrentUserCan>(
-		(capability = 'read', entityType, entity) => {
+		(capability, entityType, entity) => {
 			// bail early if the user has the capability
-			if (permissions?.includes(capability)) {
-				return true;
-			}
-
-			// we need entityType to move forward
 			if (!entityType) {
-				return false;
+				return permissions?.includes(capability);
 			}
 
 			const pluralEntityType = entityPlurals[entityType] || entityType;

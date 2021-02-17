@@ -1,12 +1,10 @@
-import { useMemoStringify } from '@eventespresso/hooks';
-import type { User } from '@eventespresso/data';
-
-import { useConfig } from '../config';
+import { useMemo } from 'react';
+import { useCurrentUser, User } from '@eventespresso/data';
 
 const useUserCapabilities = (): User['capabilities'] => {
-	const { currentUser } = useConfig();
+	const currentUser = useCurrentUser();
 
-	return useMemoStringify(currentUser?.capabilities || []);
+	return useMemo(() => currentUser?.capabilities || [], [currentUser?.capabilities]);
 };
 
 export default useUserCapabilities;

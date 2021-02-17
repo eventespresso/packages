@@ -1,10 +1,11 @@
-import { useMemoStringify } from '@eventespresso/hooks';
+import { useMemo } from 'react';
 
 import { useConfig, ConfigDataProps } from '../config';
 
 const useSitePermissions = (): ConfigDataProps['sitePermissions'] => {
 	const { sitePermissions } = useConfig();
-	return useMemoStringify(sitePermissions || []);
+
+	return useMemo(() => sitePermissions || [], [sitePermissions]);
 };
 
 export default useSitePermissions;
