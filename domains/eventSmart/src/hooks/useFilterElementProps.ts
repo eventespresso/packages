@@ -18,6 +18,10 @@ export const useFilterElementProps = (): void => {
 	const canUseEdtr = useCanUseAdvancedEditor();
 
 	useEffect(() => {
+		// bail early if all good
+		if (canUseEdtr) {
+			return;
+		}
 		const isDisabled = !canUseEdtr;
 
 		edtrHooks.addFilter(datesInlineDesc, NAMESPACE, (props) => {
