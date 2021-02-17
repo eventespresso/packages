@@ -34,6 +34,7 @@ const OUTPUT_ONLY_FIELDS: Array<keyof Omit<Ticket, keyof UpdateTicketInput> | 'i
 	'isPending',
 	'isSoldOut',
 	'registrationCount',
+	'userId',
 ];
 
 export const TICKET_FIELDS = [...TICKET_INPUT_FIELDS, ...OUTPUT_ONLY_FIELDS];
