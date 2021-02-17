@@ -18,7 +18,7 @@ export const Actions = () => {
 
 	return (
 		<DropdownMenu toggleProps={toggleProps}>
-			{<DropdownMenuItem isDisabled={!canReadDefaultTickets} onClick={open} title={__('Default tickets')} />}
+			<DropdownMenuItem isDisabled={!canReadDefaultTickets} onClick={open} title={__('Default tickets')} />
 			{/* King's throne for other future items */}
 		</DropdownMenu>
 	);
