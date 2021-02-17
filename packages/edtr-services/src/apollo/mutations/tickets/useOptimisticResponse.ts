@@ -35,6 +35,7 @@ export const TICKET_DEFAULTS: Ticket = {
 	reverseCalculate: true,
 	sold: 0,
 	startDate: PLUS_ONE_MONTH.toISOString(),
+	userId: '',
 	uses: -1,
 };
 

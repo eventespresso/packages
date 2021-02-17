@@ -61,7 +61,7 @@ export const useFilterFormFields = (): void => {
 				adjust(minQuantityIndex, setIsDisabled),
 				adjust(maxQuantityIndex, setIsDisabled)
 			)(detailsFields);
-			//#region
+			//#endregion
 
 			// update the section with updated fields
 			return adjust(detailsSectionIndex, set(fieldsLens, updatedDetailsFields), sections);
