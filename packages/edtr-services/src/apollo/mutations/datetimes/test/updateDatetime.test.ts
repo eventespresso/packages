@@ -9,8 +9,8 @@ import { nodes as tickets } from '../../../queries/tickets/test/data';
 import useInitDatetimeTestCache from '../../../queries/datetimes/test/useInitDatetimeTestCache';
 import { useDatetimeMutator, UpdateDatetimeInput } from '../';
 import { getGuids } from '@eventespresso/predicates';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('updateDatetime', () => {
 	const mockedDatetime = mockedDatetimes.UPDATE;
 	let testInput: UpdateDatetimeInput = { ...mockedDatetime, name: 'New Test Date', description: 'New Test Desc' };
@@ -42,8 +42,7 @@ describe('updateDatetime', () => {
 			});
 		});
 
-		// wait for mutation promise to resolve
-		await waitForValueToChange(() => mutationData, { timeout });
+		await actWait();
 
 		expect(mutationData).toEqual(mockResult.data);
 		const pathToName = ['updateEspressoDatetime', 'espressoDatetime', 'name'];
@@ -72,12 +71,9 @@ describe('updateDatetime', () => {
 			}
 		);
 
-		act(() => {
-			mutationResult.current.mutator.updateEntity(testInput);
+		await act(async () => {
+			await mutationResult.current.mutator.updateEntity(testInput);
 		});
-
-		// wait for mutation promise to resolve
-		await waitForNextUpdate({ timeout });
 
 		// check if datetime is related to all the passed tickets
 		const relatedTicketIds = mutationResult.current.relationsManager.getRelations({
@@ -140,13 +136,10 @@ describe('updateDatetime', () => {
 		});
 		expect(relatedTicketIds).toContain(tempTicketId);
 
-		act(() => {
+		await act(async () => {
 			// mutate
-			mutationResult.current.mutator.updateEntity(testInput);
+			await mutationResult.current.mutator.updateEntity(testInput);
 		});
-
-		// wait for mutation promise to resolve
-		await waitForNextUpdate({ timeout });
 
 		// check if datetime is related to `tempTicketId`
 		relatedTicketIds = mutationResult.current.relationsManager.getRelations({

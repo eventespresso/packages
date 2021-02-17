@@ -8,11 +8,10 @@ import { useGeneralSettings } from '..';
 import { request } from './data';
 import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('useUpdateGeneralSettingsCache', () => {
 	it('checks for generalSettings cache update', async () => {
 		const wrapper = ApolloMockedProvider();
-		const { result, waitForNextUpdate } = renderHook(
+		const { result } = renderHook(
 			() => {
 				useCacheRehydration();
 				return {
@@ -43,7 +42,7 @@ describe('useUpdateGeneralSettingsCache', () => {
 				},
 			});
 		});
-		await waitForNextUpdate({ timeout });
+		await actWait();
 
 		const cache = result.current.client.extract();
 		const { result: cacheResult } = renderHook(

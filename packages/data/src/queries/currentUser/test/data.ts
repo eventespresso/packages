@@ -10,6 +10,7 @@ export const request: CacheQueryOptions = {
 
 export const currentUser: User = {
 	id: 'dXNlcjox',
+	capabilities: [],
 	description: null,
 	email: 'user@eventespresso.com',
 	firstName: null,

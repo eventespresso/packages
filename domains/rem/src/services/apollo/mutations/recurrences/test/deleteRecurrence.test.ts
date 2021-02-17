@@ -5,8 +5,8 @@ import { MutationType } from '@eventespresso/data';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
 import { getMutationMocks, mockedRecurrences } from './data';
 import { useRecurrenceMutator } from '../';
+import { actWait } from '@eventespresso/utils/src/test';
 
-const timeout = 5000; // milliseconds
 describe('deleteRecurrence', () => {
 	const mockedRecurrence = mockedRecurrences.DELETE;
 
@@ -17,7 +17,7 @@ describe('deleteRecurrence', () => {
 	it('checks for the mutation data to be same as the mock data', async () => {
 		const wrapper = ApolloMockedProvider(mutationMocks);
 
-		const { result, waitForValueToChange } = renderHook(() => useRecurrenceMutator(mockedRecurrence.id), {
+		const { result } = renderHook(() => useRecurrenceMutator(mockedRecurrence.id), {
 			wrapper,
 		});
 
@@ -29,8 +29,7 @@ describe('deleteRecurrence', () => {
 			});
 		});
 
-		// wait for mutation promise to resolve
-		await waitForValueToChange(() => mutationData, { timeout });
+		await actWait();
 
 		expect(mutationData).toEqual(mockResult.data);
 		const pathToId = ['deleteEspressoRecurrence', 'espressoRecurrence', 'name'];

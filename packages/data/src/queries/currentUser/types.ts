@@ -5,8 +5,7 @@ export interface User {
 	id: string;
 	description: string;
 	email: string;
-	/* EE capabilities for the user */
-	capabilities?: Array<string>;
+	capabilities: Array<string>;
 	firstName: string;
 	name: string;
 	nicename: string;
