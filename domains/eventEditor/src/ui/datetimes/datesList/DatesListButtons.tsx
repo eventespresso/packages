@@ -4,7 +4,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { Ticket } from '@eventespresso/icons';
 import { Button, ButtonRow } from '@eventespresso/ui-components';
-import { EdtrGlobalModals } from '@eventespresso/edtr-services';
+import { EdtrGlobalModals, useDatetimes, useTickets } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 
 import { BaseProps } from '../../ticketAssignmentsManager';
@@ -13,6 +13,12 @@ import { NewDateButton } from './newDateOptions';
 const DatesListButtons: React.FC = () => {
 	const { openWithData } = useGlobalModal<BaseProps>(EdtrGlobalModals.TAM);
 
+	const datetimes = useDatetimes();
+	const tickets = useTickets();
+	const isDisabled = !datetimes.length || !tickets.length;
+
+	const tooltip = isDisabled && __('Add a date or a ticket in order to use Ticket Assignment Manager');
+
 	const onOpen = useCallback(() => {
 		openWithData({ assignmentType: 'forAll' });
 	}, [openWithData]);
@@ -20,7 +26,14 @@ const DatesListButtons: React.FC = () => {
 	return (
 		<ButtonRow>
 			<NewDateButton />
-			<Button buttonText={__('Ticket Assignments')} icon={Ticket} onClick={onOpen} size='big' />
+			<Button
+				buttonText={__('Ticket Assignments')}
+				icon={Ticket}
+				isDisabled={isDisabled}
+				onClick={onOpen}
+				size='big'
+				tooltip={tooltip}
+			/>
 		</ButtonRow>
 	);
 };
