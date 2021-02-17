@@ -4,7 +4,7 @@ import { __ } from '@eventespresso/i18n';
 
 import { ToolbarItemProps, ToolbarItem } from '../../RichTextEditor';
 
-const wpMedia = window?.wp?.media({
+const wpMedia = window?.wp?.media?.({
 	title: __('Select media'),
 	button: {
 		text: __('Select'),
@@ -15,7 +15,7 @@ const wpMedia = window?.wp?.media({
 	},
 });
 
-const openMediaModal = () => wpMedia?.open();
+const openMediaModal = () => wpMedia?.open?.();
 
 export const WPMedia: React.FC<ToolbarItemProps<'image'>> = ({ onChange, config, toolbar }) => {
 	const mediaHandler = useCallback(() => {
