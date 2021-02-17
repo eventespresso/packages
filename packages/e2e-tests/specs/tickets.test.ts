@@ -15,7 +15,7 @@ describe.skip('availableTickets', () => {
 
 		// await loginUser();
 
-		process.env.CI === 'true' && (await activatePlugin('event-espresso'));
+		// process.env.CI === 'true' && (await activatePlugin('event-espresso'));
 
 		await createNewEvent({ title: 'to be deleted' });
 
