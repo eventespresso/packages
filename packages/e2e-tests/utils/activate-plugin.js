@@ -11,20 +11,16 @@ export async function activatePlugin(slug) {
 	await switchUserToAdmin();
 	await visitAdminPage('plugins.php', null);
 
-	let disableLink;
-
-	try {
-		disableLink = await page.$eval(`tr[data-slug="${slug}"] .deactivate a`, (el) => el?.innerHTML);
-	} catch (err) {
-		console.log(err);
-	}
+	const disableLink = await page
+		.$eval(`tr[data-slug="${slug}"] .deactivate a`, (el) => el.innerHTML)
+		.catch(console.log);
 
 	if (disableLink) {
 		await switchUserToTest();
 		return;
 	}
 
-	await page.click(`tr[data-slug="${slug}"] .activate a`);
+	await page.click(`tr[data-slug="${slug}"] .activate a`).catch(console.log);
 
 	await switchUserToTest();
 }
