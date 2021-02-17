@@ -82,7 +82,7 @@ describe('deleteDatetime', () => {
 
 		const wrapper = ApolloMockedProvider(mutationMocks);
 
-		const { result: mutationResult, waitForNextUpdate } = renderHook(
+		const { result: mutationResult } = renderHook(
 			() => ({
 				mutator: useDatetimeMutator(mockedDatetime.id),
 				relationsManager: useRelations(),
