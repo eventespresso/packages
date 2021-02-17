@@ -21,7 +21,7 @@ beforeAll(async () => {
 	await page.click('[aria-label="ticket price calculator"]');
 });
 
-describe('TPC', () => {
+describe.skip('TPC', () => {
 	Object.entries(testData).forEach(([testName, test]) => {
 		describe(testName, () => {
 			test.forEach(({ expected, modifiers: { amount, priceTypeLabel }, should }) => {

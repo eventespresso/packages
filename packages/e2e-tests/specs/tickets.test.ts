@@ -9,7 +9,7 @@ import { addNewTicket, activatePlugin, createNewEvent, loginUser } from '../util
 
 const { getByText } = queries;
 
-describe('availableTickets', () => {
+describe.skip('availableTickets', () => {
 	it('should add new ticket', async () => {
 		const capture = await saveVideo(page, 'artifacts/new-ticket.mp4');
 
