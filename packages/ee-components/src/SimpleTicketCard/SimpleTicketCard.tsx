@@ -9,6 +9,8 @@ import type { SimpleTicketCardProps } from './types';
 import './style.scss';
 
 export const SimpleTicketCard: React.FC<SimpleTicketCardProps> = ({
+	deleteButtonProps,
+	editButtonProps,
 	entity: ticket,
 	onDelete,
 	onEdit,
@@ -36,7 +38,15 @@ export const SimpleTicketCard: React.FC<SimpleTicketCardProps> = ({
 		</div>
 	);
 
-	const sidebar = <Sidebar onDelete={onDelete} onEdit={onEdit} entity={ticket} />;
+	const sidebar = (
+		<Sidebar
+			deleteButtonProps={deleteButtonProps}
+			editButtonProps={editButtonProps}
+			onDelete={onDelete}
+			onEdit={onEdit}
+			entity={ticket}
+		/>
+	);
 
 	return (
 		<SimpleEntityCard

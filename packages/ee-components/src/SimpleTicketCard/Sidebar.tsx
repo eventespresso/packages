@@ -3,7 +3,13 @@ import { useCallback } from 'react';
 import { Edit, Trash } from './actions';
 import { SimpleTicketCardProps } from './types';
 
-const Sidebar: React.FC<SimpleTicketCardProps> = ({ entity: ticket, onEdit, onDelete }) => {
+const Sidebar: React.FC<SimpleTicketCardProps> = ({
+	deleteButtonProps,
+	editButtonProps,
+	entity: ticket,
+	onEdit,
+	onDelete,
+}) => {
 	const onClickEdit = useCallback(() => {
 		onEdit(ticket);
 	}, [onEdit, ticket]);
@@ -14,8 +20,8 @@ const Sidebar: React.FC<SimpleTicketCardProps> = ({ entity: ticket, onEdit, onDe
 
 	return (
 		<div className='ee-ticket-sidebar'>
-			<Edit onClick={onClickEdit} />
-			<Trash onClick={onClickTrash} />
+			<Edit {...editButtonProps} onClick={onClickEdit} />
+			<Trash {...deleteButtonProps} onClick={onClickTrash} />
 		</div>
 	);
 };
