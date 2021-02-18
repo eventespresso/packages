@@ -68,11 +68,15 @@ export const useFilterFormFields = (): void => {
 		};
 
 		hooks.addFilter(dateForm, NAMESPACE, filterBasicsSection);
-		hooks.addFilter(ticketForm, NAMESPACE, filterBasicsSection);
-		hooks.addFilter(ticketForm, NAMESPACE, filterTicketDetailsSection);
+		hooks.addFilter(ticketForm, `${NAMESPACE}-basics`, filterBasicsSection);
+		hooks.addFilter(ticketForm, `${NAMESPACE}-details`, filterTicketDetailsSection);
 
 		// housekeeping
-		return () => hooks.removeFilter(ticketForm, NAMESPACE);
+		return () => {
+			hooks.removeFilter(dateForm, NAMESPACE);
+			hooks.removeFilter(ticketForm, `${NAMESPACE}-basics`);
+			hooks.removeFilter(ticketForm, `${NAMESPACE}-details`);
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 };
