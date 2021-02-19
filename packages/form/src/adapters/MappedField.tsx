@@ -12,8 +12,8 @@ import TimePicker from './TimePicker';
 import SimpleTextEditor from './SimpleTextEditor';
 import Hidden from './Hidden';
 import NumberField from './Number';
-import type { FieldRendererProps } from '../types';
 import { fieldPropsAreEqual } from '../utils';
+import type { FieldRendererProps } from '../types';
 
 const DefaultComponent = () => null;
 
