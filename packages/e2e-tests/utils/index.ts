@@ -1,7 +1,9 @@
 export * from './add-new-date';
 export * from './add-new-price-modifier';
 export * from './add-new-ticket';
-export * from './remove-free-ticket';
+export * from './removeAllTickets';
+export * from './removeLastDate';
+export * from './removeLastTicket';
 
 export { activatePlugin } from './activate-plugin';
 export { activateTheme } from './activate-theme';

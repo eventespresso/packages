@@ -10,7 +10,7 @@ import type { TicketMainMenuProps } from './types';
 import { EntityEditModalData } from '@edtrUI/types';
 import { DeleteTicket } from './DeleteTicket';
 
-const toggleProps: DropdownToggleProps = { tooltip: __('ticket main menu') };
+const toggleProps: DropdownToggleProps = { className: 'ee-ticket-main-menu', tooltip: __('ticket main menu') };
 
 const TicketMainMenu: React.FC<TicketMainMenuProps> = (props) => {
 	const ticketId = props.ticket.id;

@@ -5,17 +5,15 @@ import { getDocument, queries } from 'playwright-testing-library';
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewTicket, activatePlugin, createNewEvent, loginUser } from '../utils';
+import { addNewTicket, createNewEvent } from '../utils';
 
 const { getByText } = queries;
 
-describe.skip('availableTickets', () => {
+describe('availableTickets', () => {
 	it('should add new ticket', async () => {
 		const capture = await saveVideo(page, 'artifacts/new-ticket.mp4');
 
-		// await loginUser();
-
-		// process.env.CI === 'true' && (await activatePlugin('event-espresso'));
+		await page.waitForTimeout(500);
 
 		await createNewEvent({ title: 'to be deleted' });
 

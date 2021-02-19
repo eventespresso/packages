@@ -1,5 +1,7 @@
 export async function createNewEvent({ title }: any = {}) {
-	await page.click(`.toplevel_page_espresso_events > a`);
+	await page.waitForTimeout(1000);
+
+	await page.click(`.toplevel_page_espresso_events > a`).catch(console.log);
 
 	await page.click(`#add-new-event`);
 

@@ -3,19 +3,18 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent } from '../../utils';
+import { createNewEvent, removeLastTicket } from '../../utils';
 import { isSubmitBtnDisabled } from '../../assertions';
 
 beforeAll(async () => {
 	await saveVideo(page, 'artifacts/TAM.mp4');
 
 	await createNewEvent({ title: 'TAM-related' });
-
-	await page.click('text=Ticket Assignments');
 });
 
 describe('TAM', () => {
 	it('if there are no assignments - there should be a related info and a disabled submit button', async () => {
+		await page.click('text=Ticket Assignments');
 		await page.click('[aria-label="OLD"]');
 
 		await expect(page).toHaveText(
@@ -26,9 +25,14 @@ describe('TAM', () => {
 		await expect(await isSubmitBtnDisabled()).toBe(true);
 
 		await page.click('[aria-label="REMOVED"]');
+
+		await page.click('[aria-label="close modal"]');
+
+		await page.click('[type=button] >> text=Yes');
 	});
 
 	it('if there is an assignment - the submit button should be enabled', async () => {
+		await page.click('text=Ticket Assignments');
 		await page.click('[aria-label="OLD"]');
 
 		await expect(await isSubmitBtnDisabled()).toBe(true);
@@ -36,5 +40,21 @@ describe('TAM', () => {
 		await page.click('[aria-label="REMOVED"]');
 
 		await expect(await isSubmitBtnDisabled()).toBe(false);
+
+		await page.click('[aria-label="close modal"]');
+
+		await page.click('[type=button] >> text=Yes');
+	});
+
+	describe('if there are no tickets', () => {
+		it('the assignments list should contain only the remaining date', async () => {
+			await removeLastTicket();
+
+			await page.click('text=Ticket Assignments');
+
+			const assignments = await page.$$('.ee-ticket-assignments-manager tbody tr td');
+
+			await expect(assignments?.length).toBe(1);
+		});
 	});
 });

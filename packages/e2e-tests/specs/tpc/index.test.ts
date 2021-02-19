@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewPriceModifier, addNewTicket, createNewEvent, removeFreeTicket } from '../../utils';
+import { addNewPriceModifier, addNewTicket, createNewEvent, removeLastTicket } from '../../utils';
 import { testData } from './testData';
 
 beforeAll(async () => {
@@ -14,14 +14,14 @@ beforeAll(async () => {
 
 	await createNewEvent({ title: 'calculateTicketTotal: to be deleted' });
 
-	await removeFreeTicket();
+	await removeLastTicket();
 
 	await addNewTicket({ amount: newTicketAmount, name: newTicketName });
 
 	await page.click('[aria-label="ticket price calculator"]');
 });
 
-describe.skip('TPC', () => {
+describe('TPC', () => {
 	Object.entries(testData).forEach(([testName, test]) => {
 		describe(testName, () => {
 			test.forEach(({ expected, modifiers: { amount, priceTypeLabel }, should }) => {
