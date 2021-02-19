@@ -26,7 +26,9 @@ const useDatesBulkEditActions = (): void => {
 		});
 
 		// housekeeping
-		return () => hooks.removeFilter(filterName, NAMESPACE);
+		return () => {
+			hooks.removeFilter(filterName, NAMESPACE);
+		};
 	}, []);
 
 	const { openWithData } = useGlobalModal(RemGlobalModals.BULK_ADD_TICKETS);
@@ -40,7 +42,9 @@ const useDatesBulkEditActions = (): void => {
 		});
 
 		// housekeeping
-		return () => hooks.removeAction(actionName, NAMESPACE);
+		return () => {
+			hooks.removeAction(actionName, NAMESPACE);
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 };

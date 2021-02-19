@@ -19,7 +19,7 @@ export const useFilterElements = (): void => {
 		hooks.addFilter(addSingleDate, NAMESPACE, (jsx) => {
 			return !canUseEdtr ? (
 				<Link href='https://eventsmart.com/pricing' target='_blank'>
-					{__('UPGRADE NOW')}
+					{__('UPGRADE NOW!')}
 				</Link>
 			) : (
 				jsx

@@ -35,15 +35,15 @@ add_action(
         $barista->initialize();
         add_filter(
             'FHEE__EventEspresso_core_domain_services_capabilities_FeatureFlags',
-            function () {
-                return [
+            function ($capabilities) {
+                return array_merge($capabilities, [
                     'use_bulk_edit'              => true,
                     'use_default_ticket_manager' => true,
                     'use_event_description_rte'  => true,
                     'use_experimental_rte'       => true,
                     'use_reg_options_meta_box'   => true,
                     'ee_advanced_event_editor'   => true,
-                ];
+                ]);
             }
         );
     }
