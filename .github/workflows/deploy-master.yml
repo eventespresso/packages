@@ -62,7 +62,7 @@ jobs:
               run: source tools/deploy.sh "eea-wpuser-integration"
 
             # Build EventSmart domain without packages
-            - name: Build wpUser
+            - name: Build ES
               run: yarn build:es
 
             # Deploy the built assets to ES tester plugin assets
