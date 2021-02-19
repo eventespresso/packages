@@ -7,17 +7,17 @@
 #---------------------------------------------------------------------------------------#
 # 1 | target repository name e.g. "event-espresso-core" |    YES   |         -          #
 # 2 | branch to deploy at, in the target repository     |    NO    |       "dev"        #
-# 3 | username of the target repository                 |    NO    |  "eventespresso"   #
-# 4 | build path on the current/this repository         |    NO    |      "build"       #
-# 5 | path to assets folder on the target repository    |    NO    |      "assets"      #
+# 3 | path to assets folder on the target repository    |    NO    |      "assets"      #
+# 4 | username of the target repository                 |    NO    |  "eventespresso"   #
+# 5 | build path on the current/this repository         |    NO    |      "build"       #
 #########################################################################################
 
 ##################################### EXAMPLES ##########################################
 # ./deploy.sh "event-espresso-core"                                                     #
 # ./deploy.sh "event-espresso-core" "dev"                                               #
-# ./deploy.sh "event-espresso-core" "dev" "eventespresso"                               #
-# ./deploy.sh "event-espresso-core" "dev" "eventespresso" "build"                       #
-# ./deploy.sh "event-espresso-core" "dev" "eventespresso" "build" "assets/dist"         #
+# ./deploy.sh "event-espresso-core" "dev" "assets/dist"                                 #
+# ./deploy.sh "event-espresso-core" "dev" "assets/dist" "eventespresso"                 #
+# ./deploy.sh "event-espresso-core" "dev" "assets/dist" "eventespresso" "build"         #
 #########################################################################################
 
 ##################### ENV VARIABLES THAT SHOULD ALREADY BE SET ########################
@@ -70,16 +70,21 @@ rm -rf $CLONE_DIR/*
 git clone -b $BRANCH https://$API_TOKEN_GITHUB@github.com/$USERNAME/$REPO.git $CLONE_DIR
 
 ## DEPLOY I18N ##
-## make sure languages directory exists
-mkdir -p $CLONE_DIR/languages
 # paths of the translation files
 PHP_I18N_FILE="$CLONE_DIR/languages/event_espresso-translations-js.php"
 JS_I18N_FILE="$BASE/$BUILD_PATH/js-translations.pot"
-# make sure the file exists
-touch $PHP_I18N_FILE
-# Convert POT file to PHP
-echo "Converting pot to PHP..."
-npx pot-to-php $JS_I18N_FILE $PHP_I18N_FILE event_espresso
+
+# If DEPLOY_I18N is not set to "no"
+if [ "$DEPLOY_I18N" != "no" ]; then
+	## make sure languages directory exists
+	mkdir -p $CLONE_DIR/languages
+	# make sure the file exists
+	touch $PHP_I18N_FILE
+	# Convert POT file to PHP
+	echo "Converting pot to PHP..."
+	npx pot-to-php $JS_I18N_FILE $PHP_I18N_FILE event_espresso
+fi
+
 # Remove POT file
 echo "Remove JS pot file"
 rm $JS_I18N_FILE

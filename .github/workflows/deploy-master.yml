@@ -60,3 +60,13 @@ jobs:
             # Deploy the built assets to WP User assets/dist
             - name: Deploy to WP User
               run: source tools/deploy.sh "eea-wpuser-integration"
+
+            # Build EventSmart domain without packages
+            - name: Build wpUser
+              run: yarn build:es
+
+            # Deploy the built assets to ES tester plugin assets
+            - name: Deploy to ES website repo
+              run: source tools/deploy.sh "eventsmart.com-website" "dev" "plugins/es-barista-tester/assets"
+              env:
+                  DEPLOY_I18N: 'no'
