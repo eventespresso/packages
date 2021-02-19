@@ -42,14 +42,12 @@ REPO=$1
 BRANCH="${2:-dev}"
 # Convert "refs/heads/dev" to "dev"
 BRANCH="${BRANCH#refs/heads/}"
-# GitHub account username
-USERNAME="${3:-eventespresso}"
-# Default path to build folder
-BUILD_PATH="${4:-build}"
 # Default path to assets folder (on target repo)
-ASSETS_PATH="${5:-assets}"
-# This repo
-THIS="${5:-assets/dist}"
+ASSETS_PATH="${3:-assets}"
+# GitHub account username
+USERNAME="${4:-eventespresso}"
+# Default path to build folder
+BUILD_PATH="${5:-build}"
 
 BASE=$(pwd)
 
