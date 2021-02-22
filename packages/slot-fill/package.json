@@ -1,0 +1,25 @@
+{
+	"author": "Event Espresso",
+	"name": "@eventespresso/slot-fill",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eventespresso/barista.git"
+	},
+	"private": true,
+	"version": "1.0.6",
+	"main": "src/index.ts",
+	"main:src": "src/index.ts",
+	"scripts": {
+		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
+		"update-deps": "npx ncu -p yarn -u",
+		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
+	},
+	"dependencies": {
+		"@wordpress/hooks": "^2.11.0"
+	},
+	"devDependencies": {
+		"@types/wordpress__hooks": "2.4.1"
+	},
+	"sideEffects": false,
+	"license": "GPL-3.0"
+}
