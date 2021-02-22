@@ -65,7 +65,7 @@ echo "  Clone dir: $CLONE_DIR"
 rm -rf $CLONE_DIR/*
 
 # clone the repo branch
-git clone -b $BRANCH https://$API_TOKEN_GITHUB@github.com/$USERNAME/$REPO.git $CLONE_DIR
+git clone -b $BRANCH git@github.com:$USERNAME/$REPO.git $CLONE_DIR
 
 ## DEPLOY I18N ##
 # paths of the translation files
