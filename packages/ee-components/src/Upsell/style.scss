@@ -1,2 +1,15 @@
 .ee-upsell {
+	&--template {
+		&-base {
+			display: flex;
+
+			> div {
+				padding: 0 var(--ee-padding-small);
+			}
+
+			&__main-text {
+				background-color: brown;
+			}
+		}
+	}
 }

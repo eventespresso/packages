@@ -16,6 +16,7 @@ export * from './FormHelperText';
 export * from './FormLabel';
 export * from './Heading';
 export * from './Icon';
+export * from './Image';
 export * from './InlineEdit';
 export * from './InputWithLabel';
 export * from './layout';
