@@ -13,6 +13,12 @@ jobs:
         runs-on: ubuntu-latest
         name: Deploy domains and packages
         steps:
+            - name: Setup SSH
+              uses: MrSquaare/ssh-setup-action@v1
+              with:
+                  host: github.com
+                  private-key: ${{ secrets.GH_ACTIONS_SSH_PRIVATE_KEY }}
+
             - name: Checkout the commit
               uses: actions/checkout@v2
 
