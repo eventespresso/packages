@@ -3,8 +3,8 @@
 	"name": "@eventespresso/event-smart",
 	"version": "1.0.6",
 	"private": true,
-	"main": "src/index.ts",
-	"main:src": "src/index.ts",
+	"main": "src/index.tsx",
+	"main:src": "src/index.tsx",
 	"license": "GPL-3.0",
 	"repository": {
 		"type": "git",

@@ -8,7 +8,6 @@ import { useCanUseAdvancedEditor } from './useCanUseAdvancedEditor';
 
 const datesInlineDesc: keyof EdtrFilters = 'eventEditor.datetimes.inlineDescriptionProps';
 const ticketsInlineDesc: keyof EdtrFilters = 'eventEditor.tickets.inlineDescriptionProps';
-const addSingleDate: keyof EdtrFilters = 'eventEditor.addSingleDate.buttonProps';
 const tpcDisabled: keyof TpcFilters = 'tpc.ticket.isDisabled';
 
 /**
@@ -30,9 +29,6 @@ export const useFilterElementProps = (): void => {
 		edtrHooks.addFilter(ticketsInlineDesc, NAMESPACE, (props) => {
 			return { ...props, isDisabled };
 		});
-		edtrHooks.addFilter(addSingleDate, NAMESPACE, (props) => {
-			return { ...props, isDisabled };
-		});
 		tpcHooks.addFilter(tpcDisabled, NAMESPACE, (isTPCDisabled) => {
 			return isTPCDisabled || isDisabled;
 		});
@@ -41,7 +37,6 @@ export const useFilterElementProps = (): void => {
 		return () => {
 			edtrHooks.removeFilter(datesInlineDesc, NAMESPACE);
 			edtrHooks.removeFilter(ticketsInlineDesc, NAMESPACE);
-			edtrHooks.removeFilter(addSingleDate, NAMESPACE);
 			tpcHooks.removeFilter(tpcDisabled, NAMESPACE);
 		};
 

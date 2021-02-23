@@ -1,14 +1,14 @@
-import type { NewEntitySubscriptionCb, ModalSubscriptionCb } from '@eventespresso/registry';
+import type { ModalSubscriptionCb } from '@eventespresso/registry';
 import {
-	NewEntitySubscription,
 	ModalSubscription,
 	FilterBarUISubscription,
 	FilterBarUISubscriptionCb,
 	EntityCardDetailsSubscription,
 	EntityCardDetailsSubscriptionCb,
 } from '@eventespresso/registry';
-import { domain, datesList } from '@eventespresso/edtr-services';
+import { domain, datesList, NewDateOption } from '@eventespresso/edtr-services';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
+import { registerPlugin } from '@eventespresso/plugins';
 
 import RemButton from './RemButton';
 import RemInit from './RemInit';
@@ -19,13 +19,13 @@ import { RecurrenceControl } from './filterBar';
 import RecurrenceTag from './RecurrenceTag';
 
 // Register new entity option
-const newEntitySubscription = new NewEntitySubscription(domain);
-const newDateOptionsHandler: NewEntitySubscriptionCb<'datetime'> = ({ registry }) => {
-	const { registerElement: registerOptionItem } = registry;
-
-	registerOptionItem('rem', RemButton, 11);
-};
-newEntitySubscription.subscribe(newDateOptionsHandler, { entityType: 'datetime' });
+registerPlugin('rem-button', {
+	render: () => (
+		<NewDateOption priority={11}>
+			<RemButton />
+		</NewDateOption>
+	),
+});
 
 // Register REM modals
 const modalSubscription = new ModalSubscription(domain);

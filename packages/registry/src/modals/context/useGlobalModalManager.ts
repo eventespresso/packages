@@ -15,30 +15,22 @@ const useGlobalModalManager = (): GMM => {
 		dispatch({ type: 'CLOSE_MODAL', modalName });
 	}, []);
 
-	const stateStr = JSON.stringify(state);
-
-	const getData: GMM['getData'] = useCallback(
-		() => {
-			return state;
-		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[stateStr]
-	);
+	const getData: GMM['getData'] = useCallback(() => {
+		return state;
+	}, [state]);
 
 	const getModalData: GMM['getModalData'] = useCallback(
 		(modalName) => {
 			return state[modalName]?.data || {};
 		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[stateStr]
+		[state]
 	);
 
 	const isModalOpen: GMM['isModalOpen'] = useCallback(
 		(modalName) => {
 			return Boolean(state[modalName]?.isOpen);
 		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[stateStr]
+		[state]
 	);
 
 	const openModal: GMM['openModal'] = useCallback((modalName) => {

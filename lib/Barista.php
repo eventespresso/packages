@@ -18,6 +18,11 @@ class Barista
      */
     private $styles = [];
 
+    /**
+     * @var array
+     */
+    private $edtr_domains = ['eventSmart'];
+
 
     public function initialize()
     {
@@ -182,6 +187,17 @@ class Barista
         $styles->add($handle, $src, $deps, $ver, $media);
     }
 
+    /**
+     * Whether a domain depends upon eventEditor domain.
+     *
+     * @param string $entry_point
+     * @return void
+     */
+    private function dependsUponEdtr($entry_point)
+    {
+        return in_array($entry_point, $this->edtr_domains, true);
+    }
+
 
     /**
      * Registers all the WordPress packages scripts that are in the standardized
@@ -213,6 +229,10 @@ class Barista
             if (($key = array_search($handle, $dependencies, true)) !== false) {
                 unset($dependencies[ $key ]);
             }
+            if ($this->dependsUponEdtr($entry_point)) {
+                $dependencies[] = 'eventespresso-eventEditor';
+            }
+
             $version = isset($asset['version']) ? $asset['version'] : '';
             $version = $version === '' && file_exists(EE_BARISTA_DIR . $package_path)
             ? filemtime(EE_BARISTA_DIR . $package_path)
