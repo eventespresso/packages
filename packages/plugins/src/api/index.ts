@@ -1,4 +1,4 @@
-import { AnyObject } from '@eventespresso/utils';
+import type { AnyObject } from '@eventespresso/utils';
 import { doAction } from '@eventespresso/ioc';
 
 export type Settings = {

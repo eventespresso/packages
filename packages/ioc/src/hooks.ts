@@ -10,6 +10,8 @@ import {
 } from '@wordpress/hooks';
 import type { OmitFirstFromArray } from '@eventespresso/utils';
 
+export { addAction, addFilter, applyFilters, doAction, doingAction, doingFilter, removeAction, removeFilter };
+
 export type ActionObject = {
 	// action/filter name => array of arguments
 	[name: string]: Array<any>;
