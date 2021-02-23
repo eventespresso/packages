@@ -1,14 +1,17 @@
-import useNewDateOptionItems from '@edtrUI/datetimes/hooks/useNewDateOptionItems';
 import OptionsModalButton from './OptionsModalButton';
+import { NewDateOptions } from '@eventespresso/edtr-services';
 
 const NewDateButton: React.FC = () => {
-	const optionItems = useNewDateOptionItems();
-
-	if (optionItems.length > 1) {
-		return <OptionsModalButton />;
-	}
-
-	return <>{optionItems}</>;
+	return (
+		<NewDateOptions>
+			{(fills) => {
+				if (fills.length > 1) {
+					return <OptionsModalButton>{fills}</OptionsModalButton>;
+				}
+				return <>{fills}</>;
+			}}
+		</NewDateOptions>
+	);
 };
 
 export default NewDateButton;

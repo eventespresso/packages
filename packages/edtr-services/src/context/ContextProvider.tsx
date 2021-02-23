@@ -1,5 +1,6 @@
 import { DataProvider } from '@eventespresso/data';
 import { ThemeProvider } from '@eventespresso/adapters';
+import { SlotFillProvider } from '@eventespresso/slot-fill';
 import { ConfigProvider, FeaturesProvider, RelationsProvider, StatusProvider } from '@eventespresso/services';
 import { GlobalModalProvider } from '@eventespresso/registry';
 
@@ -10,7 +11,9 @@ export const ServiceProvider: React.FC = ({ children }) => {
 				<ConfigProvider>
 					<FeaturesProvider>
 						<RelationsProvider>
-							<GlobalModalProvider>{children}</GlobalModalProvider>
+							<SlotFillProvider>
+								<GlobalModalProvider>{children}</GlobalModalProvider>
+							</SlotFillProvider>
 						</RelationsProvider>
 					</FeaturesProvider>
 				</ConfigProvider>

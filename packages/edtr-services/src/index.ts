@@ -15,6 +15,10 @@ export * from './hooks';
 
 export * from './ioc';
 
+export * from './plugins';
+
+export * from './slots';
+
 export * from './utils';
 
 export * from './types';

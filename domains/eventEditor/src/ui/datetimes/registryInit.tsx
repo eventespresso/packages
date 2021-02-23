@@ -5,7 +5,6 @@ import {
 	EntityActionsSubscription,
 	EntityActionsSubscriptionCb,
 	ModalSubscription,
-	NewEntitySubscription,
 	FilterBarUISubscription,
 	FilterBarUISubscriptionCb,
 } from '@eventespresso/registry';
@@ -15,8 +14,11 @@ import {
 	Datetime,
 	DatetimesFilterStateManager,
 	datesList,
+	NewDateOption,
+	EdtrPlugins,
 } from '@eventespresso/edtr-services';
 import { FilterBarFilter } from '@eventespresso/ui-components';
+import { registerPlugin } from '@eventespresso/plugins';
 
 import {
 	DisplayStartOrEndDateControl,
@@ -54,25 +56,6 @@ const datesActionHandler: EntityActionsSubscriptionCb<Datetime, 'datetime'> = ({
 };
 
 entityActions.subscribe(datesActionHandler, { entityType: 'datetime' });
-
-// Register new date option(s)
-const newEntityOptions = new NewEntitySubscription(domain);
-
-newEntityOptions.subscribe(
-	({ entityType, registry }) => {
-		// although this is not needed
-		if (entityType !== 'datetime') {
-			return;
-		}
-
-		const { registerElement: registerOptionItem } = registry;
-
-		registerOptionItem('AddSingleDate', ({ totalCount }) => {
-			return <AddSingleDate isOnlyButton={totalCount === 1} />;
-		});
-	},
-	{ entityType: 'datetime' }
-);
 
 // Register datetime filterbar elements
 const filterBar = new FilterBarUISubscription(domain);
@@ -119,3 +102,13 @@ const datesListFilterBar: DatesListFilterBarCallback = ({ listId, registry }) =>
 };
 
 filterBar.subscribe(datesListFilterBar, { listId: datesList });
+
+registerPlugin(EdtrPlugins.ADD_SINGLE_DATE, {
+	render: () => (
+		<NewDateOption>
+			{({ count }) => {
+				return <AddSingleDate isOnlyButton={count === 1} />;
+			}}
+		</NewDateOption>
+	),
+});

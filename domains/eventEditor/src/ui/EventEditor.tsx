@@ -1,4 +1,5 @@
 import { useIsRehydrated } from '@eventespresso/edtr-services';
+import { PluginArea } from '@eventespresso/plugins';
 
 import { getRegisteredContainers } from '@edtrServices/utils';
 import { DatesList } from './datetimes/datesList';
@@ -21,6 +22,7 @@ const EventEditor: React.FC = () => {
 			<EventRegistrationOptions />
 			<DatesList />
 			<TicketsList />
+			<PluginArea />
 			{containers}
 		</>
 	) : (
