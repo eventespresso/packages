@@ -1,9 +1,11 @@
 import type { AnyObject } from '@eventespresso/utils';
 import { doAction } from '@eventespresso/ioc';
 
+export type RenderPlugin = (prevRender?: RenderPlugin) => JSX.Element;
+
 export type Settings = {
 	name?: string;
-	render: (prevRender?: VoidFunction) => JSX.Element;
+	render: RenderPlugin;
 };
 
 export type Plugin = Required<Settings>;
@@ -17,7 +19,6 @@ export function registerPlugin(name: string, settings: Settings): Plugin {
 		console.error(
 			'Plugin names must include only lowercase alphanumeric characters or dashes, and start with a letter. Example: "my-plugin".'
 		);
-		return null;
 	}
 
 	if (plugins[name]) {
@@ -31,7 +32,7 @@ export function registerPlugin(name: string, settings: Settings): Plugin {
 
 	plugins[name] = plugin;
 
-	doAction('plugins.pluginRegistered');
+	doAction('plugins.pluginRegistered', plugin);
 	return plugin;
 }
 
@@ -45,7 +46,8 @@ export function updatePlugin(name: string, settings: Settings): Plugin {
 	const render = () => settings.render(plugin.render);
 
 	plugins[name] = { ...plugin, render };
-	doAction('plugins.pluginUpdated');
+
+	doAction('plugins.pluginUpdated', plugins[name]);
 
 	return plugin;
 }
@@ -59,7 +61,8 @@ export function unregisterPlugin(name: string): Plugin {
 	const oldPlugin = plugins[name];
 
 	delete plugins[name];
-	doAction('plugins.pluginUnregistered');
+
+	doAction('plugins.pluginUnregistered', oldPlugin);
 
 	return oldPlugin;
 }

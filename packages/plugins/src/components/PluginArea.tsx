@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { CSSProperties, useCallback, useEffect, useState } from 'react';
 
 import { addAction, removeAction } from '@eventespresso/ioc';
 
@@ -7,7 +7,7 @@ import { getPlugins } from '../api';
 
 const NAMESPACE = 'PluginArea';
 
-const style = { display: 'none' };
+const style: CSSProperties = { display: 'none' };
 
 export const PluginArea: React.FC = () => {
 	const getCurrentPluginsState = useCallback(() => {
@@ -26,8 +26,6 @@ export const PluginArea: React.FC = () => {
 	const setThePlugins = useCallback(() => {
 		setPlugins(getCurrentPluginsState());
 	}, [getCurrentPluginsState]);
-
-	console.log({ plugins });
 
 	useEffect(() => {
 		addAction('plugins.pluginUpdated', NAMESPACE, setThePlugins);
