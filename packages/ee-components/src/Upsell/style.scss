@@ -5,11 +5,29 @@
 
 			> div {
 				padding: 0 var(--ee-padding-small);
+
+				> * {
+					padding-bottom: var(--ee-padding-tiny);
+				}
 			}
 
-			&__main-text {
-				background-color: brown;
+			&__subtitle {
+				font-size: var(--ee-font-size-smaller);
 			}
+		}
+	}
+
+	&--image-position {
+		&-right {
+			flex-direction: row-reverse;
+		}
+
+		&-bottom {
+			flex-flow: column-reverse;
+		}
+
+		&-top {
+			display: block;
 		}
 	}
 }

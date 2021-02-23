@@ -5,11 +5,12 @@ export interface UpsellProps extends Size {
 	altCTAStyle?: 'test';
 	altCTAText?: string;
 	className?: string;
-	CTA?: string;
+	CTAText?: string;
 	CTAlink?: string;
 	CTAstyle?: 'style';
 	dismissable?: boolean;
 	image?: string;
+	imagePosition?: 'bottom' | 'left' | 'right' | 'top';
 	mainText?: string;
 	mainTitle?: string;
 	orientation?: 'vertical' | 'horizontal';
