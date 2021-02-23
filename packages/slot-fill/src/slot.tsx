@@ -1,12 +1,12 @@
 import { Children, Component, cloneElement } from 'react';
-import { isEmpty, is, map, complement } from 'ramda';
+import { isEmpty, is, complement } from 'ramda';
 
 import { Consumer } from './context';
 import { SlotProps, SlotFillContext } from './types';
 
 export class SlotComponent extends Component<SlotProps & SlotFillContext> {
 	isUnmounted: boolean;
-	node;
+	node: any;
 
 	constructor(props) {
 		super(props);
@@ -50,24 +50,29 @@ export class SlotComponent extends Component<SlotProps & SlotFillContext> {
 	render() {
 		const { children, name, fillProps = {}, getFills } = this.props;
 
-		const fills = map((fill) => {
-			const fillKey = fill.occurrence;
-			const fillChildren = typeof fill.children === 'function' ? fill.children(fillProps) : fill.children;
+		const fills = getFills(name, this)
+			.map((fill, i, arr) => {
+				const fillKey = fill.occurrence;
+				const fillChildren =
+					typeof fill.children === 'function'
+						? fill.children({ ...fillProps, count: arr.length })
+						: fill.children;
 
-			return Children.map(fillChildren, (child, childIndex) => {
-				if (!child || is(String, child)) {
-					return child;
-				}
+				return Children.map(fillChildren, (child, childIndex) => {
+					if (!child || is(String, child)) {
+						return child;
+					}
 
-				const childKey = `${fillKey}---${child.key || childIndex}`;
-				return cloneElement(child, { key: childKey });
-			});
-		}, getFills(name, this)).filter(
-			// In some cases fills are rendered only when some conditions apply.
-			// This ensures that we only use non-empty fills when rendering, i.e.,
-			// it allows us to render wrappers only when the fills are actually present.
-			complement(isEmpty)
-		);
+					const childKey = `${fillKey}---${child.key || childIndex}`;
+					return cloneElement(child, { key: childKey });
+				});
+			})
+			.filter(
+				// In some cases fills are rendered only when some conditions apply.
+				// This ensures that we only use non-empty fills when rendering, i.e.,
+				// it allows us to render wrappers only when the fills are actually present.
+				complement(isEmpty)
+			);
 
 		return <>{typeof children === 'function' ? children(fills) : fills}</>;
 	}

@@ -1,22 +1,23 @@
 import BaseSlot from './slot';
 import BaseFill from './fill';
+import { FillProps, SlotProps } from './types';
 
-export function Slot(props) {
+export function Slot(props: SlotProps) {
 	return <BaseSlot {...props} />;
 }
 
-export function Fill(props) {
+export function Fill(props: FillProps) {
 	// We're adding it here so they can register themselves before
 	// their respective slot has been registered. Only the Fill that has a slot
 	// will render. The other one will return null.
 	return <BaseFill {...props} />;
 }
 
-export function createSlotFill(name) {
-	const FillComponent = (props) => <Fill name={name} {...props} />;
+export function createSlotFill(name: string) {
+	const FillComponent: React.FC<FillProps> = (props) => <Fill name={name} {...props} />;
 	FillComponent.displayName = name + 'Fill';
 
-	const SlotComponent = (props) => <Slot name={name} {...props} />;
+	const SlotComponent: React.FC<SlotProps> = (props) => <Slot name={name} {...props} />;
 	SlotComponent.displayName = name + 'Slot';
 
 	return {
@@ -25,4 +26,4 @@ export function createSlotFill(name) {
 	};
 }
 
-export { SlotFillProvider } from './context';
+export * from './context';

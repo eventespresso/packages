@@ -9,6 +9,7 @@ let occurrences = 0;
 export const FillComponent: React.FC<FillProps & SlotFillContext> = ({
 	name,
 	children,
+	priority = 10,
 	registerFill,
 	unregisterFill,
 }) => {
@@ -17,6 +18,7 @@ export const FillComponent: React.FC<FillProps & SlotFillContext> = ({
 	const ref = useRef<any>({
 		name,
 		children,
+		priority,
 	});
 
 	if (!ref.current.occurrence) {

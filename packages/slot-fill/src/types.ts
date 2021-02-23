@@ -12,7 +12,12 @@ export interface SlotFillContext {
 	getFills(
 		name: string,
 		instance: SlotComponent
-	): ReadonlyArray<typeof FillComponent & { occurrence?: number; children: any }>;
+	): ReadonlyArray<
+		typeof FillComponent & {
+			occurrence?: number;
+			children: React.ReactNode | ((props: FillRenderProps) => JSX.Element);
+		}
+	>;
 	subscribe(listener: VoidFunction): void;
 }
 
@@ -26,12 +31,16 @@ export interface SlotProps {
 	name?: string;
 	children?(fills: ReadonlyArray<readonly JSX.Element[]>): JSX.Element | null;
 	bubblesVirtually?: boolean;
-	fillProps?: {
-		[k: string]: any;
-	};
+	fillProps?: FillRenderProps;
+}
+
+export interface FillRenderProps {
+	count?: number;
+	[k: string]: any;
 }
 
 export interface FillProps {
-	children?: React.ReactNode;
+	children?: JSX.Element | ((props: FillRenderProps) => JSX.Element);
 	name?: string;
+	priority?: number;
 }

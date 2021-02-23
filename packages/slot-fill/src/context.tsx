@@ -1,6 +1,5 @@
 import { Component, createContext, useContext, useState, useEffect } from 'react';
-
-import { sortBy, forEach, without } from 'lodash';
+import { forEach, prop, sortBy, without } from 'ramda';
 
 import { SlotFillContext as SlotFillContextType } from './types';
 
@@ -84,7 +83,7 @@ export class SlotFillProvider extends Component {
 	}
 
 	unregisterFill(name, instance) {
-		this.fills[name] = without(this.fills[name], instance);
+		this.fills[name] = without([instance], this.fills[name]);
 		this.resetFillOccurrence(name);
 		this.forceUpdateSlot(name);
 	}
@@ -99,7 +98,7 @@ export class SlotFillProvider extends Component {
 		if (this.slots[name] !== slotInstance) {
 			return [];
 		}
-		return sortBy(this.fills[name], 'occurrence');
+		return sortBy(prop('priority'), this.fills[name]);
 	}
 
 	hasFills(name) {
@@ -107,10 +106,10 @@ export class SlotFillProvider extends Component {
 	}
 
 	resetFillOccurrence(name) {
-		forEach(this.fills[name], (instance) => {
+		forEach<any>((instance) => {
 			// eslint-disable-next-line no-param-reassign
 			instance.occurrence = undefined;
-		});
+		}, this.fills[name]);
 	}
 
 	forceUpdateSlot(name) {
