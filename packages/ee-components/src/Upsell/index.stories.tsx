@@ -6,7 +6,7 @@ import { ConfigProvider } from '@eventespresso/services';
 
 import { Upsell } from '../Upsell';
 import { AttendantList } from '@eventespresso/icons';
-import type { UpsellProps } from '../types';
+import type { UpsellProps } from './types';
 
 export default {
 	argTypes: {},
