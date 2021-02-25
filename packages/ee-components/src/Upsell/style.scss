@@ -54,6 +54,13 @@
 			color: var(--ee-color-white) !important;
 		}
 
+		.ee-btn {
+			&:focus,
+			&:hover {
+				border-color: var(--ee-color-white) !important;
+			}
+		}
+
 		img,
 		svg {
 			height: auto;
