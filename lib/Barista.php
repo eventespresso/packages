@@ -288,8 +288,17 @@ class Barista
     /**
      * Enqueues assets that are loaded by exernal plugins/services.
      */
-    public function enqueueScripts()
+    public function enqueueScripts($hook)
     {
+        global $post;
+
+        $is_edtr_page = $post && $post->post_type === 'espresso_events';
+        $is_edtr_page = $is_edtr_page && ($hook == 'post-new.php' || $hook == 'post.php');
+
+        if (!$is_edtr_page) {
+            return;
+        }
+
         $scripts = ['eventSmart'];
 
         foreach ($scripts as $handle) {
