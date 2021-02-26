@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import { Image } from '@eventespresso/adapters';
-import { Button, Heading } from '@eventespresso/ui-components';
+import { Button, Heading } from '../../';
 import type { UpsellProps } from '../types';
 
 import '../style.scss';

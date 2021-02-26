@@ -1,4 +1,4 @@
-import { Size } from '@eventespresso/ui-components';
+import type { Size } from '../';
 
 interface Option {
 	icon: React.ReactNode;
@@ -27,9 +27,4 @@ export interface UpsellProps extends Size {
 	templateId?: 'base' | 'with-bg-image' | 'with-options';
 	theme?: 'theme';
 	withBorder?: boolean;
-}
-
-export interface UpsellFormProps {
-	onClose: VoidFunction;
-	onSubmit: VoidFunction;
 }
