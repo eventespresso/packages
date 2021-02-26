@@ -20,6 +20,7 @@ export interface UpsellProps extends Size {
 	subtitle?: string;
 	template?: 'base' | 'with-bg-image';
 	theme?: 'theme';
+	withBorder?: boolean;
 }
 
 export interface UpsellFormProps {

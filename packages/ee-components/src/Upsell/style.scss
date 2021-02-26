@@ -1,7 +1,14 @@
 .ee-upsell {
+	img {
+		max-height: 100%;
+		object-fit: contain;
+		vertical-align: top;
+	}
+
 	&--template {
 		&-base {
 			display: flex;
+			align-items: flex-start;
 
 			> div {
 				padding: 0 var(--ee-padding-small);
@@ -31,6 +38,10 @@
 
 			&__img-wrapper {
 				display: flex;
+
+				.ee-upsell--orientation-vertical & {
+					display: block;
+				}
 			}
 		}
 	}
@@ -47,6 +58,18 @@
 		&-top {
 			display: block;
 		}
+	}
+
+	&--orientation {
+		&-vertical {
+			display: block;
+			max-width: 300px;
+			text-align: center;
+		}
+	}
+
+	&--with-border {
+		border: 1px solid var(--ee-border-color);
 	}
 
 	&--bg-color {

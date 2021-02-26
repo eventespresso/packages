@@ -1,4 +1,5 @@
 import type { Story, Meta } from '@storybook/react/types-6-0';
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 
 import { DataProvider } from '@eventespresso/data';
 import { ConfigProvider } from '@eventespresso/services';
@@ -11,6 +12,7 @@ import type { UpsellProps } from './types';
 export default {
 	argTypes: {},
 	component: Upsell,
+	decorators: [withKnobs],
 	title: 'Components/Upsell',
 } as Meta;
 
@@ -29,7 +31,9 @@ const Template: UpsellStory = (args) => (
 					"The value the plugin and the add-ons we ended up using has provided is much, much higher than the cost, and the support I've received is first rate. I can't recommend Event Espresso highly enough.' -Adam Tervort"
 				}
 				mainTitle={args.mainTitle || 'Get more features with Everything subscription'}
+				orientation={select('orientation', ['horizontal', 'vertical'], 'horizontal')}
 				subtitle='Upgrade to Everything Support License'
+				withBorder={boolean('withBorder', false)}
 			/>
 		</ConfigProvider>
 	</DataProvider>
