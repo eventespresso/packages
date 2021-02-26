@@ -21,7 +21,7 @@ export const BaseTemplate: React.FC<UpsellProps> = ({
 
 	return (
 		<div className={className}>
-			<Image src={image} />
+			{imagePosition !== 'bottom' && <Image src={image} />}
 			<div>
 				<Heading as='h3' className={`${prefixClassName}__main-title`}>
 					{mainTitle}
@@ -39,6 +39,7 @@ export const BaseTemplate: React.FC<UpsellProps> = ({
 					</Button>
 				</div>
 			</div>
+			{imagePosition === 'bottom' && <Image src={image} />}
 		</div>
 	);
 };

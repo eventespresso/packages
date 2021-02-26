@@ -109,7 +109,7 @@
 		}
 
 		&-bottom {
-			flex-flow: column-reverse;
+			flex-direction: column;
 		}
 
 		&-top {
@@ -119,7 +119,9 @@
 
 	&--orientation {
 		&-vertical {
+			flex-direction: column;
 			max-width: 300px;
+			text-align: center;
 		}
 	}
 }

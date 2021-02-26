@@ -14,7 +14,7 @@ export const Upsell: React.FC<UpsellProps> = ({ orientation, templateId, withBor
 	);
 
 	if (templateId === 'base') {
-		return <BaseTemplate {...props} className={className} />;
+		return <BaseTemplate {...props} className={className} orientation={orientation} />;
 	}
 
 	if (templateId === 'with-bg-image') {
