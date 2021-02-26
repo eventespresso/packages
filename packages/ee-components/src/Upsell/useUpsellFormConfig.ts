@@ -67,7 +67,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							fieldType: 'select',
 						},
 						{
-							name: 'dismissable',
+							name: 'isDismissable',
 							label: __('Dismissable'),
 							fieldType: 'switch',
 						},

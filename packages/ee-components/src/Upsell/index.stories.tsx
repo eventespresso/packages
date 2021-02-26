@@ -6,7 +6,7 @@ import { ConfigProvider } from '@eventespresso/services';
 // import { noop } from '@eventespresso/utils';
 
 import { Upsell } from '../Upsell';
-import { AttendantList } from '@eventespresso/icons';
+import { AttendantList, BarCodeScanner, Budgeting, OnlineRegistration, Payment, Tickets } from '@eventespresso/icons';
 import type { UpsellProps } from './types';
 
 export default {
@@ -40,19 +40,19 @@ const Template: UpsellStory = (args) => (
 );
 
 export const WithBaseTemplate: UpsellStory = Template.bind({});
-WithBaseTemplate.args = { template: 'base' };
+WithBaseTemplate.args = { templateId: 'base' };
 
 export const WithBaseTemplateAndLeftImagePosition: UpsellStory = Template.bind({});
-WithBaseTemplateAndLeftImagePosition.args = { imagePosition: 'left', template: 'base' };
+WithBaseTemplateAndLeftImagePosition.args = { imagePosition: 'left', templateId: 'base' };
 
 export const WithBaseTemplateAndRightImagePosition: UpsellStory = Template.bind({});
-WithBaseTemplateAndRightImagePosition.args = { imagePosition: 'right', template: 'base' };
+WithBaseTemplateAndRightImagePosition.args = { imagePosition: 'right', templateId: 'base' };
 
 export const WithBaseTemplateAndTopImagePosition: UpsellStory = Template.bind({});
-WithBaseTemplateAndTopImagePosition.args = { imagePosition: 'top', template: 'base' };
+WithBaseTemplateAndTopImagePosition.args = { imagePosition: 'top', templateId: 'base' };
 
 export const WithBaseTemplateAndBottomImagePosition: UpsellStory = Template.bind({});
-WithBaseTemplateAndBottomImagePosition.args = { imagePosition: 'bottom', template: 'base' };
+WithBaseTemplateAndBottomImagePosition.args = { imagePosition: 'bottom', templateId: 'base' };
 
 export const WithBg: UpsellStory = Template.bind({});
 WithBg.args = {
@@ -60,5 +60,21 @@ WithBg.args = {
 	icon: <AttendantList />,
 	mainText: 'Sign up today',
 	mainTitle: 'Get your event attendance tracking to the next level',
-	template: 'with-bg-image',
+	templateId: 'with-bg-image',
+};
+
+export const WithOptions: UpsellStory = Template.bind({});
+WithOptions.args = {
+	bgColor: 'blue',
+	icon: <OnlineRegistration />,
+	mainText: 'Sign up today',
+	mainTitle: 'Ease your registration process with Event Espresso',
+	options: [
+		{ icon: <Payment />, text: 'Online payments' },
+		{ icon: <Tickets />, text: 'Digital tickets' },
+		{ icon: <BarCodeScanner />, text: 'Bar code scanner' },
+		{ icon: <Budgeting />, text: 'Paperless budgeting' },
+	],
+	orientation: 'vertical',
+	templateId: 'with-options',
 };
