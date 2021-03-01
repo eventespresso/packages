@@ -1,8 +1,8 @@
 import { Heading } from '@eventespresso/ui-components';
 
-import type { SectionProps } from './types';
+import type { FormSectionProps } from './types';
 
-const NoIcon: SectionProps['icon'] = () => null;
+const NoIcon: FormSectionProps['icon'] = () => null;
 
 interface Props {
 	desc?: React.ReactNode;

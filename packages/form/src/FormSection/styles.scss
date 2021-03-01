@@ -1,0 +1,15 @@
+.ee-form-section-wrapper {
+	padding: var(--ee-padding-bigger) 0 0;
+	display: flex;
+	flex-wrap: wrap;
+
+	&--columns {
+		&-1 {
+			display: block;
+		}
+	}
+
+	+ .ee-form-section-wrapper {
+		border-top: var(--ee-border-width) solid var(--ee-color-grey-14);
+	}
+}

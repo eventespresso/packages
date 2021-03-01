@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 import type { AnyObject } from '@eventespresso/utils';
 import type { EspressoFormProps } from '@eventespresso/form';
+
 import { useUpsellAd } from '../../services';
 
 type UpsellFormConfig = EspressoFormProps<AnyObject>;

@@ -17,22 +17,13 @@
 
 	.sections-wrapper {
 		padding: 0 0 var(--ee-padding-big);
+
 		& > div:first-child {
 			padding: var(--ee-padding-small) 0;
 		}
 	}
 
 	.section {
-		&-wrapper {
-			padding: var(--ee-padding-bigger) 0 0;
-			display: flex;
-			flex-wrap: wrap;
-		}
-
-		&-wrapper + &-wrapper {
-			border-top: var(--ee-border-width) solid var(--ee-color-grey-14);
-		}
-
 		&-body {
 			padding: var(--ee-padding-smaller) 0;
 

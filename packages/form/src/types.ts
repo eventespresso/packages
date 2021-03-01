@@ -88,11 +88,15 @@ export type FieldConditions = Array<FieldCondition>;
 
 export interface EspressoFormProps<FormValues = AnyObject>
 	extends FormProps<FormValues>,
-		AdditionalFormProps<FormValues> {}
+		AdditionalFormProps<FormValues> {
+	columns?: 1 | 2;
+}
 
 export interface FormRendererProps<FormValues = AnyObject>
 	extends FormRenderProps<FormValues>,
-		AdditionalFormProps<FormValues> {}
+		AdditionalFormProps<FormValues> {
+	columns?: 1 | 2;
+}
 
 export interface FieldRendererProps<FieldValue = any>
 	extends FieldRenderProps<FieldValue>,
@@ -124,17 +128,19 @@ export interface RenderFieldsProps {
 }
 
 export interface RenderSectionsProps {
+	columns?: 1 | 2;
 	sections: SectionList;
 }
 
 export interface RenderFieldProps extends FieldProps<AnyObject> {}
 
-export interface SectionProps<FormValues = AnyObject> {
+export interface FormSectionProps<FormValues = AnyObject> {
 	/**
 	 * If true, each field inside the section
 	 * will be saved as `${section.name}.{field.name}`
 	 */
 	addSectionToFieldNames?: boolean;
+	columns?: 1 | 2;
 	fields: FieldList<FormValues>;
 	icon?: IconComponent;
 	inline?: boolean;
@@ -144,4 +150,4 @@ export interface SectionProps<FormValues = AnyObject> {
 
 export type FieldList<FormValues = AnyObject> = Array<FieldProps<FormValues>>;
 
-export type SectionList<FormValues = AnyObject> = Array<SectionProps<FormValues>>;
+export type SectionList<FormValues = AnyObject> = Array<FormSectionProps<FormValues>>;

@@ -3,16 +3,17 @@ import { FormSpy } from 'react-final-form';
 
 import { DebugInfo } from '@eventespresso/ui-components';
 
-import type { FormRendererProps } from '../types';
 import Submit from '../Submit';
 import RenderFields from '../RenderFields';
 import RenderSections from '../RenderSections';
+import type { FormRendererProps } from '../types';
 
 const EMPTY_ARRAY = [];
 
 const FormRenderer: React.FC<FormRendererProps> = (props) => {
 	const {
 		children,
+		columns,
 		submitting,
 		sections = EMPTY_ARRAY,
 		fields = EMPTY_ARRAY,
@@ -28,7 +29,7 @@ const FormRenderer: React.FC<FormRendererProps> = (props) => {
 		<div className='ee-form'>
 			<div className='form-wrapper'>
 				<form>
-					{sections?.length ? <RenderSections sections={sections} /> : null}
+					{sections?.length ? <RenderSections columns={columns} sections={sections} /> : null}
 
 					{fields?.length ? <RenderFields fields={fields} /> : null}
 

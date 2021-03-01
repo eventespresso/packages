@@ -1,11 +1,11 @@
+import FormSection from './FormSection';
 import type { RenderSectionsProps } from './types';
-import RenderSection from './RenderSection';
 
-const RenderSections: React.FC<RenderSectionsProps> = ({ sections }) => {
+const RenderSections: React.FC<RenderSectionsProps> = ({ columns, sections }) => {
 	return (
 		<div className='sections-wrapper'>
 			{sections.map((section, key) => (
-				<RenderSection key={key} {...section} />
+				<FormSection key={key} {...section} columns={columns} />
 			))}
 		</div>
 	);
