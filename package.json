@@ -11,6 +11,7 @@
 		"build:rem": "yarn build:cra --domains \"rem\" --packages \"rrule-generator\"",
 		"build:wpUser": "yarn build:cra --domains \"wpUser\" --skip-all-packages",
 		"build:es": "yarn build:cra --domains \"eventSmart\" --skip-all-packages",
+		"build:upsellAds": "yarn build:cra --domains \"upsellAds\" --skip-all-packages",
 		"build-storybook": "BUILD_POT=false build-storybook",
 		"compile": "yarn tsc",
 		"deploy": "FORCE_COLOR=true lerna run deploy",
