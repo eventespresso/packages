@@ -4,7 +4,7 @@ import { assocPath } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import { useRelations } from '@eventespresso/services';
-import { useIsRehydrated } from '@eventespresso/edtr-services';
+import { useIsRehydrated } from '@eventespresso/data';
 
 import useCacheRehydrationData from './useCacheRehydrationData';
 import { useUpdateRecurrenceList } from '../../../hooks';

@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { useIsRehydrated, useTicketsMeta } from '@eventespresso/edtr-services';
+
+import { useIsRehydrated } from '@eventespresso/data';
+import { useTicketsMeta } from '@eventespresso/edtr-services';
 
 import useCacheRehydrationData from './useCacheRehydrationData';
 
