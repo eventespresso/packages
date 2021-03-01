@@ -29,7 +29,9 @@ const useTicketMutationAction = (): void => {
 		});
 
 		// housekeeping
-		return () => hooks.removeAction(actionName, NAMESPACE);
+		return () => {
+			hooks.removeAction(actionName, NAMESPACE);
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 };

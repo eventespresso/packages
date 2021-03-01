@@ -53,7 +53,9 @@ const useTicketFormSections = (): void => {
 		});
 
 		// housekeeping
-		return () => hooks.removeFilter(filterName, NAMESPACE);
+		return () => {
+			hooks.removeFilter(filterName, NAMESPACE);
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 };
