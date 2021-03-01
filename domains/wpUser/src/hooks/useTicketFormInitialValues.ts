@@ -41,7 +41,9 @@ const useTicketFormInitialValues = (): void => {
 		});
 
 		// housekeeping
-		return () => hooks.removeFilter(filterName, NAMESPACE);
+		return () => {
+			hooks.removeFilter(filterName, NAMESPACE);
+		};
 	}, [getMetaValue, optionValues]);
 };
 
