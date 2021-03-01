@@ -1,6 +1,7 @@
 import type { EventEditorData } from '@eventespresso/edtr-services';
 import type { RemDomData } from '@eventespresso/rem/src/types';
 import type { WpPluginsPageData } from '@eventespresso/wp-plugins-page/src/types';
+import type { UpsellAdEditorData } from '@eventespresso/upsell-ads/src/services';
 import type { WpUserData } from '@eventespresso/wp-user/src/types';
 import type { EventEspressoDomData } from '@eventespresso/services';
 
@@ -12,6 +13,7 @@ export interface EventEspressoData extends EventEspressoDomData {
 	remEditorData?: RemDomData;
 	wpPluginsPage?: WpPluginsPageData;
 	wpUserData?: WpUserData;
+	upsellAdEditor?: UpsellAdEditorData;
 }
 
 declare global {

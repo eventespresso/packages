@@ -12,6 +12,7 @@ const EMPTY_ARRAY = [];
 
 const FormRenderer: React.FC<FormRendererProps> = (props) => {
 	const {
+		children,
 		submitting,
 		sections = EMPTY_ARRAY,
 		fields = EMPTY_ARRAY,
@@ -40,6 +41,7 @@ const FormRenderer: React.FC<FormRendererProps> = (props) => {
 							resetButton={resetButton}
 						/>
 					) : null}
+					{children}
 				</form>
 
 				{debugFields?.length && (

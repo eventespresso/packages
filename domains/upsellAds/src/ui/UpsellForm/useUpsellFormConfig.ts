@@ -3,15 +3,19 @@ import { useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 import type { AnyObject } from '@eventespresso/utils';
 import type { EspressoFormProps } from '@eventespresso/form';
+import { useUpsellAd } from '../../services';
 
 type UpsellFormConfig = EspressoFormProps<AnyObject>;
 
-const onSubmit = () => null;
+const onSubmit = console.log;
 
 const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormConfig => {
+	const upsell = useUpsellAd();
+
 	return useMemo(
 		() => ({
 			...config,
+			initialValues: upsell,
 			onSubmit,
 			subscription: {},
 			validate: null,
@@ -112,7 +116,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 				},
 			],
 		}),
-		[config]
+		[config, upsell]
 	);
 };
 
