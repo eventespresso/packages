@@ -1,4 +1,4 @@
-import { useIsRehydrated } from '@eventespresso/edtr-services';
+import { useIsRehydrated } from '@eventespresso/data';
 import { PluginArea } from '@eventespresso/plugins';
 
 import { getRegisteredContainers } from '@edtrServices/utils';

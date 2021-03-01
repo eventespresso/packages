@@ -1,4 +1,6 @@
-import { makeVar, useReactiveVariable, ReactiveVariable } from '@eventespresso/data';
+import { makeVar } from '@apollo/client';
+
+import { useReactiveVariable, ReactiveVariable } from './useReactiveVariable';
 
 const isRehydrated = makeVar(false);
 

@@ -9,16 +9,11 @@ import {
 	useUpdateCache,
 	useUpdateCurrentUserCache,
 	useUpdateGeneralSettingsCache,
+	useIsRehydrated,
 } from '@eventespresso/data';
 
 import useCacheRehydrationData from './useCacheRehydrationData';
-import {
-	useIsRehydrated,
-	useUpdateDatetimeList,
-	useUpdatePriceList,
-	useUpdatePriceTypeList,
-	useUpdateTicketList,
-} from '../../hooks';
+import { useUpdateDatetimeList, useUpdatePriceList, useUpdatePriceTypeList, useUpdateTicketList } from '../../hooks';
 import {
 	DEFAULT_DATETIME_LIST_DATA,
 	DEFAULT_TICKET_LIST_DATA,
