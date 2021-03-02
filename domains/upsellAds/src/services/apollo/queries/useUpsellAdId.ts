@@ -1,3 +1,5 @@
+import { useDomData } from '../../hooks';
+
 export const useUpsellAdId = (): number => {
-	return window.eventEspressoData?.upsellAdEditor?.upsellAd?.dbId || 0;
+	return useDomData()?.upsellAd?.dbId || 0;
 };
