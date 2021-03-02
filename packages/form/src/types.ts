@@ -40,7 +40,8 @@ type FieldType =
 	| 'switch'
 	| 'text'
 	| 'textarea'
-	| 'timepicker';
+	| 'timepicker'
+	| 'wpmedia-image';
 
 export interface FieldWrapperProps extends Omit<FieldRendererProps, 'component'> {
 	component: React.ComponentType<Omit<FieldRendererProps, 'fieldType'>>;

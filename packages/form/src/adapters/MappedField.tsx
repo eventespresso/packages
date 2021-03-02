@@ -12,6 +12,7 @@ import TimePicker from './TimePicker';
 import SimpleTextEditor from './SimpleTextEditor';
 import Hidden from './Hidden';
 import NumberField from './Number';
+import WPMediaImage from './WPMediaImage';
 import { fieldPropsAreEqual } from '../utils';
 import type { FieldRendererProps } from '../types';
 
@@ -56,6 +57,9 @@ export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, wrapper: 
 			break;
 		case 'hidden':
 			Component = Hidden;
+			break;
+		case 'wpmedia-image':
+			Component = WPMediaImage;
 			break;
 		default:
 			Component = DefaultComponent;
