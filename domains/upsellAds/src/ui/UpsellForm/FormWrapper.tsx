@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { Box, Grid } from '@eventespresso/adapters';
 import { Upsell } from '@eventespresso/ui-components';
 
 const FormWrapper: React.FC<any> = ({ children, form }) => {
@@ -19,10 +20,13 @@ const FormWrapper: React.FC<any> = ({ children, form }) => {
 	}, []);
 
 	return (
-		<>
-			{children}
-			<Upsell {...previewState} templateId='base' />
-		</>
+		<Grid columns={2} gap={6}>
+			<Box w='100%'>{children}</Box>
+
+			<Box w='100%'>
+				<Upsell {...previewState} templateId='base' />
+			</Box>
+		</Grid>
 	);
 };
 

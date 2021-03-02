@@ -37,16 +37,19 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							name: 'mainTitle',
 							label: __('Main title'),
 							fieldType: 'text',
+							defaultValue: __('Main title'),
 						},
 						{
 							name: 'subTitle',
 							label: __('Subtitle'),
 							fieldType: 'text',
+							defaultValue: __('Subtitle'),
 						},
 						{
 							name: 'mainText',
 							label: __('Main text'),
 							fieldType: 'text',
+							defaultValue: __('This is the main text'),
 						},
 						{
 							name: 'cTA',
