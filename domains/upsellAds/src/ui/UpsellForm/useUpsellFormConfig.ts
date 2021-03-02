@@ -1,10 +1,11 @@
 import { useCallback, useMemo } from 'react';
 
-import { __ } from '@eventespresso/i18n';
+import { sprintf, __ } from '@eventespresso/i18n';
 import type { AnyObject } from '@eventespresso/utils';
 import type { EspressoFormProps } from '@eventespresso/form';
 
 import { useUpsellAd, useUpsellAdMutator } from '../../services';
+import { containerClassOptions } from './constants';
 
 type UpsellFormConfig = EspressoFormProps<AnyObject>;
 
@@ -77,11 +78,6 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							label: __('Alternative CTA style'),
 							fieldType: 'select',
 						},
-						{
-							name: 'isDismissable',
-							label: __('Dismissable'),
-							fieldType: 'switch',
-						},
 					],
 				},
 				{
@@ -117,7 +113,102 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 						{
 							name: 'image',
 							label: __('Image'),
-							fieldType: 'text',
+							fieldType: 'wpmedia-image',
+							displayAsInput: true,
+						},
+					],
+				},
+				{
+					name: 'conditions',
+					title: __('Conditions'),
+					fields: [
+						{
+							name: 'isDismissable',
+							label: __('Dismissable'),
+							fieldType: 'switch',
+						},
+						{
+							name: 'containerClass',
+							label: __('Container Style'),
+							fieldType: 'select',
+							options: containerClassOptions,
+						},
+						{
+							name: 'excludedCaps',
+							label: __('Exclude for Capabilities'),
+							fieldType: 'textarea',
+							description: __(
+								'If the user has any of the given capabilities then the notification will not be shown.'
+							),
+						},
+						{
+							name: 'showForCaps',
+							label: __('Show for Capabilities'),
+							fieldType: 'textarea',
+							description: __(
+								'If the user has any of the given capabilities then the notification will be shown.'
+							),
+						},
+						{
+							name: 'pagenow',
+							label: __('Non EE Page(s)'),
+							fieldType: 'textarea',
+							description: sprintf(
+								/* translators: 1 variable, 2 & 3 file extensions */
+								__(
+									'This will correspond with the global %1$s for the WP admin page. In most cases, this is the part that ends with %2$s in the url. For instance the media route would be %3$s. If a given string(s) is not a value for this field in the global $pagenow value then the notification will NOT show.'
+								),
+								'$pagenow',
+								'.php',
+								'upload.php'
+							),
+						},
+						{
+							name: 'postType',
+							label: __('Post Type'),
+							fieldType: 'textarea',
+							description: sprintf(
+								/* translators: 1 param name */
+								__('This will correspond with the %1$s request parameter in the url.'),
+								'post_type'
+							),
+						},
+						{
+							name: 'page',
+							label: __('Page(s)'),
+							fieldType: 'textarea',
+							description: sprintf(
+								/* translators: 1 param name */
+								__(
+									'This will correspond with the %1$s request parameter in the url. If a given string(s) is not a value for %1$s in the current url then the notification will NOT show.'
+								),
+								'page'
+							),
+						},
+						{
+							name: 'route',
+							label: __('Route(s)'),
+							fieldType: 'textarea',
+							description: sprintf(
+								/* translators: 1, 2 param names */
+								__(
+									'This will correspond with the %1$s or %2$s parameter in the url. If a given string(s) is not a value for %1$s or %2$s in the current url then the notification will NOT show.'
+								),
+								'action',
+								'route'
+							),
+						},
+						{
+							name: 'actionHook',
+							label: __('Action Hook(s)'),
+							fieldType: 'textarea',
+							description: sprintf(
+								/* translators: 1 hook name */
+								__(
+									'If this is left blank, then by default the notification will be hooked into the %1$s action.'
+								),
+								'admin_notices'
+							),
 						},
 					],
 				},
