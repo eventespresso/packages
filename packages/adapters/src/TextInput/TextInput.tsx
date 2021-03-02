@@ -1,17 +1,30 @@
 import { useMemo, forwardRef } from 'react';
 
-import { Input as ChakraInput } from '@chakra-ui/react';
+import { Input as ChakraInput, InputGroup, InputLeftAddon, InputRightAddon } from '@chakra-ui/react';
 
 import { useOnChange } from '@eventespresso/hooks';
 import type { TextInputProps } from './types';
 
-export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({ onChange, onChangeValue, ...props }, ref) => {
-	const onChangeHandlerArg = useMemo(() => ({ isDisabled: props.isDisabled, onChange, onChangeValue }), [
-		onChange,
-		onChangeValue,
-		props.isDisabled,
-	]);
-	const onChangeHandler = useOnChange(onChangeHandlerArg);
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+	({ addonBefore, addonAfter, addonBeforeProps, addonAfterProps, onChange, onChangeValue, ...props }, ref) => {
+		const onChangeHandlerArg = useMemo(() => ({ isDisabled: props.isDisabled, onChange, onChangeValue }), [
+			onChange,
+			onChangeValue,
+			props.isDisabled,
+		]);
+		const onChangeHandler = useOnChange(onChangeHandlerArg);
+		const input = <ChakraInput {...props} onChange={onChangeHandler} ref={ref} />;
 
-	return <ChakraInput {...props} onChange={onChangeHandler} ref={ref} />;
-});
+		if (!addonBefore && !addonAfter) {
+			return input;
+		}
+
+		return (
+			<InputGroup>
+				{addonBefore && <InputLeftAddon {...addonBeforeProps}>{addonBefore}</InputLeftAddon>}
+				{input}
+				{addonAfter && <InputRightAddon {...addonAfterProps}>{addonAfter}</InputRightAddon>}
+			</InputGroup>
+		);
+	}
+);
