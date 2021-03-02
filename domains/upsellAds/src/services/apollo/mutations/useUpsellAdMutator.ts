@@ -12,11 +12,9 @@ interface UpsellAdMutator {
 	updateEntity: (input: UpdateUpsellAdInput) => Promise<ExecutionResult<UpdateUpsellAdResult>>;
 }
 
-type DM = UpsellAdMutator;
-
 const typeName = 'Upsell Ad';
 
-const useUpsellAdMutator = (id = ''): DM => {
+const useUpsellAdMutator = (id = ''): UpsellAdMutator => {
 	const toaster = useSystemNotifications();
 
 	const updateUpsellAd = useMutationWithFeedback({
@@ -28,7 +26,7 @@ const useUpsellAdMutator = (id = ''): DM => {
 
 	const mutationHandler = useMutationHandler();
 
-	const updateEntity = useCallback<DM['updateEntity']>(
+	const updateEntity = useCallback<UpsellAdMutator['updateEntity']>(
 		(input) => {
 			const options = mutationHandler(MutationType.Update, { id, ...input });
 
