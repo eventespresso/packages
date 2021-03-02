@@ -1,7 +1,13 @@
-import type { OperationVariables, MutationUpdaterFn, ApolloCache } from '@apollo/client';
-import type { ExecutionResult } from 'graphql';
-
-import type { MutationInput, MutationType, Entity as BaseEntity, Entity } from '@eventespresso/data';
+import type {
+	ApolloCache,
+	Entity as BaseEntity,
+	Entity,
+	ExecutionResult,
+	MutationInput,
+	MutationType,
+	MutationUpdaterFn,
+	OperationVariables,
+} from '@eventespresso/data';
 import type { Merge, AnyObject } from '@eventespresso/utils';
 import type { ShiftDateArgs } from '@eventespresso/dates';
 import type { Datetime, DatetimeEdge, Ticket, TicketEdge, Price, PriceEdge } from '../types';

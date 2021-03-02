@@ -29,19 +29,21 @@ const FormRenderer: React.FC<FormRendererProps> = (props) => {
 		<div className='ee-form'>
 			<div className='form-wrapper'>
 				<form>
-					{sections?.length ? <RenderSections columns={columns} sections={sections} /> : null}
+					<div className='ee-form__body'>
+						{sections?.length ? <RenderSections columns={columns} sections={sections} /> : null}
 
-					{fields?.length ? <RenderFields fields={fields} /> : null}
+						{fields?.length ? <RenderFields fields={fields} /> : null}
 
-					{/* Maybe formWrapper handles form submission */}
-					{submitButton ? (
-						<Submit
-							hasErrors={hasValidationErrors || hasSubmitErrors}
-							submitting={submitting}
-							submitButton={submitButton}
-							resetButton={resetButton}
-						/>
-					) : null}
+						{/* Maybe formWrapper handles form submission */}
+						{submitButton ? (
+							<Submit
+								hasErrors={hasValidationErrors || hasSubmitErrors}
+								submitting={submitting}
+								submitButton={submitButton}
+								resetButton={resetButton}
+							/>
+						) : null}
+					</div>
 					{children}
 				</form>
 

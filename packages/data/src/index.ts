@@ -26,7 +26,11 @@ export type {
 	ApolloCache,
 	ApolloError,
 	GraphQLRequest,
+	MutationFunctionOptions,
+	MutationUpdaterFn,
 	OperationVariables,
 	QueryHookOptions,
 	ReactiveVar,
 } from '@apollo/client';
+
+export type { ExecutionResult } from 'graphql';
