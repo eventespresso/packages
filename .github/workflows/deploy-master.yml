@@ -76,3 +76,13 @@ jobs:
               run: source tools/deploy.sh "eventsmart.com-website" "dev" "plugins/es-barista-tester/assets"
               env:
                   DEPLOY_I18N: 'no'
+
+            # Build upsellAds domain without packages
+            - name: Build Upsell Ads
+              run: yarn build:upsellAds
+
+            # Deploy the built assets to ES tester plugin assets
+            - name: Deploy to Upsell Editor
+              run: source tools/deploy.sh "eventsmart.com-website" "dev" "plugins/ee-saas-notification/assets"
+              env:
+                  DEPLOY_I18N: 'no'
