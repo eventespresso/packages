@@ -1,17 +1,23 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import type { AnyObject } from '@eventespresso/utils';
 import type { EspressoFormProps } from '@eventespresso/form';
 
-import { useUpsellAd } from '../../services';
+import { useUpsellAd, useUpsellAdMutator } from '../../services';
 
 type UpsellFormConfig = EspressoFormProps<AnyObject>;
 
-const onSubmit = console.log;
-
 const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormConfig => {
 	const upsell = useUpsellAd();
+	const { updateEntity } = useUpsellAdMutator();
+
+	const onSubmit = useCallback(
+		async (values) => {
+			await updateEntity(values);
+		},
+		[updateEntity]
+	);
 
 	return useMemo(
 		() => ({
@@ -42,17 +48,17 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							fieldType: 'text',
 						},
 						{
-							name: 'CTA',
+							name: 'cTA',
 							label: __('CTA'),
 							fieldType: 'text',
 						},
 						{
-							name: 'CTALink',
+							name: 'cTALink',
 							label: __('CTA link'),
 							fieldType: 'text',
 						},
 						{
-							name: 'CTAStyle',
+							name: 'cTAStyle',
 							label: __('CTA style'),
 							fieldType: 'select',
 						},
@@ -117,7 +123,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 				},
 			],
 		}),
-		[config, upsell]
+		[config, onSubmit, upsell]
 	);
 };
 
