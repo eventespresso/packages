@@ -36,7 +36,6 @@ const Template: UpsellStory = ({
 			mainTitle={args.mainTitle || 'Get more features with Everything subscription'}
 			orientation={select('orientation', ['horizontal', 'vertical'], 'horizontal')}
 			subTitle={subTitle}
-			theme={select('theme', ['compact'], 'compact')}
 			withBorder={boolean('withBorder', false)}
 		/>
 	</DataProvider>
@@ -45,12 +44,11 @@ const Template: UpsellStory = ({
 export const WithBaseTemplate: UpsellStory = Template.bind({});
 WithBaseTemplate.args = { templateId: 'base' };
 
-export const WithCompactTheme: UpsellStory = Template.bind({});
-WithCompactTheme.args = {
+export const WithCompactTemplate: UpsellStory = Template.bind({});
+WithCompactTemplate.args = {
 	altCTAText: null,
 	image: null,
-	templateId: 'base',
-	theme: 'compact',
+	templateId: 'compact',
 	orientation: 'horizontal',
 	mainTitle: 'One row title for non-intrusive ads',
 	mainText: null,

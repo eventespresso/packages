@@ -101,9 +101,7 @@
 				padding-bottom: var(--ee-padding-small);
 			}
 		}
-	}
 
-	&--theme {
 		&-compact {
 			flex-direction: row !important;
 
@@ -113,7 +111,7 @@
 				margin: 0 !important;
 			}
 
-			.ee-upsell--template-base__base__cta {
+			.ee-upsell--template-compact__cta {
 				display: inline-flex !important;
 				white-space: nowrap;
 
@@ -125,6 +123,7 @@
 			}
 		}
 	}
+
 	&--image-position {
 		&-right {
 			flex-direction: row-reverse;

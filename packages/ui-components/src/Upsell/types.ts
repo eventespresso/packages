@@ -24,7 +24,6 @@ export interface UpsellProps extends Size {
 	options?: Array<Option>;
 	orientation?: 'vertical' | 'horizontal';
 	subTitle?: string;
-	templateId?: 'base' | 'with-bg-image' | 'with-options';
-	theme?: 'compact';
+	templateId?: 'base' | 'compact' | 'with-bg-image' | 'with-options';
 	withBorder?: boolean;
 }

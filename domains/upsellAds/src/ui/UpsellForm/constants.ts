@@ -75,22 +75,15 @@ export const templates = [
 		value: 'base',
 	},
 	{
+		label: 'Compact',
+		value: 'compact',
+	},
+	{
 		label: 'With background images',
 		value: 'with-bg-image',
 	},
 	{
 		label: 'With options',
 		value: 'with-options',
-	},
-];
-
-export const themes = [
-	{
-		label: 'Compact',
-		value: 'compact',
-	},
-	{
-		label: 'Other',
-		value: 'other',
 	},
 ];
