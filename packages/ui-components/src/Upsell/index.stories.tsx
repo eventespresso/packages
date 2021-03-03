@@ -24,7 +24,7 @@ const Template: UpsellStory = (args) => (
 		<Upsell
 			{...args}
 			altCTAText='Learn more'
-			CTAText='Upgrade today'
+			cTA='Upgrade today'
 			image='https://eventespresso.com/wp-content/uploads/2016/10/ee4-attendee-mover-380x250.jpg'
 			imagePosition={select('imagePosition', ['bottom', 'top', 'left', 'right'], 'right')}
 			mainText={
