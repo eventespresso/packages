@@ -2,7 +2,7 @@ name: Deploy Leading Edge (master)
 
 on:
     push:
-        branches: [master]
+        branches: [master, fix-upsell-deploy]
 env:
     API_TOKEN_GITHUB: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
     GIT_USER_EMAIL: ${{ secrets.GH_ACTIONS_GIT_USER_EMAIL }}
@@ -41,31 +41,31 @@ jobs:
               if: steps.cache-deps.outputs.cache-hit != 'true'
               run: yarn install --frozen-lockfile
 
-            # Build the core domains along with all the packages
-            # because all packages will goto core
-            - name: Build core domains and all their packages
-              run: yarn build:core
+            # # Build the core domains along with all the packages
+            # # because all packages will goto core
+            # - name: Build core domains and all their packages
+            #   run: yarn build:core
 
-            # Deploy the built assets to core repo's assets/dist
-            - name: Deploy to event-espresso-core
-              run: source tools/deploy.sh "event-espresso-core"
+            # # Deploy the built assets to core repo's assets/dist
+            # - name: Deploy to event-espresso-core
+            #   run: source tools/deploy.sh "event-espresso-core"
 
-            # Build REM domain without packages
-            # because core will load/register the packages
-            - name: Build REM with its packages
-              run: yarn build:rem
+            # # Build REM domain without packages
+            # # because core will load/register the packages
+            # - name: Build REM with its packages
+            #   run: yarn build:rem
 
-            # Deploy the built assets to REM assets/dist
-            - name: Deploy to REM
-              run: source tools/deploy.sh "eea-recurring-events-manager"
+            # # Deploy the built assets to REM assets/dist
+            # - name: Deploy to REM
+            #   run: source tools/deploy.sh "eea-recurring-events-manager"
 
-            # Build WP User domain without packages
-            - name: Build wpUser
-              run: yarn build:wpUser
+            # # Build WP User domain without packages
+            # - name: Build wpUser
+            #   run: yarn build:wpUser
 
-            # Deploy the built assets to WP User assets/dist
-            - name: Deploy to WP User
-              run: source tools/deploy.sh "eea-wpuser-integration"
+            # # Deploy the built assets to WP User assets/dist
+            # - name: Deploy to WP User
+            #   run: source tools/deploy.sh "eea-wpuser-integration"
 
             # Build EventSmart domain without packages
             - name: Build ES
