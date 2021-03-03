@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 import classNames from 'classnames';
 
-import type { LinkProps } from '../types';
 import { withTooltip } from '../../withTooltip';
+import type { LinkProps } from '../types';
 
 import '../style.scss';
 import './style.scss';

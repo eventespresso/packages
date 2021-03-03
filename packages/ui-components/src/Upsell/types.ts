@@ -11,8 +11,8 @@ export interface UpsellProps extends Size {
 	altCTAText?: string;
 	bgColor?: 'blue' | 'green' | 'red';
 	className?: string;
-	CTAText?: string;
-	CTAlink?: string;
+	cTA?: string;
+	cTALink?: string;
 	CTAstyle?: 'style';
 	icon?: React.ReactNode;
 	image?: string;
@@ -23,7 +23,7 @@ export interface UpsellProps extends Size {
 	onClick?: VoidFunction;
 	options?: Array<Option>;
 	orientation?: 'vertical' | 'horizontal';
-	subtitle?: string;
+	subTitle?: string;
 	templateId?: 'base' | 'with-bg-image' | 'with-options';
 	theme?: 'theme';
 	withBorder?: boolean;

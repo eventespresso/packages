@@ -3,11 +3,13 @@ import classNames from 'classnames';
 import { Box, FormControl, FormLabel } from '@eventespresso/adapters';
 import { Divider, ErrorMessage, InfoMessage } from '@eventespresso/ui-components';
 
-import { HelperText } from '../HelperText';
-import MappedField from '../adapters/MappedField';
-import type { FieldRendererProps } from '../types';
+import { HelperText } from '../../HelperText';
+import MappedField from '../../adapters/MappedField';
+import type { FieldRendererProps } from '../../types';
 
-const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
+import './styles.scss';
+
+const FieldRenderer: React.FC<FieldRendererProps> = ({ inline, ...props }) => {
 	const { after, before, description, formControlProps, info, label, required, ...rest } = props;
 
 	const { meta } = props;
@@ -20,6 +22,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 	const className = classNames(
 		'ee-form-item',
 		info && 'ee-form-item--has-info',
+		inline && 'ee-form-item--inline',
 		`ee-form-item__${rest.fieldType}`,
 		formControlProps?.className
 	);
@@ -47,12 +50,12 @@ const FieldRenderer: React.FC<FieldRendererProps> = (props) => {
 
 	return (
 		<FormControl className={className} isInvalid={isInvalid} isRequired={required}>
-			<Box alignItems='center' display='flex'>
+			<div className='ee-form-item__label'>
 				<FormLabel as={formLabelAs} htmlFor={formLabelFor}>
 					{label}
 				</FormLabel>
 				<HelperText id={tooltipKey} tooltipText={description || info} />
-			</Box>
+			</div>
 
 			<Divider size='smaller' />
 

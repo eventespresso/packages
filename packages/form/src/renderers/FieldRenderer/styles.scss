@@ -1,0 +1,18 @@
+.ee-form-item {
+	&__label {
+		align-items: center;
+		display: flex;
+	}
+
+	&--inline {
+		display: inline-flex;
+
+		hr {
+			display: none;
+		}
+
+		label {
+			white-space: nowrap;
+		}
+	}
+}

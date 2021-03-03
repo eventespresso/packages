@@ -1,0 +1,19 @@
+.ee-upsell-form {
+	.form-wrapper {
+		max-width: none;
+	}
+
+	form {
+		display: flex;
+		flex-wrap: wrap;
+
+		.ee-form__body,
+		.ee-upsell {
+			width: 50%;
+		}
+
+		.footer-wrap {
+			min-width: 960px;
+		}
+	}
+}

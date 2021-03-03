@@ -33,7 +33,7 @@ const Template: UpsellStory = (args) => (
 			}
 			mainTitle={args.mainTitle || 'Get more features with Everything subscription'}
 			orientation={select('orientation', ['horizontal', 'vertical'], 'horizontal')}
-			subtitle='Upgrade to Everything Support License'
+			subTitle='Upgrade to Everything Support License'
 			withBorder={boolean('withBorder', false)}
 		/>
 		{/* </ConfigProvider> */}
