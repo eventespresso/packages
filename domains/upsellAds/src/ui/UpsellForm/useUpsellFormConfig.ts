@@ -5,7 +5,7 @@ import type { AnyObject } from '@eventespresso/utils';
 import type { EspressoFormProps } from '@eventespresso/form';
 
 import { useUpsellAd, useUpsellAdMutator } from '../../services';
-import { containerClassOptions } from './constants';
+import { containerClassOptions, templates, themes } from './constants';
 
 type UpsellFormConfig = EspressoFormProps<AnyObject>;
 
@@ -98,12 +98,14 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							label: __('Theme'),
 							fieldType: 'select',
 							inline: true,
+							options: themes,
 						},
 						{
 							name: 'template',
 							label: __('Template'),
 							fieldType: 'select',
 							inline: true,
+							options: templates,
 						},
 						{
 							name: 'orientation',

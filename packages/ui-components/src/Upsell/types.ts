@@ -25,6 +25,6 @@ export interface UpsellProps extends Size {
 	orientation?: 'vertical' | 'horizontal';
 	subTitle?: string;
 	templateId?: 'base' | 'with-bg-image' | 'with-options';
-	theme?: 'theme';
+	theme?: 'compact';
 	withBorder?: boolean;
 }

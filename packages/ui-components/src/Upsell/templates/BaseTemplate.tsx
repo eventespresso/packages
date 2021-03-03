@@ -22,7 +22,7 @@ export const BaseTemplate: React.FC<UpsellProps> = ({
 
 	return (
 		<div className={className}>
-			{imagePosition !== 'bottom' && <Image src={image} />}
+			{imagePosition !== 'bottom' && image && <Image src={image} />}
 			<div>
 				<Heading as='h3' className={`${prefixClassName}__main-title`}>
 					{mainTitle}
@@ -30,7 +30,7 @@ export const BaseTemplate: React.FC<UpsellProps> = ({
 				<Heading as='h4' className={`${prefixClassName}__subTitle`}>
 					{subTitle}
 				</Heading>
-				<p className={`${prefixClassName}__main-text`}>{mainText}</p>
+				{mainText && <p className={`${prefixClassName}__main-text`}>{mainText}</p>}
 				<div className={`${prefixClassName}__base__cta`}>
 					{cTA && (
 						<Link href={cTALink} size='small'>
@@ -44,7 +44,7 @@ export const BaseTemplate: React.FC<UpsellProps> = ({
 					)}
 				</div>
 			</div>
-			{imagePosition === 'bottom' && <Image src={image} />}
+			{imagePosition === 'bottom' && image && <Image src={image} />}
 		</div>
 	);
 };
