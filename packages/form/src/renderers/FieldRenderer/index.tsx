@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { Box, FormControl, FormLabel } from '@eventespresso/adapters';
+import { FormControl, FormLabel } from '@eventespresso/adapters';
 import { Divider, ErrorMessage, InfoMessage } from '@eventespresso/ui-components';
 
 import { HelperText } from '../../HelperText';
