@@ -62,7 +62,7 @@ CLONE_DIR="__${REPO}__clone__"
 echo "  Clone dir: $CLONE_DIR"
 
 # make sure the directory is empty
-rm -rf $CLONE_DIR/*
+rm -rf $CLONE_DIR
 
 # clone the repo branch
 git clone -b $BRANCH git@github.com:$USERNAME/$REPO.git $CLONE_DIR
