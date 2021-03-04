@@ -7,5 +7,6 @@ export * from './hooks';
 export * from './meta';
 export * from './permissions';
 export * from './relations';
+export * from './slots';
 export * from './status';
 export * from './types';
