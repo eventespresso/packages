@@ -1,1 +1,1 @@
-export * from './NewDateUpsell';
+export * from './AddNewDateUpsell';

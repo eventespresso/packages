@@ -1,13 +1,19 @@
-import { EdtrPlugins } from '@eventespresso/edtr-services';
-import { registerPlugin, updatePlugin } from '@eventespresso/plugins';
+import { EdtrSlots } from '@eventespresso/services';
+import { isPluginRegistered, registerPlugin, updatePlugin } from '@eventespresso/plugins';
 
-import { NewDateUpsell } from './upsells';
+import { AddNewDateUpsell } from './upsells';
 import EventSmartInit from './EventSmartInit';
 
 registerPlugin('es-container', {
 	render: () => <EventSmartInit />,
 });
 
-updatePlugin(EdtrPlugins.ADD_SINGLE_DATE, {
-	render: (prevRender) => <NewDateUpsell output={prevRender?.()} />,
+updatePlugin(EdtrSlots.ADD_SINGLE_DATE_OPTION, {
+	render: (prevRender) => <AddNewDateUpsell output={prevRender?.()} slot={EdtrSlots.ADD_SINGLE_DATE_OPTION} />,
+});
+
+// if the plugin is already registered (by REM), we may just update it
+const recDatePluginFn = isPluginRegistered(EdtrSlots.ADD_RECURRING_DATE_OPTION) ? updatePlugin : registerPlugin;
+recDatePluginFn(EdtrSlots.ADD_RECURRING_DATE_OPTION, {
+	render: (prevRender) => <AddNewDateUpsell output={prevRender?.()} slot={EdtrSlots.ADD_RECURRING_DATE_OPTION} />,
 });
