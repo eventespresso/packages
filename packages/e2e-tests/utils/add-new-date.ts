@@ -1,5 +1,5 @@
 export const addNewDate = async ({ name }: any = {}) => {
-	await page.click('text=Add New Date');
+	await page.click('text=Add New Date').catch(() => console.log('There is no add new date button'));
 
 	await page.focus('.ee-render-fields >> text=Name');
 
