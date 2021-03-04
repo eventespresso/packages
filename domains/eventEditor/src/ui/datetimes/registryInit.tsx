@@ -15,8 +15,8 @@ import {
 	DatetimesFilterStateManager,
 	datesList,
 	NewDateOption,
-	EdtrPlugins,
 } from '@eventespresso/edtr-services';
+import { EdtrSlots } from '@eventespresso/services';
 import { FilterBarFilter } from '@eventespresso/ui-components';
 import { registerPlugin } from '@eventespresso/plugins';
 
@@ -103,7 +103,7 @@ const datesListFilterBar: DatesListFilterBarCallback = ({ listId, registry }) =>
 
 filterBar.subscribe(datesListFilterBar, { listId: datesList });
 
-registerPlugin(EdtrPlugins.ADD_SINGLE_DATE, {
+registerPlugin(EdtrSlots.ADD_SINGLE_DATE_OPTION, {
 	render: () => (
 		<NewDateOption>
 			{({ count }) => {

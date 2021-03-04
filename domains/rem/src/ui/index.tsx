@@ -8,7 +8,8 @@ import {
 } from '@eventespresso/registry';
 import { domain, datesList, NewDateOption } from '@eventespresso/edtr-services';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
-import { registerPlugin } from '@eventespresso/plugins';
+import { isPluginRegistered, updatePlugin, registerPlugin } from '@eventespresso/plugins';
+import { EdtrSlots } from '@eventespresso/services';
 
 import RemButton from './RemButton';
 import RemInit from './RemInit';
@@ -18,8 +19,9 @@ import { RemGlobalModals } from '../types';
 import { RecurrenceControl } from './filterBar';
 import RecurrenceTag from './RecurrenceTag';
 
-// Register new entity option
-registerPlugin('rem-button', {
+// if the plugin is already registered (by ES), we may just update it
+const recDatePluginFn = isPluginRegistered(EdtrSlots.ADD_RECURRING_DATE_OPTION) ? updatePlugin : registerPlugin;
+recDatePluginFn(EdtrSlots.ADD_RECURRING_DATE_OPTION, {
 	render: () => (
 		<NewDateOption priority={11}>
 			<RemButton />

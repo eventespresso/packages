@@ -36,6 +36,10 @@ export function registerPlugin(name: string, settings: Settings): Plugin {
 	return plugin;
 }
 
+export function isPluginRegistered(name: string): boolean {
+	return Boolean(plugins[name]);
+}
+
 export function updatePlugin(name: string, settings: Settings): Plugin {
 	const plugin = plugins[name];
 
