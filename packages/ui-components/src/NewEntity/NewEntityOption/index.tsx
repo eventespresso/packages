@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { NewEntityOptionProps } from './types';
+import type { NewEntityOptionProps } from '../types';
+import './styles.scss';
 
 const NewEntityOption: React.FC<NewEntityOptionProps> = ({
 	button,

@@ -42,6 +42,9 @@ const Template: UpsellStory = ({
 	</DataProvider>
 );
 
+export const WithAddNewDateTemplate: UpsellStory = Template.bind({});
+WithAddNewDateTemplate.args = { templateId: 'addNewDate' };
+
 export const WithBaseTemplate: UpsellStory = Template.bind({});
 WithBaseTemplate.args = { templateId: 'base' };
 

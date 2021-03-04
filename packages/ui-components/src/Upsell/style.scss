@@ -5,6 +5,13 @@
 		vertical-align: top;
 	}
 
+	.ee-link {
+		height: auto;
+		min-height: auto;
+		width: auto !important;
+		white-space: nowrap;
+	}
+
 	&--bg-color {
 		* {
 			color: var(--ee-color-white) !important;
@@ -115,12 +122,6 @@
 				display: inline-flex !important;
 				padding: 0 var(--ee-padding-tiny);
 				white-space: nowrap;
-
-				.ee-link {
-					height: auto;
-					min-height: auto;
-					width: auto;
-				}
 			}
 		}
 	}

@@ -1,0 +1,43 @@
+@import '~@eventespresso/styles/src/mixins/breakpoints.scss';
+
+.ee-new-entity-option {
+	align-items: center;
+	background: var(--ee-background-color);
+	box-shadow: var(--ee-box-shadow-small);
+	border-radius: var(--ee-border-radius-small);
+	border: none;
+	display: flex;
+	flex-direction: column;
+	margin: var(--ee-margin-small);
+	min-width: 16rem;
+	padding: var(--ee-padding-small);
+	z-index: 10;
+
+	h4 {
+		color: var(--ee-default-text-color-low-contrast);
+		font-size: var(--ee-font-size-bigger);
+		font-weight: 800;
+		margin-top: var(--ee-margin-small);
+		margin-bottom: var(--ee-margin-default);
+	}
+
+	&__description {
+		max-width: 14rem;
+		text-align: center;
+		white-space: pre-wrap;
+	}
+
+	svg.ee-svg.ee-svg {
+		color: var(--ee-color-grey-9);
+		height: 48px;
+		width: 48px;
+	}
+
+	&__recurring-datetime {
+		svg.ee-svg.ee-svg {
+			height: 42px;
+			margin: 6px 0 0;
+			width: 42px;
+		}
+	}
+}
