@@ -1,13 +1,12 @@
-import { NewEntityOption, Link } from '@eventespresso/ui-components';
+import { Upsell } from '@eventespresso/ui-components';
 import { EdtrSlots } from '@eventespresso/services';
 import { NewDateOption } from '@eventespresso/edtr-services';
-import { UpCircleFilled } from '@eventespresso/icons';
 
 import { useUpsellAd4Slot, useShouldDisplayUpsellAd } from '../hooks';
 
 export type NewDateUpsellProps = {
 	slot: EdtrSlots;
-	output?: React.ReactNode;
+	output?: JSX.Element;
 };
 
 export const AddNewDateUpsell: React.FC<NewDateUpsellProps> = ({ output, slot }) => {
@@ -15,8 +14,9 @@ export const AddNewDateUpsell: React.FC<NewDateUpsellProps> = ({ output, slot })
 	const shouldDisplayUpsellAd = useShouldDisplayUpsellAd();
 
 	if (!upsellAd4Slot || !shouldDisplayUpsellAd(upsellAd4Slot)) {
-		return <>{output}</>;
+		return output;
 	}
+
 	// extract upsell data
 	const { mainTitle, subTitle, cTA, cTALink } = upsellAd4Slot;
 
@@ -25,15 +25,15 @@ export const AddNewDateUpsell: React.FC<NewDateUpsellProps> = ({ output, slot })
 			{({ count }) => {
 				const isOnlyButton = count === 1;
 
-				const link = <Link href={cTALink}>{cTA}</Link>;
-
-				if (isOnlyButton) {
-					return link;
-				}
 				return (
-					<NewEntityOption description={subTitle} icon={UpCircleFilled} title={mainTitle}>
-						{link}
-					</NewEntityOption>
+					<Upsell
+						cTA={cTA}
+						cTALink={cTALink}
+						isOnlyButton={isOnlyButton}
+						mainTitle={mainTitle}
+						subTitle={subTitle}
+						templateId='addNewDate'
+					/>
 				);
 			}}
 		</NewDateOption>

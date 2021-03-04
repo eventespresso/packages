@@ -19,12 +19,13 @@ export interface UpsellProps extends Size {
 	image?: string;
 	imagePosition?: 'bottom' | 'left' | 'right' | 'top';
 	isDismissable?: boolean;
+	isOnlyButton?: boolean;
 	mainText?: string;
 	mainTitle?: string;
 	onClick?: VoidFunction;
 	options?: Array<Option>;
 	orientation?: 'vertical' | 'horizontal';
 	subTitle?: string;
-	templateId?: 'base' | 'compact' | 'with-bg-image' | 'with-options';
+	templateId?: 'addNewDate' | 'base' | 'compact' | 'with-bg-image' | 'with-options';
 	withBorder?: boolean;
 }

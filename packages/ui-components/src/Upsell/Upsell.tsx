@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { BaseTemplate, CompactTemplate, TemplateWithBg, TemplateWithOptions } from './templates';
+import { AddNewDateTemplate, BaseTemplate, CompactTemplate, TemplateWithBg, TemplateWithOptions } from './templates';
 import DismissBtn from './DismissBtn';
 import type { UpsellProps } from './types';
 
@@ -10,11 +10,15 @@ export const Upsell: React.FC<UpsellProps> = ({ isDismissable, orientation, temp
 	const className = classNames(
 		'ee-upsell',
 		orientation && `ee-upsell--orientation-${orientation}`,
-		`ee-upsell--template-${templateId}`,
+		templateId && `ee-upsell--template-${templateId}`,
 		withBorder && `ee-upsell--with-border`
 	);
 
 	const dismissBtn = isDismissable && <DismissBtn />;
+
+	if (templateId === 'addNewDate') {
+		return <AddNewDateTemplate {...props} className={className} orientation={orientation} />;
+	}
 
 	if (templateId === 'base') {
 		return <BaseTemplate {...props} className={className} orientation={orientation} />;
