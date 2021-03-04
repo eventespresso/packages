@@ -9,8 +9,11 @@ export interface UpsellAd extends Entity {
 	cTALink: string;
 	cTAStyle: string;
 	containerClass: string;
+	excludedCaps: string;
 	image: string;
 	isDismissable: boolean;
+	isForEventEditor: boolean;
+	location: string;
 	mainText: string;
 	mainTitle: string;
 	orientation: string;

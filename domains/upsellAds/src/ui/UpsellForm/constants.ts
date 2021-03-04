@@ -1,3 +1,5 @@
+import { EdtrSlots } from '@eventespresso/services';
+
 export const containerClassOptions = [
 	{
 		label: 'White Background, Black Text',
@@ -85,5 +87,48 @@ export const templates = [
 	{
 		label: 'With options',
 		value: 'with-options',
+	},
+];
+
+export const eventEditorLocationOptions = [
+	{
+		label: '...',
+		value: '',
+	},
+	{
+		label: 'Add Single Date Option',
+		value: EdtrSlots.ADD_SINGLE_DATE_OPTION,
+	},
+	{
+		label: 'Add Recurring Date Option',
+		value: EdtrSlots.ADD_RECURRING_DATE_OPTION,
+	},
+	{
+		label: 'Below the Dates list heading',
+		value: EdtrSlots.BELOW_DATES_LIST_HEADING,
+	},
+	{
+		label: 'Below the Dates list buttons',
+		value: EdtrSlots.BELOW_DATES_LIST_BUTTONS,
+	},
+	{
+		label: 'Below the Tickets list heading',
+		value: EdtrSlots.BELOW_TICKETS_LIST_HEADING,
+	},
+	{
+		label: 'Below the Tickets list buttons',
+		value: EdtrSlots.BELOW_TICKETS_LIST_BUTTONS,
+	},
+	{
+		label: 'Edit date modal footer',
+		value: EdtrSlots.EDIT_DATE_MODAL_FOOTER,
+	},
+	{
+		label: 'Edit ticket modal footer',
+		value: EdtrSlots.EDIT_TICKET_MODAL_FOOTER,
+	},
+	{
+		label: 'REM modal footer',
+		value: EdtrSlots.REM_MODAL_FOOTER,
 	},
 ];

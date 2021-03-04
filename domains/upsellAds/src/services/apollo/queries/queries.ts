@@ -12,8 +12,11 @@ export const UPSELL_AD_ATTRIBUTES: any = gql`
 		cTALink
 		cTAStyle
 		containerClass
+		excludedCaps
 		image
 		isDismissable
+		isForEventEditor
+		location
 		mainText
 		mainTitle
 		orientation
@@ -24,7 +27,6 @@ export const UPSELL_AD_ATTRIBUTES: any = gql`
 		showForCaps
 		subTitle
 		templateId
-		theme
 	}
 `;
 

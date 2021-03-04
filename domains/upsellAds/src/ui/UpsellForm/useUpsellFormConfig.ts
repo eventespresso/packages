@@ -2,12 +2,20 @@ import { useCallback, useMemo } from 'react';
 
 import { sprintf, __ } from '@eventespresso/i18n';
 import type { AnyObject } from '@eventespresso/utils';
-import type { EspressoFormProps } from '@eventespresso/form';
+import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
 
 import { useUpsellAd, useUpsellAdMutator } from '../../services';
-import { containerClassOptions, templates } from './constants';
+import { containerClassOptions, eventEditorLocationOptions, templates } from './constants';
 
 type UpsellFormConfig = EspressoFormProps<AnyObject>;
+
+const nonEdtrFieldConditions: FieldProps['conditions'] = [
+	{
+		field: 'isForEventEditor',
+		compare: '!=',
+		value: true,
+	},
+];
 
 const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormConfig => {
 	const upsell = useUpsellAd();
@@ -158,9 +166,29 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							),
 						},
 						{
+							name: 'isForEventEditor',
+							label: __('Is for event editor'),
+							fieldType: 'switch',
+							description: __('Whether the upsell is to be displayed in the event editor.'),
+						},
+						{
+							name: 'location',
+							label: __('Location'),
+							fieldType: 'select',
+							conditions: [
+								{
+									field: 'isForEventEditor',
+									compare: '=',
+									value: true,
+								},
+							],
+							options: eventEditorLocationOptions,
+						},
+						{
 							name: 'pagenow',
 							label: __('Non EE Page(s)'),
 							fieldType: 'textarea',
+							conditions: nonEdtrFieldConditions,
 							description: sprintf(
 								/* translators: 1 variable, 2 & 3 file extensions */
 								__(
@@ -175,6 +203,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							name: 'postType',
 							label: __('Post Type'),
 							fieldType: 'textarea',
+							conditions: nonEdtrFieldConditions,
 							description: sprintf(
 								/* translators: 1 param name */
 								__('This will correspond with the %1$s request parameter in the url.'),
@@ -185,6 +214,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							name: 'page',
 							label: __('Page(s)'),
 							fieldType: 'textarea',
+							conditions: nonEdtrFieldConditions,
 							description: sprintf(
 								/* translators: 1 param name */
 								__(
@@ -197,6 +227,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							name: 'route',
 							label: __('Route(s)'),
 							fieldType: 'textarea',
+							conditions: nonEdtrFieldConditions,
 							description: sprintf(
 								/* translators: 1, 2 param names */
 								__(
@@ -210,6 +241,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 							name: 'actionHook',
 							label: __('Action Hook(s)'),
 							fieldType: 'textarea',
+							conditions: nonEdtrFieldConditions,
 							description: sprintf(
 								/* translators: 1 hook name */
 								__(
