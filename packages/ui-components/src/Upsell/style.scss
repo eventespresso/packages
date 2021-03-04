@@ -113,6 +113,7 @@
 
 			.ee-upsell--template-compact__cta {
 				display: inline-flex !important;
+				padding: 0 var(--ee-padding-tiny);
 				white-space: nowrap;
 
 				.ee-link {

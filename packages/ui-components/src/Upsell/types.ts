@@ -14,6 +14,7 @@ export interface UpsellProps extends Size {
 	cTA?: string;
 	cTALink?: string;
 	CTAstyle?: 'style';
+	dismissBtn?: React.ReactNode;
 	icon?: React.ReactNode;
 	image?: string;
 	imagePosition?: 'bottom' | 'left' | 'right' | 'top';

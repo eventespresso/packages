@@ -32,6 +32,7 @@ const Template: UpsellStory = ({
 			cTA='Upgrade today'
 			image={image}
 			imagePosition={select('imagePosition', ['bottom', 'top', 'left', 'right'], 'right')}
+			isDismissable={boolean('isDismissable', false)}
 			mainText={mainText}
 			mainTitle={args.mainTitle || 'Get more features with Everything subscription'}
 			orientation={select('orientation', ['horizontal', 'vertical'], 'horizontal')}
