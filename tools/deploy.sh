@@ -85,7 +85,7 @@ fi
 
 # Remove POT file
 echo "Remove JS pot file"
-rm $JS_I18N_FILE
+rm -f $JS_I18N_FILE
 
 # goto the repo directory
 cd $CLONE_DIR
