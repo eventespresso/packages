@@ -98,7 +98,7 @@ export class SlotFillProvider extends Component {
 		if (this.slots[name] !== slotInstance) {
 			return [];
 		}
-		return sortBy(prop('priority'), this.fills[name]);
+		return sortBy(prop('priority'), this.fills[name] || []);
 	}
 
 	hasFills(name) {
