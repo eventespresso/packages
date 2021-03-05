@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { any } from 'ramda';
 import { useCurrentUserCan } from '@eventespresso/services';
 
 import { UpsellAd } from '../types';
@@ -16,22 +17,14 @@ export const useShouldDisplayUpsellAd = (): ShouldDisplayUpsellAd => {
 	return useCallback(
 		({ excludedCaps, showForCaps }) => {
 			let caps = capsStr2Array(excludedCaps);
-			if (caps.length) {
-				for (const cap of caps) {
-					// if any capability is excluded from being shown
-					if (currentUserCan(cap)) {
-						return false;
-					}
-				}
+			// if any capability is excluded from being shown
+			if (caps.length && any(currentUserCan, caps)) {
+				return false;
 			}
 			caps = capsStr2Array(showForCaps);
-			if (caps.length) {
-				for (const cap of caps) {
-					// if any capability allows to show the upsell
-					if (currentUserCan(cap)) {
-						return true;
-					}
-				}
+			// if any capability allows to show the upsell
+			if (caps.length && any(currentUserCan, caps)) {
+				return true;
 			}
 			return false;
 		},
