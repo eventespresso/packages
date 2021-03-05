@@ -23,7 +23,7 @@ export const useShouldDisplayUpsellAd = (): ShouldDisplayUpsellAd => {
 			}
 			caps = capsStr2Array(showForCaps);
 			// if any capability allows to show the upsell
-			if (caps.length && any(currentUserCan, caps)) {
+			if (!caps.length || any(currentUserCan, caps)) {
 				return true;
 			}
 			return false;

@@ -16,14 +16,14 @@ export interface UpsellAd extends Entity {
 	location: string;
 	mainText: string;
 	mainTitle: string;
-	orientation: string;
+	orientation: 'vertical' | 'horizontal';
 	page: string;
 	pagenow: string;
 	postType: string;
 	route: string;
 	showForCaps: string;
 	subTitle: string;
-	templateId: string;
+	templateId: 'base' | 'compact' | 'with-bg-image' | 'with-options';
 }
 
 export interface UpsellAdData {

@@ -1,4 +1,4 @@
-import { EntityEditModal } from '@eventespresso/ui-components';
+import { EntityEditModal } from '@eventespresso/ee-components';
 import { EdtrGlobalModals, useEvent, useTicketItem } from '@eventespresso/edtr-services';
 import { useGlobalModal } from '@eventespresso/registry';
 import { __, sprintf } from '@eventespresso/i18n';
@@ -35,6 +35,7 @@ const Modal: React.FC<ContentWrapperProps> = ({ onClose, ...props }) => {
 
 	return (
 		<EntityEditModal
+			entityType='ticket'
 			isOpen={isOpen}
 			footerContent={footerButtons}
 			onClose={onClose}

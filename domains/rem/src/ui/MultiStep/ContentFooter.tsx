@@ -2,6 +2,8 @@ import { useCallback, useState } from 'react';
 import { isEmpty } from 'ramda';
 
 import { ButtonRow, ButtonProps, Next, Previous } from '@eventespresso/ui-components';
+import { Slot } from '@eventespresso/slot-fill';
+import { EdtrSlots } from '@eventespresso/services';
 
 import SubmitButton from './SubmitButton';
 import { useStepsState } from '../../context';
@@ -49,6 +51,7 @@ const ContentFooter: React.FC<BaseProps> = ({ onSubmit }) => {
 				// last step
 				current === GENERATED_DATES_STEP && <SubmitButton isLoading={isSubmitting} onClick={onSubmitHandler} />
 			}
+			<Slot name={EdtrSlots.REM_MODAL_FOOTER} />
 		</ButtonRow>
 	);
 };

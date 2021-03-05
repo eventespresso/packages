@@ -102,7 +102,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 					title: __('Layout/ UI'),
 					fields: [
 						{
-							name: 'template',
+							name: 'templateId',
 							label: __('Template'),
 							fieldType: 'select',
 							inline: true,

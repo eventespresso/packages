@@ -104,20 +104,20 @@ export const eventEditorLocationOptions = [
 		value: EdtrSlots.ADD_RECURRING_DATE_OPTION,
 	},
 	{
-		label: 'Below the Dates list heading',
-		value: EdtrSlots.BELOW_DATES_LIST_HEADING,
+		label: 'After Dates list',
+		value: EdtrSlots.AFTER_DATES_LIST,
 	},
 	{
-		label: 'Below the Dates list buttons',
-		value: EdtrSlots.BELOW_DATES_LIST_BUTTONS,
+		label: 'After Tickets list',
+		value: EdtrSlots.AFTER_TICKETS_LIST,
 	},
 	{
-		label: 'Below the Tickets list heading',
-		value: EdtrSlots.BELOW_TICKETS_LIST_HEADING,
+		label: 'Before Dates list',
+		value: EdtrSlots.BEFORE_DATES_LIST,
 	},
 	{
-		label: 'Below the Tickets list buttons',
-		value: EdtrSlots.BELOW_TICKETS_LIST_BUTTONS,
+		label: 'Before Tickets list',
+		value: EdtrSlots.BEFORE_TICKETS_LIST,
 	},
 	{
 		label: 'Edit date modal footer',
