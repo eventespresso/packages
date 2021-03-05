@@ -25,6 +25,8 @@ export interface EntityTableProps extends Omit<ResponsiveTableProps, 'className'
 
 export interface EntityListProps {
 	activeFilters?: React.ReactNode;
+	afterHeading?: React.ReactNode;
+	afterList?: React.ReactNode;
 	className?: string;
 	entityList: React.ReactNode;
 	error?: boolean;

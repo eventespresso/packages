@@ -7,7 +7,7 @@ interface Option {
 
 export interface UpsellProps extends Size {
 	altCTALink?: string;
-	altCTAStyle?: 'test';
+	altCTAStyle?: string;
 	altCTAText?: string;
 	bgColor?: 'blue' | 'green' | 'red';
 	className?: string;

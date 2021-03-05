@@ -5,6 +5,8 @@ import './style.scss';
 
 export const EntityList: React.FC<EntityListProps> = ({
 	activeFilters,
+	afterHeading,
+	afterList,
 	entityList,
 	error,
 	filterBar,
@@ -25,6 +27,8 @@ export const EntityList: React.FC<EntityListProps> = ({
 				{headerText}
 			</Heading>
 
+			{afterHeading}
+
 			{filterBar}
 
 			{activeFilters}
@@ -37,6 +41,7 @@ export const EntityList: React.FC<EntityListProps> = ({
 			</ButtonRow>
 
 			<div className={'ee-entity-list__footer'}>{footer}</div>
+			{afterList}
 		</div>
 	);
 };

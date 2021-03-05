@@ -16,10 +16,6 @@ export const Upsell: React.FC<UpsellProps> = ({ isDismissable, orientation, temp
 
 	const dismissBtn = isDismissable && <DismissBtn />;
 
-	if (templateId === 'base') {
-		return <BaseTemplate {...props} className={className} orientation={orientation} />;
-	}
-
 	if (templateId === 'compact') {
 		return <CompactTemplate {...props} className={className} dismissBtn={dismissBtn} orientation={orientation} />;
 	}
@@ -31,6 +27,6 @@ export const Upsell: React.FC<UpsellProps> = ({ isDismissable, orientation, temp
 	if (templateId === 'with-options') {
 		return <TemplateWithOptions {...props} className={className} />;
 	}
-
-	return null;
+	// use 'base' as default template
+	return <BaseTemplate {...props} className={className} orientation={orientation} />;
 };
