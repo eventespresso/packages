@@ -9,7 +9,7 @@ import { useEdtrUpsellAds } from './useEdtrUpsellAds';
 export type GetUpsell4Slot = (slot: EdtrSlots) => UpsellAd;
 
 export const useUpsellAd4Slot = (): GetUpsell4Slot => {
-	const edtrUpsellAds = useEdtrUpsellAds();
+	const { upsellAds } = useEdtrUpsellAds();
 
-	return useCallback((slot) => find<UpsellAd>(propEq('location', slot), edtrUpsellAds), [edtrUpsellAds]);
+	return useCallback((slot) => find<UpsellAd>(propEq('location', slot), upsellAds), [upsellAds]);
 };
