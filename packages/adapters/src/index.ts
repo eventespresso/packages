@@ -1,4 +1,5 @@
 export { Clickable } from 'reakit/Clickable';
+export type { ClickableProps } from 'reakit/Clickable';
 
 export * from './AlertDialog';
 export * from './Banner';
