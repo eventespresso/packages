@@ -6,7 +6,14 @@ import type { UpsellProps } from './types';
 
 import './style.scss';
 
-export const Upsell: React.FC<UpsellProps> = ({ isDismissable, orientation, templateId, withBorder, ...props }) => {
+export const Upsell: React.FC<UpsellProps> = ({
+	isDismissable,
+	onDismiss,
+	orientation,
+	templateId,
+	withBorder,
+	...props
+}) => {
 	const className = classNames(
 		'ee-upsell',
 		orientation && `ee-upsell--orientation-${orientation}`,
@@ -14,7 +21,7 @@ export const Upsell: React.FC<UpsellProps> = ({ isDismissable, orientation, temp
 		withBorder && `ee-upsell--with-border`
 	);
 
-	const dismissBtn = isDismissable && <DismissBtn />;
+	const dismissBtn = isDismissable && onDismiss && <DismissBtn onClick={onDismiss} />;
 
 	if (templateId === 'compact') {
 		return <CompactTemplate {...props} className={className} dismissBtn={dismissBtn} orientation={orientation} />;

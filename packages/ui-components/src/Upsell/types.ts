@@ -22,6 +22,7 @@ export interface UpsellProps extends Size {
 	mainText?: string;
 	mainTitle?: string;
 	onClick?: VoidFunction;
+	onDismiss?: VoidFunction;
 	options?: Array<Option>;
 	orientation?: 'vertical' | 'horizontal';
 	subTitle?: string;

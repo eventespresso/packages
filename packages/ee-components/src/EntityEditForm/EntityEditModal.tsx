@@ -12,9 +12,7 @@ export const EntityEditModal: React.FC<EntityEditModalProps> = ({ entityType, fo
 	const footer = (
 		<>
 			{footerContent}
-			<div>
-				<Slot name={`edit-${entityType}-modal-footer`} />
-			</div>
+			<Slot name={`edit-${entityType}-modal-footer`} />
 		</>
 	);
 	return <EntityEditModalUI footerContent={footer} {...rest} />;
