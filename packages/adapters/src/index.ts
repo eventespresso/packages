@@ -31,6 +31,7 @@ export * from './Select';
 export * from './Spinner';
 export * from './Switch';
 export * from './Tabs';
+export * from './TagSelector';
 export * from './Textarea';
 export * from './TextInput';
 export * from './Tooltip';
