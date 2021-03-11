@@ -47,9 +47,9 @@ export const TagSelector: React.FC<TagSelectorProps> = ({ defaultValue, items, o
 
 	const getFilteredItems = useCallback(() => {
 		const isNotInSelectedItems = complement(flip(includes)(selectedItems));
-		const matchedInputKeywords = pipe(toLower, startsWith(toLower(inputValue)));
+		const matchesInputKeywords = pipe(toLower, startsWith(toLower(inputValue)));
 
-		return items.filter(allPass([isNotInSelectedItems, matchedInputKeywords]));
+		return items.filter(allPass([isNotInSelectedItems, matchesInputKeywords]));
 	}, [inputValue, items, selectedItems]);
 
 	const onStateChange = useCallback<UseComboboxProps<string>['onStateChange']>(
