@@ -38,6 +38,7 @@ type FieldType =
 	| 'simple-text-editor'
 	| 'select'
 	| 'switch'
+	| 'tagselector'
 	| 'text'
 	| 'textarea'
 	| 'timepicker'
@@ -56,6 +57,7 @@ export interface AdditionalFieldProps<FormValues = AnyObject> {
 	description?: React.ReactNode | string;
 	subFields?: FieldList<FormValues>;
 	options?: OptionsType;
+	items?: Array<string>; // for tag selector
 	isRepeatable?: boolean;
 	conditions?: FieldConditions;
 	formControlProps?: FormControlProps;

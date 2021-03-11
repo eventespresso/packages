@@ -2,6 +2,7 @@ import { memo } from 'react';
 
 import Text from './Text';
 import Textarea from './Textarea';
+import TagSelector from './TagSelector';
 import Select from './Select';
 import Switch from './Switch';
 import MultiCheck from './MultiCheck';
@@ -54,6 +55,9 @@ export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, wrapper: 
 			break;
 		case 'timepicker':
 			Component = TimePicker;
+			break;
+		case 'tagselector':
+			Component = TagSelector;
 			break;
 		case 'hidden':
 			Component = Hidden;
