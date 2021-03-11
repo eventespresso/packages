@@ -8,7 +8,7 @@ import { EntityOptionsRow } from './';
 export default {
 	argTypes: {},
 	component: EntityOptionsRow,
-	title: 'Components/EntityOptionsRow',
+	title: 'Components/EntityOptionsRow-REM',
 } as Meta;
 
 // eslint-disable-next-line react-perf/jsx-no-new-array-as-prop

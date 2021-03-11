@@ -4,7 +4,7 @@ import { sprintf, __ } from '@eventespresso/i18n';
 import type { AnyObject } from '@eventespresso/utils';
 import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
 
-import { useUpsellAd, useUpsellAdMutator } from '../../services';
+import { useUpsellAd, useUpsellAdMutator, useDomData } from '../../services';
 import { containerClassOptions, eventEditorLocationOptions, templates } from './constants';
 
 type UpsellFormConfig = EspressoFormProps<AnyObject>;
@@ -27,8 +27,9 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 		},
 		[updateEntity]
 	);
+	const { capabilities } = useDomData();
 
-	return useMemo(
+	return useMemo<UpsellFormConfig>(
 		() => ({
 			...config,
 			initialValues: upsell,
@@ -152,18 +153,20 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 						{
 							name: 'excludedCaps',
 							label: __('Exclude for Capabilities'),
-							fieldType: 'textarea',
+							fieldType: 'tagselector',
 							description: __(
 								'If the user has any of the given capabilities then the notification will not be shown.'
 							),
+							items: capabilities,
 						},
 						{
 							name: 'showForCaps',
 							label: __('Show for Capabilities'),
-							fieldType: 'textarea',
+							fieldType: 'tagselector',
 							description: __(
 								'If the user has any of the given capabilities then the notification will be shown.'
 							),
+							items: capabilities,
 						},
 						{
 							name: 'isForEventEditor',
@@ -254,7 +257,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 				},
 			],
 		}),
-		[config, onSubmit, upsell]
+		[capabilities, config, onSubmit, upsell]
 	);
 };
 
