@@ -57,6 +57,7 @@ export * from './Steps';
 export * from './Switch';
 export * from './TabbableText';
 export * from './Tag';
+export * from './TagSelector';
 export * from './Textarea';
 export * from './text-input';
 export * from './TimezoneTimeInfo';
