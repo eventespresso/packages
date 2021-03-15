@@ -8051,10 +8051,10 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chromatic@^5.6.1:
-  version "5.6.3"
-  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-5.6.3.tgz#5b1ef3a9ff60b617f9ee1397921951e6e2f08a8c"
-  integrity sha512-GjTWCxXD8bbOAIH8rPxIB0O96temNLis2fyCFHNwaSX762xx7mdZr8R6aEkBVjYVP5gY/l6tszPpMeCav6bNiQ==
+chromatic@^5.7.0:
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-5.7.0.tgz#2e3cf1edb32da2c65547ca7809a516ce8aea5039"
+  integrity sha512-vcHNFTzjJGwlIDLzrR9lhIaCsxgUtyBQPPxn/+cFu9fLXox28Zgsfv0ccK5/gRc4fM5aF/ePMkdpgzVzEuyfuA==
   dependencies:
     "@actions/core" "^1.2.4"
     "@actions/github" "^4.0.0"
@@ -17027,10 +17027,10 @@ playwright-core@>=1.2.0, playwright-core@^1.4.1:
     stack-utils "^2.0.3"
     ws "^7.3.1"
 
-playwright-testing-library@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/playwright-testing-library/-/playwright-testing-library-2.7.0.tgz#85ac2c45323d65170c71098db5748721a5b38022"
-  integrity sha512-AZ1oMFForckK05IBAMHD4ffa85+qUP4IwG6RYBzwkBcIVUkRAHNWabFeMTXnFIeUDMETtmUqoIaLBcaVIgYFZg==
+playwright-testing-library@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/playwright-testing-library/-/playwright-testing-library-2.7.2.tgz#ea7d6e1e4e297830981f3b9dc9c46fe31a5886d6"
+  integrity sha512-encp7MQTrshDPb6eh3iQbn8Fqas+grsAa46TZ4VGRzjbAAJzW5NQKUus2fx8jak2eQznJYrl+7ifTy6esBGnBQ==
   dependencies:
     "@testing-library/dom" "^7.22.2"
     wait-for-expect "^3.0.2"
@@ -17046,10 +17046,10 @@ playwright-video@^2.4.0:
     playwright-core "^1.4.1"
     tslib "^2.0.1"
 
-playwright@^1.8.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.9.1.tgz#b4db35f69076b2dc91e347e58d81f2f391d1ed49"
-  integrity sha512-bZXnks4UGJZoqja6TqVEUG0IQ2liqYFcO1R4lT43aO4oDVTQtawEJjS+EqLYsAuniRFWVE87Cemus4fRQbyXMg==
+playwright@^1.9.2:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.9.2.tgz#294910950b76ec4c3dfed6a1e9d28e9b8560b0f4"
+  integrity sha512-Hsgfk3GZO+hgewRNW9xl9/tHjdZvVwxTseHagbiNpDf90PXICEh8UHXy/2eykeIXrZFMA6W6petEtRWNPi3gfQ==
   dependencies:
     commander "^6.1.0"
     debug "^4.1.1"
