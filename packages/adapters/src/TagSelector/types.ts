@@ -5,7 +5,7 @@ export interface TagSelectorProps {
 	items: Array<string>;
 	listClassName?: string;
 	onChange?: (newValue: Array<string>) => void;
-	SelectedItem: React.ReactNode;
+	SelectedItem?: React.ComponentType<{ onRemove?: VoidFunction }>;
 	toggleClassName?: string;
 	value?: Array<string>;
 }
