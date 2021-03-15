@@ -21,6 +21,13 @@
 		top: var(--ee-icon-button-size);
 		overflow-y: auto;
 		width: 100%;
+
+		&-item {
+			&--highlighted {
+				background: var(--ee-color-primary-low-contrast);
+				color: var(--ee-color-white);
+			}
+		}
 	}
 
 	&__toggle {

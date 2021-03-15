@@ -15,7 +15,7 @@ const ActiveFilters: React.FC<ActiveFiltersProps> = ({ title = __('active filter
 
 	return (
 		<div className='ee-filter-tags ee-filter-tags__wrapper'>
-			z<span className='ee-filter-tags__header'>{title}</span>
+			<span className='ee-filter-tags__header'>{title}</span>
 			<div className='ee-filter-tags__body'>{children}</div>
 		</div>
 	);

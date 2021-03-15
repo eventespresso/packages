@@ -11,8 +11,9 @@ export const TagSelector: React.FC<TagSelectorProps> = ({
 	className,
 	comboBoxClassName,
 	defaultValue,
-	listClassName,
+	highlightedListItemClassName,
 	items,
+	listClassName,
 	onChange,
 	SelectedItem,
 	toggleClassName,
@@ -121,7 +122,7 @@ export const TagSelector: React.FC<TagSelectorProps> = ({
 					{isOpen &&
 						getFilteredItems().map((item, index) => (
 							<ListItem
-								backgroundColor={highlightedIndex === index ? '#bde4ff' : null}
+								className={highlightedIndex === index && highlightedListItemClassName}
 								key={`${item}${index}`}
 								{...getItemProps({ item, index })}
 							>
