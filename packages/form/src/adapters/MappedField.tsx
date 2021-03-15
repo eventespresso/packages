@@ -56,7 +56,7 @@ export const MappedField: React.FC<FieldRendererProps> = ({ fieldType, wrapper: 
 		case 'timepicker':
 			Component = TimePicker;
 			break;
-		case 'tagselector':
+		case 'tag-selector':
 			Component = TagSelector;
 			break;
 		case 'hidden':

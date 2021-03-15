@@ -38,7 +38,7 @@ type FieldType =
 	| 'simple-text-editor'
 	| 'select'
 	| 'switch'
-	| 'tagselector'
+	| 'tag-selector'
 	| 'text'
 	| 'textarea'
 	| 'timepicker'

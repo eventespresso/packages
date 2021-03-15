@@ -4,6 +4,7 @@ import { Flex, Input, IconButton, HStack, List, ListItem } from '@chakra-ui/reac
 import { allPass, complement, flip, includes, isNil, pipe, startsWith, toLower } from 'ramda';
 
 import { ArrowDownAlt } from '@eventespresso/icons';
+import { __ } from '@eventespresso/i18n';
 
 import { SelectedItem } from './SelectedItem';
 
@@ -108,7 +109,7 @@ export const TagSelector: React.FC<TagSelectorProps> = ({ defaultValue, items, o
 			</HStack>
 			<Flex {...getComboboxProps()} maxWidth='max-content'>
 				<Input {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))} />
-				<IconButton {...getToggleButtonProps()} aria-label={'toggle menu'} icon={<ArrowDownAlt />} />
+				<IconButton {...getToggleButtonProps()} aria-label={__('toggle menu')} icon={<ArrowDownAlt />} />
 			</Flex>
 			<List
 				{...getMenuProps()}

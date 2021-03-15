@@ -153,7 +153,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 						{
 							name: 'excludedCaps',
 							label: __('Exclude for Capabilities'),
-							fieldType: 'tagselector',
+							fieldType: 'tag-selector',
 							description: __(
 								'If the user has any of the given capabilities then the notification will not be shown.'
 							),
@@ -162,7 +162,7 @@ const useUpsellFormConfig = (config?: Partial<EspressoFormProps>): UpsellFormCon
 						{
 							name: 'showForCaps',
 							label: __('Show for Capabilities'),
-							fieldType: 'tagselector',
+							fieldType: 'tag-selector',
 							description: __(
 								'If the user has any of the given capabilities then the notification will be shown.'
 							),
