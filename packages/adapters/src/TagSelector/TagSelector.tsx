@@ -3,8 +3,8 @@ import { useCombobox, useMultipleSelection, UseComboboxProps, UseMultipleSelecti
 import { Input, IconButton, HStack, List, ListItem } from '@chakra-ui/react';
 import { allPass, complement, flip, includes, isNil, pipe, startsWith, toLower } from 'ramda';
 
-import { ArrowDownAlt } from '@eventespresso/icons';
 import { __ } from '@eventespresso/i18n';
+import { ArrowDownAlt } from '@eventespresso/icons';
 import type { TagSelectorProps } from './types';
 
 export const TagSelector: React.FC<TagSelectorProps> = ({
@@ -102,7 +102,7 @@ export const TagSelector: React.FC<TagSelectorProps> = ({
 				{selectedItems.map((selectedItem, index) => (
 					<SelectedItem
 						key={`selected-item-${index}`}
-						onClose={removeItem(selectedItem)}
+						onRemove={removeItem(selectedItem)}
 						{...getSelectedItemProps({ selectedItem, index })}
 					>
 						{selectedItem}
@@ -113,7 +113,7 @@ export const TagSelector: React.FC<TagSelectorProps> = ({
 				<Input {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))} />
 				<IconButton
 					{...getToggleButtonProps()}
-					aria-label='toggle menu'
+					aria-label={__('toggle menu')}
 					className={toggleClassName}
 					icon={<ArrowDownAlt />}
 				/>
