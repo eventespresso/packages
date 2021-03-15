@@ -44,7 +44,6 @@ jobs:
     e2e:
         name: E2E Tests
         #needs: [build]
-        if: false
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
