@@ -4,7 +4,7 @@ import { Radio as RadioAdapter } from '@eventespresso/adapters';
 import type { RadioProps } from './types';
 import './style.scss';
 
-const Radio: React.FC<RadioProps> = (props) => {
+export const Radio: React.FC<RadioProps> = (props) => {
 	const className = classNames('ee-radio', props.className);
 
 	return (
@@ -13,5 +13,3 @@ const Radio: React.FC<RadioProps> = (props) => {
 		</div>
 	);
 };
-
-export default Radio;

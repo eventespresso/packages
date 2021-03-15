@@ -1,6 +1,11 @@
 @import '~@eventespresso/styles/src/mixins/breakpoints';
 
-.ee-radio {
+.ee-radio.ee-radio {
+	border-color: var(--ee-border-color);
+	border-radius: 50%;
+	height: var(--ee-font-size-default);
+	width: var(--ee-font-size-default);
+
 	&__wrapper {
 		label {
 			display: flex;
