@@ -1,0 +1,45 @@
+@import '~@eventespresso/styles/src/mixins/breakpoints';
+@import '~@eventespresso/styles/src/mixins/base-styles';
+
+.ee-tag-selector {
+	&__combobox {
+		align-items: center;
+		display: inline-flex;
+		max-width: max-content;
+		position: relative;
+
+		input {
+			@include ee-base-inputs-styles;
+		}
+	}
+
+	&__list {
+		background: var(--ee-color-white);
+		list-style-type: none;
+		max-height: 200px;
+		position: absolute;
+		top: var(--ee-icon-button-size);
+		overflow-y: auto;
+		width: 100%;
+	}
+
+	&__toggle {
+		position: absolute !important;
+		right: 0;
+		top: auto;
+		bottom: auto;
+	}
+
+	.ee-filter-tag {
+		margin: var(--ee-margin-tiny) var(--ee-margin-nano);
+
+		&:first-child {
+			margin-left: 0;
+
+			[dir='rtl'] & {
+				margin-left: var(--ee-margin-nano);
+				margin-right: 0;
+			}
+		}
+	}
+}

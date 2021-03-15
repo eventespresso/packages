@@ -1,21 +1,23 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { useCombobox, useMultipleSelection, UseComboboxProps, UseMultipleSelectionProps } from 'downshift';
-import { Flex, Input, IconButton, HStack, List, ListItem } from '@chakra-ui/react';
+import { Input, IconButton, HStack, List, ListItem } from '@chakra-ui/react';
 import { allPass, complement, flip, includes, isNil, pipe, startsWith, toLower } from 'ramda';
 
 import { ArrowDownAlt } from '@eventespresso/icons';
 import { __ } from '@eventespresso/i18n';
+import type { TagSelectorProps } from './types';
 
-import { SelectedItem } from './SelectedItem';
-
-export interface TagSelectorProps {
-	items: Array<string>;
-	defaultValue?: Array<string>;
-	value?: Array<string>;
-	onChange?: (newValue: Array<string>) => void;
-}
-
-export const TagSelector: React.FC<TagSelectorProps> = ({ defaultValue, items, onChange, value }) => {
+export const TagSelector: React.FC<TagSelectorProps> = ({
+	className,
+	comboBoxClassName,
+	defaultValue,
+	listClassName,
+	items,
+	onChange,
+	SelectedItem,
+	toggleClassName,
+	value,
+}) => {
 	const [inputValue, setInputValue] = useState('');
 
 	const multipleSelectionProps = useMemo(() => {
@@ -95,7 +97,7 @@ export const TagSelector: React.FC<TagSelectorProps> = ({ defaultValue, items, o
 	);
 
 	return (
-		<div>
+		<div className={className}>
 			<HStack flexWrap='wrap'>
 				{selectedItems.map((selectedItem, index) => (
 					<SelectedItem
@@ -107,30 +109,27 @@ export const TagSelector: React.FC<TagSelectorProps> = ({ defaultValue, items, o
 					</SelectedItem>
 				))}
 			</HStack>
-			<Flex {...getComboboxProps()} maxWidth='max-content'>
+			<div {...getComboboxProps()} className={comboBoxClassName}>
 				<Input {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))} />
-				<IconButton {...getToggleButtonProps()} aria-label={__('toggle menu')} icon={<ArrowDownAlt />} />
-			</Flex>
-			<List
-				{...getMenuProps()}
-				// TODO move this to saas file
-				maxHeight='200px'
-				position='absolute'
-				overflowY='auto'
-				backgroundColor='#fff'
-				zIndex={99}
-			>
-				{isOpen &&
-					getFilteredItems().map((item, index) => (
-						<ListItem
-							backgroundColor={highlightedIndex === index ? '#bde4ff' : null}
-							key={`${item}${index}`}
-							{...getItemProps({ item, index })}
-						>
-							{item}
-						</ListItem>
-					))}
-			</List>
+				<IconButton
+					{...getToggleButtonProps()}
+					aria-label='toggle menu'
+					className={toggleClassName}
+					icon={<ArrowDownAlt />}
+				/>
+				<List {...getMenuProps()} className={listClassName}>
+					{isOpen &&
+						getFilteredItems().map((item, index) => (
+							<ListItem
+								backgroundColor={highlightedIndex === index ? '#bde4ff' : null}
+								key={`${item}${index}`}
+								{...getItemProps({ item, index })}
+							>
+								{item}
+							</ListItem>
+						))}
+				</List>
+			</div>
 		</div>
 	);
 };
