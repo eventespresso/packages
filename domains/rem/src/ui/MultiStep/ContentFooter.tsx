@@ -40,7 +40,7 @@ const ContentFooter: React.FC<BaseProps> = ({ onSubmit }) => {
 
 	const gotoPatternEditor = useCallback(() => goto(PATTERN_EDITOR_STEP), [goto]);
 
-	const paternEditorStep = (
+	const patternEditorStep = (
 		<Previous buttonText={__('Pattern Editor')} onClick={gotoPatternEditor} isDisabled={isSubmitting} skipsSteps />
 	);
 
@@ -57,7 +57,7 @@ const ContentFooter: React.FC<BaseProps> = ({ onSubmit }) => {
 
 			{current === TICKETS_STEP && (
 				<>
-					{paternEditorStep}
+					{patternEditorStep}
 					<Previous onClick={prev} />
 					<Next onClick={next} isDisabled={isNextDisabled} />
 				</>
@@ -67,7 +67,7 @@ const ContentFooter: React.FC<BaseProps> = ({ onSubmit }) => {
 				// last step
 				current === GENERATED_DATES_STEP && (
 					<>
-						{paternEditorStep}
+						{patternEditorStep}
 						<Previous onClick={prev} />
 						<SubmitButton isLoading={isSubmitting} onClick={onSubmitHandler} />
 					</>
