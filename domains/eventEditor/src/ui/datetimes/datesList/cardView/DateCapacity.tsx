@@ -14,7 +14,7 @@ import type { DateItemProps } from '../types';
 const DateCapacity: React.FC<DateItemProps> = ({ entity: datetime }) => {
 	const { updateEntity } = useDatetimeMutator(datetime.id);
 
-	const updateRelatedTickets = useUpdateRelatedTickets(datetime.id);
+	const updateRelatedTickets = useUpdateRelatedTickets();
 	const ticketQuantityForCapacity = useTicketQuantityForCapacity();
 
 	const onChange: InlineEditProps['onChange'] = useCallback(
@@ -24,10 +24,10 @@ const DateCapacity: React.FC<DateItemProps> = ({ entity: datetime }) => {
 				updateEntity({ capacity });
 
 				const inputGenerator = ticketQuantityForCapacity(capacity);
-				updateRelatedTickets(inputGenerator);
+				updateRelatedTickets(datetime.id, inputGenerator);
 			}
 		},
-		[datetime.capacity, updateEntity, ticketQuantityForCapacity, updateRelatedTickets]
+		[datetime.capacity, datetime.id, updateEntity, ticketQuantityForCapacity, updateRelatedTickets]
 	);
 
 	return (

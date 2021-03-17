@@ -14,12 +14,12 @@ import type { EntityListItemProps } from '@eventespresso/ui-components';
 const AssignTicketsButton: React.FC<EntityListItemProps<Datetime>> = ({ entity }) => {
 	const { openWithData } = useGlobalModal<BaseProps>(EdtrGlobalModals.TAM);
 
-	const relatedTickets = useRelatedTickets({
+	const getRelatedTickets = useRelatedTickets();
+
+	const count = getRelatedTickets({
 		entity: 'datetimes',
 		entityId: entity.id,
-	});
-
-	const count = relatedTickets.length;
+	}).length;
 
 	const title = count
 		? __('Number of related tickets')
