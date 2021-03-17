@@ -1,26 +1,27 @@
-import { useMemo } from 'react';
+import { useCallback } from 'react';
 
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
-import { entityListCacheIdString } from '@eventespresso/utils';
 import { useRelations } from '@eventespresso/services';
 import useTickets from './useTickets';
 import type { Ticket } from '../../types';
 import type { RelatedEntitiesHook } from '../types';
 
-const useRelatedTickets: RelatedEntitiesHook<Ticket, 'tickets'> = ({ entity, entityId }) => {
+const useRelatedTickets = (): RelatedEntitiesHook<Ticket, 'tickets'> => {
 	const tickets = useTickets();
 	const { getRelations } = useRelations();
-	const relatedTicketIds = getRelations({
-		entity,
-		entityId,
-		relation: 'tickets',
-	});
 
-	const cacheIds = entityListCacheIdString(tickets);
-	const relatedTicketIdsStr = JSON.stringify(relatedTicketIds);
+	return useCallback(
+		({ entity, entityId }) => {
+			const relatedTicketIds = getRelations({
+				entity,
+				entityId,
+				relation: 'tickets',
+			});
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	return useMemo(() => entitiesWithGuIdInArray(tickets, relatedTicketIds), [relatedTicketIdsStr, cacheIds]);
+			return entitiesWithGuIdInArray(tickets, relatedTicketIds);
+		},
+		[getRelations, tickets]
+	);
 };
 
 export default useRelatedTickets;

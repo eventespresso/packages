@@ -11,22 +11,22 @@ import { actWait } from '@eventespresso/utils/src/test';
 describe('useRelatedTickets', () => {
 	const wrapper = ApolloMockedProvider();
 	it('returns empty array for unrelated entity types', async () => {
-		const { result } = renderHook(() => useRelatedTickets({ entity: 'priceTypes', entityId: '' }), { wrapper });
+		const { result } = renderHook(() => useRelatedTickets(), { wrapper });
 
 		await actWait();
 
-		expect(result.current).toEqual([]);
+		expect(result.current({ entity: 'priceTypes', entityId: '' })).toEqual([]);
 	});
 
 	it('returns empty array for null or undefined entity types', async () => {
 		for (const value of [null, undefined]) {
-			const { result } = renderHook(() => useRelatedTickets({ entity: value, entityId: value }), {
+			const { result } = renderHook(() => useRelatedTickets(), {
 				wrapper,
 			});
 
 			await actWait();
 
-			expect(result.current).toEqual([]);
+			expect(result.current({ entity: value, entityId: value })).toEqual([]);
 		}
 	});
 
@@ -34,47 +34,47 @@ describe('useRelatedTickets', () => {
 		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
-				return useRelatedTickets({ entity: 'datetimes', entityId: datetimes[0].id });
+				return useRelatedTickets();
 			},
 			{ wrapper }
 		);
 		await actWait();
 
-		expect(result.current).toEqual([tickets[0], tickets[1]]);
+		expect(result.current({ entity: 'datetimes', entityId: datetimes[0].id })).toEqual([tickets[0], tickets[1]]);
 
 		const { result: anotherResult } = renderHook(
 			() => {
 				useInitTicketTestCache();
-				return useRelatedTickets({ entity: 'datetimes', entityId: datetimes[1].id });
+				return useRelatedTickets();
 			},
 			{ wrapper }
 		);
 		await actWait();
 
-		expect(anotherResult.current).toEqual([tickets[1]]);
+		expect(anotherResult.current({ entity: 'datetimes', entityId: datetimes[1].id })).toEqual([tickets[1]]);
 	});
 
 	it('returns related tickets for a given price', async () => {
 		const { result } = renderHook(
 			() => {
 				useInitTicketTestCache();
-				return useRelatedTickets({ entity: 'prices', entityId: prices[0].id });
+				return useRelatedTickets();
 			},
 			{ wrapper }
 		);
 		await actWait();
 
-		expect(result.current).toEqual([tickets[0]]);
+		expect(result.current({ entity: 'prices', entityId: prices[0].id })).toEqual([tickets[0]]);
 
 		const { result: anotherResult } = renderHook(
 			() => {
 				useInitTicketTestCache();
-				return useRelatedTickets({ entity: 'prices', entityId: prices[1].id });
+				return useRelatedTickets();
 			},
 			{ wrapper }
 		);
 		await actWait();
 
-		expect(anotherResult.current).toEqual([tickets[1]]);
+		expect(anotherResult.current({ entity: 'prices', entityId: prices[1].id })).toEqual([tickets[1]]);
 	});
 });
