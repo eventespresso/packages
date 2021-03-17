@@ -7,15 +7,20 @@ import { useTicketMutator, UpdateTicketInput } from '../tickets';
 import { entitiesWithGuIdInArray } from '@eventespresso/predicates';
 
 type InputGenerator = (ticket: Ticket) => UpdateTicketInput;
-type UpdateCallback = (inputGenerator: InputGenerator, relatedTicketIds?: Array<EntityId>) => void;
+type UpdateCallback = (
+	datetimeId: EntityId,
+	inputGenerator: InputGenerator,
+	relatedTicketIds?: Array<EntityId>
+) => void;
 
-const useUpdateRelatedTickets = (datetimeId: EntityId): UpdateCallback => {
+const useUpdateRelatedTickets = (): UpdateCallback => {
 	const tickets = useTickets();
-	const prevRelatedTickets = useRelatedTickets({ entity: 'datetimes', entityId: datetimeId });
+	const getRelatedTickets = useRelatedTickets();
 	const { updateEntity } = useTicketMutator();
 
 	return useCallback<UpdateCallback>(
-		(generateInput, relatedTicketIds = []) => {
+		(datetimeId, generateInput, relatedTicketIds = []) => {
+			const prevRelatedTickets = getRelatedTickets({ entity: 'datetimes', entityId: datetimeId });
 			/**
 			 * As of now, TAM can't be submitted without a date being related to a ticket
 			 * So, if this function is called after submission of multi-step and
@@ -34,7 +39,7 @@ const useUpdateRelatedTickets = (datetimeId: EntityId): UpdateCallback => {
 				updateEntity({ id: ticket.id, ...input });
 			});
 		},
-		[prevRelatedTickets, tickets, updateEntity]
+		[getRelatedTickets, tickets, updateEntity]
 	);
 };
 
