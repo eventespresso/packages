@@ -36,6 +36,7 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 				format={formatParse('')}
 				formatOnBlur
 				getValue={getValue}
+				min={0}
 				name='amount'
 				parse={formatParse()}
 				placeholder={__('amount…')}
