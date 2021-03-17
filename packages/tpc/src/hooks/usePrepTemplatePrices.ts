@@ -20,21 +20,29 @@ const usePrepTemplatePrices = (): PrepTemplatePrices => {
 
 	return useCallback(
 		(templatePrices, addBasePrice = true) => {
-			const prices = templatePrices.map((price) => {
+			const prices = templatePrices.map((price, index) => {
 				const priceModifier = convertPriceToTpcModifier(price);
 				// if it's a default tax
 				if (isDefaultTax(price)) {
 					// return without cloning
 					return priceModifier;
 				}
+				/**
+				 * Lets not rely upon the order that comes form the sever-side data
+				 * We need to ensure that base price has order 1.
+				 * For Price modifiers, we will retain their order and increment it by 2,
+				 * to make sure that there is no modifier of the same order as base price.
+				 */
+				const order = isBasePrice(price) ? 1 : (price.order || index) + 2;
 				return {
-					...priceModifier,
 					// clone it
+					...priceModifier,
 					id: uuidv4(),
 					dbId: 0,
 					isNew: true,
 					// avoid default price getting duplicated
 					isDefault: false,
+					order,
 				};
 			});
 
