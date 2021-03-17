@@ -4,12 +4,11 @@ import { parseISO } from 'date-fns';
 import { filter, pipe } from 'ramda';
 
 import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
-import { filterCellByStartOrEndDate, useDatetimes } from '@eventespresso/edtr-services';
+import { filterCellByStartOrEndDate, useDatetimes, useLazyDatetime } from '@eventespresso/edtr-services';
 import { ENTITY_LIST_DATE_TIME_FORMAT } from '@eventespresso/constants';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { getDatetimeBackgroundColorClassName, datetimeStatus } from '@eventespresso/helpers';
 import { findEntityByGuid } from '@eventespresso/predicates';
-import { shortenGuid } from '@eventespresso/utils';
 import type { EntityId } from '@eventespresso/data';
 import type { DatetimesFilterStateManager } from '@eventespresso/edtr-services';
 import type { BodyRowGeneratorFn } from '@eventespresso/ee-components';
@@ -28,16 +27,17 @@ const addZebraStripes = addZebraStripesOnMobile(exclude);
 const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 	const datetimes = useDatetimes();
 	const getDatetime = useCallback((id: EntityId) => findEntityByGuid(datetimes)(id), [datetimes]);
+	const getLazyDatetime = useLazyDatetime();
 	const { formatForSite: format } = useTimeZoneTime();
 
 	return useCallback<DatesTableBodyRowGen>(
 		({ entityId, filterState }) => {
-			const datetime = getDatetime(entityId);
+			const datetime = getDatetime(entityId) || getLazyDatetime(entityId);
 
 			const { displayStartOrEndDate, showBulkActions } = filterState;
 
 			const bgClassName = getDatetimeBackgroundColorClassName(datetime);
-			const id = datetime.dbId || shortenGuid(datetime.id);
+			const id = datetime.dbId || 0;
 			const statusClassName = datetimeStatus(datetime);
 
 			const stripeCell: CellData = {
@@ -144,7 +144,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				type: 'row',
 			};
 		},
-		[format, getDatetime]
+		[format, getDatetime, getLazyDatetime]
 	);
 };
 
