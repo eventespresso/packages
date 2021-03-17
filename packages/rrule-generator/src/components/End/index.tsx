@@ -13,7 +13,7 @@ const End: React.FC<BaseProps> = ({ id }) => {
 	const endModeId = `${id}-mode`;
 
 	return (
-		<Row align='top'>
+		<Row align='center'>
 			<label htmlFor={endModeId} className='col-form-label'>
 				<strong>{__('End')}</strong>
 			</label>

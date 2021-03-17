@@ -5,6 +5,7 @@ export interface PaginationProps extends PerPageProps {
 	defaultPageNumber?: number;
 	hideOnSinglePage?: boolean;
 	locale?: Locale;
+	noHorizontalPadding?: boolean;
 	onChangePageNumber: (pageNumber: number, perPage: number) => void;
 	showPerPageChanger?: boolean;
 	showTotal?: (total: number, range: [number, number]) => React.ReactNode;

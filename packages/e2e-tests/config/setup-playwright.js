@@ -123,52 +123,11 @@ function observeConsoleLogging() {
 	});
 }
 
-/**
- * Navigates to the post listing screen and bulk-trashes any posts which exist.
- *
- * @param {string} postType - String slug for type of post to trash.
- *
- * @return {Promise} Promise resolving once posts have been trashed.
- */
-export async function trashExistingPosts(postType = 'post', page) {
-	await switchUserToAdmin(page);
-	// Visit `/wp-admin/edit.php` so we can see a list of posts and delete them.
-	// const query = addQueryArgs('', {
-	// 	post_type: postType,
-	// }).slice(1);
-	// await visitAdminPage('edit.php', query);
-
-	// // If this selector doesn't exist there are no posts for us to delete.
-	// const bulkSelector = await page.$('#bulk-action-selector-top');
-	// if (!bulkSelector) {
-	// 	return;
-	// }
-
-	// // Select all posts.
-	// await page.waitForSelector('[id^=cb-select-all-]');
-	// await page.click('[id^=cb-select-all-]');
-	// // Select the "bulk actions" > "trash" option.
-	// await page.select('#bulk-action-selector-top', 'trash');
-	// // Submit the form to send all draft/scheduled/published posts to the trash.
-	// await page.click('#doaction');
-	// await page.waitForXPath('//*[contains(@class, "updated notice")]/p[contains(text(), "moved to the Trash.")]');
-	// await switchUserToTest();
-}
-
 // Before every test suite run, delete all content created by the test. This ensures
 // other posts/comments/etc. aren't dirtying tests and tests don't depend on
 // each other's side-effects.
 beforeAll(async () => {
 	await loginUser();
 
-	process.env.CI === 'true' && (await activatePlugin('event-espresso'));
-
-	// const browser = await playwright['chromium'].launch();
-	// const context = await browser.newContext();
-	// const page = await context.newPage();
-	// await page.goto('http://ee.local/wp-admin');
-	// await setupBrowser(page);
-	// await enablePageDialogAccept();
-	// await observeConsoleLogging();
-	// await trashExistingPosts(page);
+	await activatePlugin('event-espresso');
 });

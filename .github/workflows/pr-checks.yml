@@ -76,6 +76,15 @@ jobs:
                   ref: dev
                   token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
 
+            - name: Check out eea-recurring-events-manager
+              uses: actions/checkout@v2
+              with:
+                  repository: eventespresso/eea-recurring-events-manager
+                  path: eea-recurring-events-manager
+                  persist-credentials: true
+                  ref: dev
+                  token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+
             - name: Build event-espresso-core
               run: cd event-espresso-core && yarn && yarn build
 

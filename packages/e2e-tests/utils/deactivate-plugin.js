@@ -13,12 +13,15 @@ import { visitAdminPage } from './visit-admin-page';
 export async function deactivatePlugin(slug) {
 	await switchUserToAdmin();
 	await visitAdminPage('plugins.php');
-	const deleteLink = await page.$(`tr[data-slug="${slug}"] .delete a`);
-	if (deleteLink) {
-		await switchUserToTest();
-		return;
-	}
-	await page.click(`tr[data-slug="${slug}"] .deactivate a`);
-	await page.waitForSelector(`tr[data-slug="${slug}"] .delete a`);
+
+	// const deleteLink = await page.$eval(`tr[data-slug="${slug}"] .delete a`, (el) => el?.innerHTML);
+
+	// if (deleteLink) {
+	// 	await switchUserToTest();
+	// 	return;
+	// }
+
+	await page.click(`tr[data-slug="${slug}"] .deactivate a`).catch(console.log);
+
 	await switchUserToTest();
 }

@@ -14,6 +14,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 	defaultPerPage,
 	hideOnSinglePage = true,
 	locale = DEFAULT_LOCALE,
+	noHorizontalPadding,
 	onChangePageNumber,
 	onChangePerPage,
 	pageNumber,
@@ -23,7 +24,12 @@ export const Pagination: React.FC<PaginationProps> = ({
 	total,
 	...props
 }) => {
-	const className = classNames('ee-pagination', alignment && `ee-pagination--align-${alignment}`, props.className);
+	const className = classNames(
+		'ee-pagination',
+		alignment && `ee-pagination--align-${alignment}`,
+		noHorizontalPadding && `ee-pagination--no-horizontal-padding`,
+		props.className
+	);
 
 	const perPageChanger = showPerPageChanger && (
 		<PerPage

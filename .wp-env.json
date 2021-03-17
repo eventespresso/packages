@@ -4,6 +4,7 @@
 		"tests": {
 			"mappings": {
 				"wp-content/plugins/event-espresso-core": "./event-espresso-core",
+				"wp-content/plugins/eea-recurring-events-manager": "./eea-recurring-events-manager",
 				"wp-content/plugins/gutenberg-test-plugins": "./packages/e2e-tests/plugins"
 			}
 		}

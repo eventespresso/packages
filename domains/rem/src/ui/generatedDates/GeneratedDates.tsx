@@ -36,6 +36,7 @@ const GeneratedDates: React.FC = () => {
 					<GeneratedDatetimes datetimes={paginatedDates} />
 					<Pagination
 						defaultPerPage={6}
+						noHorizontalPadding
 						onChangePageNumber={setPageNumber}
 						onChangePerPage={setPerPage}
 						pageNumber={pageNumber}
