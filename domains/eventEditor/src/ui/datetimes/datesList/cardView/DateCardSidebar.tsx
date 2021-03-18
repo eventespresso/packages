@@ -41,7 +41,7 @@ const DateCardSidebar: React.FC<DateItemProps> = ({ entity: date }) => {
 				startDate={date.startDate}
 				tooltip={__('edit start and end dates')}
 			/>
-			<div className={'ee-ticket-status-label'}>{statusText}</div>
+			<div className='ee-entity-status-label'>{statusText}</div>
 		</>
 	) : null;
 };

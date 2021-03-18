@@ -1,6 +1,6 @@
 @import '~@eventespresso/styles/src/mixins/base-styles';
 
-.ee-search-input {
+.ee-search-input.ee-search-input {
 	@include ee-input-base;
 	@extend .ee-input;
 }
