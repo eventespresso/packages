@@ -1,6 +1,7 @@
-export * from './add-new-date';
-export * from './add-new-price-modifier';
-export * from './add-new-ticket';
+export * from './addNewDate';
+export * from './addNewPriceModifier';
+export * from './addNewRegistration';
+export * from './addNewTicket';
 export * from './removeAllTickets';
 export * from './removeLastDate';
 export * from './removeLastTicket';
@@ -8,7 +9,6 @@ export * from './removeAllPriceModifiers';
 
 export { activatePlugin } from './activate-plugin';
 export { activateTheme } from './activate-theme';
-export { arePrePublishChecksEnabled } from './are-pre-publish-checks-enabled';
 export { changeSiteTimezone } from './change-site-timezone';
 export { canvas } from './canvas';
 export { clearLocalStorage } from './clear-local-storage';

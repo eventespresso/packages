@@ -15,11 +15,11 @@ export const addNewTicket = async ({ amount, name }: any = {}) => {
 
 	await page.click('text=Add default prices');
 
-	await page.click('[aria-label="amount"]');
+	await page.click('[aria-label="amount"]').catch(console.log);
 
 	await pressKeyWithModifier('primary', 'a');
 
-	await page.type('[aria-label="amount"]', amount);
+	await page.type('[aria-label="amount"]', amount).catch(console.log);
 
 	await page.click('[type=button] >> text=Save and assign dates');
 

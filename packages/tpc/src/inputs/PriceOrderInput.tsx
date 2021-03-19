@@ -1,8 +1,8 @@
 import { __ } from '@eventespresso/i18n';
 
 import { PriceField } from '../fields';
-import type { PriceModifierProps } from '../types';
 import { useDataState } from '../data';
+import type { PriceModifierProps } from '../types';
 
 const PriceOrderInput: React.FC<PriceModifierProps> = ({ price }) => {
 	const { isDisabled } = useDataState();
