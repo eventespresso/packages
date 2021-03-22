@@ -18,7 +18,7 @@ export const testData = {
 		{
 			should: 'should calculate total ticket price for the given amount of Dollar Surcharge',
 			modifiers: { amount: '4', priceTypeLabel: 'Dollar Surcharge' },
-			expected: '14', // Add 4 10
+			expected: '14', // Add 4 to 10
 		},
 		{
 			should: 'should calculate total ticket price for the given amount of Regional Tax',
