@@ -16,9 +16,9 @@ $addon-bg-color: var(--ee-color-grey-14);
 		}
 	}
 
-	.ee-input,
-	.ee-text-input {
-		border-color: var(--ee-border-color);
+	.ee-input.ee-input,
+	.ee-text-input.ee-text-input {
+		border-color: var(--ee-border-color) !important;
 		border-width: var(--ee-border-width);
 	}
 
