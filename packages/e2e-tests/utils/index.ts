@@ -4,6 +4,7 @@ export * from './add-new-ticket';
 export * from './removeAllTickets';
 export * from './removeLastDate';
 export * from './removeLastTicket';
+export * from './removeAllPriceModifiers';
 
 export { activatePlugin } from './activate-plugin';
 export { activateTheme } from './activate-theme';
