@@ -6,6 +6,8 @@ export * from './removeAllTickets';
 export * from './removeLastDate';
 export * from './removeLastTicket';
 export * from './removeAllPriceModifiers';
+export * from './setPrice';
+export * from './setPrices';
 
 export { activatePlugin } from './activate-plugin';
 export { activateTheme } from './activate-theme';
