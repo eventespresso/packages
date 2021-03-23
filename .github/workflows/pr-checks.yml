@@ -74,6 +74,7 @@ jobs:
                   path: event-espresso-core
                   persist-credentials: true
                   ref: dev
+                  run: git reset --hard c98413a0b2809aa16483ec5d8db28299b27afd06
                   token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
 
             - name: Check out eea-recurring-events-manager
