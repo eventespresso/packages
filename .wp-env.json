@@ -1,5 +1,9 @@
 {
 	"core": "WordPress/WordPress",
+	"config": {
+		"WP_DEBUG": true,
+		"WP_DEBUG_DISPLAY": true
+	},
 	"env": {
 		"tests": {
 			"mappings": {
