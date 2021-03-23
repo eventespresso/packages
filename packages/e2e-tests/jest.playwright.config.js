@@ -1,5 +1,5 @@
 module.exports = {
-	preset: 'jest-playwright-preset',
+	preset: 'jest-playwright-jsdom',
 	globalSetup: 'jest-playwright-preset/setup.js',
 	reporters: undefined,
 	setupFilesAfterEnv: [
@@ -18,4 +18,10 @@ module.exports = {
 	},
 	testPathIgnorePatterns: ['/node_modules/'],
 	verbose: process.env.CI === 'true',
+	transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$', '^.+\\.module\\.(css|sass|scss)$'],
+	transform: {
+		'^.+\\.(js|jsx)$': '<rootDir>/../../node_modules/babel-jest',
+		'^.+\\.(ts|tsx)$': '<rootDir>/../../node_modules/ts-jest',
+		'^.+\\.(scss|css)$': '<rootDir>/../../config/jest/cssTransform.js',
+	},
 };

@@ -159,6 +159,7 @@
 		"jest": "26.6.3",
 		"jest-circus": "26.6.3",
 		"jest-environment-jsdom-fourteen": "1.0.1",
+		"jest-playwright-jsdom": "^0.0.4",
 		"jest-playwright-preset": "^1.4.6",
 		"jest-resolve": "26.6.2",
 		"jest-watch-typeahead": "0.6.1",
