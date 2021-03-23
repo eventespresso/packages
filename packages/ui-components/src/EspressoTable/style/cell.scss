@@ -68,7 +68,7 @@
 			&:not(.ee-entity-list-status-stripe):not(.ee-rspnsv-table-hide-on-mobile) {
 				@include max1280px {
 					padding: var(--ee-padding-micro) var(--ee-padding-smaller);
-					width: 100%;
+					width: fit-content;
 				}
 
 				@include max782px {
