@@ -52,6 +52,10 @@ beforeEach(async () => {
 
 const getFormattedAmount = formatAmount(2);
 
+afterAll(async () => {
+	await page.waitForTimeout(2000);
+});
+
 describe('TPC', () => {
 	Object.entries(testData).forEach(([testName, test]) => {
 		describe(testName, () => {
