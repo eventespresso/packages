@@ -1,7 +1,7 @@
-import { allPass, complement } from 'ramda';
+import { allPass } from 'ramda';
 
 import type { TpcPriceModifier } from '@eventespresso/tpc';
-import { isPercent, isBasePrice, isDiscount, isTax } from '@eventespresso/predicates';
+import { isPercent, isBasePrice, isDiscount, isTax, isNotDiscount, isNotPercent } from '@eventespresso/predicates';
 
 export const getPriceTypeLabel = (price: TpcPriceModifier): string => {
 	switch (true) {
@@ -14,14 +14,13 @@ export const getPriceTypeLabel = (price: TpcPriceModifier): string => {
 		case allPass([isPercent, isDiscount])(price):
 			return 'Percent Discount';
 
-		case allPass([complement(isPercent), isDiscount])(price):
+		case allPass([isNotPercent, isDiscount])(price):
 			return 'Dollar Discount';
 
-		case allPass([isPercent, complement(isDiscount)])(price):
+		case allPass([isPercent, isNotDiscount])(price):
 			return 'Percent Surcharge';
 
-		// Although this case is not needed, just to to be clear what is expected.
-		case allPass([complement(isPercent), complement(isDiscount)])(price):
+		// The default/fallback label
 		default:
 			return 'Dollar Surcharge';
 	}

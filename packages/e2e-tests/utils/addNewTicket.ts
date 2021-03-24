@@ -1,6 +1,6 @@
 /// <reference types="jest-playwright-preset" />
 
-import { pressKeyWithModifier } from '../utils/press-key-with-modifier';
+import { setPrice } from './setPrice';
 
 export const addNewTicket = async ({ amount, name }: any = {}) => {
 	await page.click('text=Add New Ticket');
@@ -15,11 +15,7 @@ export const addNewTicket = async ({ amount, name }: any = {}) => {
 
 	await page.click('text=Add default prices');
 
-	await page.click('[aria-label="amount"]').catch(console.log);
-
-	await pressKeyWithModifier('primary', 'a');
-
-	await page.type('[aria-label="amount"]', amount).catch(console.log);
+	await setPrice({ amount, isBasePrice: true } as any);
 
 	await page.click('[type=button] >> text=Save and assign dates');
 

@@ -7,16 +7,7 @@ import { ticketTotalTestCases } from '@eventespresso/tpc/src/utils/test/ticketTo
 import { convertToModifier, createPrices } from '@eventespresso/tpc/src/utils/test/utils';
 import { formatAmount } from '@eventespresso/utils';
 
-import {
-	// addNewPriceModifier,
-	addNewTicket,
-	createNewEvent,
-	removeAllTickets,
-	removeAllPriceModifiers,
-	setPrices,
-	// setPrice,
-} from '../../utils';
-// import { testData } from './testData';
+import { addNewTicket, createNewEvent, removeAllTickets, removeAllPriceModifiers, setPrices } from '../../utils';
 
 const ticketsListSelector = '#ee-entity-list-tickets .ee-entity-list__card-view';
 
@@ -52,21 +43,7 @@ beforeEach(async () => {
 
 const getFormattedAmount = formatAmount(2);
 
-describe('TPC', () => {
-	/* Object.entries(testData).forEach(([testName, test]) => {
-		describe(testName, () => {
-			test.forEach(({ expected, modifiers: { amount, priceTypeLabel }, should }) => {
-				it(should, async () => {
-					// Make sure the base price amount is as expected
-					await setPrice({ amount: 10, isBasePrice: true } as any);
-
-					await addNewPriceModifier({ amount, priceTypeLabel });
-					expect(await page.$eval('#ticket-price-total', (el: HTMLInputElement) => el?.value)).toBe(expected);
-				});
-			});
-		});
-	}); */
-
+describe('TPC:calculateTicketTotal', () => {
 	ticketTotalTestCases.forEach(({ name, prices, total }) => {
 		it(name, async () => {
 			const testPrices = createPrices(prices.map(convertToModifier));
