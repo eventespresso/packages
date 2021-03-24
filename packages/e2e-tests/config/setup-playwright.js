@@ -20,7 +20,7 @@ import { activatePlugin, loginUser } from '../utils';
 // import { addQueryArgs } from '@wordpress/url';
 
 // The Jest timeout is increased because these tests are a bit slow
-jest.setTimeout(100000);
+jest.setTimeout(300000);
 
 /**
  * Set of console logging types observed to protect against unexpected yet
