@@ -28,11 +28,10 @@ beforeAll(async () => {
 	await createNewEvent({ title: 'calculateTicketTotal: to be deleted' });
 
 	// Wait for page load after the event is published
-	// await page.waitForNavigation();
+	await page.waitForNavigation();
 
 	// Wait for tickets list lazy load
-	await page.waitForTimeout(3000);
-	// await page.waitForFunction((selector) => document.querySelector(selector), ticketsListSelector);
+	await page.waitForFunction((selector) => document.querySelector(selector), ticketsListSelector);
 
 	await removeAllTickets();
 
