@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewTicket, createNewEvent, removeLastTicket } from '../../../utils';
+import { addNewRegistration, addNewTicket, createNewEvent, removeLastTicket } from '../../../utils';
 import { getDatesLength } from '../../../assertions';
 
 const namespace = 'eventDates.filters.sales';
@@ -19,6 +19,8 @@ describe(namespace, () => {
 		await removeLastTicket();
 
 		await addNewTicket({ name: 'Paid Ticket' });
+
+		await addNewRegistration();
 
 		await page.click('[type=button] >> text=show filters');
 

@@ -24,7 +24,7 @@ export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const hasChanges = text !== props.text;
-	const previewClassName = classNames('ee-inline-edit__preview', className && className);
+	const previewClassName = classNames('ee-inline-edit__preview', className);
 
 	const onChange = useCallback(
 		(newText: string): void => {

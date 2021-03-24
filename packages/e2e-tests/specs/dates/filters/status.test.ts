@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewDate, addNewRegistration, addNewTicket, createNewEvent, removeLastTicket } from '../../../utils';
+import { addNewDate, createNewEvent } from '../../../utils';
 import { getDatesLength } from '../../../assertions';
 
 const namespace = 'eventDates.filters.status';
@@ -33,37 +33,5 @@ describe(namespace, () => {
 		const datetimesList = await page.$eval('#ee-entity-list-datetimes', (elements) => elements.innerHTML);
 
 		expect(await datetimesList).toContain('trash');
-	});
-
-	it('should filter dates corresponding to sales control', async () => {
-		await removeLastTicket();
-
-		await addNewTicket({ name: 'Paid Ticket' });
-
-		// await addNewRegistration();
-
-		await page.selectOption('#ee-dates-list-sales-control', {
-			value: 'above90Capacity',
-		});
-
-		expect(await getDatesLength()).toBe(0);
-
-		await page.selectOption('#ee-dates-list-sales-control', {
-			value: 'above75Capacity',
-		});
-
-		expect(await getDatesLength()).toBe(0);
-
-		await page.selectOption('#ee-dates-list-sales-control', {
-			value: 'above50Capacity',
-		});
-
-		expect(await getDatesLength()).toBe(0);
-
-		await page.selectOption('#ee-dates-list-sales-control', {
-			value: 'below50Capacity',
-		});
-
-		expect(await getDatesLength()).toBe(1);
 	});
 });

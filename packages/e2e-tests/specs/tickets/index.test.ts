@@ -5,7 +5,7 @@ import { getDocument, queries } from 'playwright-testing-library';
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewTicket, createNewEvent } from '../utils';
+import { addNewTicket, createNewEvent } from '../../utils';
 
 const { getByText } = queries;
 
