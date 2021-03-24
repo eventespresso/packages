@@ -67,17 +67,15 @@ describe('TPC', () => {
 		});
 	});
 
-	describe('calculateTicketTotalByModifiers', () => {
-		ticketTotalTestCases.forEach(({ name, prices, total }) => {
-			it(name, async () => {
-				const testPrices = createPrices(prices.map(convertToModifier));
+	ticketTotalTestCases.forEach(({ name, prices, total }) => {
+		it(name, async () => {
+			const testPrices = createPrices(prices.map(convertToModifier));
 
-				await setPrices(testPrices);
+			await setPrices(testPrices);
 
-				const calculatedTotal = await page.$eval('#ticket-price-total', (el: HTMLInputElement) => el?.value);
+			const calculatedTotal = await page.$eval('#ticket-price-total', (el: HTMLInputElement) => el?.value);
 
-				expect(getFormattedAmount(calculatedTotal)).toEqual(getFormattedAmount(total));
-			});
+			expect(getFormattedAmount(calculatedTotal)).toEqual(getFormattedAmount(total));
 		});
 	});
 });
