@@ -85,8 +85,8 @@ jobs:
                   ref: dev
                   token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
 
-            - name: Build event-espresso-core
-              run: cd event-espresso-core && yarn && yarn build
+            - name: Build barista assets
+              run: yarn && yarn build
 
             - name: Install WordPress
               run: yarn wp-env start

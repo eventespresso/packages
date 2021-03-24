@@ -30,7 +30,7 @@
 		"sb": "start-storybook -p 6006",
 		"test": "node scripts/test.js",
 		"test:ci": "FORCE_COLOR=true CI=true yarn test",
-		"test:e2e": "jest --config packages/e2e-tests/jest.playwright.config.js --forceExit",
+		"test:e2e": "jest --config packages/e2e-tests/jest.playwright.config.ts --forceExit",
 		"update-deps": "npx ncu -u && yarn workspaces run update-deps"
 	},
 	"lint-staged": {
@@ -192,6 +192,7 @@
 		"style-loader": "2.0.0",
 		"terser-webpack-plugin": "4.2.2",
 		"ts-jest": "^26.5.0",
+		"ts-node": "^9.1.1",
 		"ts-pnp": "1.2.0",
 		"typescript": "^4.1.5",
 		"url-loader": "4.1.1",

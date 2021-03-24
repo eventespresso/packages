@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from '@jest/types';
+
+const config: Config.InitialOptions = {
 	preset: 'jest-playwright-jsdom',
 	globalSetup: 'jest-playwright-preset/setup.js',
 	reporters: undefined,
@@ -25,3 +27,5 @@ module.exports = {
 		'^.+\\.(scss|css)$': '<rootDir>/../../config/jest/cssTransform.js',
 	},
 };
+
+export default config;
