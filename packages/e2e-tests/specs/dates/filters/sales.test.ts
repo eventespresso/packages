@@ -20,7 +20,7 @@ describe(namespace, () => {
 
 		await addNewTicket({ name: 'Paid Ticket' });
 
-		await addNewRegistration();
+		// await addNewRegistration();
 
 		await page.click('[type=button] >> text=show filters');
 
