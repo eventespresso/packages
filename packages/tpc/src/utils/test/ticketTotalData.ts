@@ -12,11 +12,6 @@ export const ticketTotalTestCases: Array<TestCase> = [
 		total: 15.2,
 	},
 	{
-		name: 'returns 0 when there is no base price',
-		prices: [fixedSurcharge(5), tax(8), tax(12)],
-		total: 0,
-	},
-	{
 		name: 'returns 0 when base price amount is 0',
 		prices: [basePrice(0), fixedSurcharge(5), tax(8), tax(12)],
 		total: 0,

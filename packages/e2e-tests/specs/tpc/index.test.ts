@@ -18,6 +18,8 @@ import {
 } from '../../utils';
 import { testData } from './testData';
 
+const ticketsListSelector = '#ee-entity-list-tickets .ee-entity-list__card-view';
+
 beforeAll(async () => {
 	await saveVideo(page, 'artifacts/calculateTicketTotal.mp4');
 	const newTicketName = 'one way ticket';
@@ -25,18 +27,26 @@ beforeAll(async () => {
 
 	await createNewEvent({ title: 'calculateTicketTotal: to be deleted' });
 
+	// Wait for page load after the event is published
+	await page.waitForNavigation();
+
 	// Wait for tickets list lazy load
-	await page.waitForTimeout(3000);
+	await page.waitForFunction((selector) => document.querySelector(selector), ticketsListSelector);
 
 	await removeAllTickets();
 
+	// Wait for tickets list to refresh
+	await page.waitForFunction((selector) => !document.querySelector(selector), ticketsListSelector);
+
 	await addNewTicket({ amount: newTicketAmount, name: newTicketName });
+
+	// Wait for tickets list to update
+	await page.waitForFunction((selector) => document.querySelector(selector), ticketsListSelector);
 
 	await page.click('[aria-label="ticket price calculator"]');
 });
 
 beforeEach(async () => {
-	await setPrice({ amount: 0, isBasePrice: true } as any);
 	await removeAllPriceModifiers();
 });
 
