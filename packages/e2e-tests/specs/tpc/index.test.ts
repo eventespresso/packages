@@ -8,15 +8,15 @@ import { convertToModifier, createPrices } from '@eventespresso/tpc/src/utils/te
 import { formatAmount } from '@eventespresso/utils';
 
 import {
-	addNewPriceModifier,
+	// addNewPriceModifier,
 	addNewTicket,
 	createNewEvent,
 	removeAllTickets,
 	removeAllPriceModifiers,
 	setPrices,
-	setPrice,
+	// setPrice,
 } from '../../utils';
-import { testData } from './testData';
+// import { testData } from './testData';
 
 const ticketsListSelector = '#ee-entity-list-tickets .ee-entity-list__card-view';
 
@@ -52,12 +52,8 @@ beforeEach(async () => {
 
 const getFormattedAmount = formatAmount(2);
 
-afterAll(async () => {
-	await page.waitForTimeout(2000);
-});
-
 describe('TPC', () => {
-	Object.entries(testData).forEach(([testName, test]) => {
+	/* Object.entries(testData).forEach(([testName, test]) => {
 		describe(testName, () => {
 			test.forEach(({ expected, modifiers: { amount, priceTypeLabel }, should }) => {
 				it(should, async () => {
@@ -69,7 +65,7 @@ describe('TPC', () => {
 				});
 			});
 		});
-	});
+	}); */
 
 	ticketTotalTestCases.forEach(({ name, prices, total }) => {
 		it(name, async () => {
