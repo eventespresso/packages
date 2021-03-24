@@ -1,6 +1,10 @@
 .ee-dropdown-menu {
 	&__wrapper {
 		z-index: 2;
+
+		&--no-z-index {
+			z-index: unset;
+		}
 	}
 
 	&__list {

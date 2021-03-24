@@ -7,6 +7,7 @@ export interface DropdownMenuProps extends Omit<MenuProps, 'isOpen'> {
 	className?: string;
 	wrapperClassName?: string;
 	menuListProps?: MenuListProps;
+	noZindex?: boolean;
 	toggleProps?: DropdownToggleProps;
 }
 

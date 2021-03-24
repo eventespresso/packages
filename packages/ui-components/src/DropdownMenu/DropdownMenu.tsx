@@ -12,12 +12,17 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
 	children,
 	className,
 	menuListProps,
+	noZindex,
 	toggleProps,
 	...props
 }) => {
 	const isRTL = getRTL();
 	const placement = isRTL ? 'left-start' : 'right-start';
-	const wrapperClassName = classNames('ee-dropdown-menu__wrapper', props.wrapperClassName);
+	const wrapperClassName = classNames(
+		'ee-dropdown-menu__wrapper',
+		noZindex && 'ee-dropdown-menu__wrapper--no-z-index',
+		props.wrapperClassName
+	);
 
 	return (
 		<div className={wrapperClassName}>
