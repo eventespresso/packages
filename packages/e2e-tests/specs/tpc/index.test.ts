@@ -2,12 +2,21 @@
 /// <reference types="expect-playwright" />
 
 import { saveVideo } from 'playwright-video';
+import { isNil } from 'ramda';
 
 import { ticketTotalTestCases } from '@eventespresso/tpc/src/utils/test/ticketTotalData';
+import { basePriceTestCases } from '@eventespresso/tpc/src/utils/test/basePriceData';
 import { convertToModifier, createPrices } from '@eventespresso/tpc/src/utils/test/utils';
 import { formatAmount } from '@eventespresso/utils';
 
-import { addNewTicket, createNewEvent, removeAllTickets, removeAllPriceModifiers, setPrices } from '../../utils';
+import {
+	addNewTicket,
+	createNewEvent,
+	removeAllTickets,
+	removeAllPriceModifiers,
+	setPrice,
+	setPrices,
+} from '../../utils';
 
 const ticketsListSelector = '#ee-entity-list-tickets .ee-entity-list__card-view';
 
@@ -44,7 +53,27 @@ beforeEach(async () => {
 const getFormattedAmount = formatAmount(2);
 
 describe('TPC:calculateTicketTotal', () => {
-	ticketTotalTestCases.forEach(({ name, prices, total }) => {
+	// lets reverse calculate ticket total from the base price test data
+	for (const { basePrice, name, prices, total } of basePriceTestCases) {
+		if (isNil(total)) {
+			continue;
+		}
+		it('reverse calculates: ' + name, async () => {
+			// set the base price
+			await setPrice({ amount: basePrice, isBasePrice: true } as any);
+
+			const testPrices = createPrices(prices.map(convertToModifier));
+
+			// set modifiers
+			await setPrices(testPrices);
+
+			const calculatedTotal = await page.$eval('#ticket-price-total', (el: HTMLInputElement) => el?.value);
+
+			expect(getFormattedAmount(calculatedTotal)).toEqual(getFormattedAmount(total));
+		});
+	}
+
+	for (const { name, prices, total } of ticketTotalTestCases) {
 		it(name, async () => {
 			const testPrices = createPrices(prices.map(convertToModifier));
 
@@ -54,5 +83,31 @@ describe('TPC:calculateTicketTotal', () => {
 
 			expect(getFormattedAmount(calculatedTotal)).toEqual(getFormattedAmount(total));
 		});
+	}
+});
+
+describe('TPC:calculateBasePrice', () => {
+	beforeAll(async () => {
+		await page.click('[aria-label="Enable reverse calculate"]').catch(console.log);
 	});
+
+	for (const { basePrice, name, prices, total } of basePriceTestCases) {
+		it(name, async () => {
+			const testPrices = createPrices(prices.map(convertToModifier));
+
+			await setPrices(testPrices);
+
+			// Set ticket total
+			await page.focus(`.ee-ticket-price-calculator__total [aria-label="ticket total"]`);
+			await page.fill(`.ee-ticket-price-calculator__total [aria-label="ticket total"]`, (total || '').toString());
+
+			const firstTPCRow = '.ee-ticket-price-calculator tbody tr:first-child';
+			const calculatedPrice = await page.$eval(
+				`${firstTPCRow} [aria-label="amount"]`,
+				(el: HTMLInputElement) => el?.value
+			);
+
+			expect(getFormattedAmount(calculatedPrice)).toBe(getFormattedAmount(basePrice));
+		});
+	}
 });
