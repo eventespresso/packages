@@ -52,14 +52,18 @@ beforeEach(async () => {
 
 const getFormattedAmount = formatAmount(2);
 
-const setTestName = async (text: string) => {
-	await page.$eval('header.ee-modal__header', (header) => {
-		const name = document.createElement('p');
-		const textNode = document.createTextNode(text);
-		name.appendChild(textNode);
+const setTestName = async (name: string) => {
+	await page.$eval(
+		'header.ee-modal__header',
+		(header, text) => {
+			const name = document.createElement('p');
+			const textNode = document.createTextNode(text);
+			name.appendChild(textNode);
 
-		header.insertAdjacentElement('afterend', name);
-	});
+			header.insertAdjacentElement('afterend', name);
+		},
+		name
+	);
 };
 
 describe('TPC:calculateTicketTotal', () => {
