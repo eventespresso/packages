@@ -75,39 +75,39 @@ jobs:
               if: steps.cache-playwright.outputs.cache-hit != 'true'
               run: yarn add -WD playwright
 
-            # - name: Check out event-espresso-core
-            #   uses: actions/checkout@v2
-            #   with:
-            #       repository: eventespresso/event-espresso-core
-            #       path: event-espresso-core
-            #       persist-credentials: true
-            #       ref: dev
-            #       token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+            - name: Check out event-espresso-core
+              uses: actions/checkout@v2
+              with:
+                  repository: eventespresso/event-espresso-core
+                  path: event-espresso-core
+                  persist-credentials: true
+                  ref: dev
+                  token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
 
-            # - name: Check out eea-recurring-events-manager
-            #   uses: actions/checkout@v2
-            #   with:
-            #       repository: eventespresso/eea-recurring-events-manager
-            #       path: eea-recurring-events-manager
-            #       persist-credentials: true
-            #       ref: dev
-            #       token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
+            - name: Check out eea-recurring-events-manager
+              uses: actions/checkout@v2
+              with:
+                  repository: eventespresso/eea-recurring-events-manager
+                  path: eea-recurring-events-manager
+                  persist-credentials: true
+                  ref: dev
+                  token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
 
-            # - name: Build barista assets
-            #   run: yarn && yarn build
+            - name: Build barista assets
+              run: yarn && yarn build
 
-            # - name: Install WordPress
-            #   run: yarn wp-env start
+            - name: Install WordPress
+              run: yarn wp-env start
 
-            # - name: Setup Playwright
-            #   uses: microsoft/playwright-github-action@v1
+            - name: Setup Playwright
+              uses: microsoft/playwright-github-action@v1
 
-            # - name: Running the tests
-            #   run: yarn test:e2e
+            - name: Running the tests
+              run: yarn test:e2e
 
-            # - name: Archive debug artifacts (screenshots, HTML snapshots)
-            #   uses: actions/upload-artifact@v2
-            #   #if: failure()
-            #   with:
-            #       name: failures-artifacts
-            #       path: artifacts
+            - name: Archive debug artifacts (screenshots, HTML snapshots)
+              uses: actions/upload-artifact@v2
+              #if: failure()
+              with:
+                  name: failures-artifacts
+                  path: artifacts
