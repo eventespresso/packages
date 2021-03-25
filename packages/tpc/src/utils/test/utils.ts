@@ -110,9 +110,9 @@ export const tax = (amount?: number) => compose(toTaxed, setAmount(amount));
  * Flattens an array of test prices in which the prices with same order
  * are in an array. It sets the correct order for all the prices
  */
-export const createPrices = (testPrices: Array<TestPrice>): TpcPriceModifier[] => {
+export const createPrices = (testPrices: Array<TestPrice>, incrementOrderBy = 1): TpcPriceModifier[] => {
 	return testPrices.reduce<TpcPriceModifier[]>((previousValue, priceOrArray, index) => {
-		const order = index + 1;
+		const order = index + incrementOrderBy;
 		const convertPrice = compose(createId, setOrder(order));
 
 		if (Array.isArray(priceOrArray)) {

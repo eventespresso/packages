@@ -60,9 +60,9 @@ describe('TPC:calculateTicketTotal', () => {
 		}
 		it('reverse calculates: ' + name, async () => {
 			// set the base price
-			await setPrice({ amount: basePrice, isBasePrice: true } as any);
+			await setPrice({ amount: basePrice, name, isBasePrice: true } as any);
 
-			const testPrices = createPrices(prices.map(convertToModifier));
+			const testPrices = createPrices(prices.map(convertToModifier), 2);
 
 			// set modifiers
 			await setPrices(testPrices);
