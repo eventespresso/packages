@@ -54,8 +54,6 @@ describe(namespace, () => {
 			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
 				endDateMonth.substring(0, 3)
 			);
-
-			await browser.close();
 		});
 	}
 });
