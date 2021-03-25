@@ -64,7 +64,15 @@ jobs:
               if: steps.cache-deps.outputs.cache-hit != 'true'
               run: yarn install --frozen-lockfile
 
+            - name: Cache PlayWright
+              id: cache-playwright
+              uses: actions/cache@v2
+              with:
+                  path: '~/.cache/ms-playwright' # See https://playwright.dev/docs/ci/#directories-to-cache
+                  key: ${{ runner.os }}-playwright-${{ hashFiles('**/yarn.lock') }}
+
             - name: Make sure PlayWright doesn't play it wrong
+              if: steps.cache-playwright.outputs.cache-hit != 'true'
               run: yarn add -WD playwright
 
             - name: Check out event-espresso-core
