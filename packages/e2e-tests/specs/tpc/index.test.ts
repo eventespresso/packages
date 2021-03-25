@@ -52,6 +52,16 @@ beforeEach(async () => {
 
 const getFormattedAmount = formatAmount(2);
 
+const setTestName = async (text: string) => {
+	await page.$eval('header.ee-modal__header', (header) => {
+		const name = document.createElement('p');
+		const textNode = document.createTextNode(text);
+		name.appendChild(textNode);
+
+		header.insertAdjacentElement('afterend', name);
+	});
+};
+
 describe('TPC:calculateTicketTotal', () => {
 	// lets reverse calculate ticket total from the base price test data
 	for (const { basePrice, name, prices, total } of basePriceTestCases) {
@@ -59,6 +69,7 @@ describe('TPC:calculateTicketTotal', () => {
 			continue;
 		}
 		it('reverse calculates: ' + name, async () => {
+			await setTestName('reverse calculates: ' + name);
 			// set the base price
 			await setPrice({ amount: basePrice, name, isBasePrice: true } as any);
 
@@ -75,6 +86,8 @@ describe('TPC:calculateTicketTotal', () => {
 
 	for (const { name, prices, total } of ticketTotalTestCases) {
 		it(name, async () => {
+			await setTestName(name);
+
 			const testPrices = createPrices(prices.map(convertToModifier));
 
 			await setPrices(testPrices);
@@ -93,7 +106,9 @@ describe('TPC:calculateBasePrice', () => {
 
 	for (const { basePrice, name, prices, total } of basePriceTestCases) {
 		it(name, async () => {
-			const testPrices = createPrices(prices.map(convertToModifier));
+			await setTestName(name);
+
+			const testPrices = createPrices(prices.map(convertToModifier), 2);
 
 			await setPrices(testPrices);
 
