@@ -8,7 +8,7 @@ import { ticketTotalTestCases } from '@eventespresso/tpc/src/utils/test/ticketTo
 import { basePriceTestCases } from '@eventespresso/tpc/src/utils/test/basePriceData';
 import { convertToModifier, createPrices } from '@eventespresso/tpc/src/utils/test/utils';
 import { formatAmount } from '@eventespresso/utils';
-import { getBasePrice } from '@eventespresso/predicates';
+import { getBasePrice, getPriceModifiers } from '@eventespresso/predicates';
 
 import {
 	addNewTicket,
@@ -116,7 +116,7 @@ describe('TPC:calculateBasePrice', () => {
 
 			await setTestName('reverse calculates: ' + name);
 
-			await setPrices(testPrices);
+			await setPrices(getPriceModifiers(testPrices));
 
 			// Set ticket total
 			await page.focus(`.ee-ticket-price-calculator__total [aria-label="ticket total"]`);
