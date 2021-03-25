@@ -7,7 +7,7 @@ import { isNil } from 'ramda';
 import { ticketTotalTestCases } from '@eventespresso/tpc/src/utils/test/ticketTotalData';
 import { basePriceTestCases } from '@eventespresso/tpc/src/utils/test/basePriceData';
 import { convertToModifier, createPrices } from '@eventespresso/tpc/src/utils/test/utils';
-import { formatAmount } from '@eventespresso/utils';
+import { formatAmount, getBasePrice } from '@eventespresso/utils';
 
 import {
 	addNewTicket,
@@ -56,11 +56,8 @@ const setTestName = async (name: string) => {
 	await page.$eval(
 		'header.ee-modal__header',
 		(header, text) => {
-			const name = document.createElement('p');
-			const textNode = document.createTextNode(text);
-			name.appendChild(textNode);
-
-			header.insertAdjacentElement('afterend', name);
+			// eslint-disable-next-line no-param-reassign
+			header.innerHTML = text;
 		},
 		name
 	);
@@ -72,6 +69,7 @@ describe('TPC:calculateTicketTotal', () => {
 		if (isNil(total)) {
 			continue;
 		}
+
 		it('reverse calculates: ' + name, async () => {
 			await setTestName('reverse calculates: ' + name);
 			// set the base price
@@ -107,6 +105,34 @@ describe('TPC:calculateBasePrice', () => {
 	beforeAll(async () => {
 		await page.click('[aria-label="Enable reverse calculate"]').catch(console.log);
 	});
+
+	// lets reverse calculate base price from the ticket total test data
+	for (const { name, prices, total } of ticketTotalTestCases) {
+		const testPrices = createPrices(prices.map(convertToModifier), 2);
+
+		const basePrice = getBasePrice(testPrices)?.amount;
+
+		if (isNil(basePrice)) {
+			continue;
+		}
+
+		it('reverse calculates: ' + name, async () => {
+			await setTestName('reverse calculates: ' + name);
+
+			await setPrices(testPrices);
+
+			// Set ticket total
+			await page.focus(`.ee-ticket-price-calculator__total [aria-label="ticket total"]`);
+			await page.fill(`.ee-ticket-price-calculator__total [aria-label="ticket total"]`, (total || '').toString());
+
+			const firstTPCRow = '.ee-ticket-price-calculator tbody tr:first-child';
+			const calculatedPrice = await page.$eval(
+				`${firstTPCRow} [aria-label="amount"]`,
+				(el: HTMLInputElement) => el?.value
+			);
+			expect(getFormattedAmount(calculatedPrice)).toBe(getFormattedAmount(basePrice));
+		});
+	}
 
 	for (const { basePrice, name, prices, total } of basePriceTestCases) {
 		it(name, async () => {
