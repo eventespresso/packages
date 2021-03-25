@@ -7,7 +7,8 @@ import { isNil } from 'ramda';
 import { ticketTotalTestCases } from '@eventespresso/tpc/src/utils/test/ticketTotalData';
 import { basePriceTestCases } from '@eventespresso/tpc/src/utils/test/basePriceData';
 import { convertToModifier, createPrices } from '@eventespresso/tpc/src/utils/test/utils';
-import { formatAmount, getBasePrice } from '@eventespresso/utils';
+import { formatAmount } from '@eventespresso/utils';
+import { getBasePrice } from '@eventespresso/predicates';
 
 import {
 	addNewTicket,
