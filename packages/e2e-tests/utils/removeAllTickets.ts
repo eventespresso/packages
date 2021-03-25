@@ -1,4 +1,5 @@
 /// <reference types="jest-playwright-preset" />
+import { clickButton } from './';
 
 const selector = '.ee-ticket-main-menu button';
 
@@ -7,8 +8,8 @@ export const removeAllTickets = async () => {
 
 	while (button) {
 		await button.click();
-		await page.click('[type=button] >> text=trash ticket');
-		await page.click('[type=button] >> text=Yes');
+		await clickButton('trash ticket');
+		await clickButton('Yes');
 
 		button = await page.$(selector);
 	}

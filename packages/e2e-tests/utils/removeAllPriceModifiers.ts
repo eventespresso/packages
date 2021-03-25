@@ -1,4 +1,5 @@
 /// <reference types="jest-playwright-preset" />
+import { clickButton } from './';
 
 const selector = '[aria-label="delete price modifier"]';
 
@@ -7,7 +8,7 @@ export const removeAllPriceModifiers = async () => {
 
 	while (button) {
 		await button.click();
-		await page.click('[type=button] >> text=Yes');
+		await clickButton('Yes');
 
 		button = await page.$(selector);
 	}

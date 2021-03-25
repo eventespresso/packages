@@ -1,6 +1,6 @@
 /// <reference types="jest-playwright-preset" />
 
-import { setPrice } from './setPrice';
+import { clickButton, setPrice } from './';
 
 export const addNewTicket = async ({ amount, name }: any = {}) => {
 	await page.click('text=Add New Ticket');
@@ -9,7 +9,7 @@ export const addNewTicket = async ({ amount, name }: any = {}) => {
 
 	await page.type('.ee-render-fields >> text=Name', name);
 
-	await page.click('[type=button] >> text=Set ticket prices');
+	await clickButton('Set ticket prices');
 
 	await page.waitForTimeout(1000);
 
@@ -17,7 +17,7 @@ export const addNewTicket = async ({ amount, name }: any = {}) => {
 
 	await setPrice({ amount, isBasePrice: true } as any);
 
-	await page.click('[type=button] >> text=Save and assign dates');
+	await clickButton('Save and assign dates');
 
 	await page.click('[aria-label="assign ticket"]');
 

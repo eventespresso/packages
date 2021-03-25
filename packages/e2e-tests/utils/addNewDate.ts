@@ -1,5 +1,7 @@
 import type { Datetime } from '@eventespresso/edtr-services';
 
+import { clickButton } from './';
+
 export const addNewDate = async ({ name, isTrashed }: Partial<Datetime>) => {
 	await page.click('text=Add New Date');
 
@@ -9,7 +11,7 @@ export const addNewDate = async ({ name, isTrashed }: Partial<Datetime>) => {
 
 	isTrashed && (await page.click('[aria-label="Trash"]'));
 
-	await page.click('[type=button] >> text=Save and assign tickets');
+	await clickButton('Save and assign tickets');
 
 	await page.click('[aria-label="assign ticket"]');
 

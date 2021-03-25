@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewRegistration, addNewTicket, createNewEvent, removeLastTicket } from '../../../utils';
+import { addNewRegistration, addNewTicket, clickButton, createNewEvent, removeLastTicket } from '../../../utils';
 import { getDatesLength } from '../../../assertions';
 
 const namespace = 'eventDates.filters.sales';
@@ -22,7 +22,7 @@ describe(namespace, () => {
 
 		// await addNewRegistration();
 
-		await page.click('[type=button] >> text=show filters');
+		await clickButton('show filters');
 
 		await page.selectOption('#ee-dates-list-sales-control', {
 			value: 'above90Capacity',

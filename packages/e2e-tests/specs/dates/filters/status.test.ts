@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewDate, createNewEvent } from '../../../utils';
+import { addNewDate, clickButton, createNewEvent } from '../../../utils';
 import { getDatesLength } from '../../../assertions';
 
 const namespace = 'eventDates.filters.status';
@@ -22,7 +22,7 @@ describe(namespace, () => {
 
 		expect(await getDatesLength()).toBe(1);
 
-		await page.click('[type=button] >> text=show filters');
+		await clickButton('show filters');
 
 		await page.selectOption('#ee-dates-list-status-control', {
 			value: 'all',

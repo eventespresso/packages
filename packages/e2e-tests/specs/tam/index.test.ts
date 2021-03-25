@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent, removeLastTicket } from '../../utils';
+import { clickButton, createNewEvent, removeLastTicket } from '../../utils';
 import { isSubmitBtnDisabled } from '../../assertions';
 
 beforeAll(async () => {
@@ -28,7 +28,7 @@ describe('TAM', () => {
 
 		await page.click('[aria-label="close modal"]');
 
-		await page.click('[type=button] >> text=Yes');
+		await clickButton('Yes');
 	});
 
 	it('if there is an assignment - the submit button should be enabled', async () => {
@@ -43,7 +43,7 @@ describe('TAM', () => {
 
 		await page.click('[aria-label="close modal"]');
 
-		await page.click('[type=button] >> text=Yes');
+		await clickButton('Yes');
 	});
 
 	describe('if there are no tickets', () => {

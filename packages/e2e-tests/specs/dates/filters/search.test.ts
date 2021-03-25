@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewDate, createNewEvent, pressKeyWithModifier } from '../../../utils';
+import { addNewDate, clickButton, createNewEvent, pressKeyWithModifier } from '../../../utils';
 import { getDatesLength } from '../../../assertions';
 
 const namespace = 'eventDates.filters.search';
@@ -21,7 +21,7 @@ describe(namespace, () => {
 
 		expect(await getDatesLength()).toBe(3);
 
-		await page.click('[type=button] >> text=show filters');
+		await clickButton('show filters');
 		await page.type('#ee-ee-search-input-dates-list', 'abc');
 		expect(await getDatesLength()).toBe(1);
 		expect(await page.$eval('#ee-entity-list-datetimes', (elements) => elements.innerHTML)).toContain('abc');

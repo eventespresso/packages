@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { activatePlugin, createNewEvent, deactivatePlugin, pressKeyWithModifier } from '../../utils';
+import { activatePlugin, clickButton, createNewEvent, deactivatePlugin, pressKeyWithModifier } from '../../utils';
 
 const REMSlug = 'event-espresso-recurring-events-manager-ee-4-9';
 
@@ -42,7 +42,7 @@ describe('REM', () => {
 
 		await page.type('[name="ee-r-rule-end-after"]', '40');
 
-		await page.click('[type=button] >> text=Next');
+		await clickButton('Next');
 
 		await page.click('#ee-ee-add-new-datetime');
 
@@ -50,7 +50,7 @@ describe('REM', () => {
 
 		await page.type('.ee-render-fields >> text=Name', 'New date');
 
-		await page.click('[type=button] >> text=Next');
+		await clickButton('Next');
 
 		await page.selectOption('#ee-existing-entity', {
 			label: 'Free Ticket',
@@ -58,7 +58,7 @@ describe('REM', () => {
 
 		await page.click('.ee-entity-option__input [type=button] >> text=Add');
 
-		await page.click('[type=button] >> text=Next');
+		await clickButton('Next');
 
 		await page.waitForTimeout(2000);
 
