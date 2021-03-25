@@ -104,20 +104,20 @@ describe('TPC:calculateTicketTotal', () => {
 
 describe('TPC:calculateBasePrice', () => {
 	beforeAll(async () => {
-		await page.click('[aria-label="Enable reverse calculate"]').catch(console.log);
+		await page
+			.click(
+				'[aria-label="Ticket total is being calculated normally from top to bottom starting from the base price. Entering a new ticket base price will recalculate the ticket total after applying all price modifiers. Click to turn on reverse calculations"]'
+			)
+			.catch(console.log);
 	});
 
 	// lets reverse calculate base price from the ticket total test data
 	for (const { name, prices, total } of ticketTotalTestCases) {
-		const testPrices = createPrices(prices.map(convertToModifier), 2);
-
-		const basePrice = getBasePrice(testPrices)?.amount;
-
-		if (isNil(basePrice)) {
-			continue;
-		}
-
 		it('reverse calculates: ' + name, async () => {
+			const testPrices = createPrices(prices.map(convertToModifier), 2);
+
+			const basePrice = getBasePrice(testPrices)?.amount || 0;
+
 			await setTestName('reverse calculates: ' + name);
 
 			await setPrices(testPrices);
