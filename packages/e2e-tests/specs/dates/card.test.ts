@@ -4,6 +4,7 @@
 import { saveVideo } from 'playwright-video';
 
 import { createNewEvent } from '../../utils';
+import { modalRTESel } from '../../constants';
 
 const namespace = 'event.dates.card.view.inline-inputs';
 
@@ -23,8 +24,8 @@ describe(namespace, () => {
 		await page.click(`${datesList} .entity-card-details__name`);
 		await page.type(`${datesList} .entity-card-details__name`, newDateName);
 		await page.click(`${datesList} .entity-card-details__text`);
-		await page.click('.chakra-modal__content-container .public-DraftStyleDefault-block');
-		await page.type('.chakra-modal__content-container .public-DraftStyleDefault-block', newDateDesc);
+		await page.click(modalRTESel);
+		await page.type(modalRTESel, newDateDesc);
 		await page.click('.chakra-modal__footer button[type=submit]');
 		await page.click(`${datesList} .ee-entity-details__value .ee-tabbable-text`);
 		await page.type(`${datesList} .ee-entity-details__value .ee-inline-edit__input`, newDateCap);
