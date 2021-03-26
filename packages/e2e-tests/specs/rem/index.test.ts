@@ -5,10 +5,10 @@ import { saveVideo } from 'playwright-video';
 
 import { activatePlugin, clickButton, createNewEvent, deactivatePlugin, pressKeyWithModifier } from '../../utils';
 
-const REMSlug = 'event-espresso-recurring-events-manager-ee-4-9';
+const REMPlugin = 'eea-recurring-events-manager/eea-recurring-events-manager.php';
 
 beforeAll(async () => {
-	await activatePlugin(REMSlug);
+	await activatePlugin(REMPlugin);
 
 	await page.click('text=Visit the Maintenance Page to get started');
 
@@ -24,7 +24,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-	await deactivatePlugin(REMSlug);
+	await deactivatePlugin(REMPlugin);
 });
 
 describe('REM', () => {

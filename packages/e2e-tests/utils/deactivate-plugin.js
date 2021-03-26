@@ -8,9 +8,9 @@ import { visitAdminPage } from './visit-admin-page';
 /**
  * Deactivates an active plugin.
  *
- * @param {string} slug Plugin slug.
+ * @param {string} plugin Path to the plugin file, relative to the plugins directory.
  */
-export async function deactivatePlugin(slug) {
+export async function deactivatePlugin(plugin) {
 	await switchUserToAdmin();
 	await visitAdminPage('plugins.php');
 
@@ -21,7 +21,7 @@ export async function deactivatePlugin(slug) {
 	// 	return;
 	// }
 
-	await page.click(`tr[data-slug="${slug}"] .deactivate a`).catch(console.log);
+	await page.click(`tr[data-plugin="${plugin}"] .deactivate a`).catch(console.log);
 
 	await switchUserToTest();
 }

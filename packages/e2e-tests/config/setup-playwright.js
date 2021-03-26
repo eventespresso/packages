@@ -129,7 +129,7 @@ function observeConsoleLogging() {
 beforeAll(async () => {
 	await loginUser();
 
-	await activatePlugin('event-espresso');
+	await activatePlugin('event-espresso-core/espresso.php');
 });
 
 afterAll(async () => {
