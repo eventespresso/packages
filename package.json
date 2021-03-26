@@ -30,7 +30,7 @@
 		"sb": "start-storybook -p 6006",
 		"test": "node scripts/test.js",
 		"test:ci": "FORCE_COLOR=true CI=true yarn test",
-		"test:e2e": "jest --config packages/e2e-tests/jest.playwright.config.ts --forceExit",
+		"test:e2e": "jest --config packages/e2e-tests/jest.playwright.config.ts --forceExit --bail",
 		"update-deps": "npx ncu -u && yarn workspaces run update-deps"
 	},
 	"lint-staged": {
@@ -156,6 +156,7 @@
 		"html-webpack-plugin": "4.5.1",
 		"husky": "^5.0.4",
 		"identity-obj-proxy": "3.0.0",
+		"jasmine-fail-fast": "^2.0.1",
 		"jest": "26.6.3",
 		"jest-circus": "26.6.3",
 		"jest-environment-jsdom-fourteen": "1.0.1",

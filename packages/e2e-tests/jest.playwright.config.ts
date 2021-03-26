@@ -8,6 +8,7 @@ const config: Config.InitialOptions = {
 		'expect-playwright',
 		'@testing-library/jest-dom/extend-expect',
 		'<rootDir>/config/setup-playwright.js',
+		'./failfast.js',
 	],
 	testMatch: ['**/specs/**/*test.[jt]s', '**/?(*.)spec.[jt]s'],
 	testEnvironmentOptions: {
