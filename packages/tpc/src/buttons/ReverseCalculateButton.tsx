@@ -18,7 +18,7 @@ const ReverseCalculateButton: React.FC<ReverseCalculateButtonProps> = ({ reverse
 				'Ticket total is being calculated normally from top to bottom starting from the base price. Entering a new ticket base price will recalculate the ticket total after applying all price modifiers. Click to turn on reverse calculations'
 		  );
 
-	const ariaLabel = reverseCalculate ? __('Disable reverse calculate') : __('Enable reverse calculate');
+	const ariaLabel = reverseCalculate ? __('Disable reverse calculations') : __('Enable reverse calculations');
 
 	return <IconButton aria-label={ariaLabel} icon={calcDirIcon} onClick={toggleCalcDir} tooltip={calcDirTooltip} />;
 };
