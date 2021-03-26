@@ -44,8 +44,6 @@ describe(namespace, () => {
 
 			await setListDisplayControl(entity as 'datetime' | 'ticket', 'both');
 
-			await page.waitForTimeout(2000);
-
 			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(startDate);
 			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
 				startDateMonth.substring(0, 3)
