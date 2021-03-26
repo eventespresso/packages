@@ -47,8 +47,6 @@ jobs:
         name: E2E Tests
         #needs: [build]
         runs-on: ubuntu-latest
-        env:
-            FAIL_FAST: true
         steps:
             - uses: actions/checkout@v2
 

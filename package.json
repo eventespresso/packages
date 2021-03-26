@@ -30,7 +30,7 @@
 		"sb": "start-storybook -p 6006",
 		"test": "node scripts/test.js",
 		"test:ci": "FORCE_COLOR=true CI=true yarn test",
-		"test:e2e": "jest --config packages/e2e-tests/jest.playwright.config.ts --forceExit --bail",
+		"test:e2e": "jest --config packages/e2e-tests/jest.playwright.config.ts --bail --forceExit",
 		"update-deps": "npx ncu -u && yarn workspaces run update-deps"
 	},
 	"lint-staged": {
