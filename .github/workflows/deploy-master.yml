@@ -8,6 +8,7 @@ env:
     GIT_USER_EMAIL: ${{ secrets.GH_ACTIONS_GIT_USER_EMAIL }}
     GIT_USER_NAME: ${{ secrets.GH_ACTIONS_GIT_USER_NAME }}
     FORCE_COLOR: true
+    PLAYWRIGHT_BROWSERS_PATH: 0 # See https://playwright.dev/docs/ci/#caching-browsers
 jobs:
     deploy-domains-and-packages:
         runs-on: ubuntu-latest
