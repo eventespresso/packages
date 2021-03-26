@@ -51,10 +51,6 @@ beforeEach(async () => {
 	await removeAllPriceModifiers();
 });
 
-afterAll(async () => {
-	await browser.close();
-});
-
 const getFormattedAmount = formatAmount(2);
 
 const setTestName = async (name: string) => {

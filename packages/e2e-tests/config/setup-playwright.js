@@ -131,3 +131,7 @@ beforeAll(async () => {
 
 	await activatePlugin('event-espresso');
 });
+
+afterAll(async () => {
+	await browser.close();
+});
