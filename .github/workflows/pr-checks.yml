@@ -80,7 +80,7 @@ jobs:
 
             - name: Archive debug artifacts (screenshots, HTML snapshots)
               uses: actions/upload-artifact@v2
-              #if: failure()
+              if: always()
               with:
-                  name: failures-artifacts
+                  name: playwright-artifacts
                   path: artifacts
