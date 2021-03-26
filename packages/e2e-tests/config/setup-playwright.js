@@ -131,7 +131,3 @@ beforeAll(async () => {
 
 	await activatePlugin('event-espresso-core/espresso.php');
 });
-
-afterAll(async () => {
-	await browser.close();
-});
