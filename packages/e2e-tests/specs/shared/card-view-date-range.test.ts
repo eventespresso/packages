@@ -48,6 +48,7 @@ describe(namespace, () => {
 			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
 				startDateMonth.substring(0, 3)
 			);
+
 			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(endDate);
 			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
 				endDateMonth.substring(0, 3)
