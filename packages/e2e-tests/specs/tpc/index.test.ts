@@ -104,7 +104,7 @@ describe('TPC:calculateTicketTotal', () => {
 
 describe('TPC:calculateBasePrice', () => {
 	beforeAll(async () => {
-		await page.click('[aria-label="Enable reverse calculations"]').catch(console.log);
+		await page.click('[aria-label="Enable reverse calculate"]').catch(console.log);
 	});
 
 	// lets reverse calculate base price from the ticket total test data
