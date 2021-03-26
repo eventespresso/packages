@@ -4,6 +4,7 @@
 import { saveVideo } from 'playwright-video';
 
 import { clickButton, clickLastDateFromPicker, createNewEvent, setListDisplayControl } from '../../utils';
+import { expectCardToContain } from '../../assertions';
 import { modalRTESel } from '../../constants';
 
 const namespace = 'event.dates.edit';
@@ -19,7 +20,7 @@ afterAll(async () => {
 });
 
 describe(namespace, () => {
-	it('should check the date card inline inputs', async () => {
+	it('should edit an existing datetime', async () => {
 		const datesList = '#ee-entity-list-datetimes';
 		const newDateName = 'new date name';
 		const newDateDesc = 'new date description';
@@ -49,19 +50,14 @@ describe(namespace, () => {
 		// expect(await page.$eval(`${datesList} .entity-card-details__text`, (elements) => elements.innerHTML)).toContain(
 		// 	newDateDesc
 		// );
-		expect(
-			await page.$eval(
-				`${datesList} .ee-entity-details__value .ee-tabbable-text`,
-				(elements) => elements.innerHTML
-			)
-		).toContain(newDateCap);
-		expect(await page.$eval(`${datesList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(startDate);
-		expect(await page.$eval(`${datesList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
-			startDateMonth.substring(0, 3)
-		);
-		expect(await page.$eval(`${datesList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(endDate);
-		expect(await page.$eval(`${datesList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
-			endDateMonth.substring(0, 3)
-		);
+		await expectCardToContain({
+			capacity: newDateCap,
+			endDate,
+			endDateMonth,
+			name: newDateName,
+			startDate,
+			startDateMonth,
+			type: 'datetime',
+		});
 	});
 });
