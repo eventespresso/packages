@@ -44,6 +44,8 @@ describe(namespace, () => {
 		expect(await page.$eval(`${datesList} .entity-card-details__name`, (elements) => elements.innerHTML)).toContain(
 			newDateName
 		);
+
+		// TODO: uncomment when https://github.com/eventespresso/barista/issues/789 is closed
 		// expect(await page.$eval(`${datesList} .entity-card-details__text`, (elements) => elements.innerHTML)).toContain(
 		// 	newDateDesc
 		// );
