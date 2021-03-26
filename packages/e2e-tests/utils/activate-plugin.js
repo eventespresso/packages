@@ -24,6 +24,7 @@ export async function activatePlugin(plugin) {
 
 	try {
 		await page.click(`tr[data-plugin="${plugin}"] .activate a`);
+		console.log(`Activated plugin "${plugin}".`);
 	} catch (error) {
 		console.log(`Could not activate the plugin "${plugin}". May be it's already active.`);
 	}

@@ -21,7 +21,12 @@ export async function deactivatePlugin(plugin) {
 	// 	return;
 	// }
 
-	await page.click(`tr[data-plugin="${plugin}"] .deactivate a`).catch(console.log);
+	try {
+		await page.click(`tr[data-plugin="${plugin}"] .deactivate a`);
+		console.log(`Deactivated plugin "${plugin}".`);
+	} catch (error) {
+		console.log(`Could not deactivate the plugin "${plugin}". May be it's already deactivated.`);
+	}
 
 	await switchUserToTest();
 }
