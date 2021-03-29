@@ -1,10 +1,10 @@
-import { useCallback, useState, useMemo } from 'react';
+import { useCallback, useEffect, useState, useMemo } from 'react';
 
 import classNames from 'classnames';
 
 import { Dotdotdot } from '@eventespresso/adapters';
 import { Edit } from '@eventespresso/icons';
-import { useDisclosure } from '@eventespresso/hooks';
+import { useDisclosure, usePrevious, useIfMounted } from '@eventespresso/hooks';
 import { SimpleTextEditor } from '@eventespresso/rich-text-editor';
 import { TabbableText, ModalWithAlert } from '@eventespresso/ui-components';
 
@@ -22,6 +22,18 @@ export const SimpleTextEditorModal: React.FC<SimpleTextEditorModalProps> = ({
 }) => {
 	const [text, setText] = useState(props.text);
 	const { isOpen, onOpen, onClose } = useDisclosure();
+
+	const previousValue = usePrevious(props.text);
+	const ifMounted = useIfMounted();
+	useEffect(() => {
+		// update value if updated from consumer
+		ifMounted(() => {
+			if (props.text !== previousValue) {
+				setText(props.text);
+			}
+		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [props.text]);
 
 	const hasChanges = text !== props.text;
 	const previewClassName = classNames('ee-inline-edit__preview', className);
