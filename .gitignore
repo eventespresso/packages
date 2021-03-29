@@ -76,3 +76,6 @@ typings/
 # SB-related
 storybook-static
 
+# Misc
+.wp-env.override.json
+
