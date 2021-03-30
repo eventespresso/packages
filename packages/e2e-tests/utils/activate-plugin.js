@@ -1,6 +1,7 @@
 import { switchUserToAdmin } from './switch-user-to-admin';
 import { switchUserToTest } from './switch-user-to-test';
 import { visitAdminPage } from './visit-admin-page';
+import { isPluginNetworkActive } from './isPluginNetworkActive';
 
 /**
  * Activates an installed plugin.
@@ -11,22 +12,15 @@ export async function activatePlugin(plugin) {
 	await switchUserToAdmin();
 	await visitAdminPage('plugins.php', null);
 
-	try {
-		const disableLink = await page.$eval(`tr[data-plugin="${plugin}"] .deactivate a`, (el) => el.innerHTML);
-
-		if (disableLink) {
-			await switchUserToTest();
-			return;
+	if (await isPluginNetworkActive(plugin)) {
+		console.log(`Plugin "${plugin}" is network active.`);
+	} else {
+		try {
+			await page.click(`tr[data-plugin="${plugin}"] .activate a`);
+			console.log(`Activated plugin "${plugin}".`);
+		} catch (error) {
+			console.log(`Could not activate the plugin "${plugin}". May be it's already active.`);
 		}
-	} catch (error) {
-		console.log(`Could not deactivate the plugin "${plugin}". May be it's already deactivated.`);
-	}
-
-	try {
-		await page.click(`tr[data-plugin="${plugin}"] .activate a`);
-		console.log(`Activated plugin "${plugin}".`);
-	} catch (error) {
-		console.log(`Could not activate the plugin "${plugin}". May be it's already active.`);
 	}
 
 	await switchUserToTest();
