@@ -100,6 +100,10 @@ jobs:
                   name: build
                   path: build/
 
+            - name: Display structure of downloaded files
+              run: ls -R
+              working-directory: ./
+
             # Leave this here just in case "needs" field is removed, then it can be enabled
             # - name: Build barista assets
             #   run: yarn && yarn build
