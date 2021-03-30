@@ -5,6 +5,22 @@ on: [pull_request]
 env:
     PLAYWRIGHT_BROWSERS_PATH: 0 # See https://playwright.dev/docs/ci/#caching-browsers
 jobs:
+    # JOB to check if the files in a path have changed
+    what-is-hit:
+        runs-on: ubuntu-latest
+        outputs:
+            js: ${{ steps.filter.outputs.js }}
+        steps:
+            - uses: dorny/paths-filter@v2
+              id: filter
+              with:
+                  base: ${{ github.ref }}
+                  filters: |
+                      js:
+                        - 'domains/**'
+                        - 'packages/**'
+                        - 'yarn.lock'
+
     build:
         runs-on: ubuntu-latest
         strategy:
@@ -12,13 +28,14 @@ jobs:
                 task: [lint, build, test]
         name: ${{ matrix.task }}
         needs: what-is-hit
+        # Run the job(s) only if JS is affected
+        if: ${{ needs.what-is-hit.outputs.js == 'true' }}
         steps:
             - name: Checkout the commit
               uses: actions/checkout@v2
               with:
                   # To make sure all history is fetched for jest --changedSince to work as expected
                   fetch-depth: ${{ ( matrix.task != 'test' && 1 ) || 0 }} # 0 for test, 1 otherwise
-                  token: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
 
             # TODO replace this when setup-node action supports LTS alias
             - name: Set up Node
@@ -43,37 +60,21 @@ jobs:
               run: echo "CLI_ARGS=--changedSince ${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
 
             - name: Run ${{ matrix.task }}
-              # Run the step only if it's not build or e2e is affected
-              if: ${{ matrix.task != 'build' || needs.what-is-hit.outputs.e2e == 'true' }}
               run: yarn ${{ matrix.task }}:ci ${{ env.CLI_ARGS }}
 
             - name: Upload build artifact
               uses: actions/upload-artifact@v2
-              if: ${{ matrix.task == 'build' && needs.what-is-hit.outputs.e2e == 'true' }}
+              if: ${{ matrix.task == 'build' }}
               with:
                   name: build
                   path: build/
 
-    # JOB to check if the files in a path have changed
-    what-is-hit:
-        runs-on: ubuntu-latest
-        outputs:
-            e2e: ${{ steps.filter.outputs.e2e }}
-        steps:
-            - uses: dorny/paths-filter@v2
-              id: filter
-              with:
-                  base: ${{ github.ref }}
-                  filters: |
-                      e2e:
-                        - 'domains/**'
-                        - 'packages/**'
-                        - 'yarn.lock'
-
     e2e:
         name: E2E Tests
-        needs: build
+        needs: [build, what-is-hit]
         runs-on: ubuntu-latest
+        # Run the job only if JS is affected
+        if: ${{ needs.what-is-hit.outputs.js == 'true' }}
         steps:
             - uses: actions/checkout@v2
 
