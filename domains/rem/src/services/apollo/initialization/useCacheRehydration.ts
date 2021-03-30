@@ -5,6 +5,7 @@ import { __ } from '@eventespresso/i18n';
 import { useSystemNotifications } from '@eventespresso/toaster';
 import { useRelations } from '@eventespresso/services';
 import { useIsRehydrated } from '@eventespresso/data';
+import { isDev } from '@eventespresso/constants';
 
 import useCacheRehydrationData from './useCacheRehydrationData';
 import { useUpdateRecurrenceList } from '../../../hooks';
@@ -37,7 +38,7 @@ const useCacheRehydration = (): boolean => {
 				espressoRecurrences,
 			},
 		});
-		toaster.success({ message: __('recurrences initialized') });
+		isDev && toaster.success({ message: __('recurrences initialized') });
 
 		const relationalData = getRelationalData();
 
