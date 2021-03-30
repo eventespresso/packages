@@ -50,7 +50,7 @@ describe('TAM', () => {
 		it('the assignments list should contain only the remaining date', async () => {
 			await removeLastTicket();
 
-			await page.click('text=Ticket Assignments');
+			await page.click('text=Assignments XYZ');
 
 			const assignments = await page.$$('.ee-ticket-assignments-manager tbody tr td');
 
