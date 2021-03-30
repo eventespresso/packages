@@ -11,6 +11,7 @@ jobs:
             matrix:
                 task: [lint, build, test]
         name: ${{ matrix.task }}
+        needs: what-is-hit
         steps:
             - name: Checkout the commit
               uses: actions/checkout@v2
@@ -42,10 +43,36 @@ jobs:
               run: echo "CLI_ARGS=--changedSince ${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
 
             - name: Run ${{ matrix.task }}
+              # Run the step only if it's not build or e2e is affected
+              if: ${{ matrix.task != 'build' || needs.what-is-hit.outputs.e2e == 'true' }}
               run: yarn ${{ matrix.task }}:ci ${{ env.CLI_ARGS }}
+
+            - name: Upload build artifact
+              uses: actions/upload-artifact@v2
+              if: ${{ matrix.task == 'build' && needs.what-is-hit.outputs.e2e == 'true' }}
+              with:
+                  name: build
+                  path: build/
+
+    # JOB to check if the files in a path have changed
+    what-is-hit:
+        runs-on: ubuntu-latest
+        outputs:
+            e2e: ${{ steps.filter.outputs.e2e }}
+        steps:
+            - uses: dorny/paths-filter@v2
+              id: filter
+              with:
+                  base: ${{ github.ref }}
+                  filters: |
+                      e2e:
+                        - 'domains/**'
+                        - 'packages/**'
+                        - 'yarn.lock'
+
     e2e:
         name: E2E Tests
-        #needs: [build]
+        needs: build
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -66,8 +93,15 @@ jobs:
               if: steps.cache-deps.outputs.cache-hit != 'true'
               run: yarn install --frozen-lockfile
 
-            - name: Build barista assets
-              run: yarn && yarn build
+            - name: Download build artifact
+              uses: actions/download-artifact@v2
+              with:
+                  name: build
+                  path: build/
+
+            # Leave this here just in case "needs" field is removed, then it can be enabled
+            # - name: Build barista assets
+            #   run: yarn && yarn build
 
             - name: Install WordPress
               run: yarn wp-env start
