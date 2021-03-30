@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { useRelations, useStatus, TypeName } from '@eventespresso/services';
 import { useSystemNotifications } from '@eventespresso/toaster';
+import { isDev } from '@eventespresso/constants';
 import {
 	useCurrentUserQueryOptions,
 	useGeneralSettingsQueryOptions,
@@ -91,7 +92,7 @@ const useCacheRehydration = (): boolean => {
 			},
 		});
 		setIsLoaded(TypeName.priceTypes, true);
-		toaster.success({ message: __('price types initialized') });
+		isDev && toaster.success({ message: __('price types initialized') });
 
 		/* Rehydrate datetimes */
 		updateDatetimeList({
@@ -101,7 +102,7 @@ const useCacheRehydration = (): boolean => {
 			},
 		});
 		setIsLoaded(TypeName.datetimes, true);
-		toaster.success({ message: __('datetimes initialized') });
+		isDev && toaster.success({ message: __('datetimes initialized') });
 
 		/* Rehydrate tickets */
 		updateTicketList({
@@ -111,7 +112,7 @@ const useCacheRehydration = (): boolean => {
 			},
 		});
 		setIsLoaded(TypeName.tickets, true);
-		toaster.success({ message: __('tickets initialized') });
+		isDev && toaster.success({ message: __('tickets initialized') });
 
 		/* Rehydrate prices */
 		updatePriceList({
@@ -121,7 +122,7 @@ const useCacheRehydration = (): boolean => {
 			},
 		});
 		setIsLoaded(TypeName.prices, true);
-		toaster.success({ message: __('prices initialized') });
+		isDev && toaster.success({ message: __('prices initialized') });
 
 		/* Rehydrate current user */
 		updateCurrentUser({
