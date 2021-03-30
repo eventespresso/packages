@@ -14,7 +14,7 @@ beforeAll(async () => {
 
 describe('TAM', () => {
 	it('if there are no assignments - there should be a related info and a disabled submit button', async () => {
-		await page.click('text=Ticket Assignments');
+		await page.click('text=Assignments XYZ');
 		await page.click('[aria-label="OLD"]');
 
 		await expect(page).toHaveText(
@@ -32,7 +32,7 @@ describe('TAM', () => {
 	});
 
 	it('if there is an assignment - the submit button should be enabled', async () => {
-		await page.click('text=Ticket Assignments');
+		await page.click('text=Assignments XYZ');
 		await page.click('[aria-label="OLD"]');
 
 		await expect(await isSubmitBtnDisabled()).toBe(true);
