@@ -28,8 +28,6 @@ jobs:
                 task: [lint, build, test]
         name: ${{ matrix.task }}
         needs: what-is-hit
-        # Run the job(s) only if JS is affected
-        if: ${{ needs.what-is-hit.outputs.js == 'true' }}
         steps:
             - name: Checkout the commit
               uses: actions/checkout@v2
@@ -60,11 +58,13 @@ jobs:
               run: echo "CLI_ARGS=--changedSince ${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
 
             - name: Run ${{ matrix.task }}
+              # Run the task only if JS is affected
+              if: ${{ needs.what-is-hit.outputs.js == 'true' }}
               run: yarn ${{ matrix.task }}:ci ${{ env.CLI_ARGS }}
 
             - name: Upload build artifact
               uses: actions/upload-artifact@v2
-              if: ${{ matrix.task == 'build' }}
+              if: ${{ matrix.task == 'build' && needs.what-is-hit.outputs.js == 'true' }}
               with:
                   name: build
                   path: build/
@@ -99,10 +99,6 @@ jobs:
               with:
                   name: build
                   path: build/
-
-            - name: Display structure of downloaded files
-              run: ls -R
-              working-directory: ./
 
             # Leave this here just in case "needs" field is removed, then it can be enabled
             # - name: Build barista assets
