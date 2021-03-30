@@ -27,7 +27,7 @@ const DatesListButtons: React.FC = () => {
 		<ButtonRow>
 			<NewDateButton />
 			<Button
-				buttonText={__('Assignments XYZ')}
+				buttonText={__('Ticket Assignments')}
 				icon={Ticket}
 				isDisabled={isDisabled}
 				onClick={onOpen}
