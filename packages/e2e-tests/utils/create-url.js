@@ -8,8 +8,6 @@ import { join } from 'path';
  */
 import { WP_BASE_URL } from './shared/config';
 
-console.log('WP_BASE_URL', WP_BASE_URL);
-
 /**
  * Creates new URL by parsing base URL, WPPath and query string.
  *
