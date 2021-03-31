@@ -9,7 +9,7 @@ export const findEntityIdByName = async ({ entity, name }: Props) => {
 
 	const listItemId = await entityList.$eval(`text=${name}`, (e) => e.closest('.ee-entity-list-item').id);
 
-	const [entityId] = listItemId.match(new RegExp('(?<=row-)(.*)(?=-row)', 'g'));
+	const [entityId] = listItemId.split('-row-').filter(Boolean);
 
 	return entityId;
 };
