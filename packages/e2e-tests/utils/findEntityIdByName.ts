@@ -11,7 +11,7 @@ export const findEntityIdByName = async ({ entity, name, view }: Props) => {
 	const listItemId = await entityList.$eval(`text=${name}`, (e) => e.closest('.ee-entity-list-item').id);
 
 	if (view === 'table') {
-		const [, entityId] = listItemId.split(/-row-/);
+		const entityId = listItemId.match(/row-(?<id>.+?)-row/)?.groups?.id;
 
 		return entityId;
 	}
