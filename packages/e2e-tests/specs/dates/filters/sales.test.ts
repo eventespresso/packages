@@ -3,7 +3,13 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewRegistration, addNewTicket, clickButton, createNewEvent, removeLastTicket } from '../../../utils';
+import {
+	// addNewRegistration,
+	addNewTicket,
+	clickButton,
+	createNewEvent,
+	removeLastTicket,
+} from '../../../utils';
 import { getDatesLength } from '../../../assertions';
 
 const namespace = 'eventDates.filters.sales';

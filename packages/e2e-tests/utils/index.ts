@@ -6,6 +6,7 @@ export * from './addNewTicket';
 export * from './clickButton';
 export * from './createNewEvent';
 export * from './clickLastDateFromPicker';
+export * from './deleteDateByName';
 export * from './findEntityIdByName';
 export * from './removeAllTickets';
 export * from './removeLastDate';

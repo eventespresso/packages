@@ -1,5 +1,4 @@
-import { useCallback } from 'react';
-
+import { useCallback, useMemo } from 'react';
 import { __ } from '@eventespresso/i18n';
 import {
 	DropdownMenu,
@@ -15,8 +14,6 @@ import type { EntityEditModalData } from '@edtrUI/types';
 
 import useActions from './useActions';
 import type { DateMainMenuProps } from './types';
-
-const toggleProps: DropdownToggleProps = { tooltip: __('event date main menu') };
 
 const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 	const { copyDate, trashDate, isTrashed } = useActions(datetime.id);
@@ -40,6 +37,14 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 
 	const trashDateTitle = isTrashed ? __('delete permanently') : __('trash datetime');
 
+	const toggleProps: DropdownToggleProps = useMemo(
+		() => ({
+			'data-testid': `ee-date-main-menu-${datetime.id}`,
+			tooltip: __('event date main menu'),
+		}),
+		[datetime.id]
+	);
+
 	const onOpenEditModal = useCallback(() => {
 		openWithData({ entityId: datetime.id });
 	}, [datetime.id, openWithData]);
@@ -51,7 +56,12 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 			<DropdownMenu toggleProps={toggleProps}>
 				<Edit onClick={onOpenEditModal} title={__('edit datetime')} />
 				<Copy onClick={copyDate} title={__('copy datetime')} />
-				<Trash onClick={onOpen} title={trashDateTitle} isDisabled={cannotBeDeleted} />
+				<Trash
+					data-testid={`ee-trash-date-${datetime.id}`}
+					onClick={onOpen}
+					title={trashDateTitle}
+					isDisabled={cannotBeDeleted}
+				/>
 			</DropdownMenu>
 			{confirmationDialog}
 		</>

@@ -46,10 +46,10 @@ describe(namespace, () => {
 			newDateName
 		);
 
-		// TODO: uncomment when https://github.com/eventespresso/barista/issues/789 is closed
-		// expect(await page.$eval(`${datesList} .entity-card-details__text`, (elements) => elements.innerHTML)).toContain(
-		// 	newDateDesc
-		// );
+		expect(await page.$eval(`${datesList} .entity-card-details__text`, (elements) => elements.innerHTML)).toContain(
+			newDateDesc
+		);
+
 		await expectCardToContain({
 			capacity: newDateCap,
 			endDate,
