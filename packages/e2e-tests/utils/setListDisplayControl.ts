@@ -1,4 +1,3 @@
-/// <reference types="jest-playwright-preset" />
 import type { DisplayStartOrEndDate } from '@eventespresso/edtr-services';
 
 type Value = `${DisplayStartOrEndDate}`;

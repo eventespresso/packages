@@ -1,10 +1,12 @@
 export * from './addNewDate';
+export * from './addNewEntity';
 export * from './addNewPriceModifier';
 export * from './addNewRegistration';
 export * from './addNewTicket';
 export * from './clickButton';
 export * from './createNewEvent';
 export * from './clickLastDateFromPicker';
+export * from './findEntityIdByName';
 export * from './removeAllTickets';
 export * from './removeLastDate';
 export * from './removeLastTicket';
@@ -12,6 +14,7 @@ export * from './removeAllPriceModifiers';
 export * from './setListDisplayControl';
 export * from './setPrice';
 export * from './setPrices';
+export * from './switchView';
 
 export { activatePlugin } from './activate-plugin';
 export { activateTheme } from './activate-theme';

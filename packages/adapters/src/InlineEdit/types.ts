@@ -8,6 +8,7 @@ export type InputType = 'heading' | 'number' | 'textarea' | 'text';
 export interface InlineEditProps
 	extends Partial<ChakraEditableProps>,
 		Omit<CommonInputProps<HTMLInputElement>, 'onChangeValue'> {
+	'data-testid'?: string;
 	editableInputClassName?: string;
 	inputClassName?: string;
 	inputType?: InputType;
@@ -25,7 +26,7 @@ export interface InlineEditPreviewProps
 }
 
 export interface InlineEditInputProps
-	extends Pick<InlineEditProps, 'editableInputClassName' | 'inputType' | 'textAreaClassName'> {
+	extends Pick<InlineEditProps, 'data-testid' | 'editableInputClassName' | 'inputType' | 'textAreaClassName'> {
 	onCancel: VoidFunction;
 	setValue: React.Dispatch<React.SetStateAction<string>>;
 }

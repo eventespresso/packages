@@ -7,11 +7,17 @@ import { InlineEditText } from '@eventespresso/ui-components';
 import type { DateItemProps } from '../types';
 
 interface EditableNameProps extends DateItemProps {
+	'data-testid'?: string;
 	className?: string;
 	view?: 'card' | 'table';
 }
 
-const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime, view = 'card' }) => {
+const EditableName: React.FC<EditableNameProps> = ({
+	className,
+	'data-testid': testid,
+	entity: datetime,
+	view = 'card',
+}) => {
 	const { updateEntity } = useDatetimeMutator(datetime.id);
 
 	const tooltip = __('edit title…');
@@ -32,6 +38,7 @@ const EditableName: React.FC<EditableNameProps> = ({ className, entity: datetime
 	return (
 		<InlineEditText
 			className={className}
+			data-testid={testid}
 			lineCount={lineCount}
 			onChange={onChangeName}
 			tag={view === 'table' ? 'div' : 'h4'}

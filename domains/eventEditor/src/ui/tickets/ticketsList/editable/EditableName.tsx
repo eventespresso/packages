@@ -7,11 +7,17 @@ import { useTicketMutator } from '@eventespresso/edtr-services';
 import { InlineEditText } from '@eventespresso/ui-components';
 
 interface EditableNameProps extends TicketItemProps {
+	'data-testid'?: string;
 	className?: string;
 	view?: 'card' | 'table';
 }
 
-const EditableName: React.FC<Partial<EditableNameProps>> = ({ className, entity: ticket, view = 'card' }) => {
+const EditableName: React.FC<Partial<EditableNameProps>> = ({
+	className,
+	'data-testid': testid,
+	entity: ticket,
+	view = 'card',
+}) => {
 	const { updateEntity } = useTicketMutator(ticket.id);
 
 	const lineCount = view === 'card' && 2;
@@ -32,6 +38,7 @@ const EditableName: React.FC<Partial<EditableNameProps>> = ({ className, entity:
 	return (
 		<InlineEditText
 			className={className}
+			data-testid={testid}
 			lineCount={lineCount}
 			onChange={onChangeName}
 			tag={view === 'table' ? 'div' : 'h4'}

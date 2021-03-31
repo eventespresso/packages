@@ -67,7 +67,7 @@ const useBodyRowGenerator = (): BodyRowGenerator => {
 
 		return {
 			cells,
-			className: `ee-editor-date-list-view-row`,
+			className: `ee-editor-date-list-view-row ee-entity-list-item`,
 			id: `ee-editor-date-list-view-row-${price.id}`,
 			key: `row-${price.id}`,
 			type: 'row',

@@ -68,9 +68,10 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				size: 'huge',
 				value: (
 					<EditableName
-						className={'ee-entity-list-text ee-focus-priority-5'}
+						className='ee-entity-name ee-entity-list-text ee-focus-priority-5'
+						data-testid={`ee-entity-list-view-row-editable-${datetime.id}`}
 						entity={datetime}
-						view={'table'}
+						view='table'
 					/>
 				),
 			};
@@ -141,6 +142,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				className: statusClassName,
 				id: `ee-editor-date-list-view-row-${datetime.id}`,
 				key: `row-${datetime.id}`,
+				rowClassName: 'ee-entity-list-item',
 				type: 'row',
 			};
 		},

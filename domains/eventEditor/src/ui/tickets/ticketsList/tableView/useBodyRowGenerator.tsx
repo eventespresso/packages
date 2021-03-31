@@ -65,9 +65,10 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				size: 'huge',
 				value: (
 					<EditableName
-						className={'ee-entity-list-text ee-focus-priority-5'}
+						className='ee-entity-name ee-entity-list-text ee-focus-priority-5'
+						data-testid={`ee-entity-list-view-row-editable-${ticket.id}`}
 						entity={ticket}
-						view={'table'}
+						view='table'
 					/>
 				),
 			};
@@ -149,6 +150,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				className: `ee-editor-date-list-view-row ${statusClassName}`,
 				id: `ee-editor-date-list-view-row-${ticket.id}`,
 				key: `row-${ticket.id}`,
+				rowClassName: 'ee-entity-list-item',
 				type: 'row',
 			};
 		},

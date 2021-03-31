@@ -22,7 +22,7 @@ const EntityCard: React.FC<EntityCardProps> = ({
 	const afterSidebar = <Sidebar className={'entity-card__menu'}>{actionsMenu}</Sidebar>;
 
 	return (
-		<EntityPaperFrame className='ee-entity-card-wrapper' entity={entity}>
+		<EntityPaperFrame className='ee-entity-card-wrapper ee-entity-list-item' entity={entity}>
 			<Row align={'wide'} className={'entity-card'}>
 				{!reverse ? beforeSidebar : afterSidebar}
 				<Content className={'entity-card__details-wrapper'}>

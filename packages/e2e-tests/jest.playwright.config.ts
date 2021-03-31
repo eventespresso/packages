@@ -1,4 +1,7 @@
+import dotenv from 'dotenv';
 import type { Config } from '@jest/types';
+
+dotenv.config();
 
 const config: Config.InitialOptions = {
 	preset: 'jest-playwright-jsdom',
@@ -19,7 +22,7 @@ const config: Config.InitialOptions = {
 		},
 	},
 	testPathIgnorePatterns: ['/node_modules/'],
-	verbose: process.env.CI === 'true',
+	verbose: process.env.CI === 'true' && true,
 	transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$', '^.+\\.module\\.(css|sass|scss)$'],
 	transform: {
 		'^.+\\.(js|jsx)$': '<rootDir>/../../node_modules/babel-jest',

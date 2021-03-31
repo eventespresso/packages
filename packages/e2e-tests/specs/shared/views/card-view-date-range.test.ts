@@ -3,7 +3,8 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent, clickLastDateFromPicker, setListDisplayControl } from '../../utils';
+import { createNewEvent, clickLastDateFromPicker, setListDisplayControl } from '../../../utils';
+import { entities } from '../../../constants';
 
 const namespace = 'event.entities.edit.calendar.date.range';
 
@@ -12,11 +13,11 @@ beforeAll(async () => {
 });
 
 describe(namespace, () => {
-	for (const entity of ['datetime', 'ticket']) {
+	for (const entity of entities) {
 		it('should change the start and end date from the card for:' + entity, async () => {
 			const entityList = `#ee-entity-list-${entity}s`;
 
-			await createNewEvent({ title: namespace });
+			await createNewEvent({ title: namespace + entity });
 
 			await page.click(`${entityList} .ee-edit-calendar-date-range-btn`);
 
@@ -30,7 +31,7 @@ describe(namespace, () => {
 
 			await page.click('.chakra-popover__content [aria-label="save"]');
 
-			await setListDisplayControl(entity as 'datetime' | 'ticket', 'both');
+			await setListDisplayControl(entity, 'both');
 
 			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(startDate);
 			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(

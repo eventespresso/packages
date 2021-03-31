@@ -10,6 +10,7 @@ import type { InlineEditProps } from './types';
 export const InlineEdit: React.FC<InlineEditProps> = ({
 	'aria-describedby': ariaDescribedby,
 	defaultValue,
+	'data-testid': testid,
 	editableInputClassName,
 	inputClassName,
 	inputType,
@@ -72,6 +73,7 @@ export const InlineEdit: React.FC<InlineEditProps> = ({
 							value={currentValue}
 						/>
 						<InlineEditInput
+							data-testid={testid}
 							editableInputClassName={editableInputClassName}
 							inputType={inputType}
 							setValue={setCurrentValue}
