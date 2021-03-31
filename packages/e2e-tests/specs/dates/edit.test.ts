@@ -19,7 +19,8 @@ afterAll(async () => {
 	await browser.close();
 });
 
-describe(namespace, () => {
+// eslint-disable-next-line jest/no-focused-tests
+describe.only(namespace, () => {
 	it('should edit an existing datetime', async () => {
 		const datesList = '#ee-entity-list-datetimes';
 		const newDateName = 'new date name';
