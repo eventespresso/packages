@@ -66,7 +66,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 				value: (
 					<EditableName
 						className='ee-entity-name ee-entity-list-text ee-focus-priority-5'
-						data-testid={`ee-entity-list-view-row-editable-${ticket.id}`}
+						data-testid={`ee-entity-list-view-row-editable-${ticket.dbId}`}
 						entity={ticket}
 						view='table'
 					/>
@@ -148,7 +148,7 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 			return {
 				cells,
 				className: `ee-editor-date-list-view-row ${statusClassName}`,
-				id: `ee-editor-date-list-view-row-${ticket.id}`,
+				id: `ee-editor-date-list-view-row-${ticket.dbId}`,
 				key: `row-${ticket.id}`,
 				rowClassName: 'ee-entity-list-item',
 				type: 'row',

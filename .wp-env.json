@@ -3,12 +3,13 @@
 	"env": {
 		"tests": {
 			"mappings": {
-				"wp-content/plugins/eea-recurring-events-manager": "eventespresso/eea-recurring-events-manager#dev"
+				"wp-content/plugins/event-espresso-core": "/home/vadim/Public/EE/event-espresso-core",
+				"wp-content/plugins/eea-recurring-events-manager": "/var/www/wordpress/wp-content/plugins/eea-recurring-events-manager"
 			}
 		}
 	},
 	"mappings": {
 		"wp-content/plugins/event-espresso-core/assets": "./build"
 	},
-	"plugins": ["eventespresso/event-espresso-core#dev"]
+	"plugins": ["."]
 }

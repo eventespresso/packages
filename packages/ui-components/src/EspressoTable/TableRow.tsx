@@ -16,7 +16,7 @@ const TableRow: React.FC<BodyRow> = ({
 		return null;
 	}
 
-	const id = props.id ? `${props.id}-row-${rowNumber}` : `ee-rspnsv-table-row-${rowNumber}`;
+	const id = props.id ? `${props.id}-row` : `ee-rspnsv-table-row-${rowNumber}`;
 	const css = classNames(
 		rowClassName,
 		`ee-rspnsv-table-${rowType}-row`,
