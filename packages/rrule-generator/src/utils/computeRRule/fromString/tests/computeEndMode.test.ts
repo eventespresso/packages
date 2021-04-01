@@ -23,12 +23,21 @@ describe('fromString.computeEndMode', () => {
 		expect(result).toBe('ON_DATE');
 	});
 
-	it('returns "NEVER" when no end is specified', () => {
+	it('returns the first end mode from config when no end is specified', () => {
 		const rRuleState = getDefaultRRuleState();
 		const rrule = 'DTSTART:20200901T092307Z\nRRULE:FREQ=DAILY;INTERVAL=9;WKST=MO';
 		const rruleObj = RRuleObjectFromString(rrule).origOptions;
 
 		const result = computeEndMode(rRuleState, rruleObj, DEFAULT_CONFIG);
-		expect(result).toBe('NEVER');
+		expect(result).toBe(DEFAULT_CONFIG.endModes[0]);
+	});
+
+	it('returns undefined when no end is specified without config', () => {
+		const rRuleState = getDefaultRRuleState();
+		const rrule = 'DTSTART:20200901T092307Z\nRRULE:FREQ=DAILY;INTERVAL=9;WKST=MO';
+		const rruleObj = RRuleObjectFromString(rrule).origOptions;
+
+		const result = computeEndMode(rRuleState, rruleObj);
+		expect(result).toBe(undefined);
 	});
 });
