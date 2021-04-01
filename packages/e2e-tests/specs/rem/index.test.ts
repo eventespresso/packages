@@ -10,7 +10,9 @@ const REMPlugin = 'eea-recurring-events-manager/eea-recurring-events-manager.php
 beforeAll(async () => {
 	await activatePlugin(REMPlugin);
 
-	await page.click('text=Visit the Maintenance Page to get started');
+	await page
+		.click('text=Visit the Maintenance Page to get started')
+		.catch(() => console.log('The site is not in maintenance mode.'));
 
 	await page.click('text=My Database Is Backed Up, Continue');
 
