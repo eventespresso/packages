@@ -4,7 +4,7 @@
 import { saveVideo } from 'playwright-video';
 
 import { addNewDate, clickButton, createNewEvent } from '../../../utils';
-import { getDatesLength } from '../../../assertions';
+import { getEntitiesLength } from '../../../assertions';
 
 const namespace = 'eventDates.filters.status';
 
@@ -20,7 +20,7 @@ describe(namespace, () => {
 
 		await addNewDate({ name: newDateName, isTrashed: true });
 
-		expect(await getDatesLength()).toBe(1);
+		expect(await getEntitiesLength('datetime')).toBe(1);
 
 		await clickButton('show filters');
 
@@ -28,7 +28,7 @@ describe(namespace, () => {
 			value: 'all',
 		});
 
-		expect(await getDatesLength()).toBe(2);
+		expect(await getEntitiesLength('datetime')).toBe(2);
 
 		const datetimesList = await page.$eval('#ee-entity-list-datetimes', (elements) => elements.innerHTML);
 
