@@ -13,11 +13,11 @@ const useInitialState = (config: RRuleConfig, rRuleString?: string): StateInitia
 	return useCallback<StateInitializer>(
 		(initialState) => {
 			// if rRule string is provided, use it to generate initial state
-			const state = rRuleString ? computeRRuleFromString(defaultState, rRuleString) : defaultState;
+			const state = rRuleString ? computeRRuleFromString(defaultState, rRuleString, config) : defaultState;
 
 			return { ...initialState, ...state };
 		},
-		[rRuleString, defaultState]
+		[rRuleString, defaultState, config]
 	);
 };
 

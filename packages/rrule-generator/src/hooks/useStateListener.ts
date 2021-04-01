@@ -12,7 +12,7 @@ const useStateListener = ({ onChange, value, hideStart }: RRuleGeneratorProps): 
 	// Update/Initiate the state from value if it changes
 	useEffect(() => {
 		if (value) {
-			const data = computeRRuleFromString(getData(), value);
+			const data = computeRRuleFromString(getData(), value, config);
 			setData(data);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
