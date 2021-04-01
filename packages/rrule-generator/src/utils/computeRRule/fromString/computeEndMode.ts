@@ -15,7 +15,7 @@ const computeEndMode: ComputeRule<EndMode> = (data, rruleObj, config: RRuleConfi
 		return 'NEVER';
 	}
 
-	return config?.endModes?.[0];
+	return config.endModes[0];
 };
 
 export default computeEndMode;
