@@ -78,4 +78,4 @@ storybook-static
 
 # Misc
 .wp-env.override.json
-
+.env
