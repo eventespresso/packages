@@ -10,15 +10,17 @@ const REMPlugin = 'eea-recurring-events-manager/eea-recurring-events-manager.php
 beforeAll(async () => {
 	await activatePlugin(REMPlugin);
 
-	await page
-		.click('text=Visit the Maintenance Page to get started')
-		.catch(() => console.log('The site is not in maintenance mode.'));
+	try {
+		await page.click('text=Visit the Maintenance Page to get started');
 
-	await page.click('text=My Database Is Backed Up, Continue');
+		await page.click('text=My Database Is Backed Up, Continue');
 
-	await page.click('text=Begin Database Update');
+		await page.click('text=Begin Database Update');
 
-	await page.click('text=Next');
+		await page.click('text=Next');
+	} catch (error) {
+		console.log('The site is not in maintenance mode.');
+	}
 
 	await saveVideo(page, 'artifacts/REM.mp4');
 
