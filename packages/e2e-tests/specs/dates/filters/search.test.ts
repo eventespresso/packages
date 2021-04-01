@@ -5,6 +5,7 @@ import { saveVideo } from 'playwright-video';
 
 import { addNewDate, clickButton, createNewEvent, pressKeyWithModifier } from '../../../utils';
 import { getEntitiesLength } from '../../../assertions';
+import { datesList } from '../../../constants';
 
 const namespace = 'eventDates.filters.search';
 
@@ -24,12 +25,12 @@ describe(namespace, () => {
 		await clickButton('show filters');
 		await page.type('#ee-ee-search-input-dates-list', 'abc');
 		expect(await getEntitiesLength('datetime')).toBe(1);
-		expect(await page.$eval('#ee-entity-list-datetimes', (elements) => elements.innerHTML)).toContain('abc');
+		expect(await page.$eval(datesList, (elements) => elements.innerHTML)).toContain('abc');
 
 		await pressKeyWithModifier('primary', 'a');
 		await page.type('#ee-ee-search-input-dates-list', 'def');
 
 		expect(await getEntitiesLength('datetime')).toBe(1);
-		expect(await page.$eval('#ee-entity-list-datetimes', (elements) => elements.innerHTML)).toContain('def');
+		expect(await page.$eval(datesList, (elements) => elements.innerHTML)).toContain('def');
 	});
 });

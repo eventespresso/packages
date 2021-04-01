@@ -1,3 +1,5 @@
+export const datesList = '#ee-entity-list-datetimes';
+
 export const entities: Array<'datetime' | 'ticket'> = ['datetime', 'ticket'];
 
 export const lastDateSelector =

@@ -4,7 +4,7 @@
 import { saveVideo } from 'playwright-video';
 
 import { createNewEvent } from '../../utils';
-import { modalRTESel } from '../../constants';
+import { datesList, modalRTESel } from '../../constants';
 
 const namespace = 'event.dates.card.view.inline-inputs';
 
@@ -16,7 +16,6 @@ beforeAll(async () => {
 
 describe(namespace, () => {
 	it('should check the date card inline inputs', async () => {
-		const datesList = '#ee-entity-list-tickets';
 		const newDateName = 'new date name';
 		const newDateDesc = 'new date description';
 		const newDateCap = '100';

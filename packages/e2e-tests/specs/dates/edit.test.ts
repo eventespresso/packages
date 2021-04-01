@@ -5,7 +5,7 @@ import { saveVideo } from 'playwright-video';
 
 import { clickButton, clickLastDateFromPicker, createNewEvent, setListDisplayControl } from '../../utils';
 import { expectCardToContain } from '../../assertions';
-import { modalRTESel } from '../../constants';
+import { datesList, modalRTESel } from '../../constants';
 
 const namespace = 'event.dates.edit';
 
@@ -21,7 +21,6 @@ afterAll(async () => {
 
 describe(namespace, () => {
 	it('should edit an existing datetime', async () => {
-		const datesList = '#ee-entity-list-datetimes';
 		const newDateName = 'new date name';
 		const newDateDesc = 'new date description';
 		const newDateCap = '1000';

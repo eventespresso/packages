@@ -5,6 +5,7 @@ import { saveVideo } from 'playwright-video';
 
 import { addNewDate, clickButton, createNewEvent } from '../../../utils';
 import { getEntitiesLength } from '../../../assertions';
+import { datesList } from '../../../constants';
 
 const namespace = 'eventDates.filters.status';
 
@@ -30,7 +31,7 @@ describe(namespace, () => {
 
 		expect(await getEntitiesLength('datetime')).toBe(2);
 
-		const datetimesList = await page.$eval('#ee-entity-list-datetimes', (elements) => elements.innerHTML);
+		const datetimesList = await page.$eval(datesList, (elements) => elements.innerHTML);
 
 		expect(await datetimesList).toContain('trash');
 	});
