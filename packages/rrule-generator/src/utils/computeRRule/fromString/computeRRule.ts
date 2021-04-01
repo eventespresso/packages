@@ -21,10 +21,11 @@ import computeEndMode from './computeEndMode';
 import computeEndAfter from './computeEndAfter';
 import computeEndDate from './computeEndDate';
 import { RRuleState } from '../../../state';
+import { RRuleConfig } from '../../../types';
 
-type ComputeRRule = (data: RRuleState, rRuleString: string) => RRuleState;
+type ComputeRRule = (data: RRuleState, rRuleString: string, config: RRuleConfig) => RRuleState;
 
-const computeRRule: ComputeRRule = (data, rrule) => {
+const computeRRule: ComputeRRule = (data, rrule, config) => {
 	if (!rrule) {
 		return data;
 	}
@@ -80,7 +81,7 @@ const computeRRule: ComputeRRule = (data, rrule) => {
 			},
 			end: {
 				...data.end,
-				mode: computeEndMode(data, rruleObj),
+				mode: computeEndMode(data, rruleObj, config),
 				after: computeEndAfter(data, rruleObj),
 				date: computeEndDate(data, rruleObj),
 			},
