@@ -74,7 +74,7 @@ jobs:
         # needs: [build, what-is-hit]
         runs-on: ubuntu-latest
         # Run the job only if JS is affected
-        if: ${{ needs.what-is-hit.outputs.js == 'true' }}
+        # if: ${{ needs.what-is-hit.outputs.js == 'true' }}
         steps:
             - uses: actions/checkout@v2
 
