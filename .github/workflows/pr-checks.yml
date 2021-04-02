@@ -4,8 +4,6 @@ on: [pull_request]
 
 env:
     PLAYWRIGHT_BROWSERS_PATH: 0 # See https://playwright.dev/docs/ci/#caching-browsers
-    # If you want to run e2e in parallel to build, just comment out this env and e2e.needs: and e2e.if:
-    run_after_build: 'false'
 
 jobs:
     # JOB to check if the files in a path have changed
@@ -73,7 +71,10 @@ jobs:
                   path: build/
 
     e2e:
-        needs: [build, what-is-hit]
+        env:
+            # If you want to run e2e in parallel to build, just set this to false and comment out needs:
+            run_after_build: 'false'
+        # needs: [build, what-is-hit]
         name: E2E Tests
         runs-on: ubuntu-latest
         # Run the job only if JS is affected
