@@ -1,13 +1,9 @@
-/// <reference types="jest-playwright-preset" />
+import { clickButton, setPrice, fillDateTicketForm, DateTicketFormArgs } from './';
 
-import { clickButton, setPrice } from './';
-
-export const addNewTicket = async ({ amount, name }: any = {}) => {
+export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & { amount?: number }) => {
 	await page.click('text=Add New Ticket');
 
-	await page.focus('.ee-render-fields >> text=Name');
-
-	await page.type('.ee-render-fields >> text=Name', name);
+	await fillDateTicketForm(fields);
 
 	await clickButton('Set ticket prices');
 
@@ -18,6 +14,9 @@ export const addNewTicket = async ({ amount, name }: any = {}) => {
 	await setPrice({ amount, isBasePrice: true } as any);
 
 	await clickButton('Save and assign dates');
+
+	// Ensure that trashed dates are visible
+	await page.click('[aria-label="show trashed dates"]');
 
 	await page.click('[aria-label="assign ticket"]');
 

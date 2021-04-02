@@ -1,17 +1,15 @@
-import type { Datetime } from '@eventespresso/edtr-services';
-
 import { clickButton } from './';
+import { DateTicketFormArgs, fillDateTicketForm } from './fillDateTicketForm';
 
-export const addNewDate = async ({ name, isTrashed }: Partial<Datetime>) => {
+export const addNewDate = async (fields: DateTicketFormArgs) => {
 	await page.click('text=Add New Date');
 
-	await page.focus('.ee-render-fields >> text=Name');
-
-	await page.type('.ee-render-fields >> text=Name', name);
-
-	isTrashed && (await page.click('[aria-label="Trash"]'));
+	await fillDateTicketForm(fields);
 
 	await clickButton('Save and assign tickets');
+
+	// Ensure that trashed tickets are visible
+	await page.click('[aria-label="show trashed tickets"]');
 
 	await page.click('[aria-label="assign ticket"]');
 
