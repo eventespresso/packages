@@ -7,8 +7,8 @@ import { getDocument, queries } from 'playwright-testing-library';
 import { addNewEntity, createNewEvent, findEntityIdByName, switchView } from '../../../utils';
 import { entities } from '../../../constants';
 
-const namespace = 'event.views.table.new-entities';
 const { getByTestId } = queries;
+const namespace = 'event.views.table.new-entities';
 
 beforeAll(async () => {
 	await createNewEvent({ title: namespace });
@@ -35,7 +35,7 @@ describe(namespace, () => {
 					`${entityList} #ee-editor-date-list-view-row-${entityId}-row .ee-tabbable-text`
 				);
 				const newTicketNameNode = await getByTestId($document, `ee-entity-list-view-row-editable-${entityId}`);
-				await editableName?.click();
+				await editableName.click();
 				await newTicketNameNode.type(newName);
 				await page.click(entityList);
 				await switchView(entity, 'card');
