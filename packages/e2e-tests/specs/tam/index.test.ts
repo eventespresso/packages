@@ -22,7 +22,7 @@ describe('TAM', () => {
 			'Tickets must always have at least one date assigned to them but one or more of the tickets below does not have any.'
 		);
 
-		await expect(await isSubmitBtnDisabled()).toBe(true);
+		expect(await isSubmitBtnDisabled()).toBe(true);
 
 		await page.click('[aria-label="REMOVED"]');
 
@@ -35,11 +35,11 @@ describe('TAM', () => {
 		await page.click('text=Ticket Assignments');
 		await page.click('[aria-label="OLD"]');
 
-		await expect(await isSubmitBtnDisabled()).toBe(true);
+		expect(await isSubmitBtnDisabled()).toBe(true);
 
 		await page.click('[aria-label="REMOVED"]');
 
-		await expect(await isSubmitBtnDisabled()).toBe(false);
+		expect(await isSubmitBtnDisabled()).toBe(false);
 
 		await page.click('[aria-label="close modal"]');
 
@@ -54,7 +54,7 @@ describe('TAM', () => {
 
 			const assignments = await page.$$('.ee-ticket-assignments-manager tbody tr td');
 
-			await expect(assignments?.length).toBe(1);
+			expect(assignments?.length).toBe(1);
 		});
 	});
 });

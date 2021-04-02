@@ -110,7 +110,7 @@ jobs:
             - name: Setup Playwright
               uses: microsoft/playwright-github-action@v1
 
-            - name: Running the tests
+            - name: Run E2E tests
               run: yarn test:e2e
 
             - name: Archive debug artifacts (screenshots, HTML snapshots)
