@@ -18,7 +18,7 @@ describe('availableTickets', () => {
 		await createNewEvent({ title: 'to be deleted' });
 
 		const newTicketName = 'one way ticket';
-		const newTicketAmount = '1234';
+		const newTicketAmount = 1234;
 
 		await addNewTicket({ amount: newTicketAmount, name: newTicketName });
 

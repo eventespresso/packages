@@ -24,7 +24,7 @@ const ticketsListSelector = '#ee-entity-list-tickets .ee-entity-list__card-view'
 beforeAll(async () => {
 	await saveVideo(page, 'artifacts/calculateTicketTotal.mp4');
 	const newTicketName = 'one way ticket';
-	const newTicketAmount = '10';
+	const newTicketAmount = 10;
 
 	await createNewEvent({ title: 'calculateTicketTotal: to be deleted' });
 

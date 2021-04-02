@@ -70,11 +70,14 @@ jobs:
                   path: build/
 
     e2e:
+        # If you want to run e2e in parallel to build, just comment out this env and needs
+        env:
+            run_after_build: 'false'
+        needs: [build, what-is-hit]
         name: E2E Tests
-        # needs: [build, what-is-hit]
         runs-on: ubuntu-latest
         # Run the job only if JS is affected
-        # if: ${{ needs.what-is-hit.outputs.js == 'true' }}
+        if: ${{ !fromJson(env.run_after_build) || needs.what-is-hit.outputs.js == 'true' }}
         steps:
             - uses: actions/checkout@v2
 
@@ -95,6 +98,8 @@ jobs:
               run: yarn install --frozen-lockfile
 
             - name: Download build artifact
+              # Download artifact only if running after build job
+              if: ${{ fromJson(env.run_after_build) }}
               uses: actions/download-artifact@v2
               with:
                   name: build
@@ -102,6 +107,8 @@ jobs:
 
             # Leave this here just in case "needs" field is removed, then it can be enabled
             - name: Build barista assets
+              # Build assets only if running in parallel to build/test
+              if: ${{ ! fromJson(env.run_after_build) }}
               run: yarn && yarn build
 
             - name: Install WordPress
