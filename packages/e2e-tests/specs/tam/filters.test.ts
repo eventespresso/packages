@@ -40,7 +40,7 @@ describe('TAM:Filters', () => {
 		// Now lets "show trashed dates"
 		await clickLabel('show trashed dates');
 		rows = await page.$$(`${tamSelector} tbody tr`);
-		// Now that trashed date should also be visible, amking it 7
+		// Now that trashed date should also be visible, making it 7
 		expect(rows.length).toBe(7);
 	});
 });
