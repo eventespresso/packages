@@ -4,7 +4,7 @@ on: [pull_request]
 
 env:
     PLAYWRIGHT_BROWSERS_PATH: 0 # See https://playwright.dev/docs/ci/#caching-browsers
-    # If you want to run e2e in parallel to build, just comment out this env and e2e.needs:
+    # If you want to run e2e in parallel to build, just comment out this env and e2e.needs: and e2e.if:
     run_after_build: 'false'
 
 jobs:
@@ -77,7 +77,7 @@ jobs:
         name: E2E Tests
         runs-on: ubuntu-latest
         # Run the job only if JS is affected
-        if: ${{ !fromJson(env.run_after_build) || needs.what-is-hit.outputs.js == 'true' }}
+        if: ${{ needs.what-is-hit.outputs.js == 'true' }}
         steps:
             - uses: actions/checkout@v2
 
