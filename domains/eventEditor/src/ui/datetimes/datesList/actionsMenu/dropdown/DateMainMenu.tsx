@@ -39,6 +39,7 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 
 	const toggleProps: DropdownToggleProps = useMemo(
 		() => ({
+			className: 'ee-date-main-menu',
 			'data-testid': `ee-date-main-menu-${datetime.id}`,
 			tooltip: __('event date main menu'),
 		}),
