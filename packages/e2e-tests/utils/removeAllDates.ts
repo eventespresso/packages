@@ -1,4 +1,3 @@
-/// <reference types="jest-playwright-preset" />
 import { clickButton } from './';
 
 const selector = '.ee-date-main-menu button';

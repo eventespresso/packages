@@ -71,7 +71,7 @@ jobs:
 
     e2e:
         name: E2E Tests
-        needs: [build, what-is-hit]
+        # needs: [build, what-is-hit]
         runs-on: ubuntu-latest
         # Run the job only if JS is affected
         if: ${{ needs.what-is-hit.outputs.js == 'true' }}
@@ -101,8 +101,8 @@ jobs:
                   path: build/
 
             # Leave this here just in case "needs" field is removed, then it can be enabled
-            # - name: Build barista assets
-            #   run: yarn && yarn build
+            - name: Build barista assets
+              run: yarn && yarn build
 
             - name: Install WordPress
               run: yarn wp-env start
