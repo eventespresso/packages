@@ -13,7 +13,7 @@ export const deleteDateByName = async (name: string) => {
 
 	const $document = await getDocument(page);
 
-	const mainMenu = await getByTestId($document, `ee-date-main-menu-${dateId}`);
+	const mainMenu = await getByTestId($document, `ee-datetime-main-menu-${dateId}`);
 
 	await mainMenu.click();
 

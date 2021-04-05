@@ -59,7 +59,7 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 				<Edit onClick={onOpenEditModal} title={__('edit datetime')} />
 				<Copy onClick={copyDate} title={__('copy datetime')} />
 				<Trash
-					data-testid={`ee-trash-date-${datetime.id}`}
+					data-testid={`ee-trash-date-${datetime.dbId}`}
 					onClick={onOpen}
 					title={trashDateTitle}
 					isDisabled={cannotBeDeleted}
