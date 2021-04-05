@@ -22,7 +22,7 @@ const DateCell: React.FC<RenderCellProps> = ({ datetime }) => {
 	return (
 		<div className='date-cell-content'>
 			<div className={stripeClassName}></div>
-			<div className='ee-focus-priority-8'>{`${__('ID')}: ${datetime.dbId}`}</div>
+			<div className='ee-focus-priority-8 date-cell-content__id'>{`${__('ID')}: ${datetime.dbId}`}</div>
 			<div className='ee-focus-priority-5 date-cell-content__name'>{datetime.name}</div>
 			<div className='ee-focus-priority-6'>{startDate}</div>
 		</div>

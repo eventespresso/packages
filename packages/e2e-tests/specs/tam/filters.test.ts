@@ -2,10 +2,8 @@ import { saveVideo } from 'playwright-video';
 
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 
-import { createNewEvent, addNewDate, addNewTicket, clickButton, clickLabel } from '../../utils';
-import { data } from './data';
-
-const datesListSelector = '#ee-entity-list-datetimes .ee-entity-list__card-view';
+import { createNewEvent, clickButton, clickLabel } from '../../utils';
+import { addDatesAndTickets } from './utils';
 
 const tamSelector = '.ee-ticket-assignments-manager';
 
@@ -14,20 +12,7 @@ beforeAll(async () => {
 
 	await createNewEvent({ title: 'TAM Filters Test' });
 
-	// Wait for the list lazy load
-	await page.waitForFunction((selector) => document.querySelector(selector), datesListSelector);
-
-	// add dates
-	for (const item of data) {
-		await addNewDate({ ...item, name: 'Date ' + item.name });
-	}
-
-	// add tickets
-	for (const item of data) {
-		await addNewTicket({ ...item, name: 'Ticket ' + item.name, amount: 10 });
-	}
-
-	await page.waitForTimeout(1000);
+	await addDatesAndTickets();
 
 	await clickButton('Ticket Assignments');
 });
