@@ -83,8 +83,9 @@ describe('TAM:Filters', () => {
 		const columnsWithExpired = await page.$$(`${tamSelector} tbody tr:first-child td`);
 
 		const countWithExpired = columnsWithExpired.length;
-		// We added 2 expired tickets
-		expect(countWithExpired).toBe(countWithoutExpired + 2);
+		// We added 2 expired tickets, but one ticket is added with dates set to NOW,
+		// It is possible that till the the test case reaches here, that ticket is marked as expired.
+		expect(countWithExpired - countWithoutExpired).toBeGreaterThanOrEqual(2);
 
 		// Ensure to turn off "show expired tickets"
 		await clickLabel('show expired tickets');
