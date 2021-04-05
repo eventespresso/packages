@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 import {
 	DropdownMenu,
@@ -40,10 +41,10 @@ const DateMainMenu: React.FC<DateMainMenuProps> = ({ datetime }) => {
 	const toggleProps: DropdownToggleProps = useMemo(
 		() => ({
 			className: 'ee-date-main-menu',
-			'data-testid': `ee-date-main-menu-${datetime.id}`,
+			'data-testid': `ee-datetime-main-menu-${datetime.dbId}`,
 			tooltip: __('event date main menu'),
 		}),
-		[datetime.id]
+		[datetime.dbId]
 	);
 
 	const onOpenEditModal = useCallback(() => {

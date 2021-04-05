@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Copy, Edit, DropdownMenu, DropdownToggleProps } from '@eventespresso/ui-components';
@@ -10,8 +10,6 @@ import type { TicketMainMenuProps } from './types';
 import { EntityEditModalData } from '@edtrUI/types';
 import { DeleteTicket } from './DeleteTicket';
 
-const toggleProps: DropdownToggleProps = { className: 'ee-ticket-main-menu', tooltip: __('ticket main menu') };
-
 const TicketMainMenu: React.FC<TicketMainMenuProps> = (props) => {
 	const ticketId = props.ticket.id;
 	// Make sure to subscribe to Apollo cache
@@ -19,6 +17,15 @@ const TicketMainMenu: React.FC<TicketMainMenuProps> = (props) => {
 	const ticket = useTicketItem({ id: ticketId });
 
 	const copyTicket = useCopyTicket(ticket);
+
+	const toggleProps: DropdownToggleProps = useMemo(
+		() => ({
+			className: 'ee-ticket-main-menu',
+			'data-testid': `ee-ticket-main-menu-${ticket.dbId}`,
+			tooltip: __('ticket main menu'),
+		}),
+		[ticket.dbId]
+	);
 
 	const { openWithData } = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_TICKET);
 
