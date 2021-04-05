@@ -24,7 +24,6 @@ describe(namespace, () => {
 
 			await page.focus('.date-range-picker__end .react-datepicker__input-container input');
 			const [endDate, endDateMonth] = await clickLastDateFromPicker();
-			await page.click('.ee-timezone-info__button');
 
 			await page.click('.chakra-popover__content [aria-label="save"]');
 

@@ -17,6 +17,7 @@ export * from './removeAllPriceModifiers';
 export * from './removeAllTickets';
 export * from './removeLastDate';
 export * from './removeLastTicket';
+export * from './screenOptions';
 export * from './setListDisplayControl';
 export * from './setPrice';
 export * from './setPrices';

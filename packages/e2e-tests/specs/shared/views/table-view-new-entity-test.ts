@@ -1,13 +1,14 @@
 import { saveVideo } from 'playwright-video';
 import { getDocument, queries } from 'playwright-testing-library';
 
-import { addNewEntity, createNewEvent, findEntityIdByName, switchView } from '../../../utils';
+import { addNewEntity, createNewEvent, findEntityIdByName, screenOptions, switchView } from '../../../utils';
 import { entities } from '../../../constants';
 
 const { getByTestId } = queries;
 const namespace = 'event.views.table.new-entities';
 
 beforeAll(async () => {
+	await page.click('#collapse-button');
 	await createNewEvent({ title: namespace });
 });
 
@@ -19,6 +20,7 @@ describe(namespace, () => {
 			const capture = await saveVideo(page, `artifacts/${namespace}.mp4`);
 
 			try {
+				await screenOptions({ layout: '1' });
 				await addNewEntity({ entity, name: `new ${entity}` });
 				await switchView(entity, 'table');
 				const searchNameQuery = entity === 'datetime' ? 'edit title' : 'Free Ticket';
@@ -35,7 +37,6 @@ describe(namespace, () => {
 				await editableName.click();
 				await newTicketNameNode.type(newName);
 				await page.click(entityList);
-				await switchView(entity, 'card');
 			} catch (e) {
 				await capture.stop();
 			}
