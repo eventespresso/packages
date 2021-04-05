@@ -1,6 +1,3 @@
-/// <reference types="jest-playwright-preset" />
-/// <reference types="expect-playwright" />
-
 import { saveVideo } from 'playwright-video';
 
 import { clickButton, clickLastDateFromPicker, createNewEvent, setListDisplayControl } from '../../utils';
@@ -55,5 +52,8 @@ describe(namespace, () => {
 		} catch (e) {
 			await capture.stop();
 		}
+
+		expect(await page.$eval(datesList, (elements) => elements.innerHTML)).toContain(newDateName);
+		expect(await page.$eval(datesList, (elements) => elements.innerHTML)).toContain(newDateDesc);
 	});
 });

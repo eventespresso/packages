@@ -1,6 +1,3 @@
-/// <reference types="jest-playwright-preset" />
-/// <reference types="expect-playwright" />
-
 import { saveVideo } from 'playwright-video';
 
 import { activatePlugin, clickButton, createNewEvent, deactivatePlugin, pressKeyWithModifier } from '../../utils';

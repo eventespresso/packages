@@ -1,6 +1,3 @@
-/// <reference types="jest-playwright-preset" />
-/// <reference types="expect-playwright" />
-
 import { saveVideo } from 'playwright-video';
 
 import { addNewTicket, clickButton, createNewEvent, EntityListParser, removeLastTicket } from '../../../utils';

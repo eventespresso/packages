@@ -9,8 +9,10 @@ export const findEntityIdByName = async ({ entity, name, view }: Props) => {
 	const entityList = await page.$(`#ee-entity-list-${entity}s`);
 
 	if (view === 'table') {
-		const listItemId = await entityList.$eval(`text=${name}`, (e) => e.closest('.ee-entity-list-item').id);
-		const entityId = listItemId.match(/row-(?<id>.+?)-row/)?.groups?.id;
+		const listItemId = await entityList.$eval(`text=${name}`, (e) =>
+			e.closest('.ee-entity-list-item').getAttribute('data-testid')
+		);
+		const [entityId] = listItemId.split(`ee-editor-${entity}-list-view-row-`).reverse();
 
 		return entityId;
 	}

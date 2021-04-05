@@ -140,7 +140,7 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 			return {
 				cells,
 				className: statusClassName,
-				id: `ee-editor-date-list-view-row-${datetime.dbId}`,
+				id: `ee-editor-datetime-list-view-row-${datetime.dbId}`,
 				key: `row-${datetime.id}`,
 				rowClassName: 'ee-entity-list-item',
 				type: 'row',

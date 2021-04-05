@@ -1,5 +1,3 @@
-/// <reference types="jest-playwright-preset" />
-
 export const addNewPriceModifier = async ({ amount, priceTypeLabel }) => {
 	const lastTPCRow = '.ee-ticket-price-calculator tbody tr:last-child';
 

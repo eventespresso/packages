@@ -1,4 +1,3 @@
-/// <reference types="jest-playwright-preset" />
 import type { TpcPriceModifier } from '@eventespresso/tpc';
 import { setPrice } from './setPrice';
 

@@ -1,4 +1,3 @@
-/// <reference types="jest-playwright-preset" />
 import { clickButton } from './';
 
 export const removeLastTicket = async () => {

@@ -1,5 +1,3 @@
-/// <reference types="jest-playwright-preset" />
-
 // import { pressKeyWithModifier } from '../utils/press-key-with-modifier';
 
 export const addNewRegistration = async () => {
