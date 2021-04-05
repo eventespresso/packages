@@ -20,9 +20,9 @@ describe('availableTickets', () => {
 
 		await addNewTicket({ amount: newTicketAmount, name: newTicketName });
 
-		expect(await parser.getItemName()).toContain(newTicketName);
-
 		const item = await parser.getItemBy('name', newTicketName);
+
+		expect(await parser.getItemName(item)).toContain(newTicketName);
 
 		const newTicketCurrencyNode = await item.evaluate(
 			(e) =>

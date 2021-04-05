@@ -40,7 +40,7 @@ export class EntityListParser {
 	 * Rertieve the entity list element.
 	 */
 	getListRoot = async (): ReturnType<Page['$']> => {
-		return await page.$(`#ee-entity-list-${this.entityType}s`);
+		return await page.$(this.getRootSelector());
 	};
 
 	/**

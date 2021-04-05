@@ -22,7 +22,7 @@ describe(namespace, () => {
 
 		expect(await datesParser.getItemCount()).toBe(2);
 
-		await deleteDateByName('edit title');
+		await deleteDateByName('edit title…');
 
 		expect(await datesParser.getItemCount()).toBe(1);
 		expect(await ticketsParser.getItemCount()).toBe(1);
