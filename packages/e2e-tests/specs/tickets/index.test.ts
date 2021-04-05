@@ -1,13 +1,11 @@
 /// <reference types="jest-playwright-preset" />
 /// <reference types="expect-playwright" />
 
-import { getDocument, queries } from 'playwright-testing-library';
-
 import { saveVideo } from 'playwright-video';
 
-import { addNewTicket, createNewEvent } from '../../utils';
+import { addNewTicket, createNewEvent, EntityListParser } from '../../utils';
 
-const { getByText } = queries;
+const parser = new EntityListParser('ticket');
 
 describe('availableTickets', () => {
 	it('should add new ticket', async () => {
@@ -22,18 +20,11 @@ describe('availableTickets', () => {
 
 		await addNewTicket({ amount: newTicketAmount, name: newTicketName });
 
-		const $document = await getDocument(page);
+		expect(await parser.getItemName()).toContain(newTicketName);
 
-		const $newTicketNameNode = await getByText($document, newTicketName);
+		const item = await parser.getItemBy('name', newTicketName);
 
-		expect(await $newTicketNameNode.innerHTML()).toContain(newTicketName);
-
-		const newTicketNameNode = await page.$eval('#ee-entity-list-tickets', (el) => el.innerHTML);
-
-		expect(newTicketNameNode).toContain(newTicketName);
-
-		const newTicketCurrencyNode = await page.$eval(
-			`text=${newTicketName}`,
+		const newTicketCurrencyNode = await item.evaluate(
 			(e) =>
 				e
 					.closest('.ee-entity-card-wrapper')

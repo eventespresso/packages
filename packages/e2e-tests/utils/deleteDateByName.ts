@@ -1,6 +1,7 @@
 import { getDocument, queries } from 'playwright-testing-library';
 
-import { clickButton, findEntityIdByName, switchView } from './';
+import { clickButton, switchView } from './';
+import { EntityListParser } from './EntityListParser';
 
 const { getByTestId } = queries;
 
@@ -9,7 +10,9 @@ export const deleteDateByName = async (name: string) => {
 
 	await switchView('datetime', view);
 
-	const dateId = await findEntityIdByName({ entity: 'datetime', name, view });
+	const parser = new EntityListParser('datetime', view);
+
+	const dateId = await parser.getDbIdByName(name);
 
 	const $document = await getDocument(page);
 

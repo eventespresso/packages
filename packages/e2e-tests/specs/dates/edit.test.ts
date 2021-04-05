@@ -5,7 +5,7 @@ import { saveVideo } from 'playwright-video';
 
 import { clickButton, clickLastDateFromPicker, createNewEvent, setListDisplayControl } from '../../utils';
 import { expectCardToContain } from '../../assertions';
-import { datesList, modalRTESel } from '../../constants';
+import { modalRTESel } from '../../constants';
 
 const namespace = 'event.dates.edit';
 
@@ -18,6 +18,7 @@ afterAll(async () => {
 });
 
 describe(namespace, () => {
+	// eslint-disable-next-line jest/expect-expect
 	it('should edit an existing datetime', async () => {
 		const newDateName = 'new date name';
 		const newDateDesc = 'new date description';
@@ -41,16 +42,9 @@ describe(namespace, () => {
 			await page.click('button[type=submit]');
 			await setListDisplayControl('datetime', 'both');
 
-			expect(
-				await page.$eval(`${datesList} .entity-card-details__name`, (elements) => elements.innerHTML)
-			).toContain(newDateName);
-
-			expect(
-				await page.$eval(`${datesList} .entity-card-details__text`, (elements) => elements.innerHTML)
-			).toContain(newDateDesc);
-
 			await expectCardToContain({
 				capacity: newDateCap,
+				desc: newDateDesc,
 				endDate,
 				endDateMonth,
 				name: newDateName,

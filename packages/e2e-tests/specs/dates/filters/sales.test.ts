@@ -3,14 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import {
-	// addNewRegistration,
-	addNewTicket,
-	clickButton,
-	createNewEvent,
-	removeLastTicket,
-} from '../../../utils';
-import { getEntitiesLength } from '../../../assertions';
+import { addNewTicket, clickButton, createNewEvent, EntityListParser, removeLastTicket } from '../../../utils';
 
 const namespace = 'eventDates.filters.sales';
 
@@ -19,6 +12,8 @@ beforeAll(async () => {
 
 	await createNewEvent({ title: namespace });
 });
+
+const datesParser = new EntityListParser('datetime');
 
 describe(namespace, () => {
 	it('should filter dates corresponding to sales control', async () => {
@@ -34,24 +29,24 @@ describe(namespace, () => {
 			value: 'above90Capacity',
 		});
 
-		expect(await getEntitiesLength('datetime')).toBe(0);
+		expect(await datesParser.getItemCount()).toBe(0);
 
 		await page.selectOption('#ee-dates-list-sales-control', {
 			value: 'above75Capacity',
 		});
 
-		expect(await getEntitiesLength('datetime')).toBe(0);
+		expect(await datesParser.getItemCount()).toBe(0);
 
 		await page.selectOption('#ee-dates-list-sales-control', {
 			value: 'above50Capacity',
 		});
 
-		expect(await getEntitiesLength('datetime')).toBe(0);
+		expect(await datesParser.getItemCount()).toBe(0);
 
 		await page.selectOption('#ee-dates-list-sales-control', {
 			value: 'below50Capacity',
 		});
 
-		expect(await getEntitiesLength('datetime')).toBe(1);
+		expect(await datesParser.getItemCount()).toBe(1);
 	});
 });

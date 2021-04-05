@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent } from '../../utils';
+import { createNewEvent, EntityListParser } from '../../utils';
 import { modalRTESel } from '../../constants';
 
 const namespace = 'event.tickets.card.view.inline-inputs';
@@ -14,35 +14,37 @@ beforeAll(async () => {
 	await createNewEvent({ title: namespace });
 });
 
+const parser = new EntityListParser('ticket');
+
 describe(namespace, () => {
 	it('should check the date card inline inputs', async () => {
-		const ticketsList = '#ee-entity-list-tickets';
-		const newDateName = 'new ticket name';
-		const newDateDesc = 'new ticket description';
-		const newDateCap = '100';
+		const newTicketName = 'new ticket name';
+		const newTicketDesc = 'new ticket description';
+		const newTicketQty = '100';
 
-		await page.click(`${ticketsList} .entity-card-details__name`);
-		await page.type(`${ticketsList} .entity-card-details__name`, newDateName);
-		await page.click(`${ticketsList} .entity-card-details__text`);
+		await page.click(`${parser.getRootSelector()} .entity-card-details__name`);
+		await page.type(`${parser.getRootSelector()} .entity-card-details__name`, newTicketName);
+		await page.click(`${parser.getRootSelector()} .entity-card-details__text`);
 		await page.click(modalRTESel);
-		await page.type(modalRTESel, newDateDesc);
+		await page.type(modalRTESel, newTicketDesc);
 		await page.click('.chakra-modal__footer button[type=submit]');
-		await page.click(`${ticketsList} .ee-entity-details__value .ee-tabbable-text`);
-		await page.type(`${ticketsList} .ee-entity-details__value .ee-inline-edit__input`, newDateCap);
-		await page.click(ticketsList); // click outside of the inline input
+		await page.click(`${parser.getRootSelector()} .ee-entity-details__value .ee-tabbable-text`);
+		await page.type(`${parser.getRootSelector()} .ee-entity-details__value .ee-inline-edit__input`, newTicketQty);
+		await page.click(parser.getRootSelector()); // click outside of the inline input
 
-		expect(
-			await page.$eval(`${ticketsList} .entity-card-details__name`, (elements) => elements.innerHTML)
-		).toContain(newDateName);
-		expect(
-			await page.$eval(`${ticketsList} .entity-card-details__text`, (elements) => elements.innerHTML)
-		).toContain(newDateDesc);
-		expect(
-			await page.$eval(
-				`${ticketsList} .ee-entity-details__value .ee-tabbable-text`,
-				(elements) => elements.innerHTML
-			)
-		).toContain(newDateCap);
+		// first/only item
+		const item = await parser.getItem();
+
+		expect(await parser.getItemName(item)).toContain(newTicketName);
+
+		expect(await parser.getItemDesc(item)).toContain(newTicketDesc);
+
+		const details = await item?.$eval(
+			'.ee-entity-details__value .ee-tabbable-text',
+			(elements) => elements.textContent
+		);
+
+		expect(details).toContain(newTicketQty);
 
 		await browser.close();
 	});

@@ -1,41 +1,31 @@
 import { expect } from '@jest/globals';
+import { EntityListParser } from '../utils';
 
 export const expectCardToContain = async (
 	{ capacity, desc, endDate, endDateMonth, name, quantity, startDate, startDateMonth, type }: any // TODO replace with a proper interface
 ) => {
-	const entityList = `#ee-entity-list-${type}s`;
+	const parser = new EntityListParser(type);
 
-	expect(await page.$eval(`${entityList} .entity-card-details__name`, (elements) => elements.innerHTML)).toContain(
-		name
+	// first/only item
+	const item = await parser.getItem();
+
+	expect(await parser.getItemName(item)).toContain(name);
+
+	desc && expect(await parser.getItemDesc(item)).toContain(desc);
+
+	const details = await item?.$eval(
+		'.ee-entity-details__value .ee-tabbable-text',
+		(elements) => elements.textContent
 	);
 
-	desc &&
-		expect(
-			await page.$eval(`${entityList} .entity-card-details__text`, (elements) => elements.innerHTML)
-		).toContain(desc);
+	capacity && expect(details).toContain(capacity);
 
-	capacity &&
-		expect(
-			await page.$eval(
-				`${entityList} .ee-entity-details__value .ee-tabbable-text`,
-				(elements) => elements.innerHTML
-			)
-		).toContain(capacity);
+	quantity && expect(details).toContain(quantity);
 
-	quantity &&
-		expect(
-			await page.$eval(
-				`${entityList} .ee-entity-details__value .ee-tabbable-text`,
-				(elements) => elements.innerHTML
-			)
-		).toContain(quantity);
+	const sidebarContent = await item?.$eval('.entity-card__sidebar', (elements) => elements.textContent);
 
-	expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(startDate);
-	expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
-		startDateMonth.substring(0, 3)
-	);
-	expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(endDate);
-	expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
-		endDateMonth.substring(0, 3)
-	);
+	expect(sidebarContent).toContain(startDate);
+	expect(sidebarContent).toContain(startDateMonth.substring(0, 3));
+	expect(sidebarContent).toContain(endDate);
+	expect(sidebarContent).toContain(endDateMonth.substring(0, 3));
 };

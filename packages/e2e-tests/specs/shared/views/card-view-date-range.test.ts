@@ -3,7 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent, clickLastDateFromPicker, setListDisplayControl } from '../../../utils';
+import { createNewEvent, clickLastDateFromPicker, setListDisplayControl, EntityListParser } from '../../../utils';
 import { entities } from '../../../constants';
 
 const namespace = 'event.entities.edit.calendar.date.range';
@@ -15,11 +15,11 @@ beforeAll(async () => {
 describe(namespace, () => {
 	for (const entity of entities) {
 		it('should change the start and end date from the card for:' + entity, async () => {
-			const entityList = `#ee-entity-list-${entity}s`;
+			const parser = new EntityListParser(entity);
 
 			await createNewEvent({ title: namespace + entity });
 
-			await page.click(`${entityList} .ee-edit-calendar-date-range-btn`);
+			await page.click(`${parser.getRootSelector()} .ee-edit-calendar-date-range-btn`);
 
 			await page.focus('.date-range-picker__start .react-datepicker__input-container input');
 			const [startDate, startDateMonth] = await clickLastDateFromPicker();
@@ -33,15 +33,15 @@ describe(namespace, () => {
 
 			await setListDisplayControl(entity, 'both');
 
-			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(startDate);
-			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
-				startDateMonth.substring(0, 3)
-			);
+			// first/only item
+			const item = await parser.getItem();
+			const sidebarContent = await item?.$eval('.entity-card__sidebar', (elements) => elements.textContent);
 
-			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(endDate);
-			expect(await page.$eval(`${entityList} .entity-card__sidebar`, (el) => el.innerHTML)).toContain(
-				endDateMonth.substring(0, 3)
-			);
+			expect(sidebarContent).toContain(startDate);
+			expect(sidebarContent).toContain(startDateMonth.substring(0, 3));
+
+			expect(sidebarContent).toContain(endDate);
+			expect(sidebarContent).toContain(endDateMonth.substring(0, 3));
 		});
 	}
 });

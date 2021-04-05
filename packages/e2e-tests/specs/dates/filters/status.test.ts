@@ -3,9 +3,7 @@
 
 import { saveVideo } from 'playwright-video';
 
-import { addNewDate, clickButton, createNewEvent } from '../../../utils';
-import { getEntitiesLength } from '../../../assertions';
-import { datesList } from '../../../constants';
+import { addNewDate, clickButton, createNewEvent, EntityListParser } from '../../../utils';
 
 const namespace = 'eventDates.filters.status';
 
@@ -15,13 +13,15 @@ beforeAll(async () => {
 	await createNewEvent({ title: namespace });
 });
 
+const datesParser = new EntityListParser('datetime');
+
 describe(namespace, () => {
 	it('should show trashed date when status filter is set to "all"', async () => {
 		const newDateName = 'brand new trashed date';
 
 		await addNewDate({ name: newDateName, isTrashed: true });
 
-		expect(await getEntitiesLength('datetime')).toBe(1);
+		expect(await datesParser.getItemCount()).toBe(1);
 
 		await clickButton('show filters');
 
@@ -29,10 +29,10 @@ describe(namespace, () => {
 			value: 'all',
 		});
 
-		expect(await getEntitiesLength('datetime')).toBe(2);
+		expect(await datesParser.getItemCount()).toBe(2);
 
-		const datetimesList = await page.$eval(datesList, (elements) => elements.innerHTML);
+		const datetimesList = await page.$eval(datesParser.getRootSelector(), (elements) => elements.innerHTML);
 
-		expect(await datetimesList).toContain('trash');
+		expect(datetimesList).toContain('trash');
 	});
 });
