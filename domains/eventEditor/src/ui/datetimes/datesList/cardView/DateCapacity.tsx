@@ -32,6 +32,7 @@ const DateCapacity: React.FC<DateItemProps> = ({ entity: datetime }) => {
 
 	return (
 		<InlineEditInfinity
+			data-testid='ee-datetime-inline-cap'
 			onChange={onChange}
 			tooltip={__('edit capacity (registration limit)…')}
 			value={`${datetime.capacity}`}

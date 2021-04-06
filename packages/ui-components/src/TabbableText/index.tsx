@@ -45,6 +45,7 @@ export const TabbableText: React.FC<TabbableTextProps> = ({
 				aria-describedby={ariaDescribedby}
 				aria-label={props.tooltip}
 				className={textClassName}
+				data-testid={props?.['data-testid']}
 				onClick={props.isDisabled ? null : onClick}
 				onKeyDown={onKeyDown}
 				role={role}

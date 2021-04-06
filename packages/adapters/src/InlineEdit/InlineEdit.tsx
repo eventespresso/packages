@@ -67,6 +67,7 @@ export const InlineEdit: React.FC<InlineEditProps> = ({
 						<InlineEditPreview
 							aria-describedby={ariaDescribedby}
 							className={inputClassName}
+							data-testid={testid && `${testid}-preview`}
 							isEditing={isEditing}
 							onRequestEdit={onEdit}
 							Preview={Preview}
