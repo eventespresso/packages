@@ -14,7 +14,7 @@ beforeAll(async () => {
 const parser = new EntityListParser('ticket');
 
 describe(namespace, () => {
-	it('should check the date card inline inputs', async () => {
+	it('should check the ticket card inline inputs', async () => {
 		const newTicketName = 'new ticket name';
 		const newTicketDesc = 'new ticket description';
 		const newTicketQty = '100';

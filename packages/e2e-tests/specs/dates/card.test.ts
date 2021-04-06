@@ -18,16 +18,21 @@ describe(namespace, () => {
 		const newDateName = 'new date name';
 		const newDateDesc = 'new date description';
 		const newDateCap = '100';
+		const capture = await saveVideo(page, `artifacts/${namespace}.mp4`);
 
-		await page.click(`${parser.getRootSelector()} .entity-card-details__name`);
-		await page.type(`${parser.getRootSelector()} .entity-card-details__name`, newDateName);
-		await page.click(`${parser.getRootSelector()} .entity-card-details__text`);
-		await page.click(modalRTESel);
-		await page.type(modalRTESel, newDateDesc);
-		await page.click('.chakra-modal__footer button[type=submit]');
-		await page.click(`${parser.getRootSelector()} .ee-entity-details__value .ee-tabbable-text`);
-		await page.type(`${parser.getRootSelector()} .ee-entity-details__value .ee-inline-edit__input`, newDateCap);
-		await page.click(parser.getRootSelector()); // click outside of the inline input
+		try {
+			await page.click(`${parser.getRootSelector()} .entity-card-details__name`);
+			await page.type(`${parser.getRootSelector()} .entity-card-details__name`, newDateName);
+			await page.click(`${parser.getRootSelector()} .entity-card-details__text`);
+			await page.click(modalRTESel);
+			await page.type(modalRTESel, newDateDesc);
+			await page.click('.chakra-modal__footer button[type=submit]');
+			await page.click(`${parser.getRootSelector()} .ee-entity-details__value .ee-tabbable-text`);
+			await page.type(`${parser.getRootSelector()} .ee-entity-details__value .ee-inline-edit__input`, newDateCap);
+			await page.click(parser.getRootSelector()); // click outside of the inline input
+		} catch (e) {
+			await capture.stop();
+		}
 
 		// first/only item
 		const item = await parser.getItem();
