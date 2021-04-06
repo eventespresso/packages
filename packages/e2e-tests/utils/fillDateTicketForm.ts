@@ -10,19 +10,23 @@ export type DateTicketFormArgs = {
 };
 
 export const fillDateTicketForm = async ({ name, isTrashed, startDate, endDate }: DateTicketFormArgs) => {
-	name && (await page.fill('input[aria-label="Name"]', name));
+	try {
+		name && (await page.fill('input[aria-label="Name"]', name));
 
-	if (startDate) {
-		// Since date picker input looses focus to popover on initial focus
-		// We need to focus twice
-		await page.focus('input[aria-label="Start Date"]');
-		await page.fill('input[aria-label="Start Date"]', await formatDate(startDate));
+		if (startDate) {
+			// Since date picker input looses focus to popover on initial focus
+			// We need to focus twice
+			await page.focus('input[aria-label="Start Date"]');
+			await page.fill('input[aria-label="Start Date"]', await formatDate(startDate));
+		}
+
+		if (endDate) {
+			await page.focus('input[aria-label="End Date"]');
+			await page.fill('input[aria-label="End Date"]', await formatDate(endDate));
+		}
+
+		isTrashed && (await page.click('[aria-label="Trash"]'));
+	} catch (e) {
+		console.log(e);
 	}
-
-	if (endDate) {
-		await page.focus('input[aria-label="End Date"]');
-		await page.fill('input[aria-label="End Date"]', await formatDate(endDate));
-	}
-
-	isTrashed && (await page.click('[aria-label="Trash"]'));
 };
