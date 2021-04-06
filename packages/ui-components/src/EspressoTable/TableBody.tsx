@@ -52,6 +52,7 @@ const TableBody: React.FC<TableBodyProps> = ({
 		return (
 			<TableRow
 				className={props.className}
+				data-testid={row?.['data-testid']}
 				headerRowCount={headerRowCount}
 				id={row.id || `${tableId}-row`}
 				key={`body-row-${row.key}`}

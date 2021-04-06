@@ -12,7 +12,7 @@ export const findEntityIdByName = async ({ entity, name, view }: Props) => {
 		const listItemId = await entityList.$eval(`text=${name}`, (e) =>
 			e.closest('.ee-entity-list-item').getAttribute('data-testid')
 		);
-		const [entityId] = listItemId.split(`ee-editor-${entity}-list-view-row-`).reverse();
+		const [entityId] = listItemId.split(`ee-${entity}-list-view-row-`).reverse();
 
 		return entityId;
 	}

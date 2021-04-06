@@ -11,5 +11,5 @@ jest.setTimeout(300000);
 beforeAll(async () => {
 	await loginUser();
 
-	await activatePlugin('event-espresso-core/espresso.php');
+	// await activatePlugin('event-espresso-core/espresso.php');
 });

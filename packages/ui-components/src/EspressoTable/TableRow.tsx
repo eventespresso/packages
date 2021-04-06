@@ -25,7 +25,7 @@ const TableRow: React.FC<BodyRow> = ({
 	);
 
 	return (
-		<tr className={css} data-testid={props?.id} id={id}>
+		<tr className={css} data-testid={props?.['data-testid']} id={id}>
 			{children}
 		</tr>
 	);

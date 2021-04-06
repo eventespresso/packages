@@ -31,7 +31,7 @@ describe(namespace, () => {
 				});
 				const $document = await getDocument(page);
 				const editableName = await page.$(
-					`${entityList} [data-testid="ee-editor-${entity}-list-view-row-${entityId}"] .ee-tabbable-text`
+					`${entityList} [data-testid="ee-${entity}-list-view-row-${entityId}"] .ee-tabbable-text`
 				);
 				const newTicketNameNode = await getByTestId($document, `ee-entity-list-view-row-editable-${entityId}`);
 				await editableName.click();

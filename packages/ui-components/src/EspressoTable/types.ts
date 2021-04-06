@@ -137,6 +137,7 @@ export interface BodyRow {
 	cells?: CellData[];
 	children?: React.ReactNode;
 	className?: TableClassName | string;
+	'data-testid'?: string;
 	headerRows?: HeaderRow[];
 	headerRowClassName?: string;
 	headerRowCount?: number;
