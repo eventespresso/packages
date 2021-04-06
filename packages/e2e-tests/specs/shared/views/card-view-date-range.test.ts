@@ -1,13 +1,7 @@
-import { saveVideo } from 'playwright-video';
-
 import { createNewEvent, clickLastDateFromPicker, setListDisplayControl, EntityListParser } from '../../../utils';
 import { entities } from '../../../constants';
 
 const namespace = 'event.entities.edit.calendar.date.range';
-
-beforeAll(async () => {
-	await saveVideo(page, `artifacts/${namespace}.mp4`);
-});
 
 describe(namespace, () => {
 	for (const entity of entities) {

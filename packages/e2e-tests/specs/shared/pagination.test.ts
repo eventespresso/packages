@@ -1,14 +1,8 @@
-import { saveVideo } from 'playwright-video';
-
 import { addNewEntity, createNewEvent, EntityListParser } from '../../utils';
 import { getPaginationSize } from '../../assertions';
 import { entities } from '../../constants';
 
 const namespace = 'event.entities.pagination';
-
-beforeAll(async () => {
-	await saveVideo(page, `artifacts/${namespace}.mp4`);
-});
 
 describe(namespace, () => {
 	for (const entity of entities) {

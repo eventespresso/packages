@@ -1,12 +1,6 @@
-import { saveVideo } from 'playwright-video';
-
 import { addNewDate, createNewEvent, deleteDateByName, EntityListParser } from '../../utils';
 
 const namespace = 'event.dates.delete';
-
-beforeAll(async () => {
-	await saveVideo(page, `artifacts/${namespace}.mp4`);
-});
 
 const datesParser = new EntityListParser('datetime');
 const ticketsParser = new EntityListParser('ticket');
