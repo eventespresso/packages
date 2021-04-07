@@ -3,7 +3,9 @@ export * from './addNewEntity';
 export * from './addNewPriceModifier';
 export * from './addNewRegistration';
 export * from './addNewTicket';
+export * from './answerRegFormTextInput';
 export * from './clickButton';
+export * from './clickEventPostPermaLink';
 export * from './clickLabel';
 export * from './clickLastDateFromPicker';
 export * from './createNewEvent';
@@ -22,6 +24,8 @@ export * from './screenOptions';
 export * from './setListDisplayControl';
 export * from './setPrice';
 export * from './setPrices';
+export * from './submitRegistration';
+export * from './submitTicketSelector';
 export * from './switchView';
 export * from './TAMRover';
 

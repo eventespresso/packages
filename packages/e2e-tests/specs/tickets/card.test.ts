@@ -32,6 +32,8 @@ describe(namespace, () => {
 		// first/only item
 		const item = await parser.getItem();
 
+		await page.waitForTimeout(2000);
+
 		expect(await parser.getItemName(item)).toContain(newTicketName);
 
 		expect(await parser.getItemDesc(item)).toContain(newTicketDesc);

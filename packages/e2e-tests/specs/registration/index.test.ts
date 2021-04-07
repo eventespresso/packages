@@ -1,6 +1,15 @@
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent, EntityListParser, pressKeyWithModifier } from '../../utils';
+import {
+	addNewTicket,
+	answerRegFormTextInput,
+	clickEventPostPermaLink,
+	createNewEvent,
+	EntityListParser,
+	submitRegistration,
+	submitTicketSelector,
+} from '../../utils';
+import { chooseFromTicketSelector } from '../../utils/public/ticket-selector/selectTicket';
 
 const namespace = 'event.free-event.registration';
 
@@ -24,35 +33,23 @@ describe('Create free event and register to it', () => {
 			await page.click(`${ticketRootSelector} [data-testid="ee-ticket-inline-qty-preview"]`);
 			await page.type(`${ticketRootSelector} [data-testid="ee-ticket-inline-qty"]`, '75');
 
-			await page.evaluate(() => window.scrollTo(0, 0));
-			await page.click('#edit-slug-box #sample-permalink');
+			await addNewTicket({ amount: 100, name: 'Paid Ticket' });
 
-			await page.waitForTimeout(4000);
+			await clickEventPostPermaLink();
 
-			await page.selectOption('.tckt-slctr-tbl-td-qty select', {
-				value: '1',
-			});
-			await page.click('.ticket-selector-submit-btn');
+			await chooseFromTicketSelector('Free Ticket', 1);
+			await submitTicketSelector();
+			await answerRegFormTextInput('fname', 'Joe');
+			await answerRegFormTextInput('lname', 'Doe');
+			await answerRegFormTextInput('email', 'test@example.com');
 
-			await page.waitForTimeout(4000);
-
-			await page.click('.spco-step-dv .ee-reg-qstn-fname');
-			await pressKeyWithModifier('primary', 'a');
-			await page.type('.spco-step-dv .ee-reg-qstn-fname', 'John');
-			await page.click('.spco-step-dv .ee-reg-qstn-lname');
-			await pressKeyWithModifier('primary', 'a');
-			await page.type('.spco-step-dv .ee-reg-qstn-lname', 'Doe');
-			await page.click('.spco-step-dv .ee-reg-qstn-email');
-			await pressKeyWithModifier('primary', 'a');
-			await page.type('.spco-step-dv .ee-reg-qstn-email', 'test@example.com');
-			await page.click('.spco-next-step-btn');
+			await submitRegistration();
 		} catch (e) {
 			await capture.stop();
 		}
 
-		await page.waitForTimeout(5000);
 		const statusTitle = await page
-			.$eval('.status-publish .entry-title', (elements) => elements.textContent)
+			.$eval('.status-publish .entry-title', (elements) => elements?.textContent)
 			.catch(console.log);
 
 		expect(statusTitle).toContain('Thank You');

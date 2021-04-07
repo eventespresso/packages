@@ -3,12 +3,14 @@ import { entities } from '../../../constants';
 
 const namespace = 'event.entities.edit.calendar.date.range';
 
+beforeAll(async () => {
+	await createNewEvent({ title: namespace });
+});
+
 describe(namespace, () => {
 	for (const entity of entities) {
 		it('should change the start and end date from the card for:' + entity, async () => {
 			const parser = new EntityListParser(entity);
-
-			await createNewEvent({ title: namespace + entity });
 
 			await page.click(`${parser.getRootSelector()} .ee-edit-calendar-date-range-btn`);
 
