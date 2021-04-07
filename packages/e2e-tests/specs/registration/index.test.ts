@@ -45,13 +45,15 @@ describe('Create free event and register to it', () => {
 			await pressKeyWithModifier('primary', 'a');
 			await page.type('.spco-step-dv .ee-reg-qstn-email', 'test@example.com');
 			await page.click('.spco-next-step-btn');
-
-			await page.waitForTimeout(4000);
 		} catch (e) {
 			await capture.stop();
 		}
 
-		const statusTitle = await page.$eval('.status-publish .entry-title', (elements) => elements.textContent);
+		await page.waitForTimeout(5000);
+		const statusTitle = await page
+			.$eval('.status-publish .entry-title', (elements) => elements.textContent)
+			.catch(console.log);
+
 		expect(statusTitle).toContain('Thank You');
 	});
 });
