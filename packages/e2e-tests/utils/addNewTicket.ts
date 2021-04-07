@@ -27,14 +27,12 @@ export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & {
 	await page.click('[aria-label="assign ticket"]');
 
 	const countBeforeSubmit = await listParser.getItemCount();
-	console.log({ countBeforeSubmit });
 
 	await page.click('button[type=submit]');
 
 	// Wait for tickets list to update
 	await page.waitForFunction(
 		([selector, prevCount]) => {
-			console.log({ prevCount, selector });
 			// if there is no list wrapper, it means ticket is not created yet
 			if (!document.querySelector(selector)) {
 				return false;
@@ -52,7 +50,6 @@ export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & {
 			for (const item of items.values()) {
 				// if the item id includes 'temp:', it means it is the optimistic response from Apollo, lets ignore it
 				const id = item.id;
-				console.log({ id });
 				if (id.includes('temp:')) {
 					return false;
 				}
