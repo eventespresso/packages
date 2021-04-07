@@ -9,12 +9,35 @@ export type ForType = EntityType | 'all';
 
 export type AssignmentStatus = 'OLD' | 'NEW' | 'REMOVED';
 
+/**
+ * {
+ *    141: {
+ *    	105: 'OLD',
+ *    	108: false,
+ *    	110: 'NEW',
+ *    },
+ *    142: {
+ *    	105: 'REMOVED',
+ *    	108: 'OLD',
+ *    	110: false,
+ *    },
+ *    143: {
+ *    	105: false,
+ *    	108: false,
+ *    	110: 'OLD',
+ *	  }
+ * }
+ */
 export type RelationalMap = {
-	// Date ID
+	// Date or Ticket ID
 	[key in number]: {
-		// Ticket ID
 		[key in number]: AssignmentStatus;
 	};
+};
+
+export type GetMapProps = {
+	forceGenerate?: boolean;
+	mapFromTo?: 'date2tickets' | 'ticket2dates';
 };
 
 export class TAMRover {
@@ -25,6 +48,8 @@ export class TAMRover {
 	dbId: number;
 
 	parser: EntityListParser;
+
+	relationalMap: RelationalMap;
 
 	constructor(forType: ForType = 'all', dbId?: number) {
 		this.setForType(forType);
@@ -64,33 +89,44 @@ export class TAMRover {
 	/**
 	 * Launch/open TAM modal.
 	 */
-	launch = async (): Promise<void> => {
+	launch = async (options?: GetMapProps): Promise<void> => {
 		if (this.forType === 'all') {
-			return await clickButton('Ticket Assignments');
+			await clickButton('Ticket Assignments');
+		} else {
+			// if it's for a single date or ticket
+			// Lets get that entity
+			const item = await this.parser.getItem(this.dbId);
+
+			if (!item) {
+				return console.error(`Could not launch TAM for ${this.forType} with dbId ${this.dbId}`);
+			}
+
+			const label = this.forType === 'datetime' ? 'assign tickets' : 'assign dates';
+			// Click on the TAM button for the entity
+			const tamButton = await item.$(`button[aria-label="${label}"]`);
+
+			await tamButton?.click();
 		}
-
-		// if it's for a single date or ticket
-		// Lets get that entity
-		const item = await this.parser.getItem(this.dbId);
-
-		if (!item) {
-			return console.error(`Could not launch TAM for ${this.forType} with dbId ${this.dbId}`);
-		}
-
-		const label = this.forType === 'datetime' ? 'assign tickets' : 'assign dates';
-		// Click on the TAM button for the entity
-		const tamButton = await item.$(`button[aria-label="${label}"]`);
-
-		await tamButton?.click();
+		// generate the initial map
+		await this.generateRelationMap(options);
 	};
 
 	/**
 	 * Close TAM modal.
 	 */
 	close = async (): Promise<void> => {
-		await page.click(`${this.getRootSelector()} [aria-label="close modal"]`);
+		const closeButton = await page.$(`${this.getRootSelector()} [aria-label="close modal"]`);
+
+		if (closeButton) {
+			await closeButton.click();
+		}
+
 		// If TAM is dirty, there may be an alert.
 		await respondToAlert('Yes');
+
+		this.relationalMap = null;
+
+		this.setDbId(null);
 	};
 
 	/**
@@ -265,33 +301,63 @@ export class TAMRover {
 	/**
 	 * Generates a map of the current date/ticket relations.
 	 */
-	generateRelationMap = async (): Promise<RelationalMap> => {
+	getMap = async (options?: GetMapProps): Promise<RelationalMap> => {
+		if (!this.relationalMap || options?.forceGenerate) {
+			await this.generateRelationMap(options);
+		}
+		return this.relationalMap;
+	};
+
+	/**
+	 * Generates a map of the current date/ticket relations.
+	 */
+	generateRelationMap = async (options?: GetMapProps): Promise<TAMRover> => {
 		const rows = await this.getRows();
 		const cols = await this.getCols();
 
 		let map: RelationalMap = {};
 
+		const fromTo = options?.mapFromTo || 'date2tickets';
+
+		// lets iterate over each date row
 		for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
 			const row = rows[rowIndex];
+
+			// get the db ID for the date in the row
 			const dateDbId = await this.getDateDbId(row);
 
 			if (dateDbId) {
+				// Each row has cells, created against tickets
 				const dateCells = await row.$$('td');
+				// Now we need to iterate over each ticket column
 				// first column (0 index) is the top-left corner, of no use to us.
 				for (let colIndex = 1; colIndex < cols.length; colIndex++) {
 					const col = cols[colIndex];
+					// get the db ID for the ticket in the column
 					const ticketDbId = await this.getTicketDbId(col);
 
 					if (ticketDbId) {
+						// this is the cell button that toggles the assignment
 						const button = await dateCells?.[colIndex]?.$('button');
-						const status = await button?.getAttribute('aria-label');
+						// current status is added as arial-label
+						let status = await button?.getAttribute('aria-label');
+						// if status is "assign tickets", lets mark it as null
+						status = status === 'assign ticket' ? null : status;
 
-						map = assocPath([`${dateDbId}`, `${ticketDbId}`], status, map);
+						// Whether the map should be from dates to tickets or vice versa
+						const path =
+							fromTo === 'date2tickets'
+								? [`${dateDbId}`, `${ticketDbId}`]
+								: [`${ticketDbId}`, `${dateDbId}`];
+						// Lets update the map
+						map = assocPath(path, status, map);
 					}
 				}
 			}
 		}
 
-		return map;
+		this.relationalMap = map;
+
+		return this;
 	};
 }

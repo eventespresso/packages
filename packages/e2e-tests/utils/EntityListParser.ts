@@ -10,7 +10,7 @@ export class EntityListParser {
 
 	view: View;
 
-	constructor(entityType: EntityType, view: View = 'card') {
+	constructor(entityType?: EntityType, view: View = 'card') {
 		this.entityType = entityType;
 		this.view = view;
 	}
@@ -18,15 +18,19 @@ export class EntityListParser {
 	/**
 	 * Change the current entity type in the instance.
 	 */
-	setEntityType = (entityType: EntityType): void => {
+	setEntityType = (entityType: EntityType): EntityListParser => {
 		this.entityType = entityType;
+
+		return this;
 	};
 
 	/**
 	 * Change the current view in the instance.
 	 */
-	setView = (view: View): void => {
+	setView = (view: View): EntityListParser => {
 		this.view = view;
+
+		return this;
 	};
 
 	/**
