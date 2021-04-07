@@ -12,10 +12,6 @@ beforeAll(async () => {
 	await createNewEvent({ title: 'Test for Single Vs Global TAM data' });
 	await addDatesAndTickets();
 
-	// await page.goto(
-	// 	'http://eventsmart.local.host/wp-admin/admin.php?page=espresso_events&action=edit&post=79&return=default'
-	// );
-
 	await page.waitForTimeout(1000);
 });
 
