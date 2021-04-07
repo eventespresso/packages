@@ -24,10 +24,8 @@ describe('Create free event and register to it', () => {
 			await page.click(`${ticketRootSelector} [data-testid="ee-ticket-inline-qty-preview"]`);
 			await page.type(`${ticketRootSelector} [data-testid="ee-ticket-inline-qty"]`, '75');
 
-			await page.waitForTimeout(5000);
-
 			await page.evaluate(() => window.scrollTo(0, 0));
-			await page.click('#edit-slug-box #sample-permalink a');
+			await page.click('#edit-slug-box #sample-permalink');
 
 			await page.waitForTimeout(4000);
 
