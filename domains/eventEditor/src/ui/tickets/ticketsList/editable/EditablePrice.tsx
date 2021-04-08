@@ -12,6 +12,8 @@ import { useLockedTicketAction } from '@eventespresso/tpc';
 import useRecalculateBasePrice from '../../hooks/useRecalculateBasePrice';
 import type { TicketItemProps } from '../types';
 
+import './style.scss';
+
 interface EditablePriceProps extends TicketItemProps {
 	className?: string;
 }
@@ -37,7 +39,7 @@ const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, 
 	const tooltip = __('edit ticket total…');
 
 	return isTicketLocked ? (
-		<Clickable as='div' onClick={showAlert}>
+		<Clickable as='div' className='ee-editable-price' onClick={showAlert}>
 			<CurrencyDisplay className={className} value={ticket.price} />
 			{alertContainer}
 		</Clickable>
