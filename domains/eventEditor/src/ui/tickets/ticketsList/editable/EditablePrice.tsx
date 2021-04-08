@@ -39,7 +39,7 @@ const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, 
 	const tooltip = __('edit ticket total…');
 
 	return isTicketLocked ? (
-		<Clickable as='div' className='ee-editable-price' onClick={showAlert}>
+		<Clickable as='div' className='ee-ticket-editable-price' onClick={showAlert}>
 			<CurrencyDisplay className={className} value={ticket.price} />
 			{alertContainer}
 		</Clickable>
