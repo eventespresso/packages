@@ -27,22 +27,14 @@ export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & {
 	await page.click('button[type=submit]');
 
 	// Wait for tickets list to update
-	await page.waitForFunction(
-		(selector) => {
-			const toastBody = document.querySelector(`${selector} .ee-toaster-notice__toast-body`).textContent;
+	await page.waitForFunction((selector) => {
+		const toastBody = document.querySelector(`${selector} .ee-toaster-notice__toast-body`).textContent;
 
-			return toastBody.includes('successfully created ticket');
-		},
-		toastSelector,
-		{ timeout: 90000 }
-	);
+		return toastBody.includes('successfully created ticket');
+	}, toastSelector);
 
 	try {
-		const toastsButtons = await page.$$(`${toastSelector} .Toastify__close-button`);
-
-		for (const button of toastsButtons) {
-			await button.click();
-		}
+		await page.click(`${toastSelector} .Toastify__close-button`);
 	} catch (error) {
 		// do nothing
 	}
