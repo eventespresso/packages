@@ -7,7 +7,7 @@ const tamrover = new TAMRover();
 const parser = new EntityListParser();
 
 beforeAll(async () => {
-	await saveVideo(page, 'artifacts/tam-for-single-date.mp4');
+	await saveVideo(page, 'artifacts/tam-for-single-vs-global-data.mp4');
 
 	await createNewEvent({ title: 'Test for Single Vs Global TAM data' });
 	await addDatesAndTickets();
@@ -22,7 +22,7 @@ afterAll(async () => {
 
 describe('TAM:SingleVsGlobalTAM', () => {
 	for (const entityType of ['datetime', 'ticket'] as const) {
-		it(`tests the ralations for each ${entityType} to be the same in single and global TAM modal`, async () => {
+		it(`tests the relations for each ${entityType} to be the same in single and global TAM modal`, async () => {
 			const mapFromTo = entityType === 'ticket' ? 'ticket2dates' : 'date2tickets';
 
 			const entities = await parser.setEntityType(entityType).getListItems();
