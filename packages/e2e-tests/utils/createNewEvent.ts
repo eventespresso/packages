@@ -1,5 +1,3 @@
-import { EntityListParser } from './EntityListParser';
-
 export async function createNewEvent({ title }: any = {}) {
 	await page.waitForTimeout(1000);
 
@@ -12,6 +10,4 @@ export async function createNewEvent({ title }: any = {}) {
 	await page.type('#titlewrap #title', title).catch(console.log);
 
 	await page.click(`#publishing-action #publish`).catch(console.log);
-
-	await page.waitForSelector(new EntityListParser('datetime').getRootSelector());
 }

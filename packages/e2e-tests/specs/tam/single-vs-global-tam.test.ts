@@ -22,7 +22,7 @@ afterAll(async () => {
 
 describe('TAM:SingleVsGlobalTAM', () => {
 	for (const entityType of ['datetime', 'ticket'] as const) {
-		it(`tests the ralations for each ${entityType} to be the same in single and global TAM modal`, async () => {
+		it(`tests the raltions for each ${entityType} to be the same in single and global TAM modal`, async () => {
 			const mapFromTo = entityType === 'ticket' ? 'ticket2dates' : 'date2tickets';
 
 			const entities = await parser.setEntityType(entityType).getListItems();
