@@ -19,7 +19,7 @@ export class EntityListParser {
 	 * Change the current entity type in the instance.
 	 */
 	setEntityType = (entityType: EntityType): EntityListParser => {
-		this.entityType = entityType;
+		this.entityType = entityType || 'datetime';
 
 		return this;
 	};
@@ -29,6 +29,21 @@ export class EntityListParser {
 	 */
 	setView = (view: View): EntityListParser => {
 		this.view = view;
+
+		return this;
+	};
+
+	/**
+	 * Switch the current view for the list as well as the instance.
+	 */
+	switchView = async (view: View): Promise<EntityListParser> => {
+		this.setView(view);
+
+		const filterBar = await this.getFilterBar();
+
+		const switchViewButton = await filterBar?.$(`[type=button] >> text=${view} view`);
+
+		await switchViewButton?.click();
 
 		return this;
 	};
@@ -151,11 +166,11 @@ export class EntityListParser {
 		if (this.view === 'card') {
 			dbIdStr = await targetItem?.$eval('.ee-entity-ids .ee-entity-dbid', (e) => e.textContent);
 		} else {
-			const listItemId = await targetItem?.evaluate((element) => element.id);
-			dbIdStr = listItemId?.match(/row-(?<id>.+?)-row/)?.groups?.id;
+			dbIdStr = await targetItem?.$eval('td.ee-col-1', (e) => e.textContent);
+			dbIdStr = dbIdStr?.replace('ID', '');
 		}
 
-		return dbIdStr && parseInt(dbIdStr);
+		return parseInt(dbIdStr?.trim()) || 0;
 	};
 
 	/**
@@ -207,6 +222,18 @@ export class EntityListParser {
 		const items = await this.getListItems();
 
 		return items.length;
+	};
+
+	/**
+	 * Retrieve the number of related items for a given item. Default to first item.
+	 */
+	getRelatedItemsCount = async (item?: Item | number): Promise<number> => {
+		// if it's a db id or empty
+		const targetItem = typeof item === 'number' || !item ? await this.getItem(item as number) : item;
+
+		const count = await targetItem?.$eval('.ee-entity-actions-menu .ee-item-count', (e) => e.textContent);
+
+		return parseInt(count?.trim()) || 0;
 	};
 
 	/**
