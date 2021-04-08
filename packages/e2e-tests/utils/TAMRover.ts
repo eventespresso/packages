@@ -124,9 +124,29 @@ export class TAMRover {
 		// If TAM is dirty, there may be an alert.
 		await respondToAlert('Yes');
 
+		this.reset();
+	};
+
+	/**
+	 * Reset instance data.
+	 */
+	reset = async (): Promise<void> => {
 		this.relationalMap = null;
 
 		this.setDbId(null);
+	};
+
+	/**
+	 * Submit TAM modal.
+	 */
+	submit = async (): Promise<void> => {
+		const submitButton = await page.$(`${this.getRootSelector()} button[type=submit]`);
+
+		if (submitButton) {
+			await submitButton.click();
+		}
+
+		this.reset();
 	};
 
 	/**
@@ -306,6 +326,63 @@ export class TAMRover {
 			await this.generateRelationMap(options);
 		}
 		return this.relationalMap;
+	};
+
+	/**
+	 * Retrieve all the date Ids in an array.
+	 */
+	getDateIds = async (): Promise<Array<number>> => {
+		const map = await this.getMap({ forceGenerate: true, mapFromTo: 'date2tickets' });
+
+		return Object.keys(map).map(Number);
+	};
+
+	/**
+	 * Retrieve all the ticket Ids in an array.
+	 */
+	getTicketIds = async (): Promise<Array<number>> => {
+		const map = await this.getMap({ forceGenerate: true, mapFromTo: 'ticket2dates' });
+
+		return Object.keys(map).map(Number);
+	};
+
+	/**
+	 * Toggle the assignment between all dates and tickets
+	 */
+	toggleAllAssignments = async (): Promise<void> => {
+		const dateIds = await this.getDateIds();
+		const ticketIds = await this.getTicketIds();
+
+		for (const dateId of dateIds) {
+			for (const ticketId of ticketIds) {
+				await this.toggleAssignment(dateId, ticketId);
+			}
+		}
+	};
+
+	/**
+	 * Toggle the assignment between a date and a ticket
+	 */
+	toggleAssignment = async (dateDbId: number, ticketDbId: number): Promise<void> => {
+		const dateRow = await this.getRow(dateDbId);
+		const ticketCols = await this.getCols();
+		const dateCells = await dateRow.$$('td');
+
+		// Now we need to iterate over each ticket column
+		// first column (0 index) is the top-left corner, of no use to us.
+		for (let colIndex = 1; colIndex < ticketCols.length; colIndex++) {
+			const col = ticketCols[colIndex];
+			// get the db ID for the ticket in the column
+			const dbId = await this.getTicketDbId(col);
+			// if we are lucky to have identified the target
+			if (dbId === ticketDbId) {
+				// this is the cell button that toggles the assignment
+				const button = await dateCells?.[colIndex]?.$('button');
+				// toggle the assignment
+				await button.click();
+				break;
+			}
+		}
 	};
 
 	/**
