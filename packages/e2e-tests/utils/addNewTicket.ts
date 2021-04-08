@@ -29,7 +29,7 @@ export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & {
 	// Wait for tickets list to update
 	await page.waitForFunction(
 		(selector) => {
-			const toastBody = document.querySelector(`${selector} .ee-toaster-notice__toast-body`)?.textContent || '';
+			const toastBody = document.querySelector(`${selector} .ee-toaster-notice__toast-body`).textContent;
 
 			return toastBody.includes('successfully created ticket');
 		},
