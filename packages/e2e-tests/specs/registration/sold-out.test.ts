@@ -8,10 +8,10 @@ import {
 	EntityListParser,
 	submitRegistration,
 	submitTicketSelector,
-} from '../../../utils';
-import { chooseFromTicketSelector } from '../../../utils/public/ticket-selector/selectTicket';
+} from '../../utils';
+import { chooseFromTicketSelector } from '../../utils/public/ticket-selector/selectTicket';
 
-const namespace = 'event.free-event.registration';
+const namespace = 'event.free.event.registration.sold.out';
 
 beforeAll(async () => {
 	await saveVideo(page, `artifacts/${namespace}.mp4`);
