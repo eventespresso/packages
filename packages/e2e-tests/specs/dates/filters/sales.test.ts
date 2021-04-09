@@ -1,6 +1,7 @@
 import { saveVideo } from 'playwright-video';
 
-import { addNewTicket, clickButton, createNewEvent, EntityListParser, removeLastTicket } from '../../../utils';
+import { addNewTicket, createNewEvent, EntityListParser, removeLastTicket } from '@e2eUtils/admin/event-editor';
+import { clickButton } from '@e2eUtils/common';
 
 const namespace = 'eventDates.filters.sales';
 

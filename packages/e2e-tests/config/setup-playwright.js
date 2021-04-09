@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 
-import { activatePlugin, loginUser } from '../utils';
+import { activatePlugin } from '../utils/admin/wp-plugins-page';
+import { loginUser } from '../utils/wp';
 
 // The Jest timeout is increased because these tests are a bit slow
 jest.setTimeout(300000);

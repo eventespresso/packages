@@ -1,4 +1,6 @@
-import { createNewEvent, clickLastDateFromPicker, setListDisplayControl, EntityListParser } from '../../../utils';
+import { createNewEvent, setListDisplayControl, EntityListParser } from '@e2eUtils/admin/event-editor';
+import { clickLastDateFromPicker } from '@e2eUtils/common';
+
 import { entities } from '../../../constants';
 
 const namespace = 'event.entities.edit.calendar.date.range';

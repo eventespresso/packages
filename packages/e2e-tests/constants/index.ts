@@ -1,6 +1,8 @@
+import { EntityType } from '../types';
+
 export const datesList = '#ee-entity-list-datetimes';
 
-export const entities: Array<'datetime' | 'ticket'> = ['datetime', 'ticket'];
+export const entities: Array<EntityType> = ['datetime', 'ticket'];
 
 export const lastDateSelector =
 	'.react-datepicker__week:last-child .react-datepicker__day:last-child:not(.react-datepicker__day--selected)';

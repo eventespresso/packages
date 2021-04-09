@@ -1,7 +1,4 @@
-/**
- * Internal dependencies
- */
-import { getPageError } from '../get-page-error';
+import { getPageError } from '../wp/get-page-error';
 
 describe('getPageError', () => {
 	let originalPage;

@@ -1,6 +1,6 @@
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent, EntityListParser } from '../../utils';
+import { createNewEvent, EntityListParser } from '@e2eUtils/admin/event-editor';
 import { modalRTESel } from '../../constants';
 
 const namespace = 'event.tickets.card.view.inline-inputs';

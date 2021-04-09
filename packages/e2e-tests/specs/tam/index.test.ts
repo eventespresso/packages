@@ -1,6 +1,8 @@
 import { saveVideo } from 'playwright-video';
 
-import { clickButton, createNewEvent, removeLastTicket } from '../../utils';
+import { createNewEvent, removeLastTicket } from '@e2eUtils/admin/event-editor';
+import { clickButton } from '@e2eUtils/common';
+
 import { isSubmitBtnDisabled } from '../../assertions';
 
 beforeAll(async () => {

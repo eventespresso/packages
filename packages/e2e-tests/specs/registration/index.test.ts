@@ -6,10 +6,8 @@ import {
 	clickEventPostPermaLink,
 	createNewEvent,
 	EntityListParser,
-	submitRegistration,
-	submitTicketSelector,
-} from '../../utils';
-import { chooseFromTicketSelector } from '../../utils/public/ticket-selector/selectTicket';
+} from '@e2eUtils/admin/event-editor';
+import { submitRegistration, submitTicketSelector, chooseFromTicketSelector } from '@e2eUtils/public/reg-checkout';
 
 const namespace = 'event.free-event.registration';
 

@@ -1,5 +1,11 @@
 import dotenv from 'dotenv';
 import type { Config } from '@jest/types';
+import { map, replace } from 'ramda';
+
+import { moduleNameMapper } from '../../jest.config';
+
+// E2E tests are run with packages/e2e-tests as Node CWD, so we need to adjust the paths
+const e2eModuleNameMapper = map<any, any>(replace('<rootDir>', '<rootDir>/../..'), moduleNameMapper);
 
 dotenv.config();
 
@@ -12,6 +18,7 @@ const config: Config.InitialOptions = {
 		'@testing-library/jest-dom/extend-expect',
 		'<rootDir>/config/setup-playwright.js',
 	],
+	moduleNameMapper: e2eModuleNameMapper,
 	testMatch: ['**/specs/**/*test.[jt]s', '**/?(*.)spec.[jt]s'],
 	testEnvironmentOptions: {
 		'jest-playwright': {

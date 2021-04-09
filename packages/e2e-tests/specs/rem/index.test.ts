@@ -1,6 +1,9 @@
 import { saveVideo } from 'playwright-video';
 
-import { activatePlugin, clickButton, createNewEvent, deactivatePlugin, pressKeyWithModifier } from '../../utils';
+import { createNewEvent } from '@e2eUtils/admin/event-editor';
+import { clickButton } from '@e2eUtils/common';
+import { activatePlugin, deactivatePlugin } from '@e2eUtils/admin/wp-plugins-page';
+import { pressKeyWithModifier } from '@e2eUtils/misc';
 
 const REMPlugin = 'eea-recurring-events-manager/eea-recurring-events-manager.php';
 

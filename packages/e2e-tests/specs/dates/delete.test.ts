@@ -1,4 +1,4 @@
-import { addNewDate, createNewEvent, deleteDateByName, EntityListParser } from '../../utils';
+import { addNewDate, createNewEvent, deleteDateByName, EntityListParser } from '@e2eUtils/admin/event-editor';
 
 const namespace = 'event.dates.delete';
 

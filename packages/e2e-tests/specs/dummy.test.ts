@@ -1,4 +1,4 @@
-import { createNewEvent } from '../utils';
+import { createNewEvent } from '@e2eUtils/admin/event-editor';
 
 describe('DummyTest', () => {
 	it('Does nothing more than creating an event', async () => {

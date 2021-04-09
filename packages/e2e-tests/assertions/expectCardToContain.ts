@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { EntityListParser } from '../utils';
+import { EntityListParser } from '@e2eUtils/admin/event-editor';
 
 export const expectCardToContain = async (
 	{ capacity, desc, endDate, endDateMonth, name, quantity, startDate, startDateMonth, type }: any // TODO replace with a proper interface

@@ -14,7 +14,7 @@ import {
 	removeAllPriceModifiers,
 	setPrice,
 	setPrices,
-} from '../../utils';
+} from '@e2eUtils/admin/event-editor';
 
 const ticketsListSelector = '#ee-entity-list-tickets .ee-entity-list__card-view';
 

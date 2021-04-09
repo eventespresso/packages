@@ -17,7 +17,8 @@
 			"@edtrHooks/*": ["domains/eventEditor/src/hooks/*"],
 			"@edtrInterfaces/*": ["domains/eventEditor/src/interfaces/*"],
 			"@edtrServices/*": ["domains/eventEditor/src/services/*"],
-			"@edtrUI/*": ["domains/eventEditor/src/ui/*"]
+			"@edtrUI/*": ["domains/eventEditor/src/ui/*"],
+			"@e2eUtils/*": ["packages/e2e-tests/utils/*"]
 		},
 		"resolveJsonModule": true,
 		"skipLibCheck": true,

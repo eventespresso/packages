@@ -1,8 +1,8 @@
-import type { Entity } from '../types';
+import type { EntityType } from '../types';
 
-export const getPaginationSize = async (entity: Entity['entity']) => {
+export const getPaginationSize = async (entityType: EntityType) => {
 	return await page.$$eval(
-		`#ee-entity-list-${entity}s .ee-pagination .rc-pagination-item`,
+		`#ee-entity-list-${entityType}s .ee-pagination .rc-pagination-item`,
 		(elements) => elements.length
 	);
 };

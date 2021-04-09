@@ -1,3 +1,1 @@
-export interface Entity {
-	entity: 'datetime' | 'ticket';
-}
+export type EntityType = 'datetime' | 'ticket';

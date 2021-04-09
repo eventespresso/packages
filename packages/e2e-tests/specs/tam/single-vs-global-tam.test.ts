@@ -1,6 +1,6 @@
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent, EntityListParser, TAMRover } from '../../utils';
+import { createNewEvent, EntityListParser, TAMRover } from '@e2eUtils/admin/event-editor';
 import { addDatesAndTickets } from './utils';
 
 const tamrover = new TAMRover();

@@ -2,7 +2,9 @@ import { saveVideo } from 'playwright-video';
 
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 
-import { createNewEvent, clickButton, clickLabel } from '../../utils';
+import { clickButton, clickLabel } from '@e2eUtils/common';
+import { createNewEvent } from '@e2eUtils/admin/event-editor';
+
 import { addDatesAndTickets } from './utils';
 
 const tamSelector = '.ee-ticket-assignments-manager';
