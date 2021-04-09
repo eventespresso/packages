@@ -14,6 +14,7 @@ export * from './deleteDateByName';
 export * from './EntityListParser';
 export * from './fillDateTicketForm';
 export * from './findEntityIdByName';
+export * from './getEventUrl';
 export * from './removeAllDates';
 export * from './removeAllPriceModifiers';
 export * from './removeAllTickets';

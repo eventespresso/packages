@@ -259,4 +259,10 @@ export class EntityListParser {
 
 		return await this.getItemDbId(item);
 	};
+
+	getStatusByName = async (name: string): Promise<string> => {
+		const item = await this.getItemBy('name', name);
+
+		return item?.$eval('.ee-entity-status-label', (el) => el.textContent);
+	};
 }
