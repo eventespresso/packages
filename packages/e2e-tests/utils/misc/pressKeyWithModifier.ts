@@ -1,6 +1,11 @@
 import { modifiers, SHIFT, ALT, CTRL } from '@wordpress/keycodes';
 import { ucFirst } from '@eventespresso/utils';
 
+declare global {
+	interface Window {
+		_clipboardData: any;
+	}
+}
 /**
  * Emulates a Ctrl+A SelectAll key combination by dispatching custom keyboard
  * events and using the results of those events to determine whether to call
