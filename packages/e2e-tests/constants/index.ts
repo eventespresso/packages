@@ -1,7 +1,5 @@
 import { EntityType } from '../types';
 
-export const datesList = '#ee-entity-list-datetimes';
-
 export const entities: Array<EntityType> = ['datetime', 'ticket'];
 
 export const lastDateSelector =

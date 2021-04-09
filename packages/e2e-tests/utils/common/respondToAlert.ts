@@ -1,4 +1,4 @@
-const selector = 'ee-alert-dialog';
+const selector = '.ee-alert-dialog';
 
 export const respondToAlert = async (optionToChoose = 'Yes') => {
 	const alert = await page.$(selector);

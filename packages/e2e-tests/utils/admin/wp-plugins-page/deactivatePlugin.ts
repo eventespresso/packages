@@ -6,7 +6,7 @@ import { switchUserToAdmin, switchUserToTest, visitAdminPage } from '@e2eUtils/w
  *
  * @param {string} plugin Path to the plugin file, relative to the plugins directory.
  */
-export async function deactivatePlugin(plugin) {
+export async function deactivatePlugin(plugin: string): Promise<void> {
 	await switchUserToAdmin();
 	await visitAdminPage('plugins.php', null);
 

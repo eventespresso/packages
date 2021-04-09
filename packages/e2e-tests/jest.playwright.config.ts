@@ -16,7 +16,7 @@ const config: Config.InitialOptions = {
 	setupFilesAfterEnv: [
 		'expect-playwright',
 		'@testing-library/jest-dom/extend-expect',
-		'<rootDir>/config/setup-playwright.js',
+		'<rootDir>/config/setup-playwright.ts',
 	],
 	moduleNameMapper: e2eModuleNameMapper,
 	testMatch: ['**/specs/**/*test.[jt]s', '**/?(*.)spec.[jt]s'],

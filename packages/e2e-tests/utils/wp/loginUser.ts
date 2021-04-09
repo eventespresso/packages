@@ -1,6 +1,6 @@
 import { WP_USERNAME, WP_PASSWORD } from '../dev/config';
-import { createURL } from './create-url';
-import { isCurrentURL } from './is-current-url';
+import { createURL } from './createURL';
+import { isCurrentURL } from './isCurrentURL';
 import { pressKeyWithModifier } from '../misc';
 
 /**
@@ -9,7 +9,7 @@ import { pressKeyWithModifier } from '../misc';
  * @param {?string} username String to be used as user credential.
  * @param {?string} password String to be used as user credential.
  */
-export async function loginUser(username = WP_USERNAME, password = WP_PASSWORD) {
+export async function loginUser(username = WP_USERNAME, password = WP_PASSWORD): Promise<void> {
 	if (!isCurrentURL('wp-login.php')) {
 		await page.goto(createURL('wp-login.php'));
 	}

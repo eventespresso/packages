@@ -22,5 +22,6 @@ declare global {
 	interface Window {
 		eventEspressoData: EventEspressoData;
 		wp: any;
+		_clipboardData: any;
 	}
 }

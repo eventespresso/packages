@@ -25,6 +25,7 @@ async function emulateSelectAll() {
 				key: isMac ? 'Meta' : 'Control',
 				code: isMac ? 'MetaLeft' : 'ControlLeft',
 				location: window.KeyboardEvent.DOM_KEY_LOCATION_LEFT,
+				// @ts-ignore
 				getModifierState: (keyArg) => keyArg === (isMac ? 'Meta' : 'Control'),
 				ctrlKey: !isMac,
 				metaKey: isMac,
@@ -40,6 +41,7 @@ async function emulateSelectAll() {
 			key: 'a',
 			code: 'KeyA',
 			location: window.KeyboardEvent.DOM_KEY_LOCATION_STANDARD,
+			// @ts-ignore
 			getModifierState: (keyArg) => keyArg === (isMac ? 'Meta' : 'Control'),
 			ctrlKey: !isMac,
 			metaKey: isMac,
@@ -62,6 +64,7 @@ async function emulateSelectAll() {
 				key: isMac ? 'Meta' : 'Control',
 				code: isMac ? 'MetaLeft' : 'ControlLeft',
 				location: window.KeyboardEvent.DOM_KEY_LOCATION_LEFT,
+				// @ts-ignore
 				getModifierState: () => false,
 				charCode: 0,
 				keyCode: isMac ? 93 : 17,
@@ -87,6 +90,7 @@ export async function setClipboardData({ plainText = '', html = '' }) {
 			window._clipboardData.setData('text/html', _html);
 		},
 		plainText,
+		// @ts-ignore
 		html
 	);
 }
@@ -105,6 +109,7 @@ async function emulateClipboard(type) {
 				const fragment = range.cloneContents();
 
 				html = Array.from(fragment.childNodes)
+					// @ts-ignore
 					.map((node) => node.outerHTML || node.nodeValue)
 					.join('');
 			}

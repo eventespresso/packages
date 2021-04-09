@@ -6,7 +6,7 @@ import { isPluginNetworkActive } from './isPluginNetworkActive';
  *
  * @param {string} plugin Path to the plugin file, relative to the plugins directory.
  */
-export async function activatePlugin(plugin) {
+export async function activatePlugin(plugin: string): Promise<void> {
 	await switchUserToAdmin();
 	await visitAdminPage('plugins.php', null);
 

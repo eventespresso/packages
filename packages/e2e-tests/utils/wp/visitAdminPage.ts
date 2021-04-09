@@ -1,9 +1,9 @@
 import { join } from 'path';
 
-import { createURL } from './create-url';
-import { isCurrentURL } from './is-current-url';
-import { loginUser } from './login-user';
-import { getPageError } from './get-page-error';
+import { createURL } from './createURL';
+import { isCurrentURL } from './isCurrentURL';
+import { loginUser } from './loginUser';
+import { getPageError } from './getPageError';
 
 /**
  * Visits admin page; if user is not logged in then it logging in it first, then visits admin page.
@@ -11,7 +11,7 @@ import { getPageError } from './get-page-error';
  * @param {string} adminPath String to be serialized as pathname.
  * @param {string} query String to be serialized as query portion of URL.
  */
-export async function visitAdminPage(adminPath, query) {
+export async function visitAdminPage(adminPath: string, query: string): Promise<void> {
 	const adminPage = createURL(join('wp-admin', adminPath), query);
 
 	await page.goto(adminPage);
