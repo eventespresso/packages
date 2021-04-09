@@ -41,7 +41,6 @@ const assertListAndTAMRelatedCount = async (entityType: EntityType, viewType: Li
 
 	const relatedCountInTAM = await tamrover.getAssigmentsCountMap(tamMapOptions);
 
-	/******** CHECK RELATIONS BEFORE TOGGLE ********/
 	for (const dbId in relatedCountInList) {
 		const countInList = relatedCountInList[dbId];
 		const countInTAM = relatedCountInTAM[dbId];
