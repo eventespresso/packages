@@ -1,16 +1,16 @@
 import type { Page, ElementHandle } from 'playwright';
 
 export type EntityType = 'datetime' | 'ticket';
-export type View = 'card' | 'table';
+export type ListView = 'card' | 'table';
 export type Field = 'name' | 'dbId';
 export type Item = ElementHandle<SVGElement | HTMLElement>;
 
 export class EntityListParser {
 	entityType: EntityType;
 
-	view: View;
+	view: ListView;
 
-	constructor(entityType?: EntityType, view: View = 'card') {
+	constructor(entityType?: EntityType, view: ListView = 'card') {
 		this.entityType = entityType;
 		this.view = view;
 	}
@@ -27,7 +27,7 @@ export class EntityListParser {
 	/**
 	 * Change the current view in the instance.
 	 */
-	setView = (view: View): EntityListParser => {
+	setView = (view: ListView): EntityListParser => {
 		this.view = view;
 
 		return this;
@@ -36,7 +36,7 @@ export class EntityListParser {
 	/**
 	 * Switch the current view for the list as well as the instance.
 	 */
-	switchView = async (view: View): Promise<EntityListParser> => {
+	switchView = async (view: ListView): Promise<EntityListParser> => {
 		this.setView(view);
 
 		const filterBar = await this.getFilterBar();
@@ -234,6 +234,21 @@ export class EntityListParser {
 		const count = await targetItem?.$eval('.ee-entity-actions-menu .ee-item-count', (e) => e.textContent);
 
 		return parseInt(count?.trim()) || 0;
+	};
+
+	/**
+	 * Retrieve a map of the item Ids to assigned items counts.
+	 */
+	getRelatedItemsCountMap = async (): Promise<Record<number, number>> => {
+		const dbIds = await this.getDbIds();
+		// create a map of db id and related item count
+		const relatedCountInList: Record<number, number> = {};
+		// check for each entity in the list
+		for (const dbId of dbIds) {
+			relatedCountInList[dbId] = await this.getRelatedItemsCount(dbId);
+		}
+
+		return relatedCountInList;
 	};
 
 	/**

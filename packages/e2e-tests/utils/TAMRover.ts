@@ -347,6 +347,17 @@ export class TAMRover {
 	};
 
 	/**
+	 * Create a map of the item Ids to assigned items counts.
+	 */
+	getAssigmentsCountMap = async (options?: GetMapProps): Promise<Record<number, number>> => {
+		const map = await this.getMap(options);
+
+		return Object.entries(map).reduce((prevMap, [entityId, relationMap]) => {
+			return { ...prevMap, [entityId]: Object.values(relationMap).filter((v) => v === 'OLD').length };
+		}, {});
+	};
+
+	/**
 	 * Toggle the assignment between all dates and tickets
 	 */
 	toggleAllAssignments = async (): Promise<void> => {
