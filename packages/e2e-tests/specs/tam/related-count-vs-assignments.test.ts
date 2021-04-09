@@ -7,14 +7,10 @@ const tamrover = new TAMRover();
 const parser = new EntityListParser('datetime', 'card');
 
 beforeAll(async () => {
-	// await saveVideo(page, 'artifacts/tam-related-count-vs-assignments.mp4');
+	await saveVideo(page, 'artifacts/tam-related-count-vs-assignments.mp4');
 
-	// await createNewEvent({ title: 'TAM: Related Count in card and table view vs TAM Assignments' });
-	// await addDatesAndTickets();
-
-	await page.goto(
-		'http://eventsmart.local.host/wp-admin/admin.php?page=espresso_events&action=edit&post=96&return=default'
-	);
+	await createNewEvent({ title: 'TAM: Related Count in card and table view vs TAM Assignments' });
+	await addDatesAndTickets();
 
 	await page.waitForTimeout(1000);
 });
