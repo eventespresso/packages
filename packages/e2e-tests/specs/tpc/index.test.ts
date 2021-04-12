@@ -14,10 +14,7 @@ import {
 	removeAllPriceModifiers,
 	setPrice,
 	setPrices,
-	EntityListParser,
 } from '@e2eUtils/admin/event-editor';
-
-const parser = new EntityListParser('ticket');
 
 beforeAll(async () => {
 	await saveVideo(page, 'artifacts/calculateTicketTotal.mp4');
@@ -26,11 +23,7 @@ beforeAll(async () => {
 
 	await createNewEvent({ title: 'calculateTicketTotal: to be deleted' });
 
-	const waitForListUpdate = await parser.createWaitForListUpdate();
-
 	await removeAllTickets();
-
-	await waitForListUpdate();
 
 	await addNewTicket({ amount: newTicketAmount, name: newTicketName });
 
