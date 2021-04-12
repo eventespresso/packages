@@ -72,7 +72,7 @@ describe('TAM:RelatedCountVsAssignments', () => {
 				// Lets flip all the relations
 				await tamrover.toggleAllAssignments();
 
-				const waitForListUpdate = await parser.createWaitForListUpdate();
+				const waitForListUpdate = await parser.setEntityType('ticket').createWaitForListUpdate();
 				// Now lets submit.
 				await tamrover.submit();
 
