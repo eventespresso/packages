@@ -67,7 +67,7 @@ export const cacheNodesFromBulkInput = <T extends UpdateDatetimeInput | UpdateTi
 			...node,
 			...input.sharedInput,
 			...uniqueInputs[node.id],
-			cacheId: `temp:${uuidv4()}`,
+			cacheId: uuidv4(),
 		};
 	});
 
@@ -92,7 +92,7 @@ export const cacheNodesFromBulkDelete = <E extends Datetime | Ticket | Price>(
 		return {
 			...node,
 			isTrashed: true,
-			cacheId: `temp:${uuidv4()}`,
+			cacheId: uuidv4(),
 		};
 	});
 

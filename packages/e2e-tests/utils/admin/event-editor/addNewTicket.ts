@@ -29,9 +29,5 @@ export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & {
 
 	await page.click('button[type=submit]');
 
-	page.on('console', async (msg) => {
-		for (let i = 0; i < msg.args().length; ++i) console.log(await msg.args()[i].jsonValue());
-	});
-
 	await waitForListUpdate();
 };
