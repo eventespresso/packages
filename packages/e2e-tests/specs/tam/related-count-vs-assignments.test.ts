@@ -13,9 +13,8 @@ beforeAll(async () => {
 	await saveVideo(page, 'artifacts/tam-related-count-vs-assignments.mp4');
 
 	await createNewEvent({ title: 'TAM: Related Count in card and table view vs TAM Assignments' });
-	await addDatesAndTickets();
 
-	await page.waitForTimeout(1000);
+	await addDatesAndTickets();
 });
 
 const toggleAllFilters = async () => {
@@ -73,9 +72,11 @@ describe('TAM:RelatedCountVsAssignments', () => {
 				// Lets flip all the relations
 				await tamrover.toggleAllAssignments();
 
+				const waitForListUpdate = await parser.createWaitForListUpdate();
 				// Now lets submit.
 				await tamrover.submit();
-				await page.waitForTimeout(15000);
+
+				await waitForListUpdate();
 
 				/******** CHECK AFTER SUBMIT ********/
 				await assertListAndTAMRelatedCount(entityType, viewType);

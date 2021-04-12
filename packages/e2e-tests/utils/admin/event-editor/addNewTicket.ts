@@ -1,6 +1,9 @@
+import { EntityListParser } from '@e2eUtils/admin/event-editor';
 import { clickButton } from '@e2eUtils/common';
 import { fillDateTicketForm, DateTicketFormArgs } from './';
 import { setPrice } from './setPrice';
+
+const parser = new EntityListParser('ticket');
 
 export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & { amount?: number }) => {
 	await page.click('text=Add New Ticket');
@@ -9,7 +12,7 @@ export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & {
 
 	await clickButton('Set ticket prices');
 
-	await page.waitForTimeout(1000);
+	await page.waitForSelector('text=Add default prices');
 
 	await page.click('text=Add default prices');
 
@@ -22,7 +25,13 @@ export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & {
 
 	await page.click('[aria-label="assign ticket"]');
 
+	const waitForListUpdate = await parser.createWaitForListUpdate();
+
 	await page.click('button[type=submit]');
 
-	await page.waitForTimeout(2000); // the ticket list is not updated instantly
+	page.on('console', async (msg) => {
+		for (let i = 0; i < msg.args().length; ++i) console.log(await msg.args()[i].jsonValue());
+	});
+
+	await waitForListUpdate();
 };

@@ -25,7 +25,10 @@ export const deleteDateByName = async (name: string) => {
 
 	const trashBtn = await getByTestId($document, `ee-trash-date-${dateId}`);
 
+	const waitForListUpdate = await parser.createWaitForListUpdate();
 	await trashBtn.click();
 
 	await clickButton('Yes');
+
+	await waitForListUpdate();
 };

@@ -1,18 +1,18 @@
 import { saveVideo } from 'playwright-video';
 import { path } from 'ramda';
 
-import { createNewEvent, TAMRover } from '@e2eUtils/admin/event-editor';
+import { createNewEvent, TAMRover, EntityListParser } from '@e2eUtils/admin/event-editor';
 import { addDatesAndTickets } from './utils';
 
 const tamrover = new TAMRover();
+const parser = new EntityListParser('ticket');
 
 beforeAll(async () => {
 	await saveVideo(page, 'artifacts/tam-toggle-assignments.mp4');
 
 	await createNewEvent({ title: 'TAM: Toggle Assignments' });
-	await addDatesAndTickets();
 
-	await page.waitForTimeout(1000);
+	await addDatesAndTickets();
 });
 
 afterAll(async () => {
@@ -47,10 +47,12 @@ describe('TAM:ToggleAssignments', () => {
 			}
 		}
 
+		const waitForListUpdate = await parser.createWaitForListUpdate();
+
 		// Now lets submit.
 		await tamrover.submit();
 
-		await page.waitForTimeout(30000);
+		await waitForListUpdate();
 
 		// Open TAM again
 		await tamrover.setForType('all').launch();

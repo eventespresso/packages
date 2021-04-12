@@ -1,4 +1,4 @@
-import type { Page, ElementHandle } from 'playwright';
+import type { Page, ElementHandle, JSHandle } from 'playwright';
 
 import { EntityType } from '../../../types';
 
@@ -54,6 +54,13 @@ export class EntityListParser {
 	 */
 	getRootSelector = (): string => {
 		return `#ee-entity-list-${this.entityType}s`;
+	};
+
+	/**
+	 * Retrieve the entity ids container selector.
+	 */
+	getCacheIdsSelector = (): string => {
+		return `${this.getRootSelector()} .ee-entity-list__footer .ee-entity-cache-ids`;
 	};
 
 	/**
@@ -217,6 +224,19 @@ export class EntityListParser {
 	};
 
 	/**
+	 * Retrieve the GUID of all the entities in the list, regardless of the filters.
+	 */
+	getAllEntityds = async <T extends boolean>(asArray?: T): Promise<T extends true ? Array<string> : string> => {
+		const idsStr = await page.$eval(this.getCacheIdsSelector(), (selector) =>
+			selector?.getAttribute('data-cache-ids')
+		);
+
+		const ids = idsStr || '';
+
+		return (asArray ? ids.split(',') : ids) as any;
+	};
+
+	/**
 	 * Retrieve the number of items in the list.
 	 */
 	getItemCount = async (): Promise<number> => {
@@ -265,5 +285,33 @@ export class EntityListParser {
 		const item = await this.getItemBy('name', name);
 
 		return await item?.$eval('.ee-entity-status-label', (el) => el.textContent);
+	};
+
+	/**
+	 * Create a promise to wait for the list update.
+	 * The promise should be created before list update is triggered
+	 * and then await-ed after the trigger.
+	 */
+	createWaitForListUpdate = async (): Promise<() => Promise<JSHandle<boolean>>> => {
+		// Lets save the cache IDs before update
+		const cacheIdsBeforeUpdate = await this.getAllEntityds(false);
+
+		return async () => {
+			return await page.waitForFunction(
+				([cacheIdsSelector, idsBeforeSubmit]) => {
+					// Current cache IDs in the list
+					const newCacheIds = document.querySelector(cacheIdsSelector)?.getAttribute('data-cache-ids') || '';
+
+					// If the cache IDs are from optimistic response
+					if (newCacheIds.includes('temp:')) {
+						return false;
+					}
+
+					// If new and old are not same, it means the list is updated
+					return newCacheIds !== idsBeforeSubmit;
+				},
+				[this.getCacheIdsSelector(), cacheIdsBeforeUpdate] as const
+			);
+		};
 	};
 }

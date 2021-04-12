@@ -8,8 +8,6 @@ describe('availableTickets', () => {
 	it('should add new ticket', async () => {
 		const capture = await saveVideo(page, 'artifacts/new-ticket.mp4');
 
-		await page.waitForTimeout(500);
-
 		await createNewEvent({ title: 'to be deleted' });
 
 		const newTicketName = 'one way ticket';

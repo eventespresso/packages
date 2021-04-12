@@ -64,9 +64,10 @@ describe('REM', () => {
 
 		await clickButton('Next');
 
-		await page.waitForTimeout(2000);
+		const perPageSelector = '.rrule-generator-wrapper .ee-pagination__per-page';
 
-		await page.selectOption('.rrule-generator-wrapper .ee-pagination__per-page', {
+		await page.waitForSelector(perPageSelector);
+		await page.selectOption(perPageSelector, {
 			value: '48',
 		});
 

@@ -29,7 +29,9 @@ describe(namespace, () => {
 			await page.click('.chakra-modal__footer button[type=submit]');
 			await page.click(`${parser.getRootSelector()} .ee-entity-details__value .ee-tabbable-text`);
 			await page.type(`${parser.getRootSelector()} .ee-entity-details__value .ee-inline-edit__input`, newDateCap);
+			const waitForListUpdate = await parser.createWaitForListUpdate();
 			await page.click(parser.getRootSelector()); // click outside of the inline input
+			await waitForListUpdate();
 		} catch (e) {
 			await capture.stop();
 		}

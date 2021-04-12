@@ -27,12 +27,13 @@ describe(namespace, () => {
 		await page.click('.chakra-modal__footer button[type=submit]');
 		await page.click(`${parser.getRootSelector()} .ee-entity-details__value .ee-tabbable-text`);
 		await page.type(`${parser.getRootSelector()} .ee-entity-details__value .ee-inline-edit__input`, newTicketQty);
+		const waitForListUpdate = await parser.createWaitForListUpdate();
 		await page.click(parser.getRootSelector()); // click outside of the inline input
 
 		// first/only item
 		const item = await parser.getItem();
 
-		await page.waitForTimeout(2000);
+		await waitForListUpdate();
 
 		expect(await parser.getItemName(item)).toContain(newTicketName);
 

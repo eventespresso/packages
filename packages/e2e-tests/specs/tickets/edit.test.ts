@@ -1,12 +1,13 @@
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent, setListDisplayControl } from '@e2eUtils/admin/event-editor';
+import { createNewEvent, setListDisplayControl, EntityListParser } from '@e2eUtils/admin/event-editor';
 import { clickButton, clickLastDateFromPicker } from '@e2eUtils/common';
 
 import { expectCardToContain } from '../../assertions';
 import { modalRTESel } from '../../constants';
 
 const namespace = 'event.tickets.edit';
+const parser = new EntityListParser('ticket');
 
 beforeAll(async () => {
 	await saveVideo(page, `artifacts/${namespace}.mp4`);
@@ -38,7 +39,13 @@ describe(namespace, () => {
 			await page.click('[name="quantity"]');
 			await page.type('[name="quantity"]', newTicketQuantity);
 			await clickButton('Skip prices - assign dates');
+
+			const waitForListUpdate = await parser.createWaitForListUpdate();
+
 			await page.click('button[type=submit]');
+
+			await waitForListUpdate();
+
 			await setListDisplayControl('ticket', 'both');
 
 			await expectCardToContain({

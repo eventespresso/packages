@@ -10,9 +10,8 @@ beforeAll(async () => {
 	await saveVideo(page, 'artifacts/tam-for-single-vs-global-data.mp4');
 
 	await createNewEvent({ title: 'Test for Single Vs Global TAM data' });
-	await addDatesAndTickets();
 
-	await page.waitForTimeout(1000);
+	await addDatesAndTickets();
 });
 
 afterAll(async () => {

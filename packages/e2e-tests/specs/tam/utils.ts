@@ -16,6 +16,4 @@ export const addDatesAndTickets = async () => {
 	for (const item of data) {
 		await addNewTicket({ ...item, name: 'Ticket ' + item.name, amount: 10 });
 	}
-
-	await page.waitForTimeout(1000);
 };

@@ -14,9 +14,10 @@ import {
 	removeAllPriceModifiers,
 	setPrice,
 	setPrices,
+	EntityListParser,
 } from '@e2eUtils/admin/event-editor';
 
-const ticketsListSelector = '#ee-entity-list-tickets .ee-entity-list__card-view';
+const parser = new EntityListParser('ticket');
 
 beforeAll(async () => {
 	await saveVideo(page, 'artifacts/calculateTicketTotal.mp4');
@@ -25,21 +26,13 @@ beforeAll(async () => {
 
 	await createNewEvent({ title: 'calculateTicketTotal: to be deleted' });
 
-	// Wait for page load after the event is published
-	await page.waitForNavigation();
-
-	// Wait for tickets list lazy load
-	await page.waitForFunction((selector) => document.querySelector(selector), ticketsListSelector);
+	const waitForListUpdate = await parser.createWaitForListUpdate();
 
 	await removeAllTickets();
 
-	// Wait for tickets list to refresh
-	await page.waitForFunction((selector) => !document.querySelector(selector), ticketsListSelector);
+	await waitForListUpdate();
 
 	await addNewTicket({ amount: newTicketAmount, name: newTicketName });
-
-	// Wait for tickets list to update
-	await page.waitForFunction((selector) => document.querySelector(selector), ticketsListSelector);
 
 	await page.click('[aria-label="ticket price calculator"]');
 });
