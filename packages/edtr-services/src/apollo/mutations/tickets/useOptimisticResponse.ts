@@ -50,15 +50,17 @@ const useOptimisticResponse = (): OptimisticResCb => {
 				__typename: 'EspressoTicket',
 			};
 			const ticket = getTicket(input.id);
+			const cacheId = `temp:${uuidv4()}`;
 
 			switch (mutationType) {
 				case MutationType.Create:
 					espressoTicket = {
 						...espressoTicket,
 						...TICKET_DEFAULTS,
+						cacheId,
 						// make sure the id is generated on each call to make sure
 						// it is unique for each entity created in bulk
-						id: `temp:${uuidv4()}`,
+						id: cacheId,
 						...input,
 						prices: null,
 					};
@@ -70,7 +72,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 						...ticket,
 						...input,
 						isTrashed: true,
-						cacheId: uuidv4(),
+						cacheId,
 					};
 					break;
 				case MutationType.Update:
@@ -78,7 +80,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 						...espressoTicket,
 						...ticket,
 						...input,
-						cacheId: uuidv4(),
+						cacheId,
 						prices: null,
 					};
 					break;

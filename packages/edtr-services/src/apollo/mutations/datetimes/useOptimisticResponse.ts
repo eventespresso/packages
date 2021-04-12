@@ -41,16 +41,17 @@ const useOptimisticResponse = (): OptimisticResCb => {
 			};
 
 			const datetime = getDatetime(input.id);
+			const cacheId = `temp:${uuidv4()}`;
 
 			switch (mutationType) {
 				case MutationType.Create:
 					espressoDatetime = {
 						...espressoDatetime,
 						...DATETIME_DEFAULTS,
+						cacheId,
 						// make sure the id is generated on each call to make sure
 						// it is unique for each entity created in bulk
-						id: `temp:${uuidv4()}`,
-						cacheId: uuidv4(),
+						id: cacheId,
 						...input,
 					};
 					break;
@@ -61,7 +62,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 						...datetime,
 						...input,
 						isTrashed: true,
-						cacheId: uuidv4(),
+						cacheId,
 					};
 					break;
 				case MutationType.Update:
@@ -69,7 +70,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 						...espressoDatetime,
 						...datetime,
 						...input,
-						cacheId: uuidv4(),
+						cacheId,
 					};
 					break;
 			}
