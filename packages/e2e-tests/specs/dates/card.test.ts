@@ -18,23 +18,28 @@ describe(namespace, () => {
 		const newDateName = 'new date name';
 		const newDateDesc = 'new date description';
 		const newDateCap = '100';
-		const capture = await saveVideo(page, `artifacts/${namespace}.mp4`);
 
-		try {
-			await page.click(`${parser.getRootSelector()} .entity-card-details__name`);
-			await page.type(`${parser.getRootSelector()} .entity-card-details__name`, newDateName);
-			await page.click(`${parser.getRootSelector()} .entity-card-details__text`);
-			await page.click(modalRTESel);
-			await page.type(modalRTESel, newDateDesc);
-			await page.click('.chakra-modal__footer button[type=submit]');
-			await page.click(`${parser.getRootSelector()} .ee-entity-details__value .ee-tabbable-text`);
-			await page.type(`${parser.getRootSelector()} .ee-entity-details__value .ee-inline-edit__input`, newDateCap);
-			const waitForListUpdate = await parser.createWaitForListUpdate();
-			await page.click(parser.getRootSelector()); // click outside of the inline input
-			await waitForListUpdate();
-		} catch (e) {
-			await capture.stop();
-		}
+		await page.click(`${parser.getRootSelector()} .entity-card-details__name`);
+		await page.type(`${parser.getRootSelector()} .entity-card-details__name`, newDateName);
+
+		let waitForListUpdate = await parser.createWaitForListUpdate();
+		await page.click(parser.getRootSelector()); // click outside of the inline input
+		await waitForListUpdate();
+
+		await page.click(`${parser.getRootSelector()} .entity-card-details__text`);
+		await page.click(modalRTESel);
+		await page.type(modalRTESel, newDateDesc);
+
+		waitForListUpdate = await parser.createWaitForListUpdate();
+		await page.click('.chakra-modal__footer button[type=submit]');
+		await waitForListUpdate();
+
+		await page.click(`${parser.getRootSelector()} .ee-entity-details__value .ee-tabbable-text`);
+		await page.type(`${parser.getRootSelector()} .ee-entity-details__value .ee-inline-edit__input`, newDateCap);
+
+		waitForListUpdate = await parser.createWaitForListUpdate();
+		await page.click(parser.getRootSelector()); // click outside of the inline input
+		await waitForListUpdate();
 
 		// first/only item
 		const item = await parser.getItem();
