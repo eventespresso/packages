@@ -10,7 +10,7 @@ In order to enhance reusability a few mixins has been used.
 -   In `_breakpoint.scss` we have responsive media queries.
 -   The `button-variant` mixin from `_button.scss` abstracts away the logic for creating `primary`, `secondary` and `accent` variations of buttons, which is used in the loop from `packages/ui-components/src/Button/_colors.scss`.
 -   The `reduce-motion` mixin is a `a11y`-related mixin, more info can be found [here](https://a11y-101.com/development/reduced-motion)
--   The mixins from `_screen-reader.scss` are also used for `a11y` purposes. In some cases we want to display something, but don't want to let screen reader access it, this is where `visually-hidden` mixin comes handy. In situations when we don't want to show something, but want to make that element tabbable, we can use `visually-hidden-focusable`, an example the `Skip to main content` from WP.
+-   The mixins from `_screen-reader.scss` are also used for `a11y` purposes. In some cases we want to display something, but don't want to let screen readers access it, this is where `visually-hidden` mixin comes in handy. In situations when we don't want to show something, but want to make that element tabbable, we can use `visually-hidden-focusable`, an example is the `Skip to main content` from WP.
 -   The `transition` mixin is using `reduce-motion` mixin to prevent animations, in case user have disabled it from it's OS preferences.
 
 ## Variables
