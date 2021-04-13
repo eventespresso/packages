@@ -17,19 +17,28 @@ describe(namespace, () => {
 	it('should check the ticket card inline inputs', async () => {
 		const newTicketName = 'new ticket name';
 		const newTicketDesc = 'new ticket description';
-		const newTicketQty = '100';
+		const newTicketQty = '123';
 
 		await page.click(`${parser.getRootSelector()} .entity-card-details__name`);
 		await page.type(`${parser.getRootSelector()} .entity-card-details__name`, newTicketName);
+
+		let waitForListUpdate = await parser.createWaitForListUpdate();
+		await page.click(parser.getRootSelector()); // click outside of the inline input
+		await waitForListUpdate();
+
 		await page.click(`${parser.getRootSelector()} .entity-card-details__text`);
 		await page.click(modalRTESel);
 		await page.type(modalRTESel, newTicketDesc);
+
+		waitForListUpdate = await parser.createWaitForListUpdate();
 		await page.click('.chakra-modal__footer button[type=submit]');
+		await waitForListUpdate();
+
 		await page.click(`${parser.getRootSelector()} .ee-entity-details__value .ee-tabbable-text`);
 		await page.type(`${parser.getRootSelector()} .ee-entity-details__value .ee-inline-edit__input`, newTicketQty);
-		const waitForListUpdate = await parser.createWaitForListUpdate();
-		await page.click(parser.getRootSelector()); // click outside of the inline input
 
+		waitForListUpdate = await parser.createWaitForListUpdate();
+		await page.click(parser.getRootSelector()); // click outside of the inline input
 		await waitForListUpdate();
 
 		// first/only item
