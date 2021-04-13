@@ -30,10 +30,10 @@ describe(namespace, () => {
 		const waitForListUpdate = await parser.createWaitForListUpdate();
 		await page.click(parser.getRootSelector()); // click outside of the inline input
 
+		await waitForListUpdate();
+
 		// first/only item
 		const item = await parser.getItem();
-
-		await waitForListUpdate();
 
 		expect(await parser.getItemName(item)).toContain(newTicketName);
 
