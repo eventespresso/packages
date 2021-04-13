@@ -52,7 +52,7 @@ after `prepend-append($blue, 'blue');`:
 )
 ```
 
-In the `root` folder the CSS variable are being generated. Variables are being merged with `map-collect` function then appended to `:root`.
+CSS variables are being generated in the `root` folder, then are merged with `map-collect` function and appended to `:root`.
 
 ## Animations
 
