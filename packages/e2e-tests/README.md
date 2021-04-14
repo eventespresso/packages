@@ -23,3 +23,16 @@ $ yarn wp-env start
 ```
 
 Finally, navigate to http://localhost:8888 in your web browser to see WordPress running with the local WordPress plugin or theme running and activated. Default login credentials are username: `admin` password: `password`.
+
+## Playwright
+
+Playwright is the headless end-to-end library for testing user interactions with the app.
+Given `wp-env` environment `playwright` provides the [APIs](https://playwright.dev/docs/api/class-playwright) needed to interact with it's browsers: Chromium, WebKit and Firefox.
+
+### Playwright test runner
+
+Currently, we're using [Jest as a test runner](https://github.com/playwright-community/jest-playwright). As an alternative there is Playright's own [runner](https://github.com/microsoft/playwright-test).
+
+### Headless mode
+
+By default `playwright` is running in headless mode, but for debugging purposes locally we can run tests in full-fledged browser via this command: `HEADLESS=true yarn test:e2e` or if there is a need to focus on a single test via this approach: `HEADLESS=true yarn test:e2e packages/e2e-tests/specs/dummy.test.ts`
