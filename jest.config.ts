@@ -32,7 +32,7 @@ domains.forEach((domain) => {
 	testMatch.push(`<rootDir>/domains/${domain}/src/**/*.test.{ts,tsx}`);
 });
 
-packages.forEach((pckg: string) => {
+packages.forEach((pckg) => {
 	roots.push(`<rootDir>/packages/${pckg}/src`);
 	testMatch.push(`<rootDir>/packages/${pckg}/src/**/*.test.{ts,tsx}`);
 });

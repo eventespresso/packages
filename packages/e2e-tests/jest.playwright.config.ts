@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-import type { Config } from '@jest/types';
 import { map, replace } from 'ramda';
+import type { Config } from '@jest/types';
 
 import { moduleNameMapper } from '../../jest.config';
 
