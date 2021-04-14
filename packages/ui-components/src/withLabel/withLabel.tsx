@@ -7,8 +7,7 @@ import type { ForwardRefComponent } from '../types';
 import './style.scss';
 
 const withLabel = <P extends AnyObject>(
-	WrappedComponent: React.ComponentType<P>,
-	LabelTag: React.ElementType = 'label'
+	WrappedComponent: React.ComponentType<P>
 ): ForwardRefComponent<P & WithLabelProps, typeof WrappedComponent> => {
 	type Ref = React.Ref<typeof WrappedComponent>;
 	type RefProps = { forwardedRef: Ref };
@@ -35,10 +34,20 @@ const withLabel = <P extends AnyObject>(
 
 		return label ? (
 			<div className={className}>
-				<LabelTag className='ee-input-label' htmlFor={LabelTag === 'label' ? id : null}>
+				<label
+					aria-label={props['aria-label'] || label}
+					className='ee-input-label'
+					id={`${id}-label`}
+					htmlFor={id}
+				>
 					{label}
-				</LabelTag>
-				<WrappedComponent {...(props as P)} aria-label={label} id={id} ref={forwardedRef} />
+				</label>
+				<WrappedComponent
+					{...(props as P)}
+					aria-label={null} // avoid duplicate aria-label
+					aria-labelledby={`${id}-label`}
+					ref={forwardedRef}
+				/>
 			</div>
 		) : (
 			<WrappedComponent {...(props as P)} ref={forwardedRef} id={id} />

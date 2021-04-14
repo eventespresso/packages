@@ -1,6 +1,5 @@
 import { RgbStringColorPicker } from 'react-colorful';
 import classNames from 'classnames';
-import 'react-colorful/dist/index.css';
 
 import { ColorPickerProps } from './types';
 
