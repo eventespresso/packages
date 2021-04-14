@@ -6,7 +6,14 @@ import { FilterStateManager } from '../filterState';
 type ShowTrashedDatesControlProps = Pick<FilterStateManager, 'showTrashedDates' | 'setShowTrashedDates'>;
 
 const ShowTrashedDatesControl: React.FC<ShowTrashedDatesControlProps> = ({ showTrashedDates, setShowTrashedDates }) => {
-	return <Switch isChecked={showTrashedDates} label={__('show trashed dates')} onChangeValue={setShowTrashedDates} />;
+	return (
+		<Switch
+			id='show-trashed-dates'
+			isChecked={showTrashedDates}
+			label={__('show trashed dates')}
+			onChangeValue={setShowTrashedDates}
+		/>
+	);
 };
 
 export default ShowTrashedDatesControl;
