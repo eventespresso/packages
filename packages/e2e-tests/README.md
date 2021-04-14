@@ -35,5 +35,5 @@ Currently, we're using [Jest as a test runner](https://github.com/playwright-com
 
 ### Headless mode
 
-By default `playwright` runs in headless mode, but for debugging purposes locally, we can run tests in full-fledged browser (headful mode) by setting environment variable `HEADLESS` to `false`. For example, `HEADLESS=false yarn test:e2e` (For Unix), `Set HEADLESS=false;  yarn test:e2e` (Windows) .
-If there is a need to focus on a single test, we can use: `HEADLESS=false yarn test:e2e packages/e2e-tests/specs/dummy.test.ts`
+By default `playwright` runs in headless mode, but for local debugging, we can run tests in headful mode by setting environment variable `HEADLESS` to `false`. For example, `HEADLESS=false yarn test:e2e` (For Unix), `Set HEADLESS=false; yarn test:e2e` (Windows).
+If there is a need to focus on a single test, we can use: `HEADLESS=false yarn test:e2e packages/e2e-tests/specs/dummy.test.ts`.
