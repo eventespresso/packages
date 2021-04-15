@@ -4,7 +4,7 @@ The scripts in this file provide assets that are further used as a ready to be p
 
 ## build.js
 
-The `build.js` is mirroring this [file](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/scripts/build.js) from CRA with some minor changes. For example, we don't need `copyPublicFolder` function, so it's removed.
+The `build.js` mirrors this [file](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/scripts/build.js) from CRA with some minor changes. For example, we don't need `copyPublicFolder` function, so it's removed.
 This script is creating production build.
 
 ## test.js
