@@ -1,8 +1,6 @@
 import { createNewEvent, setListDisplayControl, EntityListParser } from '@e2eUtils/admin/event-editor';
 import { clickLastDateFromPicker } from '@e2eUtils/common';
 
-import { entities } from '../../../constants';
-
 const namespace = 'event.entities.edit.calendar.date.range';
 const parser = new EntityListParser();
 
@@ -11,7 +9,7 @@ beforeAll(async () => {
 });
 
 describe(namespace, () => {
-	for (const entity of entities) {
+	for (const entity of ['ticket', 'datetime'] as const) {
 		it('should change the start and end date from the card for:' + entity, async () => {
 			parser.setEntityType(entity);
 
