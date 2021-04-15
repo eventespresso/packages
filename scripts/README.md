@@ -1,6 +1,6 @@
 # The build process
 
-The scripts in this file are providing assets that will be further used as a ready to be parsed by browsers within the plugin `assets` folder.
+The scripts in this file provide assets that are further used as a ready to be parsed by browsers within the plugin `assets` folder.
 
 ## build.js
 
