@@ -52,7 +52,7 @@ export const useReorderEntities = <E extends Entity>({
 
 	const [mutate, result] = useMutation(REORDER_ENTITIES);
 
-	const { callback: runMutation, cancel: cancelDebounce } = useDebouncedCallback(mutate, 5000); // delay in MS
+	const runMutation = useDebouncedCallback(mutate, 5000); // delay in MS
 
 	useEffect(() => {
 		setAllOrderedEntities(filteredEntities);
@@ -73,8 +73,8 @@ export const useReorderEntities = <E extends Entity>({
 	}, [allEntityGuids, entityType, runMutation, toaster]);
 
 	const cancel = useCallback(() => {
-		cancelDebounce();
-	}, [cancelDebounce]);
+		runMutation.cancel();
+	}, [runMutation]);
 
 	const sortEntities = useCallback<SortCallback<E>>(
 		({ allEntities: allEntitiesList, newIndex, oldIndex }) => {

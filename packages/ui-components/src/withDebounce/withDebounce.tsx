@@ -30,7 +30,7 @@ const withDebounce = <P extends AnyObject, R extends any>(
 
 		const [internalValue, setInternalValue] = useState(fieldValue);
 
-		const { callback } = useDebouncedCallback(onChangeValue || noop, debounceDelay); // delay in MS
+		const callback = useDebouncedCallback(onChangeValue || noop, debounceDelay); // delay in MS
 
 		const onChangeHandler = useCallback(
 			(newValue, event) => {

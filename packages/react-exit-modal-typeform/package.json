@@ -27,9 +27,9 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@typeform/embed": "^0.34.0",
+		"@typeform/embed": "^1.1.4",
 		"prop-types": "^15.7.2",
-		"react-modal": "^3.12.1"
+		"react-modal": "^3.13.1"
 	},
 	"babel": {
 		"presets": "@wordpress/default"
