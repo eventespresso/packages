@@ -36,7 +36,7 @@ describe('REM', () => {
 		await page.click('text=Add New Date');
 		await page.click('text=Add Recurring Dates');
 
-		await page.selectOption('#ee-r-rule-repeat-frequency', {
+		await page.selectOption('#r-rule-repeat-frequency', {
 			label: 'Daily',
 		});
 
@@ -48,7 +48,7 @@ describe('REM', () => {
 
 		await clickButton('Next');
 
-		await page.click('#ee-ee-add-new-datetime');
+		await page.click('#ee-add-new-datetime');
 
 		await page.focus('.ee-render-fields >> text=Name');
 
@@ -56,7 +56,7 @@ describe('REM', () => {
 
 		await clickButton('Next');
 
-		await page.selectOption('#ee-existing-entity', {
+		await page.selectOption('#existing-entity', {
 			label: 'Free Ticket',
 		});
 
