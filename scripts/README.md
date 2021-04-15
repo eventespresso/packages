@@ -9,7 +9,7 @@ This script creates production build.
 
 ## test.js
 
-The `test.js` script gather test configs and starts unit-testing through `jest`.
+The `test.js` script gathers test configurations and starts unit-testing through `jest`.
 
 ## watch.js
 
