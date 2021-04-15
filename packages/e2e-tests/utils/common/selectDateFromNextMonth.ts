@@ -3,7 +3,7 @@
 // next or previous month which are not clickable
 const daySelector = '.react-datepicker__week:nth-child(3) .react-datepicker__day';
 
-export async function clickLastDateFromPicker() {
+export async function selectDateFromNextMonth() {
 	const monthSelector = '.react-datepicker__current-month';
 
 	// Lets goto next month, which will have no rows disabled

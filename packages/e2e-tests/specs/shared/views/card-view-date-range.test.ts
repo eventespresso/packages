@@ -1,5 +1,5 @@
 import { createNewEvent, setListDisplayControl, EntityListParser } from '@e2eUtils/admin/event-editor';
-import { clickLastDateFromPicker } from '@e2eUtils/common';
+import { selectDateFromNextMonth } from '@e2eUtils/common';
 
 const namespace = 'event.entities.edit.calendar.date.range';
 const parser = new EntityListParser();
@@ -16,11 +16,11 @@ describe(namespace, () => {
 			await page.click(`${parser.getRootSelector()} .ee-edit-calendar-date-range-btn`);
 
 			await page.focus('.date-range-picker__start .react-datepicker__input-container input');
-			const [startDate, startDateMonth] = await clickLastDateFromPicker();
+			const [startDate, startDateMonth] = await selectDateFromNextMonth();
 			await page.click('.ee-timezone-info__button');
 
 			await page.focus('.date-range-picker__end .react-datepicker__input-container input');
-			const [endDate, endDateMonth] = await clickLastDateFromPicker();
+			const [endDate, endDateMonth] = await selectDateFromNextMonth();
 
 			const waitForListUpdate = await parser.createWaitForListUpdate();
 			await page.click('.chakra-popover__content [aria-label="save"]');

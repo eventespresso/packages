@@ -1,7 +1,7 @@
 import { saveVideo } from 'playwright-video';
 
 import { createNewEvent, setListDisplayControl, EntityListParser } from '@e2eUtils/admin/event-editor';
-import { clickButton, clickLastDateFromPicker } from '@e2eUtils/common';
+import { clickButton, selectDateFromNextMonth } from '@e2eUtils/common';
 
 import { expectCardToContain } from '../../assertions';
 import { modalRTESel } from '../../constants';
@@ -33,9 +33,9 @@ describe(namespace, () => {
 			await page.click(modalRTESel);
 			await page.type(modalRTESel, newTicketDesc);
 			await page.focus('[name="startDate"]');
-			const [startDate, startDateMonth] = await clickLastDateFromPicker();
+			const [startDate, startDateMonth] = await selectDateFromNextMonth();
 			await page.click('[name="endDate"]');
-			const [endDate, endDateMonth] = await clickLastDateFromPicker();
+			const [endDate, endDateMonth] = await selectDateFromNextMonth();
 			await page.click('[name="quantity"]');
 			await page.type('[name="quantity"]', newTicketQuantity);
 			await clickButton('Skip prices - assign dates');
