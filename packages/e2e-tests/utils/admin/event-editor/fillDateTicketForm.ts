@@ -44,7 +44,7 @@ export const fillDateTicketForm = async ({
 			await page.type('[name="quantity"]', quantity);
 		}
 
-		isTrashed && (await page.click('[aria-label="Trash"]'));
+		isTrashed && (await page.click('label[for="isTrashed"]'));
 	} catch (e) {
 		console.log(e);
 	}
