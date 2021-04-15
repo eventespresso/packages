@@ -1,12 +1,13 @@
 import type { Config } from '@jest/types';
 
+import { domains, packages } from './config/paths';
+
 export const moduleNameMapper = {
 	'^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
 	'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
 		'<rootDir>/config/jest/__mocks__/fileMock.js',
 };
 
-/* eslint-disable */
 function resolveTsconfigPathsToModuleNameMapper() {
 	const tsconfigPath = './tsconfig.json';
 	const { paths } = require(tsconfigPath).compilerOptions;
@@ -23,8 +24,7 @@ function resolveTsconfigPathsToModuleNameMapper() {
 	return moduleNameMapper;
 }
 
-const { domains, packages } = require('./config/paths');
-let roots = [],
+const roots = [],
 	testMatch = [];
 
 domains.forEach((domain) => {
