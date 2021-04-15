@@ -15,4 +15,4 @@ The `test.js` script gather test configs and starts unit-testing through `jest`.
 
 The `watch.js` script provides the development build for local development/debugging.
 
-Upon further CRA upgrades we need to take into account the changes in this [folder](https://github.com/facebook/create-react-app/tree/master/packages/react-scripts/scripts) if there is a need for a more modern build process.
+In future CRA upgrades, we need to take into account the changes in this [folder](https://github.com/facebook/create-react-app/tree/master/packages/react-scripts/scripts), if there is a need for a more modern build process.
