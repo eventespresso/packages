@@ -4,7 +4,7 @@ import $ from 'jquery';
 import '../../../types';
 
 import './exitSurvey';
-import './style.scss';
+import './style.css';
 
 $(() => {
 	if ($('tr.ee-upsell-plugin-list-table').length > 0) {
