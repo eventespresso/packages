@@ -45,6 +45,7 @@ const withLabel = <P extends AnyObject>(
 				<WrappedComponent
 					{...(props as P)}
 					aria-label={null} // avoid duplicate aria-label
+					id={id}
 					aria-labelledby={`${id}-label`}
 					ref={forwardedRef}
 				/>
