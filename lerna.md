@@ -1,8 +1,3 @@
----
-title: Lerna
-slug: /
----
-
 Prerequisite: `lerna` needs to be installed globally on local machine.
 
 ## Step 1: Run `lerna publish`
