@@ -12,6 +12,7 @@ const safePostCssParser = require('postcss-safe-parser');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const paths = require('./paths');
 const modules = require('./modules');
@@ -44,7 +45,9 @@ const useTypeScript = fs.existsSync(paths.appTsConfig);
 
 // style files regexes
 const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 const workspacesConfig = workspaces.init(paths);
 
@@ -422,6 +425,7 @@ module.exports = function (webpackEnv) {
 						// By default we support CSS Modules with the extension .module.css
 						{
 							test: cssRegex,
+							exclude: cssModuleRegex,
 							use: getStyleLoaders({
 								importLoaders: 1,
 								sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
@@ -432,11 +436,24 @@ module.exports = function (webpackEnv) {
 							// See https://github.com/webpack/webpack/issues/6571
 							sideEffects: true,
 						},
+						// Adds support for CSS Modules (https://github.com/css-modules/css-modules)
+						// using the extension .module.css
+						{
+							test: cssModuleRegex,
+							use: getStyleLoaders({
+								importLoaders: 1,
+								sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+								modules: {
+									getLocalIdent: getCSSModuleLocalIdent,
+								},
+							}),
+						},
 						// Opt-in support for SASS (using .scss or .sass extensions).
 						// By default we support SASS Modules with the
 						// extensions .module.scss or .module.sass
 						{
 							test: sassRegex,
+							exclude: sassModuleRegex,
 							use: getStyleLoaders(
 								{
 									importLoaders: 3,
@@ -449,6 +466,21 @@ module.exports = function (webpackEnv) {
 							// Remove this when webpack adds a warning or an error for this.
 							// See https://github.com/webpack/webpack/issues/6571
 							sideEffects: true,
+						},
+						// Adds support for CSS Modules, but using SASS
+						// using the extension .module.scss or .module.sass
+						{
+							test: sassModuleRegex,
+							use: getStyleLoaders(
+								{
+									importLoaders: 3,
+									sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+									modules: {
+										getLocalIdent: getCSSModuleLocalIdent,
+									},
+								},
+								'sass-loader'
+							),
 						},
 						// "file" loader makes sure those assets get served by WebpackDevServer.
 						// When you `import` an asset, you get its (virtual) filename.
