@@ -1,6 +1,7 @@
 import type { Config } from '@jest/types';
 
-import { domains, packages } from './config/paths';
+// const { getDomains } = require('./workspaces');
+import { getDomains, getPackages } from './config/workspaces';
 
 export const moduleNameMapper = {
 	'^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
@@ -27,14 +28,14 @@ function resolveTsconfigPathsToModuleNameMapper() {
 const roots = [],
 	testMatch = [];
 
-domains.forEach((domain) => {
-	roots.push(`<rootDir>/domains/${domain}/src`);
-	testMatch.push(`<rootDir>/domains/${domain}/src/**/*.test.{ts,tsx}`);
+getDomains().forEach(({ location }) => {
+	roots.push(`<rootDir>/${location}/src`);
+	testMatch.push(`<rootDir>/${location}/src/**/*.test.{ts,tsx}`);
 });
 
-packages.forEach((pckg) => {
-	roots.push(`<rootDir>/packages/${pckg}/src`);
-	testMatch.push(`<rootDir>/packages/${pckg}/src/**/*.test.{ts,tsx}`);
+getPackages().forEach(({ location }) => {
+	roots.push(`<rootDir>/${location}/src`);
+	testMatch.push(`<rootDir>/${location}/src/**/*.test.{ts,tsx}`);
 });
 
 const config: Config.InitialOptions = {

@@ -1,112 +1,136 @@
-/* eslint-disable */
-const fs = require('fs');
-const path = require('path');
 const R = require('ramda');
 
-const PACKAGES_DIR = path.resolve(__dirname, '../packages');
-const DOMAINS_DIR = path.resolve(__dirname, '../domains');
+const { getPackages, getDomains } = require('./workspaces');
+
+const { getCommandArgs, commaStrToArray, camelCaseDash } = require('./utils');
 
 /**
- * Returns true if the given base file name for a file within the packages
- * directory is itself a directory.
- *
- * @param {string} file Packages directory file.
- *
- * @return {boolean} Whether file is a directory.
+ * Get args from CLI to watch only the domains specified during dev
+ * All domains in production and all packages are watched by default
+ * Domain names should match their corresponding directory names
+ * Example commands:
+ * - `yarn dev --domains "core/admin/eventEditor,core/admin/blocks"`
  */
-const isDirectory = (relativePath) => (file) => {
-	return fs.lstatSync(path.resolve(relativePath, file)).isDirectory();
-};
+let {
+	domains: includeDomains,
+	packages: includePackages,
+	'skip-packages': skipPackages,
+	'skip-all-packages': skipAllPackages,
+} = getCommandArgs();
 
 /**
- * Returns true if the given packages have "main:src" field.
+ * Returns the all domains that are to be included.
  *
- * @param {string} file Packages directory file.
- *
- * @return {boolean} Whether package has "main:src" field.
+ * @return {Array<Record<'name' | 'location', string>>} Domains to watch
  */
-const hasMainSrcField = (relativePath) => (file) => {
-	const packagePath = path.resolve(relativePath, file, 'package.json');
+const getDomainsToWatch = () => {
+	const allDomains = getDomains();
+	// watch all domains by default
+	let domainsToWatch = allDomains;
 
-	return hasField(packagePath, 'main:src');
-};
+	if (includeDomains && typeof includeDomains === 'string') {
+		domainsToWatch = [];
 
-/**
- * Returns true if the given packages have "main:src" field.
- *
- * @param {string} file Packages directory file.
- *
- * @return {boolean} Whether package has "main:src" field.
- */
-const hasIsCoreField = (relativePath) => (file) => {
-	const packagePath = path.resolve(relativePath, file, 'package.json');
+		const domainLocations = commaStrToArray(includeDomains);
 
-	return hasField(packagePath, 'isCore');
-};
-
-/**
- * Returns true if the given package.json has the given field.
- *
- * @param {string} packagePath Absolute path to package.json
- * @param {string} field Name of the field to look for
- *
- * @return {boolean} Whether package.json has field.
- */
-const hasField = (packagePath, field) => {
-	let pkg;
-	try {
-		pkg = require(packagePath);
-	} catch {
-		// If, for whatever reason, the package's `package.json` cannot be read,
-		// consider it as an invalid candidate. In most cases, this can happen
-		// when lingering directories are left in the working path when changing
-		// to an older branch where a package did not yet exist.
-		return false;
+		for (const domain of allDomains) {
+			const domainLocation = R.prop('location', domain);
+			const isDomainInPath = R.flip(R.includes)(domainLocation);
+			if (R.any(isDomainInPath, domainLocations)) {
+				domainsToWatch.push(domain);
+			}
+		}
+		if (!domainsToWatch.length) {
+			throw new Error('No matching domains found');
+		}
 	}
 
-	const isNotNil = R.complement(R.isNil);
-	const isNotEmpty = R.complement(R.isEmpty);
-
-	return R.allPass([isNotNil, isNotEmpty])(pkg[field]);
+	return domainsToWatch;
 };
 
 /**
- * Filter predicate, returning true if the given base file name is to be
- * included in the build.
- */
-const filterPackages = R.allPass([isDirectory(PACKAGES_DIR), hasMainSrcField(PACKAGES_DIR)]);
-const filterDomains = R.allPass([isDirectory(DOMAINS_DIR), hasMainSrcField(DOMAINS_DIR)]);
-const filterCoreDomains = R.allPass([hasIsCoreField(DOMAINS_DIR)]);
-
-/**
- * Returns the names of all packages
+ * Returns the all packages that are filtered via CLI args.
  *
- * @return {Array} Package names
+ * @return {Array<Record<'name' | 'location', string>>} Domains to watch
  */
-const getPackages = () => {
-	return fs.readdirSync(PACKAGES_DIR).filter(filterPackages);
+const getFilteredPackages = () => {
+	if (skipAllPackages) {
+		return [];
+	}
+
+	if (includePackages && typeof includePackages === 'string') {
+		return filterPackages(includePackages, 'include');
+	}
+
+	if (skipPackages && typeof skipPackages === 'string') {
+		return filterPackages(skipPackages, 'exclude');
+	}
+
+	// watch all domains by default
+	return getPackages();
 };
 
 /**
- * Returns the names of all domains
+ * Filter the packages by the given list.
  *
- * @return {Array} Domain names
+ * @param {string} packages A comma sepaprated list of packages to use for filtering.
+ * @param {'include' | 'exclude'} action The filter action.
  */
-const getDomains = () => {
-	return fs.readdirSync(DOMAINS_DIR).filter(filterDomains);
+const filterPackages = (packages, action = 'include') => {
+	const packageNames = commaStrToArray(packages);
+
+	let predicate = R.flip(R.includes)(packageNames);
+	if (action === 'exclude') {
+		predicate = R.complement(predicate);
+	}
+
+	const filteredPackages = R.filter(R.propSatisfies(predicate, 'name'), getPackages());
+
+	return filteredPackages;
 };
 
 /**
- * Returns the names of all core domains
+ * Get a list of paths to be included fo babel transformation
+ * and the entrypoints to be supplied to webpack.
  *
- * @return {Array} Domain names
+ * @return {{includePaths: Array<string>, entries: Record<string, string>}}
  */
-const getCoreDomains = () => {
-	return getDomains().filter(filterCoreDomains);
+const getIncludedPathsAndEntries = (resolveApp, resolveModule) => {
+	const domainPaths = [];
+	const domainEntries = {};
+	getDomainsToWatch().forEach(({ name, location }) => {
+		const domainEntry = resolveModule(resolveApp, `${location}/src/index`);
+		const domainPath = resolveApp(`${location}/src/`);
+
+		// "event-editor" becomes "eventEditor"
+		const domainName = camelCaseDash(name);
+
+		domainEntries[domainName] = [domainEntry];
+		domainPaths.push(domainPath);
+	});
+
+	const filteredPackageNames = getFilteredPackages().map(R.prop('name'));
+
+	const packagePaths = [];
+	const packageEntries = {};
+	getPackages().forEach(({ name, location }) => {
+		const packageEntry = resolveModule(resolveApp, `${location}/src/index`);
+		const packagePath = resolveApp(`${location}/src/`);
+		// we don't need an entry point for icons
+		if (name !== 'icons' && filteredPackageNames.includes(name)) {
+			const packageName = camelCaseDash(name);
+			// "edtr-services" becomes "edtrServices"
+			packageEntries[packageName] = [packageEntry];
+		}
+		packagePaths.push(packagePath);
+	});
+	console.log('domains: ', Object.keys(domainEntries));
+
+	return {
+		// Also add global types to include paths for ts-loader
+		includePaths: [...domainPaths, ...packagePaths, resolveApp('types')],
+		entries: { ...packageEntries, ...domainEntries },
+	};
 };
 
-module.exports = {
-	getDomains,
-	getPackages,
-	getCoreDomains,
-};
+module.exports = { getIncludedPathsAndEntries };

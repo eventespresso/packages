@@ -14,7 +14,6 @@
 		"url": "https://github.com/eventespresso/barista/issues"
 	},
 	"main": "src/index.ts",
-	"main:src": "src/index.ts",
 	"scripts": {
 		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",
 		"update-deps": "npx ncu -p yarn -u",

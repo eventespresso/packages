@@ -4,8 +4,6 @@
 	"version": "1.0.6",
 	"private": true,
 	"main": "src/index.ts",
-	"main:src": "src/index.ts",
-	"isCore": true,
 	"license": "GPL-3.0",
 	"repository": {
 		"type": "git",

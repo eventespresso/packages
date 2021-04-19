@@ -16,13 +16,7 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const ESLintPlugin = require('eslint-webpack-plugin');
 const paths = require('./paths');
 const modules = require('./modules');
-const workspaces = require('./yarn-workspaces');
 const getClientEnvironment = require('./env');
-const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
-const { requestToExternal, requestToHandle } = require('./utils');
-
-const resolveTsconfigPathsToAlias = require('./resolve-tsconfig-path-to-webpack-alias');
-
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
@@ -32,11 +26,19 @@ const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
 
+const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
+const { requestToExternal, requestToHandle } = require('./utils');
+
+const resolveTsconfigPathsToAlias = require('./resolve-tsconfig-path-to-webpack-alias');
+
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
 const webpackDevClientEntry = require.resolve('react-dev-utils/webpackHotDevClient');
 const reactRefreshOverlayEntry = require.resolve('react-dev-utils/refreshOverlayInterop');
+
+const emitErrorsAsWarnings = process.env.ESLINT_NO_DEV_ERRORS === 'true';
+const disableESLintPlugin = process.env.DISABLE_ESLINT_PLUGIN === 'true';
 
 const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || '10000');
 
@@ -48,8 +50,6 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
-
-const workspacesConfig = workspaces.init(paths);
 
 const hasJsxRuntime = (() => {
 	if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -69,15 +69,6 @@ const hasJsxRuntime = (() => {
 module.exports = function (webpackEnv) {
 	const isEnvDevelopment = webpackEnv === 'development';
 	const isEnvProduction = webpackEnv === 'production';
-	const workspacesMainFields = [workspacesConfig.packageEntry, 'main'];
-	const mainFields =
-		isEnvDevelopment && workspacesConfig.development
-			? workspacesMainFields
-			: isEnvProduction && workspacesConfig.production
-			? workspacesMainFields
-			: undefined;
-
-	const includePaths = paths.includePaths;
 
 	// Variable used for enabling profiling in Production
 	// passed into alias object. Uses a flag if passed into the build command
@@ -291,7 +282,6 @@ module.exports = function (webpackEnv) {
 			extensions: paths.moduleFileExtensions
 				.map((ext) => `.${ext}`)
 				.filter((ext) => useTypeScript || !ext.includes('ts')),
-			mainFields,
 			alias: {
 				// Support React Native Web
 				// https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -359,7 +349,7 @@ module.exports = function (webpackEnv) {
 						// The preset includes JSX, Flow, TypeScript, and some ESnext features.
 						{
 							test: /\.(js|mjs|jsx|ts|tsx)$/,
-							include: includePaths,
+							include: paths.includePaths,
 							loader: require.resolve('babel-loader'),
 							options: {
 								customize: require.resolve('babel-preset-react-app/webpack-overrides'),
@@ -566,9 +556,7 @@ module.exports = function (webpackEnv) {
 						return manifest;
 					}, seed);
 					const entrypointFiles = Object.entries(entrypoints).reduce((acc, [name, paths]) => {
-						acc[name] = paths.filter(
-							(fileName) => !fileName.endsWith('.map') && !fileName.endsWith('.php')
-						);
+						acc[name] = paths.filter((fileName) => !fileName.endsWith('.map'));
 						return acc;
 					}, {});
 
@@ -609,30 +597,33 @@ module.exports = function (webpackEnv) {
 						'!**/src/setupProxy.*',
 						'!**/src/setupTests.*',
 					],
-					watch: includePaths,
+					watch: paths.includePaths,
 					silent: true,
 					// The formatter is invoked directly in WebpackDevServerUtils during development
 					formatter: isEnvProduction ? typescriptFormatter : undefined,
 				}),
-			new ESLintPlugin({
-				// Plugin options
-				extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
-				formatter: require.resolve('react-dev-utils/eslintFormatter'),
-				eslintPath: require.resolve('eslint'),
-				context: paths.appSrc,
-				cache: true,
-				// ESLint class options
-				cwd: paths.appPath,
-				resolvePluginsRelativeTo: __dirname,
-				baseConfig: {
-					extends: [require.resolve('eslint-config-react-app/base')],
-					rules: {
-						...(!hasJsxRuntime && {
-							'react/react-in-jsx-scope': 'error',
-						}),
+			!disableESLintPlugin &&
+				new ESLintPlugin({
+					// Plugin options
+					extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
+					formatter: require.resolve('react-dev-utils/eslintFormatter'),
+					eslintPath: require.resolve('eslint'),
+					failOnError: !(isEnvDevelopment && emitErrorsAsWarnings),
+					context: paths.appSrc,
+					cache: true,
+					cacheLocation: path.resolve(paths.appNodeModules, '.cache/.eslintcache'),
+					// ESLint class options
+					cwd: paths.appPath,
+					resolvePluginsRelativeTo: __dirname,
+					baseConfig: {
+						extends: [require.resolve('eslint-config-react-app/base')],
+						rules: {
+							...(!hasJsxRuntime && {
+								'react/react-in-jsx-scope': 'error',
+							}),
+						},
 					},
-				},
-			}),
+				}),
 		].filter(Boolean),
 		// Some libraries import Node modules but don't use them in the browser.
 		// Tell webpack to provide empty mocks for them so importing them works.

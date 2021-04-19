@@ -1,0 +1,134 @@
+[
+    {
+        "name": "@eventespresso/blocks",
+        "location": "domains/blocks"
+    },
+    {
+        "name": "@eventespresso/event-editor",
+        "location": "domains/eventEditor"
+    },
+    {
+        "name": "@eventespresso/event-smart",
+        "location": "domains/eventSmart"
+    },
+    {
+        "name": "@eventespresso/rem",
+        "location": "domains/rem"
+    },
+    {
+        "name": "@eventespresso/upsell-ads",
+        "location": "domains/upsellAds"
+    },
+    {
+        "name": "@eventespresso/wp-plugins-page",
+        "location": "domains/wpPluginsPage"
+    },
+    {
+        "name": "@eventespresso/wp-user",
+        "location": "domains/wpUser"
+    },
+    {
+        "name": "@eventespresso/adapters",
+        "location": "packages/adapters"
+    },
+    {
+        "name": "@eventespresso/constants",
+        "location": "packages/constants"
+    },
+    {
+        "name": "@eventespresso/data",
+        "location": "packages/data"
+    },
+    {
+        "name": "@eventespresso/dates",
+        "location": "packages/dates"
+    },
+    {
+        "name": "@eventespresso/edtr-services",
+        "location": "packages/edtr-services"
+    },
+    {
+        "name": "@eventespresso/ee-components",
+        "location": "packages/ee-components"
+    },
+    {
+        "name": "@eventespresso/events",
+        "location": "packages/events"
+    },
+    {
+        "name": "@eventespresso/form",
+        "location": "packages/form"
+    },
+    {
+        "name": "@eventespresso/helpers",
+        "location": "packages/helpers"
+    },
+    {
+        "name": "@eventespresso/hooks",
+        "location": "packages/hooks"
+    },
+    {
+        "name": "@eventespresso/i18n",
+        "location": "packages/i18n"
+    },
+    {
+        "name": "@eventespresso/icons",
+        "location": "packages/icons"
+    },
+    {
+        "name": "@eventespresso/ioc",
+        "location": "packages/ioc"
+    },
+    {
+        "name": "@eventespresso/plugins",
+        "location": "packages/plugins"
+    },
+    {
+        "name": "@eventespresso/predicates",
+        "location": "packages/predicates"
+    },
+    {
+        "name": "@eventespresso/registry",
+        "location": "packages/registry"
+    },
+    {
+        "name": "@eventespresso/rich-text-editor",
+        "location": "packages/rich-text-editor"
+    },
+    {
+        "name": "@eventespresso/rrule-generator",
+        "location": "packages/rrule-generator"
+    },
+    {
+        "name": "@eventespresso/services",
+        "location": "packages/services"
+    },
+    {
+        "name": "@eventespresso/slot-fill",
+        "location": "packages/slot-fill"
+    },
+    {
+        "name": "@eventespresso/storage",
+        "location": "packages/storage"
+    },
+    {
+        "name": "@eventespresso/styles",
+        "location": "packages/styles"
+    },
+    {
+        "name": "@eventespresso/toaster",
+        "location": "packages/toaster"
+    },
+    {
+        "name": "@eventespresso/tpc",
+        "location": "packages/tpc"
+    },
+    {
+        "name": "@eventespresso/ui-components",
+        "location": "packages/ui-components"
+    },
+    {
+        "name": "@eventespresso/utils",
+        "location": "packages/utils"
+    }
+]

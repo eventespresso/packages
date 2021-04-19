@@ -1,7 +1,6 @@
-/* eslint-disable */
 const { resolve } = require('path');
 
-const { domains } = require('./paths');
+const { getDomains } = require('./workspaces');
 
 function resolveTsconfigPathsToAlias() {
 	// get paths defined in root, if any
@@ -12,12 +11,10 @@ function resolveTsconfigPathsToAlias() {
 	let aliases = { ...rootAliases };
 
 	// loop through domains to see if paths are defined in tsconfig
-	domains.forEach((domain) => {
-		const relativePath = `domains/${domain}/`;
-
-		const tsconfigPath = `../${relativePath}tsconfig.json`;
+	getDomains().forEach(({ location }) => {
+		const tsconfigPath = `../${location}/tsconfig.json`;
 		const domainPaths = getTsConfigPaths(tsconfigPath);
-		const domainAliases = generateAliases(domainPaths, relativePath);
+		const domainAliases = generateAliases(domainPaths, location);
 		aliases = { ...aliases, ...domainAliases };
 	});
 
@@ -40,8 +37,7 @@ const generateAliases = (paths, relativePath = '') => {
 		const key = alias.replace('/*', '');
 		// "src/services/*" becomes "domains/eventEditor/src/services"
 		const value = resolve('./', relativePath + path.replace('/*', '').replace('*', ''));
-		aliases[key] = value;
-		return aliases;
+		return { ...aliases, [key]: value };
 	}, {});
 };
 
