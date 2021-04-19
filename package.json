@@ -3,7 +3,7 @@
 	"private": true,
 	"license": "GPL-3.0",
 	"scripts": {
-		"build": "yarn build:cra --domains \"all\"",
+		"build": "yarn build:cra",
 		"build-storybook": "BUILD_POT=false build-storybook",
 		"build:ci": "FORCE_COLOR=true yarn build",
 		"build:cra": "node scripts/build.js",
