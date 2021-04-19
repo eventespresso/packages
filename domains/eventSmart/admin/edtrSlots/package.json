@@ -1,6 +1,6 @@
 {
 	"author": "Event Espresso",
-	"name": "@eventespresso/event-smart",
+	"name": "@eventespresso/es-edtr-slots",
 	"version": "1.0.6",
 	"private": true,
 	"main": "src/index.tsx",

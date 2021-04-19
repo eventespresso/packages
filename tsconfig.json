@@ -12,12 +12,11 @@
 		"moduleResolution": "node",
 		"noEmit": true,
 		"paths": {
-			"@blocksServices/*": ["domains/blocks/src/services/*"],
-			"@blocksComponents/*": ["domains/blocks/src/components/*"],
-			"@edtrHooks/*": ["domains/eventEditor/src/hooks/*"],
-			"@edtrInterfaces/*": ["domains/eventEditor/src/interfaces/*"],
-			"@edtrServices/*": ["domains/eventEditor/src/services/*"],
-			"@edtrUI/*": ["domains/eventEditor/src/ui/*"],
+			"@blocksServices/*": ["domains/core/admin/blocks/src/services/*"],
+			"@blocksComponents/*": ["domains/core/admin/blocks/src/components/*"],
+			"@edtrHooks/*": ["domains/core/admin/eventEditor/src/hooks/*"],
+			"@edtrServices/*": ["domains/core/admin/eventEditor/src/services/*"],
+			"@edtrUI/*": ["domains/core/admin/eventEditor/src/ui/*"],
 			"@e2eUtils/*": ["packages/e2e-tests/utils/*"]
 		},
 		"resolveJsonModule": true,

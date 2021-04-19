@@ -69,8 +69,8 @@ jobs:
               run: source tools/deploy.sh "eea-wpuser-integration"
 
             # Build EventSmart domain without packages
-            - name: Build ES
-              run: yarn build:es
+            - name: Build ES EdtrSlots
+              run: yarn build:es:edtrSlots
 
             # Deploy the built assets to ES tester plugin assets
             - name: Deploy to ES website repo
@@ -80,9 +80,9 @@ jobs:
 
             # Build upsellAds domain without packages
             - name: Build Upsell Ads
-              run: yarn build:upsellAds
+              run: yarn build:es:upsellEditor
 
-            # Deploy the built assets to ES tester plugin assets
+            # Deploy the built assets to Upsell/Notifications plugin assets
             - name: Deploy to Upsell Editor
               run: source tools/deploy.sh "eventsmart.com-website" "dev" "plugins/ee-saas-notification/assets"
               env:

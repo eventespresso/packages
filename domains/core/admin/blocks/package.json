@@ -21,8 +21,7 @@
 	"devDependencies": {
 		"@types/react-select": "^4.0.14",
 		"@types/wordpress__block-editor": "^2.2.9",
-		"@types/wordpress__components": "^9.8.6",
-		"@types/wordpress__i18n": "^3.11.0"
+		"@types/wordpress__components": "^9.8.6"
 	},
 	"scripts": {
 		"lint": "eslint ./src/**/*.{ts,tsx} --format=codeframe",

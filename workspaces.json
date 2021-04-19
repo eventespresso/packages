@@ -1,27 +1,27 @@
 [
     {
         "name": "@eventespresso/blocks",
-        "location": "domains/blocks"
+        "location": "domains/core/admin/blocks"
     },
     {
         "name": "@eventespresso/event-editor",
-        "location": "domains/eventEditor"
+        "location": "domains/core/admin/eventEditor"
     },
     {
-        "name": "@eventespresso/event-smart",
-        "location": "domains/eventSmart"
+        "name": "@eventespresso/wp-plugins-page",
+        "location": "domains/core/admin/wpPluginsPage"
+    },
+    {
+        "name": "@eventespresso/es-edtr-slots",
+        "location": "domains/eventSmart/admin/edtrSlots"
+    },
+    {
+        "name": "@eventespresso/es-upsell-editor",
+        "location": "domains/eventSmart/admin/upsellEditor"
     },
     {
         "name": "@eventespresso/rem",
         "location": "domains/rem"
-    },
-    {
-        "name": "@eventespresso/upsell-ads",
-        "location": "domains/upsellAds"
-    },
-    {
-        "name": "@eventespresso/wp-plugins-page",
-        "location": "domains/wpPluginsPage"
     },
     {
         "name": "@eventespresso/wp-user",
