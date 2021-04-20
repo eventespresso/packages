@@ -19,7 +19,7 @@ let {
 } = getCommandArgs();
 
 /**
- * Returns the all domains that are to be included.
+ * Returns all the domains that are to be included.
  *
  * @return {Array<Record<'name' | 'location', string>>} Domains to watch
  */
@@ -49,7 +49,7 @@ const getDomainsToWatch = () => {
 };
 
 /**
- * Returns the all packages that are filtered via CLI args.
+ * Returns all the packages that are filtered via CLI args.
  *
  * @return {Array<Record<'name' | 'location', string>>} Domains to watch
  */
@@ -90,7 +90,7 @@ const filterPackages = (packages, action = 'include') => {
 };
 
 /**
- * Get a list of paths to be included fo babel transformation
+ * Get a list of paths to be included for babel transformation
  * and the entrypoints to be supplied to webpack.
  *
  * @return {{includePaths: Array<string>, entries: Record<string, string>}}
@@ -114,14 +114,14 @@ const getIncludedPathsAndEntries = (resolveApp, resolveModule) => {
 	const packagePaths = [];
 	const packageEntries = {};
 	getPackages().forEach(({ name, location }) => {
-		const packageEntry = resolveModule(resolveApp, `${location}/src/index`);
-		const packagePath = resolveApp(`${location}/src/`);
 		// we don't need an entry point for icons
 		if (name !== 'icons' && filteredPackageNames.includes(name)) {
+			const packageEntry = resolveModule(resolveApp, `${location}/src/index`);
 			const packageName = camelCaseDash(name);
 			// "edtr-services" becomes "edtrServices"
 			packageEntries[packageName] = [packageEntry];
 		}
+		const packagePath = resolveApp(`${location}/src/`);
 		packagePaths.push(packagePath);
 	});
 	console.log('domains: ', Object.keys(domainEntries));
