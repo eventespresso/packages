@@ -73,7 +73,7 @@ const getFilteredPackages = () => {
 /**
  * Filter the packages by the given list.
  *
- * @param {string} packages A comma sepaprated list of packages to use for filtering.
+ * @param {string} packages A comma separated list of packages to use for filtering.
  * @param {'include' | 'exclude'} action The filter action.
  */
 const filterPackages = (packages, action = 'include') => {
