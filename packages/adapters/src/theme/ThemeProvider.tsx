@@ -1,12 +1,12 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
-const theme = extendTheme({ styles: null });
+import { isRTL } from '@eventespresso/i18n';
 
-const environment = { window, document };
+const theme = extendTheme({ styles: null, direction: isRTL() ? 'rtl' : 'ltr' });
 
 const ThemeProvider: React.FC = ({ children }) => {
 	return (
-		<ChakraProvider theme={theme} environment={environment}>
+		<ChakraProvider theme={theme} resetCSS>
 			{children}
 		</ChakraProvider>
 	);
