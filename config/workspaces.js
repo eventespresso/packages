@@ -18,7 +18,7 @@ const getWorkspaces = () => {
 };
 
 /**
- * Returns the all packages
+ * Returns all packages
  * @param {boolean} stripNamespace Whether to remove the namespace (@eventespresso) from the name.
  *
  * @return {Array<Record<'name' | 'location', string>>} Packages

@@ -21,7 +21,7 @@
 	"main": "build/index.js",
 	"module": "build-module/index.js",
 	"scripts": {
-		"update-deps": "npx ncu -u"
+		"update-deps": "npx ncu"
 	},
 	"publishConfig": {
 		"access": "public"

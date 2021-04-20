@@ -15,7 +15,7 @@
 		"build:wpUser": "yarn build:cra --domains \"wpUser\" --skip-all-packages",
 		"compile": "yarn tsc",
 		"deploy": "FORCE_COLOR=true lerna run deploy",
-		"dev": "yarn dev:watch --domains \"eventEditor\"",
+		"dev": "yarn dev:watch --domains \"core\"",
 		"dev:all": "yarn dev:watch",
 		"dev:blocks": "yarn dev:watch --domains \"blocks\"",
 		"dev:core": "yarn dev:watch --domains \"core\"",
