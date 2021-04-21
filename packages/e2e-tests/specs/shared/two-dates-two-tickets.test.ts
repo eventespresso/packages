@@ -25,7 +25,7 @@ describe(namespace, () => {
 			await editEntityCard({
 				name: 'Ticket 1',
 				entityType: 'ticket',
-				quantity: '20',
+				quantity: '15',
 			});
 
 			await addNewTicket({ name: 'Ticket 2', quantity: '20' });
