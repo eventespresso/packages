@@ -80,6 +80,15 @@ export class EntityListParser {
 	};
 
 	/**
+	 * Retrieve the entity filter tags wrapper element.
+	 */
+	getFilterTags = async (): ReturnType<ElementHandle['$']> => {
+		const entityList = await this.getListRoot();
+
+		return entityList?.$('.ee-filter-tags');
+	};
+
+	/**
 	 * Retrieve the entity items wrapper based on the current view.
 	 */
 	getItemsListWrapper = async (): ReturnType<ElementHandle['$']> => {
@@ -281,6 +290,9 @@ export class EntityListParser {
 		return await this.getItemDbId(item);
 	};
 
+	/**
+	 * Get entity status label by name.
+	 */
 	getStatusByName = async (name: string): Promise<string> => {
 		const item = await this.getItemBy('name', name);
 
@@ -313,5 +325,18 @@ export class EntityListParser {
 				[this.getCacheIdsSelector(), cacheIdsBeforeUpdate] as const
 			);
 		};
+	};
+
+	/**
+	 * Remove all the filters for the entity list.
+	 */
+	removeAllFilters = async (): Promise<void> => {
+		const filterTags = await this.getFilterTags();
+
+		const filterButtons = await filterTags.$$('.ee-filter-tag button');
+
+		for (const button of filterButtons) {
+			await button.click();
+		}
 	};
 }

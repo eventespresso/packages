@@ -13,7 +13,7 @@ export const addNewDate = async (fields: DateTicketFormArgs) => {
 		await clickButton('Save and assign tickets');
 
 		// Ensure that trashed tickets are visible
-		await page.click('[aria-label="show trashed tickets"]');
+		// await page.click('[aria-label="show trashed tickets"]');
 
 		await page.waitForSelector('[aria-label="assign ticket"]');
 

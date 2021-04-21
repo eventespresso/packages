@@ -1,8 +1,17 @@
 import { clickButton } from '@e2eUtils/common';
+import { EntityListParser } from './EntityListParser';
+
+const parser = new EntityListParser('ticket');
 
 export const removeLastTicket = async () => {
-	await page.click('[aria-label="ticket main menu"]').catch(() => console.log('there is no ticket main menu'));
+	try {
+		await page.click('[aria-label="ticket main menu"]');
 
-	await clickButton('trash ticket');
-	await clickButton('Yes');
+		const waitForListUpdate = await parser.createWaitForListUpdate();
+		await clickButton('trash ticket');
+		await clickButton('Yes');
+		await waitForListUpdate();
+	} catch (error) {
+		// There may not be any ticket to remove
+	}
 };
