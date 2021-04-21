@@ -299,7 +299,7 @@ class Barista
             return;
         }
 
-        $scripts = ['eventSmart'];
+        $scripts = ['esEdtrSlots'];
 
         foreach ($scripts as $handle) {
             $handle = 'eventespresso-' . $handle;
