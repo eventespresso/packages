@@ -129,3 +129,7 @@ export const mayBeAdjustEndDate = ({
 	}
 	return newEndDate;
 };
+
+export const getMonthName = (date: Date, format: Intl.DateTimeFormatOptions['month'] = 'long'): string => {
+	return date.toLocaleString('default', { month: format });
+};

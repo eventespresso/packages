@@ -8,6 +8,7 @@ import type { Datetime, Ticket } from '@eventespresso/edtr-services';
 import type { OptionsType } from '@eventespresso/adapters';
 import { sortDates } from '@eventespresso/predicates';
 import { parseInfinity, isInfinite } from '@eventespresso/utils';
+import { getMonthName } from '@eventespresso/dates';
 
 export type EntitiesToUpdate = Array<[EntityId, TAMPossibleRelation]>;
 
@@ -134,7 +135,7 @@ const getYearWiseMonthsFromDates = (dates: Array<Datetime>): YearWiseMonths => {
 
 		const monthsInTheYear = acc[year] || {};
 		if (!(month in monthsInTheYear)) {
-			monthsInTheYear[month] = parsedDate.toLocaleString('default', { month: 'long' });
+			monthsInTheYear[month] = getMonthName(parsedDate);
 
 			return {
 				...acc,

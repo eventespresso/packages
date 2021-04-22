@@ -1,26 +1,29 @@
 import { formatDateTime } from '@e2eUtils/common';
+import { CommonEntityFields, EntityEditor } from './EntityEditor';
 
 const formatDate = formatDateTime();
 
-export type DateTicketFormArgs = {
+export type DateTicketFormArgs = CommonEntityFields & {
 	capacity?: string;
-	isTrashed?: boolean;
-	endDate?: Date;
-	name?: string;
 	quantity?: string;
-	startDate?: Date;
 };
 
 export const fillDateTicketForm = async ({
 	capacity,
+	description,
 	endDate,
-	name,
 	isTrashed,
+	name,
 	quantity,
 	startDate,
 }: DateTicketFormArgs) => {
 	try {
 		name && (await page.fill('input[aria-label="Name"]', name));
+
+		if (description) {
+			await page.click(EntityEditor.RTEContentSelector);
+			await page.type(EntityEditor.RTEContentSelector, description);
+		}
 
 		if (startDate) {
 			// Since date picker input looses focus to popover on initial focus
@@ -35,12 +38,12 @@ export const fillDateTicketForm = async ({
 		}
 
 		if (capacity) {
-			await page.click('[name="capacity"]');
+			await page.focus('[name="capacity"]');
 			await page.fill('[name="capacity"]', capacity);
 		}
 
 		if (quantity) {
-			await page.click('[name="quantity"]');
+			await page.focus('[name="quantity"]');
 			await page.fill('[name="quantity"]', quantity);
 		}
 
