@@ -1,7 +1,6 @@
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent, EntityListParser } from '@e2eUtils/admin/event-editor';
-import { modalRTESel } from '../../constants';
+import { createNewEvent, getTicketQuantityByName, TicketEditor } from '@e2eUtils/admin/event-editor';
 
 const namespace = 'event.tickets.card.view.inline-inputs';
 
@@ -11,7 +10,7 @@ beforeAll(async () => {
 	await createNewEvent({ title: namespace });
 });
 
-const parser = new EntityListParser('ticket');
+const editor = new TicketEditor();
 
 describe(namespace, () => {
 	it('should check the ticket card inline inputs', async () => {
@@ -19,42 +18,19 @@ describe(namespace, () => {
 		const newTicketDesc = 'new ticket description';
 		const newTicketQty = '123';
 
-		await page.click(`${parser.getRootSelector()} .entity-card-details__name`);
-		await page.type(`${parser.getRootSelector()} .entity-card-details__name`, newTicketName);
-
-		let waitForListUpdate = await parser.createWaitForListUpdate();
-		await page.click(parser.getRootSelector()); // click outside of the inline input
-		await waitForListUpdate();
-
-		await page.click(`${parser.getRootSelector()} .entity-card-details__text`);
-		await page.click(modalRTESel);
-		await page.type(modalRTESel, newTicketDesc);
-
-		waitForListUpdate = await parser.createWaitForListUpdate();
-		await page.click('.chakra-modal__footer button[type=submit]');
-		await waitForListUpdate();
-
-		await page.click(`${parser.getRootSelector()} .ee-entity-details__value .ee-tabbable-text`);
-		await page.type(`${parser.getRootSelector()} .ee-entity-details__value .ee-inline-edit__input`, newTicketQty);
-
-		waitForListUpdate = await parser.createWaitForListUpdate();
-		await page.click(parser.getRootSelector()); // click outside of the inline input
-		await waitForListUpdate();
-
 		// first/only item
-		const item = await parser.getItem();
+		const item = await editor.getItem();
 
-		expect(await parser.getItemName(item)).toContain(newTicketName);
+		await editor.updateNameInline(item, newTicketName);
+		await editor.updateDescInline(item, newTicketDesc);
+		await editor.updateQuantityInline(item, newTicketQty);
 
-		expect(await parser.getItemDesc(item)).toContain(newTicketDesc);
+		expect(await editor.getItemName(item)).toContain(newTicketName);
 
-		const details = await item?.$eval(
-			'.ee-entity-details__value .ee-tabbable-text',
-			(elements) => elements.textContent
-		);
+		expect(await editor.getItemDesc(item)).toContain(newTicketDesc);
 
-		expect(details).toContain(newTicketQty);
+		const quantity = await getTicketQuantityByName(newTicketName);
 
-		await browser.close();
+		expect(quantity).toBe(newTicketQty);
 	});
 });

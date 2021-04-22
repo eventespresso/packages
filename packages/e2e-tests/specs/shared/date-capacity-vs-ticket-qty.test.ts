@@ -2,7 +2,6 @@
 
 import {
 	createNewEvent,
-	DatesListParser,
 	removeLastTicket,
 	addNewDate,
 	addNewTicket,
@@ -10,7 +9,8 @@ import {
 	TAMRover,
 	getDateCapacityByName,
 	getTicketQuantityByName,
-	TicketsListParser,
+	DateEditor,
+	EntityListParser,
 } from '@e2eUtils/admin/event-editor';
 import { clickLabel } from '@e2eUtils/common';
 
@@ -18,8 +18,8 @@ const newTicketName = 'New Ticket';
 const newDateName = 'New Date';
 const oldTicketName = 'Old Ticket';
 const oldDateName = 'Old Date';
-const datesParser = new DatesListParser();
-const ticketsParser = new TicketsListParser();
+const dateEditor = new DateEditor();
+const ticketsParser = new EntityListParser('ticket');
 const tamrover = new TAMRover('datetime');
 
 const namespace = 'date-capacity-vs-ticket-qty';
@@ -40,7 +40,7 @@ beforeAll(async () => {
 	// because we trashed the existing ticket
 	await addNewDate({ name: newDateName });
 	// Get the dbId of the existing date
-	const oldDateId = await datesParser.getDbIdByName(oldDateName);
+	const oldDateId = await dateEditor.getDbIdByName(oldDateName);
 	// Open TAM for it
 	await tamrover.setDbId(oldDateId).launch();
 	// Now only the non-trashed tickets will be visible,
@@ -80,9 +80,9 @@ describe(namespace, () => {
 	});
 
 	it('tests the ticket quantity change when the related date capacity is changed inline', async () => {
-		const oldDate = await datesParser.getItemBy('name', oldDateName);
+		const oldDate = await dateEditor.getItemBy('name', oldDateName);
 		// Set the old date capacity to 200
-		await datesParser.updateCapacityInline(oldDate, '200');
+		await dateEditor.updateCapacityInline(oldDate, '200');
 
 		const oldDateCapacity = await getDateCapacityByName(oldDateName);
 		expect(oldDateCapacity).toBe('200');
@@ -92,7 +92,7 @@ describe(namespace, () => {
 		expect(oldTicketQuantity).toBe('100');
 
 		// Set the old date capacity to 90
-		await datesParser.updateCapacityInline(oldDate, '90');
+		await dateEditor.updateCapacityInline(oldDate, '90');
 
 		oldTicketQuantity = await getTicketQuantityByName(oldTicketName);
 		// This should now be set to 90
@@ -102,9 +102,9 @@ describe(namespace, () => {
 		let newTicketQuantity = await getTicketQuantityByName(newTicketName);
 		expect(newTicketQuantity).toBe('∞');
 
-		const newDate = await datesParser.getItemBy('name', newDateName);
+		const newDate = await dateEditor.getItemBy('name', newDateName);
 		// Set the new date capacity to 300
-		await datesParser.updateCapacityInline(newDate, '300');
+		await dateEditor.updateCapacityInline(newDate, '300');
 
 		const newDateCapacity = await getDateCapacityByName(newDateName);
 		expect(newDateCapacity).toBe('300');
@@ -120,7 +120,7 @@ describe(namespace, () => {
 
 	it('tests the ticket quantity change when the related date capacity is changed in edit form', async () => {
 		// Lets change the capacity in edit form
-		await datesParser.editDateBy('name', newDateName, { capacity: '200' });
+		await dateEditor.editDateBy('name', newDateName, { capacity: '200' });
 
 		const newTicketQuantity = await getTicketQuantityByName(newTicketName);
 		expect(newTicketQuantity).toBe('200');
@@ -140,7 +140,7 @@ describe(namespace, () => {
 	});
 
 	it('tests the ticket quantity change when the related date is changed via TAM', async () => {
-		const newDateId = await datesParser.getDbIdByName('One more new date');
+		const newDateId = await dateEditor.getDbIdByName('One more new date');
 		// Open TAM for it
 		await tamrover.setDbId(newDateId).launch();
 		await clickLabel('show trashed tickets');

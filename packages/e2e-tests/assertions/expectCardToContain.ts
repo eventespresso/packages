@@ -2,7 +2,7 @@ import { expect } from '@jest/globals';
 import { EntityListParser } from '@e2eUtils/admin/event-editor';
 
 export const expectCardToContain = async (
-	{ capacity, desc, endDate, endDateMonth, name, quantity, startDate, startDateMonth, type }: any // TODO replace with a proper interface
+	{ capacity, description, endDate, endDateMonth, name, quantity, startDate, startDateMonth, type }: any // TODO replace with a proper interface
 ) => {
 	const parser = new EntityListParser(type);
 
@@ -11,7 +11,7 @@ export const expectCardToContain = async (
 
 	expect(await parser.getItemName(item)).toContain(name);
 
-	desc && expect(await parser.getItemDesc(item)).toContain(desc);
+	description && expect(await parser.getItemDesc(item)).toContain(description);
 
 	const details = await item?.$eval(
 		'.ee-entity-details__value .ee-tabbable-text',

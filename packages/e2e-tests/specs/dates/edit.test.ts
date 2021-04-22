@@ -1,66 +1,43 @@
 import { saveVideo } from 'playwright-video';
+import { NOW } from '@eventespresso/constants';
+import { add, getMonthName } from '@eventespresso/dates';
 
-import { createNewEvent, setListDisplayControl, EntityListParser } from '@e2eUtils/admin/event-editor';
-import { clickButton, selectDateFromNextMonth } from '@e2eUtils/common';
+import { createNewEvent, setListDisplayControl, DateEditor, DateFields } from '@e2eUtils/admin/event-editor';
 
 import { expectCardToContain } from '../../assertions';
-import { modalRTESel } from '../../constants';
 
 const namespace = 'event.dates.edit';
 
-const parser = new EntityListParser('datetime');
+const editor = new DateEditor();
 
 beforeAll(async () => {
+	await saveVideo(page, `artifacts/${namespace}.mp4`);
 	await createNewEvent({ title: namespace });
 });
 
-afterAll(async () => {
-	await browser.close();
-});
+const formData: DateFields = {
+	name: 'new date name',
+	description: 'new date description',
+	capacity: '1000',
+	startDate: add('months', NOW, 1),
+	endDate: add('months', NOW, 1),
+};
 
 describe(namespace, () => {
 	// eslint-disable-next-line jest/expect-expect
 	it('should edit an existing datetime', async () => {
-		const newDateName = 'new date name';
-		const newDateDesc = 'new date description';
-		const newDateCap = '1000';
-		const capture = await saveVideo(page, `artifacts/${namespace}.mp4`);
+		const dateItem = await editor.getItem();
+		await editor.editDate(dateItem, formData);
 
-		try {
-			await page.click('[aria-label="event date main menu"]');
-			await clickButton('edit datetime');
-			await page.focus('[aria-label="Name"]');
-			await page.type('[aria-label="Name"]', newDateName);
-			await page.click(modalRTESel);
-			await page.type(modalRTESel, newDateDesc);
-			await page.focus('[name="startDate"]');
-			const [startDate, startDateMonth] = await selectDateFromNextMonth();
-			await page.click('[name="endDate"]');
-			const [endDate, endDateMonth] = await selectDateFromNextMonth();
-			await page.click('[name="capacity"]');
-			await page.type('[name="capacity"]', newDateCap);
-			await clickButton('Save and assign tickets');
+		await setListDisplayControl('datetime', 'both');
 
-			const waitForListUpdate = await parser.createWaitForListUpdate();
-
-			await page.click('button[type=submit]');
-
-			await waitForListUpdate();
-
-			await setListDisplayControl('datetime', 'both');
-
-			await expectCardToContain({
-				capacity: newDateCap,
-				desc: newDateDesc,
-				endDate,
-				endDateMonth,
-				name: newDateName,
-				startDate,
-				startDateMonth,
-				type: 'datetime',
-			});
-		} catch (e) {
-			await capture.stop();
-		}
+		await expectCardToContain({
+			...formData,
+			endDate: formData.endDate.getDate(),
+			endDateMonth: getMonthName(formData.endDate),
+			startDate: formData.startDate.getDate(),
+			startDateMonth: getMonthName(formData.startDate),
+			type: 'datetime',
+		});
 	});
 });

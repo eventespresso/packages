@@ -1,65 +1,43 @@
 import { saveVideo } from 'playwright-video';
+import { NOW } from '@eventespresso/constants';
+import { add, getMonthName } from '@eventespresso/dates';
 
-import { createNewEvent, setListDisplayControl, EntityListParser } from '@e2eUtils/admin/event-editor';
-import { clickButton, selectDateFromNextMonth } from '@e2eUtils/common';
+import { createNewEvent, setListDisplayControl, TicketFields, TicketEditor } from '@e2eUtils/admin/event-editor';
 
 import { expectCardToContain } from '../../assertions';
-import { modalRTESel } from '../../constants';
 
 const namespace = 'event.tickets.edit';
-const parser = new EntityListParser('ticket');
 
 beforeAll(async () => {
 	await saveVideo(page, `artifacts/${namespace}.mp4`);
 	await createNewEvent({ title: namespace });
 });
 
-afterAll(async () => {
-	await browser.close();
-});
+const formData: TicketFields = {
+	name: 'new ticket name',
+	description: 'new ticket description',
+	quantity: '1000',
+	startDate: add('months', NOW, 1),
+	endDate: add('months', NOW, 1),
+};
+
+const editor = new TicketEditor();
 
 describe(namespace, () => {
 	// eslint-disable-next-line jest/expect-expect
 	it('should edit an existing ticket', async () => {
-		const newTicketName = 'new ticket name';
-		const newTicketDesc = 'new ticket description';
-		const newTicketQuantity = '1000';
+		const item = await editor.getItem();
+		await editor.editTicket(item, formData);
 
-		try {
-			await page.click('[aria-label="ticket main menu"]');
-			await clickButton('edit ticket');
-			await page.focus('[aria-label="Name"]');
-			await page.type('[aria-label="Name"]', newTicketName);
-			await page.click(modalRTESel);
-			await page.type(modalRTESel, newTicketDesc);
-			await page.focus('[name="startDate"]');
-			const [startDate, startDateMonth] = await selectDateFromNextMonth();
-			await page.click('[name="endDate"]');
-			const [endDate, endDateMonth] = await selectDateFromNextMonth();
-			await page.click('[name="quantity"]');
-			await page.type('[name="quantity"]', newTicketQuantity);
-			await clickButton('Skip prices - assign dates');
+		await setListDisplayControl('ticket', 'both');
 
-			const waitForListUpdate = await parser.createWaitForListUpdate();
-
-			await page.click('button[type=submit]');
-
-			await waitForListUpdate();
-
-			await setListDisplayControl('ticket', 'both');
-
-			await expectCardToContain({
-				desc: newTicketDesc,
-				endDate,
-				endDateMonth,
-				name: newTicketName,
-				quantity: newTicketQuantity,
-				startDate,
-				startDateMonth,
-				type: 'ticket',
-			});
-		} catch (e) {
-			console.log(e);
-		}
+		await expectCardToContain({
+			...formData,
+			endDate: formData.endDate.getDate(),
+			endDateMonth: getMonthName(formData.endDate),
+			startDate: formData.startDate.getDate(),
+			startDateMonth: getMonthName(formData.startDate),
+			type: 'ticket',
+		});
 	});
 });
