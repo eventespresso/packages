@@ -1,14 +1,14 @@
 import { EntityListParser } from './EntityListParser';
 
 /**
- * Get the capacity of a date by name.
+ * Get the quanitity of a ticket by name.
  * It is assumed that the list view is set to 'card'
  */
-export const getDateCapacityByName = async (name: string): Promise<string> => {
-	const parser = new EntityListParser('datetime');
-	const date = await parser.getItemBy('name', name);
+export const getTicketQuantityByName = async (name: string): Promise<string> => {
+	const parser = new EntityListParser('ticket');
+	const ticket = await parser.getItemBy('name', name);
 
-	const capacity = await date.$eval('.ee-entity-details .ee-tabbable-text', (el) => el.textContent);
+	const quanitity = await ticket.$eval('.ee-entity-details .ee-tabbable-text', (el) => el.textContent);
 
-	return capacity?.trim();
+	return quanitity?.trim();
 };

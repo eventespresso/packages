@@ -7,17 +7,18 @@ export async function createNewEvent({ title }: any = {}) {
 
 	await page.click(menuLinkSelector);
 
-	await page.click(`#add-new-event`);
+	await page.click('#add-new-event');
 
 	await page.focus('#titlewrap #title');
 
 	await page.type('#titlewrap #title', title);
 
-	await page.click(`#publishing-action #publish`);
-
-	// Wait for page load after the event is published
-	await page.waitForNavigation();
+	await Promise.all([
+		// Wait for page load after the event is published
+		page.waitForNavigation(),
+		page.click('#publishing-action #publish'),
+	]);
 
 	// Wait for tickets list lazy load
-	await page.waitForFunction((selector) => document.querySelector(selector), ticketsListSelector);
+	await page.waitForSelector(ticketsListSelector);
 }

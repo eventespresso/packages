@@ -19,10 +19,10 @@ export class EntityListParser {
 	/**
 	 * Reset instance data.
 	 */
-	reset = (): void => {
+	reset(): void {
 		this.entityType = undefined;
 		this.view = 'card';
-	};
+	}
 
 	/**
 	 * Change the current entity type in the instance.
@@ -59,7 +59,23 @@ export class EntityListParser {
 
 			// wait for the button to become active
 			await page.waitForSelector(`button.ee-btn--is-active >> text="${view} view"`);
+
+			const listSelector = view === 'card' ? '.ee-entity-list__card-view' : '.ee-entity-table';
+
+			// wait for the list to lazy load
+			await page.waitForSelector(listSelector);
 		}
+
+		return this;
+	};
+
+	/**
+	 * Toggle the current view for the list as well as the instance.
+	 */
+	toggleView = async (): Promise<EntityListParser> => {
+		const currentView = await this.getCurrentView();
+
+		await this.switchView(currentView === 'card' ? 'table' : 'card');
 
 		return this;
 	};

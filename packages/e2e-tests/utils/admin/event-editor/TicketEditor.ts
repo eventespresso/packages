@@ -16,10 +16,32 @@ export class TicketEditor extends EntityEditor {
 	}
 
 	/**
+	 * Reset instance data.
+	 */
+	reset(): void {
+		super.reset();
+		this.setEntityType('ticket');
+	}
+
+	/**
 	 * Given an entity item, it updates the quantity in the inline edit input
 	 */
 	updateQuantityInline = async (item: Item, quantity: string | number) => {
 		await this.updateDetailsInputInline(item, String(quantity));
+	};
+
+	/**
+	 * Given an entity item, it updates the price in the inline edit input
+	 */
+	updatePriceInline = async (item: Item, price: number) => {
+		const inlineEditPreview = await item.$('.entity-card__details .ee-currency-input .ee-tabbable-text');
+		await inlineEditPreview.click();
+		const inlineEditInput = await item.$('.entity-card__details .ee-currency-input input');
+		await inlineEditInput.type(String(price));
+
+		const waitForListUpdate = await this.createWaitForListUpdate();
+		await page.click(this.getRootSelector()); // click outside of the inline input
+		await waitForListUpdate();
 	};
 
 	/**
