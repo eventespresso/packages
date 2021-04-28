@@ -40,11 +40,18 @@ export class EntityListParser {
 	switchView = async (view: ListView): Promise<EntityListParser> => {
 		this.setView(view);
 
-		const filterBar = await this.getFilterBar();
+		const currentView = await this.getCurrentView();
 
-		const switchViewButton = await filterBar?.$(`[type=button] >> text=${view} view`);
+		if (currentView !== view) {
+			const filterBar = await this.getFilterBar();
 
-		await switchViewButton?.click();
+			const switchViewButton = await filterBar?.$(`[type=button] >> text=${view} view`);
+
+			await switchViewButton?.click();
+
+			// wait for the button to become active
+			await page.waitForSelector(`button.ee-btn--is-active >> text="${view} view"`);
+		}
 
 		return this;
 	};
@@ -86,6 +93,23 @@ export class EntityListParser {
 		const entityList = await this.getListRoot();
 
 		return entityList?.$('.ee-filter-tags');
+	};
+
+	/**
+	 * Get the current list view - card|table
+	 */
+	getCurrentView = async (): Promise<ListView> => {
+		const filterBar = await this.getFilterBar();
+
+		// Use * to match the button, instead of the child span
+		const tableViewButton = await filterBar?.$('*css=button >> text=table view');
+
+		const className = await tableViewButton.getAttribute('class');
+
+		// If table view button has "is-active" class
+		const isTableViewActive = className.includes('is-active');
+
+		return isTableViewActive ? 'table' : 'card';
 	};
 
 	/**
