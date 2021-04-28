@@ -17,6 +17,14 @@ export class EntityListParser {
 	}
 
 	/**
+	 * Reset instance data.
+	 */
+	reset = (): void => {
+		this.entityType = undefined;
+		this.view = 'card';
+	};
+
+	/**
 	 * Change the current entity type in the instance.
 	 */
 	setEntityType = (entityType: EntityType): EntityListParser => {

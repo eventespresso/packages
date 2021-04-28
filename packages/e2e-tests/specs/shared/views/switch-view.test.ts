@@ -31,7 +31,7 @@ describe(namespace, () => {
 			expect(view).toBe('card');
 
 			// Restore default view
-			parser.setView('card');
+			parser.reset();
 		});
 	}
 });
