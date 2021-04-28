@@ -3,49 +3,35 @@ import { isNil } from 'ramda';
 
 import { ticketTotalTestCases } from '@eventespresso/tpc/src/utils/test/ticketTotalData';
 import { basePriceTestCases } from '@eventespresso/tpc/src/utils/test/basePriceData';
-import { convertToModifier, createPrices } from '@eventespresso/tpc/src/utils/test/utils';
-import { formatAmount } from '@eventespresso/utils';
-import { getBasePrice, getPriceModifiers } from '@eventespresso/predicates';
+import { getBasePrice } from '@eventespresso/predicates';
 
 import {
 	addNewTicket,
 	createNewEvent,
 	removeAllTickets,
 	removeAllPriceModifiers,
-	setPrice,
-	setPrices,
+	TPCSafari,
 } from '@e2eUtils/admin/event-editor';
+
+const tpcSafari = new TPCSafari();
 
 beforeAll(async () => {
 	await saveVideo(page, 'artifacts/calculateTicketTotal.mp4');
 	const newTicketName = 'one way ticket';
 	const newTicketAmount = 10;
 
-	await createNewEvent({ title: 'calculateTicketTotal: to be deleted' });
+	await createNewEvent({ title: 'calculate ticket prices' });
 
 	await removeAllTickets();
 
 	await addNewTicket({ amount: newTicketAmount, name: newTicketName });
 
-	await page.click('[aria-label="ticket price calculator"]');
+	await tpcSafari.launch();
 });
 
 beforeEach(async () => {
 	await removeAllPriceModifiers();
 });
-
-const getFormattedAmount = formatAmount(2);
-
-const setTestName = async (name: string) => {
-	await page.$eval(
-		'header.ee-modal__header',
-		(header, text) => {
-			// eslint-disable-next-line no-param-reassign
-			header.innerHTML = text;
-		},
-		name
-	);
-};
 
 describe('TPC:calculateTicketTotal', () => {
 	// lets reverse calculate ticket total from the base price test data
@@ -54,85 +40,73 @@ describe('TPC:calculateTicketTotal', () => {
 			continue;
 		}
 
-		it('reverse calculates: ' + name, async () => {
-			await setTestName('reverse calculates: ' + name);
+		it('reverses: ' + name, async () => {
+			await tpcSafari.updateHeader('reverses: ' + name);
 			// set the base price
-			await setPrice({ amount: basePrice, name, isBasePrice: true } as any);
-
-			const testPrices = createPrices(prices.map(convertToModifier), 2);
+			await tpcSafari.setBasePrice({ amount: basePrice, name });
 
 			// set modifiers
-			await setPrices(testPrices);
+			await tpcSafari.setPrices(prices);
 
-			const calculatedTotal = await page.$eval('#ticket-price-total', (el: HTMLInputElement) => el?.value);
+			const calculatedTotal = await tpcSafari.getTicketTotal();
 
-			expect(getFormattedAmount(calculatedTotal)).toEqual(getFormattedAmount(total));
+			expect(calculatedTotal).toEqual(tpcSafari.getFormattedAmount(total));
 		});
 	}
 
 	for (const { name, prices, total } of ticketTotalTestCases) {
 		it(name, async () => {
-			await setTestName(name);
+			await tpcSafari.updateHeader(name);
 
-			const testPrices = createPrices(prices.map(convertToModifier));
+			// set modifiers
+			await tpcSafari.setPrices(prices);
 
-			await setPrices(testPrices);
+			const calculatedTotal = await tpcSafari.getTicketTotal();
 
-			const calculatedTotal = await page.$eval('#ticket-price-total', (el: HTMLInputElement) => el?.value);
-
-			expect(getFormattedAmount(calculatedTotal)).toEqual(getFormattedAmount(total));
+			expect(calculatedTotal).toEqual(tpcSafari.getFormattedAmount(total));
 		});
 	}
 });
 
 describe('TPC:calculateBasePrice', () => {
 	beforeAll(async () => {
-		await page.click('[aria-label="Enable reverse calculate"]').catch(console.log);
+		await tpcSafari.toggleReverseCalculate();
 	});
 
 	// lets reverse calculate base price from the ticket total test data
 	for (const { name, prices, total } of ticketTotalTestCases) {
-		it('reverse calculates: ' + name, async () => {
-			const testPrices = createPrices(prices.map(convertToModifier), 2);
+		it('reverses: ' + name, async () => {
+			const testPrices = tpcSafari.createPrices(prices);
 
 			const basePrice = getBasePrice(testPrices)?.amount || 0;
 
-			await setTestName('reverse calculates: ' + name);
+			await tpcSafari.updateHeader('reverses: ' + name);
 
-			await setPrices(getPriceModifiers(testPrices));
+			// set prices
+			await tpcSafari.setPrices(prices, true);
 
 			// Set ticket total
-			await page.focus(`.ee-ticket-price-calculator__total [aria-label="ticket total"]`);
-			await page.fill(`.ee-ticket-price-calculator__total [aria-label="ticket total"]`, (total || '').toString());
+			await tpcSafari.setTicketTotal(total);
 
-			const firstTPCRow = '.ee-ticket-price-calculator tbody tr:first-child';
-			const calculatedPrice = await page.$eval(
-				`${firstTPCRow} [aria-label="amount"]`,
-				(el: HTMLInputElement) => el?.value
-			);
-			expect(getFormattedAmount(calculatedPrice)).toBe(getFormattedAmount(basePrice));
+			const calculatedPrice = await tpcSafari.getBasePrice();
+
+			expect(calculatedPrice).toBe(tpcSafari.getFormattedAmount(basePrice));
 		});
 	}
 
 	for (const { basePrice, name, prices, total } of basePriceTestCases) {
 		it(name, async () => {
-			await setTestName(name);
+			await tpcSafari.updateHeader(name);
 
-			const testPrices = createPrices(prices.map(convertToModifier), 2);
-
-			await setPrices(testPrices);
+			// set prices
+			await tpcSafari.setPrices(prices);
 
 			// Set ticket total
-			await page.focus(`.ee-ticket-price-calculator__total [aria-label="ticket total"]`);
-			await page.fill(`.ee-ticket-price-calculator__total [aria-label="ticket total"]`, (total || '').toString());
+			await tpcSafari.setTicketTotal(total);
 
-			const firstTPCRow = '.ee-ticket-price-calculator tbody tr:first-child';
-			const calculatedPrice = await page.$eval(
-				`${firstTPCRow} [aria-label="amount"]`,
-				(el: HTMLInputElement) => el?.value
-			);
+			const calculatedPrice = await tpcSafari.getBasePrice();
 
-			expect(getFormattedAmount(calculatedPrice)).toBe(getFormattedAmount(basePrice));
+			expect(calculatedPrice).toBe(tpcSafari.getFormattedAmount(basePrice));
 		});
 	}
 });
