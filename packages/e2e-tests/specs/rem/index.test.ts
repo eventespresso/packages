@@ -3,7 +3,7 @@ import { saveVideo } from 'playwright-video';
 import { createNewEvent } from '@e2eUtils/admin/event-editor';
 import { clickButton } from '@e2eUtils/common';
 import { activatePlugin, deactivatePlugin } from '@e2eUtils/admin/wp-plugins-page';
-import { pressKeyWithModifier } from '@e2eUtils/misc';
+import { pressKeyWithModifier, EE_DEBUG } from '@e2eUtils/misc';
 
 const REMPlugin = 'eea-recurring-events-manager/eea-recurring-events-manager.php';
 
@@ -19,7 +19,7 @@ beforeAll(async () => {
 
 		await page.click('text=Next');
 	} catch (error) {
-		console.log('The site is not in maintenance mode.');
+		EE_DEBUG && console.log('The site is not in maintenance mode.');
 	}
 
 	await saveVideo(page, 'artifacts/REM.mp4');

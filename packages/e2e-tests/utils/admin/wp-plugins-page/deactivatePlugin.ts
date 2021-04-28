@@ -1,5 +1,7 @@
-import { isPluginNetworkActive } from './isPluginNetworkActive';
 import { switchUserToAdmin, switchUserToTest, visitAdminPage } from '@e2eUtils/wp';
+import { EE_DEBUG } from '@e2eUtils/misc';
+
+import { isPluginNetworkActive } from './isPluginNetworkActive';
 
 /**
  * Deactivates an active plugin.
@@ -11,13 +13,13 @@ export async function deactivatePlugin(plugin: string): Promise<void> {
 	await visitAdminPage('plugins.php', null);
 
 	if (await isPluginNetworkActive(plugin)) {
-		console.log(`Plugin "${plugin}" is network active.`);
+		EE_DEBUG && console.log(`Plugin "${plugin}" is network active.`);
 	} else {
 		try {
 			await page.click(`tr[data-plugin="${plugin}"] .deactivate a`);
-			console.log(`Deactivated plugin "${plugin}".`);
+			EE_DEBUG && console.log(`Deactivated plugin "${plugin}".`);
 		} catch (error) {
-			console.log(`Could not deactivate the plugin "${plugin}". May be it's already deactivated.`);
+			EE_DEBUG && console.log(`Could not deactivate the plugin "${plugin}". May be it's already deactivated.`);
 		}
 	}
 
