@@ -33,7 +33,7 @@ export class TicketEditor extends EntityEditor {
 	/**
 	 * Given an entity item, it updates the price in the inline edit input
 	 */
-	updatePriceInline = async (item: Item, price: number) => {
+	updatePriceInline = async (item: Item, price: number | string) => {
 		const inlineEditPreview = await item.$('.entity-card__details .ee-currency-input .ee-tabbable-text');
 		await inlineEditPreview.click();
 		const inlineEditInput = await item.$('.entity-card__details .ee-currency-input input');
