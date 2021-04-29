@@ -82,7 +82,7 @@ export class TPCSafari {
 		if (closeButton) {
 			await closeButton.click();
 		} else {
-			EE_DEBUG || console.error('Could not find the close button for TPC.');
+			EE_DEBUG && console.error('Could not find the close button for TPC.');
 		}
 		// If TPC is dirty, there may be an alert.
 		await respondToAlert('Yes');

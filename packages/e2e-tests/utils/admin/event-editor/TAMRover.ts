@@ -130,7 +130,7 @@ export class TAMRover {
 		if (closeButton) {
 			await closeButton.click();
 		} else {
-			EE_DEBUG || console.error('Could not find the close button for TAM.');
+			EE_DEBUG && console.error('Could not find the close button for TAM.');
 		}
 
 		// If TAM is dirty, there may be an alert.
