@@ -76,7 +76,6 @@ jobs:
             specs: ${{ steps.list.outputs.files }}
         steps:
             - uses: actions/checkout@v2
-            - run: ls
             - id: list
               run: echo "::set-output name=files::{\"path\":$(ls -d packages/e2e-tests/specs/* | jq -R -s -c 'split("\n")[:-1]')}"
 
@@ -90,7 +89,7 @@ jobs:
         # Run the job only if JS is affected
         if: ${{ needs.what-is-hit.outputs.js == 'true' }}
         strategy:
-            matrix: ${{needs.list-e2e-specs.outputs.specs}}
+            matrix: ${{ fromJSON(needs.list-e2e-specs.outputs.specs) }}
             fail-fast: true
         steps:
             - uses: actions/checkout@v2
