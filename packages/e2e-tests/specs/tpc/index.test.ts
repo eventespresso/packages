@@ -1,4 +1,4 @@
-import { saveVideo } from 'playwright-video';
+// import { saveVideo } from 'playwright-video';
 import { isNil } from 'ramda';
 
 import { ticketTotalTestCases } from '@eventespresso/tpc/src/utils/test/ticketTotalData';
@@ -11,12 +11,15 @@ import {
 	removeAllTickets,
 	removeAllPriceModifiers,
 	TPCSafari,
+	TicketEditor,
+	getTicketPrice,
 } from '@e2eUtils/admin/event-editor';
 
+const editor = new TicketEditor();
 const tpcSafari = new TPCSafari();
 
 beforeAll(async () => {
-	await saveVideo(page, 'artifacts/calculateTicketTotal.mp4');
+	// await saveVideo(page, 'artifacts/calculateTicketTotal.mp4');
 	const newTicketName = 'one way ticket';
 	const newTicketAmount = 10;
 
@@ -25,13 +28,20 @@ beforeAll(async () => {
 	await removeAllTickets();
 
 	await addNewTicket({ amount: newTicketAmount, name: newTicketName });
-
-	await tpcSafari.launch();
 });
 
 beforeEach(async () => {
+	await tpcSafari.launch();
 	await removeAllPriceModifiers();
 });
+
+const submitAndAssertTotal = async (total: string | number) => {
+	await tpcSafari.submit();
+
+	const item = await editor.getItem();
+	const price = await getTicketPrice(item);
+	expect(tpcSafari.getFormattedAmount(price)).toBe(tpcSafari.getFormattedAmount(total));
+};
 
 describe('TPC:calculateTicketTotal', () => {
 	// lets reverse calculate ticket total from the base price test data
@@ -51,6 +61,8 @@ describe('TPC:calculateTicketTotal', () => {
 			const calculatedTotal = await tpcSafari.getTicketTotal();
 
 			expect(calculatedTotal).toEqual(tpcSafari.getFormattedAmount(total));
+
+			await submitAndAssertTotal(calculatedTotal);
 		});
 	}
 
@@ -64,13 +76,15 @@ describe('TPC:calculateTicketTotal', () => {
 			const calculatedTotal = await tpcSafari.getTicketTotal();
 
 			expect(calculatedTotal).toEqual(tpcSafari.getFormattedAmount(total));
+
+			await submitAndAssertTotal(calculatedTotal);
 		});
 	}
 });
 
 describe('TPC:calculateBasePrice', () => {
-	beforeAll(async () => {
-		await tpcSafari.toggleReverseCalculate();
+	beforeEach(async () => {
+		await tpcSafari.setReverseCalculate(true);
 	});
 
 	// lets reverse calculate base price from the ticket total test data
@@ -91,6 +105,8 @@ describe('TPC:calculateBasePrice', () => {
 			const calculatedPrice = await tpcSafari.getBasePrice();
 
 			expect(calculatedPrice).toBe(tpcSafari.getFormattedAmount(basePrice));
+
+			await submitAndAssertTotal(total);
 		});
 	}
 
@@ -107,6 +123,8 @@ describe('TPC:calculateBasePrice', () => {
 			const calculatedPrice = await tpcSafari.getBasePrice();
 
 			expect(calculatedPrice).toBe(tpcSafari.getFormattedAmount(basePrice));
+
+			await submitAndAssertTotal(total);
 		});
 	}
 });
