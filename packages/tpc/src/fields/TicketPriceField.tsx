@@ -19,7 +19,7 @@ const TicketPriceField: React.FC<TicketPriceFieldProps> = (props) => {
 
 	const parse: BFP['parse'] = useCallback((price) => parsedAmount(price), []);
 
-	const setValue: BFP['setValue'] = useCallback((value) => updateTicketPrice(parsedAmount(value)), [
+	const setValue: BFP['setValue'] = useCallback((value) => updateTicketPrice(Math.abs(parsedAmount(value)) || 0), [
 		updateTicketPrice,
 	]);
 
@@ -33,6 +33,7 @@ const TicketPriceField: React.FC<TicketPriceFieldProps> = (props) => {
 				parse={parse}
 				setValue={setValue}
 				type='number'
+				min={0}
 			/>
 		</MoneyInputWithConfig>
 	);

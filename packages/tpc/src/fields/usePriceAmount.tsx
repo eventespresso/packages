@@ -1,5 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
+import { parsedAmount } from '@eventespresso/utils';
+
 import { useDataState } from '../data';
 import type { BaseFieldProps, UsePrice, UsePriceAmount } from './types';
 
@@ -12,7 +14,7 @@ const usePriceAmount = ({ field, price }: UsePriceAmount): UsePrice => {
 
 	const setValue = useCallback<BFP['setValue']>(
 		(value) => {
-			const absValue = Math.abs(value as number) || 0;
+			const absValue = Math.abs(parsedAmount(value as number)) || 0;
 			updatePrice({ id: price.id, fieldValues: { [field]: absValue } });
 		},
 		[updatePrice, price.id, field]
