@@ -75,7 +75,7 @@ jobs:
         outputs:
             specs: ${{ steps.list.outputs.files }}
         steps:
-            - run: pwd
+            - run: ls
             - id: list
               run: echo "::set-output name=files::{\"path\":$(ls -d packages/e2e-tests/specs/* | jq -R -s -c 'split("\n")[:-1]')}"
 
