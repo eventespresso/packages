@@ -43,10 +43,8 @@ describe(namespace, () => {
 		// Since there are no modifiers, totol is equal to base price
 		expect(Number(ticketTotal)).toBe(13);
 
-		const waitForListUpdate = await editor.createWaitForListUpdate();
 		// Now lets submit.
 		await tpcSafari.submit();
-		await waitForListUpdate();
 
 		// first/only item
 		let item = await editor.getItem();

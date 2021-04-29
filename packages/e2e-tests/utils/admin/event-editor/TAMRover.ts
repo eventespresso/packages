@@ -64,7 +64,7 @@ export class TAMRover {
 
 		// set parser if TAM is for a single date or ticket
 		if (this.forType && this.forType !== 'all') {
-			this.parser = new EntityListParser(this.forType);
+			this.setParser(this.forType);
 		}
 
 		return this;
@@ -75,6 +75,15 @@ export class TAMRover {
 	 */
 	setDbId = (dbId?: number): TAMRover => {
 		this.dbId = dbId;
+
+		return this;
+	};
+
+	/**
+	 * Change the "for entity type".
+	 */
+	setParser = (forType: Exclude<ForType, 'all'>): TAMRover => {
+		this.parser = new EntityListParser(forType);
 
 		return this;
 	};
@@ -143,7 +152,12 @@ export class TAMRover {
 		const submitButton = await page.$(`${this.getRootSelector()} button[type=submit]`);
 
 		if (submitButton) {
+			// Ensure that parser is set
+			this.setParser('ticket');
+
+			const waitForListUpdate = await this.parser.createWaitForListUpdate();
 			await submitButton.click();
+			await waitForListUpdate();
 		}
 
 		this.reset();

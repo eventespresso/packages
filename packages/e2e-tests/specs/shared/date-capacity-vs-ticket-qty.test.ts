@@ -49,9 +49,7 @@ beforeAll(async () => {
 	await tamrover.toggleAllAssignments();
 
 	// Submit TAM
-	const waitForListUpdate = await ticketsParser.createWaitForListUpdate();
 	await tamrover.submit();
-	await waitForListUpdate();
 
 	// Now we have this kind of relationship,
 	/**
@@ -148,9 +146,7 @@ describe(namespace, () => {
 		await tamrover.toggleAllAssignments();
 
 		// Submit TAM
-		const waitForListUpdate = await ticketsParser.createWaitForListUpdate();
 		await tamrover.submit();
-		await waitForListUpdate();
 
 		// Now the old ticket quantity should have changed from 90 to 60
 		const oldTicketQuantity = await getTicketQuantityByName(oldTicketName);

@@ -96,7 +96,9 @@ export class TPCSafari {
 		const submitButton = await page.$(`${this.getRootSelector()} button[type=submit]`);
 
 		if (submitButton) {
+			const waitForListUpdate = await this.parser.createWaitForListUpdate();
 			await submitButton.click();
+			await waitForListUpdate();
 		}
 
 		this.reset();
