@@ -90,7 +90,7 @@ jobs:
         if: ${{ needs.what-is-hit.outputs.js == 'true' }}
         strategy:
             matrix: ${{ fromJSON(needs.list-e2e-specs.outputs.specs) }}
-            fail-fast: true
+            # fail-fast: true
         steps:
             - uses: actions/checkout@v2
 
