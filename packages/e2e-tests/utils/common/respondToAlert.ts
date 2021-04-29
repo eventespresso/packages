@@ -1,3 +1,5 @@
+import { EE_DEBUG } from '../misc';
+
 const selector = '.ee-alert-dialog';
 
 export const respondToAlert = async (optionToChoose = 'Yes') => {
@@ -8,7 +10,7 @@ export const respondToAlert = async (optionToChoose = 'Yes') => {
 		if (button) {
 			button.click();
 		} else {
-			console.error(`Could not find the option "${optionToChoose}" in the alert.`);
+			EE_DEBUG && console.error(`Could not find the option "${optionToChoose}" in the alert.`);
 		}
 	}
 };

@@ -2,6 +2,7 @@ import type { Page, ElementHandle } from 'playwright';
 import { assocPath } from 'ramda';
 
 import { clickButton, respondToAlert } from '@e2eUtils/common';
+import { EE_DEBUG } from '@e2eUtils/misc';
 import { EntityListParser, Field, Item } from './EntityListParser';
 import { EntityType } from '../../../types';
 
@@ -128,6 +129,8 @@ export class TAMRover {
 
 		if (closeButton) {
 			await closeButton.click();
+		} else {
+			EE_DEBUG || console.error('Could not find the close button for TAM.');
 		}
 
 		// If TAM is dirty, there may be an alert.

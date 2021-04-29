@@ -12,7 +12,6 @@ export const setPrice = async (price: TpcPriceModifier) => {
 	if (!isBasePrice(price)) {
 		await page.click(`${parentSelector} [aria-label="add new price modifier after this row"]`);
 		// Set price order
-		await page.focus(`${parentSelector} [aria-label="price order"]`);
 		await page.fill(`${parentSelector} [aria-label="price order"]`, (price.order || 2).toString());
 
 		// Set price type
@@ -21,14 +20,11 @@ export const setPrice = async (price: TpcPriceModifier) => {
 	}
 
 	// Set price name
-	await page.focus(`${parentSelector} [aria-label="price name"]`);
 	await page.fill(`${parentSelector} [aria-label="price name"]`, price.name || '');
 
 	// Set price description
-	await page.focus(`${parentSelector} [aria-label="price description"]`);
 	await page.fill(`${parentSelector} [aria-label="price description"]`, price.description || '');
 
 	// Set price amount
-	await page.focus(`${parentSelector} [aria-label="amount"]`);
 	await page.fill(`${parentSelector} [aria-label="amount"]`, (price.amount || '').toString());
 };

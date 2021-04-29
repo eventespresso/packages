@@ -6,6 +6,7 @@ import { getPriceModifiers } from '@eventespresso/predicates';
 import { convertToModifier, createPrices, PriceCreator } from '@eventespresso/tpc/src/utils/test/utils';
 
 import { respondToAlert } from '@e2eUtils/common';
+import { EE_DEBUG } from '@e2eUtils/misc';
 import { EntityListParser } from './EntityListParser';
 import { setPrice } from './setPrice';
 import { setPrices } from './setPrices';
@@ -76,13 +77,13 @@ export class TPCSafari {
 	 * Close TPC modal.
 	 */
 	close = async (): Promise<void> => {
-		const root = await this.getRoot();
-		const closeButton = await root.$('[aria-label="close modal"]');
+		const closeButton = await page.$(`${this.getRootSelector()} [aria-label="close modal"]`);
 
 		if (closeButton) {
 			await closeButton.click();
+		} else {
+			EE_DEBUG || console.error('Could not find the close button for TPC.');
 		}
-
 		// If TPC is dirty, there may be an alert.
 		await respondToAlert('Yes');
 
@@ -112,21 +113,37 @@ export class TPCSafari {
 		await root.$eval(
 			'header.ee-modal__header',
 			(header, text) => {
-				// eslint-disable-next-line no-param-reassign
-				header.innerHTML = text;
+				// First child node is the text node, containing the title
+				header.firstChild.replaceWith(text);
 			},
 			title
 		);
 	};
 
 	/**
-	 * Updates the TPC Modal header title
+	 * Returns true if reverse calculate is ON
 	 */
-	toggleReverseCalculate = async (): Promise<void> => {
+	isReverseCalculateOn = async (): Promise<boolean> => {
 		const root = await this.getRoot();
-		const revCalcButton = await root.$('[aria-label="Enable reverse calculate"]');
+		const revCalcButton = await root.$('[aria-label="Disable reverse calculate"]');
+		// If the element is found, it will be truthy
+		return Boolean(revCalcButton);
+	};
 
-		await revCalcButton?.click().catch(console.log);
+	/**
+	 * Sets reverse calculate to true or false
+	 */
+	setReverseCalculate = async (value = false): Promise<void> => {
+		const isReverseCalculateOn = await this.isReverseCalculateOn();
+
+		if (isReverseCalculateOn !== value) {
+			const selector = `[aria-label="${isReverseCalculateOn ? 'Disable' : 'Enable'} reverse calculate"]`;
+
+			const root = await this.getRoot();
+			const revCalcButton = await root.$(selector);
+
+			await revCalcButton?.click();
+		}
 	};
 
 	/**
@@ -180,6 +197,10 @@ export class TPCSafari {
 
 		// set modifiers
 		await setPrices(modifiersOnly ? getPriceModifiers(testPrices) : testPrices);
+
+		// Focus on root to make sure the amount is updated when empty
+		const root = await this.getRoot();
+		await root.focus();
 	};
 
 	/**
