@@ -40,7 +40,7 @@ const submitAndAssertTotal = async (total: string | number) => {
 
 	const item = await editor.getItem();
 	const price = await getTicketPrice(item);
-	expect(tpcSafari.getFormattedAmount(price)).toBe(tpcSafari.getFormattedAmount(total));
+	expect(tpcSafari.getFormattedAmount(price)).toBe(tpcSafari.getFormattedAmount(total || 0));
 };
 
 describe('TPC:calculateTicketTotal', () => {
