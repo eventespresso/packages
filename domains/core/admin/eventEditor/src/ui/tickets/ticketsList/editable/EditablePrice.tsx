@@ -23,7 +23,7 @@ const EditablePrice: React.FC<Partial<EditablePriceProps>> = ({ entity: ticket, 
 	const recalculateBasePrice = useRecalculateBasePrice(ticket.id);
 	const onChangePrice = useCallback(
 		({ amount }: any): void => {
-			const price = parseFloat(amount);
+			const price = Math.abs(amount);
 			if (price !== ticket.price) {
 				recalculateBasePrice(price);
 			}
