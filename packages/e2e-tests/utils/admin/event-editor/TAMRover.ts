@@ -155,12 +155,16 @@ export class TAMRover {
 		const submitButton = await page.$(`${this.getRootSelector()} button[type=submit]`);
 
 		if (submitButton) {
+			const oldEntityType = this.parser.entityType;
 			// Ensure that parser is set
 			this.setParser('ticket');
 
 			const waitForListUpdate = await this.parser.createWaitForListUpdate();
 			await submitButton.click();
 			await waitForListUpdate();
+
+			// restore the entity type
+			this.setParser(oldEntityType);
 		}
 
 		this.reset();
