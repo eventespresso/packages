@@ -8,13 +8,14 @@ const dateEditor = new DateEditor();
 const ticketsParser = new EntityListParser('ticket');
 
 beforeAll(async () => {
-	await saveVideo(page, `artifacts/${namespace}.mp4`);
+	// await saveVideo(page, `artifacts/${namespace}.mp4`);
 	await createNewEvent({ title: namespace });
 	await addNewDate({ name: namespace + '.date' });
 });
 
 describe(namespace, () => {
 	it('should delete dates by name:', async () => {
+		const capture = await saveVideo(page, `artifacts/${namespace}.mp4`);
 		let dateCount = await dateEditor.getItemCount();
 
 		expect(dateCount).toBe(2);
@@ -35,5 +36,6 @@ describe(namespace, () => {
 		ticketCount = await ticketsParser.getItemCount();
 		expect(dateCount).toBe(0);
 		expect(ticketCount).toBe(0);
+		await capture.stop();
 	});
 });
