@@ -1,8 +1,8 @@
-import { addNewDate, createNewEvent, deleteDateByName, EntityListParser } from '@e2eUtils/admin/event-editor';
+import { addNewDate, createNewEvent, EntityListParser, DateEditor } from '@e2eUtils/admin/event-editor';
 
 const namespace = 'event.dates.delete';
 
-const datesParser = new EntityListParser('datetime');
+const dateEditor = new DateEditor();
 const ticketsParser = new EntityListParser('ticket');
 
 describe(namespace, () => {
@@ -11,16 +11,25 @@ describe(namespace, () => {
 
 		await addNewDate({ name: namespace + '.date' });
 
-		expect(await datesParser.getItemCount()).toBe(2);
+		let dateCount = await dateEditor.getItemCount();
 
-		await deleteDateByName('edit title…');
+		expect(dateCount).toBe(2);
 
-		expect(await datesParser.getItemCount()).toBe(1);
-		expect(await ticketsParser.getItemCount()).toBe(1);
+		await dateEditor.deleteItemBy('name', namespace + '.date');
 
-		await deleteDateByName('event.dates.delete.date');
+		dateCount = await dateEditor.getItemCount();
+		let ticketCount = await ticketsParser.getItemCount();
 
-		expect(await datesParser.getItemCount()).toBe(0);
-		expect(await ticketsParser.getItemCount()).toBe(0);
+		expect(dateCount).toBe(1);
+		expect(ticketCount).toBe(1);
+
+		const date = await dateEditor.getItem();
+
+		await dateEditor.deleteItem(date);
+
+		dateCount = await dateEditor.getItemCount();
+		ticketCount = await ticketsParser.getItemCount();
+		expect(dateCount).toBe(0);
+		expect(ticketCount).toBe(0);
 	});
 });

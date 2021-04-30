@@ -13,6 +13,7 @@ export class DateEditor extends EntityEditor {
 
 		this.dropdownMenuLabel = 'event date main menu';
 		this.editButtonLabel = 'edit datetime';
+		this.deleteButtonLabel = 'trash datetime';
 	}
 
 	/**

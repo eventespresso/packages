@@ -1,4 +1,4 @@
-import { clickButton } from '@e2eUtils/common';
+import { clickButton, respondToAlert } from '@e2eUtils/common';
 import { EntityListParser, Item, Field } from './EntityListParser';
 
 export interface CommonEntityFields {
@@ -14,14 +14,16 @@ export class EntityEditor extends EntityListParser {
 
 	dropdownMenuLabel = '';
 	editButtonLabel = '';
+	deleteButtonLabel = '';
 
 	/**
 	 * Given an entity item, it updates the name in the inline edit input
 	 */
 	updateNameInline = async (item: Item, name: string) => {
-		const inlineEditPreview = await item.$('.entity-card-details__name .ee-tabbable-text');
+		// .ee-entity-name for table view
+		const inlineEditPreview = await item.$('.entity-card-details__name, .ee-entity-name >> .ee-tabbable-text');
 		await inlineEditPreview.click();
-		const inlineEditInput = await item.$('.entity-card-details__name input');
+		const inlineEditInput = await item.$('.entity-card-details__name, .ee-entity-name >> input');
 		await inlineEditInput.type(name);
 
 		const waitForListUpdate = await this.createWaitForListUpdate();
@@ -56,6 +58,32 @@ export class EntityEditor extends EntityListParser {
 
 		const waitForListUpdate = await this.createWaitForListUpdate();
 		await page.click(this.getRootSelector()); // click outside of the inline input
+		await waitForListUpdate();
+	};
+
+	/**
+	 * Deletes an entity item.
+	 */
+	deleteItem = async (item: Item): Promise<void> => {
+		await this.openDropdownMenu(item);
+		await this.confirmAndDelete();
+	};
+
+	/**
+	 * Deletes an entity item identified by the field and its value.
+	 */
+	deleteItemBy = async (field: Field, value: string | number): Promise<void> => {
+		await this.openDropdownMenuBy(field, value);
+		await this.confirmAndDelete();
+	};
+
+	/**
+	 * Confirms an entity deletion and waits for the entity list to update.
+	 */
+	confirmAndDelete = async (): Promise<void> => {
+		await clickButton(this.deleteButtonLabel);
+		const waitForListUpdate = await this.createWaitForListUpdate();
+		await respondToAlert('Yes');
 		await waitForListUpdate();
 	};
 
