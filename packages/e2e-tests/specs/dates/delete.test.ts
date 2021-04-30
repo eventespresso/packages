@@ -10,12 +10,11 @@ const ticketsParser = new EntityListParser('ticket');
 beforeAll(async () => {
 	await saveVideo(page, `artifacts/${namespace}.mp4`);
 	await createNewEvent({ title: namespace });
+	await addNewDate({ name: namespace + '.date' });
 });
 
 describe(namespace, () => {
 	it('should delete dates by name:', async () => {
-		await addNewDate({ name: namespace + '.date' });
-
 		let dateCount = await dateEditor.getItemCount();
 
 		expect(dateCount).toBe(2);

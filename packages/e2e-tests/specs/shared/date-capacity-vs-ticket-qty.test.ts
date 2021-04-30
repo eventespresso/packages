@@ -1,4 +1,4 @@
-// import { saveVideo } from 'playwright-video';
+import { saveVideo } from 'playwright-video';
 
 import {
 	createNewEvent,
@@ -25,7 +25,7 @@ const tamrover = new TAMRover('datetime');
 const namespace = 'date-capacity-vs-ticket-qty';
 
 beforeAll(async () => {
-	// await saveVideo(page, `artifacts/${namespace}.mp4`);
+	await saveVideo(page, `artifacts/${namespace}.mp4`);
 
 	await createNewEvent({ title: namespace });
 

@@ -11,7 +11,6 @@ export * from './addNewTicket';
 export * from './answerRegFormTextInput';
 export * from './clickEventPostPermaLink';
 export * from './createNewEvent';
-export * from './deleteDateByName';
 export * from './editEntityCard';
 export * from './fillDateTicketForm';
 export * from './findEntityIdByName';

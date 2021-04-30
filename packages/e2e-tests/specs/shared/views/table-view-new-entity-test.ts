@@ -7,13 +7,14 @@ import { entities } from '../../../constants';
 const namespace = 'event.views.table.inline-edit';
 
 beforeAll(async () => {
+	await saveVideo(page, `artifacts/${namespace}.mp4`);
+
+	await createNewEvent({ title: namespace });
+
 	// In smaller screens, table view does not make the name editable
 	// We need to clear some real-state
 	await page.click('#collapse-button');
 	await screenOptions({ layout: '1' });
-
-	await saveVideo(page, `artifacts/${namespace}.mp4`);
-	await createNewEvent({ title: namespace });
 });
 
 const editor = new EntityEditor();
