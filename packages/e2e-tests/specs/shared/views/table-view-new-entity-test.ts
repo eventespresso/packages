@@ -1,11 +1,17 @@
 import { saveVideo } from 'playwright-video';
 
-import { addNewEntity, createNewEvent, EntityEditor } from '@e2eUtils/admin/event-editor';
+import { createNewEvent, EntityEditor } from '@e2eUtils/admin/event-editor';
+import { screenOptions } from '@e2eUtils/common';
 import { entities } from '../../../constants';
 
-const namespace = 'event.views.table.new-entities';
+const namespace = 'event.views.table.inline-edit';
 
 beforeAll(async () => {
+	// In smaller screens, table view does not make the name editable
+	// We need to clear some real-state
+	await page.click('#collapse-button');
+	await screenOptions({ layout: '1' });
+
 	await saveVideo(page, `artifacts/${namespace}.mp4`);
 	await createNewEvent({ title: namespace });
 });
@@ -16,8 +22,6 @@ describe(namespace, () => {
 	for (const entityType of entities) {
 		it('should switch the view and rename the inline entity name for ' + entityType, async () => {
 			const newName = `yet another name for ${entityType}`;
-
-			await addNewEntity({ entityType, name: `new ${entityType}` });
 
 			await editor.setEntityType(entityType).switchView('table');
 

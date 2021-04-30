@@ -1,3 +1,5 @@
+import { saveVideo } from 'playwright-video';
+
 import { addNewDate, createNewEvent, EntityListParser, DateEditor } from '@e2eUtils/admin/event-editor';
 
 const namespace = 'event.dates.delete';
@@ -5,10 +7,13 @@ const namespace = 'event.dates.delete';
 const dateEditor = new DateEditor();
 const ticketsParser = new EntityListParser('ticket');
 
+beforeAll(async () => {
+	await saveVideo(page, `artifacts/${namespace}.mp4`);
+	await createNewEvent({ title: namespace });
+});
+
 describe(namespace, () => {
 	it('should delete dates by name:', async () => {
-		await createNewEvent({ title: namespace });
-
 		await addNewDate({ name: namespace + '.date' });
 
 		let dateCount = await dateEditor.getItemCount();

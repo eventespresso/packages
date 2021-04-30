@@ -2,7 +2,6 @@ import { saveVideo } from 'playwright-video';
 
 import { addNewDate, createNewEvent, EntityListParser } from '@e2eUtils/admin/event-editor';
 import { clickButton } from '@e2eUtils/common';
-import { pressKeyWithModifier } from '@e2eUtils/misc';
 
 const namespace = 'eventDates.filters.search';
 
@@ -22,14 +21,15 @@ describe(namespace, () => {
 		expect(await datesParser.getItemCount()).toBe(3);
 
 		await clickButton('show filters');
-		await page.type('#ee-ee-search-input-dates-list', 'abc');
-		expect(await datesParser.getItemCount()).toBe(1);
-		expect(await page.$eval(datesParser.getRootSelector(), (elements) => elements.innerHTML)).toContain('abc');
 
-		await pressKeyWithModifier('primary', 'a');
-		await page.type('#ee-ee-search-input-dates-list', 'def');
-
+		await page.fill('#ee-ee-search-input-dates-list', 'abc');
 		expect(await datesParser.getItemCount()).toBe(1);
-		expect(await page.$eval(datesParser.getRootSelector(), (elements) => elements.innerHTML)).toContain('def');
+		let item = await datesParser.getItem();
+		expect(await item.innerText()).toContain('abc');
+
+		await page.fill('#ee-ee-search-input-dates-list', 'def');
+		expect(await datesParser.getItemCount()).toBe(1);
+		item = await datesParser.getItem();
+		expect(await item.innerText()).toContain('def');
 	});
 });
