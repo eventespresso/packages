@@ -14,6 +14,15 @@ export class DateEditor extends EntityEditor {
 		this.dropdownMenuLabel = 'event date main menu';
 		this.editButtonLabel = 'edit datetime';
 		this.deleteButtonLabel = 'trash datetime';
+		this.copyButtonLabel = 'copy datetime';
+	}
+
+	/**
+	 * Reset instance data.
+	 */
+	reset(): void {
+		super.reset();
+		this.setEntityType('datetime');
 	}
 
 	/**

@@ -14,6 +14,7 @@ export class TicketEditor extends EntityEditor {
 		this.dropdownMenuLabel = 'ticket main menu';
 		this.editButtonLabel = 'edit ticket';
 		this.deleteButtonLabel = 'trash ticket';
+		this.copyButtonLabel = 'copy ticket';
 	}
 
 	/**

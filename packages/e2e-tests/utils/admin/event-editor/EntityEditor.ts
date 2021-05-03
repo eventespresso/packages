@@ -15,6 +15,7 @@ export class EntityEditor extends EntityListParser {
 	dropdownMenuLabel = '';
 	editButtonLabel = '';
 	deleteButtonLabel = '';
+	copyButtonLabel = '';
 
 	/**
 	 * Given an entity item, it updates the name in the inline edit input
@@ -62,26 +63,52 @@ export class EntityEditor extends EntityListParser {
 	};
 
 	/**
+	 * Copies/clones an entity item.
+	 */
+	copyItem = async (item: Item): Promise<void> => {
+		await this.openDropdownMenu(item);
+		await this.copyAndWait(item);
+	};
+
+	/**
+	 * Copies an entity item identified by the field and its value.
+	 */
+	coopyItemBy = async (field: Field, value: string | number): Promise<void> => {
+		const item = await this.openDropdownMenuBy(field, value);
+		await this.copyAndWait(item);
+	};
+
+	/**
+	 * Selects copy option from the dropdown menu and waits for the entity list to update.
+	 */
+	copyAndWait = async (item: Item): Promise<void> => {
+		const waitForListUpdate = await this.createWaitForListUpdate();
+		await page.waitForTimeout(1000);
+		await clickButton(this.copyButtonLabel, item);
+		await waitForListUpdate();
+	};
+
+	/**
 	 * Deletes an entity item.
 	 */
 	deleteItem = async (item: Item): Promise<void> => {
 		await this.openDropdownMenu(item);
-		await this.confirmAndDelete();
+		await this.confirmAndDelete(item);
 	};
 
 	/**
 	 * Deletes an entity item identified by the field and its value.
 	 */
 	deleteItemBy = async (field: Field, value: string | number): Promise<void> => {
-		await this.openDropdownMenuBy(field, value);
-		await this.confirmAndDelete();
+		const item = await this.openDropdownMenuBy(field, value);
+		await this.confirmAndDelete(item);
 	};
 
 	/**
 	 * Confirms an entity deletion and waits for the entity list to update.
 	 */
-	confirmAndDelete = async (): Promise<void> => {
-		await clickButton(this.deleteButtonLabel);
+	confirmAndDelete = async (item: Item): Promise<void> => {
+		await clickButton(this.deleteButtonLabel, item);
 		const waitForListUpdate = await this.createWaitForListUpdate();
 		await respondToAlert('Yes');
 		await waitForListUpdate();
@@ -90,18 +117,19 @@ export class EntityEditor extends EntityListParser {
 	/**
 	 * Opens the dropdown menu for the entity item.
 	 */
-	openDropdownMenu = async (item: Item): Promise<void> => {
+	openDropdownMenu = async (item: Item): Promise<Item> => {
 		const mainMenuButton = await item.$(`[aria-label="${this.dropdownMenuLabel}"]`);
 		await mainMenuButton.click();
+		await item.waitForSelector('.ee-dropdown-menu__toggle--open');
+		return item;
 	};
 
 	/**
 	 * Opens the dropdown menu for the entity identified by the field and its value.
 	 */
-	openDropdownMenuBy = async (field: Field, value: string | number): Promise<void> => {
+	openDropdownMenuBy = async (field: Field, value: string | number): Promise<Item> => {
 		const entityItem = await this.getItemBy(field, value);
-		const mainMenuButton = await entityItem.$(`[aria-label="${this.dropdownMenuLabel}"]`);
-		await mainMenuButton.click();
+		return await this.openDropdownMenu(entityItem);
 	};
 
 	/**
@@ -109,7 +137,7 @@ export class EntityEditor extends EntityListParser {
 	 */
 	openEditForm = async (item: Item): Promise<void> => {
 		await this.openDropdownMenu(item);
-		await clickButton(this.editButtonLabel);
+		await clickButton(this.editButtonLabel, item);
 	};
 
 	/**
