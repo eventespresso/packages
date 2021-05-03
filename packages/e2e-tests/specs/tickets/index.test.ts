@@ -19,12 +19,7 @@ describe('availableTickets', () => {
 
 		expect(await parser.getItemName(item)).toContain(newTicketName);
 
-		const newTicketCurrencyNode = await item.evaluate(
-			(e) =>
-				e
-					.closest('.ee-entity-card-wrapper')
-					.querySelector('.ee-currency-input .ee-tabbable-text__inner_wrapper').innerHTML
-		);
+		const newTicketCurrencyNode = await item.innerText();
 
 		expect(newTicketCurrencyNode).toContain('1419.10');
 

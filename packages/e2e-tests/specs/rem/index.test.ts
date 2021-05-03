@@ -76,7 +76,7 @@ describe('REM', () => {
 			(elements) => elements.length
 		);
 
-		await expect(generatedDatesLength).toBe(40);
+		expect(generatedDatesLength).toBe(40);
 
 		await page.click('button[type=submit]');
 	});
