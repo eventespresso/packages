@@ -73,7 +73,7 @@ export class EntityEditor extends EntityListParser {
 	/**
 	 * Copies an entity item identified by the field and its value.
 	 */
-	coopyItemBy = async (field: Field, value: string | number): Promise<void> => {
+	copyItemBy = async (field: Field, value: string | number): Promise<void> => {
 		const item = await this.openDropdownMenuBy(field, value);
 		await this.copyAndWait(item);
 	};
