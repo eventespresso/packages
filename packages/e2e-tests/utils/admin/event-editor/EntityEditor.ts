@@ -83,7 +83,6 @@ export class EntityEditor extends EntityListParser {
 	 */
 	copyAndWait = async (item: Item): Promise<void> => {
 		const waitForListUpdate = await this.createWaitForListUpdate();
-		await page.waitForTimeout(1000);
 		await clickButton(this.copyButtonLabel, item);
 		await waitForListUpdate();
 	};
