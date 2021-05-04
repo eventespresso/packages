@@ -30,7 +30,7 @@ describe(namespace, () => {
 				expect(beforeCopyCount + 1).toBe(afterCopyCount);
 
 				// Lets delete the item by the same name
-				await editor.deleteItemBy('name', itemName);
+				await editor.trashItemBy('name', itemName);
 				// We should still have an item by the same name
 				item = await editor.getItemBy('name', itemName);
 				expect(item).toBeDefined();

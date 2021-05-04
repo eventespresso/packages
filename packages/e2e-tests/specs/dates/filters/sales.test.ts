@@ -1,7 +1,6 @@
 import { saveVideo } from 'playwright-video';
 
-import { addNewTicket, createNewEvent, EntityListParser, removeLastTicket } from '@e2eUtils/admin/event-editor';
-import { clickButton } from '@e2eUtils/common';
+import { addNewTicket, createNewEvent, removeLastTicket, DateEditor } from '@e2eUtils/admin/event-editor';
 
 const namespace = 'eventDates.filters.sales';
 
@@ -11,7 +10,7 @@ beforeAll(async () => {
 	await createNewEvent({ title: namespace });
 });
 
-const datesParser = new EntityListParser('datetime');
+const dateEditor = new DateEditor();
 
 describe(namespace, () => {
 	it('should filter dates corresponding to sales control', async () => {
@@ -21,30 +20,20 @@ describe(namespace, () => {
 
 		// await addNewRegistration();
 
-		await clickButton('show filters');
+		await dateEditor.filterListBy('sales', { value: 'above90Capacity' });
 
-		await page.selectOption('#ee-dates-list-sales-control', {
-			value: 'above90Capacity',
-		});
+		expect(await dateEditor.getItemCount()).toBe(0);
 
-		expect(await datesParser.getItemCount()).toBe(0);
+		await dateEditor.filterListBy('sales', { value: 'above75Capacity' });
 
-		await page.selectOption('#ee-dates-list-sales-control', {
-			value: 'above75Capacity',
-		});
+		expect(await dateEditor.getItemCount()).toBe(0);
 
-		expect(await datesParser.getItemCount()).toBe(0);
+		await dateEditor.filterListBy('sales', { value: 'above50Capacity' });
 
-		await page.selectOption('#ee-dates-list-sales-control', {
-			value: 'above50Capacity',
-		});
+		expect(await dateEditor.getItemCount()).toBe(0);
 
-		expect(await datesParser.getItemCount()).toBe(0);
+		await dateEditor.filterListBy('sales', { value: 'below50Capacity' });
 
-		await page.selectOption('#ee-dates-list-sales-control', {
-			value: 'below50Capacity',
-		});
-
-		expect(await datesParser.getItemCount()).toBe(1);
+		expect(await dateEditor.getItemCount()).toBe(1);
 	});
 });

@@ -1,7 +1,6 @@
 import { saveVideo } from 'playwright-video';
 
-import { addNewDate, createNewEvent, EntityListParser } from '@e2eUtils/admin/event-editor';
-import { clickButton } from '@e2eUtils/common';
+import { addNewDate, createNewEvent, DateEditor } from '@e2eUtils/admin/event-editor';
 
 const namespace = 'eventDates.filters.status';
 
@@ -11,7 +10,7 @@ beforeAll(async () => {
 	await createNewEvent({ title: namespace });
 });
 
-const datesParser = new EntityListParser('datetime');
+const dateEditor = new DateEditor();
 
 describe(namespace, () => {
 	it('should show trashed date when status filter is set to "all"', async () => {
@@ -19,17 +18,13 @@ describe(namespace, () => {
 
 		await addNewDate({ name: newDateName, isTrashed: true });
 
-		expect(await datesParser.getItemCount()).toBe(1);
+		expect(await dateEditor.getItemCount()).toBe(1);
 
-		await clickButton('show filters');
+		await dateEditor.filterListBy('status', { value: 'all' });
 
-		await page.selectOption('#ee-dates-list-status-control', {
-			value: 'all',
-		});
+		expect(await dateEditor.getItemCount()).toBe(2);
 
-		expect(await datesParser.getItemCount()).toBe(2);
-
-		const datetimesList = await page.$eval(datesParser.getRootSelector(), (elements) => elements.innerHTML);
+		const datetimesList = await page.$eval(dateEditor.getRootSelector(), (elements) => elements.innerHTML);
 
 		expect(datetimesList).toContain('trash');
 	});
