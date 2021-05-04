@@ -1,9 +1,10 @@
+import { clickButton } from '@e2eUtils/common';
 import type { Page, ElementHandle, JSHandle } from 'playwright';
 
 import { EntityType } from '../../../types';
 
 export type ListView = 'card' | 'table';
-export type Field = 'name' | 'dbId';
+export type Field = 'name' | 'dbId' | 'status';
 export type Item = ElementHandle<SVGElement | HTMLElement>;
 
 export class EntityListParser {
@@ -216,6 +217,9 @@ export class EntityListParser {
 
 			case 'name':
 				return this.getItemName(item);
+
+			case 'status':
+				return this.getItemStatus(item);
 		}
 
 		return null;
@@ -257,6 +261,17 @@ export class EntityListParser {
 			return await targetItem?.$eval('.entity-card-details__text', (e) => e.textContent);
 		}
 		// there is no description in table view.
+		return '';
+	};
+
+	/**
+	 * Retrieve the status of an entity. Default to first item. Only works in card view.
+	 */
+	getItemStatus = async (item?: Item): Promise<string> => {
+		const targetItem = item || (await this.getItem());
+		if (this.view === 'card') {
+			return await targetItem?.$eval('.entity-card__sidebar .ee-entity-status-label', (e) => e.textContent);
+		}
 		return '';
 	};
 
@@ -385,6 +400,47 @@ export class EntityListParser {
 
 		for (const button of filterButtons) {
 			await button.click();
+		}
+	};
+
+	/**
+	 * Whether the filter bar is open.
+	 */
+	isFilterBarOpen = async (): Promise<boolean> => {
+		const filterBar = await this.getFilterBar();
+		const hideFiltersButton = await filterBar.$('[type=button] >> text=hide filters');
+		// If hide filters button is visible, the filter bar is open
+		return Boolean(hideFiltersButton);
+	};
+
+	/**
+	 * Sets the value for the entity list filter
+	 */
+	setFilter = async (selector: string, values: Parameters<Item['selectOption']>[0]): Promise<void> => {
+		const filterBar = await this.getFilterBar();
+
+		if (!(await this.isFilterBarOpen())) {
+			await clickButton('show filters', filterBar);
+		}
+
+		const filter = await filterBar.$(selector);
+
+		if (!filter) {
+			throw new Error('Could not find a filter by selector: ' + selector);
+		}
+
+		const nodeName = await filter.evaluate((el) => el.nodeName);
+
+		switch (nodeName) {
+			case 'SELECT':
+				await filter.selectOption(values);
+				break;
+			case 'INPUT':
+				await filter.fill(String(values));
+				break;
+			case 'BUTTON':
+				await filter.click();
+				break;
 		}
 	};
 }

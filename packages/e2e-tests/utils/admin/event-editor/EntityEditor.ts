@@ -9,13 +9,16 @@ export interface CommonEntityFields {
 	startDate?: Date;
 }
 
+export type CommonFilters = 'status' | 'sales' | 'search';
+
 export class EntityEditor extends EntityListParser {
 	static RTEContentSelector = '.chakra-modal__content-container .public-DraftStyleDefault-block';
 
 	dropdownMenuLabel = '';
 	editButtonLabel = '';
-	deleteButtonLabel = '';
+	trashButtonLabel = '';
 	copyButtonLabel = '';
+	deleteButtonLabel = 'delete permanently';
 
 	/**
 	 * Given an entity item, it updates the name in the inline edit input
@@ -65,9 +68,9 @@ export class EntityEditor extends EntityListParser {
 	/**
 	 * Copies/clones an entity item.
 	 */
-	copyItem = async (item: Item): Promise<void> => {
-		await this.openDropdownMenu(item);
-		await this.copyAndWait(item);
+	copyItem = async (item?: Item): Promise<void> => {
+		const targetItem = await this.openDropdownMenu(item);
+		await this.copyAndWait(targetItem);
 	};
 
 	/**
@@ -88,39 +91,57 @@ export class EntityEditor extends EntityListParser {
 	};
 
 	/**
-	 * Deletes an entity item.
+	 * Trashs an entity item.
 	 */
-	deleteItem = async (item: Item): Promise<void> => {
-		await this.openDropdownMenu(item);
-		await this.confirmAndDelete(item);
+	trashItem = async (item?: Item): Promise<void> => {
+		const targetItem = await this.openDropdownMenu(item);
+		await this.confirmAndDelete(targetItem, this.trashButtonLabel);
 	};
 
 	/**
-	 * Deletes an entity item identified by the field and its value.
+	 * Trashs an entity item identified by the field and its value.
 	 */
-	deleteItemBy = async (field: Field, value: string | number): Promise<void> => {
+	trashItemBy = async (field: Field, value: string | number): Promise<void> => {
 		const item = await this.openDropdownMenuBy(field, value);
-		await this.confirmAndDelete(item);
+		await this.confirmAndDelete(item, this.trashButtonLabel);
+	};
+
+	/**
+	 * Deletes an entity item permanently
+	 */
+	permanentlyDeleteItem = async (item?: Item): Promise<void> => {
+		const targetItem = await this.openDropdownMenu(item);
+		await this.confirmAndDelete(targetItem, this.deleteButtonLabel);
+	};
+
+	/**
+	 * Permanently deletes an entity item identified by the field and its value.
+	 */
+	permanentlyDeleteItemBy = async (field: Field, value: string | number): Promise<void> => {
+		const item = await this.openDropdownMenuBy(field, value);
+		await this.confirmAndDelete(item, this.deleteButtonLabel);
 	};
 
 	/**
 	 * Confirms an entity deletion and waits for the entity list to update.
 	 */
-	confirmAndDelete = async (item: Item): Promise<void> => {
-		await clickButton(this.deleteButtonLabel, item);
+	confirmAndDelete = async (item: Item, label: string): Promise<void> => {
+		console.log({ label, entity: this.entityType, item: await item.innerText() });
+		await clickButton(label, item);
 		const waitForListUpdate = await this.createWaitForListUpdate();
 		await respondToAlert('Yes');
 		await waitForListUpdate();
 	};
 
 	/**
-	 * Opens the dropdown menu for the entity item.
+	 * Opens the dropdown menu for the entity item. Default to first item.
 	 */
-	openDropdownMenu = async (item: Item): Promise<Item> => {
-		const mainMenuButton = await item.$(`[aria-label="${this.dropdownMenuLabel}"]`);
+	openDropdownMenu = async (item?: Item): Promise<Item> => {
+		const targetItem = item || (await this.getItem());
+		const mainMenuButton = await targetItem.$(`[aria-label="${this.dropdownMenuLabel}"]`);
 		await mainMenuButton.click();
-		await item.waitForSelector('.ee-dropdown-menu__toggle--open');
-		return item;
+		await targetItem.waitForSelector('.ee-dropdown-menu__toggle--open');
+		return targetItem;
 	};
 
 	/**
@@ -134,17 +155,17 @@ export class EntityEditor extends EntityListParser {
 	/**
 	 * Opens the edit form for the entity item.
 	 */
-	openEditForm = async (item: Item): Promise<void> => {
-		await this.openDropdownMenu(item);
-		await clickButton(this.editButtonLabel, item);
+	openEditForm = async (item?: Item): Promise<void> => {
+		const targetItem = await this.openDropdownMenu(item);
+		await clickButton(this.editButtonLabel, targetItem);
 	};
 
 	/**
 	 * Opens the edit form for the entity identified by the field and its value.
 	 */
 	openEditFormBy = async (field: Field, value: string | number): Promise<void> => {
-		await this.openDropdownMenuBy(field, value);
-		await clickButton(this.editButtonLabel);
+		const targetItem = await this.openDropdownMenuBy(field, value);
+		await clickButton(this.editButtonLabel, targetItem);
 	};
 
 	/**

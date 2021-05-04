@@ -1,5 +1,5 @@
 import { clickButton } from '@e2eUtils/common';
-import { EntityEditor, CommonEntityFields } from './EntityEditor';
+import { EntityEditor, CommonEntityFields, CommonFilters } from './EntityEditor';
 import { ListView, Item, Field } from './EntityListParser';
 import { fillDateTicketForm } from './fillDateTicketForm';
 
@@ -13,7 +13,7 @@ export class TicketEditor extends EntityEditor {
 
 		this.dropdownMenuLabel = 'ticket main menu';
 		this.editButtonLabel = 'edit ticket';
-		this.deleteButtonLabel = 'trash ticket';
+		this.trashButtonLabel = 'trash ticket';
 		this.copyButtonLabel = 'copy ticket';
 	}
 
@@ -23,6 +23,26 @@ export class TicketEditor extends EntityEditor {
 	reset(): void {
 		super.reset();
 		this.setEntityType('ticket');
+	}
+
+	/**
+	 * Filters the list by the given field and value.
+	 */
+	async filterListBy(filter: CommonFilters, values: Parameters<Item['selectOption']>[0]): Promise<void> {
+		const selector =
+			filter === 'status'
+				? '#ee-tickets-list-status-control'
+				: filter === 'sales'
+				? '#ee-tickets-list-sales-control'
+				: filter === 'search'
+				? '#ee-ee-search-input-tickets-list-label'
+				: '';
+
+		if (!selector) {
+			console.log('Unknown filter supplied: ' + filter);
+			return;
+		}
+		await this.setFilter(selector, values);
 	}
 
 	/**
@@ -71,7 +91,7 @@ export class TicketEditor extends EntityEditor {
 	/**
 	 * Opens the edit form for the ticket identified by the field and its value.
 	 */
-	editTicket = async (item: Item, formData: TicketFields): Promise<void> => {
+	editTicket = async (item?: Item, formData?: TicketFields): Promise<void> => {
 		// Open the edit form modal
 		await this.openEditForm(item);
 		// Fill and submit the edit form

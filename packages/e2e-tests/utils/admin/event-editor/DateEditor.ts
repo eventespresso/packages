@@ -1,5 +1,5 @@
 import { clickButton } from '@e2eUtils/common';
-import { EntityEditor, CommonEntityFields } from './EntityEditor';
+import { EntityEditor, CommonEntityFields, CommonFilters } from './EntityEditor';
 import { ListView, Item, Field } from './EntityListParser';
 import { fillDateTicketForm } from './fillDateTicketForm';
 
@@ -13,7 +13,7 @@ export class DateEditor extends EntityEditor {
 
 		this.dropdownMenuLabel = 'event date main menu';
 		this.editButtonLabel = 'edit datetime';
-		this.deleteButtonLabel = 'trash datetime';
+		this.trashButtonLabel = 'trash datetime';
 		this.copyButtonLabel = 'copy datetime';
 	}
 
@@ -23,6 +23,26 @@ export class DateEditor extends EntityEditor {
 	reset(): void {
 		super.reset();
 		this.setEntityType('datetime');
+	}
+
+	/**
+	 * Filters the list by the given field and value.
+	 */
+	async filterListBy(filter: CommonFilters, values: Parameters<Item['selectOption']>[0]): Promise<void> {
+		const selector =
+			filter === 'status'
+				? '#ee-dates-list-status-control'
+				: filter === 'sales'
+				? '#ee-dates-list-sales-control'
+				: filter === 'search'
+				? '#ee-ee-search-input-dates-list'
+				: '';
+
+		if (!selector) {
+			console.log('Unknown filter supplied: ' + filter);
+			return;
+		}
+		await this.setFilter(selector, values);
 	}
 
 	/**
@@ -57,7 +77,7 @@ export class DateEditor extends EntityEditor {
 	/**
 	 * Opens the edit form for the date identified by the field and its value.
 	 */
-	editDate = async (item: Item, formData: DateFields): Promise<void> => {
+	editDate = async (item?: Item, formData?: DateFields): Promise<void> => {
 		// Open the edit form modal
 		await this.openEditForm(item);
 		// Fill and submit the edit form
