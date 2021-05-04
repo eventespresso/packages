@@ -126,7 +126,7 @@ export class EntityEditor extends EntityListParser {
 	 * Confirms an entity deletion and waits for the entity list to update.
 	 */
 	confirmAndDelete = async (item: Item, label: string): Promise<void> => {
-		console.log({ label, entity: this.entityType, item: await item.innerText() });
+		await page.waitForTimeout(500);
 		await clickButton(label, item);
 		const waitForListUpdate = await this.createWaitForListUpdate();
 		await respondToAlert('Yes');
