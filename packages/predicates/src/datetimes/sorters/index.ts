@@ -1,4 +1,4 @@
-import { prop, sort, sortBy as sortByFn } from 'ramda';
+import { prop, sort, sortBy as sortByFn, compose, toLower } from 'ramda';
 import { compareAsc, parseISO } from 'date-fns';
 
 import type { Datetime, SortBy } from '@eventespresso/edtr-services';
@@ -21,11 +21,11 @@ const sorters = ({ dates, sortBy = 'date' }: SortDates): Datetime[] => {
 				return compareAsc(parseISO(dateLeft), parseISO(dateRight));
 			}, dates);
 		case 'id':
-			return sortByFn(prop('dbId'))(dates);
+			return sortByFn(prop('dbId'), dates);
 		case 'name':
-			return sortByFn(prop('name'))(dates);
+			return sortByFn(compose(toLower, prop('name')), dates);
 		case 'order':
-			return sortByFn(prop('order'))(dates);
+			return sortByFn(prop('order'), dates);
 		default:
 			return dates;
 	}
