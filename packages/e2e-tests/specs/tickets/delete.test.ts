@@ -75,7 +75,7 @@ describe(namespace, () => {
 		expect(itemCount).toBe(2);
 
 		item = await ticketEditor.getItemBy('status', 'trashed');
-		// we should now be able to delete the item pemanently
+		// we should now be able to delete the item permanently
 		await ticketEditor.permanentlyDeleteItem(item);
 
 		itemCount = await ticketEditor.getItemCount();
