@@ -5,7 +5,9 @@ import {
 	useTicketQuantityForCapacity,
 	useUpdateRelatedTickets,
 	useDatetimeItem,
+	useDatetimes,
 } from '@eventespresso/edtr-services';
+import { getHighestOrder } from '@eventespresso/predicates';
 import type { EntityId } from '@eventespresso/data';
 import { isInfinite, wait } from '@eventespresso/utils';
 
@@ -17,6 +19,7 @@ const useOnSubmit = (entityId: EntityId, onClose: VoidFunction): OnSubmit => {
 
 	const updateRelatedTickets = useUpdateRelatedTickets();
 	const ticketQuantityForCapacity = useTicketQuantityForCapacity();
+	const dates = useDatetimes();
 
 	const onSubmit = useCallback(
 		async (fields) => {
@@ -35,8 +38,10 @@ const useOnSubmit = (entityId: EntityId, onClose: VoidFunction): OnSubmit => {
 
 				capacityChanged = fields?.capacity !== datetime?.capacity;
 			} else {
+				// we need to set the order to be higher than those of all the existing ones
+				const order = fields.order || getHighestOrder(dates) + 1;
 				// otherwise create it
-				const result = await createEntity(fields);
+				const result = await createEntity({ ...fields, order });
 
 				// Get the ID.
 				id = result?.data?.createEspressoDatetime?.espressoDatetime?.id;
@@ -52,6 +57,7 @@ const useOnSubmit = (entityId: EntityId, onClose: VoidFunction): OnSubmit => {
 		},
 		[
 			createEntity,
+			dates,
 			datetime?.capacity,
 			entityId,
 			onClose,

@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo } from 'react';
-import { last } from 'ramda';
 
-import { copyDatetimeFields, isDatetimeInputField, sortDates } from '@eventespresso/predicates';
+import { copyDatetimeFields, isDatetimeInputField, getHighestOrder } from '@eventespresso/predicates';
 import { useDatetimeMutator, useDatetimes } from '@eventespresso/edtr-services';
 import { useSiteDateToUtcISO } from '@eventespresso/services';
 import { setTimeFromDate } from '@eventespresso/dates';
@@ -55,7 +54,7 @@ const useSubmitForm = (formState: FormState, generatedDates: Array<GeneratedDate
 
 		const { duration, unit, startTime } = dateDetails;
 
-		const highestDateOrder = last(sortDates({ dates, sortBy: 'order' }))?.order || 0;
+		const highestDateOrder = getHighestOrder(dates);
 
 		const setStartTime = setTimeFromDate(startTime);
 

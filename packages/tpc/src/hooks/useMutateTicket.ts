@@ -1,8 +1,14 @@
 import { useCallback } from 'react';
 
-import { copyTicketFields, isTicketInputField } from '@eventespresso/predicates';
+import { copyTicketFields, isTicketInputField, getHighestOrder } from '@eventespresso/predicates';
 import type { Entity, EntityId } from '@eventespresso/data';
-import { UpdateTicketInput, useTicketMutator, TicketMutationResult, hooks } from '@eventespresso/edtr-services';
+import {
+	TicketMutationResult,
+	UpdateTicketInput,
+	hooks,
+	useTicketMutator,
+	useTickets,
+} from '@eventespresso/edtr-services';
 
 import useMutatePrices from './useMutatePrices';
 import { TpcPriceModifier } from '../types';
@@ -19,6 +25,7 @@ type Callback = (ticket: TicketData) => Promise<EntityId>;
 const useMutateTicket = (): Callback => {
 	const { createEntity: createTicket, updateEntity: updateTicket } = useTicketMutator();
 	const mutatePrices = useMutatePrices();
+	const tickets = useTickets();
 
 	// Async to make sure that prices are handled before updating the ticket.
 	return useCallback(
@@ -41,7 +48,10 @@ const useMutateTicket = (): Callback => {
 			let mutationResult: TicketMutationResult;
 
 			if (isNew) {
-				const result = await createTicket(mutationInput);
+				// we need to set the order to be higher than those of all the existing ones
+				const order = mutationInput.order || getHighestOrder(tickets) + 1;
+
+				const result = await createTicket({ ...mutationInput, order });
 				mutationResult = result?.data?.createEspressoTicket;
 			} else if (isModified) {
 				// update only if modified
@@ -51,7 +61,7 @@ const useMutateTicket = (): Callback => {
 
 			return mutationResult?.espressoTicket?.id;
 		},
-		[createTicket, mutatePrices, updateTicket]
+		[createTicket, mutatePrices, tickets, updateTicket]
 	);
 };
 
