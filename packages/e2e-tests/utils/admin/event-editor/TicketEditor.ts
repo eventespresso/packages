@@ -62,7 +62,7 @@ export class TicketEditor extends EntityEditor {
 		await inlineEditInput.type(String(price));
 
 		const waitForListUpdate = await this.createWaitForListUpdate();
-		await page.click(this.getRootSelector()); // click outside of the inline input
+		await item.press('Enter');
 		await waitForListUpdate();
 	};
 

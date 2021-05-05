@@ -14,7 +14,9 @@ describe('eventDates', () => {
 
 		await addNewDate({ name: newDateName });
 
-		expect(await parser.getItemName()).toContain(newDateName);
+		const newDate = await parser.getItemBy('name', newDateName);
+
+		expect(await newDate.innerText()).toContain(newDateName);
 
 		await capture.stop();
 		await browser.close();

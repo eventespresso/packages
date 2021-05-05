@@ -31,7 +31,7 @@ export class EntityEditor extends EntityListParser {
 		await inlineEditInput.type(name);
 
 		const waitForListUpdate = await this.createWaitForListUpdate();
-		await page.click(this.getRootSelector()); // click outside of the inline input
+		await item.press('Enter');
 		await waitForListUpdate();
 	};
 
@@ -61,7 +61,7 @@ export class EntityEditor extends EntityListParser {
 		await inlineEditInput.type(String(value));
 
 		const waitForListUpdate = await this.createWaitForListUpdate();
-		await page.click(this.getRootSelector()); // click outside of the inline input
+		await item.press('Enter');
 		await waitForListUpdate();
 	};
 

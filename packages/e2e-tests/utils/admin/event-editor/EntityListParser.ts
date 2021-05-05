@@ -296,9 +296,9 @@ export class EntityListParser {
 	};
 
 	/**
-	 * Retrieve the GUID of all the entities in the list, regardless of the filters.
+	 * Retrieve the cache ids of all the entities in the list, regardless of the filters.
 	 */
-	getAllEntityds = async <T extends boolean>(asArray?: T): Promise<T extends true ? Array<string> : string> => {
+	getAllCacheds = async <T extends boolean>(asArray?: T): Promise<T extends true ? Array<string> : string> => {
 		const idsStr = await page.$eval(this.getCacheIdsSelector(), (selector) =>
 			selector?.getAttribute('data-cache-ids')
 		);
@@ -369,7 +369,7 @@ export class EntityListParser {
 	 */
 	createWaitForListUpdate = async (): Promise<() => Promise<JSHandle<boolean>>> => {
 		// Lets save the cache IDs before update
-		const cacheIdsBeforeUpdate = await this.getAllEntityds(false);
+		const cacheIdsBeforeUpdate = await this.getAllCacheds(false);
 
 		return async () => {
 			return await page.waitForFunction(
