@@ -1,6 +1,6 @@
 import { saveVideo } from 'playwright-video';
 
-import { addNewTicket, createNewEvent, TicketEditor, getEventPermalink } from '@e2eUtils/admin/event-editor';
+import { addNewTicket, createNewEvent, EDTRGlider, TicketEditor } from '@e2eUtils/admin/event-editor';
 import { EventRegistrar } from '@e2eUtils/public/reg-checkout';
 
 const namespace = 'event.free-event.registration';
@@ -11,6 +11,7 @@ beforeAll(async () => {
 
 const ticketEditor = new TicketEditor();
 const registrar = new EventRegistrar();
+const edtrGlider = new EDTRGlider();
 
 describe(namespace, () => {
 	it('should show thank you message if everything went well', async () => {
@@ -20,7 +21,7 @@ describe(namespace, () => {
 
 		await addNewTicket({ amount: 100, name: 'Paid Ticket' });
 
-		registrar.setPermalink(await getEventPermalink()).registerForEvent({
+		await registrar.setPermalink(await edtrGlider.getEventPermalink()).registerForEvent({
 			ticketName: 'Free Ticket',
 			quantity: 1,
 			attendeeInfo: {

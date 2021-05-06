@@ -1,11 +1,12 @@
 import { saveVideo } from 'playwright-video';
 
-import { createNewEvent, getEventEditUrl, DateEditor, getEventPermalink } from '@e2eUtils/admin/event-editor';
+import { createNewEvent, DateEditor, EDTRGlider } from '@e2eUtils/admin/event-editor';
 import { EventRegistrar, RegisterOptions } from '@e2eUtils/public/reg-checkout';
 
 const namespace = 'event.free.event.registration.sold.out';
 
 const registrar = new EventRegistrar();
+const edtrGlider = new EDTRGlider();
 
 beforeAll(async () => {
 	await saveVideo(page, `artifacts/${namespace}.mp4`);
@@ -21,7 +22,7 @@ describe(namespace, () => {
 		await dateEditor.updateNameInline(null, dateName);
 		await dateEditor.updateCapacityInline(null, 2);
 
-		registrar.setPermalink(await getEventPermalink());
+		registrar.setPermalink(await edtrGlider.getEventPermalink());
 
 		const registrationOptions: RegisterOptions = {
 			ticketName: 'Free Ticket',
@@ -31,14 +32,14 @@ describe(namespace, () => {
 				lname: 'Doe',
 				email: 'test@example.com',
 			},
-			redirectURL: await getEventEditUrl(),
+			redirectURL: await edtrGlider.getEventEditUrl(),
 		};
 
-		registrar.registerForEvent(registrationOptions);
+		await registrar.registerForEvent(registrationOptions);
 
 		expect(await dateEditor.getItemCount()).toBe(1);
 
-		registrar.registerForEvent(registrationOptions);
+		await registrar.registerForEvent(registrationOptions);
 
 		expect(await dateEditor.getStatusByName(dateName)).toBe('sold out');
 	});

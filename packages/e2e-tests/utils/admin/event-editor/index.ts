@@ -16,8 +16,6 @@ export * from './editEntityCard';
 export * from './fillDateTicketForm';
 export * from './findEntityIdByName';
 export * from './getDateCapacityByName';
-export * from './getEventPermalink';
-export * from './getEventEditUrl';
 export * from './getTicketPrice';
 export * from './getTicketQuantityByName';
 export * from './questionsForPrimaryRegistrant';

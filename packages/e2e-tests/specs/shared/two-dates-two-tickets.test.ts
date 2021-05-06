@@ -1,12 +1,4 @@
-import {
-	addNewDate,
-	addNewTicket,
-	createNewEvent,
-	editEntityCard,
-	EDTRGlider,
-	getEventPermalink,
-	getEventEditUrl,
-} from '@e2eUtils/admin/event-editor';
+import { addNewDate, addNewTicket, createNewEvent, editEntityCard, EDTRGlider } from '@e2eUtils/admin/event-editor';
 import { EventRegistrar } from '@e2eUtils/public/reg-checkout';
 
 const namespace = 'event.entities.reigstration-2';
@@ -36,9 +28,9 @@ describe(namespace, () => {
 
 			await edtrGlider.questionsForRegistrant('Primary', { address: true });
 
-			registrar.setPermalink(await getEventPermalink());
+			registrar.setPermalink(await edtrGlider.getEventPermalink());
 
-			registrar.registerForEvent({
+			await registrar.registerForEvent({
 				ticketName: 'Ticket 1',
 				quantity: 1,
 				attendeeInfo: {
@@ -47,7 +39,7 @@ describe(namespace, () => {
 					email: 'test@example.com',
 					address: '3868  Burton Avenue',
 				},
-				redirectURL: await getEventEditUrl(),
+				redirectURL: await edtrGlider.getEventEditUrl(),
 			});
 		} catch (e) {
 			console.log(e);
