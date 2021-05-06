@@ -1,13 +1,12 @@
 import { saveVideo } from 'playwright-video';
 
+import { clickEventPostPermaLink, createNewEvent, getEventUrl, DateEditor } from '@e2eUtils/admin/event-editor';
 import {
-	answerRegFormTextInput,
-	clickEventPostPermaLink,
-	createNewEvent,
-	getEventUrl,
-	EntityListParser,
-} from '@e2eUtils/admin/event-editor';
-import { chooseFromTicketSelector, submitRegistration, submitTicketSelector } from '@e2eUtils/public/reg-checkout';
+	chooseFromTicketSelector,
+	submitRegistration,
+	submitTicketSelector,
+	fillAttendeeInformation,
+} from '@e2eUtils/public/reg-checkout';
 
 const namespace = 'event.free.event.registration.sold.out';
 
@@ -15,15 +14,17 @@ beforeAll(async () => {
 	await saveVideo(page, `artifacts/${namespace}.mp4`);
 });
 
-const dateParser = new EntityListParser('datetime');
-const ticketParser = new EntityListParser('ticket');
+const dateEditor = new DateEditor();
 
 const registerForEvent = async () => {
 	await chooseFromTicketSelector('Free Ticket', 1);
 	await submitTicketSelector();
-	await answerRegFormTextInput('fname', 'Joe');
-	await answerRegFormTextInput('lname', 'Doe');
-	await answerRegFormTextInput('email', 'test@example.com');
+
+	await fillAttendeeInformation({
+		fname: 'Joe',
+		lname: 'Doe',
+		email: 'test@example.com',
+	});
 };
 
 const goBackToEvent = async (eventUrl) => {
@@ -31,21 +32,14 @@ const goBackToEvent = async (eventUrl) => {
 	await page.waitForLoadState('domcontentloaded');
 };
 
-describe('Create free event and register to it until it is sold', () => {
+describe(namespace, () => {
 	it('should show show sold out label on date when the number of registration is the same as capacity', async () => {
-		const dateRootSelector = dateParser.getRootSelector();
-		const ticketRootSelector = ticketParser.getRootSelector();
 		const dateName = 'upcoming datetime';
 
 		await createNewEvent({ title: 'Free event' });
 
-		await page.click(`${dateRootSelector} .entity-card-details__name`);
-		await page.type(`${dateRootSelector} .entity-card-details__name`, dateName);
-		await page.click(`${dateRootSelector} [data-testid="ee-datetime-inline-cap-preview"]`);
-		await page.type(`${dateRootSelector} [data-testid="ee-datetime-inline-cap"]`, '2');
-
-		await page.click(`${ticketRootSelector} [data-testid="ee-ticket-inline-qty-preview"]`);
-		await page.type(`${ticketRootSelector} [data-testid="ee-ticket-inline-qty"]`, '2');
+		await dateEditor.updateNameInline(null, dateName);
+		await dateEditor.updateCapacityInline(null, 2);
 
 		const eventUrl = await getEventUrl();
 
@@ -55,7 +49,7 @@ describe('Create free event and register to it until it is sold', () => {
 
 		await goBackToEvent(eventUrl);
 
-		expect(await dateParser.getItemCount()).toBe(1);
+		expect(await dateEditor.getItemCount()).toBe(1);
 
 		await clickEventPostPermaLink();
 		await registerForEvent();
@@ -63,6 +57,6 @@ describe('Create free event and register to it until it is sold', () => {
 
 		await goBackToEvent(eventUrl);
 
-		expect(await dateParser.getStatusByName(dateName)).toBe('sold out');
+		expect(await dateEditor.getStatusByName(dateName)).toBe('sold out');
 	});
 });
