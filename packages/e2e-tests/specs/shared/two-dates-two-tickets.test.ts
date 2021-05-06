@@ -53,10 +53,11 @@ describe(namespace, () => {
 			console.log(e);
 		}
 
-		const title = await page.$eval('h1.entry-title', (el) => el.textContent);
+		const title = await page.$eval('.entry-title', (el) => el.textContent);
 		expect(title).toContain('Thank You');
 
 		const content = await page.$eval('.entry-content', (el) => el.textContent);
 		expect(content).toContain('Congratulations');
+		expect(content).toContain('Approved');
 	});
 });
