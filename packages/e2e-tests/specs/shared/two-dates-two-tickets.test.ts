@@ -1,13 +1,17 @@
 import {
 	addNewDate,
 	addNewTicket,
-	answerRegFormTextInput,
 	clickEventPostPermaLink,
 	createNewEvent,
 	editEntityCard,
 	questionsForPrimaryRegistrant,
 } from '@e2eUtils/admin/event-editor';
-import { submitRegistration, submitTicketSelector, chooseFromTicketSelector } from '@e2eUtils/public/reg-checkout';
+import {
+	submitRegistration,
+	submitTicketSelector,
+	chooseFromTicketSelector,
+	fillAttendeeInformation,
+} from '@e2eUtils/public/reg-checkout';
 
 const namespace = 'event.entities.reigstration-2';
 
@@ -38,12 +42,12 @@ describe(namespace, () => {
 			await chooseFromTicketSelector('Ticket 1', 1);
 			await submitTicketSelector();
 
-			await answerRegFormTextInput('address', '3868  Burton Avenue');
-			await page.click(`.spco-step-dv .ee-reg-qstn-state`);
-			await page.press(`.spco-step-dv .ee-reg-qstn-state`, 'ArrowDown');
-			await answerRegFormTextInput('fname', 'Joe');
-			await answerRegFormTextInput('lname', 'Doe');
-			await answerRegFormTextInput('email', 'test@example.com');
+			await fillAttendeeInformation({
+				fname: 'Joe',
+				lname: 'Doe',
+				email: 'test@example.com',
+				address: '3868  Burton Avenue',
+			});
 			await submitRegistration();
 		} catch (e) {
 			console.log(e);

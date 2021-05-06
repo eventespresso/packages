@@ -2,6 +2,7 @@ export type AttendeeInformation = {
 	fname: string;
 	lname: string;
 	email: string;
+	address?: string;
 };
 
 const FORM_SELECTOR = '#ee-spco-attendee_information-reg-step-form';
