@@ -1,9 +1,9 @@
 export const addNewPriceModifier = async ({ amount, priceTypeLabel }) => {
 	const lastTPCRow = '.ee-ticket-price-calculator tbody tr:last-child';
 
-	await page.waitForTimeout(1000);
-
-	await page.click(`${lastTPCRow} [aria-label="add new price modifier after this row"]`);
+	const selector = `${lastTPCRow} [aria-label="add new price modifier after this row"]`;
+	await page.waitForSelector(selector);
+	await page.click(selector);
 
 	await page.selectOption(`${lastTPCRow} [aria-label="price type"]`, {
 		label: priceTypeLabel,

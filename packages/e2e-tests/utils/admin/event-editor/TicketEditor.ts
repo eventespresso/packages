@@ -48,7 +48,7 @@ export class TicketEditor extends EntityEditor {
 	/**
 	 * Given an entity item, it updates the quantity in the inline edit input
 	 */
-	updateQuantityInline = async (item: Item, quantity: string | number) => {
+	updateQuantityInline = async (item?: Item, quantity?: string | number) => {
 		await this.updateDetailsInputInline(item, String(quantity));
 	};
 

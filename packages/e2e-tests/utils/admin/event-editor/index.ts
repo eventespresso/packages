@@ -8,7 +8,6 @@ export * from './addNewEntity';
 export * from './addNewPriceModifier';
 export * from './addNewRegistration';
 export * from './addNewTicket';
-export * from './answerRegFormTextInput';
 export * from './clickEventPostPermaLink';
 export * from './createNewEvent';
 export * from './editEntityCard';

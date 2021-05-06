@@ -1,4 +1,5 @@
 export const submitRegistration = async () => {
-	await page.click('.spco-next-step-btn');
-	await page.waitForTimeout(3000);
+	await Promise.all([page.waitForNavigation(), page.click('input[value="Proceed to Finalize Registration"]')]);
+	
+	await page.waitForSelector('#espresso-thank-you-page-overview-dv');
 };

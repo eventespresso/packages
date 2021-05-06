@@ -21,25 +21,29 @@ export class EntityEditor extends EntityListParser {
 	deleteButtonLabel = 'delete permanently';
 
 	/**
-	 * Given an entity item, it updates the name in the inline edit input
+	 * Given an entity item, it updates the name in the inline edit input. Default to first item.
 	 */
-	updateNameInline = async (item: Item, name: string) => {
+	updateNameInline = async (item?: Item, name?: string) => {
+		const targetItem = item || (await this.getItem());
 		// .ee-entity-name for table view
-		const inlineEditPreview = await item.$('.entity-card-details__name, .ee-entity-name >> .ee-tabbable-text');
+		const inlineEditPreview = await targetItem.$(
+			'.entity-card-details__name, .ee-entity-name >> .ee-tabbable-text'
+		);
 		await inlineEditPreview.click();
-		const inlineEditInput = await item.$('.entity-card-details__name, .ee-entity-name >> input');
+		const inlineEditInput = await targetItem.$('.entity-card-details__name, .ee-entity-name >> input');
 		await inlineEditInput.type(name);
 
 		const waitForListUpdate = await this.createWaitForListUpdate();
-		await item.press('Enter');
+		await targetItem.press('Enter');
 		await waitForListUpdate();
 	};
 
 	/**
-	 * Given an entity item, it updates the description in the inline edit input
+	 * Given an entity item, it updates the description in the inline edit input. Default to first item.
 	 */
-	updateDescInline = async (item: Item, desc: string) => {
-		const element = await item.$('.entity-card-details__text');
+	updateDescInline = async (item?: Item, desc?: string) => {
+		const targetItem = item || (await this.getItem());
+		const element = await targetItem.$('.entity-card-details__text');
 		await element.click();
 
 		await page.click(EntityEditor.RTEContentSelector);
@@ -51,17 +55,18 @@ export class EntityEditor extends EntityListParser {
 	};
 
 	/**
-	 * Given an entity item, it updates the value in the inline edit input in card details.
+	 * Given an entity item, it updates the value in the inline edit input in card details. Default to first item.
 	 * This can be used to update date capacity or ticket quantity.
 	 */
-	updateDetailsInputInline = async (item: Item, value: string) => {
-		const inlineEditPreview = await item.$('.ee-entity-details__value .ee-tabbable-text');
+	updateDetailsInputInline = async (item?: Item, value?: string) => {
+		const targetItem = item || (await this.getItem());
+		const inlineEditPreview = await targetItem.$('.ee-entity-details__value .ee-tabbable-text');
 		await inlineEditPreview.click();
-		const inlineEditInput = await item.$('.ee-entity-details__value .ee-inline-edit__input');
+		const inlineEditInput = await targetItem.$('.ee-entity-details__value .ee-inline-edit__input');
 		await inlineEditInput.type(String(value));
 
 		const waitForListUpdate = await this.createWaitForListUpdate();
-		await item.press('Enter');
+		await targetItem.press('Enter');
 		await waitForListUpdate();
 	};
 
@@ -126,7 +131,7 @@ export class EntityEditor extends EntityListParser {
 	 * Confirms an entity deletion and waits for the entity list to update.
 	 */
 	confirmAndDelete = async (item: Item, label: string): Promise<void> => {
-		await page.waitForTimeout(500);
+		await item.waitForSelector(`[type=button] >> text=${label}`);
 		await clickButton(label, item);
 		const waitForListUpdate = await this.createWaitForListUpdate();
 		await respondToAlert('Yes');

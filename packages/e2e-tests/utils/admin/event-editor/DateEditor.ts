@@ -48,7 +48,7 @@ export class DateEditor extends EntityEditor {
 	/**
 	 * Given an entity item, it updates the capacity in the inline edit input
 	 */
-	updateCapacityInline = async (item: Item, capacity: string | number) => {
+	updateCapacityInline = async (item?: Item, capacity?: string | number) => {
 		await this.updateDetailsInputInline(item, String(capacity));
 	};
 

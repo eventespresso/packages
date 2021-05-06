@@ -359,7 +359,7 @@ export class EntityListParser {
 	getStatusByName = async (name: string): Promise<string> => {
 		const item = await this.getItemBy('name', name);
 
-		return await item?.$eval('.ee-entity-status-label', (el) => el.textContent);
+		return await this.getItemStatus(item);
 	};
 
 	/**

@@ -1,4 +1,5 @@
 export const submitTicketSelector = async () => {
-	await page.click('.ticket-selector-submit-btn');
-	await page.waitForTimeout(4000);
+	await Promise.all([page.waitForNavigation(), page.click('input[value="Register Now"]')]);
+	
+	await page.waitForSelector('#ee-spco-attendee_information-reg-step-form');
 };
