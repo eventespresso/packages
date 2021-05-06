@@ -21,13 +21,13 @@ export class EDTRGlider {
 	 * Enable/Disable questions for registrants
 	 */
 	questionsForRegistrant = async (
-		registrants: 'Primary' | 'Additional' = 'Primary',
+		registrants: 'primary' | 'additional' = 'primary',
 		{ personalInfo = false, address = false } = {},
 		updateEvent = true
 	) => {
-		const metaboxHeading = `Questions for ${registrants} Registrants`;
+		const selector = `#espresso_events_Registration_Form_Hooks_Extend_${registrants}_questions_metabox`;
 
-		const metabox = await page.$(`.postbox:has-text('${metaboxHeading}') .tckt-slctr-tbl-td-qty select`);
+		const metabox = await page.$(selector);
 
 		if (personalInfo) {
 			await metabox.$eval('text=Personal Information', (e) => e.closest('p').querySelector('input').click());

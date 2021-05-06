@@ -40,6 +40,8 @@ export class EventRegistrar {
 	 * Register for the event
 	 */
 	registerForEvent = async ({ ticketName, quantity, attendeeInfo, redirectURL }: RegisterOptions) => {
+		await this.gotoEventPage();
+
 		await this.chooseTicketQty(ticketName, quantity);
 
 		await this.submitTicketSelector();
