@@ -1,4 +1,2 @@
-export * from './chooseFromTicketSelector';
+export * from './EventRegistrar';
 export * from './fillAttendeeInformation';
-export * from './submitRegistration';
-export * from './submitTicketSelector';

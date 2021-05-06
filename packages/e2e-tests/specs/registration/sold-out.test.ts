@@ -1,61 +1,44 @@
 import { saveVideo } from 'playwright-video';
 
-import { clickEventPostPermaLink, createNewEvent, getEventUrl, DateEditor } from '@e2eUtils/admin/event-editor';
-import {
-	chooseFromTicketSelector,
-	submitRegistration,
-	submitTicketSelector,
-	fillAttendeeInformation,
-} from '@e2eUtils/public/reg-checkout';
+import { createNewEvent, getEventEditUrl, DateEditor, getEventPermalink } from '@e2eUtils/admin/event-editor';
+import { EventRegistrar, RegisterOptions } from '@e2eUtils/public/reg-checkout';
 
 const namespace = 'event.free.event.registration.sold.out';
 
+const registrar = new EventRegistrar();
+
 beforeAll(async () => {
 	await saveVideo(page, `artifacts/${namespace}.mp4`);
+	await createNewEvent({ title: 'Free event' });
 });
 
 const dateEditor = new DateEditor();
-
-const registerForEvent = async () => {
-	await chooseFromTicketSelector('Free Ticket', 1);
-	await submitTicketSelector();
-
-	await fillAttendeeInformation({
-		fname: 'Joe',
-		lname: 'Doe',
-		email: 'test@example.com',
-	});
-};
-
-const goBackToEvent = async (eventUrl) => {
-	await page.goto(eventUrl);
-	await page.waitForLoadState('domcontentloaded');
-};
 
 describe(namespace, () => {
 	it('should show show sold out label on date when the number of registration is the same as capacity', async () => {
 		const dateName = 'upcoming datetime';
 
-		await createNewEvent({ title: 'Free event' });
-
 		await dateEditor.updateNameInline(null, dateName);
 		await dateEditor.updateCapacityInline(null, 2);
 
-		const eventUrl = await getEventUrl();
+		registrar.setPermalink(await getEventPermalink());
 
-		await clickEventPostPermaLink();
-		await registerForEvent();
-		await submitRegistration();
+		const registrationOptions: RegisterOptions = {
+			ticketName: 'Free Ticket',
+			quantity: 1,
+			attendeeInfo: {
+				fname: 'Joe',
+				lname: 'Doe',
+				email: 'test@example.com',
+			},
+			redirectURL: await getEventEditUrl(),
+		};
 
-		await goBackToEvent(eventUrl);
+		registrar.registerForEvent(registrationOptions);
 
 		expect(await dateEditor.getItemCount()).toBe(1);
 
-		await clickEventPostPermaLink();
-		await registerForEvent();
-		await submitRegistration();
-
-		await goBackToEvent(eventUrl);
+		registrar.registerForEvent(registrationOptions);
 
 		expect(await dateEditor.getStatusByName(dateName)).toBe('sold out');
 	});

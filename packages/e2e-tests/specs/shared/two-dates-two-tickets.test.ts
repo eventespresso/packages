@@ -1,19 +1,18 @@
 import {
 	addNewDate,
 	addNewTicket,
-	clickEventPostPermaLink,
 	createNewEvent,
 	editEntityCard,
-	questionsForPrimaryRegistrant,
+	EDTRGlider,
+	getEventPermalink,
+	getEventEditUrl,
 } from '@e2eUtils/admin/event-editor';
-import {
-	submitRegistration,
-	submitTicketSelector,
-	chooseFromTicketSelector,
-	fillAttendeeInformation,
-} from '@e2eUtils/public/reg-checkout';
+import { EventRegistrar } from '@e2eUtils/public/reg-checkout';
 
 const namespace = 'event.entities.reigstration-2';
+
+const registrar = new EventRegistrar();
+const edtrGlider = new EDTRGlider();
 
 describe(namespace, () => {
 	it('should check if registration was succesful and the reg status is approved', async () => {
@@ -35,28 +34,29 @@ describe(namespace, () => {
 			await addNewTicket({ name: 'Ticket 2', quantity: '20' });
 			await addNewDate({ name: 'Date 2', capacity: '20' });
 
-			await questionsForPrimaryRegistrant('Address Information');
+			await edtrGlider.questionsForRegistrant('Primary', { address: true });
 
-			await clickEventPostPermaLink();
+			registrar.setPermalink(await getEventPermalink());
 
-			await chooseFromTicketSelector('Ticket 1', 1);
-			await submitTicketSelector();
-
-			await fillAttendeeInformation({
-				fname: 'Joe',
-				lname: 'Doe',
-				email: 'test@example.com',
-				address: '3868  Burton Avenue',
+			registrar.registerForEvent({
+				ticketName: 'Ticket 1',
+				quantity: 1,
+				attendeeInfo: {
+					fname: 'Joe',
+					lname: 'Doe',
+					email: 'test@example.com',
+					address: '3868  Burton Avenue',
+				},
+				redirectURL: await getEventEditUrl(),
 			});
-			await submitRegistration();
 		} catch (e) {
 			console.log(e);
 		}
 
-		const statusTitle = await page
-			.$eval('.status-publish .entry-title', (elements) => elements?.textContent)
-			.catch(console.log);
-		expect(statusTitle).toContain('Thank You');
-		expect(await page.$eval('.ee-registrations-list tbody', (el) => el.textContent)).toContain('Approved');
+		const title = await page.$eval('h1.entry-title', (el) => el.textContent);
+		expect(title).toContain('Thank You');
+
+		const content = await page.$eval('.entry-content', (el) => el.textContent);
+		expect(content).toContain('Congratulations');
 	});
 });

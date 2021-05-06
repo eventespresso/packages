@@ -1,12 +1,7 @@
 import { saveVideo } from 'playwright-video';
 
-import { addNewTicket, clickEventPostPermaLink, createNewEvent, DateEditor } from '@e2eUtils/admin/event-editor';
-import {
-	submitRegistration,
-	submitTicketSelector,
-	chooseFromTicketSelector,
-	fillAttendeeInformation,
-} from '@e2eUtils/public/reg-checkout';
+import { addNewTicket, createNewEvent, TicketEditor, getEventPermalink } from '@e2eUtils/admin/event-editor';
+import { EventRegistrar } from '@e2eUtils/public/reg-checkout';
 
 const namespace = 'event.free-event.registration';
 
@@ -14,28 +9,26 @@ beforeAll(async () => {
 	await saveVideo(page, `artifacts/${namespace}.mp4`);
 });
 
-const dateEditor = new DateEditor();
+const ticketEditor = new TicketEditor();
+const registrar = new EventRegistrar();
 
 describe(namespace, () => {
 	it('should show thank you message if everything went well', async () => {
 		await createNewEvent({ title: 'Free event' });
 
-		await dateEditor.updateCapacityInline(null, 75);
+		await ticketEditor.updateQuantityInline(null, 75);
 
 		await addNewTicket({ amount: 100, name: 'Paid Ticket' });
 
-		await clickEventPostPermaLink();
-
-		await chooseFromTicketSelector('Free Ticket', 1);
-		await submitTicketSelector();
-
-		await fillAttendeeInformation({
-			fname: 'Joe',
-			lname: 'Doe',
-			email: 'test@example.com',
+		registrar.setPermalink(await getEventPermalink()).registerForEvent({
+			ticketName: 'Free Ticket',
+			quantity: 1,
+			attendeeInfo: {
+				fname: 'Joe',
+				lname: 'Doe',
+				email: 'test@example.com',
+			},
 		});
-
-		await submitRegistration();
 
 		const title = await page.$eval('h1.entry-title', (el) => el.textContent);
 		expect(title).toContain('Thank You');
