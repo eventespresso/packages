@@ -2,8 +2,8 @@ import { useMemo, useCallback } from 'react';
 import { pick } from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
-import { useUtcISOToSiteDate, useSiteDateToUtcISO } from '@eventespresso/services';
-import { startAndEndDateFixer, useTicketItem, hooks, TICKET_VISIBILITY_OPTIONS } from '@eventespresso/edtr-services';
+import { useUtcISOToSiteDate, useSiteDateToUtcISO, getEEDomData } from '@eventespresso/services';
+import { startAndEndDateFixer, useTicketItem, hooks } from '@eventespresso/edtr-services';
 import { PLUS_ONE_MONTH } from '@eventespresso/constants';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { setDefaultTime } from '@eventespresso/dates';
@@ -32,6 +32,7 @@ export const FIELD_NAMES: Array<keyof Ticket> = [
 ];
 
 const decorators = [startAndEndDateFixer];
+const VISIBILITY_OPTIONS = getEEDomData('eventEditor').ticketMeta.visibilityOptions;
 
 export const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): TicketFormConfig => {
 	const ticket = useTicketItem({ id });
@@ -182,7 +183,7 @@ export const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): T
 							label: __('Visibility'),
 							fieldType: 'select',
 							info: __('Where the ticket can be viewed throughout the UI.'),
-							options: TICKET_VISIBILITY_OPTIONS,
+							options: VISIBILITY_OPTIONS,
 						},
 						{
 							name: 'isRequired',

@@ -3,10 +3,10 @@ import { pick } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/dates';
-import { useTimeZoneTime } from '@eventespresso/services';
+import { getEEDomData, useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { Ticket, TICKET_VISIBILITY_OPTIONS } from '@eventespresso/edtr-services';
+import { Ticket } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
 
@@ -69,6 +69,7 @@ const ticketSalesFields: Array<FieldProps> = [
 		],
 	},
 ];
+const VISIBILITY_OPTIONS = getEEDomData('eventEditor').ticketMeta.visibilityOptions;
 
 const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<TicketFormConfig>): TicketFormConfig => {
 	const { utcToSiteTime } = useTimeZoneTime();
@@ -224,7 +225,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							label: __('Visibility'),
 							fieldType: 'select',
 							info: __('Where the ticket can be viewed throughout the UI.'),
-							options: TICKET_VISIBILITY_OPTIONS,
+							options: VISIBILITY_OPTIONS,
 						},
 						{
 							name: 'isRequired',

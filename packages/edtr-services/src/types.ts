@@ -1,12 +1,18 @@
+import type { OptionsType } from '@eventespresso/adapters';
 import type { User } from '@eventespresso/data';
 import type { GeneralSettings, RelationalData } from '@eventespresso/services';
 import type { DatetimeEdge, TicketEdge, PriceEdge, PriceTypeEdge, Event, EventManager } from './apollo';
+
+export type TicketMeta = {
+	visibilityOptions: OptionsType;
+};
 
 export interface EventEditorData {
 	event?: Event;
 	eventManagers?: Array<EventManager>;
 	datetimes?: DatetimeEdge;
 	tickets?: TicketEdge;
+	ticketMeta?: TicketMeta;
 	prices?: PriceEdge;
 	priceTypes?: PriceTypeEdge;
 	relations?: RelationalData;
