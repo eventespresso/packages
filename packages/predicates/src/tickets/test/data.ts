@@ -29,6 +29,7 @@ export const tickets: Ticket[] = [
 		isTaxable: false,
 		isTrashed: false,
 		reverseCalculate: true,
+		visibility: 'PUBLIC',
 	},
 	{
 		id: '2',
@@ -58,6 +59,7 @@ export const tickets: Ticket[] = [
 		isTaxable: false,
 		isTrashed: false,
 		reverseCalculate: true,
+		visibility: 'PUBLIC',
 	},
 	{
 		id: '3',
@@ -87,6 +89,7 @@ export const tickets: Ticket[] = [
 		isTaxable: false,
 		isTrashed: false,
 		reverseCalculate: true,
+		visibility: 'PUBLIC',
 	},
 	{
 		id: '4',
@@ -116,6 +119,7 @@ export const tickets: Ticket[] = [
 		isTaxable: false,
 		isTrashed: false,
 		reverseCalculate: true,
+		visibility: 'PUBLIC',
 	},
 	{
 		id: '5',
@@ -145,5 +149,6 @@ export const tickets: Ticket[] = [
 		isTaxable: false,
 		isTrashed: false,
 		reverseCalculate: true,
+		visibility: 'PUBLIC',
 	},
 ];

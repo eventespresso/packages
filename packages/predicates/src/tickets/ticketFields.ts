@@ -21,6 +21,7 @@ export const TICKET_INPUT_FIELDS: Array<keyof UpdateTicketInput> = [
 	'sold',
 	'startDate',
 	'uses',
+	'visibility',
 	'wpUser',
 ];
 

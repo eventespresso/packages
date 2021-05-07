@@ -6,7 +6,7 @@ import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/dates';
 import { useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useMemoStringify } from '@eventespresso/hooks';
-import { Ticket } from '@eventespresso/edtr-services';
+import { Ticket, TICKET_VISIBILITY_OPTIONS } from '@eventespresso/edtr-services';
 
 import { validate } from './formValidation';
 
@@ -218,6 +218,13 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 								'\n' +
 								__('Leave blank for no minimum.'),
 							width: 'small',
+						},
+						{
+							name: 'visibility',
+							label: __('Visibility'),
+							fieldType: 'select',
+							info: __('Where the ticket can be viewed throughout the UI.'),
+							options: TICKET_VISIBILITY_OPTIONS,
 						},
 						{
 							name: 'isRequired',

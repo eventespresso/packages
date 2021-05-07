@@ -105,6 +105,7 @@ export const normalizeTicketForRem = (
 			endDate,
 		},
 		isShared: false,
+		visibility: 'PUBLIC',
 	};
 
 	return {
