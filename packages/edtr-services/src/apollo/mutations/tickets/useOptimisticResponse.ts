@@ -37,6 +37,7 @@ export const TICKET_DEFAULTS: Ticket = {
 	startDate: PLUS_ONE_MONTH.toISOString(),
 	userId: '',
 	uses: -1,
+	visibility: 'PUBLIC',
 };
 
 type OptimisticResCb = (mutationType: MutationType, input: MutationInput) => any;

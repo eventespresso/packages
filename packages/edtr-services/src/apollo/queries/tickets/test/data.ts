@@ -35,6 +35,7 @@ export const nodes: Ticket[] = [
 		startDate: formatISO(new Date(2018, 8, 18, 19, 0, 52)),
 		userId: '',
 		uses: -1,
+		visibility: 'PUBLIC',
 		__typename: 'EspressoTicket',
 	},
 	{
@@ -65,6 +66,7 @@ export const nodes: Ticket[] = [
 		startDate: formatISO(new Date(2038, 8, 18, 19, 0, 52)),
 		userId: '',
 		uses: -1,
+		visibility: 'PUBLIC',
 		__typename: 'EspressoTicket',
 	},
 	{
@@ -95,6 +97,7 @@ export const nodes: Ticket[] = [
 		startDate: formatISO(new Date(2028, 8, 18, 19, 0, 52)),
 		userId: '',
 		uses: -1,
+		visibility: 'PUBLIC',
 		__typename: 'EspressoTicket',
 	},
 ];

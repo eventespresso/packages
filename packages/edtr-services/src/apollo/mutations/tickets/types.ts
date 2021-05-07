@@ -1,5 +1,5 @@
 import type { EntityId } from '@eventespresso/data';
-import type { Ticket } from '../../';
+import type { Ticket, TicketVisibility } from '../../';
 import { BulkUpdateInput } from '../types';
 
 export interface TicketBaseInput {
@@ -24,6 +24,7 @@ export interface TicketBaseInput {
 	sold?: number;
 	startDate?: string | Date;
 	uses?: number;
+	visibility?: TicketVisibility;
 	wpUser?: number;
 }
 

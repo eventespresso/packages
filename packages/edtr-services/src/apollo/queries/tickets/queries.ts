@@ -29,6 +29,7 @@ export const TICKET_ATTRIBUTES: any = gql`
 		startDate
 		userId
 		uses
+		visibility
 	}
 `;
 

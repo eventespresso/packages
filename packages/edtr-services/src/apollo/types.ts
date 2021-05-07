@@ -97,6 +97,8 @@ export interface PricesList {
 	espressoPrices: PriceEdge;
 }
 
+export type TicketVisibility = 'ADMINS_ONLY' | 'ADMIN_UI_ONLY' | 'MEMBERS_ONLY' | 'NONE' | 'PUBLIC';
+
 export interface Ticket extends Entity, Trashable {
 	description: string;
 	endDate: string; // ISO string
@@ -122,6 +124,7 @@ export interface Ticket extends Entity, Trashable {
 	startDate: string; // ISO string
 	userId: EntityId;
 	uses: number;
+	visibility: TicketVisibility;
 }
 
 export interface TicketItem {

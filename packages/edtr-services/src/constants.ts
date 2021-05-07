@@ -1,4 +1,5 @@
 import type { Ticket } from '@eventespresso/edtr-services';
+import { __ } from '@eventespresso/i18n';
 
 export const domain = 'eventEditor';
 
@@ -13,4 +14,28 @@ export const TICKET_FIELDS_FOR_TPC: Array<keyof Ticket> = [
 	'price',
 	'quantity',
 	'reverseCalculate',
+	'visibility',
+];
+
+export const TICKET_VISIBILITY_OPTIONS = [
+	{
+		value: 'PUBLIC',
+		label: __('Public'),
+	},
+	{
+		value: 'MEMBERS_ONLY',
+		label: __('Members only'),
+	},
+	{
+		value: 'ADMINS_ONLY',
+		label: __('Admins only'),
+	},
+	{
+		value: 'ADMIN_UI_ONLY',
+		label: __('Admin UI only'),
+	},
+	{
+		value: 'NONE',
+		label: __('None'),
+	},
 ];
