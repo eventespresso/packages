@@ -1,12 +1,12 @@
 import { NOW } from '@eventespresso/constants';
-import { sub } from '@eventespresso/dates';
+import { sub, add } from '@eventespresso/dates';
 
 export const data = [
 	{
 		name: '1',
 		// This date is in the past
-		startDate: sub('days', NOW, 20),
-		endDate: sub('days', NOW, 19),
+		startDate: sub('days', NOW, 40),
+		endDate: sub('days', NOW, 38),
 	},
 	{
 		name: '2',
@@ -17,8 +17,8 @@ export const data = [
 	{
 		name: '3',
 		// This date is in the current month
-		startDate: NOW,
-		endDate: NOW,
+		startDate: sub('minutes', NOW, 10),
+		endDate: add('days', NOW, 2),
 	},
 	{
 		name: '4',
