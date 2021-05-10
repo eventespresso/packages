@@ -34,9 +34,7 @@ describe(namespace, () => {
 
 		await dateEditor.filterListBy('status', { value: 'upcomingOnly' });
 		// We have 3 upcoming dates - 2 added, 1 default
-		// TODO It should be 3 instead of 4 when UTC bug is fixed
-		// expect(await dateEditor.getItemCount()).toBe(3);
-		expect(await dateEditor.getItemCount()).toBe(4);
+		expect(await dateEditor.getItemCount()).toBe(3);
 		expect(await dateEditor.getItemStatus()).toBe('upcoming');
 
 		await dateEditor.filterListBy('status', { value: 'nextActiveUpcomingOnly' });
