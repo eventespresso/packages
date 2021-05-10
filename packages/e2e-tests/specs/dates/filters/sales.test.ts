@@ -21,7 +21,7 @@ beforeAll(async () => {
 	await ticketEditor.updateNameInline(null, 'Ticket1');
 
 	/**
-	 * Lets have 4 dates with varying vapacity
+	 * Lets have 4 dates with varying capacity
 	 *
 	 * We will register for 10 tickets
 	 */
