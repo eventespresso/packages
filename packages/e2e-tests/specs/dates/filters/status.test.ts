@@ -26,11 +26,10 @@ describe(namespace, () => {
 		// We added 2 upcoming and 1 active dates, the default date is also upcoming, making it 4
 		expect(await dateEditor.getItemCount()).toBe(4);
 
-		// TODO activate this assertion when UTC NOW bug is fixed
-		/* await dateEditor.filterListBy('status', { value: 'activeOnly' });
+		await dateEditor.filterListBy('status', { value: 'activeOnly' });
 		// We have only 1 active date
 		expect(await dateEditor.getItemCount()).toBe(1);
-		expect(await dateEditor.getItemStatus()).toBe('active'); */
+		expect(await dateEditor.getItemStatus()).toBe('active');
 
 		await dateEditor.filterListBy('status', { value: 'upcomingOnly' });
 		// We have 3 upcoming dates - 2 added, 1 default
