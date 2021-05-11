@@ -35,7 +35,7 @@ export class TicketEditor extends EntityEditor {
 				: filter === 'sales'
 				? '#ee-tickets-list-sales-control'
 				: filter === 'search'
-				? '#ee-ee-search-input-tickets-list-label'
+				? '#ee-ee-search-input-tickets-list'
 				: filter === 'chained'
 				? '#ee-ee-ticket-list-filter-bar-is-chained'
 				: '';
