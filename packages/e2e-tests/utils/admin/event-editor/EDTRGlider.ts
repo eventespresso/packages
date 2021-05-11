@@ -14,9 +14,7 @@ export class EDTRGlider {
 	 * Returns the permalink of the event, inside EDTR
 	 */
 	getEventPermalink = async () => {
-		console.log(await page.$eval('#titlediv', (el) => el.innerHTML));
-
-		return await page.$eval('#edit-slug-box #sample-permalink a', (el) => el.getAttribute('href'));
+		return await page.$eval('#edit-slug-box #sample-permalink', (el) => el.getAttribute('href'));
 	};
 
 	/**

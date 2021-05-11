@@ -66,7 +66,7 @@ describe(namespace, () => {
 			redirectURL: await edtrGlider.getEventEditUrl(),
 		});
 
-		//Now there should be 1 sold out date
+		//Now there should be 1 sold out ticket
 		await ticketEditor.filterListBy('status', { value: 'sold-out-only' });
 		expect(await ticketEditor.getItemCount()).toBe(1);
 		expect(await ticketEditor.getItemStatus()).toBe('sold out');
