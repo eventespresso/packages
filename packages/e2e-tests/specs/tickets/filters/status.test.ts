@@ -51,13 +51,13 @@ describe(namespace, () => {
 		// We have total 7 tickets, but pagination will only show 6
 		expect(await ticketEditor.getItemCount()).toBe(6);
 
-		// Lets update the quantity of "Ticket5"
-		await ticketEditor.updateQuantityInline(await ticketEditor.getItemBy('name', 'Ticket5'), 3);
+		// Lets update the quantity of "Ticket3"
+		await ticketEditor.updateQuantityInline(await ticketEditor.getItemBy('name', 'Ticket3'), 3);
 
 		// Lets register for 3 tickets to make the date sold out
 		registrar.setPermalink(await edtrGlider.getEventPermalink());
 		await registrar.registerForEvent({
-			tickets: [{ name: 'Ticket5', quantity: 3 }],
+			tickets: [{ name: 'Ticket3', quantity: 3 }],
 			attendeeInfo: {
 				fname: 'Joe',
 				lname: 'Doe',
