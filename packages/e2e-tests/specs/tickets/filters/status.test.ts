@@ -28,8 +28,7 @@ describe(namespace, () => {
 		expect(await ticketEditor.getItemStatus()).toBe('on sale');
 
 		await ticketEditor.filterListBy('status', { value: 'pending-only' });
-		// We have 3 upcoming tickets - 2 added, 1 default
-		expect(await ticketEditor.getItemCount()).toBe(3);
+		expect(await ticketEditor.getItemCount()).toBe(2);
 		expect(await ticketEditor.getItemStatus()).toBe('pending');
 
 		await ticketEditor.filterListBy('status', { value: 'next-on-sale-or-pending-only' });
