@@ -34,7 +34,6 @@ describe(namespace, () => {
 		await ticketEditor.filterListBy('status', { value: 'next-on-sale-or-pending-only' });
 		// It should show only one
 		expect(await ticketEditor.getItemCount()).toBe(1);
-		expect(await ticketEditor.getItemStatus()).toBe('pending');
 
 		await ticketEditor.filterListBy('status', { value: 'expired-only' });
 		expect(await ticketEditor.getItemCount()).toBe(2);
