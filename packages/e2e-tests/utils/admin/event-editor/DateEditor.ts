@@ -46,6 +46,15 @@ export class DateEditor extends EntityEditor {
 	}
 
 	/**
+	 * sorts the list by the given field and value.
+	 */
+	async sortBy(values: Parameters<Item['selectOption']>[0]): Promise<void> {
+		const selector = '#ee-dates-list-sort-by-control';
+
+		await this.setFilter(selector, values);
+	}
+
+	/**
 	 * Given an entity item, it updates the capacity in the inline edit input
 	 */
 	updateCapacityInline = async (item?: Item, capacity?: string | number) => {

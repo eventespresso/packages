@@ -37,8 +37,7 @@ beforeAll(async () => {
 	registrar.setPermalink(await edtrGlider.getEventPermalink());
 
 	await registrar.registerForEvent({
-		ticketName: 'Ticket1',
-		quantity: 10,
+		tickets: [{ name: 'Ticket1', quantity: 10 }],
 		attendeeInfo: {
 			fname: 'Joe',
 			lname: 'Doe',

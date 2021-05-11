@@ -30,8 +30,7 @@ describe(namespace, () => {
 		registrar.setPermalink(await edtrGlider.getEventPermalink());
 
 		await registrar.registerForEvent({
-			ticketName: 'Ticket 1',
-			quantity: 1,
+			tickets: [{ name: 'Ticket 1', quantity: 1 }],
 			attendeeInfo: {
 				fname: 'Joe',
 				lname: 'Doe',

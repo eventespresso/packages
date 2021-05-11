@@ -18,6 +18,24 @@ export class EDTRGlider {
 	};
 
 	/**
+	 * Sets the maximum registrations value.
+	 */
+	setMaxRegistrations = async (value: number, updateEvent = true) => {
+		await page.fill('#max-registrants', String(value));
+
+		await this.updateEvent(updateEvent);
+	};
+
+	/**
+	 * Updates the event by clicking the Publish/update button
+	 */
+	updateEvent = async (update = true) => {
+		if (update) {
+			await Promise.all([page.waitForNavigation(), page.click('#publish')]);
+		}
+	};
+
+	/**
 	 * Enable/Disable questions for registrants
 	 */
 	questionsForRegistrant = async (
@@ -36,8 +54,6 @@ export class EDTRGlider {
 			await metabox.$eval('text=Address Information', (e) => e.closest('p').querySelector('input').click());
 		}
 
-		if (updateEvent) {
-			await Promise.all([page.waitForNavigation(), page.click('#publish')]);
-		}
+		await this.updateEvent(updateEvent);
 	};
 }

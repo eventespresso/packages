@@ -2,7 +2,7 @@ import { saveVideo } from 'playwright-video';
 
 import { addNewDate, createNewEvent, DateEditor, EDTRGlider } from '@e2eUtils/admin/event-editor';
 import { EventRegistrar } from '@e2eUtils/public/reg-checkout';
-import { data } from './data';
+import { data } from '../../shared/data';
 
 const namespace = 'eventDates.filters.status';
 
@@ -67,8 +67,7 @@ describe(namespace, () => {
 		// Lets register for 3 tickets to make the date sold out
 		registrar.setPermalink(await edtrGlider.getEventPermalink());
 		await registrar.registerForEvent({
-			ticketName: 'Free Ticket',
-			quantity: 3,
+			tickets: [{ name: 'Free Ticket', quantity: 3 }],
 			attendeeInfo: {
 				fname: 'Joe',
 				lname: 'Doe',

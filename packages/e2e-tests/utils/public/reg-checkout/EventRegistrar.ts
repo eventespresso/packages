@@ -1,8 +1,7 @@
 import { fillAttendeeInformation, AttendeeInformation } from './fillAttendeeInformation';
 
 export type RegisterOptions = {
-	ticketName: string;
-	quantity: number;
+	tickets: Array<{ name: string; quantity: number }>;
 	attendeeInfo: AttendeeInformation;
 	redirectURL?: string;
 };
@@ -39,10 +38,12 @@ export class EventRegistrar {
 	/**
 	 * Register for the event
 	 */
-	registerForEvent = async ({ ticketName, quantity, attendeeInfo, redirectURL }: RegisterOptions) => {
+	registerForEvent = async ({ tickets, attendeeInfo, redirectURL }: RegisterOptions) => {
 		await this.gotoEventPage();
 
-		await this.chooseTicketQty(ticketName, quantity);
+		for (const { name, quantity } of tickets) {
+			await this.chooseTicketQty(name, quantity);
+		}
 
 		await this.submitTicketSelector();
 

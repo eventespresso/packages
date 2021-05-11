@@ -10,15 +10,20 @@ export const addNewTicket = async ({ amount, ...fields }: DateTicketFormArgs & {
 
 	await fillDateTicketForm(fields);
 
-	await clickButton('Set ticket prices');
+	// Set prices only if we have the amount
+	if (amount !== undefined) {
+		await clickButton('Set ticket prices');
 
-	await page.waitForSelector('text=Add default prices');
+		await page.waitForSelector('text=Add default prices');
 
-	await page.click('text=Add default prices');
+		await page.click('text=Add default prices');
 
-	await setPrice({ amount, isBasePrice: true } as any);
+		await setPrice({ amount, isBasePrice: true } as any);
 
-	await clickButton('Save and assign dates');
+		await clickButton('Save and assign dates');
+	} else {
+		await clickButton('Skip prices - assign dates');
+	}
 
 	// Ensure that trashed dates are visible
 	await page.click('[aria-label="show trashed dates"]');

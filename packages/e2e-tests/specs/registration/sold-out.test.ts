@@ -25,8 +25,7 @@ describe(namespace, () => {
 		registrar.setPermalink(await edtrGlider.getEventPermalink());
 
 		const registrationOptions: RegisterOptions = {
-			ticketName: 'Free Ticket',
-			quantity: 1,
+			tickets: [{ name: 'Free Ticket', quantity: 1 }],
 			attendeeInfo: {
 				fname: 'Joe',
 				lname: 'Doe',

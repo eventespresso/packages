@@ -22,8 +22,7 @@ describe(namespace, () => {
 		await addNewTicket({ amount: 100, name: 'Paid Ticket' });
 
 		await registrar.setPermalink(await edtrGlider.getEventPermalink()).registerForEvent({
-			ticketName: 'Free Ticket',
-			quantity: 1,
+			tickets: [{ name: 'Free Ticket', quantity: 1 }],
 			attendeeInfo: {
 				fname: 'Joe',
 				lname: 'Doe',
