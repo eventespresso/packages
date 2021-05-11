@@ -17,14 +17,14 @@ const registrar = new EventRegistrar();
 const edtrGlider = new EDTRGlider();
 
 describe(namespace, () => {
-	it('should filter dates corresponding to status control', async () => {
+	it('should filter tickets corresponding to status control', async () => {
 		// By default, the status filter should be "all tickets for all dates"
 		// We added 2 upcoming and 1 on sale ticket, the default ticket is also on sale, making it 4
 		expect(await ticketEditor.getItemCount()).toBe(4);
 
 		await ticketEditor.filterListBy('status', { value: 'on-sale-only' });
-		// We have only 1 on-sale ticket
-		expect(await ticketEditor.getItemCount()).toBe(1);
+		// We have 2 on-sale tickets
+		expect(await ticketEditor.getItemCount()).toBe(2);
 		expect(await ticketEditor.getItemStatus()).toBe('on sale');
 
 		await ticketEditor.filterListBy('status', { value: 'pending-only' });
