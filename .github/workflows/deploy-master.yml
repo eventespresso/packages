@@ -2,7 +2,7 @@ name: Deploy Leading Edge (master)
 
 on:
     push:
-        branches: [master]
+        branches: [master, deploy-to-cafe]
 env:
     API_TOKEN_GITHUB: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
     GIT_USER_EMAIL: ${{ secrets.GH_ACTIONS_GIT_USER_EMAIL }}
@@ -51,6 +51,9 @@ jobs:
             - name: Deploy to event-espresso-core
               run: source tools/deploy.sh "event-espresso-core"
 
+            - name: Deploy core to cafe repo
+              run: source tools/deploy.sh "cafe" "dev" "plugins/event-espresso-core/assets"
+
             # Build REM domain without packages
             # because core will load/register the packages
             - name: Build REM with its packages
@@ -60,6 +63,9 @@ jobs:
             - name: Deploy to REM
               run: source tools/deploy.sh "eea-recurring-events-manager"
 
+            - name: Deploy REM to cafe repo
+              run: source tools/deploy.sh "cafe" "dev" "plugins/eea-recurring-events-manager/assets"
+
             # Build WP User domain without packages
             - name: Build wpUser
               run: yarn build:wpUser
@@ -67,6 +73,9 @@ jobs:
             # Deploy the built assets to WP User assets/dist
             - name: Deploy to WP User
               run: source tools/deploy.sh "eea-wpuser-integration"
+
+            - name: Deploy WP User to cafe repo
+              run: source tools/deploy.sh "cafe" "dev" "plugins/eea-wp-user-integration/assets"
 
             # Build EventSmart domain without packages
             - name: Build ES EdtrSlots
