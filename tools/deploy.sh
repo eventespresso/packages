@@ -83,9 +83,12 @@ if [ "$DEPLOY_I18N" != "no" ]; then
 	npx pot-to-php $JS_I18N_FILE $PHP_I18N_FILE event_espresso
 fi
 
-# Remove POT file
-echo "Remove JS pot file"
-rm -f $JS_I18N_FILE
+# If REMOVE_JS_I18N_FILE is not set to "no"
+if [ "$REMOVE_JS_I18N_FILE" != "no" ]; then
+	# Remove POT file
+	echo "Remove JS pot file"
+	rm -f $JS_I18N_FILE
+fi
 
 # goto the repo directory
 cd $CLONE_DIR

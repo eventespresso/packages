@@ -50,6 +50,8 @@ jobs:
             # Deploy the built assets to core repo's assets/dist
             - name: Deploy to event-espresso-core
               run: source tools/deploy.sh "event-espresso-core"
+              env:
+                  REMOVE_JS_I18N_FILE: 'no'
 
             - name: Deploy core to cafe repo
               run: source tools/deploy.sh "cafe" "dev" "plugins/event-espresso-core/assets"
@@ -62,6 +64,8 @@ jobs:
             # Deploy the built assets to REM assets/dist
             - name: Deploy to REM
               run: source tools/deploy.sh "eea-recurring-events-manager"
+              env:
+                  REMOVE_JS_I18N_FILE: 'no'
 
             - name: Deploy REM to cafe repo
               run: source tools/deploy.sh "cafe" "dev" "plugins/eea-recurring-events-manager/assets"
@@ -73,6 +77,8 @@ jobs:
             # Deploy the built assets to WP User assets/dist
             - name: Deploy to WP User
               run: source tools/deploy.sh "eea-wpuser-integration"
+              env:
+                  REMOVE_JS_I18N_FILE: 'no'
 
             - name: Deploy WP User to cafe repo
               run: source tools/deploy.sh "cafe" "dev" "plugins/eea-wp-user-integration/assets"
