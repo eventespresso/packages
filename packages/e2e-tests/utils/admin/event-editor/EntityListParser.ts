@@ -208,6 +208,15 @@ export class EntityListParser {
 	};
 
 	/**
+	 * Retrieve an item/element from the entity list by the given posision, starting from 1.
+	 */
+	getNthItem = async (position: number): ReturnType<ElementHandle['$']> => {
+		const items = await this.getListItems();
+
+		return items[position - 1];
+	};
+
+	/**
 	 * Retrieve the field value of an item/element.
 	 */
 	getItemField = async (item: Item, field: Field): Promise<string | number> => {
