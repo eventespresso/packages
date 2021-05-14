@@ -78,7 +78,7 @@ JS_I18N_FILE="$BASE/$BUILD_PATH/js-translations.pot"
 # If DEPLOY_I18N is not set to "no"
 if [ "$DEPLOY_I18N" != "no" ]; then
 	## make sure languages directory exists
-	mkdir -p $CLONE_DIR/languages
+	mkdir -p $CLONE_DIR/$I18N_PATH
 	# make sure the file exists
 	touch $PHP_I18N_FILE
 	# Convert POT file to PHP
