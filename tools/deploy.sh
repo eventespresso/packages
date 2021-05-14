@@ -8,17 +8,18 @@
 # 1 | target repository name e.g. "event-espresso-core" |    YES   |         -          #
 # 2 | branch to deploy at, in the target repository     |    NO    |       "dev"        #
 # 3 | path to assets folder on the target repository    |    NO    |      "assets"      #
-# 4 | username of the target repository                 |    NO    |  "eventespresso"   #
-# 5 | build path on the current/this repository         |    NO    |      "build"       #
+# 4 | path to languages folder on the target repository |    NO    |     "languages"    #
+# 5 | username of the target repository                 |    NO    |  "eventespresso"   #
+# 6 | build path on the current/this repository         |    NO    |      "build"       #
 #########################################################################################
 
-##################################### EXAMPLES ##########################################
-# ./deploy.sh "event-espresso-core"                                                     #
-# ./deploy.sh "event-espresso-core" "dev"                                               #
-# ./deploy.sh "event-espresso-core" "dev" "assets/dist"                                 #
-# ./deploy.sh "event-espresso-core" "dev" "assets/dist" "eventespresso"                 #
-# ./deploy.sh "event-espresso-core" "dev" "assets/dist" "eventespresso" "build"         #
-#########################################################################################
+##################################### EXAMPLES #################################################
+# ./deploy.sh "event-espresso-core"                                                            #
+# ./deploy.sh "event-espresso-core" "dev"                                                      #
+# ./deploy.sh "event-espresso-core" "dev" "assets"                                             #
+# ./deploy.sh "event-espresso-core" "dev" "assets" "plugins/eea-abc/languages"                 #
+# ./deploy.sh "event-espresso-core" "dev" "assets" "plugins/eea-abc/languages" "eventespresso" #
+################################################################################################
 
 ##################### ENV VARIABLES THAT SHOULD ALREADY BE SET ########################
 #-------------------------------------------------------------------------------------#
@@ -44,10 +45,12 @@ BRANCH="${2:-dev}"
 BRANCH="${BRANCH#refs/heads/}"
 # Default path to assets folder (on target repo)
 ASSETS_PATH="${3:-assets}"
+# Default path to languages folder (on target repo)
+I18N_PATH="${4:-languages}"
 # GitHub account username
-USERNAME="${4:-eventespresso}"
+USERNAME="${5:-eventespresso}"
 # Default path to build folder
-BUILD_PATH="${5:-build}"
+BUILD_PATH="${6:-build}"
 
 BASE=$(pwd)
 
@@ -69,7 +72,7 @@ git clone -b $BRANCH git@github.com:$USERNAME/$REPO.git $CLONE_DIR
 
 ## DEPLOY I18N ##
 # paths of the translation files
-PHP_I18N_FILE="$CLONE_DIR/languages/event_espresso-translations-js.php"
+PHP_I18N_FILE="$CLONE_DIR/$I18N_PATH/event_espresso-translations-js.php"
 JS_I18N_FILE="$BASE/$BUILD_PATH/js-translations.pot"
 
 # If DEPLOY_I18N is not set to "no"
@@ -93,17 +96,20 @@ fi
 # goto the repo directory
 cd $CLONE_DIR
 
-# clean the assets path.
-echo "Clean up assets path..."
-rm -rf $ASSETS_PATH/static/*
-rm -f $ASSETS_PATH/asset-manifest.json
+# If DEPLOY_ASSETS is not set to "no"
+if [ "$DEPLOY_ASSETS" != "no" ]; then
+	# clean the assets path.
+	echo "Clean up assets path..."
+	rm -rf $ASSETS_PATH/static/*
+	rm -f $ASSETS_PATH/asset-manifest.json
 
-# Make sure the directory exists
-mkdir -p $ASSETS_PATH
+	# Make sure the directory exists
+	mkdir -p $ASSETS_PATH
 
-# copy files from build folder to target assets folder
-echo "Copy build files to assets path..."
-cp -r $BASE/$BUILD_PATH/* $ASSETS_PATH/
+	# copy files from build folder to target assets folder
+	echo "Copy build files to assets path..."
+	cp -r $BASE/$BUILD_PATH/* $ASSETS_PATH/
+fi
 
 # Commit if there is anything to
 if [ -n "$(git status --porcelain)" ]; then

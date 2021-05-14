@@ -2,7 +2,7 @@ name: Deploy Leading Edge (master)
 
 on:
     push:
-        branches: [master]
+        branches: [master, fix-i18n-deployment]
 env:
     API_TOKEN_GITHUB: ${{ secrets.GH_ACTIONS_ACCESS_TOKEN }}
     GIT_USER_EMAIL: ${{ secrets.GH_ACTIONS_GIT_USER_EMAIL }}
@@ -54,7 +54,7 @@ jobs:
                   REMOVE_JS_I18N_FILE: 'no'
 
             - name: Deploy core to cafe repo
-              run: source tools/deploy.sh "cafe" "dev" "plugins/event-espresso-core/assets"
+              run: source tools/deploy.sh "cafe" "dev" "plugins/event-espresso-core/assets" "plugins/event-espresso-core/languages"
 
             # Build REM domain without packages
             # because core will load/register the packages
@@ -68,7 +68,7 @@ jobs:
                   REMOVE_JS_I18N_FILE: 'no'
 
             - name: Deploy REM to cafe repo
-              run: source tools/deploy.sh "cafe" "dev" "plugins/eea-recurring-events-manager/assets"
+              run: source tools/deploy.sh "cafe" "dev" "plugins/eea-recurring-events-manager/assets" "plugins/eea-recurring-events-manager/languages"
 
             # Build WP User domain without packages
             - name: Build wpUser
@@ -81,7 +81,7 @@ jobs:
                   REMOVE_JS_I18N_FILE: 'no'
 
             - name: Deploy WP User to cafe repo
-              run: source tools/deploy.sh "cafe" "dev" "plugins/eea-wp-user-integration/assets"
+              run: source tools/deploy.sh "cafe" "dev" "plugins/eea-wp-user-integration/assets" "plugins/eea-wp-user-integration/languages"
 
             # Build EventSmart domain without packages
             - name: Build ES EdtrSlots
