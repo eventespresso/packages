@@ -43,6 +43,7 @@ add_action(
                     'use_experimental_rte'       => true,
                     'use_reg_options_meta_box'   => true,
                     'ee_advanced_event_editor'   => true,
+                    'use_reg_form_builder'       => true,
                 ]);
             }
         );
