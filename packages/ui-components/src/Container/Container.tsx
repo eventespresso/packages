@@ -1,3 +1,5 @@
+import { isRTL as getRTL } from '@eventespresso/i18n';
+
 import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
@@ -17,17 +19,24 @@ const Container: React.FC<ContainerProps> = ({
 	sidebarBefore,
 	...props
 }) => {
+	const isRTL = getRTL();
+	const sidebarOne = sidebarBefore && (
+		<Sidebar before className={classes?.sidebarBefore}>
+			{sidebarBefore}
+		</Sidebar>
+	);
+	const sidebarTwo = sidebarAfter && <Sidebar className={classes?.sidebarAfter}>{sidebarAfter}</Sidebar>;
+	const afterContent = isRTL ? sidebarOne : sidebarTwo;
+	const beforeContent = isRTL ? sidebarTwo : sidebarOne;
 	return (
 		<Stack {...props} className={classes?.container}>
-			<Header className={classes?.header}>{header}</Header>
+			{header && <Header className={classes?.header}>{header}</Header>}
 			<Row className={classes?.body}>
-				<Sidebar before className={classes?.sidebarBefore}>
-					{sidebarBefore}
-				</Sidebar>
+				{beforeContent}
 				<Content className={classes?.content}>{content}</Content>
-				<Sidebar className={classes?.sidebarAfter}>{sidebarAfter}</Sidebar>
+				{afterContent}
 			</Row>
-			<Footer className={classes?.footer}>{footer}</Footer>
+			{footer && <Footer className={classes?.footer}>{footer}</Footer>}
 		</Stack>
 	);
 };
