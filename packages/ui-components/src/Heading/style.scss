@@ -8,7 +8,7 @@
 	max-width: 100%;
 	text-shadow: var(--ee-text-shadow-inset-light);
 
-	@at-root .ee-edtr-section > h3#{&} {
+	@at-root .ee-edtr-section h3.ee-edtr-section-heading#{&} {
 		font-size: calc(var(--ee-font-size-huge) * 1.375);
 	}
 

@@ -39,7 +39,9 @@ export const EventRegistrationOptions: React.FC<Partial<EventRegistrationOptions
 	status,
 }) => (
 	<div className='ee-event-registration-options ee-edtr-section'>
-		<Heading as='h3'>{__('Registration Options')}</Heading>
+		<Heading as='h3' className='ee-edtr-section-heading'>
+			{__('Registration Options')}
+		</Heading>
 		<Grid columns={columns} spacing='1.25rem'>
 			<ActiveStatus status={status} onStatusChange={onStatusChange} />
 

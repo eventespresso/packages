@@ -29,7 +29,9 @@ const EventDescription: React.FC = () => {
 
 	return (
 		<div className='ee-event-description ee-edtr-section'>
-			<Heading as='h3'>{__('Event Description')}</Heading>
+			<Heading as='h3' className='ee-edtr-section-heading'>
+				{__('Event Description')}
+			</Heading>
 			<AdvancedTextEditor debounceDelay={4000} defaultValue={event?.description} onChange={onChangeDescription} />
 		</div>
 	);

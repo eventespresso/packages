@@ -23,7 +23,7 @@ export const EntityList: React.FC<EntityListProps> = ({
 
 	return (
 		<div className='ee-entity-list ee-edtr-section' id={id}>
-			<Heading as='h3' className='ee-entity-list__header'>
+			<Heading as='h3' className='ee-entity-list__header ee-edtr-section-heading'>
 				{headerText}
 			</Heading>
 
