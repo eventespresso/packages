@@ -1,28 +1,29 @@
-import { TextInput, NumberInput, Textarea, Select, Switch } from '@eventespresso/adapters';
 import { pick } from 'ramda';
 import { useMemo } from 'react';
 
+import type { AnyObject } from '@eventespresso/utils';
+import { TextInput, NumberInput, Textarea, Select, Switch, withLabel } from '../';
 import { FormElementProps, FormInput } from './types';
 
 const DefaultComponent = () => null;
 
 export const MappedElement: React.FC<FormElementProps> = ({ element }) => {
-	let Component: React.ComponentType<any>;
+	let Component: React.ComponentType<AnyObject>;
 
 	const propsToPick = useMemo<Array<keyof FormInput>>(() => ['placeholder'], []);
 
 	switch (element.type) {
 		case 'text':
 		case 'email':
-			Component = TextInput;
+			Component = withLabel(TextInput);
 			propsToPick.push('type');
 			break;
 		case 'integer':
 			propsToPick.push('min', 'max');
-			Component = NumberInput;
+			Component = withLabel(NumberInput);
 			break;
 		case 'textarea':
-			Component = Textarea;
+			Component = withLabel(Textarea);
 			break;
 		case 'select':
 			Component = Select;
@@ -38,5 +39,5 @@ export const MappedElement: React.FC<FormElementProps> = ({ element }) => {
 
 	const inputSpecificProps = useMemo(() => pick(propsToPick, element), [element, propsToPick]);
 
-	return <Component id={element.UUID} {...inputSpecificProps} />;
+	return <Component id={element.UUID} {...inputSpecificProps} label={element.publicLabel} />;
 };
