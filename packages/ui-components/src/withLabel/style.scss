@@ -29,7 +29,7 @@
 		&--bottom-right {
 			flex-direction: column-reverse;
 			label {
-				margin: var(--ee-margin-micro) var(--ee-margin-micro) 0;
+				margin: var(--ee-margin-nano) var(--ee-margin-nano) 0;
 			}
 		}
 
@@ -38,7 +38,7 @@
 		&--left-bottom {
 			flex-direction: row;
 			label {
-				margin: 0 0 0 var(--ee-margin-micro);
+				margin: 0 0 0 var(--ee-margin-nano);
 			}
 		}
 
@@ -47,7 +47,7 @@
 		&--right-bottom {
 			flex-direction: row-reverse;
 			label {
-				margin: 0 var(--ee-margin-micro) 0 0;
+				margin: 0 var(--ee-margin-nano) 0 0;
 			}
 		}
 
@@ -58,7 +58,7 @@
 
 			label,
 			legend {
-				margin: 0 var(--ee-margin-micro) var(--ee-margin-micro);
+				margin: 0 var(--ee-margin-nano) var(--ee-margin-nano);
 			}
 		}
 

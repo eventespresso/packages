@@ -43,6 +43,7 @@
 	box-shadow: none;
 	color: var(--ee-default-text-color);
 	font-size: var(--ee-font-size-default);
+	height: auto; // to overide Chakra
 	line-height: inherit;
 	min-height: var(--ee-icon-button-size); // 42px
 	outline: none;
