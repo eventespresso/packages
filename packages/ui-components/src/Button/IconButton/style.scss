@@ -50,8 +50,11 @@
 			}
 		}
 
-		path {
+		path:not(.ee-outlined) {
 			fill: currentColor;
+		}
+		path.ee-outlined {
+			fill: none !important;
 		}
 
 		&:focus {
