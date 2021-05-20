@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
+
 import { Container } from '../Container';
 import { FormBuilderSidebar } from './FormBuilderSidebar';
-import { FormElement } from './FormElement';
+import { FormSection } from './FormSection';
 
 import type { FormBuilderProps } from './types';
 import './styles.scss';
@@ -30,14 +31,12 @@ const FormBuilder: React.FC<FormBuilderProps> = ({
 		};
 	}, [bodyClass, containerClass, contentClass, sidebarClass]);
 
-	const listItems = formSections.map((formSection) => {
-		return formSection.elements.map((element, index) => <FormElement key={index} element={element} />);
-	});
+	const form = formSections.map((formSection, index) => <FormSection key={index} formSection={formSection} />);
 
 	return (
 		<Container
 			classes={classes}
-			content={listItems}
+			content={form}
 			header={header}
 			sidebarAfter={<FormBuilderSidebar />}
 			sidebarBefore={null}

@@ -21,6 +21,7 @@ export interface FormInput {
 
 export interface FormSection {
 	UUID: string;
+	adminLabel: string;
 	appliesTo: string;
 	belongsTo: string;
 	elements: Array<FormInput>;
@@ -42,4 +43,13 @@ export interface FormBuilderProps {
 
 export interface FormElementProps {
 	element: FormInput;
+}
+
+export interface FormSectionProps {
+	formSection: FormSection;
+}
+
+export interface SettingsProps {
+	element: FormInput;
+	open: boolean;
 }
