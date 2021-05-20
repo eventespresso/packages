@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 
-import { ThemeProvider } from '@eventespresso/adapters';
+import { ThemeProvider, Box } from '@eventespresso/adapters';
 
 const withTheme = (StoryFn) => (
 	<ThemeProvider>
-		<div id='story-wrapper'>
+		<Box
+			id='story-wrapper'
+			// WP Admin background color
+			backgroundColor='#f0f0f1'
+			p='10px'
+		>
 			<StoryFn />
-		</div>
+		</Box>
 	</ThemeProvider>
 );
 
