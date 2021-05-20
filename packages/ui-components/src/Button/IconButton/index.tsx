@@ -14,6 +14,7 @@ export const iconBtnClassName = 'ee-btn-base ee-icon-button';
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 	(
 		{
+			active = false,
 			borderless,
 			buttonType = ButtonType.DEFAULT,
 			color,
@@ -31,6 +32,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 		const ariaLabel = props['aria-label'];
 		const className = classNames(
 			iconBtnClassName,
+			active && `ee-icon-button--active`,
 			color && `ee-icon-button-color--${color}`,
 			borderless && 'ee-icon-button--borderless',
 			buttonType !== ButtonType.DEFAULT && [`ee-btn--${buttonType}`],

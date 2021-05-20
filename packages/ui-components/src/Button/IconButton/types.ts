@@ -3,6 +3,7 @@ import type { ButtonType } from '../types';
 import type { IconButtonProps as IconButtonAdapterProps } from '@eventespresso/adapters';
 
 export interface IconButtonProps extends Size, Omit<IconButtonAdapterProps, 'aria-label' | 'size'> {
+	active?: boolean;
 	'aria-label'?: string;
 	borderless?: boolean;
 	buttonType?: ButtonType;

@@ -1,12 +1,35 @@
-@import '~@eventespresso/styles/src/mixins/breakpoints';
+// @import '~@eventespresso/styles/src/mixins/breakpoints';
 
 .ee-btn-base {
 	&.ee-btn {
+		box-sizing: border-box;
+
+		&.ee-btn--micro {
+			height: var(--ee-icon-button-size-micro);
+			min-height: var(--ee-font-size-smaller);
+			line-height: var(--ee-font-size-micro);
+			padding: 1px var(--ee-padding-tiny) 2px;
+
+			span {
+				font-size: var(--ee-font-size-micro);
+				letter-spacing: 1px;
+			}
+
+			svg {
+				height: 0.6rem;
+				width: 0.6rem;
+			}
+
+			.img-wrap span {
+				line-height: var(--ee-font-size-micro);
+			}
+		}
+
 		&.ee-btn--tiny {
 			height: var(--ee-icon-button-size-tiny);
 			min-height: var(--ee-font-size-smaller);
 			line-height: var(--ee-font-size-tiny);
-			padding: 1px var(--ee-padding-micro) var(--ee-padding-nano);
+			padding: 1px var(--ee-padding-smaller) var(--ee-padding-nano);
 
 			span {
 				font-size: var(--ee-font-size-tiny);
@@ -28,7 +51,7 @@
 			line-height: var(--ee-font-size-tiny);
 			min-height: var(--ee-font-size-small);
 			letter-spacing: 1px;
-			padding: calc(var(--ee-padding-nano) + 1px) var(--ee-padding-tiny) var(--ee-padding-micro);
+			padding: calc(var(--ee-padding-nano) + 1px) var(--ee-padding-smaller) var(--ee-padding-micro);
 
 			svg {
 				margin-top: 2px;
