@@ -6,161 +6,157 @@ import { Tooltip } from '../Tooltip';
 
 const elementBlocks = [
 	{
-		label: 'Form Section',
+		label: __('Form Section'),
 		type: 'formSection',
-		desc:
-			'Used for creating logical groupings for questions and form elements. Need to add a heading or description? Use the HTML form element. ',
+		desc: __(
+			'Used for creating logical groupings for questions and form elements. Need to add a heading or description? Use the HTML form element.'
+		),
 	},
 	{
-		label: 'HTML',
+		label: __('HTML'),
 		type: 'html',
-		desc: 'allows you to add HTML like headings or text paragraphs to your form',
+		desc: __('allows you to add HTML like headings or text paragraphs to your form'),
 	},
 	{
-		label: 'Text Input',
+		label: __('Text Input'),
 		type: 'text',
-		desc: 'adds a text input that only accepts plain text',
+		desc: __('adds a text input that only accepts plain text'),
 	},
 	{
-		label: 'Plain Text Area',
+		label: __('Plain Text Area'),
 		type: 'textarea',
-		desc: 'adds a textarea block that only accepts plain text',
+		desc: __('adds a textarea block that only accepts plain text'),
 	},
 	{
-		label: 'HTML Text Area',
+		label: __('HTML Text Area'),
 		type: 'textarea-html',
-		desc: 'adds a textarea block that accepts text including simple HTML markup',
+		desc: __('adds a textarea block that accepts text including simple HTML markup'),
 	},
 	{
-		label: 'Email Address',
+		label: __('Email Address'),
 		type: 'email',
-		desc: 'adds a text input that only accets a valid email address',
+		desc: __('adds a text input that only accets a valid email address'),
 	},
 	{
-		label: 'Email Confirmation',
+		label: __('Email Confirmation'),
 		type: 'email-confirmation',
 		desc:
 			'adds a text input that confirms the entered email address matches the value entered into another email address input',
 	},
 	{
-		label: 'Password',
+		label: __('Password'),
 		type: 'password',
-		desc: 'adds a text input that accepts text but masks what the user enters',
+		desc: __('adds a text input that accepts text but masks what the user enters'),
 	},
 	{
-		label: 'URL',
+		label: __('URL'),
 		type: 'url',
-		desc: 'adds a text input for entering a URL address',
+		desc: __('adds a text input for entering a URL address'),
 	},
 	{
-		label: 'Date',
+		label: __('Date'),
 		type: 'date',
-		desc: 'adds a text input that allows users to enter a date directly via keyboard or a datepicker',
+		desc: __('adds a text input that allows users to enter a date directly via keyboard or a datepicker'),
 	},
 	{
-		label: 'Local Date',
+		label: __('Local Date'),
 		type: 'datetime-local',
 		desc:
 			'adds a text input that allows users to enter a date and time (no timezone) directly via keyboard or a date/time picker',
 	},
 	{
-		label: 'Month',
+		label: __('Month'),
 		type: 'month',
-		desc: 'adds a text input that allows users to enter a month and year directly via keyboard or a datepicker',
+		desc: __('adds a text input that allows users to enter a month and year directly via keyboard or a datepicker'),
 	},
 	{
-		label: 'Time',
+		label: __('Time'),
 		type: 'time',
-		desc: 'adds a text input that allows users to enter a time directly via keyboard or a timepicker',
+		desc: __('adds a text input that allows users to enter a time directly via keyboard or a timepicker'),
 	},
 	{
-		label: 'Week',
+		label: __('Week'),
 		type: 'week',
-		desc: 'adds a text input that allows users to enter a week and year directly via keyboard or a datepicker',
+		desc: __('adds a text input that allows users to enter a week and year directly via keyboard or a datepicker'),
 	},
 	{
-		label: 'Day Selector',
+		label: __('Day Selector'),
 		type: 'day-select',
-		desc: 'adds a dropdown selector that allows users to select the day of the month (01 to 31)',
+		desc: __('adds a dropdown selector that allows users to select the day of the month (01 to 31)'),
 	},
 	{
-		label: 'Month Selector',
+		label: __('Month Selector'),
 		type: 'month-select',
-		desc: 'adds a dropdown selector that allows users to select the month of the year (01 to 12)',
+		desc: __('adds a dropdown selector that allows users to select the month of the year (01 to 12)'),
 	},
 	{
-		label: 'Year Selector',
+		label: __('Year Selector'),
 		type: 'year-select',
-		desc: 'adds a dropdown selector that allows users to select the year from a configurable range',
+		desc: __('adds a dropdown selector that allows users to select the year from a configurable range'),
 	},
 	{
-		label: 'Checkbox',
+		label: __('Checkbox'),
 		type: 'checkbox',
-		desc: 'adds one or more checkboxes that allow users to select zero or more options from those provided',
+		desc: __('adds one or more checkboxes that allow users to select zero or more options from those provided'),
 	},
 	{
-		label: 'Radio Buttons',
+		label: __('Radio Buttons'),
 		type: 'radio',
-		desc: 'adds one or more radio buttons that allow users to only select one option from those provided',
+		desc: __('adds one or more radio buttons that allow users to only select one option from those provided'),
 	},
 	{
-		label: 'Decimal Number',
+		label: __('Decimal Number'),
 		type: 'decimal',
-		desc: 'adds a text input that only accepts numbers whose value is a decimal (float)',
+		desc: __('adds a text input that only accepts numbers whose value is a decimal (float)'),
 	},
 	{
-		label: 'Whole Number',
+		label: __('Whole Number'),
 		type: 'integer',
-		desc: 'adds a text input that only accepts numbers whose value is an integer (whole number)',
+		desc: __('adds a text input that only accepts numbers whose value is an integer (whole number)'),
 	},
 	{
-		label: 'Number Range',
+		label: __('Number Range'),
 		type: 'range',
 		desc:
 			'adds a slider input that can be used to indicate a number range for setting a minimum and maximum values',
 	},
 	{
-		label: 'Phone Number',
+		label: __('Phone Number'),
 		type: 'tel',
 		desc:
 			'adds a text field for entering a telephone number. Can be configured to only accept input that matches a pattern',
 	},
 	{
-		label: 'Dropdown',
+		label: __('Dropdown'),
 		type: 'select',
-		desc: 'adds a dropdown selector that accepts a single value',
+		desc: __('adds a dropdown selector that accepts a single value'),
 	},
 	{
-		label: 'Multi Select',
+		label: __('Multi Select'),
 		type: 'select-multi',
-		desc: 'adds a dropdown selector that accepts multiple values',
+		desc: __('adds a dropdown selector that accepts multiple values'),
 	},
 	{
-		label: 'Country Selector',
+		label: __('Country Selector'),
 		type: 'select-country',
-		desc: 'adds a dropdown selector populated with names of countries that are enabled for the site',
+		desc: __('adds a dropdown selector populated with names of countries that are enabled for the site'),
 	},
 	{
-		label: 'State Selector',
+		label: __('State Selector'),
 		type: 'select-state',
 		desc:
 			'adds a dropdown selector populated with names of states/provinces for the countries that are enabled for the site',
 	},
 	{
-		label: 'Button',
+		label: __('Button'),
 		type: 'button',
-		desc: 'adds a button to the form that can be used for triggering fucntionality (requires custom coding)',
+		desc: __('adds a button to the form that can be used for triggering fucntionality (requires custom coding)'),
 	},
 	{
-		label: 'Reset Button',
+		label: __('Reset Button'),
 		type: 'reset',
-		desc: "adds a button that will reset the form back to it's orginial state.",
+		desc: __('adds a button that will reset the form back to its orginial state.'),
 	},
-	// {
-	// 	label: 'Submit Button',
-	// 	type: 'submit',
-	// 	desc: '',
-	// },
 ];
 
 export const FormBuilderSidebar = () => {
