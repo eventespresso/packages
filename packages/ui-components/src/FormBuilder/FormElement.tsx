@@ -4,6 +4,8 @@ import { DragHandle, SettingsOutlined, Trash } from '@eventespresso/icons';
 
 import { IconButton } from '../Button';
 import { FormElementSettings } from './FormElementSettings';
+import { ELEMENT_BLOCKS_INDEXED } from './constants';
+import { FormElementInput } from './FormElementInput';
 
 import type { FormElementProps } from './types';
 
@@ -11,14 +13,13 @@ export const FormElement: React.FC<FormElementProps> = ({ element }) => {
 	const { isOpen, onToggle } = useDisclosure();
 	const wrapperClass = classNames('ee-form-element__wrapper', isOpen && 'ee-form-element__wrapper--active');
 
+	const elementTypeLabel = ELEMENT_BLOCKS_INDEXED[element.type]?.label || '';
+
 	return (
 		<div className={wrapperClass}>
 			<div className='ee-form-element'>
-				<div className='ee-form-element__input'>
-					<label htmlFor={element.UUID}>{element.publicLabel}</label>
-					<input type='text' id={element.UUID} placeholder={element.placeholder} />
-				</div>
-				<div className='ee-form-element__type'>{element.type}</div>
+				<FormElementInput element={element} />
+				<div className='ee-form-element__type'>{elementTypeLabel}</div>
 				<div className='ee-form-element__actions'>
 					<IconButton
 						active={isOpen}
