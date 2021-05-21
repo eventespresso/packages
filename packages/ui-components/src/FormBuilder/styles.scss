@@ -21,120 +21,200 @@
 		padding: var(--ee-padding-small) var(--ee-padding-tiny);
 		width: 100%;
 
-		&-section {
-			border: none;
-			margin:  0 0 var(--ee-margin-default);
-			padding: var(--ee-padding-micro) var(--ee-padding-tiny);
-			position: relative;
+		.ee-form {
+			&-section {
+				border: none;
+				margin:  0 0 var(--ee-margin-default);
+				padding: var(--ee-padding-micro) var(--ee-padding-tiny);
+				position: relative;
 
-			& + fieldset {
-				margin: var(--ee-margin-small) 0 0;
-			}
-
-			&-edit-btn.ee-btn {
-				bottom: -1.5rem;
-				position: absolute;
-				right: 0;
-			}
-
-			legend {
-				color: var(--ee-default-text-color-super-low-contrast);
-				font-size: var(--ee-font-size-big);
-				font-weight: 600;
-				opacity: 0;
-				padding: 0 0 0 var(--ee-padding-tiny);
-				transition: all 250ms ease-in-out;
-			}
-
-			&:hover legend {
-				opacity: 1;
-			}
-		}
-
-
-		.ee-form-element {
-			display: flex;
-			flex-flow: row wrap;
-			height: fit-content;
-			justify-content: space-between;
-			max-width: 100%;
-			width: 100%;
-
-			&__input {
-				align-content: flex-start;
-				display: flex;
-				flex-flow: column wrap;
-				height: unset;
-				width: 100%;
-
-				@include min600px {
-					width: 60%;
+				&__wrapper {
+					display: flex;
 				}
 
-				input {
-					display: block;
-					width: 100%;
+				&__menu-button {
+					margin: var(--ee-margin-small) var(--ee-margin-tiny);
 				}
 
-				.ee-input-label__wrapper {
-					padding: 0;
-					width: 100%;
+				&--active {
+					background: var(--ee-color-grey-14);
 				}
-			}
 
-			&__menu {
-				align-content: flex-end;
-				align-items: center;
-				box-sizing: border-box;
-				display: flex;
-				flex-flow: row wrap;
-				height: 0;
-				justify-content: flex-end;
-				opacity: 0;
-				padding: var(--ee-padding-tiny) 0 0 ;
-				width: 100%;
-				transition: all 250ms ease-in-out;
-
-				@include min600px {
-					padding: 0;
-					width: 40%;
+				& + fieldset {
+					margin: var(--ee-margin-small) 0 0;
 				}
-			}
 
-			&__actions {
-				align-content: center;
-				align-items: center;
-				display: flex;
-				flex-flow: row wrap;
-				justify-content: flex-end;
-				width: 134px;
+				&-edit-btn.ee-btn {
+					bottom: -1.5rem;
+					position: absolute;
+					right: 0;
+				}
 
-				button {
-					margin: 0 .25rem;
+				&__toolbar {
+					box-sizing: border-box;
+					height: 0;
+					opacity: 0;
+					padding: var(--ee-padding-tiny) 0;
+					transition: all 250ms ease-in-out;
+					width: calc(100% - var(--ee-icon-button-size-big));
 
-					&.ee-drag-handle {
-						cursor: move;
+					&--active {
+						height: auto;
+						opacity: 1;
+					}
+
+					&-tools {
+						align-content: center;
+						align-items: flex-end;
+						display: flex;
+						flex-flow: row wrap;
+						justify-content: flex-end;
+					}
+
+					&-item {
+						align-items: center;
+						display: flex;
+
+						&-name {
+							margin-right: auto;
+
+							h4 {
+								color: var(--ee-default-text-color-super-low-contrast);
+								font-size: var(--ee-font-size-big);
+								font-weight: 600;
+								height: var(--ee-icon-button-size-small);
+								line-height: var(--ee-icon-button-size-tiny);
+								margin: var(--ee-margin-tiny);
+								min-height: var(--ee-icon-button-size-small);
+								padding: 0;
+							}
+						}
+
+						.ee-input__wrapper {
+							align-items: center;
+							flex-flow: row nowrap;
+							padding: var(--ee-padding-tiny);
+
+							label {
+								padding-right: var(--ee-padding-micro);
+							}
+						}
+
+						button {
+							margin: var(--ee-margin-tiny);
+						}
 					}
 				}
 			}
 
-			&__type {
-				align-content: center;
-				align-items: center;
-				color: var(--ee-default-text-color-super-low-contrast);
+			&-element {
+				align-items: flex-end;
 				display: flex;
-				justify-content: flex-end;
-				padding: 0 var(--ee-padding-tiny);
-			}
+				flex-flow: row wrap;
+				height: fit-content;
+				justify-content: flex-start;
+				max-width: 100%;
+				width: 100%;
 
-			&:hover {
-				.ee-form-element__menu {
-					height: auto;
-					opacity: 1;
+				&__input {
+					align-content: flex-start;
+					display: flex;
+					flex-flow: column wrap;
+					height: unset;
+					width: 100%;
+
+					@include min600px {
+  						width: calc(60% - var(--ee-icon-button-size-big));
+					}
+
+					input {
+						display: block;
+						width: 100%;
+					}
+
+					.ee-input-label__wrapper {
+						padding: 0;
+						width: 100%;
+					}
+				}
+
+				&__menu {
+					align-content: flex-end;
+					align-items: center;
+					box-sizing: border-box;
+					display: flex;
+					flex-flow: row wrap;
+					height: 0;
+					justify-content: flex-end;
+					opacity: 0;
+					padding: var(--ee-padding-tiny) 0 0 ;
+					width: 100%;
+					transition: all 250ms ease-in-out;
+
+					@include min600px {
+						padding: var(--ee-padding-micro);
+  						width: 40%;
+					}
+
+					&--active {
+						height: auto;
+						opacity: 1;
+					}
+
+					&-button {
+						margin: var(--ee-margin-micro);
+					}
+				}
+
+				&__actions {
+					align-content: center;
+					align-items: center;
+					display: flex;
+					flex-flow: row wrap;
+					justify-content: flex-end;
+					width: 134px;
+
+					button {
+						margin: 0 .25rem;
+
+						&.ee-drag-handle {
+							cursor: move;
+						}
+					}
+				}
+
+				&__type {
+					align-content: center;
+					align-items: center;
+					color: var(--ee-default-text-color-super-low-contrast);
+					display: flex;
+					justify-content: flex-end;
+					padding: 0 var(--ee-padding-tiny);
+				}
+
+				&__wrapper {
+					border-radius: 3px;
+					color: var(--ee-default-text-color);
+					display: flex;
+					flex-flow: column wrap;
+					margin: 0 0 var(--ee-margin-tiny);
+					padding: var(--ee-padding-tiny);
+					transition: all 250ms ease-in-out;
+
+					&:hover {
+						background: var(--ee-color-grey-14);
+					}
+					&--active {
+						background: var(--ee-color-grey-14);
+						.ee-form-element__actions,
+						.ee-form-element__type {
+							opacity: 1;
+						}
+					}
 				}
 			}
 
-			&__tabs {
+			&-settings__tabs {
 				background: var(--ee-background-color);
 				box-sizing: border-box;
 				color: var(--ee-default-text-color);
@@ -145,27 +225,6 @@
 				padding: 0 var(--ee-padding-small) var(--ee-padding-small);
 				min-height: unset;
 				width: 100%;
-			}
-
-			&__wrapper {
-				border-radius: 3px;
-				color: var(--ee-default-text-color);
-				display: flex;
-				flex-flow: column wrap;
-				margin: 0 0 var(--ee-margin-tiny);
-				padding: var(--ee-padding-tiny);
-				transition: all 250ms ease-in-out;
-
-				&:hover {
-					background: var(--ee-color-grey-14);
-				}
-				&--active {
-					background: var(--ee-color-grey-14);
-					.ee-form-element__actions,
-					.ee-form-element__type {
-						opacity: 1;
-					}
-				}
 			}
 		}
 	}
