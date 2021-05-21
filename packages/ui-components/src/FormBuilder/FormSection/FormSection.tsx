@@ -16,9 +16,7 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 	return (
 		<fieldset className={fieldsetClass}>
 			<div className={'ee-form-section__wrapper'}>
-				{/* <div className='ee-form-section__name'> */}
 				<h4 className='ee-form-section__name'>{formSection.adminLabel || formSection.name}</h4>
-				{/* </div> */}
 				<IconButton
 					active={isOpen}
 					borderless

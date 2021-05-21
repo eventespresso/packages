@@ -30,22 +30,23 @@
 
 				&__wrapper {
 					display: flex;
+					flex-flow: column wrap;
+
+					@include min600px {
+						flex-flow: row wrap;
+					}
 				}
 
 				&__name {
-					// margin-right: auto;
-
-					// h4 {
-						color: var(--ee-default-text-color-super-low-contrast);
-						font-size: var(--ee-font-size-big);
-						font-weight: 600;
-						height: var(--ee-icon-button-size-small);
-						line-height: var(--ee-icon-button-size-tiny);
-						margin: var(--ee-margin-small) var(--ee-margin-tiny);
-						min-height: var(--ee-icon-button-size-small);
-						padding: 0;
-						width: auto;
-					// }
+					color: var(--ee-default-text-color-super-low-contrast);
+					font-size: var(--ee-font-size-big);
+					font-weight: 600;
+					height: var(--ee-icon-button-size-small);
+					line-height: var(--ee-icon-button-size-tiny);
+					margin: var(--ee-margin-small) var(--ee-margin-tiny);
+					min-height: var(--ee-icon-button-size-small);
+					padding: 0;
+					width: auto;
 				}
 
 				&__menu-button {
@@ -72,7 +73,6 @@
 					opacity: 0;
 					padding: var(--ee-padding-tiny) 0;
 					transition: all 250ms ease-in-out;
-					// width: calc(100% - var(--ee-icon-button-size-big));
 					width: auto;
 
 					&--active {
@@ -84,18 +84,24 @@
 						align-content: center;
 						align-items: flex-end;
 						display: flex;
-						flex-flow: row wrap;
+						flex-flow: column wrap;
 						justify-content: flex-end;
+
+						@include min600px {
+							flex-flow: row wrap;
+						}
 					}
 
 					&-item {
 						align-items: center;
 						display: flex;
+						flex-flow: row wrap;
+						margin: 0 var(--ee-margin-tiny);
 
 						.ee-input__wrapper {
 							align-items: center;
 							flex-flow: row nowrap;
-							padding: var(--ee-padding-tiny);
+							padding: var(--ee-padding-tiny) var(--ee-padding-micro);
 
 							label {
 								padding-right: var(--ee-padding-micro);
@@ -103,7 +109,7 @@
 						}
 
 						button {
-							margin: var(--ee-margin-tiny);
+							margin: var(--ee-margin-tiny) var(--ee-margin-micro);
 						}
 					}
 				}
@@ -217,16 +223,30 @@
 			}
 
 			&-settings__tabs {
-				background: var(--ee-background-color);
 				box-sizing: border-box;
-				color: var(--ee-default-text-color);
-				display: flex;
-				flex-flow: column wrap;
 				height: fit-content;
 				margin: var(--ee-margin-small) 0 0;
-				padding: 0 var(--ee-padding-small) var(--ee-padding-small);
+				padding: 0 var(--ee-padding-tiny) var(--ee-padding-default);
 				min-height: unset;
 				width: 100%;
+
+				.ee-tabs__tab {
+					svg.ee-svg.ee-svg {
+						// for the Pallette icon
+						circle {
+							fill: var(--ee-color-grey-12);
+						}
+						&.ee-tab-icon-settings {
+							height: calc(var(--ee-icon-button-size-micro) + 6px);
+							width: calc(var(--ee-icon-button-size-micro) + 6px);
+							margin: -2px 0 0;
+						}
+						&.ee-tab-icon-validation {
+							height: calc(var(--ee-icon-button-size-micro) - 3px);
+							width: calc(var(--ee-icon-button-size-micro) - 3px);
+						}
+					}
+				}
 			}
 		}
 	}

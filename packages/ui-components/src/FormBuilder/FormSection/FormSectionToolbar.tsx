@@ -28,29 +28,28 @@ const locations = [
 
 export const FormSectionToolbar: React.FC<FormSectionProps> = ({ active, formSection }) => {
 	const toolbarClass = classNames('ee-form-section__toolbar', active && 'ee-form-section__toolbar--active');
-	return (
-		<div className={toolbarClass}>
-			<div className={'ee-form-section__toolbar-tools'}>
-				<div className='ee-form-section__toolbar-item'>
-					<Select
-						id={`${formSection.UUID}-add-new-section-selector`}
-						label={__('add new')}
-						options={options}
-						size='small'
-					/>
-					<Select
-						id={`${formSection.UUID}-new-location-selector`}
-						label={__('to the')}
-						options={locations}
-						size='small'
-					/>
-					<Button buttonText={__('Add')} size='small' />
-				</div>
-				<div className='ee-form-section__toolbar-item'>
-					<IconButton icon={Trash} borderless size='small' transparentBg />
-					<IconButton icon={DragHandle} borderless className='ee-drag-handle' size='small' transparentBg />
-				</div>
+	const tools = active && (
+		<div className={'ee-form-section__toolbar-tools'}>
+			<div className='ee-form-section__toolbar-item'>
+				<Select
+					id={`${formSection.UUID}-add-new-section-selector`}
+					label={__('add new')}
+					options={options}
+					size='small'
+				/>
+				<Select
+					id={`${formSection.UUID}-new-location-selector`}
+					label={__('to the')}
+					options={locations}
+					size='small'
+				/>
+				<Button buttonText={__('Add')} size='small' />
+			</div>
+			<div className='ee-form-section__toolbar-item'>
+				<IconButton icon={Trash} borderless size='small' transparentBg />
+				<IconButton icon={DragHandle} borderless className='ee-drag-handle' size='small' transparentBg />
 			</div>
 		</div>
 	);
+	return <div className={toolbarClass}>{tools}</div>;
 };

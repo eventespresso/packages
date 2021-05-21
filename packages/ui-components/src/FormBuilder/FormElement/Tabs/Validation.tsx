@@ -7,8 +7,8 @@ import { Switch } from '../../../Switch';
 
 import type { FormElementProps, ElementType } from '../../types';
 
-const Input = withLabel(TextInput);
-const NumericInput = withLabel(NumberInput);
+const TextWithLabel = withLabel(TextInput);
+const NumberWithLabel = withLabel(NumberInput);
 
 const numericFields: Array<ElementType> = ['integer', 'decimal'];
 
@@ -17,11 +17,11 @@ export const Validation: React.FC<FormElementProps> = ({ element }) => {
 		// TODO wire up the values from data state
 		<>
 			<Switch label={__('required')} defaultChecked={element.required} />
-			<Input label={__('required text')} defaultValue={element.requiredText} />
+			<TextWithLabel label={__('required text')} defaultValue={element.requiredText} />
 			{numericFields.includes(element.type) && (
 				<>
-					<NumericInput label={__('min')} defaultValue={element.min} />
-					<NumericInput label={__('max')} defaultValue={element.max} />
+					<NumberWithLabel label={__('min')} defaultValue={element.min} />
+					<NumberWithLabel label={__('max')} defaultValue={element.max} />
 				</>
 			)}
 		</>

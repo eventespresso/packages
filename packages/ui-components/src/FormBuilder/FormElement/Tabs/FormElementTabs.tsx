@@ -1,6 +1,7 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/adapters';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '../../../Tabs';
 
 import { __ } from '@eventespresso/i18n';
+import { Check, CheckList, Palette, SettingsOutlined } from '@eventespresso/icons';
 
 import { Collapsible } from '../../../Collapsible';
 import type { SettingsProps } from '../../types';
@@ -13,19 +14,35 @@ export const FormElementTabs: React.FC<SettingsProps> = ({ element, open = false
 		<Collapsible show={open}>
 			<Tabs variant='enclosed' wrapperClassName='ee-form-settings__tabs'>
 				<TabList>
-					<Tab>{__('Settings')}</Tab>
-					<Tab>{__('Validation')}</Tab>
-					<Tab>{__('Styles')}</Tab>
+					<Tab>
+						<SettingsOutlined className='ee-tab-icon-settings' />
+						{__('Settings')}
+					</Tab>
+					<Tab>
+						<Palette className='ee-tab-icon-palette' />
+						{__('Styles')}
+					</Tab>
+					<Tab>
+						<Check className='ee-tab-icon-validation' />
+						{__('Validation')}
+					</Tab>
+					<Tab>
+						<CheckList className='ee-tab-icon-rules' />
+						{__('Rules')}
+					</Tab>
 				</TabList>
 				<TabPanels>
 					<TabPanel>
 						<Settings element={element} />
 					</TabPanel>
 					<TabPanel>
+						<Styles element={element} />
+					</TabPanel>
+					<TabPanel>
 						<Validation element={element} />
 					</TabPanel>
 					<TabPanel>
-						<Styles element={element} />
+						<p>dont be bad person</p>
 					</TabPanel>
 				</TabPanels>
 			</Tabs>
