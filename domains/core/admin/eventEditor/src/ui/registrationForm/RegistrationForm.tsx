@@ -8,7 +8,7 @@ const formSections: FormBuilderProps['formSections'] = [
 		UUID: 'abc123',
 		appliesTo: 'all',
 		belongsTo: 'Event-1',
-		adminLabel: 'personal questions',
+		adminLabel: 'personal information',
 		htmlClass: '',
 		order: 1,
 		relation: 'Event',
