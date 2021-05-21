@@ -49,6 +49,7 @@ export { default as InfoCircleOutlined } from './InfoCircleOutlined';
 export { default as Insert } from './Insert';
 export { default as Link } from './Link';
 export { default as Lock } from './Lock';
+export { default as Menu } from './Menu';
 export { default as MinusOutlined } from './MinusOutlined';
 export { default as More } from './More';
 export { default as OnlineEventRegistration } from './OnlineEventRegistration';
