@@ -1,7 +1,5 @@
 import { Tab as ChakraTab } from '@chakra-ui/react';
 
-import type { TabProps } from './types';
+import type { TabAdapterProps } from './types';
 
-export const Tab: React.FC<TabProps> = (props) => {
-	return <ChakraTab tabIndex={0} {...props} />;
-};
+export const Tab: React.FC<TabAdapterProps> = (props) => <ChakraTab tabIndex={0} {...props} />;

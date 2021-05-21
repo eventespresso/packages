@@ -1,10 +1,5 @@
 import { TabPanels as ChakraTabPanels } from '@chakra-ui/react';
-import classNames from 'classnames';
 
-import type { TabPanelsProps } from './types';
+import type { TabPanelsAdapterProps } from './types';
 
-export const TabPanels: React.FC<TabPanelsProps> = (props) => {
-	const className = classNames(props.className, 'ee-tabs__tab-panels');
-
-	return <ChakraTabPanels {...props} className={className} />;
-};
+export const TabPanels: React.FC<TabPanelsAdapterProps> = (props) => <ChakraTabPanels {...props} />;

@@ -1,0 +1,101 @@
+
+.ee-tabs {
+	.ee-tabs {
+		&__wrapper {
+			box-sizing: border-box;
+			position: relative;
+		}
+
+		&__tab {
+			background: var(--ee-color-grey-12);
+			border-color: var(--ee-color-grey-12);
+			border-radius: 0 !important;
+			border-style: solid;
+			border-width: 0;
+			border-top-width: var(--ee-border-width-thick);
+			box-shadow: none;
+			box-sizing: border-box;
+			color: var(--ee-default-text-color-low-contrast);
+			display: flex;
+			flex-flow: column nowrap;
+			font-size: var(--ee-font-size-smaller);
+			font-weight: 600;
+			height: calc(var(--ee-font-size-small) * 3 + var(--ee-icon-button-size-micro));
+			line-height: var(--ee-font-size-small);
+			margin: 0;
+ 			min-width: calc(var(--ee-font-size-small) * 9);
+			outline: none;
+			position: relative;
+
+			& + .ee-tabs__tab {
+				margin-left:var(--ee-margin-micro);
+			}
+
+			svg.ee-svg.ee-svg {
+				color: var(--ee-default-text-color-super-low-contrast);
+				font-size: var(--ee-font-size-big);
+				font-weight: 300;
+				height: var(--ee-icon-button-size-micro);
+				margin:  0 0 var(--ee-margin-micro);
+				width: var(--ee-icon-button-size-micro);
+
+				g {
+					stroke-width: 1 !important;
+				}
+				path {
+					color: var(--ee-default-text-color-super-low-contrast);
+				}
+			}
+
+			&:hover {
+				color: var(--ee-default-text-color-high-contrast);
+
+				svg.ee-svg.ee-svg {
+					path {
+						color: var(--ee-default-text-color-low-contrast);
+					}
+				}
+			}
+
+			&[aria-selected="true"] {
+				background: var(--ee-background-color);
+				border-color: var(--ee-background-color);
+				border-top-color: var(--ee-color-primary);
+				color: var(--ee-default-text-color);
+				z-index: 2;
+
+				svg.ee-svg.ee-svg {
+					path {
+						color: var(--ee-default-text-color-low-contrast);
+					}
+					circle {
+						fill: var(--ee-background-color);
+					}
+				}
+			}
+
+			&:focus {
+				box-shadow: none;
+			}
+		}
+
+		&__tab-list {
+			border: none;
+		}
+
+		&__tab-panels {
+			box-sizing: border-box;
+		}
+
+		&__tab-panel {
+			background: var(--ee-background-color);
+			border: none;
+			box-shadow: none;
+			box-sizing: border-box;
+			color: var(--ee-default-text-color);
+			outline: none;
+			position: relative;
+			z-index: 1;
+		}
+	}
+}

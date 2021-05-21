@@ -6,14 +6,12 @@ import type {
 	TabPanelsProps as ChakraTabPanelsProps,
 } from '@chakra-ui/react';
 
-export interface TabProps extends ChakraTabProps {}
+export interface TabAdapterProps extends ChakraTabProps {}
 
-export interface TabsProps extends ChakraTabsProps {
-	wrapperClassName?: string;
-}
+export interface TabsAdapterProps extends ChakraTabsProps {}
 
-export interface TabListProps extends ChakraTabListProps {}
+export interface TabListAdapterProps extends ChakraTabListProps {}
 
-export interface TabPanelProps extends ChakraTabPanelProps {}
+export interface TabPanelAdapterProps extends ChakraTabPanelProps {}
 
-export interface TabPanelsProps extends ChakraTabPanelsProps {}
+export interface TabPanelsAdapterProps extends ChakraTabPanelsProps {}
