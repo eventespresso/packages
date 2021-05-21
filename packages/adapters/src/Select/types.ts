@@ -11,6 +11,6 @@ export interface OptionProps {
 
 export type OptionsType = Array<OptionProps>;
 
-export interface SelectProps extends Omit<ChakraSelectProps, 'size'>, CommonInputProps<HTMLSelectElement> {
+export interface SelectProps extends ChakraSelectProps, CommonInputProps<HTMLSelectElement> {
 	options?: OptionsType;
 }

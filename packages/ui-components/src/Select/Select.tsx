@@ -10,8 +10,13 @@ import type { SelectProps } from './types';
 import './style.scss';
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
-	({ fitContainer, flow, id, noBorderColor, ...props }, ref) => {
-		const className = classNames('ee-select', noBorderColor && 'ee-select--no-border-color', props.className);
+	({ fitContainer, flow, id, noBorderColor, size, ...props }, ref) => {
+		const className = classNames(
+			'ee-select',
+			noBorderColor && 'ee-select--no-border-color',
+			props.className,
+			size && size !== 'default' && [`ee-select--${size}`]
+		);
 		const wrapperClassName = classNames('ee-select-wrapper', fitContainer && 'ee-select-wrapper--fit-container');
 		const rootProps = useMemo(() => ({ className: wrapperClassName, width: 'max-content' }), [wrapperClassName]);
 
