@@ -3,7 +3,10 @@
 	color: var(--ee-default-text-color-low-contrast);
 	display: flex;
 
-	justify-content: center;
+	justify-content: flex-end;
+	[dir='rtl'] & {
+		justify-content: flex-start;
+	}
 
 	padding: var(--ee-padding-tiny);
 
