@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import { More } from '@eventespresso/icons';
 import { useDisclosure } from '@eventespresso/hooks';
 
-import { IconButton } from '../Button';
-import { FormElement } from './FormElement';
+import { IconButton } from '../../Button';
+import { FormElement } from '../FormElement';
 import { FormSectionToolbar } from './FormSectionToolbar';
-import { FormSectionSettings } from './FormSectionSettings';
+import { FormSectionTabs } from './Tabs';
 
-import type { FormSectionProps } from './types';
+import type { FormSectionProps } from '../types';
 
 export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 	const { isOpen, onToggle } = useDisclosure();
@@ -17,7 +17,7 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 		<fieldset className={fieldsetClass}>
 			<div className={'ee-form-section__wrapper'}>
 				{/* <div className='ee-form-section__name'> */}
-				<h4 className='ee-form-section__name'>{formSection.adminLabel}</h4>
+				<h4 className='ee-form-section__name'>{formSection.adminLabel || formSection.name}</h4>
 				{/* </div> */}
 				<IconButton
 					active={isOpen}
@@ -30,7 +30,7 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 				/>
 				<FormSectionToolbar active={isOpen} formSection={formSection} />
 			</div>
-			<FormSectionSettings formSection={formSection} open={isOpen} />
+			<FormSectionTabs formSection={formSection} open={isOpen} />
 			{formElements}
 		</fieldset>
 	);

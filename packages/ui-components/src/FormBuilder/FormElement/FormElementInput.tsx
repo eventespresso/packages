@@ -1,7 +1,7 @@
 import { FormControl } from '@eventespresso/adapters';
 
 import { MappedElement } from './MappedElement';
-import type { FormElementProps } from './types';
+import type { FormElementProps } from '../types';
 
 export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
 	return (

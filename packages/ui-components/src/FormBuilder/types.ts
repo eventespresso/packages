@@ -41,19 +41,22 @@ export type ElementBlock = {
 
 export interface FormInput {
 	UUID: string;
-	relation?: string;
 	adminLabel?: string;
 	adminOnly?: boolean;
 	belongsTo?: string;
+	customCss?: string;
 	helpClass?: string;
 	helpText?: string;
 	htmlClass?: string;
+	inputClass?: string;
+	labelClass?: string;
 	max?: number;
 	min?: number;
 	options?: OptionsType;
 	order?: number;
 	placeholder?: string;
 	publicLabel: string;
+	relation?: string;
 	required?: boolean;
 	requiredText?: string;
 	status?: string;
@@ -63,15 +66,20 @@ export interface FormInput {
 
 export interface FormSection {
 	UUID: string;
-	adminLabel: string;
-	appliesTo: string;
-	belongsTo: string;
+	adminLabel?: string;
+	appliesTo?: string;
+	belongsTo?: string;
+	customCss?: string;
+	description?: string;
 	elements: Array<FormInput>;
-	htmlClass: string;
-	order: number;
-	relation: string;
-	status: string;
-	wpUser: number;
+	htmlClass?: string;
+	name: string;
+	order?: number;
+	relation?: string;
+	showName?: boolean;
+	showDescription?: boolean;
+	status?: string;
+	wpUser?: number;
 }
 
 export interface FormBuilderProps {

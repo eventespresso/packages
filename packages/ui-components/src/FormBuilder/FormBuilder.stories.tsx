@@ -18,6 +18,7 @@ const formSections: FormBuilderProps['formSections'] = [
 		appliesTo: 'all',
 		belongsTo: 'Event-1',
 		adminLabel: 'personal questions',
+		name: 'personal questions',
 		htmlClass: '',
 		order: 1,
 		relation: 'Event',

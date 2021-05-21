@@ -1,12 +1,13 @@
 import classNames from 'classnames';
+
 import { __ } from '@eventespresso/i18n';
 import { DragHandle, Trash } from '@eventespresso/icons';
 
-import { Button, IconButton } from '../Button';
-import { ELEMENT_BLOCKS } from './constants';
-import { Select } from '../';
+import { Button, IconButton } from '../../Button';
+import { ELEMENT_BLOCKS } from '../constants';
+import { Select } from '../../';
 
-import type { FormSectionProps } from './types';
+import type { FormSectionProps } from '../types';
 
 const options = ELEMENT_BLOCKS.map((tag) => {
 	return {

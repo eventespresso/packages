@@ -2,8 +2,8 @@ import { pick } from 'ramda';
 import { useMemo } from 'react';
 
 import type { AnyObject } from '@eventespresso/utils';
-import { TextInput, NumberInput, Textarea, Select, Switch, withLabel } from '../';
-import { FormElementProps, FormInput } from './types';
+import { TextInput, NumberInput, Textarea, Select, Switch, withLabel } from '../../';
+import { FormElementProps, FormInput } from '../types';
 
 const DefaultComponent = () => null;
 

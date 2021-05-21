@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import { useDisclosure } from '@eventespresso/hooks';
 import { More } from '@eventespresso/icons';
 
-import { IconButton } from '../Button';
+import { IconButton } from '../../Button';
 import { FormElementInput } from './FormElementInput';
 import { FormElementToolbar } from './FormElementToolbar';
-import { FormElementSettings } from './FormElementSettings';
+import { FormElementTabs } from './Tabs';
 
-import type { FormElementProps } from './types';
+import type { FormElementProps } from '../types';
 
 export const FormElement: React.FC<FormElementProps> = ({ element }) => {
 	const { isOpen, onToggle } = useDisclosure();
@@ -28,7 +28,7 @@ export const FormElement: React.FC<FormElementProps> = ({ element }) => {
 				/>
 				<FormElementToolbar active={isOpen} element={element} />
 			</div>
-			<FormElementSettings element={element} open={isOpen} />
+			<FormElementTabs element={element} open={isOpen} />
 		</div>
 	);
 };
