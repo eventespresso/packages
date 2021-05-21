@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import { useDisclosure } from '@eventespresso/hooks';
-import { DragHandle, SettingsOutlined, Trash } from '@eventespresso/icons';
+import { More } from '@eventespresso/icons';
 
 import { IconButton } from '../Button';
-import { ELEMENT_BLOCKS_INDEXED } from './constants';
-import { FormElementSettings } from './FormElementSettings';
 import { FormElementInput } from './FormElementInput';
+import { FormElementToolbar } from './FormElementToolbar';
 
 import type { FormElementProps } from './types';
 
@@ -13,35 +12,21 @@ export const FormElement: React.FC<FormElementProps> = ({ element }) => {
 	const { isOpen, onToggle } = useDisclosure();
 	const wrapperClass = classNames('ee-form-element__wrapper', isOpen && 'ee-form-element__wrapper--active');
 
-	const elementTypeLabel = ELEMENT_BLOCKS_INDEXED[element.type]?.label || '';
-
 	return (
 		<div className={wrapperClass}>
 			<div className='ee-form-element'>
 				<FormElementInput element={element} />
-				<div className='ee-form-element__menu'>
-					<div className='ee-form-element__type'>{elementTypeLabel}</div>
-					<div className='ee-form-element__actions'>
-						<IconButton
-							active={isOpen}
-							borderless
-							icon={SettingsOutlined}
-							onClick={onToggle}
-							size='smaller'
-							transparentBg
-						/>
-						<IconButton icon={Trash} borderless size='smaller' transparentBg />
-						<IconButton
-							icon={DragHandle}
-							borderless
-							className='ee-drag-handle'
-							size='smaller'
-							transparentBg
-						/>
-					</div>
-				</div>
+				<IconButton
+					active={isOpen}
+					borderless
+					className='ee-form-element__menu-button'
+					icon={More}
+					onClick={onToggle}
+					size='small'
+					transparentBg
+				/>
+				<FormElementToolbar active={isOpen} element={element} />
 			</div>
-			<FormElementSettings element={element} open={isOpen} />
 		</div>
 	);
 };
