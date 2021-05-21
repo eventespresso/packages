@@ -84,14 +84,17 @@ export interface FormBuilderProps {
 }
 
 export interface FormElementProps {
+	active?: boolean;
 	element: FormInput;
 }
 
 export interface FormSectionProps {
+	active?: boolean;
 	formSection: FormSection;
 }
 
 export interface SettingsProps {
-	element: FormInput;
+	element?: FormInput;
+	formSection?: FormSection;
 	open: boolean;
 }
