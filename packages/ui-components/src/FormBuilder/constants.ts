@@ -1,5 +1,5 @@
-import { __ } from '@eventespresso/i18n';
 import { indexBy, prop } from 'ramda';
+import { __ } from '@eventespresso/i18n';
 
 import { ElementBlock } from './types';
 
