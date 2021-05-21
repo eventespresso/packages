@@ -1,6 +1,6 @@
 @import '~@eventespresso/styles/src/mixins/base-styles';
 
-.ee-text-input {
+.ee-text-input.ee-text-input {
 	@include ee-input-base;
 	@extend .ee-input;
 
