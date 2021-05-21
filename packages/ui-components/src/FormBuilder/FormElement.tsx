@@ -5,6 +5,7 @@ import { More } from '@eventespresso/icons';
 import { IconButton } from '../Button';
 import { FormElementInput } from './FormElementInput';
 import { FormElementToolbar } from './FormElementToolbar';
+import { FormElementSettings } from './FormElementSettings';
 
 import type { FormElementProps } from './types';
 
@@ -27,6 +28,7 @@ export const FormElement: React.FC<FormElementProps> = ({ element }) => {
 				/>
 				<FormElementToolbar active={isOpen} element={element} />
 			</div>
+			<FormElementSettings element={element} open={isOpen} />
 		</div>
 	);
 };

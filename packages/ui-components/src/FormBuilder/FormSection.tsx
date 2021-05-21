@@ -5,6 +5,7 @@ import { useDisclosure } from '@eventespresso/hooks';
 import { IconButton } from '../Button';
 import { FormElement } from './FormElement';
 import { FormSectionToolbar } from './FormSectionToolbar';
+import { FormSectionSettings } from './FormSectionSettings';
 
 import type { FormSectionProps } from './types';
 
@@ -15,6 +16,9 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 	return (
 		<fieldset className={fieldsetClass}>
 			<div className={'ee-form-section__wrapper'}>
+				{/* <div className='ee-form-section__name'> */}
+				<h4 className='ee-form-section__name'>{formSection.adminLabel}</h4>
+				{/* </div> */}
 				<IconButton
 					active={isOpen}
 					borderless
@@ -26,6 +30,7 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 				/>
 				<FormSectionToolbar active={isOpen} formSection={formSection} />
 			</div>
+			<FormSectionSettings formSection={formSection} open={isOpen} />
 			{formElements}
 		</fieldset>
 	);

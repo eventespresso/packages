@@ -32,6 +32,22 @@
 					display: flex;
 				}
 
+				&__name {
+					// margin-right: auto;
+
+					// h4 {
+						color: var(--ee-default-text-color-super-low-contrast);
+						font-size: var(--ee-font-size-big);
+						font-weight: 600;
+						height: var(--ee-icon-button-size-small);
+						line-height: var(--ee-icon-button-size-tiny);
+						margin: var(--ee-margin-small) var(--ee-margin-tiny);
+						min-height: var(--ee-icon-button-size-small);
+						padding: 0;
+						width: auto;
+					// }
+				}
+
 				&__menu-button {
 					margin: var(--ee-margin-small) var(--ee-margin-tiny);
 				}
@@ -56,7 +72,8 @@
 					opacity: 0;
 					padding: var(--ee-padding-tiny) 0;
 					transition: all 250ms ease-in-out;
-					width: calc(100% - var(--ee-icon-button-size-big));
+					// width: calc(100% - var(--ee-icon-button-size-big));
+					width: auto;
 
 					&--active {
 						height: auto;
@@ -74,21 +91,6 @@
 					&-item {
 						align-items: center;
 						display: flex;
-
-						&-name {
-							margin-right: auto;
-
-							h4 {
-								color: var(--ee-default-text-color-super-low-contrast);
-								font-size: var(--ee-font-size-big);
-								font-weight: 600;
-								height: var(--ee-icon-button-size-small);
-								line-height: var(--ee-icon-button-size-tiny);
-								margin: var(--ee-margin-tiny);
-								min-height: var(--ee-icon-button-size-small);
-								padding: 0;
-							}
-						}
 
 						.ee-input__wrapper {
 							align-items: center;
