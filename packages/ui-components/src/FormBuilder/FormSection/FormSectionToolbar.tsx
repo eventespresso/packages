@@ -7,9 +7,9 @@ import { Button, IconButton } from '../../Button';
 import { ELEMENT_BLOCKS } from '../constants';
 import { Select } from '../../';
 
-import type { FormSectionProps } from '../types';
+import type { FormSectionToolbarProps } from '../types';
 
-const options = ELEMENT_BLOCKS.map((tag) => {
+const elementtypes = ELEMENT_BLOCKS.map((tag) => {
 	return {
 		label: tag.label,
 		value: tag.type,
@@ -17,16 +17,16 @@ const options = ELEMENT_BLOCKS.map((tag) => {
 });
 const locations = [
 	{
-		label: 'top of this form section',
+		label: __('top'),
 		value: 'top',
 	},
 	{
-		label: 'bottom of this form section',
+		label: __('bottom'),
 		value: 'bottom',
 	},
 ];
 
-export const FormSectionToolbar: React.FC<FormSectionProps> = ({ active, formSection }) => {
+export const FormSectionToolbar: React.FC<FormSectionToolbarProps> = ({ active, formSection }) => {
 	const toolbarClass = classNames('ee-form-section__toolbar', active && 'ee-form-section__toolbar--active');
 	const tools = active && (
 		<div className={'ee-form-section__toolbar-tools'}>
@@ -34,7 +34,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ active, formSec
 				<Select
 					id={`${formSection.UUID}-add-new-section-selector`}
 					label={__('add new')}
-					options={options}
+					options={elementtypes}
 					size='small'
 				/>
 				<Select
@@ -43,6 +43,14 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ active, formSec
 					options={locations}
 					size='small'
 				/>
+				<label
+					aria-label=' of this form section'
+					className='ee-input-label'
+					id={`${formSection.UUID}-new-location-selector-label`}
+					htmlFor={`${formSection.UUID}-new-location-selector`}
+				>
+					{__('of this form section')}
+				</label>
 				<Button buttonText={__('Add')} size='small' />
 			</div>
 			<div className='ee-form-section__toolbar-item'>

@@ -4,12 +4,12 @@ import { TextInput } from '../../../text-input';
 import { withLabel } from '../../../withLabel';
 import { Textarea } from '../../../Textarea';
 
-import type { FormElementProps } from '../../types';
+import type { SettingsProps } from '../../types';
 
 const TextWithLabel = withLabel(TextInput);
 const TextAreaWithLabel = withLabel(Textarea);
 
-export const Styles: React.FC<FormElementProps> = ({ element }) => {
+export const Styles: React.FC<SettingsProps> = ({ element }) => {
 	return (
 		// TODO wire up the values from data state
 		<>

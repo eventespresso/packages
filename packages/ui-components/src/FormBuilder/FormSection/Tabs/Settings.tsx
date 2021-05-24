@@ -5,12 +5,12 @@ import { withLabel } from '../../../withLabel';
 import { Textarea } from '../../../Textarea';
 import { Switch } from '../../../Switch';
 
-import type { FormSectionProps } from '../../types';
+import type { SettingsProps } from '../../types';
 
 const Input = withLabel(TextInput);
 const TextAreaWithLabel = withLabel(Textarea);
 
-export const Settings: React.FC<FormSectionProps> = ({ formSection }) => {
+export const Settings: React.FC<SettingsProps> = ({ formSection }) => {
 	return (
 		// TODO wire up the values from data state
 		<>

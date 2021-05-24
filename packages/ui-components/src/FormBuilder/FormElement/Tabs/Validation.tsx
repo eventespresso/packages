@@ -5,14 +5,14 @@ import { NumberInput } from '../../../NumberInput';
 import { withLabel } from '../../../withLabel';
 import { Switch } from '../../../Switch';
 
-import type { FormElementProps, ElementType } from '../../types';
+import type { SettingsProps, ElementType } from '../../types';
 
 const TextWithLabel = withLabel(TextInput);
 const NumberWithLabel = withLabel(NumberInput);
 
 const numericFields: Array<ElementType> = ['integer', 'decimal'];
 
-export const Validation: React.FC<FormElementProps> = ({ element }) => {
+export const Validation: React.FC<SettingsProps> = ({ element }) => {
 	return (
 		// TODO wire up the values from data state
 		<>

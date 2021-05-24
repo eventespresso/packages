@@ -4,9 +4,9 @@ import { DragHandle, Trash } from '@eventespresso/icons';
 import { IconButton } from '../../Button';
 import { ELEMENT_BLOCKS_INDEXED } from '../constants';
 
-import type { FormElementProps } from '../types';
+import type { FormElementToolbarProps } from '../types';
 
-export const FormElementToolbar: React.FC<FormElementProps> = ({ active, element }) => {
+export const FormElementToolbar: React.FC<FormElementToolbarProps> = ({ active, element }) => {
 	const menuClass = classNames('ee-form-element__menu', active && 'ee-form-element__menu--active');
 
 	const elementTypeLabel = ELEMENT_BLOCKS_INDEXED[element.type]?.label || '';

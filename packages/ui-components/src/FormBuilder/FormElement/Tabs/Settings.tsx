@@ -1,12 +1,12 @@
 import { __ } from '@eventespresso/i18n';
 
-import type { FormElementProps } from '../../types';
 import { TextInput } from '../../../text-input';
 import { withLabel } from '../../../withLabel';
+import type { SettingsProps } from '../../types';
 
 const TextWithLabel = withLabel(TextInput);
 
-export const Settings: React.FC<FormElementProps> = ({ element }) => {
+export const Settings: React.FC<SettingsProps> = ({ element }) => {
 	return (
 		// TODO wire up the values from data state
 		<>
