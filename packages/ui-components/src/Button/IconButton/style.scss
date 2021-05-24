@@ -42,8 +42,10 @@
 			width: var(--ee-icon-button-size);
 		}
 
-		svg {
+		svg,
+		svg.ee-svg {
 			display: inline-block;
+			margin: 0;
 
 			path {
 				@include transition(fill 0.1s ease 0.1s, color 0.1s ease 0.1s !important);

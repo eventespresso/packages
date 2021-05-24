@@ -57,7 +57,7 @@
 		height: var(--ee-icon-button-size);
 		line-height: var(--ee-font-size-default);
 		margin: var(--ee-margin-smaller);
-		min-width: min-content;
+		min-width: var(--ee-icon-button-size);
 		outline: none;
 		padding: var(--ee-padding-tiny) var(--ee-padding-smaller);
 		position: relative;
