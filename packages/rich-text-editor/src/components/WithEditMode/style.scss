@@ -3,61 +3,8 @@
 .ee-rte-with-edit-mode {
 	margin-top: var(--ee-margin-small);
 
-	@include min1280px {
-		margin-top: calc(var(--ee-margin-bigger) * -1);
-	}
-
-	.ee-tabs {
-		border-radius: var(--ee-border-radius-default);
-
-		&__tab-list {
-			border: none;
-			margin-bottom: 0;
-			padding: 0 var(--ee-padding-small);
-
-			button,
-			button:active,
-			button:focus,
-			button:hover,
-			button:visited,
-			button[data-focus] {
-				background: var(--ee-button-transparent-background);
-				border: 3px solid var(--ee-button-transparent-background);
-				border-bottom: none !important;
-				border-bottom-color: transparent !important;
-				box-shadow: none !important;
-				margin: 0 0 0 var(--ee-margin-tiny);
-
-				&[data-selected],
-				&[aria-selected='true'] {
-					background: var(--ee-background-color);
-					border-color: var(--ee-background-color);
-					color: var(--ee-default-text-color);
-				}
-
-				&:focus,
-				&[data-focus] {
-					border-color: var(--ee-color-primary);
-				}
-
-				&:hover {
-					border-color: var(--ee-color-primary-low-contrast);
-				}
-			}
-		}
-
-		&__tab-panels {
-			background: var(--ee-background-color);
-			border-radius: var(--ee-border-radius-default);
-			box-shadow: var(--ee-box-shadow-tiny-diffuse);
-
-			> div {
-				padding: var(--ee-padding-tiny);
-				@include min667px {
-					padding: var(--ee-padding-small);
-				}
-			}
-		}
+	@include min767px {
+		margin-top: calc(var(--ee-margin-small) * -3.5);
 	}
 
 	.ee-textarea.ee-html-editor {
