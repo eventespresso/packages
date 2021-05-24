@@ -36,9 +36,8 @@ const Toolbar: React.FC<ToolbarProps> = ({ align, setAlignment, toolbar }) => {
 						onKeyPress={onKeyPress}
 						isActive={align === alignment}
 						onClick={getOnClick(alignment)}
-					>
-						<Icon />
-					</ToolbarItem>
+						icon={Icon}
+					/>
 				);
 			})}
 		</ReakitToolbar>

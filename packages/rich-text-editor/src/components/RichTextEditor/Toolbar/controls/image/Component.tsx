@@ -30,9 +30,12 @@ const Component: React.FC<ToolbarItemProps<'image'>> = ({ toolbar, onChange, con
 			initialFocusRef={inputRef}
 			isOpen={isImagePopoverOpen}
 			trigger={
-				<ToolbarItem {...toolbar} aria-label={__('Add image')} onClick={toggleImagePopover}>
-					{config.icon && <config.icon />}
-				</ToolbarItem>
+				<ToolbarItem
+					{...toolbar}
+					aria-label={__('Add image')}
+					onClick={toggleImagePopover}
+					icon={config?.icon}
+				/>
 			}
 			onClose={toggleImagePopover}
 		>

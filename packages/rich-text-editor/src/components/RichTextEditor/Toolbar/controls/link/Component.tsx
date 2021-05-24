@@ -45,9 +45,7 @@ const Component: React.FC<ToolbarItemProps<'link'>> = ({ currentValue, toolbar, 
 				initialFocusRef={inputRef}
 				isOpen={isUrlPopoverOpen}
 				trigger={
-					<ToolbarItem {...toolbar} aria-label={__('Edit link')} onClick={onClickTrigger}>
-						{link.icon && <link.icon />}
-					</ToolbarItem>
+					<ToolbarItem {...toolbar} aria-label={__('Edit link')} onClick={onClickTrigger} icon={link?.icon} />
 				}
 				onClose={toggleUrlPopover}
 			>
@@ -71,9 +69,7 @@ const Component: React.FC<ToolbarItemProps<'link'>> = ({ currentValue, toolbar, 
 				<Button onClick={onCloseUrlPopover}>{'Cancel'}</Button>
 			</ToolbarPopover>
 
-			<ToolbarItem {...toolbar} onClick={removeLink}>
-				{unlink.icon && <unlink.icon />}
-			</ToolbarItem>
+			<ToolbarItem {...toolbar} onClick={removeLink} icon={unlink?.icon} />
 		</>
 	);
 };

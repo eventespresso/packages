@@ -35,11 +35,7 @@ export const WPMedia: React.FC<ToolbarItemProps<'image'>> = ({ onChange, config,
 		return () => wpMedia?.off('select', mediaHandler);
 	}, [mediaHandler]);
 
-	return (
-		<ToolbarItem {...toolbar} onClick={openMediaModal}>
-			{config.icon && <config.icon />}
-		</ToolbarItem>
-	);
+	return <ToolbarItem {...toolbar} onClick={openMediaModal} icon={config?.icon} />;
 };
 
 export default WPMedia;

@@ -14,14 +14,12 @@ const Component: React.FC<ToolbarItemProps<'inline'>> = ({ toolbar, currentValue
 	return (
 		<>
 			{config?.items?.map((item) => {
-				const itemConfig = config?.[item];
-				const Icon = itemConfig?.icon;
-
+				const itemIcon = config?.[item]?.icon;
 				const isActive = currentValue?.[item] === true || (item === 'monospace' && currentValue?.CODE);
 
 				return (
-					<ToolbarItem {...toolbar} isActive={isActive} key={item} onClick={getOnClick(item)}>
-						{(Icon && <Icon />) || item}
+					<ToolbarItem {...toolbar} isActive={isActive} key={item} onClick={getOnClick(item)} icon={itemIcon}>
+						{item}
 					</ToolbarItem>
 				);
 			})}

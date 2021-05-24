@@ -8,11 +8,7 @@ const Component: React.FC<ToolbarItemProps<'remove'>> = ({ toolbar, onChange, co
 		onChange('');
 	}, [onChange]);
 
-	return (
-		<ToolbarItem {...toolbar} onClick={onClick}>
-			{config.icon && <config.icon />}
-		</ToolbarItem>
-	);
+	return <ToolbarItem {...toolbar} onClick={onClick} icon={config?.icon} />;
 };
 
 export default Component;

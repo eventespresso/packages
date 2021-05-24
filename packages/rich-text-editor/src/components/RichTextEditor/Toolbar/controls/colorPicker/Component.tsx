@@ -31,9 +31,12 @@ const Component: React.FC<ToolbarItemProps<'colorPicker'>> = ({ currentValue, to
 		<ToolbarPopover
 			isOpen={isColorPickerPopoverOpen}
 			trigger={
-				<ToolbarItem {...toolbar} aria-label={__('Set color')} onClick={toggleColorPickerPopover}>
-					{config.icon && <config.icon />}
-				</ToolbarItem>
+				<ToolbarItem
+					{...toolbar}
+					aria-label={__('Set color')}
+					onClick={toggleColorPickerPopover}
+					icon={config?.icon}
+				/>
 			}
 			onClose={toggleColorPickerPopover}
 		>
