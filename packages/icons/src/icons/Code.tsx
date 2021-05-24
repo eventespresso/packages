@@ -4,7 +4,7 @@ import { IconProps } from '../types';
 const SvgCode = (props: IconProps): JSX.Element => {
 	return (
 		<svg
-			viewBox='0 0 24 24'
+			viewBox='0 0 20 16'
 			className='code_svg__ee-svg'
 			fill='currentColor'
 			aria-hidden='true'
@@ -12,7 +12,9 @@ const SvgCode = (props: IconProps): JSX.Element => {
 			width='1.25em'
 			{...props}
 		>
-			<path d='M20.8 10.7l-4.3-4.3-1.1 1.1 4.3 4.3c.1.1.1.3 0 .4l-4.3 4.3 1.1 1.1 4.3-4.3c.7-.8.7-1.9 0-2.6zM4.2 11.8l4.3-4.3-1-1-4.3 4.3c-.7.7-.7 1.8 0 2.5l4.3 4.3 1.1-1.1-4.3-4.3c-.2-.1-.2-.3-.1-.4z' />
+			<path d='M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z' />
+			<path d='M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z' />
+			<path d='M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z' />
 		</svg>
 	);
 };

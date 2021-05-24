@@ -4,7 +4,7 @@ import { IconProps } from '../types';
 const SvgFormatUnderline = (props: IconProps): JSX.Element => {
 	return (
 		<svg
-			viewBox='0 0 24 24'
+			viewBox='2 0 20 20'
 			className='formatUnderline_svg__ee-svg'
 			fill='currentColor'
 			aria-hidden='true'
