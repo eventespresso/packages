@@ -4,11 +4,11 @@ import classNames from 'classnames';
 import { Container } from '../Container';
 import { FormBuilderSidebar } from './FormBuilderSidebar';
 import { FormSection } from './FormSection';
+import { useOpenElement } from './useOpenElement';
 
 import type { FormBuilderProps } from './types';
 import './styles.scss';
 
-// FormBuilderSidebar
 const FormBuilder: React.FC<FormBuilderProps> = ({
 	bodyClassName,
 	containerClassName,
@@ -31,7 +31,12 @@ const FormBuilder: React.FC<FormBuilderProps> = ({
 		};
 	}, [bodyClass, containerClass, contentClass, sidebarClass]);
 
-	const form = formSections.map((formSection, index) => <FormSection key={index} formSection={formSection} />);
+	// controls and tracks which element is open for editing
+	const { isOpen, toggleElement } = useOpenElement();
+
+	const form = formSections.map((formSection, index) => (
+		<FormSection key={index} formSection={formSection} isOpen={isOpen} toggleElement={toggleElement} />
+	));
 
 	return (
 		<Container
