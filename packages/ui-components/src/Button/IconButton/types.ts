@@ -6,7 +6,7 @@ export interface IconButtonProps extends Size, Omit<IconButtonAdapterProps, 'ari
 	active?: boolean;
 	'aria-label'?: string;
 	borderless?: boolean;
-	buttonType?: ButtonType;
+	buttonType?: ButtonType | 'accent' | 'default' | 'minimal' | 'primary' | 'secondary';
 	color?: 'white' | 'black';
 	noMargin?: boolean;
 	noPadding?: boolean;
