@@ -2,8 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { extractInlineStyle } from 'draftjs-utils';
 
 import { __ } from '@eventespresso/i18n';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/adapters';
-import { Textarea } from '@eventespresso/ui-components';
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Textarea } from '@eventespresso/ui-components';
 import { useIfMounted, usePrevious } from '@eventespresso/hooks';
 
 import { useEditorState } from '../../hooks';

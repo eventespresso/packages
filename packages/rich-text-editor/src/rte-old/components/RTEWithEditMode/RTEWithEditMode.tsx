@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/adapters';
-import { Textarea } from '@eventespresso/ui-components';
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Textarea } from '@eventespresso/ui-components';
 
 import { RTEWithEditModeProps } from './types';
 import { RichTextEditor } from '../RichTextEditor';
