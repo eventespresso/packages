@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { extractInlineStyle } from 'draftjs-utils';
 
 import { __ } from '@eventespresso/i18n';
+import { Code, Desktop } from '@eventespresso/icons';
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Textarea } from '@eventespresso/ui-components';
 import { useIfMounted, usePrevious } from '@eventespresso/hooks';
 
@@ -56,8 +57,14 @@ export const WithEditMode: React.FC<WithEditModeProps> = ({ isDisabled, visualEd
 	return (
 		<Tabs align='end' variant='enclosed' wrapperClassName='ee-rte-with-edit-mode' onChange={onChangeTab}>
 			<TabList>
-				<Tab>{__('Visual editor')}</Tab>
-				<Tab>{__('HTML editor')}</Tab>
+				<Tab>
+					<Desktop className='ee-tab-icon-desktop' />
+					{__('Visual editor')}
+				</Tab>
+				<Tab>
+					<Code className='ee-tab-icon-code' />
+					{__('HTML editor')}
+				</Tab>
 			</TabList>
 			<TabPanels>
 				<TabPanel>{visualEditor}</TabPanel>

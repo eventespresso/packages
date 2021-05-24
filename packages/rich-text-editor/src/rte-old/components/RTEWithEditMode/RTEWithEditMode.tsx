@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
+import { Code, Desktop } from '@eventespresso/icons';
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Textarea } from '@eventespresso/ui-components';
 
 import { RTEWithEditModeProps } from './types';
@@ -29,8 +30,14 @@ export const RTEWithEditMode: React.FC<RTEWithEditModeProps> = ({ enableEditMode
 	return (
 		<Tabs align='end' variant='enclosed' wrapperClassName='ee-rte-with-edit-mode'>
 			<TabList>
-				<Tab>{__('Visual editor')}</Tab>
-				<Tab>{__('HTML editor')}</Tab>
+				<Tab>
+					<Desktop className='ee-tab-icon-desktop' />
+					{__('Visual editor')}
+				</Tab>
+				<Tab>
+					<Code className='ee-tab-icon-code' />
+					{__('HTML editor')}
+				</Tab>
 			</TabList>
 			<TabPanels>
 				<TabPanel>{editor}</TabPanel>
