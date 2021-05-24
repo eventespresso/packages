@@ -27,6 +27,7 @@ export { default as ColorPicker } from './ColorPicker';
 export { default as CompassFilled } from './CompassFilled';
 export { default as ControlOutlined } from './ControlOutlined';
 export { default as Copy } from './Copy';
+export { default as Desktop } from './Desktop';
 export { default as DownCircleFilled } from './DownCircleFilled';
 export { default as DragHandle } from './DragHandle';
 export { default as DragOutlined } from './DragOutlined';
