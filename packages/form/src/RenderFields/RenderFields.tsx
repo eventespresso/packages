@@ -5,7 +5,7 @@ import type { RenderFieldsProps } from '../types';
 
 import './styles.scss';
 
-const RenderFields: React.FC<RenderFieldsProps> = ({ fields, inline, namespace }) => {
+export const RenderFields: React.FC<RenderFieldsProps> = ({ fields, inline, namespace }) => {
 	const className = classNames('ee-render-fields', inline && 'ee-render-fields--inline');
 
 	return (
@@ -17,5 +17,3 @@ const RenderFields: React.FC<RenderFieldsProps> = ({ fields, inline, namespace }
 		</div>
 	);
 };
-
-export default RenderFields;

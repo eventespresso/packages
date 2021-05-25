@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import FormSectionSidebar from '../FormSectionSidebar';
-import RenderFields from '../RenderFields';
+import { RenderFields } from '../RenderFields';
 import type { FormSectionProps } from '../types';
 
 import './styles.scss';

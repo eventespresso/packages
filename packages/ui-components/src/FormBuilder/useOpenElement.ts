@@ -1,14 +1,16 @@
-import { useCallback, useState } from 'react';
-import type { openCloseElement } from './types';
+import { useCallback, useMemo, useState } from 'react';
+import type { OpenCloseElement as OCE } from './types';
 
 /**
  * controls and tracks which element is open for editing
  */
-export const useOpenElement = (): openCloseElement => {
+export const useOpenElement = (): OCE => {
 	const [openElement, setOpenElement] = useState('');
-	const isOpen = (UUID: string) => UUID === openElement;
+
+	const isOpen = useCallback<OCE['isOpen']>((UUID) => UUID === openElement, [openElement]);
+
 	// onClick handler that must be primed (curried) with the form element's UUID
-	const toggleElement = useCallback(
+	const toggleElement = useCallback<OCE['toggleElement']>(
 		(UUID: string) => () => {
 			// if passed UUID matches the currently open element, then close that element (by unsetting UUID)
 			const activeElement = UUID !== openElement ? UUID : '';
@@ -16,5 +18,6 @@ export const useOpenElement = (): openCloseElement => {
 		},
 		[openElement, setOpenElement]
 	);
-	return { isOpen, toggleElement };
+
+	return useMemo(() => ({ isOpen, toggleElement }), [isOpen, toggleElement]);
 };

@@ -105,14 +105,14 @@ export interface FormSectionToolbarProps {
 	formSection: FormSection;
 }
 
-export interface openCloseElement {
+export interface OpenCloseElement {
 	isOpen: (UUID: string) => boolean;
 	toggleElement: (UUID: string) => MouseEventHandler<HTMLButtonElement>;
 }
 
-export interface FormElementProps extends FormElementToolbarProps, openCloseElement {}
+export interface FormElementProps extends FormElementToolbarProps, OpenCloseElement {}
 
-export interface FormSectionProps extends FormSectionToolbarProps, openCloseElement {}
+export interface FormSectionProps extends FormSectionToolbarProps, OpenCloseElement {}
 
 export interface SettingsProps {
 	element?: FormInput;
