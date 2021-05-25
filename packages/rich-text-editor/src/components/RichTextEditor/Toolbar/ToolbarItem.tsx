@@ -20,7 +20,7 @@ export const ToolbarItem = forwardRef<typeof ReakitToolbarItem, ToolbarItemProps
 
 	const As = props?.icon ? IconButton : Button;
 
-	return <ReakitToolbarItem as={As} borderless {...props} ref={ref} className={className} />;
+	return <ReakitToolbarItem as={As} {...props} ref={ref} className={className} />;
 });
 
 export default ToolbarItem;
