@@ -1,6 +1,5 @@
 import { __ } from '@eventespresso/i18n';
-import { Heading } from '@eventespresso/ui-components';
-import { FormBuilder, FormBuilderProps } from '@eventespresso/ee-components';
+import { FormBuilder, Heading, FormBuilderProps } from '@eventespresso/ui-components';
 import { withFeature } from '@eventespresso/services';
 
 // this is based off of the data schema I started for the PHP models, but can be changed to whatever

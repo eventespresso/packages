@@ -1,5 +1,8 @@
 import { __ } from '@eventespresso/i18n';
-import { TextInput, withLabel, Textarea } from '@eventespresso/ui-components';
+
+import { TextInput } from '../../../text-input';
+import { withLabel } from '../../../withLabel';
+import { Textarea } from '../../../Textarea';
 
 import type { SettingsProps } from '../../types';
 

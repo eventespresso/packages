@@ -1,5 +1,9 @@
 import { __ } from '@eventespresso/i18n';
-import { TextInput, NumberInput, withLabel, Switch } from '@eventespresso/ui-components';
+
+import { TextInput } from '../../../text-input';
+import { NumberInput } from '../../../NumberInput';
+import { withLabel } from '../../../withLabel';
+import { Switch } from '../../../Switch';
 
 import type { SettingsProps, ElementType } from '../../types';
 
