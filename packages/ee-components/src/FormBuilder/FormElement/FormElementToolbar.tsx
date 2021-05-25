@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import { DragHandle, Trash } from '@eventespresso/icons';
 
-import { IconButton } from '../../Button';
+import { DragHandle, Trash } from '@eventespresso/icons';
+import { IconButton } from '@eventespresso/ui-components';
+
 import { ELEMENT_BLOCKS_INDEXED } from '../constants';
 
 import type { FormElementToolbarProps } from '../types';

@@ -8,6 +8,7 @@ export * from './EndDateFieldWrapper';
 export * from './EntityEditForm';
 export * from './EntityList';
 export * from './filterBar';
+export * from './FormBuilder';
 export * from './FormWithConfig';
 export * from './RangeFormat';
 export * from './rich-text-editor';

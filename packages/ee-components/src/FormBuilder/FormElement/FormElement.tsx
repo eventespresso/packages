@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import { More } from '@eventespresso/icons';
 
-import { IconButton } from '../../Button';
+import { More } from '@eventespresso/icons';
+import { IconButton } from '@eventespresso/ui-components';
+
 import { FormElementInput } from './FormElementInput';
 import { FormElementToolbar } from './FormElementToolbar';
 import { FormElementTabs } from './Tabs';

@@ -1,9 +1,7 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '../../../Tabs';
-
 import { __ } from '@eventespresso/i18n';
+import { Collapsible, Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/ui-components';
 import { Check, CheckList, Palette, SettingsOutlined } from '@eventespresso/icons';
 
-import { Collapsible } from '../../../Collapsible';
 import type { SettingsProps } from '../../types';
 import { Settings } from './Settings';
 import { Styles } from './Styles';

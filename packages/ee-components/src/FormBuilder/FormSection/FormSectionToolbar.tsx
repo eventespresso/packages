@@ -2,11 +2,9 @@ import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
 import { DragHandle, Trash } from '@eventespresso/icons';
+import { Button, IconButton, Select } from '@eventespresso/ui-components';
 
-import { Button, IconButton } from '../../Button';
 import { ELEMENT_BLOCKS } from '../constants';
-import { Select } from '../../';
-
 import type { FormSectionToolbarProps } from '../types';
 
 const elementtypes = ELEMENT_BLOCKS.map((tag) => {

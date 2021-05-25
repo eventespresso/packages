@@ -30,7 +30,6 @@ export * from './EntityList';
 export * from './EntityPaperFrame';
 export * from './EspressoTable';
 export * from './FilterBarFilter';
-export * from './FormBuilder';
 export * from './Grid';
 export * from './Heading';
 export * from './HelpIcon';

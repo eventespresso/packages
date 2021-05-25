@@ -1,8 +1,9 @@
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
+import { Heading } from '@eventespresso/ui-components';
+
 import type { FormBuilderProps } from './types';
 import FormBuilder from './FormBuilder';
-import { Heading } from '../';
 
 export default {
 	argTypes: {},

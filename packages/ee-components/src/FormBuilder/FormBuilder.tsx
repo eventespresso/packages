@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
 
-import { Container } from '../Container';
+import { Container } from '@eventespresso/ui-components';
+
 import { FormBuilderSidebar } from './FormBuilderSidebar';
 import { FormSection } from './FormSection';
 import { useOpenElement } from './useOpenElement';
@@ -34,8 +35,8 @@ const FormBuilder: React.FC<FormBuilderProps> = ({
 	// controls and tracks which element is open for editing
 	const { isOpen, toggleElement } = useOpenElement();
 
-	const form = formSections.map((formSection, index) => (
-		<FormSection key={index} formSection={formSection} isOpen={isOpen} toggleElement={toggleElement} />
+	const form = formSections.map((formSection) => (
+		<FormSection key={formSection.UUID} formSection={formSection} isOpen={isOpen} toggleElement={toggleElement} />
 	));
 
 	return (

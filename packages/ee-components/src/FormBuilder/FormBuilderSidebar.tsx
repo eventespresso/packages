@@ -1,8 +1,7 @@
 import { __ } from '@eventespresso/i18n';
 import { InfoCircleFilled } from '@eventespresso/icons';
+import { Heading, Tooltip } from '@eventespresso/ui-components';
 
-import { Heading } from '../Heading';
-import { Tooltip } from '../Tooltip';
 import { ELEMENT_BLOCKS } from './constants';
 
 export const FormBuilderSidebar = () => {
