@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 
+import { IconButton } from '@eventespresso/ui-components';
 import { __ } from '@eventespresso/i18n';
 
 import { ToolbarItemProps, ToolbarItem } from '../../RichTextEditor';
@@ -35,7 +36,7 @@ export const WPMedia: React.FC<ToolbarItemProps<'image'>> = ({ onChange, config,
 		return () => wpMedia?.off('select', mediaHandler);
 	}, [mediaHandler]);
 
-	return <ToolbarItem {...toolbar} onClick={openMediaModal} icon={config?.icon} />;
+	return <ToolbarItem {...toolbar} as={IconButton} borderless icon={config?.icon} onClick={openMediaModal} />;
 };
 
 export default WPMedia;

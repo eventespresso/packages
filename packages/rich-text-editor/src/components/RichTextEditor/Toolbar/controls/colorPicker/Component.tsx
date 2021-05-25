@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { ColorPicker } from '@eventespresso/ui-components';
+import { ColorPicker, IconButton } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
 
 import { ToolbarItem } from '../../ToolbarItem';
@@ -34,6 +34,8 @@ const Component: React.FC<ToolbarItemProps<'colorPicker'>> = ({ currentValue, to
 				<ToolbarItem
 					{...toolbar}
 					aria-label={__('Set color')}
+					as={IconButton}
+					borderless
 					onClick={toggleColorPickerPopover}
 					icon={config?.icon}
 				/>

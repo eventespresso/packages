@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Button, TextInput } from '@eventespresso/ui-components';
+import { Button, IconButton, TextInput } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
 
 import { ToolbarItem } from '../../ToolbarItem';
@@ -33,6 +33,8 @@ const Component: React.FC<ToolbarItemProps<'image'>> = ({ toolbar, onChange, con
 				<ToolbarItem
 					{...toolbar}
 					aria-label={__('Add image')}
+					as={IconButton}
+					borderless
 					onClick={toggleImagePopover}
 					icon={config?.icon}
 				/>

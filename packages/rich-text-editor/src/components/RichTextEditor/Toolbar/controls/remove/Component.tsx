@@ -1,5 +1,7 @@
 import { useCallback } from 'react';
 
+import { IconButton } from '@eventespresso/ui-components';
+
 import { ToolbarItem } from '../../ToolbarItem';
 import { ToolbarItemProps } from '../../types';
 
@@ -8,7 +10,7 @@ const Component: React.FC<ToolbarItemProps<'remove'>> = ({ toolbar, onChange, co
 		onChange('');
 	}, [onChange]);
 
-	return <ToolbarItem {...toolbar} onClick={onClick} icon={config?.icon} />;
+	return <ToolbarItem {...toolbar} as={IconButton} borderless icon={config?.icon} onClick={onClick} />;
 };
 
 export default Component;

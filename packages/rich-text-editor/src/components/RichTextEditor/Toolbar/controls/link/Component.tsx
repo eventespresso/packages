@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Switch, Button, TextInput } from '@eventespresso/ui-components';
+import { Button, IconButton, Switch, TextInput } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
 
 import { ToolbarItem } from '../../ToolbarItem';
@@ -45,10 +45,18 @@ const Component: React.FC<ToolbarItemProps<'link'>> = ({ currentValue, toolbar, 
 				initialFocusRef={inputRef}
 				isOpen={isUrlPopoverOpen}
 				trigger={
-					<ToolbarItem {...toolbar} aria-label={__('Edit link')} onClick={onClickTrigger} icon={link?.icon} />
+					<ToolbarItem
+						{...toolbar}
+						aria-label={__('Edit link')}
+						as={IconButton}
+						borderless
+						icon={link?.icon}
+						onClick={onClickTrigger}
+					/>
 				}
 				onClose={toggleUrlPopover}
 			>
+				<br />
 				<TextInput value={title} placeholder={__('URL title')} onChangeValue={setTitle as typeof onChange} />
 				<br />
 				<br />
@@ -59,7 +67,9 @@ const Component: React.FC<ToolbarItemProps<'link'>> = ({ currentValue, toolbar, 
 					onChangeValue={setUrl as typeof onChange}
 				/>
 				<br />
+				<br />
 				<Switch isChecked={openInNewTab} onChangeValue={setOpenInNewTab} id='open-in-new-tab' />
+				&emsp;
 				<label htmlFor='open-in-new-tab'>Open in new tab</label>
 				<br />
 				<Button onClick={addLink} isDisabled={!url || !title}>
@@ -69,7 +79,7 @@ const Component: React.FC<ToolbarItemProps<'link'>> = ({ currentValue, toolbar, 
 				<Button onClick={onCloseUrlPopover}>{'Cancel'}</Button>
 			</ToolbarPopover>
 
-			<ToolbarItem {...toolbar} onClick={removeLink} icon={unlink?.icon} />
+			<ToolbarItem {...toolbar} as={IconButton} borderless icon={unlink?.icon} onClick={removeLink} />
 		</>
 	);
 };
