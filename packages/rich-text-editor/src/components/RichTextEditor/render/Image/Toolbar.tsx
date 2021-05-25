@@ -1,6 +1,7 @@
 import { DOMAttributes, useCallback } from 'react';
 import { Toolbar as ReakitToolbar } from 'reakit/Toolbar';
 
+import { IconButton } from '@eventespresso/ui-components';
 import { AlignCenter, AlignLeft, AlignRight } from '@eventespresso/icons';
 import { __ } from '@eventespresso/i18n';
 
@@ -31,12 +32,14 @@ const Toolbar: React.FC<ToolbarProps> = ({ align, setAlignment, toolbar }) => {
 			{Object.entries(alignmentWithIcons).map(([alignment, Icon]) => {
 				return (
 					<ToolbarItem
-						key={alignment}
 						{...toolbar}
-						onKeyPress={onKeyPress}
-						isActive={align === alignment}
-						onClick={getOnClick(alignment)}
+						as={IconButton}
+						borderless
 						icon={Icon}
+						isActive={align === alignment}
+						key={alignment}
+						onClick={getOnClick(alignment)}
+						onKeyPress={onKeyPress}
 					/>
 				);
 			})}
