@@ -4,7 +4,6 @@ import { IconProps } from '../types';
 const SvgDragHandle = (props: IconProps): JSX.Element => {
 	return (
 		<svg
-			className='settings_svg__ee-svg'
 			color='currentColor'
 			fill='currentColor'
 			aria-hidden='true'
@@ -20,4 +19,4 @@ const SvgDragHandle = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgDragHandle);
+export default withClassName(SvgDragHandle, 'settings');

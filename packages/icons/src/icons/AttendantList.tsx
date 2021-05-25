@@ -46,4 +46,4 @@ const SvgAttendantList = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgAttendantList);
+export default withClassName(SvgAttendantList, 'attendant-list');

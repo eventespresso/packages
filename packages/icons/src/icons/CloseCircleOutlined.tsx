@@ -5,7 +5,6 @@ const SvgCloseCircleOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='closeCircleOutlined_svg__ee-svg'
 			fill='currentColor'
 			viewBox='64 64 896 896'
 			data-icon='close-circle'
@@ -19,4 +18,4 @@ const SvgCloseCircleOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCloseCircleOutlined);
+export default withClassName(SvgCloseCircleOutlined, 'close-circle-outlined');

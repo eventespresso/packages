@@ -9,4 +9,4 @@ const SvgGroups = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgGroups);
+export default withClassName(SvgGroups, 'groups');

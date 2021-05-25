@@ -5,7 +5,6 @@ const SvgMinusOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
-			className='minusOutlined_svg__ee-svg'
 			data-icon='minus'
 			fill='currentColor'
 			aria-hidden='true'
@@ -18,4 +17,4 @@ const SvgMinusOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgMinusOutlined);
+export default withClassName(SvgMinusOutlined, 'minus-outlined');

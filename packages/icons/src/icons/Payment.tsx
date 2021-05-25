@@ -78,4 +78,4 @@ const SvgPayment = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgPayment);
+export default withClassName(SvgPayment, 'payment');

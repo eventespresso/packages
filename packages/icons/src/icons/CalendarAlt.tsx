@@ -5,7 +5,6 @@ const SvgCalendarAlt = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 20 20'
-			className='calendar-alt_svg__ee-svg'
 			data-icon='calendar'
 			fill='currentColor'
 			aria-hidden='true'
@@ -18,4 +17,4 @@ const SvgCalendarAlt = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCalendarAlt);
+export default withClassName(SvgCalendarAlt, 'calendar-alt');

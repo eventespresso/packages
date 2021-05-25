@@ -110,4 +110,4 @@ const SvgBudgeting = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgBudgeting);
+export default withClassName(SvgBudgeting, 'budgeting');

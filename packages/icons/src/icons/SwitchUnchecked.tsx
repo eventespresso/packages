@@ -12,4 +12,4 @@ const SvgSwitchUnchecked = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSwitchUnchecked);
+export default withClassName(SvgSwitchUnchecked, 'switch-unchecked');

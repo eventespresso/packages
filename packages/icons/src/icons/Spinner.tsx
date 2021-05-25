@@ -3,15 +3,7 @@ import { IconProps } from '../types';
 
 const SvgSpinner = (props: IconProps): JSX.Element => {
 	return (
-		<svg
-			aria-hidden='true'
-			className='spinner_svg__ee-svg'
-			fill='currentColor'
-			viewBox='0 0 24 24'
-			height='1.25em'
-			width='1.25em'
-			{...props}
-		>
+		<svg aria-hidden='true' fill='currentColor' viewBox='0 0 24 24' height='1.25em' width='1.25em' {...props}>
 			<defs>
 				<linearGradient x1='28.154%' y1='63.74%' x2='74.629%' y2='17.783%' id='spinner_svg__a'>
 					<stop stopColor='currentColor' offset='0%' />
@@ -27,4 +19,4 @@ const SvgSpinner = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSpinner);
+export default withClassName(SvgSpinner, 'spinner');

@@ -5,7 +5,6 @@ const SvgBrush = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='brush_svg__ee-svg'
 			height='1.25em'
 			viewBox='0 0 24 24'
 			width='1.25em'
@@ -17,4 +16,4 @@ const SvgBrush = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgBrush);
+export default withClassName(SvgBrush, 'brush');

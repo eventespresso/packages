@@ -5,7 +5,6 @@ const SvgChevronRight = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='chevron-right_svg__ee-svg'
 			fill='currentColor'
 			height='1.25em'
 			width='1.25em'
@@ -17,4 +16,4 @@ const SvgChevronRight = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgChevronRight);
+export default withClassName(SvgChevronRight, 'chevron-right');

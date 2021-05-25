@@ -5,7 +5,6 @@ const SvgLink = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='link_svg__css-thzv76 link_svg__dashicon link_svg__dashicons-admin-links link_svg__espresso-icon'
 			height='1.25em'
 			viewBox='0 0 20 20'
 			width='1.25em'
@@ -17,4 +16,4 @@ const SvgLink = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgLink);
+export default withClassName(SvgLink, 'link');

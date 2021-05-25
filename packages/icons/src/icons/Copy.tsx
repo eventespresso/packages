@@ -5,7 +5,6 @@ const SvgCopy = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='copy_svg__dashicon copy_svg__dashicons-copy copy_svg__espresso-icon'
 			height='1.25em'
 			viewBox='0 0 20 20'
 			width='1.25em'
@@ -17,4 +16,4 @@ const SvgCopy = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCopy);
+export default withClassName(SvgCopy, 'copy');

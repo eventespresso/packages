@@ -5,7 +5,6 @@ const SvgPalette = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='palette_svg__ee-svg'
 			height='1.25em'
 			viewBox='0 0 512 512'
 			width='1.25em'
@@ -22,4 +21,4 @@ const SvgPalette = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgPalette);
+export default withClassName(SvgPalette, 'palette');

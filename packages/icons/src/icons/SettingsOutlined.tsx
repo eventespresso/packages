@@ -4,7 +4,6 @@ import { IconProps } from '../types';
 const SvgSettingsOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
-			className='settings_svg__ee-svg ee-svg--no-fill'
 			color='currentColor'
 			fill='none'
 			aria-hidden='true'
@@ -23,4 +22,4 @@ const SvgSettingsOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSettingsOutlined);
+export default withClassName(SvgSettingsOutlined, 'settings');

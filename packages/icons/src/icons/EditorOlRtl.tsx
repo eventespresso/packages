@@ -9,4 +9,4 @@ const SvgEditorOlRtl = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgEditorOlRtl);
+export default withClassName(SvgEditorOlRtl, 'editor-ol-rtl');

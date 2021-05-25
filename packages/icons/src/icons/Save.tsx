@@ -5,7 +5,6 @@ const SvgSave = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
-			className='save_svg__ee-svg'
 			data-icon='save'
 			fill='currentColor'
 			aria-hidden='true'
@@ -19,4 +18,4 @@ const SvgSave = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSave);
+export default withClassName(SvgSave, 'save');

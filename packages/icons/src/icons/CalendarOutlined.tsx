@@ -5,7 +5,6 @@ const SvgCalendarOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
-			className='calendarOutlined_svg__ee-svg'
 			data-icon='calendar'
 			fill='currentColor'
 			aria-hidden='true'
@@ -18,4 +17,4 @@ const SvgCalendarOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCalendarOutlined);
+export default withClassName(SvgCalendarOutlined, 'calendar-outlined');

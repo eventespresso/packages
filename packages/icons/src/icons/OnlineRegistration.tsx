@@ -88,4 +88,4 @@ const SvgOnlineRegistration = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgOnlineRegistration);
+export default withClassName(SvgOnlineRegistration, 'online-registration');

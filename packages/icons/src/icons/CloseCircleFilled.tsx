@@ -3,10 +3,10 @@ import { IconProps } from '../types';
 
 const SvgCloseCircleFilled = (props: IconProps): JSX.Element => {
 	return (
+		// eslint-disable-next-line prettier/prettier
 		<svg
 			viewBox='0 0 1024 1024'
 			aria-hidden='true'
-			className='close-circle-filled_svg__ee-svg'
 			fill='currentColor'
 			height='1.25em'
 			width='1.25em'
@@ -17,4 +17,4 @@ const SvgCloseCircleFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCloseCircleFilled);
+export default withClassName(SvgCloseCircleFilled, 'close-circle-filled');

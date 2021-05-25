@@ -6,7 +6,6 @@ const SvgUpCircleFilled = (props: IconProps): JSX.Element => {
 		<svg
 			aria-hidden='true'
 			viewBox='64 64 896 896'
-			className='upCircleFilled_svg__ee-svg'
 			data-icon='up-circle'
 			fill='currentColor'
 			height='1.25em'
@@ -18,4 +17,4 @@ const SvgUpCircleFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgUpCircleFilled);
+export default withClassName(SvgUpCircleFilled, 'up-circle-filled');

@@ -5,7 +5,6 @@ const SvgProfileOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
-			className='profileOutlined_svg__ee-svg'
 			data-icon='profile'
 			fill='currentColor'
 			aria-hidden='true'
@@ -18,4 +17,4 @@ const SvgProfileOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgProfileOutlined);
+export default withClassName(SvgProfileOutlined, 'profile-outlined');

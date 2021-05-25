@@ -5,7 +5,6 @@ const SvgCloseOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
-			className='closeOutlined_svg__ee-svg'
 			data-icon='close'
 			fill='currentColor'
 			aria-hidden='true'
@@ -18,4 +17,4 @@ const SvgCloseOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCloseOutlined);
+export default withClassName(SvgCloseOutlined, 'close-outlined');

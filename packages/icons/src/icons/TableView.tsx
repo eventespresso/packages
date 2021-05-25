@@ -5,7 +5,6 @@ const SvgTableView = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='tableView_svg__ee-svg'
 			height='1.25rem'
 			viewBox='0 0 20 20'
 			width='1.25rem'
@@ -17,4 +16,4 @@ const SvgTableView = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgTableView);
+export default withClassName(SvgTableView, 'table-view');

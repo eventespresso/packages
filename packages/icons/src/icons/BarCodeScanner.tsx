@@ -46,4 +46,4 @@ const SvgBarCodeScanner = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgBarCodeScanner);
+export default withClassName(SvgBarCodeScanner, 'bar-code-scanner');

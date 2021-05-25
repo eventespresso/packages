@@ -4,7 +4,6 @@ import { IconProps } from '../types';
 const SvgControlOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
-			className='controlOutlined_svg__ee-svg'
 			data-icon='control'
 			fill='currentColor'
 			aria-hidden='true'
@@ -18,4 +17,4 @@ const SvgControlOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgControlOutlined);
+export default withClassName(SvgControlOutlined, 'control-outlined');

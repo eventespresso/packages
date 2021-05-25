@@ -13,4 +13,4 @@ const SvgPlus = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgPlus);
+export default withClassName(SvgPlus, 'plus');

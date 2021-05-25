@@ -9,4 +9,4 @@ const SvgFilter = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgFilter);
+export default withClassName(SvgFilter, 'filter');

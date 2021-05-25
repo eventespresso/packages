@@ -5,7 +5,6 @@ const SvgCheckList = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='check_list_svg__ee-svg'
 			height='1.25em'
 			viewBox='0 0 16 16'
 			width='1.25em'
@@ -21,4 +20,4 @@ const SvgCheckList = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCheckList);
+export default withClassName(SvgCheckList, 'check-list');

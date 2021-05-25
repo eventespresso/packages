@@ -5,7 +5,6 @@ const SvgCalendar = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='calendar_svg__css-1pmpdjw calendar_svg__dashicon calendar_svg__dashicons-calendar calendar_svg__espresso-icon'
 			data-custom-icon='true'
 			height='1.25em'
 			viewBox='0 0 20 20'
@@ -18,4 +17,4 @@ const SvgCalendar = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCalendar);
+export default withClassName(SvgCalendar, 'calendar');

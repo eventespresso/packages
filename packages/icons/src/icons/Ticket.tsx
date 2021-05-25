@@ -5,7 +5,6 @@ const SvgTicket = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='ticket_svg__css-1pmpdjw ticket_svg__dashicon ticket_svg__dashicons-ticket-alt ticket_svg__espresso-icon'
 			height='1.25em'
 			viewBox='0 0 20 20'
 			width='1.25em'
@@ -18,4 +17,4 @@ const SvgTicket = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgTicket);
+export default withClassName(SvgTicket, 'ticket');

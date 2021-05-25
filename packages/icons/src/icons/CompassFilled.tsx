@@ -5,7 +5,6 @@ const SvgCompassFilled = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
-			className='compassFilled_svg__ee-svg'
 			data-icon='compass'
 			fill='currentColor'
 			aria-hidden='true'
@@ -18,4 +17,4 @@ const SvgCompassFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCompassFilled);
+export default withClassName(SvgCompassFilled, 'compass-filled');

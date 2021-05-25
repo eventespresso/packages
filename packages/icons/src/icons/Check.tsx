@@ -5,7 +5,6 @@ const SvgCheck = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			className='check_svg__ee-svg'
 			fill='currentColor'
 			viewBox='64 64 896 896'
 			data-icon='check-circle'
@@ -19,4 +18,4 @@ const SvgCheck = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCheck);
+export default withClassName(SvgCheck, 'check');

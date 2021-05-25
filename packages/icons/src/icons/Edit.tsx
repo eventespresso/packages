@@ -4,7 +4,6 @@ import { IconProps } from '../types';
 const SvgEdit = (props: IconProps): JSX.Element => {
 	return (
 		<svg
-			className='edit_svg__ee-svg'
 			data-icon='control'
 			fill='currentColor'
 			aria-hidden='true'
@@ -21,4 +20,4 @@ const SvgEdit = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgEdit);
+export default withClassName(SvgEdit, 'edit');

@@ -66,4 +66,4 @@ const SvgTickets = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgTickets);
+export default withClassName(SvgTickets, 'tickets');

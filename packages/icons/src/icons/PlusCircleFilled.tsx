@@ -5,7 +5,6 @@ const SvgPlusCircleFilled = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
-			className='plusCircleFilled_svg__ee-svg'
 			data-icon='plus-circle'
 			fill='currentColor'
 			aria-hidden='true'
@@ -18,4 +17,4 @@ const SvgPlusCircleFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgPlusCircleFilled);
+export default withClassName(SvgPlusCircleFilled, 'plus-circle-filled');

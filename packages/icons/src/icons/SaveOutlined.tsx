@@ -5,7 +5,6 @@ const SvgSaveOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
-			className='saveOutlined_svg__ee-svg'
 			data-icon='save'
 			fill='currentColor'
 			aria-hidden='true'
@@ -21,4 +20,4 @@ const SvgSaveOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSaveOutlined);
+export default withClassName(SvgSaveOutlined, 'save-outlined');

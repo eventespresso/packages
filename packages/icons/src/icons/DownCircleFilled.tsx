@@ -5,7 +5,6 @@ const SvgDownCircleFilled = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
-			className='downCircleFilled_svg__ee-svg'
 			data-icon='down-circle'
 			fill='currentColor'
 			aria-hidden='true'
@@ -18,4 +17,4 @@ const SvgDownCircleFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgDownCircleFilled);
+export default withClassName(SvgDownCircleFilled, 'down-circle-filled');

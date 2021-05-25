@@ -9,4 +9,4 @@ const SvgExclamationCircle = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgExclamationCircle);
+export default withClassName(SvgExclamationCircle, 'exclamation-circle');
