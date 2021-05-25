@@ -4,7 +4,7 @@ import { FormSpy } from 'react-final-form';
 import { DebugInfo } from '@eventespresso/ui-components';
 
 import Submit from '../Submit';
-import RenderFields from '../RenderFields';
+import { RenderFields } from '../RenderFields';
 import RenderSections from '../RenderSections';
 import type { FormRendererProps } from '../types';
 

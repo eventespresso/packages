@@ -5,11 +5,13 @@ import { IconButton } from '../../Button';
 import { FormElementInput } from './FormElementInput';
 import { FormElementToolbar } from './FormElementToolbar';
 import { FormElementTabs } from './Tabs';
+import { useFormState } from '../state';
 
 import type { FormElementProps } from '../types';
 
-export const FormElement: React.FC<FormElementProps> = ({ element, isOpen, toggleElement }) => {
-	const active = isOpen(element.UUID);
+export const FormElement: React.FC<FormElementProps> = ({ element }) => {
+	const { isElementOpen, toggleOpenElement } = useFormState();
+	const active = isElementOpen(element.UUID);
 	const wrapperClass = classNames('ee-form-element__wrapper', active && 'ee-form-element__wrapper--active');
 
 	return (
@@ -21,13 +23,13 @@ export const FormElement: React.FC<FormElementProps> = ({ element, isOpen, toggl
 					borderless
 					className='ee-form-element__menu-button'
 					icon={More}
-					onClick={toggleElement(element.UUID)}
+					onClick={toggleOpenElement(element.UUID)}
 					size='small'
 					transparentBg
 				/>
 				<FormElementToolbar active={active} element={element} />
 			</div>
-			<FormElementTabs element={element} open={active} />
+			<FormElementTabs element={element} />
 		</div>
 	);
 };

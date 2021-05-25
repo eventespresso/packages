@@ -1,16 +1,17 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '../../../Tabs';
-
 import { __ } from '@eventespresso/i18n';
 import { CheckList, Palette, SettingsOutlined } from '@eventespresso/icons';
 
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '../../../Tabs';
+import { useFormState } from '../../state';
+import { Styles } from './Styles';
 import { Collapsible } from '../../../';
 import type { SettingsProps } from '../../types';
 import { Settings } from './Settings';
-import { Styles } from './Styles';
 
-export const FormSectionTabs: React.FC<SettingsProps> = ({ formSection, open = false }) => {
+export const FormSectionTabs: React.FC<SettingsProps> = ({ formSection }) => {
+	const { isElementOpen } = useFormState();
 	return (
-		<Collapsible show={open}>
+		<Collapsible show={isElementOpen(formSection.UUID)}>
 			<Tabs variant='enclosed' wrapperClassName='ee-form-settings__tabs'>
 				<TabList>
 					<Tab>

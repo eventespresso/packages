@@ -1,4 +1,3 @@
-import { MouseEventHandler } from 'react';
 import type { OptionsType } from '@eventespresso/adapters';
 
 export type ElementType =
@@ -40,7 +39,7 @@ export type ElementBlock = {
 	desc: string;
 };
 
-export interface FormInput {
+export interface FormElement {
 	UUID: string;
 	adminLabel?: string;
 	adminOnly?: boolean;
@@ -72,7 +71,7 @@ export interface FormSection {
 	belongsTo?: string;
 	customCss?: string;
 	description?: string;
-	elements: Array<FormInput>;
+	elements: Array<FormElement>;
 	htmlClass?: string;
 	name: string;
 	order?: number;
@@ -93,7 +92,7 @@ export interface FormBuilderProps {
 }
 
 export interface FormInputProps {
-	element: FormInput;
+	element: FormElement;
 }
 
 export interface FormElementToolbarProps extends FormInputProps {
@@ -105,17 +104,11 @@ export interface FormSectionToolbarProps {
 	formSection: FormSection;
 }
 
-export interface OpenCloseElement {
-	isOpen: (UUID: string) => boolean;
-	toggleElement: (UUID: string) => MouseEventHandler<HTMLButtonElement>;
-}
+export interface FormElementProps extends FormElementToolbarProps {}
 
-export interface FormElementProps extends FormElementToolbarProps, OpenCloseElement {}
-
-export interface FormSectionProps extends FormSectionToolbarProps, OpenCloseElement {}
+export interface FormSectionProps extends FormSectionToolbarProps {}
 
 export interface SettingsProps {
-	element?: FormInput;
+	element?: FormElement;
 	formSection?: FormSection;
-	open?: boolean;
 }

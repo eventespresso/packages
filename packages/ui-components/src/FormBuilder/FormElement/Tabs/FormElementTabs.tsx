@@ -8,10 +8,12 @@ import type { SettingsProps } from '../../types';
 import { Settings } from './Settings';
 import { Styles } from './Styles';
 import { Validation } from './Validation';
+import { useFormState } from '../../state';
 
-export const FormElementTabs: React.FC<SettingsProps> = ({ element, open = false }) => {
+export const FormElementTabs: React.FC<SettingsProps> = ({ element }) => {
+	const { isElementOpen } = useFormState();
 	return (
-		<Collapsible show={open}>
+		<Collapsible show={isElementOpen(element.UUID)}>
 			<Tabs variant='enclosed' wrapperClassName='ee-form-settings__tabs'>
 				<TabList>
 					<Tab>

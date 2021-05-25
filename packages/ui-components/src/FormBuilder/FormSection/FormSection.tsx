@@ -5,15 +5,17 @@ import { IconButton } from '../../Button';
 import { FormElement } from '../FormElement';
 import { FormSectionToolbar } from './FormSectionToolbar';
 import { FormSectionTabs } from './Tabs';
+import { useFormState } from '../state';
 
 import type { FormSectionProps } from '../types';
 
-export const FormSection: React.FC<FormSectionProps> = ({ formSection, isOpen, toggleElement }) => {
-	const active = isOpen(formSection.UUID);
+export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
+	const { isElementOpen, toggleOpenElement } = useFormState();
+
+	const active = isElementOpen(formSection.UUID);
 	const fieldsetClass = classNames('ee-form-section', active && 'ee-form-section--active');
-	const formElements = formSection.elements.map((element, index) => (
-		<FormElement key={index} element={element} isOpen={isOpen} toggleElement={toggleElement} />
-	));
+	const formElements = formSection.elements.map((element, index) => <FormElement key={index} element={element} />);
+
 	return (
 		<fieldset className={fieldsetClass}>
 			<div className={'ee-form-section__wrapper'}>
@@ -23,13 +25,13 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection, isOpen, t
 					borderless
 					className='ee-form-section__menu-button'
 					icon={More}
-					onClick={toggleElement(formSection.UUID)}
+					onClick={toggleOpenElement(formSection.UUID)}
 					size='small'
 					transparentBg
 				/>
 				<FormSectionToolbar active={active} formSection={formSection} />
 			</div>
-			<FormSectionTabs formSection={formSection} open={active} />
+			<FormSectionTabs formSection={formSection} />
 			{formElements}
 		</fieldset>
 	);
