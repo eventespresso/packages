@@ -3,10 +3,10 @@ import { FormControl } from '@eventespresso/adapters';
 import { MappedElement } from './MappedElement';
 import type { FormElementProps } from '../types';
 
-export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
+export const FormElementInput: React.FC<FormElementProps> = ({ element, sectionId }) => {
 	return (
 		<FormControl className='ee-form-element__input' isRequired={element.required}>
-			<MappedElement element={element} />
+			<MappedElement sectionId={sectionId} element={element} />
 		</FormControl>
 	);
 };

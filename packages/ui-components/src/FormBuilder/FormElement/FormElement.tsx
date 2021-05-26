@@ -17,7 +17,7 @@ export const FormElement: React.FC<FormElementProps> = ({ element, sectionId }) 
 	return (
 		<div className={wrapperClass}>
 			<div className='ee-form-element'>
-				<FormElementInput element={element} />
+				<FormElementInput sectionId={sectionId} element={element} />
 				<IconButton
 					active={active}
 					borderless
