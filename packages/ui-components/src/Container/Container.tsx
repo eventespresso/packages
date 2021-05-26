@@ -11,6 +11,7 @@ import type { ContainerProps } from './types';
 import './styles.scss';
 
 const Container: React.FC<ContainerProps> = ({
+	children,
 	classes,
 	content,
 	footer,
@@ -33,7 +34,7 @@ const Container: React.FC<ContainerProps> = ({
 			{header && <Header className={classes?.header}>{header}</Header>}
 			<Row className={classes?.body}>
 				{beforeContent}
-				<Content className={classes?.content}>{content}</Content>
+				<Content className={classes?.content}>{content || children}</Content>
 				{afterContent}
 			</Row>
 			{footer && <Footer className={classes?.footer}>{footer}</Footer>}

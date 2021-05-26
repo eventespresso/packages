@@ -14,7 +14,6 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 
 	const active = isElementOpen(formSection.UUID);
 	const fieldsetClass = classNames('ee-form-section', active && 'ee-form-section--active');
-	const formElements = formSection.elements.map((element, index) => <FormElement key={index} element={element} />);
 
 	return (
 		<fieldset className={fieldsetClass}>
@@ -29,10 +28,12 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 					size='small'
 					transparentBg
 				/>
-				<FormSectionToolbar active={active} formSection={formSection} />
+				<FormSectionToolbar formSection={formSection} />
 			</div>
 			<FormSectionTabs formSection={formSection} />
-			{formElements}
+			{formSection.elements.map((element, index) => (
+				<FormElement key={index} sectionId={formSection.UUID} element={element} />
+			))}
 		</fieldset>
 	);
 };

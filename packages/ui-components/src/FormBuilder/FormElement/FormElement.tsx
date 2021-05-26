@@ -9,7 +9,7 @@ import { useFormState } from '../state';
 
 import type { FormElementProps } from '../types';
 
-export const FormElement: React.FC<FormElementProps> = ({ element }) => {
+export const FormElement: React.FC<FormElementProps> = ({ element, sectionId }) => {
 	const { isElementOpen, toggleOpenElement } = useFormState();
 	const active = isElementOpen(element.UUID);
 	const wrapperClass = classNames('ee-form-element__wrapper', active && 'ee-form-element__wrapper--active');
@@ -27,7 +27,7 @@ export const FormElement: React.FC<FormElementProps> = ({ element }) => {
 					size='small'
 					transparentBg
 				/>
-				<FormElementToolbar active={active} element={element} />
+				<FormElementToolbar element={element} sectionId={sectionId} />
 			</div>
 			<FormElementTabs element={element} />
 		</div>

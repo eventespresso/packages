@@ -42,7 +42,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 
 				case 'UPDATE_ELEMENT':
 					existingElementIdx = findIndex<FormElement>(
-						propEq('UUID', UUID),
+						propEq('UUID', id),
 						state.sections[sectionId]?.elements || []
 					);
 					if (existingElementIdx > -1) {
@@ -57,7 +57,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 				case 'DELETE_ELEMENT':
 					newState = over(
 						lensPath(['sections', sectionId, 'elements']),
-						reject<FormElement>(propEq('UUID', UUID)),
+						reject<FormElement>(propEq('UUID', id)),
 						state
 					);
 					break;

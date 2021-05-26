@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import type { FormStateManager, FormStateManagerHook } from './types';
 import { useFormStateReducer, initialState } from './useFormStateReducer';
@@ -11,7 +11,13 @@ export const useFormStateManager: FormStateManagerHook = (initialSections) => {
 	const reducer = useFormStateReducer(initializer);
 	const [state, dispatch] = useReducer(reducer, initialState, initializer);
 
+	useEffect(() => {
+		console.log('FormState', state);
+	}, [state]);
+
 	const getData: FSM['getData'] = useCallback(() => state, [state]);
+
+	const getSections: FSM['getSections'] = useCallback(() => Object.values(state.sections), [state]);
 
 	const addSection: FSM['addSection'] = useCallback((section) => {
 		dispatch({
@@ -84,6 +90,7 @@ export const useFormStateManager: FormStateManagerHook = (initialSections) => {
 			deleteElement,
 			deleteSection,
 			getData,
+			getSections,
 			isElementOpen,
 			reset,
 			toggleOpenElement,

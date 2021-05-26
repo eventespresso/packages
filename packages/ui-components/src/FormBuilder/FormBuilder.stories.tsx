@@ -1,6 +1,6 @@
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
-import type { FormBuilderProps } from './types';
+import type { FormBuilderProps, FormSection } from './types';
 import FormBuilder from './FormBuilder';
 import { Heading } from '../';
 
@@ -12,7 +12,7 @@ export default {
 
 type FormBuilderStory = Story<FormBuilderProps>;
 
-const formSections: FormBuilderProps['formSections'] = [
+const formSections: Array<FormSection> = [
 	{
 		UUID: 'abc123',
 		appliesTo: 'all',
@@ -131,7 +131,7 @@ const Template: FormBuilderStory = (args) => (
 	<FormBuilder
 		{...args}
 		containerClassName='ee-edtr-section'
-		formSections={formSections}
+		initialSections={formSections}
 		header={
 			<Heading as='h3' className='ee-edtr-section-heading'>
 				{'Registration Form Builder'}

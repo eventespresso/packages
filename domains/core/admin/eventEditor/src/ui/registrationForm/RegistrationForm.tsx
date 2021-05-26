@@ -1,9 +1,9 @@
 import { __ } from '@eventespresso/i18n';
-import { FormBuilder, Heading, FormBuilderProps } from '@eventespresso/ui-components';
+import { FormBuilder, Heading, FormSection } from '@eventespresso/ui-components';
 import { withFeature } from '@eventespresso/services';
 
 // this is based off of the data schema I started for the PHP models, but can be changed to whatever
-const formSections: FormBuilderProps['formSections'] = [
+const formSections: Array<FormSection> = [
 	{
 		UUID: 'abc123',
 		appliesTo: 'all',
@@ -121,7 +121,7 @@ const formSections: FormBuilderProps['formSections'] = [
 export const RegistrationForm: React.FC = () => (
 	<FormBuilder
 		containerClassName='ee-edtr-section'
-		formSections={formSections}
+		initialSections={formSections}
 		header={
 			<Heading as='h3' className='ee-edtr-section-heading'>
 				{__('Registration Form Builder')}

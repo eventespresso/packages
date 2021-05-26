@@ -6,8 +6,10 @@ import { DragHandle, Trash } from '@eventespresso/icons';
 import { Button, IconButton } from '../../Button';
 import { ELEMENT_BLOCKS } from '../constants';
 import { Select } from '../../';
+import { useFormState } from '../state';
 
-import type { FormSectionToolbarProps } from '../types';
+import type { FormSectionProps } from '../types';
+import { useCallback } from 'react';
 
 const elementtypes = ELEMENT_BLOCKS.map((tag) => {
 	return {
@@ -26,7 +28,14 @@ const locations = [
 	},
 ];
 
-export const FormSectionToolbar: React.FC<FormSectionToolbarProps> = ({ active, formSection }) => {
+export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) => {
+	const { isElementOpen, deleteSection } = useFormState();
+	const active = isElementOpen(formSection.UUID);
+
+	const onDelete = useCallback(() => {
+		deleteSection(formSection.UUID);
+	}, [deleteSection, formSection.UUID]);
+
 	const toolbarClass = classNames('ee-form-section__toolbar', active && 'ee-form-section__toolbar--active');
 	const tools = active && (
 		<div className={'ee-form-section__toolbar-tools'}>
@@ -54,7 +63,7 @@ export const FormSectionToolbar: React.FC<FormSectionToolbarProps> = ({ active, 
 				<Button buttonText={__('Add')} size='small' />
 			</div>
 			<div className='ee-form-section__toolbar-item'>
-				<IconButton icon={Trash} borderless size='small' transparentBg />
+				<IconButton icon={Trash} borderless size='small' onClick={onDelete} transparentBg />
 				<IconButton icon={DragHandle} borderless className='ee-drag-handle' size='small' transparentBg />
 			</div>
 		</div>

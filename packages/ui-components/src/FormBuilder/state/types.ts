@@ -36,6 +36,7 @@ export interface FormStateManager extends FormState {
 	deleteElement: (sectionId: string, uuid: string) => void;
 	deleteSection: (uuid: string) => void;
 	getData: () => FormState;
+	getSections: () => Array<FormSection>;
 	isElementOpen: (uuid: string) => boolean;
 	reset: () => void;
 	toggleOpenElement: (uuid: string) => MouseEventHandler<HTMLButtonElement>;

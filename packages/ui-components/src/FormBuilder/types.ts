@@ -87,26 +87,17 @@ export interface FormBuilderProps {
 	containerClassName?: string;
 	contentClassName?: string;
 	header?: React.ReactNode;
-	formSections: Array<FormSection>;
 	sidebarClassName?: string;
 }
 
-export interface FormInputProps {
+export interface FormElementProps {
 	element: FormElement;
+	sectionId: string;
 }
 
-export interface FormElementToolbarProps extends FormInputProps {
-	active?: boolean;
-}
-
-export interface FormSectionToolbarProps {
-	active?: boolean;
+export interface FormSectionProps {
 	formSection: FormSection;
 }
-
-export interface FormElementProps extends FormElementToolbarProps {}
-
-export interface FormSectionProps extends FormSectionToolbarProps {}
 
 export interface SettingsProps {
 	element?: FormElement;

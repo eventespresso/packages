@@ -19,7 +19,7 @@ export interface ConditionalElementProps {
 
 export interface ContainerProps extends AnyObject {
 	classes?: ContainerClasses;
-	content: React.ReactNode;
+	content?: React.ReactNode;
 	footer?: React.ReactNode;
 	header?: React.ReactNode;
 	sidebarAfter?: React.ReactNode;
