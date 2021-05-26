@@ -3,11 +3,11 @@ import { useMemo } from 'react';
 
 import type { AnyObject } from '@eventespresso/utils';
 import { TextInput, NumberInput, Textarea, Select, Switch, withLabel } from '../../';
-import { FormInputProps, FormElement } from '../types';
+import { FormElementProps, FormElement } from '../types';
 
 const DefaultComponent = () => null;
 
-export const MappedElement: React.FC<FormInputProps> = ({ element }) => {
+export const MappedElement: React.FC<FormElementProps> = ({ element }) => {
 	let Component: React.ComponentType<AnyObject>;
 
 	const propsToPick = useMemo<Array<keyof FormElement>>(() => ['placeholder'], []);
