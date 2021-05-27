@@ -32,7 +32,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					icon={SettingsOutlined}
 					onClick={onToggle}
 					size='small'
-					tooltip={__('click to view form element settings')}
+					tooltip={__('form element settings')}
 					transparentBg
 				/>
 				<IconButton
@@ -41,7 +41,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					size='smaller'
 					onClick={onCopy}
 					tabIndex={tabIndex}
-					tooltip={__('click to copy this form element')}
+					tooltip={__('copy form element')}
 					transparentBg
 				/>
 				<IconButton
@@ -50,7 +50,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					size='smaller'
 					// onClick={onSave}
 					tabIndex={tabIndex}
-					tooltip={__('click to save this form element for use in other forms')}
+					tooltip={__('save form element for use in other forms')}
 					transparentBg
 				/>
 				<IconButton
@@ -59,7 +59,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					size='smaller'
 					onClick={onDelete}
 					tabIndex={tabIndex}
-					tooltip={__('click to delete this form element')}
+					tooltip={__('delete form element')}
 					transparentBg
 				/>
 				<IconButton
@@ -68,7 +68,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					className='ee-drag-handle'
 					size='smaller'
 					tabIndex={tabIndex}
-					tooltip={__('click, hold, and drag to reorder this form element')}
+					tooltip={__('click, hold, and drag to reorder form element')}
 					transparentBg
 				/>
 			</div>

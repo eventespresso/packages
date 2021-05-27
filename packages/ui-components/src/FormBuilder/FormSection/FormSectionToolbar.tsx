@@ -29,7 +29,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 					className='ee-form-section__menu-button'
 					onClick={onToggle}
 					size='smaller'
-					tooltip={__('click to view form section settings')}
+					tooltip={__('form section settings')}
 					transparentBg
 				/>
 				<IconButton
@@ -38,7 +38,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 					onClick={onCopy}
 					size='smaller'
 					tabIndex={tabIndex}
-					tooltip={__('click to copy this form section')}
+					tooltip={__('copy form section')}
 					transparentBg
 				/>
 				<IconButton
@@ -47,7 +47,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 					// onClick={onSave}
 					size='smaller'
 					tabIndex={tabIndex}
-					tooltip={__('click to save this form section for use in other forms')}
+					tooltip={__('save form section for use in other forms')}
 					transparentBg
 				/>
 				<IconButton
@@ -56,7 +56,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 					onClick={onDelete}
 					size='small'
 					tabIndex={tabIndex}
-					tooltip={__('click to delete this form section')}
+					tooltip={__('delete form section')}
 					transparentBg
 				/>
 				<IconButton
@@ -65,7 +65,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 					className='ee-drag-handle'
 					size='small'
 					tabIndex={tabIndex}
-					tooltip={__('click, hold, and drag to reorder this form section')}
+					tooltip={__('click, hold, and drag to reorder form section')}
 					transparentBg
 				/>
 			</div>
