@@ -43,7 +43,7 @@ export interface FormElement {
 	UUID: string;
 	adminLabel?: string;
 	adminOnly?: boolean;
-	belongsTo?: string;
+	belongsTo: string;
 	customCss?: string;
 	helpClass?: string;
 	helpText?: string;
@@ -53,9 +53,9 @@ export interface FormElement {
 	max?: number;
 	min?: number;
 	options?: OptionsType;
-	order?: number;
+	order: number;
 	placeholder?: string;
-	publicLabel: string;
+	publicLabel?: string;
 	relation?: string;
 	required?: boolean;
 	requiredText?: string;
@@ -71,10 +71,9 @@ export interface FormSection {
 	belongsTo?: string;
 	customCss?: string;
 	description?: string;
-	elements: Array<FormElement>;
 	htmlClass?: string;
 	name: string;
-	order?: number;
+	order: number;
 	relation?: string;
 	showName?: boolean;
 	showDescription?: boolean;
@@ -92,7 +91,6 @@ export interface FormBuilderProps {
 
 export interface FormElementProps {
 	element: FormElement;
-	sectionId: string;
 }
 
 export interface FormSectionProps {
