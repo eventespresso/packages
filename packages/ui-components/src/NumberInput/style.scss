@@ -43,5 +43,14 @@
 
 	.ee-number-field-stepper {
 		z-index: 0;
+
+		> div {
+			border-color: var(--ee-border-color);
+			border-inline-start-width: var(--ee-border-width);
+
+			+ div {
+				border-top-width: var(--ee-border-width);
+			}
+		}
 	}
 }
