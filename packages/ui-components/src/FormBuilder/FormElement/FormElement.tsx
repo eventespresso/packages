@@ -1,4 +1,6 @@
 import classNames from 'classnames';
+
+import { __ } from '@eventespresso/i18n';
 import { More } from '@eventespresso/icons';
 
 import { IconButton } from '../../Button';
@@ -25,6 +27,7 @@ export const FormElement: React.FC<FormElementProps> = ({ element, sectionId }) 
 					icon={More}
 					onClick={toggleOpenElement(element.UUID)}
 					size='small'
+					tooltip={__('click to view form element toolbar and settings')}
 					transparentBg
 				/>
 				<FormElementToolbar element={element} sectionId={sectionId} />
