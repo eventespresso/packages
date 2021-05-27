@@ -91,6 +91,8 @@ export const FormSectionSidebar: React.FC<SidebarProps> = ({ className, formSect
 		sidebarOpen && 'ee-form-section__sidebar-toggle--active'
 	);
 
+	const tabIndex = sidebarOpen ? 0 : -1;
+
 	const sidebar = (
 		<div className={sidebarClass}>
 			<Heading as='h5'>{__('Add Form Element')}</Heading>
@@ -106,8 +108,15 @@ export const FormSectionSidebar: React.FC<SidebarProps> = ({ className, formSect
 					options={existingFormSections}
 					onChangeValue={onChangeSection}
 					size='small'
+					tabIndex={tabIndex}
 				/>
-				<Button buttonText={__('Add')} onClick={onAddExistingSection} buttonType='primary' size='small' />
+				<Button
+					buttonText={__('Add')}
+					onClick={onAddExistingSection}
+					buttonType='primary'
+					size='small'
+					tabIndex={tabIndex}
+				/>
 			</div>
 			<div className={sidebarItemClass}>
 				<Select
@@ -116,17 +125,25 @@ export const FormSectionSidebar: React.FC<SidebarProps> = ({ className, formSect
 					options={ELEMENT_BLOCKS_OPTIONS}
 					onChangeValue={onChangeElement}
 					size='small'
+					tabIndex={tabIndex}
 				/>
-				<Button buttonText={__('Add')} onClick={onAddElement} buttonType='primary' size='small' />
+				<Button
+					buttonText={__('Add')}
+					onClick={onAddElement}
+					buttonType='primary'
+					size='small'
+					tabIndex={tabIndex}
+				/>
 			</div>
 			<div className={sidebarItemClass}>
-				<Button buttonText={__('Cancel')} onClick={toggleSidebar} size='small' />
+				<Button buttonText={__('Cancel')} onClick={toggleSidebar} size='small' tabIndex={tabIndex} />
 			</div>
 		</div>
 	);
 
 	return (
 		<>
+			{sidebar}
 			<Button
 				buttonText={__('Add Form Element')}
 				className={toggleClass}
@@ -134,7 +151,6 @@ export const FormSectionSidebar: React.FC<SidebarProps> = ({ className, formSect
 				onClick={toggleSidebar}
 				size='small'
 			/>
-			{sidebar}
 		</>
 	);
 };
