@@ -5,6 +5,7 @@
 		box-sizing: border-box;
 
 		&.ee-btn--micro {
+			box-shadow: var(--ee-button-box-shadow-soft);
 			font-size: var(--ee-font-size-micro);
 			height: var(--ee-icon-button-size-micro);
 			min-height: var(--ee-icon-button-size-smaller);
@@ -27,6 +28,7 @@
 		}
 
 		&.ee-btn--tiny {
+			box-shadow: var(--ee-button-box-shadow-soft);
 			font-size: var(--ee-font-size-tiny);
 			height: var(--ee-icon-button-size-tiny);
 			min-height: var(--ee-icon-button-size-smaller);
@@ -49,6 +51,7 @@
 
 		&.ee-btn--small,
 		&.ee-btn--smaller {
+			box-shadow: var(--ee-button-box-shadow-soft);
 			line-height: var(--ee-font-size-small);
 			height: var(--ee-icon-button-size-small);
 			line-height: var(--ee-icon-button-size-tiny);
@@ -82,6 +85,7 @@
 		}
 
 		&.ee-btn--small {
+			box-shadow: var(--ee-button-box-shadow);
 			// height: var(--ee-icon-button-size-small);
 			// line-height: var(--ee-font-size-tiny);
 			// min-height: var(--ee-font-size-small);
@@ -113,6 +117,7 @@
 
 		&.ee-btn--big,
 		&.ee-btn--bigger {
+			box-shadow: var(--ee-button-box-shadow-hard);
 			font-size: var(--ee-font-size-big);
 			height: var(--ee-icon-button-size-big);
 			min-height: var(--ee-icon-button-size-bigger);
@@ -151,6 +156,7 @@
 		}
 
 		&.ee-btn--huge {
+			box-shadow: var(--ee-button-box-shadow-hard);
 			font-size: var(--ee-font-size-bigger);
 			height: var(--ee-icon-button-size-huge);
 			min-height: var(--ee-icon-button-size-huge);

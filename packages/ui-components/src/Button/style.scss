@@ -93,6 +93,11 @@
 			font-family: var(--ee-admin-font-family);
 			font-size: var(--ee-font-size-default);
 			font-weight: 600;
+			margin: 0;
+
+			&.btn-text {
+				margin: 0 var(--ee-margin-tiny);
+			}
 		}
 
 		svg {
@@ -102,7 +107,7 @@
 
 		&--has-icon,
 		&:not(.ee-noIcon) {
-			span {
+			span.btn-text {
 				margin: 0 var(--ee-margin-tiny);
 			}
 		}

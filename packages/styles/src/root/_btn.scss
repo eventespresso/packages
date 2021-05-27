@@ -1,9 +1,19 @@
 $btn: (
 	button-background: var(--ee-color-grey-12),
 	button-background-rte: hsla(0, 0%, 75.3%, 0.25),
-	button-box-shadow: (
+	button-box-shadow-soft: (
 		1px 1px 1px rgba(0, 0, 0, 0.25),
-		-1px -1px 1px rgba(255, 255, 255, 0.375),
+		-1px -1px 1px rgba(255, 255, 255, 0.5),
+	),
+	button-box-shadow: (
+		1px 1px 1px rgba(0, 0, 0, 0.375),
+		-1px -1px 1px rgba(255, 255, 255, 0.75),
+	),
+	button-box-shadow-hard: (
+		1px 1px 1px rgba(0, 0, 0, 0.375),
+		2px 2px 5px rgba(0, 0, 0, 0.188),
+		-1px -1px 1px rgba(255, 255, 255, 0.75),
+		-2px -2px 5px rgba(255, 255, 255, 0.375)
 	),
 	button-text-color: var(--ee-text-on-grey-12),
 	button-transparent-background: rgba(192, 192, 192, 0.25),
