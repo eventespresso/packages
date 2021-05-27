@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
-import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
-import { Copy, DragHandle, Save, Trash } from '@eventespresso/icons';
+import { Copy, DragHandle, Save, SettingsOutlined, Trash } from '@eventespresso/icons';
 
 import { IconButton } from '../../Button';
 import { ELEMENT_BLOCKS_INDEXED } from '../constants';
@@ -11,26 +10,37 @@ import { useFormState } from '../state';
 import type { FormElementProps } from '../types';
 
 export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
-	const { isElementOpen, deleteElement, copyElement } = useFormState();
+	const { copyElement, deleteElement, isElementOpen, toggleOpenElement } = useFormState();
 
 	const active = isElementOpen(element.UUID);
-
-	const menuClass = classNames('ee-form-element__menu', active && 'ee-form-element__menu--active');
-
 	const elementTypeLabel = ELEMENT_BLOCKS_INDEXED[element.type]?.label || '';
 
-	const onDelete = useCallback(() => deleteElement(element.UUID), [deleteElement, element.UUID]);
 	const onCopy = useCallback(() => copyElement(element.UUID), [copyElement, element.UUID]);
+	const onDelete = useCallback(() => deleteElement(element.UUID), [deleteElement, element.UUID]);
+	const onToggle = useCallback(() => toggleOpenElement(element.UUID), [element.UUID, toggleOpenElement]);
 
-	const tools = active && (
-		<>
+	const tabIndex = active ? 0 : -1;
+
+	return (
+		<div className='ee-form-element__toolbar'>
 			<div className='ee-form-element__type'>{elementTypeLabel}</div>
-			<div className='ee-form-element__actions'>
+			<div className='ee-form-element__toolbar-actions'>
+				<IconButton
+					active={active}
+					borderless
+					className='ee-form-element__menu-button'
+					icon={SettingsOutlined}
+					onClick={onToggle}
+					size='small'
+					tooltip={__('click to view form element settings')}
+					transparentBg
+				/>
 				<IconButton
 					icon={Copy}
 					borderless
 					size='smaller'
 					onClick={onCopy}
+					tabIndex={tabIndex}
 					tooltip={__('click to copy this form element')}
 					transparentBg
 				/>
@@ -38,7 +48,8 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					icon={Save}
 					borderless
 					size='smaller'
-					// onClick={onDelete}
+					// onClick={onSave}
+					tabIndex={tabIndex}
 					tooltip={__('click to save this form element for use in other forms')}
 					transparentBg
 				/>
@@ -47,6 +58,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					borderless
 					size='smaller'
 					onClick={onDelete}
+					tabIndex={tabIndex}
 					tooltip={__('click to delete this form element')}
 					transparentBg
 				/>
@@ -55,12 +67,11 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					borderless
 					className='ee-drag-handle'
 					size='smaller'
+					tabIndex={tabIndex}
 					tooltip={__('click, hold, and drag to reorder this form element')}
 					transparentBg
 				/>
 			</div>
-		</>
+		</div>
 	);
-
-	return <div className={menuClass}>{tools}</div>;
 };
