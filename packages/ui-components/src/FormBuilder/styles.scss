@@ -61,8 +61,10 @@
 					background: var(--ee-color-grey-14);
 				}
 
+				.ee-form-section__menu-button:focus,
 				&:hover .ee-form-section__menu-button,
 				&--active .ee-form-section__menu-button,
+				.ee-form-section__sidebar-toggle:focus,
 				&:hover .ee-form-section__sidebar-toggle,
 				&--active .ee-form-section__sidebar-toggle {
 					opacity: 1 !important;
@@ -267,6 +269,10 @@
 					&-button {
 						margin: var(--ee-margin-micro);
 						opacity: 0;
+
+						&:focus {
+							opacity: 1;
+						}
 					}
 				}
 
