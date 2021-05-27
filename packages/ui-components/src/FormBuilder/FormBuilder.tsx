@@ -9,37 +9,24 @@ import { useFormState } from './state';
 import type { FormBuilderProps } from './types';
 import './styles.scss';
 
-const FormBuilder: React.FC<FormBuilderProps> = ({
-	bodyClassName,
-	containerClassName,
-	contentClassName,
-	header,
-	sidebarClassName,
-}) => {
+const FormBuilder: React.FC<FormBuilderProps> = ({ bodyClassName, containerClassName, contentClassName, header }) => {
+	const { getSections } = useFormState();
+
 	const bodyClass = classNames('ee-form-builder__wrapper', bodyClassName);
 	const contentClass = classNames('ee-form-builder__form', contentClassName);
 	const containerClass = classNames('ee-form-builder', containerClassName);
-	const sidebarClass = classNames(sidebarClassName, 'ee-form-builder__sidebar');
 
 	const classes = useMemo(() => {
 		return {
 			body: bodyClass,
 			container: containerClass,
 			content: contentClass,
-			sidebarAfter: sidebarClass,
-			sidebarBefore: '',
 		};
-	}, [bodyClass, containerClass, contentClass, sidebarClass]);
+	}, [bodyClass, containerClass, contentClass]);
 
-	const { getSections } = useFormState();
+	const form = getSections().map((formSection) => <FormSection key={formSection.UUID} formSection={formSection} />);
 
-	return (
-		<Container classes={classes} header={header}>
-			{getSections().map((formSection) => (
-				<FormSection key={formSection.UUID} formSection={formSection} />
-			))}
-		</Container>
-	);
+	return <Container classes={classes} header={header} content={form} />;
 };
 
 export default withFormState(FormBuilder);
