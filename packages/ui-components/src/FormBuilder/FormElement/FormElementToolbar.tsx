@@ -10,8 +10,8 @@ import { useFormState } from '../state';
 
 import type { FormElementProps } from '../types';
 
-export const FormElementToolbar: React.FC<FormElementProps> = ({ element, sectionId }) => {
-	const { isElementOpen, deleteElement } = useFormState();
+export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
+	const { isElementOpen, deleteElement, copyElement } = useFormState();
 
 	const active = isElementOpen(element.UUID);
 
@@ -19,9 +19,8 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element, sectio
 
 	const elementTypeLabel = ELEMENT_BLOCKS_INDEXED[element.type]?.label || '';
 
-	const onDelete = useCallback(() => {
-		deleteElement(sectionId, element.UUID);
-	}, [deleteElement, element.UUID, sectionId]);
+	const onDelete = useCallback(() => deleteElement(element.UUID), [deleteElement, element.UUID]);
+	const onCopy = useCallback(() => copyElement(element.UUID), [copyElement, element.UUID]);
 
 	const tools = active && (
 		<>
@@ -31,7 +30,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element, sectio
 					icon={Copy}
 					borderless
 					size='smaller'
-					// onClick={onCopy}
+					onClick={onCopy}
 					tooltip={__('click to copy this form element')}
 					transparentBg
 				/>

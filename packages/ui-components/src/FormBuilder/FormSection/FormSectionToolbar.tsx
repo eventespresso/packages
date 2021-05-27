@@ -10,13 +10,12 @@ import { useFormState } from '../state';
 import type { FormSectionProps } from '../types';
 
 export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) => {
-	const { isElementOpen, deleteSection } = useFormState();
+	const { isElementOpen, deleteSection, copySection } = useFormState();
 
 	const active = isElementOpen(formSection.UUID);
 
-	const onDelete = useCallback(() => {
-		deleteSection(formSection.UUID);
-	}, [deleteSection, formSection.UUID]);
+	const onDelete = useCallback(() => deleteSection(formSection.UUID), [deleteSection, formSection.UUID]);
+	const onCopy = useCallback(() => copySection(formSection.UUID), [copySection, formSection.UUID]);
 
 	const toolbarClass = classNames(
 		'ee-form-section__toolbar',
@@ -32,7 +31,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 						icon={Copy}
 						borderless
 						size='smaller'
-						// onClick={onCopy}
+						onClick={onCopy}
 						tooltip={__('click to copy this form section')}
 						transparentBg
 					/>
@@ -40,7 +39,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 						icon={Save}
 						borderless
 						size='smaller'
-						// onClick={onDelete}
+						// onClick={onSave}
 						tooltip={__('click to save this form section for use in other forms')}
 						transparentBg
 					/>

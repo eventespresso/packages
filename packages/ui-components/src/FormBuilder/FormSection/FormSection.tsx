@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
@@ -13,10 +14,12 @@ import { useFormState } from '../state';
 import type { FormSectionProps } from '../types';
 
 export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
-	const { isElementOpen, toggleOpenElement } = useFormState();
+	const { isElementOpen, toggleOpenElement, getElements } = useFormState();
 
 	const active = isElementOpen(formSection.UUID);
 	const fieldsetClass = classNames('ee-form-section', active && 'ee-form-section--active');
+
+	const onToggle = useCallback(() => toggleOpenElement(formSection.UUID), [formSection.UUID, toggleOpenElement]);
 
 	return (
 		<fieldset className={fieldsetClass}>
@@ -27,7 +30,7 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 					borderless
 					className='ee-form-section__menu-button'
 					icon={More}
-					onClick={toggleOpenElement(formSection.UUID)}
+					onClick={onToggle}
 					size='small'
 					tooltip={__('click to view form section toolbar and settings')}
 					transparentBg
@@ -35,8 +38,8 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection }) => {
 				<FormSectionToolbar formSection={formSection} />
 			</div>
 			<FormSectionTabs formSection={formSection} />
-			{formSection.elements.map((element) => (
-				<FormElement key={element.UUID} element={element} sectionId={formSection.UUID} />
+			{getElements(formSection.UUID).map((element) => (
+				<FormElement key={element.UUID} element={element} />
 			))}
 			<FormSectionSidebar formSection={formSection} />
 		</fieldset>

@@ -1,7 +1,25 @@
 import { indexBy, prop } from 'ramda';
-import { __ } from '@eventespresso/i18n';
 
-import { ElementBlock } from './types';
+import { __ } from '@eventespresso/i18n';
+import type { OptionsType } from '@eventespresso/adapters';
+
+import { ElementBlock, FormSection, FormElement } from './types';
+
+export const DEFAULT_SECTION: FormSection = {
+	UUID: '',
+	appliesTo: 'all',
+	name: '',
+	order: 1,
+	status: 'active',
+};
+
+export const DEFAULT_ELEMENT: FormElement = {
+	UUID: '',
+	belongsTo: '',
+	type: 'text',
+	order: 1,
+	status: 'active',
+};
 
 export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	{
@@ -164,3 +182,8 @@ export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 ];
 
 export const ELEMENT_BLOCKS_INDEXED = indexBy(prop('type'), ELEMENT_BLOCKS);
+
+export const ELEMENT_BLOCKS_OPTIONS = ELEMENT_BLOCKS.map<OptionsType[number]>(({ label, type: value }) => ({
+	label,
+	value,
+}));

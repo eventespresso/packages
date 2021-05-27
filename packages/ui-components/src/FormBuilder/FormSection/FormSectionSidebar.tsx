@@ -1,4 +1,4 @@
-// import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
@@ -6,11 +6,11 @@ import { Plus } from '@eventespresso/icons';
 
 import { Button } from '../../Button';
 import { Heading } from '../../Heading';
-import { Select } from '../../';
-import { ELEMENT_BLOCKS } from '../constants';
+import { Select, SelectProps } from '../../';
+import { ELEMENT_BLOCKS_OPTIONS } from '../constants';
 import { useFormState } from '../state';
-
-import { FormSection } from '../types';
+import { FormSection, ElementType } from '../types';
+import { find, propEq } from 'ramda';
 
 interface SidebarProps {
 	className?: string;
@@ -45,25 +45,36 @@ const existingFormSections = mockFormSectionData.map((section: FormSection) => {
 	};
 });
 
-const elementtypes = ELEMENT_BLOCKS.map((tag) => {
-	return {
-		label: tag.label,
-		value: tag.type,
-	};
-});
-
 export const FormSectionSidebar: React.FC<SidebarProps> = ({ className, formSection }) => {
-	const { isElementOpen, toggleOpenElement } = useFormState();
+	const { isElementOpen, toggleOpenElement, addSection, addElement } = useFormState();
+	const [selectedElement, setSelectedElement] = useState<ElementType>('formSection');
+	const [selectedSection, setSelectedSection] = useState(existingFormSections[0].value);
+
 	const sidebarID = `${formSection.UUID}-sidebar`;
 	const sidebarOpen = isElementOpen(sidebarID);
 
-	// console.log('%c sidebarID', 'color: LimeGreen;', sidebarID, 'open', sidebarOpen);
-	/*
-	const toggleSidebar = useCallback(() => {
-		toggleOpenElement(sidebarID);
-		console.log('%c sidebarID', 'color: Yellow;', sidebarID, 'open', isElementOpen(sidebarID));
-	}, [sidebarID, isElementOpen, toggleOpenElement]);
- 	*/
+	const toggleSidebar = useCallback(() => toggleOpenElement(sidebarID), [sidebarID, toggleOpenElement]);
+
+	const onAddElement = useCallback(() => {
+		if (selectedElement === 'formSection') {
+			addSection({}, formSection.UUID);
+		} else {
+			addElement({ type: selectedElement, belongsTo: formSection.UUID });
+		}
+	}, [addElement, addSection, formSection.UUID, selectedElement]);
+
+	const onAddExistingSection = useCallback(() => {
+		const section = find(propEq('UUID', selectedSection), mockFormSectionData);
+		addSection(section, formSection.UUID);
+	}, [addSection, formSection.UUID, selectedSection]);
+
+	const onChangeElement = useCallback<SelectProps['onChangeValue']>((value) => {
+		setSelectedElement(value as ElementType);
+	}, []);
+	const onChangeSection = useCallback<SelectProps['onChangeValue']>((value) => {
+		setSelectedSection(value as string);
+	}, []);
+
 	const sidebarClass = classNames(
 		className,
 		'ee-form-section__sidebar',
@@ -93,26 +104,23 @@ export const FormSectionSidebar: React.FC<SidebarProps> = ({ className, formSect
 					id={`${formSection.UUID}-load-existing-section-selector`}
 					label={__('load existing form section')}
 					options={existingFormSections}
+					onChangeValue={onChangeSection}
 					size='small'
 				/>
-				<Button buttonText={__('Add')} buttonType='primary' size='small' />
+				<Button buttonText={__('Add')} onClick={onAddExistingSection} buttonType='primary' size='small' />
 			</div>
 			<div className={sidebarItemClass}>
 				<Select
 					id={`${formSection.UUID}-add-new-section-selector`}
 					label={__('add new form element')}
-					options={elementtypes}
+					options={ELEMENT_BLOCKS_OPTIONS}
+					onChangeValue={onChangeElement}
 					size='small'
 				/>
-				<Button buttonText={__('Add')} buttonType='primary' size='small' />
+				<Button buttonText={__('Add')} onClick={onAddElement} buttonType='primary' size='small' />
 			</div>
 			<div className={sidebarItemClass}>
-				<Button
-					buttonText={__('Cancel')}
-					// onClick={toggleSidebar}
-					onClick={toggleOpenElement(sidebarID)}
-					size='small'
-				/>
+				<Button buttonText={__('Cancel')} onClick={toggleSidebar} size='small' />
 			</div>
 		</div>
 	);
@@ -123,8 +131,7 @@ export const FormSectionSidebar: React.FC<SidebarProps> = ({ className, formSect
 				buttonText={__('Add Form Element')}
 				className={toggleClass}
 				icon={Plus}
-				// onClick={toggleSidebar}
-				onClick={toggleOpenElement(sidebarID)}
+				onClick={toggleSidebar}
 				size='small'
 			/>
 			{sidebar}

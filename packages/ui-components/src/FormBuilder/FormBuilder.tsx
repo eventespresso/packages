@@ -24,9 +24,13 @@ const FormBuilder: React.FC<FormBuilderProps> = ({ bodyClassName, containerClass
 		};
 	}, [bodyClass, containerClass, contentClass]);
 
-	const form = getSections().map((formSection) => <FormSection key={formSection.UUID} formSection={formSection} />);
-
-	return <Container classes={classes} header={header} content={form} />;
+	return (
+		<Container classes={classes} header={header}>
+			{getSections().map((formSection) => (
+				<FormSection key={formSection.UUID} formSection={formSection} />
+			))}
+		</Container>
+	);
 };
 
 export default withFormState(FormBuilder);
