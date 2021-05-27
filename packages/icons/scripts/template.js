@@ -6,9 +6,9 @@ function defaultTemplate({ template }, opts, { interfaces, componentName, jsx })
 	const typeScriptTpl = template.smart({ plugins });
 
 	return typeScriptTpl.ast`
-	
+
 	import withClassName from '../withClassName';
-	import { IconProps } from '../types';	
+	import { IconProps } from '../types';
 
 	${interfaces}
 
@@ -16,7 +16,7 @@ function defaultTemplate({ template }, opts, { interfaces, componentName, jsx })
 		return ${jsx};
 	}
 
-	export default withClassName(${componentName});
+	export default withClassName(${componentName}, ${componentName});
 	`;
 }
 module.exports = defaultTemplate;
