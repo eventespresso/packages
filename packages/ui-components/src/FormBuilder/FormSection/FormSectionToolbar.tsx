@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
-import { DragHandle, Trash } from '@eventespresso/icons';
+import { Copy, DragHandle, Save, Trash } from '@eventespresso/icons';
 
 import { IconButton } from '../../Button';
 import { useFormState } from '../state';
@@ -28,6 +28,22 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 		active && (
 			<div className={toolbarClass}>
 				<div className='ee-form-section__toolbar-item ee-form-section__toolbar-item--align-end'>
+					<IconButton
+						icon={Copy}
+						borderless
+						size='smaller'
+						// onClick={onCopy}
+						tooltip={__('click to copy this form section')}
+						transparentBg
+					/>
+					<IconButton
+						icon={Save}
+						borderless
+						size='smaller'
+						// onClick={onDelete}
+						tooltip={__('click to save this form section for use in other forms')}
+						transparentBg
+					/>
 					<IconButton
 						icon={Trash}
 						borderless
