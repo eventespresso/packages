@@ -59,6 +59,19 @@
 				}
 			}
 
+			&:focus,
+			&[data-focus] {
+				border-top-color: var(--ee-color-grey-8);
+				box-shadow: none;
+				color: var(--ee-default-text-color-super-high-contrast);
+
+				svg.ee-svg.ee-svg {
+					path {
+						color: var(--ee-default-text-color);
+					}
+				}
+			}
+
 			&[data-selected],
 			&[aria-selected="true"] {
 				background: var(--ee-background-color);
@@ -75,11 +88,18 @@
 						fill: var(--ee-background-color);
 					}
 				}
-			}
 
-			&:focus,
-			&[data-focus] {
-				box-shadow: none;
+				&:focus,
+				&[data-focus] {
+					border-top-color: var(--ee-color-primary-low-contrast);
+					color: var(--ee-default-text-color-high-contrast);
+
+					svg.ee-svg.ee-svg {
+						path {
+							color: var(--ee-default-text-color);
+						}
+					}
+				}
 			}
 		}
 
