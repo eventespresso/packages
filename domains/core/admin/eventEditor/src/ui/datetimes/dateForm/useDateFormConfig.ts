@@ -84,17 +84,23 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 					title: __('Dates'),
 					fields: [
 						{
-							name: 'startDate',
-							label: __('Start Date'),
-							fieldType: 'datetimepicker',
-							required: true,
-						},
-						{
-							name: 'endDate',
-							label: __('End Date'),
-							fieldType: 'datetimepicker',
-							required: true,
-							wrapper: EndDateFieldWrapper,
+							name: '',
+							fieldType: 'group',
+							subFields: [
+								{
+									name: 'startDate',
+									label: __('Start Date'),
+									fieldType: 'datetimepicker',
+									required: true,
+								},
+								{
+									name: 'endDate',
+									label: __('End Date'),
+									fieldType: 'datetimepicker',
+									required: true,
+									wrapper: EndDateFieldWrapper,
+								},
+							],
 						},
 					],
 				},
@@ -104,23 +110,29 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 					title: __('Details'),
 					fields: [
 						{
-							name: 'capacity',
-							label: __('Capacity'),
-							fieldType: 'number',
-							parseAsInfinity: true,
-							min: -1,
-							info:
-								__(
-									'The maximum number of registrants that can attend the event at this particular date.'
-								) +
-								'\n' +
-								__('Set to 0 to close registration or leave blank for no limit.'),
-							width: 'small',
-						},
-						{
-							name: 'isTrashed',
-							label: __('Trash'),
-							fieldType: 'switch',
+							name: '',
+							fieldType: 'group',
+							subFields: [
+								{
+									name: 'capacity',
+									label: __('Capacity'),
+									fieldType: 'number',
+									parseAsInfinity: true,
+									min: -1,
+									info:
+										__(
+											'The maximum number of registrants that can attend the event at this particular date.'
+										) +
+										'\n' +
+										__('Set to 0 to close registration or leave blank for no limit.'),
+									width: 'small',
+								},
+								{
+									name: 'isTrashed',
+									label: __('Trash'),
+									fieldType: 'switch',
+								},
+							],
 						},
 					],
 				},
