@@ -12,7 +12,7 @@ export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 		),
 	},
 	{
-		label: __('HTML'),
+		label: __('HTML Block'),
 		type: 'html',
 		desc: __('allows you to add HTML like headings or text paragraphs to your form'),
 	},
