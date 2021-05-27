@@ -26,6 +26,8 @@ export const MappedElement: React.FC<FormElementProps> = ({ element }) => {
 			Component = withLabel(Textarea);
 			break;
 		case 'select':
+		case 'select-state':
+		case 'select-country':
 			Component = Select;
 			propsToPick.push('options');
 			break;
