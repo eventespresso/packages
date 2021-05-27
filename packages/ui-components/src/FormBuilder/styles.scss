@@ -156,13 +156,13 @@
 					color: var(--ee-default-text-color);
 					display: flex;
 					flex-flow: column wrap;
-					margin: var(--ee-margin-default)  var(--ee-margin-small);
+					margin: var(--ee-margin-default)  var(--ee-margin-small) 0;
 					max-width: 360px;
 					min-width: 240px;
 					padding:  var(--ee-padding-small) var(--ee-padding-default);
 					position: absolute;
 					right: -480px;
-					top: 0;
+					bottom: 0;
 					transition: all 375ms ease-in-out;
 					width: auto;
 					z-index: 2;
@@ -173,10 +173,6 @@
 
 					&-toggle {
 						align-self: flex-end;
-						// margin: var(--ee-margin-big);
-						// position: absolute;
-						// right: 0;
-						// top: 0;
 					}
 
 					&-item {
@@ -274,10 +270,10 @@
 					display: flex;
 					flex-flow: row wrap;
 					justify-content: flex-end;
-					width: 134px;
+					width: calc((var(--ee-icon-button-size-small) + var(--ee-margin-size-micro) * 2) * 4);
 
 					button {
-						margin: 0 .25rem;
+						margin: 0 var(--ee-margin-micro);
 
 						&.ee-drag-handle {
 							cursor: move;
