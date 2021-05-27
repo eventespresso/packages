@@ -54,10 +54,18 @@
 
 				&__menu-button {
 					margin: var(--ee-margin-small) var(--ee-margin-tiny);
+					opacity: 0;
 				}
 
 				&--active {
 					background: var(--ee-color-grey-14);
+				}
+
+				&:hover .ee-form-section__menu-button,
+				&--active .ee-form-section__menu-button,
+				&:hover .ee-form-section__sidebar-toggle,
+				&--active .ee-form-section__sidebar-toggle {
+					opacity: 1 !important;
 				}
 
 				& + fieldset {
@@ -173,6 +181,7 @@
 
 					&-toggle {
 						align-self: flex-end;
+						opacity: 0;
 					}
 
 					&-item {
@@ -261,6 +270,7 @@
 
 					&-button {
 						margin: var(--ee-margin-micro);
+						opacity: 0;
 					}
 				}
 
@@ -301,11 +311,17 @@
 
 					&:hover {
 						background: var(--ee-color-grey-14);
+
+						.ee-form-element__menu-button {
+							opacity: 1;
+						}
 					}
 					&--active {
 						background: var(--ee-color-grey-14);
+
+						.ee-form-element__type,
 						.ee-form-element__actions,
-						.ee-form-element__type {
+						.ee-form-element__menu-button {
 							opacity: 1;
 						}
 					}
