@@ -40,25 +40,25 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 		});
 	}, []);
 
-	const copySection = useCallback<FSM['copySection']>((id) => {
+	const copySection = useCallback<FSM['copySection']>((UUID) => {
 		dispatch({
 			type: 'COPY_SECTION',
-			id,
+			UUID,
 		});
 	}, []);
 
-	const updateSection = useCallback<FSM['updateSection']>((id, section) => {
+	const updateSection = useCallback<FSM['updateSection']>((UUID, section) => {
 		dispatch({
 			type: 'UPDATE_SECTION',
-			id,
+			UUID,
 			section,
 		});
 	}, []);
 
-	const deleteSection = useCallback<FSM['deleteSection']>((id) => {
+	const deleteSection = useCallback<FSM['deleteSection']>((UUID) => {
 		dispatch({
 			type: 'DELETE_SECTION',
-			id,
+			UUID,
 		});
 	}, []);
 
@@ -69,25 +69,25 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 		});
 	}, []);
 
-	const copyElement = useCallback<FSM['copyElement']>((id) => {
+	const copyElement = useCallback<FSM['copyElement']>((UUID) => {
 		dispatch({
 			type: 'COPY_ELEMENT',
-			id,
+			UUID,
 		});
 	}, []);
 
-	const updateElement = useCallback<FSM['updateElement']>((id, element) => {
+	const updateElement = useCallback<FSM['updateElement']>((UUID, element) => {
 		dispatch({
 			type: 'UPDATE_ELEMENT',
-			id,
+			UUID,
 			element,
 		});
 	}, []);
 
-	const deleteElement = useCallback<FSM['deleteElement']>((id) => {
+	const deleteElement = useCallback<FSM['deleteElement']>((UUID) => {
 		dispatch({
 			type: 'DELETE_ELEMENT',
-			id,
+			UUID,
 		});
 	}, []);
 

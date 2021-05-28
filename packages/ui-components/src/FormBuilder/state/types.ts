@@ -27,7 +27,7 @@ export type ActionType =
 export interface DataAction extends Partial<FormState> {
 	afterUuid?: string;
 	element?: Partial<FormElement>;
-	id?: string;
+	UUID?: string;
 	section?: Partial<FormSection>;
 	type: ActionType;
 }
@@ -53,4 +53,4 @@ export interface FormStateManager extends FormState {
 
 export type FormStateReducer = Reducer<FormState, DataAction>;
 
-export type StateInitializer = (arg: FormState) => ReducerState<FormStateReducer>;
+export type StateInitializer = (state: FormState) => ReducerState<FormStateReducer>;
