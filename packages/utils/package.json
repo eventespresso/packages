@@ -13,6 +13,9 @@
 		"update-deps": "npx ncu -p yarn -u",
 		"lint-fix": "eslint ./src/**/*.{ts,tsx} --fix"
 	},
+	"dependencies": {
+		"cuid": "^2.1.8"
+	},
 	"sideEffects": false,
 	"license": "GPL-3.0",
 	"gitHead": "66fae0230a22c100153cb05f5a624305efc5a8d9"
