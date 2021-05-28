@@ -1,11 +1,10 @@
 import { useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { findIndex, omit, propEq, insert, prop, indexBy, over, lensPath, mergeLeft } from 'ramda';
+import { omit, over, lensPath, mergeLeft, set, compose } from 'ramda';
 
 import { FormStateReducer, StateInitializer, FormState } from './types';
-import { sortByOrder, setOrderByIndex } from '../utils';
 import { DEFAULT_SECTION, DEFAULT_ELEMENT } from '../constants';
-import { FormElement } from '../types';
+import { addElementToState, addSectionToState, copySectionElements, getSectionElementIds } from './utils';
 
 export const initialState: FormState = {
 	elements: {},
@@ -16,116 +15,68 @@ export const initialState: FormState = {
 export const useFormStateReducer = (initializer: StateInitializer): FormStateReducer => {
 	return useCallback<FormStateReducer>(
 		(state, action) => {
-			const { id, afterUuid, section, element, type, openElement } = action;
-			let newState: FormState;
+			const { UUID, afterUuid, section, element, type, openElement } = action;
+			// Generate a fresh UUID for new/copied elements/sections
+			const newUuid = uuidv4();
+
+			// List of predicates that will be applied/composed to the state to produce the new state
+			// Each case below provides that list of predicates
+			let predicates: Array<(state: FormState) => FormState> = [];
 
 			switch (type) {
-				case 'COPY_SECTION':
 				case 'ADD_SECTION': {
-					const UUID = uuidv4();
-					// Sort the sections by order
-					let sortedSections = sortByOrder(Object.values(state.sections));
-					const targetId = type === 'ADD_SECTION' ? afterUuid : id;
-					// Find the index of the section after which the new section should be added
-					const existingSectionIdx = findIndex(propEq('UUID', targetId), sortedSections);
-					// use the existing or default section
-					const newFields = type === 'ADD_SECTION' ? DEFAULT_SECTION : state.sections[id];
-					// Insert the new section at the correct position
-					sortedSections = insert(existingSectionIdx + 1, { ...newFields, ...section, UUID }, sortedSections);
-					// Recalculate the order of all the sections
-					sortedSections = setOrderByIndex(sortedSections);
+					// New section will be composed of default section
+					const newSection = { ...DEFAULT_SECTION, ...section, UUID: newUuid };
+					predicates = [addSectionToState(newSection, afterUuid)];
+					break;
+				}
 
-					// We also need to copy the elements of the section
-					let sectionElements: Array<FormElement> = [];
-					if (type === 'COPY_SECTION') {
-						// Lets get all the elements that belong to the copied section
-						sectionElements = Object.values(state.elements).filter(propEq('belongsTo', id));
-						// Change the UUID and belongsTo for all the elements
-						sectionElements = sectionElements.map((elem) => ({ ...elem, UUID: uuidv4(), belongsTo: UUID }));
-					}
-					// compute the state
-					newState = {
-						...state,
-						sections: indexBy(prop('UUID'), sortedSections),
-						elements: {
-							// Since we filtered the elements by section, we need to retain other elements
-							...state.elements,
-							...indexBy(prop('UUID'), sectionElements),
-						},
-						// Open the new section
-						openElement: UUID,
-					};
+				case 'COPY_SECTION': {
+					// Copied section will be composed of the existing section
+					const newSection = { ...state.sections[UUID], ...section, UUID: newUuid };
+					predicates = [addSectionToState(newSection, UUID), copySectionElements(UUID, newSection.UUID)];
 					break;
 				}
 
 				case 'UPDATE_SECTION':
-					newState = over(lensPath(['sections', id]), mergeLeft({ ...section, UUID: id }), state);
+					predicates = [over(lensPath(['sections', UUID]), mergeLeft({ ...section, UUID }))];
 					break;
 
 				case 'DELETE_SECTION': {
 					// We also need to delete the section elements as well
-					const sectionElementIds = Object.values(state.elements)
-						.filter(propEq('belongsTo', id))
-						.map(({ UUID }) => UUID);
+					const sectionElementIds = getSectionElementIds(state, UUID);
 
-					newState = {
-						...state,
-						sections: omit([id], state.sections),
-						elements: omit(sectionElementIds, state.elements),
-					};
+					predicates = [
+						over(lensPath(['sections']), omit([UUID])),
+						over(lensPath(['elements']), omit(sectionElementIds)),
+					];
 					break;
 				}
 
-				case 'COPY_ELEMENT':
 				case 'ADD_ELEMENT': {
-					const UUID = uuidv4();
-					// it is assumed that element will have `belongsTo` field set
-					const belongsTo = type === 'ADD_ELEMENT' ? element.belongsTo : state.elements[id].belongsTo;
-					// If adding a new one, use default fields, otherwise use existing
-					const newFields = type === 'ADD_ELEMENT' ? DEFAULT_ELEMENT : state.elements[id];
-					// we need to filter the elements by section to set the order
-					const elements = Object.values(state.elements).filter(propEq('belongsTo', belongsTo));
-					// Sort the elements by order
-					let sortedElements = sortByOrder(elements);
-					// Find the index of the element after which the new element should be added
-					// When adding the new element, the index is -1, which means end of the list
-					const newIndex = type === 'ADD_ELEMENT' ? -1 : findIndex(propEq('UUID', id), sortedElements) + 1;
+					// New element will be composed of default element
+					const newElement = { ...DEFAULT_ELEMENT, ...element, UUID: newUuid };
+					predicates = [addElementToState(newElement)];
+					break;
+				}
 
-					// Insert the new element at the correct position
-					sortedElements = insert(newIndex, { ...newFields, ...element, UUID }, sortedElements);
-
-					// Recalculate the order of all the elements
-					sortedElements = setOrderByIndex(sortedElements);
-					// compute the state
-					newState = {
-						...state,
-						elements: {
-							// Since we filtered the elements by section, we need to retain other elements
-							...state.elements,
-							...indexBy(prop('UUID'), sortedElements),
-						},
-						// Open the new element
-						openElement: UUID,
-					};
+				case 'COPY_ELEMENT': {
+					// Copied element will be composed of the existing element
+					const newElement = { ...state.elements[UUID], UUID: newUuid };
+					predicates = [addElementToState(newElement, UUID)];
 					break;
 				}
 
 				case 'UPDATE_ELEMENT':
-					newState = over(lensPath(['elements', id]), mergeLeft({ ...element, UUID: id }), state);
+					predicates = [over(lensPath(['elements', UUID]), mergeLeft({ ...element, UUID }))];
 					break;
 
 				case 'DELETE_ELEMENT':
-					newState = {
-						...state,
-						elements: omit([id], state.elements),
-					};
+					predicates = [over(lensPath(['elements']), omit([UUID]))];
 					break;
 
 				case 'TOGGLE_OPEN_ELEMENT':
-					newState = {
-						...state,
-						openElement: openElement !== state.openElement ? openElement : '',
-					};
+					predicates = [set(lensPath(['openElement']), openElement !== state.openElement ? openElement : '')];
 					break;
 
 				case 'RESET':
@@ -134,8 +85,9 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 				default:
 					throw new Error('Unexpected action');
 			}
-
-			return { ...state, ...newState, isDirty: true };
+			// @ts-ignore - compose TS is not happy with unknown number of arguments
+			const newState = compose(...predicates)(state);
+			return { ...newState, isDirty: true };
 		},
 		[initializer]
 	);
