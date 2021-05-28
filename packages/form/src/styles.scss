@@ -47,6 +47,7 @@
 				&-pair {
 					box-sizing: border-box;
 					display: inline-flex;
+					flex-flow:  column nowrap;
 					margin: var(--ee-margin-default) 0;
 					padding-right: var(--ee-padding-default);
 					width: 50%;
