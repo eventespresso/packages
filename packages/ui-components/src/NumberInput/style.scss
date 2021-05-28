@@ -2,8 +2,8 @@
 @import '~@eventespresso/styles/src/mixins/base-styles';
 
 .ee-number-input.ee-number-input {
-	min-width: 48px;
-	width: 50%;
+	min-width: 3.75rem;
+	width: 60%;
 
 	input {
 		z-index: 0;
@@ -25,19 +25,19 @@
 		}
 
 		&-2 {
-			width: 32px;
+			width: 3.75rem;
 		}
 		&-3 {
-			width: 48px;
+			width: 4.25rem;
 		}
 		&-4 {
-			width: 64px;
+			width: 4.75rem;
 		}
 		&-5 {
-			width: 80px;
+			width: 5.25rem;
 		}
 		&-6 {
-			width: 96px;
+			width: 5.75rem;
 		}
 	}
 
