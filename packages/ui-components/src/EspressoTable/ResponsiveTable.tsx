@@ -1,10 +1,9 @@
 import { useRef } from 'react';
 
 import classNames from 'classnames';
-import { v4 as uuidv4 } from 'uuid';
 
 import { useMemoStringify } from '@eventespresso/hooks';
-import { isEmpty } from '@eventespresso/utils';
+import { isEmpty, uuid } from '@eventespresso/utils';
 import Table from './Table';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
@@ -29,7 +28,7 @@ export const ResponsiveTable: React.FC<ResponsiveTableProps> = ({
 }) => {
 	const primaryHeader = headerRows.find((row) => row.primary === true);
 	// avoid the ID getting changed on every render
-	const defaultId = useRef(uuidv4()).current;
+	const defaultId = useRef(uuid()).current;
 	const instanceId = props.instanceId || defaultId;
 	const isScrollable = !!metaData?.isScrollable;
 	const hasRowHeaders = !!metaData?.hasRowHeaders;

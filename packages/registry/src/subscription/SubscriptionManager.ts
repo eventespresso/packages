@@ -1,6 +1,7 @@
 import { assocPath, omit, pathOr } from 'ramda';
-import { v4 as uuidv4 } from 'uuid';
 import invariant from 'invariant';
+
+import { uuid } from '@eventespresso/utils';
 
 import type {
 	ServiceRegistry,
@@ -33,7 +34,7 @@ class SubscriptionManager<D extends string, S extends string, SR extends Service
 	public subscribe: SMI<SR>['subscribe'] = (callback, options) => {
 		invariant(typeof callback === 'function', 'subscribe `callback` must be a function');
 
-		const subscriptionId = uuidv4();
+		const subscriptionId = uuid();
 
 		this.updateSubscription({ id: subscriptionId, callback, options, action: 'add' });
 

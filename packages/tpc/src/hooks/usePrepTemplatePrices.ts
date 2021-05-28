@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import { isBasePrice, sortByPriceOrderIdAsc, isDefaultTax } from '@eventespresso/predicates';
 import { Price } from '@eventespresso/edtr-services';
+import { uuid } from '@eventespresso/utils';
 
 import { TpcPriceModifier } from '../types';
 import usePriceToTpcModifier from './usePriceToTpcModifier';
@@ -37,7 +37,7 @@ const usePrepTemplatePrices = (): PrepTemplatePrices => {
 				return {
 					// clone it
 					...priceModifier,
-					id: uuidv4(),
+					id: uuid(),
 					dbId: 0,
 					isNew: true,
 					// avoid default price getting duplicated

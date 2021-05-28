@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { assocPath, omit, path } from 'ramda';
+
+import { uuid } from '@eventespresso/utils';
 
 import { DataStateReducer, StateInitializer, DataState, DefaultTicket } from './types';
 
@@ -20,7 +21,7 @@ const useDataStateReducer = (initializer: StateInitializer): DataStateReducer =>
 				case 'ADD_TICKET':
 				case 'UPDATE_TICKET':
 					// use id to update and uuid to add new
-					ticketId = id || uuidv4();
+					ticketId = id || uuid();
 					existingTicket = path(['tickets', ticketId], state);
 					// we need to make the id inside ticket and in tickets object same
 					newState = assocPath(

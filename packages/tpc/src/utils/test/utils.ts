@@ -1,5 +1,6 @@
 import { compose, applyTo, ifElse, map } from 'ramda';
-import { v4 as uuid } from 'uuid';
+
+import { uuid } from '@eventespresso/utils';
 
 import { TpcPriceModifier } from '../../types';
 import defaultPrice from '../../defaultPriceModifier';

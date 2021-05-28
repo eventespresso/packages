@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { omit, over, lensPath, mergeLeft, set, compose } from 'ramda';
+
+import { uuid } from '@eventespresso/utils';
 
 import { FormStateReducer, StateInitializer, FormState } from './types';
 import { DEFAULT_SECTION, DEFAULT_ELEMENT } from '../constants';
@@ -17,7 +18,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 		(state, action) => {
 			const { UUID, afterUuid, section, element, type, openElement } = action;
 			// Generate a fresh UUID for new/copied elements/sections
-			const newUuid = uuidv4();
+			const newUuid = uuid();
 
 			// List of predicates that will be applied/composed to the state to produce the new state
 			// Each case below provides that list of predicates

@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { setSeconds } from 'date-fns';
 
 import { NOW } from '@eventespresso/constants';
 import { setTimeToNoon } from '@eventespresso/dates';
+import { uuid } from '@eventespresso/utils';
+
 import { RRuleStateManager as RSM, RRuleState } from '../state';
 import { DEFAULT_CONFIG } from '../context';
 
@@ -30,7 +31,7 @@ export const getDefaultRRuleState = (config = DEFAULT_CONFIG): RRuleState => {
 	// if time picker is enabled, set the seconds to 0, otherwise set the time to noon
 	const date = config?.enableTimepicker ? setSeconds(NOW, 0) : setTimeToNoon(NOW);
 	return {
-		hash: uuidv4(),
+		hash: uuid(),
 		start: {
 			date,
 		},

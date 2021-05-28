@@ -1,9 +1,8 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import { entitiesWithGuIdInArray, entitiesWithGuIdNotInArray } from '@eventespresso/predicates';
 import type { AnyObject } from '@eventespresso/utils';
 import { shiftDate } from '@eventespresso/dates';
 import type { EntityId } from '@eventespresso/data';
+import { uuid } from '@eventespresso/utils';
 
 import { BulkUpdateInput, BulkEditFormBaseShape } from './types';
 import { Datetime, Ticket, Price } from '../types';
@@ -67,7 +66,7 @@ export const cacheNodesFromBulkInput = <T extends UpdateDatetimeInput | UpdateTi
 			...node,
 			...input.sharedInput,
 			...uniqueInputs[node.id],
-			cacheId: uuidv4(),
+			cacheId: uuid(),
 		};
 	});
 
@@ -92,7 +91,7 @@ export const cacheNodesFromBulkDelete = <E extends Datetime | Ticket | Price>(
 		return {
 			...node,
 			isTrashed: true,
-			cacheId: uuidv4(),
+			cacheId: uuid(),
 		};
 	});
 

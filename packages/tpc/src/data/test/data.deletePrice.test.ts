@@ -1,8 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { v4 as uuidv4 } from 'uuid';
 import { last } from 'ramda';
 
 import { usePriceTypeForPrice } from '@eventespresso/edtr-services';
+import { uuid } from '@eventespresso/utils';
+
 import { usePriceModifier } from '../../hooks';
 import defaultPrice from '../../defaultPriceModifier';
 import { useDataState } from '../';
@@ -59,7 +60,7 @@ describe('TPC:data.deletePrice', () => {
 		act(() => result.current.dataState.reset());
 
 		// generate an id for the price
-		const newPriceId = uuidv4();
+		const newPriceId = uuid();
 
 		const newPrice = {
 			...result.current.defaultPriceModifier,

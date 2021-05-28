@@ -1,5 +1,6 @@
 import { findIndex, propEq, insert, prop, indexBy } from 'ramda';
-import { v4 as uuidv4 } from 'uuid';
+
+import { uuid } from '@eventespresso/utils';
 
 import { FormState } from './types';
 import { sortByOrder, setOrderByIndex } from '../utils';
@@ -61,7 +62,7 @@ export const copySectionElements = (copyFromSectionId: string, newSectionId: str
 	// Lets get all the elements that belong to the copied section
 	sectionElements = Object.values(state.elements).filter(propEq('belongsTo', copyFromSectionId));
 	// Change the UUID and belongsTo for all the elements
-	sectionElements = sectionElements.map((elem) => ({ ...elem, UUID: uuidv4(), belongsTo: newSectionId }));
+	sectionElements = sectionElements.map((elem) => ({ ...elem, UUID: uuid(), belongsTo: newSectionId }));
 
 	return {
 		...state,

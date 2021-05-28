@@ -1,9 +1,8 @@
 import { useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import { MutationType, MutationInput } from '@eventespresso/data';
 import { PLUS_ONE_MONTH, PLUS_TWO_MONTHS } from '@eventespresso/constants';
-import { ucFirst } from '@eventespresso/utils';
+import { ucFirst, uuid } from '@eventespresso/utils';
 import type { Datetime } from '../../types';
 import { useLazyDatetime } from '../../queries';
 
@@ -41,7 +40,7 @@ const useOptimisticResponse = (): OptimisticResCb => {
 			};
 
 			const datetime = getDatetime(input.id);
-			const cacheId = `temp:${uuidv4()}`;
+			const cacheId = `temp:${uuid()}`;
 
 			switch (mutationType) {
 				case MutationType.Create:

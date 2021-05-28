@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { assocPath, omit, without } from 'ramda';
+
+import { uuid } from '@eventespresso/utils';
 
 import { FormStateReducer, StateInitializer, FormState } from './types';
 
@@ -63,7 +64,7 @@ const useFormStateReducer = (initializer: StateInitializer): FormStateReducer =>
 				case 'ADD_TICKET':
 				case 'UPDATE_TICKET':
 					// use id to update and uuid to add new
-					ticketId = id || uuidv4();
+					ticketId = id || uuid();
 					// we need to make the id inside ticket and in tickets object same
 					newState = assocPath(['tickets', ticketId], { ...ticket, id: ticketId }, state);
 					break;

@@ -1,13 +1,14 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { v4 as uuidv4 } from 'uuid';
 import { last } from 'ramda';
 
-import { useDataState } from '../';
 import { usePriceTypeForPrice } from '@eventespresso/edtr-services';
+import { getBasePrice } from '@eventespresso/predicates';
+import { uuid } from '@eventespresso/utils';
+
+import { useDataState } from '../';
 import { usePriceModifier } from '../../hooks';
 import defaultPrice from '../../defaultPriceModifier';
 import TestWrapper from './TestWrapper';
-import { getBasePrice } from '@eventespresso/predicates';
 import { calculateBasePrice, calculateTicketTotal } from '../../utils';
 import { actWait } from '@eventespresso/utils/src/test';
 
@@ -33,7 +34,7 @@ describe('TPC:data.calculations', () => {
 		act(() => result.current.dataState.reset());
 
 		// generate an id for the price
-		const newPriceId = uuidv4();
+		const newPriceId = uuid();
 
 		const newPrice = {
 			...result.current.defaultPriceModifier,
@@ -94,7 +95,7 @@ describe('TPC:data.calculations', () => {
 		act(() => result.current.dataState.reset());
 
 		// generate an id for the price
-		const newPriceId = uuidv4();
+		const newPriceId = uuid();
 
 		const newPrice = {
 			...result.current.defaultPriceModifier,
