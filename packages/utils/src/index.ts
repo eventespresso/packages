@@ -17,3 +17,5 @@ export * from './text';
 export * from './types';
 
 export { cancelClickEvent } from './cancelClickEvent';
+
+export { default as uuid } from 'cuid';
