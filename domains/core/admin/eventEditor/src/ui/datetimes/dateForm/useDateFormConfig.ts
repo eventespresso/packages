@@ -19,6 +19,10 @@ const FIELD_NAMES: Array<keyof Datetime> = ['id', 'name', 'description', 'capaci
 
 const decorators = [startAndEndDateFixer];
 
+const adjacentFormItemProps = {
+	className: 'ee-form-item-pair',
+};
+
 const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormConfig => {
 	const datetime = useDatetimeItem({ id });
 
@@ -84,23 +88,19 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 					title: __('Dates'),
 					fields: [
 						{
-							name: '',
-							fieldType: 'group',
-							subFields: [
-								{
-									name: 'startDate',
-									label: __('Start Date'),
-									fieldType: 'datetimepicker',
-									required: true,
-								},
-								{
-									name: 'endDate',
-									label: __('End Date'),
-									fieldType: 'datetimepicker',
-									required: true,
-									wrapper: EndDateFieldWrapper,
-								},
-							],
+							name: 'startDate',
+							label: __('Start Date'),
+							fieldType: 'datetimepicker',
+							required: true,
+							formControlProps: adjacentFormItemProps,
+						},
+						{
+							name: 'endDate',
+							label: __('End Date'),
+							fieldType: 'datetimepicker',
+							required: true,
+							wrapper: EndDateFieldWrapper,
+							formControlProps: adjacentFormItemProps,
 						},
 					],
 				},
@@ -110,29 +110,25 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 					title: __('Details'),
 					fields: [
 						{
-							name: '',
-							fieldType: 'group',
-							subFields: [
-								{
-									name: 'capacity',
-									label: __('Capacity'),
-									fieldType: 'number',
-									parseAsInfinity: true,
-									min: -1,
-									info:
-										__(
-											'The maximum number of registrants that can attend the event at this particular date.'
-										) +
-										'\n' +
-										__('Set to 0 to close registration or leave blank for no limit.'),
-									width: 'small',
-								},
-								{
-									name: 'isTrashed',
-									label: __('Trash'),
-									fieldType: 'switch',
-								},
-							],
+							name: 'capacity',
+							label: __('Capacity'),
+							fieldType: 'number',
+							parseAsInfinity: true,
+							min: -1,
+							info:
+								__(
+									'The maximum number of registrants that can attend the event at this particular date.'
+								) +
+								'\n' +
+								__('Set to 0 to close registration or leave blank for no limit.'),
+							width: 'small',
+							formControlProps: adjacentFormItemProps,
+						},
+						{
+							name: 'isTrashed',
+							label: __('Trash'),
+							fieldType: 'switch',
+							formControlProps: adjacentFormItemProps,
 						},
 					],
 				},
