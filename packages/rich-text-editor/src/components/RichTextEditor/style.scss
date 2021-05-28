@@ -53,11 +53,12 @@
 			border-color: var(--ee-color-primary);
 		}
 
-		&--active {
-			color: var(--ee-color-primary-high-contrast);
-			background: var(--ee-color-white) !important;
+		&--active.ee-btn-base.ee-icon-button {
+			color: var(--ee-text-on-primary) !important;
+			background: var(--ee-color-primary) !important;
 			svg {
-				color: var(--ee-color-primary-high-contrast);
+				color: var(--ee-text-on-primary);
+				fill: var(--ee-text-on-primary);
 			}
 		}
 	}
