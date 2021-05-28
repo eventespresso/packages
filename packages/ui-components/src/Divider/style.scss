@@ -1,34 +1,60 @@
 .ee-divider {
 	&.ee-divider {
 		&--horizontal {
-			margin: var(--ee-margin-bigger) 0;
+			margin: var(--ee-margin-default) 0;
 
+			&--nano {
+				margin: var(--ee-margin-nano) 0;
+			}
+			&--micro {
+				margin: var(--ee-margin-micro) 0;
+			}
+			&--tiny {
+				margin: var(--ee-margin-tiny) 0;
+			}
+			&--smaller {
+				margin: var(--ee-margin-smaller) 0;
+			}
 			&--small {
 				margin: var(--ee-margin-small) 0;
 			}
-
-			&--smaller {
-				margin: var(--ee-margin-smaller) 0;
+			&--big {
+				margin: var(--ee-margin-big) 0;
+			}
+			&--bigger {
+				margin: var(--ee-margin-bigger) 0;
+			}
+			&--huge {
+				margin: var(--ee-margin-huge) 0;
 			}
 		}
 
 		&--vertical {
 			margin: 0 var(--ee-margin-default);
 
+			&--nano {
+				margin: 0 var(--ee-margin-nano);
+			}
 			&--micro {
 				margin: 0 var(--ee-margin-micro);
 			}
-
 			&--tiny {
 				margin: 0 var(--ee-margin-tiny);
 			}
-
+			&--smaller {
+				margin: 0 var(--ee-margin-smaller);
+			}
 			&--small {
 				margin: 0 var(--ee-margin-small);
 			}
-
-			&--smaller {
-				margin: 0 var(--ee-margin-smaller);
+			&--big {
+				margin: 0 var(--ee-margin-small);
+			}
+			&--bigger {
+				margin: 0 var(--ee-margin-small);
+			}
+			&--huge {
+				margin: 0 var(--ee-margin-small);
 			}
 		}
 	}

@@ -15,7 +15,7 @@ export const Divider: React.FC<DividerProps> = ({
 	const className = classNames(
 		'ee-divider',
 		orientation && `ee-divider--${orientation}`,
-		orientation && size && `ee-divider--${orientation}--${size}`,
+		orientation && size && size !== 'default' && `ee-divider--${orientation}--${size}`,
 		props.className
 	);
 

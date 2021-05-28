@@ -49,7 +49,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = ({ inline, ...props }) => {
 				<HelperText id={tooltipKey} tooltipText={description || info} />
 			</div>
 
-			<Divider size='smaller' />
+			<Divider size='nano' />
 
 			{before}
 			<MappedField
