@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Copy, DragHandle, Save, SettingsOutlined, Trash } from '@eventespresso/icons';
+import { Copy, DragHandle, SettingsOutlined, Trash } from '@eventespresso/icons';
 
 import { IconButton } from '../../Button';
 import { ELEMENT_BLOCKS_INDEXED } from '../constants';
@@ -42,15 +42,6 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					onClick={onCopy}
 					tabIndex={tabIndex}
 					tooltip={__('copy form element')}
-					transparentBg
-				/>
-				<IconButton
-					icon={Save}
-					borderless
-					size='smaller'
-					// onClick={onSave}
-					tabIndex={tabIndex}
-					tooltip={__('save form element for use in other forms')}
 					transparentBg
 				/>
 				<IconButton

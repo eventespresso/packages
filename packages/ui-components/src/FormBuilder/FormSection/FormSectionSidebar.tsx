@@ -18,7 +18,7 @@ interface SidebarProps {
 }
 
 // this represents existing forms sections pulled from the database with a status of "default"
-const mockFormSectionData = [
+const mockFormSectionData: Array<FormSection> = [
 	{
 		UUID: 'lkj567',
 		adminLabel: 'pet questions',
@@ -26,7 +26,6 @@ const mockFormSectionData = [
 		belongsTo: '',
 		customCss: '',
 		description: '',
-		elements: [],
 		htmlClass: '',
 		name: 'About Your Pet',
 		order: 3,

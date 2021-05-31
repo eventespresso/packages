@@ -1,10 +1,11 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Copy, DragHandle, Save, SettingsOutlined, Trash } from '@eventespresso/icons';
+import { Copy, DragHandle, SettingsOutlined, Trash } from '@eventespresso/icons';
 
 import { IconButton } from '../../Button';
 import { useFormState } from '../state';
+import { SaveSection } from './SaveSection';
 
 import type { FormSectionProps } from '../types';
 
@@ -41,15 +42,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 					tooltip={__('copy form section')}
 					transparentBg
 				/>
-				<IconButton
-					icon={Save}
-					borderless
-					// onClick={onSave}
-					size='smaller'
-					tabIndex={tabIndex}
-					tooltip={__('save form section for use in other forms')}
-					transparentBg
-				/>
+				<SaveSection formSection={formSection} />
 				<IconButton
 					icon={Trash}
 					borderless
