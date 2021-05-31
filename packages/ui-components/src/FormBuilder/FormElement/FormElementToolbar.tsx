@@ -28,7 +28,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 				<IconButton
 					active={active}
 					borderless
-					className='ee-form-element__menu-button'
+					className='ee-form-element__menu-button ee-form-element__toolbar-button'
 					icon={SettingsOutlined}
 					onClick={onToggle}
 					size='small'
@@ -38,6 +38,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 				<IconButton
 					icon={Copy}
 					borderless
+					className='ee-form-element__toolbar-button'
 					size='smaller'
 					onClick={onCopy}
 					tabIndex={tabIndex}
@@ -47,6 +48,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 				<IconButton
 					icon={Trash}
 					borderless
+					className='ee-form-element__toolbar-button'
 					size='smaller'
 					onClick={onDelete}
 					tabIndex={tabIndex}
@@ -56,7 +58,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 				<IconButton
 					icon={DragHandle}
 					borderless
-					className='ee-drag-handle'
+					className='ee-drag-handle ee-form-element__toolbar-button'
 					size='smaller'
 					tabIndex={tabIndex}
 					tooltip={__('click, hold, and drag to reorder form element')}

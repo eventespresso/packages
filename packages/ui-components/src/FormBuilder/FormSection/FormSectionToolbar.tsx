@@ -27,7 +27,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 					icon={SettingsOutlined}
 					active={active}
 					borderless
-					className='ee-form-section__menu-button'
+					className='ee-form-section__menu-button ee-form-section__toolbar-button'
 					onClick={onToggle}
 					size='smaller'
 					tooltip={__('form section settings')}
@@ -36,6 +36,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 				<IconButton
 					icon={Copy}
 					borderless
+					className='ee-form-section__toolbar-button'
 					onClick={onCopy}
 					size='smaller'
 					tabIndex={tabIndex}
@@ -46,6 +47,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 				<IconButton
 					icon={Trash}
 					borderless
+					className='ee-form-section__toolbar-button'
 					onClick={onDelete}
 					size='small'
 					tabIndex={tabIndex}
@@ -55,7 +57,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 				<IconButton
 					icon={DragHandle}
 					borderless
-					className='ee-drag-handle'
+					className='ee-drag-handle ee-form-section__toolbar-button'
 					size='small'
 					tabIndex={tabIndex}
 					tooltip={__('click, hold, and drag to reorder form section')}
