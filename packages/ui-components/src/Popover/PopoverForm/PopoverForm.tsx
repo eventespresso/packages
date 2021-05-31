@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
-import { Save } from '@eventespresso/icons';
+import { SaveOutlined } from '@eventespresso/icons';
 import { Divider } from '@eventespresso/adapters';
 import { useDisclosure } from '@eventespresso/hooks';
 
@@ -43,7 +43,7 @@ export const PopoverForm: React.FC<PopoverFormProps> = ({
 			<Button
 				buttonText={submitLabel || __('save')}
 				buttonType={ButtonType.PRIMARY}
-				icon={Save}
+				icon={SaveOutlined}
 				isDisabled={isSubmitDisabled}
 				noMargin
 				onClick={onSave}

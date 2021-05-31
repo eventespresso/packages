@@ -28,7 +28,11 @@
 		}
 
 		header {
+			border-bottom-color: var(--ee-border-color);
+			border-bottom-width: var(--ee-border-width);
 			margin: 0 0 var(--ee-margin-smaller);
+			padding-inline-end: 0;
+			padding-inline-start: 0;
 		}
 
 		&:focus {
@@ -38,5 +42,16 @@
 		.chakra-popover__arrow {
 			display: none;
 		}
+
+		buton,
+		.ee-btn-base.ee-btn {
+			align-self: flex-end;
+			opacity: 1;
+		}
+	}
+
+	&-form__content {
+		display: flex;
+  		flex-direction: column;
 	}
 }

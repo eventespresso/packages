@@ -25,6 +25,7 @@ export const SaveSection: React.FC<FormSectionProps> = ({ formSection }) => {
 			<IconButton
 				{...props}
 				borderless
+				className='ee-form-section__toolbar-button'
 				icon={Save}
 				onClick={onOpen}
 				size='smaller'
