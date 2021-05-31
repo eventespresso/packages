@@ -9,17 +9,18 @@
 	}
 
 	&__wrapper {
-		margin: var(--ee-margin-smaller) var(--ee-margin-tiny);
+		margin: var(--ee-margin-smaller) var(--ee-margin-nano);
 
 		label {
 			display: flex;
-		}
 
-		.chakra-radio__label {
-			white-space: nowrap;
+			span:not(.ee-radio) {
+				font-weight: 500;
+				white-space: nowrap;
 
-			[dir='rtl'] & {
-				margin-left: var(--ee-margin-tiny);
+				[dir='rtl'] & {
+					margin-left: var(--ee-margin-tiny);
+				}
 			}
 		}
 	}
