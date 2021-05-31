@@ -109,19 +109,11 @@
 							position: relative;
 							right: var(--ee-margin-default);
 							top: calc(var(--ee-margin-huge) * -1);
-							width: 22rem;
+							width: 20rem;
 
 							[dir='rtl'] & {
 								left: var(--ee-margin-default);
 								right: unset;
-							}
-						}
-
-						ul {
-							margin: var(--ee-margin-tiny) 0;
-
-							li {
-								margin-bottom: var(--ee-margin-small);
 							}
 						}
 					}

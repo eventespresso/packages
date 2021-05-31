@@ -52,20 +52,16 @@ export const SaveSection: React.FC<FormSectionProps> = ({ formSection }) => {
 				<Radio value='default' aria-describedby={`${id}-default-desc`}>
 					{__('default')}
 				</Radio>
+				<p id={`${id}-default-desc`}>
+					{__(' a copy of this form section will be automatically added to ALL new events')}
+				</p>
 				<Radio value='shared' aria-describedby={`${id}-shared-desc`}>
 					{__('shared')}
 				</Radio>
+				<p id={`${id}-shared-desc`}>
+					{__('a copy of this form section will be saved for use in other events but not loaded by default')}
+				</p>
 			</RadioGroup>
-			<ul>
-				<li id={`${id}-default-desc`}>
-					{__('default: a copy of this form section will be automatically added to ALL new events')}
-				</li>
-				<li id={`${id}-shared-desc`}>
-					{__(
-						'shared: a copy of this form section will be saved for use in other events but not loaded by default'
-					)}
-				</li>
-			</ul>
 		</PopoverForm>
 	);
 };
