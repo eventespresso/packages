@@ -106,7 +106,15 @@
 
 					.ee-popover {
 						&__content[role=dialog] {
+							position: relative;
+							right: var(--ee-margin-default);
+							top: calc(var(--ee-margin-huge) * -1);
 							width: 22rem;
+
+							[dir='rtl'] & {
+								left: var(--ee-margin-default);
+								right: unset;
+							}
 						}
 
 						ul {
