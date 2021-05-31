@@ -10,20 +10,21 @@ import { useDisclosure } from '@eventespresso/hooks';
 import { Button, ButtonType, Popover } from '../../';
 import type { PopoverFormProps } from './types';
 
-const PopoverForm: React.FC<PopoverFormProps> = ({
+export const PopoverForm: React.FC<PopoverFormProps> = ({
+	children,
+	className,
 	content,
 	isSubmitDisabled,
 	onClose: _onClose,
 	onSubmit,
+	renderTrigger,
 	submitLabel,
 	title,
-	triggerText,
-	triggerProps,
 	...props
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const className = classNames(props.className, 'ee-popover-form__content');
+	const contentClassName = classNames(className, 'ee-popover-form__content');
 
 	const onSave = useCallback(() => {
 		onSubmit?.();
@@ -36,8 +37,8 @@ const PopoverForm: React.FC<PopoverFormProps> = ({
 	}, [_onClose, onClose]);
 
 	const popoverContent = (
-		<div className={className}>
-			{content}
+		<div className={contentClassName}>
+			{content || children}
 			<Divider />
 			<Button
 				buttonText={submitLabel || __('save')}
@@ -50,7 +51,7 @@ const PopoverForm: React.FC<PopoverFormProps> = ({
 		</div>
 	);
 
-	const triggerClassName = classNames(props.className, 'ee-popover-form__btn');
+	const triggerClassName = 'ee-popover-form__btn';
 
 	return (
 		<Popover
@@ -60,16 +61,8 @@ const PopoverForm: React.FC<PopoverFormProps> = ({
 			header={<strong>{title}</strong>}
 			isOpen={isOpen}
 			onClose={onClosePopover}
-			trigger={
-				<Button
-					buttonText={triggerText || title}
-					{...triggerProps}
-					className={triggerClassName}
-					onClick={onOpen}
-				/>
-			}
+			trigger={renderTrigger({ className: triggerClassName, onOpen })}
+			{...props}
 		/>
 	);
 };
-
-export default PopoverForm;

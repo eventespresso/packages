@@ -1,15 +1,17 @@
-import type React from 'react';
+import type { PopoverProps } from '../Popover';
 
-import type { ButtonProps } from '../../Button';
-
-export interface PopoverFormProps {
+export type PopoverFormTriggerProps = {
+	onOpen: VoidFunction;
 	className?: string;
-	content: React.ReactNode;
+};
+
+export interface PopoverFormProps extends PopoverProps {
+	className?: string;
+	content?: React.ReactNode;
 	isSubmitDisabled?: boolean;
 	onClose?: VoidFunction;
 	onSubmit?: VoidFunction;
 	submitLabel?: string;
-	triggerText?: string;
 	title: string;
-	triggerProps?: ButtonProps;
+	renderTrigger: (props: PopoverFormTriggerProps) => JSX.Element;
 }
