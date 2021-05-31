@@ -5,6 +5,7 @@ export const NOW = parseISO(formatISO(new Date()));
 export const CURRENT_YEAR = NOW.getFullYear();
 export const CURRENT_MONTH = NOW.getMonth();
 export const CURRENT_DATE = NOW.getDate(); // day of the month
+// date-fns addMonths takes care of adding 1 or 2 months to a date even if it's 31st or 28th of a month
 export const PLUS_ONE_MONTH = addMonths(NOW, 1);
 export const PLUS_TWO_MONTHS = addMonths(NOW, 2);
 export const PLUS_TEN_YEARS = addYears(NOW, 10);
