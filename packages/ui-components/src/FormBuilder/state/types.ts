@@ -38,7 +38,7 @@ export interface FormStateManager extends FormState {
 	addElement: (element: Partial<FormElement>) => void;
 	addSection: (section: Partial<FormSection>, afterUuid?: string) => void;
 	copyElement: (uuid: string) => void;
-	copySection: (uuid: string) => void;
+	copySection: (uuid: string, section?: DataAction['section']) => void;
 	deleteElement: (uuid: string) => void;
 	deleteSection: (uuid: string) => void;
 	getData: () => FormState;

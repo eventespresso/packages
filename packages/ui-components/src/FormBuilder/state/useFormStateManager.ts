@@ -4,7 +4,7 @@ import { propEq } from 'ramda';
 import type { FormStateManager, FormStateManagerHook } from './types';
 import { useFormStateReducer, initialState } from './useFormStateReducer';
 import { useInitialState } from './useInitialState';
-import { sortByOrder } from '../utils';
+import { sortByOrder, isNotSharedOrDefault } from '../utils';
 
 type FSM = FormStateManager;
 
@@ -19,7 +19,10 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 
 	const getData = useCallback<FSM['getData']>(() => state, [state]);
 
-	const getSections = useCallback<FSM['getSections']>(() => sortByOrder(Object.values(state.sections)), [state]);
+	const getSections = useCallback<FSM['getSections']>(() => {
+		const sections = Object.values(state.sections).filter(isNotSharedOrDefault);
+		return sortByOrder(sections);
+	}, [state]);
 
 	const getElements = useCallback<FSM['getElements']>(
 		(sectionId) => {
@@ -40,10 +43,11 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 		});
 	}, []);
 
-	const copySection = useCallback<FSM['copySection']>((UUID) => {
+	const copySection = useCallback<FSM['copySection']>((UUID, section) => {
 		dispatch({
 			type: 'COPY_SECTION',
 			UUID,
+			section,
 		});
 	}, []);
 

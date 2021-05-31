@@ -64,6 +64,8 @@ export interface FormElement {
 	wpUser?: number;
 }
 
+export type FormSectionStatus = 'active' | 'archived' | 'default' | 'shared' | 'trashed';
+
 export interface FormSection {
 	UUID: string;
 	adminLabel?: string;
@@ -77,7 +79,7 @@ export interface FormSection {
 	relation?: string;
 	showName?: boolean;
 	showDescription?: boolean;
-	status?: string;
+	status?: FormSectionStatus;
 	wpUser?: number;
 }
 
