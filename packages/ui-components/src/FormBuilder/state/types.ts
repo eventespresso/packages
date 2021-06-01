@@ -13,42 +13,48 @@ export interface FormState {
 }
 
 export type ActionType =
-	| 'ADD_SECTION'
-	| 'UPDATE_SECTION'
-	| 'DELETE_SECTION'
-	| 'COPY_SECTION'
 	| 'ADD_ELEMENT'
-	| 'UPDATE_ELEMENT'
-	| 'DELETE_ELEMENT'
+	| 'ADD_SECTION'
 	| 'COPY_ELEMENT'
+	| 'COPY_SECTION'
+	| 'DELETE_ELEMENT'
+	| 'DELETE_SECTION'
+	| 'MOVE_ELEMENT'
+	| 'MOVE_SECTION'
 	| 'TOGGLE_OPEN_ELEMENT'
+	| 'UPDATE_ELEMENT'
+	| 'UPDATE_SECTION'
 	| 'RESET';
 
 export interface DataAction extends Partial<FormState> {
+	UUID?: string;
 	afterUuid?: string;
 	element?: Partial<FormElement>;
-	UUID?: string;
+	index?: number;
 	section?: Partial<FormSection>;
+	sectionId?: string;
 	type: ActionType;
 }
 
 export type FormStateManagerHook = (props?: FormStateProviderProps) => FormStateManager;
 
 export interface FormStateManager extends FormState {
-	addElement: (element: Partial<FormElement>) => void;
-	addSection: (section: Partial<FormSection>, afterUuid?: string) => void;
-	copyElement: (uuid: string) => void;
-	copySection: (uuid: string, section?: DataAction['section']) => void;
-	deleteElement: (uuid: string) => void;
-	deleteSection: (uuid: string) => void;
+	addElement: (args: Pick<DataAction, 'element'>) => void;
+	addSection: (args: Pick<DataAction, 'section' | 'afterUuid'>) => void;
+	copyElement: (args: Pick<DataAction, 'UUID'>) => void;
+	copySection: (args: Pick<DataAction, 'section' | 'UUID'>) => void;
+	deleteElement: (args: Pick<DataAction, 'UUID'>) => void;
+	deleteSection: (args: Pick<DataAction, 'UUID'>) => void;
 	getData: () => FormState;
-	getElements: (sectionId?: string) => Array<FormElement>;
+	getElements: (args: Pick<DataAction, 'sectionId'>) => Array<FormElement>;
 	getSections: () => Array<FormSection>;
-	isElementOpen: (uuid: string) => boolean;
+	isElementOpen: (args: Pick<DataAction, 'UUID'>) => boolean;
+	moveElement: (args: Pick<DataAction, 'index' | 'UUID' | 'sectionId'>) => void;
+	moveSection: (args: Pick<DataAction, 'index' | 'UUID'>) => void;
 	reset: () => void;
-	toggleOpenElement: (uuid: string) => void;
-	updateElement: (uuid: string, element: DataAction['element']) => void;
-	updateSection: (uuid: string, section: DataAction['section']) => void;
+	toggleOpenElement: (args: Pick<DataAction, 'openElement'>) => void;
+	updateElement: (args: Pick<DataAction, 'UUID' | 'element'>) => void;
+	updateSection: (args: Pick<DataAction, 'UUID' | 'section'>) => void;
 }
 
 export type FormStateReducer = Reducer<FormState, DataAction>;

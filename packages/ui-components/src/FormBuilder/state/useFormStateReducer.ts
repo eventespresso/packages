@@ -5,7 +5,14 @@ import { uuid } from '@eventespresso/utils';
 
 import { FormStateReducer, StateInitializer, FormState } from './types';
 import { DEFAULT_SECTION, DEFAULT_ELEMENT } from '../constants';
-import { addElementToState, addSectionToState, copySectionElements, getSectionElementIds } from './utils';
+import {
+	addElementToState,
+	addSectionToState,
+	copySectionElements,
+	getSectionElementIds,
+	moveElement,
+	moveSection,
+} from './utils';
 
 export const initialState: FormState = {
 	elements: {},
@@ -16,7 +23,7 @@ export const initialState: FormState = {
 export const useFormStateReducer = (initializer: StateInitializer): FormStateReducer => {
 	return useCallback<FormStateReducer>(
 		(state, action) => {
-			const { UUID, afterUuid, section, element, type, openElement } = action;
+			const { UUID, afterUuid, section, element, type, index, sectionId, openElement } = action;
 			// Generate a fresh UUID for new/copied elements/sections
 			const newUuid = uuid();
 
@@ -36,6 +43,11 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 					// Copied section will be composed of the existing section
 					const newSection = { ...state.sections[UUID], ...section, UUID: newUuid };
 					predicates = [addSectionToState(newSection, UUID), copySectionElements(UUID, newSection.UUID)];
+					break;
+				}
+
+				case 'MOVE_SECTION': {
+					predicates = [moveSection(UUID, index)];
 					break;
 				}
 
@@ -65,6 +77,11 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 					// Copied element will be composed of the existing element
 					const newElement = { ...state.elements[UUID], UUID: newUuid };
 					predicates = [addElementToState(newElement, UUID)];
+					break;
+				}
+
+				case 'MOVE_ELEMENT': {
+					predicates = [moveElement(UUID, index, sectionId)];
 					break;
 				}
 

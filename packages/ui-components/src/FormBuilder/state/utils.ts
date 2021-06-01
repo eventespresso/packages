@@ -1,4 +1,4 @@
-import { findIndex, propEq, insert, prop, indexBy } from 'ramda';
+import { findIndex, propEq, insert, prop, indexBy, move } from 'ramda';
 
 import { uuid } from '@eventespresso/utils';
 
@@ -22,6 +22,29 @@ export const addSectionToState = (section: FormSection, afterUuid: string) => (s
 		sections: indexBy(prop('UUID'), sortedSections),
 		// Open the new section
 		openElement: section.UUID,
+	};
+};
+
+export const moveSection = (UUID: string, newIndex: number) => (state: FormState): FormState => {
+	// Sort the sections by order
+	let sortedSections = sortByOrder(Object.values(state.sections));
+	// Find the current index of the section
+	const currentIndex = findIndex(propEq('UUID', UUID), sortedSections);
+	// If the element is not found
+	if (currentIndex < 0) {
+		return state;
+	}
+	// Move the element to the new index
+	sortedSections = move(currentIndex, newIndex, sortedSections);
+	// Recalculate the order of all the sections
+	sortedSections = setOrderByIndex(sortedSections);
+
+	// compute the state
+	return {
+		...state,
+		sections: indexBy(prop('UUID'), sortedSections),
+		// close any open elements
+		openElement: '',
 	};
 };
 
@@ -51,6 +74,43 @@ export const addElementToState = (element: FormElement, afterUuid?: string) => (
 		},
 		// Open the new element
 		openElement: element.UUID,
+	};
+};
+
+export const moveElement = (UUID: string, newIndex: number, sectionId: string) => (state: FormState): FormState => {
+	// Change/Set the section Id for the element
+	const elementsMap = {
+		...state.elements,
+		[UUID]: {
+			...state.elements[UUID],
+			belongsTo: sectionId,
+		},
+	};
+	// we need to filter the elements by section to set the order
+	const elements = Object.values(elementsMap).filter(propEq('belongsTo', sectionId));
+	// Sort the elements by order
+	let sortedElements = sortByOrder(elements);
+	// Find the current index of the section
+	const currentIndex = findIndex(propEq('UUID', UUID), sortedElements);
+	// If the element is not found
+	if (currentIndex < 0) {
+		return state;
+	}
+	// Move the element to the new index
+	sortedElements = move(currentIndex, newIndex, sortedElements);
+
+	// Recalculate the order of all the elements
+	sortedElements = setOrderByIndex(sortedElements);
+	// compute the state
+	return {
+		...state,
+		elements: {
+			// Since we filtered the elements by section, we need to retain other elements
+			...state.elements,
+			...indexBy(prop('UUID'), sortedElements),
+		},
+		// close any open elements
+		openElement: '',
 	};
 };
 

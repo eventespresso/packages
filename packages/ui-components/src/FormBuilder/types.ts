@@ -1,4 +1,4 @@
-import type { OptionsType } from '@eventespresso/adapters';
+import type { DraggableProvidedDragHandleProps, OptionsType } from '@eventespresso/adapters';
 
 export type ElementType =
 	| 'button'
@@ -91,12 +91,24 @@ export interface FormBuilderProps {
 	sidebarClassName?: string;
 }
 
-export interface FormElementProps {
+interface CommonProps {
+	index?: number;
+}
+
+export interface FormElementProps extends CommonProps {
 	element: FormElement;
 }
 
-export interface FormSectionProps {
+export interface FormElementToolbarProps extends FormElementProps {
+	dragHandleProps: DraggableProvidedDragHandleProps;
+}
+
+export interface FormSectionProps extends CommonProps {
 	formSection: FormSection;
+}
+
+export interface FormSectionToolbarProps extends FormSectionProps {
+	dragHandleProps: DraggableProvidedDragHandleProps;
 }
 
 export interface SettingsProps {
