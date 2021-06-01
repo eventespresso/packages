@@ -18,7 +18,7 @@ export const SortByControl: React.FC<SortByControlProps> = ({
 	onSort,
 	onSubmit,
 	options,
-	renderDraggableItems,
+	renderDraggableItem,
 	value,
 }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -52,9 +52,11 @@ export const SortByControl: React.FC<SortByControlProps> = ({
 					droppableId={droppableId}
 					items={draggableItems}
 					onDragEnd={onSort}
-					renderDraggableItems={renderDraggableItems}
+					renderDraggableItem={renderDraggableItem}
 				/>
 			</ModalWithAlert>
 		</>
 	);
 };
+
+export type { SortByControlProps };

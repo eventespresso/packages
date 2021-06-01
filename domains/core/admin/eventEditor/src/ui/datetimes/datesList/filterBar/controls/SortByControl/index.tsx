@@ -1,6 +1,10 @@
-import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
-import { useDatesListFilterState, useFilteredDateIds, useReorderDatetimes } from '@eventespresso/edtr-services';
-
+import { SortByControl as SortByControlUI, SortByControlProps } from '@eventespresso/ee-components';
+import {
+	useDatesListFilterState,
+	useFilteredDateIds,
+	useReorderDatetimes,
+	Datetime,
+} from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 import { datetimesDroppableId } from '@eventespresso/constants';
 import { TypeName } from '@eventespresso/services';
@@ -10,7 +14,7 @@ import DraggableDatetime from './DraggableDatetime';
 
 const options = objectToSelectOptions(sortByOptions);
 
-const renderDraggableItems = (datetime) => ({
+const renderDraggableItem: SortByControlProps<Datetime>['renderDraggableItem'] = (datetime) => ({
 	...datetime,
 	content: <DraggableDatetime {...datetime} />,
 });
@@ -29,7 +33,7 @@ const SortByControl: React.FC = () => {
 			entityType={TypeName.datetimes}
 			id='dates-list-sort-by-control'
 			label={labels.sortBy}
-			renderDraggableItems={renderDraggableItems}
+			renderDraggableItem={renderDraggableItem}
 			onChangeValue={setSortBy}
 			onSort={sortResponder}
 			onSubmit={updateEntityList}

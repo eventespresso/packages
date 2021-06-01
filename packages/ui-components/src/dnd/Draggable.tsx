@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 
-import { Draggable as DraggableAdapter, DraggableProps } from '@eventespresso/adapters';
+import { Draggable as DraggableAdapter } from '@eventespresso/adapters';
 import { DragOutlined } from '@eventespresso/icons';
+import { DraggableProps } from './types';
 
 const Draggable: React.FC<DraggableProps> = ({ asItem: AsItem, content, index, ...props }) => {
 	if (!content) {

@@ -1,23 +1,24 @@
 import classNames from 'classnames';
 
-import { DragDropContext, Droppable, DragAndDropProps } from '@eventespresso/adapters';
+import { DragDropContext, Droppable } from '@eventespresso/adapters';
 import Draggable from './Draggable';
 
+import { DragAndDropProps } from './types';
 import './style.scss';
 
-export const DragAndDrop: React.FC<DragAndDropProps> = ({
-	asContainer: AsContainer,
-	asItem,
+export const DragAndDrop = <E extends any>({
+	asContainer: AsContainer = 'div',
+	asItem = 'div',
 	droppableId,
 	items,
 	onBeforeDragStart,
 	onDragEnd,
 	onDragStart,
 	onDragUpdate,
-	renderDraggableItems,
-}) => {
+	renderDraggableItem,
+}: DragAndDropProps<E>) => {
 	const draggableItems = items
-		.map(renderDraggableItems)
+		.map(renderDraggableItem)
 		.map((item, index) => (
 			<Draggable asItem={asItem} content={item.content} id={item.id} index={index} key={item?.id} />
 		));

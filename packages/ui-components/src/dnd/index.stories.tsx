@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import type { Meta } from '@storybook/react/types-6-0';
 import { DragAndDrop } from './DragAndDrop';
 import { data } from './data';
@@ -17,6 +17,16 @@ const reorder = (list, startIndex, endIndex) => {
 	return result;
 };
 
+const renderDraggableItem = (item) => ({
+	...item,
+	content: (
+		<>
+			<span>{item.id})</span>
+			<span>{item.name}: </span>
+		</>
+	),
+});
+
 export const ReorderEntities = () => {
 	const [items, setItems] = useState<Array<any>>(data);
 
@@ -34,19 +44,6 @@ export const ReorderEntities = () => {
 		[items]
 	);
 
-	const renderDraggableItems = useCallback(
-		(item) => ({
-			...item,
-			content: (
-				<>
-					<span>{item.id})</span>
-					<span>{item.name}: </span>
-				</>
-			),
-		}),
-		[]
-	);
-
 	return (
 		<DragAndDrop
 			asContainer='ul'
@@ -54,7 +51,7 @@ export const ReorderEntities = () => {
 			droppableId='droppable'
 			items={items}
 			onDragEnd={onDragEnd}
-			renderDraggableItems={renderDraggableItems}
+			renderDraggableItem={renderDraggableItem}
 		/>
 	);
 };

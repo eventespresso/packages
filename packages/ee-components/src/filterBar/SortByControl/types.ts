@@ -1,14 +1,14 @@
-import type { DragAndDropProps } from '@eventespresso/adapters';
-import type { SelectProps } from '@eventespresso/ui-components';
-import type { Datetime, SortBy, Ticket } from '@eventespresso/edtr-services';
+import type { SelectProps, DragAndDropProps } from '@eventespresso/ui-components';
+import type { SortBy } from '@eventespresso/edtr-services';
+import type { Entity } from '@eventespresso/data';
 
 import type { EntityType } from '../../';
 
-export interface SortByControlProps
+export interface SortByControlProps<E extends Entity = Entity>
 	extends EntityType,
-		Pick<DragAndDropProps, 'renderDraggableItems'>,
+		Pick<DragAndDropProps<E>, 'renderDraggableItem'>,
 		Pick<SelectProps, 'label' | 'options'> {
-	draggableItems: Datetime[] | Ticket[];
+	draggableItems: Array<E>;
 	droppableId: string;
 	id: string;
 	onChangeValue: (sortBy: SortBy) => void;

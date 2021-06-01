@@ -1,15 +1,21 @@
 import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
-import { useFilteredTicketIds, useReorderTickets, useTicketsListFilterState } from '@eventespresso/edtr-services';
+import {
+	Ticket,
+	useFilteredTicketIds,
+	useReorderTickets,
+	useTicketsListFilterState,
+} from '@eventespresso/edtr-services';
 import { ticketDroppableId } from '@eventespresso/constants';
 import { objectToSelectOptions } from '@eventespresso/utils';
 import { TypeName } from '@eventespresso/services';
+import type { SortByControlProps } from '@eventespresso/ee-components';
 
 import { labels, sortByOptions } from '../options';
 import DraggableTicket from './DraggableTicket';
 
 const options = objectToSelectOptions(sortByOptions);
 
-const renderDraggableItems = (ticket) => ({
+const renderDraggableItem: SortByControlProps<Ticket>['renderDraggableItem'] = (ticket) => ({
 	...ticket,
 	content: <DraggableTicket {...ticket} />,
 });
@@ -35,7 +41,7 @@ const SortByControl: React.FC = () => {
 			options={options}
 			onSort={sortResponder}
 			onSubmit={updateEntityList}
-			renderDraggableItems={renderDraggableItems}
+			renderDraggableItem={renderDraggableItem}
 			value={sortBy}
 		/>
 	);

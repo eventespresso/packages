@@ -1,6 +1,12 @@
 import type React from 'react';
-import type { BodyRow, HeaderRow, LegendConfig, RowType, TableRow } from '@eventespresso/ui-components';
-import type { DragAndDropProps } from '@eventespresso/adapters';
+import type {
+	BodyRow,
+	HeaderRow,
+	LegendConfig,
+	RowType,
+	TableRow,
+	DragAndDropProps,
+} from '@eventespresso/ui-components';
 import type { Entity, EntityId } from '@eventespresso/data';
 import type { EntityListFilterStateManager } from '@eventespresso/services';
 import type { TypeName } from '@eventespresso/services';

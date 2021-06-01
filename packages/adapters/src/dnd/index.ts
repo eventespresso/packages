@@ -1,2 +1,8 @@
 export { Draggable, DragDropContext, Droppable } from 'react-beautiful-dnd';
-export * from './types';
+
+export type {
+	DragDropContextProps,
+	DraggableProps,
+	DroppableProps,
+	DraggableProvidedDragHandleProps,
+} from 'react-beautiful-dnd';
