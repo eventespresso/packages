@@ -14,7 +14,7 @@ export const Settings: React.FC<SettingsProps> = ({ element }) => {
 
 	const onChangeValue = useCallback(
 		(field: keyof FormElement) => (value) => {
-			updateElement(element.UUID, { [field]: value });
+			updateElement({ UUID: element.UUID, element: { [field]: value } });
 		},
 		[element.UUID, updateElement]
 	);

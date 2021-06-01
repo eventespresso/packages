@@ -13,7 +13,7 @@ import { useFormState } from '../../state';
 export const FormElementTabs: React.FC<SettingsProps> = ({ element }) => {
 	const { isElementOpen } = useFormState();
 	return (
-		<Collapsible show={isElementOpen(element.UUID)}>
+		<Collapsible show={isElementOpen({ UUID: element.UUID })}>
 			<Tabs variant='enclosed' wrapperClassName='ee-form-settings__tabs'>
 				<TabList>
 					<Tab>

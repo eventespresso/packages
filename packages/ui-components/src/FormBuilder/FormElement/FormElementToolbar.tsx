@@ -7,17 +7,17 @@ import { IconButton } from '../../Button';
 import { ELEMENT_BLOCKS_INDEXED } from '../constants';
 import { useFormState } from '../state';
 
-import type { FormElementProps } from '../types';
+import type { FormElementToolbarProps } from '../types';
 
-export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
+export const FormElementToolbar: React.FC<FormElementToolbarProps> = ({ element, dragHandleProps }) => {
 	const { copyElement, deleteElement, isElementOpen, toggleOpenElement } = useFormState();
-
-	const active = isElementOpen(element.UUID);
+	const { UUID } = element;
+	const active = isElementOpen({ UUID });
 	const elementTypeLabel = ELEMENT_BLOCKS_INDEXED[element.type]?.label || '';
 
-	const onCopy = useCallback(() => copyElement(element.UUID), [copyElement, element.UUID]);
-	const onDelete = useCallback(() => deleteElement(element.UUID), [deleteElement, element.UUID]);
-	const onToggle = useCallback(() => toggleOpenElement(element.UUID), [element.UUID, toggleOpenElement]);
+	const onCopy = useCallback(() => copyElement({ UUID }), [UUID, copyElement]);
+	const onDelete = useCallback(() => deleteElement({ UUID }), [UUID, deleteElement]);
+	const onToggle = useCallback(() => toggleOpenElement({ openElement: UUID }), [UUID, toggleOpenElement]);
 
 	const tabIndex = active ? 0 : -1;
 
@@ -63,6 +63,7 @@ export const FormElementToolbar: React.FC<FormElementProps> = ({ element }) => {
 					tabIndex={tabIndex}
 					tooltip={__('click, hold, and drag to reorder form element')}
 					transparentBg
+					{...dragHandleProps}
 				/>
 			</div>
 		</div>

@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 
+import { Draggable } from '@eventespresso/adapters';
+
 import { FormElementInput } from './FormElementInput';
 import { FormElementToolbar } from './FormElementToolbar';
 import { FormElementTabs } from './Tabs';
@@ -7,17 +9,22 @@ import { useFormState } from '../state';
 
 import type { FormElementProps } from '../types';
 
-export const FormElement: React.FC<FormElementProps> = ({ element }) => {
+export const FormElement: React.FC<FormElementProps> = ({ element, index }) => {
 	const { isElementOpen } = useFormState();
-	const active = isElementOpen(element.UUID);
+	const active = isElementOpen({ UUID: element.UUID });
 	const wrapperClass = classNames('ee-form-element__wrapper', active && 'ee-form-element__wrapper--active');
+
 	return (
-		<div className={wrapperClass}>
-			<div className='ee-form-element'>
-				<FormElementInput element={element} />
-				<FormElementToolbar element={element} />
-			</div>
-			<FormElementTabs element={element} />
-		</div>
+		<Draggable draggableId={element.UUID} index={index}>
+			{({ draggableProps, dragHandleProps, innerRef }) => (
+				<div className={wrapperClass} {...draggableProps} ref={innerRef}>
+					<div className='ee-form-element'>
+						<FormElementInput element={element} />
+						<FormElementToolbar element={element} dragHandleProps={dragHandleProps} />
+					</div>
+					<FormElementTabs element={element} />
+				</div>
+			)}
+		</Draggable>
 	);
 };

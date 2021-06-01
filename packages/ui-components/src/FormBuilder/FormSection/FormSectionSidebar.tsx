@@ -50,21 +50,24 @@ export const FormSectionSidebar: React.FC<SidebarProps> = ({ className, formSect
 	const [selectedSection, setSelectedSection] = useState(existingFormSections[0].value);
 
 	const sidebarID = `${formSection.UUID}-sidebar`;
-	const sidebarOpen = isElementOpen(sidebarID);
+	const sidebarOpen = isElementOpen({ UUID: sidebarID });
 
-	const toggleSidebar = useCallback(() => toggleOpenElement(sidebarID), [sidebarID, toggleOpenElement]);
+	const toggleSidebar = useCallback(() => toggleOpenElement({ openElement: sidebarID }), [
+		sidebarID,
+		toggleOpenElement,
+	]);
 
 	const onAddElement = useCallback(() => {
 		if (selectedElement === 'formSection') {
-			addSection({}, formSection.UUID);
+			addSection({ afterUuid: formSection.UUID });
 		} else {
-			addElement({ type: selectedElement, belongsTo: formSection.UUID });
+			addElement({ element: { type: selectedElement, belongsTo: formSection.UUID } });
 		}
 	}, [addElement, addSection, formSection.UUID, selectedElement]);
 
 	const onAddExistingSection = useCallback(() => {
 		const section = find(propEq('UUID', selectedSection), mockFormSectionData);
-		addSection(section, formSection.UUID);
+		addSection({ section, afterUuid: formSection.UUID });
 	}, [addSection, formSection.UUID, selectedSection]);
 
 	const onChangeElement = useCallback<SelectProps['onChangeValue']>((value) => {

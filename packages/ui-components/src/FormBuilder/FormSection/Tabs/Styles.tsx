@@ -17,7 +17,7 @@ export const Styles: React.FC<SettingsProps> = ({ formSection }) => {
 
 	const onChangeValue = useCallback(
 		(field: keyof FormSection) => (value) => {
-			updateSection(formSection.UUID, { [field]: value });
+			updateSection({ UUID: formSection.UUID, section: { [field]: value } });
 		},
 		[formSection.UUID, updateSection]
 	);

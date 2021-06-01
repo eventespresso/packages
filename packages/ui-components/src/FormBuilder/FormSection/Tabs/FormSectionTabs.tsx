@@ -11,7 +11,7 @@ import { Settings } from './Settings';
 export const FormSectionTabs: React.FC<SettingsProps> = ({ formSection }) => {
 	const { isElementOpen } = useFormState();
 	return (
-		<Collapsible show={isElementOpen(formSection.UUID)}>
+		<Collapsible show={isElementOpen({ UUID: formSection.UUID })}>
 			<Tabs variant='enclosed' wrapperClassName='ee-form-settings__tabs'>
 				<TabList>
 					<Tab>

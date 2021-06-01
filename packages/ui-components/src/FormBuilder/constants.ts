@@ -5,6 +5,8 @@ import type { OptionsType } from '@eventespresso/adapters';
 
 import { ElementBlock, FormSection, FormElement } from './types';
 
+export const SECTIONS_DROPPABLE_ID = 'form-sections';
+
 export const DEFAULT_SECTION: FormSection = {
 	UUID: '',
 	appliesTo: 'all',

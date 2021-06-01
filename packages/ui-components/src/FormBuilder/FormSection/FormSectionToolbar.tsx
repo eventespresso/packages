@@ -7,16 +7,17 @@ import { IconButton } from '../../Button';
 import { useFormState } from '../state';
 import { SaveSection } from './SaveSection';
 
-import type { FormSectionProps } from '../types';
+import type { FormSectionToolbarProps } from '../types';
 
-export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) => {
+export const FormSectionToolbar: React.FC<FormSectionToolbarProps> = ({ formSection, dragHandleProps }) => {
 	const { copySection, deleteSection, isElementOpen, toggleOpenElement } = useFormState();
 
-	const active = isElementOpen(formSection.UUID);
+	const { UUID } = formSection;
+	const active = isElementOpen({ UUID });
 
-	const onCopy = useCallback(() => copySection(formSection.UUID), [copySection, formSection.UUID]);
-	const onDelete = useCallback(() => deleteSection(formSection.UUID), [deleteSection, formSection.UUID]);
-	const onToggle = useCallback(() => toggleOpenElement(formSection.UUID), [formSection.UUID, toggleOpenElement]);
+	const onCopy = useCallback(() => copySection({ UUID }), [UUID, copySection]);
+	const onDelete = useCallback(() => deleteSection({ UUID }), [UUID, deleteSection]);
+	const onToggle = useCallback(() => toggleOpenElement({ openElement: UUID }), [UUID, toggleOpenElement]);
 
 	const tabIndex = active ? 0 : -1;
 
@@ -62,6 +63,7 @@ export const FormSectionToolbar: React.FC<FormSectionProps> = ({ formSection }) 
 					tabIndex={tabIndex}
 					tooltip={__('click, hold, and drag to reorder form section')}
 					transparentBg
+					{...dragHandleProps}
 				/>
 			</div>
 		</div>
