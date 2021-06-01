@@ -2,13 +2,12 @@
 @import '~@eventespresso/styles/src/mixins/transition';
 
 .ee-droppable {
-	border: 1px solid transparent;
-	border-radius: var(--ee-border-radius-default);
+	border: var(--ee-border-width-thick) solid transparent;
+	border-radius: var(--ee-border-radius-small);
+	padding: var(--ee-padding-tiny);
 
 	li {
 		align-items: center;
-		border: 1px dashed transparent;
-		border-radius: var(--ee-border-radius-small);
 		display: flex;
 
 		list-style: none;
@@ -19,7 +18,7 @@
 		}
 
 		&:hover {
-			border-color: var(--ee-color-secondary);
+			border: var(--ee-border-width-thick) solid #99cfdb !important;
 
 			.ee-svg {
 				opacity: 1;
@@ -28,12 +27,20 @@
 	}
 
 	&--is-dragging-over {
-		border-color: var(--ee-color-secondary);
+		background-color: #e1f3ea !important;
+		border: var(--ee-border-width-thick) solid #9fdbbf !important;
 	}
 }
 
 .ee-draggable {
+	border: var(--ee-border-width-thick) solid transparent;
+	border-radius: var(--ee-border-radius-small);
+
 	&--is-dragging {
+		background-color: #deeff3 !important;
+		border: var(--ee-border-width-thick) solid #99cfdb !important;
+		box-shadow: var(--ee-box-shadow-small);
+
 		.ee-svg.ee-svg {
 			opacity: 1;
 		}
