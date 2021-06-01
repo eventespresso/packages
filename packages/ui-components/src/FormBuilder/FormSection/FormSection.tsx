@@ -20,17 +20,20 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection, index }) 
 
 	return (
 		<Draggable draggableId={UUID} index={index}>
-			{({ draggableProps, dragHandleProps, innerRef }) => (
-				<fieldset className={fieldsetClass} {...draggableProps} ref={innerRef}>
-					<div className={'ee-form-section__header'}>
-						<h4 className='ee-form-section__name'>{formSection.adminLabel || formSection.name}</h4>
-						<FormSectionToolbar formSection={formSection} dragHandleProps={dragHandleProps} />
-					</div>
-					<FormSectionTabs formSection={formSection} />
-					<FormSectionElements formSection={formSection} />
-					<FormSectionSidebar formSection={formSection} />
-				</fieldset>
-			)}
+			{({ draggableProps, dragHandleProps, innerRef }, { isDragging }) => {
+				const className = classNames(fieldsetClass, 'ee-draggable', isDragging && 'ee-draggable--is-dragging');
+				return (
+					<fieldset className={className} {...draggableProps} ref={innerRef}>
+						<div className={'ee-form-section__header'}>
+							<h4 className='ee-form-section__name'>{formSection.adminLabel || formSection.name}</h4>
+							<FormSectionToolbar formSection={formSection} dragHandleProps={dragHandleProps} />
+						</div>
+						<FormSectionTabs formSection={formSection} />
+						<FormSectionElements formSection={formSection} />
+						<FormSectionSidebar formSection={formSection} />
+					</fieldset>
+				);
+			}}
 		</Draggable>
 	);
 };

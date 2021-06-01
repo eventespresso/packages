@@ -16,15 +16,18 @@ export const FormElement: React.FC<FormElementProps> = ({ element, index }) => {
 
 	return (
 		<Draggable draggableId={element.UUID} index={index}>
-			{({ draggableProps, dragHandleProps, innerRef }) => (
-				<div className={wrapperClass} {...draggableProps} ref={innerRef}>
-					<div className='ee-form-element'>
-						<FormElementInput element={element} />
-						<FormElementToolbar element={element} dragHandleProps={dragHandleProps} />
+			{({ draggableProps, dragHandleProps, innerRef }, { isDragging }) => {
+				const className = classNames(wrapperClass, 'ee-draggable', isDragging && 'ee-draggable--is-dragging');
+				return (
+					<div className={className} {...draggableProps} ref={innerRef}>
+						<div className='ee-form-element'>
+							<FormElementInput element={element} />
+							<FormElementToolbar element={element} dragHandleProps={dragHandleProps} />
+						</div>
+						<FormElementTabs element={element} />
 					</div>
-					<FormElementTabs element={element} />
-				</div>
-			)}
+				);
+			}}
 		</Draggable>
 	);
 };
