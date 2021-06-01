@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import { DragDropContext, Droppable } from '@eventespresso/adapters';
-import Draggable from './Draggable';
+import { Draggable } from './Draggable';
 
 import { DragAndDropProps } from './types';
 import './style.scss';

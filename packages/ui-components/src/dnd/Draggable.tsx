@@ -4,7 +4,7 @@ import { Draggable as DraggableAdapter } from '@eventespresso/adapters';
 import { DragOutlined } from '@eventespresso/icons';
 import { DraggableProps } from './types';
 
-const Draggable: React.FC<DraggableProps> = ({ asItem: AsItem, content, index, ...props }) => {
+export const Draggable: React.FC<DraggableProps> = ({ asItem: AsItem, content, index, ...props }) => {
 	if (!content) {
 		return null;
 	}
@@ -24,5 +24,3 @@ const Draggable: React.FC<DraggableProps> = ({ asItem: AsItem, content, index, .
 		</DraggableAdapter>
 	);
 };
-
-export default Draggable;
