@@ -1,74 +1,21 @@
 import { useMemo } from 'react';
-import { pick } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
-import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/dates';
 import { getEEDomData, useTimeZoneTime } from '@eventespresso/services';
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { Ticket } from '@eventespresso/edtr-services';
 
+import { ticketSalesEndFields } from './ticketSalesEndFields';
+import { ticketSalesStartFields } from './ticketSalesStartFields';
 import { validate } from './formValidation';
 
-import type { EspressoFormProps, FieldProps } from '@eventespresso/form';
-import type { Intervals } from '@eventespresso/dates';
+import type { EspressoFormProps } from '@eventespresso/form';
 import type { RemTicket } from '../../data';
 import { normalizeTicketForRem } from '../../utils';
 
 type TicketFormConfig = EspressoFormProps<RemTicket>;
 
-const unitOptions = intervalsToOptions(
-	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS)
-);
-
-const ticketSalesFields: Array<FieldProps> = [
-	{
-		label: __('Duration'),
-		name: 'unitValue',
-		fieldType: 'number',
-		required: true,
-		min: 1,
-	},
-	{
-		name: 'unit',
-		label: __('Unit'),
-		fieldType: 'select',
-		required: true,
-		options: unitOptions,
-	},
-	{
-		name: 'position',
-		label: __('Position'),
-		fieldType: 'select',
-		required: true,
-		options: [
-			{
-				label: __('before'),
-				value: 'before',
-			},
-			{
-				label: __('after'),
-				value: 'after',
-			},
-		],
-	},
-	{
-		name: 'startOrEnd',
-		label: __('Start/ end'),
-		fieldType: 'select',
-		required: true,
-		options: [
-			{
-				label: __('start'),
-				value: 'start',
-			},
-			{
-				label: __('end'),
-				value: 'end',
-			},
-		],
-	},
-];
 const VISIBILITY_OPTIONS = getEEDomData('eventEditor').ticketMeta.visibilityOptions;
 
 const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<TicketFormConfig>): TicketFormConfig => {
@@ -131,7 +78,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							label: '',
 							fieldType: 'group',
 							conditions: [{ field: 'isShared', compare: '=', value: false }],
-							subFields: ticketSalesFields,
+							subFields: ticketSalesStartFields,
 						},
 					],
 				},
@@ -152,7 +99,7 @@ const useTicketFormConfig = (ticket?: RemTicket | Ticket, config?: Partial<Ticke
 							label: '',
 							fieldType: 'group',
 							conditions: [{ field: 'isShared', compare: '=', value: false }],
-							subFields: ticketSalesFields,
+							subFields: ticketSalesEndFields,
 						},
 					],
 				},
