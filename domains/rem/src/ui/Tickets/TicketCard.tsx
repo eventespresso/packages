@@ -43,7 +43,7 @@ const TicketCard: React.FC<SimpleEntityRendererProps<RemTicket>> = ({ entity: ti
 
 	const renderEndDate = useCallback(
 		(ticket) => {
-			const { isShared, ticketSalesDates, ticketSalesStart } = ticket;
+			const { isShared, ticketSalesDates, ticketSalesEnd } = ticket;
 
 			return isShared
 				? formatForSite(ticketSalesDates.endDate as Date, LOCALIZED_DATE_AND_TIME_SHORT_FORMAT)
@@ -58,10 +58,10 @@ const TicketCard: React.FC<SimpleEntityRendererProps<RemTicket>> = ({ entity: ti
 						*/
 						// eslint-disable-next-line @wordpress/i18n-translator-comments
 						__('%1$d %2$s %3$s the %4$s date'),
-						ticketSalesStart?.unitValue,
-						DATE_INTERVALS?.[ticketSalesStart?.unit],
-						ticketSalesStart?.position === 'before' ? __('before') : __('after'),
-						ticketSalesStart?.startOrEnd === 'start' ? __('start') : __('end')
+						ticketSalesEnd?.unitValue,
+						DATE_INTERVALS?.[ticketSalesEnd?.unit],
+						ticketSalesEnd?.position === 'before' ? __('before') : __('after'),
+						ticketSalesEnd?.startOrEnd === 'start' ? __('start') : __('end')
 				  );
 		},
 		[formatForSite]
