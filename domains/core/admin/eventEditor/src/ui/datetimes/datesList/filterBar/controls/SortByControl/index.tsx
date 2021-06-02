@@ -1,4 +1,5 @@
-import { SortByControl as SortByControlUI, SortByControlProps } from '@eventespresso/ee-components';
+import { SortByControl as SortByControlUI } from '@eventespresso/ee-components';
+import type { SortByControlProps } from '@eventespresso/ee-components';
 import {
 	useDatesListFilterState,
 	useFilteredDateIds,

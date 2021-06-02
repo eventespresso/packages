@@ -2,7 +2,6 @@ import type { DraggableProvidedDragHandleProps, OptionsType } from '@eventespres
 
 export type ElementType =
 	| 'button'
-	| 'checkbox'
 	| 'checkbox-multi'
 	| 'date'
 	| 'datetime-local'
@@ -62,6 +61,8 @@ export interface FormElement {
 	status?: string;
 	type: ElementType;
 	wpUser?: number;
+	// This is the current input value if needed.
+	value?: any;
 }
 
 export type FormSectionStatus = 'active' | 'archived' | 'default' | 'shared' | 'trashed';

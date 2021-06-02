@@ -9,7 +9,6 @@ export const useHandleDnD = (): DnDProps['onDragEnd'] => {
 
 	return useCallback(
 		(result) => {
-			console.log(result);
 			const { destination, source, draggableId, type } = result;
 
 			const noDestination = !destination;
