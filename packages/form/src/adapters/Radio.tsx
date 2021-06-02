@@ -1,21 +1,10 @@
-import { Radio, RadioGroup } from '@eventespresso/adapters';
+import { RadioGroup } from '@eventespresso/ui-components';
+
 import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';
 
 const RadioField: React.FC<FieldRendererProps> = ({ input, options, ...props }) => {
-	const children = options.map(({ label, value, ...rest }, index) => {
-		return (
-			<Radio {...rest} key={`${value}${index}`} value={value}>
-				{label}
-			</Radio>
-		);
-	});
-
-	return (
-		<RadioGroup {...input} {...props}>
-			{children}
-		</RadioGroup>
-	);
+	return <RadioGroup {...input} {...props} options={options} />;
 };
 
 export default withoutMetaProp(RadioField);

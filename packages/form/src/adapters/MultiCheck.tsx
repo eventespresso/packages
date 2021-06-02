@@ -1,23 +1,14 @@
-import { Checkbox, CheckboxGroup } from '@eventespresso/adapters';
+import { useMemo } from 'react';
+
+import { MultiCheckbox } from '@eventespresso/ui-components';
+
 import withoutMetaProp from './withoutMetaProp';
 import type { FieldRendererProps } from '../types';
 
 const MultiCheck: React.FC<FieldRendererProps> = ({ input, options, ...props }) => {
-	const children = options.map(({ label, value, ...rest }, index) => {
-		return (
-			<Checkbox {...rest} key={`${value}${index}`} value={value}>
-				{label}
-			</Checkbox>
-		);
-	});
+	const value = useMemo(() => input.value || [], [input.value]);
 
-	const value = input.value || [];
-
-	return (
-		<CheckboxGroup {...input} {...props} value={value}>
-			{children}
-		</CheckboxGroup>
-	);
+	return <MultiCheckbox {...input} {...props} options={options} value={value} />;
 };
 
 export default withoutMetaProp(MultiCheck);
