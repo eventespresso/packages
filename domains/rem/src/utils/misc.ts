@@ -98,7 +98,7 @@ export const normalizeTicketForRem = (
 			position: 'before',
 			startOrEnd: 'start',
 			unit: 'days',
-			unitValue: 1,
+			unitValue: 0,
 		},
 		ticketSalesDates: {
 			startDate,
