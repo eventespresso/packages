@@ -9,12 +9,12 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({ options = [], direction 
 	const children = useMemo(() => {
 		return options.map(({ label, value, ...rest }, index) => {
 			return (
-				<Radio {...rest} key={`${value}${index}`} value={value}>
+				<Radio id={`${props.id}-${value}`} {...rest} key={`${value}${index}`} value={value}>
 					{label}
 				</Radio>
 			);
 		});
-	}, [options]);
+	}, [options, props.id]);
 
 	return (
 		<RadioGroupAdapter {...props}>
