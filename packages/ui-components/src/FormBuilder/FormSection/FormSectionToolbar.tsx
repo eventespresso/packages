@@ -1,9 +1,10 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Copy, DragHandle, SettingsOutlined, Trash } from '@eventespresso/icons';
 
-import { IconButton } from '../../Button';
+import { IconButton, ButtonProps } from '../../Button';
+import { ConfirmDelete } from '../../Confirm';
 import { useFormState } from '../state';
 import { SaveSection } from './SaveSection';
 
@@ -20,6 +21,19 @@ export const FormSectionToolbar: React.FC<FormSectionToolbarProps> = ({ formSect
 	const onToggle = useCallback(() => toggleOpenElement({ openElement: UUID }), [UUID, toggleOpenElement]);
 
 	const tabIndex = active ? 0 : -1;
+
+	const deleteButtonProps = useMemo<ButtonProps>(
+		() => ({
+			icon: Trash,
+			borderless: true,
+			className: 'ee-form-section__toolbar-button',
+			size: 'small',
+			tabIndex,
+			tooltip: __('delete form section'),
+			transparentBg: true,
+		}),
+		[tabIndex]
+	);
 
 	return (
 		<div className={'ee-form-section__toolbar'}>
@@ -45,16 +59,7 @@ export const FormSectionToolbar: React.FC<FormSectionToolbarProps> = ({ formSect
 					transparentBg
 				/>
 				<SaveSection formSection={formSection} />
-				<IconButton
-					icon={Trash}
-					borderless
-					className='ee-form-section__toolbar-button'
-					onClick={onDelete}
-					size='small'
-					tabIndex={tabIndex}
-					tooltip={__('delete form section')}
-					transparentBg
-				/>
+				<ConfirmDelete asIconButton onConfirm={onDelete} buttonProps={deleteButtonProps} />
 				<IconButton
 					icon={DragHandle}
 					borderless

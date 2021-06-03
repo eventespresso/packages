@@ -10,5 +10,6 @@ export interface ConfirmProps {
 }
 
 export interface ConfirmPropsWithButton extends ConfirmProps {
+	asIconButton?: boolean;
 	buttonProps: ButtonProps;
 }

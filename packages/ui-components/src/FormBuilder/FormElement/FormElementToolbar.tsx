@@ -1,9 +1,10 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Copy, DragHandle, SettingsOutlined, Trash } from '@eventespresso/icons';
 
-import { IconButton } from '../../Button';
+import { IconButton, ButtonProps } from '../../Button';
+import { ConfirmDelete } from '../../Confirm';
 import { ELEMENT_BLOCKS_INDEXED } from '../constants';
 import { useFormState } from '../state';
 
@@ -20,6 +21,19 @@ export const FormElementToolbar: React.FC<FormElementToolbarProps> = ({ element,
 	const onToggle = useCallback(() => toggleOpenElement({ openElement: UUID }), [UUID, toggleOpenElement]);
 
 	const tabIndex = active ? 0 : -1;
+
+	const deleteButtonProps = useMemo<ButtonProps>(
+		() => ({
+			icon: Trash,
+			borderless: true,
+			className: 'ee-form-element__toolbar-button',
+			size: 'smaller',
+			tabIndex,
+			tooltip: __('delete form element'),
+			transparentBg: true,
+		}),
+		[tabIndex]
+	);
 
 	return (
 		<div className='ee-form-element__toolbar'>
@@ -45,16 +59,7 @@ export const FormElementToolbar: React.FC<FormElementToolbarProps> = ({ element,
 					tooltip={__('copy form element')}
 					transparentBg
 				/>
-				<IconButton
-					icon={Trash}
-					borderless
-					className='ee-form-element__toolbar-button'
-					size='smaller'
-					onClick={onDelete}
-					tabIndex={tabIndex}
-					tooltip={__('delete form element')}
-					transparentBg
-				/>
+				<ConfirmDelete asIconButton onConfirm={onDelete} buttonProps={deleteButtonProps} />
 				<IconButton
 					icon={DragHandle}
 					borderless
