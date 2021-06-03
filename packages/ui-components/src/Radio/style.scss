@@ -3,24 +3,38 @@
 .ee-radio {
 	&.ee-radio {
 		border-color: var(--ee-border-color);
-		border-radius: 50%;
+		border-radius: var(--ee-border-radius-full);
 		height: var(--ee-font-size-default);
 		width: var(--ee-font-size-default);
+
+		&[data-checked] {
+			background: var(--ee-color-primary);
+			border-color: var(--ee-color-primary);
+			color: var(--ee-text-on-primary);
+		}
 	}
 
-	&__wrapper {
+	&__wrapper.ee-radio__wrapper {
 		margin: var(--ee-margin-smaller) var(--ee-margin-nano);
 
 		label {
 			display: flex;
 
 			span:not(.ee-radio) {
-				font-weight: 500;
 				white-space: nowrap;
 
 				[dir='rtl'] & {
 					margin-left: var(--ee-margin-tiny);
 				}
+			}
+		}
+
+		+ .ee-radio__wrapper {
+			margin-left: var(--ee-margin-bigger);
+			margin-inline-start: var(--ee-margin-bigger);
+
+			[dir='rtl'] & {
+				margin-right: var(--ee-margin-bigger);
 			}
 		}
 	}

@@ -1,5 +1,26 @@
-.ee-checkbox {
+.ee-checkbox.ee-checkbox {
+	margin: var(--ee-margin-smaller) var(--ee-margin-nano);
+
 	.chakra-checkbox__control {
 		border-color: var(--ee-border-color);
+
+		&[data-checked] {
+			background: var(--ee-color-primary);
+			border-color: var(--ee-color-primary);
+			color: var(--ee-text-on-primary);
+		}
+	}
+
+	span:not(.chakra-checkbox__control) {
+		white-space: nowrap;
+	}
+
+	+ .ee-checkbox {
+			margin-left: var(--ee-margin-bigger);
+			margin-inline-start: var(--ee-margin-bigger);
+
+			[dir='rtl'] & {
+				margin-right: var(--ee-margin-bigger);
+			}
 	}
 }
