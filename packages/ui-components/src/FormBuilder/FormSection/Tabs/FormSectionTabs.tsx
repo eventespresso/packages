@@ -5,10 +5,10 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '../../../Tabs';
 import { useFormState } from '../../state';
 import { Styles } from './Styles';
 import { Collapsible } from '../../../';
-import type { SettingsProps } from '../../types';
+import type { FormSectionProps } from '../../types';
 import { Settings } from './Settings';
 
-export const FormSectionTabs: React.FC<SettingsProps> = ({ formSection }) => {
+export const FormSectionTabs: React.FC<FormSectionProps> = ({ formSection }) => {
 	const { isElementOpen } = useFormState();
 	return (
 		<Collapsible show={isElementOpen({ UUID: formSection.UUID })}>

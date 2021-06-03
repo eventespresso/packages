@@ -5,10 +5,10 @@ import type { AnyObject } from '@eventespresso/utils';
 
 import { MappedElement } from './MappedElement';
 import type { FormElementProps } from '../types';
-import { useFormState } from '../state';
+import { useUpdateElement } from './useUpdateElement';
 
 export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
-	const { updateElement } = useFormState();
+	const onChangeValue = useUpdateElement(element);
 
 	const props = useMemo(() => {
 		let inputProps: AnyObject = {
@@ -36,7 +36,7 @@ export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
 					...inputProps,
 					// Datepicker has to be controlled, so we need to pass the value and onChange
 					value: element.value,
-					onChange: (value: Date) => updateElement({ UUID: element.UUID, element: { value } }),
+					onChange: onChangeValue('value'),
 				};
 				switch (element.type) {
 					// TODO update formats from site config
@@ -67,7 +67,7 @@ export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
 				break;
 		}
 		return inputProps;
-	}, [element, updateElement]);
+	}, [element, onChangeValue]);
 
 	return (
 		<FormControl className='ee-form-element__input' isRequired={element.required}>

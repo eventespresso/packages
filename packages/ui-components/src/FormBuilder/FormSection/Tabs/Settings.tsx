@@ -1,25 +1,16 @@
-import { useCallback } from 'react';
-
 import { __ } from '@eventespresso/i18n';
 
 import { TextInput } from '../../../text-input';
 import { withLabel } from '../../../withLabel';
 import { Switch } from '../../../Switch';
+import { useUpdateSection } from '../useUpdateSection';
 
-import type { SettingsProps, FormSection } from '../../types';
-import { useFormState } from '../../state';
+import type { FormSectionProps } from '../../types';
 
 const TextWithLabel = withLabel(TextInput);
 
-export const Settings: React.FC<SettingsProps> = ({ formSection }) => {
-	const { updateSection } = useFormState();
-
-	const onChangeValue = useCallback(
-		(field: keyof FormSection) => (value) => {
-			updateSection({ UUID: formSection.UUID, section: { [field]: value } });
-		},
-		[formSection.UUID, updateSection]
-	);
+export const Settings: React.FC<FormSectionProps> = ({ formSection }) => {
+	const onChangeValue = useUpdateSection(formSection);
 
 	return (
 		<>

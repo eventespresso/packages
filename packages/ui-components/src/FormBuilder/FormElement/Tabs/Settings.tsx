@@ -1,23 +1,17 @@
-import { useCallback } from 'react';
-
 import { __ } from '@eventespresso/i18n';
 
 import { TextInput } from '../../../text-input';
 import { withLabel } from '../../../withLabel';
-import type { FormElement, SettingsProps } from '../../types';
-import { useFormState } from '../../state';
+import type { FormElementProps } from '../../types';
+import { FieldOptions } from './FieldOptions';
+import { FIELDS_WITH_OPTIONS } from '../../constants';
+import { useUpdateElement } from '../useUpdateElement';
 
 const TextWithLabel = withLabel(TextInput);
 
-export const Settings: React.FC<SettingsProps> = ({ element }) => {
-	const { updateElement } = useFormState();
+export const Settings: React.FC<FormElementProps> = ({ element }) => {
+	const onChangeValue = useUpdateElement(element);
 
-	const onChangeValue = useCallback(
-		(field: keyof FormElement) => (value) => {
-			updateElement({ UUID: element.UUID, element: { [field]: value } });
-		},
-		[element.UUID, updateElement]
-	);
 	return (
 		<>
 			<TextWithLabel
@@ -30,6 +24,7 @@ export const Settings: React.FC<SettingsProps> = ({ element }) => {
 				onChangeValue={onChangeValue('publicLabel')}
 				value={element.publicLabel}
 			/>
+			{FIELDS_WITH_OPTIONS.includes(element.type) && <FieldOptions element={element} />}
 			<TextWithLabel
 				label={__('placeholder')}
 				onChangeValue={onChangeValue('placeholder')}

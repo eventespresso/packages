@@ -3,7 +3,7 @@ import { indexBy, prop } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 import type { OptionsType } from '@eventespresso/adapters';
 
-import { ElementBlock, FormSection, FormElement } from './types';
+import { ElementBlock, FormSection, FormElement, ElementType } from './types';
 
 export const SECTIONS_DROPPABLE_ID = 'form-sections';
 
@@ -22,6 +22,9 @@ export const DEFAULT_ELEMENT: FormElement = {
 	order: 1,
 	status: 'active',
 };
+
+// These are the fields that require `options` to be passed to the component
+export const FIELDS_WITH_OPTIONS: Array<ElementType> = ['checkbox-multi', 'radio', 'select'];
 
 export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	{

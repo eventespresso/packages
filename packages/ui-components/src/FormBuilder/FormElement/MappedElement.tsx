@@ -25,7 +25,7 @@ export const MappedElement: React.FC<MappedElementProps> = ({ type, id, label, .
 			break;
 		case 'date':
 		case 'datetime-local':
-			Component = withLabel(DatePicker);
+			Component = DatePicker;
 			break;
 		case 'email':
 		case 'email-confirmation':
@@ -33,22 +33,22 @@ export const MappedElement: React.FC<MappedElementProps> = ({ type, id, label, .
 		case 'tel':
 		case 'text':
 		case 'url':
-			Component = withLabel(TextInput);
+			Component = TextInput;
 			break;
 		case 'html':
 		case 'textarea':
 		case 'textarea-html':
-			Component = withLabel(Textarea);
+			Component = Textarea;
 			break;
 		case 'integer':
 		case 'decimal':
-			Component = withLabel(NumberInput);
+			Component = NumberInput;
 			break;
 		case 'month':
 		case 'month-select':
 		case 'week':
 		case 'year-select':
-			Component = withLabel(DatePicker);
+			Component = DatePicker;
 			break;
 		case 'radio':
 			Component = RadioGroup;
@@ -68,6 +68,8 @@ export const MappedElement: React.FC<MappedElementProps> = ({ type, id, label, .
 			Component = DefaultComponent;
 			break;
 	}
+
+	Component = withLabel(Component);
 
 	return <Component id={id} {...props} label={label} />;
 };

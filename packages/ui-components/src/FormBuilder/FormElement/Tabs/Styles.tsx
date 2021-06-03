@@ -1,28 +1,19 @@
-import { useCallback } from 'react';
-
 import { __ } from '@eventespresso/i18n';
 
 import { TextInput } from '../../../text-input';
 import { withLabel } from '../../../withLabel';
 import { Textarea } from '../../../Textarea';
-import { useFormState } from '../../state';
+import { useUpdateElement } from '../useUpdateElement';
 
-import type { FormElement, SettingsProps } from '../../types';
+import type { FormElementProps } from '../../types';
 
 const TextWithLabel = withLabel(TextInput);
 const TextAreaWithLabel = withLabel(Textarea);
 
-export const Styles: React.FC<SettingsProps> = ({ element }) => {
-	const { updateElement } = useFormState();
+export const Styles: React.FC<FormElementProps> = ({ element }) => {
+	const onChangeValue = useUpdateElement(element);
 
-	const onChangeValue = useCallback(
-		(field: keyof FormElement) => (value) => {
-			updateElement({ UUID: element.UUID, element: { [field]: value } });
-		},
-		[element.UUID, updateElement]
-	);
 	return (
-		// TODO wire up the values from data state
 		<>
 			<TextWithLabel
 				label={__('label css class')}

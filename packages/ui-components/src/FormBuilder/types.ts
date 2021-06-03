@@ -111,8 +111,3 @@ export interface FormSectionProps extends CommonProps {
 export interface FormSectionToolbarProps extends FormSectionProps {
 	dragHandleProps: DraggableProvidedDragHandleProps;
 }
-
-export interface SettingsProps {
-	element?: FormElement;
-	formSection?: FormSection;
-}
