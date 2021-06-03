@@ -1,8 +1,6 @@
-import { useState } from 'react';
-import { Stack } from '@chakra-ui/react';
 import type { Meta } from '@storybook/react/types-6-0';
 
-import { RadioGroup } from '@eventespresso/adapters';
+import { RadioGroup } from './RadioGroup';
 import { Radio } from './';
 
 export default {
@@ -10,16 +8,21 @@ export default {
 	title: 'Components/Radio',
 } as Meta;
 
-export const Default = () => {
-	const [value, setValue] = useState<string | number>('1');
+const options = [
+	{
+		value: '1',
+		label: 'First',
+	},
+	{
+		value: '2',
+		label: 'Second',
+	},
+	{
+		value: '3',
+		label: 'Third',
+	},
+];
 
-	return (
-		<RadioGroup onChange={setValue} value={value}>
-			<Stack direction='row'>
-				<Radio value='1'>First</Radio>
-				<Radio value='2'>Second</Radio>
-				<Radio value='3'>Third</Radio>
-			</Stack>
-		</RadioGroup>
-	);
+export const Default = () => {
+	return <RadioGroup options={options} />;
 };
