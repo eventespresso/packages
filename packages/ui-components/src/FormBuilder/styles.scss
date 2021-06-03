@@ -307,6 +307,13 @@
 						}
 					}
 				}
+
+				.ee-field-options {
+					&__desc {
+						font-size: var(--ee-font-size-default);
+						margin: var(--ee-margin-micro) var(--ee-margin-smaller) 0;
+					}
+				}
 			}
 		}
 	}
