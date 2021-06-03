@@ -7,9 +7,7 @@ import { Textarea } from '../../../Textarea';
 import { withLabel } from '../../../withLabel';
 import { useUpdateElement } from '../useUpdateElement';
 
-const TextAreaWithLabel = withLabel(Textarea);
-
-export const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
+const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 	const [currentValue, setCurrentValue] = useState(() => {
 		// Convert options array to multiline string
 		return (element.options || []).reduce((prev, cur) => `${prev}\n${cur.value}`, '').trim();
@@ -28,17 +26,21 @@ export const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 
 	return (
 		<>
-			<TextAreaWithLabel
+			<Textarea
 				aria-describedby={`${element.UUID}-options-desc`}
+				className='ee-field-options'
 				id={`${element.UUID}-options`}
-				label={__('options')}
 				onBlur={updateValue}
 				onChangeValue={setCurrentValue}
 				placeholder={`Apple\nBanana\nMango`}
 				value={currentValue}
 				rows={10}
 			/>
-			<p id={`${element.UUID}-options-desc`}>{__('value on each line will become an option for the input.')}</p>
+			<p id={`${element.UUID}-options-desc`} className='ee-field-options__desc'>
+				{__('value on each line will become an option for the input.')}
+			</p>
 		</>
 	);
 };
+
+export default withLabel(FieldOptions);

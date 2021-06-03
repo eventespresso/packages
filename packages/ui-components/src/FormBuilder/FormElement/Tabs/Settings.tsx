@@ -3,7 +3,7 @@ import { __ } from '@eventespresso/i18n';
 import { TextInput } from '../../../text-input';
 import { withLabel } from '../../../withLabel';
 import type { FormElementProps } from '../../types';
-import { FieldOptions } from './FieldOptions';
+import FieldOptions from './FieldOptions';
 import { FIELDS_WITH_OPTIONS } from '../../constants';
 import { useUpdateElement } from '../useUpdateElement';
 
@@ -24,7 +24,7 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 				onChangeValue={onChangeValue('publicLabel')}
 				value={element.publicLabel}
 			/>
-			{FIELDS_WITH_OPTIONS.includes(element.type) && <FieldOptions element={element} />}
+			{FIELDS_WITH_OPTIONS.includes(element.type) && <FieldOptions element={element} label={__('options')} />}
 			<TextWithLabel
 				label={__('placeholder')}
 				onChangeValue={onChangeValue('placeholder')}
