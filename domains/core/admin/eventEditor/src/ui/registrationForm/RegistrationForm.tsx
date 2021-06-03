@@ -28,6 +28,18 @@ const formSections: Array<FormSection> = [
 		status: 'active',
 		wpUser: 1,
 	},
+	{
+		UUID: 'xyz123',
+		appliesTo: 'all',
+		belongsTo: 'Event-1',
+		adminLabel: 'other information',
+		name: 'other information',
+		htmlClass: '',
+		order: 3,
+		relation: 'Event',
+		status: 'active',
+		wpUser: 1,
+	},
 ];
 
 const formElements: Array<FormElement> = [
@@ -234,6 +246,76 @@ const formElements: Array<FormElement> = [
 		requiredText: '',
 		status: 'active',
 		type: 'text',
+		wpUser: 1,
+	},
+	{
+		UUID: 'xyz123-abc',
+		relation: '',
+		adminLabel: 'what can the user code?',
+		adminOnly: false,
+		belongsTo: 'xyz123',
+		helpClass: '',
+		helpText: '',
+		htmlClass: '',
+		order: 5,
+		publicLabel: 'what can you code?',
+		required: false,
+		requiredText: '',
+		status: 'active',
+		type: 'checkbox-multi',
+		options: [
+			{
+				value: 'JS',
+				label: 'JS',
+			},
+			{
+				value: 'TS',
+				label: 'TS',
+			},
+			{
+				value: 'React',
+				label: 'React',
+			},
+			{
+				value: 'PHP',
+				label: 'PHP',
+			},
+		],
+		wpUser: 1,
+	},
+	{
+		UUID: 'xyz123-def',
+		relation: '',
+		adminLabel: 'Which language does the user like the most?',
+		adminOnly: false,
+		belongsTo: 'xyz123',
+		helpClass: '',
+		helpText: '',
+		htmlClass: '',
+		order: 5,
+		publicLabel: 'Which language do you like the most?',
+		required: false,
+		requiredText: '',
+		status: 'active',
+		type: 'radio',
+		options: [
+			{
+				value: 'JS',
+				label: 'JS',
+			},
+			{
+				value: 'TS',
+				label: 'TS',
+			},
+			{
+				value: 'React',
+				label: 'React',
+			},
+			{
+				value: 'PHP',
+				label: 'PHP',
+			},
+		],
 		wpUser: 1,
 	},
 ];
