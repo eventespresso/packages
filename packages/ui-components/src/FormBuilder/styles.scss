@@ -8,7 +8,6 @@
 		justify-content: space-between;
 		margin: var(--ee-margin-small) 0;
 		max-width: 100%;
-		overflow: hidden;
 		position: relative;
 		width: 100%;
 		z-index: 1;
@@ -23,7 +22,6 @@
 		display: flex;
 		flex-flow: column wrap;
 		margin: 0 0 var(--ee-margin-small);
-		overflow: hidden;
 		padding: var(--ee-padding-small);
 		width: 100%;
 
@@ -124,42 +122,36 @@
 					background: var(--ee-color-grey-14);
 				}
 
-				.ee-form-section__sidebar-toggle:focus,
-				&:hover .ee-form-section__sidebar-toggle,
-				&--active .ee-form-section__sidebar-toggle,
-				&:hover .ee-form-section__toolbar .ee-form-section__toolbar-button,
-				&--active .ee-form-section__toolbar .ee-form-section__toolbar-button {
-					opacity: 1 !important;
-				}
+				.ee-add-form-element {
 
-				&__sidebar {
-					background: var(--ee-background-color);
-					border-radius: var(--ee-border-radius-default);
-					box-shadow: var(--ee-box-shadow-tiny);
-					box-sizing: border-box;
-					color: var(--ee-default-text-color);
-					display: flex;
-					flex-flow: column wrap;
-					margin: var(--ee-margin-default)  var(--ee-margin-small) 0;
-					max-width: 360px;
-					min-width: 240px;
-					padding:  var(--ee-padding-small) var(--ee-padding-default);
-					position: absolute;
-					right: -480px;
-					transition: all 375ms ease-in-out;
-					width: auto;
-					z-index: 2;
-
-					&--active {
-						right: 0;
+					&__popover {
+						display: flex;
+						flex-direction: row;
+						justify-content: flex-end;
 					}
 
-					&-toggle {
+					&__content {
+						background: var(--ee-background-color);
+						box-sizing: border-box;
+						color: var(--ee-default-text-color);
+						display: flex;
+						flex-flow: column wrap;
+						max-width: 360px;
+						min-width: 240px;
+						padding:  var(--ee-padding-tiny) var(--ee-padding-default);
+						width: auto;
+
+						div:last-child {
+							padding: 0;
+						}
+					}
+
+					&__trigger {
 						align-self: flex-end;
 						opacity: 0;
 					}
 
-					&-item {
+					&__option {
 						align-items: flex-end;
 						display: flex;
 						flex-direction: column;
@@ -180,6 +172,14 @@
 							margin: 0;
 						}
 					}
+				}
+
+				.ee-add-form-element__trigger:focus,
+				&:hover .ee-add-form-element__trigger,
+				&--active .ee-add-form-element__trigger,
+				&:hover .ee-form-section__toolbar .ee-form-section__toolbar-button,
+				&--active .ee-form-section__toolbar .ee-form-section__toolbar-button {
+					opacity: 1 !important;
 				}
 
 				&__footer {

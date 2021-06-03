@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 import { Draggable } from '@eventespresso/adapters';
 
-import { FormSectionSidebar } from './FormSectionSidebar';
+import { AddFormElementPopover } from './AddFormElementPopover';
 import { FormSectionToolbar } from './FormSectionToolbar';
 import { FormSectionElements } from './FormSectionElements';
 import { FormSectionTabs } from './Tabs';
@@ -30,7 +30,7 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection, index }) 
 						</div>
 						<FormSectionTabs formSection={formSection} />
 						<FormSectionElements formSection={formSection} />
-						<FormSectionSidebar formSection={formSection} />
+						<AddFormElementPopover formSection={formSection} />
 					</fieldset>
 				);
 			}}
