@@ -1,6 +1,8 @@
 import { forwardRef } from 'react';
 import classNames from 'classnames';
 
+import { Label } from '../Label';
+
 import type { AnyObject } from '@eventespresso/utils';
 import type { WithLabelProps } from './types';
 import type { ForwardRefComponent } from '../types';
@@ -34,14 +36,7 @@ const withLabel = <P extends AnyObject>(
 
 		return label ? (
 			<div className={className}>
-				<label
-					aria-label={props['aria-label'] || label}
-					className='ee-input-label'
-					id={`${id}-label`}
-					htmlFor={id}
-				>
-					{label}
-				</label>
+				<Label ariaLabel={props['aria-label'] || label} id={id} label={label} />
 				<WrappedComponent
 					{...(props as P)}
 					aria-label={null} // avoid duplicate aria-label

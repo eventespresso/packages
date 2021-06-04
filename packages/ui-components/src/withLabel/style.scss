@@ -4,10 +4,6 @@
  * ------------------------------------------------------------------------- */
 
 .ee-input-label {
-	color: var(--ee-default-text-color-super-high-contrast);
-	font-weight: bold;
-	white-space: nowrap;
-
 	&__wrapper {
 		align-items: flex-start;
 		display: flex;

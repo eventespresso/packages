@@ -1,3 +1,5 @@
+import { LabelProps } from '../Label';
+
 // ordered clockwise starting top left
 export type LabelPosition =
 	| 'top-left'
@@ -13,10 +15,8 @@ export type LabelPosition =
 	| 'left-middle'
 	| 'left-top';
 
-export interface WithLabelProps {
+export interface WithLabelProps extends Pick<LabelProps, 'id' | 'label'> {
 	fontWeightNormal?: boolean;
-	id?: string;
-	label?: string;
 	labelClassName?: string;
 	labelPosition?: LabelPosition;
 	noPadding?: boolean;
