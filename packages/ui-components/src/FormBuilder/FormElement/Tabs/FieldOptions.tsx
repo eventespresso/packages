@@ -35,7 +35,7 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 	);
 
 	const onAddOption = useCallback(() => {
-		const newOptions = [...element.options, { value: '', label: '' }];
+		const newOptions = [...(element.options || []), { value: '', label: '' }];
 		updateElement('options')(newOptions);
 	}, [element.options, updateElement]);
 
