@@ -19,8 +19,10 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 
 	const onChangeOptionInput = useCallback(
 		(key: 'value' | 'label', index: number) => (value: string) => {
+			// if it's the 'value' field, accept only letters, numbers, underscore and hyphen
+			const safeValue = key === 'value' ? value.replace(/[^\w-]/g, '') : value;
 			// Update the option at specified index
-			const newOptions = adjust(index, assoc(key, value), element.options || []);
+			const newOptions = adjust(index, assoc(key, safeValue), element.options || []);
 			updateElement('options')(newOptions);
 		},
 		[element.options, updateElement]
