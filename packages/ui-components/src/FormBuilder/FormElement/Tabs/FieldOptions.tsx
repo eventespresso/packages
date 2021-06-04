@@ -1,43 +1,70 @@
-import { useCallback, useState } from 'react';
+import { useCallback, CSSProperties } from 'react';
+import { adjust, assoc, remove } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
+import { Trash, Plus } from '@eventespresso/icons';
 
 import { FormElementProps } from '../../types';
-import { Textarea } from '../../../Textarea';
+import { TextInput } from '../../../text-input';
 import { withLabel } from '../../../withLabel';
+import { IconButton } from '../../../Button';
 import { useUpdateElement } from '../useUpdateElement';
 
+const inputRowStyles: CSSProperties = {
+	display: 'flex',
+};
+
 const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
-	const [currentValue, setCurrentValue] = useState(() => {
-		// Convert options array to multiline string
-		return (element.options || []).reduce((prev, cur) => `${prev}\n${cur.value}`, '').trim();
-	});
 	const updateElement = useUpdateElement(element);
 
-	const updateValue = useCallback(() => {
-		// Split the given string by new line to create an option from each line
-		const options = currentValue
-			.trim()
-			.split(/[\n\r]/)
-			.map((value) => ({ value, label: value }));
+	const onChangeOptionInput = useCallback(
+		(key: 'value' | 'label', index: number) => (value: string) => {
+			// Update the option at specified index
+			const newOptions = adjust(index, assoc(key, value), element.options || []);
+			updateElement('options')(newOptions);
+		},
+		[element.options, updateElement]
+	);
 
-		updateElement('options')(options);
-	}, [currentValue, updateElement]);
+	const onRemoveOption = useCallback(
+		(index: number) => () => {
+			const newOptions = remove(index, 1, element.options || []);
+			updateElement('options')(newOptions);
+		},
+		[element.options, updateElement]
+	);
+
+	const onAddOption = useCallback(() => {
+		const newOptions = [...element.options, { value: '', label: '' }];
+		updateElement('options')(newOptions);
+	}, [element.options, updateElement]);
 
 	return (
 		<>
-			<Textarea
-				aria-describedby={`${element.UUID}-options-desc`}
-				className='ee-field-options'
-				id={`${element.UUID}-options`}
-				onBlur={updateValue}
-				onChangeValue={setCurrentValue}
-				placeholder={`Apple\nBanana\nMango`}
-				value={currentValue}
-				rows={10}
-			/>
-			<p id={`${element.UUID}-options-desc`} className='ee-field-options__desc'>
-				{__('value on each line will become an option for the input.')}
+			<div>
+				{(element.options || []).map(({ value, label }, index) => {
+					return (
+						<div key={`${index}`} style={inputRowStyles}>
+							<TextInput
+								onChangeValue={onChangeOptionInput('value', index)}
+								value={value}
+								placeholder={__('value')}
+							/>
+							<TextInput
+								onChangeValue={onChangeOptionInput('label', index)}
+								value={label as string}
+								placeholder={__('label')}
+							/>
+							<IconButton aria-label={__('remove option')} icon={Trash} onClick={onRemoveOption(index)} />
+						</div>
+					);
+				})}
+				<IconButton aria-label={__('add option')} icon={Plus} onClick={onAddOption} />
+			</div>
+			<p className='ee-field-options__desc'>
+				{__(
+					'Options are the choices you give people to select from. The value is a simple key that will be saved to the database and the label is what is shown to the user.'
+				)}
 			</p>
 		</>
 	);
