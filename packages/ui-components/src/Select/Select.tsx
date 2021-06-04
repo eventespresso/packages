@@ -9,7 +9,7 @@ import type { SelectProps } from './types';
 
 import './style.scss';
 
-const Select = forwardRef<HTMLSelectElement, SelectProps>(
+export const SelectWithOutLabel = forwardRef<HTMLSelectElement, SelectProps>(
 	({ fitContainer, flow, id, noBorderColor, size, ...props }, ref) => {
 		const className = classNames(
 			'ee-select',
@@ -46,4 +46,4 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 	}
 );
 
-export default withLabel(Select);
+export default withLabel(SelectWithOutLabel);
