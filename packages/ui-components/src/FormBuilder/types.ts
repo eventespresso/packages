@@ -100,6 +100,7 @@ export interface FieldOptionProps extends CommonProps {
 	label: React.ReactNode;
 	onChange: (key: 'value' | 'label', index: number) => (value: string) => void;
 	onRemove: (index: number) => VoidFunction;
+	UUID: string;
 	value: React.ReactText;
 }
 

@@ -344,7 +344,7 @@
 						align-self: flex-end;
 						margin: var(--ee-margin-small) 0;
 						margin-inline-end: calc(
-							var(--ee-icon-button-size-small) + var(--ee-margin-tiny) + var(--ee-margin-smaller)
+							((var(--ee-icon-button-size-small) + var(--ee-margin-tiny)) * 2) + var(--ee-margin-default)
 						);
 					}
 
@@ -358,7 +358,8 @@
 							margin-inline-start: var(--ee-margin-smaller);
 						}
 
-						&:last-of-type {
+						&__actions {
+							flex-flow: row nowrap;
 							width: auto;
 						}
 
@@ -377,6 +378,7 @@
 							width: 100%;
 						}
 
+						&__drag,
 						&__remove {
 							margin: var(--ee-margin-micro);
 						}

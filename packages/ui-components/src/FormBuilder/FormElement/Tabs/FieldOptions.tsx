@@ -1,14 +1,20 @@
 import { useCallback } from 'react';
+import classNames from 'classnames';
 import { adjust, assoc, remove } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { Plus } from '@eventespresso/icons';
+import { DragDropContext, Droppable } from '@eventespresso/adapters';
 
 import { FieldOption } from './FieldOption';
 import { FormElementProps } from '../../types';
 import { withLabel } from '../../../withLabel';
 import { Button } from '../../../Button';
 import { useUpdateElement } from '../useUpdateElement';
+
+const handleDnD = (args) => {
+	console.log('%c args', 'color: LimeGreen;', args);
+};
 
 const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 	const updateElement = useUpdateElement(element);
@@ -46,18 +52,34 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 					'The value is a simple key that will be saved to the database and the label is what is shown to the user.'
 				)}
 			</p>
-			{(element.options || []).map(({ value, label }, index) => {
-				return (
-					<FieldOption
-						key={`${index}`}
-						index={index}
-						label={label}
-						onChange={onChangeOptionInput}
-						onRemove={onRemoveOption}
-						value={value}
-					/>
-				);
-			})}
+			<DragDropContext onDragEnd={handleDnD}>
+				<Droppable droppableId={`ee-field-option-${element.UUID}`} type='option'>
+					{({ innerRef, droppableProps, placeholder }, { isDraggingOver }) => {
+						const className = classNames(
+							'ee-droppable',
+							isDraggingOver && 'ee-droppable--is-dragging-over'
+						);
+						return (
+							<div {...droppableProps} className={className} ref={innerRef}>
+								{(element.options || []).map(({ value, label }, index) => {
+									return (
+										<FieldOption
+											key={`${index}`}
+											index={index}
+											label={label}
+											onChange={onChangeOptionInput}
+											onRemove={onRemoveOption}
+											UUID={element.UUID}
+											value={value}
+										/>
+									);
+								})}
+								{placeholder}
+							</div>
+						);
+					}}
+				</Droppable>
+			</DragDropContext>
 			<Button
 				buttonText={__('add new option')}
 				className='ee-field-options__add-option'
