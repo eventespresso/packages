@@ -1,11 +1,19 @@
 import { __ } from '@eventespresso/i18n';
 import { withFeature } from '@eventespresso/services';
+import { uuid } from '@eventespresso/utils';
 import { FormBuilder, Heading, FormSection, FormElement } from '@eventespresso/ui-components';
+
+// Generate unique IDs for sections
+const sectionIds = {
+	personal_info: uuid(),
+	address_info: uuid(),
+	other_info: uuid(),
+};
 
 // this is based off of the data schema I started for the PHP models, but can be changed to whatever
 const formSections: Array<FormSection> = [
 	{
-		UUID: 'abc123',
+		UUID: sectionIds.personal_info,
 		appliesTo: 'all',
 		belongsTo: '',
 		adminLabel: 'personal information',
@@ -17,7 +25,7 @@ const formSections: Array<FormSection> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'def456',
+		UUID: sectionIds.address_info,
 		appliesTo: 'all',
 		belongsTo: 'Event-1',
 		adminLabel: 'address information',
@@ -29,7 +37,7 @@ const formSections: Array<FormSection> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'xyz123',
+		UUID: sectionIds.other_info,
 		appliesTo: 'all',
 		belongsTo: 'Event-1',
 		adminLabel: 'other information',
@@ -44,11 +52,11 @@ const formSections: Array<FormSection> = [
 
 const formElements: Array<FormElement> = [
 	{
-		UUID: 'xyz123',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'registrant first name',
 		adminOnly: false,
-		belongsTo: 'abc123',
+		belongsTo: sectionIds.personal_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -62,11 +70,11 @@ const formElements: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'xyz456',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'registrant last name',
 		adminOnly: false,
-		belongsTo: 'abc123',
+		belongsTo: sectionIds.personal_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -80,11 +88,11 @@ const formElements: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'xyz789',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'registrant email address',
 		adminOnly: false,
-		belongsTo: 'abc123',
+		belongsTo: sectionIds.personal_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -98,11 +106,11 @@ const formElements: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'xyz852',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'registrant age',
 		adminOnly: false,
-		belongsTo: 'abc123',
+		belongsTo: sectionIds.personal_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -117,7 +125,7 @@ const formElements: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'pqr',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'Where to live in 2021',
 		adminOnly: false,
@@ -142,11 +150,11 @@ const formElements: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'uvw1',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'registrant street',
 		adminOnly: false,
-		belongsTo: 'def456',
+		belongsTo: sectionIds.address_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -160,11 +168,11 @@ const formElements: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'uvw2',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'registrant city',
 		adminOnly: false,
-		belongsTo: 'def456',
+		belongsTo: sectionIds.address_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -178,11 +186,11 @@ const formElements: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'uvw3',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'registrant state',
 		adminOnly: false,
-		belongsTo: 'def456',
+		belongsTo: sectionIds.address_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -205,11 +213,11 @@ const formElements: Array<FormElement> = [
 		],
 	},
 	{
-		UUID: 'uvw4',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'registrant country',
 		adminOnly: false,
-		belongsTo: 'def456',
+		belongsTo: sectionIds.address_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -232,11 +240,11 @@ const formElements: Array<FormElement> = [
 		],
 	},
 	{
-		UUID: 'uvw5',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'registrant postal code',
 		adminOnly: false,
-		belongsTo: 'def456',
+		belongsTo: sectionIds.address_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -249,11 +257,11 @@ const formElements: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: 'xyz123-abc',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'what can the user code?',
 		adminOnly: false,
-		belongsTo: 'xyz123',
+		belongsTo: sectionIds.other_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -265,30 +273,30 @@ const formElements: Array<FormElement> = [
 		type: 'checkbox-multi',
 		options: [
 			{
-				value: 'JS',
+				value: 'js',
 				label: 'JS',
 			},
 			{
-				value: 'TS',
+				value: 'ts',
 				label: 'TS',
 			},
 			{
-				value: 'React',
+				value: 'react',
 				label: 'React',
 			},
 			{
-				value: 'PHP',
+				value: 'php',
 				label: 'PHP',
 			},
 		],
 		wpUser: 1,
 	},
 	{
-		UUID: 'xyz123-def',
+		UUID: uuid(),
 		relation: '',
 		adminLabel: 'Which language does the user like the most?',
 		adminOnly: false,
-		belongsTo: 'xyz123',
+		belongsTo: sectionIds.other_info,
 		helpClass: '',
 		helpText: '',
 		htmlClass: '',
@@ -300,19 +308,19 @@ const formElements: Array<FormElement> = [
 		type: 'radio',
 		options: [
 			{
-				value: 'JS',
+				value: 'js',
 				label: 'JS',
 			},
 			{
-				value: 'TS',
+				value: 'ts',
 				label: 'TS',
 			},
 			{
-				value: 'React',
+				value: 'react',
 				label: 'React',
 			},
 			{
-				value: 'PHP',
+				value: 'php',
 				label: 'PHP',
 			},
 		],
