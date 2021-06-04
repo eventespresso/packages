@@ -1,3 +1,4 @@
+@import '~@eventespresso/styles/src/mixins/breakpoints';
 
 .ee-tabs {
 	.ee-tabs {
@@ -20,12 +21,19 @@
 			flex-flow: column nowrap;
 			font-size: var(--ee-font-size-smaller);
 			font-weight: 600;
-			height: calc(var(--ee-font-size-small) * 3 + var(--ee-icon-button-size-micro));
+			height: calc(var(--ee-font-size-small) * 2.5 + var(--ee-icon-button-size-micro));
 			line-height: var(--ee-font-size-small);
 			margin: 0;
- 			min-width: calc(var(--ee-font-size-small) * 9);
+			min-width: calc(var(--ee-font-size-small) * 5);
 			outline: none;
+			padding: var(--ee-margin-nano) var(--ee-margin-tiny);
 			position: relative;
+
+			@include min480px {
+				height: calc(var(--ee-font-size-small) * 3 + var(--ee-icon-button-size-micro));
+				min-width: calc(var(--ee-font-size-small) * 9);
+				padding: var(--ee-margin-tiny) var(--ee-margin-small);
+			}
 
 			& + .ee-tabs__tab {
 				margin-left:var(--ee-margin-micro);
@@ -33,11 +41,17 @@
 
 			svg.ee-svg.ee-svg {
 				color: var(--ee-default-text-color-super-low-contrast);
-				font-size: var(--ee-font-size-big);
+				font-size: var(--ee-font-size-smaller);
 				font-weight: 300;
-				height: var(--ee-icon-button-size-micro);
+				height: calc(var(--ee-icon-button-size-small) / 2);
 				margin:  0 0 var(--ee-margin-micro);
-				width: var(--ee-icon-button-size-micro);
+				width: calc(var(--ee-icon-button-size-small) / 2);
+
+				@include min480px {
+					font-size: var(--ee-font-size-big);
+					height: var(--ee-icon-button-size-micro);
+					width: var(--ee-icon-button-size-micro);
+				}
 
 				g {
 					stroke-width: 1 !important;
@@ -118,8 +132,13 @@
 			box-sizing: border-box;
 			color: var(--ee-default-text-color);
 			outline: none;
+			padding: var(--ee-padding-tiny);
 			position: relative;
 			z-index: 1;
+
+			@include min767px {
+				padding: var(--ee-padding-small);
+			}
 		}
 	}
 }

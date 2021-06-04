@@ -4,7 +4,10 @@
 .ee-droppable {
 	border: var(--ee-border-width-thick) solid transparent;
 	border-radius: var(--ee-border-radius-small);
-	padding: var(--ee-padding-tiny);
+
+	@include min767px {
+		padding: var(--ee-padding-tiny);
+	}
 
 	li {
 		align-items: center;

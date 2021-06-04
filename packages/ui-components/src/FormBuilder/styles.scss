@@ -22,8 +22,11 @@
 		display: flex;
 		flex-flow: column wrap;
 		margin: 0 0 var(--ee-margin-small);
-		padding: var(--ee-padding-small);
 		width: 100%;
+
+		@include min767px {
+			padding: var(--ee-padding-small);
+		}
 
 		.ee-form {
 			&-section {
@@ -108,7 +111,11 @@
 							position: relative;
 							right: var(--ee-margin-default);
 							top: calc(var(--ee-margin-huge) * -1);
-							width: 20rem;
+							width: 100%;
+
+							@include min767px {
+								width: 20rem;
+							}
 
 							[dir='rtl'] & {
 								left: var(--ee-margin-default);
@@ -205,7 +212,7 @@
 					height: unset;
 					width: 100%;
 
-					@include min600px {
+					@include min767px {
   						width: 60%;
 					}
 
@@ -231,7 +238,7 @@
 					width: 100%;
 					transition: all 250ms ease-in-out;
 
-					@include min600px {
+					@include min767px {
   						width: 40%;
 					}
 
@@ -286,9 +293,13 @@
 				box-sizing: border-box;
 				height: fit-content;
 				margin: var(--ee-margin-small) 0 0;
-				padding: 0 var(--ee-padding-tiny) var(--ee-padding-default);
+				padding: 0 0 var(--ee-padding-small);
 				min-height: unset;
 				width: 100%;
+
+				@include min767px {
+					padding: 0 var(--ee-padding-tiny) var(--ee-padding-default);
+				}
 
 				.ee-tabs__tab {
 					svg.ee-svg.ee-svg {
@@ -296,22 +307,79 @@
 						circle {
 							fill: var(--ee-color-grey-12);
 						}
+
 						&.ee-tab-icon-settings {
-							height: calc(var(--ee-icon-button-size-micro) + 6px);
-							width: calc(var(--ee-icon-button-size-micro) + 6px);
+							height: calc((var(--ee-icon-button-size-small) / 2) + 3px);
+							width: calc((var(--ee-icon-button-size-small) / 2) + 3px);
 							margin: -2px 0 0;
+
+							@include min480px {
+								height: calc(var(--ee-icon-button-size-micro) + 6px);
+								width: calc(var(--ee-icon-button-size-micro) + 6px);
+							}
 						}
+
 						&.ee-tab-icon-validation {
-							height: calc(var(--ee-icon-button-size-micro) - 3px);
-							width: calc(var(--ee-icon-button-size-micro) - 3px);
+							height: calc((var(--ee-icon-button-size-small) / 2) - 2px);
+							width: calc((var(--ee-icon-button-size-small) / 2) - 2px);
+
+							@include min480px {
+								height: calc(var(--ee-icon-button-size-micro) - 4px);
+								width: calc(var(--ee-icon-button-size-micro) - 4px);
+							}
 						}
 					}
 				}
 
 				.ee-field-options {
+						display: flex;
+						flex-flow: column nowrap;
+						width: 100%;
+
 					&__desc {
 						font-size: var(--ee-font-size-default);
-						margin: var(--ee-margin-micro) var(--ee-margin-smaller) 0;
+						margin: var(--ee-margin-small) 0;
+					}
+					&__add-option {
+						align-self: flex-end;
+						margin: var(--ee-margin-small) 0;
+						margin-inline-end: calc(
+							var(--ee-icon-button-size-small) + var(--ee-margin-tiny) + var(--ee-margin-smaller)
+						);
+					}
+
+					.ee-field-option {
+						display: flex;
+						flex-flow: column nowrap;
+						margin: var(--ee-margin-micro) 0 var(--ee-margin-micro);
+						width: 100%;
+
+						+ .ee-field-option {
+							margin-inline-start: var(--ee-margin-smaller);
+						}
+
+						&:last-of-type {
+							width: auto;
+						}
+
+						&__wrapper {
+							align-items: flex-end;
+							display: flex;
+							flex-flow: column nowrap;
+
+							@include min480px {
+								flex-flow: row nowrap;
+							}
+						}
+
+						&__label,
+						&__value {
+							width: 100%;
+						}
+
+						&__remove {
+							margin: var(--ee-margin-micro);
+						}
 					}
 				}
 			}
