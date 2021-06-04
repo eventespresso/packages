@@ -1,4 +1,4 @@
-import { Select } from '@eventespresso/ui-components';
+import { SelectWithLabel } from '@eventespresso/ui-components';
 import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { objectToSelectOptions } from '@eventespresso/utils';
@@ -12,7 +12,7 @@ const StatusControl: React.FC = () => {
 	]);
 
 	return (
-		<Select
+		<SelectWithLabel
 			id='tickets-list-status-control'
 			label={labels.status}
 			onChangeValue={setStatus}

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { __ } from '@eventespresso/i18n';
-import { GridItem, Select } from '@eventespresso/ui-components';
+import { GridItem, SelectWithLabel } from '@eventespresso/ui-components';
 import { datetimeStatus } from '@eventespresso/constants';
 import { objectToSelectOptions } from '@eventespresso/utils';
 import { datetimeStatusBgColorClassName } from '@eventespresso/helpers';
@@ -21,7 +21,7 @@ const ActiveStatus: React.FC<Props> = ({ status, onStatusChange }) => {
 	return (
 		<GridItem className={className} id={id} label={__('Active status')} size='small'>
 			<div className='ee-reg-option__value'>
-				<Select
+				<SelectWithLabel
 					flow='inline'
 					id={`${id}-select`}
 					noBorderColor

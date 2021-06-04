@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { Button, DragAndDrop, ModalWithAlert, Select } from '@eventespresso/ui-components';
+import { Button, DragAndDrop, ModalWithAlert, SelectWithLabel } from '@eventespresso/ui-components';
 import { useDisclosure } from '@eventespresso/hooks';
 
 import type { SortByControlProps } from './types';
@@ -34,7 +34,7 @@ export const SortByControl: React.FC<SortByControlProps> = ({
 	return (
 		<>
 			<div className='ee-sort-by-control'>
-				<Select id={id} label={label} options={options} onChangeValue={onChangeValue} value={value} />
+				<SelectWithLabel id={id} label={label} options={options} onChangeValue={onChangeValue} value={value} />
 				<Button buttonText={text} onClick={onOpen} noMargin />
 			</div>
 			<ModalWithAlert

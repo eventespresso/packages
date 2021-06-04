@@ -2,6 +2,8 @@ import classNames from 'classnames';
 
 import { Textarea as TextAreaAdapter, TextareaProps } from '@eventespresso/adapters';
 
+import { withLabel } from '../withLabel';
+
 import './style.scss';
 
 export const Textarea: React.FC<TextareaProps> = (props) => {
@@ -9,3 +11,5 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
 
 	return <TextAreaAdapter {...props} className={className} />;
 };
+
+export const TextareaWithLabel = withLabel(Textarea);

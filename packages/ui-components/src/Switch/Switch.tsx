@@ -7,10 +7,10 @@ import type { SwitchProps } from './types';
 
 import './style.scss';
 
-export const SwitchWithOutLabel: React.FC<SwitchProps> = (props) => {
+export const Switch: React.FC<SwitchProps> = (props) => {
 	const className = classNames('ee-switch', props.className);
 
 	return <SwitchAdapter as='div' {...props} className={className} />;
 };
 
-export default withDebounce(withLabel(SwitchWithOutLabel), 'isChecked');
+export const SwitchWithLabel = withDebounce(withLabel(Switch), 'isChecked');

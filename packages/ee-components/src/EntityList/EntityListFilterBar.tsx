@@ -1,7 +1,7 @@
 import { __ } from '@eventespresso/i18n';
 import { useFilterBarUIElements } from '@eventespresso/registry';
 import {
-	SearchInput,
+	SearchInputWithLabel,
 	EntityListFilterBar as EntityListFilterBarUI,
 	EntityListViewButtonGroup,
 	ToggleBulkActionsButton,
@@ -47,7 +47,7 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 		<>
 			{filerBarItems}
 			<div className='ee-filter-bar__filter'>
-				<SearchInput
+				<SearchInputWithLabel
 					className='ee-entity-list-filter-bar-search'
 					id={searchId}
 					label={__('search')}

@@ -1,6 +1,6 @@
 import { __ } from '@eventespresso/i18n';
 
-import { Switch } from '@eventespresso/ui-components';
+import { SwitchWithLabel } from '@eventespresso/ui-components';
 import type { FilterStateManager } from '../filterState';
 
 type ShowTrashedTicketsControlProps = Pick<FilterStateManager, 'showTrashedTickets' | 'setShowTrashedTickets'>;
@@ -10,7 +10,7 @@ const ShowTrashedTicketsControl: React.FC<ShowTrashedTicketsControlProps> = ({
 	setShowTrashedTickets,
 }) => {
 	return (
-		<Switch
+		<SwitchWithLabel
 			id='show-trashed-tickets'
 			isChecked={showTrashedTickets}
 			label={__('show trashed tickets')}

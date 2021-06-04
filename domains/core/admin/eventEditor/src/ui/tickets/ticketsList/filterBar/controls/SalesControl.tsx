@@ -1,4 +1,4 @@
-import { Select } from '@eventespresso/ui-components';
+import { SelectWithLabel } from '@eventespresso/ui-components';
 import { useTicketsListFilterState } from '@eventespresso/edtr-services';
 import { useMemoStringify } from '@eventespresso/hooks';
 import { objectToSelectOptions } from '@eventespresso/utils';
@@ -12,7 +12,7 @@ const SalesControl: React.FC = () => {
 	]);
 
 	return (
-		<Select
+		<SelectWithLabel
 			id='tickets-list-sales-control'
 			label={labels.sales}
 			onChangeValue={setSales}

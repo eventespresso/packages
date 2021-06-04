@@ -10,7 +10,7 @@ interface SearchInputProps extends TextInputProps {
 	setSearchText: (text?: string) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ id, searchText, setSearchText, ...props }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ id, searchText, setSearchText, ...props }) => {
 	const className = classNames('ee-search-input', props.className);
 
 	return typeof setSearchText === 'function' ? (
@@ -18,4 +18,4 @@ const SearchInput: React.FC<SearchInputProps> = ({ id, searchText, setSearchText
 	) : null;
 };
 
-export default withLabel(SearchInput);
+export const SearchInputWithLabel = withLabel(SearchInput);

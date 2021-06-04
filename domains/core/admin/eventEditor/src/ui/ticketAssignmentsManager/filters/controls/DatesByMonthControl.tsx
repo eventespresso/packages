@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { useDatetimes } from '@eventespresso/edtr-services';
-import { Select } from '@eventespresso/ui-components';
+import { SelectWithLabel } from '@eventespresso/ui-components';
 import { getMonthsListFromDatetimes } from '../../utils';
 import type { FilterStateManager } from '../filterState';
 
@@ -21,7 +21,7 @@ const DatesByMonthControl: React.FC<DatesByMonthControlProps> = ({ datesByMonth,
 	]);
 
 	return (
-		<Select
+		<SelectWithLabel
 			id='dates-by-month'
 			label={__('dates by month')}
 			onChangeValue={setDatesByMonth}

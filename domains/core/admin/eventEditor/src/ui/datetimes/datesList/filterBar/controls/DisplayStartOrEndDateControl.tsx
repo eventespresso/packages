@@ -1,4 +1,4 @@
-import { Select } from '@eventespresso/ui-components';
+import { SelectWithLabel } from '@eventespresso/ui-components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 
@@ -12,7 +12,7 @@ const DisplayStartOrEndDateControl: React.FC = () => {
 	const { displayStartOrEndDate, setDisplayStartOrEndDate } = useDatesListFilterState();
 
 	return (
-		<Select
+		<SelectWithLabel
 			id='dates-list-display-control'
 			label={labels.displayStartOrEndDate}
 			value={displayStartOrEndDate}

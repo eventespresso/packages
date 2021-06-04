@@ -1,4 +1,4 @@
-import { Select } from '@eventespresso/ui-components';
+import { SelectWithLabel } from '@eventespresso/ui-components';
 import { useDatesListFilterState } from '@eventespresso/edtr-services';
 import { objectToSelectOptions } from '@eventespresso/utils';
 
@@ -9,7 +9,7 @@ const StatusControl: React.FC = () => {
 	const { status, setStatus } = useDatesListFilterState();
 
 	return (
-		<Select
+		<SelectWithLabel
 			id='dates-list-status-control'
 			label={labels.status}
 			onChangeValue={setStatus}

@@ -1,15 +1,6 @@
 import type { AnyObject } from '@eventespresso/utils';
 import { DatePicker, TimePicker } from '@eventespresso/dates';
-import {
-	TextInput,
-	MultiCheckbox,
-	NumberInput,
-	Textarea,
-	SelectWithOutLabel,
-	RadioGroup,
-	SwitchWithOutLabel,
-	withLabel,
-} from '../../';
+import { TextInput, MultiCheckbox, NumberInput, Textarea, Select, RadioGroup, Switch, withLabel } from '../../';
 import { ElementType } from '../types';
 
 const DefaultComponent = () => null;
@@ -65,10 +56,10 @@ export const MappedElement: React.FC<MappedElementProps> = ({ type, id, label, .
 		case 'select':
 		case 'select-country':
 		case 'select-state':
-			Component = SelectWithOutLabel;
+			Component = Select;
 			break;
 		case 'switch':
-			Component = SwitchWithOutLabel;
+			Component = Switch;
 			break;
 		case 'time':
 			Component = TimePicker;

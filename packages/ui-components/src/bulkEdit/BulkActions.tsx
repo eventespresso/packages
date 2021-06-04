@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { CheckboxProps } from '@eventespresso/adapters';
 
-import { Button, Select, SelectProps } from '../';
+import { Button, SelectWithLabel, SelectProps } from '../';
 
 import './styles.scss';
 
@@ -36,7 +36,7 @@ export const BulkActions = <T extends string>({
 
 	return (
 		<div className='ee-bulk-edit-actions__wrapper'>
-			<Select
+			<SelectWithLabel
 				aria-label={__('bulk actions')}
 				className='ee-bulk-edit-actions__select'
 				id={id}

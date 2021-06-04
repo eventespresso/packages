@@ -2,6 +2,8 @@ import classNames from 'classnames';
 
 import { NumberInput as NumberInputAdapter, NumberInputProps } from '@eventespresso/adapters';
 
+import { withLabel } from '../withLabel';
+
 import './style.scss';
 
 interface Props extends NumberInputProps {
@@ -41,3 +43,5 @@ export const NumberInput: React.FC<Props> = ({
 		/>
 	);
 };
+
+export const NumberInputWithLabel = withLabel(NumberInput);

@@ -8,7 +8,7 @@ import { useDisclosure } from '@eventespresso/hooks';
 import { Button } from '../../Button';
 import { Heading } from '../../Heading';
 import { Popover } from '../../Popover';
-import { Select, SelectProps } from '../../';
+import { SelectWithLabel, SelectProps } from '../../';
 
 import { ELEMENT_BLOCKS_OPTIONS } from '../constants';
 import { useFormState } from '../state';
@@ -100,7 +100,7 @@ export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) =
 				)}
 			</p>
 			<div className={'ee-add-form-element__option'}>
-				<Select
+				<SelectWithLabel
 					id={`${formSection.UUID}-load-existing-section-selector`}
 					label={__('load existing form section')}
 					options={existingFormSections}
@@ -117,7 +117,7 @@ export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) =
 				/>
 			</div>
 			<div className={'ee-add-form-element__option'}>
-				<Select
+				<SelectWithLabel
 					id={`${formSection.UUID}-add-new-section-selector`}
 					label={__('add new form element')}
 					options={ELEMENT_BLOCKS_OPTIONS}
