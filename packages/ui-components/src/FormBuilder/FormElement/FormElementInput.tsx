@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { FormControl } from '@eventespresso/adapters';
+import { FormControl, FormHelperText } from '@eventespresso/adapters';
 import type { AnyObject } from '@eventespresso/utils';
 
 import { MappedElement } from './MappedElement';
@@ -73,6 +73,7 @@ export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
 	return (
 		<FormControl className='ee-form-element__input' isRequired={element.required}>
 			<MappedElement type={element.type} id={element.UUID} label={element.publicLabel} {...props} />
+			{element.helpText && <FormHelperText>{element.helpText}</FormHelperText>}
 		</FormControl>
 	);
 };
