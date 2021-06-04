@@ -18,7 +18,8 @@ export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
 			case 'checkbox-multi':
 			case 'radio':
 			case 'select':
-				inputProps.options = element.options;
+				// Display only the options which have both value and label
+				inputProps.options = (element.options || []).filter(({ value, label }) => value && label);
 				break;
 			case 'select-country':
 			case 'select-state':
