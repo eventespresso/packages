@@ -28,7 +28,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
 
 	const onEditorStateChange = useCallback<EditorProps['onEditorStateChange']>(
 		(newEditorState) => {
-			const html = editorStateToHtml(newEditorState);
+			const html = editorStateToHtml(newEditorState as any);
 			onChange?.(html);
 			onChangeValue?.(html);
 		},
@@ -41,7 +41,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	 * So, we will only pass the state props if they are defined
 	 */
 	const editorProps = useMemo(() => {
-		const stateProps: Partial<EditorProps> = {};
+		const stateProps: any = {};
 		if (typeof editorState !== 'undefined') {
 			stateProps.editorState = editorState;
 		}

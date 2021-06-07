@@ -39,8 +39,8 @@ const WPMedia: React.FC<ToolbarButtonProps> = ({ onChange, editorState }) => {
 				.createEntity(entityType, 'MUTABLE', entityData)
 				.getLastCreatedEntityKey();
 
-			const newEditorState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
-			onChange(newEditorState);
+			const newEditorState = AtomicBlockUtils.insertAtomicBlock(editorState as any, entityKey, ' ');
+			onChange(newEditorState as any);
 		},
 		[editorState, onChange]
 	);
