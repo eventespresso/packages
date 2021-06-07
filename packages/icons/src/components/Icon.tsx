@@ -14,7 +14,7 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(({ className, name, svgSize = 
 		return null;
 	}
 
-	const newClassName = classNames(className, 'dashicon', `dashicons-${name}`, 'espresso-icon');
+	const newClassName = classNames(className, 'ee-icon');
 	const viewBox = props.viewBox || '0 0 20 20';
 
 	return (
