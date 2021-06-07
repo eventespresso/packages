@@ -1,22 +1,21 @@
 import type { AnyObject } from '@eventespresso/utils';
 import { DatePicker, TimePicker } from '@eventespresso/dates';
-import { TextInput, MultiCheckbox, NumberInput, Textarea, Select, RadioGroup, Switch, withLabel } from '../../';
+import { TextInput, MultiCheckbox, NumberInput, Textarea, Select, RadioGroup, Switch } from '../../';
+import { withLabel } from '../../withLabel';
+
 import { ElementType } from '../types';
 
 const DefaultComponent = () => null;
 
 export interface MappedElementProps {
 	type: ElementType;
-	id?: string;
-	label?: React.ReactText;
-	[key: string]: any;
 }
 
 /**
  * This component renders the appropriate Component for the given element type.
  * The props to the Component must be passed by the consumer
  */
-export const MappedElement: React.FC<MappedElementProps> = ({ type, id, label, ...props }) => {
+const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
 	let Component: React.ComponentType<AnyObject>;
 
 	switch (type) {
@@ -69,7 +68,7 @@ export const MappedElement: React.FC<MappedElementProps> = ({ type, id, label, .
 			break;
 	}
 
-	Component = withLabel(Component);
-
-	return <Component id={id} {...props} label={label} />;
+	return <Component {...props} />;
 };
+
+export const MappedElement = withLabel(MappedComponent);
