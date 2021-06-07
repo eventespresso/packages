@@ -1,3 +1,6 @@
 module.exports = {
-	template: require('./scripts/template'),
+	indexTemplate: require('./templates/index-template.js'),
+	memo: true,
+	template: require('./templates/svg-template.js'),
+	typescript: true,
 };
