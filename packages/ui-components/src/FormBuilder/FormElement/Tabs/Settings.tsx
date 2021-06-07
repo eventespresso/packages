@@ -1,6 +1,7 @@
 import { __ } from '@eventespresso/i18n';
 
 import { TextInputWithLabel } from '../../../text-input';
+import { SwitchWithLabel } from '../../../Switch';
 import type { FormElementProps } from '../../types';
 import FieldOptions from './FieldOptions';
 import { FIELDS_WITH_OPTIONS } from '../../constants';
@@ -15,6 +16,11 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 				label={__('admin label')}
 				onChangeValue={onChangeValue('adminLabel')}
 				value={element.adminLabel}
+			/>
+			<SwitchWithLabel
+				label={__('admin only')}
+				onChangeValue={onChangeValue('adminOnly')}
+				isChecked={element.adminOnly}
 			/>
 			<TextInputWithLabel
 				label={__('public label')}
