@@ -3,7 +3,14 @@ import { IconProps } from '../types';
 
 const SvgBarCodeScanner = (props: IconProps): JSX.Element => {
 	return (
-		<svg height={512} viewBox='0 0 256 256' width={512} xmlns='http://www.w3.org/2000/svg' {...props}>
+		<svg
+			height={512}
+			viewBox='0 0 256 256'
+			width={512}
+			xmlns='http://www.w3.org/2000/svg'
+			className='ee-svg--bar-code-scanner'
+			{...props}
+		>
 			<path
 				d='M104.001 226.79V29.21a6.21 6.21 0 016.21-6.21H77.82c-5.423 0-9.819 4.396-9.819 9.819V223.18c0 5.423 4.396 9.819 9.819 9.819h32.391a6.208 6.208 0 01-6.21-6.209z'
 				fill='#ef7f72'
@@ -46,4 +53,4 @@ const SvgBarCodeScanner = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgBarCodeScanner, 'bar-code-scanner');
+export default withClassName(SvgBarCodeScanner);

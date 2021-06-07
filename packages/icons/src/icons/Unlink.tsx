@@ -5,6 +5,7 @@ const SvgUnlink = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
+			className='ee-svg--unlink'
 			height='1.25em'
 			viewBox='0 0 20 20'
 			width='1.25em'
@@ -16,4 +17,4 @@ const SvgUnlink = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgUnlink, 'unlink');
+export default withClassName(SvgUnlink);

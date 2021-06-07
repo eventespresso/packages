@@ -3,7 +3,14 @@ import { IconProps } from '../types';
 
 const SvgOnlineRegistration = (props: IconProps): JSX.Element => {
 	return (
-		<svg height={512} viewBox='0 0 256 256' width={512} xmlns='http://www.w3.org/2000/svg' {...props}>
+		<svg
+			height={512}
+			viewBox='0 0 256 256'
+			width={512}
+			xmlns='http://www.w3.org/2000/svg'
+			className='ee-svg--online-registration'
+			{...props}
+		>
 			<path
 				d='M196.015 50.275h-50.073a6.297 6.297 0 016.297 6.297v125.406a6.297 6.297 0 01-6.297 6.297h50.073c5.647 0 10.225-4.578 10.225-10.225V60.5c-.001-5.647-4.578-10.225-10.225-10.225z'
 				fill='#d3ba2a'
@@ -88,4 +95,4 @@ const SvgOnlineRegistration = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgOnlineRegistration, 'online-registration');
+export default withClassName(SvgOnlineRegistration);

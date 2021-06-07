@@ -5,6 +5,7 @@ const SvgCalculator = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
+			className='ee-svg--calculator'
 			height='1.25em'
 			viewBox='0 0 20 20'
 			width='1.25em'
@@ -16,4 +17,4 @@ const SvgCalculator = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCalculator, 'calculator');
+export default withClassName(SvgCalculator);

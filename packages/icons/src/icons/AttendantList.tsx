@@ -3,7 +3,14 @@ import { IconProps } from '../types';
 
 const SvgAttendantList = (props: IconProps): JSX.Element => {
 	return (
-		<svg height={512} viewBox='0 0 128 128' width={512} xmlns='http://www.w3.org/2000/svg' {...props}>
+		<svg
+			height={512}
+			viewBox='0 0 128 128'
+			width={512}
+			xmlns='http://www.w3.org/2000/svg'
+			className='ee-svg--attendant-list'
+			{...props}
+		>
 			<path
 				d='M109.573 23.253a4.877 4.877 0 00-4.872-4.872H86.248a6.13 6.13 0 00-3.781-1.306h-6v-.677c0-5.79-4.71-10.5-10.5-10.5s-10.5 4.71-10.5 10.5v.677h-6a6.13 6.13 0 00-3.781 1.306H27.233a4.877 4.877 0 00-4.872 4.872v97.978a4.878 4.878 0 004.872 4.872h77.469a4.877 4.877 0 004.872-4.872V23.253z'
 				fill='#e6e7e8'
@@ -46,4 +53,4 @@ const SvgAttendantList = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgAttendantList, 'attendant-list');
+export default withClassName(SvgAttendantList);

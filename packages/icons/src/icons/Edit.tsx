@@ -10,6 +10,7 @@ const SvgEdit = (props: IconProps): JSX.Element => {
 			height='1.25em'
 			width='1.25em'
 			viewBox='0 0 24 24'
+			className='ee-svg--edit'
 			{...props}
 		>
 			<g fill='none' stroke='currentColor' strokeWidth={2}>
@@ -20,4 +21,4 @@ const SvgEdit = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgEdit, 'edit');
+export default withClassName(SvgEdit);

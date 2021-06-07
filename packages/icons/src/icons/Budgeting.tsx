@@ -3,7 +3,14 @@ import { IconProps } from '../types';
 
 const SvgBudgeting = (props: IconProps): JSX.Element => {
 	return (
-		<svg height={512} viewBox='0 0 256 256' width={512} xmlns='http://www.w3.org/2000/svg' {...props}>
+		<svg
+			height={512}
+			viewBox='0 0 256 256'
+			width={512}
+			xmlns='http://www.w3.org/2000/svg'
+			className='ee-svg--budgeting'
+			{...props}
+		>
 			<path
 				d='M57.482 85.756c-.056-6.188 2.419-11.241 5.48-11.241H31.034c-6.163 0-11.145 5.052-11.032 11.241.111 6.074 5.323 10.828 11.398 10.828h31.744c-3.018-.001-5.607-4.754-5.662-10.828z'
 				fill='#ef7f72'
@@ -110,4 +117,4 @@ const SvgBudgeting = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgBudgeting, 'budgeting');
+export default withClassName(SvgBudgeting);

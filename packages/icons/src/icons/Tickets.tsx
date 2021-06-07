@@ -3,7 +3,14 @@ import { IconProps } from '../types';
 
 const SvgTickets = (props: IconProps): JSX.Element => {
 	return (
-		<svg height={512} viewBox='0 0 256 256' width={512} xmlns='http://www.w3.org/2000/svg' {...props}>
+		<svg
+			height={512}
+			viewBox='0 0 256 256'
+			width={512}
+			xmlns='http://www.w3.org/2000/svg'
+			className='ee-svg--tickets'
+			{...props}
+		>
 			<path
 				d='M104.614 135.797l40.399-52.281a8.964 8.964 0 0012.574-1.612l-37.953-29.328c-5.065 6.555-14.486 7.763-21.041 2.698L65.575 98.003c6.555 5.065 7.763 14.486 2.698 21.041l37.953 29.328a8.964 8.964 0 00-1.612-12.575z'
 				fill='#ef7f72'
@@ -66,4 +73,4 @@ const SvgTickets = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgTickets, 'tickets');
+export default withClassName(SvgTickets);
