@@ -1,7 +1,15 @@
 import type { AnyObject } from '@eventespresso/utils';
 import { DatePicker, TimePicker } from '@eventespresso/dates';
-import { TextInput, MultiCheckbox, NumberInput, Textarea, Select, RadioGroup, Switch } from '../../';
-import { withLabel } from '../../withLabel';
+import {
+	TextInput,
+	MultiCheckbox,
+	NumberInput,
+	Textarea,
+	Select,
+	RadioGroup,
+	Switch,
+	withLabel,
+} from '@eventespresso/ui-components';
 
 import { ElementType } from '../types';
 

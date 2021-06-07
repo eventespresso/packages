@@ -1,8 +1,9 @@
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
+import { Heading } from '@eventespresso/ui-components';
+
 import { formSectionsData, formElementsData } from './mockData';
 import FormBuilder from './FormBuilder';
-import { Heading } from '../';
 
 import type { FormBuilderProps } from './types';
 

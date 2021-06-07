@@ -4,12 +4,9 @@ import classNames from 'classnames';
 import { __ } from '@eventespresso/i18n';
 import { Draggable } from '@eventespresso/adapters';
 import { DragHandle, Trash } from '@eventespresso/icons';
+import { ConfirmDelete, Label, TextInput, ButtonProps, IconButton } from '@eventespresso/ui-components';
 
-import { ConfirmDelete } from '../../../Confirm';
-import { Label } from '../../../Label';
 import { FieldOptionProps } from '../../types';
-import { TextInput } from '../../../text-input';
-import { ButtonProps, IconButton } from '../../../Button';
 
 export const FieldOption: React.FC<FieldOptionProps> = ({ index, label, onChange, onRemove, UUID, value }) => {
 	const hidden = index > 0;

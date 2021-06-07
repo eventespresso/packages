@@ -4,11 +4,7 @@ import { find, propEq } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 import { Plus } from '@eventespresso/icons';
 import { useDisclosure } from '@eventespresso/hooks';
-
-import { Button } from '../../Button';
-import { Heading } from '../../Heading';
-import { Popover } from '../../Popover';
-import { SelectWithLabel, SelectProps } from '../../';
+import { Button, Heading, Popover, SelectWithLabel, SelectProps } from '@eventespresso/ui-components';
 
 import { ELEMENT_BLOCKS_OPTIONS } from '../constants';
 import { useFormState } from '../state';

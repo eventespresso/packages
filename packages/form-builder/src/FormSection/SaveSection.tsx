@@ -3,10 +3,8 @@ import { useCallback, useState } from 'react';
 import { __ } from '@eventespresso/i18n';
 import { Save } from '@eventespresso/icons';
 import { RadioGroup } from '@eventespresso/adapters';
+import { IconButton, Radio, PopoverForm, PopoverFormProps } from '@eventespresso/ui-components';
 
-import { IconButton } from '../../Button';
-import { Radio } from '../../Radio';
-import { PopoverForm, PopoverFormProps } from '../../Popover';
 import { useFormState } from '../state';
 import type { FormSectionProps, FormSectionStatus } from '../types';
 

@@ -5,11 +5,10 @@ import { adjust, assoc, move, remove } from 'ramda';
 import { __ } from '@eventespresso/i18n';
 import { Plus } from '@eventespresso/icons';
 import { DragDropContext, Droppable, DragDropContextProps as DnDProps } from '@eventespresso/adapters';
+import { Button, withLabel } from '@eventespresso/ui-components';
 
 import { FieldOption } from './FieldOption';
 import { FormElementProps } from '../../types';
-import { withLabel } from '../../../withLabel';
-import { Button } from '../../../Button';
 import { useUpdateElement } from '../useUpdateElement';
 
 const FieldOptions: React.FC<FormElementProps> = ({ element }) => {

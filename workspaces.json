@@ -56,6 +56,10 @@
         "location": "packages/events"
     },
     {
+        "name": "@eventespresso/form-builder",
+        "location": "packages/form-builder"
+    },
+    {
         "name": "@eventespresso/form",
         "location": "packages/form"
     },

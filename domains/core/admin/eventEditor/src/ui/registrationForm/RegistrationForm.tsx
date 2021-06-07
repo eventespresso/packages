@@ -1,12 +1,10 @@
 import { __ } from '@eventespresso/i18n';
 import { withFeature } from '@eventespresso/services';
-import { FormBuilder, Heading } from '@eventespresso/ui-components';
+import { Heading } from '@eventespresso/ui-components';
+import { FormBuilder } from '@eventespresso/form-builder';
 
 // TODO replace mock data imported from component with real data from db
-import {
-	formSectionsData,
-	formElementsData,
-} from '../../../../../../../packages/ui-components/src/FormBuilder/mockData';
+import { formSectionsData, formElementsData } from '../../../../../../../packages/form-builder/src/mockData';
 
 export const RegistrationForm: React.FC = () => (
 	<FormBuilder

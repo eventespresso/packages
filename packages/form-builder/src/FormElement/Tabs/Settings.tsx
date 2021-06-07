@@ -1,7 +1,6 @@
 import { __ } from '@eventespresso/i18n';
+import { SwitchWithLabel, TextInputWithLabel } from '@eventespresso/ui-components';
 
-import { TextInputWithLabel } from '../../../text-input';
-import { SwitchWithLabel } from '../../../Switch';
 import type { FormElementProps } from '../../types';
 import FieldOptions from './FieldOptions';
 import { FIELDS_WITH_OPTIONS } from '../../constants';

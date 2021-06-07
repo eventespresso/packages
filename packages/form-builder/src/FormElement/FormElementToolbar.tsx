@@ -2,9 +2,8 @@ import { useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Copy, DragHandle, SettingsOutlined, Trash } from '@eventespresso/icons';
+import { IconButton, ButtonProps, ConfirmDelete } from '@eventespresso/ui-components';
 
-import { IconButton, ButtonProps } from '../../Button';
-import { ConfirmDelete } from '../../Confirm';
 import { ELEMENT_BLOCKS_INDEXED } from '../constants';
 import { useFormState } from '../state';
 

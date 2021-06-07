@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { DragDropContext, Droppable } from '@eventespresso/adapters';
+import { Container } from '@eventespresso/ui-components';
 
-import { Container } from '../Container';
 import { FormSection } from './FormSection';
 import { withFormState } from './context';
 import { useFormState, useHandleDnD } from './state';

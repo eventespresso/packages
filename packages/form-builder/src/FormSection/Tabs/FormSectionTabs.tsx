@@ -1,10 +1,9 @@
 import { __ } from '@eventespresso/i18n';
 import { CheckList, Palette, SettingsOutlined } from '@eventespresso/icons';
+import { Collapsible, Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/ui-components';
 
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '../../../Tabs';
 import { useFormState } from '../../state';
 import { Styles } from './Styles';
-import { Collapsible } from '../../../';
 import type { FormSectionProps } from '../../types';
 import { Settings } from './Settings';
 

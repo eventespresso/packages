@@ -1,7 +1,6 @@
 import { __ } from '@eventespresso/i18n';
+import { TextInputWithLabel, TextareaWithLabel } from '@eventespresso/ui-components';
 
-import { TextInputWithLabel } from '../../../text-input';
-import { TextareaWithLabel } from '../../../Textarea';
 import { useUpdateSection } from '../useUpdateSection';
 
 import type { FormSectionProps } from '../../types';
