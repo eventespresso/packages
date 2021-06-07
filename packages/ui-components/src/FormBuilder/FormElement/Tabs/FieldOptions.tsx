@@ -1,20 +1,16 @@
 import { useCallback } from 'react';
 import classNames from 'classnames';
-import { adjust, assoc, remove } from 'ramda';
+import { adjust, assoc, move, remove } from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { Plus } from '@eventespresso/icons';
-import { DragDropContext, Droppable } from '@eventespresso/adapters';
+import { DragDropContext, Droppable, DragDropContextProps as DnDProps } from '@eventespresso/adapters';
 
 import { FieldOption } from './FieldOption';
 import { FormElementProps } from '../../types';
 import { withLabel } from '../../../withLabel';
 import { Button } from '../../../Button';
 import { useUpdateElement } from '../useUpdateElement';
-
-const handleDnD = (args) => {
-	console.log('%c args', 'color: LimeGreen;', args);
-};
 
 const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 	const updateElement = useUpdateElement(element);
@@ -43,6 +39,23 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 		updateElement('options')(newOptions);
 	}, [element.options, updateElement]);
 
+	const droppableId = `ee-field-option-${element.UUID}`;
+
+	const handleDnD = useCallback<DnDProps['onDragEnd']>(
+		({ destination, source }) => {
+			const noDestination = !destination;
+			const noChange = source?.index === destination?.index && destination?.droppableId === source?.droppableId;
+			const notOfOurInterest = destination?.droppableId !== droppableId;
+
+			if (noDestination || noChange || notOfOurInterest) {
+				return;
+			}
+			const newOptions = move(source.index, destination.index, element.options || []);
+			updateElement('options')(newOptions);
+		},
+		[droppableId, element.options, updateElement]
+	);
+
 	return (
 		<div className='ee-field-options'>
 			<p className='ee-field-options__desc'>
@@ -53,7 +66,7 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 				)}
 			</p>
 			<DragDropContext onDragEnd={handleDnD}>
-				<Droppable droppableId={`ee-field-option-${element.UUID}`} type='option'>
+				<Droppable droppableId={droppableId} type='option'>
 					{({ innerRef, droppableProps, placeholder }, { isDraggingOver }) => {
 						const className = classNames(
 							'ee-droppable',
