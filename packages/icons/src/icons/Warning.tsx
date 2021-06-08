@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgWarning = (props: IconProps): JSX.Element => {
+const Warning = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgWarning = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgWarning);
+export default withClassName(Warning, 'warning');

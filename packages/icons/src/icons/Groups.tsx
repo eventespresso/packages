@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgGroups = (props: IconProps): JSX.Element => {
+const Groups = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'
@@ -16,4 +16,4 @@ const SvgGroups = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgGroups);
+export default withClassName(Groups, 'groups');

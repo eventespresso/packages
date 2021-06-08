@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgGlobalOutlined = (props: IconProps): JSX.Element => {
+const GlobalOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
@@ -18,4 +18,4 @@ const SvgGlobalOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgGlobalOutlined);
+export default withClassName(GlobalOutlined, 'global-outlined');

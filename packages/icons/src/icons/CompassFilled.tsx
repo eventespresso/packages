@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgCompassFilled = (props: IconProps): JSX.Element => {
+const CompassFilled = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
@@ -18,4 +18,4 @@ const SvgCompassFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCompassFilled);
+export default withClassName(CompassFilled, 'compass-filled');

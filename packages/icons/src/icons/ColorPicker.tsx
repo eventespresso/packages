@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgColorPicker = (props: IconProps): JSX.Element => {
+const ColorPicker = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -17,4 +17,4 @@ const SvgColorPicker = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgColorPicker);
+export default withClassName(ColorPicker, 'color-picker');

@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgCalendarAlt = (props: IconProps): JSX.Element => {
+const CalendarAlt = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 20 20'
@@ -18,4 +18,4 @@ const SvgCalendarAlt = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCalendarAlt);
+export default withClassName(CalendarAlt, 'calendar-alt');

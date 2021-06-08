@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgEditorQuote = (props: IconProps): JSX.Element => {
+const EditorQuote = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgEditorQuote = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgEditorQuote);
+export default withClassName(EditorQuote, 'editor-quote');

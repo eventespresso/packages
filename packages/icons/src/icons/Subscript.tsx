@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgSubscript = (props: IconProps): JSX.Element => {
+const Subscript = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -17,4 +17,4 @@ const SvgSubscript = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSubscript);
+export default withClassName(Subscript, 'subscript');

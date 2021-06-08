@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgUpCircleFilled = (props: IconProps): JSX.Element => {
+const UpCircleFilled = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -18,4 +18,4 @@ const SvgUpCircleFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgUpCircleFilled);
+export default withClassName(UpCircleFilled, 'up-circle-filled');

@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgPlus = (props: IconProps): JSX.Element => {
+const Plus = (props: IconProps): JSX.Element => {
 	return (
 		<svg viewBox='0 0 1024 1024' height='1.25em' width='1.25em' className='ee-svg--plus' {...props}>
 			<defs>
@@ -13,4 +13,4 @@ const SvgPlus = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgPlus);
+export default withClassName(Plus, 'plus');

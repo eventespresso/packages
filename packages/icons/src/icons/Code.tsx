@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgCode = (props: IconProps): JSX.Element => {
+const Code = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 20 16'
@@ -17,4 +17,4 @@ const SvgCode = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCode);
+export default withClassName(Code, 'code');

@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgSettingsOutlined = (props: IconProps): JSX.Element => {
+const SettingsOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			color='currentColor'
@@ -23,4 +23,4 @@ const SvgSettingsOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSettingsOutlined);
+export default withClassName(SettingsOutlined, 'settings-outlined');

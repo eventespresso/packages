@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgControlOutlined = (props: IconProps): JSX.Element => {
+const ControlOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			data-icon='control'
@@ -18,4 +18,4 @@ const SvgControlOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgControlOutlined);
+export default withClassName(ControlOutlined, 'control-outlined');

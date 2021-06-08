@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgBarCodeScanner = (props: IconProps): JSX.Element => {
+const BarCodeScanner = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			height={512}
@@ -53,4 +53,4 @@ const SvgBarCodeScanner = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgBarCodeScanner);
+export default withClassName(BarCodeScanner, 'bar-code-scanner');

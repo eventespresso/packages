@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgCalendarOutlined = (props: IconProps): JSX.Element => {
+const CalendarOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
@@ -18,4 +18,4 @@ const SvgCalendarOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCalendarOutlined);
+export default withClassName(CalendarOutlined, 'calendar-outlined');

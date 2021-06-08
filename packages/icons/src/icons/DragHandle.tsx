@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgDragHandle = (props: IconProps): JSX.Element => {
+const DragHandle = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			color='currentColor'
@@ -22,4 +22,4 @@ const SvgDragHandle = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgDragHandle);
+export default withClassName(DragHandle, 'drag-handle');

@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgChevronDoubleLeft = (props: IconProps): JSX.Element => {
+const ChevronDoubleLeft = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -18,4 +18,4 @@ const SvgChevronDoubleLeft = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgChevronDoubleLeft);
+export default withClassName(ChevronDoubleLeft, 'chevron-double-left');

@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgFormatListBullets = (props: IconProps): JSX.Element => {
+const FormatListBullets = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -17,4 +17,4 @@ const SvgFormatListBullets = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgFormatListBullets);
+export default withClassName(FormatListBullets, 'format-list-bullets');

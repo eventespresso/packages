@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgExclamationCircle = (props: IconProps): JSX.Element => {
+const ExclamationCircle = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgExclamationCircle = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgExclamationCircle);
+export default withClassName(ExclamationCircle, 'exclamation-circle');

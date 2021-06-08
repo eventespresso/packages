@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgEditorUl = (props: IconProps): JSX.Element => {
+const EditorUl = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgEditorUl = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgEditorUl);
+export default withClassName(EditorUl, 'editor-ul');

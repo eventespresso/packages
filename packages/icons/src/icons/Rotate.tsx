@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgRotate = (props: IconProps): JSX.Element => {
+const Rotate = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -16,4 +16,4 @@ const SvgRotate = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgRotate);
+export default withClassName(Rotate, 'rotate');

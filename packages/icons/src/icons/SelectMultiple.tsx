@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgSelectMultiple = (props: IconProps): JSX.Element => {
+const SelectMultiple = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -18,4 +18,4 @@ const SvgSelectMultiple = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSelectMultiple);
+export default withClassName(SelectMultiple, 'select-multiple');

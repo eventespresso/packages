@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgCalendar = (props: IconProps): JSX.Element => {
+const Calendar = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgCalendar = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCalendar);
+export default withClassName(Calendar, 'calendar');

@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgClose = (props: IconProps): JSX.Element => {
+const Close = (props: IconProps): JSX.Element => {
 	return (
 		<svg viewBox='0 0 24 24' aria-hidden='true' className='ee-svg--close' {...props}>
 			<path
@@ -12,4 +12,4 @@ const SvgClose = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgClose);
+export default withClassName(Close, 'close');

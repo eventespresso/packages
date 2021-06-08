@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgTableView = (props: IconProps): JSX.Element => {
+const TableView = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgTableView = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgTableView);
+export default withClassName(TableView, 'table-view');

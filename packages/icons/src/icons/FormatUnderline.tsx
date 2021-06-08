@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgFormatUnderline = (props: IconProps): JSX.Element => {
+const FormatUnderline = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='2 0 20 20'
@@ -17,4 +17,4 @@ const SvgFormatUnderline = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgFormatUnderline);
+export default withClassName(FormatUnderline, 'format-underline');

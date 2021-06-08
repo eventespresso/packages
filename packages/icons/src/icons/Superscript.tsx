@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgSuperscript = (props: IconProps): JSX.Element => {
+const Superscript = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -17,4 +17,4 @@ const SvgSuperscript = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSuperscript);
+export default withClassName(Superscript, 'superscript');

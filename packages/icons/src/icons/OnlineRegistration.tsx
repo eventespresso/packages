@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgOnlineRegistration = (props: IconProps): JSX.Element => {
+const OnlineRegistration = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			height={512}
@@ -95,4 +95,4 @@ const SvgOnlineRegistration = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgOnlineRegistration);
+export default withClassName(OnlineRegistration, 'online-registration');

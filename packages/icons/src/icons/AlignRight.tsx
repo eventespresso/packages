@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgAlignRight = (props: IconProps): JSX.Element => {
+const AlignRight = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -17,4 +17,4 @@ const SvgAlignRight = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgAlignRight);
+export default withClassName(AlignRight, 'align-right');

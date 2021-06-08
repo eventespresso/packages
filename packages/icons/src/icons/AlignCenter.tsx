@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgAlignCenter = (props: IconProps): JSX.Element => {
+const AlignCenter = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -17,4 +17,4 @@ const SvgAlignCenter = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgAlignCenter);
+export default withClassName(AlignCenter, 'align-center');

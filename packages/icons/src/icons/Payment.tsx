@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgPayment = (props: IconProps): JSX.Element => {
+const Payment = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			height={512}
@@ -85,4 +85,4 @@ const SvgPayment = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgPayment);
+export default withClassName(Payment, 'payment');

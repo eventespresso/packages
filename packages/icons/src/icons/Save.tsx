@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgSave = (props: IconProps): JSX.Element => {
+const Save = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 1024 1024'
@@ -17,4 +17,4 @@ const SvgSave = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSave);
+export default withClassName(Save, 'save');

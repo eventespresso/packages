@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgTrash = (props: IconProps): JSX.Element => {
+const Trash = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgTrash = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgTrash);
+export default withClassName(Trash, 'trash');

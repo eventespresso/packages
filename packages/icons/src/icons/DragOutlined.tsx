@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgDragOutlined = (props: IconProps): JSX.Element => {
+const DragOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgDragOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgDragOutlined);
+export default withClassName(DragOutlined, 'drag-outlined');

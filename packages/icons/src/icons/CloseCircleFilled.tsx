@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgCloseCircleFilled = (props: IconProps): JSX.Element => {
+const CloseCircleFilled = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 1024 1024'
@@ -17,4 +17,4 @@ const SvgCloseCircleFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCloseCircleFilled);
+export default withClassName(CloseCircleFilled, 'close-circle-filled');

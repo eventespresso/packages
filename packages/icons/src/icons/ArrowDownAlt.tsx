@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgArrowDownAlt = (props: IconProps): JSX.Element => {
+const ArrowDownAlt = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			fill='currentColor'
@@ -17,4 +17,4 @@ const SvgArrowDownAlt = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgArrowDownAlt);
+export default withClassName(ArrowDownAlt, 'arrow-down-alt');

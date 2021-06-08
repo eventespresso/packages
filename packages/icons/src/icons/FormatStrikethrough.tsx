@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgFormatStrikethrough = (props: IconProps): JSX.Element => {
+const FormatStrikethrough = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -17,4 +17,4 @@ const SvgFormatStrikethrough = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgFormatStrikethrough);
+export default withClassName(FormatStrikethrough, 'format-strikethrough');

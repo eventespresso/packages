@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgStrikethrough = (props: IconProps): JSX.Element => {
+const Strikethrough = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgStrikethrough = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgStrikethrough);
+export default withClassName(Strikethrough, 'strikethrough');

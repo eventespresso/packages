@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgPlusCircleFilled = (props: IconProps): JSX.Element => {
+const PlusCircleFilled = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
@@ -18,4 +18,4 @@ const SvgPlusCircleFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgPlusCircleFilled);
+export default withClassName(PlusCircleFilled, 'plus-circle-filled');

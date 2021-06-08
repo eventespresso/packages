@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgCloseOutlined = (props: IconProps): JSX.Element => {
+const CloseOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
@@ -18,4 +18,4 @@ const SvgCloseOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCloseOutlined);
+export default withClassName(CloseOutlined, 'close-outlined');

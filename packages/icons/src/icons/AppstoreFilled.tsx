@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgAppstoreFilled = (props: IconProps): JSX.Element => {
+const AppstoreFilled = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
@@ -17,4 +17,4 @@ const SvgAppstoreFilled = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgAppstoreFilled);
+export default withClassName(AppstoreFilled, 'appstore-filled');

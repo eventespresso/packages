@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgCloseCircleOutlined = (props: IconProps): JSX.Element => {
+const CloseCircleOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -19,4 +19,4 @@ const SvgCloseCircleOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgCloseCircleOutlined);
+export default withClassName(CloseCircleOutlined, 'close-circle-outlined');

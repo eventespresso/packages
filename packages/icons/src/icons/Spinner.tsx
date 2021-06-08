@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgSpinner = (props: IconProps): JSX.Element => {
+const Spinner = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -27,4 +27,4 @@ const SvgSpinner = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSpinner);
+export default withClassName(Spinner, 'spinner');

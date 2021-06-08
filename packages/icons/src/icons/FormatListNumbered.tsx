@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgFormatListNumbered = (props: IconProps): JSX.Element => {
+const FormatListNumbered = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -17,4 +17,4 @@ const SvgFormatListNumbered = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgFormatListNumbered);
+export default withClassName(FormatListNumbered, 'format-list-numbered');

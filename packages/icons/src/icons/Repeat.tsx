@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgRepeat = (props: IconProps): JSX.Element => {
+const Repeat = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgRepeat = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgRepeat);
+export default withClassName(Repeat, 'repeat');

@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgMinusOutlined = (props: IconProps): JSX.Element => {
+const MinusOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
@@ -18,4 +18,4 @@ const SvgMinusOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgMinusOutlined);
+export default withClassName(MinusOutlined, 'minus-outlined');

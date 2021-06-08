@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgDesktop = (props: IconProps): JSX.Element => {
+const Desktop = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			fill='currentColor'
@@ -17,4 +17,4 @@ const SvgDesktop = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgDesktop);
+export default withClassName(Desktop, 'desktop');

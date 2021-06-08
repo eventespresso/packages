@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgMenu = (props: IconProps): JSX.Element => {
+const Menu = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgMenu = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgMenu);
+export default withClassName(Menu, 'menu');

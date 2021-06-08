@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgInfoCircleOutlined = (props: IconProps): JSX.Element => {
+const InfoCircleOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -18,4 +18,4 @@ const SvgInfoCircleOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgInfoCircleOutlined);
+export default withClassName(InfoCircleOutlined, 'info-circle-outlined');

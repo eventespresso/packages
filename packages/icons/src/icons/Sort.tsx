@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgSort = (props: IconProps): JSX.Element => {
+const Sort = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgSort = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSort);
+export default withClassName(Sort, 'sort');

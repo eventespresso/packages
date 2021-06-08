@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgUndo = (props: IconProps): JSX.Element => {
+const Undo = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -17,4 +17,4 @@ const SvgUndo = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgUndo);
+export default withClassName(Undo, 'undo');

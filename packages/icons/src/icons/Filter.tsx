@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgFilter = (props: IconProps): JSX.Element => {
+const Filter = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'
@@ -16,4 +16,4 @@ const SvgFilter = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgFilter);
+export default withClassName(Filter, 'filter');

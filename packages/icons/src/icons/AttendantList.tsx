@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgAttendantList = (props: IconProps): JSX.Element => {
+const AttendantList = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			height={512}
@@ -53,4 +53,4 @@ const SvgAttendantList = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgAttendantList);
+export default withClassName(AttendantList, 'attendant-list');

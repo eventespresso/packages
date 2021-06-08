@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgEdit = (props: IconProps): JSX.Element => {
+const Edit = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			data-icon='control'
@@ -21,4 +21,4 @@ const SvgEdit = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgEdit);
+export default withClassName(Edit, 'edit');

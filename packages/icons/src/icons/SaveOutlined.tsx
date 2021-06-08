@@ -1,7 +1,7 @@
 import withClassName from '../withClassName';
 import { IconProps } from '../types';
 
-const SvgSaveOutlined = (props: IconProps): JSX.Element => {
+const SaveOutlined = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			viewBox='64 64 896 896'
@@ -18,4 +18,4 @@ const SvgSaveOutlined = (props: IconProps): JSX.Element => {
 	);
 };
 
-export default withClassName(SvgSaveOutlined);
+export default withClassName(SaveOutlined, 'save-outlined');
