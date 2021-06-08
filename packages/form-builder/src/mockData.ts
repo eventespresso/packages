@@ -270,10 +270,10 @@ export const formElementsData: Array<FormElement> = [
 		status: 'active',
 		type: 'html',
 		wpUser: 1,
-		value: `<p>This is an example HTML block. In this block, user can add any arbitary HTML. This is <strong>bold</strong> here, this <strong><em>bold and italic</em></strong>, this <strong><ins>bold and underlined</ins></strong>, this <em><ins>italic and underlined</ins></em>. There can also be list items like this:</p>
+		placeholder: `<p>This is an example HTML block. In this block, user can add any arbitary HTML. This is <strong>bold</strong> here, this <strong><em>bold and italic</em></strong>, this <strong><ins>bold and underlined</ins></strong>, this <em><ins>italic and underlined</ins></em>. There can also be list items like this:</p>
 			<ul>
-			<li>Test item</li>
-			<li>another Test</li>
+			<li>Test Item 1</li>
+			<li>Test Item 2</li>
 			</ul>
 			`,
 	},

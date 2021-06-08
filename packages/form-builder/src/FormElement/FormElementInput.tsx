@@ -67,8 +67,9 @@ export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
 				inputProps.max = element.max;
 				break;
 			case 'html':
-				inputProps.value = element.value;
+				inputProps.value = element.placeholder;
 				inputProps.toolbarHidden = true;
+				inputProps.readonly = true;
 				inputProps.isDisabled = true;
 				break;
 		}
