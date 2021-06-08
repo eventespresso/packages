@@ -23,6 +23,8 @@ describe(namespace, () => {
 			const [endDate, endDateMonth] = await selectDateFromNextMonth();
 
 			const waitForListUpdate = await parser.createWaitForListUpdate();
+			// Ensure to take focus away from datepicker input to close the popup
+			await page.focus('.ee-timezone-info');
 			await page.click('.chakra-popover__content [aria-label="save"]');
 			await waitForListUpdate();
 
