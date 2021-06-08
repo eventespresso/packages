@@ -61,7 +61,7 @@ export interface FormElement {
 	status?: string;
 	type: ElementType;
 	wpUser?: number;
-	// This is the current input value if needed.
+	// This is the current input value/content if needed.
 	value?: any;
 }
 

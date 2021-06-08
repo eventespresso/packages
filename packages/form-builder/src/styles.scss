@@ -34,8 +34,8 @@
 				border-radius: var(--ee-border-radius-small);
 				box-sizing: border-box;
 				display: flex;
-  				flex-direction: column;
-				margin:  0;
+				flex-direction: column;
+				margin: 0;
 				padding: var(--ee-padding-tiny) 0;
 				position: relative;
 				width: 100%;
@@ -107,7 +107,7 @@
 					}
 
 					.ee-popover {
-						&__content[role=dialog] {
+						&__content[role='dialog'] {
 							position: relative;
 							right: var(--ee-margin-default);
 							top: calc(var(--ee-margin-huge) * -1);
@@ -130,7 +130,6 @@
 				}
 
 				.ee-add-form-element {
-
 					&__popover {
 						display: flex;
 						flex-direction: row;
@@ -145,7 +144,7 @@
 						flex-flow: column wrap;
 						max-width: 360px;
 						min-width: 240px;
-						padding:  var(--ee-padding-tiny) var(--ee-padding-default);
+						padding: var(--ee-padding-tiny) var(--ee-padding-default);
 						width: auto;
 
 						div:last-child {
@@ -213,7 +212,7 @@
 					width: 100%;
 
 					@include min767px {
-  						width: 60%;
+						width: 60%;
 					}
 
 					input {
@@ -224,6 +223,10 @@
 					.ee-input-label__wrapper {
 						padding: 0;
 						width: 100%;
+					}
+
+					.ee-rich-text-editor__root {
+						border-style: none;
 					}
 				}
 
@@ -239,7 +242,7 @@
 					transition: all 250ms ease-in-out;
 
 					@include min767px {
-  						width: 40%;
+						width: 40%;
 					}
 
 					.ee-form-element__toolbar-button {
@@ -332,9 +335,9 @@
 				}
 
 				.ee-field-options {
-						display: flex;
-						flex-flow: column nowrap;
-						width: 100%;
+					display: flex;
+					flex-flow: column nowrap;
+					width: 100%;
 
 					&__desc {
 						font-size: var(--ee-font-size-default);
