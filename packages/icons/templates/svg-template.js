@@ -30,7 +30,8 @@ const updateJsxAttributes = (componentClass, jsx) => {
 };
 
 function defaultTemplate({ template }, opts, { componentName, jsx }) {
-	const componentClass = convertClassName(componentName.name.replace('Svg', ''));
+	const iconName = componentName.name.replace('Svg', '');
+	const componentClass = convertClassName(iconName);
 	const newJsx = updateJsxAttributes(componentClass, jsx);
 
 	const plugins = ['jsx'];
@@ -42,11 +43,11 @@ function defaultTemplate({ template }, opts, { componentName, jsx }) {
 	return typeScriptTpl.ast`import withClassName from '../withClassName';
 	import { IconProps } from '../types';
 
-	const ${componentName} = (props: IconProps): JSX.Element => {
+	const ${iconName} = (props: IconProps): JSX.Element => {
 		return ${newJsx};
 	}
 
-	export default withClassName(${componentName});
+	export default withClassName(${iconName}, '${componentClass}');
 	`;
 }
 
