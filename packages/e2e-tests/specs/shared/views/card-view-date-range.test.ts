@@ -15,17 +15,21 @@ describe(namespace, () => {
 
 			await page.click(`${parser.getRootSelector()} .ee-edit-calendar-date-range-btn`);
 
-			await page.focus('.date-range-picker__start .react-datepicker__input-container input');
-			const [startDate, startDateMonth] = await selectDateFromNextMonth();
-			await page.click('.ee-timezone-info__button');
+			let inputSelector = '.date-range-picker__start .react-datepicker__input-container input';
 
-			await page.focus('.date-range-picker__end .react-datepicker__input-container input');
+			await page.focus(inputSelector);
+			const [startDate, startDateMonth] = await selectDateFromNextMonth();
+			// Ensure to take focus away from datepicker input to close the popup
+			await page.press(inputSelector, 'Escape');
+
+			inputSelector = '.date-range-picker__end .react-datepicker__input-container input';
+			await page.focus(inputSelector);
 			const [endDate, endDateMonth] = await selectDateFromNextMonth();
+			// Ensure to take focus away from datepicker input to close the popup
+			await page.press(inputSelector, 'Escape');
 
 			const waitForListUpdate = await parser.createWaitForListUpdate();
-			// Ensure to take focus away from datepicker input to close the popup
-			await page.focus('.ee-timezone-info');
-			await page.click('.chakra-popover__content [aria-label="save"]');
+			await page.click('.ee-popover__content [aria-label="save"]');
 			await waitForListUpdate();
 
 			await setListDisplayControl(entity, 'both');
