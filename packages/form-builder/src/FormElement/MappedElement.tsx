@@ -10,6 +10,7 @@ import {
 	Switch,
 	withLabel,
 } from '@eventespresso/ui-components';
+import { SimpleTextEditor } from '@eventespresso/rich-text-editor';
 
 import { ElementType } from '../types';
 
@@ -43,6 +44,8 @@ const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
 			Component = TextInput;
 			break;
 		case 'html':
+			Component = SimpleTextEditor;
+			break;
 		case 'textarea':
 		case 'textarea-html':
 			Component = Textarea;
