@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { find, propEq } from 'ramda';
+import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { Plus } from '@eventespresso/icons';
@@ -58,7 +58,7 @@ export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) =
 	}, [addElement, addSection, formSection.UUID, onClose, selectedElement]);
 
 	const onAddExistingSection = useCallback(() => {
-		const section = find(propEq('UUID', selectedSection), mockFormSectionData);
+		const section = R.find(R.propEq('UUID', selectedSection), mockFormSectionData);
 		addSection({ section, afterUuid: formSection.UUID });
 		onClose();
 	}, [addSection, formSection.UUID, onClose, selectedSection]);

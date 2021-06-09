@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useReducer } from 'react';
-import { propEq } from 'ramda';
+import * as R from 'ramda';
 
 import type { FormStateManager, FormStateManagerHook } from './types';
 import { useFormStateReducer, initialState } from './useFormStateReducer';
@@ -28,7 +28,7 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 		({ sectionId }) => {
 			let elements = Object.values(state.elements);
 			if (sectionId) {
-				elements = elements.filter(propEq('belongsTo', sectionId));
+				elements = elements.filter(R.propEq('belongsTo', sectionId));
 			}
 			return sortByOrder(elements);
 		},

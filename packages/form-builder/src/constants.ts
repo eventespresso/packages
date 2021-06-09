@@ -1,4 +1,4 @@
-import { indexBy, prop } from 'ramda';
+import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import type { OptionsType } from '@eventespresso/adapters';
@@ -186,7 +186,7 @@ export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	},
 ];
 
-export const ELEMENT_BLOCKS_INDEXED = indexBy(prop('type'), ELEMENT_BLOCKS);
+export const ELEMENT_BLOCKS_INDEXED = R.indexBy(R.prop('type'), ELEMENT_BLOCKS);
 
 export const ELEMENT_BLOCKS_OPTIONS = ELEMENT_BLOCKS.map<OptionsType[number]>(({ label, type: value }) => ({
 	label,

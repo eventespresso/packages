@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import classNames from 'classnames';
-import { adjust, assoc, move, remove } from 'ramda';
+import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { Plus } from '@eventespresso/icons';
@@ -19,7 +19,7 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 			// if it's the 'value' field, accept only letters, numbers, underscore and hyphen
 			const safeValue = key === 'value' ? value.replace(/[^\w-]/g, '') : value;
 			// Update the option at specified index
-			const newOptions = adjust(index, assoc(key, safeValue), element.options || []);
+			const newOptions = R.adjust(index, R.assoc(key, safeValue), element.options || []);
 			updateElement('options')(newOptions);
 		},
 		[element.options, updateElement]
@@ -27,7 +27,7 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 
 	const onRemoveOption = useCallback(
 		(index: number) => () => {
-			const newOptions = remove(index, 1, element.options || []);
+			const newOptions = R.remove(index, 1, element.options || []);
 			updateElement('options')(newOptions);
 		},
 		[element.options, updateElement]
@@ -49,7 +49,7 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 			if (noDestination || noChange || notOfOurInterest) {
 				return;
 			}
-			const newOptions = move(source.index, destination.index, element.options || []);
+			const newOptions = R.move(source.index, destination.index, element.options || []);
 			updateElement('options')(newOptions);
 		},
 		[droppableId, element.options, updateElement]

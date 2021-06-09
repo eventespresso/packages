@@ -1,10 +1,10 @@
-import { prop, sortBy, complement, flip, includes, propSatisfies } from 'ramda';
+import * as R from 'ramda';
 
 /**
  * Sorts the given list by order prop of the objects
  */
 export function sortByOrder<E extends Record<'order', number>>(list: Array<E>): Array<E> {
-	return sortBy(prop('order'), list);
+	return R.sortBy(R.prop('order'), list);
 }
 
 /**
@@ -20,4 +20,4 @@ export function setOrderByIndex<E extends Record<'order', number>>(list: Array<E
 /**
  * Predecate that returns true if the section status is not default or shared.
  */
-export const isNotSharedOrDefault = propSatisfies(complement(flip(includes)(['shared', 'default'])), 'status');
+export const isNotSharedOrDefault = R.propSatisfies(R.complement(R.flip(R.includes)(['shared', 'default'])), 'status');

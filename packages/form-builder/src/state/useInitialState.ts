@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { indexBy, prop } from 'ramda';
+import * as R from 'ramda';
 
 import type { StateInitializer } from './types';
 import type { FormStateProviderProps } from '../context';
@@ -10,8 +10,8 @@ import type { FormStateProviderProps } from '../context';
 export const useInitialState = ({ initialSections, initialElements }: FormStateProviderProps): StateInitializer => {
 	return useCallback<StateInitializer>(
 		(initialState) => {
-			const sections = indexBy(prop('UUID'), initialSections || []);
-			const elements = indexBy(prop('UUID'), initialElements || []);
+			const sections = R.indexBy(R.prop('UUID'), initialSections || []);
+			const elements = R.indexBy(R.prop('UUID'), initialElements || []);
 
 			return { ...initialState, sections, elements };
 		},

@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { compose, concat, lensPath, mergeLeft, omit, over, pathEq, set, unless } from 'ramda';
+import * as R from 'ramda';
 
 import { uuid } from '@eventespresso/utils';
 
@@ -56,7 +56,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 				case 'UPDATE_SECTION': {
 					// Update and mark the section as modified
 					const newSection = { ...section, UUID, isModified: true };
-					predicates = [over(lensPath(['sections', UUID]), mergeLeft(newSection))];
+					predicates = [R.over(R.lensPath(['sections', UUID]), R.mergeLeft(newSection))];
 					break;
 				}
 
@@ -65,12 +65,12 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 					const sectionElementIds = getSectionElementIds(state, UUID);
 
 					predicates = [
-						over(lensPath(['sections']), omit([UUID])),
-						over(lensPath(['elements']), omit(sectionElementIds)),
+						R.over(R.lensPath(['sections']), R.omit([UUID])),
+						R.over(R.lensPath(['elements']), R.omit(sectionElementIds)),
 						// unless a section is new, it needs to be marked as deleted
-						unless(
-							pathEq(['sections', UUID, 'isNew'], true),
-							over(lensPath(['deletedSections']), concat([UUID]))
+						R.unless(
+							R.pathEq(['sections', UUID, 'isNew'], true),
+							R.over(R.lensPath(['deletedSections']), R.concat([UUID]))
 						),
 					];
 					break;
@@ -98,23 +98,25 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 				case 'UPDATE_ELEMENT': {
 					// Update and mark the element as modified
 					const newElement = { ...element, UUID, isModified: true };
-					predicates = [over(lensPath(['elements', UUID]), mergeLeft(newElement))];
+					predicates = [R.over(R.lensPath(['elements', UUID]), R.mergeLeft(newElement))];
 					break;
 				}
 
 				case 'DELETE_ELEMENT':
 					predicates = [
-						over(lensPath(['elements']), omit([UUID])),
+						R.over(R.lensPath(['elements']), R.omit([UUID])),
 						// unless an element is new, it needs to be marked as deleted
-						unless(
-							pathEq(['elements', UUID, 'isNew'], true),
-							over(lensPath(['deletedElements']), concat([UUID]))
+						R.unless(
+							R.pathEq(['elements', UUID, 'isNew'], true),
+							R.over(R.lensPath(['deletedElements']), R.concat([UUID]))
 						),
 					];
 					break;
 
 				case 'TOGGLE_OPEN_ELEMENT':
-					predicates = [set(lensPath(['openElement']), openElement !== state.openElement ? openElement : '')];
+					predicates = [
+						R.set(R.lensPath(['openElement']), openElement !== state.openElement ? openElement : ''),
+					];
 					break;
 
 				case 'RESET':

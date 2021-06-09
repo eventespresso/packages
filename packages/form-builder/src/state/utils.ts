@@ -1,4 +1,4 @@
-import { findIndex, indexBy, insert, lensProp, move, prop, propEq, set, splitAt } from 'ramda';
+import * as R from 'ramda';
 
 import { uuid } from '@eventespresso/utils';
 
@@ -8,9 +8,9 @@ import { FormElement, FormSection } from '../types';
 
 export function markAsModified<Item extends { isModified?: boolean }>(items: Array<Item>, startingIndex: number) {
 	// split the items at the starting index to mark the succeeding indices as modified items
-	const [unmodifiedElements, modifiedElements] = splitAt(startingIndex, items);
+	const [unmodifiedElements, modifiedElements] = R.splitAt(startingIndex, items);
 	// set `isModified` to true
-	const newModifiedElements = modifiedElements.map(set(lensProp('isModified'), true));
+	const newModifiedElements = modifiedElements.map(R.set(R.lensProp('isModified'), true));
 	// Update the elements array
 	return [...unmodifiedElements, ...newModifiedElements];
 }
@@ -19,10 +19,10 @@ export const addSectionToState = (section: FormSection, afterUuid: string) => (s
 	// Sort the sections by order
 	let sortedSections = sortByOrder(Object.values(state.sections));
 	// Find the index of the section after which the new section should be added
-	const existingSectionIdx = findIndex(propEq('UUID', afterUuid), sortedSections);
+	const existingSectionIdx = R.findIndex(R.propEq('UUID', afterUuid), sortedSections);
 	const newIndex = existingSectionIdx + 1;
 	// Insert the new section at the correct position
-	sortedSections = insert(newIndex, section, sortedSections);
+	sortedSections = R.insert(newIndex, section, sortedSections);
 	// Recalculate the order of all the sections
 	sortedSections = setOrderByIndex(sortedSections);
 	// mark the updated items as modified, here the `order` will change only from the new index
@@ -31,7 +31,7 @@ export const addSectionToState = (section: FormSection, afterUuid: string) => (s
 	// compute the state
 	return {
 		...state,
-		sections: indexBy(prop('UUID'), sortedSections),
+		sections: R.indexBy(R.prop('UUID'), sortedSections),
 		// Open the new section
 		openElement: section.UUID,
 	};
@@ -41,13 +41,13 @@ export const moveSection = (UUID: string, newIndex: number) => (state: FormState
 	// Sort the sections by order
 	let sortedSections = sortByOrder(Object.values(state.sections));
 	// Find the current index of the section
-	const currentIndex = findIndex(propEq('UUID', UUID), sortedSections);
+	const currentIndex = R.findIndex(R.propEq('UUID', UUID), sortedSections);
 	// If the element is not found
 	if (currentIndex < 0) {
 		return state;
 	}
 	// Move the element to the new index
-	sortedSections = move(currentIndex, newIndex, sortedSections);
+	sortedSections = R.move(currentIndex, newIndex, sortedSections);
 	// Recalculate the order of all the sections
 	sortedSections = setOrderByIndex(sortedSections);
 	// items can be re-arranged in any order (up and down), so the `order` will change starting from the lower index
@@ -59,7 +59,7 @@ export const moveSection = (UUID: string, newIndex: number) => (state: FormState
 	// compute the state
 	return {
 		...state,
-		sections: indexBy(prop('UUID'), sortedSections),
+		sections: R.indexBy(R.prop('UUID'), sortedSections),
 		// close any open elements
 		openElement: '',
 	};
@@ -67,17 +67,17 @@ export const moveSection = (UUID: string, newIndex: number) => (state: FormState
 
 export const addElementToState = (element: FormElement, afterUuid?: string) => (state: FormState): FormState => {
 	// we need to filter the elements by section to set the order
-	const elements = Object.values(state.elements).filter(propEq('belongsTo', element.belongsTo));
+	const elements = Object.values(state.elements).filter(R.propEq('belongsTo', element.belongsTo));
 	// Sort the elements by order
 	let sortedElements = sortByOrder(elements);
 	// Find the index of the element after which the new element should be added
-	const existingElementIdx = afterUuid ? findIndex(propEq('UUID', afterUuid), sortedElements) : -1;
+	const existingElementIdx = afterUuid ? R.findIndex(R.propEq('UUID', afterUuid), sortedElements) : -1;
 
 	// If the element is not found, new index is -1 (end of the list)
 	const newIndex = existingElementIdx < 0 ? -1 : existingElementIdx + 1;
 
 	// Insert the new element at the correct position
-	sortedElements = insert(newIndex, element, sortedElements);
+	sortedElements = R.insert(newIndex, element, sortedElements);
 
 	// Recalculate the order of all the elements
 	sortedElements = setOrderByIndex(sortedElements);
@@ -90,7 +90,7 @@ export const addElementToState = (element: FormElement, afterUuid?: string) => (
 		elements: {
 			// Since we filtered the elements by section, we need to retain other elements
 			...state.elements,
-			...indexBy(prop('UUID'), sortedElements),
+			...R.indexBy(R.prop('UUID'), sortedElements),
 		},
 		// Open the new element
 		openElement: element.UUID,
@@ -107,17 +107,17 @@ export const moveElement = (UUID: string, newIndex: number, sectionId: string) =
 		},
 	};
 	// we need to filter the elements by section to set the order
-	const elements = Object.values(elementsMap).filter(propEq('belongsTo', sectionId));
+	const elements = Object.values(elementsMap).filter(R.propEq('belongsTo', sectionId));
 	// Sort the elements by order
 	let sortedElements = sortByOrder(elements);
 	// Find the current index of the section
-	const currentIndex = findIndex(propEq('UUID', UUID), sortedElements);
+	const currentIndex = R.findIndex(R.propEq('UUID', UUID), sortedElements);
 	// If the element is not found
 	if (currentIndex < 0) {
 		return state;
 	}
 	// Move the element to the new index
-	sortedElements = move(currentIndex, newIndex, sortedElements);
+	sortedElements = R.move(currentIndex, newIndex, sortedElements);
 
 	// Recalculate the order of all the elements
 	sortedElements = setOrderByIndex(sortedElements);
@@ -133,7 +133,7 @@ export const moveElement = (UUID: string, newIndex: number, sectionId: string) =
 		elements: {
 			// Since we filtered the elements by section, we need to retain other elements
 			...state.elements,
-			...indexBy(prop('UUID'), sortedElements),
+			...R.indexBy(R.prop('UUID'), sortedElements),
 		},
 		// close any open elements
 		openElement: '',
@@ -146,7 +146,7 @@ export const copySectionElements = (copyFromSectionId: string, newSectionId: str
 	// We also need to copy the elements of the section
 	let sectionElements: Array<FormElement> = [];
 	// Lets get all the elements that belong to the copied section
-	sectionElements = Object.values(state.elements).filter(propEq('belongsTo', copyFromSectionId));
+	sectionElements = Object.values(state.elements).filter(R.propEq('belongsTo', copyFromSectionId));
 	// Change the UUID and belongsTo for all the elements
 	sectionElements = sectionElements.map((elem) => ({ ...elem, UUID: uuid(), belongsTo: newSectionId, isNew: true }));
 
@@ -155,13 +155,13 @@ export const copySectionElements = (copyFromSectionId: string, newSectionId: str
 		elements: {
 			// Since we filtered the elements by section, we need to retain other elements
 			...state.elements,
-			...indexBy(prop('UUID'), sectionElements),
+			...R.indexBy(R.prop('UUID'), sectionElements),
 		},
 	};
 };
 
 export const getSectionElementIds = (state: FormState, sectionId: string): Array<string> => {
 	return Object.values(state.elements)
-		.filter(propEq('belongsTo', sectionId))
+		.filter(R.propEq('belongsTo', sectionId))
 		.map(({ UUID }) => UUID);
 };
