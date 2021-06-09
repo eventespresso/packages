@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import classNames from 'classnames';
 import { parseISO } from 'date-fns';
-import { filter, pipe } from 'ramda';
+import * as R from 'ramda';
 
 import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
 import { CurrencyDisplay } from '@eventespresso/ee-components';
@@ -140,8 +140,8 @@ const useBodyRowGenerator = (): TicketsTableBodyRowGen => {
 
 			const exclude = ['row', 'stripe', 'name', 'actions'];
 
-			const cells = pipe(
-				filter(filterCellByStartOrEndDate(displayStartOrEndDate)),
+			const cells = R.pipe(
+				R.filter(filterCellByStartOrEndDate(displayStartOrEndDate)),
 				addZebraStripesOnMobile(exclude)
 			)(cellsData);
 

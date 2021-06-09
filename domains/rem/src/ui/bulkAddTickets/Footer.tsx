@@ -1,4 +1,4 @@
-import { isEmpty } from 'ramda';
+import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { ButtonRow, Button, ButtonType } from '@eventespresso/ui-components';
@@ -8,7 +8,7 @@ import type { BaseProps } from '../types';
 
 const Footer: React.FC<BaseProps> = ({ onClose, onSubmit }) => {
 	const { tickets } = useFormState();
-	const isDisabled = isEmpty(tickets);
+	const isDisabled = R.isEmpty(tickets);
 
 	return (
 		<ButtonRow fullWidth horizontalAlign='right' topBordered>

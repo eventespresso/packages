@@ -1,8 +1,9 @@
+import * as R from 'ramda';
+
 import { prepareEntitiesForUpdate, ticketsWithNewQuantity } from './';
 import { nodes as allDates } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
 import { nodes as allTickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
 import { relationalData as existingData } from '@eventespresso/edtr-services/src/context/test/data';
-import { assocPath, pathOr } from 'ramda';
 
 describe('TAM:ticketsWithNewQuantity', () => {
 	it('returns an empty object when existing relational data is empty', () => {
@@ -46,7 +47,7 @@ describe('TAM:ticketsWithNewQuantity', () => {
 		const path = ['tickets', allTickets[0].id, 'datetimes'];
 		// ticket at allTickets[0] is related to two dates
 		// lets assign the ticket to only one date and remove others
-		const newData = assocPath(path, [allDates[1].id], existingData);
+		const newData = R.assocPath(path, [allDates[1].id], existingData);
 
 		const ticketsToUpdate = prepareEntitiesForUpdate({
 			entity: 'tickets',
@@ -68,10 +69,10 @@ describe('TAM:ticketsWithNewQuantity', () => {
 	it('returns an empty object when newly assigned date and ticket have equal capacity and quantity respectively', () => {
 		// lets modify existing data to create new one
 		const path = ['tickets', allTickets[0].id, 'datetimes']; // ticket at index 0 has quantity 100
-		const existingRelatedDates = pathOr([], path, existingData);
+		const existingRelatedDates = R.pathOr([], path, existingData);
 
 		// lets assign a date to the first ticket
-		const newData = assocPath(path, [...existingRelatedDates, allDates[1].id], existingData); // date at index 1 has capacity 100
+		const newData = R.assocPath(path, [...existingRelatedDates, allDates[1].id], existingData); // date at index 1 has capacity 100
 
 		const ticketsToUpdate = prepareEntitiesForUpdate({
 			entity: 'tickets',
@@ -92,9 +93,9 @@ describe('TAM:ticketsWithNewQuantity', () => {
 
 	it('does not add the ticket to changed map if the assigned date capacity is higher than ticket quantity', () => {
 		const path = ['tickets', allTickets[0].id, 'datetimes']; // ticket at index 0 has quantity 100
-		const existingRelatedDates = pathOr([], path, existingData);
+		const existingRelatedDates = R.pathOr([], path, existingData);
 		// lets assign the date to the ticket
-		const newData = assocPath(path, [...existingRelatedDates, allDates[2].id], existingData); // date at index 2 has capacity 420
+		const newData = R.assocPath(path, [...existingRelatedDates, allDates[2].id], existingData); // date at index 2 has capacity 420
 
 		const ticketsToUpdate = prepareEntitiesForUpdate({
 			entity: 'tickets',
@@ -117,9 +118,9 @@ describe('TAM:ticketsWithNewQuantity', () => {
 	it('returns an object with new quantities when a date with lower capacity than ticket quantity is assigned', () => {
 		// lets modify existing data to create new one
 		const path = ['tickets', allTickets[1].id, 'datetimes']; // ticket at index 1 has quantity -1 (infinite)
-		const existingRelatedDates = pathOr([], path, existingData);
+		const existingRelatedDates = R.pathOr([], path, existingData);
 		// lets assign a date to the first ticket
-		const newData = assocPath(path, [...existingRelatedDates, allDates[2].id], existingData); // date at index 2 has capacity 420
+		const newData = R.assocPath(path, [...existingRelatedDates, allDates[2].id], existingData); // date at index 2 has capacity 420
 
 		const ticketsToUpdate = prepareEntitiesForUpdate({
 			entity: 'tickets',

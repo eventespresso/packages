@@ -1,4 +1,4 @@
-import { sortBy, prop } from 'ramda';
+import * as R from 'ramda';
 import { formatISO, parseISO } from 'date-fns';
 
 import { useMemoStringify } from '@eventespresso/hooks';
@@ -41,7 +41,7 @@ export const useGenerateDates = (includeExDates?: boolean): Array<GeneratedDate>
 			generatedDates = [...generatedDates, ...excludedDates];
 		}
 
-		result = sortBy(prop('ISOStr'), generatedDates);
+		result = R.sortBy(R.prop('ISOStr'), generatedDates);
 	}
 
 	return useMemoStringify(result);

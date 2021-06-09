@@ -1,7 +1,6 @@
 import { useCallback, useMemo } from 'react';
-
 import ReactSelect from 'react-select';
-import { find, propEq } from 'ramda';
+import * as R from 'ramda';
 
 import type { SelectProps } from './types';
 
@@ -11,7 +10,7 @@ const Select: React.FC<SelectProps> = ({ value, options, label, onChange, id, ..
 	 * Lets create it from options array by finding the option with the same value
 	 */
 	const reactSelectValue = useMemo(() => {
-		return find(propEq('value', value), options);
+		return R.find(R.propEq('value', value), options);
 	}, [options, value]);
 
 	const reactSelectOnChange = useCallback(

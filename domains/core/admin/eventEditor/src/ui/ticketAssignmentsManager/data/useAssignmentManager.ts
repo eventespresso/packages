@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { pick, map, mapObjIndexed, isEmpty } from 'ramda';
+import * as R from 'ramda';
 
 import { useRelationsManager, RelationFunctionProps } from '@eventespresso/services';
 
@@ -120,10 +120,10 @@ const useAssignmentManager = (): AM => {
 		) {
 			// only the realtions for the given single entity
 			// for which TAM has been opened
-			relationalEntityToUse = pick([entity.id], relationalEntity);
+			relationalEntityToUse = R.pick([entity.id], relationalEntity);
 			// if it's for a new date or ticket,
 			// there will obviously be no entry of it in existing relations
-			if (isEmpty(relationalEntityToUse)) {
+			if (R.isEmpty(relationalEntityToUse)) {
 				const newRelationKey = entityType === 'datetimes' ? 'tickets' : 'datetimes';
 				// initialize to empty relations
 				relationalEntityToUse[entity.id] = {
@@ -133,9 +133,9 @@ const useAssignmentManager = (): AM => {
 		}
 
 		// Now loop through all the relational entities
-		return map((relation) => {
+		return R.map((relation) => {
 			// pick only TAM relations, i.e. filter out tickets to prices relations
-			return pick(TAM_ENTITIES, relation);
+			return R.pick(TAM_ENTITIES, relation);
 		}, relationalEntityToUse);
 	}, []);
 
@@ -145,10 +145,10 @@ const useAssignmentManager = (): AM => {
 	const initialize = useCallback<AM['initialize']>(
 		({ data, assignmentType, entity }) => {
 			// pick only datetimes and tickets from relational data
-			let newData = pick(TAM_ENTITIES, data);
+			let newData = R.pick(TAM_ENTITIES, data);
 
 			// Remove other relations from newData
-			newData = mapObjIndexed((relationalEntity, entityType) => {
+			newData = R.mapObjIndexed((relationalEntity, entityType) => {
 				return removeNonTAMRelations({ assignmentType, entity, entityType, relationalEntity });
 			}, newData);
 

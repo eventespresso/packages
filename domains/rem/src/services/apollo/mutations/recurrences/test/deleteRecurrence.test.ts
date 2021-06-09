@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { path } from 'ramda';
+import * as R from 'ramda';
 
 import { MutationType } from '@eventespresso/data';
 import { ApolloMockedProvider } from '@eventespresso/edtr-services/src/context/test';
@@ -34,8 +34,8 @@ describe('deleteRecurrence', () => {
 		expect(mutationData).toEqual(mockResult.data);
 		const pathToId = ['deleteEspressoRecurrence', 'espressoRecurrence', 'name'];
 
-		const idFromMutationData = path(pathToId, mutationData);
-		const idFromMockData = path(pathToId, mockResult.data);
+		const idFromMutationData = R.path(pathToId, mutationData);
+		const idFromMockData = R.path(pathToId, mockResult.data);
 
 		expect(idFromMutationData).toEqual(idFromMockData);
 	});

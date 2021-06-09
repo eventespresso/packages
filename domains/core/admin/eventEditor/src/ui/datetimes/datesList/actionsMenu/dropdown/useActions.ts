@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-import { pick } from 'ramda';
+import * as R from 'ramda';
 
 import { isTrashed } from '@eventespresso/predicates';
 import { useDatetimeItem, useDatetimeMutator, useDeleteRelatedTickets, useEventId } from '@eventespresso/edtr-services';
@@ -30,7 +30,7 @@ const useActions = (datetimeId: EntityId): Actions => {
 	});
 
 	const copyDate = useCallback(() => {
-		const newDatetime = pick(
+		const newDatetime = R.pick(
 			['capacity', 'description', 'endDate', 'isPrimary', 'name', 'order', 'reserved', 'sold', 'startDate'],
 			datetime
 		);

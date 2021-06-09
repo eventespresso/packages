@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { assocPath } from 'ramda';
+import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { useSystemNotifications } from '@eventespresso/toaster';
@@ -43,13 +43,13 @@ const useCacheRehydration = (): boolean => {
 		const relationalData = getRelationalData();
 
 		// Update recurrences to dates relational data
-		let newRelationalData = assocPath(['recurrences'], relations?.recurrences, relationalData);
+		let newRelationalData = R.assocPath(['recurrences'], relations?.recurrences, relationalData);
 
 		// now we need to update the relational data from dates to recurrences
 		// make sure we have something to deal with
 		if (relations?.datetimes) {
 			Object.entries(relations.datetimes).forEach(([datetimeId, relations]) => {
-				newRelationalData = assocPath(
+				newRelationalData = R.assocPath(
 					['datetimes', datetimeId, 'recurrences'],
 					relations.recurrences,
 					newRelationalData

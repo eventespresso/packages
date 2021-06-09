@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { isEmpty } from 'ramda';
+import * as R from 'ramda';
 
 import { Datetime } from '@eventespresso/edtr-services';
 import { FormWithConfig } from '@eventespresso/ee-components';
@@ -17,7 +17,7 @@ const DatetimeDetails: React.FC<DatetimeDetailsProps> = () => {
 
 	// if date details have not been set already
 	// and we have no template date set
-	if (isEmpty(dateDetails) && !templateDate) {
+	if (R.isEmpty(dateDetails) && !templateDate) {
 		return <DateTemplate setTemplate={setTemplateDate} />;
 	}
 

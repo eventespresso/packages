@@ -1,5 +1,5 @@
 import { Frequency } from 'rrule';
-import { pick } from 'ramda';
+import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { Ticket, TICKET_FIELDS_FOR_TPC } from '@eventespresso/edtr-services';
@@ -110,6 +110,6 @@ export const normalizeTicketForRem = (
 
 	return {
 		...TICKET_DEFAULTS,
-		...pick(TICKET_FIELDS_FOR_TPC, ticket || {}),
+		...R.pick(TICKET_FIELDS_FOR_TPC, ticket || {}),
 	} as RemTicket;
 };

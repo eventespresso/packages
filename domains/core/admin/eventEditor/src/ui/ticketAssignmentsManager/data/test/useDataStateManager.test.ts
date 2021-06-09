@@ -1,4 +1,4 @@
-import { head } from 'ramda';
+import * as R from 'ramda';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import { actWait } from '@eventespresso/utils/src/test';
@@ -24,9 +24,9 @@ describe('useDataStateManager', () => {
 			result.current.initialize({ ...props, data: relationalData });
 		});
 
-		const ticketId = head(Object.keys(result.current.getData().tickets));
+		const ticketId = R.head(Object.keys(result.current.getData().tickets));
 		const assignedDatetimes = result.current.getData().tickets[ticketId].datetimes;
-		const datetimeId = head(assignedDatetimes);
+		const datetimeId = R.head(assignedDatetimes);
 
 		// they are old childhood friends
 		expect(result.current.getAssignmentStatus({ datetimeId, ticketId })).toBe('OLD');
@@ -70,7 +70,7 @@ describe('useDataStateManager', () => {
 			result.current.initialize({ ...props, data: relationalData });
 		});
 
-		const datetimeId = head(Object.keys(result.current.getData().datetimes));
+		const datetimeId = R.head(Object.keys(result.current.getData().datetimes));
 		const assignedTickets = result.current.getData().datetimes[datetimeId].tickets;
 
 		// it has tickets by default
@@ -111,7 +111,7 @@ describe('useDataStateManager', () => {
 		expect(result.current.hasOrphanTickets()).toBe(false);
 		expect(result.current.hasOrphanEntities()).toBe(false);
 
-		const datetimeId = head(Object.keys(result.current.getData().datetimes));
+		const datetimeId = R.head(Object.keys(result.current.getData().datetimes));
 		const assignedTickets = result.current.getData().datetimes[datetimeId].tickets;
 
 		// lets remove all the assigned tickets for the datetimeId
@@ -124,7 +124,7 @@ describe('useDataStateManager', () => {
 		expect(result.current.hasOrphanDates()).toBe(true);
 		expect(result.current.hasOrphanEntities()).toBe(true);
 
-		const ticketId = head(Object.keys(result.current.getData().tickets));
+		const ticketId = R.head(Object.keys(result.current.getData().tickets));
 		const assignedDates = result.current.getData().tickets[ticketId].datetimes;
 
 		assignedDates.forEach((datetimeId) => {

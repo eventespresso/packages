@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { omit, pick } from 'ramda';
+import * as R from 'ramda';
 
 import { useRelations } from '@eventespresso/services';
 import { useDefaultTicketIds } from '@eventespresso/edtr-services';
@@ -16,13 +16,13 @@ const useInvalidDataAlert = (showAlert: VoidFunction): Callback => {
 	const hasOrphanEntities = useCallback(() => {
 		const data = getData();
 		// remove default tickets from TAM relations
-		const newData = { ...data, tickets: omit(defaultTicketIds, data.tickets || {}) };
+		const newData = { ...data, tickets: R.omit(defaultTicketIds, data.tickets || {}) };
 		// simplify the data for loop
-		const entries = Object.entries(pick(TAM_ENTITIES, newData));
+		const entries = Object.entries(R.pick(TAM_ENTITIES, newData));
 
 		for (const [, entityRelations] of entries) {
 			for (const [, relations] of Object.entries(entityRelations)) {
-				const tamRelations = pick(TAM_ENTITIES, relations);
+				const tamRelations = R.pick(TAM_ENTITIES, relations);
 				// flatten the relations
 				const relatedIds = Object.values(tamRelations).flat();
 				if (!relatedIds.length) {

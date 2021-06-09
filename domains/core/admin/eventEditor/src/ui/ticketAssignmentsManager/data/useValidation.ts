@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { mapObjIndexed, pickBy, isEmpty } from 'ramda';
+import * as R from 'ramda';
 
 import { AssignmentManager, TAMPossibleRelation, TAMRelationalData, TAMRelationalEntity } from '../types';
 
@@ -14,14 +14,14 @@ const useValidation = (assignmentManager: AssignmentManager): TAMPossibleRelatio
 
 	useEffect(() => {
 		// may be the data is not initialized yet
-		if (isEmpty(TAMData)) {
+		if (R.isEmpty(TAMData)) {
 			return;
 		}
 		// loop through TAM data to find entities with no relations
 		// See the data shape, please check the shape of TAMRelationalData
-		const newTAMData: TAMPossibleRelation = mapObjIndexed((relationalEntity, entity) => {
+		const newTAMData: TAMPossibleRelation = R.mapObjIndexed((relationalEntity, entity) => {
 			const relation: keyof TAMPossibleRelation = entity === 'datetimes' ? 'tickets' : 'datetimes';
-			const emptyRelationalEntities = pickBy<TAMRelationalEntity, TAMRelationalEntity>(
+			const emptyRelationalEntities = R.pickBy<TAMRelationalEntity, TAMRelationalEntity>(
 				(relations: TAMPossibleRelation) => {
 					const relatedIds = relations?.[relation] || [];
 					return relatedIds.length === 0;

@@ -1,4 +1,4 @@
-import { head } from 'ramda';
+import * as R from 'ramda';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import { relationalData } from '@eventespresso/edtr-services/src/context/test';
@@ -39,8 +39,8 @@ describe('useAssignmentManager', () => {
 		expect(result.current.getData()).toHaveProperty('datetimes');
 		expect(result.current.getData()).toHaveProperty('tickets');
 		expect(result.current.getData()).not.toHaveProperty('prices');
-		expect(head(Object.values(result.current.getData().tickets))).toHaveProperty('datetimes');
-		expect(head(Object.values(result.current.getData().tickets))).not.toHaveProperty('prices');
+		expect(R.head(Object.values(result.current.getData().tickets))).toHaveProperty('datetimes');
+		expect(R.head(Object.values(result.current.getData().tickets))).not.toHaveProperty('prices');
 	});
 
 	it('returns assigned tickets to a given datetimeId', () => {
@@ -55,9 +55,9 @@ describe('useAssignmentManager', () => {
 			expect(result.current.getAssignedTickets({ datetimeId })).toEqual([]);
 		});
 
-		const datetimeId = head(Object.keys(initArgs.data.datetimes));
+		const datetimeId = R.head(Object.keys(initArgs.data.datetimes));
 		const assignedTickets = initArgs.data.datetimes[datetimeId].tickets;
-		const ticketId = head(assignedTickets);
+		const ticketId = R.head(assignedTickets);
 
 		// sane value for datetimeId
 		expect(result.current.getAssignedTickets({ datetimeId })).toEqual(assignedTickets);
@@ -84,9 +84,9 @@ describe('useAssignmentManager', () => {
 			expect(result.current.getAssignedDates({ ticketId })).toEqual([]);
 		});
 
-		const ticketId = head(Object.keys(initArgs.data.tickets));
+		const ticketId = R.head(Object.keys(initArgs.data.tickets));
 		const assignedDatetimes = initArgs.data.tickets[ticketId].datetimes;
-		const datetimeId = head(assignedDatetimes);
+		const datetimeId = R.head(assignedDatetimes);
 
 		// sane value for ticketId
 		expect(result.current.getAssignedDates({ ticketId })).toEqual(assignedDatetimes);
@@ -132,9 +132,9 @@ describe('useAssignmentManager', () => {
 			result.current.initialize(initArgs);
 		});
 
-		const ticketId = head(Object.keys(initArgs.data.tickets));
+		const ticketId = R.head(Object.keys(initArgs.data.tickets));
 		const assignedDatetimes = initArgs.data.tickets[ticketId].datetimes;
-		const datetimeId = head(assignedDatetimes);
+		const datetimeId = R.head(assignedDatetimes);
 
 		// they are married for now
 		expect(result.current.getAssignedDates({ ticketId })).toEqual(assignedDatetimes);
@@ -156,9 +156,9 @@ describe('useAssignmentManager', () => {
 			result.current.initialize(initArgs);
 		});
 
-		const ticketId = head(Object.keys(initArgs.data.tickets));
+		const ticketId = R.head(Object.keys(initArgs.data.tickets));
 		const assignedDatetimes = initArgs.data.tickets[ticketId].datetimes;
-		const datetimeId = head(assignedDatetimes);
+		const datetimeId = R.head(assignedDatetimes);
 
 		// they are married for now
 		expect(result.current.getAssignedDates({ ticketId })).toEqual(assignedDatetimes);

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { pick } from 'ramda';
+import * as R from 'ramda';
 
 import type { EspressoFormProps } from '@eventespresso/form';
 import { Ticket, TicketFormConfig } from '@eventespresso/edtr-services';
@@ -14,7 +14,7 @@ const useTicketFormConfig = (ticket?: DefaultTicket, config?: EspressoFormProps)
 			...newConfig,
 			initialValues: {
 				...newConfig?.initialValues,
-				...pick<Omit<Partial<DefaultTicket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
+				...R.pick<Omit<Partial<DefaultTicket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
 			},
 		}),
 		[newConfig, ticket]

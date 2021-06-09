@@ -1,6 +1,6 @@
 import { useMemo, useCallback } from 'react';
 import { __ } from '@eventespresso/i18n';
-import { pick } from 'ramda';
+import * as R from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { intervalsToOptions, Intervals, DATE_INTERVALS } from '@eventespresso/dates';
@@ -13,7 +13,7 @@ import { useMemoStringify } from '@eventespresso/hooks';
 type DateFormConfig = EspressoFormProps<BulkEditFormShape>;
 
 const unitOptions = intervalsToOptions(
-	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS),
+	R.pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS),
 	true
 );
 

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { last } from 'ramda';
+import * as R from 'ramda';
 
 import type { RRuleConfig } from '@eventespresso/rrule-generator';
 
@@ -25,7 +25,7 @@ const useRRuleLimits = (type: PatternType): Pick<RRuleConfig, 'maxEndDate' | 'ma
 			return i < maxExecutions + 1;
 		});
 
-		maxEndDate = last(generatedDates);
+		maxEndDate = R.last(generatedDates);
 	}
 
 	return useMemo(

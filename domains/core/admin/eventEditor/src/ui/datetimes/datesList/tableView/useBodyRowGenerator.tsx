@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import classNames from 'classnames';
 import { parseISO } from 'date-fns';
-import { filter, pipe } from 'ramda';
+import * as R from 'ramda';
 
 import { addZebraStripesOnMobile, CellData } from '@eventespresso/ui-components';
 import { filterCellByStartOrEndDate, useDatetimes, useLazyDatetime } from '@eventespresso/edtr-services';
@@ -133,9 +133,9 @@ const useBodyRowGenerator = (): DatesTableBodyRowGen => {
 				Boolean
 			);
 
-			const filterCells = filter(filterCellByStartOrEndDate(displayStartOrEndDate));
+			const filterCells = R.filter(filterCellByStartOrEndDate(displayStartOrEndDate));
 
-			const cells = pipe(filterCells, addZebraStripes)(cellsData);
+			const cells = R.pipe(filterCells, addZebraStripes)(cellsData);
 
 			return {
 				cells,

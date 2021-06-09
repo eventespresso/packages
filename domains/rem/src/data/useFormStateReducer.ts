@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { assocPath, omit, without } from 'ramda';
+import * as R from 'ramda';
 
 import { uuid } from '@eventespresso/utils';
 
@@ -43,14 +43,14 @@ const useFormStateReducer = (initializer: StateInitializer): FormStateReducer =>
 				case 'REMOVE_R_DATE':
 					newState = {
 						...state,
-						rDates: without([date], state.rDates),
+						rDates: R.without([date], state.rDates),
 					};
 					break;
 
 				case 'REMOVE_EX_DATE':
 					newState = {
 						...state,
-						exDates: without([date], state.exDates),
+						exDates: R.without([date], state.exDates),
 					};
 					break;
 
@@ -66,13 +66,13 @@ const useFormStateReducer = (initializer: StateInitializer): FormStateReducer =>
 					// use id to update and uuid to add new
 					ticketId = id || uuid();
 					// we need to make the id inside ticket and in tickets object same
-					newState = assocPath(['tickets', ticketId], { ...ticket, id: ticketId }, state);
+					newState = R.assocPath(['tickets', ticketId], { ...ticket, id: ticketId }, state);
 					break;
 
 				case 'DELETE_TICKET':
 					newState = {
 						...state,
-						tickets: omit([id], state.tickets),
+						tickets: R.omit([id], state.tickets),
 					};
 					break;
 

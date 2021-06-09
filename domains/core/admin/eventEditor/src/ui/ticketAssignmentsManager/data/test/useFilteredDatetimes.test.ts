@@ -1,4 +1,4 @@
-import { assocPath } from 'ramda';
+import * as R from 'ramda';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { formatISO } from 'date-fns';
 
@@ -9,7 +9,7 @@ import TestWrapper from './TestWrapper';
 import { nodes as datetimes } from '@eventespresso/edtr-services/src/apollo/queries/datetimes/test/data';
 import { useFilterState } from '../../filters';
 
-const datetimesWithATrashedOne = assocPath([1, 'isTrashed'], true, datetimes);
+const datetimesWithATrashedOne = R.assocPath([1, 'isTrashed'], true, datetimes);
 
 describe('useFilteredDatetimes', () => {
 	it('returns filtered dates for default filter state', async () => {

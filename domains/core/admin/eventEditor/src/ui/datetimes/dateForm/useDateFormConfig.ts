@@ -1,5 +1,5 @@
 import { useMemo, useCallback } from 'react';
-import { pick } from 'ramda';
+import * as R from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { startAndEndDateFixer, useDatetimeItem, hooks } from '@eventespresso/edtr-services';
@@ -53,7 +53,7 @@ const useDateFormConfig = (id: EntityId, config?: EspressoFormProps): DateFormCo
 		return hooks.applyFilters(
 			'eventEditor.dateForm.initalValues',
 			{
-				...pick<Partial<Datetime>, keyof Datetime>(FIELD_NAMES, datetime || {}),
+				...R.pick<Partial<Datetime>, keyof Datetime>(FIELD_NAMES, datetime || {}),
 				startDate,
 				endDate,
 			},

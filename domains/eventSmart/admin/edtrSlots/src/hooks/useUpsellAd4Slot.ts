@@ -1,6 +1,6 @@
-import { find, propEq } from 'ramda';
-
 import { useCallback } from 'react';
+import * as R from 'ramda';
+
 import { EdtrSlots } from '@eventespresso/services';
 
 import { UpsellAd } from '../types';
@@ -11,5 +11,5 @@ export type GetUpsell4Slot = (slot: EdtrSlots) => UpsellAd;
 export const useUpsellAd4Slot = (): GetUpsell4Slot => {
 	const { upsellAds } = useEdtrUpsellAds();
 
-	return useCallback((slot) => find<UpsellAd>(propEq('location', slot), upsellAds), [upsellAds]);
+	return useCallback((slot) => R.find<UpsellAd>(R.propEq('location', slot), upsellAds), [upsellAds]);
 };

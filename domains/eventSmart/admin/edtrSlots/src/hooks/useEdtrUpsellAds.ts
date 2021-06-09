@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { complement, propEq } from 'ramda';
+import * as R from 'ramda';
 
 import type { EntityId } from '@eventespresso/data';
 
@@ -19,7 +19,7 @@ export const useEdtrUpsellAds = (): EdtrUpsellAds => {
 
 	const dismissUpsellAd = useCallback<EdtrUpsellAds['dismissUpsellAd']>(
 		(id) => async () => {
-			setUpsellAds((upsellAds) => upsellAds.filter(complement(propEq('id', id))));
+			setUpsellAds((upsellAds) => upsellAds.filter(R.complement(R.propEq('id', id))));
 			await sendDismissRequest(id);
 		},
 		[sendDismissRequest]

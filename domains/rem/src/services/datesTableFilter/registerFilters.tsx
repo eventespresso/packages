@@ -2,7 +2,7 @@
  * This file registers the filters for dates table via registry package
  */
 
-import { insert } from 'ramda';
+import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { EntityTableFilters } from '@eventespresso/registry';
@@ -39,6 +39,6 @@ registerFilter(({ row, type, entityId }) => {
 		);
 	}
 	// insert the cell at index 6
-	const cells: Array<CellData> = insert(6, { ...cell, value }, row.cells);
+	const cells: Array<CellData> = R.insert(6, { ...cell, value }, row.cells);
 	return { ...row, cells };
 }, 11);

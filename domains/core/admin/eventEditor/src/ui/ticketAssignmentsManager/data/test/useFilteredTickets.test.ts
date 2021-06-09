@@ -1,4 +1,4 @@
-import { assocPath } from 'ramda';
+import * as R from 'ramda';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import { actWait } from '@eventespresso/utils/src/test';
@@ -8,7 +8,7 @@ import TestWrapper from './TestWrapper';
 import { nodes as tickets } from '@eventespresso/edtr-services/src/apollo/queries/tickets/test/data';
 import { useFilterState } from '../../filters';
 
-const ticketsWithATrashedOne = assocPath([1, 'isTrashed'], true, tickets);
+const ticketsWithATrashedOne = R.assocPath([1, 'isTrashed'], true, tickets);
 
 describe('useFilteredTickets', () => {
 	it('returns filtered tickets for default filter state', async () => {

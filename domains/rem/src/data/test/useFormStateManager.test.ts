@@ -1,4 +1,4 @@
-import { head } from 'ramda';
+import * as R from 'ramda';
 import { act, renderHook } from '@testing-library/react-hooks';
 import { formatISO } from 'date-fns';
 
@@ -141,7 +141,7 @@ describe('REM.useFormStateManager', () => {
 			result.current.addTicket(ticketDetails);
 		});
 		// the auto-generated id
-		const ticketId = head(Object.keys(result.current.tickets));
+		const ticketId = R.head(Object.keys(result.current.tickets));
 		expect(result.current.tickets[ticketId]).toEqual({ ...ticketDetails, id: ticketId });
 
 		// lets update

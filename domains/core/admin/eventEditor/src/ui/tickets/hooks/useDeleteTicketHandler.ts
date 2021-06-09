@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { assocPath } from 'ramda';
+import * as R from 'ramda';
 
 import { useTicketPrices } from '@eventespresso/edtr-services';
 import type { EntityId } from '@eventespresso/data';
@@ -34,7 +34,7 @@ const useDeleteTicketHandler = (id: EntityId): Callback => {
 		// filter out the related prices from Apollo cache data
 		const pricesToRetain = entitiesWithGuIdNotInArray(data?.espressoPrices?.nodes || [], priceIdsToDelete);
 		// avoid the dirty object creation using assocPath
-		const newData = assocPath(['espressoPrices', 'nodes'], pricesToRetain, data);
+		const newData = R.assocPath(['espressoPrices', 'nodes'], pricesToRetain, data);
 
 		// write the data back to cache
 		client.writeQuery<PricesList>({

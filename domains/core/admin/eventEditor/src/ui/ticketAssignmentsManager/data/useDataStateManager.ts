@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useMemo, useState } from 'react';
-import { omit } from 'ramda';
+import * as R from 'ramda';
 
 import { EntityId } from '@eventespresso/data';
 import { useRelations } from '@eventespresso/services';
@@ -92,7 +92,7 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 		if (!initialized) {
 			const data = relations.getData();
 			// remove default tickets from TAM relations
-			const newData = { ...data, tickets: omit(defaultTicketIds, data.tickets || {}) };
+			const newData = { ...data, tickets: R.omit(defaultTicketIds, data.tickets || {}) };
 			// initialize with existing data
 			initialize({ data: newData, ...props });
 			// now check if there are any orphaned entities in the initial data and save the result

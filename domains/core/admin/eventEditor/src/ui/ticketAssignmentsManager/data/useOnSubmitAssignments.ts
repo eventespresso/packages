@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { any } from 'ramda';
+import * as R from 'ramda';
 
 import { useRelations } from '@eventespresso/services';
 import { UpdateTicketInput, useDatetimes, useTickets, useBulkEditTickets } from '@eventespresso/edtr-services';
@@ -46,7 +46,7 @@ const useOnSubmitAssignments = (): Callback => {
 			});
 			Object.entries(ticketsWithChangedQuantity).forEach(([id, quantity]) => {
 				// if it's already in uniqueInputs
-				if (any<UpdateTicketInput>(entityHasGuid(id), uniqueInputs)) {
+				if (R.any<UpdateTicketInput>(entityHasGuid(id), uniqueInputs)) {
 					return;
 				}
 				uniqueInputs.push({ id, quantity });

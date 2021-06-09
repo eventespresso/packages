@@ -1,4 +1,4 @@
-import { pickBy } from 'ramda';
+import * as R from 'ramda';
 import { ExecutionResult } from 'graphql';
 
 import { nodes as recurrences } from '../../../queries/recurrences/test/data';
@@ -45,7 +45,7 @@ export const getMockRequest = (mutationInput: MutationInput, mutationType: Mutat
 
 export const getMockResult = (mutationInput: MutationInput, mutationType: MutationType): ExecutionResult => {
 	// make sure that recurrences don't go into the result
-	const input = pickBy<MutationInput, MutationInput>(
+	const input = R.pickBy<MutationInput, MutationInput>(
 		(_, key) => Object.keys(mockedRecurrences[mutationType]).includes(key),
 		mutationInput
 	);

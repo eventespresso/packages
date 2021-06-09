@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { isEmpty } from 'ramda';
+import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { ButtonRow, ButtonProps, Next, Previous } from '@eventespresso/ui-components';
@@ -28,7 +28,7 @@ const ContentFooter: React.FC<BaseProps> = ({ onSubmit }) => {
 			isNextDisabled = !dateNameLen;
 			break;
 		case TICKETS_STEP:
-			isNextDisabled = isEmpty(tickets);
+			isNextDisabled = R.isEmpty(tickets);
 			break;
 	}
 

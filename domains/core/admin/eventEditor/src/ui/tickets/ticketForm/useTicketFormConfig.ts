@@ -1,5 +1,5 @@
 import { useMemo, useCallback } from 'react';
-import { pick } from 'ramda';
+import * as R from 'ramda';
 
 import { CalendarOutlined, ControlOutlined, ProfileOutlined } from '@eventespresso/icons';
 import { useUtcISOToSiteDate, useSiteDateToUtcISO, getEEDomData } from '@eventespresso/services';
@@ -69,7 +69,7 @@ export const useTicketFormConfig = (id: EntityId, config?: EspressoFormProps): T
 			'eventEditor.ticketForm.initalValues',
 			{
 				visibility: 'PUBLIC',
-				...pick<Omit<Partial<Ticket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
+				...R.pick<Omit<Partial<Ticket>, 'prices'>, keyof Ticket>(FIELD_NAMES, ticket || {}),
 				startDate,
 				endDate,
 			},

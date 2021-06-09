@@ -1,4 +1,4 @@
-import { equals, filter, pathOr, assocPath } from 'ramda';
+import * as R from 'ramda';
 import { parseISO } from 'date-fns';
 
 import type { EntityId } from '@eventespresso/data';
@@ -25,15 +25,15 @@ export const prepareEntitiesForUpdate = <Entity extends TAMRelationEntity>({
 	newData,
 	relation,
 }: EntitiesForUpdateOptions<Entity>): EntitiesToUpdate => {
-	const existingEntities = pathOr<TAMRelationalEntity>({}, [entity], existingData);
-	const newEntities = pathOr<TAMRelationalEntity>({}, [entity], newData);
+	const existingEntities = R.pathOr<TAMRelationalEntity>({}, [entity], existingData);
+	const newEntities = R.pathOr<TAMRelationalEntity>({}, [entity], newData);
 
-	return filter<EntitiesToUpdate[0]>(([entityId, possibleRelation]) => {
-		const newRelatedEntities = pathOr<EntityId[]>([], [relation], possibleRelation);
-		const oldRelatedEntities = pathOr<EntityId[]>([], [entityId, relation], existingEntities);
+	return R.filter<EntitiesToUpdate[0]>(([entityId, possibleRelation]) => {
+		const newRelatedEntities = R.pathOr<EntityId[]>([], [relation], possibleRelation);
+		const oldRelatedEntities = R.pathOr<EntityId[]>([], [entityId, relation], existingEntities);
 		// make sure to sort them before compare
 		// to make sure that they are actually different
-		return !equals(newRelatedEntities.sort(), oldRelatedEntities.sort());
+		return !R.equals(newRelatedEntities.sort(), oldRelatedEntities.sort());
 	}, Object.entries(newEntities));
 };
 
@@ -55,12 +55,12 @@ export const ticketsWithNewQuantity = ({
 }: TicketsWithQuantityArgs): AnyObject<number> => {
 	// create a map of date ids to capacities
 	const dateIdToCapacityMap: AnyObject<number> = allDates.reduce(
-		(acc, date) => assocPath([date.id], date.capacity, acc),
+		(acc, date) => R.assocPath([date.id], date.capacity, acc),
 		{}
 	);
 	// create a map of ticket ids to quantities
 	const ticketIdToQuantityMap: AnyObject<number> = allTickets.reduce(
-		(acc, ticket) => assocPath([ticket.id], ticket.quantity, acc),
+		(acc, ticket) => R.assocPath([ticket.id], ticket.quantity, acc),
 		{}
 	);
 	/**
@@ -103,7 +103,7 @@ export const ticketsWithNewQuantity = ({
 		}
 
 		// set the quantity to minimum capacity
-		return assocPath([ticketId], minimumCapacity, acc);
+		return R.assocPath([ticketId], minimumCapacity, acc);
 	}, {});
 };
 

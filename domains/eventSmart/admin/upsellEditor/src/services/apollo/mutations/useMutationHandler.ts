@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { pick } from 'ramda';
+import * as R from 'ramda';
 
 import { MutationFunctionOptions, MutationType } from '@eventespresso/data';
 
@@ -14,7 +14,7 @@ const useMutationHandler = (): MutationHandler => {
 
 	const mutationHandler = useCallback<MutationHandler>(
 		(mutationType, input) => {
-			const normalizedInput: UpsellAdCommonInput = pick(UPSELL_AD_INPUT_FIELDS, input);
+			const normalizedInput: UpsellAdCommonInput = R.pick(UPSELL_AD_INPUT_FIELDS, input);
 
 			if (mutationType === MutationType.Update) {
 				normalizedInput.id = input.id;

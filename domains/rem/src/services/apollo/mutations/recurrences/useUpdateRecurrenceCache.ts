@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { findIndex, update } from 'ramda';
+import * as R from 'ramda';
 
 import type { CacheUpdaterFn, CacheUpdaterFnArgs } from '../types';
 import { Recurrence, RecurrencesList } from '../../types';
@@ -21,10 +21,10 @@ const useUpdateRecurrenceCache = (): CacheUpdaterFn => {
 					break;
 				case 'update':
 					// find the index of the recurrence to update
-					recurrenceIndex = findIndex(entityHasGuid(recurrence.id), nodes);
+					recurrenceIndex = R.findIndex(entityHasGuid(recurrence.id), nodes);
 					// if recurrence exists
 					if (recurrenceIndex >= 0) {
-						newNodes = update(recurrenceIndex, recurrence, nodes);
+						newNodes = R.update(recurrenceIndex, recurrence, nodes);
 					}
 					break;
 				case 'remove':

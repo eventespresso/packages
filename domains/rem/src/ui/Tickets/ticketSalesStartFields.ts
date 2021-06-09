@@ -1,4 +1,4 @@
-import { pick } from 'ramda';
+import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
 import { intervalsToOptions, DATE_INTERVALS } from '@eventespresso/dates';
@@ -7,7 +7,7 @@ import type { Intervals } from '@eventespresso/dates';
 import type { FieldProps } from '@eventespresso/form';
 
 const unitOptions = intervalsToOptions(
-	pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS)
+	R.pick<Intervals, keyof Intervals>(['months', 'weeks', 'days', 'hours', 'minutes'], DATE_INTERVALS)
 );
 
 export const ticketSalesStartFields: Array<FieldProps> = [

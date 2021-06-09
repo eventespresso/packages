@@ -1,4 +1,4 @@
-import { pick } from 'ramda';
+import * as R from 'ramda';
 import { __ } from '@eventespresso/i18n';
 
 import { intervalsToOptions, DATE_INTERVALS, setTimeToNoon } from '@eventespresso/dates';
@@ -31,7 +31,7 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 		() => ({
 			...DATE_DEFAULTS,
 			...config?.initialValues,
-			...pick<Partial<Datetime>, keyof Datetime>(DATE_FIELDS_TO_USE, datetime || {}),
+			...R.pick<Partial<Datetime>, keyof Datetime>(DATE_FIELDS_TO_USE, datetime || {}),
 		}),
 		[config?.initialValues, datetime]
 	);
@@ -93,7 +93,7 @@ const useDateFormConfig = (datetime: Datetime, config?: Partial<EspressoFormProp
 							name: 'unit',
 							label: __('Unit'),
 							fieldType: 'select',
-							options: intervalsToOptions(pick(['days', 'hours', 'minutes'], DATE_INTERVALS)),
+							options: intervalsToOptions(R.pick(['days', 'hours', 'minutes'], DATE_INTERVALS)),
 						},
 					],
 				},
