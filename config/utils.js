@@ -24,6 +24,9 @@ function requestToExternal(request) {
 
 		case 'react-dom':
 			return 'ReactDOM';
+
+		case 'ramda':
+			return 'R';
 	}
 
 	if (BUNDLED_PACKAGES.includes(request)) {
