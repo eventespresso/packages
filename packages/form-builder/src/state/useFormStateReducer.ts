@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { omit, over, lensPath, mergeLeft, set, compose } from 'ramda';
+import { compose, concat, lensPath, mergeLeft, omit, over, pathEq, set, unless } from 'ramda';
 
 import { uuid } from '@eventespresso/utils';
 
@@ -17,6 +17,8 @@ import {
 export const initialState: FormState = {
 	elements: {},
 	sections: {},
+	deletedElements: [],
+	deletedSections: [],
 	isDirty: false,
 };
 
@@ -34,14 +36,14 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 			switch (type) {
 				case 'ADD_SECTION': {
 					// New section will be composed of default section
-					const newSection = { ...DEFAULT_SECTION, ...section, UUID: newUuid };
+					const newSection = { ...DEFAULT_SECTION, ...section, UUID: newUuid, isNew: true };
 					predicates = [addSectionToState(newSection, afterUuid)];
 					break;
 				}
 
 				case 'COPY_SECTION': {
 					// Copied section will be composed of the existing section
-					const newSection = { ...state.sections[UUID], ...section, UUID: newUuid };
+					const newSection = { ...state.sections[UUID], ...section, UUID: newUuid, isNew: true };
 					predicates = [addSectionToState(newSection, UUID), copySectionElements(UUID, newSection.UUID)];
 					break;
 				}
@@ -51,9 +53,12 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 					break;
 				}
 
-				case 'UPDATE_SECTION':
-					predicates = [over(lensPath(['sections', UUID]), mergeLeft({ ...section, UUID }))];
+				case 'UPDATE_SECTION': {
+					// Update and mark the section as modified
+					const newSection = { ...section, UUID, isModified: true };
+					predicates = [over(lensPath(['sections', UUID]), mergeLeft(newSection))];
 					break;
+				}
 
 				case 'DELETE_SECTION': {
 					// We also need to delete the section elements as well
@@ -62,20 +67,25 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 					predicates = [
 						over(lensPath(['sections']), omit([UUID])),
 						over(lensPath(['elements']), omit(sectionElementIds)),
+						// unless a section is new, it needs to be marked as deleted
+						unless(
+							pathEq(['sections', UUID, 'isNew'], true),
+							over(lensPath(['deletedSections']), concat([UUID]))
+						),
 					];
 					break;
 				}
 
 				case 'ADD_ELEMENT': {
 					// New element will be composed of default element
-					const newElement = { ...DEFAULT_ELEMENT, ...element, UUID: newUuid };
+					const newElement = { ...DEFAULT_ELEMENT, ...element, UUID: newUuid, isNew: true };
 					predicates = [addElementToState(newElement)];
 					break;
 				}
 
 				case 'COPY_ELEMENT': {
 					// Copied element will be composed of the existing element
-					const newElement = { ...state.elements[UUID], UUID: newUuid };
+					const newElement = { ...state.elements[UUID], UUID: newUuid, isNew: true };
 					predicates = [addElementToState(newElement, UUID)];
 					break;
 				}
@@ -85,12 +95,22 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 					break;
 				}
 
-				case 'UPDATE_ELEMENT':
-					predicates = [over(lensPath(['elements', UUID]), mergeLeft({ ...element, UUID }))];
+				case 'UPDATE_ELEMENT': {
+					// Update and mark the element as modified
+					const newElement = { ...element, UUID, isModified: true };
+					predicates = [over(lensPath(['elements', UUID]), mergeLeft(newElement))];
 					break;
+				}
 
 				case 'DELETE_ELEMENT':
-					predicates = [over(lensPath(['elements']), omit([UUID]))];
+					predicates = [
+						over(lensPath(['elements']), omit([UUID])),
+						// unless an element is new, it needs to be marked as deleted
+						unless(
+							pathEq(['elements', UUID, 'isNew'], true),
+							over(lensPath(['deletedElements']), concat([UUID]))
+						),
+					];
 					break;
 
 				case 'TOGGLE_OPEN_ELEMENT':
