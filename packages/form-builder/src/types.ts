@@ -63,6 +63,9 @@ export interface FormElement {
 	wpUser?: number;
 	// This is the current input value if needed.
 	value?: any;
+	// These are the purity flags which can be used for mutations
+	isNew?: boolean;
+	isModified?: boolean;
 }
 
 export type FormSectionStatus = 'active' | 'archived' | 'default' | 'shared' | 'trashed';
@@ -82,7 +85,15 @@ export interface FormSection {
 	showDescription?: boolean;
 	status?: FormSectionStatus;
 	wpUser?: number;
+	// These are the purity flags which can be used for mutations
+	isNew?: boolean;
+	isModified?: boolean;
 }
+
+export type FormBuilderData = {
+	sections: Array<FormSection>;
+	elements: Array<FormElement>;
+};
 
 export interface FormBuilderProps {
 	bodyClassName?: string;
@@ -90,6 +101,7 @@ export interface FormBuilderProps {
 	contentClassName?: string;
 	header?: React.ReactNode;
 	sidebarClassName?: string;
+	onSave?: (data: FormBuilderData) => void;
 }
 
 interface CommonProps {

@@ -8,6 +8,8 @@ import type { FormStateProviderProps } from '../context';
 export interface FormState {
 	sections: AnyObject<FormSection>;
 	elements: AnyObject<FormElement>;
+	deletedSections: Array<string>;
+	deletedElements: Array<string>;
 	isDirty: boolean;
 	openElement?: string;
 }
