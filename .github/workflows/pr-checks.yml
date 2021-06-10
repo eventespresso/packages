@@ -126,7 +126,7 @@ jobs:
               run: yarn && yarn build
 
             - name: Install WordPress
-              run: yarn wp-env start
+              run: yarn wp-env start --update --debug
 
             - name: Setup Playwright
               uses: microsoft/playwright-github-action@v1
