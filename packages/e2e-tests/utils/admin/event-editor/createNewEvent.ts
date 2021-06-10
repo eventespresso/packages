@@ -8,8 +8,7 @@ export async function createNewEvent({ title }: any = {}) {
 	await page.click(menuLinkSelector);
 
 	await page.click('#add-new-event');
-	const content = await page.content();
-	console.log(content);
+
 	await page.focus('#titlewrap #title');
 
 	await page.type('#titlewrap #title', title);
