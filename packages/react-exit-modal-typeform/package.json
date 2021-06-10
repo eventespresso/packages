@@ -21,9 +21,7 @@
 	"main": "build/index.js",
 	"module": "build-module/index.js",
 	"scripts": {
-		"lint": "eslint ./src/**/*.{js,ts,tsx} --format=codeframe",
-		"update-deps": "npx ncu -p yarn -u",
-		"lint-fix": "eslint ./src/**/*.{js,ts,tsx} --fix"
+		"update-deps": "npx ncu"
 	},
 	"publishConfig": {
 		"access": "public"
