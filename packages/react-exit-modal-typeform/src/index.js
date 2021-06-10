@@ -35,7 +35,7 @@ var ExitModal =
 		_createClass(ExitModal, [
 			{
 				key: 'componentWillUpdate',
-				value: function componentWillUpdate(nextProps, nextState) {
+				value: function componentWillUpdate(nextProps) {
 					if (nextProps.showModal !== this.state.showModal) {
 						this.setState({
 							showModal: nextProps.showModal,
