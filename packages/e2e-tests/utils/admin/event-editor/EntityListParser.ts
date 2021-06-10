@@ -1,5 +1,5 @@
 import { clickButton } from '@e2eUtils/common';
-import type { Page, ElementHandle, JSHandle } from 'playwright';
+import type { Page, ElementHandle, JSHandle } from 'playwright-core';
 
 import { EntityType } from '../../../types';
 

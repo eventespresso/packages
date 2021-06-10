@@ -1,4 +1,4 @@
-import type { ElementHandle } from 'playwright';
+import type { ElementHandle } from 'playwright-core';
 
 /**
  * Clicks a button with the given text.

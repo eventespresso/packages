@@ -1,4 +1,4 @@
-import type { Page, ElementHandle } from 'playwright';
+import type { Page, ElementHandle } from 'playwright-core';
 import { assocPath } from 'ramda';
 
 import { clickButton, respondToAlert } from '@e2eUtils/common';

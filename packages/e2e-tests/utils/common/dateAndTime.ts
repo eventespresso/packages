@@ -5,10 +5,12 @@ import { getEEDOMData } from './DOMData';
 /**
  * Formate the date object using the website format settigs
  */
-export const formatDateTime = (formatStr?: string) => async (date: Date): Promise<string> => {
-	const formatString = formatStr || (await getDateTimeFormat());
-	return format(date, formatString);
-};
+export const formatDateTime =
+	(formatStr?: string) =>
+	async (date: Date): Promise<string> => {
+		const formatString = formatStr || (await getDateTimeFormat());
+		return format(date, formatString);
+	};
 
 export const getDateFormat = async (): Promise<string> => {
 	const data = await getEEDOMData();
