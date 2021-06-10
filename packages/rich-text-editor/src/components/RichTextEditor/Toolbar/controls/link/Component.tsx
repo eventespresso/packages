@@ -9,7 +9,11 @@ import { ToolbarItemProps } from '../../types';
 import { ToolbarPopover } from '../../ToolbarPopover';
 
 const Component: React.FC<ToolbarItemProps<'link'>> = ({ currentValue, toolbar, onChange, config }) => {
-	const { isOpen: isUrlPopoverOpen, onClose: onCloseUrlPopover, onToggle: toggleUrlPopover } = useDisclosure({
+	const {
+		isOpen: isUrlPopoverOpen,
+		onClose: onCloseUrlPopover,
+		onToggle: toggleUrlPopover,
+	} = useDisclosure({
 		defaultIsOpen: false,
 	});
 

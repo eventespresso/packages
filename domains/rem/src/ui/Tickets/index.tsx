@@ -12,7 +12,7 @@ import { ContentRenderer } from './multiStep';
 
 const Tickets: React.FC = () => {
 	const { addTicket, tickets, deleteTicket } = useFormState();
-	const templates = (useTickets() as unknown) as RemTicket[];
+	const templates = useTickets() as unknown as RemTicket[];
 	const { utcToSiteTime } = useTimeZoneTime();
 	const getTicketPrices = useTicketPrices();
 	const prepTemplatePrices = usePrepTemplatePrices();

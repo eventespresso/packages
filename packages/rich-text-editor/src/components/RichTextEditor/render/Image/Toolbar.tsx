@@ -20,10 +20,11 @@ const Toolbar: React.FC<ToolbarProps> = ({ align, setAlignment, toolbar }) => {
 	}, []);
 
 	const getOnClick = useCallback(
-		(alignment): DOMAttributes<HTMLButtonElement>['onClick'] => (event) => {
-			event.preventDefault();
-			setAlignment(alignment);
-		},
+		(alignment): DOMAttributes<HTMLButtonElement>['onClick'] =>
+			(event) => {
+				event.preventDefault();
+				setAlignment(alignment);
+			},
 		[setAlignment]
 	);
 

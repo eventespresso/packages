@@ -11,8 +11,10 @@ export type FormatAmountFunction = (amount: Amount) => string;
  * @param {number} decimalPlaces
  * @return {Function}
  */
-export const formatAmount = (decimalPlaces: number): FormatAmountFunction => (amount: Amount): string => {
-	const newParsedAmount = parsedAmount(amount);
-	// newParsedAmount may be NaN
-	return isNaN(newParsedAmount) ? '' : newParsedAmount.toFixed(decimalPlaces);
-};
+export const formatAmount =
+	(decimalPlaces: number): FormatAmountFunction =>
+	(amount: Amount): string => {
+		const newParsedAmount = parsedAmount(amount);
+		// newParsedAmount may be NaN
+		return isNaN(newParsedAmount) ? '' : newParsedAmount.toFixed(decimalPlaces);
+	};

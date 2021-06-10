@@ -20,9 +20,10 @@ import { ActiveDatesFilters } from './filterBar';
 const DatesList: React.FC = () => {
 	const filterState = useDatesListFilterState();
 
-	const renderList = useCallback(() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />), [
-		filterState.view,
-	]);
+	const renderList = useCallback(
+		() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />),
+		[filterState.view]
+	);
 
 	return (
 		<EntityList

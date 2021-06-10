@@ -19,10 +19,12 @@ const PriceAmountInput: React.FC<PriceModifierProps> = ({ price }) => {
 
 	const disabled = isDisabled || (reverseCalculate && price.isBasePrice) || price.isDefault;
 
-	const formatParse = (defaultValue = null) => (amount: any) => {
-		const parsedValue = parsedAmount(amount);
-		return isNaN(parsedValue) ? defaultValue : parsedValue;
-	};
+	const formatParse =
+		(defaultValue = null) =>
+		(amount: any) => {
+			const parsedValue = parsedAmount(amount);
+			return isNaN(parsedValue) ? defaultValue : parsedValue;
+		};
 
 	return (
 		<MoneyInputWithConfig disabled={disabled} isPercent={price.isPercent}>

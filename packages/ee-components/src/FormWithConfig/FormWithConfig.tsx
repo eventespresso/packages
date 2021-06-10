@@ -13,7 +13,7 @@ const FormWithConfig = <FormValues extends AnyObject>({
 
 	const config = useMemoStringify<FormConfig>({ ...dateTimeFormats, locale: locale?.user });
 
-	return <EspressoForm columns={columns} config={config} {...((props as unknown) as any)} />;
+	return <EspressoForm columns={columns} config={config} {...(props as unknown as any)} />;
 };
 
 export default FormWithConfig;

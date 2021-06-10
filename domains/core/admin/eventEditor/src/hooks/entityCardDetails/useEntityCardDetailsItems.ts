@@ -12,10 +12,10 @@ const useEntityCardDetailsItems = <T extends string>(
 	entityId: EntityId,
 	filterByEntityType = true
 ): Array<React.ReactNode> => {
-	const registry = useMemo(() => new EntityCardDetailsRegistry({ domain, entityType, entityId }), [
-		entityId,
-		entityType,
-	]);
+	const registry = useMemo(
+		() => new EntityCardDetailsRegistry({ domain, entityType, entityId }),
+		[entityId, entityType]
+	);
 
 	const { generateElements } = registry;
 

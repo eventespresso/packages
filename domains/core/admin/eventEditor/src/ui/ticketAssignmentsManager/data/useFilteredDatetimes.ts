@@ -10,11 +10,10 @@ const useFilteredDatetimes = (allDates: Array<Datetime>): Array<Datetime> => {
 	const datesInYearAndMonth = inYearAndMonth(datesByMonth);
 
 	// If the year i.e. datesByMonth[0] is set, then filter
-	const datetimes = useMemo(() => (datesByMonth[0] ? datesInYearAndMonth(allDates) : allDates), [
-		allDates,
-		datesByMonth,
-		datesInYearAndMonth,
-	]);
+	const datetimes = useMemo(
+		() => (datesByMonth[0] ? datesInYearAndMonth(allDates) : allDates),
+		[allDates, datesByMonth, datesInYearAndMonth]
+	);
 
 	return useMemo(() => {
 		return showTrashedDates ? datetimes : notTrashed(datetimes);

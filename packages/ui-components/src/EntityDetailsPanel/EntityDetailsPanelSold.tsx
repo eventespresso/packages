@@ -18,10 +18,10 @@ interface Props {
 }
 
 const EntityDetailsPanelSold: React.FC<Props> = ({ adminUrl, eventId, sold = 0, type, ...props }) => {
-	const dbId = useMemo(() => (type === 'date' ? { datetime_id: props.dbId } : { ticket_id: props.dbId }), [
-		props.dbId,
-		type,
-	]);
+	const dbId = useMemo(
+		() => (type === 'date' ? { datetime_id: props.dbId } : { ticket_id: props.dbId }),
+		[props.dbId, type]
+	);
 
 	const regListUrl = useMemo(() => {
 		return addQueryArgs(adminUrl, {

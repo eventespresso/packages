@@ -31,14 +31,16 @@ export const intervalsToOptions = (intervals: Intervals, prependEmpty?: boolean)
 /**
  * Shifts the given date according to args.
  */
-export const shiftDate = (args: ShiftDateArgs) => (date: Date | string): Date => {
-	const parsedDate = date instanceof Date ? date : parseISO(date);
-	if (args?.unit && args?.value && args?.type) {
-		const fn = args.type === 'earlier' ? sub : add;
-		return fn(args.unit, parsedDate, args.value);
-	}
-	return parsedDate;
-};
+export const shiftDate =
+	(args: ShiftDateArgs) =>
+	(date: Date | string): Date => {
+		const parsedDate = date instanceof Date ? date : parseISO(date);
+		if (args?.unit && args?.value && args?.type) {
+			const fn = args.type === 'earlier' ? sub : add;
+			return fn(args.unit, parsedDate, args.value);
+		}
+		return parsedDate;
+	};
 
 /**
  * Sets the default time for a date based on `type`
@@ -68,12 +70,14 @@ export const setTimeToNoon = (date: Date): Date => pipe(setHours(12), setMinutes
 /**
  * Sets the time of the date object to from the given time object
  */
-export const setTimeFromDate = (time: Date) => (date: Date): Date => {
-	const hours = getHours(time);
-	const minutes = getMinutes(time);
-	const seconds = getSeconds(time);
-	return pipe(setHours(hours), setMinutes(minutes), setSeconds(seconds))(date);
-};
+export const setTimeFromDate =
+	(time: Date) =>
+	(date: Date): Date => {
+		const hours = getHours(time);
+		const minutes = getMinutes(time);
+		const seconds = getSeconds(time);
+		return pipe(setHours(hours), setMinutes(minutes), setSeconds(seconds))(date);
+	};
 
 /**
  * Sets the date, month and year of the date object to those of today

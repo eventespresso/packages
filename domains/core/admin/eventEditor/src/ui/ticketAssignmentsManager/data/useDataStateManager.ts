@@ -20,13 +20,15 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 	const { initialize, isInitialized } = assignmentManager;
 	const initialized = isInitialized();
 
-	const hasNoAssignedDates = useCallback(({ ticketId }) => orphanEntities.tickets.includes(ticketId), [
-		orphanEntities.tickets,
-	]);
+	const hasNoAssignedDates = useCallback(
+		({ ticketId }) => orphanEntities.tickets.includes(ticketId),
+		[orphanEntities.tickets]
+	);
 
-	const hasNoAssignedTickets = useCallback(({ datetimeId }) => orphanEntities.datetimes.includes(datetimeId), [
-		orphanEntities.datetimes,
-	]);
+	const hasNoAssignedTickets = useCallback(
+		({ datetimeId }) => orphanEntities.datetimes.includes(datetimeId),
+		[orphanEntities.datetimes]
+	);
 
 	const hasOrphanEntitiesOfType = useCallback(
 		(entityType: keyof typeof orphanEntities) => {
@@ -50,10 +52,10 @@ const useDataStateManager = (props: BaseProps): DataStateManager => {
 
 	const hasOrphanDates = useCallback(() => hasOrphanEntitiesOfType('datetimes'), [hasOrphanEntitiesOfType]);
 
-	const hasOrphanEntities = useCallback(() => hasOrphanTickets() || hasOrphanDates(), [
-		hasOrphanDates,
-		hasOrphanTickets,
-	]);
+	const hasOrphanEntities = useCallback(
+		() => hasOrphanTickets() || hasOrphanDates(),
+		[hasOrphanDates, hasOrphanTickets]
+	);
 
 	const getOldRelation = useCallback(
 		({ datetimeId }): EntityId[] => {

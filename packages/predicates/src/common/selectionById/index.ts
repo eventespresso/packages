@@ -17,12 +17,16 @@ export const entityHasGuid = <T extends Entity>(guid: EntityId): ((entity: T) =>
 
 // the following return a function that:
 // returns the entity with specified property if found in array of entities supplied to predicate
-export const findEntityByDbId = <T extends Entity>(entities: T[]) => (dbid: EntityDbId): T => {
-	return find(entityHasDbId(dbid), entities);
-};
-export const findEntityByGuid = <T extends Entity>(entities: T[]) => (guid: EntityId): T => {
-	return find(entityHasGuid(guid), entities);
-};
+export const findEntityByDbId =
+	<T extends Entity>(entities: T[]) =>
+	(dbid: EntityDbId): T => {
+		return find(entityHasDbId(dbid), entities);
+	};
+export const findEntityByGuid =
+	<T extends Entity>(entities: T[]) =>
+	(guid: EntityId): T => {
+		return find(entityHasGuid(guid), entities);
+	};
 // the following return a function that:
 // returns an array of entities with specified property found in array of property values supplied to predicate
 export const entitiesWithDbIdInArray = <T extends Entity>(entities: T[], dbidArray: EntityDbId[]): T[] => {

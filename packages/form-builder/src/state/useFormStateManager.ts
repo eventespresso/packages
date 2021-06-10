@@ -112,9 +112,10 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 		});
 	}, []);
 
-	const isElementOpen = useCallback<FSM['isElementOpen']>(({ UUID }) => UUID === state.openElement, [
-		state.openElement,
-	]);
+	const isElementOpen = useCallback<FSM['isElementOpen']>(
+		({ UUID }) => UUID === state.openElement,
+		[state.openElement]
+	);
 
 	const toggleOpenElement = useCallback<FSM['toggleOpenElement']>(({ openElement }) => {
 		dispatch({

@@ -24,16 +24,20 @@ export const copyPriceFields = <T>(price: T, predicate = isPriceField): T => pic
  *
  * @param {number} amount
  */
-export const updatePriceAmount = <T extends Price>(amount: number) => (price: T): T =>
-	assoc<number, T, string>('amount', parsedAmount(amount || 0), price);
+export const updatePriceAmount =
+	<T extends Price>(amount: number) =>
+	(price: T): T =>
+		assoc<number, T, string>('amount', parsedAmount(amount || 0), price);
 
 /**
  * updates the price type
  *
  * @param {string} type
  */
-export const updatePriceType = <T extends Price>(type: string) => (price: T): T =>
-	assoc<string, T, string>('priceType', type, price);
+export const updatePriceType =
+	<T extends Price>(type: string) =>
+	(price: T): T =>
+		assoc<string, T, string>('priceType', type, price);
 
 /**
  * given an array of prices, finds and updates price type for price matching the supplied GUID

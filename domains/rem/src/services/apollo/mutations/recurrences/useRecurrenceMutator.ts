@@ -44,7 +44,7 @@ const useRecurrenceMutator = (id = ''): RM => {
 
 	const mutationHandler = useMutationHandler();
 
-	const getUpdateCallback = useUpdateCallback((TypeName.Recurrence as unknown) as EdtrTypeName);
+	const getUpdateCallback = useUpdateCallback(TypeName.Recurrence as unknown as EdtrTypeName);
 
 	const createEntity = useCallback<RM['createEntity']>(
 		(input) => {

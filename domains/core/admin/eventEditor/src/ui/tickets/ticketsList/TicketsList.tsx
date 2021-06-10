@@ -21,9 +21,10 @@ import { ActiveTicketsFilters } from './filterBar';
 const TicketsList: React.FC = () => {
 	const filterState = useTicketsListFilterState();
 
-	const renderList = useCallback(() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />), [
-		filterState.view,
-	]);
+	const renderList = useCallback(
+		() => (filterState.view === 'card' ? <RenderCardView /> : <RenderTableView />),
+		[filterState.view]
+	);
 
 	return (
 		<EntityList

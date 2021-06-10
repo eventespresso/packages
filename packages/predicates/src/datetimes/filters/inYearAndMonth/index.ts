@@ -5,12 +5,14 @@ import type { DatetimeFilterFn } from '../types';
 
 type InYearAndMonth = (yearMonth: [number, number]) => DatetimeFilterFn;
 
-const inYearAndMonth: InYearAndMonth = ([year, month]) => (dates: Array<Datetime>): Array<Datetime> => {
-	const datesInYear = dates.filter((date) => isInYear(date, year));
+const inYearAndMonth: InYearAndMonth =
+	([year, month]) =>
+	(dates: Array<Datetime>): Array<Datetime> => {
+		const datesInYear = dates.filter((date) => isInYear(date, year));
 
-	const datesInMonth = datesInYear.filter((date) => isInMonth(date, month));
+		const datesInMonth = datesInYear.filter((date) => isInMonth(date, month));
 
-	return datesInMonth;
-};
+		return datesInMonth;
+	};
 
 export default inYearAndMonth;

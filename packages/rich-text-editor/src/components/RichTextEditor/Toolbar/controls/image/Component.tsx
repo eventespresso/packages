@@ -9,7 +9,11 @@ import { ToolbarItemProps } from '../../types';
 import { ToolbarPopover } from '../../ToolbarPopover';
 
 const Component: React.FC<ToolbarItemProps<'image'>> = ({ toolbar, onChange, config }) => {
-	const { isOpen: isImagePopoverOpen, onClose: onCloseImagePopover, onToggle: toggleImagePopover } = useDisclosure({
+	const {
+		isOpen: isImagePopoverOpen,
+		onClose: onCloseImagePopover,
+		onToggle: toggleImagePopover,
+	} = useDisclosure({
 		defaultIsOpen: false,
 	});
 

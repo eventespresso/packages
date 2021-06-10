@@ -26,9 +26,11 @@ const renderDraggableItem: SortByControlProps<Ticket>['renderDraggableItem'] = (
 const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useTicketsListFilterState();
 	const filteredTicketIds = useFilteredTicketIds();
-	const { allReorderedEntities: draggableItems, sortResponder, updateEntityList } = useReorderTickets(
-		filteredTicketIds
-	);
+	const {
+		allReorderedEntities: draggableItems,
+		sortResponder,
+		updateEntityList,
+	} = useReorderTickets(filteredTicketIds);
 
 	return (
 		<SortByControlUI

@@ -29,23 +29,29 @@ export const createId: PricePred = (price) => {
 /**
  * Converts a price to base price and sets the amount
  */
-export const basePrice = (amount?: number): PricePred => (price) => {
-	return { ...price, isBasePrice: true, amount };
-};
+export const basePrice =
+	(amount?: number): PricePred =>
+	(price) => {
+		return { ...price, isBasePrice: true, amount };
+	};
 
 /**
  * Sets the price amount
  */
-export const setAmount = (amount?: number): PricePred => (price) => {
-	return { ...price, amount };
-};
+export const setAmount =
+	(amount?: number): PricePred =>
+	(price) => {
+		return { ...price, amount };
+	};
 
 /**
  * Sets the price order
  */
-export const setOrder = (order: number): PricePred => (price) => {
-	return { ...price, order };
-};
+export const setOrder =
+	(order: number): PricePred =>
+	(price) => {
+		return { ...price, order };
+	};
 
 /**
  * Converts a price to percent discount

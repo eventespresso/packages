@@ -21,11 +21,10 @@ import './bg-colors.scss';
 const GeneratedDates: React.FC = () => {
 	const dates = useGenerateDates(true);
 	const { pageNumber, perPage, setPerPage, setPageNumber } = usePagination();
-	const paginatedDates = useMemo(() => paginateEntities({ entities: dates, pageNumber, perPage }), [
-		dates,
-		pageNumber,
-		perPage,
-	]);
+	const paginatedDates = useMemo(
+		() => paginateEntities({ entities: dates, pageNumber, perPage }),
+		[dates, pageNumber, perPage]
+	);
 	const total = dates?.length;
 
 	return (

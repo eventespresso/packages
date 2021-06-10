@@ -34,13 +34,8 @@ export const TagSelector: React.FC<TagSelectorProps> = ({
 		return props;
 	}, [defaultValue, value]);
 
-	const {
-		getSelectedItemProps,
-		getDropdownProps,
-		addSelectedItem,
-		removeSelectedItem,
-		selectedItems,
-	} = useMultipleSelection(multipleSelectionProps);
+	const { getSelectedItemProps, getDropdownProps, addSelectedItem, removeSelectedItem, selectedItems } =
+		useMultipleSelection(multipleSelectionProps);
 
 	const mayBeFireOnChange = useCallback(
 		(selectedItem) => {

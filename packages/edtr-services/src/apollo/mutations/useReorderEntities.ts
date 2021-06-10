@@ -123,11 +123,8 @@ export const useReorderEntities = <E extends Entity>({
 		[allReorderedEntities, cancel]
 	);
 
-	return useMemo(() => ({ allReorderedEntities, cancel, done, result, sortEntities }), [
-		allReorderedEntities,
-		cancel,
-		done,
-		result,
-		sortEntities,
-	]);
+	return useMemo(
+		() => ({ allReorderedEntities, cancel, done, result, sortEntities }),
+		[allReorderedEntities, cancel, done, result, sortEntities]
+	);
 };

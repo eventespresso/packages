@@ -62,8 +62,7 @@ export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	{
 		label: __('Email Confirmation'),
 		type: 'email-confirmation',
-		desc:
-			'adds a text input that confirms the entered email address matches the value entered into another email address input',
+		desc: 'adds a text input that confirms the entered email address matches the value entered into another email address input',
 	},
 	{
 		label: __('Password'),
@@ -83,8 +82,7 @@ export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	{
 		label: __('Local Date'),
 		type: 'datetime-local',
-		desc:
-			'adds a text input that allows users to enter a date and time (no timezone) directly via keyboard or a date/time picker',
+		desc: 'adds a text input that allows users to enter a date and time (no timezone) directly via keyboard or a date/time picker',
 	},
 	{
 		label: __('Month'),
@@ -134,14 +132,12 @@ export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	{
 		label: __('Number Range'),
 		type: 'range',
-		desc:
-			'adds a slider input that can be used to indicate a number range for setting a minimum and maximum values',
+		desc: 'adds a slider input that can be used to indicate a number range for setting a minimum and maximum values',
 	},
 	{
 		label: __('Phone Number'),
 		type: 'tel',
-		desc:
-			'adds a text field for entering a telephone number. Can be configured to only accept input that matches a pattern',
+		desc: 'adds a text field for entering a telephone number. Can be configured to only accept input that matches a pattern',
 	},
 	{
 		label: __('Dropdown'),
@@ -171,8 +167,7 @@ export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	{
 		label: __('State Selector'),
 		type: 'select-state',
-		desc:
-			'adds a dropdown selector populated with names of states/provinces for the countries that are enabled for the site',
+		desc: 'adds a dropdown selector populated with names of states/provinces for the countries that are enabled for the site',
 	},
 	{
 		label: __('Button'),

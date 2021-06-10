@@ -20,15 +20,8 @@ export const EntityListFilterBar = <FS extends ELFSM>({
 	listId,
 	showBulkActionsToggle,
 }: EntityListFilterBarProps<FS>): JSX.Element => {
-	const {
-		searchText,
-		setCardView,
-		setSearchText,
-		setTableView,
-		showBulkActions,
-		toggleBulkActions,
-		view,
-	} = filterState;
+	const { searchText, setCardView, setSearchText, setTableView, showBulkActions, toggleBulkActions, view } =
+		filterState;
 
 	const filerBarItems = useFilterBarUIElements({ domain, filterState, listId });
 

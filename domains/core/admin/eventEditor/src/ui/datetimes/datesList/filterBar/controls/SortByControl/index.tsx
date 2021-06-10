@@ -23,9 +23,11 @@ const renderDraggableItem: SortByControlProps<Datetime>['renderDraggableItem'] =
 const SortByControl: React.FC = () => {
 	const { sortBy, setSortBy } = useDatesListFilterState();
 	const filteredDateIds = useFilteredDateIds();
-	const { allReorderedEntities: draggableItems, sortResponder, updateEntityList } = useReorderDatetimes(
-		filteredDateIds
-	);
+	const {
+		allReorderedEntities: draggableItems,
+		sortResponder,
+		updateEntityList,
+	} = useReorderDatetimes(filteredDateIds);
 
 	return (
 		<SortByControlUI

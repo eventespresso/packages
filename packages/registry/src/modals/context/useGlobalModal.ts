@@ -19,21 +19,17 @@ const useGlobalModal = <D = AnyObject>(name: string): GlobalModal<D> => {
 
 	const open = useCallback<GM['open']>(() => openModal(name), [name, openModal]);
 
-	const openWithData = useCallback<GM['openWithData']>((data) => openModalWithData(name, data), [
-		name,
-		openModalWithData,
-	]);
+	const openWithData = useCallback<GM['openWithData']>(
+		(data) => openModalWithData(name, data),
+		[name, openModalWithData]
+	);
 
 	const setData = useCallback<GM['setData']>((data) => setModalData(name, data), [name, setModalData]);
 
-	return useMemo(() => ({ close, getData, isOpen, open, openWithData, setData }), [
-		close,
-		getData,
-		isOpen,
-		open,
-		openWithData,
-		setData,
-	]);
+	return useMemo(
+		() => ({ close, getData, isOpen, open, openWithData, setData }),
+		[close, getData, isOpen, open, openWithData, setData]
+	);
 };
 
 export default useGlobalModal;

@@ -22,11 +22,10 @@ const Table: React.FC<TableProps> = ({ prices }) => {
 	const footerRowGenerator = useFooterRowGenerator();
 	const headerRowGenerator = useHeaderRowGenerator();
 
-	const bodyRows = useMemo(() => prices.map((price, index) => bodyRowGenerator({ index, isDisabled, price })), [
-		bodyRowGenerator,
-		isDisabled,
-		prices,
-	]);
+	const bodyRows = useMemo(
+		() => prices.map((price, index) => bodyRowGenerator({ index, isDisabled, price })),
+		[bodyRowGenerator, isDisabled, prices]
+	);
 
 	const footerRows = useMemo(() => {
 		const footerRow = footerRowGenerator({ isDisabled, reverseCalculate, toggleCalcDir });

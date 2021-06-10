@@ -12,10 +12,10 @@ const useEntityActionsMenuItems = <E extends Entity, T extends string>(
 	entity: E,
 	filterByEntityType = true
 ): Array<React.ReactNode> => {
-	const registry = useMemo(() => new EntityActionsMenuRegistry({ domain, entityType, entityId: entity.id }), [
-		entity.id,
-		entityType,
-	]);
+	const registry = useMemo(
+		() => new EntityActionsMenuRegistry({ domain, entityType, entityId: entity.id }),
+		[entity.id, entityType]
+	);
 
 	const { generateElements } = registry;
 

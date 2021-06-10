@@ -11,11 +11,10 @@ const BodyCell: React.FC<RenderCellProps> = ({ datetime, ticket }) => {
 
 	const status = getAssignmentStatus({ datetimeId: datetime.id, ticketId: ticket.id });
 
-	const onClick = useCallback(() => toggleAssignment({ datetimeId: datetime.id, ticketId: ticket.id }), [
-		datetime.id,
-		ticket.id,
-		toggleAssignment,
-	]);
+	const onClick = useCallback(
+		() => toggleAssignment({ datetimeId: datetime.id, ticketId: ticket.id }),
+		[datetime.id, ticket.id, toggleAssignment]
+	);
 
 	const icon = useMemo(() => getRelationIcon(status), [status]);
 

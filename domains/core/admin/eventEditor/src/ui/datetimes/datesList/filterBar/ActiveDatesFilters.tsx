@@ -8,16 +8,8 @@ import { DatetimeSales, DatetimeStatus } from '@eventespresso/predicates';
 import { labels, statusOptions, salesOptions } from './controls/options';
 
 const ActiveDatesFilters: React.FC = () => {
-	const {
-		status,
-		setStatus,
-		sales,
-		setSales,
-		searchText,
-		setSearchText,
-		recurrence,
-		setRecurrence,
-	} = useDatesListFilterState();
+	const { status, setStatus, sales, setSales, searchText, setSearchText, recurrence, setRecurrence } =
+		useDatesListFilterState();
 
 	const statusTitle = `${labels.status}: ${statusOptions?.[status]}`;
 	const salesTitle = `${labels.sales}: ${salesOptions?.[sales]}`;

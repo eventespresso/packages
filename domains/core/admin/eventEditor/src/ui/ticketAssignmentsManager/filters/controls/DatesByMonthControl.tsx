@@ -16,9 +16,10 @@ const DatesByMonthControl: React.FC<DatesByMonthControlProps> = ({ datesByMonth,
 	const yearMonth = datesByMonth.join(':');
 
 	// Add all dates option at the top, "0:0" to match the "year:month" format
-	const monthsListWithAllDates = useMemo(() => [{ value: '0:0', label: __('All Dates') }, ...monthsList], [
-		monthsList,
-	]);
+	const monthsListWithAllDates = useMemo(
+		() => [{ value: '0:0', label: __('All Dates') }, ...monthsList],
+		[monthsList]
+	);
 
 	return (
 		<SelectWithLabel

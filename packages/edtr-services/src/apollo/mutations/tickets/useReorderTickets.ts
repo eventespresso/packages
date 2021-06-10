@@ -67,11 +67,10 @@ const useReorderTickets = (filteredEntityIds: Array<EntityId>): ReorderTickets =
 		[allEntities, sortEntities]
 	);
 
-	return useMemo(() => ({ allReorderedEntities, sortResponder, updateEntityList }), [
-		allReorderedEntities,
-		sortResponder,
-		updateEntityList,
-	]);
+	return useMemo(
+		() => ({ allReorderedEntities, sortResponder, updateEntityList }),
+		[allReorderedEntities, sortResponder, updateEntityList]
+	);
 };
 
 export default useReorderTickets;

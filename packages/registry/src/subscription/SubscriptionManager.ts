@@ -22,7 +22,8 @@ type SMI<SR extends ServiceRegistry = ServiceRegistry> = SubscriptionManagerInte
  * SR: Custom Service Registry structure created by the consumer which may contain additional properties/ methods
  */
 class SubscriptionManager<D extends string, S extends string, SR extends ServiceRegistry = ServiceRegistry>
-	implements SMI<SR> {
+	implements SMI<SR>
+{
 	protected options: Options<D, S>;
 
 	protected static subscriptionRegistry: SubscriptionRegistry = {};

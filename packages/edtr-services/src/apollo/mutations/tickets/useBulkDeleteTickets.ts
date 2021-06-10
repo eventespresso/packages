@@ -29,57 +29,58 @@ const useBulkDeleteTickets = (): Callback<Promise<ExecutionResult | void>> => {
 	const bulkDelete = useBulkDeleteEntities({ entityType: 'TICKET', typeName: TypeName.Ticket });
 
 	const updateEntityList = useCallback<Callback<VoidFunction>>(
-		({ entityIds, deletePermanently, relatedDatetimeIds }) => () => {
-			// Read the existing data from cache.
-			let data: TicketsList;
-			try {
-				data = cache.readQuery(queryOptions);
-			} catch (error) {
-				data = null;
-			}
-			const tickets = data?.espressoTickets || DEFAULT_LIST_DATA;
+		({ entityIds, deletePermanently, relatedDatetimeIds }) =>
+			() => {
+				// Read the existing data from cache.
+				let data: TicketsList;
+				try {
+					data = cache.readQuery(queryOptions);
+				} catch (error) {
+					data = null;
+				}
+				const tickets = data?.espressoTickets || DEFAULT_LIST_DATA;
 
-			const findTicket = findEntityByGuid(tickets.nodes);
-			const filteredTickets = { ...tickets };
-			let ticket: Ticket;
-			// run onDelete handler for every deleted ticket
-			for (const entityId of entityIds) {
-				ticket = findTicket(entityId);
-				onDeleteTicket({
-					cache,
-					tickets: filteredTickets,
-					ticket,
-					deletePermanently,
-				});
-				filteredTickets.nodes = entitiesWithGuIdNotInArray(filteredTickets.nodes, [entityId]);
-			}
+				const findTicket = findEntityByGuid(tickets.nodes);
+				const filteredTickets = { ...tickets };
+				let ticket: Ticket;
+				// run onDelete handler for every deleted ticket
+				for (const entityId of entityIds) {
+					ticket = findTicket(entityId);
+					onDeleteTicket({
+						cache,
+						tickets: filteredTickets,
+						ticket,
+						deletePermanently,
+					});
+					filteredTickets.nodes = entitiesWithGuIdNotInArray(filteredTickets.nodes, [entityId]);
+				}
 
-			const nodes = cacheNodesFromBulkDelete(entityIds, allTickets, deletePermanently);
+				const nodes = cacheNodesFromBulkDelete(entityIds, allTickets, deletePermanently);
 
-			let options: typeof queryOptions;
-			// if bulk delete is done as a result of deletion of related date(s)
-			if (relatedDatetimeIds.length) {
-				const path = ['variables', 'where', 'datetimeIn'];
-				// this is the current value for datetimeIn
-				const datetimeIn = pathOr([], path, queryOptions);
-				// remove the related dates from query options
-				// to make sure ticket list is updated
-				const finalDatetimeIn = datetimeIn.filter((id) => !relatedDatetimeIds.includes(id));
-				// update query options
-				options = assocPath(path, finalDatetimeIn, queryOptions);
-			}
+				let options: typeof queryOptions;
+				// if bulk delete is done as a result of deletion of related date(s)
+				if (relatedDatetimeIds.length) {
+					const path = ['variables', 'where', 'datetimeIn'];
+					// this is the current value for datetimeIn
+					const datetimeIn = pathOr([], path, queryOptions);
+					// remove the related dates from query options
+					// to make sure ticket list is updated
+					const finalDatetimeIn = datetimeIn.filter((id) => !relatedDatetimeIds.includes(id));
+					// update query options
+					options = assocPath(path, finalDatetimeIn, queryOptions);
+				}
 
-			updateTicketList({
-				...queryOptions,
-				...options,
-				data: {
-					espressoTickets: {
-						...tickets,
-						nodes,
+				updateTicketList({
+					...queryOptions,
+					...options,
+					data: {
+						espressoTickets: {
+							...tickets,
+							nodes,
+						},
 					},
-				},
-			});
-		},
+				});
+			},
 		[allTickets, cache, onDeleteTicket, queryOptions, updateTicketList]
 	);
 

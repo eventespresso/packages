@@ -8,16 +8,8 @@ import { TicketsSales, TicketsStatus } from '@eventespresso/predicates';
 import { labels, statusOptions, salesOptions } from './controls/options';
 
 const ActiveTicketsSFilters: React.FC = () => {
-	const {
-		status,
-		setStatus,
-		sales,
-		setSales,
-		searchText,
-		setSearchText,
-		isChained,
-		toggleIsChained,
-	} = useTicketsListFilterState();
+	const { status, setStatus, sales, setSales, searchText, setSearchText, isChained, toggleIsChained } =
+		useTicketsListFilterState();
 
 	const statusTitle = `${labels.status}: ${statusOptions?.[status]}`;
 	const salesTitle = `${labels.sales}: ${salesOptions?.[sales]}`;

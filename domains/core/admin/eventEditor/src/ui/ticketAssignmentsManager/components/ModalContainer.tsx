@@ -52,12 +52,10 @@ const ModalContainer: React.FC = () => {
 		);
 	}
 
-	const contextProps = useMemo(() => ({ assignmentType, entity, title, onCloseModal: onClose }), [
-		assignmentType,
-		entity,
-		onClose,
-		title,
-	]);
+	const contextProps = useMemo(
+		() => ({ assignmentType, entity, title, onCloseModal: onClose }),
+		[assignmentType, entity, onClose, title]
+	);
 
 	const onSubmit = useCallback<TAMModalProps['onSubmit']>(
 		async (data) => {

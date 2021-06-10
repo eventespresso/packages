@@ -25,7 +25,8 @@ type GetSetCbArgs = {
  * FS: Filter State (manager): The filter state instance for the current entity list
  */
 class FilterBarService<D extends string, L extends string, E extends Entity, FS extends ELFSM>
-	implements FBS<L, E, FS> {
+	implements FBS<L, E, FS>
+{
 	private subscriptionManager: SubscriptionManager<D, FilterBarServiceType>;
 
 	public entityListId: L;

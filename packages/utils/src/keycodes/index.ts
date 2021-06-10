@@ -1,9 +1,15 @@
 import { includes } from 'ramda';
 import type { Key } from './types';
 
-const eventHasKey = (key: Key) => (e: React.KeyboardEvent): boolean => e?.key === key;
+const eventHasKey =
+	(key: Key) =>
+	(e: React.KeyboardEvent): boolean =>
+		e?.key === key;
 
-const eventKeyIn = (keys: Key[]) => (e: React.KeyboardEvent): boolean => includes(e?.key, keys);
+const eventKeyIn =
+	(keys: Key[]) =>
+	(e: React.KeyboardEvent): boolean =>
+		includes(e?.key, keys);
 
 export const isEnterKey = eventHasKey('Enter');
 

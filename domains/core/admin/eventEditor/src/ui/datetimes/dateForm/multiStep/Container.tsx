@@ -8,9 +8,12 @@ import { EntityEditModalData } from '@edtrUI/types';
 import useOnSubmit from './useOnSubmit';
 
 const Container: React.FC = () => {
-	const { getData, isOpen, close: closeEditDateModal, setData } = useGlobalModal<EntityEditModalData>(
-		EdtrGlobalModals.EDIT_DATE
-	);
+	const {
+		getData,
+		isOpen,
+		close: closeEditDateModal,
+		setData,
+	} = useGlobalModal<EntityEditModalData>(EdtrGlobalModals.EDIT_DATE);
 	const { close: closeNewDateModal } = useGlobalModal(EdtrGlobalModals.NEW_DATE);
 
 	const onClose = useCallback(() => {

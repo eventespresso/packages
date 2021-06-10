@@ -11,9 +11,11 @@ import type { PriceToTpcModifier } from '../hooks/usePriceToTpcModifier';
 export const getPriceModifierPriceTypeGuid = (price: TpcPriceModifier): EntityId => prop('priceType', price);
 
 // returns price type for supplied price modifier if found in array of price types
-export const getPriceType = (priceTypes: PriceType[]) => (price: TpcPriceModifier): PriceType => {
-	return findEntityByGuid(priceTypes)(getPriceModifierPriceTypeGuid(price));
-};
+export const getPriceType =
+	(priceTypes: PriceType[]) =>
+	(price: TpcPriceModifier): PriceType => {
+		return findEntityByGuid(priceTypes)(getPriceModifierPriceTypeGuid(price));
+	};
 
 /**
  * returns a copy of price with price type properties applied
