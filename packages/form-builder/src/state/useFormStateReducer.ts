@@ -126,7 +126,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 					throw new Error('Unexpected action');
 			}
 			// @ts-ignore - compose TS is not happy with unknown number of arguments
-			const newState = compose(...predicates)(state);
+			const newState = R.compose(...predicates)(state);
 			return { ...newState, isDirty: true };
 		},
 		[initializer]
