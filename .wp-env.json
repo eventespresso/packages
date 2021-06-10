@@ -1,5 +1,5 @@
 {
-	"core": "WordPress/WordPress#5.7",
+	"core": "WordPress/WordPress",
 	"env": {
 		"tests": {
 			"mappings": {
