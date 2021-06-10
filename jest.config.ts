@@ -50,7 +50,7 @@ const config: Config.InitialOptions = {
 	collectCoverageFrom: ['assets/src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
 	setupFiles: ['react-app-polyfill/jsdom'],
 	setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
-	testEnvironment: 'jest-environment-jsdom-fourteen',
+	testEnvironment: 'jest-environment-jsdom',
 	transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$', '^.+\\.module\\.(css|sass|scss)$'],
 	modulePaths: [],
 	moduleNameMapper: resolveTsconfigPathsToModuleNameMapper(),
