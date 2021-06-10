@@ -125,6 +125,9 @@ jobs:
               if: ${{ ! fromJson(env.run_after_build) }}
               run: yarn && yarn build
 
+            - name: Copy vendor assets
+              run: mkdir -p build/vendor/ && cp node_modules/ramda/dist/* build/vendor/
+
             - name: Install WordPress
               run: yarn wp-env start --debug
 

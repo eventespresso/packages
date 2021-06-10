@@ -113,7 +113,7 @@
 		"@typescript-eslint/parser": "^4.22.0",
 		"@wordpress/babel-plugin-makepot": "^4.1.2",
 		"@wordpress/dependency-extraction-webpack-plugin": "^3.1.2",
-		"@wordpress/env": "4.0.2",
+		"@wordpress/env": "4.0.5",
 		"@wordpress/eslint-plugin": "^9.0.3",
 		"babel-eslint": "10.1.0",
 		"babel-jest": "^26.6.3",
