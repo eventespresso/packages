@@ -1,15 +1,16 @@
-import { useCallback, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Copy, DragHandle, SettingsOutlined, Trash } from '@eventespresso/icons';
 import { IconButton, ButtonProps, ConfirmDelete } from '@eventespresso/ui-components';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 import { ELEMENT_BLOCKS_INDEXED } from '../constants';
 import { useFormState } from '../state';
 
 import type { FormElementToolbarProps } from '../types';
 
-export const FormElementToolbar: React.FC<FormElementToolbarProps> = ({ element, dragHandleProps }) => {
+export const FormElementToolbar = memo<FormElementToolbarProps>(({ element, dragHandleProps }) => {
 	const { copyElement, deleteElement, isElementOpen, toggleOpenElement } = useFormState();
 	const { UUID } = element;
 	const active = isElementOpen({ UUID });
@@ -72,4 +73,4 @@ export const FormElementToolbar: React.FC<FormElementToolbarProps> = ({ element,
 			</div>
 		</div>
 	);
-};
+}, getPropsAreEqual([['element']]));

@@ -1,12 +1,14 @@
+import { memo } from 'react';
 import classNames from 'classnames';
 
 import { Droppable } from '@eventespresso/adapters';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 import { useFormState } from '../state';
 import type { FormSectionProps } from '../types';
 import { FormElement } from '../FormElement';
 
-export const FormSectionElements: React.FC<FormSectionProps> = ({ formSection }) => {
+export const FormSectionElements = memo<FormSectionProps>(({ formSection }) => {
 	const { getElements } = useFormState();
 
 	return (
@@ -25,4 +27,4 @@ export const FormSectionElements: React.FC<FormSectionProps> = ({ formSection })
 			}}
 		</Droppable>
 	);
-};
+}, getPropsAreEqual([['formSection']]));

@@ -20,6 +20,7 @@ export const initialState: FormState = {
 	deletedElements: [],
 	deletedSections: [],
 	isDirty: false,
+	openElement: '',
 };
 
 export const useFormStateReducer = (initializer: StateInitializer): FormStateReducer => {

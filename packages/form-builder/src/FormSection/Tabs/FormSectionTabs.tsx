@@ -1,13 +1,16 @@
+import { memo } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 import { CheckList, Palette, SettingsOutlined } from '@eventespresso/icons';
 import { Collapsible, Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/ui-components';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 import { useFormState } from '../../state';
 import { Styles } from './Styles';
 import type { FormSectionProps } from '../../types';
 import { Settings } from './Settings';
 
-export const FormSectionTabs: React.FC<FormSectionProps> = ({ formSection }) => {
+export const FormSectionTabs = memo<FormSectionProps>(({ formSection }) => {
 	const { isElementOpen } = useFormState();
 	return (
 		<Collapsible show={isElementOpen({ UUID: formSection.UUID })}>
@@ -40,4 +43,4 @@ export const FormSectionTabs: React.FC<FormSectionProps> = ({ formSection }) => 
 			</Tabs>
 		</Collapsible>
 	);
-};
+}, getPropsAreEqual([['formSection']]));

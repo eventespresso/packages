@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { DragDropContext, Droppable } from '@eventespresso/adapters';
 import { Container } from '@eventespresso/ui-components';
 
-import { FormSection } from './FormSection';
+import { FormSections } from './FormSection';
 import { withFormState } from './context';
 import { useFormState, useHandleDnD } from './state';
 import { SECTIONS_DROPPABLE_ID } from './constants';
@@ -42,9 +42,7 @@ const FormBuilder: React.FC<FormBuilderProps> = ({ bodyClassName, containerClass
 
 						return (
 							<div {...droppableProps} className={className} ref={innerRef}>
-								{getSections().map((formSection, index) => (
-									<FormSection key={formSection.UUID} formSection={formSection} index={index} />
-								))}
+								<FormSections formSections={getSections()} />
 								{placeholder}
 							</div>
 						);

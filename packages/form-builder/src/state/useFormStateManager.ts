@@ -22,7 +22,7 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 	const getSections = useCallback<FSM['getSections']>(() => {
 		const sections = Object.values(state.sections).filter(isNotSharedOrDefault);
 		return sortByOrder(sections);
-	}, [state]);
+	}, [state.sections]);
 
 	const getElements = useCallback<FSM['getElements']>(
 		({ sectionId }) => {
@@ -32,7 +32,7 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 			}
 			return sortByOrder(elements);
 		},
-		[state]
+		[state.elements]
 	);
 
 	const addSection = useCallback<FSM['addSection']>(({ section, afterUuid }) => {

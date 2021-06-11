@@ -1,13 +1,13 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 
 import { FormControl, FormHelperText } from '@eventespresso/adapters';
-import type { AnyObject } from '@eventespresso/utils';
+import { AnyObject, getPropsAreEqual } from '@eventespresso/utils';
 
 import { MappedElement } from './MappedElement';
 import type { FormElementProps } from '../types';
 import { useUpdateElement } from './useUpdateElement';
 
-export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
+export const FormElementInput = memo<FormElementProps>(({ element }) => {
 	const onChangeValue = useUpdateElement(element);
 
 	const props = useMemo(() => {
@@ -82,4 +82,4 @@ export const FormElementInput: React.FC<FormElementProps> = ({ element }) => {
 			{element.helpText && <FormHelperText>{element.helpText}</FormHelperText>}
 		</FormControl>
 	);
-};
+}, getPropsAreEqual([['element']]));

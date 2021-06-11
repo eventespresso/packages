@@ -1,15 +1,16 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, memo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
 import { Copy, DragHandle, SettingsOutlined, Trash } from '@eventespresso/icons';
 import { IconButton, ButtonProps, ConfirmDelete } from '@eventespresso/ui-components';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 import { useFormState } from '../state';
 import { SaveSection } from './SaveSection';
 
 import type { FormSectionToolbarProps } from '../types';
 
-export const FormSectionToolbar: React.FC<FormSectionToolbarProps> = ({ formSection, dragHandleProps }) => {
+export const FormSectionToolbar = memo<FormSectionToolbarProps>(({ formSection, dragHandleProps }) => {
 	const { copySection, deleteSection, isElementOpen, toggleOpenElement } = useFormState();
 
 	const { UUID } = formSection;
@@ -72,4 +73,4 @@ export const FormSectionToolbar: React.FC<FormSectionToolbarProps> = ({ formSect
 			</div>
 		</div>
 	);
-};
+}, getPropsAreEqual([['formSection']]));

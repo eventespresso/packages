@@ -1,7 +1,9 @@
 import { path, Path } from 'ramda';
+
+import { isEqualJson } from '../misc';
 import type { AnyObject } from '../types';
 
-type PropsAreEqual<P extends AnyObject> = (
+export type PropsAreEqual<P extends AnyObject> = (
 	prevProps: Readonly<React.PropsWithChildren<P>>,
 	nextProps: Readonly<React.PropsWithChildren<P>>
 ) => boolean;
@@ -9,13 +11,17 @@ type PropsAreEqual<P extends AnyObject> = (
 /**
  * Generates the comparison function that can be used as second argument to React.memo()
  */
-const getPropsAreEqual = <P extends AnyObject>(...paths: Array<Path>): PropsAreEqual<P> => {
+export const getPropsAreEqual = <P extends AnyObject>(paths: Array<Path>, compareAsJson = true): PropsAreEqual<P> => {
 	const propsAreEqual: PropsAreEqual<P> = (prevProps, nextProps): boolean => {
 		for (const pathToValue of paths) {
 			const prevValue = path<any>(pathToValue, prevProps);
 			const nextValue = path<any>(pathToValue, nextProps);
 
-			if (prevValue !== nextValue) {
+			if (compareAsJson) {
+				if (!isEqualJson(prevValue, nextValue)) {
+					return false;
+				}
+			} else if (prevValue !== nextValue) {
 				return false;
 			}
 		}
@@ -24,5 +30,3 @@ const getPropsAreEqual = <P extends AnyObject>(...paths: Array<Path>): PropsAreE
 
 	return propsAreEqual;
 };
-
-export default getPropsAreEqual;

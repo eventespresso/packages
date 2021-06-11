@@ -1,6 +1,9 @@
+import { memo } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 import { Check, CheckList, Palette, SettingsOutlined } from '@eventespresso/icons';
 import { Collapsible, Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/ui-components';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 import type { FormElementProps } from '../../types';
 import { Settings } from './Settings';
@@ -8,7 +11,7 @@ import { Styles } from './Styles';
 import { Validation } from './Validation';
 import { useFormState } from '../../state';
 
-export const FormElementTabs: React.FC<FormElementProps> = ({ element }) => {
+export const FormElementTabs = memo<FormElementProps>(({ element }) => {
 	const { isElementOpen } = useFormState();
 	return (
 		<Collapsible show={isElementOpen({ UUID: element.UUID })}>
@@ -48,4 +51,4 @@ export const FormElementTabs: React.FC<FormElementProps> = ({ element }) => {
 			</Tabs>
 		</Collapsible>
 	);
-};
+}, getPropsAreEqual([['element']]));

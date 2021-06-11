@@ -1,6 +1,8 @@
+import { memo } from 'react';
 import classNames from 'classnames';
 
 import { Draggable } from '@eventespresso/adapters';
+import { getPropsAreEqual } from '@eventespresso/utils';
 
 import { AddFormElementPopover } from './AddFormElementPopover';
 import { FormSectionToolbar } from './FormSectionToolbar';
@@ -10,7 +12,7 @@ import { useFormState } from '../state';
 
 import type { FormSectionProps } from '../types';
 
-export const FormSection: React.FC<FormSectionProps> = ({ formSection, index }) => {
+export const FormSection = memo<FormSectionProps>(({ formSection, index }) => {
 	const { isElementOpen } = useFormState();
 
 	const { UUID } = formSection;
@@ -36,4 +38,4 @@ export const FormSection: React.FC<FormSectionProps> = ({ formSection, index }) 
 			}}
 		</Draggable>
 	);
-};
+}, getPropsAreEqual([['formSection'], ['index']]));
