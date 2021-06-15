@@ -3,7 +3,8 @@
 	"env": {
 		"tests": {
 			"mappings": {
-				"wp-content/plugins/eea-recurring-events-manager": "eventespresso/eea-recurring-events-manager#dev"
+				"wp-content/plugins/eea-recurring-events-manager": "eventespresso/eea-recurring-events-manager#dev",
+				"wp-content/plugins/eea-recurring-events-manager/assets": "./build"
 			}
 		}
 	},
