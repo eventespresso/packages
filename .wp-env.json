@@ -3,13 +3,9 @@
 	"env": {
 		"tests": {
 			"mappings": {
-				"wp-content/plugins/eea-recurring-events-manager": "eventespresso/eea-recurring-events-manager#dev",
-				"wp-content/plugins/eea-recurring-events-manager/assets": "./build"
+				"wp-content/plugins/eea-recurring-events-manager": "eventespresso/eea-recurring-events-manager#dev"
 			}
 		}
 	},
-	"mappings": {
-		"wp-content/plugins/event-espresso-core/assets": "./build"
-	},
-	"plugins": ["eventespresso/event-espresso-core#dev"]
+	"plugins": [".", "eventespresso/event-espresso-core#dev"]
 }
