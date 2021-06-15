@@ -29,8 +29,8 @@ export type ActionType =
 	| 'RESET';
 
 export interface DataAction extends Partial<FormState> {
-	UUID?: string;
-	afterUuid?: string;
+	id?: string;
+	afterId?: string;
 	element?: Partial<FormElement>;
 	index?: number;
 	section?: Partial<FormSection>;
@@ -42,21 +42,21 @@ export type FormStateManagerHook = (props?: FormStateProviderProps) => FormState
 
 export interface FormStateManager extends FormState {
 	addElement: (args: Pick<DataAction, 'element'>) => void;
-	addSection: (args: Pick<DataAction, 'section' | 'afterUuid'>) => void;
-	copyElement: (args: Pick<DataAction, 'UUID'>) => void;
-	copySection: (args: Pick<DataAction, 'section' | 'UUID'>) => void;
-	deleteElement: (args: Pick<DataAction, 'UUID'>) => void;
-	deleteSection: (args: Pick<DataAction, 'UUID'>) => void;
+	addSection: (args: Pick<DataAction, 'section' | 'afterId'>) => void;
+	copyElement: (args: Pick<DataAction, 'id'>) => void;
+	copySection: (args: Pick<DataAction, 'section' | 'id'>) => void;
+	deleteElement: (args: Pick<DataAction, 'id'>) => void;
+	deleteSection: (args: Pick<DataAction, 'id'>) => void;
 	getData: () => FormState;
 	getElements: (args: Pick<DataAction, 'sectionId'>) => Array<FormElement>;
 	getSections: () => Array<FormSection>;
-	isElementOpen: (args: Pick<DataAction, 'UUID'>) => boolean;
-	moveElement: (args: Pick<DataAction, 'index' | 'UUID' | 'sectionId'>) => void;
-	moveSection: (args: Pick<DataAction, 'index' | 'UUID'>) => void;
+	isElementOpen: (args: Pick<DataAction, 'id'>) => boolean;
+	moveElement: (args: Pick<DataAction, 'index' | 'id' | 'sectionId'>) => void;
+	moveSection: (args: Pick<DataAction, 'index' | 'id'>) => void;
 	reset: () => void;
 	toggleOpenElement: (args: Pick<DataAction, 'openElement'>) => void;
-	updateElement: (args: Pick<DataAction, 'UUID' | 'element'>) => void;
-	updateSection: (args: Pick<DataAction, 'UUID' | 'section'>) => void;
+	updateElement: (args: Pick<DataAction, 'id' | 'element'>) => void;
+	updateSection: (args: Pick<DataAction, 'id' | 'section'>) => void;
 }
 
 export type FormStateReducer = Reducer<FormState, DataAction>;

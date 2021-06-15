@@ -10,13 +10,13 @@ import type { FormSectionProps, FormSectionStatus } from '../types';
 
 export const SaveSection: React.FC<FormSectionProps> = ({ formSection }) => {
 	const { isElementOpen, copySection } = useFormState();
-	const tabIndex = isElementOpen({ UUID: formSection.UUID }) ? 0 : -1;
+	const tabIndex = isElementOpen({ id: formSection.id }) ? 0 : -1;
 
 	const [value, setValue] = useState('shared');
 	const onSave = useCallback(() => {
 		// Lets create a copy of the section with status set to the selected value
-		copySection({ UUID: formSection.UUID, section: { status: value as FormSectionStatus } });
-	}, [copySection, formSection.UUID, value]);
+		copySection({ id: formSection.id, section: { status: value as FormSectionStatus } });
+	}, [copySection, formSection.id, value]);
 
 	const renderTrigger = useCallback<PopoverFormProps['renderTrigger']>(
 		({ onOpen, ...props }) => (
@@ -35,7 +35,7 @@ export const SaveSection: React.FC<FormSectionProps> = ({ formSection }) => {
 		[tabIndex]
 	);
 
-	const id = `save-section-${formSection.UUID}`;
+	const id = `save-section-${formSection.id}`;
 	return (
 		<PopoverForm
 			closeOnBlur

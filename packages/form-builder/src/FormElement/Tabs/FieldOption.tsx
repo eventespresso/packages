@@ -8,7 +8,7 @@ import { ConfirmDelete, Label, TextInput, ButtonProps, IconButton } from '@event
 
 import { FieldOptionProps } from '../../types';
 
-export const FieldOption: React.FC<FieldOptionProps> = ({ index, label, onChange, onRemove, UUID, value }) => {
+export const FieldOption: React.FC<FieldOptionProps> = ({ index, label, onChange, onRemove, id, value }) => {
 	const hidden = index > 0;
 
 	const removeButtonProps = useMemo<ButtonProps>(
@@ -24,7 +24,7 @@ export const FieldOption: React.FC<FieldOptionProps> = ({ index, label, onChange
 	);
 
 	return (
-		<Draggable draggableId={`ee-field-option-${UUID}-${index}`} index={index}>
+		<Draggable draggableId={`ee-field-option-${id}-${index}`} index={index}>
 			{({ draggableProps, dragHandleProps, innerRef }, { isDragging }) => {
 				const className = classNames(
 					'ee-field-option__wrapper',

@@ -13,8 +13,8 @@ export const useUpdateSection = (formSection: FormSection): OnChangeValue => {
 
 	return useCallback<OnChangeValue>(
 		(field) => (value) => {
-			updateSection({ UUID: formSection.UUID, section: { [field]: value } });
+			updateSection({ id: formSection.id, section: { [field]: value } });
 		},
-		[formSection.UUID, updateSection]
+		[formSection.id, updateSection]
 	);
 };

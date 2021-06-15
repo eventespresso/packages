@@ -78,7 +78,7 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 
 	return (
 		<FormControl className='ee-form-element__input' isRequired={element.required}>
-			<MappedElement type={element.type} id={element.UUID} label={element.publicLabel} {...props} />
+			<MappedElement type={element.type} id={element.id} label={element.publicLabel} {...props} />
 			{element.helpText && <FormHelperText>{element.helpText}</FormHelperText>}
 		</FormControl>
 	);

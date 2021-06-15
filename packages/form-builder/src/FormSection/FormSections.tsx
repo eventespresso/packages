@@ -14,7 +14,7 @@ export const FormSections: React.FC<FormSectionsProps> = memo(({ formSections })
 	return (
 		<>
 			{formSections.map((formSection, index) => (
-				<FormSection key={formSection.UUID} formSection={formSection} index={index} />
+				<FormSection key={formSection.id} formSection={formSection} index={index} />
 			))}
 		</>
 	);

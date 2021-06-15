@@ -13,8 +13,8 @@ export const useUpdateElement = (element: FormElement): OnChangeValue => {
 
 	return useCallback<OnChangeValue>(
 		(field) => (value) => {
-			updateElement({ UUID: element.UUID, element: { [field]: value } });
+			updateElement({ id: element.id, element: { [field]: value } });
 		},
-		[element.UUID, updateElement]
+		[element.id, updateElement]
 	);
 };

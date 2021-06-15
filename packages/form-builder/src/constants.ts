@@ -8,7 +8,7 @@ import { ElementBlock, FormSection, FormElement, ElementType } from './types';
 export const SECTIONS_DROPPABLE_ID = 'form-sections';
 
 export const DEFAULT_SECTION: FormSection = {
-	UUID: '',
+	id: '',
 	appliesTo: 'all',
 	name: '',
 	order: 1,
@@ -16,7 +16,7 @@ export const DEFAULT_SECTION: FormSection = {
 };
 
 export const DEFAULT_ELEMENT: FormElement = {
-	UUID: '',
+	id: '',
 	belongsTo: '',
 	type: 'text',
 	order: 1,

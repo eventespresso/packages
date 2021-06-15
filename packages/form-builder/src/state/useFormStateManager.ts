@@ -8,14 +8,14 @@ import { sortByOrder, isNotSharedOrDefault } from '../utils';
 
 type FSM = FormStateManager;
 
-export const useFormStateManager: FormStateManagerHook = (props) => {
+export const useFormStateManager: FormStateManagerHook = ({ onChange, ...props }) => {
 	const initializer = useInitialState(props);
 	const reducer = useFormStateReducer(initializer);
 	const [state, dispatch] = useReducer(reducer, initialState, initializer);
 
 	useEffect(() => {
-		console.log('FormState', state);
-	}, [state]);
+		onChange?.(state);
+	}, [onChange, state]);
 
 	const getData = useCallback<FSM['getData']>(() => state, [state]);
 
@@ -35,42 +35,42 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 		[state.elements]
 	);
 
-	const addSection = useCallback<FSM['addSection']>(({ section, afterUuid }) => {
+	const addSection = useCallback<FSM['addSection']>(({ section, afterId }) => {
 		dispatch({
 			type: 'ADD_SECTION',
-			afterUuid,
+			afterId,
 			section,
 		});
 	}, []);
 
-	const copySection = useCallback<FSM['copySection']>(({ UUID, section }) => {
+	const copySection = useCallback<FSM['copySection']>(({ id, section }) => {
 		dispatch({
 			type: 'COPY_SECTION',
-			UUID,
+			id,
 			section,
 		});
 	}, []);
 
-	const moveSection = useCallback<FSM['moveSection']>(({ UUID, index }) => {
+	const moveSection = useCallback<FSM['moveSection']>(({ id, index }) => {
 		dispatch({
 			type: 'MOVE_SECTION',
-			UUID,
+			id,
 			index,
 		});
 	}, []);
 
-	const updateSection = useCallback<FSM['updateSection']>(({ UUID, section }) => {
+	const updateSection = useCallback<FSM['updateSection']>(({ id, section }) => {
 		dispatch({
 			type: 'UPDATE_SECTION',
-			UUID,
+			id,
 			section,
 		});
 	}, []);
 
-	const deleteSection = useCallback<FSM['deleteSection']>(({ UUID }) => {
+	const deleteSection = useCallback<FSM['deleteSection']>(({ id }) => {
 		dispatch({
 			type: 'DELETE_SECTION',
-			UUID,
+			id,
 		});
 	}, []);
 
@@ -81,41 +81,38 @@ export const useFormStateManager: FormStateManagerHook = (props) => {
 		});
 	}, []);
 
-	const copyElement = useCallback<FSM['copyElement']>(({ UUID }) => {
+	const copyElement = useCallback<FSM['copyElement']>(({ id }) => {
 		dispatch({
 			type: 'COPY_ELEMENT',
-			UUID,
+			id,
 		});
 	}, []);
 
-	const moveElement = useCallback<FSM['moveElement']>(({ UUID, index, sectionId }) => {
+	const moveElement = useCallback<FSM['moveElement']>(({ id, index, sectionId }) => {
 		dispatch({
 			type: 'MOVE_ELEMENT',
-			UUID,
+			id,
 			index,
 			sectionId,
 		});
 	}, []);
 
-	const updateElement = useCallback<FSM['updateElement']>(({ UUID, element }) => {
+	const updateElement = useCallback<FSM['updateElement']>(({ id, element }) => {
 		dispatch({
 			type: 'UPDATE_ELEMENT',
-			UUID,
+			id,
 			element,
 		});
 	}, []);
 
-	const deleteElement = useCallback<FSM['deleteElement']>(({ UUID }) => {
+	const deleteElement = useCallback<FSM['deleteElement']>(({ id }) => {
 		dispatch({
 			type: 'DELETE_ELEMENT',
-			UUID,
+			id,
 		});
 	}, []);
 
-	const isElementOpen = useCallback<FSM['isElementOpen']>(
-		({ UUID }) => UUID === state.openElement,
-		[state.openElement]
-	);
+	const isElementOpen = useCallback<FSM['isElementOpen']>(({ id }) => id === state.openElement, [state.openElement]);
 
 	const toggleOpenElement = useCallback<FSM['toggleOpenElement']>(({ openElement }) => {
 		dispatch({

@@ -18,7 +18,7 @@ interface SidebarProps {
 // this represents existing forms sections pulled from the database with a status of "default"
 const mockFormSectionData: Array<FormSection> = [
 	{
-		UUID: 'lkj567',
+		id: 'lkj567',
 		adminLabel: 'pet questions',
 		appliesTo: 'primary',
 		belongsTo: '',
@@ -38,7 +38,7 @@ const mockFormSectionData: Array<FormSection> = [
 const existingFormSections = mockFormSectionData.map((section: FormSection) => {
 	return {
 		label: section.adminLabel,
-		value: section.UUID,
+		value: section.id,
 	};
 });
 
@@ -50,18 +50,18 @@ export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) =
 
 	const onAddElement = useCallback(() => {
 		if (selectedElement === 'formSection') {
-			addSection({ afterUuid: formSection.UUID });
+			addSection({ afterId: formSection.id });
 		} else {
-			addElement({ element: { type: selectedElement, belongsTo: formSection.UUID } });
+			addElement({ element: { type: selectedElement, belongsTo: formSection.id } });
 		}
 		onClose();
-	}, [addElement, addSection, formSection.UUID, onClose, selectedElement]);
+	}, [addElement, addSection, formSection.id, onClose, selectedElement]);
 
 	const onAddExistingSection = useCallback(() => {
-		const section = R.find(R.propEq('UUID', selectedSection), mockFormSectionData);
-		addSection({ section, afterUuid: formSection.UUID });
+		const section = R.find(R.propEq('id', selectedSection), mockFormSectionData);
+		addSection({ section, afterId: formSection.id });
 		onClose();
-	}, [addSection, formSection.UUID, onClose, selectedSection]);
+	}, [addSection, formSection.id, onClose, selectedSection]);
 
 	const onChangeElement = useCallback<SelectProps['onChangeValue']>((value) => {
 		setSelectedElement(value as ElementType);
@@ -97,7 +97,7 @@ export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) =
 			</p>
 			<div className={'ee-add-form-element__option'}>
 				<SelectWithLabel
-					id={`${formSection.UUID}-load-existing-section-selector`}
+					id={`${formSection.id}-load-existing-section-selector`}
 					label={__('load existing form section')}
 					options={existingFormSections}
 					onChangeValue={onChangeSection}
@@ -114,7 +114,7 @@ export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) =
 			</div>
 			<div className={'ee-add-form-element__option'}>
 				<SelectWithLabel
-					id={`${formSection.UUID}-add-new-section-selector`}
+					id={`${formSection.id}-add-new-section-selector`}
 					label={__('add new form element')}
 					options={ELEMENT_BLOCKS_OPTIONS}
 					onChangeValue={onChangeElement}

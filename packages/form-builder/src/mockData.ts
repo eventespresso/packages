@@ -11,7 +11,7 @@ const sectionIds = {
 // this is based off of the data schema I started for the PHP models, but can be changed to whatever
 export const formSectionsData: Array<FormSection> = [
 	{
-		UUID: sectionIds.personal_info,
+		id: sectionIds.personal_info,
 		appliesTo: 'all',
 		belongsTo: '',
 		adminLabel: 'personal information',
@@ -23,7 +23,7 @@ export const formSectionsData: Array<FormSection> = [
 		wpUser: 1,
 	},
 	{
-		UUID: sectionIds.address_info,
+		id: sectionIds.address_info,
 		appliesTo: 'all',
 		belongsTo: 'Event-1',
 		adminLabel: 'address information',
@@ -35,7 +35,7 @@ export const formSectionsData: Array<FormSection> = [
 		wpUser: 1,
 	},
 	{
-		UUID: sectionIds.other_info,
+		id: sectionIds.other_info,
 		appliesTo: 'all',
 		belongsTo: 'Event-1',
 		adminLabel: 'other information',
@@ -50,7 +50,7 @@ export const formSectionsData: Array<FormSection> = [
 
 export const formElementsData: Array<FormElement> = [
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'registrant first name',
 		adminOnly: false,
@@ -68,7 +68,7 @@ export const formElementsData: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'registrant last name',
 		adminOnly: false,
@@ -86,7 +86,7 @@ export const formElementsData: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'registrant email address',
 		adminOnly: false,
@@ -104,7 +104,7 @@ export const formElementsData: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'registrant age',
 		adminOnly: false,
@@ -123,7 +123,7 @@ export const formElementsData: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'Where to live in 2021',
 		adminOnly: false,
@@ -148,7 +148,7 @@ export const formElementsData: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'registrant street',
 		adminOnly: false,
@@ -166,7 +166,7 @@ export const formElementsData: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'registrant city',
 		adminOnly: false,
@@ -184,7 +184,7 @@ export const formElementsData: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'registrant state',
 		adminOnly: false,
@@ -211,7 +211,7 @@ export const formElementsData: Array<FormElement> = [
 		],
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'registrant country',
 		adminOnly: false,
@@ -238,7 +238,7 @@ export const formElementsData: Array<FormElement> = [
 		],
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'registrant postal code',
 		adminOnly: false,
@@ -255,7 +255,7 @@ export const formElementsData: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: '',
 		adminOnly: false,
@@ -278,7 +278,7 @@ export const formElementsData: Array<FormElement> = [
 			`,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'what can the user code?',
 		adminOnly: false,
@@ -313,7 +313,7 @@ export const formElementsData: Array<FormElement> = [
 		wpUser: 1,
 	},
 	{
-		UUID: uuid(),
+		id: uuid(),
 		relation: '',
 		adminLabel: 'Which language does the user like the most?',
 		adminOnly: false,

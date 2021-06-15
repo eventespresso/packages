@@ -14,7 +14,7 @@ import { useFormState } from '../../state';
 export const FormElementTabs = memo<FormElementProps>(({ element }) => {
 	const { isElementOpen } = useFormState();
 	return (
-		<Collapsible show={isElementOpen({ UUID: element.UUID })}>
+		<Collapsible show={isElementOpen({ id: element.id })}>
 			<Tabs variant='enclosed' wrapperClassName='ee-form-settings__tabs'>
 				<TabList>
 					<Tab>

@@ -13,12 +13,12 @@ import type { FormSectionToolbarProps } from '../types';
 export const FormSectionToolbar = memo<FormSectionToolbarProps>(({ formSection, dragHandleProps }) => {
 	const { copySection, deleteSection, isElementOpen, toggleOpenElement } = useFormState();
 
-	const { UUID } = formSection;
-	const active = isElementOpen({ UUID });
+	const { id } = formSection;
+	const active = isElementOpen({ id });
 
-	const onCopy = useCallback(() => copySection({ UUID }), [UUID, copySection]);
-	const onDelete = useCallback(() => deleteSection({ UUID }), [UUID, deleteSection]);
-	const onToggle = useCallback(() => toggleOpenElement({ openElement: UUID }), [UUID, toggleOpenElement]);
+	const onCopy = useCallback(() => copySection({ id }), [id, copySection]);
+	const onDelete = useCallback(() => deleteSection({ id }), [id, deleteSection]);
+	const onToggle = useCallback(() => toggleOpenElement({ openElement: id }), [id, toggleOpenElement]);
 
 	const tabIndex = active ? 0 : -1;
 

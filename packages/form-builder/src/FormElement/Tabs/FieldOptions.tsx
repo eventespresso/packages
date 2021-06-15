@@ -38,7 +38,7 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 		updateElement('options')(newOptions);
 	}, [element.options, updateElement]);
 
-	const droppableId = `ee-field-option-${element.UUID}`;
+	const droppableId = `ee-field-option-${element.id}`;
 
 	const handleDnD = useCallback<DnDProps['onDragEnd']>(
 		({ destination, source }) => {
@@ -81,7 +81,7 @@ const FieldOptions: React.FC<FormElementProps> = ({ element }) => {
 											label={label}
 											onChange={onChangeOptionInput}
 											onRemove={onRemoveOption}
-											UUID={element.UUID}
+											id={element.id}
 											value={value}
 										/>
 									);

@@ -20,12 +20,12 @@ export const useHandleDnD = (): DnDProps['onDragEnd'] => {
 			// if we are dealing with sorting of sections
 			if (type === 'section') {
 				moveSection({
-					UUID: draggableId,
+					id: draggableId,
 					index: destination.index,
 				});
 			} else if (type === 'element') {
 				moveElement({
-					UUID: draggableId,
+					id: draggableId,
 					index: destination.index,
 					sectionId: destination?.droppableId,
 				});

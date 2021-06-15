@@ -15,13 +15,13 @@ import type { FormSectionProps } from '../types';
 export const FormSection = memo<FormSectionProps>(({ formSection, index }) => {
 	const { isElementOpen } = useFormState();
 
-	const { UUID } = formSection;
+	const { id } = formSection;
 
-	const active = isElementOpen({ UUID });
+	const active = isElementOpen({ id });
 	const fieldsetClass = classNames('ee-form-section', active && 'ee-form-section--active');
 
 	return (
-		<Draggable draggableId={UUID} index={index}>
+		<Draggable draggableId={id} index={index}>
 			{({ draggableProps, dragHandleProps, innerRef }, { isDragging }) => {
 				const className = classNames(fieldsetClass, 'ee-draggable', isDragging && 'ee-draggable--is-dragging');
 				return (

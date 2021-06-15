@@ -13,7 +13,7 @@ import { Settings } from './Settings';
 export const FormSectionTabs = memo<FormSectionProps>(({ formSection }) => {
 	const { isElementOpen } = useFormState();
 	return (
-		<Collapsible show={isElementOpen({ UUID: formSection.UUID })}>
+		<Collapsible show={isElementOpen({ id: formSection.id })}>
 			<Tabs variant='enclosed' wrapperClassName='ee-form-settings__tabs'>
 				<TabList>
 					<Tab>

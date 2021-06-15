@@ -6,16 +6,19 @@ import { FormBuilder } from '@eventespresso/form-builder';
 // TODO replace mock data imported from component with real data from db
 import { formSectionsData, formElementsData } from '../../../../../../../packages/form-builder/src/mockData';
 
+const header = (
+	<Heading as='h3' className='ee-edtr-section-heading'>
+		{__('Registration Form Builder')}
+	</Heading>
+);
+
 export const RegistrationForm: React.FC = () => (
 	<FormBuilder
 		containerClassName='ee-edtr-section'
-		initialSections={formSectionsData}
+		header={header}
 		initialElements={formElementsData}
-		header={
-			<Heading as='h3' className='ee-edtr-section-heading'>
-				{__('Registration Form Builder')}
-			</Heading>
-		}
+		initialSections={formSectionsData}
+		onChange={console.log}
 	/>
 );
 

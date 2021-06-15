@@ -39,7 +39,7 @@ export type ElementBlock = {
 };
 
 export interface FormElement {
-	UUID: string;
+	id: string;
 	adminLabel?: string;
 	adminOnly?: boolean;
 	belongsTo: string;
@@ -71,7 +71,7 @@ export interface FormElement {
 export type FormSectionStatus = 'active' | 'archived' | 'default' | 'shared' | 'trashed';
 
 export interface FormSection {
-	UUID: string;
+	id: string;
 	adminLabel?: string;
 	appliesTo?: string;
 	belongsTo?: string;
@@ -90,18 +90,12 @@ export interface FormSection {
 	isModified?: boolean;
 }
 
-export type FormBuilderData = {
-	sections: Array<FormSection>;
-	elements: Array<FormElement>;
-};
-
 export interface FormBuilderProps {
 	bodyClassName?: string;
 	containerClassName?: string;
 	contentClassName?: string;
 	header?: React.ReactNode;
 	sidebarClassName?: string;
-	onSave?: (data: FormBuilderData) => void;
 }
 
 interface CommonProps {
@@ -112,7 +106,7 @@ export interface FieldOptionProps extends CommonProps {
 	label: React.ReactNode;
 	onChange: (key: 'value' | 'label', index: number) => (value: string) => void;
 	onRemove: (index: number) => VoidFunction;
-	UUID: string;
+	id: string;
 	value: React.ReactText;
 }
 
