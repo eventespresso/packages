@@ -66,10 +66,10 @@ export const evalFieldConditions = (conditions: FieldConditions, formData: AnyOb
 						return (typeof result === 'string' || Array.isArray(result)) && result.includes(value);
 					case 'NOT_CONTAINS':
 						return !(typeof result === 'string' || Array.isArray(result)) || !result.includes(value);
-					case 'MATCHES':
-						return new RegExp(value).test(result);
-					case 'NOT_MATCHES':
-						return !new RegExp(value).test(result);
+					// case 'MATCHES':
+					// 	return new RegExp(value).test(result);
+					// case 'NOT_MATCHES':
+					// 	return !new RegExp(value).test(result);
 					default:
 						return false;
 				}
