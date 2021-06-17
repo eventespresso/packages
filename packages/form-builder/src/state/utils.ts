@@ -4,13 +4,15 @@ import { uuid } from '@eventespresso/utils';
 
 import { FormState } from './types';
 import { sortByOrder, setOrderByIndex } from '../utils';
-import { FormElement, FormSection } from '../types';
+import { FormElement, FormSection, LocalOnlyFields } from '../types';
 
-export function markAsModified<Item extends { isModified?: boolean }>(items: Array<Item>, startingIndex: number) {
+export function markAsModified<Item extends LocalOnlyFields>(items: Array<Item>, startingIndex: number) {
 	// split the items at the starting index to mark the succeeding indices as modified items
 	const [unmodifiedElements, modifiedElements] = R.splitAt(startingIndex, items);
 	// set `isModified` to true
-	const newModifiedElements = modifiedElements.map(R.set(R.lensProp('isModified'), true));
+	const newModifiedElements = modifiedElements.map(
+		R.pipe<Item, Item, Item>(R.set(R.lensProp('isModified'), true), R.set(R.lensProp('hash'), uuid()))
+	);
 	// Update the elements array
 	return [...unmodifiedElements, ...newModifiedElements];
 }
@@ -161,6 +163,7 @@ export const copySectionElements =
 			id: uuid(),
 			belongsTo: newSectionId,
 			isNew: true,
+			hash: uuid(),
 		}));
 
 		return {

@@ -38,7 +38,14 @@ export type ElementBlock = {
 	desc: string;
 };
 
-export interface FormElement {
+export type LocalOnlyFields = {
+	// These are the purity flags which can be used for mutations
+	isNew?: boolean;
+	isModified?: boolean;
+	hash?: string;
+};
+
+export interface FormElement extends LocalOnlyFields {
 	id: string;
 	adminLabel?: string;
 	adminOnly?: boolean;
@@ -63,14 +70,11 @@ export interface FormElement {
 	wpUser?: number;
 	// This is the current input value if needed.
 	value?: any;
-	// These are the purity flags which can be used for mutations
-	isNew?: boolean;
-	isModified?: boolean;
 }
 
 export type FormSectionStatus = 'active' | 'archived' | 'default' | 'shared' | 'trashed';
 
-export interface FormSection {
+export interface FormSection extends LocalOnlyFields {
 	id: string;
 	adminLabel?: string;
 	appliesTo?: string;
@@ -85,9 +89,6 @@ export interface FormSection {
 	showDescription?: boolean;
 	status?: FormSectionStatus;
 	wpUser?: number;
-	// These are the purity flags which can be used for mutations
-	isNew?: boolean;
-	isModified?: boolean;
 }
 
 export interface FormBuilderProps {
