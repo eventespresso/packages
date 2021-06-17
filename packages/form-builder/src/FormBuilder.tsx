@@ -7,6 +7,7 @@ import { Container } from '@eventespresso/ui-components';
 import { FormSections } from './FormSection';
 import { withFormState } from './context';
 import { useFormState, useHandleDnD } from './state';
+import { useSaveForm } from './data';
 import { SECTIONS_DROPPABLE_ID } from './constants';
 
 import type { FormBuilderProps } from './types';
@@ -15,6 +16,9 @@ import './styles.scss';
 
 const FormBuilder: React.FC<FormBuilderProps> = ({ bodyClassName, containerClassName, contentClassName, header }) => {
 	const { getSections } = useFormState();
+
+	// handle save form
+	useSaveForm();
 
 	const bodyClass = classNames('ee-form-builder__wrapper', bodyClassName);
 	const contentClass = classNames('ee-form-builder__form', contentClassName);

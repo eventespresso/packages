@@ -15,7 +15,7 @@ export const SaveSection: React.FC<FormSectionProps> = ({ formSection }) => {
 	const [value, setValue] = useState('shared');
 	const onSave = useCallback(() => {
 		// Lets create a copy of the section with status set to the selected value
-		copySection({ id: formSection.id, section: { status: value as FormSectionStatus } });
+		copySection({ id: formSection.id, section: { status: value as FormSectionStatus, belongsTo: '' } });
 	}, [copySection, formSection.id, value]);
 
 	const renderTrigger = useCallback<PopoverFormProps['renderTrigger']>(
