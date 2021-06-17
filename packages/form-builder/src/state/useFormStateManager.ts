@@ -44,11 +44,10 @@ export const useFormStateManager: FormStateManagerHook = ({ onChange, ...props }
 		});
 	}, []);
 
-	const copySection = useCallback<FSM['copySection']>(({ id, section }) => {
+	const copySection = useCallback<FSM['copySection']>(({ id }) => {
 		dispatch({
 			type: 'COPY_SECTION',
 			id,
-			section,
 		});
 	}, []);
 

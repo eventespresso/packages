@@ -9,7 +9,6 @@ type MutateElementsCb = (elements: FormState['elements'], deletedElements?: Arra
 export const useMutateElements = (): MutateElementsCb => {
 	const { markElementAsSaved, markElementAsDeleted } = useFormState();
 
-	// Async to make sure that prices are handled before updating the ticket.
 	return useCallback(
 		async (elements, deletedElements = []) => {
 			// Fire the network requests then await later

@@ -50,7 +50,7 @@ export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) =
 
 	const onAddElement = useCallback(() => {
 		if (selectedElement === 'formSection') {
-			addSection({ afterId: formSection.id });
+			addSection({ afterId: formSection.id, section: {} });
 		} else {
 			addElement({ element: { type: selectedElement, belongsTo: formSection.id } });
 		}

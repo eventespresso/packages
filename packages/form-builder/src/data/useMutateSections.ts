@@ -9,7 +9,6 @@ type MutateSectionsCb = (sections: FormState['sections'], deletedSections?: Arra
 export const useMutateSections = (): MutateSectionsCb => {
 	const { markSectionAsSaved, markSectionAsDeleted } = useFormState();
 
-	// Async to make sure that prices are handled before updating the ticket.
 	return useCallback(
 		async (sections, deletedSections = []) => {
 			// Fire the network requests then await later
