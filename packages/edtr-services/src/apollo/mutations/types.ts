@@ -2,7 +2,6 @@ import type {
 	ApolloCache,
 	Entity as BaseEntity,
 	Entity,
-	ExecutionResult,
 	MutationInput,
 	MutationType,
 	MutationUpdaterFn,
@@ -87,10 +86,6 @@ export interface MutationVariables<MI = MutationInput> {
 	input: Merge<MI, MutationInputWithId>;
 }
 /*********************************/
-export type MutationFunction<TData = any, TVariables = OperationVariables> = (
-	input?: TVariables
-) => Promise<ExecutionResult<TData>>;
-
 export interface MutationBaseProps<MI extends MutationInput = MutationInput> {
 	input: MI;
 	mutationType: MutationType;

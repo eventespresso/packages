@@ -1,11 +1,11 @@
 import { useCallback, useMemo } from 'react';
 
 import type { CreatePriceInput, UpdatePriceInput, DeletePriceInput } from './types';
-import { MutationType, useMutationWithFeedback } from '@eventespresso/data';
+import { MutationType, MutationFunction, useMutationWithFeedback } from '@eventespresso/data';
 import { CREATE_PRICE, UPDATE_PRICE, DELETE_PRICE } from './';
 import useMutationHandler from './useMutationHandler';
 import useUpdateCallback from '../useUpdateCallback';
-import { MutationFunction, TypeName } from '../types';
+import { TypeName } from '../types';
 import type { CreatePriceResult, UpdatePriceResult, DeletePriceResult } from './types';
 import { useSystemNotifications } from '@eventespresso/toaster';
 

@@ -1,10 +1,10 @@
 import { useCallback, useMemo } from 'react';
 
 import type { CreateRecurrenceInput, UpdateRecurrenceInput, DeleteRecurrenceInput } from './types';
-import { MutationType, useMutationWithFeedback } from '@eventespresso/data';
+import { MutationType, MutationFunction, useMutationWithFeedback } from '@eventespresso/data';
 import { CREATE_RECURRENCE, UPDATE_RECURRENCE, DELETE_RECURRENCE } from './';
 import useMutationHandler from './useMutationHandler';
-import { useUpdateCallback, MutationFunction, TypeName as EdtrTypeName } from '@eventespresso/edtr-services';
+import { useUpdateCallback, TypeName as EdtrTypeName } from '@eventespresso/edtr-services';
 import { TypeName } from '../types';
 import type { CreateRecurrenceResult, UpdateRecurrenceResult, DeleteRecurrenceResult } from './types';
 import { useSystemNotifications } from '@eventespresso/toaster';

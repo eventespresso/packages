@@ -1,10 +1,10 @@
 import { useCallback, useMemo } from 'react';
 
 import type { UpdateEventInput } from './types';
-import { MutationType, useMutationWithFeedback } from '@eventespresso/data';
+import { MutationType, MutationFunction, useMutationWithFeedback } from '@eventespresso/data';
 import { UPDATE_EVENT } from './';
 import useMutationHandler from './useMutationHandler';
-import { MutationFunction, TypeName } from '../types';
+import { TypeName } from '../types';
 import type { UpdateEventResult } from './types';
 import { useSystemNotifications } from '@eventespresso/toaster';
 
