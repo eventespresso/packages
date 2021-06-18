@@ -21,6 +21,7 @@ function requestToExternal(request) {
 	if (request === 'ramda') {
 		return 'R';
 	}
+
 	if (BUNDLED_PACKAGES.includes(request)) {
 		return undefined;
 	}
