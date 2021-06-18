@@ -18,19 +18,19 @@ const BUNDLED_PACKAGES = ['@eventespresso/icons'];
  * @type {import('.').RequestToExternal}
  */
 function requestToExternal(request) {
-	if (request === 'ramda') {
-		return 'R';
-	}
+	switch (true) {
+		case BUNDLED_PACKAGES.includes(request):
+			return undefined;
 
-	if (BUNDLED_PACKAGES.includes(request)) {
-		return undefined;
-	}
+		case request.startsWith(EVENTESPRESSO_NAMESPACE):
+			return ['eventespresso', camelCaseDash(request.substring(EVENTESPRESSO_NAMESPACE.length))];
 
-	if (request.startsWith(EVENTESPRESSO_NAMESPACE)) {
-		return ['eventespresso', camelCaseDash(request.substring(EVENTESPRESSO_NAMESPACE.length))];
-	}
+		case request === 'ramda':
+			return 'R';
 
-	return defaultRequestToExternal(request);
+		default:
+			return defaultRequestToExternal(request);
+	}
 }
 
 /**
