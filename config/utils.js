@@ -44,9 +44,6 @@ function requestToExternal(request) {
  * @type {import('.').RequestToHandle}
  */
 function requestToHandle(request) {
-	if (request === '@babel/runtime/regenerator') {
-		return 'wp-polyfill';
-	}
 	if (request.startsWith(EVENTESPRESSO_NAMESPACE)) {
 		return 'eventespresso-' + camelCaseDash(request.substring(EVENTESPRESSO_NAMESPACE.length));
 	}
