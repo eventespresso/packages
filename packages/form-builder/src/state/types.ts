@@ -12,7 +12,6 @@ export interface FormState {
 	deletedElements: Array<string>;
 	isDirty: boolean;
 	openElement?: string;
-	hash?: string;
 }
 
 export type ActionType =

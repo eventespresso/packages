@@ -13,13 +13,13 @@ export const useMutateElements = (): MutateElementsCb => {
 		async (elements, deletedElements = []) => {
 			// Fire the network requests then await later
 			const savedElements = Promise.all(
-				Object.values(elements).map(async ({ isNew, isModified, ...element }) => {
-					if (isNew) {
+				Object.values(elements).map(async (element) => {
+					if (element.isNew) {
 						console.log('creating element...', element);
 						// emulate network request
 						await wait(1500);
 						return element;
-					} else if (isModified) {
+					} else if (element.isModified) {
 						console.log('updating element...', element);
 						// emulate network request
 						await wait(1500);

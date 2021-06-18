@@ -42,7 +42,6 @@ export type LocalOnlyFields = {
 	// These are the purity flags which can be used for mutations
 	isNew?: boolean;
 	isModified?: boolean;
-	hash?: string;
 };
 
 export interface FormElement extends LocalOnlyFields {

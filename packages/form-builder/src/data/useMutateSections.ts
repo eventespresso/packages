@@ -13,13 +13,13 @@ export const useMutateSections = (): MutateSectionsCb => {
 		async (sections, deletedSections = []) => {
 			// Fire the network requests then await later
 			const savedSections = Promise.all(
-				Object.values(sections).map(async ({ isNew, isModified, ...section }) => {
-					if (isNew) {
+				Object.values(sections).map(async (section) => {
+					if (section.isNew) {
 						console.log('creating section...', section);
 						// emulate network request
 						await wait(1500);
 						return section;
-					} else if (isModified) {
+					} else if (section.isModified) {
 						console.log('updating section...', section);
 						// emulate network request
 						await wait(1500);

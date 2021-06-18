@@ -13,7 +13,7 @@ export const useSaveForm = (): SaveFormCb => {
 	const mutateElements = useMutateElements();
 	const mutateSections = useMutateSections();
 
-	const { getData, hash } = useFormState();
+	const { getData } = useFormState();
 
 	const saveForm = useDebouncedCallback<SaveFormCb>(async (state) => {
 		console.log('state', state);
@@ -21,10 +21,12 @@ export const useSaveForm = (): SaveFormCb => {
 		mutateElements(state.elements, state.deletedElements);
 	}, DEBOUNCE_TIME);
 
+	const data = getData();
+
 	useEffect(() => {
-		saveForm(getData());
+		saveForm(data);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [hash]);
+	}, [JSON.stringify(data)]);
 
 	return;
 };

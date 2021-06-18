@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import * as R from 'ramda';
 
-import { uuid } from '@eventespresso/utils';
+import { uuid, isEqualJson } from '@eventespresso/utils';
 
 import { FormStateReducer, StateInitializer, FormState } from './types';
 import { DEFAULT_SECTION, DEFAULT_ELEMENT } from '../constants';
@@ -22,10 +22,9 @@ export const initialState: FormState = {
 	deletedSections: [],
 	isDirty: false,
 	openElement: '',
-	hash: '',
 };
 
-const PURITY_FLAGS: Array<keyof Omit<LocalOnlyFields, 'hash'>> = ['isModified', 'isNew'];
+const PURITY_FLAGS: Array<keyof LocalOnlyFields> = ['isModified', 'isNew'];
 
 export const useFormStateReducer = (initializer: StateInitializer): FormStateReducer => {
 	return useCallback<FormStateReducer>(
@@ -41,14 +40,14 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 			switch (type) {
 				case 'ADD_SECTION': {
 					// New section will be composed of default section
-					const newSection = { ...DEFAULT_SECTION, ...section, id: newId, isNew: true, hash: newId };
+					const newSection: FormSection = { ...DEFAULT_SECTION, ...section, id: newId, isNew: true };
 					predicates = [addSectionToState(newSection, afterId)];
 					break;
 				}
 
 				case 'COPY_SECTION': {
 					// Copied section will be composed of the existing section
-					const newSection = { ...state.sections[id], ...section, id: newId, isNew: true, hash: newId };
+					const newSection: FormSection = { ...state.sections[id], ...section, id: newId, isNew: true };
 					predicates = [addSectionToState(newSection, id), copySectionElements(id, newSection.id)];
 					break;
 				}
@@ -60,7 +59,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 
 				case 'UPDATE_SECTION': {
 					// Update and mark the section as modified
-					const newSection = { ...section, id, isModified: true, hash: newId };
+					const newSection: Partial<FormSection> = { ...section, id, isModified: true };
 					predicates = [R.over(R.lensPath(['sections', id]), R.mergeLeft(newSection))];
 					break;
 				}
@@ -88,17 +87,17 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 							 * Here we need to properly handle the case for modifications
 							 * while the section was being saved.
 							 *
-							 * if no hash is passed in the saved section, it will be considered as modified
-							 * or
 							 * if the user made changes after the save request was fired, then we again need to
 							 * mark the section as modified.
-							 * We can do so by matching the section hash that comes from the saved section with the one in current state
-							 * If the hashes are different, it means it was modified after the save request was fired
+							 * We can do so by matching the passed section with the one in current state
+							 * If the their JSON is different, it means it was modified after the save request was fired
+							 *
+							 * It is expected that a complete section is passed back when marking a section as saved
 							 */
-							const isModified = !section.hash || section.hash !== existingSection.hash;
+							const isModified = !isEqualJson(section, existingSection);
 							// get rid of `isModified` and `isNew` flags
 							const newSection = R.omit(PURITY_FLAGS, existingSection);
-							return { ...newSection, isModified } as FormSection;
+							return { ...newSection, isModified };
 						}),
 					];
 					break;
@@ -111,14 +110,14 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 
 				case 'ADD_ELEMENT': {
 					// New element will be composed of default element
-					const newElement = { ...DEFAULT_ELEMENT, ...element, id: newId, isNew: true, hash: newId };
+					const newElement: FormElement = { ...DEFAULT_ELEMENT, ...element, id: newId, isNew: true };
 					predicates = [addElementToState(newElement)];
 					break;
 				}
 
 				case 'COPY_ELEMENT': {
 					// Copied element will be composed of the existing element
-					const newElement = { ...state.elements[id], id: newId, isNew: true, hash: newId };
+					const newElement: FormElement = { ...state.elements[id], id: newId, isNew: true };
 					predicates = [addElementToState(newElement, id)];
 					break;
 				}
@@ -130,7 +129,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 
 				case 'UPDATE_ELEMENT': {
 					// Update and mark the element as modified
-					const newElement = { ...element, id, isModified: true, hash: newId };
+					const newElement: Partial<FormElement> = { ...element, id, isModified: true };
 					predicates = [R.over(R.lensPath(['elements', id]), R.mergeLeft(newElement))];
 					break;
 				}
@@ -152,10 +151,10 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 							/**
 							 * See 'MARK_SECTION_AS_SAVED' case above
 							 */
-							const isModified = !element.hash || element.hash !== existingElement.hash;
+							const isModified = !isEqualJson(element, existingElement);
 							// get rid of `isModified` and `isNew` flags
 							const newElement = R.omit(PURITY_FLAGS, existingElement);
-							return { ...newElement, isModified } as FormElement;
+							return { ...newElement, isModified };
 						}),
 					];
 					break;
@@ -180,7 +179,8 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 			}
 			// @ts-ignore - compose TS is not happy with unknown number of arguments
 			const newState = R.compose(...predicates)(state);
-			return { ...newState, isDirty: true, hash: newId };
+
+			return { ...newState, isDirty: true };
 		},
 		[initializer]
 	);
