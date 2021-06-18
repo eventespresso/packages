@@ -1,13 +1,14 @@
 import { useCallback } from 'react';
 
-import { wait } from '@eventespresso/utils';
-
 import { FormState, useFormState } from '../state';
+import { useSectionMutator } from './useSectionMutator';
 
 type MutateSectionsCb = (sections: FormState['sections'], deletedSections?: Array<string>) => Promise<void>;
 
 export const useMutateSections = (): MutateSectionsCb => {
 	const { markSectionAsSaved, markSectionAsDeleted } = useFormState();
+
+	const { createEntity, updateEntity, deleteEntity } = useSectionMutator();
 
 	return useCallback(
 		async (sections, deletedSections = []) => {
@@ -15,15 +16,19 @@ export const useMutateSections = (): MutateSectionsCb => {
 			const savedSections = Promise.all(
 				Object.values(sections).map(async (section) => {
 					if (section.isNew) {
-						console.log('creating section...', section);
-						// emulate network request
-						await wait(1500);
-						return section;
+						try {
+							await createEntity(section);
+							return section;
+						} catch (error) {
+							// TODO handle error
+						}
 					} else if (section.isModified) {
-						console.log('updating section...', section);
-						// emulate network request
-						await wait(1500);
-						return section;
+						try {
+							await updateEntity(section);
+							return section;
+						} catch (error) {
+							// TODO handle error
+						}
 					}
 					return null;
 				})
@@ -33,10 +38,12 @@ export const useMutateSections = (): MutateSectionsCb => {
 				// Delete all unlucky ones
 				await Promise.all(
 					deletedSections.map(async (id) => {
-						console.log('deleting section...', id);
-						// emulate network request
-						await wait(1000);
-						markSectionAsDeleted({ id });
+						try {
+							await deleteEntity({ id });
+							markSectionAsDeleted({ id });
+						} catch (error) {
+							// TODO handle error
+						}
 					})
 				);
 			}
@@ -46,6 +53,6 @@ export const useMutateSections = (): MutateSectionsCb => {
 				markSectionAsSaved({ id: section.id, section });
 			});
 		},
-		[markSectionAsDeleted, markSectionAsSaved]
+		[createEntity, deleteEntity, markSectionAsDeleted, markSectionAsSaved, updateEntity]
 	);
 };
