@@ -5,6 +5,11 @@ import { uuid } from '@eventespresso/utils';
 import { FormState } from './types';
 import { sortByOrder, setOrderByIndex } from '../utils';
 import { FormElement, FormSection, LocalOnlyFields } from '../types';
+import { PURITY_FLAGS } from './constants';
+
+export function omitLocalFields<Item extends LocalOnlyFields>(item: Item) {
+	return R.omit(PURITY_FLAGS, item);
+}
 
 export function markAsModified<Item extends LocalOnlyFields>(items: Array<Item>, startingIndex: number) {
 	// split the items at the starting index to mark the succeeding indices as modified items

@@ -12,8 +12,9 @@ import {
 	getSectionElementIds,
 	moveElement,
 	moveSection,
+	omitLocalFields,
 } from './utils';
-import { FormElement, FormSection, LocalOnlyFields } from '../types';
+import { FormElement, FormSection } from '../types';
 
 export const initialState: FormState = {
 	elements: {},
@@ -23,8 +24,6 @@ export const initialState: FormState = {
 	isDirty: false,
 	openElement: '',
 };
-
-const PURITY_FLAGS: Array<keyof LocalOnlyFields> = ['isModified', 'isNew'];
 
 export const useFormStateReducer = (initializer: StateInitializer): FormStateReducer => {
 	return useCallback<FormStateReducer>(
@@ -96,7 +95,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 							 */
 							const isModified = !isEqualJson(section, existingSection);
 							// get rid of `isModified` and `isNew` flags
-							const newSection = R.omit(PURITY_FLAGS, existingSection);
+							const newSection = omitLocalFields(existingSection);
 							return { ...newSection, isModified };
 						}),
 					];
@@ -153,7 +152,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 							 */
 							const isModified = !isEqualJson(element, existingElement);
 							// get rid of `isModified` and `isNew` flags
-							const newElement = R.omit(PURITY_FLAGS, existingElement);
+							const newElement = omitLocalFields(existingElement);
 							return { ...newElement, isModified };
 						}),
 					];
