@@ -134,8 +134,8 @@ jobs:
               run: |
                   mkdir -p build/vendor/
                   cp node_modules/ramda/dist/* build/vendor/
-                  cp node_modules/react/umd/react.production.min.js build/vendor/react.min.js
-                  cp node_modules/react-dom/umd/react-dom.production.min.js build/vendor/react-dom.min.js
+                  cp node_modules/react/umd/react.production.min.js build/vendor/ee-react.min.js
+                  cp node_modules/react-dom/umd/react-dom.production.min.js build/vendor/ee-react-dom.min.js
 
             - name: Install WordPress
               run: yarn wp-env start
