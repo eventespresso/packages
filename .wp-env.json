@@ -11,5 +11,5 @@
 	"mappings": {
 		"wp-content/plugins/event-espresso-core/assets": "./build"
 	},
-	"plugins": [".", "eventespresso/event-espresso-core#fix-react-asset-loading"]
+	"plugins": ["eventespresso/event-espresso-core#fix-react-asset-loading"]
 }
