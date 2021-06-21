@@ -44,6 +44,9 @@ function requestToExternal(request) {
  * @type {import('.').RequestToHandle}
  */
 function requestToHandle(request) {
+	if (request === 'react' || request === 'react-dom') {
+		return 'ee-' + request;
+	}
 	if (request.startsWith(EVENTESPRESSO_NAMESPACE)) {
 		return 'eventespresso-' + camelCaseDash(request.substring(EVENTESPRESSO_NAMESPACE.length));
 	}
