@@ -48,14 +48,7 @@ function requestToHandle(request) {
 		return 'eventespresso-' + camelCaseDash(request.substring(EVENTESPRESSO_NAMESPACE.length));
 	}
 
-	switch (request) {
-		case 'react':
-		case 'react-dom':
-			return 'ee-' + request;
-
-		default:
-			return defaultRequestToHandle(request);
-	}
+	return defaultRequestToHandle(request);
 }
 
 /**
