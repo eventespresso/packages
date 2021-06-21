@@ -82,13 +82,16 @@ jobs:
 
     e2e:
         env:
-            # If you want to run e2e in parallel to build, just set this to false and comment out needs: and if:
-            run_after_build: 'false'
+            # If you want to run e2e in parallel to build:
+            # - Set this to false
+            # - Remove 'build' from needs:
+            # - Comment out if:
+            run_after_build: 'true'
         name: E2E Tests
-        needs: [list-e2e-specs] #, what-is-hit, build]
+        needs: [list-e2e-specs, what-is-hit, build]
         runs-on: ubuntu-latest
         # Run the job only if JS is affected
-        # if: ${{ needs.what-is-hit.outputs.js == 'true' }}
+        if: ${{ needs.what-is-hit.outputs.js == 'true' }}
         strategy:
             matrix: ${{ fromJSON(needs.list-e2e-specs.outputs.specs) }}
             fail-fast: false
