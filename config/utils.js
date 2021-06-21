@@ -20,6 +20,7 @@ const BUNDLED_PACKAGES = ['@eventespresso/icons'];
 function requestToExternal(request) {
 	switch (true) {
 		case BUNDLED_PACKAGES.includes(request):
+		case request === '@babel/runtime/regenerator':
 			return undefined;
 
 		case request.startsWith(EVENTESPRESSO_NAMESPACE):
@@ -44,13 +45,21 @@ function requestToExternal(request) {
  * @type {import('.').RequestToHandle}
  */
 function requestToHandle(request) {
-	if (request === 'react' || request === 'react-dom') {
-		return 'ee-' + request;
-	}
 	if (request.startsWith(EVENTESPRESSO_NAMESPACE)) {
 		return 'eventespresso-' + camelCaseDash(request.substring(EVENTESPRESSO_NAMESPACE.length));
 	}
-	return defaultRequestToHandle(request);
+
+	switch (request) {
+		case 'react':
+		case 'react-dom':
+			return 'ee-' + request;
+
+		case '@babel/runtime/regenerator':
+			return undefined;
+
+		default:
+			return defaultRequestToHandle(request);
+	}
 }
 
 /**
