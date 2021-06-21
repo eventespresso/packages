@@ -26,7 +26,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                task: [lint, build] #, test]
+                task: [lint, build, test]
         name: ${{ matrix.task }}
         needs: what-is-hit
         steps:

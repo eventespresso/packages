@@ -7,6 +7,10 @@ module.exports = function (api) {
 		[
 			'@babel/plugin-transform-runtime',
 			{
+				/**
+				 * `absoluteRuntime` needs to be true for our monorepo set up
+				 * @see https://babeljs.io/docs/en/babel-plugin-transform-runtime#absoluteruntime
+				 */
 				absoluteRuntime: true,
 				corejs: false,
 				helpers: true,
