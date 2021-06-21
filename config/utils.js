@@ -20,7 +20,6 @@ const BUNDLED_PACKAGES = ['@eventespresso/icons'];
 function requestToExternal(request) {
 	switch (true) {
 		case BUNDLED_PACKAGES.includes(request):
-		case request === '@babel/runtime/regenerator':
 			return undefined;
 
 		case request.startsWith(EVENTESPRESSO_NAMESPACE):
@@ -53,9 +52,6 @@ function requestToHandle(request) {
 		case 'react':
 		case 'react-dom':
 			return 'ee-' + request;
-
-		case '@babel/runtime/regenerator':
-			return undefined;
 
 		default:
 			return defaultRequestToHandle(request);
