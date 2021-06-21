@@ -131,7 +131,11 @@ jobs:
             # Since we map the barista build directory to core/assets, vendor scripts are not present
             # we need to copy them manually
             - name: Copy vendor assets
-              run: mkdir -p build/vendor/ && cp node_modules/ramda/dist/* build/vendor/
+              run: |
+                  mkdir -p build/vendor/
+                  cp node_modules/ramda/dist/* build/vendor/
+                  cp node_modules/react/umd/react.production.min.js build/vendor/react.min.js
+                  cp node_modules/react-dom/umd/react-dom.production.min.js build/vendor/react-dom.min.js
 
             - name: Install WordPress
               run: yarn wp-env start
