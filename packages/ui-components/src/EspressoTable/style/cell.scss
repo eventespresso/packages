@@ -189,18 +189,17 @@ table.ee-rspnsv-table.ee-rspnsv-table {
 
 		&--text-align {
 			&-center {
+				justify-content: center;
 				text-align: center !important;
-
-				@include max782px {
-					text-align: center !important;
-				}
 			}
 
 			&-start {
+				justify-content: flex-start;
 				text-align: start !important;
 			}
 
 			&-end {
+				justify-content: flex-end;
 				text-align: end !important;
 			}
 		}
