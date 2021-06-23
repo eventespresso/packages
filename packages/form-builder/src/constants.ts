@@ -9,10 +9,10 @@ export const SECTIONS_DROPPABLE_ID = 'form-sections';
 
 export const DEFAULT_SECTION: FormSection = {
 	id: '',
-	appliesTo: 'all',
-	name: '',
+	appliesTo: 'ALL',
+	publicLabel: '',
 	order: 1,
-	status: 'active',
+	status: 'ACTIVE',
 };
 
 export const DEFAULT_ELEMENT: FormElement = {

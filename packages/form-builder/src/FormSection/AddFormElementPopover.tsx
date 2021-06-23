@@ -18,20 +18,15 @@ interface SidebarProps {
 // this represents existing forms sections pulled from the database with a status of "default"
 const mockFormSectionData: Array<FormSection> = [
 	{
-		id: 'lkj567',
 		adminLabel: 'pet questions',
-		appliesTo: 'primary',
+		appliesTo: 'PRIMARY',
 		belongsTo: '',
-		customCss: '',
-		description: '',
 		htmlClass: '',
-		name: 'About Your Pet',
+		id: 'lkj567',
 		order: 3,
-		relation: '',
-		showName: false,
-		showDescription: false,
-		status: 'default',
-		wpUser: 1,
+		publicLabel: 'About Your Pet',
+		showLabel: false,
+		status: 'DEFAULT',
 	},
 ];
 
