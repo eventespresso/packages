@@ -71,21 +71,18 @@ export interface FormElement extends LocalOnlyFields {
 	value?: any;
 }
 
-export type FormSectionStatus = 'active' | 'archived' | 'default' | 'shared' | 'trashed';
+export type FormSectionStatus = 'ACTIVE' | 'ARCHIVED' | 'DEFAULT' | 'SHARED' | 'TRASHED';
+export type FormSectionAppliesTo = 'ALL' | 'PRIMARY' | 'PURCHASER' | 'REGISTRANTS';
 
 export interface FormSection extends LocalOnlyFields {
-	id: string;
 	adminLabel?: string;
-	appliesTo?: string;
+	appliesTo?: FormSectionAppliesTo;
 	belongsTo?: string;
-	customCss?: string;
-	description?: string;
 	htmlClass?: string;
-	name: string;
+	id: string;
 	order: number;
-	relation?: string;
-	showName?: boolean;
-	showDescription?: boolean;
+	publicLabel: string;
+	showLabel?: boolean;
 	status?: FormSectionStatus;
 	wpUser?: number;
 }
