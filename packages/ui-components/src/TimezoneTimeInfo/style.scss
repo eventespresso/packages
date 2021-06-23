@@ -19,14 +19,8 @@
 	}
 
 	[role='dialog'] {
-		background-color: var(--ee-background-color);
-		border: 2px solid var(--ee-color-primary-super-low-contrast);
-		border-radius: var(--ee-border-radius-small);
-		color: var(--ee-default-text-color-high-contrast);
-		font-weight: normal;
 		left: 0;
 		min-width: 260px;
-		padding: var(--ee-padding-tiny);
 		position: absolute;
 
 		[x-arrow] {
