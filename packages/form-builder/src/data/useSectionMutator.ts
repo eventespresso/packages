@@ -8,7 +8,6 @@ import {
 	useMutationWithFeedback,
 } from '@eventespresso/data';
 import { useSystemNotifications } from '@eventespresso/toaster';
-import { wait } from '@eventespresso/utils';
 
 import type {
 	CreateFormSectionInput,
@@ -19,6 +18,7 @@ import type {
 	UpdateFormSectionResult,
 } from './types';
 import { CREATE_FORM_SECTION, DELETE_FORM_SECTION, UPDATE_FORM_SECTION } from './gql';
+import { omitLocalFields } from '../state/utils';
 
 interface SectionMutator {
 	createEntity: MutationFunction<CreateFormSectionResult, CreateFormSectionInput>;
@@ -29,7 +29,7 @@ interface SectionMutator {
 const createVariables = (mutationType: MutationType, input: MutationInput): OperationVariables => {
 	const mutationInput: MutationInput = {
 		clientMutationId: `${mutationType}_SECTION`,
-		...input,
+		...omitLocalFields(input),
 	};
 
 	return {
@@ -63,11 +63,6 @@ export const useSectionMutator = (id = ''): SectionMutator => {
 
 	const createEntity = useCallback<SectionMutator['createEntity']>(
 		async (input) => {
-			// emulate network request
-			console.log('creating section...', input);
-			return await wait(1500);
-
-			// eslint-disable-next-line no-unreachable
 			const variables = createVariables(MutationType.Create, { id, ...input });
 			return createSection({ variables });
 		},
@@ -76,10 +71,6 @@ export const useSectionMutator = (id = ''): SectionMutator => {
 
 	const updateEntity = useCallback<SectionMutator['updateEntity']>(
 		async (input) => {
-			// emulate network request
-			console.log('updating section...', input);
-			return await wait(1500);
-
 			// eslint-disable-next-line no-unreachable
 			const variables = createVariables(MutationType.Update, { id, ...input });
 			return updateSection({ variables });
@@ -89,10 +80,6 @@ export const useSectionMutator = (id = ''): SectionMutator => {
 
 	const deleteEntity = useCallback<SectionMutator['deleteEntity']>(
 		async (input) => {
-			// emulate network request
-			console.log('deleting section...', input);
-			return await wait(1500);
-
 			// eslint-disable-next-line no-unreachable
 			const variables = createVariables(MutationType.Delete, { id, ...input });
 			return deleteSection({ variables });
