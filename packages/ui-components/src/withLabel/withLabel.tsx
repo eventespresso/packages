@@ -21,6 +21,7 @@ const withLabel = <P extends AnyObject>(
 		labelClassName,
 		labelPosition = 'top-left',
 		noPadding,
+		isRequired,
 		...props
 	}) => {
 		const className = classNames(
@@ -36,7 +37,7 @@ const withLabel = <P extends AnyObject>(
 
 		return label ? (
 			<div className={className}>
-				<Label ariaLabel={props['aria-label'] || label} id={id} label={label} />
+				<Label ariaLabel={props['aria-label'] || label} id={id} label={label} isRequired={isRequired} />
 				<WrappedComponent
 					{...(props as P)}
 					aria-label={null} // avoid duplicate aria-label

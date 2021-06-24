@@ -1,7 +1,7 @@
 export { Clickable } from 'reakit/Clickable';
 export type { ClickableProps } from 'reakit/Clickable';
 export type { StackProps } from '@chakra-ui/react';
-export { RequiredIndicator, Stack } from '@chakra-ui/react';
+export { Stack } from '@chakra-ui/react';
 
 export * from './AlertDialog';
 export * from './Banner';

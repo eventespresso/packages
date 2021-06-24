@@ -48,6 +48,7 @@ export * from './Pagination';
 export * from './PercentSign';
 export * from './Popover';
 export * from './Radio';
+export * from './RequiredIndicator';
 export * from './SearchInput';
 export * from './Select';
 export * from './SimpleEntityList';

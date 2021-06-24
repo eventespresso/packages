@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 
-import { RequiredIndicator } from '@eventespresso/adapters';
+import { RequiredIndicator, RequiredIndicatorProps } from '../RequiredIndicator';
 
 import './style.scss';
 
-export interface LabelProps {
+export interface LabelProps extends RequiredIndicatorProps {
 	ariaLabel?: string;
 	hidden?: boolean;
 	id?: string;
@@ -12,12 +12,12 @@ export interface LabelProps {
 	className?: string;
 }
 
-export const Label: React.FC<LabelProps> = ({ ariaLabel, className, hidden = false, id, label }) => {
+export const Label: React.FC<LabelProps> = ({ ariaLabel, className, hidden = false, id, label, isRequired }) => {
 	const labelClassName = classNames('ee-input-label', hidden && 'screen-reader-text', className);
 	return (
 		<label aria-label={ariaLabel || label} className={labelClassName} id={`${id}-label`} htmlFor={id}>
 			{label}
-			<RequiredIndicator />
+			<RequiredIndicator isRequired={isRequired} />
 		</label>
 	);
 };
