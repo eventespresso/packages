@@ -13,6 +13,8 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 	const props = useMemo(() => {
 		let inputProps: AnyObject = {
 			placeholder: element.placeholder,
+			// ensure that the field is not required inside form builder 😄
+			required: false,
 		};
 		switch (element.type) {
 			case 'checkbox-multi':
