@@ -1,4 +1,7 @@
 import classNames from 'classnames';
+
+import { FormLabel } from '@eventespresso/adapters';
+
 import './style.scss';
 
 export interface LabelProps {
@@ -12,8 +15,8 @@ export interface LabelProps {
 export const Label: React.FC<LabelProps> = ({ ariaLabel, className, hidden = false, id, label }) => {
 	const labelClassName = classNames('ee-input-label', hidden && 'screen-reader-text', className);
 	return (
-		<label aria-label={ariaLabel || label} className={labelClassName} id={`${id}-label`} htmlFor={id}>
+		<FormLabel aria-label={ariaLabel || label} className={labelClassName} id={`${id}-label`} htmlFor={id}>
 			{label}
-		</label>
+		</FormLabel>
 	);
 };
