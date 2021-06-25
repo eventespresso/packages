@@ -11,14 +11,9 @@ export const Styles: React.FC<FormElementProps> = ({ element }) => {
 	return (
 		<>
 			<TextInputWithLabel
-				label={__('label css class')}
-				onChangeValue={onChangeValue('labelClass')}
-				value={element.labelClass}
-			/>
-			<TextInputWithLabel
-				label={__('input css class')}
-				onChangeValue={onChangeValue('inputClass')}
-				value={element.inputClass}
+				label={__('css class')}
+				onChangeValue={onChangeValue('htmlClass')}
+				value={element.htmlClass}
 			/>
 			<TextInputWithLabel
 				label={__('help text css class')}

@@ -71,7 +71,6 @@ export const useSectionMutator = (id = ''): SectionMutator => {
 
 	const updateEntity = useCallback<SectionMutator['updateEntity']>(
 		async (input) => {
-			// eslint-disable-next-line no-unreachable
 			const variables = createVariables(MutationType.Update, { id, ...input });
 			return updateSection({ variables });
 		},
@@ -80,7 +79,6 @@ export const useSectionMutator = (id = ''): SectionMutator => {
 
 	const deleteEntity = useCallback<SectionMutator['deleteEntity']>(
 		async (input) => {
-			// eslint-disable-next-line no-unreachable
 			const variables = createVariables(MutationType.Delete, { id, ...input });
 			return deleteSection({ variables });
 		},

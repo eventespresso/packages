@@ -8,7 +8,6 @@ import {
 	useMutationWithFeedback,
 } from '@eventespresso/data';
 import { useSystemNotifications } from '@eventespresso/toaster';
-import { wait } from '@eventespresso/utils';
 
 import type {
 	CreateFormElementInput,
@@ -19,7 +18,7 @@ import type {
 	UpdateFormElementResult,
 } from './types';
 import { CREATE_FORM_ELEMENT, DELETE_FORM_ELEMENT, UPDATE_FORM_ELEMENT } from './gql';
-import { omitLocalFields } from '../state/utils';
+import { normalizeElementInput } from '../state/utils';
 
 interface ElementMutator {
 	createEntity: MutationFunction<CreateFormElementResult, CreateFormElementInput>;
@@ -30,7 +29,7 @@ interface ElementMutator {
 const createVariables = (mutationType: MutationType, input: MutationInput): OperationVariables => {
 	const mutationInput: MutationInput = {
 		clientMutationId: `${mutationType}_ELEMENT`,
-		...omitLocalFields(input),
+		...normalizeElementInput(input),
 	};
 
 	return {
@@ -64,11 +63,6 @@ export const useElementMutator = (id = ''): ElementMutator => {
 
 	const createEntity = useCallback<ElementMutator['createEntity']>(
 		async (input) => {
-			// emulate network request
-			console.log('creating element...', input);
-			return await wait(1500);
-
-			// eslint-disable-next-line no-unreachable
 			const variables = createVariables(MutationType.Create, { id, ...input });
 			return createElement({ variables });
 		},
@@ -77,11 +71,6 @@ export const useElementMutator = (id = ''): ElementMutator => {
 
 	const updateEntity = useCallback<ElementMutator['updateEntity']>(
 		async (input) => {
-			// emulate network request
-			console.log('updating element...', input);
-			return await wait(1500);
-
-			// eslint-disable-next-line no-unreachable
 			const variables = createVariables(MutationType.Update, { id, ...input });
 			return updateElement({ variables });
 		},
@@ -90,11 +79,6 @@ export const useElementMutator = (id = ''): ElementMutator => {
 
 	const deleteEntity = useCallback<ElementMutator['deleteEntity']>(
 		async (input) => {
-			// emulate network request
-			console.log('deleting element...', input);
-			return await wait(1000);
-
-			// eslint-disable-next-line no-unreachable
 			const variables = createVariables(MutationType.Delete, { id, ...input });
 			return deleteElement({ variables });
 		},
