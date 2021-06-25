@@ -42,6 +42,8 @@ export type LocalOnlyFields = {
 	// These are the purity flags which can be used for mutations
 	isNew?: boolean;
 	isModified?: boolean;
+	// This is the current input value if needed.
+	value?: any;
 };
 
 export interface FormElement extends LocalOnlyFields {
@@ -53,22 +55,18 @@ export interface FormElement extends LocalOnlyFields {
 	helpClass?: string;
 	helpText?: string;
 	htmlClass?: string;
-	inputClass?: string;
-	labelClass?: string;
+	mapsTo?: string;
 	max?: number;
 	min?: number;
 	options?: OptionsType;
 	order: number;
 	placeholder?: string;
 	publicLabel?: string;
-	relation?: string;
 	required?: boolean;
 	requiredText?: string;
-	status?: string;
+	status?: FormSectionStatus;
 	type: ElementType;
 	wpUser?: number;
-	// This is the current input value if needed.
-	value?: any;
 }
 
 export type FormSectionStatus = 'ACTIVE' | 'ARCHIVED' | 'DEFAULT' | 'SHARED' | 'TRASHED';

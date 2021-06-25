@@ -8,6 +8,8 @@ const sectionIds = {
 	other_info: uuid(),
 };
 
+const isNew = true;
+
 // this is based off of the data schema I started for the PHP models, but can be changed to whatever
 export const formSectionsData: Array<FormSection> = [
 	{
@@ -19,7 +21,7 @@ export const formSectionsData: Array<FormSection> = [
 		htmlClass: '',
 		order: 1,
 		status: 'ACTIVE',
-		isNew: true,
+		isNew,
 	},
 	{
 		id: sectionIds.address_info,
@@ -30,7 +32,7 @@ export const formSectionsData: Array<FormSection> = [
 		htmlClass: '',
 		order: 2,
 		status: 'ACTIVE',
-		isNew: true,
+		isNew,
 	},
 	{
 		id: sectionIds.other_info,
@@ -41,14 +43,13 @@ export const formSectionsData: Array<FormSection> = [
 		htmlClass: '',
 		order: 3,
 		status: 'ACTIVE',
-		isNew: true,
+		isNew,
 	},
 ];
 
 export const formElementsData: Array<FormElement> = [
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'registrant first name',
 		adminOnly: false,
 		belongsTo: sectionIds.personal_info,
@@ -60,13 +61,12 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'first name',
 		required: true,
 		requiredText: 'Please enter your first name!',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'text',
-		wpUser: 1,
+		isNew,
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'registrant last name',
 		adminOnly: false,
 		belongsTo: sectionIds.personal_info,
@@ -78,13 +78,12 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'last name',
 		required: false,
 		requiredText: 'Please enter your last name!',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'text',
-		wpUser: 1,
+		isNew,
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'registrant email address',
 		adminOnly: false,
 		belongsTo: sectionIds.personal_info,
@@ -96,13 +95,12 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'email address',
 		required: true,
 		requiredText: 'Please enter a valid email address!',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'email',
-		wpUser: 1,
+		isNew,
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'registrant age',
 		adminOnly: false,
 		belongsTo: sectionIds.personal_info,
@@ -115,22 +113,21 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'age',
 		required: true,
 		requiredText: 'Please enter your age!',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'integer',
-		wpUser: 1,
+		isNew,
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'Where to live in 2021',
 		adminOnly: false,
-		belongsTo: 'earth',
+		belongsTo: sectionIds.address_info,
 		helpClass: '',
 		helpText: 'Is it worth living where you want to?',
 		htmlClass: '',
 		order: 3,
 		publicLabel: 'Where do you want to live',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'select',
 		options: [
 			{
@@ -142,11 +139,10 @@ export const formElementsData: Array<FormElement> = [
 				label: 'Mars',
 			},
 		],
-		wpUser: 1,
+		isNew,
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'registrant street',
 		adminOnly: false,
 		belongsTo: sectionIds.address_info,
@@ -158,13 +154,12 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'street address',
 		required: false,
 		requiredText: '',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'text',
-		wpUser: 1,
+		isNew,
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'registrant city',
 		adminOnly: false,
 		belongsTo: sectionIds.address_info,
@@ -176,13 +171,12 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'city',
 		required: false,
 		requiredText: '',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'text',
-		wpUser: 1,
+		isNew,
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'registrant state',
 		adminOnly: false,
 		belongsTo: sectionIds.address_info,
@@ -193,9 +187,10 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'state/province',
 		required: false,
 		requiredText: '',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'select-state',
-		wpUser: 1,
+		isNew,
+
 		options: [
 			{
 				value: 'AB',
@@ -209,7 +204,6 @@ export const formElementsData: Array<FormElement> = [
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'registrant country',
 		adminOnly: false,
 		belongsTo: sectionIds.address_info,
@@ -220,9 +214,10 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'country',
 		required: false,
 		requiredText: '',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'select-country',
-		wpUser: 1,
+		isNew,
+
 		options: [
 			{
 				value: 'CA',
@@ -236,7 +231,6 @@ export const formElementsData: Array<FormElement> = [
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'registrant postal code',
 		adminOnly: false,
 		belongsTo: sectionIds.address_info,
@@ -247,13 +241,12 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'zip/postal code',
 		required: false,
 		requiredText: '',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'text',
-		wpUser: 1,
+		isNew,
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: '',
 		adminOnly: false,
 		belongsTo: sectionIds.other_info,
@@ -264,9 +257,10 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: '',
 		required: false,
 		requiredText: '',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'html',
-		wpUser: 1,
+		isNew,
+
 		placeholder: `<p>This is an example HTML block. In this block, user can add any arbitary HTML. This is <strong>bold</strong> here, this <strong><em>bold and italic</em></strong>, this <strong><ins>bold and underlined</ins></strong>, this <em><ins>italic and underlined</ins></em>. There can also be list items like this:</p>
 			<ul>
 			<li>Test Item 1</li>
@@ -276,7 +270,6 @@ export const formElementsData: Array<FormElement> = [
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'what can the user code?',
 		adminOnly: false,
 		belongsTo: sectionIds.other_info,
@@ -287,7 +280,7 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'what can you code?',
 		required: false,
 		requiredText: '',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'checkbox-multi',
 		options: [
 			{
@@ -307,11 +300,10 @@ export const formElementsData: Array<FormElement> = [
 				label: 'PHP',
 			},
 		],
-		wpUser: 1,
+		isNew,
 	},
 	{
 		id: uuid(),
-		relation: '',
 		adminLabel: 'Which language does the user like the most?',
 		adminOnly: false,
 		belongsTo: sectionIds.other_info,
@@ -322,7 +314,7 @@ export const formElementsData: Array<FormElement> = [
 		publicLabel: 'Which language do you like the most?',
 		required: false,
 		requiredText: '',
-		status: 'active',
+		status: 'ACTIVE',
 		type: 'radio',
 		options: [
 			{
@@ -342,6 +334,6 @@ export const formElementsData: Array<FormElement> = [
 				label: 'PHP',
 			},
 		],
-		wpUser: 1,
+		isNew,
 	},
 ];
