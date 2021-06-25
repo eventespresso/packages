@@ -9,7 +9,9 @@ import {
 	addElementToState,
 	addSectionToState,
 	copySectionElements,
-	getSectionElementIds,
+	deleteElement,
+	deleteSection,
+	deleteSectionElements,
 	moveElement,
 	moveSection,
 	omitLocalFields,
@@ -64,18 +66,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 				}
 
 				case 'DELETE_SECTION': {
-					// We also need to delete the section elements as well
-					const sectionElementIds = getSectionElementIds(state, id);
-
-					predicates = [
-						R.over(R.lensPath(['sections']), R.omit([id])),
-						R.over(R.lensPath(['elements']), R.omit(sectionElementIds)),
-						// unless a section is new, it needs to be marked as deleted
-						R.unless(
-							R.pathEq(['sections', id, 'isNew'], true),
-							R.over(R.lensPath(['deletedSections']), R.concat([id]))
-						),
-					];
+					predicates = [deleteSection(id), deleteSectionElements(id)];
 					break;
 				}
 
@@ -134,14 +125,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 				}
 
 				case 'DELETE_ELEMENT':
-					predicates = [
-						R.over(R.lensPath(['elements']), R.omit([id])),
-						// unless an element is new, it needs to be marked as deleted
-						R.unless(
-							R.pathEq(['elements', id, 'isNew'], true),
-							R.over(R.lensPath(['deletedElements']), R.concat([id]))
-						),
-					];
+					predicates = [deleteElement(id)];
 					break;
 
 				case 'MARK_ELEMENT_AS_SAVED': {

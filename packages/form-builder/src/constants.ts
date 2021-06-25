@@ -20,7 +20,7 @@ export const DEFAULT_ELEMENT: FormElement = {
 	belongsTo: '',
 	type: 'text',
 	order: 1,
-	status: 'active',
+	status: 'ACTIVE',
 };
 
 // These are the fields that require `options` to be passed to the component

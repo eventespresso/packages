@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-import { uuid } from '@eventespresso/utils';
+import { uuid, AnyObject } from '@eventespresso/utils';
 
 import { FormState } from './types';
 import { sortByOrder, setOrderByIndex } from '../utils';
@@ -9,6 +9,18 @@ import { PURITY_FLAGS } from './constants';
 
 export function omitLocalFields<Item extends LocalOnlyFields>(item: Item) {
 	return R.omit(PURITY_FLAGS, item);
+}
+
+const stringifyOptions = R.when<FormElement, FormElement>(
+	R.has('options'),
+	R.over(R.lensProp('options'), JSON.stringify)
+);
+
+/**
+ * Normalizes mutation input for element mutations
+ */
+export function normalizeElementInput(input: AnyObject) {
+	return R.pipe(omitLocalFields, stringifyOptions)(input);
 }
 
 export function markAsModified<Item extends LocalOnlyFields>(items: Array<Item>, startingIndex: number) {
@@ -153,6 +165,22 @@ export const moveElement =
 		};
 	};
 
+export const deleteElement = (id: string) => {
+	return R.pipe<FormState, FormState, FormState>(
+		// unless an element is new, it needs to be marked as deleted
+		R.unless(R.pathEq(['elements', id, 'isNew'], true), R.over(R.lensPath(['deletedElements']), R.concat([id]))),
+		R.over(R.lensPath(['elements']), R.omit([id]))
+	);
+};
+
+export const deleteSection = (id: string) => {
+	return R.pipe<FormState, FormState, FormState>(
+		// unless a section is new, it needs to be marked as deleted
+		R.unless(R.pathEq(['sections', id, 'isNew'], true), R.over(R.lensPath(['deletedSections']), R.concat([id]))),
+		R.over(R.lensPath(['sections']), R.omit([id]))
+	);
+};
+
 export const copySectionElements =
 	(copyFromSectionId: string, newSectionId: string) =>
 	(state: FormState): FormState => {
@@ -178,8 +206,18 @@ export const copySectionElements =
 		};
 	};
 
-export const getSectionElementIds = (state: FormState, sectionId: string): Array<string> => {
-	return Object.values(state.elements)
-		.filter(R.propEq('belongsTo', sectionId))
-		.map(({ id }) => id);
-};
+export const deleteSectionElements =
+	(sectionId: string) =>
+	(state: FormState): FormState => {
+		const sectionElementIds = getSectionElementIds(sectionId)(state);
+
+		return R.over(R.lensPath(['elements']), R.omit(sectionElementIds), state);
+	};
+
+export const getSectionElementIds =
+	(sectionId: string) =>
+	(state: FormState): Array<string> => {
+		return Object.values(state.elements)
+			.filter(R.propEq('belongsTo', sectionId))
+			.map(({ id }) => id);
+	};
