@@ -37,40 +37,38 @@ export const FormSectionToolbar = memo<FormSectionToolbarProps>(({ formSection, 
 
 	return (
 		<div className={'ee-form-section__toolbar'}>
-			<div className='ee-form-section__toolbar-actions'>
-				<IconButton
-					icon={SettingsOutlined}
-					active={active}
-					borderless
-					className='ee-form-section__menu-button ee-form-section__toolbar-button'
-					onClick={onToggle}
-					size='smaller'
-					tooltip={__('form section settings')}
-					transparentBg
-				/>
-				<IconButton
-					icon={Copy}
-					borderless
-					className='ee-form-section__toolbar-button'
-					onClick={onCopy}
-					size='smaller'
-					tabIndex={tabIndex}
-					tooltip={__('copy form section')}
-					transparentBg
-				/>
-				<SaveSection formSection={formSection} />
-				<ConfirmDelete asIconButton onConfirm={onDelete} buttonProps={deleteButtonProps} />
-				<IconButton
-					icon={DragHandle}
-					borderless
-					className='ee-drag-handle ee-form-section__toolbar-button'
-					size='small'
-					tabIndex={tabIndex}
-					tooltip={__('click, hold, and drag to reorder form section')}
-					transparentBg
-					{...dragHandleProps}
-				/>
-			</div>
+			<IconButton
+				icon={SettingsOutlined}
+				active={active}
+				borderless
+				className='ee-form-section__menu-button ee-form-section__toolbar-button'
+				onClick={onToggle}
+				size='smaller'
+				tooltip={__('form section settings')}
+				transparentBg
+			/>
+			<IconButton
+				icon={Copy}
+				borderless
+				className='ee-form-section__toolbar-button'
+				onClick={onCopy}
+				size='smaller'
+				tabIndex={tabIndex}
+				tooltip={__('copy form section')}
+				transparentBg
+			/>
+			<SaveSection formSection={formSection} />
+			<ConfirmDelete asIconButton onConfirm={onDelete} buttonProps={deleteButtonProps} />
+			<IconButton
+				icon={DragHandle}
+				borderless
+				className='ee-drag-handle ee-form-section__toolbar-button'
+				size='small'
+				tabIndex={tabIndex}
+				tooltip={__('click, hold, and drag to reorder form section')}
+				transparentBg
+				{...dragHandleProps}
+			/>
 		</div>
 	);
 }, getPropsAreEqual([['formSection']]));
