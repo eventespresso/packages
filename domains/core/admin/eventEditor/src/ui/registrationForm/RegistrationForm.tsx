@@ -8,7 +8,7 @@ import { formSectionsData, formElementsData } from '../../../../../../../package
 
 const header = (
 	<Heading as='h3' className='ee-edtr-section-heading'>
-		{__('Registration Form Builder')}
+		{__('Registration Form')}
 	</Heading>
 );
 

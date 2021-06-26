@@ -23,7 +23,7 @@ const Template: FormBuilderStory = (args) => (
 		initialElements={formElementsData}
 		header={
 			<Heading as='h3' className='ee-edtr-section-heading'>
-				{'Registration Form Builder'}
+				{'Registration Form'}
 			</Heading>
 		}
 	/>
