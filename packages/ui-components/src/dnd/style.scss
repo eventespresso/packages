@@ -4,6 +4,7 @@
 .ee-droppable {
 	border: var(--ee-border-width-thick) solid transparent;
 	border-radius: var(--ee-border-radius-small);
+	max-width: 100%;
 
 	@include min767px {
 		padding: var(--ee-padding-tiny);

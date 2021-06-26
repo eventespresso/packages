@@ -1,6 +1,14 @@
 @import '~@eventespresso/styles/src/mixins/breakpoints';
 
 .ee-form-builder {
+	h3.ee-edtr-section-heading.ee-heading.ee-heading {
+		font-size: calc(var(--ee-font-size-huge) * 1.15);
+
+		@include min480px {
+			font-size: calc(var(--ee-font-size-huge) * 1.375);
+		}
+	}
+
 	&__wrapper {
 		display: flex;
 		box-sizing: border-box;
@@ -55,10 +63,13 @@
 					font-weight: 600;
 					height: var(--ee-icon-button-size-small);
 					line-height: var(--ee-icon-button-size-tiny);
-					margin: var(--ee-margin-tiny);
+					margin: var(--ee-margin-tiny) var(--ee-margin-tiny) 0;
 					min-height: var(--ee-icon-button-size-small);
 					padding: 0;
 					width: auto;
+					@include min480px {
+						margin: var(--ee-margin-tiny);
+					}
 				}
 
 				&-edit-btn.ee-btn {
@@ -72,13 +83,17 @@
 					align-items: flex-end;
 					box-sizing: border-box;
 					display: flex;
-					flex-flow: column wrap;
+					flex-flow: row wrap;
 					justify-content: flex-start;
-					margin: 0;
-					padding: 0 var(--ee-padding-smaller);
+					margin: 0 0 var(--ee-margin-tiny) auto;
+					padding: 0;
 					transition: all 250ms ease-in-out;
-					width: auto;
+					// width: auto;
 
+					@include min480px {
+						margin: 0;
+						padding: 0 var(--ee-padding-smaller);
+					}
 					@include min767px {
 						flex-flow: row wrap;
 					}
@@ -95,10 +110,14 @@
 
 					.ee-form-section__toolbar-button {
 						margin: var(--ee-margin-tiny) var(--ee-margin-micro);
-						opacity: 0;
+						opacity: 1;
 
-						&:focus {
-							opacity: 1;
+						@include min480px {
+							opacity: 0;
+
+							&:focus {
+								opacity: 1;
+							}
 						}
 
 						&.ee-drag-handle {
@@ -142,7 +161,7 @@
 						color: var(--ee-default-text-color);
 						display: flex;
 						flex-flow: column wrap;
-						max-width: 360px;
+						max-width: clamp(300px, 340px, 100%);
 						min-width: 240px;
 						padding: var(--ee-padding-tiny) var(--ee-padding-default);
 						width: auto;
@@ -154,7 +173,11 @@
 
 					&__trigger {
 						align-self: flex-end;
-						opacity: 0;
+						opacity: 1;
+
+						@include min480px {
+							opacity: 0;
+						}
 					}
 
 					&__option {
@@ -247,10 +270,14 @@
 
 					.ee-form-element__toolbar-button {
 						margin: var(--ee-margin-micro);
-						opacity: 0;
+						opacity: 1;
 
-						&:focus {
-							opacity: 1;
+						@include min480px {
+							opacity: 0;
+
+							&:focus {
+								opacity: 1;
+							}
 						}
 
 						&.ee-drag-handle {
@@ -265,8 +292,12 @@
 					color: var(--ee-default-text-color-super-low-contrast);
 					display: flex;
 					justify-content: flex-end;
-					opacity: 0;
+					opacity: 1;
 					padding: 0 var(--ee-padding-tiny);
+
+					@include min480px {
+						opacity: 0;
+					}
 				}
 
 				&__wrapper {
@@ -312,23 +343,22 @@
 						}
 
 						&.ee-tab-icon-settings {
-							height: calc((var(--ee-icon-button-size-small) / 2) + 3px);
-							width: calc((var(--ee-icon-button-size-small) / 2) + 3px);
-							margin: -2px 0 0;
+							height: var(--ee-icon-button-size-nano);
+							width: var(--ee-icon-button-size-nano);
 
 							@include min480px {
-								height: calc(var(--ee-icon-button-size-micro) + 6px);
-								width: calc(var(--ee-icon-button-size-micro) + 6px);
+								height: var(--ee-icon-button-size-micro);
+								width: var(--ee-icon-button-size-micro);
 							}
 						}
 
 						&.ee-tab-icon-validation {
-							height: calc((var(--ee-icon-button-size-small) / 2) - 2px);
-							width: calc((var(--ee-icon-button-size-small) / 2) - 2px);
+							height: var(--ee-icon-button-size-nano);
+							width: var(--ee-icon-button-size-nano);
 
 							@include min480px {
-								height: calc(var(--ee-icon-button-size-micro) - 4px);
-								width: calc(var(--ee-icon-button-size-micro) - 4px);
+								height: var(--ee-icon-button-size-micro);
+								width: var(--ee-icon-button-size-micro);
 							}
 						}
 					}

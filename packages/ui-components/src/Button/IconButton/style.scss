@@ -141,10 +141,19 @@
 
 		&.ee-btn--bigger {
 			box-shadow: var(--ee-button-box-shadow-hard);
+			height: var(--ee-icon-button-size-bigger);
+			min-height: var(--ee-icon-button-size-bigger);
+			min-width: var(--ee-icon-button-size-bigger);
+			padding: var(--ee-padding-smaller);
+			width: var(--ee-icon-button-size-bigger);
+		}
+
+		&.ee-btn--huge {
+			box-shadow: var(--ee-button-box-shadow-hard);
 			height: var(--ee-icon-button-size-huge);
 			min-height: var(--ee-icon-button-size-huge);
 			min-width: var(--ee-icon-button-size-huge);
-			padding: var(--ee-padding-smaller);
+			padding: var(--ee-padding-small);
 			width: var(--ee-icon-button-size-huge);
 		}
 	}

@@ -6,6 +6,15 @@
 	display: flex;
 	justify-content: space-between;
 
+	@at-root .ee-input__wrapper & {
+		width: 100%;
+
+		@include min480px {
+			max-width: 100%;
+			width: auto;
+		}
+	}
+
 	&--fit-container {
 		width: 100% !important;
 	}
