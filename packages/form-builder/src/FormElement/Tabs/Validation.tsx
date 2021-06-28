@@ -5,7 +5,7 @@ import { useUpdateElement } from '../useUpdateElement';
 
 import type { FormElementProps, ElementType } from '../../types';
 
-const numericFields: Array<ElementType> = ['integer', 'decimal'];
+const numericFields: Array<ElementType> = ['INTEGER', 'DECIMAL'];
 
 export const Validation: React.FC<FormElementProps> = ({ element }) => {
 	const onChangeValue = useUpdateElement(element);
@@ -14,18 +14,26 @@ export const Validation: React.FC<FormElementProps> = ({ element }) => {
 		<>
 			<SwitchWithLabel
 				label={__('required')}
-				onChangeValue={onChangeValue('required')}
-				isChecked={element.required}
+				onChangeValue={onChangeValue('required.required')}
+				isChecked={element.required?.required}
 			/>
 			<TextInputWithLabel
 				label={__('required text')}
-				onChangeValue={onChangeValue('requiredText')}
-				value={element.requiredText}
+				onChangeValue={onChangeValue('required.validationText')}
+				value={element.required?.validationText}
 			/>
 			{numericFields.includes(element.type) && (
 				<>
-					<NumberInputWithLabel label={__('min')} onChangeValue={onChangeValue('min')} value={element.min} />
-					<NumberInputWithLabel label={__('max')} onChangeValue={onChangeValue('max')} value={element.max} />
+					<NumberInputWithLabel
+						label={__('min')}
+						onChangeValue={onChangeValue('attributes.min')}
+						value={element.attributes?.min}
+					/>
+					<NumberInputWithLabel
+						label={__('max')}
+						onChangeValue={onChangeValue('attributes.max')}
+						value={element.attributes?.max}
+					/>
 				</>
 			)}
 		</>

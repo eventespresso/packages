@@ -11,8 +11,8 @@ export const Styles: React.FC<FormSectionProps> = ({ formSection }) => {
 	return (
 		<TextInputWithLabel
 			label={__('css class')}
-			onChangeValue={onChangeValue('htmlClass')}
-			value={formSection.htmlClass}
+			onChangeValue={onChangeValue('attributes.class')}
+			value={formSection.attributes?.class}
 		/>
 	);
 };

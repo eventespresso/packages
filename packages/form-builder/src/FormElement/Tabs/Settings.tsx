@@ -16,42 +16,42 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 		<>
 			<TextInputWithLabel
 				label={__('admin label')}
-				onChangeValue={onChangeValue('adminLabel')}
-				value={element.adminLabel}
+				onChangeValue={onChangeValue('label.adminLabel')}
+				value={element.label.adminLabel}
 			/>
 			<SwitchWithLabel
 				label={__('admin only')}
 				onChangeValue={onChangeValue('adminOnly')}
 				isChecked={element.adminOnly}
 			/>
-			{element.type === 'html' ? (
+			{element.type === 'HTML' ? (
 				<>
 					<RTEWithLabel
 						label={__('content')}
-						defaultValue={element.placeholder}
+						defaultValue={element.attributes?.placeholder}
 						// lets save the content to `placeholder` field because that field will be unused here
-						onChangeValue={onChangeValue('placeholder')}
+						onChangeValue={onChangeValue('attributes.placeholder')}
 					/>
 				</>
 			) : (
 				<>
 					<TextInputWithLabel
 						label={__('public label')}
-						onChangeValue={onChangeValue('publicLabel')}
-						value={element.publicLabel}
+						onChangeValue={onChangeValue('label.publicLabel')}
+						value={element.label.publicLabel}
 					/>
 					{FIELDS_WITH_OPTIONS.includes(element.type) && (
 						<FieldOptions element={element} label={__('options')} />
 					)}
 					<TextInputWithLabel
 						label={__('placeholder')}
-						onChangeValue={onChangeValue('placeholder')}
-						value={element.placeholder}
+						onChangeValue={onChangeValue('attributes.placeholder')}
+						value={element.attributes?.placeholder}
 					/>
 					<TextInputWithLabel
 						label={__('help text')}
-						onChangeValue={onChangeValue('helpText')}
-						value={element.helpText}
+						onChangeValue={onChangeValue('helpText.helpText')}
+						value={element.helpText?.helpText}
 					/>
 				</>
 			)}

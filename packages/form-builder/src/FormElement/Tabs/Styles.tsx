@@ -1,5 +1,5 @@
 import { __ } from '@eventespresso/i18n';
-import { TextInputWithLabel, TextareaWithLabel } from '@eventespresso/ui-components';
+import { TextInputWithLabel } from '@eventespresso/ui-components';
 
 import { useUpdateElement } from '../useUpdateElement';
 
@@ -12,18 +12,13 @@ export const Styles: React.FC<FormElementProps> = ({ element }) => {
 		<>
 			<TextInputWithLabel
 				label={__('css class')}
-				onChangeValue={onChangeValue('htmlClass')}
-				value={element.htmlClass}
+				onChangeValue={onChangeValue('attributes.class')}
+				value={element.attributes?.class}
 			/>
 			<TextInputWithLabel
 				label={__('help text css class')}
-				onChangeValue={onChangeValue('helpClass')}
-				value={element.helpClass}
-			/>
-			<TextareaWithLabel
-				label={__('custom css')}
-				onChangeValue={onChangeValue('customCss')}
-				value={element.customCss}
+				onChangeValue={onChangeValue('helpText.htmlClass')}
+				value={element.helpText?.htmlClass}
 			/>
 		</>
 	);
