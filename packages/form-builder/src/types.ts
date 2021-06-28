@@ -1,36 +1,36 @@
 import type { DraggableProvidedDragHandleProps, OptionsType } from '@eventespresso/adapters';
 
 export type ElementType =
-	| 'button'
-	| 'checkbox-multi'
-	| 'date'
-	| 'datetime-local'
-	| 'day-select'
-	| 'decimal'
-	| 'email'
-	| 'email-confirmation'
-	| 'formSection'
-	| 'html'
-	| 'integer'
-	| 'month'
-	| 'month-select'
-	| 'password'
-	| 'radio'
-	| 'range'
-	| 'reset'
-	| 'select'
-	| 'select-country'
-	| 'select-multi'
-	| 'select-state'
-	| 'switch'
-	| 'tel'
-	| 'text'
-	| 'textarea'
-	| 'textarea-html'
-	| 'time'
-	| 'url'
-	| 'week'
-	| 'year-select';
+	| 'BUTTON'
+	| 'CHECKBOX_MULTI'
+	| 'DATE'
+	| 'DATETIME_LOCAL'
+	| 'DAY_SELECT'
+	| 'DECIMAL'
+	| 'EMAIL'
+	| 'EMAIL_CONFIRMATION'
+	| 'FORMSECTION'
+	| 'HTML'
+	| 'INTEGER'
+	| 'MONTH'
+	| 'MONTH_SELECT'
+	| 'PASSWORD'
+	| 'RADIO'
+	| 'RANGE'
+	| 'RESET'
+	| 'SELECT'
+	| 'SELECT_COUNTRY'
+	| 'SELECT_MULTI'
+	| 'SELECT_STATE'
+	| 'SWITCH'
+	| 'TEL'
+	| 'TEXT'
+	| 'TEXTAREA'
+	| 'TEXTAREA_HTML'
+	| 'TIME'
+	| 'URL'
+	| 'WEEK'
+	| 'YEAR_SELECT';
 
 export type ElementBlock = {
 	label: React.ReactNode;
@@ -46,43 +46,57 @@ export type LocalOnlyFields = {
 	value?: any;
 };
 
-export interface FormElement extends LocalOnlyFields {
-	id: string;
-	adminLabel?: string;
-	adminOnly?: boolean;
-	belongsTo: string;
-	customCss?: string;
-	helpClass?: string;
-	helpText?: string;
-	htmlClass?: string;
-	mapsTo?: string;
+export type FormAttributes = {
+	class?: string;
 	max?: number;
 	min?: number;
+	placeholder?: string;
+};
+
+export type FormHelpText = {
+	helpText?: string;
+	htmlClass?: string;
+};
+
+export type FormLabel = {
+	adminLabel?: string;
+	publicLabel?: string;
+	showLabel?: boolean;
+};
+
+export type FormRequired = {
+	required?: boolean;
+	validationText?: string;
+};
+
+export interface FormElement extends LocalOnlyFields {
+	adminOnly?: boolean;
+	attributes?: FormAttributes;
+	belongsTo: string;
+	helpText?: FormHelpText;
+	id: string;
+	label?: FormLabel;
+	mapsTo?: string;
 	options?: OptionsType;
 	order: number;
-	placeholder?: string;
-	publicLabel?: string;
-	required?: boolean;
-	requiredText?: string;
+	required?: FormRequired;
 	status?: FormSectionStatus;
 	type: ElementType;
-	wpUser?: number;
+	wpUser?: string;
 }
 
 export type FormSectionStatus = 'ACTIVE' | 'ARCHIVED' | 'DEFAULT' | 'SHARED' | 'TRASHED';
 export type FormSectionAppliesTo = 'ALL' | 'PRIMARY' | 'PURCHASER' | 'REGISTRANTS';
 
 export interface FormSection extends LocalOnlyFields {
-	adminLabel?: string;
 	appliesTo?: FormSectionAppliesTo;
+	attributes?: FormAttributes;
 	belongsTo?: string;
-	htmlClass?: string;
 	id: string;
+	label?: FormLabel;
 	order: number;
-	publicLabel: string;
-	showLabel?: boolean;
 	status?: FormSectionStatus;
-	wpUser?: number;
+	wpUser?: string;
 }
 
 export interface FormBuilderProps {

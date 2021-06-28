@@ -27,3 +27,32 @@ export type KeysOfType<Obj, Type> = {
 export type BoolField<F extends string> = Record<F, boolean>;
 
 export type EntityFieldPred<Field extends string, FieldType = any> = (entity: Record<Field, FieldType>) => boolean;
+
+export type DotPrefix<T extends string> = T extends '' ? '' : `.${T}`;
+
+/**
+ * Creates a dotted path of a nested object property
+ *
+ * type Test = {
+ * 	foo: {
+ * 		bar?: {
+ * 			baz: string;
+ * 		};
+ * 		foo: number;
+ * 	};
+ * 	bar: number;
+ * };
+ *
+ * type T = DeepKeyOf<Test>; // "bar" | "foo.foo" | "foo.bar.baz"
+ */
+export type DeepKeyOf<T> = (
+	[T] extends [never]
+		? ''
+		: T extends object
+		? {
+				[K in Exclude<keyof T, symbol>]: `${K}${DotPrefix<DeepKeyOf<T[K]>>}`;
+		  }[Exclude<keyof T, symbol>]
+		: ''
+) extends infer D
+	? Extract<D, string>
+	: never;
