@@ -1,4 +1,6 @@
 import { uuid } from '@eventespresso/utils';
+
+import { stringifyElementFields, stringifySectionFields } from './state/utils';
 import type { FormSection, FormElement } from './types';
 
 // Generate unique IDs for sections
@@ -11,7 +13,7 @@ const sectionIds = {
 const isNew = true;
 
 // this is based off of the data schema I started for the PHP models, but can be changed to whatever
-export const formSectionsData: Array<FormSection> = [
+export const formSections: Array<FormSection> = [
 	{
 		id: sectionIds.personal_info,
 		appliesTo: 'ALL',
@@ -50,7 +52,9 @@ export const formSectionsData: Array<FormSection> = [
 	},
 ];
 
-export const formElementsData: Array<FormElement> = [
+export const formSectionsData = formSections.map(stringifySectionFields);
+
+export const formElements: Array<FormElement> = [
 	{
 		id: uuid(),
 		adminOnly: false,
@@ -396,3 +400,5 @@ export const formElementsData: Array<FormElement> = [
 		isNew,
 	},
 ];
+
+export const formElementsData = formElements.map(stringifyElementFields);

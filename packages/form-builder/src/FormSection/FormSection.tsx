@@ -28,7 +28,7 @@ export const FormSection = memo<FormSectionProps>(({ formSection, index }) => {
 					<fieldset className={className} {...draggableProps} ref={innerRef}>
 						<div className={'ee-form-section__header'}>
 							<h4 className='ee-form-section__name'>
-								{formSection.adminLabel || formSection.publicLabel}
+								{formSection.label?.adminLabel || formSection.label?.publicLabel}
 							</h4>
 							<FormSectionToolbar formSection={formSection} dragHandleProps={dragHandleProps} />
 						</div>

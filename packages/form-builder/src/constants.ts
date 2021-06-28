@@ -10,7 +10,9 @@ export const SECTIONS_DROPPABLE_ID = 'form-sections';
 export const DEFAULT_SECTION: FormSection = {
 	id: '',
 	appliesTo: 'ALL',
-	publicLabel: '',
+	label: {
+		publicLabel: '',
+	},
 	order: 1,
 	status: 'ACTIVE',
 };
@@ -18,165 +20,165 @@ export const DEFAULT_SECTION: FormSection = {
 export const DEFAULT_ELEMENT: FormElement = {
 	id: '',
 	belongsTo: '',
-	type: 'text',
+	type: 'TEXT',
 	order: 1,
 	status: 'ACTIVE',
 };
 
 // These are the fields that require `options` to be passed to the component
-export const FIELDS_WITH_OPTIONS: Array<ElementType> = ['checkbox-multi', 'radio', 'select'];
+export const FIELDS_WITH_OPTIONS: Array<ElementType> = ['CHECKBOX_MULTI', 'RADIO', 'SELECT'];
 
 export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	{
 		label: __('Form Section'),
-		type: 'formSection',
+		type: 'FORM_SECTION',
 		desc: __(
 			'Used for creating logical groupings for questions and form elements. Need to add a heading or description? Use the HTML form element.'
 		),
 	},
 	{
 		label: __('HTML Block'),
-		type: 'html',
+		type: 'HTML',
 		desc: __('allows you to add HTML like headings or text paragraphs to your form'),
 	},
 	{
 		label: __('Text Input'),
-		type: 'text',
+		type: 'TEXT',
 		desc: __('adds a text input that only accepts plain text'),
 	},
 	{
 		label: __('Plain Text Area'),
-		type: 'textarea',
+		type: 'TEXTAREA',
 		desc: __('adds a textarea block that only accepts plain text'),
 	},
 	{
 		label: __('HTML Text Area'),
-		type: 'textarea-html',
+		type: 'TEXTAREA_HTML',
 		desc: __('adds a textarea block that accepts text including simple HTML markup'),
 	},
 	{
 		label: __('Email Address'),
-		type: 'email',
+		type: 'EMAIL',
 		desc: __('adds a text input that only accets a valid email address'),
 	},
 	{
 		label: __('Email Confirmation'),
-		type: 'email-confirmation',
+		type: 'EMAIL_CONFIRMATION',
 		desc: 'adds a text input that confirms the entered email address matches the value entered into another email address input',
 	},
 	{
 		label: __('Password'),
-		type: 'password',
+		type: 'PASSWORD',
 		desc: __('adds a text input that accepts text but masks what the user enters'),
 	},
 	{
 		label: __('URL'),
-		type: 'url',
+		type: 'URL',
 		desc: __('adds a text input for entering a URL address'),
 	},
 	{
 		label: __('Date'),
-		type: 'date',
+		type: 'DATE',
 		desc: __('adds a text input that allows users to enter a date directly via keyboard or a datepicker'),
 	},
 	{
 		label: __('Local Date'),
-		type: 'datetime-local',
+		type: 'DATETIME_LOCAL',
 		desc: 'adds a text input that allows users to enter a date and time (no timezone) directly via keyboard or a date/time picker',
 	},
 	{
 		label: __('Month'),
-		type: 'month',
+		type: 'MONTH',
 		desc: __('adds a text input that allows users to enter a month and year directly via keyboard or a datepicker'),
 	},
 	{
 		label: __('Time'),
-		type: 'time',
+		type: 'TIME',
 		desc: __('adds a text input that allows users to enter a time directly via keyboard or a timepicker'),
 	},
 	{
 		label: __('Week'),
-		type: 'week',
+		type: 'WEEK',
 		desc: __('adds a text input that allows users to enter a week and year directly via keyboard or a datepicker'),
 	},
 	{
 		label: __('Day Selector'),
-		type: 'day-select',
+		type: 'DAY_SELECT',
 		desc: __('adds a dropdown selector that allows users to select the day of the month (01 to 31)'),
 	},
 	{
 		label: __('Month Selector'),
-		type: 'month-select',
+		type: 'MONTH_SELECT',
 		desc: __('adds a dropdown selector that allows users to select the month of the year (01 to 12)'),
 	},
 	{
 		label: __('Year Selector'),
-		type: 'year-select',
+		type: 'YEAR_SELECT',
 		desc: __('adds a dropdown selector that allows users to select the year from a configurable range'),
 	},
 	{
 		label: __('Radio Buttons'),
-		type: 'radio',
+		type: 'RADIO',
 		desc: __('adds one or more radio buttons that allow users to only select one option from those provided'),
 	},
 	{
 		label: __('Decimal Number'),
-		type: 'decimal',
+		type: 'DECIMAL',
 		desc: __('adds a text input that only accepts numbers whose value is a decimal (float)'),
 	},
 	{
 		label: __('Whole Number'),
-		type: 'integer',
+		type: 'INTEGER',
 		desc: __('adds a text input that only accepts numbers whose value is an integer (whole number)'),
 	},
 	{
 		label: __('Number Range'),
-		type: 'range',
+		type: 'RANGE',
 		desc: 'adds a slider input that can be used to indicate a number range for setting a minimum and maximum values',
 	},
 	{
 		label: __('Phone Number'),
-		type: 'tel',
+		type: 'TEL',
 		desc: 'adds a text field for entering a telephone number. Can be configured to only accept input that matches a pattern',
 	},
 	{
 		label: __('Dropdown'),
-		type: 'select',
+		type: 'SELECT',
 		desc: __('adds a dropdown selector that accepts a single value'),
 	},
 	{
 		label: __('Multi Select'),
-		type: 'select-multi',
+		type: 'SELECT_MULTI',
 		desc: __('adds a dropdown selector that accepts multiple values'),
 	},
 	{
 		label: __('Toggle/Switch'),
-		type: 'switch',
+		type: 'SWITCH',
 		desc: __('adds a toggle or a switch to accept true or false value'),
 	},
 	{
 		label: __('Multi Checkbox'),
-		type: 'checkbox-multi',
+		type: 'CHECKBOX_MULTI',
 		desc: __('adds checkboxes that allow users to select zero or more options from those provided'),
 	},
 	{
 		label: __('Country Selector'),
-		type: 'select-country',
+		type: 'SELECT_COUNTRY',
 		desc: __('adds a dropdown selector populated with names of countries that are enabled for the site'),
 	},
 	{
 		label: __('State Selector'),
-		type: 'select-state',
+		type: 'SELECT_STATE',
 		desc: 'adds a dropdown selector populated with names of states/provinces for the countries that are enabled for the site',
 	},
 	{
 		label: __('Button'),
-		type: 'button',
+		type: 'BUTTON',
 		desc: __('adds a button to the form that can be used for triggering fucntionality (requires custom coding)'),
 	},
 	{
 		label: __('Reset Button'),
-		type: 'reset',
+		type: 'RESET',
 		desc: __('adds a button that will reset the form back to its orginial state.'),
 	},
 ];

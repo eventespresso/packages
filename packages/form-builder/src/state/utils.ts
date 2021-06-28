@@ -4,23 +4,69 @@ import { uuid, AnyObject } from '@eventespresso/utils';
 
 import { FormState } from './types';
 import { sortByOrder, setOrderByIndex } from '../utils';
-import { FormElement, FormSection, LocalOnlyFields } from '../types';
+import {
+	FormElement,
+	FormElementRaw,
+	FormSection,
+	FormSectionRaw,
+	LocalOnlyFields,
+	ElementJsonFields,
+	SectionJsonFields,
+} from '../types';
 import { PURITY_FLAGS } from './constants';
 
 export function omitLocalFields<Item extends LocalOnlyFields>(item: Item) {
 	return R.omit(PURITY_FLAGS, item);
 }
 
-const stringifyOptions = R.when<FormElement, FormElement>(
-	R.has('options'),
-	R.over(R.lensProp('options'), JSON.stringify)
-);
+const elementJsonFields: Array<ElementJsonFields> = ['attributes', 'helpText', 'label', 'options', 'required'];
+export const parseRawElement = (element: FormElementRaw) => {
+	const predicates = elementJsonFields.map((field) => {
+		// when the field is present in the element, parse it as JSON
+		return R.when<FormElement, FormElement>(R.has(field), R.over(R.lensProp(field), JSON.parse));
+	});
+	// @ts-ignore ramda TS doesn't like spread operator here which it should
+	return R.pipe(...predicates)(element);
+};
+export const stringifyElementFields = (element: FormElement) => {
+	const predicates = elementJsonFields.map((field) => {
+		// when the field is present in the element, stringify it as JSON
+		return R.when<FormElementRaw, FormElementRaw>(R.has(field), R.over(R.lensProp(field), JSON.stringify));
+	});
+	// @ts-ignore ramda TS doesn't like spread operator here which it should
+	return R.pipe(...predicates)(element);
+};
+
+const sectionJsonFields: Array<SectionJsonFields> = ['attributes', 'label'];
+export const parseRawSection = (element: FormSectionRaw) => {
+	const predicates = sectionJsonFields.map((field) => {
+		// when the field is present in the section, parse it as JSON
+		return R.when<FormSection, FormSection>(R.has(field), R.over(R.lensProp(field), JSON.parse));
+	});
+	// @ts-ignore ramda TS doesn't like spread operator here which it should
+	return R.pipe(...predicates)(element);
+};
+export const stringifySectionFields = (element: FormSection) => {
+	const predicates = sectionJsonFields.map((field) => {
+		// when the field is present in the element, stringify it as JSON
+		return R.when<FormSectionRaw, FormSectionRaw>(R.has(field), R.over(R.lensProp(field), JSON.stringify));
+	});
+	// @ts-ignore ramda TS doesn't like spread operator here which it should
+	return R.pipe(...predicates)(element);
+};
 
 /**
  * Normalizes mutation input for element mutations
  */
 export function normalizeElementInput(input: AnyObject) {
-	return R.pipe(omitLocalFields, stringifyOptions)(input);
+	return R.pipe(omitLocalFields, stringifyElementFields)(input);
+}
+
+/**
+ * Normalizes mutation input for element mutations
+ */
+export function normalizeSectionInput(input: AnyObject) {
+	return R.pipe(omitLocalFields, stringifySectionFields)(input);
 }
 
 export function markAsModified<Item extends LocalOnlyFields>(items: Array<Item>, startingIndex: number) {

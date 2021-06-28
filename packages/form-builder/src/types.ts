@@ -9,7 +9,7 @@ export type ElementType =
 	| 'DECIMAL'
 	| 'EMAIL'
 	| 'EMAIL_CONFIRMATION'
-	| 'FORMSECTION'
+	| 'FORM_SECTION'
 	| 'HTML'
 	| 'INTEGER'
 	| 'MONTH'
@@ -98,6 +98,14 @@ export interface FormSection extends LocalOnlyFields {
 	status?: FormSectionStatus;
 	wpUser?: string;
 }
+
+export type SectionJsonFields = 'attributes' | 'label';
+
+export type ElementJsonFields = SectionJsonFields | 'helpText' | 'options' | 'required';
+
+export type FormElementRaw = Omit<FormElement, ElementJsonFields> & Partial<Record<ElementJsonFields, string>>;
+
+export type FormSectionRaw = Omit<FormSection, SectionJsonFields> & Partial<Record<SectionJsonFields, string>>;
 
 export interface FormBuilderProps {
 	bodyClassName?: string;

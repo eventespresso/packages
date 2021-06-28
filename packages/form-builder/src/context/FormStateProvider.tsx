@@ -1,15 +1,15 @@
 import { createContext } from 'react';
 
 import { FormState, FormStateManager, useFormStateManager } from '../state';
-import { FormSection, FormElement } from '../types';
+import { FormSectionRaw, FormElementRaw } from '../types';
 
 const FormStateContext = createContext<FormStateManager>(null);
 
 const { Provider, Consumer: FormStateConsumer } = FormStateContext;
 
 export interface FormStateProviderProps {
-	initialSections?: Array<FormSection>;
-	initialElements?: Array<FormElement>;
+	initialSections?: Array<FormSectionRaw>;
+	initialElements?: Array<FormElementRaw>;
 	onChange?: (data: FormState) => void;
 }
 

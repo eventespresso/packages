@@ -28,50 +28,50 @@ const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
 	let Component: React.ComponentType<AnyObject>;
 
 	switch (type) {
-		case 'checkbox-multi':
+		case 'CHECKBOX_MULTI':
 			Component = MultiCheckbox;
 			break;
-		case 'date':
-		case 'datetime-local':
+		case 'DATE':
+		case 'DATETIME_LOCAL':
 			Component = DatePicker;
 			break;
-		case 'email':
-		case 'email-confirmation':
-		case 'password':
-		case 'tel':
-		case 'text':
-		case 'url':
+		case 'EMAIL':
+		case 'EMAIL_CONFIRMATION':
+		case 'PASSWORD':
+		case 'TEL':
+		case 'TEXT':
+		case 'URL':
 			Component = TextInput;
 			break;
-		case 'html':
+		case 'HTML':
 			Component = SimpleTextEditor;
 			break;
-		case 'textarea':
-		case 'textarea-html':
+		case 'TEXTAREA':
+		case 'TEXTAREA_HTML':
 			Component = Textarea;
 			break;
-		case 'integer':
-		case 'decimal':
+		case 'INTEGER':
+		case 'DECIMAL':
 			Component = NumberInput;
 			break;
-		case 'month':
-		case 'month-select':
-		case 'week':
-		case 'year-select':
+		case 'MONTH':
+		case 'MONTH_SELECT':
+		case 'WEEK':
+		case 'YEAR_SELECT':
 			Component = DatePicker;
 			break;
-		case 'radio':
+		case 'RADIO':
 			Component = RadioGroup;
 			break;
-		case 'select':
-		case 'select-country':
-		case 'select-state':
+		case 'SELECT':
+		case 'SELECT_COUNTRY':
+		case 'SELECT_STATE':
 			Component = Select;
 			break;
-		case 'switch':
+		case 'SWITCH':
 			Component = Switch;
 			break;
-		case 'time':
+		case 'TIME':
 			Component = TimePicker;
 			break;
 		default:

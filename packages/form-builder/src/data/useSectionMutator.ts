@@ -18,7 +18,7 @@ import type {
 	UpdateFormSectionResult,
 } from './types';
 import { CREATE_FORM_SECTION, DELETE_FORM_SECTION, UPDATE_FORM_SECTION } from './gql';
-import { omitLocalFields } from '../state/utils';
+import { normalizeSectionInput } from '../state/utils';
 
 interface SectionMutator {
 	createEntity: MutationFunction<CreateFormSectionResult, CreateFormSectionInput>;
@@ -29,7 +29,7 @@ interface SectionMutator {
 const createVariables = (mutationType: MutationType, input: MutationInput): OperationVariables => {
 	const mutationInput: MutationInput = {
 		clientMutationId: `${mutationType}_SECTION`,
-		...omitLocalFields(input),
+		...normalizeSectionInput(input),
 	};
 
 	return {

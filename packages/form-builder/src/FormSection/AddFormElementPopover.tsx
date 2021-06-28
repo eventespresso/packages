@@ -18,21 +18,22 @@ interface SidebarProps {
 // this represents existing forms sections pulled from the database with a status of "default"
 const mockFormSectionData: Array<FormSection> = [
 	{
-		adminLabel: 'pet questions',
 		appliesTo: 'PRIMARY',
+		label: {
+			adminLabel: 'pet questions',
+			publicLabel: 'About Your Pet',
+			showLabel: false,
+		},
 		belongsTo: '',
-		htmlClass: '',
 		id: 'lkj567',
 		order: 3,
-		publicLabel: 'About Your Pet',
-		showLabel: false,
 		status: 'DEFAULT',
 	},
 ];
 
 const existingFormSections = mockFormSectionData.map((section: FormSection) => {
 	return {
-		label: section.adminLabel,
+		label: section.label?.adminLabel,
 		value: section.id,
 	};
 });
@@ -40,11 +41,11 @@ const existingFormSections = mockFormSectionData.map((section: FormSection) => {
 export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { addSection, addElement } = useFormState();
-	const [selectedElement, setSelectedElement] = useState<ElementType>('formSection');
+	const [selectedElement, setSelectedElement] = useState<ElementType>('FORM_SECTION');
 	const [selectedSection, setSelectedSection] = useState(existingFormSections[0].value);
 
 	const onAddElement = useCallback(() => {
-		if (selectedElement === 'formSection') {
+		if (selectedElement === 'FORM_SECTION') {
 			addSection({ afterId: formSection.id, section: {} });
 		} else {
 			addElement({ element: { type: selectedElement, belongsTo: formSection.id } });

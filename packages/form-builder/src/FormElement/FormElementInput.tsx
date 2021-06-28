@@ -12,29 +12,29 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 
 	const props = useMemo(() => {
 		let inputProps: AnyObject = {
-			placeholder: element.placeholder,
+			placeholder: element.attributes?.placeholder,
 			// ensure that the field is not required inside form builder 😄
 			required: false,
 		};
 		switch (element.type) {
-			case 'checkbox-multi':
-			case 'radio':
-			case 'select':
+			case 'CHECKBOX_MULTI':
+			case 'RADIO':
+			case 'SELECT':
 				// Display only the options which have both value and label
 				inputProps.options = (element.options || []).filter(({ value, label }) => value && label);
 				break;
-			case 'select-country':
-			case 'select-state':
-			case 'month-select':
-			case 'year-select':
+			case 'SELECT_COUNTRY':
+			case 'SELECT_STATE':
+			case 'MONTH_SELECT':
+			case 'YEAR_SELECT':
 				// TODO generate the options dynamically
 				inputProps.options = element.options || [];
 				break;
-			case 'date':
-			case 'datetime-local':
-			case 'month':
-			case 'week':
-			case 'time':
+			case 'DATE':
+			case 'DATETIME_LOCAL':
+			case 'MONTH':
+			case 'WEEK':
+			case 'TIME':
 				inputProps = {
 					...inputProps,
 					// Datepicker has to be controlled, so we need to pass the value and onChange
@@ -43,7 +43,7 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 				};
 				switch (element.type) {
 					// TODO update formats from site config
-					case 'month':
+					case 'MONTH':
 						inputProps = {
 							...inputProps,
 							showMonthYearPicker: true,
@@ -53,23 +53,23 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 					// add more cases in future
 				}
 				break;
-			case 'email':
-			case 'password':
-			case 'tel':
-			case 'text':
-			case 'url':
+			case 'EMAIL':
+			case 'PASSWORD':
+			case 'TEL':
+			case 'TEXT':
+			case 'URL':
 				inputProps.type = element.type;
 				break;
-			case 'email-confirmation':
+			case 'EMAIL_CONFIRMATION':
 				inputProps.type = 'email';
 				break;
-			case 'decimal':
-			case 'integer':
-				inputProps.min = element.min;
-				inputProps.max = element.max;
+			case 'DECIMAL':
+			case 'INTEGER':
+				inputProps.min = element.attributes?.min;
+				inputProps.max = element.attributes?.max;
 				break;
-			case 'html':
-				inputProps.value = element.placeholder;
+			case 'HTML':
+				inputProps.value = element.attributes?.placeholder;
 				inputProps.toolbarHidden = true;
 				inputProps.readonly = true;
 				inputProps.isDisabled = true;
@@ -83,11 +83,11 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 			<MappedElement
 				type={element.type}
 				id={element.id}
-				label={element.publicLabel}
-				isRequired={element.required}
+				label={element.label?.publicLabel}
+				isRequired={element.required?.required}
 				{...props}
 			/>
-			{element.helpText && <FormHelperText>{element.helpText}</FormHelperText>}
+			{element.helpText?.helpText && <FormHelperText>{element.helpText?.helpText}</FormHelperText>}
 		</FormControl>
 	);
 }, getPropsAreEqual([['element']]));

@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import * as R from 'ramda';
 
-import { DeepKeyOf, strToPath } from '@eventespresso/utils';
+import { strToPath, PropsPath } from '@eventespresso/utils';
 
 import type { FormSection } from '../types';
 import { useFormState } from '../state';
 
-type OnChangeValue = (field: DeepKeyOf<FormSection>) => (value: any) => void;
+type OnChangeValue = (field: PropsPath<FormSection>) => (value: any) => void;
 
 /**
  * Returns an onChange handler for field inputs of a section settings
