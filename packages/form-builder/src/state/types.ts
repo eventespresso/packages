@@ -10,6 +10,7 @@ export interface FormState {
 	elements: AnyObject<FormElement>;
 	deletedSections: Array<string>;
 	deletedElements: Array<string>;
+	topLevelSection: string;
 	isDirty: boolean;
 	openElement?: string;
 }

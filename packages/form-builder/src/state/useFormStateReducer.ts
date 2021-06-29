@@ -12,6 +12,7 @@ import {
 	deleteElement,
 	deleteSection,
 	deleteSectionElements,
+	mayBeSetTopLevelSection,
 	moveElement,
 	moveSection,
 	omitLocalFields,
@@ -23,6 +24,7 @@ export const initialState: FormState = {
 	sections: {},
 	deletedElements: [],
 	deletedSections: [],
+	topLevelSection: '',
 	isDirty: false,
 	openElement: '',
 };
@@ -41,8 +43,15 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 			switch (type) {
 				case 'ADD_SECTION': {
 					// New section will be composed of default section
-					const newSection: FormSection = { ...DEFAULT_SECTION, ...section, id: newId, isNew: true };
-					predicates = [addSectionToState(newSection, afterId)];
+					const newSection: FormSection = {
+						...DEFAULT_SECTION,
+						// by default set `belongsTo` to `topLevelSection`
+						belongsTo: state.topLevelSection,
+						...section,
+						id: newId,
+						isNew: true,
+					};
+					predicates = [addSectionToState(newSection, afterId), mayBeSetTopLevelSection(newId)];
 					break;
 				}
 

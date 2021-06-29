@@ -1,10 +1,10 @@
-import { clone, compose, has, isNil, not, pickBy } from 'ramda';
+import * as R from 'ramda';
 
 import { AnyObject } from '../types';
 import { toBoolean } from '../converters';
 
 export const removeNullAndUndefined = <T extends AnyObject>(filterable: T): T => {
-	return pickBy(compose(not, isNil), filterable);
+	return R.pickBy(R.compose(R.not, R.isNil), filterable);
 };
 
 export const normalizeNumericFields = (numericFields: Array<string>, object: AnyObject) => {
@@ -16,12 +16,14 @@ export const normalizeBooleanFields = (booleanFields: Array<string>, object: Any
 };
 
 export const normalizeFields = <T extends Function>(fields: Array<string>, object: AnyObject, convert: T) => {
-	const output = clone(object);
+	const output = R.clone(object);
 
 	for (const field of fields) {
-		if (has(field, output)) {
+		if (R.has(field, output)) {
 			output[field] = convert(output[field]);
 		}
 	}
 	return output;
 };
+
+export const isNilOrEmpty = R.anyPass([R.isNil, R.isEmpty]);

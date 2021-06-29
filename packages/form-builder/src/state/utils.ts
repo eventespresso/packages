@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-import { uuid, AnyObject } from '@eventespresso/utils';
+import { uuid, AnyObject, isNilOrEmpty } from '@eventespresso/utils';
 
 import { FormState } from './types';
 import { sortByOrder, setOrderByIndex } from '../utils';
@@ -20,6 +20,9 @@ export function omitLocalFields<Item extends LocalOnlyFields>(item: Item) {
 }
 
 const elementJsonFields: Array<ElementJsonFields> = ['attributes', 'helpText', 'label', 'options', 'required'];
+/**
+ * Parses a raw form element which has consolidated fields as JSON and converts them to objects
+ */
 export const parseRawElement = (element: FormElementRaw) => {
 	const predicates = elementJsonFields.map((field) => {
 		// when the field is present in the element, parse it as JSON
@@ -28,6 +31,9 @@ export const parseRawElement = (element: FormElementRaw) => {
 	// @ts-ignore ramda TS doesn't like spread operator here which it should
 	return R.pipe(...predicates)(element);
 };
+/**
+ * Converts the consolidated fields (which are objects) to JSON strings.
+ */
 export const stringifyElementFields = (element: FormElement) => {
 	const predicates = elementJsonFields.map((field) => {
 		// when the field is present in the element, stringify it as JSON
@@ -38,6 +44,9 @@ export const stringifyElementFields = (element: FormElement) => {
 };
 
 const sectionJsonFields: Array<SectionJsonFields> = ['attributes', 'label'];
+/**
+ * Parses a raw form section which has consolidated fields as JSON and converts them to objects
+ */
 export const parseRawSection = (element: FormSectionRaw) => {
 	const predicates = sectionJsonFields.map((field) => {
 		// when the field is present in the section, parse it as JSON
@@ -46,6 +55,9 @@ export const parseRawSection = (element: FormSectionRaw) => {
 	// @ts-ignore ramda TS doesn't like spread operator here which it should
 	return R.pipe(...predicates)(element);
 };
+/**
+ * Converts the consolidated fields (which are objects) to JSON strings.
+ */
 export const stringifySectionFields = (element: FormSection) => {
 	const predicates = sectionJsonFields.map((field) => {
 		// when the field is present in the element, stringify it as JSON
@@ -77,6 +89,17 @@ export function markAsModified<Item extends LocalOnlyFields>(items: Array<Item>,
 	// Update the elements array
 	return [...unmodifiedElements, ...newModifiedElements];
 }
+
+/**
+ * If the `topLevelSection` is not set,
+ * it attemps to set the first addded section as the top level one
+ */
+export const mayBeSetTopLevelSection = (addedSectionId: string) => {
+	return R.when<FormState, FormState>(
+		R.propSatisfies(isNilOrEmpty, 'topLevelSection'),
+		R.set(R.lensProp<FormState>('topLevelSection'), addedSectionId)
+	);
+};
 
 export const addSectionToState =
 	(section: FormSection, afterId: string) =>
@@ -267,3 +290,8 @@ export const getSectionElementIds =
 			.filter(R.propEq('belongsTo', sectionId))
 			.map(({ id }) => id);
 	};
+
+/**
+ * Returns true if a section or element has `belongsTo` field empty
+ */
+export const belongsToNone = R.propSatisfies<string, { belongsTo?: string }>(isNilOrEmpty, 'belongsTo');

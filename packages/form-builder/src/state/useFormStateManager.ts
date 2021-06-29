@@ -144,6 +144,11 @@ export const useFormStateManager: FormStateManagerHook = ({ onChange, ...props }
 
 	const isElementOpen = useCallback<FSM['isElementOpen']>(({ id }) => id === state.openElement, [state.openElement]);
 
+	const isTopLevelSection = useCallback<FSM['isTopLevelSection']>(
+		({ id }) => id === state.topLevelSection,
+		[state.topLevelSection]
+	);
+
 	const toggleOpenElement = useCallback<FSM['toggleOpenElement']>(({ openElement }) => {
 		dispatch({
 			type: 'TOGGLE_OPEN_ELEMENT',
@@ -168,6 +173,7 @@ export const useFormStateManager: FormStateManagerHook = ({ onChange, ...props }
 			getElements,
 			getSections,
 			isElementOpen,
+			isTopLevelSection,
 			markElementAsDeleted,
 			markElementAsSaved,
 			markSectionAsDeleted,
