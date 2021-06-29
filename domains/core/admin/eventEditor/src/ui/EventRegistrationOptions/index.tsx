@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { __ } from '@eventespresso/i18n';
 import { Grid, Heading } from '@eventespresso/ui-components';
 import { noop } from '@eventespresso/utils';
@@ -12,6 +14,7 @@ import EventPhoneNumber from './EventPhoneNumber';
 import MaxRegistrations from './MaxRegistrations';
 import TicketSelector from './TicketSelector';
 import withData from './withData';
+import { moveAfterElement, hideAllExcept } from '../utils';
 
 import type { EventRegistrationOptionsProps } from './types';
 
@@ -37,35 +40,46 @@ export const EventRegistrationOptions: React.FC<Partial<EventRegistrationOptions
 	onMaxRegChange = noop,
 	phoneNumber,
 	status,
-}) => (
-	<div className='ee-event-registration-options ee-edtr-section'>
-		<Heading as='h3' className='ee-edtr-section-heading'>
-			{__('Registration Options')}
-		</Heading>
-		<Grid columns={columns} spacing='1.25rem'>
-			<ActiveStatus status={status} onStatusChange={onStatusChange} />
+}) => {
+	useEffect(() => {
+		const regOptions = document.querySelector('.ee-event-registration-options');
+		moveAfterElement(regOptions, 'page_templates');
+		moveAfterElement(regOptions, 'tagsdiv-post_tag');
+		moveAfterElement(regOptions, 'espresso_event_categoriesdiv');
+		const divsToKeep = ['espresso_event_categoriesdiv', 'page_templates', 'tagsdiv-post_tag'];
+		hideAllExcept(divsToKeep);
+	}, []);
 
-			<DefaultRegistrationStatus
-				defaultRegStatus={defaultRegStatus}
-				onDefaultRegStatusChange={onDefaultRegStatusChange}
-			/>
+	return (
+		<div className='ee-event-registration-options ee-edtr-section'>
+			<Heading as='h3' className='ee-edtr-section-heading'>
+				{__('Registration Options')}
+			</Heading>
+			<Grid columns={columns} spacing='1.25rem'>
+				<ActiveStatus status={status} onStatusChange={onStatusChange} />
 
-			<MaxRegistrations maxReg={maxReg} onMaxRegChange={onMaxRegChange} />
+				<DefaultRegistrationStatus
+					defaultRegStatus={defaultRegStatus}
+					onDefaultRegStatusChange={onDefaultRegStatusChange}
+				/>
 
-			<TicketSelector
-				displayTicketSelector={displayTicketSelector}
-				onTicketSelectorChange={onTicketSelectorChange}
-			/>
+				<MaxRegistrations maxReg={maxReg} onMaxRegChange={onMaxRegChange} />
 
-			<Donations allowDonations={allowDonations} onDonationsChange={onDonationsChange} />
+				<TicketSelector
+					displayTicketSelector={displayTicketSelector}
+					onTicketSelectorChange={onTicketSelectorChange}
+				/>
 
-			<EventPhoneNumber phoneNumber={phoneNumber} onPhoneNumberChange={onPhoneNumberChange} />
+				<Donations allowDonations={allowDonations} onDonationsChange={onDonationsChange} />
 
-			<EventManager eventManagers={eventManagers} managerId={managerId} onManagerChange={onManagerChange} />
+				<EventPhoneNumber phoneNumber={phoneNumber} onPhoneNumberChange={onPhoneNumberChange} />
 
-			<AltRegPage altRegPage={altRegPage} onAltRegPageChange={onAltRegPageChange} />
-		</Grid>
-	</div>
-);
+				<EventManager eventManagers={eventManagers} managerId={managerId} onManagerChange={onManagerChange} />
+
+				<AltRegPage altRegPage={altRegPage} onAltRegPageChange={onAltRegPageChange} />
+			</Grid>
+		</div>
+	);
+};
 
 export default withFeature('use_reg_options_meta_box')(withData(EventRegistrationOptions));

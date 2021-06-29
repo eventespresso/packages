@@ -1,12 +1,18 @@
+import { useState } from 'react';
+
 import { useIsRehydrated } from '@eventespresso/data';
 import { PluginArea } from '@eventespresso/plugins';
-
 import { getRegisteredContainers } from '@edtrServices/utils';
+
 import { DatesList } from './datetimes/datesList';
 import EventRegistrationOptions from './EventRegistrationOptions';
 import { TicketsList } from './tickets/ticketsList';
+import { EdtrMenuBar } from './EdtrMenuBar';
 import EventDescription from './EventDescription';
 import { RegistrationForm } from './registrationForm';
+import { Comments } from './Comments';
+import { Notifications } from './Notifications';
+import { Venue } from './Venue';
 import Init from './Init';
 // fire up the service and UI element registry
 import './registryInit';
@@ -16,19 +22,51 @@ const containers = getRegisteredContainers();
 
 const EventEditor: React.FC = () => {
 	const [isRehydrated] = useIsRehydrated();
+	const [activeModule, setActiveModule] = useState('event-details');
 
-	return isRehydrated ? (
-		<>
-			<EventDescription />
-			<EventRegistrationOptions />
-			<DatesList />
-			<TicketsList />
-			<RegistrationForm />
-			<PluginArea />
-			{containers}
-		</>
-	) : (
-		<Init />
+	if (!isRehydrated) {
+		return <Init />;
+	}
+
+	let module: {};
+	switch (activeModule) {
+		case 'event-details':
+			module = <EventDescription />;
+			break;
+		case 'venue':
+			module = <Venue />;
+			break;
+		case 'config':
+			module = <EventRegistrationOptions />;
+			break;
+		case 'dates-list':
+			module = <DatesList />;
+			break;
+		case 'tickets-list':
+			module = <TicketsList />;
+			break;
+		case 'reg-form':
+			module = <RegistrationForm />;
+			break;
+		case 'comments':
+			module = <Comments />;
+			break;
+		case 'notifications':
+			module = <Notifications />;
+			break;
+		case 'plugins':
+			module = <PluginArea />;
+			break;
+	}
+
+	return (
+		<div className='ee-event-editor'>
+			<EdtrMenuBar activeModule={activeModule} setActiveModule={setActiveModule} />
+			<div className='ee-event-editor__modules'>
+				{module}
+				{containers}
+			</div>
+		</div>
 	);
 };
 
