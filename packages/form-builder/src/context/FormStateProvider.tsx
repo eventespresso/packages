@@ -10,6 +10,7 @@ const { Provider, Consumer: FormStateConsumer } = FormStateContext;
 export interface FormStateProviderProps {
 	initialSections?: Array<FormSectionRaw>;
 	initialElements?: Array<FormElementRaw>;
+	topLevelSectionId?: string;
 	onChange?: (data: FormState) => void;
 }
 
