@@ -12,7 +12,7 @@ import {
 	deleteElement,
 	deleteSection,
 	deleteSectionElements,
-	mayBeSetTopLevelSection,
+	maybeSetTopLevelSection,
 	moveElement,
 	moveSection,
 	omitLocalFields,
@@ -51,7 +51,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 						id: newId,
 						isNew: true,
 					};
-					predicates = [addSectionToState(newSection, afterId), mayBeSetTopLevelSection(newId)];
+					predicates = [addSectionToState(newSection, afterId), maybeSetTopLevelSection(newId)];
 					break;
 				}
 
