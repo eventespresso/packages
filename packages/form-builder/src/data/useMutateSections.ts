@@ -37,10 +37,14 @@ export const useMutateSections = (): MutateSectionsCb => {
 			if (deletedSections?.length) {
 				// Delete all unlucky ones
 				await Promise.all(
-					deletedSections.map(async (id) => {
+					deletedSections.map(async (deletedSectionId) => {
 						try {
-							await deleteEntity({ id });
-							markSectionAsDeleted({ id });
+							const { data } = await deleteEntity({ id: deletedSectionId });
+							// ensure that section is marked as deleted only if the deletion was successful
+							const id = data?.deleteEspressoFormSection?.espressoFormSection?.id;
+							if (id) {
+								markSectionAsDeleted({ id });
+							}
 						} catch (error) {
 							// TODO handle error
 						}

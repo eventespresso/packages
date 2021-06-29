@@ -37,10 +37,14 @@ export const useMutateElements = (): MutateElementsCb => {
 			if (deletedElements?.length) {
 				// Delete all unlucky ones
 				await Promise.all(
-					deletedElements.map(async (id) => {
+					deletedElements.map(async (deletedElementId) => {
 						try {
-							await deleteEntity({ id });
-							markElementAsDeleted({ id });
+							const { data } = await deleteEntity({ id: deletedElementId });
+							// ensure that element is marked as deleted only if the deletion was successful
+							const id = data?.deleteEspressoFormElement?.espressoFormElement?.id;
+							if (id) {
+								markElementAsDeleted({ id });
+							}
 						} catch (error) {
 							// TODO handle error
 						}
