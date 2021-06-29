@@ -11,7 +11,7 @@ import { SaveSection } from './SaveSection';
 import type { FormSectionToolbarProps } from '../types';
 
 export const FormSectionToolbar = memo<FormSectionToolbarProps>(({ formSection, dragHandleProps }) => {
-	const { copySection, deleteSection, isElementOpen, toggleOpenElement } = useFormState();
+	const { copySection, deleteSection, isElementOpen, isTopLevelSection, toggleOpenElement } = useFormState();
 
 	const { id } = formSection;
 	const active = isElementOpen({ id });
@@ -58,7 +58,13 @@ export const FormSectionToolbar = memo<FormSectionToolbarProps>(({ formSection, 
 				transparentBg
 			/>
 			<SaveSection formSection={formSection} />
-			<ConfirmDelete asIconButton onConfirm={onDelete} buttonProps={deleteButtonProps} />
+
+			{
+				// Hide delete button for top level section
+				!isTopLevelSection({ id: formSection.id }) && (
+					<ConfirmDelete asIconButton onConfirm={onDelete} buttonProps={deleteButtonProps} />
+				)
+			}
 			<IconButton
 				icon={DragHandle}
 				borderless
