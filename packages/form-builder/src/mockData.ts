@@ -29,7 +29,7 @@ export const formSections: Array<FormSection> = [
 	{
 		id: sectionIds.address_info,
 		appliesTo: 'ALL',
-		belongsTo: 'Event-1',
+		belongsTo: sectionIds.personal_info,
 		label: {
 			adminLabel: 'address information',
 			publicLabel: 'address information',
@@ -41,7 +41,7 @@ export const formSections: Array<FormSection> = [
 	{
 		id: sectionIds.other_info,
 		appliesTo: 'ALL',
-		belongsTo: 'Event-1',
+		belongsTo: sectionIds.personal_info,
 		label: {
 			adminLabel: 'other information',
 			publicLabel: 'other information',
