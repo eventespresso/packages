@@ -3,6 +3,8 @@ import { compose, prop, sort, sortBy as sortByFn, toLower } from 'ramda';
 
 import type { Ticket, SortBy } from '@eventespresso/edtr-services';
 
+import { sortByOrder } from '../../common';
+
 interface SortByProps {
 	tickets: Ticket[];
 	sortBy?: SortBy;
@@ -19,7 +21,7 @@ const sorters = ({ tickets, sortBy = 'date' }: SortByProps): Ticket[] => {
 		case 'id':
 			return sortByFn(prop('dbId'), tickets);
 		case 'order':
-			return sortByFn(prop('order'), tickets);
+			return sortByOrder(tickets);
 	}
 };
 

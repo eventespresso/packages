@@ -3,6 +3,8 @@ import { compareAsc, parseISO } from 'date-fns';
 
 import type { Datetime, SortBy } from '@eventespresso/edtr-services';
 
+import { sortByOrder } from '../../common';
+
 interface SortDates {
 	dates: Datetime[];
 	sortBy?: SortBy;
@@ -25,7 +27,7 @@ const sorters = ({ dates, sortBy = 'date' }: SortDates): Datetime[] => {
 		case 'name':
 			return sortByFn(compose(toLower, prop('name')), dates);
 		case 'order':
-			return sortByFn(prop('order'), dates);
+			return sortByOrder(dates);
 		default:
 			return dates;
 	}
