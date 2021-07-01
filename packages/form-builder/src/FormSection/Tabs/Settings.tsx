@@ -13,17 +13,17 @@ export const Settings: React.FC<FormSectionProps> = ({ formSection }) => {
 			<TextInputWithLabel
 				label={__('public label')}
 				onChangeValue={onChangeValue('label.publicLabel')}
-				value={formSection.label.publicLabel}
+				value={formSection.label?.publicLabel}
 			/>
 			<TextInputWithLabel
 				label={__('admin label')}
 				onChangeValue={onChangeValue('label.adminLabel')}
-				value={formSection.label.adminLabel}
+				value={formSection.label?.adminLabel}
 			/>
 			<SwitchWithLabel
 				label={__('show label')}
 				onChangeValue={onChangeValue('label.showLabel')}
-				isChecked={formSection.label.showLabel}
+				isChecked={formSection.label?.showLabel}
 			/>
 		</>
 	);

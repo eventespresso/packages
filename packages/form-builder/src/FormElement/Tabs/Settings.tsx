@@ -17,7 +17,7 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 			<TextInputWithLabel
 				label={__('admin label')}
 				onChangeValue={onChangeValue('label.adminLabel')}
-				value={element.label.adminLabel}
+				value={element.label?.adminLabel}
 			/>
 			<SwitchWithLabel
 				label={__('admin only')}
@@ -38,7 +38,7 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 					<TextInputWithLabel
 						label={__('public label')}
 						onChangeValue={onChangeValue('label.publicLabel')}
-						value={element.label.publicLabel}
+						value={element.label?.publicLabel}
 					/>
 					{FIELDS_WITH_OPTIONS.includes(element.type) && (
 						<FieldOptions element={element} label={__('options')} />

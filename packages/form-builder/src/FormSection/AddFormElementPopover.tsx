@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import * as R from 'ramda';
 
 import { __ } from '@eventespresso/i18n';
@@ -15,34 +15,23 @@ interface SidebarProps {
 	formSection: FormSection;
 }
 
-// this represents existing forms sections pulled from the database with a status of "default"
-const mockFormSectionData: Array<FormSection> = [
-	{
-		appliesTo: 'PRIMARY',
-		label: {
-			adminLabel: 'pet questions',
-			publicLabel: 'About Your Pet',
-			showLabel: false,
-		},
-		belongsTo: '',
-		id: 'lkj567',
-		order: 3,
-		status: 'DEFAULT',
-	},
-];
-
-const existingFormSections = mockFormSectionData.map((section: FormSection) => {
-	return {
-		label: section.label?.adminLabel,
-		value: section.id,
-	};
-});
-
 export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const { addSection, addElement } = useFormState();
+	const { addSection, copySection, addElement, getSharedSections } = useFormState();
+
+	const sharedSections = getSharedSections();
+
+	const sharedSectionOptions = useMemo(() => {
+		return sharedSections.map(({ id, label }) => {
+			return {
+				label: label?.adminLabel || label?.publicLabel,
+				value: id,
+			};
+		});
+	}, [sharedSections]);
+
 	const [selectedElement, setSelectedElement] = useState<ElementType>('FORM_SECTION');
-	const [selectedSection, setSelectedSection] = useState(existingFormSections[0].value);
+	const [selectedSection, setSelectedSection] = useState(sharedSectionOptions[0]?.value || '');
 
 	const onAddElement = useCallback(() => {
 		if (selectedElement === 'FORM_SECTION') {
@@ -54,10 +43,16 @@ export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) =
 	}, [addElement, addSection, formSection.id, onClose, selectedElement]);
 
 	const onAddExistingSection = useCallback(() => {
-		const section = R.find(R.propEq('id', selectedSection), mockFormSectionData);
-		addSection({ section, afterId: formSection.id });
+		// find the section by its ID
+		let section = R.find<FormSection>(R.propEq('id', selectedSection), sharedSections);
+		if (section) {
+			// make sure that new status is not 'SHARED' and `belongsTo` is not set
+			// just to let the reducer to add `belongsTo` as the `topLevelSection`
+			section = { ...R.omit(['belongsTo'], section), status: 'ACTIVE' };
+			copySection({ id: selectedSection, section });
+		}
 		onClose();
-	}, [addSection, formSection.id, onClose, selectedSection]);
+	}, [copySection, onClose, selectedSection, sharedSections]);
 
 	const onChangeElement = useCallback<SelectProps['onChangeValue']>((value) => {
 		setSelectedElement(value as ElementType);
@@ -95,13 +90,14 @@ export const AddFormElementPopover: React.FC<SidebarProps> = ({ formSection }) =
 				<SelectWithLabel
 					id={`${formSection.id}-load-existing-section-selector`}
 					label={__('load existing form section')}
-					options={existingFormSections}
+					options={sharedSectionOptions}
 					onChangeValue={onChangeSection}
 					size='small'
 					tabIndex={tabIndex}
 				/>
 				<Button
 					buttonText={__('Add')}
+					isDisabled={!selectedSection}
 					onClick={onAddExistingSection}
 					buttonType='primary'
 					size='small'
