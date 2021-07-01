@@ -13,7 +13,7 @@ const sectionIds = {
 const isNew = true;
 
 // this is based off of the data schema I started for the PHP models, but can be changed to whatever
-export const formSections: Array<FormSection> = [
+export const formSections: Array<Partial<FormSection>> = [
 	{
 		id: sectionIds.personal_info,
 		appliesTo: 'ALL',
@@ -54,7 +54,7 @@ export const formSections: Array<FormSection> = [
 
 export const formSectionsData = formSections.map(stringifySectionFields);
 
-export const formElements: Array<FormElement> = [
+export const formElements: Array<Partial<FormElement>> = [
 	{
 		id: uuid(),
 		adminOnly: false,
@@ -74,7 +74,6 @@ export const formElements: Array<FormElement> = [
 			required: true,
 			validationText: 'Please enter your first name!',
 		},
-		status: 'ACTIVE',
 		type: 'TEXT',
 		isNew,
 	},
@@ -97,7 +96,6 @@ export const formElements: Array<FormElement> = [
 			required: false,
 			validationText: 'Please enter your last name!',
 		},
-		status: 'ACTIVE',
 		type: 'TEXT',
 		isNew,
 	},
@@ -120,7 +118,6 @@ export const formElements: Array<FormElement> = [
 			required: true,
 			validationText: 'Please enter a valid email address!',
 		},
-		status: 'ACTIVE',
 		type: 'EMAIL',
 		isNew,
 	},
@@ -144,7 +141,6 @@ export const formElements: Array<FormElement> = [
 			required: true,
 			validationText: 'Please enter your age!',
 		},
-		status: 'ACTIVE',
 		type: 'INTEGER',
 		isNew,
 	},
@@ -160,7 +156,6 @@ export const formElements: Array<FormElement> = [
 			publicLabel: 'Where do you want to live',
 		},
 		order: 3,
-		status: 'ACTIVE',
 		type: 'SELECT',
 		options: [
 			{
@@ -193,7 +188,6 @@ export const formElements: Array<FormElement> = [
 			required: false,
 			validationText: '',
 		},
-		status: 'ACTIVE',
 		type: 'TEXT',
 		isNew,
 	},
@@ -216,7 +210,6 @@ export const formElements: Array<FormElement> = [
 			required: false,
 			validationText: '',
 		},
-		status: 'ACTIVE',
 		type: 'TEXT',
 		isNew,
 	},
@@ -236,7 +229,6 @@ export const formElements: Array<FormElement> = [
 			required: false,
 			validationText: '',
 		},
-		status: 'ACTIVE',
 		type: 'SELECT_STATE',
 		isNew,
 
@@ -267,7 +259,6 @@ export const formElements: Array<FormElement> = [
 			required: false,
 			validationText: '',
 		},
-		status: 'ACTIVE',
 		type: 'SELECT_COUNTRY',
 		isNew,
 
@@ -298,7 +289,6 @@ export const formElements: Array<FormElement> = [
 			required: false,
 			validationText: '',
 		},
-		status: 'ACTIVE',
 		type: 'TEXT',
 		isNew,
 	},
@@ -319,7 +309,6 @@ export const formElements: Array<FormElement> = [
 			required: false,
 			validationText: '',
 		},
-		status: 'ACTIVE',
 		type: 'HTML',
 		isNew,
 	},
@@ -339,7 +328,6 @@ export const formElements: Array<FormElement> = [
 			required: false,
 			validationText: '',
 		},
-		status: 'ACTIVE',
 		type: 'CHECKBOX_MULTI',
 		options: [
 			{
@@ -377,7 +365,6 @@ export const formElements: Array<FormElement> = [
 			required: false,
 			validationText: '',
 		},
-		status: 'ACTIVE',
 		type: 'RADIO',
 		options: [
 			{

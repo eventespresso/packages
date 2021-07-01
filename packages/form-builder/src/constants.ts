@@ -4,25 +4,30 @@ import { __ } from '@eventespresso/i18n';
 import type { OptionsType } from '@eventespresso/adapters';
 
 import { ElementBlock, FormSection, FormElement, ElementType } from './types';
+import { resetStatusFlags } from './state/utils';
 
 export const SECTIONS_DROPPABLE_ID = 'form-sections';
 
-export const DEFAULT_SECTION: FormSection = {
+export const DEFAULT_SECTION: FormSection = resetStatusFlags({
 	id: '',
 	appliesTo: 'ALL',
+	isActive: false,
+	isArchived: false,
+	isDefault: false,
+	isShared: false,
+	isTrashed: false,
 	label: {
 		publicLabel: '',
 	},
 	order: 1,
 	status: 'ACTIVE',
-};
+});
 
 export const DEFAULT_ELEMENT: FormElement = {
 	id: '',
 	belongsTo: '',
 	type: 'TEXT',
 	order: 1,
-	status: 'ACTIVE',
 };
 
 // These are the fields that require `options` to be passed to the component

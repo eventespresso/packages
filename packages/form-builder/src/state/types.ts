@@ -57,6 +57,7 @@ export interface FormStateManager extends FormState {
 	getData: () => FormState;
 	getElements: (args: Pick<ArgsData, 'sectionId'>) => Array<FormElement>;
 	getSections: () => Array<FormSection>;
+	getSharedSections: () => Array<FormSection>;
 	isElementOpen: (args: Pick<ArgsData, 'id'>) => boolean;
 	isTopLevelSection: (args: Pick<ArgsData, 'id'>) => boolean;
 	markElementAsDeleted: (args: Pick<ArgsData, 'id'>) => void;

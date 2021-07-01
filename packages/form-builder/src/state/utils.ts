@@ -1,22 +1,58 @@
 import * as R from 'ramda';
 
-import { uuid, AnyObject, isNilOrEmpty } from '@eventespresso/utils';
+import { uuid, isNilOrEmpty } from '@eventespresso/utils';
+import { sortByOrder, setOrderByIndex, isSharedOrDefault } from '@eventespresso/predicates';
 
 import { FormState } from './types';
-import { sortByOrder, setOrderByIndex } from '../utils';
 import {
 	FormElement,
 	FormElementRaw,
 	FormSection,
 	FormSectionRaw,
 	LocalOnlyFields,
+	FormStatusFlags,
+	FormStatus,
 	ElementJsonFields,
 	SectionJsonFields,
 } from '../types';
-import { PURITY_FLAGS } from './constants';
+import { PURITY_FLAGS, STATUS_FLAGS } from './constants';
 
 export function omitLocalFields<Item extends LocalOnlyFields>(item: Item) {
 	return R.omit(PURITY_FLAGS, item);
+}
+
+export function omitStatusFlags<Item extends FormStatusFlags>(item: Item) {
+	return R.omit(STATUS_FLAGS, item);
+}
+
+/**
+ * recalculates the boolean status flags based on the new status
+ */
+export function resetStatusFlags<Item extends FormStatusFlags & { status?: FormStatus }>(item: Item): Item {
+	// Set all of them to false first
+	let isActive = false,
+		isArchived = false,
+		isDefault = false,
+		isShared = false,
+		isTrashed = false;
+	switch (item.status) {
+		case 'ACTIVE':
+			isActive = true;
+			break;
+		case 'ARCHIVED':
+			isArchived = true;
+			break;
+		case 'DEFAULT':
+			isDefault = true;
+			break;
+		case 'SHARED':
+			isShared = true;
+			break;
+		case 'TRASHED':
+			isTrashed = true;
+			break;
+	}
+	return { ...item, isActive, isArchived, isDefault, isShared, isTrashed };
 }
 
 const elementJsonFields: Array<ElementJsonFields> = ['attributes', 'helpText', 'label', 'options', 'required'];
@@ -70,15 +106,15 @@ export const stringifySectionFields = (element: FormSection) => {
 /**
  * Normalizes mutation input for element mutations
  */
-export function normalizeElementInput(input: AnyObject) {
+export function normalizeElementInput(input: any) {
 	return R.pipe(omitLocalFields, stringifyElementFields)(input);
 }
 
 /**
  * Normalizes mutation input for element mutations
  */
-export function normalizeSectionInput(input: AnyObject) {
-	return R.pipe(omitLocalFields, stringifySectionFields)(input);
+export function normalizeSectionInput(input: any) {
+	return R.pipe(stringifySectionFields, omitStatusFlags, omitLocalFields)(input);
 }
 
 export function markAsModified<Item extends LocalOnlyFields>(items: Array<Item>, startingIndex: number) {
@@ -104,13 +140,19 @@ export const maybeSetTopLevelSection = (addedSectionId: string) => {
 export const addSectionToState =
 	(section: FormSection, afterId: string) =>
 	(state: FormState): FormState => {
+		const newSection = resetStatusFlags(section);
+		// if a section is saved (as DEFAULT or SHARED),
+		// we don't need to recalculate the order, lets prevent unnecessary mutations
+		if (isSharedOrDefault(newSection)) {
+			return R.assocPath(['sections', newSection.id], newSection, state);
+		}
 		// Sort the sections by order
 		let sortedSections = sortByOrder(Object.values(state.sections));
 		// Find the index of the section after which the new section should be added
 		const existingSectionIdx = R.findIndex(R.propEq('id', afterId), sortedSections);
 		const newIndex = existingSectionIdx + 1;
 		// Insert the new section at the correct position
-		sortedSections = R.insert(newIndex, section, sortedSections);
+		sortedSections = R.insert(newIndex, newSection, sortedSections);
 		// Recalculate the order of all the sections
 		sortedSections = setOrderByIndex(sortedSections);
 		// mark the updated items as modified, here the `order` will change only from the new index
@@ -121,7 +163,7 @@ export const addSectionToState =
 			...state,
 			sections: R.indexBy(R.prop('id'), sortedSections),
 			// Open the new section
-			openElement: section.id,
+			openElement: newSection.id,
 		};
 	};
 

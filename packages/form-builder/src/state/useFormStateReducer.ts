@@ -57,7 +57,14 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 
 				case 'COPY_SECTION': {
 					// Copied section will be composed of the existing section
-					const newSection: FormSection = { ...state.sections[id], ...section, id: newId, isNew: true };
+					const newSection: FormSection = {
+						...state.sections[id],
+						// by default set `belongsTo` to `topLevelSection`
+						belongsTo: state.topLevelSection,
+						...section,
+						id: newId,
+						isNew: true,
+					};
 					predicates = [addSectionToState(newSection, id), copySectionElements(id, newSection.id)];
 					break;
 				}
@@ -70,7 +77,7 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 				case 'UPDATE_SECTION': {
 					// Update and mark the section as modified
 					const newSection: Partial<FormSection> = { ...section, id, isModified: true };
-					predicates = [R.over(R.lensPath(['sections', id]), R.mergeLeft(newSection))];
+					predicates = [R.over(R.lensPath(['sections', id]), R.mergeDeepLeft(newSection))];
 					break;
 				}
 
@@ -129,7 +136,8 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 				case 'UPDATE_ELEMENT': {
 					// Update and mark the element as modified
 					const newElement: Partial<FormElement> = { ...element, id, isModified: true };
-					predicates = [R.over(R.lensPath(['elements', id]), R.mergeLeft(newElement))];
+					// R.mergeDeepLeft types don't play nice with nested `options` field of the element, thus casted as 'any'
+					predicates = [R.over(R.lensPath(['elements', id]), R.mergeDeepLeft(newElement) as any)];
 					break;
 				}
 

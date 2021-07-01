@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import * as R from 'ramda';
 
+import { sortByOrder, isNotSharedOrDefault, isShared } from '@eventespresso/predicates';
+
 import type { FormStateManager, FormStateManagerHook } from './types';
 import { useFormStateReducer, initialState } from './useFormStateReducer';
 import { useInitialState } from './useInitialState';
-import { sortByOrder, isNotSharedOrDefault } from '../utils';
 
 type FSM = FormStateManager;
 
@@ -23,6 +24,10 @@ export const useFormStateManager: FormStateManagerHook = ({ onChange, ...props }
 	const getSections = useCallback<FSM['getSections']>(() => {
 		const sections = Object.values(state.sections).filter(isNotSharedOrDefault);
 		return sortByOrder(sections);
+	}, [state.sections]);
+
+	const getSharedSections = useCallback<FSM['getSharedSections']>(() => {
+		return Object.values(state.sections).filter(isShared);
 	}, [state.sections]);
 
 	const getElements = useCallback<FSM['getElements']>(
@@ -44,10 +49,11 @@ export const useFormStateManager: FormStateManagerHook = ({ onChange, ...props }
 		});
 	}, []);
 
-	const copySection = useCallback<FSM['copySection']>(({ id }) => {
+	const copySection = useCallback<FSM['copySection']>(({ id, section }) => {
 		dispatch({
 			type: 'COPY_SECTION',
 			id,
+			section,
 		});
 	}, []);
 
@@ -172,6 +178,7 @@ export const useFormStateManager: FormStateManagerHook = ({ onChange, ...props }
 			getData,
 			getElements,
 			getSections,
+			getSharedSections,
 			isElementOpen,
 			isTopLevelSection,
 			markElementAsDeleted,

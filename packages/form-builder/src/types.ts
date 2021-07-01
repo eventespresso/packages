@@ -46,6 +46,14 @@ export type LocalOnlyFields = {
 	value?: any;
 };
 
+export type FormStatusFlags = {
+	isActive?: boolean;
+	isArchived?: boolean;
+	isDefault?: boolean;
+	isShared?: boolean;
+	isTrashed?: boolean;
+};
+
 export type FormAttributes = {
 	class?: string;
 	max?: number;
@@ -80,22 +88,21 @@ export interface FormElement extends LocalOnlyFields {
 	options?: OptionsType;
 	order: number;
 	required?: FormRequired;
-	status?: FormSectionStatus;
 	type: ElementType;
 	wpUser?: string;
 }
 
-export type FormSectionStatus = 'ACTIVE' | 'ARCHIVED' | 'DEFAULT' | 'SHARED' | 'TRASHED';
+export type FormStatus = 'ACTIVE' | 'ARCHIVED' | 'DEFAULT' | 'SHARED' | 'TRASHED';
 export type FormSectionAppliesTo = 'ALL' | 'PRIMARY' | 'PURCHASER' | 'REGISTRANTS';
 
-export interface FormSection extends LocalOnlyFields {
+export interface FormSection extends LocalOnlyFields, Required<FormStatusFlags> {
 	appliesTo?: FormSectionAppliesTo;
 	attributes?: FormAttributes;
 	belongsTo?: string;
 	id: string;
 	label?: FormLabel;
 	order: number;
-	status?: FormSectionStatus;
+	status?: FormStatus;
 	wpUser?: string;
 }
 
