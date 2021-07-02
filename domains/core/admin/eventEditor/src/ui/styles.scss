@@ -5,6 +5,9 @@ html.wp-toolbar {
 }
 
 .post-type-espresso_events {
+	// Fix scroll issue when opening modals
+	height: unset;
+
 	#ed_toolbar {
 		box-sizing: content-box;
 	}
