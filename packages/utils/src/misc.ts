@@ -14,6 +14,6 @@ export const wait = (milliseconds = 0) => new Promise((resolve) => setTimeout(re
  * converts dot and bracket syntax path to ramda path, i.e.
  * 'user.address[0].phones[0].code'
  * to
- * ["people", "1", "address", "0", "phones", "0", "code"]
+ * ["user", "address", "0", "phones", "0", "code"]
  */
 export const strToPath = (str: string): Array<string> => str.split(/[[\].]+/).filter(Boolean);
