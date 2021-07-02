@@ -19,9 +19,8 @@ jobs:
               with:
                   fetch-depth: 0 # 👈 Required to retrieve git history
 
-            # TODO replace this when setup-node action supports LTS alias
             - name: Set up Node
-              uses: dcodeIO/setup-node-nvm@master
+              uses: actions/setup-node@v2
               with:
                   node-version: lts/*
 
