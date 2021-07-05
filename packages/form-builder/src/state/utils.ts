@@ -15,10 +15,10 @@ import {
 	ElementJsonFields,
 	SectionJsonFields,
 } from '../types';
-import { PURITY_FLAGS, STATUS_FLAGS } from './constants';
+import { LOCAL_ONLY_FIELDS, STATUS_FLAGS } from './constants';
 
 export function omitLocalFields<Item extends LocalOnlyFields>(item: Item) {
-	return R.omit(PURITY_FLAGS, item);
+	return R.omit(LOCAL_ONLY_FIELDS, item);
 }
 
 export function omitStatusFlags<Item extends FormStatusFlags>(item: Item) {

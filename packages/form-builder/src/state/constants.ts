@@ -1,6 +1,6 @@
 import { LocalOnlyFields, FormStatusFlags } from '../types';
 
-export const PURITY_FLAGS: Array<keyof LocalOnlyFields> = ['isModified', 'isNew'];
+export const LOCAL_ONLY_FIELDS: Array<keyof LocalOnlyFields> = ['isModified', 'isNew', 'value'];
 
 export const STATUS_FLAGS: Array<keyof FormStatusFlags> = [
 	'isActive',
