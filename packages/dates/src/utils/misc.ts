@@ -5,6 +5,7 @@ import { setHours, setMinutes, setSeconds, setYear, setMonth, setDate } from 'da
 
 import type { OptionsType } from '@eventespresso/adapters';
 import { NOW } from '@eventespresso/constants';
+import { arrayOfN } from '@eventespresso/utils';
 
 import { add, sub } from './addSub';
 import diff from './diff';
@@ -136,4 +137,128 @@ export const mayBeAdjustEndDate = ({
 
 export const getMonthName = (date: Date, format: Intl.DateTimeFormatOptions['month'] = 'long'): string => {
 	return date.toLocaleString('default', { month: format });
+};
+
+/**
+ * Returns a localized list of days in a month from 1 to 31 as
+ * an array of options for Select dropdown
+ * [
+ *     {
+ *         value: '2',
+ *         label: '2' // or '۲' etc.
+ *     },
+ *     ...
+ * ]
+ */
+export const getDaysDropdownOptions = (format: Intl.DateTimeFormatOptions['day'] = 'numeric'): OptionsType => {
+	// Create an array of 31 days and loop through it
+	return arrayOfN(31).map((value) => {
+		// make each a day for January to localize it
+		const label = new Date(2021, 0, value).toLocaleString('default', { day: format });
+		// `value` should be returned as is - non-localized, because it will be save to DB
+		return { value, label };
+	});
+};
+
+/**
+ * Returns a localized list of months in a year from January to December
+ * an array of options for Select dropdown
+ * [
+ *     {
+ *         value: '1',
+ *         label: 'January', // or 'يناير' etc.
+ *     },
+ *     ...
+ * ]
+ */
+export const getMonthsDropdownOptions = (format: Intl.DateTimeFormatOptions['month'] = 'long'): OptionsType => {
+	// Create an array of 12 months staring from 1 and loop through it
+	return arrayOfN(12).map((value) => {
+		// make each a day for January to localize it
+		const label = new Date(2021, value - 1).toLocaleString('default', { month: format });
+		// `value` should be returned as is - non-localized, because it will be save to DB
+		return { value, label };
+	});
+};
+
+/**
+ * Configuration to generate year dropdown options
+ * - Number of years generated will be determined by `totalCount`, if either `startYear` or `endYear` is missing
+ * - `totalCount` will be ignored if both `startYear` or `endYear` are passed and former is less than later
+ * - If `startYear` is 'current', years will be generated staring from the current year
+ * - If `startYear` is a number (e.g. 2010), years will be generated staring from that
+ * - If `endYear` is 'current', years will be generated with current year being the ending one
+ * - If `endYear` is a number (e.g. 2025), years will be generated with that year being the ending one
+ * - If none of `startYear` and `endYear` is passed, `startYear` will be set to 'current'
+ */
+type YearOptionsConfig = {
+	/**
+	 * Year to start from.
+	 */
+	startYear?: number | 'current';
+
+	/**
+	 * Year to end with.
+	 */
+	endYear?: number | 'current';
+
+	/**
+	 * Total number of years to show
+	 * @default 20
+	 */
+	totalCount?: number;
+	/**
+	 * Year format
+	 * @default 'numeric'
+	 */
+	format?: Intl.DateTimeFormatOptions['year'];
+};
+
+/**
+ * Returns a localized list of months in a year from January to December
+ * an array of options for Select dropdown
+ * [
+ *     {
+ *         value: '2021',
+ *         label: '2021', // or '۲۰۲۱' etc.
+ *     },
+ *     ...
+ * ]
+ */
+export const getYearsDropdownOptions = (configuration?: YearOptionsConfig): OptionsType => {
+	const config: YearOptionsConfig = { totalCount: 20, format: 'numeric', ...configuration };
+
+	// If none of `startYear` and `endYear` is passed, set `startYear` to 'current'
+	const startYear = !(config.startYear || config.endYear) ? 'current' : config.startYear;
+
+	const startingYear = startYear === 'current' ? NOW.getFullYear() : startYear;
+	let endingYear = config.endYear === 'current' ? NOW.getFullYear() : config.endYear;
+
+	// if `startYear` is not less than `endYear`, discard `endYear`
+	endingYear = startingYear && endingYear && startingYear > endingYear ? undefined : endingYear;
+
+	let totalCount: number,
+		startIndex: number,
+		dir: Parameters<typeof arrayOfN>['2'] = 'positive';
+
+	// if both `startYear` or `endYear` are passed, ignore `totalCount`
+	if (startingYear && endingYear) {
+		startIndex = startingYear;
+		totalCount = endingYear - startingYear;
+	} else if (startingYear && !endingYear) {
+		// if `startYear` is passed but not `endYear`
+		startIndex = startingYear;
+		totalCount = config.totalCount;
+	} else if (!startingYear && endingYear) {
+		// if `endingYear` is passed but not `startingYear`
+		startIndex = endingYear;
+		totalCount = config.totalCount;
+		dir = 'negative';
+	}
+
+	return arrayOfN(totalCount, startIndex, dir).map((value) => {
+		const label = new Date(value, 0).toLocaleString('default', { year: config.format });
+		// `value` should be returned as is - non-localized, because it will be save to DB
+		return { value, label };
+	});
 };
