@@ -2,6 +2,7 @@ import { memo, useMemo } from 'react';
 
 import { FormControl, FormHelperText } from '@eventespresso/adapters';
 import { AnyObject, getPropsAreEqual } from '@eventespresso/utils';
+import { getDaysDropdownOptions, getMonthsDropdownOptions, getYearsDropdownOptions } from '@eventespresso/dates';
 
 import { MappedElement } from './MappedElement';
 import type { FormElementProps } from '../types';
@@ -25,10 +26,18 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 				break;
 			case 'SELECT_COUNTRY':
 			case 'SELECT_STATE':
-			case 'MONTH_SELECT':
-			case 'YEAR_SELECT':
 				// TODO generate the options dynamically
 				inputProps.options = element.options || [];
+				break;
+			case 'DAY_SELECT':
+				inputProps.options = getDaysDropdownOptions();
+				break;
+			case 'MONTH_SELECT':
+				inputProps.options = getMonthsDropdownOptions();
+				break;
+			case 'YEAR_SELECT':
+				// TODO add configuration for this dropdown
+				inputProps.options = getYearsDropdownOptions({ endYear: 'current' });
 				break;
 			case 'DATE':
 			case 'DATETIME_LOCAL':
@@ -83,7 +92,7 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 			<MappedElement
 				type={element.type}
 				id={element.id}
-				label={element.label?.publicLabel}
+				label={element.label?.publicLabel || element.label?.adminLabel}
 				isRequired={element.required?.required}
 				{...props}
 			/>

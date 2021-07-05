@@ -33,6 +33,7 @@ const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
 			break;
 		case 'DATE':
 		case 'DATETIME_LOCAL':
+		case 'MONTH':
 			Component = DatePicker;
 			break;
 		case 'EMAIL':
@@ -54,18 +55,15 @@ const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
 		case 'DECIMAL':
 			Component = NumberInput;
 			break;
-		case 'MONTH':
-		case 'MONTH_SELECT':
-		case 'WEEK':
-		case 'YEAR_SELECT':
-			Component = DatePicker;
-			break;
 		case 'RADIO':
 			Component = RadioGroup;
 			break;
 		case 'SELECT':
 		case 'SELECT_COUNTRY':
 		case 'SELECT_STATE':
+		case 'DAY_SELECT':
+		case 'MONTH_SELECT':
+		case 'YEAR_SELECT':
 			Component = Select;
 			break;
 		case 'SWITCH':
