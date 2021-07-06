@@ -32,7 +32,7 @@ export const FieldOption: React.FC<FieldOptionProps> = ({ index, label, onChange
 					isDragging && 'ee-draggable--is-dragging'
 				);
 				return (
-					<div {...draggableProps} key={`${index}`} ref={innerRef} className={className}>
+					<div {...draggableProps} {...dragHandleProps} key={`${index}`} ref={innerRef} className={className}>
 						<div className='ee-field-option'>
 							<Label id={`ee-field-option-value-${index}`} label={__('value')} hidden={hidden} />
 							<TextInput
