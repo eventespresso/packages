@@ -2,10 +2,11 @@
 	align-items: flex-start;
 	border: 1px solid var(--ee-border-color);
 	display: flex;
-	flex-wrap: wrap;
+	flex-flow: row nowrap;
 	margin: var(--ee-margin-tiny);
 	max-width: 19rem;
 	min-height: 8rem;
+	min-width: 10rem;
 
 	&__details {
 		border-left: 1px dotted var(--ee-border-color);
