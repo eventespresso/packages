@@ -55,9 +55,13 @@ export type FormStatusFlags = {
 };
 
 export type FormAttributes = {
+	autocomplete?: boolean;
 	class?: string;
 	max?: number;
+	maxDate?: Date;
 	min?: number;
+	minDate?: Date;
+	pattern?: string;
 	placeholder?: string;
 };
 
