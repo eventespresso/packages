@@ -6,6 +6,7 @@ import type { FormElementProps } from '../../types';
 import FieldOptions from './FieldOptions';
 import { FIELDS_WITH_OPTIONS } from '../../constants';
 import { useUpdateElement } from '../useUpdateElement';
+import { InputType } from './InputType';
 
 const RTEWithLabel = withLabel(SimpleTextEditor);
 
@@ -14,15 +15,20 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 
 	return (
 		<>
+			{
+				// HTML doesn't need a public label
+				element.type !== 'HTML' && (
+					<TextInputWithLabel
+						label={__('public label')}
+						onChangeValue={onChangeValue('label.publicLabel')}
+						value={element.label?.publicLabel}
+					/>
+				)
+			}
 			<TextInputWithLabel
 				label={__('admin label')}
 				onChangeValue={onChangeValue('label.adminLabel')}
 				value={element.label?.adminLabel}
-			/>
-			<SwitchWithLabel
-				label={__('admin only')}
-				onChangeValue={onChangeValue('adminOnly')}
-				isChecked={element.adminOnly}
 			/>
 			{element.type === 'HTML' ? (
 				<>
@@ -35,24 +41,26 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 				</>
 			) : (
 				<>
-					<TextInputWithLabel
-						label={__('public label')}
-						onChangeValue={onChangeValue('label.publicLabel')}
-						value={element.label?.publicLabel}
-					/>
-					{FIELDS_WITH_OPTIONS.includes(element.type) && (
+					{FIELDS_WITH_OPTIONS.includes(element.type) ? (
 						<FieldOptions element={element} label={__('options')} />
+					) : (
+						<TextInputWithLabel
+							label={__('placeholder')}
+							onChangeValue={onChangeValue('attributes.placeholder')}
+							value={element.attributes?.placeholder}
+						/>
 					)}
-					<TextInputWithLabel
-						label={__('placeholder')}
-						onChangeValue={onChangeValue('attributes.placeholder')}
-						value={element.attributes?.placeholder}
+					<SwitchWithLabel
+						label={__('admin only')}
+						onChangeValue={onChangeValue('adminOnly')}
+						isChecked={element.adminOnly}
 					/>
 					<TextInputWithLabel
 						label={__('help text')}
 						onChangeValue={onChangeValue('helpText.helpText')}
 						value={element.helpText?.helpText}
 					/>
+					<InputType element={element} />
 				</>
 			)}
 		</>
