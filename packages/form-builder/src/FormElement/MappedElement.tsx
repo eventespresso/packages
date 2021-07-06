@@ -1,5 +1,5 @@
 import type { AnyObject } from '@eventespresso/utils';
-import { DatePicker, TimePicker } from '@eventespresso/dates';
+import { DatePicker, MonthPicker, TimePicker } from '@eventespresso/dates';
 import {
 	TextInput,
 	MultiCheckbox,
@@ -28,32 +28,20 @@ const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
 	let Component: React.ComponentType<AnyObject>;
 
 	switch (type) {
-		case 'CHECKBOX_MULTI':
-			Component = MultiCheckbox;
-			break;
+		// DATE & TIME RELATED INPUTS
 		case 'DATE':
 		case 'DATETIME_LOCAL':
-		case 'MONTH':
 			Component = DatePicker;
 			break;
-		case 'EMAIL':
-		case 'EMAIL_CONFIRMATION':
-		case 'PASSWORD':
-		case 'TEL':
-		case 'TEXT':
-		case 'URL':
-			Component = TextInput;
+		case 'MONTH':
+			Component = MonthPicker;
 			break;
-		case 'HTML':
-			Component = SimpleTextEditor;
+		case 'TIME':
+			Component = TimePicker;
 			break;
-		case 'TEXTAREA':
-		case 'TEXTAREA_HTML':
-			Component = Textarea;
-			break;
-		case 'INTEGER':
-		case 'DECIMAL':
-			Component = NumberInput;
+		// MULTI OPTION RELATED INPUTS
+		case 'CHECKBOX_MULTI':
+			Component = MultiCheckbox;
 			break;
 		case 'RADIO':
 			Component = RadioGroup;
@@ -69,8 +57,26 @@ const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
 		case 'SWITCH':
 			Component = Switch;
 			break;
-		case 'TIME':
-			Component = TimePicker;
+		// NUMERIC INPUTS
+		case 'INTEGER':
+		case 'DECIMAL':
+			Component = NumberInput;
+			break;
+		// TEXT RELATED INPUTS
+		case 'EMAIL':
+		case 'EMAIL_CONFIRMATION':
+		case 'PASSWORD':
+		case 'TEL':
+		case 'TEXT':
+		case 'URL':
+			Component = TextInput;
+			break;
+		case 'TEXTAREA':
+		case 'TEXTAREA_HTML':
+			Component = Textarea;
+			break;
+		case 'HTML':
+			Component = SimpleTextEditor;
 			break;
 		default:
 			Component = DefaultComponent;
