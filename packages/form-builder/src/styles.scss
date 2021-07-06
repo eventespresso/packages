@@ -312,12 +312,16 @@
 					width: 100%;
 
 					&:hover,
+					&:focus,
 					&--active {
 						background: var(--ee-color-grey-14);
 
 						.ee-form-element__type,
 						.ee-form-element__toolbar .ee-form-element__toolbar-button {
 							opacity: 1;
+						}
+						&:focus {
+							border: 1px solid var(--ee-border-color);
 						}
 					}
 				}

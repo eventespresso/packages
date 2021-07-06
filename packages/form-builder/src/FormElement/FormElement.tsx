@@ -21,7 +21,7 @@ export const FormElement = memo<FormElementProps>(({ element, index }) => {
 			{({ draggableProps, dragHandleProps, innerRef }, { isDragging }) => {
 				const className = classNames(wrapperClass, 'ee-draggable', isDragging && 'ee-draggable--is-dragging');
 				return (
-					<div className={className} {...draggableProps} ref={innerRef}>
+					<div className={className} {...draggableProps} ref={innerRef} {...dragHandleProps}>
 						<div className='ee-form-element'>
 							<FormElementInput element={element} />
 							<FormElementToolbar element={element} dragHandleProps={dragHandleProps} />
