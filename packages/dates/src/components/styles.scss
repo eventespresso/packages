@@ -33,10 +33,6 @@
 		width: $datetime-container-width;
 	}
 
-	&.ee-timepicker {
-		width: $time-container-width;
-	}
-
 	&-popper {
 		z-index: 3;
 	}
@@ -317,7 +313,7 @@
 					width: 100%;
 
 					ul.react-datepicker__time-list {
-						height: unset !important;
+						height: unset;
 						max-height: $month-height;
 						scrollbar-width: thin;
 
@@ -327,6 +323,7 @@
 
 						li.react-datepicker__time-list-item {
 							align-items: center;
+							border: 2px solid var(--ee-background-color);
 							box-sizing: border-box;
 							display: flex;
 							height: var(--ee-icon-button-size-big);
@@ -334,8 +331,8 @@
 							line-height: var(--ee-icon-button-size-micro);
 							margin: 0;
 							margin-inline-start: var(--ee-margin-tiny);
-							padding: 0 var(--ee-padding-smaller) 0 var(--ee-padding-micro);
-
+							outline: none !important;
+							padding: 0 var(--ee-padding-smaller) 0 0;
 
 							&--selected {
 								background-color: var(--ee-date-picker-date-in-range-bg-color);
@@ -343,9 +340,55 @@
 								font-weight: 500;
 							}
 
+							// use graduated coloring for time blocks
+							// so that nighttime blocks are darker than daytime blocks
 							&:hover {
-								background-color: var(--ee-color-primary-low-contrast);
-								color: var(--ee-text-on-primary);
+								background-color: var(--ee-color-blue-low-contrast);
+								color: var(--ee-text-on-blue);
+
+								&:nth-child(-n+16),
+								&:nth-child(n+33) {
+									background-color: var(--ee-color-blue);
+								}
+
+								&:nth-child(-n+12),
+								&:nth-child(n+37) {
+									background-color: var(--ee-color-blue-high-contrast);
+								}
+
+								&:nth-child(-n+8),
+								&:nth-child(n+41) {
+									background-color: var(--ee-color-blue-super-high-contrast);
+								}
+
+								&:nth-child(-n+4),
+								&:nth-child(n+45) {
+									background-color: var(--ee-color-dark-blue-high-contrast);
+								}
+							}
+
+							&:focus {
+								border-color: var(--ee-color-blue-low-contrast);
+
+								&:nth-child(-n+16),
+								&:nth-child(n+33) {
+									border-color: var(--ee-color-blue);
+								}
+
+								&:nth-child(-n+12),
+								&:nth-child(n+37) {
+									border-color: var(--ee-color-blue-high-contrast);
+								}
+
+								&:nth-child(-n+8),
+								&:nth-child(n+41) {
+									border-color: var(--ee-color-blue-super-high-contrast);
+								}
+
+								&:nth-child(-n+4),
+								&:nth-child(n+45) {
+									border-color: var(--ee-color-dark-blue-high-contrast);
+								}
 							}
 
 							&--disabled {
@@ -361,17 +404,90 @@
 	}
 
 	&--time-only {
-		.react-datepicker__time-container {
-			height: auto;
+		.react-datepicker {
+			&__time-container {
+				box-sizing: content-box;
+				height: auto;
+				padding: 0 0 var(--ee-padding-tiny);
+				width: calc(var(--ee-icon-button-size-bigger) * 8);
 
-			.react-datepicker__header--time {
-				height: var(--ee-icon-button-size-big);
+				.react-datepicker__time {
+					padding-top: var(--ee-padding-tiny);
+
+					&-box ul.react-datepicker__time-list {
+						display: grid;
+						grid-template-columns: repeat(4, 1fr);
+
+						li.react-datepicker__time-list-item {
+							padding: 0 var(--ee-padding-small) 0 0;
+
+							// use graduated coloring for time blocks
+							// so that nighttime blocks are darker than daytime blocks
+							&:hover {
+								&:nth-child(n+32) {
+									background-color: var(--ee-color-blue-low-contrast);
+								}
+
+								&:nth-child(-n+32),
+								&:nth-child(n+65) {
+									background-color: var(--ee-color-blue);
+								}
+
+								&:nth-child(-n+24),
+								&:nth-child(n+73) {
+									background-color: var(--ee-color-blue-high-contrast);
+								}
+
+								&:nth-child(-n+16),
+								&:nth-child(n+81) {
+									background-color: var(--ee-color-blue-super-high-contrast);
+								}
+
+								&:nth-child(-n+8),
+								&:nth-child(n+89) {
+									background-color: var(--ee-color-dark-blue-high-contrast);
+								}
+							}
+
+							&:focus {
+								&:nth-child(n+32) {
+									border-color: var(--ee-color-blue-low-contrast);
+								}
+
+								&:nth-child(-n+32),
+								&:nth-child(n+65) {
+									border-color: var(--ee-color-blue);
+								}
+
+								&:nth-child(-n+24),
+								&:nth-child(n+73) {
+									border-color: var(--ee-color-blue-high-contrast);
+								}
+
+								&:nth-child(-n+16),
+								&:nth-child(n+81) {
+									border-color: var(--ee-color-blue-super-high-contrast);
+								}
+
+								&:nth-child(-n+8),
+								&:nth-child(n+89) {
+									border-color: var(--ee-color-dark-blue-high-contrast);
+								}
+							}
+
+							&:focus-visible {
+								outline: none;
+							}
+						}
+					}
+				}
+			}
+
+			&__header--time {
+				display: none;
+				height: 0;
 				padding: 0;
 			}
-		}
-
-		.react-datepicker__triangle {
-			left: calc(var(--ee-margin-huge) * -1) !important;
 		}
 	}
 
