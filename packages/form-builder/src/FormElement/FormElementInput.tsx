@@ -50,17 +50,6 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 					value: element.value,
 					onChange: onChangeValue('value'),
 				};
-				switch (element.type) {
-					// TODO update formats from site config
-					case 'MONTH':
-						inputProps = {
-							...inputProps,
-							showMonthYearPicker: true,
-							dateFormat: 'MM/yyyy',
-						};
-						break;
-					// add more cases in future
-				}
 				break;
 			case 'EMAIL':
 			case 'PASSWORD':
