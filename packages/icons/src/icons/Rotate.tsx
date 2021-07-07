@@ -5,9 +5,9 @@ const Rotate = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			aria-hidden='true'
-			height='1.25rem'
+			height='1.5em'
 			viewBox='0 0 20 20'
-			width='1.25rem'
+			width='1.5em'
 			className='ee-svg--rotate'
 			{...props}
 		>

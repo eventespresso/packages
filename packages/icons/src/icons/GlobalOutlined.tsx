@@ -8,8 +8,8 @@ const GlobalOutlined = (props: IconProps): JSX.Element => {
 			data-icon='global'
 			fill='currentColor'
 			aria-hidden='true'
-			height='1.25em'
-			width='1.25em'
+			height='1.5em'
+			width='1.5em'
 			className='ee-svg--global-outlined'
 			{...props}
 		>

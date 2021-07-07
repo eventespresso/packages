@@ -7,8 +7,8 @@ const InfoCircleOutlined = (props: IconProps): JSX.Element => {
 			aria-hidden='true'
 			fill='currentColor'
 			viewBox='64 64 896 896'
-			width='1.25em'
-			height='1.25em'
+			width='1.5em'
+			height='1.5em'
 			className='ee-svg--info-circle-outlined'
 			{...props}
 		>

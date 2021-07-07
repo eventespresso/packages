@@ -8,8 +8,8 @@ const UpCircleFilled = (props: IconProps): JSX.Element => {
 			viewBox='64 64 896 896'
 			data-icon='up-circle'
 			fill='currentColor'
-			height='1.25em'
-			width='1.25em'
+			height='1.5em'
+			width='1.5em'
 			className='ee-svg--up-circle-filled'
 			{...props}
 		>

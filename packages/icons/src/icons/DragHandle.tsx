@@ -7,8 +7,8 @@ const DragHandle = (props: IconProps): JSX.Element => {
 			color='currentColor'
 			fill='currentColor'
 			aria-hidden='true'
-			height='1.25em'
-			width='1.25em'
+			height='1.5em'
+			width='1.5em'
 			viewBox='0 0 18 18'
 			className='ee-svg--drag-handle'
 			{...props}

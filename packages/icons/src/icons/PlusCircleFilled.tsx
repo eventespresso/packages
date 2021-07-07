@@ -8,8 +8,8 @@ const PlusCircleFilled = (props: IconProps): JSX.Element => {
 			data-icon='plus-circle'
 			fill='currentColor'
 			aria-hidden='true'
-			height='1.25em'
-			width='1.25em'
+			height='1.5em'
+			width='1.5em'
 			className='ee-svg--plus-circle-filled'
 			{...props}
 		>

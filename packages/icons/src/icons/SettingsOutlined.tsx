@@ -8,11 +8,11 @@ const SettingsOutlined = (props: IconProps): JSX.Element => {
 			className='ee-svg--settings-outlined'
 			color='currentColor'
 			fill='currentColor'
-			height='1.25em'
+			height='1.5em'
 			stroke='currentColor'
 			strokeWidth='0'
 			viewBox='0 0 512 512'
-			width='1.25em'
+			width='1.5em'
 			xmlns='http://www.w3.org/2000/svg'
 			{...props}
 		>
