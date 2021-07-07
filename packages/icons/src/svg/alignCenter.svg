@@ -3,8 +3,8 @@
 	focusable="false"
 	fill="currentColor"
 	aria-hidden="true"
-	height="1.25em"
-	width="1.25em"
+	height="1.5em"
+	width="1.5em"
 >
 <path
 		d="M16.4 4.2H7.6v1.5h8.9V4.2zM4 11.2v1.5h16v-1.5H4zm3.6 8.6h8.9v-1.5H7.6v1.5z"

@@ -62,7 +62,7 @@
 		height: 5.25rem;
 		justify-content: flex-start;
 		min-width: 15rem;
-		padding: var(--ee-padding-small) var(--ee-padding-big);
+		padding: var(--ee-padding-small) var(--ee-padding-default);
 		position: relative;
 
 		@at-root .ee-form-steps--compact#{&} {
@@ -157,7 +157,7 @@
 			align-items: flex-start;
 			display: flex;
 			flex-flow: column nowrap;
-			font-size: var(--ee-font-size-default);
+			font-size: var(--ee-font-size-small);
 			line-height: 1.1;
 		}
 

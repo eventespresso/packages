@@ -38,36 +38,43 @@
 	&--micro {
 		font-size: var(--ee-font-size-micro);
 		height: var(--ee-icon-button-size-micro);
+		line-height: var(--ee-font-size-tiny);
 		min-height: var(--ee-icon-button-size-micro);
 	}
 	&--tiny {
 		font-size: var(--ee-font-size-tiny);
 		height: var(--ee-icon-button-size-tiny);
+		line-height: var(--ee-font-size-smaller);
 		min-height: var(--ee-icon-button-size-tiny);
 	}
 	&--smaller {
 		font-size: var(--ee-font-size-smaller);
 		height: var(--ee-icon-button-size-smaller);
+		line-height: var(--ee-font-size-small);
 		min-height: var(--ee-icon-button-size-smaller);
 	}
 	&--small {
 		font-size: var(--ee-font-size-small);
 		height: var(--ee-icon-button-size-small);
+		line-height: var(--ee-font-size-default);
 		min-height: var(--ee-icon-button-size-small);
 	}
 	&--big {
 		font-size: var(--ee-font-size-big);
 		height: var(--ee-icon-button-size-big);
+		line-height: var(--ee-font-size-bigger);
 		min-height: var(--ee-icon-button-size-big);
 	}
 	&--bigger {
 		font-size: var(--ee-font-size-bigger);
 		height: var(--ee-icon-button-size-bigger);
+		line-height: var(--ee-font-size-huge);
 		min-height: var(--ee-icon-button-size-bigger);
 	}
 	&--huge {
 		font-size: var(--ee-font-size-huge);
 		height: var(--ee-icon-button-size-huge);
+		line-height: var(--ee-font-size-extreme);
 		min-height: var(--ee-icon-button-size-huge);
 	}
 }
@@ -82,7 +89,7 @@
 	color: var(--ee-default-text-color);
 	font-size: var(--ee-font-size-default);
 	height: var(--ee-icon-button-size); // to overide Chakra
-	line-height: inherit;
+	line-height: var(--ee-font-size-big);
 	min-height: var(--ee-icon-button-size); // 42px
 	outline: none;
 	padding: var(--ee-padding-micro) var(--ee-padding-tiny);

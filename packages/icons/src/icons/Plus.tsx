@@ -3,7 +3,7 @@ import { IconProps } from '../types';
 
 const Plus = (props: IconProps): JSX.Element => {
 	return (
-		<svg viewBox='0 0 1024 1024' height='1.25em' width='1.25em' className='ee-svg--plus' {...props}>
+		<svg viewBox='0 0 1024 1024' height='1.5em' width='1.5em' className='ee-svg--plus' {...props}>
 			<defs>
 				<style />
 			</defs>

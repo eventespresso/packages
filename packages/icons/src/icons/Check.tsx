@@ -8,8 +8,8 @@ const Check = (props: IconProps): JSX.Element => {
 			fill='currentColor'
 			viewBox='64 64 896 896'
 			data-icon='check-circle'
-			height='1.25em'
-			width='1.25em'
+			height='1.5em'
+			width='1.5em'
 			className='ee-svg--check'
 			{...props}
 		>

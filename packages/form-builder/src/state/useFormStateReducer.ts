@@ -1,10 +1,9 @@
 import { useCallback } from 'react';
 import * as R from 'ramda';
 
-import { uuid, isEqualJson } from '@eventespresso/utils';
+import { isEqualJson } from '@eventespresso/utils';
 
 import { FormStateReducer, StateInitializer, FormState } from './types';
-import { DEFAULT_SECTION, DEFAULT_ELEMENT } from '../constants';
 import {
 	addElementToState,
 	addSectionToState,
@@ -16,6 +15,8 @@ import {
 	moveElement,
 	moveSection,
 	omitLocalFields,
+	prepareNewElement,
+	prepareNewSection,
 } from './utils';
 import { FormElement, FormSection } from '../types';
 
@@ -33,8 +34,6 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 	return useCallback<FormStateReducer>(
 		(state, action) => {
 			const { id, afterId, section, element, type, index, sectionId, openElement } = action;
-			// Generate a fresh id for new/copied elements/sections
-			const newId = uuid();
 
 			// List of predicates that will be applied/composed to the state to produce the new state
 			// Each case below provides that list of predicates
@@ -42,29 +41,14 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 
 			switch (type) {
 				case 'ADD_SECTION': {
-					// New section will be composed of default section
-					const newSection: FormSection = {
-						...DEFAULT_SECTION,
-						// by default set `belongsTo` to `topLevelSection`
-						belongsTo: state.topLevelSection,
-						...section,
-						id: newId,
-						isNew: true,
-					};
-					predicates = [addSectionToState(newSection, afterId), maybeSetTopLevelSection(newId)];
+					const newSection: FormSection = prepareNewSection(section, state.topLevelSection);
+					predicates = [addSectionToState(newSection, afterId), maybeSetTopLevelSection(newSection.id)];
 					break;
 				}
 
 				case 'COPY_SECTION': {
 					// Copied section will be composed of the existing section
-					const newSection: FormSection = {
-						...state.sections[id],
-						// by default set `belongsTo` to `topLevelSection`
-						belongsTo: state.topLevelSection,
-						...section,
-						id: newId,
-						isNew: true,
-					};
+					const newSection = prepareNewSection({ ...state.sections[id], ...section });
 					predicates = [addSectionToState(newSection, id), copySectionElements(id, newSection.id)];
 					break;
 				}
@@ -115,15 +99,14 @@ export const useFormStateReducer = (initializer: StateInitializer): FormStateRed
 				}
 
 				case 'ADD_ELEMENT': {
-					// New element will be composed of default element
-					const newElement: FormElement = { ...DEFAULT_ELEMENT, ...element, id: newId, isNew: true };
+					const newElement = prepareNewElement(element);
 					predicates = [addElementToState(newElement)];
 					break;
 				}
 
 				case 'COPY_ELEMENT': {
 					// Copied element will be composed of the existing element
-					const newElement: FormElement = { ...state.elements[id], id: newId, isNew: true };
+					const newElement = prepareNewElement(state.elements[id]);
 					predicates = [addElementToState(newElement, id)];
 					break;
 				}

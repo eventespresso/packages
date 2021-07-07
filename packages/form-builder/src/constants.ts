@@ -30,6 +30,19 @@ export const DEFAULT_ELEMENT: FormElement = {
 	order: 1,
 };
 
+export const NUMERIC_FIELDS: Array<ElementType> = ['INTEGER', 'DECIMAL'];
+
+export const TEXT_FIELDS: Array<ElementType> = [
+	...NUMERIC_FIELDS,
+	'EMAIL',
+	'EMAIL_CONFIRMATION',
+	'PASSWORD',
+	'TEL',
+	'TEXT',
+	'URL',
+];
+export const DATE_FIELDS: Array<ElementType> = ['DATE', 'DATETIME_LOCAL', 'MONTH'];
+
 // These are the fields that require `options` to be passed to the component
 export const FIELDS_WITH_OPTIONS: Array<ElementType> = ['CHECKBOX_MULTI', 'RADIO', 'SELECT'];
 

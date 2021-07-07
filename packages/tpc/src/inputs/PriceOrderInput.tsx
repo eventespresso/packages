@@ -17,7 +17,7 @@ const PriceOrderInput: React.FC<PriceModifierProps> = ({ price }) => {
 			field='order'
 			min={1}
 			price={price}
-			type={'number'}
+			type={'text'}
 		/>
 	);
 };

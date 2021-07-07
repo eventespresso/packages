@@ -15,7 +15,6 @@ export const ToggleBulkActionsButton: React.FC<ToggleBulkActionsButtonProps> = (
 			id={filterId}
 			labelClassName='ee-filter-bar__btn-wrap'
 			onClick={onClick}
-			size='smaller'
 		>
 			{tooltip}
 		</Button>

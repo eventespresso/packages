@@ -2,8 +2,8 @@
 	aria-hidden="true"
 	fill="currentColor"
 	focusable="false"
-	height="1.25em"
-	width="1.25em"
+	height="1.5em"
+	width="1.5em"
     viewBox="0 0 24 24"
 >
     <path d="M20,2H8C6.897,2,6,2.897,6,4v12c0,1.103,0.897,2,2,2h12c1.103,0,2-0.897,2-2V4C22,2.897,21.103,2,20,2z M8,16V4h12 l0.002,12H8z"/>

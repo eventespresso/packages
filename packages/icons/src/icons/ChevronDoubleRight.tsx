@@ -6,8 +6,8 @@ const ChevronDoubleRight = (props: IconProps): JSX.Element => {
 		<svg
 			aria-hidden='true'
 			fill='currentColor'
-			height='1.25em'
-			width='1.25em'
+			height='1.5em'
+			width='1.5em'
 			viewBox='0 0 330 330'
 			className='ee-svg--chevron-double-right'
 			{...props}

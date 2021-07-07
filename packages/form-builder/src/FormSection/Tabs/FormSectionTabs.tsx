@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import { __ } from '@eventespresso/i18n';
-import { CheckList, Palette, SettingsOutlined } from '@eventespresso/icons';
+import { Palette, SettingsOutlined } from '@eventespresso/icons';
 import { Collapsible, Tabs, TabList, TabPanels, Tab, TabPanel } from '@eventespresso/ui-components';
 import { getPropsAreEqual } from '@eventespresso/utils';
 
@@ -24,10 +24,10 @@ export const FormSectionTabs = memo<FormSectionProps>(({ formSection }) => {
 						<Palette className='ee-tab-icon-palette' />
 						{__('Styles')}
 					</Tab>
-					<Tab>
+					{/* <Tab>
 						<CheckList className='ee-tab-icon-rules' />
 						{__('Rules')}
-					</Tab>
+					</Tab> */}
 				</TabList>
 				<TabPanels>
 					<TabPanel>
@@ -36,9 +36,9 @@ export const FormSectionTabs = memo<FormSectionProps>(({ formSection }) => {
 					<TabPanel>
 						<Styles formSection={formSection} />
 					</TabPanel>
-					<TabPanel>
+					{/* <TabPanel>
 						<p>dont be bad person</p>
-					</TabPanel>
+					</TabPanel> */}
 				</TabPanels>
 			</Tabs>
 		</Collapsible>

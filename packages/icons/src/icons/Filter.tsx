@@ -5,8 +5,8 @@ const Filter = (props: IconProps): JSX.Element => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'
-			width='1.25em'
-			height='1.25em'
+			width='1.5em'
+			height='1.5em'
 			viewBox='0 0 20 20'
 			className='ee-svg--filter'
 			{...props}

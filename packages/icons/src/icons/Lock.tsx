@@ -7,8 +7,8 @@ const Lock = (props: IconProps): JSX.Element => {
 			viewBox='0 0 20 20'
 			aria-hidden='true'
 			fill='currentColor'
-			height='1.25em'
-			width='1.25em'
+			height='1.5em'
+			width='1.5em'
 			className='ee-svg--lock'
 			{...props}
 		>

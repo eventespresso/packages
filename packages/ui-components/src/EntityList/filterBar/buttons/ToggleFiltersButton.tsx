@@ -16,7 +16,6 @@ export const ToggleFiltersButton: React.FC<ToggleFiltersButtonProps> = ({ id, on
 			id={filterId}
 			labelClassName={'ee-filter-bar__btn-wrap'}
 			onClick={onClick}
-			size='smaller'
 			{...rest}
 		>
 			{tooltip}

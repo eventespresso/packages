@@ -6,9 +6,9 @@ const Undo = (props: IconProps): JSX.Element => {
 		<svg
 			aria-hidden='true'
 			fill='currentColor'
-			height='1.25rem'
+			height='1.5em'
 			viewBox='0 0 20 20'
-			width='1.25rem'
+			width='1.5em'
 			className='ee-svg--undo'
 			{...props}
 		>

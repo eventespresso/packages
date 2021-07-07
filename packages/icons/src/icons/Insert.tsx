@@ -7,8 +7,8 @@ const Insert = (props: IconProps): JSX.Element => {
 			aria-hidden='true'
 			fill='currentColor'
 			viewBox='0 0 20 20'
-			width='1.25em'
-			height='1.25em'
+			width='1.5em'
+			height='1.5em'
 			className='ee-svg--insert'
 			{...props}
 		>

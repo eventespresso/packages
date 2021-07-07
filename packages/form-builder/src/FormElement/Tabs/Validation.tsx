@@ -1,11 +1,19 @@
 import { __ } from '@eventespresso/i18n';
-import { NumberInputWithLabel, SwitchWithLabel, TextInputWithLabel } from '@eventespresso/ui-components';
+import { NumberInputWithLabel, SwitchWithLabel, TextInputWithLabel, withLabel } from '@eventespresso/ui-components';
+import { DatePicker, TimePicker } from '@eventespresso/dates';
 
 import { useUpdateElement } from '../useUpdateElement';
 
-import type { FormElementProps, ElementType } from '../../types';
+import type { FormElementProps } from '../../types';
+import { DATE_FIELDS, NUMERIC_FIELDS, TEXT_FIELDS } from '../../constants';
 
-const numericFields: Array<ElementType> = ['INTEGER', 'DECIMAL'];
+const DatePickerWithLabel = withLabel(DatePicker);
+const TimePickerWithLabel = withLabel(TimePicker);
+
+const monthFieldProps = {
+	showMonthYearPicker: true,
+	dateFormat: 'MM/yyyy',
+};
 
 export const Validation: React.FC<FormElementProps> = ({ element }) => {
 	const onChangeValue = useUpdateElement(element);
@@ -22,7 +30,21 @@ export const Validation: React.FC<FormElementProps> = ({ element }) => {
 				onChangeValue={onChangeValue('required.validationText')}
 				value={element.required?.validationText}
 			/>
-			{numericFields.includes(element.type) && (
+			{TEXT_FIELDS.includes(element.type) && (
+				<>
+					<SwitchWithLabel
+						label={__('autocomplete')}
+						onChangeValue={onChangeValue('attributes.autocomplete')}
+						isChecked={element.attributes?.autocomplete}
+					/>
+					<TextInputWithLabel
+						label={__('pattern')}
+						onChangeValue={onChangeValue('attributes.pattern')}
+						value={element.attributes?.pattern}
+					/>
+				</>
+			)}
+			{NUMERIC_FIELDS.includes(element.type) && (
 				<>
 					<NumberInputWithLabel
 						label={__('min')}
@@ -33,6 +55,36 @@ export const Validation: React.FC<FormElementProps> = ({ element }) => {
 						label={__('max')}
 						onChangeValue={onChangeValue('attributes.max')}
 						value={element.attributes?.max}
+					/>
+				</>
+			)}
+			{DATE_FIELDS.includes(element.type) && (
+				<>
+					<DatePickerWithLabel
+						label={__('min')}
+						onChange={onChangeValue('attributes.minDate')}
+						value={element.attributes?.minDate}
+						{...(element.type === 'MONTH' && monthFieldProps)}
+					/>
+					<DatePickerWithLabel
+						label={__('max')}
+						onChange={onChangeValue('attributes.maxDate')}
+						value={element.attributes?.maxDate}
+						{...(element.type === 'MONTH' && monthFieldProps)}
+					/>
+				</>
+			)}
+			{element.type === 'TIME' && (
+				<>
+					<TimePickerWithLabel
+						label={__('min')}
+						onChange={onChangeValue('attributes.minDate')}
+						value={element.attributes?.minDate}
+					/>
+					<TimePickerWithLabel
+						label={__('max')}
+						onChange={onChangeValue('attributes.maxDate')}
+						value={element.attributes?.maxDate}
 					/>
 				</>
 			)}

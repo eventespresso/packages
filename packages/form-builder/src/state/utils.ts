@@ -1,5 +1,6 @@
 import * as R from 'ramda';
 
+import { __ } from '@eventespresso/i18n';
 import { uuid, isNilOrEmpty } from '@eventespresso/utils';
 import { sortByOrder, setOrderByIndex, isSharedOrDefault } from '@eventespresso/predicates';
 
@@ -16,6 +17,7 @@ import {
 	SectionJsonFields,
 } from '../types';
 import { LOCAL_ONLY_FIELDS, STATUS_FLAGS } from './constants';
+import { DEFAULT_ELEMENT, DEFAULT_SECTION } from '../constants';
 
 export function omitLocalFields<Item extends LocalOnlyFields>(item: Item) {
 	return R.omit(LOCAL_ONLY_FIELDS, item);
@@ -337,3 +339,77 @@ export const getSectionElementIds =
  * Returns true if a section or element has `belongsTo` field empty
  */
 export const belongsToNone = R.propSatisfies<string, { belongsTo?: string }>(isNilOrEmpty, 'belongsTo');
+
+export const prepareNewSection = (section: Partial<FormSection>, topLevelSection?: string): FormSection => {
+	return {
+		// New section will be composed of default section
+		...DEFAULT_SECTION,
+		// by default set `belongsTo` to `topLevelSection`
+		belongsTo: topLevelSection,
+		...section,
+		id: uuid(),
+		isNew: true,
+	};
+};
+
+export const prepareNewElement = (element: Partial<FormElement>): FormElement => {
+	let publicLabel: string;
+
+	switch (element.type) {
+		case 'DATE':
+		case 'DATETIME_LOCAL':
+			publicLabel = __('date');
+			break;
+		case 'DAY_SELECT':
+			publicLabel = __('day');
+			break;
+		case 'DECIMAL':
+		case 'INTEGER':
+			publicLabel = __('pick a number');
+			break;
+		case 'EMAIL':
+			publicLabel = __('email address');
+			break;
+		case 'EMAIL_CONFIRMATION':
+			publicLabel = __('confirm email address');
+			break;
+		case 'MONTH':
+		case 'MONTH_SELECT':
+			publicLabel = __('month');
+			break;
+		case 'PASSWORD':
+			publicLabel = __('password');
+			break;
+		case 'SELECT_COUNTRY':
+			publicLabel = __('country');
+			break;
+		case 'SELECT_STATE':
+			publicLabel = __('state/province');
+			break;
+		case 'TEL':
+			publicLabel = __('phone number');
+			break;
+		case 'TIME':
+			publicLabel = __('time');
+			break;
+		case 'URL':
+			publicLabel = __('URL');
+			break;
+		case 'WEEK':
+			publicLabel = __('week');
+			break;
+		case 'YEAR_SELECT':
+			publicLabel = __('year');
+			break;
+	}
+
+	const newElement = R.mergeDeepRight({ label: { publicLabel } }, element);
+
+	return {
+		// New element will be composed of default element
+		...DEFAULT_ELEMENT,
+		...newElement,
+		id: uuid(),
+		isNew: true,
+	};
+};
