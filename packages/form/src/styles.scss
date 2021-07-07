@@ -33,6 +33,7 @@
 				label {
 					color: var(--ee-default-text-color-high-contrast);
 					display: inline-flex !important;
+					font-size: var(--ee-font-size-default);
 				}
 
 				label,
@@ -75,17 +76,20 @@
 			&-heading.ee-heading.ee-heading {
 				color: var(--ee-default-text-color-high-contrast);
 				font-size: var(--ee-font-size-bigger);
-				margin-top: 0;
-				padding-right: var(--ee-padding-small);
+				margin: 0;
+				margin-inline-end: var(--ee-margin-small);
 			}
 
 			&-icon.ee-svg.ee-svg {
-				color: var(--ee-color-grey-13);
+				color: var(--ee-color-grey-14);
 				display: inline-block;
-				font-size: var(--ee-font-size-extreme);
-				height: var(--ee-font-size-extreme);
-				margin: 0 0 var(--ee-margin-tiny);
-				width: var(--ee-font-size-extreme);
+				font-size: calc(var(--ee-font-size-extreme) * 2.5);
+				left: calc(var(--ee-padding-smaller) * -1);
+				height: calc(var(--ee-font-size-extreme) * 2.5);
+				position: absolute;
+				top: var(--ee-padding-big);
+				width: calc(var(--ee-font-size-extreme) * 2.5);
+				z-index: -1;
 			}
 
 			&-desc {

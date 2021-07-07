@@ -10,6 +10,11 @@
 	min-height: var(--ee-icon-button-size);
 	min-width: var(--ee-icon-button-size);
 
+	p {
+		font-size: var(--ee-font-size-default);
+		line-height: var(--ee-font-size-bigger);
+	}
+
 	&:not(&--is-disabled) {
 		cursor: pointer;
 

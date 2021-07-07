@@ -1,5 +1,7 @@
 .ee-input-label {
-	color: var(--ee-default-text-color-super-high-contrast);
-	font-weight: bold;
+	color: var(--ee-default-text-color-high-contrast);
+	font-size: var(--ee-font-size-small);
+	font-weight: 500;
+	padding: 0 0 var(--ee-padding-nano);
 	white-space: nowrap;
 }

@@ -3,8 +3,8 @@
 
 .ee-entity-list {
 	.entity-card {
-		--ee-sidebar-width: 9rem;
-		--ee-menu-width: 44px;
+		--ee-sidebar-width: 10rem;
+		--ee-menu-width: var(--ee-icon-button-size);
 
 		align-items: stretch;
 		box-sizing: border-box;
