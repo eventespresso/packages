@@ -9,7 +9,7 @@ const MaxRegistrations: React.FC<Props> = ({ maxReg, onMaxRegChange }) => {
 	const strValue = maxReg && String(maxReg);
 
 	return (
-		<GridItem id={id} label={__('Max Registrations per Transaction')} size='smaller'>
+		<GridItem id={id} label={__('Max Registrations per Transaction')} size='micro'>
 			<div className='ee-reg-option__value'>
 				<InlineEditText
 					aria-describedby={id}

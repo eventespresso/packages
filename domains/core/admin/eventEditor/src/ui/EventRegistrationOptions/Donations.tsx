@@ -6,10 +6,10 @@ interface Props extends Pick<EventRegistrationOptionsProps, 'allowDonations' | '
 
 const Donations: React.FC<Props> = ({ allowDonations: isChecked, onDonationsChange }) => {
 	const id = 'ee-event-donations';
-	const label = isChecked ? __('Donations Enabled') : __('Donations Disabled');
+	const label = isChecked ? __('Donations') : __('Donations');
 
 	return (
-		<GridItem id={id} label={label} size='smaller'>
+		<GridItem id={id} label={label} size='default'>
 			<SwitchWithLabel
 				aria-describedby={id}
 				isChecked={isChecked}

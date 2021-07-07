@@ -44,25 +44,19 @@ export const EventRegistrationOptions: React.FC<Partial<EventRegistrationOptions
 		</Heading>
 		<Grid columns={columns} spacing='1.25rem'>
 			<ActiveStatus status={status} onStatusChange={onStatusChange} />
-
+			<EventManager eventManagers={eventManagers} managerId={managerId} onManagerChange={onManagerChange} />
+			<EventPhoneNumber phoneNumber={phoneNumber} onPhoneNumberChange={onPhoneNumberChange} />
+			<Donations allowDonations={allowDonations} onDonationsChange={onDonationsChange} />
+			
 			<DefaultRegistrationStatus
 				defaultRegStatus={defaultRegStatus}
 				onDefaultRegStatusChange={onDefaultRegStatusChange}
 			/>
-
-			<MaxRegistrations maxReg={maxReg} onMaxRegChange={onMaxRegChange} />
-
 			<TicketSelector
 				displayTicketSelector={displayTicketSelector}
 				onTicketSelectorChange={onTicketSelectorChange}
 			/>
-
-			<Donations allowDonations={allowDonations} onDonationsChange={onDonationsChange} />
-
-			<EventPhoneNumber phoneNumber={phoneNumber} onPhoneNumberChange={onPhoneNumberChange} />
-
-			<EventManager eventManagers={eventManagers} managerId={managerId} onManagerChange={onManagerChange} />
-
+			<MaxRegistrations maxReg={maxReg} onMaxRegChange={onMaxRegChange} />
 			<AltRegPage altRegPage={altRegPage} onAltRegPageChange={onAltRegPageChange} />
 		</Grid>
 	</div>

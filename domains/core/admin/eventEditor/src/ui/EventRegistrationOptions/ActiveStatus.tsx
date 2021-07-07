@@ -19,7 +19,7 @@ const ActiveStatus: React.FC<Props> = ({ status, onStatusChange }) => {
 	const options = useMemo(() => objectToSelectOptions(datetimeStatus), []);
 
 	return (
-		<GridItem className={className} id={id} label={__('Active status')} size='small'>
+		<GridItem className={className} id={id} label={__('Event Active Status')} size='default'>
 			<div className='ee-reg-option__value'>
 				<SelectWithLabel
 					flow='inline'

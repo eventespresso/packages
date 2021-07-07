@@ -5,4 +5,6 @@ export interface GridItemProps extends Size {
 	className?: string;
 	id: string;
 	label: string;
+	labelLink?: string;
+	url?: string;
 }

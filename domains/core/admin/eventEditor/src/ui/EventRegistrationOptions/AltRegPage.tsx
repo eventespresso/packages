@@ -13,6 +13,8 @@ const AltRegPage: React.FC<Props> = ({ altRegPage, onAltRegPageChange }) => {
 			id={id}
 			label={__('Alternative Registration Page')}
 			size='huge'
+			labelLink={'Visit URL'}
+			url={altRegPage}
 		>
 			<div className='ee-reg-option__value'>
 				<InlineEditText

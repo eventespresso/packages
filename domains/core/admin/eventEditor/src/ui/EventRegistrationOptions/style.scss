@@ -2,8 +2,9 @@
 
 .ee-event-registration-options {
 	.ee-grid__item {
+		min-height: 100px;
 		box-sizing: border-box;
-		flex-direction: column-reverse;
+		flex-direction: column;
 		height: unset;
 		padding: var(--ee-padding-tiny) var(--ee-padding-small) var(--ee-padding-small);
 		text-align: unset;
@@ -13,8 +14,19 @@
 			padding: var(--ee-padding-smaller) var(--ee-padding-default) var(--ee-padding-small);
 		}
 
+		&--size-micro {
+			grid-column-start: span 3 !important;
+		}
+
 		label {
 			margin: var(--ee-margin-small) 0;
+		}
+
+		&-wrapper {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 
 		.ee-reg-option__value {
@@ -84,17 +96,24 @@
 
 		.ee-grid__item-label,
 		.ee-tabbable-text.ee-tabbable-text--no-text {
-			font-size: var(--ee-font-size-smaller);
+			font-size: var(--ee-font-size-default);
 			letter-spacing: 1px;
 		}
 
 		.ee-grid__item-label {
+			font-family: var(--ee-admin-font-family);
 			color: var(--ee-default-text-color-high-contrast);
 			font-weight: 400;
 			margin: 0;
 			max-width: unset;
 			text-align: start !important;
 			text-shadow: none !important;
+		}
+
+		&-link {
+			font-size: var(--ee-font-size-default);
+			font-weight: 500;
+			color: var(--ee-color-primary);
 		}
 
 		.ee-tabbable-text.ee-tabbable-text--no-text {
