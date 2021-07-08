@@ -1,5 +1,4 @@
 import { memo, useMemo } from 'react';
-import * as R from 'ramda';
 
 import { FormControl, FormHelperText } from '@eventespresso/adapters';
 import { AnyObject, getPropsAreEqual, safeNumber } from '@eventespresso/utils';
