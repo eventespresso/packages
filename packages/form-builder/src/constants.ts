@@ -95,7 +95,7 @@ export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	{
 		label: __('Password Confirmation'),
 		type: 'PASSWORD_CONFIRMATION',
-		desc: 'adds a text input that confirms the entered email password matches the value entered into another password input',
+		desc: 'adds a text input that confirms the entered password matches the value entered into another password input',
 	},
 	{
 		label: __('URL'),
