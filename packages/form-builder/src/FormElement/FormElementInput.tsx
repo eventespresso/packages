@@ -1,7 +1,8 @@
 import { memo, useMemo } from 'react';
+import * as R from 'ramda';
 
 import { FormControl, FormHelperText } from '@eventespresso/adapters';
-import { AnyObject, getPropsAreEqual } from '@eventespresso/utils';
+import { AnyObject, getPropsAreEqual, safeNumber } from '@eventespresso/utils';
 import { getDaysDropdownOptions, getMonthsDropdownOptions, getYearsDropdownOptions } from '@eventespresso/dates';
 
 import { MappedElement } from './MappedElement';
@@ -75,10 +76,10 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 			case 'INTEGER':
 			case 'RANGE':
 				// ensure that min/max is number and not NaN
-				inputProps.min = Number(element.attributes?.min) || null;
-				inputProps.max = Number(element.attributes?.max) || null;
-				inputProps.step = Number(element.attributes?.step) || null;
-				inputProps.size = Number(element.attributes?.size) || null;
+				inputProps.min = safeNumber(element.attributes?.min);
+				inputProps.max = safeNumber(element.attributes?.max);
+				inputProps.step = safeNumber(element.attributes?.step);
+				inputProps.size = safeNumber(element.attributes?.size);
 				break;
 			case 'HTML':
 				inputProps.value = element.label?.html;
