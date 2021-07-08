@@ -30,7 +30,7 @@ export const DEFAULT_ELEMENT: FormElement = {
 	order: 1,
 };
 
-export const NUMERIC_FIELDS: Array<ElementType> = ['INTEGER', 'DECIMAL'];
+export const NUMERIC_FIELDS: Array<ElementType> = ['INTEGER', 'DECIMAL', 'RANGE'];
 
 export const TEXT_FIELDS: Array<ElementType> = [
 	...NUMERIC_FIELDS,
@@ -41,7 +41,10 @@ export const TEXT_FIELDS: Array<ElementType> = [
 	'TEXT',
 	'URL',
 ];
+
 export const DATE_FIELDS: Array<ElementType> = ['DATE', 'DATETIME_LOCAL', 'MONTH'];
+
+export const BUTTON_FIELDS: Array<ElementType> = ['BUTTON', 'RESET'];
 
 // These are the fields that require `options` to be passed to the component
 export const FIELDS_WITH_OPTIONS: Array<ElementType> = ['CHECKBOX_MULTI', 'RADIO', 'SELECT'];
@@ -88,6 +91,11 @@ export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 		label: __('Password'),
 		type: 'PASSWORD',
 		desc: __('adds a text input that accepts text but masks what the user enters'),
+	},
+	{
+		label: __('Password Confirmation'),
+		type: 'PASSWORD_CONFIRMATION',
+		desc: 'adds a text input that confirms the entered email password matches the value entered into another password input',
 	},
 	{
 		label: __('URL'),

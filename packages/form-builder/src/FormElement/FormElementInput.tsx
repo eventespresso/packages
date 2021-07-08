@@ -7,9 +7,12 @@ import { getDaysDropdownOptions, getMonthsDropdownOptions, getYearsDropdownOptio
 import { MappedElement } from './MappedElement';
 import type { FormElementProps } from '../types';
 import { useUpdateElement } from './useUpdateElement';
+import { isButtonField } from '../utils';
 
 export const FormElementInput = memo<FormElementProps>(({ element }) => {
 	const onChangeValue = useUpdateElement(element);
+
+	const label = element.label?.publicLabel || element.label?.adminLabel;
 
 	const props = useMemo(() => {
 		let inputProps: AnyObject = {
@@ -18,6 +21,10 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 			required: false,
 		};
 		switch (element.type) {
+			case 'BUTTON':
+			case 'RESET':
+				inputProps.buttonText = label;
+				break;
 			case 'CHECKBOX_MULTI':
 			case 'RADIO':
 			case 'SELECT':
@@ -61,28 +68,36 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 			case 'EMAIL_CONFIRMATION':
 				inputProps.type = 'email';
 				break;
+			case 'PASSWORD_CONFIRMATION':
+				inputProps.type = 'password';
+				break;
 			case 'DECIMAL':
 			case 'INTEGER':
-				inputProps.min = element.attributes?.min;
-				inputProps.max = element.attributes?.max;
+			case 'RANGE':
+				// ensure that min/max is number and not NaN
+				inputProps.min = Number(element.attributes?.min) || null;
+				inputProps.max = Number(element.attributes?.max) || null;
+				inputProps.step = Number(element.attributes?.step) || null;
+				inputProps.size = Number(element.attributes?.size) || null;
 				break;
 			case 'HTML':
-				inputProps.value = element.attributes?.html;
+				inputProps.value = element.label?.html;
 				inputProps.toolbarHidden = true;
 				inputProps.readonly = true;
 				inputProps.isDisabled = true;
 				break;
 		}
 		return inputProps;
-	}, [element, onChangeValue]);
+	}, [element, label, onChangeValue]);
 
 	return (
 		<FormControl className='ee-form-element__input'>
 			<MappedElement
-				type={element.type}
+				elementType={element.type}
 				id={element.id}
-				label={element.label?.publicLabel || element.label?.adminLabel}
 				isRequired={element.required?.required}
+				// Buttons do not need external label
+				label={isButtonField(element) ? null : label}
 				{...props}
 			/>
 			{element.helpText?.helpText && <FormHelperText>{element.helpText?.helpText}</FormHelperText>}
