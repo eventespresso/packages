@@ -60,11 +60,13 @@ export type FormAttributes = {
 	class?: string;
 	max?: number;
 	maxDate?: Date;
+	maxlength?: number;
 	min?: number;
 	minDate?: Date;
 	pattern?: string;
 	placeholder?: string;
-	html?: string; // this is for HTML elements
+	size?: number;
+	step?: number;
 };
 
 export type FormHelpText = {
@@ -76,6 +78,7 @@ export type FormLabel = {
 	adminLabel?: string;
 	publicLabel?: string;
 	showLabel?: boolean;
+	html?: string; // this is for HTML elements
 };
 
 export type FormRequired = {
