@@ -15,6 +15,7 @@ export type ElementType =
 	| 'MONTH'
 	| 'MONTH_SELECT'
 	| 'PASSWORD'
+	| 'PASSWORD_CONFIRMATION'
 	| 'RADIO'
 	| 'RANGE'
 	| 'RESET'

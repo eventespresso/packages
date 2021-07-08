@@ -390,6 +390,9 @@ export const prepareNewElement = (element: Partial<FormElement>): FormElement =>
 		case 'PASSWORD':
 			publicLabel = __('password');
 			break;
+		case 'PASSWORD_CONFIRMATION':
+			publicLabel = __('confirm password');
+			break;
 		case 'RADIO':
 			publicLabel = __('radio buttons');
 			break;
