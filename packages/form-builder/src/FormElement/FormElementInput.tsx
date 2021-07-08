@@ -67,7 +67,7 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 				inputProps.max = element.attributes?.max;
 				break;
 			case 'HTML':
-				inputProps.value = element.attributes?.placeholder;
+				inputProps.value = element.attributes?.html;
 				inputProps.toolbarHidden = true;
 				inputProps.readonly = true;
 				inputProps.isDisabled = true;

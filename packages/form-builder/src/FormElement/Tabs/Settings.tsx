@@ -34,9 +34,8 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 				<>
 					<RTEWithLabel
 						label={__('content')}
-						defaultValue={element.attributes?.placeholder}
-						// lets save the content to `placeholder` field because that field will be unused here
-						onChangeValue={onChangeValue('attributes.placeholder')}
+						defaultValue={element.attributes?.html}
+						onChangeValue={onChangeValue('attributes.html')}
 					/>
 				</>
 			) : (

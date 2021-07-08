@@ -64,6 +64,7 @@ export type FormAttributes = {
 	minDate?: Date;
 	pattern?: string;
 	placeholder?: string;
+	html?: string; // this is for HTML elements
 };
 
 export type FormHelpText = {
