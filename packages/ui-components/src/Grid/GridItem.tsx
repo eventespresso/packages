@@ -12,7 +12,7 @@ export const GridItem: React.FC<GridItemProps> = ({ children, id, label, labelLi
 					{label}
 				</label>
 				{ labelLink && 
-					<a href={url} className='ee-grid__item-link' target='_blank'>
+					<a href={url} className='ee-grid__item-label ee-grid__item-link' target='_blank'>
 						{labelLink}
 					</a> 
 				}

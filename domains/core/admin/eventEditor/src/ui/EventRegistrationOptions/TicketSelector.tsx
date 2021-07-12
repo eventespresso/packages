@@ -6,10 +6,9 @@ interface Props extends Pick<EventRegistrationOptionsProps, 'displayTicketSelect
 
 const TicketSelector: React.FC<Props> = ({ displayTicketSelector: isChecked, onTicketSelectorChange }) => {
 	const id = 'ee-event-registration-ticket-selector';
-	const label = isChecked ? __('Ticket Selector') : __('Ticket Selector');
 
 	return (
-		<GridItem id={id} label={label} size='micro'>
+		<GridItem id={id} label={__('Ticket Selector')} size='micro'>
 			<SwitchWithLabel
 				aria-describedby={id}
 				isChecked={isChecked}

@@ -8,7 +8,7 @@ import type { EventRegistrationOptionsProps } from './types';
 interface Props extends Pick<EventRegistrationOptionsProps, 'defaultRegStatus' | 'onDefaultRegStatusChange'> {}
 
 const DefaultRegistrationStatus: React.FC<Props> = ({ defaultRegStatus, onDefaultRegStatusChange }) => {
-	const className = classNames('ee-status-background', 'ee-status-background-color-RAP');
+	const className = classNames('ee-status-background ee-status-container', 'ee-status-background-color-RAP');
 	const id = 'ee-event-registration-default-status';
 
 	return (

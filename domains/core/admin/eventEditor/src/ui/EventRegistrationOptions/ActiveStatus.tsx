@@ -12,7 +12,7 @@ interface Props extends Pick<EventRegistrationOptionsProps, 'status' | 'onStatus
 
 const ActiveStatus: React.FC<Props> = ({ status, onStatusChange }) => {
 	const bgColorClassName = datetimeStatusBgColorClassName(null);
-	const className = classNames('ee-status-background', bgColorClassName);
+	const className = classNames('ee-status-background ee-status-container', bgColorClassName);
 
 	const id = 'ee-event-registration-active-status';
 
