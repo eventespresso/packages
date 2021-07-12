@@ -47,7 +47,7 @@ export const DATE_FIELDS: Array<ElementType> = ['DATE', 'DATETIME_LOCAL', 'MONTH
 export const BUTTON_FIELDS: Array<ElementType> = ['BUTTON', 'RESET'];
 
 // These are the fields that require `options` to be passed to the component
-export const FIELDS_WITH_OPTIONS: Array<ElementType> = ['CHECKBOX_MULTI', 'RADIO', 'SELECT'];
+export const FIELDS_WITH_OPTIONS: Array<ElementType> = ['CHECKBOX_MULTI', 'RADIO', 'SELECT', 'SELECT_MULTI'];
 
 export const ELEMENT_BLOCKS: Array<ElementBlock> = [
 	{

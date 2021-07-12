@@ -28,6 +28,7 @@ export const FormElementInput = memo<FormElementProps>(({ element }) => {
 			case 'CHECKBOX_MULTI':
 			case 'RADIO':
 			case 'SELECT':
+			case 'SELECT_MULTI':
 				// Display only the options which have both value and label
 				inputProps.options = (element.options || []).filter(({ value, label }) => value && label);
 				break;

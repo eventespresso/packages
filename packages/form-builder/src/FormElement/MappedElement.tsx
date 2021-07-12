@@ -3,13 +3,14 @@ import { DatePicker, MonthPicker, TimePicker } from '@eventespresso/dates';
 import { Slider } from '@eventespresso/adapters';
 import {
 	Button,
-	TextInput,
 	MultiCheckbox,
+	MultiSelect,
 	NumberInput,
-	Textarea,
-	Select,
 	RadioGroup,
+	Select,
 	Switch,
+	TextInput,
+	Textarea,
 	withLabel,
 } from '@eventespresso/ui-components';
 import { SimpleTextEditor } from '@eventespresso/rich-text-editor';
@@ -44,6 +45,9 @@ const MappedComponent: React.FC<MappedElementProps> = ({ elementType, ...props }
 		// MULTI OPTION RELATED INPUTS
 		case 'CHECKBOX_MULTI':
 			Component = MultiCheckbox;
+			break;
+		case 'SELECT_MULTI':
+			Component = MultiSelect;
 			break;
 		case 'RADIO':
 			Component = RadioGroup;
