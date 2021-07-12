@@ -5,7 +5,7 @@ import { DatePicker, TimePicker } from '@eventespresso/dates';
 import { useUpdateElement } from '../useUpdateElement';
 
 import type { FormElementProps } from '../../types';
-import { DATE_FIELDS, NUMERIC_FIELDS, TEXT_FIELDS } from '../../constants';
+import { isDateField, isNumericField, isTextField, isFieldOfType } from '../../utils';
 
 const DatePickerWithLabel = withLabel(DatePicker);
 const TimePickerWithLabel = withLabel(TimePicker);
@@ -30,7 +30,7 @@ export const Validation: React.FC<FormElementProps> = ({ element }) => {
 				onChangeValue={onChangeValue('required.validationText')}
 				value={element.required?.validationText}
 			/>
-			{TEXT_FIELDS.includes(element.type) && (
+			{isTextField(element) && (
 				<>
 					<SwitchWithLabel
 						label={__('autocomplete')}
@@ -44,7 +44,7 @@ export const Validation: React.FC<FormElementProps> = ({ element }) => {
 					/>
 				</>
 			)}
-			{NUMERIC_FIELDS.includes(element.type) && (
+			{isNumericField(element) && (
 				<>
 					<NumberInputWithLabel
 						label={__('min')}
@@ -58,7 +58,7 @@ export const Validation: React.FC<FormElementProps> = ({ element }) => {
 					/>
 				</>
 			)}
-			{DATE_FIELDS.includes(element.type) && (
+			{isDateField(element) && (
 				<>
 					<DatePickerWithLabel
 						label={__('min')}
@@ -74,7 +74,7 @@ export const Validation: React.FC<FormElementProps> = ({ element }) => {
 					/>
 				</>
 			)}
-			{element.type === 'TIME' && (
+			{isFieldOfType(['TIME'], element) && (
 				<>
 					<TimePickerWithLabel
 						label={__('min')}

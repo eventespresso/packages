@@ -15,6 +15,7 @@ export type ElementType =
 	| 'MONTH'
 	| 'MONTH_SELECT'
 	| 'PASSWORD'
+	| 'PASSWORD_CONFIRMATION'
 	| 'RADIO'
 	| 'RANGE'
 	| 'RESET'
@@ -59,10 +60,13 @@ export type FormAttributes = {
 	class?: string;
 	max?: number;
 	maxDate?: Date;
+	maxlength?: number;
 	min?: number;
 	minDate?: Date;
 	pattern?: string;
 	placeholder?: string;
+	size?: number;
+	step?: number;
 };
 
 export type FormHelpText = {
@@ -74,6 +78,7 @@ export type FormLabel = {
 	adminLabel?: string;
 	publicLabel?: string;
 	showLabel?: boolean;
+	html?: string; // this is for HTML elements
 };
 
 export type FormRequired = {

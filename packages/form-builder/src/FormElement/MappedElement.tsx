@@ -1,6 +1,8 @@
 import type { AnyObject } from '@eventespresso/utils';
 import { DatePicker, MonthPicker, TimePicker } from '@eventespresso/dates';
+import { Slider } from '@eventespresso/adapters';
 import {
+	Button,
 	TextInput,
 	MultiCheckbox,
 	NumberInput,
@@ -17,17 +19,17 @@ import { ElementType } from '../types';
 const DefaultComponent = () => null;
 
 export interface MappedElementProps {
-	type: ElementType;
+	elementType: ElementType;
 }
 
 /**
  * This component renders the appropriate Component for the given element type.
  * The props to the Component must be passed by the consumer
  */
-const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
+const MappedComponent: React.FC<MappedElementProps> = ({ elementType, ...props }) => {
 	let Component: React.ComponentType<AnyObject>;
 
-	switch (type) {
+	switch (elementType) {
 		// DATE & TIME RELATED INPUTS
 		case 'DATE':
 		case 'DATETIME_LOCAL':
@@ -62,10 +64,14 @@ const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
 		case 'DECIMAL':
 			Component = NumberInput;
 			break;
+		case 'RANGE':
+			Component = Slider;
+			break;
 		// TEXT RELATED INPUTS
 		case 'EMAIL':
 		case 'EMAIL_CONFIRMATION':
 		case 'PASSWORD':
+		case 'PASSWORD_CONFIRMATION':
 		case 'TEL':
 		case 'TEXT':
 		case 'URL':
@@ -77,6 +83,11 @@ const MappedComponent: React.FC<MappedElementProps> = ({ type, ...props }) => {
 			break;
 		case 'HTML':
 			Component = SimpleTextEditor;
+			break;
+		// Button INPUTS
+		case 'BUTTON':
+		case 'RESET':
+			Component = Button;
 			break;
 		default:
 			Component = DefaultComponent;

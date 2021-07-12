@@ -4,9 +4,10 @@ import { SimpleTextEditor } from '@eventespresso/rich-text-editor';
 
 import type { FormElementProps } from '../../types';
 import FieldOptions from './FieldOptions';
-import { FIELDS_WITH_OPTIONS } from '../../constants';
+import { isFieldWithOptions } from '../../utils';
 import { useUpdateElement } from '../useUpdateElement';
 import { InputType } from './InputType';
+import { isFieldOfType } from '../../utils';
 
 const RTEWithLabel = withLabel(SimpleTextEditor);
 
@@ -17,7 +18,7 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 		<>
 			{
 				// HTML doesn't need a public label
-				element.type !== 'HTML' && (
+				isFieldOfType(['HTML'], element) && (
 					<TextInputWithLabel
 						label={__('public label')}
 						onChangeValue={onChangeValue('label.publicLabel')}
@@ -30,18 +31,17 @@ export const Settings: React.FC<FormElementProps> = ({ element }) => {
 				onChangeValue={onChangeValue('label.adminLabel')}
 				value={element.label?.adminLabel}
 			/>
-			{element.type === 'HTML' ? (
+			{isFieldOfType(['HTML'], element) ? (
 				<>
 					<RTEWithLabel
 						label={__('content')}
-						defaultValue={element.attributes?.placeholder}
-						// lets save the content to `placeholder` field because that field will be unused here
-						onChangeValue={onChangeValue('attributes.placeholder')}
+						defaultValue={element.label?.html}
+						onChangeValue={onChangeValue('label.html')}
 					/>
 				</>
 			) : (
 				<>
-					{FIELDS_WITH_OPTIONS.includes(element.type) ? (
+					{isFieldWithOptions(element) ? (
 						<FieldOptions element={element} label={__('options')} />
 					) : (
 						<TextInputWithLabel

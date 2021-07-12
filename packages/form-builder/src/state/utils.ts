@@ -356,16 +356,26 @@ export const prepareNewElement = (element: Partial<FormElement>): FormElement =>
 	let publicLabel: string;
 
 	switch (element.type) {
+		case 'BUTTON':
+			publicLabel = __('click');
+			break;
+		case 'CHECKBOX_MULTI':
+			publicLabel = __('checkboxes');
+			break;
 		case 'DATE':
-		case 'DATETIME_LOCAL':
 			publicLabel = __('date');
+			break;
+		case 'DATETIME_LOCAL':
+			publicLabel = __('Local Date');
 			break;
 		case 'DAY_SELECT':
 			publicLabel = __('day');
 			break;
 		case 'DECIMAL':
+			publicLabel = __('Decimal Number');
+			break;
 		case 'INTEGER':
-			publicLabel = __('pick a number');
+			publicLabel = __('Whole Number');
 			break;
 		case 'EMAIL':
 			publicLabel = __('email address');
@@ -380,14 +390,44 @@ export const prepareNewElement = (element: Partial<FormElement>): FormElement =>
 		case 'PASSWORD':
 			publicLabel = __('password');
 			break;
+		case 'PASSWORD_CONFIRMATION':
+			publicLabel = __('confirm password');
+			break;
+		case 'RADIO':
+			publicLabel = __('radio buttons');
+			break;
+		case 'RANGE':
+			publicLabel = __('number range');
+			break;
+		case 'SELECT':
+			publicLabel = __('selection dropdown');
+			break;
 		case 'SELECT_COUNTRY':
 			publicLabel = __('country');
+			break;
+		case 'SELECT_MULTI':
+			publicLabel = __('multi-select dropdown');
 			break;
 		case 'SELECT_STATE':
 			publicLabel = __('state/province');
 			break;
+		case 'SWITCH':
+			publicLabel = __('on/off switch');
+			break;
+		case 'RESET':
+			publicLabel = __('reset');
+			break;
 		case 'TEL':
 			publicLabel = __('phone number');
+			break;
+		case 'TEXT':
+			publicLabel = __('text');
+			break;
+		case 'TEXTAREA':
+			publicLabel = __('simple textarea');
+			break;
+		case 'TEXTAREA_HTML':
+			publicLabel = __('html textarea');
 			break;
 		case 'TIME':
 			publicLabel = __('time');
