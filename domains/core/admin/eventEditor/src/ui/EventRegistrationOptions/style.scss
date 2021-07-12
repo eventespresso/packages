@@ -9,6 +9,8 @@
 		padding: var(--ee-padding-tiny) var(--ee-padding-small) var(--ee-padding-small);
 		text-align: unset;
 		border-radius: var(--ee-border-radius-default);
+		align-items: unset !important;
+		justify-content: unset !important;
 
 		@include min1080px {
 			padding: var(--ee-padding-smaller) var(--ee-padding-default) var(--ee-padding-small);
@@ -86,6 +88,27 @@
 					width: 1rem;
 				}
 			}
+
+			.chakra-editable {
+
+				.ee-tabbable-text {
+					// min-height: unset;
+					padding: 0px;
+				}
+
+				.ee-tabbable-text__inner_wrapper {
+					height: var(--ee-font-size-default);
+					line-height: var(--ee-font-size-bigger);
+					max-width: unset;
+					overflow: unset;
+					white-space: unset;
+				}
+
+				.chakra-editable__input {
+					width: 100%;
+					min-height: var(--ee-icon-button-size);
+				}
+			}
 		}
 
 		&:not([class*='status']) {
@@ -96,7 +119,7 @@
 
 		.ee-grid__item-label,
 		.ee-tabbable-text.ee-tabbable-text--no-text {
-			font-size: var(--ee-font-size-default);
+			font-size: var(--ee-font-size-small);
 			letter-spacing: 1px;
 		}
 
@@ -108,12 +131,10 @@
 			max-width: unset;
 			text-align: start !important;
 			text-shadow: none !important;
-		}
 
-		&-link {
-			font-size: var(--ee-font-size-default);
-			font-weight: 500;
-			color: var(--ee-color-primary);
+			&.ee-grid__item-link {
+				color: var(--ee-color-primary);
+			}
 		}
 
 		.ee-tabbable-text.ee-tabbable-text--no-text {
@@ -140,6 +161,19 @@
 						option {
 							font-size: var(--ee-font-size-big);
 						}
+
+						&:focus,
+						&:hover {
+							border-color: transparent;
+						}
+
+						&:hover + .chakra-select__icon-wrapper {
+							opacity: 1;
+						}
+					}
+
+					.chakra-select__icon-wrapper {
+						opacity: 0;
 					}
 
 					> div {
