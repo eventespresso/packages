@@ -1,8 +1,8 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import type { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Select } from '../';
+import { Select, SelectWithCustomText } from '../';
 import type { SelectProps } from './types';
 
 export default {
@@ -50,5 +50,62 @@ export const SelectControlled: SelectStory = () => {
 			<option value='Option 2'>Option 2</option>
 			<option value='Option 3'>Option 3</option>
 		</Select>
+	);
+};
+
+const formatOptions = [
+	{
+		value: 'de_DE',
+		label: 'Germany',
+	},
+	{
+		value: 'fr_FR',
+		label: 'France',
+	},
+	{
+		value: 'en_UK',
+		label: 'United Kingdom',
+	},
+	{
+		value: 'en_US',
+		label: 'United States',
+	},
+	{
+		value: 'custom',
+		label: 'Custom',
+	},
+];
+
+export const SelectWithText: SelectStory = () => {
+	return (
+		<SelectWithCustomText
+			// defaultValue='(\+91)?[6-9][0-9]{9}'
+			defaultValue='en_US'
+			inputLabel='Custom pattern'
+			label='Phone number pattern'
+			onChangeValue={console.log}
+			options={formatOptions}
+			customOptionValue='custom'
+		/>
+	);
+};
+
+export const SelectWithTextControlled: SelectStory = () => {
+	const [value, setValue] = useState<React.ReactText>('en_US');
+
+	const onChangeValue = useCallback((newValue) => {
+		setValue(newValue);
+		console.log({ newValue });
+	}, []);
+
+	return (
+		<SelectWithCustomText
+			value={value}
+			inputLabel='Custom pattern'
+			label='Phone number pattern'
+			onChangeValue={onChangeValue}
+			options={formatOptions}
+			customOptionValue='custom'
+		/>
 	);
 };
