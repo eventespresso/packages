@@ -1,7 +1,7 @@
 import { __ } from '@eventespresso/i18n';
 import {
 	NumberInputWithLabel,
-	SelectWithLabel,
+	SelectWithCustomText,
 	SwitchWithLabel,
 	TextInputWithLabel,
 	withLabel,
@@ -21,6 +21,7 @@ const monthFieldProps = {
 	dateFormat: 'MM/yyyy',
 };
 
+// TODO use DOM data to add these options
 const formatOptions = [
 	{
 		value: 'de_DE',
@@ -67,16 +68,17 @@ export const Validation: React.FC<FormElementProps> = ({ element }) => {
 						isChecked={element.attributes?.autocomplete}
 					/>
 					{isTelField(element) && (
-						<SelectWithLabel
+						<SelectWithCustomText
 							id={`${element.id}-format`}
+							customOptionValue='custom'
+							inputLabel={__('custom format')}
 							label={__('format')}
+							onChangeValue={onChangeValue('attributes.pattern')}
 							options={formatOptions}
-							value={element.attributes?.format}
-							onChangeValue={onChangeValue('attributes.format')}
-							size='small'
+							value={element.attributes?.pattern}
 						/>
 					)}
-					{(!isTelField(element) || element.attributes?.format === 'custom') && (
+					{!isTelField(element) && (
 						<TextInputWithLabel
 							label={__('pattern')}
 							onChangeValue={onChangeValue('attributes.pattern')}

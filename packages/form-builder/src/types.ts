@@ -58,7 +58,6 @@ export type FormStatusFlags = {
 export type FormAttributes = {
 	autocomplete?: boolean;
 	class?: string;
-	format?: string; // for phone numbers
 	max?: number;
 	maxDate?: Date;
 	maxlength?: number;
