@@ -17,7 +17,7 @@
 		"./src/publicPath.ts"
 	],
 	"dependencies": {
-		"use-debounce": "^6.0.1"
+		"use-debounce": "^7.0.0"
 	},
 	"license": "GPL-3.0",
 	"gitHead": "66fae0230a22c100153cb05f5a624305efc5a8d9"
