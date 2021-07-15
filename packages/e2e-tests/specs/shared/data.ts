@@ -17,7 +17,7 @@ export const data = [
 	{
 		name: '3',
 		// This date is in the current month
-		startDate: sub('minutes', NOW, 10),
+		startDate: NOW,
 		endDate: add('days', NOW, 2),
 	},
 	{
